@@ -1,88 +1,68 @@
 import Container from "@/components/ui/Container";
 import ToolCard from "./ToolCard";
 
-import {
-  Receipt,
-  Calculator,
-  Landmark,
-  FileText,
-  Image,
-  ScanSearch,
-  QrCode,
-  Clock,
-} from "lucide-react";
-
-const tools = [
-  {
-    title: "GST Calculator",
-    description: "Calculate GST instantly for inclusive and exclusive prices.",
-    icon: Receipt,
-    href: "/tools/gst-calculator",
-  },
+const featuredTools = [
   {
     title: "EMI Calculator",
-    description: "Calculate monthly loan EMI with detailed breakup.",
-    icon: Calculator,
-    href: "/tools/emi-calculator",
+    description:
+      "Calculate monthly EMI, total interest and repayment instantly.",
+    category: "Finance",
+    badge: "Popular",
   },
   {
-    title: "SIP Calculator",
-    description: "Estimate future wealth from your SIP investments.",
-    icon: Landmark,
-    href: "/tools/sip-calculator",
-  },
-  {
-    title: "PDF to Word",
-    description: "Convert PDF documents into editable Word files.",
-    icon: FileText,
-    href: "/tools/pdf-to-word",
-  },
-  {
-    title: "Image Compressor",
-    description: "Reduce image size without noticeable quality loss.",
-    icon: Image,
-    href: "/tools/image-compressor",
-  },
-  {
-    title: "QR Generator",
-    description: "Generate beautiful QR codes in seconds.",
-    icon: QrCode,
-    href: "/tools/qr-generator",
+    title: "GST Calculator",
+    description:
+      "Calculate inclusive and exclusive GST in one click.",
+    category: "Finance",
+    badge: "Trending",
   },
   {
     title: "Age Calculator",
-    description: "Calculate exact age in years, months and days.",
-    icon: Clock,
-    href: "/tools/age-calculator",
+    description:
+      "Find exact age in years, months and days instantly.",
+    category: "Utility",
   },
   {
-    title: "Image to Text",
-    description: "Extract text from images using OCR.",
-    icon: ScanSearch,
-    href: "/tools/image-to-text",
+    title: "PDF to Word",
+    description:
+      "Convert PDF documents into editable Word files.",
+    category: "PDF",
+  },
+  {
+    title: "Image Compressor",
+    description:
+      "Reduce image size while maintaining excellent quality.",
+    category: "Images",
+  },
+  {
+    title: "QR Code Generator",
+    description:
+      "Generate beautiful QR codes for URLs, text and more.",
+    category: "Utility",
   },
 ];
 
 export default function FeaturedTools() {
   return (
-    <section className="py-24 bg-muted/30">
+    <section className="py-28 bg-slate-50">
+
       <Container>
 
         <div className="mx-auto max-w-3xl text-center">
 
-          <h2 className="text-4xl font-bold">
-            Most Popular Tools
+          <h2 className="text-5xl font-black tracking-tight">
+            Featured Tools
           </h2>
 
-          <p className="mt-5 text-lg text-muted-foreground">
-            Start with our most frequently used online tools.
+          <p className="mt-6 text-xl text-slate-600">
+            Discover the tools people use the most every day.
           </p>
 
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-          {tools.map((tool) => (
+          {featuredTools.map((tool) => (
             <ToolCard
               key={tool.title}
               {...tool}
@@ -92,6 +72,7 @@ export default function FeaturedTools() {
         </div>
 
       </Container>
+
     </section>
   );
 }

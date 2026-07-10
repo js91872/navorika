@@ -1,61 +1,85 @@
 import Container from "@/components/ui/Container";
-import FeatureCard from "./FeatureCard";
-
 import {
   Zap,
-  ShieldCheck,
-  Lock,
+  Shield,
+  Globe,
   BadgeCheck,
 } from "lucide-react";
 
 const features = [
   {
+    icon: Zap,
     title: "Lightning Fast",
     description:
-      "Every tool is optimized for speed so you get instant results without waiting.",
-    icon: Zap,
+      "Every tool is optimized to deliver results instantly with a smooth and responsive experience.",
   },
   {
+    icon: Shield,
     title: "Privacy First",
     description:
-      "Most processing happens in your browser. Your files stay private whenever possible.",
-    icon: Lock,
+      "Your files and data remain secure. Wherever possible, processing happens directly in your browser.",
   },
   {
-    title: "Secure & Trusted",
+    icon: Globe,
+    title: "Works Everywhere",
     description:
-      "Built using modern web technologies with a strong focus on security and reliability.",
-    icon: ShieldCheck,
+      "Built for desktop, tablet and mobile so you can access your favorite tools from any device.",
   },
   {
-    title: "Always Free",
-    description:
-      "Core tools will remain free, fast, and accessible without mandatory sign-up.",
     icon: BadgeCheck,
+    title: "Reliable Results",
+    description:
+      "Every calculator, converter and utility is carefully developed and tested for accuracy.",
   },
 ];
 
 export default function WhyNavorika() {
   return (
-    <section className="py-24">
+    <section className="bg-white py-28">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-bold">
-            Why Choose Navorika?
+
+          <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+            Why Navorika
+          </span>
+
+          <h2 className="mt-6 text-5xl font-black tracking-tight text-slate-900">
+            Built for Speed, Accuracy & Trust
           </h2>
 
-          <p className="mt-5 text-lg text-muted-foreground">
-            Designed to be fast, secure, simple, and genuinely useful every day.
+          <p className="mt-6 text-xl leading-8 text-slate-600">
+            Navorika is more than a collection of online tools. It is a
+            thoughtfully designed platform focused on delivering fast,
+            reliable and privacy-friendly experiences for everyone.
           </p>
+
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {features.map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              {...feature}
-            />
-          ))}
+        <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+
+          {features.map((feature) => {
+            const Icon = feature.icon;
+
+            return (
+              <div
+                key={feature.title}
+                className="group rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              >
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
+                  <Icon size={30} />
+                </div>
+
+                <h3 className="mt-8 text-2xl font-bold text-slate-900">
+                  {feature.title}
+                </h3>
+
+                <p className="mt-4 leading-7 text-slate-600">
+                  {feature.description}
+                </p>
+              </div>
+            );
+          })}
+
         </div>
       </Container>
     </section>
