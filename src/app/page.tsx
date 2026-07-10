@@ -1,17 +1,11 @@
-import Header from "@/components/layout/Header";
 import Hero from "@/components/home/Hero";
-import Categories from "@/components/home/Categories";
-import FeaturedTools from "@/components/home/FeaturedTools";
-import WhyNavorika from "@/components/home/WhyNavorika";
+import CategoryGrid from "@/components/home/CategoryGrid";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <Header />
       <Hero />
-      <Categories />
-      <FeaturedTools />
-      <WhyNavorika />
+      <CategoryGrid />
     </>
   );
 }
