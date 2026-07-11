@@ -1,27 +1,45 @@
-export interface FAQ {
+export interface FAQItem {
   question: string;
   answer: string;
 }
 
-export interface ToolData {
+export interface ToolExample {
+  title: string;
+  description: string;
+}
+
+export interface Tool {
+  id?: string;
   slug: string;
   title: string;
   description: string;
   category: string;
+  badge?: string;
+  featured?: boolean;
+}
 
-  keywords: string[];
+export interface ToolData extends Tool {
+  // SEO
+  keywords?: string[];
+  metaTitle?: string;
+  metaDescription?: string;
 
+  // Hero
   heroTitle?: string;
   heroDescription?: string;
 
+  // Content
+  introduction?: string;
   formula?: string;
+  howToUse?: string[];
 
-  examples?: {
-    title: string;
-    description: string;
-  }[];
+  // Examples
+  examples?: ToolExample[];
 
-  faq: FAQ[];
+  // FAQ
+  faq: FAQItem[];
 
-  relatedTools: string[];
+  // Related Content
+  relatedTools?: string[];
+  relatedArticles?: string[];
 }
