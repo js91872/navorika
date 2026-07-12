@@ -1,28 +1,27 @@
 import Container from "@/components/ui/Container";
-import { ToolData } from "@/types/tool";
 
 interface ToolFormulaProps {
-  tool: ToolData;
+  formula?: string;
 }
 
 export default function ToolFormula({
-  tool,
+  formula,
 }: ToolFormulaProps) {
-  if (!tool.formula) {
+  if (!formula) {
     return null;
   }
 
   return (
-    <section className="py-20">
+    <section className="py-16">
       <Container>
-        <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
+        <div className="rounded-3xl border bg-card p-10">
 
-          <h2 className="text-3xl font-bold text-slate-900">
+          <h2 className="text-3xl font-bold">
             Formula
           </h2>
 
-          <div className="mt-8 overflow-x-auto rounded-2xl bg-slate-100 p-6 font-mono text-lg text-slate-800">
-            {tool.formula}
+          <div className="mt-8 rounded-2xl bg-muted p-6 font-mono text-lg">
+            {formula}
           </div>
 
         </div>

@@ -20,7 +20,7 @@ export default function ToolLayout({
 }: ToolLayoutProps) {
   return (
     <>
-      <Breadcrumb tool={tool} />
+     <Breadcrumb tool={tool} />
 
       <ToolHero tool={tool} />
 
@@ -28,7 +28,9 @@ export default function ToolLayout({
 
       <ToolContent tool={tool} />
 
-      <ToolFormula tool={tool} />
+      <ToolFormula
+        formula={tool.formula}
+      />
 
       <ToolExamples tool={tool} />
 

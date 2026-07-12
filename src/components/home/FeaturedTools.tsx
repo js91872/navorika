@@ -1,32 +1,34 @@
 import Container from "@/components/ui/Container";
 import ToolCard from "./ToolCard";
-import { featuredTools } from "@/data/featuredTools";
+
+import { getFeaturedTools } from "@/lib/toolRegistry";
 
 export default function FeaturedTools() {
+  const featuredTools = getFeaturedTools();
+
   return (
-    <section className="bg-slate-50 py-28">
+    <section className="py-20">
       <Container>
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-5xl font-black tracking-tight">
+
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl font-bold">
             Featured Tools
           </h2>
 
-          <p className="mt-6 text-xl text-slate-600">
-            Discover our most popular tools, trusted by users every day.
+          <p className="mt-4 text-lg text-muted-foreground">
+            Free online tools for everyone.
           </p>
         </div>
 
-        <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {featuredTools.map((tool) => (
             <ToolCard
-              key={tool.id}
-              title={tool.title}
-              description={tool.description}
-              category={tool.category}
-              badge={tool.badge}
+              key={tool.slug}
+              tool={tool}
             />
           ))}
         </div>
+
       </Container>
     </section>
   );
