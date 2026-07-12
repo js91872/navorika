@@ -1,45 +1,40 @@
-"use client";
-
 interface ResultCardProps {
   label: string;
   value: string;
+  subtitle?: string;
   highlight?: boolean;
 }
 
 export default function ResultCard({
   label,
   value,
+  subtitle,
   highlight = false,
 }: ResultCardProps) {
   return (
     <div
       className={`
-        rounded-2xl
-        border
-        p-6
-        transition-all
-        duration-200
-        hover:shadow-md
+        rounded-3xl border p-6 transition-all duration-200
         ${
           highlight
-            ? "border-primary bg-primary text-primary-foreground"
-            : "border-border bg-card"
+            ? "border-blue-600 bg-blue-50 shadow-lg"
+            : "border-slate-200 bg-white shadow-sm hover:shadow-md"
         }
       `}
     >
-      <p
-        className={`text-sm ${
-          highlight
-            ? "text-primary-foreground/80"
-            : "text-muted-foreground"
-        }`}
-      >
+      <p className="text-sm font-medium text-slate-500">
         {label}
       </p>
 
-      <h3 className="mt-3 break-words text-2xl font-bold lg:text-3xl">
+      <h3 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">
         {value}
       </h3>
+
+      {subtitle && (
+        <p className="mt-2 text-sm text-slate-500">
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }

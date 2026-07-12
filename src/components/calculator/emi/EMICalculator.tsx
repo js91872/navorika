@@ -12,6 +12,7 @@ import ResultGrid from "../ResultGrid";
 import ResultCard from "../ResultCard";
 import PieChart from "../PieChart";
 import Summary from "../Summary";
+import Insights from "../Insights";
 import ScheduleTable from "../ScheduleTable";
 
 import { calculateEMI } from "@/lib/calculations/emi";
@@ -115,10 +116,10 @@ export default function EMICalculator() {
 
           <ResultGrid>
 
-           <ResultCard
-  label="Monthly EMI"
-  value={formatCurrency(result.emi)}
-  highlight
+            <ResultCard
+              label="Monthly EMI"
+              value={formatCurrency(result.emi)}
+              highlight
             />
 
             <ResultCard
@@ -139,6 +140,12 @@ export default function EMICalculator() {
           />
 
           <Summary
+            principal={loanAmount}
+            interest={result.totalInterest}
+            total={result.totalPayment}
+          />
+
+          <Insights
             principal={loanAmount}
             interest={result.totalInterest}
             total={result.totalPayment}
