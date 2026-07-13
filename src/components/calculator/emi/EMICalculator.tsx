@@ -18,6 +18,8 @@ import ScheduleTable from "../ScheduleTable";
 import { calculateEMI } from "@/lib/calculations/emi";
 import { generateAmortizationSchedule } from "@/lib/calculations/amortization";
 import { formatCurrency } from "@/lib/format/currency";
+import ExportButton from "../ExportButton";
+import { downloadCSV } from "@/lib/export/csv";
 
 export default function EMICalculator() {
   const [loanAmount, setLoanAmount] = useState(1000000);
