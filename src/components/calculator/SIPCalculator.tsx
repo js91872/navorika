@@ -86,10 +86,11 @@ export default function SIPCalculator() {
 
           <div className="space-y-3">
 
-            <TenureInput
-              value={years}
-              onChange={setYears}
-            />
+           <TenureInput
+  label="Investment Period"
+  value={years}
+  onChange={setYears}
+/>
 
             <Slider
               value={years}

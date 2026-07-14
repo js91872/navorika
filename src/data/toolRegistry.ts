@@ -62,6 +62,7 @@ export const toolRegistry: Record<string, ToolData> = {
 
     relatedTools: [
       "gst-calculator",
+      "fd-calculator",
     ],
 
     relatedArticles: [],
@@ -121,8 +122,145 @@ export const toolRegistry: Record<string, ToolData> = {
 
     relatedTools: [
       "emi-calculator",
+      "fd-calculator",
     ],
 
     relatedArticles: [],
   },
+
+  "fd-calculator": {
+    id: "fd-calculator",
+    slug: "fd-calculator",
+
+    title: "FD Calculator",
+
+    description:
+      "Calculate Fixed Deposit maturity amount, interest earned and maturity value instantly.",
+
+    category: "Finance",
+
+    featured: true,
+
+    keywords: [
+      "FD Calculator",
+      "Fixed Deposit Calculator",
+      "FD Interest Calculator",
+      "Bank FD Calculator",
+    ],
+
+    heroTitle: "Free FD Calculator",
+
+    heroDescription:
+      "Calculate your Fixed Deposit maturity value with yearly, half-yearly, quarterly or monthly compounding.",
+
+    introduction:
+      "Estimate your FD returns instantly using the standard compound interest formula followed by banks.",
+
+    formula:
+      "A = P × (1 + r / n)^(n × t)",
+
+    howToUse: [
+      "Enter the deposit amount.",
+      "Enter annual interest rate.",
+      "Select investment tenure.",
+      "Choose compounding frequency.",
+      "View maturity amount instantly.",
+    ],
+
+    examples: [
+      {
+        title: "Example",
+        description:
+          "₹1,00,000 invested for 5 years at 7.25% compounded quarterly.",
+      },
+    ],
+
+    faq: [
+      {
+        question: "What is a Fixed Deposit?",
+        answer:
+          "A Fixed Deposit (FD) is a bank investment that offers a guaranteed interest rate for a fixed tenure.",
+      },
+      {
+        question: "How is FD interest calculated?",
+        answer:
+          "FD interest is calculated using the compound interest formula based on the selected compounding frequency.",
+      },
+    ],
+
+    relatedTools: [
+      "emi-calculator",
+      "sip-calculator",
+      "gst-calculator",
+    ],
+
+    relatedArticles: [],
+  },
+  "rd-calculator": {
+  id: "rd-calculator",
+
+  slug: "rd-calculator",
+
+  title: "RD Calculator",
+
+  description:
+    "Calculate Recurring Deposit maturity amount, total investment and interest earned instantly.",
+
+  category: "Finance",
+
+  featured: true,
+
+  keywords: [
+    "RD Calculator",
+    "Recurring Deposit Calculator",
+    "RD Interest Calculator",
+    "Bank RD Calculator",
+  ],
+
+  heroTitle: "Free RD Calculator",
+
+  heroDescription:
+    "Estimate your Recurring Deposit maturity value using the standard compound interest formula.",
+
+  introduction:
+    "Our RD Calculator helps you estimate maturity amount, total investment and interest earned for recurring deposits.",
+
+  formula:
+    "A = P × ((1+r/n)^(nt)-1)/(r/n)",
+
+  howToUse: [
+    "Enter monthly deposit.",
+    "Enter annual interest rate.",
+    "Select deposit tenure.",
+    "View maturity amount instantly.",
+  ],
+
+  examples: [
+    {
+      title: "Example",
+      description:
+        "₹5,000 monthly for 5 years at 7.5% annual interest.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "What is a Recurring Deposit?",
+      answer:
+        "A Recurring Deposit (RD) is a savings scheme where a fixed amount is deposited every month for a fixed tenure and earns compound interest.",
+    },
+    {
+      question: "Is this calculator accurate?",
+      answer:
+        "Yes. It uses the standard compound interest calculation used by most banks.",
+    },
+  ],
+
+  relatedTools: [
+    "fd-calculator",
+    "sip-calculator",
+  ],
+
+  relatedArticles: [],
+},
 };
