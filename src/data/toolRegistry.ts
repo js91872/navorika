@@ -263,4 +263,72 @@ export const toolRegistry: Record<string, ToolData> = {
 
   relatedArticles: [],
 },
+"ppf-calculator": {
+  id: "ppf-calculator",
+
+  slug: "ppf-calculator",
+
+  title: "PPF Calculator",
+
+  description:
+    "Calculate Public Provident Fund maturity amount, total investment and interest earned instantly.",
+
+  category: "Finance",
+
+  featured: true,
+
+  keywords: [
+    "PPF Calculator",
+    "Public Provident Fund Calculator",
+    "PPF Interest Calculator",
+    "PPF Maturity Calculator",
+  ],
+
+  heroTitle: "Free PPF Calculator",
+
+  heroDescription:
+    "Estimate your Public Provident Fund maturity value using annual contributions and compound interest.",
+
+  introduction:
+    "Use our free PPF Calculator to estimate maturity amount, total investment and interest earned over your investment period.",
+
+  formula:
+    "Future Value = Annual Contribution compounded annually",
+
+  howToUse: [
+    "Enter yearly investment.",
+    "Enter annual interest rate.",
+    "Select investment period.",
+    "View maturity amount instantly.",
+  ],
+
+  examples: [
+    {
+      title: "Example",
+      description:
+        "₹1,50,000 invested every year for 15 years at 7.1% annual interest.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "What is PPF?",
+      answer:
+        "Public Provident Fund (PPF) is a long-term government-backed savings scheme offering tax benefits and compounded returns.",
+    },
+    {
+      question: "Is this calculator accurate?",
+      answer:
+        "Yes. It estimates maturity value using annual contributions and annual compounding. Actual maturity may vary slightly depending on the timing of deposits and government-notified interest rates.",
+    },
+  ],
+
+  relatedTools: [
+    "fd-calculator",
+    "rd-calculator",
+    "sip-calculator",
+  ],
+
+  relatedArticles: [],
+},
 };
