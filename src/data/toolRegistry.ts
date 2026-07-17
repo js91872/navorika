@@ -471,4 +471,76 @@ export const toolRegistry: Record<string, ToolData> = {
 
   relatedArticles: [],
 },
+"swp-calculator": {
+  id: "swp-calculator",
+
+  slug: "swp-calculator",
+
+  title: "SWP Calculator",
+
+  description:
+    "Calculate Systematic Withdrawal Plan returns, remaining corpus and total withdrawals instantly.",
+
+  category: "Finance",
+
+  featured: true,
+
+  keywords: [
+    "SWP Calculator",
+    "Systematic Withdrawal Plan Calculator",
+    "Mutual Fund SWP Calculator",
+    "Withdrawal Calculator",
+    "SWP Return Calculator",
+  ],
+
+  heroTitle: "Free SWP Calculator",
+
+  heroDescription:
+    "Estimate your remaining corpus and total withdrawals using a Systematic Withdrawal Plan (SWP).",
+
+  introduction:
+    "Use our free SWP Calculator to estimate how long your investment corpus can support regular withdrawals while continuing to earn returns.",
+
+  formula:
+    "Closing Corpus = Opening Corpus × (1 + Return) − Withdrawal",
+
+  howToUse: [
+    "Enter your initial investment.",
+    "Enter yearly withdrawal amount.",
+    "Enter expected annual return.",
+    "Select withdrawal period.",
+    "View remaining corpus instantly.",
+  ],
+
+  examples: [
+    {
+      title: "Example",
+      description:
+        "₹10,00,000 investment with ₹1,20,000 yearly withdrawal for 20 years at 10% annual return.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "What is a Systematic Withdrawal Plan (SWP)?",
+      answer:
+        "An SWP allows you to withdraw a fixed amount from your investment at regular intervals while the remaining corpus continues to earn returns.",
+    },
+    {
+      question: "Who should use an SWP?",
+      answer:
+        "SWPs are commonly used by retirees and investors seeking regular income from mutual fund investments.",
+    },
+  ],
+
+  relatedTools: [
+    "sip-calculator",
+    "lumpsum-calculator",
+    "compound-interest-calculator",
+    "retirement-calculator",
+    "cagr-calculator",
+  ],
+
+  relatedArticles: [],
+},
 };
