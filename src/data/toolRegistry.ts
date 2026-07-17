@@ -399,4 +399,76 @@ export const toolRegistry: Record<string, ToolData> = {
 
   relatedArticles: [],
 },
+"compound-interest-calculator": {
+  id: "compound-interest-calculator",
+
+  slug: "compound-interest-calculator",
+
+  title: "Compound Interest Calculator",
+
+  description:
+    "Calculate compound interest, maturity amount and investment growth instantly.",
+
+  category: "Finance",
+
+  featured: true,
+
+  keywords: [
+    "Compound Interest Calculator",
+    "Compound Interest",
+    "Investment Calculator",
+    "Future Value Calculator",
+    "Compound Growth Calculator",
+  ],
+
+  heroTitle: "Free Compound Interest Calculator",
+
+  heroDescription:
+    "Calculate compound interest, investment growth and maturity value using yearly, half-yearly, quarterly or monthly compounding.",
+
+  introduction:
+    "Our Compound Interest Calculator helps you estimate the future value of your investment using the standard compound interest formula adopted by banks and financial institutions.",
+
+  formula:
+    "A = P × (1 + r / n)^(n × t)",
+
+  howToUse: [
+    "Enter principal amount.",
+    "Enter annual interest rate.",
+    "Select investment period.",
+    "Choose compounding frequency.",
+    "View maturity amount instantly.",
+  ],
+
+  examples: [
+    {
+      title: "Example",
+      description:
+        "₹1,00,000 invested for 10 years at 8% annual interest compounded quarterly.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "What is compound interest?",
+      answer:
+        "Compound interest is interest earned on both the original principal and the accumulated interest from previous periods.",
+    },
+    {
+      question: "Why is compound interest important?",
+      answer:
+        "Compound interest accelerates wealth creation because your investment earns interest on previously earned interest.",
+    },
+  ],
+
+  relatedTools: [
+    "fd-calculator",
+    "rd-calculator",
+    "sip-calculator",
+    "lumpsum-calculator",
+    "ppf-calculator",
+  ],
+
+  relatedArticles: [],
+},
 };
