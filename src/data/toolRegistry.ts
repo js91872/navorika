@@ -331,4 +331,72 @@ export const toolRegistry: Record<string, ToolData> = {
 
   relatedArticles: [],
 },
+"lumpsum-calculator": {
+  id: "lumpsum-calculator",
+
+  slug: "lumpsum-calculator",
+
+  title: "Lumpsum Calculator",
+
+  description:
+    "Calculate the future value of a one-time investment.",
+
+  category: "Finance",
+
+  featured: true,
+
+  keywords: [
+    "Lumpsum Calculator",
+    "One Time Investment Calculator",
+    "Investment Growth Calculator",
+    "Future Value Calculator",
+  ],
+
+  heroTitle: "Free Lumpsum Calculator",
+
+  heroDescription:
+    "Estimate how your one-time investment can grow over time with compound returns.",
+
+  introduction:
+    "Use this calculator to estimate the future value, investment amount and expected returns on a lump sum investment.",
+
+  formula:
+    "Future Value = P × (1 + r)^n",
+
+  howToUse: [
+    "Enter investment amount.",
+    "Enter expected annual return.",
+    "Select investment period.",
+    "View future value instantly.",
+  ],
+
+  examples: [
+    {
+      title: "Example",
+      description:
+        "₹1,00,000 invested for 10 years at 12% annual return.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "What is a lumpsum investment?",
+      answer:
+        "A lumpsum investment is a one-time investment made upfront instead of investing periodically.",
+    },
+    {
+      question: "Is this calculator accurate?",
+      answer:
+        "Yes. It uses the standard compound growth formula based on the inputs you provide.",
+    },
+  ],
+
+  relatedTools: [
+    "sip-calculator",
+    "ppf-calculator",
+    "fd-calculator",
+  ],
+
+  relatedArticles: [],
+},
 };
