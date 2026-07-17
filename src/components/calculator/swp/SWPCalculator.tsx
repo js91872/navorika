@@ -172,16 +172,20 @@ export default function SWPCalculator() {
           />
 
           <Summary
-            principal={result.investedAmount}
-            interest={Math.max(
-              0,
-              result.finalCorpus +
-                result.totalWithdrawal -
-                result.investedAmount
-            )}
-            total={result.finalCorpus}
-          />
+  title="SWP Summary"
 
+  principalLabel="Initial Investment"
+
+  interestLabel="Total Withdrawn"
+
+  totalLabel="Remaining Corpus"
+
+  principal={result.investedAmount}
+
+  interest={result.totalWithdrawal}
+
+  total={result.finalCorpus}
+/>
         </div>
 
       </div>
