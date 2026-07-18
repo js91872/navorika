@@ -543,4 +543,77 @@ export const toolRegistry: Record<string, ToolData> = {
 
   relatedArticles: [],
 },
+
+"cagr-calculator": {
+  id: "cagr-calculator",
+
+  slug: "cagr-calculator",
+
+  title: "CAGR Calculator",
+
+  description:
+    "Calculate the Compound Annual Growth Rate (CAGR) of your investment.",
+
+  category: "Finance",
+
+  featured: true,
+
+  keywords: [
+    "CAGR Calculator",
+    "Compound Annual Growth Rate Calculator",
+    "Investment CAGR Calculator",
+    "Annual Return Calculator",
+    "Growth Rate Calculator",
+  ],
+
+  heroTitle: "Free CAGR Calculator",
+
+  heroDescription:
+    "Calculate the Compound Annual Growth Rate of your investments instantly.",
+
+  introduction:
+    "Our CAGR Calculator helps you calculate the average annual growth rate of your investment over a specified period.",
+
+  formula:
+    "CAGR = ((Ending Value / Beginning Value)^(1 / Years) − 1) × 100",
+
+  howToUse: [
+    "Enter beginning value.",
+    "Enter ending value.",
+    "Enter investment period.",
+    "View CAGR instantly.",
+  ],
+
+  examples: [
+    {
+      title: "Example",
+      description:
+        "₹1,00,000 grows to ₹2,00,000 in 7 years. CAGR is approximately 10.41%.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "What is CAGR?",
+      answer:
+        "CAGR is the average annual growth rate of an investment over a period assuming compounding.",
+    },
+    {
+      question: "Why use CAGR?",
+      answer:
+        "It allows investors to compare the performance of different investments using a standardized annual growth rate.",
+    },
+  ],
+
+  relatedTools: [
+    "sip-calculator",
+    "lumpsum-calculator",
+    "compound-interest-calculator",
+    "swp-calculator",
+    "fd-calculator",
+  ],
+
+  relatedArticles: [],
+}
+
 };
