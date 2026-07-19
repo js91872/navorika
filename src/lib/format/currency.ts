@@ -20,3 +20,18 @@ export function formatCurrency(
     maximumFractionDigits,
   }).format(value);
 }
+
+// Add a number formatter for non-currency values
+export function formatNumber(
+  value: number,
+  options: { locale?: string; maximumFractionDigits?: number } = {}
+): string {
+  const {
+    locale = "en-IN",
+    maximumFractionDigits = 1,
+  } = options;
+
+  return new Intl.NumberFormat(locale, {
+    maximumFractionDigits,
+  }).format(value);
+}

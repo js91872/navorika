@@ -161,6 +161,7 @@ export default function EPFCalculator() {
           </ResultGrid>
 
           <PieChart
+            key={`${result.totalContribution}-${result.totalInterest}`}
             principal={result.totalContribution}
             interest={result.totalInterest}
           />
