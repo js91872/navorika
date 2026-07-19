@@ -614,6 +614,83 @@ export const toolRegistry: Record<string, ToolData> = {
   ],
 
   relatedArticles: [],
-}
+},
+"retirement-calculator": {
+  id: "retirement-calculator",
+
+  slug: "retirement-calculator",
+
+  title: "Retirement Calculator",
+
+  description:
+    "Calculate the retirement corpus you can accumulate through regular monthly investments.",
+
+  category: "Finance",
+
+  featured: true,
+
+  keywords: [
+    "Retirement Calculator",
+    "Retirement Planning Calculator",
+    "Retirement Corpus Calculator",
+    "Retirement Savings Calculator",
+    "Pension Calculator",
+  ],
+
+  heroTitle: "Free Retirement Calculator",
+
+  heroDescription:
+    "Estimate your retirement corpus based on monthly investments, expected returns and investment period.",
+
+  introduction:
+    "Our Retirement Calculator helps you estimate the wealth you can build by investing regularly every month until retirement. It uses the future value of monthly investments with compounding to estimate your retirement corpus.",
+
+  formula:
+    "FV = P × (((1 + r)^n − 1) / r) × (1 + r)",
+
+  howToUse: [
+    "Enter your monthly investment.",
+    "Enter expected annual return.",
+    "Select your investment period.",
+    "View estimated retirement corpus instantly.",
+  ],
+
+  examples: [
+    {
+      title: "Example",
+      description:
+        "₹10,000 invested every month for 25 years at an expected annual return of 12%.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "What is a Retirement Calculator?",
+      answer:
+        "A Retirement Calculator estimates the future value of your regular investments to help you understand how much retirement corpus you may accumulate.",
+    },
+    {
+      question: "Is this calculator accurate?",
+      answer:
+        "Yes. It uses the standard future value of monthly investment formula with monthly compounding. Actual returns depend on market performance.",
+    },
+    {
+      question: "Why should I start retirement planning early?",
+      answer:
+        "Starting early allows your investments to benefit from the power of compounding, resulting in a significantly larger retirement corpus.",
+    },
+  ],
+
+  relatedTools: [
+    "sip-calculator",
+    "swp-calculator",
+    "lumpsum-calculator",
+    "cagr-calculator",
+    "ppf-calculator",
+    "fd-calculator",
+  ],
+
+  relatedArticles: [],
+},
 
 };

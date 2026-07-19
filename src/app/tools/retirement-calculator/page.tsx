@@ -1,9 +1,9 @@
 import ToolLayout from "@/components/tool/ToolLayout";
-import IncomeTaxCalculator from "@/components/calculator/income-tax/IncomeTaxCalculator";
+import RetirementCalculator from "@/components/calculator/retirement/RetirementCalculator";
 import { toolRegistry } from "@/data/toolRegistry";
 
-export default function IncomeTaxPage() {
-  const tool = toolRegistry["income-tax-calculator"];
+export default function RetirementPage() {
+  const tool = toolRegistry["retirement-calculator"];
 
   if (!tool) {
     return <div>Tool not found.</div>;
@@ -11,7 +11,7 @@ export default function IncomeTaxPage() {
 
   return (
     <ToolLayout tool={tool}>
-      <IncomeTaxCalculator />
+      <RetirementCalculator />
     </ToolLayout>
   );
 }
