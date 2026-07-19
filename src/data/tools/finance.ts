@@ -77,4 +77,59 @@ export const financeTools: Tool[] = [
 
     badge: "Trending",
   },
+  {
+  slug: "epf-calculator",
+
+  title: "EPF Calculator",
+
+  shortDescription:
+    "Calculate your EPF maturity amount instantly.",
+
+  description:
+    "Estimate Employees' Provident Fund maturity, contributions and interest earned.",
+
+  category: "Finance",
+
+  keywords: [
+    "EPF Calculator",
+    "PF Calculator",
+    "Provident Fund",
+    "EPF Interest",
+  ],
+
+  featured: true,
+
+  badge: "New",
+
+  heroTitle: "Free EPF Calculator",
+
+  heroDescription:
+    "Estimate your Employees' Provident Fund maturity amount instantly.",
+
+  formula:
+    "Future Value = Monthly Contribution compounded monthly",
+
+  faq: [
+    {
+      question: "What is EPF?",
+      answer:
+        "EPF is a retirement savings scheme for salaried employees in India.",
+    },
+  ],
+
+  examples: [
+    {
+      title: "Example",
+      description:
+        "₹50,000 salary with 12% contribution for 20 years.",
+    },
+  ],
+
+  relatedTools: [
+    "retirement-calculator",
+    "ppf-calculator",
+    "fd-calculator",
+    "sip-calculator",
+  ],
+}
 ];

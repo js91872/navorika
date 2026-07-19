@@ -692,5 +692,85 @@ export const toolRegistry: Record<string, ToolData> = {
 
   relatedArticles: [],
 },
+"epf-calculator": {
+  id: "epf-calculator",
+
+  slug: "epf-calculator",
+
+  title: "EPF Calculator",
+
+  description:
+    "Calculate your Employees' Provident Fund (EPF) maturity amount, total contributions and interest earned instantly.",
+
+  category: "Finance",
+
+  featured: true,
+
+  keywords: [
+    "EPF Calculator",
+    "Employee Provident Fund Calculator",
+    "PF Calculator",
+    "Provident Fund Calculator",
+    "EPF Interest Calculator",
+    "EPF Maturity Calculator",
+    "Retirement Savings Calculator",
+  ],
+
+  heroTitle: "Free EPF Calculator",
+
+  heroDescription:
+    "Estimate your EPF maturity amount, employee contribution, employer contribution and interest earned instantly.",
+
+  introduction:
+    "Our EPF Calculator helps salaried employees estimate their Employees' Provident Fund corpus based on monthly salary, contribution percentage, EPF interest rate and years of service.",
+
+  formula:
+    "Future Value = Monthly Contribution compounded monthly over the investment period",
+
+  howToUse: [
+    "Enter your monthly basic salary.",
+    "Enter employee contribution percentage.",
+    "Enter EPF interest rate.",
+    "Select years of service.",
+    "View your estimated EPF corpus instantly.",
+  ],
+
+  examples: [
+    {
+      title: "Example",
+      description:
+        "A monthly basic salary of ₹50,000 with 12% employee contribution for 20 years at 8.25% annual EPF interest.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "What is EPF?",
+      answer:
+        "Employees' Provident Fund (EPF) is a government-backed retirement savings scheme for salaried employees in India where both employee and employer contribute every month.",
+    },
+    {
+      question: "Is this calculator accurate?",
+      answer:
+        "Yes. It provides an estimated EPF maturity value using monthly compounding. Actual EPF balance may vary depending on salary revisions, EPS allocation and government-notified EPF interest rates.",
+    },
+    {
+      question: "Who should use this calculator?",
+      answer:
+        "Any salaried employee contributing to EPF can use this calculator to estimate their retirement corpus.",
+    },
+  ],
+
+  relatedTools: [
+    "retirement-calculator",
+    "ppf-calculator",
+    "nps-calculator",
+    "gratuity-calculator",
+    "sip-calculator",
+    "fd-calculator",
+  ],
+
+  relatedArticles: [],
+}
 
 };
