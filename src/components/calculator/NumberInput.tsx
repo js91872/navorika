@@ -23,6 +23,23 @@ export default function NumberInput({
   max,
   step = 1,
 }: NumberInputProps) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value;
+    // Remove leading zeros and parse as number
+    const cleanedValue = rawValue.replace(/^0+/, '');
+    if (cleanedValue === '') {
+      onChange(0);
+      return;
+    }
+    const numValue = Number(cleanedValue);
+    if (!isNaN(numValue)) {
+      onChange(numValue);
+    }
+  };
+
+  // Format the display value without leading zeros
+  const displayValue = value === 0 ? '' : value.toString();
+
   return (
     <div className="space-y-3">
       <label className="text-sm font-semibold text-foreground">
@@ -30,7 +47,6 @@ export default function NumberInput({
       </label>
 
       <div className="flex items-center rounded-xl border border-border bg-background px-4 py-3 transition focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
-
         {prefix && (
           <span className="mr-3 font-semibold text-muted-foreground">
             {prefix}
@@ -38,15 +54,18 @@ export default function NumberInput({
         )}
 
         <input
-          type="number"
-          value={value}
+          type="text"
+          inputMode="numeric"
+          value={displayValue}
           min={min}
           max={max}
           step={step}
           placeholder={placeholder}
-          onChange={(e) =>
-            onChange(Number(e.target.value))
-          }
+          onChange={handleChange}
+          onFocus={(e) => {
+            // Select all text on focus for easy replacement
+            e.target.select();
+          }}
           className="w-full bg-transparent text-lg font-medium outline-none"
         />
 
@@ -55,7 +74,6 @@ export default function NumberInput({
             {suffix}
           </span>
         )}
-
       </div>
     </div>
   );

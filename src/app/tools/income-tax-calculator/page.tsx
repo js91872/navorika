@@ -1,9 +1,9 @@
 import ToolLayout from "@/components/tool/ToolLayout";
 import IncomeTaxCalculator from "@/components/calculator/income-tax/IncomeTaxCalculator";
-import { toolRegistry } from "@/data/toolRegistry";
+import { getToolBySlug } from "@/lib/toolRegistry";
 
 export default function IncomeTaxPage() {
-  const tool = toolRegistry["income-tax-calculator"];
+  const tool = getToolBySlug("income-tax-calculator");
 
   if (!tool) {
     return <div>Tool not found.</div>;

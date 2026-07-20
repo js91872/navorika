@@ -1,122 +1,80 @@
-import Container from "@/components/ui/Container";
-import {
-  Calculator,
-  FileText,
-  Image,
-  Brain,
-  Code2,
-  Briefcase,
-  ShieldCheck,
-  Globe,
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { 
+  TrendingUp, 
+  FileText, 
+  Image, 
+  Zap, 
+  Heart, 
+  Code, 
+  Building2, 
+  Users
 } from "lucide-react";
+import Container from "@/components/ui/Container";
 
 const categories = [
-  {
-    title: "Finance",
-    description: "EMI, SIP, Tax, GST and investment calculators.",
-    icon: Calculator,
-    tools: "28 Tools",
-    color: "bg-blue-50 text-blue-600",
-  },
-  {
-    title: "PDF Tools",
-    description: "Convert, merge, split and compress PDF files.",
-    icon: FileText,
-    tools: "32 Tools",
-    color: "bg-red-50 text-red-600",
-  },
-  {
-    title: "Image Tools",
-    description: "Compress, resize, convert and optimize images.",
-    icon: Image,
-    tools: "24 Tools",
-    color: "bg-emerald-50 text-emerald-600",
-  },
-  {
-    title: "AI Tools",
-    description: "Modern AI powered productivity utilities.",
-    icon: Brain,
-    tools: "20 Tools",
-    color: "bg-violet-50 text-violet-600",
-  },
-  {
-    title: "Developer",
-    description: "JSON, Base64, Regex and coding utilities.",
-    icon: Code2,
-    tools: "18 Tools",
-    color: "bg-slate-100 text-slate-700",
-  },
-  {
-    title: "Business",
-    description: "Invoice, profit, margin and planning tools.",
-    icon: Briefcase,
-    tools: "16 Tools",
-    color: "bg-amber-50 text-amber-600",
-  },
-  {
-    title: "Security",
-    description: "Password generators and security utilities.",
-    icon: ShieldCheck,
-    tools: "14 Tools",
-    color: "bg-cyan-50 text-cyan-600",
-  },
-  {
-    title: "SEO & Web",
-    description: "Meta tags, schema and SEO optimization tools.",
-    icon: Globe,
-    tools: "22 Tools",
-    color: "bg-indigo-50 text-indigo-600",
-  },
+  { name: "Finance", icon: TrendingUp, count: 8, href: "/categories/finance", color: "from-blue-500 to-blue-600" },
+  { name: "PDF Tools", icon: FileText, count: 6, href: "/categories/pdf", color: "from-red-500 to-red-600" },
+  { name: "Image Tools", icon: Image, count: 5, href: "/categories/image", color: "from-purple-500 to-purple-600" },
+  { name: "Productivity", icon: Zap, count: 5, href: "/categories/productivity", color: "from-yellow-500 to-yellow-600" },
+  { name: "Health", icon: Heart, count: 5, href: "/categories/health", color: "from-green-500 to-green-600" },
+  { name: "Developer", icon: Code, count: 4, href: "/categories/developer", color: "from-indigo-500 to-indigo-600" },
+  { name: "Construction", icon: Building2, count: 2, href: "/categories/construction", color: "from-orange-500 to-orange-600" },
+  { name: "India Tools", icon: Users, count: 3, href: "/categories/india", color: "from-emerald-500 to-emerald-600" },
 ];
 
 export default function CategoryGrid() {
   return (
-    <section className="py-28">
+    <section className="py-20 bg-slate-50">
       <Container>
-        <div className="mx-auto max-w-3xl text-center">
-
-          <h2 className="text-5xl font-black tracking-tight">
-            Explore Categories
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
+            Everything You Need, <span className="text-blue-600">All in One Place</span>
           </h2>
-
-          <p className="mt-6 text-xl text-slate-600">
-            Everything you need, organized into powerful categories for
-            productivity, finance, AI, PDFs and more.
+          <p className="mt-4 text-lg text-slate-600">
+            Explore 40+ powerful tools organized into intuitive categories.
           </p>
-
         </div>
 
-        <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-
-          {categories.map((category) => {
-            const Icon = category.icon;
-
-            return (
-              <div
-                key={category.title}
-                className="group cursor-pointer rounded-3xl border border-slate-200 bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((category, index) => (
+            <motion.div
+              key={category.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Link
+                href={category.href}
+                className="group relative block overflow-hidden rounded-2xl bg-white p-6 shadow-sm transition-all hover:shadow-xl hover:-translate-y-1"
               >
-                <div
-                  className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl ${category.color}`}
-                >
-                  <Icon size={30} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 transition-opacity group-hover:opacity-5`} />
+                
+                <div className="relative">
+                  <div className="mb-4 inline-flex rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 p-3">
+                    <category.icon className="h-6 w-6 text-blue-600" />
+                  </div>
+                  
+                  <h3 className="text-lg font-semibold text-slate-900">
+                    {category.name}
+                  </h3>
+                  
+                  <p className="mt-1 text-sm text-slate-500">
+                    {category.count} tools
+                  </p>
+
+                  <div className="mt-4 flex items-center text-sm font-medium text-blue-600 opacity-0 transition-opacity group-hover:opacity-100">
+                    Explore
+                    <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
-
-                <h3 className="mt-8 text-2xl font-bold">
-                  {category.title}
-                </h3>
-
-                <p className="mt-4 leading-7 text-slate-600">
-                  {category.description}
-                </p>
-
-                <div className="mt-8 inline-flex rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
-                  {category.tools}
-                </div>
-              </div>
-            );
-          })}
-
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </Container>
     </section>
