@@ -45,7 +45,7 @@ export const imageTools: Tool[] = [
     shortDescription: "Convert images between JPG, PNG, WEBP, BMP, and GIF.",
     description: "Convert images between formats with adjustable quality.",
     category: "Image Tools",
-    keywords: ["Image Converter", "Convert Image", "JPG to PNG", "PNG to WEBP", "Image Format"],
+    keywords: ["Image Converter", "Convert Image", "JPG to PNG", "PNG to WEBP"],
     featured: true,
     badge: "Popular",
     heroTitle: "Free Image Converter",
@@ -53,10 +53,29 @@ export const imageTools: Tool[] = [
     formula: "",
     faq: [
       { question: "What formats are supported?", answer: "We support JPG, PNG, WEBP, BMP, and GIF." },
-      { question: "Can I control quality?", answer: "Yes, use the quality slider to balance file size and quality." },
-      { question: "Is my data secure?", answer: "Yes, all processing happens in your browser." }
+      { question: "Can I control quality?", answer: "Yes, use the quality slider to balance file size and quality." }
     ],
     examples: [],
     relatedTools: ["image-compressor", "image-resizer", "crop-image"]
+  },
+  {
+    slug: "crop-image",
+    title: "Crop Image",
+    shortDescription: "Crop your images to any dimensions or aspect ratio.",
+    description: "Crop images with visual controls. Choose from preset aspect ratios or create custom crops.",
+    category: "Image Tools",
+    keywords: ["Crop Image", "Image Cropper", "Crop Photo", "Aspect Ratio"],
+    featured: true,
+    badge: "Popular",
+    heroTitle: "Free Image Cropper",
+    heroDescription: "Crop your images to any dimensions or aspect ratio.",
+    formula: "",
+    faq: [
+      { question: "What aspect ratios are available?", answer: "We offer Square, 4:3, 3:2, 16:9, 9:16, and custom ratios." },
+      { question: "Can I free-crop?", answer: "Yes, choose the 'Free' option for custom cropping." },
+      { question: "Is my data secure?", answer: "Yes, all processing happens in your browser." }
+    ],
+    examples: [],
+    relatedTools: ["image-compressor", "image-resizer", "image-converter"]
   }
 ];
