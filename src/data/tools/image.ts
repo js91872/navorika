@@ -72,7 +72,26 @@ export const imageTools: Tool[] = [
     formula: "",
     faq: [
       { question: "What aspect ratios are available?", answer: "We offer Square, 4:3, 3:2, 16:9, 9:16, and custom ratios." },
-      { question: "Can I free-crop?", answer: "Yes, choose the 'Free' option for custom cropping." },
+      { question: "Can I free-crop?", answer: "Yes, choose the 'Free' option for custom cropping." }
+    ],
+    examples: [],
+    relatedTools: ["image-compressor", "image-resizer", "image-converter"]
+  },
+  {
+    slug: "background-remover",
+    title: "Background Remover",
+    shortDescription: "Remove image backgrounds automatically with AI.",
+    description: "Remove image backgrounds automatically using AI technology.",
+    category: "Image Tools",
+    keywords: ["Background Remover", "Remove Background", "AI Background Remover", "Transparent Background"],
+    featured: true,
+    badge: "Popular",
+    heroTitle: "Free Background Remover",
+    heroDescription: "Remove image backgrounds automatically with AI.",
+    formula: "",
+    faq: [
+      { question: "How does it work?", answer: "Our AI automatically detects the subject and removes the background." },
+      { question: "What formats are supported?", answer: "We support JPG, PNG, WEBP, GIF, and BMP." },
       { question: "Is my data secure?", answer: "Yes, all processing happens in your browser." }
     ],
     examples: [],
