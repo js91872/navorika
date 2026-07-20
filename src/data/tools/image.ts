@@ -38,5 +38,25 @@ export const imageTools: Tool[] = [
     ],
     examples: [],
     relatedTools: ["image-compressor", "image-converter", "crop-image"]
+  },
+  {
+    slug: "image-converter",
+    title: "Image Converter",
+    shortDescription: "Convert images between JPG, PNG, WEBP, BMP, and GIF.",
+    description: "Convert images between formats with adjustable quality.",
+    category: "Image Tools",
+    keywords: ["Image Converter", "Convert Image", "JPG to PNG", "PNG to WEBP", "Image Format"],
+    featured: true,
+    badge: "Popular",
+    heroTitle: "Free Image Converter",
+    heroDescription: "Convert images between JPG, PNG, WEBP, BMP, and GIF.",
+    formula: "",
+    faq: [
+      { question: "What formats are supported?", answer: "We support JPG, PNG, WEBP, BMP, and GIF." },
+      { question: "Can I control quality?", answer: "Yes, use the quality slider to balance file size and quality." },
+      { question: "Is my data secure?", answer: "Yes, all processing happens in your browser." }
+    ],
+    examples: [],
+    relatedTools: ["image-compressor", "image-resizer", "crop-image"]
   }
 ];
