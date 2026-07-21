@@ -9,6 +9,7 @@ const categoryData: Record<string, { icon: string; color: string; description: s
   "Image Tools": { icon: "🖼️", color: "from-purple-500 to-violet-600", description: "Compress, resize & edit", slug: "image" },
   "Developer Tools": { icon: "💻", color: "from-cyan-500 to-blue-600", description: "Format, encode & generate", slug: "developer" },
   "productivity": { icon: "🚀", color: "from-indigo-500 to-purple-600", description: "Calculate, generate & more", slug: "productivity" },
+  "Construction": { icon: "🏗️", color: "from-amber-500 to-orange-600", description: "Construction calculators for concrete, paint & more", slug: "construction" },
 };
 
 export default function CategoriesPage() {
@@ -26,8 +27,8 @@ export default function CategoriesPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">Browse Tools by Category</h1>
-        <p className="text-lg text-slate-600">
+        <h1 className="text-4xl font-bold text-slate-900 mb-4 dark:text-slate-100">Browse Tools by Category</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">
           Find the perfect tool for your needs. Explore {allTools.length} tools across {sortedCategories.length} categories.
         </p>
       </div>
@@ -44,17 +45,17 @@ export default function CategoriesPage() {
             <Link
               key={category}
               href={`/categories/${data.slug}`}
-              className="group block p-6 bg-white rounded-2xl border border-slate-200 hover:shadow-xl hover:border-blue-300 transition-all"
+              className="group block p-6 bg-white rounded-2xl border border-slate-200 hover:shadow-xl hover:border-blue-300 transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:border-blue-500"
             >
               <div className="flex items-start gap-4">
                 <div className={`flex h-14 w-14 items-center justify-center rounded-xl text-3xl bg-gradient-to-br ${data.color}`}>
                   {data.icon}
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-xl font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                  <h2 className="text-xl font-semibold text-slate-900 group-hover:text-blue-600 transition dark:text-slate-100 dark:group-hover:text-blue-400">
                     {category}
                   </h2>
-                  <p className="text-sm text-slate-500">{count} tools • {data.description}</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{count} tools • {data.description}</p>
                 </div>
               </div>
             </Link>

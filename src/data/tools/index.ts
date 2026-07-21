@@ -4,6 +4,7 @@ import { pdfTools } from "./pdf";
 import { imageTools } from "./image";
 import { developerTools } from "./developer";
 import { productivityTools } from "./productivity";
+import { constructionTools } from "./construction";
 import { Tool } from "@/types/tool";
 
 export const allTools: Tool[] = [
@@ -13,4 +14,5 @@ export const allTools: Tool[] = [
   ...imageTools,
   ...developerTools,
   ...productivityTools,
+  ...constructionTools,
 ];

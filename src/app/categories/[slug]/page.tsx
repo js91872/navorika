@@ -10,6 +10,7 @@ const slugToCategory: Record<string, string> = {
   image: "Image Tools",
   developer: "Developer Tools",
   productivity: "productivity",
+  construction: "Construction",
 };
 
 // Map slugs to display info
@@ -20,72 +21,18 @@ const categoryInfo: Record<string, { icon: string; description: string }> = {
   image: { icon: "🖼️", description: "Image tools to compress, resize, convert, and edit images." },
   developer: { icon: "💻", description: "Developer tools for formatting, encoding, generating IDs, and more." },
   productivity: { icon: "🚀", description: "Productivity tools to calculate dates, generate passwords, QR codes, and more." },
+  construction: { icon: "🏗️", description: "Construction calculators for concrete, paint, and more." },
 };
 
 // Get individual tool icon based on title and keywords
 function getToolIcon(tool: any): string {
-  // If tool has an icon, use it
   if (tool.icon) return tool.icon;
   
-  // Otherwise, assign based on title keywords
   const title = tool.title.toLowerCase();
   
-  // Finance tools
-  if (title.includes('emi')) return '🏦';
-  if (title.includes('gst')) return '🧾';
-  if (title.includes('epf')) return '💰';
-  if (title.includes('compound interest')) return '📈';
-  if (title.includes('income tax')) return '🧾';
-  if (title.includes('loan')) return '🏦';
-  if (title.includes('inflation')) return '📉';
-  if (title.includes('currency')) return '💱';
-  if (title.includes('roi')) return '📊';
-  if (title.includes('sip')) return '📈';
-  if (title.includes('ppf')) return '🏦';
-  if (title.includes('rd')) return '🏦';
-  if (title.includes('fd')) return '🏦';
-  if (title.includes('retirement')) return '👴';
-  if (title.includes('cagr')) return '📈';
-  if (title.includes('lumpsum')) return '💰';
-  if (title.includes('mortgage')) return '🏠';
-  if (title.includes('swp')) return '💹';
-  
-  // Health tools
-  if (title.includes('water')) return '💧';
-  if (title.includes('bmi')) return '⚖️';
-  if (title.includes('bmr')) return '🔥';
-  if (title.includes('calorie')) return '🍽️';
-  if (title.includes('protein')) return '🥩';
-  
-  // PDF tools
-  if (title.includes('merge')) return '📑';
-  if (title.includes('split')) return '✂️';
-  if (title.includes('compress')) return '📦';
-  if (title.includes('pdf to word')) return '📄➡️📝';
-  if (title.includes('word to pdf')) return '📝➡️📄';
-  if (title.includes('jpg to pdf')) return '🖼️➡️📄';
-  if (title.includes('pdf to jpg')) return '📄➡️🖼️';
-  
-  // Image tools
-  if (title.includes('compressor')) return '📦';
-  if (title.includes('resizer')) return '📐';
-  if (title.includes('converter')) return '🔄';
-  if (title.includes('crop')) return '✂️';
-  if (title.includes('background remover')) return '🧹';
-  if (title.includes('passport')) return '📸';
-  
-  // Developer tools
-  if (title.includes('json')) return '📋';
-  if (title.includes('base64')) return '🔐';
-  if (title.includes('uuid')) return '🆔';
-  if (title.includes('url')) return '🔗';
-  
-  // Productivity tools
-  if (title.includes('age')) return '🎂';
-  if (title.includes('date')) return '📅';
-  if (title.includes('percentage')) return '💯';
-  if (title.includes('qr')) return '📱';
-  if (title.includes('password')) return '🔑';
+  // Construction tools
+  if (title.includes('concrete')) return '🏗️';
+  if (title.includes('paint')) return '🎨';
   
   // Default icon based on category
   const categoryIcons: Record<string, string> = {
@@ -95,6 +42,7 @@ function getToolIcon(tool: any): string {
     'Image Tools': '🖼️',
     'Developer Tools': '💻',
     'productivity': '🚀',
+    'Construction': '🏗️',
   };
   
   return categoryIcons[tool.category] || '🔧';
@@ -104,14 +52,12 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const allTools = getAllTools();
   
-  // Get the actual category name from the slug
   const categoryName = slugToCategory[slug];
   
   if (!categoryName) {
     notFound();
   }
   
-  // Filter tools by the exact category name
   const tools = allTools.filter(t => t.category === categoryName);
   
   if (tools.length === 0) {
@@ -122,7 +68,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <Link href="/categories" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition mb-8">
+      <Link href="/categories" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition mb-8 dark:text-blue-400 dark:hover:text-blue-300">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
@@ -130,11 +76,11 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
       </Link>
       
       <div className="flex items-center gap-4 mb-8">
-        <span className="text-5xl" role="img" aria-label={categoryName}>{info.icon}</span>
+        <span className="text-5xl">{info.icon}</span>
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">{categoryName}</h1>
-          <p className="text-slate-600">{info.description}</p>
-          <p className="text-sm text-slate-500 mt-1">{tools.length} tools available</p>
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">{categoryName}</h1>
+          <p className="text-slate-600 dark:text-slate-400">{info.description}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">{tools.length} tools available</p>
         </div>
       </div>
 
@@ -145,15 +91,15 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
             <Link 
               key={tool.slug} 
               href={`/tools/${tool.slug}`} 
-              className="block p-6 bg-white rounded-2xl border border-slate-200 hover:shadow-lg hover:border-blue-300 transition-all group"
+              className="block p-6 bg-white rounded-2xl border border-slate-200 hover:shadow-lg hover:border-blue-300 transition-all group dark:bg-slate-800 dark:border-slate-700 dark:hover:border-blue-500"
             >
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-2xl" role="img" aria-label={tool.title}>{icon}</span>
-                <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 transition dark:text-slate-200 dark:group-hover:text-blue-400">
                   {tool.title}
                 </h3>
               </div>
-              <p className="text-sm text-slate-600">{tool.shortDescription}</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">{tool.shortDescription}</p>
             </Link>
           );
         })}
