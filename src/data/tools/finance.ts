@@ -8,6 +8,7 @@ export const financeTools: Tool[] = [
     description: "Calculate monthly EMI, total interest and repayment using the standard banking formula.",
     category: "Finance",
     keywords: ["EMI Calculator", "Loan EMI", "Home Loan", "Car Loan"],
+    icon: "💰",
     featured: true,
     badge: "Popular",
     heroTitle: "Free EMI Calculator",
@@ -21,7 +22,6 @@ export const financeTools: Tool[] = [
     ],
     relatedTools: ["sip-calculator", "fd-calculator"]
   },
-
   {
     slug: "gst-calculator",
     title: "GST Calculator",
@@ -29,10 +29,10 @@ export const financeTools: Tool[] = [
     description: "Calculate GST inclusive and exclusive prices.",
     category: "Finance",
     keywords: ["GST", "Tax"],
+    icon: "🧾",
     featured: true,
     badge: "Trending"
   },
-
   {
     slug: "epf-calculator",
     title: "EPF Calculator",
@@ -40,6 +40,7 @@ export const financeTools: Tool[] = [
     description: "Estimate Employees' Provident Fund maturity, contributions and interest earned.",
     category: "Finance",
     keywords: ["EPF Calculator", "PF Calculator", "Provident Fund", "EPF Interest"],
+    icon: "💰",
     featured: true,
     badge: "New",
     heroTitle: "Free EPF Calculator",
@@ -53,7 +54,6 @@ export const financeTools: Tool[] = [
     ],
     relatedTools: ["retirement-calculator", "ppf-calculator", "fd-calculator", "sip-calculator"]
   },
-
   {
     slug: "compound-interest-calculator",
     title: "Compound Interest Calculator",
@@ -61,6 +61,7 @@ export const financeTools: Tool[] = [
     description: "Calculate the future value of your investments with compound interest, regular contributions, and multiple compounding frequencies.",
     category: "Finance",
     keywords: ["Compound Interest", "Compound Interest Calculator", "Investment Calculator", "Future Value", "Wealth Calculator"],
+    icon: "📈",
     featured: true,
     badge: "Popular",
     heroTitle: "Free Compound Interest Calculator",
@@ -75,7 +76,6 @@ export const financeTools: Tool[] = [
     ],
     relatedTools: ["sip-calculator", "fd-calculator", "retirement-calculator", "emi-calculator"]
   },
-
   {
     slug: "income-tax-calculator",
     title: "Income Tax Calculator",
@@ -83,6 +83,7 @@ export const financeTools: Tool[] = [
     description: "Calculate your income tax for FY 2026-27 under New or Old Tax Regime with Standard Deduction, HRA, Section 80C, 80D, and NPS.",
     category: "Finance",
     keywords: ["Income Tax Calculator", "Tax Calculator India", "New Tax Regime", "Old Tax Regime", "Income Tax", "ITR", "Tax Planning", "FY 2026-27"],
+    icon: "🧾",
     featured: true,
     badge: "Popular",
     heroTitle: "Free Income Tax Calculator (India)",
@@ -98,7 +99,6 @@ export const financeTools: Tool[] = [
     ],
     relatedTools: ["gst-calculator", "epf-calculator", "fd-calculator", "sip-calculator"]
   },
-
   {
     slug: "loan-calculator",
     title: "Loan Calculator",
@@ -106,6 +106,7 @@ export const financeTools: Tool[] = [
     description: "Calculate your monthly EMI, total interest, and repayment schedule for personal, home, car, education, and business loans.",
     category: "Finance",
     keywords: ["Loan Calculator", "EMI Calculator", "Personal Loan", "Home Loan", "Car Loan", "Education Loan", "Business Loan", "Monthly Payment", "Interest Calculator"],
+    icon: "🏦",
     featured: true,
     badge: "Popular",
     heroTitle: "Free Loan Calculator",
@@ -120,7 +121,6 @@ export const financeTools: Tool[] = [
     ],
     relatedTools: ["emi-calculator", "fd-calculator", "sip-calculator", "mortgage-calculator"]
   },
-
   {
     slug: "inflation-calculator",
     title: "Inflation Calculator",
@@ -128,6 +128,7 @@ export const financeTools: Tool[] = [
     description: "Calculate how inflation reduces the purchasing power of your money over time and see what you'll need in the future.",
     category: "Finance",
     keywords: ["Inflation Calculator", "Inflation", "Purchasing Power", "Future Value", "Money Value", "Cost of Living"],
+    icon: "📉",
     featured: true,
     badge: "Popular",
     heroTitle: "Free Inflation Calculator",
@@ -143,7 +144,6 @@ export const financeTools: Tool[] = [
     ],
     relatedTools: ["compound-interest-calculator", "fd-calculator", "retirement-calculator", "sip-calculator"]
   },
-
   {
     slug: "currency-converter",
     title: "Currency Converter",
@@ -151,6 +151,7 @@ export const financeTools: Tool[] = [
     description: "Convert between 100+ currencies with live exchange rates. Track trends and get accurate conversions instantly.",
     category: "Finance",
     keywords: ["Currency Converter", "Exchange Rate", "Forex", "Money Converter", "USD to INR", "Currency Exchange"],
+    icon: "💱",
     featured: true,
     badge: "Popular",
     heroTitle: "Free Currency Converter",
@@ -166,7 +167,6 @@ export const financeTools: Tool[] = [
     ],
     relatedTools: ["inflation-calculator", "compound-interest-calculator", "loan-calculator", "emi-calculator"]
   },
-
   {
     slug: "roi-calculator",
     title: "ROI Calculator",
@@ -174,6 +174,7 @@ export const financeTools: Tool[] = [
     description: "Calculate return on investment, annualized returns, and measure investment performance with or without additional contributions.",
     category: "Finance",
     keywords: ["ROI Calculator", "Return on Investment", "Investment Return", "Annualized Return", "Investment Performance", "Profit Calculator"],
+    icon: "📊",
     featured: true,
     badge: "Popular",
     heroTitle: "Free ROI Calculator",
@@ -188,5 +189,17 @@ export const financeTools: Tool[] = [
       { title: "Example", description: "₹1,00,000 invested for 5 years growing to ₹1,50,000: ROI = 50%." }
     ],
     relatedTools: ["compound-interest-calculator", "inflation-calculator", "loan-calculator", "sip-calculator"]
+  },
+  {
+    slug: "ppf-calculator",
+    title: "PPF Calculator",
+    shortDescription: "Calculate your Public Provident Fund maturity amount.",
+    description: "Calculate your Public Provident Fund (PPF) maturity amount with monthly compounding. Plan your tax-saving investments with accurate PPF projections.",
+    category: "Finance",
+    keywords: ["ppf", "public provident fund", "savings", "investment", "tax saving", "interest", "retirement"],
+    icon: "🏦",
+    featured: false,
+    popular: true,
+    relatedTools: ["fd-calculator", "rd-calculator", "epf-calculator", "retirement-calculator"]
   }
 ];

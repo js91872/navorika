@@ -1,160 +1,214 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState, useMemo } from "react";
+import { Calendar, TrendingUp, Wallet, CalendarDays, IndianRupee } from "lucide-react";
 
 import CalculatorShell from "../CalculatorShell";
 import CalculatorHeader from "../CalculatorHeader";
-import NumberInput from "../NumberInput";
-import PercentageInput from "../PercentageInput";
-import TenureInput from "../TenureInput";
-import Slider from "../Slider";
+import { Button } from "@/components/ui/Button";
 import ResultGrid from "../ResultGrid";
 import ResultCard from "../ResultCard";
-import PieChart from "../PieChart";
-import Summary from "../Summary";
+import NumberInput from "../NumberInput";
 
-import { calculatePPF } from "@/lib/calculations/ppf";
-import { formatCurrency } from "@/lib/format/currency";
-import { ppfConfig } from "@/config/calculators/ppf";
+interface PPFResult {
+  totalInvestment: number;
+  totalInterest: number;
+  maturityAmount: number;
+  yearByYear: {
+    year: number;
+    openingBalance: number;
+    deposit: number;
+    interest: number;
+    closingBalance: number;
+  }[];
+}
 
 export default function PPFCalculator() {
-  const [yearlyInvestment, setYearlyInvestment] = useState(
-    ppfConfig.yearlyInvestment.default
-  );
+  const [annualDeposit, setAnnualDeposit] = useState<number>(150000);
+  const [tenure, setTenure] = useState<number>(15);
+  const [interestRate, setInterestRate] = useState<number>(7.1);
+  const [showYearlyBreakdown, setShowYearlyBreakdown] = useState(false);
 
-  const [interestRate, setInterestRate] = useState(
-    ppfConfig.rate.default
-  );
+  const calculatePPF = (): PPFResult | null => {
+    if (annualDeposit <= 0 || tenure <= 0 || interestRate <= 0) {
+      return null;
+    }
 
-  const [tenure, setTenure] = useState(
-    ppfConfig.tenure.default
-  );
+    const maxAnnualDeposit = 150000; // Maximum allowed in PPF
+    const actualDeposit = Math.min(annualDeposit, maxAnnualDeposit);
+    const monthlyRate = interestRate / 100 / 12;
+    let balance = 0;
+    let totalInvestment = 0;
+    let totalInterest = 0;
+    const yearByYear = [];
 
-  const result = useMemo(() => {
-    return calculatePPF(
-      yearlyInvestment,
-      interestRate,
-      tenure
-    );
-  }, [
-    yearlyInvestment,
-    interestRate,
-    tenure,
-  ]);
+    for (let year = 1; year <= tenure; year++) {
+      let openingBalance = balance;
+      let yearlyDeposit = 0;
+      let yearlyInterest = 0;
+
+      // Monthly compounding
+      for (let month = 1; month <= 12; month++) {
+        // Deposit at the beginning of each month
+        const monthlyDeposit = actualDeposit / 12;
+        balance += monthlyDeposit;
+        yearlyDeposit += monthlyDeposit;
+        
+        // Interest calculation
+        const interest = balance * monthlyRate;
+        balance += interest;
+        yearlyInterest += interest;
+      }
+
+      totalInvestment += yearlyDeposit;
+      totalInterest += yearlyInterest;
+
+      yearByYear.push({
+        year,
+        openingBalance: Math.round(openingBalance),
+        deposit: Math.round(yearlyDeposit),
+        interest: Math.round(yearlyInterest),
+        closingBalance: Math.round(balance),
+      });
+
+      // PPF rule: minimum deposit is ₹500 per year
+      if (actualDeposit < 500) {
+        break;
+      }
+    }
+
+    return {
+      totalInvestment: Math.round(totalInvestment),
+      totalInterest: Math.round(totalInterest),
+      maturityAmount: Math.round(balance),
+      yearByYear,
+    };
+  };
+
+  const result = useMemo(() => calculatePPF(), [annualDeposit, tenure, interestRate]);
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
 
   return (
     <CalculatorShell>
-
       <CalculatorHeader
         title="PPF Calculator"
-        description="Estimate the maturity amount, invested amount and interest earned on your Public Provident Fund."
+        description="Calculate your Public Provident Fund maturity amount and interest."
+        icon="🏦"
+        accuracy="Accurate PPF calculations with monthly compounding"
       />
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_420px]">
-
-        {/* LEFT PANEL */}
-
-        <div className="space-y-10">
-
-          <div className="space-y-3">
-
-            <NumberInput
-              label="Yearly Investment"
-              value={yearlyInvestment}
-              onChange={setYearlyInvestment}
-              prefix="₹"
-              min={ppfConfig.yearlyInvestment.min}
-            />
-
-            <Slider
-              value={yearlyInvestment}
-              min={ppfConfig.yearlyInvestment.min}
-              max={ppfConfig.yearlyInvestment.max}
-              step={ppfConfig.yearlyInvestment.step}
-              onChange={setYearlyInvestment}
-            />
-
-          </div>
-
-          <div className="space-y-3">
-
-            <PercentageInput
-              label="Interest Rate"
-              value={interestRate}
-              onChange={setInterestRate}
-            />
-
-            <Slider
-              value={interestRate}
-              min={ppfConfig.rate.min}
-              max={ppfConfig.rate.max}
-              step={ppfConfig.rate.step}
-              onChange={setInterestRate}
-            />
-
-          </div>
-
-          <div className="space-y-3">
-
-            <TenureInput
-              label="Investment Period"
-              value={tenure}
-              onChange={setTenure}
-              min={15}
-              max={50}
-            />
-
-            <Slider
-              value={tenure}
-              min={ppfConfig.tenure.min}
-              max={ppfConfig.tenure.max}
-              step={ppfConfig.tenure.step}
-              onChange={setTenure}
-            />
-
-          </div>
-
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6">
+        <div className="grid gap-6 md:grid-cols-3">
+          <NumberInput
+            label="Annual Deposit (₹)"
+            value={annualDeposit}
+            onChange={setAnnualDeposit}
+            min={500}
+            max={150000}
+            step={1000}
+            prefix="₹"
+          />
+          <NumberInput
+            label="Tenure (Years)"
+            value={tenure}
+            onChange={setTenure}
+            min={15}
+            max={50}
+            step={1}
+          />
+          <NumberInput
+            label="Interest Rate (%)"
+            value={interestRate}
+            onChange={setInterestRate}
+            min={1}
+            max={15}
+            step={0.1}
+            suffix="%"
+          />
         </div>
 
-        {/* RIGHT PANEL */}
-
-        <div className="space-y-6">
-
-          <ResultGrid>
-
-            <ResultCard
-              label="Total Investment"
-              value={formatCurrency(result.investedAmount)}
-            />
-
-            <ResultCard
-              label="Interest Earned"
-              value={formatCurrency(result.interestEarned)}
-            />
-
-            <ResultCard
-              label="Maturity Amount"
-              value={formatCurrency(result.maturityAmount)}
-              highlight
-            />
-
-          </ResultGrid>
-
-          <PieChart
-            principal={result.investedAmount}
-            interest={result.interestEarned}
-          />
-
-          <Summary
-            principal={result.investedAmount}
-            interest={result.interestEarned}
-            total={result.maturityAmount}
-          />
-
+        <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 text-sm text-slate-600 dark:text-slate-400">
+          <p className="font-medium text-slate-700 dark:text-slate-300 mb-2">💡 PPF Rules:</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>Minimum annual deposit: ₹500</li>
+            <li>Maximum annual deposit: ₹1,50,000</li>
+            <li>Minimum tenure: 15 years</li>
+            <li>Interest is compounded monthly</li>
+            <li>Tax-free returns under Section 80C</li>
+          </ul>
         </div>
 
+        {result && (
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 text-white text-center">
+              <p className="text-sm text-emerald-200">PPF Maturity Amount</p>
+              <p className="text-4xl sm:text-5xl font-bold mt-2">
+                {formatCurrency(result.maturityAmount)}
+              </p>
+            </div>
+
+            <ResultGrid>
+              <ResultCard
+                label="Total Investment"
+                value={formatCurrency(result.totalInvestment)}
+                icon="💰"
+              />
+              <ResultCard
+                label="Total Interest Earned"
+                value={formatCurrency(result.totalInterest)}
+                icon="📈"
+              />
+              <ResultCard
+                label="Tenure"
+                value={`${tenure} Years`}
+                icon="📅"
+              />
+            </ResultGrid>
+
+            <Button
+              variant="outline"
+              onClick={() => setShowYearlyBreakdown(!showYearlyBreakdown)}
+              className="w-full"
+            >
+              {showYearlyBreakdown ? "Hide" : "Show"} Yearly Breakdown
+            </Button>
+
+            {showYearlyBreakdown && (
+              <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+                <table className="w-full text-sm">
+                  <thead className="bg-slate-50 dark:bg-slate-800/50">
+                    <tr>
+                      <th className="px-4 py-3 text-left font-medium text-slate-600 dark:text-slate-400">Year</th>
+                      <th className="px-4 py-3 text-right font-medium text-slate-600 dark:text-slate-400">Opening Balance</th>
+                      <th className="px-4 py-3 text-right font-medium text-slate-600 dark:text-slate-400">Deposit</th>
+                      <th className="px-4 py-3 text-right font-medium text-slate-600 dark:text-slate-400">Interest</th>
+                      <th className="px-4 py-3 text-right font-medium text-slate-600 dark:text-slate-400">Closing Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.yearByYear.map((row) => (
+                      <tr key={row.year} className="border-t border-slate-100 dark:border-slate-700">
+                        <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{row.year}</td>
+                        <td className="px-4 py-3 text-right text-slate-600 dark:text-slate-400">{formatCurrency(row.openingBalance)}</td>
+                        <td className="px-4 py-3 text-right text-slate-600 dark:text-slate-400">{formatCurrency(row.deposit)}</td>
+                        <td className="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400">{formatCurrency(row.interest)}</td>
+                        <td className="px-4 py-3 text-right font-medium text-slate-700 dark:text-slate-300">{formatCurrency(row.closingBalance)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        )}
       </div>
-
     </CalculatorShell>
   );
 }
