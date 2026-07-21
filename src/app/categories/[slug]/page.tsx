@@ -1,6 +1,12 @@
 import { getAllTools } from "@/lib/toolRegistry";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowLeft, Sparkles } from "lucide-react";
+import { PremiumGradient } from "@/components/ui/PremiumGradient";
+import { PremiumHeading } from "@/components/ui/PremiumHeading";
+import { PremiumCard } from "@/components/ui/PremiumCard";
+import { PremiumBadge } from "@/components/ui/PremiumBadge";
+import { PremiumButton } from "@/components/ui/PremiumButton";
 
 // Map slugs to actual category names
 const slugToCategory: Record<string, string> = {
@@ -24,17 +30,9 @@ const categoryInfo: Record<string, { icon: string; description: string }> = {
   construction: { icon: "🏗️", description: "Construction calculators for concrete, paint, and more." },
 };
 
-// Get individual tool icon based on title and keywords
+// Get individual tool icon
 function getToolIcon(tool: any): string {
   if (tool.icon) return tool.icon;
-  
-  const title = tool.title.toLowerCase();
-  
-  // Construction tools
-  if (title.includes('concrete')) return '🏗️';
-  if (title.includes('paint')) return '🎨';
-  
-  // Default icon based on category
   const categoryIcons: Record<string, string> = {
     'Finance': '💰',
     'Health': '💪',
@@ -44,7 +42,6 @@ function getToolIcon(tool: any): string {
     'productivity': '🚀',
     'Construction': '🏗️',
   };
-  
   return categoryIcons[tool.category] || '🔧';
 }
 
@@ -67,43 +64,76 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   const info = categoryInfo[slug] || { icon: "🔧", description: `${tools.length} tools available` };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <Link href="/categories" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition mb-8 dark:text-blue-400 dark:hover:text-blue-300">
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        Back to Categories
-      </Link>
-      
-      <div className="flex items-center gap-4 mb-8">
-        <span className="text-5xl">{info.icon}</span>
-        <div>
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">{categoryName}</h1>
-          <p className="text-slate-600 dark:text-slate-400">{info.description}</p>
-          <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">{tools.length} tools available</p>
+    <PremiumGradient variant="section">
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        {/* Back Button */}
+        <Link
+          href="/categories"
+          className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition dark:text-slate-400 dark:hover:text-blue-400 mb-8 group"
+        >
+          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+          Back to Categories
+        </Link>
+        
+        {/* Category Header */}
+        <div className="mb-12">
+          <div className="flex flex-wrap items-center gap-6">
+            <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 text-5xl dark:from-blue-500/20 dark:to-purple-500/20 shadow-lg shadow-blue-500/10">
+              {info.icon}
+            </div>
+            <div>
+              <PremiumHeading level="h1">{categoryName}</PremiumHeading>
+              <p className="text-slate-600 dark:text-slate-400 mt-1">{info.description}</p>
+              <div className="flex items-center gap-3 mt-3">
+                <PremiumBadge variant="blue" icon={<Sparkles className="h-3.5 w-3.5" />}>
+                  {tools.length} tools available
+                </PremiumBadge>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Tools Grid */}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {tools.map((tool) => {
+            const icon = getToolIcon(tool);
+            return (
+              <Link 
+                key={tool.slug} 
+                href={`/tools/${tool.slug}`}
+                className="group"
+              >
+                <PremiumCard 
+                  hover 
+                  className="h-full transition-all duration-300 group-hover:border-blue-200/50 dark:group-hover:border-blue-800/50"
+                >
+                  <div className="flex items-start gap-3 mb-3">
+                    <span className="text-3xl">{icon}</span>
+                    <div>
+                      <h3 className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+                        {tool.title}
+                      </h3>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+                        {tool.shortDescription}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {tool.keywords?.slice(0, 3).map((keyword) => (
+                      <span 
+                        key={keyword} 
+                        className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-1 rounded-full"
+                      >
+                        {keyword}
+                      </span>
+                    ))}
+                  </div>
+                </PremiumCard>
+              </Link>
+            );
+          })}
         </div>
       </div>
-
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {tools.map((tool) => {
-          const icon = getToolIcon(tool);
-          return (
-            <Link 
-              key={tool.slug} 
-              href={`/tools/${tool.slug}`} 
-              className="block p-6 bg-white rounded-2xl border border-slate-200 hover:shadow-lg hover:border-blue-300 transition-all group dark:bg-slate-800 dark:border-slate-700 dark:hover:border-blue-500"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-2xl" role="img" aria-label={tool.title}>{icon}</span>
-                <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 transition dark:text-slate-200 dark:group-hover:text-blue-400">
-                  {tool.title}
-                </h3>
-              </div>
-              <p className="text-sm text-slate-600 dark:text-slate-400">{tool.shortDescription}</p>
-            </Link>
-          );
-        })}
-      </div>
-    </div>
+    </PremiumGradient>
   );
 }

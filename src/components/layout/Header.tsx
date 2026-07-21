@@ -3,10 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Menu, X, Search, Sun, Moon } from "lucide-react";
+import { Menu, X, Search, Sun, Moon, Sparkles, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Logo } from "@/components/ui/Logo";
-import { Button } from "@/components/ui/Button";
+import { PremiumButton } from "@/components/ui/PremiumButton";
+import { PremiumBadge } from "@/components/ui/PremiumBadge";
 import { cn } from "@/lib/utils";
 import { getAllTools } from "@/lib/toolRegistry";
 import { Tool } from "@/types/tool";
@@ -37,7 +38,6 @@ export default function Header() {
     setMounted(true);
   }, []);
 
-  // Handle search with debounce
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchQuery.length > 1) {
@@ -116,8 +116,8 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-900/80">
-      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl dark:border-slate-700/80 dark:bg-slate-900/80">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -132,7 +132,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <div className="hidden md:block" ref={searchRef}>
             <button
               onClick={() => {
@@ -141,17 +141,17 @@ export default function Header() {
                   setTimeout(() => inputRef.current?.focus(), 100);
                 }
               }}
-              className="flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm text-slate-500 transition hover:border-blue-300 hover:bg-slate-50 min-w-[200px] dark:border-slate-700 dark:text-slate-400 dark:hover:border-blue-500 dark:hover:bg-slate-800"
+              className="flex items-center gap-2 rounded-xl border border-slate-200/80 bg-slate-50/50 px-3.5 py-2 text-sm text-slate-500 transition hover:border-blue-300 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-400 dark:hover:border-blue-500 dark:hover:bg-slate-700"
             >
               <Search className="h-4 w-4" />
-              <span>{t('nav.search')}</span>
-              <kbd className="ml-auto rounded bg-slate-100 px-2 py-0.5 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+              <span className="hidden lg:inline">{t('nav.search')}</span>
+              <kbd className="ml-1 rounded bg-slate-200 px-1.5 py-0.5 text-xs text-slate-500 dark:bg-slate-700 dark:text-slate-400">
                 ⌘K
               </kbd>
             </button>
 
             {isSearchOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden dark:bg-slate-900 dark:border-slate-700">
+              <div className="absolute left-0 right-0 top-full mt-2 max-w-2xl mx-auto bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
                 <div className="p-4">
                   <form onSubmit={handleSearchSubmit}>
                     <div className="flex items-center gap-3 border-b border-slate-100 pb-3 dark:border-slate-700">
@@ -162,7 +162,7 @@ export default function Header() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder={t('nav.search')}
-                        className="flex-1 bg-transparent outline-none text-slate-800 placeholder:text-slate-400 dark:text-slate-200 dark:placeholder:text-slate-500"
+                        className="flex-1 bg-transparent outline-none text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                         autoFocus
                       />
                       {searchQuery && (
@@ -174,12 +174,9 @@ export default function Header() {
                           <X className="h-4 w-4" />
                         </button>
                       )}
-                      <button
-                        type="submit"
-                        className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition"
-                      >
+                      <PremiumButton type="submit" size="sm">
                         {t('home.searchButton')}
-                      </button>
+                      </PremiumButton>
                     </div>
                   </form>
 
@@ -191,21 +188,21 @@ export default function Header() {
                             <button
                               key={tool.slug}
                               onClick={() => handleSearchSelect(tool.slug)}
-                              className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800"
+                              className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800"
                             >
                               <span className="text-2xl">{tool.icon || "🔧"}</span>
                               <div className="flex-1">
                                 <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{tool.title}</p>
                                 <p className="text-xs text-slate-500 dark:text-slate-400">{tool.shortDescription}</p>
                               </div>
-                              <span className="text-xs capitalize text-slate-400 bg-slate-100 px-2 py-1 rounded dark:bg-slate-800 dark:text-slate-400">
+                              <PremiumBadge variant="gray" size="sm">
                                 {tool.category}
-                              </span>
+                              </PremiumBadge>
                             </button>
                           ))}
                           <button
                             onClick={handleSearchSubmit}
-                            className="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm text-blue-600 hover:bg-blue-50 transition dark:text-blue-400 dark:hover:bg-blue-950"
+                            className="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-sm text-blue-600 hover:bg-blue-50 transition dark:text-blue-400 dark:hover:bg-blue-950/50"
                           >
                             <Search className="h-4 w-4" />
                             {t('search.viewAll') || 'View all results'}
@@ -232,7 +229,7 @@ export default function Header() {
 
           <button
             onClick={toggleTheme}
-            className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 transition dark:text-slate-400 dark:hover:bg-slate-800"
+            className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
             aria-label="Toggle dark mode"
           >
             {mounted ? (
@@ -253,34 +250,34 @@ export default function Header() {
                 setTimeout(() => inputRef.current?.focus(), 100);
               }
             }}
-            className="md:hidden p-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+            className="md:hidden rounded-xl p-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
           >
             <Search className="h-5 w-5" />
           </button>
 
-          <div className="hidden items-center gap-4 md:flex">
-            <Button variant="ghost" size="sm" className="dark:text-slate-300 dark:hover:text-white">
+          <div className="hidden items-center gap-3 md:flex">
+            <PremiumButton variant="ghost" size="sm">
               {t('nav.signIn')}
-            </Button>
-            <Button size="sm" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700">
+            </PremiumButton>
+            <PremiumButton size="sm" icon={<Sparkles className="h-4 w-4" />}>
               {t('nav.getStarted')}
-            </Button>
+            </PremiumButton>
           </div>
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 md:hidden dark:text-slate-400 dark:hover:bg-slate-800"
-            aria-label="Toggle menu"
+            className="md:hidden rounded-xl p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <div
         className={cn(
-          "fixed inset-x-0 top-20 z-40 bg-white/95 backdrop-blur-lg border-b border-slate-200 transition-all duration-300 md:hidden dark:bg-slate-900/95 dark:border-slate-700",
-          isMobileMenuOpen ? "max-h-[calc(100vh-5rem)] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          "fixed inset-x-0 top-16 z-40 bg-white/95 backdrop-blur-xl border-b border-slate-200 transition-all duration-300 md:hidden dark:bg-slate-900/95 dark:border-slate-700",
+          isMobileMenuOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
         )}
       >
         <div className="flex flex-col space-y-1 p-4">
@@ -289,24 +286,25 @@ export default function Header() {
               key={item.name}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="rounded-lg px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-400"
+              className="rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-400"
             >
               {t(`nav.${item.name}`)}
             </Link>
           ))}
           <div className="flex flex-col gap-2 pt-4 border-t border-slate-200 dark:border-slate-700">
-            <Button variant="ghost" size="sm" className="justify-center dark:text-slate-300">
+            <PremiumButton variant="ghost" size="sm" className="justify-center">
               {t('nav.signIn')}
-            </Button>
-            <Button size="sm" className="justify-center bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600">
+            </PremiumButton>
+            <PremiumButton size="sm" className="justify-center">
               {t('nav.getStarted')}
-            </Button>
+            </PremiumButton>
           </div>
         </div>
       </div>
 
+      {/* Mobile Search Overlay */}
       {isSearchOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-white/95 backdrop-blur-sm dark:bg-slate-900/95">
+        <div className="md:hidden fixed inset-0 z-50 bg-white/95 backdrop-blur-xl dark:bg-slate-900/95">
           <div className="p-4">
             <form onSubmit={handleSearchSubmit}>
               <div className="flex items-center gap-3 border-b border-slate-100 pb-3 dark:border-slate-700">
@@ -317,7 +315,7 @@ export default function Header() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t('nav.search')}
-                  className="flex-1 bg-transparent outline-none text-slate-800 placeholder:text-slate-400 text-lg dark:text-slate-200 dark:placeholder:text-slate-500"
+                  className="flex-1 bg-transparent outline-none text-slate-800 dark:text-slate-200 placeholder:text-slate-400 text-lg"
                   autoFocus
                 />
                 <button
@@ -340,7 +338,7 @@ export default function Header() {
                       <button
                         key={tool.slug}
                         onClick={() => handleSearchSelect(tool.slug)}
-                        className="flex w-full items-center gap-3 rounded-lg p-3 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800"
+                        className="flex w-full items-center gap-3 rounded-xl p-3 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800"
                       >
                         <span className="text-2xl">{tool.icon || "🔧"}</span>
                         <div className="flex-1">
@@ -351,7 +349,7 @@ export default function Header() {
                     ))}
                     <button
                       onClick={handleSearchSubmit}
-                      className="flex w-full items-center justify-center gap-2 rounded-lg p-3 text-sm text-blue-600 hover:bg-blue-50 transition dark:text-blue-400 dark:hover:bg-blue-950"
+                      className="flex w-full items-center justify-center gap-2 rounded-xl p-3 text-sm text-blue-600 hover:bg-blue-50 transition dark:text-blue-400 dark:hover:bg-blue-950/50"
                     >
                       <Search className="h-4 w-4" />
                       {t('search.viewAll') || 'View all results'}
