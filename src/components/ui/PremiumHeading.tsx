@@ -29,7 +29,7 @@ export function PremiumHeading({
     h4: "text-xl sm:text-2xl lg:text-3xl leading-snug",
   };
 
-  const gradientStyles = gradient && "bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent";
+  const gradientStyles = gradient && "text-gradient";
 
   return (
     <div className="space-y-2">
