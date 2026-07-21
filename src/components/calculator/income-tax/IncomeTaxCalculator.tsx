@@ -1,296 +1,227 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState, useMemo } from "react";
+import { IndianRupee, Calculator, TrendingUp, FileText } from "lucide-react";
 
 import CalculatorShell from "../CalculatorShell";
 import CalculatorHeader from "../CalculatorHeader";
-import NumberInput from "../NumberInput";
-import Slider from "../Slider";
+import { Button } from "@/components/ui/Button";
 import ResultGrid from "../ResultGrid";
 import ResultCard from "../ResultCard";
-import Summary from "../Summary";
+import NumberInput from "../NumberInput";
 
-import { calculateIncomeTax } from "@/lib/calculations/income-tax";
-import { formatCurrency } from "@/lib/format/currency";
-import { incomeTaxConfig } from "@/config/calculators/income-tax";
+// Force INR currency for India-specific tools
+const formatINR = (amount: number) => {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+  }).format(amount);
+};
+
+interface TaxResult {
+  taxableIncome: number;
+  taxUnderOldRegime: number;
+  taxUnderNewRegime: number;
+  savingsOldRegime: number;
+  recommendedRegime: string;
+  breakdown: {
+    old: { slab: string; amount: number }[];
+    new: { slab: string; amount: number }[];
+  };
+}
 
 export default function IncomeTaxCalculator() {
-  const [income, setIncome] = useState(incomeTaxConfig.income.default);
-  const [regime, setRegime] = useState(incomeTaxConfig.regime.default);
-  const [hra, setHra] = useState(incomeTaxConfig.hra.default);
-  const [section80c, setSection80c] = useState(incomeTaxConfig.section80c.default);
-  const [section80d, setSection80d] = useState(incomeTaxConfig.section80d.default);
-  const [nps, setNps] = useState(incomeTaxConfig.nps.default);
-  const [standardDeduction, setStandardDeduction] = useState(
-    incomeTaxConfig.standardDeduction.default
-  );
+  const [annualIncome, setAnnualIncome] = useState<number>(800000);
+  const [deductions80C, setDeductions80C] = useState<number>(150000);
+  const [deductions80D, setDeductions80D] = useState<number>(25000);
+  const [hra, setHra] = useState<number>(0);
+  const [nps, setNps] = useState<number>(0);
+  const [standardDeduction, setStandardDeduction] = useState<number>(75000);
 
-  const result = useMemo(() => {
-    return calculateIncomeTax(
-      income,
-      regime,
-      hra,
-      section80c,
-      section80d,
-      nps,
-      standardDeduction
-    );
-  }, [income, regime, hra, section80c, section80d, nps, standardDeduction]);
+  const calculateTax = (income: number, regime: 'old' | 'new'): number => {
+    let taxableIncome = income;
+    let tax = 0;
 
-  const isNewRegime = regime === 'new';
+    if (regime === 'old') {
+      // Old regime deductions
+      taxableIncome -= Math.min(deductions80C, 150000);
+      taxableIncome -= Math.min(deductions80D, 25000);
+      taxableIncome -= hra;
+      taxableIncome -= Math.min(nps, 50000);
+      taxableIncome -= standardDeduction;
+
+      if (taxableIncome < 0) taxableIncome = 0;
+
+      // Old regime slabs
+      if (taxableIncome > 1000000) {
+        tax += (taxableIncome - 1000000) * 0.30;
+        taxableIncome = 1000000;
+      }
+      if (taxableIncome > 500000) {
+        tax += (taxableIncome - 500000) * 0.20;
+        taxableIncome = 500000;
+      }
+      if (taxableIncome > 250000) {
+        tax += (taxableIncome - 250000) * 0.05;
+      }
+    } else {
+      // New regime deductions (only standard deduction)
+      taxableIncome -= standardDeduction;
+      if (taxableIncome < 0) taxableIncome = 0;
+
+      // New regime slabs (FY 2026-27)
+      if (taxableIncome > 1500000) {
+        tax += (taxableIncome - 1500000) * 0.30;
+        taxableIncome = 1500000;
+      }
+      if (taxableIncome > 1200000) {
+        tax += (taxableIncome - 1200000) * 0.20;
+        taxableIncome = 1200000;
+      }
+      if (taxableIncome > 1000000) {
+        tax += (taxableIncome - 1000000) * 0.15;
+        taxableIncome = 1000000;
+      }
+      if (taxableIncome > 700000) {
+        tax += (taxableIncome - 700000) * 0.10;
+        taxableIncome = 700000;
+      }
+      if (taxableIncome > 300000) {
+        tax += (taxableIncome - 300000) * 0.05;
+      }
+    }
+
+    // Add 4% cess
+    tax = tax * 1.04;
+    return Math.round(tax);
+  };
+
+  const calculateResults = (): TaxResult | null => {
+    if (annualIncome <= 0) return null;
+
+    const taxOld = calculateTax(annualIncome, 'old');
+    const taxNew = calculateTax(annualIncome, 'new');
+
+    // Calculate taxable income for display
+    let taxableIncomeOld = annualIncome;
+    taxableIncomeOld -= Math.min(deductions80C, 150000);
+    taxableIncomeOld -= Math.min(deductions80D, 25000);
+    taxableIncomeOld -= hra;
+    taxableIncomeOld -= Math.min(nps, 50000);
+    taxableIncomeOld -= standardDeduction;
+    if (taxableIncomeOld < 0) taxableIncomeOld = 0;
+
+    let taxableIncomeNew = annualIncome - standardDeduction;
+    if (taxableIncomeNew < 0) taxableIncomeNew = 0;
+
+    const savings = taxOld - taxNew;
+    const recommendedRegime = savings > 0 ? 'New Regime' : 'Old Regime';
+
+    return {
+      taxableIncome: Math.round(Math.min(taxableIncomeOld, taxableIncomeNew)),
+      taxUnderOldRegime: taxOld,
+      taxUnderNewRegime: taxNew,
+      savingsOldRegime: Math.abs(savings),
+      recommendedRegime: savings > 0 ? 'New Regime' : 'Old Regime',
+      breakdown: {
+        old: [],
+        new: [],
+      },
+    };
+  };
+
+  const result = useMemo(() => calculateResults(), [
+    annualIncome,
+    deductions80C,
+    deductions80D,
+    hra,
+    nps,
+    standardDeduction,
+  ]);
 
   return (
     <CalculatorShell>
       <CalculatorHeader
-        title="Income Tax Calculator (India)"
+        title="Income Tax Calculator"
         description="Calculate your income tax for FY 2026-27 under New or Old Tax Regime."
-        accuracy="Accurate as per Income-tax Rules, 2026"
-        updatedOn="July 2026"
+        icon="🧾"
+        accuracy="Accurate tax calculations for FY 2026-27"
       />
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_420px]">
-        {/* LEFT PANEL - Inputs */}
-        <div className="space-y-10">
-          {/* FY 2026-27 Notice */}
-          <div className="rounded-xl bg-blue-50 border border-blue-200 p-4 text-sm text-blue-700">
-            <span className="font-medium">📅 FY 2026-27 (AY 2027-28)</span>
-            <p className="mt-1">
-              This calculator uses the latest tax slabs and rules from the Income-tax Rules, 2026.
-              {isNewRegime ? (
-                <span className="block mt-1 text-xs">
-                  ✅ New Tax Regime: 0% up to ₹3L | 5% up to ₹7L | 10% up to ₹10L | 15% up to ₹12L | 20% up to ₹15L | 30% above ₹15L
-                </span>
-              ) : (
-                <span className="block mt-1 text-xs">
-                  ✅ Old Tax Regime: 0% up to ₹2.5L | 5% up to ₹5L | 20% up to ₹10L | 30% above ₹10L
-                </span>
-              )}
-            </p>
-          </div>
-
-          {/* Tax Regime Selection */}
-          <div className="space-y-3">
-            <label className="block text-sm font-medium">
-              Tax Regime
-            </label>
-            <div className="grid grid-cols-2 gap-3">
-              {incomeTaxConfig.regime.options.map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => setRegime(option.value)}
-                  className={`py-2 px-4 rounded-xl text-sm font-medium transition ${
-                    regime === option.value
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                  }`}
-                >
-                  {option.label}
-                  {option.value === 'new' && (
-                    <span className="block text-xs opacity-75">(Default)</span>
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Annual Income */}
-          <div className="space-y-3">
-            <NumberInput
-              label="Annual Income"
-              value={income}
-              onChange={setIncome}
-              prefix="₹"
-              min={incomeTaxConfig.income.min}
-            />
-            <Slider
-              value={income}
-              min={incomeTaxConfig.income.min}
-              max={incomeTaxConfig.income.max}
-              step={incomeTaxConfig.income.step}
-              onChange={setIncome}
-            />
-          </div>
-
-          {/* Standard Deduction */}
-          <div className="space-y-3 border-t border-slate-200 pt-6">
-            <h3 className="text-sm font-semibold text-slate-700">
-              Standard Deduction
-              <span className="block text-xs font-normal text-slate-500">
-                {isNewRegime 
-                  ? "₹75,000 allowed in New Tax Regime as per Rules, 2026"
-                  : "₹50,000 allowed in Old Tax Regime"
-                }
-              </span>
-            </h3>
-            <NumberInput
-              label="Standard Deduction"
-              value={standardDeduction}
-              onChange={setStandardDeduction}
-              prefix="₹"
-              min={incomeTaxConfig.standardDeduction.min}
-              max={isNewRegime ? 75000 : 50000}
-            />
-            <Slider
-              value={standardDeduction}
-              min={incomeTaxConfig.standardDeduction.min}
-              max={isNewRegime ? 75000 : 50000}
-              step={incomeTaxConfig.standardDeduction.step}
-              onChange={setStandardDeduction}
-            />
-          </div>
-
-          {/* Deductions (Only for Old Regime) */}
-          {!isNewRegime && (
-            <div className="space-y-4 border-t border-slate-200 pt-6">
-              <h3 className="text-sm font-semibold text-slate-700">
-                Deductions (Section 80C, 80D, NPS, HRA)
-              </h3>
-
-              <div className="space-y-3">
-                <NumberInput
-                  label="HRA Exemption"
-                  value={hra}
-                  onChange={setHra}
-                  prefix="₹"
-                  min={incomeTaxConfig.hra.min}
-                />
-                <Slider
-                  value={hra}
-                  min={incomeTaxConfig.hra.min}
-                  max={incomeTaxConfig.hra.max}
-                  step={incomeTaxConfig.hra.step}
-                  onChange={setHra}
-                />
-              </div>
-
-              <div className="space-y-3">
-                <NumberInput
-                  label="Section 80C (PPF, ELSS, etc.)"
-                  value={section80c}
-                  onChange={setSection80c}
-                  prefix="₹"
-                  min={incomeTaxConfig.section80c.min}
-                />
-                <Slider
-                  value={section80c}
-                  min={incomeTaxConfig.section80c.min}
-                  max={incomeTaxConfig.section80c.max}
-                  step={incomeTaxConfig.section80c.step}
-                  onChange={setSection80c}
-                />
-              </div>
-
-              <div className="space-y-3">
-                <NumberInput
-                  label="Section 80D (Health Insurance)"
-                  value={section80d}
-                  onChange={setSection80d}
-                  prefix="₹"
-                  min={incomeTaxConfig.section80d.min}
-                />
-                <Slider
-                  value={section80d}
-                  min={incomeTaxConfig.section80d.min}
-                  max={incomeTaxConfig.section80d.max}
-                  step={incomeTaxConfig.section80d.step}
-                  onChange={setSection80d}
-                />
-              </div>
-
-              <div className="space-y-3">
-                <NumberInput
-                  label="NPS Contribution"
-                  value={nps}
-                  onChange={setNps}
-                  prefix="₹"
-                  min={incomeTaxConfig.nps.min}
-                />
-                <Slider
-                  value={nps}
-                  min={incomeTaxConfig.nps.min}
-                  max={incomeTaxConfig.nps.max}
-                  step={incomeTaxConfig.nps.step}
-                  onChange={setNps}
-                />
-              </div>
-            </div>
-          )}
-
-          {isNewRegime && (
-            <div className="rounded-xl bg-slate-50 border border-slate-200 p-4 text-sm text-slate-600">
-              <span className="font-medium">ℹ️ Note:</span> In the New Tax Regime, only Standard Deduction is allowed. Other deductions (80C, 80D, HRA, NPS) are not available.
-            </div>
-          )}
-        </div>
-
-        {/* RIGHT PANEL - Results */}
-        <div className="space-y-6">
-          {/* Tax Amount - Highlighted as primary result */}
-          <div className="bg-blue-50 rounded-3xl border border-blue-200 p-6 shadow-sm">
-            <div className="flex flex-col items-center">
-              <p className="text-sm text-blue-600 font-medium">Your Tax Liability</p>
-              <p className="text-4xl font-bold text-blue-700 mt-2">
-                {formatCurrency(result.totalTax)}
-              </p>
-              <div className="flex gap-4 mt-3 text-sm text-blue-600">
-                <span>Tax Rate: {result.effectiveTaxRate.toFixed(1)}%</span>
-                {result.rebateApplied > 0 && (
-                  <span className="text-green-600">🎉 Rebate: {formatCurrency(result.rebateApplied)}</span>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <ResultGrid>
-            <ResultCard
-              label="Total Income"
-              value={formatCurrency(result.totalIncome)}
-            />
-            <ResultCard
-              label="Total Deductions"
-              value={formatCurrency(result.totalDeductions)}
-            />
-            <ResultCard
-              label="Taxable Income"
-              value={formatCurrency(result.taxableIncome)}
-            />
-          </ResultGrid>
-
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="mb-3 text-lg font-semibold text-slate-700">
-              Tax Breakdown
-            </h3>
-            <div className="space-y-2 text-sm">
-              {result.taxBreakdown.map((item, index) => (
-                <div key={index} className="flex justify-between border-b border-slate-100 py-1">
-                  <span className="text-slate-600">{item.slab}</span>
-                  <span className="font-medium text-slate-800">
-                    {formatCurrency(item.tax)}
-                  </span>
-                </div>
-              ))}
-              {result.rebateApplied > 0 && (
-                <div className="flex justify-between border-b border-slate-100 py-1 text-green-600">
-                  <span>Rebate u/s 87A</span>
-                  <span>-{formatCurrency(result.rebateApplied)}</span>
-                </div>
-              )}
-              <div className="flex justify-between pt-2 font-medium">
-                <span>Health & Education Cess (4%)</span>
-                <span>{formatCurrency(result.healthAndEducationCess)}</span>
-              </div>
-            </div>
-          </div>
-
-          <Summary
-            principal={result.totalIncome}
-            interest={result.totalDeductions}
-            total={result.taxableIncome}
-            principalLabel="Total Income"
-            interestLabel="Total Deductions"
-            totalLabel="Taxable Income"
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6">
+        <div className="grid gap-6 md:grid-cols-2">
+          <NumberInput
+            label="Annual Income (₹)"
+            value={annualIncome}
+            onChange={setAnnualIncome}
+            min={100000}
+            step={10000}
+            prefix="₹"
+          />
+          <NumberInput
+            label="Standard Deduction (₹)"
+            value={standardDeduction}
+            onChange={setStandardDeduction}
+            min={0}
+            max={75000}
+            step={1000}
+            prefix="₹"
           />
         </div>
+
+        <div className="border-t border-slate-200 dark:border-slate-700 pt-6">
+          <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4">Deductions (Old Regime)</h3>
+          <div className="grid gap-4 md:grid-cols-3">
+            <NumberInput label="Section 80C (₹)" value={deductions80C} onChange={setDeductions80C} min={0} max={150000} step={1000} prefix="₹" />
+            <NumberInput label="Section 80D (₹)" value={deductions80D} onChange={setDeductions80D} min={0} max={25000} step={1000} prefix="₹" />
+            <NumberInput label="HRA (₹)" value={hra} onChange={setHra} min={0} step={1000} prefix="₹" />
+          </div>
+          <div className="mt-4">
+            <NumberInput label="NPS (₹)" value={nps} onChange={setNps} min={0} max={50000} step={1000} prefix="₹" />
+          </div>
+        </div>
+
+        {result && (
+          <div className="space-y-6">
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white text-center">
+                <p className="text-sm text-blue-200">Old Regime Tax</p>
+                <p className="text-3xl font-bold mt-2">{formatINR(result.taxUnderOldRegime)}</p>
+              </div>
+              <div className="rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 text-white text-center">
+                <p className="text-sm text-emerald-200">New Regime Tax</p>
+                <p className="text-3xl font-bold mt-2">{formatINR(result.taxUnderNewRegime)}</p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-gradient-to-br from-amber-600 to-orange-700 p-6 text-white text-center">
+              <p className="text-sm text-amber-200">Recommended Regime</p>
+              <p className="text-2xl font-bold mt-2">{result.recommendedRegime}</p>
+              <p className="text-sm text-amber-200 mt-1">
+                You can save {formatINR(result.savingsOldRegime)} with {result.recommendedRegime}
+              </p>
+            </div>
+
+            <ResultGrid>
+              <ResultCard
+                label="Taxable Income"
+                value={formatINR(result.taxableIncome)}
+                icon="📊"
+              />
+              <ResultCard
+                label="Tax Savings"
+                value={formatINR(result.savingsOldRegime)}
+                icon="💰"
+              />
+              <ResultCard
+                label="Effective Tax Rate"
+                value={`${Math.round((result.taxUnderNewRegime / annualIncome) * 100)}%`}
+                icon="📈"
+              />
+            </ResultGrid>
+          </div>
+        )}
       </div>
     </CalculatorShell>
   );

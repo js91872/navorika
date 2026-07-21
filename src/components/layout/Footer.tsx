@@ -1,90 +1,53 @@
+"use client";
+
 import Link from "next/link";
-import Container from "@/components/ui/Container";
-
-const productLinks = [
-  { name: "Tools", href: "/tools" },
-  { name: "Categories", href: "/categories" },
-  { name: "Guides", href: "/guides" },
-];
-
-const companyLinks = [
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-  { name: "Privacy", href: "/privacy" },
-];
-
-const resourceLinks = [
-  { name: "Blog", href: "/blog" },
-  { name: "Help", href: "/help" },
-  { name: "Sitemap", href: "/sitemap" },
-];
+import { Logo } from "@/components/ui/Logo";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
   return (
-    <footer className="border-t border-slate-200 bg-white">
-      <Container>
-        <div className="py-12 lg:py-16">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Brand */}
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-bold tracking-tight text-slate-900">
-                  Navo<span className="text-blue-600">rika</span>
-                </span>
-              </div>
-              <p className="mt-3 text-sm text-slate-500 max-w-xs">
-                Fast, reliable and beautifully designed online tools for productivity, finance, PDFs, AI and more.
-              </p>
-            </div>
-
-            {/* Product */}
-            <div>
-              <h3 className="text-sm font-semibold text-slate-900">Product</h3>
-              <ul className="mt-3 space-y-2">
-                {productLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="text-sm text-slate-500 hover:text-blue-600 transition">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h3 className="text-sm font-semibold text-slate-900">Company</h3>
-              <ul className="mt-3 space-y-2">
-                {companyLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="text-sm text-slate-500 hover:text-blue-600 transition">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h3 className="text-sm font-semibold text-slate-900">Resources</h3>
-              <ul className="mt-3 space-y-2">
-                {resourceLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="text-sm text-slate-500 hover:text-blue-600 transition">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+    <footer className="border-t border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <Logo />
+            <p className="mt-4 text-sm text-slate-600 dark:text-slate-400">
+              Fast, reliable and beautifully designed online tools for productivity, finance, PDFs, AI and more.
+            </p>
           </div>
-
-          <div className="mt-8 border-t border-slate-200 pt-8 text-center text-sm text-slate-500">
-            <p>© {new Date().getFullYear()} Navorika. All rights reserved.</p>
+          <div>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">{t('footer.product')}</h3>
+            <ul className="mt-4 space-y-2">
+              <li><Link href="/tools" className="text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">{t('nav.tools')}</Link></li>
+              <li><Link href="/categories" className="text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">{t('nav.categories')}</Link></li>
+              <li><Link href="/guides" className="text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">{t('nav.guides')}</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">{t('footer.company')}</h3>
+            <ul className="mt-4 space-y-2">
+              <li><Link href="/about" className="text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">{t('footer.about')}</Link></li>
+              <li><Link href="/contact" className="text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">{t('footer.contact')}</Link></li>
+              <li><Link href="/privacy" className="text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">{t('footer.privacy')}</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">{t('footer.resources')}</h3>
+            <ul className="mt-4 space-y-2">
+              <li><Link href="/blog" className="text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">{t('footer.blog')}</Link></li>
+              <li><Link href="/help" className="text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">{t('footer.help')}</Link></li>
+              <li><Link href="/sitemap" className="text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">{t('footer.sitemap')}</Link></li>
+            </ul>
           </div>
         </div>
-      </Container>
+        <div className="mt-8 border-t border-slate-200 pt-8 dark:border-slate-700">
+          <p className="text-center text-sm text-slate-500 dark:text-slate-400">
+            © {new Date().getFullYear()} Navorika. {t('footer.rights')}
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }

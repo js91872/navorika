@@ -10,12 +10,14 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { getAllTools } from "@/lib/toolRegistry";
 import { Tool } from "@/types/tool";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const navigation = [
-  { name: "Tools", href: "/tools" },
-  { name: "Categories", href: "/categories" },
-  { name: "Guides", href: "/guides" },
-  { name: "About", href: "/about" },
+  { name: "tools", href: "/tools" },
+  { name: "categories", href: "/categories" },
+  { name: "guides", href: "/guides" },
+  { name: "about", href: "/about" },
 ];
 
 export default function Header() {
@@ -28,9 +30,9 @@ export default function Header() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
 
-  // After mounting, we can safely show the theme toggle
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -61,7 +63,6 @@ export default function Header() {
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  // Close search on escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -73,7 +74,6 @@ export default function Header() {
     return () => document.removeEventListener("keydown", handleEscape);
   }, []);
 
-  // Handle click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -85,7 +85,6 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Handle keyboard shortcut (Cmd+K or Ctrl+K)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -119,10 +118,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-900/80">
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
         <Logo />
 
-        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
           {navigation.map((item) => (
             <Link
@@ -130,14 +127,12 @@ export default function Header() {
               href={item.href}
               className="text-sm font-medium text-slate-600 transition hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
             >
-              {item.name}
+              {t(`nav.${item.name}`)}
             </Link>
           ))}
         </nav>
 
-        {/* Search & CTA */}
         <div className="flex items-center gap-4">
-          {/* Search - Desktop */}
           <div className="hidden md:block" ref={searchRef}>
             <button
               onClick={() => {
@@ -149,13 +144,12 @@ export default function Header() {
               className="flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm text-slate-500 transition hover:border-blue-300 hover:bg-slate-50 min-w-[200px] dark:border-slate-700 dark:text-slate-400 dark:hover:border-blue-500 dark:hover:bg-slate-800"
             >
               <Search className="h-4 w-4" />
-              <span>Search tools...</span>
+              <span>{t('nav.search')}</span>
               <kbd className="ml-auto rounded bg-slate-100 px-2 py-0.5 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
                 ⌘K
               </kbd>
             </button>
 
-            {/* Search Dropdown */}
             {isSearchOpen && (
               <div className="absolute top-full left-0 right-0 mt-2 max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden dark:bg-slate-900 dark:border-slate-700">
                 <div className="p-4">
@@ -167,7 +161,7 @@ export default function Header() {
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Search for tools..."
+                        placeholder={t('nav.search')}
                         className="flex-1 bg-transparent outline-none text-slate-800 placeholder:text-slate-400 dark:text-slate-200 dark:placeholder:text-slate-500"
                         autoFocus
                       />
@@ -184,12 +178,11 @@ export default function Header() {
                         type="submit"
                         className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition"
                       >
-                        Search
+                        {t('home.searchButton')}
                       </button>
                     </div>
                   </form>
 
-                  {/* Search Results */}
                   {isSearching && (
                     <div className="mt-3 max-h-80 overflow-y-auto">
                       {searchResults.length > 0 ? (
@@ -202,12 +195,8 @@ export default function Header() {
                             >
                               <span className="text-2xl">{tool.icon || "🔧"}</span>
                               <div className="flex-1">
-                                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
-                                  {tool.title}
-                                </p>
-                                <p className="text-xs text-slate-500 dark:text-slate-400">
-                                  {tool.shortDescription}
-                                </p>
+                                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{tool.title}</p>
+                                <p className="text-xs text-slate-500 dark:text-slate-400">{tool.shortDescription}</p>
                               </div>
                               <span className="text-xs capitalize text-slate-400 bg-slate-100 px-2 py-1 rounded dark:bg-slate-800 dark:text-slate-400">
                                 {tool.category}
@@ -219,13 +208,13 @@ export default function Header() {
                             className="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm text-blue-600 hover:bg-blue-50 transition dark:text-blue-400 dark:hover:bg-blue-950"
                           >
                             <Search className="h-4 w-4" />
-                            View all results for "{searchQuery}"
+                            {t('search.viewAll') || 'View all results'}
                           </button>
                         </div>
                       ) : searchQuery.length > 1 ? (
                         <div className="py-8 text-center text-slate-500 dark:text-slate-400">
-                          <p>No tools found for "{searchQuery}"</p>
-                          <p className="text-sm mt-1">Try different keywords</p>
+                          <p>{t('search.noResults')}</p>
+                          <p className="text-sm mt-1">{t('search.tryAdjusting')}</p>
                         </div>
                       ) : (
                         <div className="py-8 text-center text-slate-400 dark:text-slate-500">
@@ -239,7 +228,8 @@ export default function Header() {
             )}
           </div>
 
-          {/* Dark Mode Toggle */}
+          <LanguageSwitcher />
+
           <button
             onClick={toggleTheme}
             className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 transition dark:text-slate-400 dark:hover:bg-slate-800"
@@ -252,11 +242,10 @@ export default function Header() {
                 <Moon className="h-5 w-5" />
               )
             ) : (
-              <div className="h-5 w-5" /> // Placeholder while mounting
+              <div className="h-5 w-5" />
             )}
           </button>
 
-          {/* Mobile Search Button */}
           <button
             onClick={() => {
               setIsSearchOpen(!isSearchOpen);
@@ -269,17 +258,15 @@ export default function Header() {
             <Search className="h-5 w-5" />
           </button>
 
-          {/* Desktop CTA */}
           <div className="hidden items-center gap-4 md:flex">
             <Button variant="ghost" size="sm" className="dark:text-slate-300 dark:hover:text-white">
-              Sign In
+              {t('nav.signIn')}
             </Button>
             <Button size="sm" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700">
-              Get Started
+              {t('nav.getStarted')}
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 md:hidden dark:text-slate-400 dark:hover:bg-slate-800"
@@ -290,7 +277,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={cn(
           "fixed inset-x-0 top-20 z-40 bg-white/95 backdrop-blur-lg border-b border-slate-200 transition-all duration-300 md:hidden dark:bg-slate-900/95 dark:border-slate-700",
@@ -305,21 +291,20 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-400"
             >
-              {item.name}
+              {t(`nav.${item.name}`)}
             </Link>
           ))}
           <div className="flex flex-col gap-2 pt-4 border-t border-slate-200 dark:border-slate-700">
             <Button variant="ghost" size="sm" className="justify-center dark:text-slate-300">
-              Sign In
+              {t('nav.signIn')}
             </Button>
             <Button size="sm" className="justify-center bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600">
-              Get Started
+              {t('nav.getStarted')}
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Search Overlay */}
       {isSearchOpen && (
         <div className="md:hidden fixed inset-0 z-50 bg-white/95 backdrop-blur-sm dark:bg-slate-900/95">
           <div className="p-4">
@@ -331,7 +316,7 @@ export default function Header() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search for tools..."
+                  placeholder={t('nav.search')}
                   className="flex-1 bg-transparent outline-none text-slate-800 placeholder:text-slate-400 text-lg dark:text-slate-200 dark:placeholder:text-slate-500"
                   autoFocus
                 />
@@ -359,12 +344,8 @@ export default function Header() {
                       >
                         <span className="text-2xl">{tool.icon || "🔧"}</span>
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
-                            {tool.title}
-                          </p>
-                          <p className="text-xs text-slate-500 dark:text-slate-400">
-                            {tool.shortDescription}
-                          </p>
+                          <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{tool.title}</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400">{tool.shortDescription}</p>
                         </div>
                       </button>
                     ))}
@@ -373,12 +354,12 @@ export default function Header() {
                       className="flex w-full items-center justify-center gap-2 rounded-lg p-3 text-sm text-blue-600 hover:bg-blue-50 transition dark:text-blue-400 dark:hover:bg-blue-950"
                     >
                       <Search className="h-4 w-4" />
-                      View all results for "{searchQuery}"
+                      {t('search.viewAll') || 'View all results'}
                     </button>
                   </div>
                 ) : (
                   <div className="py-8 text-center text-slate-500 dark:text-slate-400">
-                    <p>No tools found for "{searchQuery}"</p>
+                    <p>{t('search.noResults')}</p>
                   </div>
                 )}
               </div>

@@ -11,7 +11,7 @@ export const constructionTools: Tool[] = [
     icon: "🏗️",
     featured: false,
     popular: true,
-    relatedTools: ["paint-calculator"],
+    relatedTools: ["paint-calculator", "tile-calculator"],
   },
   {
     slug: "paint-calculator",
@@ -23,6 +23,18 @@ export const constructionTools: Tool[] = [
     icon: "🎨",
     featured: false,
     popular: true,
-    relatedTools: ["concrete-calculator"],
+    relatedTools: ["concrete-calculator", "tile-calculator"],
+  },
+  {
+    slug: "tile-calculator",
+    title: "Tile Calculator",
+    shortDescription: "Calculate how many tiles you need for floors, walls, and more.",
+    description: "Calculate the exact number of tiles required for your tiling project. Estimate tiles for floors, walls, with patterns, waste factor, and cost calculations.",
+    category: "Construction",
+    keywords: ["tile", "calculator", "construction", "floor", "wall", "tiling", "ceramic", "renovation", "marble"],
+    icon: "🧱",
+    featured: false,
+    popular: true,
+    relatedTools: ["concrete-calculator", "paint-calculator"],
   },
 ];

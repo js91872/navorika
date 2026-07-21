@@ -1,50 +1,112 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState, useMemo } from "react";
+import { Calendar, TrendingUp, Wallet, IndianRupee } from "lucide-react";
 
 import CalculatorShell from "../CalculatorShell";
 import CalculatorHeader from "../CalculatorHeader";
-import NumberInput from "../NumberInput";
-import PercentageInput from "../PercentageInput";
-import TenureInput from "../TenureInput";
-import Slider from "../Slider";
+import { Button } from "@/components/ui/Button";
 import ResultGrid from "../ResultGrid";
 import ResultCard from "../ResultCard";
-import PieChart from "../PieChart";
-import Summary from "../Summary";
+import NumberInput from "../NumberInput";
 
-import { epfConfig } from "@/config/calculators/epf";
-import { calculateEPF } from "@/lib/calculations/epf";
-import { formatCurrency } from "@/lib/format/currency";
+// Force INR currency for India-specific tools
+const formatINR = (amount: number) => {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+  }).format(amount);
+};
+
+const currencySymbol = '₹';
+
+interface EPFResult {
+  employeeShare: number;
+  employerShare: number;
+  totalContribution: number;
+  interestEarned: number;
+  maturityAmount: number;
+  yearByYear: {
+    year: number;
+    openingBalance: number;
+    employeeContribution: number;
+    employerContribution: number;
+    interest: number;
+    closingBalance: number;
+  }[];
+}
 
 export default function EPFCalculator() {
-  const [monthlySalary, setMonthlySalary] = useState(
-    epfConfig.monthlySalary.default
-  );
+  const [monthlySalary, setMonthlySalary] = useState<number>(50000);
+  const [employeeContributionRate, setEmployeeContributionRate] = useState<number>(12);
+  const [employerContributionRate, setEmployerContributionRate] = useState<number>(3.67);
+  const [interestRate, setInterestRate] = useState<number>(8.25);
+  const [tenure, setTenure] = useState<number>(20);
+  const [showYearlyBreakdown, setShowYearlyBreakdown] = useState(false);
 
-  const [employeeContribution, setEmployeeContribution] = useState(
-    epfConfig.employeeContribution.default
-  );
+  const calculateEPF = (): EPFResult | null => {
+    if (monthlySalary <= 0 || tenure <= 0) return null;
 
-  const [annualInterest, setAnnualInterest] = useState(
-    epfConfig.annualInterest.default
-  );
+    const monthlyEmployee = (monthlySalary * employeeContributionRate) / 100;
+    const monthlyEmployer = (monthlySalary * employerContributionRate) / 100;
+    const monthlyTotal = monthlyEmployee + monthlyEmployer;
+    const monthlyRate = interestRate / 100 / 12;
 
-  const [tenure, setTenure] = useState(
-    epfConfig.tenure.default
-  );
+    let balance = 0;
+    let totalEmployee = 0;
+    let totalEmployer = 0;
+    let totalInterest = 0;
+    const yearByYear = [];
 
-  const result = useMemo(() => {
-    return calculateEPF(
-      monthlySalary,
-      employeeContribution,
-      annualInterest,
-      tenure
-    );
-  }, [
+    for (let year = 1; year <= tenure; year++) {
+      let openingBalance = balance;
+      let yearlyEmployee = 0;
+      let yearlyEmployer = 0;
+      let yearlyInterest = 0;
+
+      for (let month = 1; month <= 12; month++) {
+        // Interest is calculated on the opening balance + contributions
+        const interest = balance * monthlyRate;
+        balance += interest;
+        yearlyInterest += interest;
+
+        // Contributions at the end of month
+        balance += monthlyEmployee;
+        yearlyEmployee += monthlyEmployee;
+        balance += monthlyEmployer;
+        yearlyEmployer += monthlyEmployer;
+      }
+
+      totalEmployee += yearlyEmployee;
+      totalEmployer += yearlyEmployer;
+      totalInterest += yearlyInterest;
+
+      yearByYear.push({
+        year,
+        openingBalance: Math.round(openingBalance),
+        employeeContribution: Math.round(yearlyEmployee),
+        employerContribution: Math.round(yearlyEmployer),
+        interest: Math.round(yearlyInterest),
+        closingBalance: Math.round(balance),
+      });
+    }
+
+    return {
+      employeeShare: Math.round(totalEmployee),
+      employerShare: Math.round(totalEmployer),
+      totalContribution: Math.round(totalEmployee + totalEmployer),
+      interestEarned: Math.round(totalInterest),
+      maturityAmount: Math.round(balance),
+      yearByYear,
+    };
+  };
+
+  const result = useMemo(() => calculateEPF(), [
     monthlySalary,
-    employeeContribution,
-    annualInterest,
+    employeeContributionRate,
+    employerContributionRate,
+    interestRate,
     tenure,
   ]);
 
@@ -52,130 +114,137 @@ export default function EPFCalculator() {
     <CalculatorShell>
       <CalculatorHeader
         title="EPF Calculator"
-        description="Estimate your Employees' Provident Fund (EPF) maturity amount based on salary, contribution, interest and service period."
+        description="Calculate your Employees' Provident Fund maturity amount and interest."
+        icon="💰"
+        accuracy="Accurate EPF calculations with monthly compounding"
       />
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_420px]">
-
-        <div className="space-y-10">
-
-          <div className="space-y-3">
-            <NumberInput
-              label="Monthly Basic Salary"
-              value={monthlySalary}
-              onChange={setMonthlySalary}
-              prefix="₹"
-              min={epfConfig.monthlySalary.min}
-            />
-
-            <Slider
-              value={monthlySalary}
-              min={epfConfig.monthlySalary.min}
-              max={epfConfig.monthlySalary.max}
-              step={epfConfig.monthlySalary.step}
-              onChange={setMonthlySalary}
-            />
-          </div>
-
-          <div className="space-y-3">
-            <PercentageInput
-              label="Employee Contribution (%)"
-              value={employeeContribution}
-              onChange={setEmployeeContribution}
-            />
-
-            <Slider
-              value={employeeContribution}
-              min={epfConfig.employeeContribution.min}
-              max={epfConfig.employeeContribution.max}
-              step={epfConfig.employeeContribution.step}
-              onChange={setEmployeeContribution}
-            />
-          </div>
-
-          <div className="space-y-3">
-            <PercentageInput
-              label="EPF Interest Rate"
-              value={annualInterest}
-              onChange={setAnnualInterest}
-            />
-
-            <Slider
-              value={annualInterest}
-              min={epfConfig.annualInterest.min}
-              max={epfConfig.annualInterest.max}
-              step={epfConfig.annualInterest.step}
-              onChange={setAnnualInterest}
-            />
-          </div>
-
-          <div className="space-y-3">
-            <TenureInput
-              label="Years of Service"
-              value={tenure}
-              onChange={setTenure}
-              max={40}
-            />
-
-            <Slider
-              value={tenure}
-              min={epfConfig.tenure.min}
-              max={epfConfig.tenure.max}
-              step={epfConfig.tenure.step}
-              onChange={setTenure}
-            />
-          </div>
-
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6">
+        <div className="grid gap-6 md:grid-cols-3">
+          <NumberInput
+            label="Monthly Salary (₹)"
+            value={monthlySalary}
+            onChange={setMonthlySalary}
+            min={1000}
+            step={1000}
+            prefix="₹"
+          />
+          <NumberInput
+            label="Employee Rate (%)"
+            value={employeeContributionRate}
+            onChange={setEmployeeContributionRate}
+            min={0}
+            max={15}
+            step={0.1}
+            suffix="%"
+          />
+          <NumberInput
+            label="Employer Rate (%)"
+            value={employerContributionRate}
+            onChange={setEmployerContributionRate}
+            min={0}
+            max={15}
+            step={0.01}
+            suffix="%"
+          />
         </div>
 
-        <div className="space-y-6">
-
-          <ResultGrid>
-
-            <ResultCard
-              label="Employee Contribution"
-              value={formatCurrency(result.employeeContribution)}
-            />
-
-            <ResultCard
-              label="Employer Contribution"
-              value={formatCurrency(result.employerContribution)}
-            />
-
-            <ResultCard
-              label="Total Contribution"
-              value={formatCurrency(result.totalContribution)}
-            />
-
-            <ResultCard
-              label="Interest Earned"
-              value={formatCurrency(result.totalInterest)}
-            />
-
-            <ResultCard
-              label="Estimated EPF Corpus"
-              value={formatCurrency(result.maturityAmount)}
-              highlight
-            />
-
-          </ResultGrid>
-
-          <PieChart
-            key={`${result.totalContribution}-${result.totalInterest}`}
-            principal={result.totalContribution}
-            interest={result.totalInterest}
+        <div className="grid gap-6 md:grid-cols-2">
+          <NumberInput
+            label="Interest Rate (%)"
+            value={interestRate}
+            onChange={setInterestRate}
+            min={1}
+            max={12}
+            step={0.1}
+            suffix="%"
           />
-
-          <Summary
-            principal={result.totalContribution}
-            interest={result.totalInterest}
-            total={result.maturityAmount}
+          <NumberInput
+            label="Tenure (Years)"
+            value={tenure}
+            onChange={setTenure}
+            min={1}
+            max={40}
+            step={1}
           />
-
         </div>
 
+        <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 text-sm text-slate-600 dark:text-slate-400">
+          <p className="font-medium text-slate-700 dark:text-slate-300 mb-2">💡 EPF Rules:</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>Employee contribution: 12% of basic salary</li>
+            <li>Employer contribution: 3.67% of basic salary (8.33% goes to pension)</li>
+            <li>Interest is compounded monthly</li>
+            <li>Tax-free returns on maturity</li>
+          </ul>
+        </div>
+
+        {result && (
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 text-white text-center">
+              <p className="text-sm text-emerald-200">EPF Maturity Amount</p>
+              <p className="text-4xl sm:text-5xl font-bold mt-2">
+                {formatINR(result.maturityAmount)}
+              </p>
+            </div>
+
+            <ResultGrid>
+              <ResultCard
+                label="Employee Share"
+                value={formatINR(result.employeeShare)}
+                icon="👤"
+              />
+              <ResultCard
+                label="Employer Share"
+                value={formatINR(result.employerShare)}
+                icon="🏢"
+              />
+              <ResultCard
+                label="Total Interest"
+                value={formatINR(result.interestEarned)}
+                icon="📈"
+              />
+            </ResultGrid>
+
+            <Button
+              variant="outline"
+              onClick={() => setShowYearlyBreakdown(!showYearlyBreakdown)}
+              className="w-full"
+            >
+              {showYearlyBreakdown ? "Hide" : "Show"} Yearly Breakdown
+            </Button>
+
+            {showYearlyBreakdown && (
+              <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+                <table className="w-full text-sm">
+                  <thead className="bg-slate-50 dark:bg-slate-800/50">
+                    <tr>
+                      <th className="px-4 py-3 text-left font-medium text-slate-600 dark:text-slate-400">Year</th>
+                      <th className="px-4 py-3 text-right font-medium text-slate-600 dark:text-slate-400">Opening Balance</th>
+                      <th className="px-4 py-3 text-right font-medium text-slate-600 dark:text-slate-400">Employee</th>
+                      <th className="px-4 py-3 text-right font-medium text-slate-600 dark:text-slate-400">Employer</th>
+                      <th className="px-4 py-3 text-right font-medium text-slate-600 dark:text-slate-400">Interest</th>
+                      <th className="px-4 py-3 text-right font-medium text-slate-600 dark:text-slate-400">Closing Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.yearByYear.map((row) => (
+                      <tr key={row.year} className="border-t border-slate-100 dark:border-slate-700">
+                        <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{row.year}</td>
+                        <td className="px-4 py-3 text-right text-slate-600 dark:text-slate-400">{formatINR(row.openingBalance)}</td>
+                        <td className="px-4 py-3 text-right text-slate-600 dark:text-slate-400">{formatINR(row.employeeContribution)}</td>
+                        <td className="px-4 py-3 text-right text-slate-600 dark:text-slate-400">{formatINR(row.employerContribution)}</td>
+                        <td className="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400">{formatINR(row.interest)}</td>
+                        <td className="px-4 py-3 text-right font-medium text-slate-700 dark:text-slate-300">{formatINR(row.closingBalance)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        )}
       </div>
-
     </CalculatorShell>
   );
 }

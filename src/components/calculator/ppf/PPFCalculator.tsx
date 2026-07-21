@@ -10,6 +10,17 @@ import ResultGrid from "../ResultGrid";
 import ResultCard from "../ResultCard";
 import NumberInput from "../NumberInput";
 
+// Force INR currency for India-specific tools
+const formatINR = (amount: number) => {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+  }).format(amount);
+};
+
+const currencySymbol = '₹';
+
 interface PPFResult {
   totalInvestment: number;
   totalInterest: number;
@@ -34,7 +45,7 @@ export default function PPFCalculator() {
       return null;
     }
 
-    const maxAnnualDeposit = 150000; // Maximum allowed in PPF
+    const maxAnnualDeposit = 150000;
     const actualDeposit = Math.min(annualDeposit, maxAnnualDeposit);
     const monthlyRate = interestRate / 100 / 12;
     let balance = 0;
@@ -47,14 +58,11 @@ export default function PPFCalculator() {
       let yearlyDeposit = 0;
       let yearlyInterest = 0;
 
-      // Monthly compounding
       for (let month = 1; month <= 12; month++) {
-        // Deposit at the beginning of each month
         const monthlyDeposit = actualDeposit / 12;
         balance += monthlyDeposit;
         yearlyDeposit += monthlyDeposit;
         
-        // Interest calculation
         const interest = balance * monthlyRate;
         balance += interest;
         yearlyInterest += interest;
@@ -71,7 +79,6 @@ export default function PPFCalculator() {
         closingBalance: Math.round(balance),
       });
 
-      // PPF rule: minimum deposit is ₹500 per year
       if (actualDeposit < 500) {
         break;
       }
@@ -86,14 +93,6 @@ export default function PPFCalculator() {
   };
 
   const result = useMemo(() => calculatePPF(), [annualDeposit, tenure, interestRate]);
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
 
   return (
     <CalculatorShell>
@@ -150,19 +149,19 @@ export default function PPFCalculator() {
             <div className="rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 text-white text-center">
               <p className="text-sm text-emerald-200">PPF Maturity Amount</p>
               <p className="text-4xl sm:text-5xl font-bold mt-2">
-                {formatCurrency(result.maturityAmount)}
+                {formatINR(result.maturityAmount)}
               </p>
             </div>
 
             <ResultGrid>
               <ResultCard
                 label="Total Investment"
-                value={formatCurrency(result.totalInvestment)}
+                value={formatINR(result.totalInvestment)}
                 icon="💰"
               />
               <ResultCard
                 label="Total Interest Earned"
-                value={formatCurrency(result.totalInterest)}
+                value={formatINR(result.totalInterest)}
                 icon="📈"
               />
               <ResultCard
@@ -196,10 +195,10 @@ export default function PPFCalculator() {
                     {result.yearByYear.map((row) => (
                       <tr key={row.year} className="border-t border-slate-100 dark:border-slate-700">
                         <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{row.year}</td>
-                        <td className="px-4 py-3 text-right text-slate-600 dark:text-slate-400">{formatCurrency(row.openingBalance)}</td>
-                        <td className="px-4 py-3 text-right text-slate-600 dark:text-slate-400">{formatCurrency(row.deposit)}</td>
-                        <td className="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400">{formatCurrency(row.interest)}</td>
-                        <td className="px-4 py-3 text-right font-medium text-slate-700 dark:text-slate-300">{formatCurrency(row.closingBalance)}</td>
+                        <td className="px-4 py-3 text-right text-slate-600 dark:text-slate-400">{formatINR(row.openingBalance)}</td>
+                        <td className="px-4 py-3 text-right text-slate-600 dark:text-slate-400">{formatINR(row.deposit)}</td>
+                        <td className="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400">{formatINR(row.interest)}</td>
+                        <td className="px-4 py-3 text-right font-medium text-slate-700 dark:text-slate-300">{formatINR(row.closingBalance)}</td>
                       </tr>
                     ))}
                   </tbody>
