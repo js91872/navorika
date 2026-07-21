@@ -1,16 +1,13 @@
-"use client";
-
-import { ReactNode } from "react";
+import React from "react";
 
 interface ResultGridProps {
-  children: ReactNode;
+  children: React.ReactNode;
+  cols?: number;
 }
 
-export default function ResultGrid({
-  children,
-}: ResultGridProps) {
+export default function ResultGrid({ children, cols = 3 }: ResultGridProps) {
   return (
-    <div className="grid gap-4 sm:grid-cols-3">
+    <div className={`grid grid-cols-1 md:grid-cols-${cols} gap-4`}>
       {children}
     </div>
   );

@@ -96,5 +96,25 @@ export const imageTools: Tool[] = [
     ],
     examples: [],
     relatedTools: ["image-compressor", "image-resizer", "image-converter"]
+  },
+  {
+    slug: "passport-photo",
+    title: "Passport Size Photo Maker",
+    shortDescription: "Create passport photos that meet official requirements.",
+    description: "Create passport photos that meet official requirements for any country. Auto-sizing and background options.",
+    category: "Image Tools",
+    keywords: ["Passport Photo", "Passport Size Photo", "Photo Maker", "ID Photo", "Visa Photo"],
+    featured: true,
+    badge: "New",
+    heroTitle: "Free Passport Size Photo Maker",
+    heroDescription: "Create passport photos that meet official requirements.",
+    formula: "",
+    faq: [
+      { question: "What countries are supported?", answer: "We support 15+ countries including US, UK, India, Canada, Australia, and more." },
+      { question: "What are the requirements?", answer: "Each country has specific size, background, and head size requirements." },
+      { question: "Is my data secure?", answer: "Yes, all processing happens in your browser." }
+    ],
+    examples: [],
+    relatedTools: ["background-remover", "image-resizer", "crop-image"]
   }
 ];

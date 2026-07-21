@@ -1,40 +1,17 @@
 interface ResultCardProps {
   label: string;
   value: string;
+  icon?: string;
   subtitle?: string;
-  highlight?: boolean;
 }
 
-export default function ResultCard({
-  label,
-  value,
-  subtitle,
-  highlight = false,
-}: ResultCardProps) {
+export default function ResultCard({ label, value, icon, subtitle }: ResultCardProps) {
   return (
-    <div
-      className={`
-        rounded-3xl border p-6 transition-all duration-200
-        ${
-          highlight
-            ? "border-blue-600 bg-blue-50 shadow-lg"
-            : "border-slate-200 bg-white shadow-sm hover:shadow-md"
-        }
-      `}
-    >
-      <p className="text-sm font-medium text-slate-500">
-        {label}
-      </p>
-
-      <h3 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">
-        {value}
-      </h3>
-
-      {subtitle && (
-        <p className="mt-2 text-sm text-slate-500">
-          {subtitle}
-        </p>
-      )}
+    <div className="rounded-xl border border-slate-200 bg-white p-4 text-center hover:shadow-md transition-shadow dark:border-slate-700 dark:bg-slate-800">
+      {icon && <div className="text-2xl mb-1">{icon}</div>}
+      <div className="text-sm text-slate-500 dark:text-slate-400">{label}</div>
+      <div className="text-xl font-bold text-slate-800 mt-1 dark:text-slate-200">{value}</div>
+      {subtitle && <div className="text-xs text-slate-400 mt-1 dark:text-slate-500">{subtitle}</div>}
     </div>
   );
 }

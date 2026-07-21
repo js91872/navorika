@@ -1,12 +1,65 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Search, ArrowRight, Star, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import { getAllTools } from "@/lib/toolRegistry";
 
 export default function Hero() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const router = useRouter();
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  // Get search suggestions
+  useEffect(() => {
+    if (searchQuery.length > 1) {
+      const allTools = getAllTools();
+      const matches = allTools
+        .filter((tool) => {
+          const query = searchQuery.toLowerCase();
+          return (
+            tool.title.toLowerCase().includes(query) ||
+            tool.shortDescription.toLowerCase().includes(query) ||
+            tool.category.toLowerCase().includes(query)
+          );
+        })
+        .slice(0, 5)
+        .map((tool) => tool.title);
+      setSuggestions(matches);
+      setShowSuggestions(true);
+    } else {
+      setSuggestions([]);
+      setShowSuggestions(false);
+    }
+  }, [searchQuery]);
+
+  // Handle click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setSearchQuery(suggestion);
+    setShowSuggestions(false);
+    router.push(`/search?q=${encodeURIComponent(suggestion)}`);
+  };
 
   return (
     <section className="relative overflow-hidden py-20 lg:py-32">
@@ -40,19 +93,50 @@ export default function Hero() {
           </p>
 
           {/* Search Bar */}
-          <div className="mx-auto mt-10 flex max-w-xl items-center gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg ring-1 ring-slate-200/50 transition-all focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20">
-            <Search className="ml-3 h-5 w-5 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Search tools... (e.g., PDF, EMI, Inflation)"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="flex-1 bg-transparent px-2 py-3 text-sm outline-none placeholder:text-slate-400"
-            />
-            <Button className="rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
-              Search
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+          <div className="mx-auto mt-10 max-w-xl" ref={searchRef}>
+            <form onSubmit={handleSearch}>
+              <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg ring-1 ring-slate-200/50 transition-all focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20">
+                <Search className="ml-3 h-5 w-5 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search tools... (e.g., PDF, EMI, Inflation)"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-1 bg-transparent px-2 py-3 text-sm outline-none placeholder:text-slate-400"
+                  onFocus={() => searchQuery.length > 1 && setShowSuggestions(true)}
+                />
+                <Button 
+                  type="submit"
+                  className="rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
+                >
+                  Search
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+
+              {/* Suggestions Dropdown */}
+              {showSuggestions && suggestions.length > 0 && (
+                <div className="absolute left-0 right-0 top-full mt-2 rounded-2xl bg-white shadow-xl border border-slate-200 overflow-hidden z-20">
+                  {suggestions.map((suggestion, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleSuggestionClick(suggestion)}
+                      className="flex w-full items-center gap-3 px-4 py-3 text-left text-slate-700 transition hover:bg-slate-50"
+                    >
+                      <Search className="h-4 w-4 text-slate-400" />
+                      <span>{suggestion}</span>
+                    </button>
+                  ))}
+                  <button
+                    onClick={() => router.push(`/search?q=${encodeURIComponent(searchQuery)}`)}
+                    className="flex w-full items-center justify-center gap-2 border-t border-slate-100 px-4 py-3 text-sm text-blue-600 transition hover:bg-blue-50"
+                  >
+                    <Search className="h-4 w-4" />
+                    View all results for "{searchQuery}"
+                  </button>
+                </div>
+              )}
+            </form>
           </div>
 
           {/* Trust Indicators */}

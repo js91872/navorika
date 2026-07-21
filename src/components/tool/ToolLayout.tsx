@@ -1,44 +1,33 @@
-import Breadcrumb from "./Breadcrumb";
-import ToolHero from "./ToolHero";
-import ToolContent from "./ToolContent";
-import ToolFormula from "./ToolFormula";
-import ToolExamples from "./ToolExamples";
-import ToolFAQ from "./ToolFAQ";
-import RelatedTools from "./RelatedTools";
-import RelatedArticles from "./RelatedArticles";
-
-import { ToolData } from "@/types/tool";
+import React from 'react';
+import { Tool } from '@/types/tool';
+import Container from '@/components/ui/Container';
+import Breadcrumb from './Breadcrumb';
 
 interface ToolLayoutProps {
-  tool: ToolData;
+  tool: Tool;
   children: React.ReactNode;
+  showBreadcrumb?: boolean;
 }
 
-export default function ToolLayout({
-  tool,
-  children,
+export default function ToolLayout({ 
+  tool, 
+  children, 
+  showBreadcrumb = true 
 }: ToolLayoutProps) {
   return (
-    <>
-     <Breadcrumb tool={tool} />
-
-      <ToolHero tool={tool} />
-
-      {children}
-
-      <ToolContent tool={tool} />
-
-      <ToolFormula
-        formula={tool.formula}
-      />
-
-      <ToolExamples tool={tool} />
-
-      <ToolFAQ tool={tool} />
-
-      <RelatedTools tool={tool} />
-
-      <RelatedArticles tool={tool} />
-    </>
+    <Container>
+      <div className="py-8 lg:py-12">
+        {showBreadcrumb && <Breadcrumb tool={tool} />}
+        
+        {/* Tool Header */}
+        <div className="mt-2 mb-6">
+          <h1 className="text-3xl font-bold text-slate-900">{tool.title}</h1>
+          <p className="text-slate-600 mt-1">{tool.shortDescription}</p>
+        </div>
+        
+        {/* Tool Content */}
+        {children}
+      </div>
+    </Container>
   );
 }

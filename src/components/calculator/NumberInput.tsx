@@ -1,10 +1,7 @@
-"use client";
-
 interface NumberInputProps {
   label: string;
   value: number;
   onChange: (value: number) => void;
-  placeholder?: string;
   prefix?: string;
   suffix?: string;
   min?: number;
@@ -16,64 +13,27 @@ export default function NumberInput({
   label,
   value,
   onChange,
-  placeholder,
-  prefix,
-  suffix,
+  prefix = "",
+  suffix = "",
   min,
   max,
   step = 1,
 }: NumberInputProps) {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const rawValue = e.target.value;
-    // Remove leading zeros and parse as number
-    const cleanedValue = rawValue.replace(/^0+/, '');
-    if (cleanedValue === '') {
-      onChange(0);
-      return;
-    }
-    const numValue = Number(cleanedValue);
-    if (!isNaN(numValue)) {
-      onChange(numValue);
-    }
-  };
-
-  // Format the display value without leading zeros
-  const displayValue = value === 0 ? '' : value.toString();
-
   return (
-    <div className="space-y-3">
-      <label className="text-sm font-semibold text-foreground">
-        {label}
-      </label>
-
-      <div className="flex items-center rounded-xl border border-border bg-background px-4 py-3 transition focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
-        {prefix && (
-          <span className="mr-3 font-semibold text-muted-foreground">
-            {prefix}
-          </span>
-        )}
-
+    <div className="space-y-2">
+      <label className="text-sm font-medium text-slate-700 dark:text-slate-300">{label}</label>
+      <div className="flex items-center">
+        {prefix && <span className="text-sm text-slate-500 dark:text-slate-400 mr-2">{prefix}</span>}
         <input
-          type="text"
-          inputMode="numeric"
-          value={displayValue}
+          type="number"
+          value={value}
+          onChange={(e) => onChange(Number(e.target.value))}
           min={min}
           max={max}
           step={step}
-          placeholder={placeholder}
-          onChange={handleChange}
-          onFocus={(e) => {
-            // Select all text on focus for easy replacement
-            e.target.select();
-          }}
-          className="w-full bg-transparent text-lg font-medium outline-none"
+          className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:placeholder:text-slate-400"
         />
-
-        {suffix && (
-          <span className="ml-3 font-semibold text-muted-foreground">
-            {suffix}
-          </span>
-        )}
+        {suffix && <span className="text-sm text-slate-500 dark:text-slate-400 ml-2">{suffix}</span>}
       </div>
     </div>
   );
