@@ -1,5 +1,3 @@
-import { useState, useEffect, useRef } from "react";
-
 interface NumberInputProps {
   label: string;
   value: number;
@@ -9,6 +7,7 @@ interface NumberInputProps {
   min?: number;
   max?: number;
   step?: number;
+  className?: string;
 }
 
 export default function NumberInput({
@@ -20,28 +19,16 @@ export default function NumberInput({
   min,
   max,
   step = 1,
+  className = "",
 }: NumberInputProps) {
-  const [inputValue, setInputValue] = useState<string>("");
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  // Update internal state when external value changes
-  useEffect(() => {
-    if (value === 0 && min === undefined) {
-      setInputValue("");
-    } else if (value === 0 && min !== undefined && min === 0) {
-      setInputValue("");
-    } else {
-      setInputValue(value.toString());
-    }
-  }, [value, min]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
-    setInputValue(rawValue);
     
-    // If empty, don't update the value yet
-    if (rawValue === "" || rawValue === "-") {
-      // Don't call onChange for empty values
+    if (rawValue === "") {
+      if (min !== undefined && min > 0) {
+        return;
+      }
+      onChange(0);
       return;
     }
     
@@ -58,39 +45,51 @@ export default function NumberInput({
     }
   };
 
-  const handleBlur = () => {
-    // If empty, set to min or 0
-    if (inputValue === "" || inputValue === "-") {
-      const defaultValue = min !== undefined ? min : 0;
-      setInputValue(defaultValue === 0 ? "" : defaultValue.toString());
-      onChange(defaultValue);
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value;
+    if (rawValue === "" || rawValue === "-") {
+      onChange(min !== undefined ? min : 0);
     }
   };
 
-  const handleFocus = () => {
-    // Select all text when focusing
-    if (inputRef.current) {
-      inputRef.current.select();
+  const getDisplayValue = (): string => {
+    if (value === 0 && min !== undefined && min === 0) {
+      return "";
     }
+    return value.toString();
   };
 
   return (
-    <div className="space-y-2">
-      <label className="text-sm font-medium text-slate-700 dark:text-slate-300">{label}</label>
-      <div className="flex items-center">
-        {prefix && <span className="text-sm text-slate-500 dark:text-slate-400 mr-2">{prefix}</span>}
+    <div className={`space-y-1.5 ${className}`}>
+      <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
+        {label}
+      </label>
+      <div className="relative flex items-center">
+        {prefix && (
+          <span className="absolute left-3 text-sm text-slate-500 dark:text-slate-400">
+            {prefix}
+          </span>
+        )}
         <input
-          ref={inputRef}
           type="text"
           inputMode="decimal"
-          value={inputValue}
+          value={getDisplayValue()}
           onChange={handleChange}
           onBlur={handleBlur}
-          onFocus={handleFocus}
-          placeholder={min !== undefined && min > 0 ? min.toString() : "0"}
-          className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:placeholder:text-slate-400"
+          placeholder={min !== undefined ? min.toString() : "0"}
+          className={`
+            w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none
+            focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20
+            dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:placeholder:text-slate-400
+            ${prefix ? 'pl-7' : 'pl-3'}
+            ${suffix ? 'pr-12' : 'pr-3'}
+          `}
         />
-        {suffix && <span className="text-sm text-slate-500 dark:text-slate-400 ml-2">{suffix}</span>}
+        {suffix && (
+          <span className="absolute right-3 text-sm text-slate-500 dark:text-slate-400">
+            {suffix}
+          </span>
+        )}
       </div>
     </div>
   );

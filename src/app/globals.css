@@ -58,46 +58,30 @@
   }
 }
 
-/* Premium Animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+/* Premium Background */
+.bg-premium {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(79, 93, 237, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+.dark .bg-premium {
+  background-color: #0f172a;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(79, 93, 237, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* Dot pattern */
+.bg-dots {
+  background-image: radial-gradient(circle, rgba(79, 93, 237, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Premium Utility Classes */
-.shimmer {
-  background: linear-gradient(90deg, 
-    rgba(79, 93, 237, 0.1) 0%, 
-    rgba(79, 93, 237, 0.2) 50%, 
-    rgba(79, 93, 237, 0.1) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 3s ease-in-out infinite;
-}
-
-/* Premium Glass Effect */
-.glass-premium {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-}
-
-.dark .glass-premium {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+.dark .bg-dots {
+  background-image: radial-gradient(circle, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Premium Gradient Text */
@@ -115,12 +99,18 @@
   background-clip: text;
 }
 
-/* Ensure emojis render properly */
-[role="img"] {
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+/* Premium Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
-/* Smooth theme transition */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Smooth transitions */
 * {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }

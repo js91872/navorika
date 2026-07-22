@@ -1,116 +1,123 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { Calculator, TrendingUp, Receipt, IndianRupee } from "lucide-react";
 
 import CalculatorShell from "../CalculatorShell";
-import CalculatorHeader from "../CalculatorHeader";
-import NumberInput from "../NumberInput";
-import Slider from "../Slider";
-import ResultGrid from "../ResultGrid";
+import { Button } from "@/components/ui/Button";
 import ResultCard from "../ResultCard";
-import PieChart from "../PieChart";
-
-import { calculateGST } from "@/lib/calculations/gst";
-import { formatCurrency } from "@/lib/format/currency";
+import ResultGrid from "../ResultGrid";
+import NumberInput from "../NumberInput";
 
 export default function GSTCalculator() {
-  const [amount, setAmount] = useState(1000);
-  const [gstRate, setGstRate] = useState(18);
+  const [amount, setAmount] = useState<number>(10000);
+  const [rate, setRate] = useState<number>(18);
+  const [type, setType] = useState<"exclusive" | "inclusive">("exclusive");
 
-  const result = useMemo(() => {
-    return calculateGST(amount, gstRate);
-  }, [amount, gstRate]);
+  const calculateGST = () => {
+    const gstAmount = (amount * rate) / 100;
+    const total = type === "exclusive" ? amount + gstAmount : amount;
+    const baseAmount = type === "inclusive" ? amount / (1 + rate / 100) : amount;
+    const calculatedGST = type === "inclusive" ? amount - baseAmount : gstAmount;
+
+    return {
+      baseAmount: Math.round(baseAmount),
+      gstAmount: Math.round(calculatedGST),
+      totalAmount: Math.round(total),
+      rate,
+    };
+  };
+
+  const result = calculateGST();
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
 
   return (
     <CalculatorShell>
-      <CalculatorHeader
-        title="GST Calculator"
-        description="Calculate GST amount and total price instantly."
-      />
-
-      <div className="grid gap-12 lg:grid-cols-[1fr_420px]">
-
-        {/* LEFT PANEL */}
-
-        <div className="space-y-10">
-
-          <div className="space-y-3">
-
-            <NumberInput
-              label="Amount"
-              value={amount}
-              onChange={setAmount}
-              prefix="₹"
-              min={1}
-            />
-
-            <Slider
-              value={amount}
-              min={1}
-              max={1000000}
-              step={100}
-              onChange={setAmount}
-            />
-
-          </div>
-
-          <div className="space-y-3">
-
-            <label className="text-sm font-medium">
-              GST Rate (%)
-            </label>
-
-            <select
-              value={gstRate}
-              onChange={(e) =>
-                setGstRate(Number(e.target.value))
-              }
-              className="w-full rounded-2xl border border-slate-300 p-3"
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6">
+        {/* Type Selection */}
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { value: "exclusive", label: "Exclusive" },
+            { value: "inclusive", label: "Inclusive" },
+          ].map((option) => (
+            <button
+              key={option.value}
+              onClick={() => setType(option.value as any)}
+              className={`py-2.5 px-4 rounded-xl text-sm font-medium transition ${
+                type === option.value
+                  ? 'bg-brand-600 text-white shadow-lg shadow-brand-500/30'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300'
+              }`}
             >
-              <option value={3}>3%</option>
-              <option value={5}>5%</option>
-              <option value={12}>12%</option>
-              <option value={18}>18%</option>
-              <option value={28}>28%</option>
-            </select>
-
-          </div>
-
+              {option.label}
+            </button>
+          ))}
         </div>
 
-        {/* RIGHT PANEL */}
-
-        <div className="space-y-6">
-
-          <ResultGrid>
-
-            <ResultCard
-              label="Original Amount"
-              value={formatCurrency(result.originalAmount)}
-            />
-
-            <ResultCard
-              label="GST Amount"
-              value={formatCurrency(result.gstAmount)}
-            />
-
-            <ResultCard
-              label="Final Amount"
-              value={formatCurrency(result.totalAmount)}
-              highlight
-            />
-
-          </ResultGrid>
-
-          <PieChart
-            principal={result.originalAmount}
-            interest={result.gstAmount}
+        {/* Input Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <NumberInput
+            label={type === "exclusive" ? "Net Amount" : "Total Amount"}
+            value={amount}
+            onChange={setAmount}
+            min={1}
+            step={100}
+            prefix="₹"
           />
-
+          <NumberInput
+            label="GST Rate"
+            value={rate}
+            onChange={setRate}
+            min={0}
+            max={40}
+            step={0.5}
+            suffix="%"
+          />
         </div>
 
-      </div>
+        {/* Calculate Button */}
+        <Button onClick={() => {}} className="w-full sm:w-auto">
+          <Calculator className="mr-2 h-4 w-4" />
+          Calculate GST
+        </Button>
 
+        {/* Results */}
+        {result && (
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-gradient-to-br from-brand-600 to-accent-600 p-6 text-white text-center">
+              <p className="text-sm text-white/70">GST Amount</p>
+              <p className="text-3xl sm:text-4xl font-bold mt-1">
+                {formatCurrency(result.gstAmount)}
+              </p>
+            </div>
+
+            <ResultGrid>
+              <ResultCard
+                label="Base Amount"
+                value={formatCurrency(result.baseAmount)}
+                icon="💰"
+              />
+              <ResultCard
+                label="GST Amount"
+                value={formatCurrency(result.gstAmount)}
+                icon="📈"
+              />
+              <ResultCard
+                label="Total Amount"
+                value={formatCurrency(result.totalAmount)}
+                icon="🧾"
+              />
+            </ResultGrid>
+          </div>
+        )}
+      </div>
     </CalculatorShell>
   );
 }

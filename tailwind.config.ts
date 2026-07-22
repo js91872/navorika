@@ -76,7 +76,6 @@ const config: Config = {
           900: '#7f1d1d',
           950: '#450a0a',
         },
-        // Neutral colors with premium feel
         slate: {
           50: '#f8fafc',
           100: '#f1f5f9',
@@ -90,31 +89,17 @@ const config: Config = {
           900: '#0f172a',
           950: '#020617',
         },
-        // Glass colors for transparency
-        glass: {
-          white: 'rgba(255, 255, 255, 0.7)',
-          dark: 'rgba(15, 23, 42, 0.7)',
-          light: 'rgba(255, 255, 255, 0.4)',
-        },
       },
       backgroundImage: {
-        // Premium gradients
         'brand-gradient': 'linear-gradient(135deg, #4f5ded 0%, #7c3aed 50%, #8b5cf6 100%)',
         'brand-gradient-subtle': 'linear-gradient(135deg, #f0f4ff 0%, #ede9fe 50%, #f5f3ff 100%)',
-        'brand-gradient-dark': 'linear-gradient(135deg, #1d2250 0%, #2e1065 50%, #4c1d95 100%)',
         'hero-light': 'linear-gradient(135deg, #f0f4ff 0%, #ede9fe 50%, #f5f3ff 100%)',
         'hero-dark': 'linear-gradient(135deg, #0f172a 0%, #1d2250 50%, #2e1065 100%)',
-        'card-light': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%)',
-        'card-dark': 'linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0.6) 100%)',
-        'glow-purple': 'radial-gradient(circle at 50% 50%, rgba(139,92,246,0.15) 0%, transparent 70%)',
-        'glow-blue': 'radial-gradient(circle at 50% 50%, rgba(79,93,237,0.15) 0%, transparent 70%)',
       },
       boxShadow: {
         'premium': '0 20px 60px -12px rgba(79, 93, 237, 0.25), 0 4px 16px -8px rgba(79, 93, 237, 0.1)',
         'premium-lg': '0 30px 80px -16px rgba(79, 93, 237, 0.3), 0 8px 24px -12px rgba(79, 93, 237, 0.15)',
-        'premium-xl': '0 40px 100px -20px rgba(79, 93, 237, 0.35), 0 12px 32px -16px rgba(79, 93, 237, 0.2)',
         'glass': '0 8px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04)',
-        'glass-hover': '0 12px 48px rgba(79, 93, 237, 0.12), 0 4px 16px rgba(79, 93, 237, 0.06)',
       },
     },
   },

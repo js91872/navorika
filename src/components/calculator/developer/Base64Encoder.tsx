@@ -1,30 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { Link, Copy, Check, Download, RefreshCw } from "lucide-react";
+import { Code, Copy, Check, Download, Upload, RefreshCw } from "lucide-react";
 
 import CalculatorShell from "../CalculatorShell";
 import { Button } from "@/components/ui/Button";
 
-export default function URLEncoder() {
+export default function Base64Encoder() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const processURL = () => {
+  const processText = () => {
     if (!input.trim()) {
-      setError("Please enter URL to " + (mode === "encode" ? "encode" : "decode"));
+      setError("Please enter text to " + (mode === "encode" ? "encode" : "decode"));
       return;
     }
 
     try {
       if (mode === "encode") {
-        const encoded = encodeURIComponent(input);
+        const encoded = btoa(unescape(encodeURIComponent(input)));
         setOutput(encoded);
       } else {
-        const decoded = decodeURIComponent(input);
+        const decoded = decodeURIComponent(escape(atob(input)));
         setOutput(decoded);
       }
       setError(null);
@@ -109,21 +109,21 @@ export default function URLEncoder() {
         {/* Input */}
         <div className="space-y-2">
           <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
-            {mode === "encode" ? "URL to Encode" : "URL to Decode"}
+            {mode === "encode" ? "Text to Encode" : "Base64 to Decode"}
           </label>
-          <input
-            type="text"
+          <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={mode === "encode" ? "Enter URL to encode..." : "Enter encoded URL to decode..."}
-            className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:placeholder:text-slate-400"
+            placeholder={mode === "encode" ? "Enter text to encode..." : "Enter Base64 to decode..."}
+            className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-mono outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:placeholder:text-slate-400 min-h-[100px]"
+            spellCheck={false}
           />
         </div>
 
         {/* Actions */}
         <div className="flex flex-wrap gap-3">
-          <Button onClick={processURL} className="flex-1 sm:flex-none">
-            <Link className="mr-2 h-4 w-4" />
+          <Button onClick={processText} className="flex-1 sm:flex-none">
+            <Code className="mr-2 h-4 w-4" />
             {mode === "encode" ? "Encode" : "Decode"}
           </Button>
           {output && (
@@ -147,10 +147,10 @@ export default function URLEncoder() {
         {output && (
           <div className="space-y-2">
             <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              {mode === "encode" ? "Encoded URL" : "Decoded URL"}
+              {mode === "encode" ? "Encoded Base64" : "Decoded Text"}
             </label>
             <div className="relative">
-              <pre className="w-full rounded-xl border border-slate-300 bg-slate-50 dark:border-slate-600 dark:bg-slate-800/50 px-4 py-3 text-sm font-mono text-slate-800 dark:text-slate-200 overflow-auto min-h-[60px] max-h-[150px] whitespace-pre-wrap break-all">
+              <pre className="w-full rounded-xl border border-slate-300 bg-slate-50 dark:border-slate-600 dark:bg-slate-800/50 px-4 py-3 text-sm font-mono text-slate-800 dark:text-slate-200 overflow-auto min-h-[100px] max-h-[200px] whitespace-pre-wrap break-all">
                 {output}
               </pre>
               <div className="absolute top-2 right-2 flex gap-2">
