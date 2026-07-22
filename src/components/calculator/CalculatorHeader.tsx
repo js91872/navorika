@@ -3,6 +3,7 @@ interface CalculatorHeaderProps {
   description: string;
   icon: string;
   accuracy?: string;
+  showTitle?: boolean;
 }
 
 export default function CalculatorHeader({
@@ -10,16 +11,17 @@ export default function CalculatorHeader({
   description,
   icon,
   accuracy,
+  showTitle = false,
 }: CalculatorHeaderProps) {
   return (
-    <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-8 text-white dark:from-blue-700 dark:to-blue-800">
-      <div className="flex items-start gap-4">
-        <div className="text-4xl">{icon}</div>
+    <div className="bg-gradient-to-r from-brand-600 via-accent-500 to-brand-600 bg-[length:200%_auto] px-6 py-6 text-white">
+      <div className="flex items-center gap-4">
+        <div className="text-3xl">{icon}</div>
         <div className="flex-1">
-          <h1 className="text-2xl font-bold">{title}</h1>
-          <p className="text-sm text-blue-100 mt-1 dark:text-blue-200">{description}</p>
+          {showTitle && <h2 className="text-xl font-bold">{title}</h2>}
+          <p className="text-sm text-white/80">{description}</p>
           {accuracy && (
-            <p className="text-xs text-blue-200 mt-2 opacity-80 dark:text-blue-300">⚡ {accuracy}</p>
+            <p className="text-xs text-white/60 mt-1">⚡ {accuracy}</p>
           )}
         </div>
       </div>

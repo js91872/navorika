@@ -1,266 +1,177 @@
 "use client";
 
-import { useEffect, useState, useMemo, useCallback } from "react";
-import { ArrowRightLeft, RefreshCw, TrendingUp, TrendingDown } from "lucide-react";
+import { useState, useEffect } from "react";
+import { RefreshCw, TrendingUp, DollarSign, ArrowRight } from "lucide-react";
+
 import CalculatorShell from "../CalculatorShell";
-import CalculatorHeader from "../CalculatorHeader";
-import NumberInput from "../NumberInput";
 import { Button } from "@/components/ui/Button";
-import { Card, CardContent } from "@/components/ui/Card";
-import { currencyConfig } from "@/config/calculators/currency-converter";
-import { fetchExchangeRates, fetchHistoricalRates } from "@/lib/services/currency-api";
-import { convertCurrency, formatCurrency } from "@/lib/calculations/currency-converter";
+import ResultCard from "../ResultCard";
+import ResultGrid from "../ResultGrid";
+import NumberInput from "../NumberInput";
+
+// Currency data (simplified - in real app, fetch from API)
+const currencies = [
+  { code: "USD", name: "US Dollar", symbol: "$" },
+  { code: "EUR", name: "Euro", symbol: "€" },
+  { code: "GBP", name: "British Pound", symbol: "£" },
+  { code: "INR", name: "Indian Rupee", symbol: "₹" },
+  { code: "JPY", name: "Japanese Yen", symbol: "¥" },
+  { code: "CAD", name: "Canadian Dollar", symbol: "C$" },
+  { code: "AUD", name: "Australian Dollar", symbol: "A$" },
+  { code: "CHF", name: "Swiss Franc", symbol: "Fr" },
+  { code: "CNY", name: "Chinese Yuan", symbol: "¥" },
+  { code: "SGD", name: "Singapore Dollar", symbol: "S$" },
+];
+
+// Mock exchange rates (in real app, fetch from API)
+const mockRates: Record<string, number> = {
+  USD: 1,
+  EUR: 0.85,
+  GBP: 0.73,
+  INR: 83.5,
+  JPY: 149.5,
+  CAD: 1.36,
+  AUD: 1.53,
+  CHF: 0.91,
+  CNY: 7.24,
+  SGD: 1.35,
+};
 
 export default function CurrencyConverter() {
-  const [amount, setAmount] = useState(currencyConfig.amount.default);
-  const [fromCurrency, setFromCurrency] = useState(currencyConfig.fromCurrency.default);
-  const [toCurrency, setToCurrency] = useState(currencyConfig.toCurrency.default);
-  const [rates, setRates] = useState<Record<string, number>>({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [lastUpdated, setLastUpdated] = useState<string>("");
-  const [historicalData, setHistoricalData] = useState<{ date: string; rate: number }[]>([]);
+  const [amount, setAmount] = useState<number>(1);
+  const [fromCurrency, setFromCurrency] = useState("USD");
+  const [toCurrency, setToCurrency] = useState("INR");
+  const [result, setResult] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const result = useMemo(() => {
-    if (Object.keys(rates).length === 0) return null;
-    try {
-      return convertCurrency(amount, fromCurrency, toCurrency, rates);
-    } catch {
-      return null;
-    }
-  }, [amount, fromCurrency, toCurrency, rates]);
-
-  const loadRates = useCallback(async () => {
+  const convertCurrency = () => {
     setIsLoading(true);
-    setError(null);
-    try {
-      const data = await fetchExchangeRates(fromCurrency);
-      setRates(data.rates);
-      setLastUpdated(data.date);
-      
-      // Fetch historical data for chart
-      const historical = await fetchHistoricalRates(fromCurrency, toCurrency, 30);
-      setHistoricalData(historical);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load exchange rates");
-    } finally {
+    // Simulate API call
+    setTimeout(() => {
+      const fromRate = mockRates[fromCurrency] || 1;
+      const toRate = mockRates[toCurrency] || 1;
+      const converted = (amount / fromRate) * toRate;
+      setResult(converted);
       setIsLoading(false);
-    }
-  }, [fromCurrency, toCurrency]);
-
-  useEffect(() => {
-    loadRates();
-  }, [loadRates]);
-
-  const handleSwap = () => {
-    setFromCurrency(toCurrency);
-    setToCurrency(fromCurrency);
+    }, 300);
   };
 
-  const isUpwardTrend = historicalData.length > 1 && 
-    historicalData[historicalData.length - 1]?.rate > historicalData[0]?.rate;
+  useEffect(() => {
+    convertCurrency();
+  }, [amount, fromCurrency, toCurrency]);
+
+  const getSymbol = (code: string) => {
+    const currency = currencies.find(c => c.code === code);
+    return currency?.symbol || code;
+  };
+
+  const formatCurrency = (value: number, currencyCode: string) => {
+    const symbol = getSymbol(currencyCode);
+    return `${symbol}${value.toFixed(2)}`;
+  };
 
   return (
     <CalculatorShell>
-      <CalculatorHeader
-        title="Currency Converter"
-        description="Convert currencies with real-time exchange rates."
-        accuracy="Live rates updated daily"
-        updatedOn={lastUpdated}
-      />
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6">
+        {/* Amount Input */}
+        <NumberInput
+          label="Amount"
+          value={amount}
+          onChange={setAmount}
+          min={0.01}
+          step={0.01}
+          prefix={getSymbol(fromCurrency)}
+        />
 
-      <div className="p-6 lg:p-8 space-y-8">
-        {/* Error Message */}
-        {error && (
-          <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-sm text-red-700">
-            {error}
-            <button
-              onClick={loadRates}
-              className="ml-2 text-red-600 font-medium hover:text-red-800"
+        {/* Currency Selection */}
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-slate-700 dark:text-slate-300">From</label>
+            <select
+              value={fromCurrency}
+              onChange={(e) => setFromCurrency(e.target.value)}
+              className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
             >
-              Try Again
-            </button>
+              {currencies.map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.code} - {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-slate-700 dark:text-slate-300">To</label>
+            <select
+              value={toCurrency}
+              onChange={(e) => setToCurrency(e.target.value)}
+              className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
+            >
+              {currencies.map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.code} - {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Swap Button */}
+        <div className="flex justify-center">
+          <button
+            onClick={() => {
+              setFromCurrency(toCurrency);
+              setToCurrency(fromCurrency);
+            }}
+            className="rounded-full bg-slate-100 p-2.5 text-slate-600 transition hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+          >
+            <ArrowRight className="h-5 w-5 rotate-90" />
+          </button>
+        </div>
+
+        {/* Result */}
+        {result !== null && (
+          <div className="rounded-2xl bg-gradient-to-br from-brand-600 to-accent-600 p-6 text-white text-center">
+            <p className="text-sm text-white/70">Converted Amount</p>
+            <p className="text-3xl sm:text-4xl font-bold mt-1">
+              {isLoading ? (
+                <span className="inline-block animate-pulse">...</span>
+              ) : (
+                formatCurrency(result, toCurrency)
+              )}
+            </p>
+            <p className="text-xs text-white/50 mt-2">
+              {amount} {fromCurrency} → {toCurrency}
+            </p>
           </div>
         )}
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* LEFT PANEL - Inputs */}
-          <div className="space-y-6">
-            {/* Amount Input */}
-            <NumberInput
-              label="Amount"
-              value={amount}
-              onChange={setAmount}
-              min={currencyConfig.amount.min}
-              step={currencyConfig.amount.step}
-            />
-
-            {/* From Currency */}
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">From</label>
-              <div className="flex gap-2">
-                <select
-                  value={fromCurrency}
-                  onChange={(e) => setFromCurrency(e.target.value)}
-                  className="flex-1 rounded-xl border border-slate-300 bg-white px-4 py-3 text-lg font-medium outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                >
-                  <optgroup label="Popular">
-                    {currencyConfig.popularCurrencies.map((c) => (
-                      <option key={c.code} value={c.code}>
-                        {c.flag} {c.code} - {c.name}
-                      </option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="All Currencies">
-                    {currencyConfig.allCurrencies.map((code) => (
-                      <option key={code} value={code}>
-                        {code}
-                      </option>
-                    ))}
-                  </optgroup>
-                </select>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleSwap}
-                  className="flex-shrink-0"
-                  title="Swap currencies"
-                >
-                  <ArrowRightLeft className="h-5 w-5" />
-                </Button>
-              </div>
-            </div>
-
-            {/* To Currency */}
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">To</label>
-              <select
-                value={toCurrency}
-                onChange={(e) => setToCurrency(e.target.value)}
-                className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-lg font-medium outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-              >
-                <optgroup label="Popular">
-                  {currencyConfig.popularCurrencies.map((c) => (
-                    <option key={c.code} value={c.code}>
-                      {c.flag} {c.code} - {c.name}
-                    </option>
-                  ))}
-                </optgroup>
-                <optgroup label="All Currencies">
-                  {currencyConfig.allCurrencies.map((code) => (
-                    <option key={code} value={code}>
-                      {code}
-                    </option>
-                  ))}
-                </optgroup>
-              </select>
-            </div>
-
-            {/* Refresh Button */}
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={loadRates}
-              disabled={isLoading}
-              className="w-full"
-            >
-              <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-              {isLoading ? "Loading..." : "Refresh Rates"}
-            </Button>
+        {/* Quick Info */}
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-slate-50/50 dark:bg-slate-800/50">
+            <p className="text-xs text-slate-500 dark:text-slate-400">Live Rate</p>
+            <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
+              1 {fromCurrency} = {formatCurrency(mockRates[toCurrency] / mockRates[fromCurrency], toCurrency)}
+            </p>
           </div>
-
-          {/* RIGHT PANEL - Results */}
-          <div className="space-y-6">
-            {/* Converted Amount */}
-            <div className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white">
-              <p className="text-sm text-blue-200">Converted Amount</p>
-              <p className="text-4xl font-bold mt-1">
-                {result ? formatCurrency(result.toAmount, toCurrency) : "—"}
-              </p>
-              <div className="flex items-center gap-2 mt-2 text-sm text-blue-200">
-                <span>{fromCurrency}</span>
-                <span>→</span>
-                <span>{toCurrency}</span>
-                {result && (
-                  <span className="ml-auto text-xs bg-blue-800/50 px-2 py-1 rounded-full">
-                    1 {fromCurrency} = {result.rate.toFixed(4)} {toCurrency}
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Exchange Rate Details */}
-            <Card>
-              <CardContent className="p-4 space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Exchange Rate</span>
-                  {result ? (
-                    <span className="font-medium">
-                      1 {fromCurrency} = {result.rate.toFixed(6)} {toCurrency}
-                    </span>
-                  ) : (
-                    <span className="text-slate-400">Loading...</span>
-                  )}
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Inverse Rate</span>
-                  {result ? (
-                    <span className="font-medium">
-                      1 {toCurrency} = {result.inverseRate.toFixed(6)} {fromCurrency}
-                    </span>
-                  ) : (
-                    <span className="text-slate-400">Loading...</span>
-                  )}
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Last Updated</span>
-                  <span className="font-medium text-slate-600">
-                    {lastUpdated || "—"}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* 30-Day Trend */}
-            {historicalData.length > 1 && (
-              <Card>
-                <CardContent className="p-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-slate-700">30-Day Trend</span>
-                    <div className={`flex items-center gap-1 text-sm ${isUpwardTrend ? 'text-green-600' : 'text-red-600'}`}>
-                      {isUpwardTrend ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
-                      {isUpwardTrend ? '↑' : '↓'}
-                      {historicalData.length > 0 && 
-                        ((historicalData[historicalData.length - 1]?.rate || 0) - (historicalData[0]?.rate || 0)).toFixed(4)
-                      }
-                    </div>
-                  </div>
-                  <div className="mt-3 h-16 flex items-end gap-1">
-                    {historicalData.map((item, index) => {
-                      const maxRate = Math.max(...historicalData.map(d => d.rate));
-                      const height = maxRate > 0 ? Math.max(5, (item.rate / maxRate) * 100) : 5;
-                      return (
-                        <div
-                          key={index}
-                          className="flex-1 rounded-sm transition-all"
-                          style={{
-                            height: `${height}%`,
-                            background: isUpwardTrend ? '#10b981' : '#ef4444',
-                            opacity: 0.3 + (index / historicalData.length) * 0.7,
-                          }}
-                        />
-                      );
-                    })}
-                  </div>
-                  <div className="flex justify-between text-xs text-slate-400 mt-1">
-                    <span>{historicalData[0]?.date || ''}</span>
-                    <span>Today</span>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+          <div className="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-slate-50/50 dark:bg-slate-800/50">
+            <p className="text-xs text-slate-500 dark:text-slate-400">Last Updated</p>
+            <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
+              {new Date().toLocaleString()}
+            </p>
           </div>
         </div>
+
+        {/* Refresh Button */}
+        <Button
+          onClick={convertCurrency}
+          disabled={isLoading}
+          variant="outline"
+          className="w-full"
+        >
+          <RefreshCw className={`mr-2 h-4 w-4 ${isLoading ? "animate-spin" : ""}`} />
+          {isLoading ? "Converting..." : "Refresh Rates"}
+        </Button>
       </div>
     </CalculatorShell>
   );
