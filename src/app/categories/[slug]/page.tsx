@@ -2,11 +2,9 @@ import { getAllTools } from "@/lib/toolRegistry";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Sparkles } from "lucide-react";
-import { PremiumGradient } from "@/components/ui/PremiumGradient";
 import { PremiumHeading } from "@/components/ui/PremiumHeading";
-import { PremiumCard } from "@/components/ui/PremiumCard";
 import { PremiumBadge } from "@/components/ui/PremiumBadge";
-import { PremiumButton } from "@/components/ui/PremiumButton";
+import { ToolCard } from "@/components/ui/ToolCard";
 
 // Map slugs to actual category names
 const slugToCategory: Record<string, string> = {
@@ -30,21 +28,6 @@ const categoryInfo: Record<string, { icon: string; description: string }> = {
   construction: { icon: "🏗️", description: "Construction calculators for concrete, paint, and more." },
 };
 
-// Get individual tool icon
-function getToolIcon(tool: any): string {
-  if (tool.icon) return tool.icon;
-  const categoryIcons: Record<string, string> = {
-    'Finance': '💰',
-    'Health': '💪',
-    'PDF Tools': '📄',
-    'Image Tools': '🖼️',
-    'Developer Tools': '💻',
-    'productivity': '🚀',
-    'Construction': '🏗️',
-  };
-  return categoryIcons[tool.category] || '🔧';
-}
-
 export default function CategoryPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const allTools = getAllTools();
@@ -64,28 +47,29 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   const info = categoryInfo[slug] || { icon: "🔧", description: `${tools.length} tools available` };
 
   return (
-    <PremiumGradient variant="section">
-      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        {/* Back Button */}
+    <div className="min-h-screen bg-premium bg-dots">
+      <div className="fixed top-20 left-20 h-96 w-96 rounded-full bg-brand-400/10 blur-3xl pointer-events-none" />
+      <div className="fixed bottom-20 right-20 h-96 w-96 rounded-full bg-accent-400/10 blur-3xl pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 relative z-10">
         <Link
           href="/categories"
-          className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition dark:text-slate-400 dark:hover:text-blue-400 mb-8 group"
+          className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-brand-600 transition dark:text-slate-400 dark:hover:text-brand-400 mb-8 group"
         >
           <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
           Back to Categories
         </Link>
         
-        {/* Category Header */}
         <div className="mb-12">
           <div className="flex flex-wrap items-center gap-6">
-            <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 text-5xl dark:from-blue-500/20 dark:to-purple-500/20 shadow-lg shadow-blue-500/10">
+            <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-brand-500/10 to-accent-500/10 text-5xl dark:from-brand-500/20 dark:to-accent-500/20 shadow-lg shadow-brand-500/10">
               {info.icon}
             </div>
             <div>
               <PremiumHeading level="h1">{categoryName}</PremiumHeading>
               <p className="text-slate-600 dark:text-slate-400 mt-1">{info.description}</p>
               <div className="flex items-center gap-3 mt-3">
-                <PremiumBadge variant="blue" icon={<Sparkles className="h-3.5 w-3.5" />}>
+                <PremiumBadge variant="gradient" icon={<Sparkles className="h-3.5 w-3.5" />}>
                   {tools.length} tools available
                 </PremiumBadge>
               </div>
@@ -93,47 +77,12 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        {/* Tools Grid */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {tools.map((tool) => {
-            const icon = getToolIcon(tool);
-            return (
-              <Link 
-                key={tool.slug} 
-                href={`/tools/${tool.slug}`}
-                className="group"
-              >
-                <PremiumCard 
-                  hover 
-                  className="h-full transition-all duration-300 group-hover:border-blue-200/50 dark:group-hover:border-blue-800/50"
-                >
-                  <div className="flex items-start gap-3 mb-3">
-                    <span className="text-3xl">{icon}</span>
-                    <div>
-                      <h3 className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
-                        {tool.title}
-                      </h3>
-                      <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
-                        {tool.shortDescription}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1 mt-2">
-                    {tool.keywords?.slice(0, 3).map((keyword) => (
-                      <span 
-                        key={keyword} 
-                        className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-1 rounded-full"
-                      >
-                        {keyword}
-                      </span>
-                    ))}
-                  </div>
-                </PremiumCard>
-              </Link>
-            );
-          })}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {tools.map((tool) => (
+            <ToolCard key={tool.slug} tool={tool} variant="default" />
+          ))}
         </div>
       </div>
-    </PremiumGradient>
+    </div>
   );
 }

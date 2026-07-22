@@ -1,89 +1,78 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, TrendingUp, Calculator, FileText, Image, Heart } from "lucide-react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
-import Container from "@/components/ui/Container";
-
-const featuredTools = [
-  {
-    slug: "emi-calculator",
-    name: "EMI Calculator",
-    description: "Calculate monthly loan EMI instantly.",
-    icon: Calculator,
-    category: "Finance",
-    usage: "10K+",
-  },
-  {
-    slug: "income-tax-calculator",
-    name: "Income Tax Calculator",
-    description: "Calculate your income tax for FY 2026-27.",
-    icon: TrendingUp,
-    category: "Finance",
-    usage: "8K+",
-  },
-  {
-    slug: "water-intake-calculator",
-    name: "Water Intake Calculator",
-    description: "Calculate your daily water intake needs.",
-    icon: Heart,
-    category: "Health",
-    usage: "5K+",
-  },
-];
+import { ArrowRight, Sparkles } from "lucide-react";
+import { getAllTools } from "@/lib/toolRegistry";
+import { Tool } from "@/types/tool";
+import { PremiumHeading } from "@/components/ui/PremiumHeading";
+import { PremiumBadge } from "@/components/ui/PremiumBadge";
+import { ToolCard } from "@/components/ui/ToolCard";
 
 export default function FeaturedTools() {
-  return (
-    <section className="py-20">
-      <Container>
-        <div className="flex items-center justify-between mb-12">
-          <div>
-            <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-              Featured <span className="text-blue-600">Tools</span>
-            </h2>
-            <p className="mt-2 text-lg text-slate-600">
-              Most popular and highly-rated tools on Navorika.
-            </p>
+  const [featuredTools, setFeaturedTools] = useState<Tool[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const tools = getAllTools();
+    const featured = tools.filter(tool => tool.featured === true).slice(0, 6);
+    setFeaturedTools(featured);
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="h-8 w-48 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto animate-pulse" />
+            <div className="h-12 w-64 bg-slate-200 dark:bg-slate-700 rounded-lg mx-auto mt-4 animate-pulse" />
           </div>
-          <Link
-            href="/tools"
-            className="flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-700"
-          >
-            View All
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="h-64 bg-slate-200 dark:bg-slate-700 rounded-2xl animate-pulse" />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (featuredTools.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="py-16 bg-premium">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <PremiumBadge variant="gradient" className="mb-4" icon={<Sparkles className="h-3.5 w-3.5" />}>
+            Popular Tools
+          </PremiumBadge>
+          <PremiumHeading level="h2" gradient>
+            Featured Tools
+          </PremiumHeading>
+          <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
+            Most popular and highly-rated tools on Navorika.
+          </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredTools.map((tool) => (
-            <Link key={tool.slug} href={`/tools/${tool.slug}`}>
-              <Card className="h-full transition-all hover:shadow-lg hover:-translate-y-1">
-                <CardHeader>
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50">
-                    <tool.icon className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <CardTitle className="mt-4">{tool.name}</CardTitle>
-                  <CardDescription>{tool.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-4 text-sm text-slate-500">
-                    <span className="inline-flex items-center gap-1">
-                      <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-                      {tool.category}
-                    </span>
-                    <span>{tool.usage} users</span>
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <span className="text-sm font-medium text-blue-600">
-                    Try Now →
-                  </span>
-                </CardFooter>
-              </Card>
-            </Link>
+            <ToolCard key={tool.slug} tool={tool} variant="default" />
           ))}
         </div>
-      </Container>
+
+        <div className="text-center mt-10">
+          <Link
+            href="/tools"
+            className="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-medium hover:gap-3 transition-all"
+          >
+            View all tools
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
     </section>
   );
 }
