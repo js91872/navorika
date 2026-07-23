@@ -1,260 +1,241 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Utensils, Flame, Target, Apple, Bread, Fish } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Apple, Flame, Activity, Target, Utensils, Salad } from "lucide-react";
 
 import CalculatorShell from "../CalculatorShell";
-import CalculatorHeader from "../CalculatorHeader";
-import NumberInput from "../NumberInput";
-import Slider from "../Slider";
-import ResultGrid from "../ResultGrid";
+import { Button } from "@/components/ui/Button";
 import ResultCard from "../ResultCard";
-
-import { calculateCalories } from "@/lib/calculations/calorie";
-import { formatNumber } from "@/lib/format/currency";
-import { calorieConfig } from "@/config/calculators/calorie";
+import ResultGrid from "../ResultGrid";
+import NumberInput from "../NumberInput";
 
 export default function CalorieCalculator() {
-  const [weight, setWeight] = useState(calorieConfig.weight.default);
-  const [height, setHeight] = useState(calorieConfig.height.default);
-  const [age, setAge] = useState(calorieConfig.age.default);
-  const [gender, setGender] = useState(calorieConfig.gender.default);
-  const [unit, setUnit] = useState(calorieConfig.unit.default);
-  const [activityLevel, setActivityLevel] = useState(calorieConfig.activityLevel.default);
-  const [goal, setGoal] = useState(calorieConfig.goal.default);
+  const [age, setAge] = useState<number>(30);
+  const [gender, setGender] = useState<"male" | "female">("male");
+  const [weight, setWeight] = useState<number>(70);
+  const [height, setHeight] = useState<number>(175);
+  const [activityLevel, setActivityLevel] = useState<"sedentary" | "light" | "moderate" | "active" | "veryActive">("moderate");
+  const [goal, setGoal] = useState<"maintain" | "lose" | "gain">("maintain");
+  const [unit, setUnit] = useState<"metric" | "imperial">("metric");
 
   const result = useMemo(() => {
-    return calculateCalories({
-      weight,
-      height,
-      age,
-      gender: gender as 'male' | 'female',
-      unit: unit as 'metric' | 'imperial',
-      activityLevel: activityLevel as any,
-      goal: goal as any,
-    });
-  }, [weight, height, age, gender, unit, activityLevel, goal]);
+    const heightInCm = unit === "metric" ? height : height * 2.54;
+    const weightInKg = unit === "metric" ? weight : weight * 0.453592;
 
-  const weightUnit = unit === 'metric' ? 'kg' : 'lbs';
-  const heightUnit = unit === 'metric' ? 'cm' : 'in';
+    // BMR using Mifflin-St Jeor Equation
+    let bmr = 0;
+    if (gender === "male") {
+      bmr = 10 * weightInKg + 6.25 * heightInCm - 5 * age + 5;
+    } else {
+      bmr = 10 * weightInKg + 6.25 * heightInCm - 5 * age - 161;
+    }
 
-  const goalLabels = {
-    maintain: 'Maintain Weight',
-    lose: 'Lose Weight',
-    gain: 'Gain Weight',
-  };
+    const activityMultipliers = {
+      sedentary: 1.2,
+      light: 1.375,
+      moderate: 1.55,
+      active: 1.725,
+      veryActive: 1.9,
+    };
+
+    const tdee = bmr * activityMultipliers[activityLevel];
+    
+    const goalAdjustments = {
+      maintain: 0,
+      lose: -500,
+      gain: 500,
+    };
+
+    const dailyCalories = tdee + goalAdjustments[goal];
+
+    return {
+      bmr: Math.round(bmr),
+      tdee: Math.round(tdee),
+      dailyCalories: Math.round(dailyCalories),
+      weightInKg: Math.round(weightInKg),
+      heightInCm: Math.round(heightInCm),
+    };
+  }, [age, gender, weight, height, activityLevel, goal, unit]);
 
   return (
     <CalculatorShell>
-      <CalculatorHeader
-        title="Calorie Calculator"
-        description="Calculate your daily calorie needs and macro recommendations."
-        icon="🥗"
-        accuracy="Based on scientific formulas"
-      />
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6">
+        {/* Gender Selection */}
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { value: "male", label: "Male" },
+            { value: "female", label: "Female" },
+          ].map((option) => (
+            <button
+              key={option.value}
+              onClick={() => setGender(option.value as any)}
+              className={`py-2.5 px-4 rounded-xl text-sm font-medium transition ${
+                gender === option.value
+                  ? 'bg-brand-600 text-white shadow-lg shadow-brand-500/30'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300'
+              }`}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
 
-      <div className="p-4 sm:p-6 lg:p-8">
-        <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
-          {/* LEFT PANEL - Inputs */}
+        {/* Unit Selection */}
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { value: "metric", label: "Metric" },
+            { value: "imperial", label: "Imperial" },
+          ].map((option) => (
+            <button
+              key={option.value}
+              onClick={() => setUnit(option.value as any)}
+              className={`py-2.5 px-4 rounded-xl text-sm font-medium transition ${
+                unit === option.value
+                  ? 'bg-brand-600 text-white shadow-lg shadow-brand-500/30'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300'
+              }`}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Inputs */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <NumberInput
+            label="Age"
+            value={age}
+            onChange={setAge}
+            min={10}
+            max={100}
+            step={1}
+            suffix="Years"
+          />
+          <NumberInput
+            label="Weight"
+            value={weight}
+            onChange={setWeight}
+            min={20}
+            max={300}
+            step={0.5}
+            suffix={unit === "metric" ? "kg" : "lbs"}
+          />
+          <NumberInput
+            label="Height"
+            value={height}
+            onChange={setHeight}
+            min={100}
+            max={250}
+            step={0.5}
+            suffix={unit === "metric" ? "cm" : "inches"}
+          />
+        </div>
+
+        {/* Activity Level */}
+        <div className="space-y-1.5">
+          <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Activity Level</label>
+          <select
+            value={activityLevel}
+            onChange={(e) => setActivityLevel(e.target.value as any)}
+            className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
+          >
+            <option value="sedentary">Sedentary (little or no exercise)</option>
+            <option value="light">Light (1-3 days/week)</option>
+            <option value="moderate">Moderate (3-5 days/week)</option>
+            <option value="active">Active (6-7 days/week)</option>
+            <option value="veryActive">Very Active (athlete)</option>
+          </select>
+        </div>
+
+        {/* Goal Selection */}
+        <div className="grid grid-cols-3 gap-3">
+          {[
+            { value: "maintain", label: "Maintain", icon: "⚖️" },
+            { value: "lose", label: "Lose Weight", icon: "📉" },
+            { value: "gain", label: "Gain Weight", icon: "📈" },
+          ].map((option) => (
+            <button
+              key={option.value}
+              onClick={() => setGoal(option.value as any)}
+              className={`py-2.5 px-4 rounded-xl text-sm font-medium transition ${
+                goal === option.value
+                  ? 'bg-brand-600 text-white shadow-lg shadow-brand-500/30'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300'
+              }`}
+            >
+              <span className="mr-1">{option.icon}</span>
+              {option.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Results */}
+        {result && (
           <div className="space-y-6">
-            {/* Unit Selection */}
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">Unit System</label>
-              <div className="grid grid-cols-2 gap-3">
-                {calorieConfig.unit.options.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => setUnit(option.value)}
-                    className={`py-2 px-4 rounded-xl text-sm font-medium transition ${
-                      unit === option.value
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Weight */}
-            <div className="space-y-2">
-              <NumberInput
-                label={`Weight (${weightUnit})`}
-                value={weight}
-                onChange={setWeight}
-                suffix={weightUnit}
-                min={calorieConfig.weight.min}
-                max={calorieConfig.weight.max}
-                step={calorieConfig.weight.step}
-              />
-              <Slider
-                value={weight}
-                min={calorieConfig.weight.min}
-                max={calorieConfig.weight.max}
-                step={calorieConfig.weight.step}
-                onChange={setWeight}
-              />
-            </div>
-
-            {/* Height */}
-            <div className="space-y-2">
-              <NumberInput
-                label={`Height (${heightUnit})`}
-                value={height}
-                onChange={setHeight}
-                suffix={heightUnit}
-                min={calorieConfig.height.min}
-                max={calorieConfig.height.max}
-                step={calorieConfig.height.step}
-              />
-              <Slider
-                value={height}
-                min={calorieConfig.height.min}
-                max={calorieConfig.height.max}
-                step={calorieConfig.height.step}
-                onChange={setHeight}
-              />
-            </div>
-
-            {/* Age */}
-            <div className="space-y-2">
-              <NumberInput
-                label="Age"
-                value={age}
-                onChange={setAge}
-                suffix="years"
-                min={calorieConfig.age.min}
-                max={calorieConfig.age.max}
-                step={calorieConfig.age.step}
-              />
-              <Slider
-                value={age}
-                min={calorieConfig.age.min}
-                max={calorieConfig.age.max}
-                step={calorieConfig.age.step}
-                onChange={setAge}
-              />
-            </div>
-
-            {/* Gender */}
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">Gender</label>
-              <div className="grid grid-cols-2 gap-3">
-                {calorieConfig.gender.options.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => setGender(option.value)}
-                    className={`py-2 px-4 rounded-xl text-sm font-medium transition ${
-                      gender === option.value
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Activity Level */}
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">Activity Level</label>
-              <select
-                value={activityLevel}
-                onChange={(e) => setActivityLevel(e.target.value)}
-                className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-              >
-                {calorieConfig.activityLevel.options.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Goal */}
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">Goal</label>
-              <div className="grid grid-cols-3 gap-2">
-                {calorieConfig.goal.options.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => setGoal(option.value)}
-                    className={`py-2 px-4 rounded-xl text-sm font-medium transition ${
-                      goal === option.value
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                    }`}
-                  >
-                    {option.label.split(' ')[0]}
-                    <span className="block text-xs opacity-75">{option.label.split(' ').slice(1).join(' ')}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT PANEL - Results */}
-          <div className="space-y-6">
-            <div className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white text-center">
-              <p className="text-sm text-blue-200">Daily Calorie Goal</p>
-              <p className="text-5xl font-bold mt-1">{formatNumber(result.goalCalories)}</p>
-              <p className="text-sm text-blue-200 mt-1">calories/day</p>
-              <div className="mt-3 flex justify-center gap-4 text-xs text-blue-200">
-                <span>{goalLabels[goal as keyof typeof goalLabels]}</span>
-                <span>•</span>
-                <span>BMR: {formatNumber(result.bmr)} cal</span>
-              </div>
+            <div className={`rounded-2xl p-6 text-white text-center ${
+              goal === "maintain" 
+                ? 'bg-gradient-to-br from-brand-600 to-accent-600'
+                : goal === "lose"
+                ? 'bg-gradient-to-br from-orange-500 to-amber-600'
+                : 'bg-gradient-to-br from-emerald-500 to-teal-600'
+            }`}>
+              <p className="text-sm text-white/70">Daily Calorie Goal</p>
+              <p className="text-4xl sm:text-5xl font-bold mt-1">
+                {result.dailyCalories} <span className="text-xl font-normal">cal</span>
+              </p>
+              <p className="text-sm text-white/60 mt-2">
+                {goal === "maintain" ? "Maintain current weight" : goal === "lose" ? "Lose weight" : "Gain weight"}
+              </p>
             </div>
 
             <ResultGrid>
               <ResultCard
-                label="Maintenance"
-                value={`${formatNumber(result.maintenanceCalories)} cal`}
+                label="BMR"
+                value={`${result.bmr} cal`}
+                icon="🔥"
+                subtitle="Basal Metabolic Rate"
               />
               <ResultCard
-                label="Protein"
-                value={`${result.protein}g`}
-                subtitle={`${result.macros.protein.calories} cal`}
+                label="TDEE"
+                value={`${result.tdee} cal`}
+                icon="🏃"
+                subtitle="Total Daily Energy Expenditure"
               />
               <ResultCard
-                label="Carbs"
-                value={`${result.carbs}g`}
-                subtitle={`${result.macros.carbs.calories} cal`}
-              />
-              <ResultCard
-                label="Fat"
-                value={`${result.fat}g`}
-                subtitle={`${result.macros.fat.calories} cal`}
+                label="Weight"
+                value={`${result.weightInKg} kg`}
+                icon="⚖️"
               />
             </ResultGrid>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-sm font-semibold text-slate-700 mb-3">Macro Breakdown</h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="h-2 flex-1 rounded-full bg-slate-200 overflow-hidden">
-                    <div className="h-full rounded-full bg-blue-600" style={{ width: '40%' }} />
-                  </div>
-                  <span className="text-xs text-slate-600 w-16 text-right">40% Carbs</span>
+            <div className="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-800">
+              <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">💡 Macro Breakdown</h4>
+              <div className="grid grid-cols-3 gap-3 text-center">
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-700/30">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">Protein</p>
+                  <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                    {Math.round(result.dailyCalories * 0.3 / 4)}g
+                  </p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="h-2 flex-1 rounded-full bg-slate-200 overflow-hidden">
-                    <div className="h-full rounded-full bg-green-500" style={{ width: '30%' }} />
-                  </div>
-                  <span className="text-xs text-slate-600 w-16 text-right">30% Protein</span>
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-700/30">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">Carbs</p>
+                  <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                    {Math.round(result.dailyCalories * 0.4 / 4)}g
+                  </p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="h-2 flex-1 rounded-full bg-slate-200 overflow-hidden">
-                    <div className="h-full rounded-full bg-yellow-500" style={{ width: '30%' }} />
-                  </div>
-                  <span className="text-xs text-slate-600 w-16 text-right">30% Fat</span>
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-700/30">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">Fats</p>
+                  <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                    {Math.round(result.dailyCalories * 0.3 / 9)}g
+                  </p>
                 </div>
               </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 text-center mt-2">
+                Based on standard macro split: 30% Protein, 40% Carbs, 30% Fats
+              </p>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </CalculatorShell>
   );

@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { Search, Grid, List, Sparkles } from "lucide-react";
 import { getAllTools } from "@/lib/toolRegistry";
 import { Tool } from "@/types/tool";
 import { PremiumHeading } from "@/components/ui/PremiumHeading";
 import { PremiumBadge } from "@/components/ui/PremiumBadge";
-import { ToolCard } from "@/components/ui/ToolCard";
+import { PremiumToolGrid } from "@/components/ui/PremiumToolGrid";
+import { PremiumToolCard } from "@/components/ui/PremiumToolCard";
 
 export default function ToolsPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -42,10 +42,8 @@ export default function ToolsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-premium bg-dots">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <div className="h-12 w-64 bg-slate-200 dark:bg-slate-700 rounded-lg animate-pulse mb-4" />
-          <div className="h-8 w-96 bg-slate-200 dark:bg-slate-700 rounded-lg animate-pulse mb-8" />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div key={i} className="h-64 bg-slate-200 dark:bg-slate-700 rounded-2xl animate-pulse" />
@@ -57,11 +55,8 @@ export default function ToolsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-premium bg-dots">
-      <div className="fixed top-20 right-20 h-96 w-96 rounded-full bg-brand-400/10 blur-3xl pointer-events-none" />
-      <div className="fixed bottom-20 left-20 h-96 w-96 rounded-full bg-accent-400/10 blur-3xl pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 relative z-10">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-8">
           <PremiumBadge variant="gradient" className="mb-3" icon={<Sparkles className="h-3.5 w-3.5" />}>
             {tools.length} Tools Available
@@ -112,15 +107,15 @@ export default function ToolsPage() {
         </div>
 
         {viewMode === "grid" ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredTools.map((tool) => (
-              <ToolCard key={tool.slug} tool={tool} variant="default" />
-            ))}
-          </div>
+          <PremiumToolGrid 
+            tools={filteredTools} 
+            variant="default"
+            showBadge={true}
+          />
         ) : (
           <div className="space-y-3">
             {filteredTools.map((tool) => (
-              <ToolCard key={tool.slug} tool={tool} variant="compact" />
+              <PremiumToolCard key={tool.slug} tool={tool} variant="compact" />
             ))}
           </div>
         )}
