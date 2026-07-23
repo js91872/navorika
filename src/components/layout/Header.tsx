@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { Menu, X, Search, Sun, Moon, Sparkles, ChevronDown } from "lucide-react";
+import { Menu, X, Search, Sun, Moon, Home } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Logo } from "@/components/ui/Logo";
 import { PremiumButton } from "@/components/ui/PremiumButton";
@@ -15,6 +16,7 @@ import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const navigation = [
+  { name: "Home", href: "/", icon: Home },
   { name: "tools", href: "/tools" },
   { name: "categories", href: "/categories" },
   { name: "guides", href: "/guides" },
@@ -30,6 +32,7 @@ export default function Header() {
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
@@ -115,21 +118,40 @@ export default function Header() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(href);
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl dark:border-slate-700/80 dark:bg-slate-900/80">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
 
         <nav className="hidden items-center gap-8 md:flex">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-slate-600 transition hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
-            >
-              {t(`nav.${item.name}`)}
-            </Link>
-          ))}
+          {navigation.map((item) => {
+            const isHome = item.name === "Home";
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`text-sm font-medium transition flex items-center gap-1.5 ${
+                  active
+                    ? 'text-brand-600 dark:text-brand-400'
+                    : 'text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400'
+                }`}
+              >
+                {isHome && <Home className="h-4 w-4" />}
+                {isHome ? "Home" : t(`nav.${item.name}`)}
+                {active && (
+                  <span className="absolute -bottom-[1px] left-0 right-0 h-0.5 bg-brand-600 dark:bg-brand-400 rounded-full" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -259,7 +281,7 @@ export default function Header() {
             <PremiumButton variant="ghost" size="sm">
               {t('nav.signIn')}
             </PremiumButton>
-            <PremiumButton size="sm" icon={<Sparkles className="h-4 w-4" />}>
+            <PremiumButton size="sm">
               {t('nav.getStarted')}
             </PremiumButton>
           </div>
@@ -281,16 +303,28 @@ export default function Header() {
         )}
       >
         <div className="flex flex-col space-y-1 p-4">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-400"
-            >
-              {t(`nav.${item.name}`)}
-            </Link>
-          ))}
+          {navigation.map((item) => {
+            const isHome = item.name === "Home";
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`rounded-xl px-4 py-3 text-sm font-medium transition flex items-center gap-2 ${
+                  active
+                    ? 'bg-brand-50 text-brand-600 dark:bg-brand-950/30 dark:text-brand-400'
+                    : 'text-slate-600 hover:bg-slate-50 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-400'
+                }`}
+              >
+                {isHome && <Home className="h-4 w-4" />}
+                {isHome ? "Home" : t(`nav.${item.name}`)}
+                {active && (
+                  <span className="ml-auto h-1.5 w-1.5 rounded-full bg-brand-600 dark:bg-brand-400" />
+                )}
+              </Link>
+            );
+          })}
           <div className="flex flex-col gap-2 pt-4 border-t border-slate-200 dark:border-slate-700">
             <PremiumButton variant="ghost" size="sm" className="justify-center">
               {t('nav.signIn')}
