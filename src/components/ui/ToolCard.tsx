@@ -14,7 +14,8 @@ interface ToolCardProps {
 }
 
 export function ToolCard({ tool, variant = "default", className }: ToolCardProps) {
-  const Icon = getToolIcon(tool.slug);
+  // Get the icon component for this specific tool
+  const IconComponent = getToolIcon(tool.slug);
   const iconColor = getIconColor(tool.slug);
 
   const getCategoryColor = () => {
@@ -43,12 +44,19 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
     return emojis[tool.category] || "🔧";
   };
 
+  // For debugging - log the slug and icon
+  // console.log("Tool slug:", tool.slug, "Icon:", IconComponent);
+
   if (variant === "compact") {
     return (
       <Link href={`/tools/${tool.slug}`} className="group block">
         <div className="relative flex items-center gap-4 rounded-xl bg-white p-4 transition-all duration-300 hover:bg-slate-50/80 dark:bg-slate-800 dark:hover:bg-slate-700/80">
           <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${getCategoryColor()} shadow-lg shadow-brand-500/20 flex-shrink-0`}>
-            {Icon ? <Icon className={`h-6 w-6 text-white`} /> : <span className="text-xl text-white">{getCategoryEmoji()}</span>}
+            {IconComponent ? (
+              <IconComponent className="h-6 w-6 text-white" />
+            ) : (
+              <span className="text-xl text-white">{getCategoryEmoji()}</span>
+            )}
           </div>
           <div className="flex-1 min-w-0">
             <h4 className="font-medium text-slate-900 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition">
@@ -82,7 +90,11 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${getCategoryColor()} shadow-lg shadow-brand-500/20 flex-shrink-0 transition-transform group-hover:scale-105`}>
-                {Icon ? <Icon className={`h-7 w-7 text-white`} /> : <span className="text-2xl text-white">{getCategoryEmoji()}</span>}
+                {IconComponent ? (
+                  <IconComponent className="h-7 w-7 text-white" />
+                ) : (
+                  <span className="text-2xl text-white">{getCategoryEmoji()}</span>
+                )}
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition">

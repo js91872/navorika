@@ -1,50 +1,51 @@
+// Import all needed icons
 import { 
-  Calendar, 
-  Percent, 
-  QrCode, 
-  Lock,
+  // Finance
   Wallet,
-  TrendingUp,
+  Landmark,
+  PiggyBank,
+  Coins,
   Shield,
   Receipt,
+  TrendingUp,
+  BarChart3,
+  LineChart,
+  DollarSign,
+  Banknote,
+  // Productivity
+  Calendar,
+  Percent,
+  QrCode,
+  Lock,
+  // Health
   Scale,
   Flame,
   Apple,
   Utensils,
   Droplets,
+  // PDF
   FileImage,
   Files,
   Scissors,
   FileDown,
   FileText,
+  // Image
   Image,
   Maximize2,
   Crop,
   Wand2,
+  // Developer
   Braces,
   Link,
   Fingerprint,
-  Calculator,
-  PiggyBank,
-  Landmark,
-  Coins,
-  Banknote,
-  BarChart3,
-  LineChart,
-  DollarSign
+  // Default fallback
+  Calculator
 } from 'lucide-react';
 
 type IconMap = Record<string, any>;
 
 export const toolIcons: IconMap = {
-  // Productivity Tools
-  'age-calculator': Calendar,
-  'date-calculator': Calendar,
-  'percentage-calculator': Percent,
-  'qr-code-generator': QrCode,
-  'password-generator': Lock,
-  
-  // Finance Tools - Complete List
+  // ============ FINANCE TOOLS ============
   'emi-calculator': Wallet,
   'loan-calculator': Landmark,
   'mortgage-calculator': Landmark,
@@ -67,14 +68,21 @@ export const toolIcons: IconMap = {
   'retirement-calculator': PiggyBank,
   'swp-calculator': Coins,
   
-  // Health Tools
+  // ============ PRODUCTIVITY TOOLS ============
+  'age-calculator': Calendar,
+  'date-calculator': Calendar,
+  'percentage-calculator': Percent,
+  'qr-code-generator': QrCode,
+  'password-generator': Lock,
+  
+  // ============ HEALTH TOOLS ============
   'bmi-calculator': Scale,
   'bmr-calculator': Flame,
   'calorie-calculator': Apple,
   'protein-calculator': Utensils,
   'water-intake-calculator': Droplets,
   
-  // PDF Tools
+  // ============ PDF TOOLS ============
   'pdf-to-jpg': FileImage,
   'jpg-to-pdf': FileImage,
   'merge-pdf': Files,
@@ -83,14 +91,15 @@ export const toolIcons: IconMap = {
   'pdf-to-word': FileText,
   'word-to-pdf': FileText,
   
-  // Image Tools
+  // ============ IMAGE TOOLS ============
   'image-compressor': Image,
   'image-converter': Image,
   'image-resizer': Maximize2,
   'crop-image': Crop,
   'background-remover': Wand2,
+  'passport-photo': Image,
   
-  // Developer Tools
+  // ============ DEVELOPER TOOLS ============
   'json-formatter': Braces,
   'base64-encoder': Link,
   'url-encoder': Link,
@@ -99,7 +108,7 @@ export const toolIcons: IconMap = {
 
 // Color mapping for icons
 const iconColors: Record<string, string> = {
-  // Finance Tools Colors
+  // Finance
   'emi-calculator': 'text-blue-600',
   'loan-calculator': 'text-blue-700',
   'mortgage-calculator': 'text-indigo-600',
@@ -122,7 +131,7 @@ const iconColors: Record<string, string> = {
   'retirement-calculator': 'text-amber-600',
   'swp-calculator': 'text-cyan-600',
   
-  // Productivity Tools Colors
+  // Productivity
   'age-calculator': 'text-blue-500',
   'date-calculator': 'text-blue-500',
   'percentage-calculator': 'text-green-500',
@@ -134,7 +143,12 @@ const iconColors: Record<string, string> = {
 };
 
 export function getToolIcon(slug: string) {
-  return toolIcons[slug] || Calculator;
+  const icon = toolIcons[slug];
+  if (!icon) {
+    console.warn(`No icon found for slug: ${slug}, using fallback`);
+    return Calculator;
+  }
+  return icon;
 }
 
 export function getIconColor(slug: string) {
