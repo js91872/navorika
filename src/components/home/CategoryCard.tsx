@@ -13,12 +13,16 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+// Support both old and new prop structures
 interface CategoryCardProps {
   category: {
-    name: string;
-    slug: string;
+    name?: string;
+    title?: string;
+    slug?: string;
+    href?: string;
     description: string;
-    count: number;
+    count?: number;
+    tools?: number;
   };
   className?: string;
 }
@@ -39,66 +43,62 @@ const categoryStyles: Record<string, {
   gradient: string;
   iconBg: string;
   badge: string;
-  hoverGlow: string;
 }> = {
   "Finance": {
     gradient: "from-blue-500 to-blue-600",
     iconBg: "from-blue-500 to-blue-600",
     badge: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-    hoverGlow: "shadow-blue-500/20",
   },
   "PDF Tools": {
     gradient: "from-orange-500 to-orange-600",
     iconBg: "from-orange-500 to-orange-600",
     badge: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    hoverGlow: "shadow-orange-500/20",
   },
   "Image Tools": {
     gradient: "from-purple-500 to-purple-600",
     iconBg: "from-purple-500 to-purple-600",
     badge: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
-    hoverGlow: "shadow-purple-500/20",
   },
   "Health": {
     gradient: "from-emerald-500 to-emerald-600",
     iconBg: "from-emerald-500 to-emerald-600",
     badge: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
-    hoverGlow: "shadow-emerald-500/20",
   },
   "productivity": {
     gradient: "from-indigo-500 to-indigo-600",
     iconBg: "from-indigo-500 to-indigo-600",
     badge: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
-    hoverGlow: "shadow-indigo-500/20",
   },
   "Developer Tools": {
     gradient: "from-cyan-500 to-cyan-600",
     iconBg: "from-cyan-500 to-cyan-600",
     badge: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
-    hoverGlow: "shadow-cyan-500/20",
   },
   "Construction": {
     gradient: "from-amber-500 to-amber-600",
     iconBg: "from-amber-500 to-amber-600",
     badge: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-    hoverGlow: "shadow-amber-500/20",
   },
 };
 
-export function CategoryCard({ category, className }: CategoryCardProps) {
-  const IconComponent = categoryIcons[category.name];
-  const style = categoryStyles[category.name] || categoryStyles["Finance"];
+export default function CategoryCard({ category, className }: CategoryCardProps) {
+  // Support both name and title
+  const categoryName = category.name || category.title || "";
+  const categorySlug = category.slug || (category.href ? category.href.replace("/categories/", "") : "");
+  const categoryCount = category.count || category.tools || 0;
+  
+  const IconComponent = categoryIcons[categoryName];
+  const style = categoryStyles[categoryName] || categoryStyles["Finance"];
 
   return (
     <Link
-      href={`/categories/${category.slug}`}
+      href={category.href || `/categories/${categorySlug}`}
       className={cn(
         "group relative block overflow-hidden rounded-2xl",
         "bg-white dark:bg-slate-800",
         "border border-slate-200/80 dark:border-slate-700/80",
         "shadow-lg transition-all duration-300",
         "hover:shadow-2xl hover:-translate-y-2",
-        `hover:${style.hoverGlow}`,
         className
       )}
     >
@@ -119,13 +119,13 @@ export function CategoryCard({ category, className }: CategoryCardProps) {
             "px-3 py-1 rounded-full text-xs font-semibold",
             style.badge
           )}>
-            {category.count} tools
+            {categoryCount} tools
           </div>
         </div>
 
         {/* Category Name */}
         <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-          {category.name}
+          {categoryName}
         </h3>
         
         {/* Description */}
