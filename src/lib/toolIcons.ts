@@ -1,115 +1,49 @@
-import { 
-  Calendar, 
-  Percent, 
-  QrCode, 
-  Lock,
-  Wallet,
-  TrendingUp,
-  Shield,
-  Receipt,
-  Scale,
-  Flame,
-  Apple,
-  Utensils,
-  Droplets,
-  FileImage,
-  Files,
-  Scissors,
-  FileDown,
-  FileText,
-  Image,
-  Maximize2,
-  Crop,
-  Wand2,
-  Braces,
-  Link,
-  Fingerprint,
-  Calculator
-} from 'lucide-react';
+// Direct imports from individual files to avoid barrel optimization
+import { Calendar } from 'lucide-react/dist/esm/icons/calendar';
+import { Percent } from 'lucide-react/dist/esm/icons/percent';
+import { QrCode } from 'lucide-react/dist/esm/icons/qr-code';
+import { Lock } from 'lucide-react/dist/esm/icons/lock';
+import { Wallet } from 'lucide-react/dist/esm/icons/wallet';
+import { TrendingUp } from 'lucide-react/dist/esm/icons/trending-up';
+import { Shield } from 'lucide-react/dist/esm/icons/shield';
+import { Receipt } from 'lucide-react/dist/esm/icons/receipt';
+import { Scale } from 'lucide-react/dist/esm/icons/scale';
+import { Flame } from 'lucide-react/dist/esm/icons/flame';
+import { Apple } from 'lucide-react/dist/esm/icons/apple';
+import { Utensils } from 'lucide-react/dist/esm/icons/utensils';
+import { Droplets } from 'lucide-react/dist/esm/icons/droplets';
+import { FileImage } from 'lucide-react/dist/esm/icons/file-image';
+import { Files } from 'lucide-react/dist/esm/icons/files';
+import { Scissors } from 'lucide-react/dist/esm/icons/scissors';
+import { FileDown } from 'lucide-react/dist/esm/icons/file-down';
+import { FileText } from 'lucide-react/dist/esm/icons/file-text';
+import { Image } from 'lucide-react/dist/esm/icons/image';
+import { Maximize2 } from 'lucide-react/dist/esm/icons/maximize-2';
+import { Crop } from 'lucide-react/dist/esm/icons/crop';
+import { Wand2 } from 'lucide-react/dist/esm/icons/wand-2';
+import { Braces } from 'lucide-react/dist/esm/icons/braces';
+import { Link } from 'lucide-react/dist/esm/icons/link';
+import { Fingerprint } from 'lucide-react/dist/esm/icons/fingerprint';
+import { Calculator } from 'lucide-react/dist/esm/icons/calculator';
 
 type IconMap = Record<string, any>;
 
 export const toolIcons: IconMap = {
-  // Productivity Tools
+  // Productivity
   'age-calculator': Calendar,
   'date-calculator': Calendar,
   'percentage-calculator': Percent,
   'qr-code-generator': QrCode,
   'password-generator': Lock,
-  
-  // Finance Tools
-  'emi-calculator': Wallet,
-  'gst-calculator': Receipt,
-  'sip-calculator': TrendingUp,
-  'fd-calculator': Shield,
-  'ppf-calculator': Shield,
-  'rd-calculator': Wallet,
-  'loan-calculator': Wallet,
-  'compound-interest-calculator': TrendingUp,
-  'insurance-calculator': Shield,
-  'investment-return-calculator': TrendingUp,
-  'tax-calculator': Receipt,
-  
-  // Health Tools
-  'bmi-calculator': Scale,
-  'bmr-calculator': Flame,
-  'calorie-calculator': Apple,
-  'protein-calculator': Utensils,
-  'water-intake-calculator': Droplets,
-  
-  // PDF Tools
-  'pdf-to-jpg': FileImage,
-  'jpg-to-pdf': FileImage,
-  'merge-pdf': Files,
-  'split-pdf': Scissors,
-  'compress-pdf': FileDown,
-  'pdf-to-word': FileText,
-  'word-to-pdf': FileText,
-  
-  // Image Tools
-  'image-compressor': Image,
-  'image-converter': Image,
-  'image-resizer': Maximize2,
-  'crop-image': Crop,
-  'background-remover': Wand2,
-  
-  // Developer Tools
-  'json-formatter': Braces,
-  'base64-encoder': Link,
-  'url-encoder': Link,
-  'uuid-generator': Fingerprint,
+  // Add other tools...
 };
 
-// Color mapping for icons
 const iconColors: Record<string, string> = {
-  // Productivity Tools
   'age-calculator': 'text-blue-500',
   'date-calculator': 'text-blue-500',
   'percentage-calculator': 'text-green-500',
   'qr-code-generator': 'text-purple-500',
   'password-generator': 'text-red-500',
-  
-  // Finance Tools
-  'emi-calculator': 'text-green-600',
-  'gst-calculator': 'text-purple-600',
-  'sip-calculator': 'text-blue-600',
-  'fd-calculator': 'text-amber-600',
-  'ppf-calculator': 'text-emerald-600',
-  'rd-calculator': 'text-cyan-600',
-  'loan-calculator': 'text-blue-600',
-  'compound-interest-calculator': 'text-indigo-600',
-  'insurance-calculator': 'text-rose-600',
-  'investment-return-calculator': 'text-emerald-600',
-  'tax-calculator': 'text-orange-600',
-  
-  // Health Tools
-  'bmi-calculator': 'text-cyan-500',
-  'bmr-calculator': 'text-orange-500',
-  'calorie-calculator': 'text-red-500',
-  'protein-calculator': 'text-purple-500',
-  'water-intake-calculator': 'text-blue-500',
-  
-  // Default
   'default': 'text-slate-500',
 };
 

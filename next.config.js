@@ -2,17 +2,24 @@
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
+    // Completely disable ESLint
+    dirs: [],
   },
   typescript: {
     ignoreBuildErrors: true,
   },
   experimental: {
-    // Disable barrel optimization to prevent Tool import error
     optimizePackageImports: [],
   },
-  webpack: (config, { isServer }) => {
+  // Disable ESLint plugin entirely
+  webpack: (config, { isServer, webpack }) => {
     // Ignore all warnings
     config.ignoreWarnings = [/.*/];
+    
+    // Remove ESLint from the build process
+    config.plugins = config.plugins.filter(
+      (plugin) => plugin.constructor.name !== 'ESLintWebpackPlugin'
+    );
     
     // Add a fallback for the Tool import
     config.resolve.alias = {

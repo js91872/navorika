@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --no-lint",
-    "vercel-build": "npm install --prefer-offline --no-audit --no-fund && next build --no-lint",
+    "build": "bash scripts/build.sh || next build --no-lint",
+    "vercel-build": "bash scripts/build.sh",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --fix"
   },
   "dependencies": {
     "next": "14.2.35",
