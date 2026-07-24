@@ -1,6 +1,7 @@
 "use client";
 
 import { CategoryCard } from "./CategoryCard";
+import { Sparkles } from "lucide-react";
 
 const categories = [
   {
@@ -49,18 +50,27 @@ const categories = [
 
 export function CategoriesSection() {
   return (
-    <section className="py-16 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">
-            Explore Our Tools
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100/50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 text-sm font-medium mb-4">
+            <Sparkles className="h-4 w-4" />
+            <span>Categories</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+            Explore Our{" "}
+            <span className="bg-gradient-to-r from-brand-600 to-brand-700 bg-clip-text text-transparent">
+              Tool Categories
+            </span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             Discover powerful tools organized by category to help you with finance, health, documents, and more.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Category Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {categories.map((category) => (
             <CategoryCard key={category.slug} category={category} />
           ))}
