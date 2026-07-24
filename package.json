@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build --no-lint",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next export"
+    "lint": "next lint --fix"
   },
   "dependencies": {
     "next": "14.2.35",

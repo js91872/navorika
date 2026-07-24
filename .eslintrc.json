@@ -8,11 +8,5 @@
     "@next/next/no-img-element": "off",
     "jsx-a11y/alt-text": "off",
     "prefer-const": "off"
-  },
-  "ignorePatterns": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx"
-  ]
+  }
 }

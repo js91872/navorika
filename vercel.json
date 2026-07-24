@@ -1,5 +1,9 @@
 {
   "buildCommand": "next build --no-lint",
   "installCommand": "npm install",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_IGNORE_ESLINT": "true",
+    "NEXT_PUBLIC_IGNORE_TYPESCRIPT": "true"
+  }
 }
