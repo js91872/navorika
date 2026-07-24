@@ -1,74 +1,122 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Tool } from "@/types/tool";
 import { cn } from "@/lib/utils";
+import { 
+  TrendingUp,
+  FileText,
+  Image,
+  Heart,
+  Rocket,
+  Code,
+  Building2,
+  ArrowRight 
+} from "lucide-react";
 
 interface CategoryCardProps {
-  category: string;
-  icon: string; // emoji icon
-  description: string;
-  color: string; // gradient class
-  toolCount: number;
-  tools: Tool[];
+  category: {
+    name: string;
+    slug: string;
+    description: string;
+    count: number;
+    icon?: string;
+  };
+  className?: string;
 }
 
-export default function CategoryCard({
-  category,
-  icon,
-  description,
-  color,
-  toolCount,
-  tools,
-}: CategoryCardProps) {
-  const categorySlug = category.toLowerCase();
-  const previewTools = tools.slice(0, 4);
+const categoryIcons: Record<string, any> = {
+  "Finance": TrendingUp,
+  "PDF Tools": FileText,
+  "Image Tools": Image,
+  "Health": Heart,
+  "productivity": Rocket,
+  "Developer Tools": Code,
+  "Construction": Building2,
+};
+
+const categoryColors: Record<string, string> = {
+  "Finance": "from-blue-500 to-blue-600",
+  "PDF Tools": "from-orange-500 to-orange-600",
+  "Image Tools": "from-purple-500 to-purple-600",
+  "Health": "from-emerald-500 to-emerald-600",
+  "productivity": "from-indigo-500 to-indigo-600",
+  "Developer Tools": "from-cyan-500 to-cyan-600",
+  "Construction": "from-amber-500 to-amber-600",
+};
+
+const categoryEmojis: Record<string, string> = {
+  "Finance": "💰",
+  "PDF Tools": "📄",
+  "Image Tools": "🖼️",
+  "Health": "💪",
+  "productivity": "🚀",
+  "Developer Tools": "💻",
+  "Construction": "🏗️",
+};
+
+export function CategoryCard({ category, className }: CategoryCardProps) {
+  const IconComponent = categoryIcons[category.name];
+  const colorClass = categoryColors[category.name] || "from-slate-500 to-slate-600";
+  const emoji = categoryEmojis[category.name] || "📁";
 
   return (
     <Link
-      href={`/categories/${categorySlug}`}
-      className="group block rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:shadow-xl hover:border-blue-200"
+      href={`/categories/${category.slug}`}
+      className={cn(
+        "group relative block overflow-hidden rounded-2xl bg-white dark:bg-slate-800",
+        "border border-slate-200/80 dark:border-slate-700/80",
+        "shadow-lg shadow-slate-200/30 dark:shadow-slate-800/30",
+        "transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-500/10",
+        className
+      )}
     >
-      {/* Category Header */}
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
+      {/* Gradient accent bar */}
+      <div className={cn(
+        "h-1 w-full bg-gradient-to-r",
+        colorClass
+      )} />
+
+      <div className="p-6">
+        <div className="flex items-start justify-between mb-4">
           <div className={cn(
-            "flex h-12 w-12 items-center justify-center rounded-xl text-2xl bg-gradient-to-br",
-            color
+            "flex h-14 w-14 items-center justify-center rounded-2xl",
+            "bg-gradient-to-br shadow-lg shadow-brand-500/20",
+            colorClass
           )}>
-            {icon}
+            {IconComponent ? (
+              <IconComponent className="h-7 w-7 text-white" />
+            ) : (
+              <span className="text-2xl">{emoji}</span>
+            )}
           </div>
-          <div>
-            <h3 className="text-lg font-semibold capitalize text-slate-900">
-              {category}
-            </h3>
-            <p className="text-sm text-slate-500">{toolCount} tools</p>
-          </div>
+          <ArrowRight className="h-5 w-5 text-slate-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
         </div>
-        <ArrowRight className="h-5 w-5 text-slate-400 transition group-hover:text-blue-600 group-hover:translate-x-1" />
+
+        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">
+          {category.name}
+        </h3>
+        
+        <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-2">
+          {category.description}
+        </p>
+
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
+            {category.count} tools
+          </span>
+          <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+          <span className="text-xs text-brand-600 dark:text-brand-400 font-medium group-hover:underline">
+            View all
+          </span>
+        </div>
       </div>
 
-      {/* Description */}
-      <p className="text-sm text-slate-600 mb-4 line-clamp-2">{description}</p>
-
-      {/* Tool Preview */}
-      <div className="flex flex-wrap gap-2">
-        {previewTools.map((tool) => (
-          <span
-            key={tool.slug}
-            className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600"
-          >
-            <span>{tool.icon || "🔧"}</span>
-            {tool.title}
-          </span>
-        ))}
-        {toolCount > 4 && (
-          <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs text-blue-600">
-            +{toolCount - 4} more
-          </span>
-        )}
-      </div>
+      {/* Subtle hover glow effect */}
+      <div className={cn(
+        "absolute -bottom-20 -right-20 h-40 w-40 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-2xl",
+        "bg-gradient-to-r",
+        colorClass
+      )} />
     </Link>
   );
 }
