@@ -1,12 +1,11 @@
 {
-  "buildCommand": "npm run build -- --no-lint",
-  "installCommand": "npm ci --prefer-offline --no-audit --no-fund --no-optional --cache .npm",
+  "buildCommand": "npm run vercel-build",
+  "installCommand": "npm install --prefer-offline --no-audit --no-fund --cache .npm --legacy-peer-deps",
   "framework": "nextjs",
   "env": {
     "NEXT_PUBLIC_IGNORE_ESLINT": "true",
     "NEXT_PUBLIC_IGNORE_TYPESCRIPT": "true",
     "NEXT_DISABLE_ESLINT": "1",
-    "NPM_CONFIG_CACHE": ".npm"
-  },
-  "installCommand": "npm ci --prefer-offline --no-audit --no-fund --cache .npm"
+    "NODE_OPTIONS": "--max-old-space-size=4096"
+  }
 }
