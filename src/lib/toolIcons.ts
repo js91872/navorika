@@ -80,8 +80,45 @@ export const toolIcons: IconMap = {
   'uuid-generator': Fingerprint,
 };
 
+// Color mapping for icons
+const iconColors: Record<string, string> = {
+  // Productivity Tools
+  'age-calculator': 'text-blue-500',
+  'date-calculator': 'text-blue-500',
+  'percentage-calculator': 'text-green-500',
+  'qr-code-generator': 'text-purple-500',
+  'password-generator': 'text-red-500',
+  
+  // Finance Tools
+  'emi-calculator': 'text-green-600',
+  'gst-calculator': 'text-purple-600',
+  'sip-calculator': 'text-blue-600',
+  'fd-calculator': 'text-amber-600',
+  'ppf-calculator': 'text-emerald-600',
+  'rd-calculator': 'text-cyan-600',
+  'loan-calculator': 'text-blue-600',
+  'compound-interest-calculator': 'text-indigo-600',
+  'insurance-calculator': 'text-rose-600',
+  'investment-return-calculator': 'text-emerald-600',
+  'tax-calculator': 'text-orange-600',
+  
+  // Health Tools
+  'bmi-calculator': 'text-cyan-500',
+  'bmr-calculator': 'text-orange-500',
+  'calorie-calculator': 'text-red-500',
+  'protein-calculator': 'text-purple-500',
+  'water-intake-calculator': 'text-blue-500',
+  
+  // Default
+  'default': 'text-slate-500',
+};
+
 export function getToolIcon(slug: string) {
   return toolIcons[slug] || Calculator;
+}
+
+export function getIconColor(slug: string) {
+  return iconColors[slug] || iconColors['default'];
 }
 
 export default toolIcons;
