@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Tool } from "@/types/tool";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
-import { getToolIcon, getIconColor } from "@/lib/toolIcons";
+import { getToolIcon, getIconColor, getCategoryColor } from "@/lib/toolIcons";
 import { PremiumBadge } from "./PremiumBadge";
 
 interface ToolCardProps {
@@ -14,22 +14,9 @@ interface ToolCardProps {
 }
 
 export function ToolCard({ tool, variant = "default", className }: ToolCardProps) {
-  // Get the icon component for this specific tool
   const IconComponent = getToolIcon(tool.slug);
   const iconColor = getIconColor(tool.slug);
-
-  const getCategoryColor = () => {
-    const colors: Record<string, string> = {
-      "Finance": "from-blue-500 to-blue-600",
-      "Health": "from-emerald-500 to-emerald-600",
-      "PDF Tools": "from-orange-500 to-orange-600",
-      "Image Tools": "from-purple-500 to-purple-600",
-      "Developer Tools": "from-cyan-500 to-cyan-600",
-      "productivity": "from-indigo-500 to-purple-600",
-      "Construction": "from-amber-500 to-orange-600",
-    };
-    return colors[tool.category] || "from-slate-400 to-slate-500";
-  };
+  const categoryColor = getCategoryColor(tool.category);
 
   const getCategoryEmoji = () => {
     const emojis: Record<string, string> = {
@@ -44,18 +31,19 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
     return emojis[tool.category] || "🔧";
   };
 
-  // For debugging - log the slug and icon
-  // console.log("Tool slug:", tool.slug, "Icon:", IconComponent);
-
   if (variant === "compact") {
     return (
       <Link href={`/tools/${tool.slug}`} className="group block">
-        <div className="relative flex items-center gap-4 rounded-xl bg-white p-4 transition-all duration-300 hover:bg-slate-50/80 dark:bg-slate-800 dark:hover:bg-slate-700/80">
-          <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${getCategoryColor()} shadow-lg shadow-brand-500/20 flex-shrink-0`}>
+        <div className="relative flex items-center gap-4 rounded-xl bg-white p-4 transition-all duration-300 hover:bg-slate-50/80 dark:bg-slate-800 dark:hover:bg-slate-700/80 border border-slate-200/50 dark:border-slate-700/50">
+          <div className={cn(
+            "flex h-12 w-12 items-center justify-center rounded-xl flex-shrink-0",
+            "bg-gradient-to-br shadow-lg transition-transform group-hover:scale-105",
+            categoryColor.bg
+          )}>
             {IconComponent ? (
-              <IconComponent className="h-6 w-6 text-white" />
+              <IconComponent className={cn("h-6 w-6", categoryColor.icon)} />
             ) : (
-              <span className="text-xl text-white">{getCategoryEmoji()}</span>
+              <span className="text-xl">{getCategoryEmoji()}</span>
             )}
           </div>
           <div className="flex-1 min-w-0">
@@ -66,7 +54,7 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
               {tool.shortDescription}
             </p>
           </div>
-          <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 group-hover:translate-x-0.5 transition-all" />
+          <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
         </div>
       </Link>
     );
@@ -84,16 +72,23 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
       )}>
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 to-transparent dark:from-slate-800/50 pointer-events-none" />
         
-        <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r ${getCategoryColor()}`} />
+        <div className={cn(
+          "absolute top-0 left-0 right-0 h-1 rounded-t-2xl",
+          categoryColor.border
+        )} />
 
         <div className="relative p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${getCategoryColor()} shadow-lg shadow-brand-500/20 flex-shrink-0 transition-transform group-hover:scale-105`}>
+              <div className={cn(
+                "flex h-14 w-14 items-center justify-center rounded-2xl flex-shrink-0 transition-transform group-hover:scale-105",
+                "bg-gradient-to-br shadow-lg shadow-brand-500/20",
+                categoryColor.bg
+              )}>
                 {IconComponent ? (
-                  <IconComponent className="h-7 w-7 text-white" />
+                  <IconComponent className={cn("h-7 w-7", categoryColor.icon)} />
                 ) : (
-                  <span className="text-2xl text-white">{getCategoryEmoji()}</span>
+                  <span className="text-2xl">{getCategoryEmoji()}</span>
                 )}
               </div>
               <div>
