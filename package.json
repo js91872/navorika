@@ -4,22 +4,35 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "bash scripts/build.sh || next build --no-lint",
-    "vercel-build": "bash scripts/build.sh",
+    "build": "next build --no-lint",
     "start": "next start",
-    "lint": "next lint --fix"
+    "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.344.0",
     "next": "14.2.35",
+    "next-themes": "^0.3.0",
+    "qrcode": "^1.5.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.17.24",
+    "@types/qrcode": "^1.5.5",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
+    "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.35",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2"
   }
 }
