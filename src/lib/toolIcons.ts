@@ -1,42 +1,16 @@
-// Direct imports from individual files to avoid barrel optimization
-import { Calendar } from 'lucide-react/dist/esm/icons/calendar';
-import { Percent } from 'lucide-react/dist/esm/icons/percent';
-import { QrCode } from 'lucide-react/dist/esm/icons/qr-code';
-import { Lock } from 'lucide-react/dist/esm/icons/lock';
-import { Wallet } from 'lucide-react/dist/esm/icons/wallet';
-import { TrendingUp } from 'lucide-react/dist/esm/icons/trending-up';
-import { Shield } from 'lucide-react/dist/esm/icons/shield';
-import { Receipt } from 'lucide-react/dist/esm/icons/receipt';
-import { Scale } from 'lucide-react/dist/esm/icons/scale';
-import { Flame } from 'lucide-react/dist/esm/icons/flame';
-import { Apple } from 'lucide-react/dist/esm/icons/apple';
-import { Utensils } from 'lucide-react/dist/esm/icons/utensils';
-import { Droplets } from 'lucide-react/dist/esm/icons/droplets';
-import { FileImage } from 'lucide-react/dist/esm/icons/file-image';
-import { Files } from 'lucide-react/dist/esm/icons/files';
-import { Scissors } from 'lucide-react/dist/esm/icons/scissors';
-import { FileDown } from 'lucide-react/dist/esm/icons/file-down';
-import { FileText } from 'lucide-react/dist/esm/icons/file-text';
-import { Image } from 'lucide-react/dist/esm/icons/image';
-import { Maximize2 } from 'lucide-react/dist/esm/icons/maximize-2';
-import { Crop } from 'lucide-react/dist/esm/icons/crop';
-import { Wand2 } from 'lucide-react/dist/esm/icons/wand-2';
-import { Braces } from 'lucide-react/dist/esm/icons/braces';
-import { Link } from 'lucide-react/dist/esm/icons/link';
-import { Fingerprint } from 'lucide-react/dist/esm/icons/fingerprint';
-import { Calculator } from 'lucide-react/dist/esm/icons/calculator';
-import { Landmark } from 'lucide-react/dist/esm/icons/landmark';
-import { PiggyBank } from 'lucide-react/dist/esm/icons/piggy-bank';
-import { Coins } from 'lucide-react/dist/esm/icons/coins';
-import { BarChart3 } from 'lucide-react/dist/esm/icons/bar-chart-3';
-import { LineChart } from 'lucide-react/dist/esm/icons/line-chart';
-import { DollarSign } from 'lucide-react/dist/esm/icons/dollar-sign';
-import { Banknote } from 'lucide-react/dist/esm/icons/banknote';
+import { 
+  Calendar, Percent, QrCode, Lock, Wallet, TrendingUp, Shield, Receipt,
+  Scale, Flame, Apple, Utensils, Droplets, FileImage, Files, Scissors,
+  FileDown, FileText, Image, Maximize2, Crop, Wand2, Braces, Link,
+  Fingerprint, Calculator, Landmark, PiggyBank, Coins, BarChart3,
+  LineChart, DollarSign, Banknote
+} from 'lucide-react';
 
 type IconMap = Record<string, any>;
 
+// ============ ICON MAPPINGS ============
 export const toolIcons: IconMap = {
-  // Finance Tools
+  // Finance
   'emi-calculator': Wallet,
   'loan-calculator': Landmark,
   'mortgage-calculator': Landmark,
@@ -59,21 +33,21 @@ export const toolIcons: IconMap = {
   'retirement-calculator': PiggyBank,
   'swp-calculator': Coins,
   
-  // Productivity Tools
+  // Productivity
   'age-calculator': Calendar,
   'date-calculator': Calendar,
   'percentage-calculator': Percent,
   'qr-code-generator': QrCode,
   'password-generator': Lock,
   
-  // Health Tools
+  // Health
   'bmi-calculator': Scale,
   'bmr-calculator': Flame,
   'calorie-calculator': Apple,
   'protein-calculator': Utensils,
   'water-intake-calculator': Droplets,
   
-  // PDF Tools
+  // PDF
   'pdf-to-jpg': FileImage,
   'jpg-to-pdf': FileImage,
   'merge-pdf': Files,
@@ -82,7 +56,7 @@ export const toolIcons: IconMap = {
   'pdf-to-word': FileText,
   'word-to-pdf': FileText,
   
-  // Image Tools
+  // Image
   'image-compressor': Image,
   'image-converter': Image,
   'image-resizer': Maximize2,
@@ -90,13 +64,14 @@ export const toolIcons: IconMap = {
   'background-remover': Wand2,
   'passport-photo': Image,
   
-  // Developer Tools
+  // Developer
   'json-formatter': Braces,
   'base64-encoder': Link,
   'url-encoder': Link,
   'uuid-generator': Fingerprint,
 };
 
+// ============ COLOR MAPPINGS (separate object) ============
 const iconColors: Record<string, string> = {
   // Finance
   'emi-calculator': 'text-blue-600',
@@ -139,7 +114,12 @@ const iconColors: Record<string, string> = {
 };
 
 export function getToolIcon(slug: string) {
-  return toolIcons[slug] || Calculator;
+  const icon = toolIcons[slug];
+  if (!icon) {
+    console.warn(`No icon found for slug: ${slug}, using fallback`);
+    return Calculator;
+  }
+  return icon;
 }
 
 export function getIconColor(slug: string) {
