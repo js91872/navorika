@@ -17,15 +17,16 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
   const Icon = getToolIcon(tool.slug);
   const iconColor = getIconColor(tool.slug);
 
+  // Category-based colors with lighter backgrounds
   const getCategoryColor = () => {
     const colors: Record<string, string> = {
-      "Finance": "from-emerald-500 to-teal-600",
-      "Health": "from-red-500 to-rose-600",
-      "PDF Tools": "from-orange-500 to-amber-600",
-      "Image Tools": "from-purple-500 to-violet-600",
-      "Developer Tools": "from-cyan-500 to-blue-600",
-      "productivity": "from-indigo-500 to-purple-600",
-      "Construction": "from-amber-500 to-orange-600",
+      "Finance": "from-blue-400 to-blue-500",
+      "Health": "from-emerald-400 to-emerald-500",
+      "PDF Tools": "from-orange-400 to-orange-500",
+      "Image Tools": "from-purple-400 to-purple-500",
+      "Developer Tools": "from-cyan-400 to-cyan-500",
+      "productivity": "from-indigo-400 to-indigo-500",
+      "Construction": "from-amber-400 to-amber-500",
     };
     return colors[tool.category] || "from-slate-400 to-slate-500";
   };
@@ -47,8 +48,12 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
     return (
       <Link href={`/tools/${tool.slug}`} className="group block">
         <div className="relative flex items-center gap-4 rounded-xl bg-white p-4 transition-all duration-300 hover:bg-slate-50/80 dark:bg-slate-800 dark:hover:bg-slate-700/80 border border-slate-200/80 dark:border-slate-700/80">
-          <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${getCategoryColor()} shadow-lg shadow-brand-500/20 flex-shrink-0`}>
-            <Icon className={`h-6 w-6 text-white`} />
+          <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${getCategoryColor()} shadow-md flex-shrink-0`}>
+            {Icon ? (
+              <Icon className="h-6 w-6 text-white" />
+            ) : (
+              <span className="text-xl text-white">{getCategoryEmoji()}</span>
+            )}
           </div>
           <div className="flex-1 min-w-0">
             <h4 className="font-medium text-slate-900 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition">
@@ -74,15 +79,19 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
         "hover:border-brand-200/50 dark:hover:border-brand-800/50",
         className
       )}>
-        {/* Premium Gradient Bar */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 to-transparent dark:from-slate-800/50 pointer-events-none" />
+        
         <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r ${getCategoryColor()}`} />
 
         <div className="relative p-6">
-          {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${getCategoryColor()} shadow-lg shadow-brand-500/20 flex-shrink-0 transition-transform group-hover:scale-105`}>
-                <Icon className={`h-7 w-7 text-white`} />
+              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${getCategoryColor()} shadow-md flex-shrink-0 transition-transform group-hover:scale-105`}>
+                {Icon ? (
+                  <Icon className="h-7 w-7 text-white" strokeWidth={1.5} />
+                ) : (
+                  <span className="text-2xl text-white">{getCategoryEmoji()}</span>
+                )}
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition">
@@ -94,6 +103,7 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
                   </span>
                   {tool.featured && (
                     <PremiumBadge variant="gradient" size="sm" className="text-[10px] px-2 py-0.5">
+                      <Sparkles className="h-2.5 w-2.5 inline mr-1" />
                       Featured
                     </PremiumBadge>
                   )}
@@ -103,12 +113,10 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
             <ArrowRight className="h-5 w-5 text-slate-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
           </div>
 
-          {/* Description */}
           <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-4">
             {tool.shortDescription}
           </p>
 
-          {/* Keywords */}
           <div className="flex flex-wrap gap-1.5 mt-3">
             {tool.keywords?.slice(0, 3).map((keyword) => (
               <span 
@@ -125,7 +133,6 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
             )}
           </div>
 
-          {/* View Tool */}
           <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="flex items-center gap-1.5 text-xs text-brand-600 dark:text-brand-400 font-medium">
               <span>View Tool</span>
