@@ -34,13 +34,14 @@ export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage(); // language triggers re-renders
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Search logic
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchQuery.length > 1) {
@@ -64,7 +65,7 @@ export default function Header() {
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [searchQuery]);
+  }, [searchQuery, language]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
