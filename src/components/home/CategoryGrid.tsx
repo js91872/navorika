@@ -1,125 +1,117 @@
-"use client";
-
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Container from "@/components/ui/Container";
-import { getAllTools } from "@/lib/toolRegistry";
+import {
+  Wallet,
+  Files,
+  Aperture,
+  Wand2,
+  Terminal,
+  Briefcase,
+  ShieldCheck,
+  Globe,
+} from "lucide-react";
 
-// Category mapping with correct slugs
-const categoryMap: Record<string, { 
-  slug: string; 
-  bg: string; 
-  icon: string; 
-  description: string;
-}> = {
-  "Finance": {
-    slug: "finance",
-    bg: "from-emerald-500 to-teal-600",
-    icon: "💰",
-    description: "Loans, investments, taxes & more",
+const categories = [
+  {
+    title: "Finance",
+    description: "EMI, SIP, Tax, GST and investment calculators.",
+    icon: Wallet, // Upgraded from Calculator
+    tools: "28 Tools",
+    color: "bg-blue-50 text-blue-600",
   },
-  "Health": {
-    slug: "health",
-    bg: "from-red-500 to-rose-600",
-    icon: "💪",
-    description: "Fitness, nutrition & wellness",
+  {
+    title: "PDF Tools",
+    description: "Convert, merge, split and compress PDF files.",
+    icon: Files, // Upgraded from FileText
+    tools: "32 Tools",
+    color: "bg-red-50 text-red-600",
   },
-  "PDF Tools": {
-    slug: "pdf",
-    bg: "from-orange-500 to-amber-600",
-    icon: "📄",
-    description: "Merge, split, compress & convert",
+  {
+    title: "Image Tools",
+    description: "Compress, resize, convert and optimize images.",
+    icon: Aperture, // Upgraded from Image
+    tools: "24 Tools",
+    color: "bg-emerald-50 text-emerald-600",
   },
-  "Image Tools": {
-    slug: "image",
-    bg: "from-purple-500 to-violet-600",
-    icon: "🖼️",
-    description: "Compress, resize & edit images",
+  {
+    title: "AI Tools",
+    description: "Modern AI powered productivity utilities.",
+    icon: Wand2, // Upgraded from Brain
+    tools: "20 Tools",
+    color: "bg-violet-50 text-violet-600",
   },
-  "Developer Tools": {
-    slug: "developer",
-    bg: "from-cyan-500 to-blue-600",
-    icon: "💻",
-    description: "Format, encode & generate",
+  {
+    title: "Developer",
+    description: "JSON, Base64, Regex and coding utilities.",
+    icon: Terminal, // Upgraded from Code2
+    tools: "18 Tools",
+    color: "bg-slate-100 text-slate-700",
   },
-  "productivity": {
-    slug: "productivity",
-    bg: "from-indigo-500 to-purple-600",
-    icon: "🚀",
-    description: "Calculate, generate & more",
+  {
+    title: "Business",
+    description: "Invoice, profit, margin and planning tools.",
+    icon: Briefcase,
+    tools: "16 Tools",
+    color: "bg-amber-50 text-amber-600",
   },
-  "Construction": {
-    slug: "construction",
-    bg: "from-amber-500 to-orange-600",
-    icon: "🏗️",
-    description: "Concrete, paint & tile calculators",
+  {
+    title: "Security",
+    description: "Password generators and security utilities.",
+    icon: ShieldCheck,
+    tools: "14 Tools",
+    color: "bg-cyan-50 text-cyan-600",
   },
-};
+  {
+    title: "SEO & Web",
+    description: "Meta tags, schema and SEO optimization tools.",
+    icon: Globe,
+    tools: "22 Tools",
+    color: "bg-indigo-50 text-indigo-600",
+  },
+];
 
 export default function CategoryGrid() {
-  const allTools = getAllTools();
-  
-  const categories = allTools.reduce((acc, tool) => {
-    const cat = tool.category;
-    if (!acc[cat]) {
-      acc[cat] = { count: 0, tools: [] };
-    }
-    acc[cat].count++;
-    acc[cat].tools.push(tool);
-    return acc;
-  }, {} as Record<string, { count: number; tools: typeof allTools }>);
-  
-  const sortedCategories = Object.entries(categories).sort((a, b) => b[1].count - a[1].count);
-
   return (
-    <section className="py-16 bg-white dark:bg-slate-900">
+    <section className="py-28">
       <Container>
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">Browse by Categories</h2>
-          <p className="text-slate-600 dark:text-slate-400 mt-2">Find the right tool for your needs</p>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-5xl font-black tracking-tight">
+            Explore Categories
+          </h2>
+          <p className="mt-6 text-xl text-slate-600">
+            Everything you need, organized into powerful categories for
+            productivity, finance, AI, PDFs and more.
+          </p>
         </div>
-        
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {sortedCategories.map(([category, data]) => {
-            const meta = categoryMap[category] || {
-              slug: category.toLowerCase().replace(/\s+/g, '-'),
-              bg: "from-slate-500 to-slate-600",
-              icon: "🔧",
-              description: `${data.count} tools available`,
-            };
-            
+
+        <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+          {categories.map((category) => {
+            const Icon = category.icon;
+
             return (
-              <Link
-                key={category}
-                href={`/categories/${meta.slug}`}
-                className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm transition hover:shadow-lg border border-slate-200 dark:bg-slate-800 dark:border-slate-700"
+              <div
+                key={category.title}
+                className="group cursor-pointer rounded-3xl border border-slate-200 bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
-                <div className="flex items-center gap-4">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${meta.bg} text-2xl`}>
-                    {meta.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold capitalize text-slate-900 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition">
-                      {category}
-                    </h3>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">{data.count} tools</p>
-                  </div>
-                  <ArrowRight className="h-5 w-5 text-slate-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 group-hover:translate-x-1 transition" />
+                <div
+                  className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl ${category.color}`}
+                >
+                  <Icon size={30} />
                 </div>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{meta.description}</p>
-              </Link>
+
+                <h3 className="mt-8 text-2xl font-bold">
+                  {category.title}
+                </h3>
+
+                <p className="mt-4 leading-7 text-slate-600">
+                  {category.description}
+                </p>
+
+                <div className="mt-8 inline-flex rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
+                  {category.tools}
+                </div>
+              </div>
             );
           })}
-        </div>
-        
-        <div className="text-center mt-8">
-          <Link
-            href="/categories"
-            className="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 hover:text-brand-700 font-medium"
-          >
-            View all categories
-            <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
       </Container>
     </section>
