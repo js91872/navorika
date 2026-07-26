@@ -2,18 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { Calculator, FileText, Image, Users } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const stats = [
-  { key: "calculators", icon: Calculator, value: "40+", color: "from-blue-500 to-blue-600" },
-  { key: "pdf_tools", icon: FileText, value: "15+", color: "from-orange-500 to-orange-600" },
-  { key: "image_tools", icon: Image, value: "10+", color: "from-purple-500 to-purple-600" },
-  { key: "active_users", icon: Users, value: "10K+", color: "from-pink-500 to-pink-600" },
+  { icon: Calculator, value: "40+", label: "Calculators", color: "from-blue-500 to-blue-600" },
+  { icon: FileText, value: "15+", label: "PDF Tools", color: "from-orange-500 to-orange-600" },
+  { icon: Image, value: "10+", label: "Image Tools", color: "from-purple-500 to-purple-600" },
+  { icon: Users, value: "10K+", label: "Active Users", color: "from-pink-500 to-pink-600" },
 ];
 
 export default function PremiumStats() {
   const [isVisible, setIsVisible] = useState(false);
-  const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -33,7 +31,7 @@ export default function PremiumStats() {
               <div className="relative">
                 <stat.icon className={`w-8 h-8 mx-auto mb-3 text-transparent bg-gradient-to-br ${stat.color} bg-clip-text`} />
                 <div className="text-3xl font-bold text-slate-900 dark:text-slate-100">{stat.value}</div>
-                <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">{t(`stats.${stat.key}`)}</div>
+                <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">{stat.label}</div>
               </div>
             </div>
           ))}

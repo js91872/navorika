@@ -4,26 +4,25 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 15, 23, 42;
+    --background-end-rgb: 15, 23, 42;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -32,7 +31,7 @@ body {
   }
 }
 
-/* Premium Animations */
+/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -46,11 +45,6 @@ body {
 
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease forwards;
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Custom scrollbar */
@@ -71,7 +65,6 @@ html {
   background: linear-gradient(to bottom, #2563eb, #7c3aed);
 }
 
-/* Dark mode scrollbar */
 @media (prefers-color-scheme: dark) {
   ::-webkit-scrollbar-track {
     background: #1a1a1a;

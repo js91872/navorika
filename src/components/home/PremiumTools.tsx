@@ -1,15 +1,13 @@
 "use client";
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Sparkles, ArrowRight } from "lucide-react";
-import { LanguageContext } from "@/contexts/LanguageContext";
 import { getAllTools } from "@/lib/toolRegistry";
 
 export default function PremiumTools() {
   const [tools, setTools] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
-  const { t } = useContext(LanguageContext);
 
   useEffect(() => {
     setIsVisible(true);
@@ -58,16 +56,16 @@ export default function PremiumTools() {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 dark:bg-purple-950/30 text-purple-700 dark:text-purple-400 text-sm font-medium mb-4">
             <Sparkles className="w-4 h-4" />
-            <span>{t('tools.featured')}</span>
+            <span>Featured</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4">
-            {t('tools.title')}
+            Most Popular
             <span className="block bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mt-1">
-              {t('tools.subheading')}
+              Featured Tools
             </span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            {t('tools.description')}
+            Hand-picked tools that our users love and use every day
           </p>
         </div>
 
@@ -76,10 +74,8 @@ export default function PremiumTools() {
             <Link
               key={tool.slug}
               href={`/tools/${tool.slug}`}
-              className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 p-6 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 hover:-translate-y-2 transition-all duration-700 opacity-0 translate-y-10`}
-              style={{ 
-                animation: `fadeInUp 0.6s ease forwards ${index * 0.1 + 0.3}s`,
-              }}
+              className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 p-6 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 hover:-translate-y-2`}
+              style={{ animation: `fadeInUp 0.6s ease forwards ${index * 0.1 + 0.3}s`, opacity: 0 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent dark:from-slate-800/50" />
               
@@ -119,7 +115,7 @@ export default function PremiumTools() {
             href="/tools"
             className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30"
           >
-            {t('tools.view_all')}
+            View All Tools
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
