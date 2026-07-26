@@ -71,17 +71,21 @@ export const toolIcons: IconMap = {
   'uuid-generator': Fingerprint,
 };
 
+// ============ COLOR MAPPINGS ============
+const iconColors: Record<string, string> = {
+  'default': 'text-white',
+};
+
 export function getToolIcon(slug: string) {
   const icon = toolIcons[slug];
   if (!icon) {
-    console.warn(`No icon found for slug: ${slug}, using fallback`);
     return Calculator;
   }
   return icon;
 }
 
 export function getIconColor(slug: string) {
-  return 'text-white';
+  return iconColors[slug] || iconColors['default'];
 }
 
 export default toolIcons;

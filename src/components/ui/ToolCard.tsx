@@ -14,21 +14,21 @@ interface ToolCardProps {
 }
 
 export function ToolCard({ tool, variant = "default", className }: ToolCardProps) {
+  // Safely get the icon
   const Icon = getToolIcon(tool.slug);
   const iconColor = getIconColor(tool.slug);
 
-  // Category-based colors with lighter backgrounds
   const getCategoryColor = () => {
     const colors: Record<string, string> = {
-      "Finance": "from-blue-400 to-blue-500",
-      "Health": "from-emerald-400 to-emerald-500",
-      "PDF Tools": "from-orange-400 to-orange-500",
-      "Image Tools": "from-purple-400 to-purple-500",
-      "Developer Tools": "from-cyan-400 to-cyan-500",
-      "productivity": "from-indigo-400 to-indigo-500",
-      "Construction": "from-amber-400 to-amber-500",
+      "Finance": "from-blue-500 to-blue-700",
+      "Health": "from-emerald-500 to-emerald-700",
+      "PDF Tools": "from-orange-500 to-orange-700",
+      "Image Tools": "from-purple-500 to-purple-700",
+      "Developer Tools": "from-cyan-500 to-cyan-700",
+      "productivity": "from-indigo-500 to-indigo-700",
+      "Construction": "from-amber-500 to-amber-700",
     };
-    return colors[tool.category] || "from-slate-400 to-slate-500";
+    return colors[tool.category] || "from-slate-400 to-slate-600";
   };
 
   const getCategoryEmoji = () => {
@@ -48,7 +48,7 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
     return (
       <Link href={`/tools/${tool.slug}`} className="group block">
         <div className="relative flex items-center gap-4 rounded-xl bg-white p-4 transition-all duration-300 hover:bg-slate-50/80 dark:bg-slate-800 dark:hover:bg-slate-700/80 border border-slate-200/80 dark:border-slate-700/80">
-          <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${getCategoryColor()} shadow-md flex-shrink-0`}>
+          <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${getCategoryColor()} shadow-lg shadow-brand-500/20 flex-shrink-0`}>
             {Icon ? (
               <Icon className="h-6 w-6 text-white" />
             ) : (
@@ -86,9 +86,9 @@ export function ToolCard({ tool, variant = "default", className }: ToolCardProps
         <div className="relative p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${getCategoryColor()} shadow-md flex-shrink-0 transition-transform group-hover:scale-105`}>
+              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${getCategoryColor()} shadow-lg shadow-brand-500/20 flex-shrink-0 transition-transform group-hover:scale-105`}>
                 {Icon ? (
-                  <Icon className="h-7 w-7 text-white" strokeWidth={1.5} />
+                  <Icon className="h-7 w-7 text-white" />
                 ) : (
                   <span className="text-2xl text-white">{getCategoryEmoji()}</span>
                 )}
