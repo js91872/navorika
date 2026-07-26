@@ -2,17 +2,7 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { 
-  Wallet,
-  Files,
-  Aperture,
-  Activity,
-  Zap,
-  Terminal,
-  HardHat,
-  ArrowRight,
-  Sparkles
-} from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const categories = [
   {
@@ -20,54 +10,51 @@ const categories = [
     slug: "finance",
     description: "Loans, investments, taxes & more",
     count: 10,
+    icon: "💰",
   },
   {
     name: "PDF Tools",
     slug: "pdf-tools",
     description: "Merge, split, compress & convert",
     count: 7,
+    icon: "📄",
   },
   {
     name: "Image Tools",
     slug: "image-tools",
     description: "Compress, resize & edit",
     count: 6,
+    icon: "🖼️",
   },
   {
     name: "Health",
     slug: "health",
     description: "Fitness, nutrition & wellness",
     count: 5,
+    icon: "💪",
   },
   {
     name: "productivity",
     slug: "productivity",
     description: "Calculate, generate & more",
     count: 5,
+    icon: "🚀",
   },
   {
     name: "Developer Tools",
     slug: "developer",
     description: "Format, encode & generate",
     count: 4,
+    icon: "💻",
   },
   {
     name: "Construction",
     slug: "construction",
     description: "Construction calculators for concrete, paint & more",
     count: 3,
+    icon: "🏗️",
   },
 ];
-
-const categoryIcons: Record<string, any> = {
-  "Finance": Wallet,
-  "PDF Tools": Files,
-  "Image Tools": Aperture,
-  "Health": Activity,
-  "productivity": Zap,
-  "Developer Tools": Terminal,
-  "Construction": HardHat,
-};
 
 const categoryColors: Record<string, string> = {
   "Finance": "from-blue-500 to-blue-600",
@@ -93,7 +80,6 @@ export default function Categories() {
   return (
     <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-4 max-w-7xl">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100/50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 text-sm font-medium mb-4">
             <Sparkles className="h-4 w-4" />
@@ -110,10 +96,8 @@ export default function Categories() {
           </p>
         </div>
 
-        {/* Category Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {categories.map((category) => {
-            const IconComponent = categoryIcons[category.name];
             const color = categoryColors[category.name] || "from-slate-500 to-slate-600";
             const badge = categoryBadges[category.name] || "bg-slate-100 text-slate-700";
 
@@ -124,17 +108,14 @@ export default function Categories() {
                 className="group relative block overflow-hidden rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 <div className="relative p-6 z-10">
-                  {/* Icon and Count */}
                   <div className="flex items-start justify-between mb-4">
                     <div className={cn(
-                      "flex h-16 w-16 items-center justify-center rounded-2xl",
+                      "flex h-16 w-16 items-center justify-center rounded-2xl text-3xl",
                       "bg-gradient-to-br shadow-lg",
                       color,
                       "transition-transform duration-300 group-hover:scale-110"
                     )}>
-                      {IconComponent && (
-                        <IconComponent className="h-8 w-8 text-white" />
-                      )}
+                      {category.icon}
                     </div>
                     <div className={cn(
                       "px-3 py-1 rounded-full text-xs font-semibold",
@@ -144,24 +125,20 @@ export default function Categories() {
                     </div>
                   </div>
 
-                  {/* Category Name */}
                   <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
                     {category.name}
                   </h3>
                   
-                  {/* Description */}
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
                     {category.description}
                   </p>
 
-                  {/* View all link */}
                   <div className="flex items-center gap-2 text-sm font-medium text-brand-600 dark:text-brand-400 group-hover:text-brand-700 dark:group-hover:text-brand-300 transition-colors">
                     <span>Explore category</span>
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </div>
 
-                {/* Decorative glow effect */}
                 <div className={cn(
                   "absolute -bottom-16 -right-16 h-40 w-40 rounded-full",
                   "opacity-0 group-hover:opacity-10 transition-opacity duration-500",
