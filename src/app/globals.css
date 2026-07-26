@@ -31,6 +31,7 @@ body {
     text-wrap: balance;
   }
 }
+
 /* Premium Animations */
 @keyframes fadeInUp {
   from {
@@ -59,7 +60,6 @@ html {
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-  dark: background: #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -69,4 +69,11 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #2563eb, #7c3aed);
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
 }
