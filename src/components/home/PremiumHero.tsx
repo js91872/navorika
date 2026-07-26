@@ -9,7 +9,17 @@ export default function PremiumHero() {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
-  const { t } = useContext(LanguageContext);
+  
+  // Safely get language context
+  let t = (key: string) => key;
+  try {
+    const context = useContext(LanguageContext);
+    if (context) {
+      t = context.t;
+    }
+  } catch (error) {
+    console.warn("LanguageContext not available, using fallback translations");
+  }
 
   useEffect(() => {
     setIsVisible(true);
@@ -37,19 +47,19 @@ export default function PremiumHero() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-400/10 dark:to-purple-400/10 border border-blue-500/20 dark:border-blue-400/20 mb-6 backdrop-blur-sm">
             <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              {t('hero.badge')}
+              {t('hero.badge') || 'Trusted by 10,000+ users'}
             </span>
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-slate-100 mb-6 leading-tight">
-            {t('hero.title')}
+            {t('hero.title') || 'Smart Tools for'}
             <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              {t('hero.subtitle')}
+              {t('hero.subtitle') || 'Modern Professionals'}
             </span>
           </h1>
           
           <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            {t('hero.description')}
+            {t('hero.description') || 'Access 40+ premium calculators and utilities designed to boost productivity, simplify complex tasks, and save you time.'}
           </p>
 
           {/* Search Bar */}
@@ -59,7 +69,7 @@ export default function PremiumHero() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={t('hero.search_placeholder')}
+                placeholder={t('hero.search_placeholder') || 'Search for any tool...'}
                 className="w-full px-8 py-5 pl-14 rounded-2xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 shadow-xl shadow-slate-200/50 dark:shadow-slate-800/50"
               />
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 dark:text-slate-500 group-focus-within:text-blue-500 transition-colors" />
@@ -67,7 +77,7 @@ export default function PremiumHero() {
                 type="submit" 
                 className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 flex items-center gap-2"
               >
-                <span className="hidden sm:inline">{t('hero.search_button')}</span>
+                <span className="hidden sm:inline">{t('hero.search_button') || 'Search'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -77,15 +87,15 @@ export default function PremiumHero() {
           <div className="flex flex-wrap items-center justify-center gap-8 mt-12">
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
               <Zap className="w-5 h-5 text-blue-500 dark:text-blue-400" />
-              <span>{t('hero.fast')}</span>
+              <span>{t('hero.fast') || 'Fast & Free'}</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
               <Shield className="w-5 h-5 text-purple-500 dark:text-purple-400" />
-              <span>{t('hero.secure')}</span>
+              <span>{t('hero.secure') || 'Secure & Private'}</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
               <Users className="w-5 h-5 text-pink-500 dark:text-pink-400" />
-              <span>{t('hero.users')}</span>
+              <span>{t('hero.users') || '10K+ Users'}</span>
             </div>
           </div>
         </div>
