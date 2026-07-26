@@ -6,6 +6,7 @@ import { PremiumCard } from '@/components/ui/PremiumCard';
 import { PremiumHeading } from '@/components/ui/PremiumHeading';
 import { PremiumBadge } from '@/components/ui/PremiumBadge';
 import { Bookmark, Share2, Sparkles } from 'lucide-react';
+import { getToolIcon } from '@/lib/toolIcons';
 
 interface ToolLayoutProps {
   tool: Tool;
@@ -13,6 +14,34 @@ interface ToolLayoutProps {
 }
 
 export default function ToolLayout({ tool, children }: ToolLayoutProps) {
+  const Icon = getToolIcon(tool.slug);
+
+  const getCategoryColor = () => {
+    const colors: Record<string, string> = {
+      "Finance": "from-blue-500 to-blue-600",
+      "Health": "from-emerald-500 to-emerald-600",
+      "PDF Tools": "from-orange-500 to-orange-600",
+      "Image Tools": "from-purple-500 to-purple-600",
+      "Developer Tools": "from-cyan-500 to-cyan-600",
+      "productivity": "from-indigo-500 to-indigo-600",
+      "Construction": "from-amber-500 to-amber-600",
+    };
+    return colors[tool.category] || "from-slate-400 to-slate-500";
+  };
+
+  const getCategoryEmoji = () => {
+    const emojis: Record<string, string> = {
+      "Finance": "💰",
+      "Health": "💪",
+      "PDF Tools": "📄",
+      "Image Tools": "🖼️",
+      "Developer Tools": "💻",
+      "productivity": "🚀",
+      "Construction": "🏗️",
+    };
+    return emojis[tool.category] || "🔧";
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
       <Container>
@@ -24,7 +53,13 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="text-4xl">{tool.icon || '🔧'}</span>
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${getCategoryColor()} shadow-lg`}>
+                    {Icon ? (
+                      <Icon className="h-7 w-7 text-white" />
+                    ) : (
+                      <span className="text-2xl text-white">{getCategoryEmoji()}</span>
+                    )}
+                  </div>
                   <PremiumHeading level="h2">{tool.title}</PremiumHeading>
                 </div>
                 <p className="mt-2 text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
