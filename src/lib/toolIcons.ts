@@ -1,16 +1,43 @@
 import { 
-  Calendar, Percent, QrCode, Lock, Wallet, TrendingUp, Shield, Receipt,
-  Scale, Flame, Apple, Utensils, Droplets, FileImage, Files, Scissors,
-  FileDown, FileText, Image, Maximize2, Crop, Wand2, Braces, Link,
-  Fingerprint, Calculator, Landmark, PiggyBank, Coins, BarChart3,
-  LineChart, DollarSign, Banknote
+  Wallet,
+  Landmark,
+  PiggyBank,
+  Coins,
+  Shield,
+  Receipt,
+  TrendingUp,
+  BarChart3,
+  LineChart,
+  DollarSign,
+  Banknote,
+  Calendar,
+  Percent,
+  QrCode,
+  Lock,
+  Scale,
+  Flame,
+  Apple,
+  Utensils,
+  Droplets,
+  FileImage,
+  Files,
+  Scissors,
+  FileDown,
+  FileText,
+  Image,
+  Maximize2,
+  Crop,
+  Wand2,
+  Braces,
+  Link,
+  Fingerprint,
+  Calculator
 } from 'lucide-react';
 
 type IconMap = Record<string, any>;
 
-// ============ ICON MAPPINGS ============
 export const toolIcons: IconMap = {
-  // Finance
+  // Finance Tools - Proper mapping
   'emi-calculator': Wallet,
   'loan-calculator': Landmark,
   'mortgage-calculator': Landmark,
@@ -33,21 +60,21 @@ export const toolIcons: IconMap = {
   'retirement-calculator': PiggyBank,
   'swp-calculator': Coins,
   
-  // Productivity
+  // Productivity Tools
   'age-calculator': Calendar,
   'date-calculator': Calendar,
   'percentage-calculator': Percent,
   'qr-code-generator': QrCode,
   'password-generator': Lock,
   
-  // Health
+  // Health Tools
   'bmi-calculator': Scale,
   'bmr-calculator': Flame,
   'calorie-calculator': Apple,
   'protein-calculator': Utensils,
   'water-intake-calculator': Droplets,
   
-  // PDF
+  // PDF Tools
   'pdf-to-jpg': FileImage,
   'jpg-to-pdf': FileImage,
   'merge-pdf': Files,
@@ -56,7 +83,7 @@ export const toolIcons: IconMap = {
   'pdf-to-word': FileText,
   'word-to-pdf': FileText,
   
-  // Image
+  // Image Tools
   'image-compressor': Image,
   'image-converter': Image,
   'image-resizer': Maximize2,
@@ -64,28 +91,19 @@ export const toolIcons: IconMap = {
   'background-remover': Wand2,
   'passport-photo': Image,
   
-  // Developer
+  // Developer Tools
   'json-formatter': Braces,
   'base64-encoder': Link,
   'url-encoder': Link,
   'uuid-generator': Fingerprint,
 };
 
-// ============ COLOR MAPPINGS ============
-const iconColors: Record<string, string> = {
-  'default': 'text-white',
-};
-
 export function getToolIcon(slug: string) {
-  const icon = toolIcons[slug];
-  if (!icon) {
-    return Calculator;
-  }
-  return icon;
-}
-
-export function getIconColor(slug: string) {
-  return iconColors[slug] || iconColors['default'];
+  return toolIcons[slug] || Calculator;
 }
 
 export default toolIcons;
+
+export function getIconColor(slug: string) {
+  return "text-white";
+}
