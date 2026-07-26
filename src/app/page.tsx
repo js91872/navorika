@@ -1,13 +1,13 @@
 import PremiumHero from "@/components/home/PremiumHero";
-import PremiumCategories from "@/components/home/PremiumCategories";
-import PremiumFeatures from "@/components/home/PremiumFeatures";
 import PremiumStats from "@/components/home/PremiumStats";
+import PremiumCategories from "@/components/home/PremiumCategories";
 import PremiumTools from "@/components/home/PremiumTools";
+import PremiumFeatures from "@/components/home/PremiumFeatures";
 import PremiumCTA from "@/components/home/PremiumCTA";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main>
       <PremiumHero />
       <PremiumStats />
       <PremiumCategories />
