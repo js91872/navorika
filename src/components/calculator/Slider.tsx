@@ -1,51 +1,57 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 interface SliderProps {
+  label: string;
   value: number;
+  onChange: (value: number) => void;
   min: number;
   max: number;
   step?: number;
-  onChange: (value: number) => void;
+  suffix?: string;
 }
 
 export default function Slider({
+  label,
   value,
+  onChange,
   min,
   max,
   step = 1,
-  onChange,
+  suffix = "",
 }: SliderProps) {
-  return (
-    <div className="pt-2">
+  const [localValue, setLocalValue] = useState(value);
 
+  useEffect(() => {
+    setLocalValue(value);
+  }, [value]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value);
+    setLocalValue(newValue);
+    onChange(newValue);
+  };
+
+  return (
+    <div className="space-y-3">
+      <div className="flex items-center justify-between">
+        <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
+          {label}
+        </label>
+        <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+          {localValue.toLocaleString()}{suffix}
+        </span>
+      </div>
       <input
         type="range"
         min={min}
         max={max}
         step={step}
-        value={value}
-        onChange={(e) =>
-          onChange(Number(e.target.value))
-        }
-        className="
-          h-2
-          w-full
-          cursor-pointer
-          appearance-none
-          rounded-full
-          bg-slate-200
-          accent-blue-600
-        "
+        value={localValue}
+        onChange={handleChange}
+        className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
       />
-
-      <div className="mt-2 flex justify-between text-xs text-muted-foreground">
-
-        <span>{min.toLocaleString()}</span>
-
-        <span>{max.toLocaleString()}</span>
-
-      </div>
-
     </div>
   );
 }
