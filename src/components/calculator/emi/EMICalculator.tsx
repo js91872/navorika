@@ -35,7 +35,6 @@ export default function EMICalculator() {
     const totalPayment = emi * months;
     const totalInterest = totalPayment - loanAmount;
     
-    // Generate amortization schedule
     let balance = loanAmount;
     const schedule = [];
     for (let i = 1; i <= Math.min(months, 360); i++) {
@@ -78,7 +77,7 @@ export default function EMICalculator() {
       <div className="p-4 sm:p-6 lg:p-8 space-y-6">
         <div className="grid gap-6 md:grid-cols-2">
           <NumberInput
-            label="Loan Amount (₹)"
+            label="Loan Amount"
             value={loanAmount}
             onChange={setLoanAmount}
             prefix="₹"
@@ -87,7 +86,7 @@ export default function EMICalculator() {
             step={1000}
           />
           <NumberInput
-            label="Interest Rate (%)"
+            label="Interest Rate"
             value={interestRate}
             onChange={setInterestRate}
             suffix="%"
@@ -97,7 +96,7 @@ export default function EMICalculator() {
           />
           <div className="md:col-span-2">
             <Slider
-              label="Tenure (Years)"
+              label="Tenure"
               value={tenure}
               onChange={setTenure}
               min={1}
@@ -118,7 +117,6 @@ export default function EMICalculator() {
           </Button>
         </div>
 
-        {/* Results */}
         {loanAmount > 0 && interestRate > 0 && tenure > 0 && (
           <div className="space-y-6">
             <div className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white text-center">
@@ -143,7 +141,7 @@ export default function EMICalculator() {
               />
             </ResultGrid>
 
-            {showSchedule && (
+            {showSchedule && calculateEMI.schedule.length > 0 && (
               <ScheduleTable 
                 data={calculateEMI.schedule} 
                 columns={[

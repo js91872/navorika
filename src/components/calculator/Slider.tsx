@@ -22,16 +22,27 @@ export default function Slider({
   suffix = "",
 }: SliderProps) {
   const [localValue, setLocalValue] = useState(value);
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
-    setLocalValue(value);
-  }, [value]);
+    if (!isDragging) {
+      setLocalValue(value);
+    }
+  }, [value, isDragging]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value);
     setLocalValue(newValue);
+    setIsDragging(true);
     onChange(newValue);
   };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // Calculate percentage for progress bar
+  const percentage = ((localValue - min) / (max - min)) * 100;
 
   return (
     <div className="space-y-3">
@@ -43,15 +54,22 @@ export default function Slider({
           {localValue.toLocaleString()}{suffix}
         </span>
       </div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={localValue}
-        onChange={handleChange}
-        className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
-      />
+      <div className="relative">
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={localValue}
+          onChange={handleChange}
+          onMouseUp={handleMouseUp}
+          onTouchEnd={handleMouseUp}
+          className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
+          style={{
+            background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${percentage}%, #e2e8f0 ${percentage}%, #e2e8f0 100%)`,
+          }}
+        />
+      </div>
     </div>
   );
 }
