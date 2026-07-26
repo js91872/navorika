@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { LanguageContext } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const categories = [
   { name: "finance", slug: "finance", icon: "💰", color: "from-blue-500 to-blue-600" },
@@ -17,17 +17,7 @@ const categories = [
 
 export default function PremiumCategories() {
   const [isVisible, setIsVisible] = useState(false);
-  
-  // Safely get language context
-  let t = (key: string) => key;
-  try {
-    const context = useContext(LanguageContext);
-    if (context) {
-      t = context.t;
-    }
-  } catch (error) {
-    console.warn("LanguageContext not available, using fallback translations");
-  }
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -39,16 +29,16 @@ export default function PremiumCategories() {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400 text-sm font-medium mb-4">
             <Sparkles className="w-4 h-4" />
-            <span>{t('categories.title') || 'Categories'}</span>
+            <span>{t('categories.title')}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4">
-            {t('categories.heading') || 'Explore Our'}
+            {t('categories.heading')}
             <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mt-1">
-              {t('categories.subheading') || 'Tool Categories'}
+              {t('categories.subheading')}
             </span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            {t('categories.description') || 'Find the perfect tool for your needs across 7 specialized categories'}
+            {t('categories.description')}
           </p>
         </div>
 
@@ -68,7 +58,7 @@ export default function PremiumCategories() {
                   <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                  {t(`categories.${category.name}`) || category.name}
+                  {t(`categories.${category.name}`)}
                 </h3>
               </div>
             </Link>

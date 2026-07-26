@@ -1,39 +1,19 @@
 "use client";
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Calculator, FileText, Image, Users } from "lucide-react";
-import { LanguageContext } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const stats = [
-  {
-    key: "calculators",
-    icon: Calculator,
-    value: "40+",
-    color: "from-blue-500 to-blue-600",
-  },
-  {
-    key: "pdf_tools",
-    icon: FileText,
-    value: "15+",
-    color: "from-orange-500 to-orange-600",
-  },
-  {
-    key: "image_tools",
-    icon: Image,
-    value: "10+",
-    color: "from-purple-500 to-purple-600",
-  },
-  {
-    key: "active_users",
-    icon: Users,
-    value: "10K+",
-    color: "from-pink-500 to-pink-600",
-  },
+  { key: "calculators", icon: Calculator, value: "40+", color: "from-blue-500 to-blue-600" },
+  { key: "pdf_tools", icon: FileText, value: "15+", color: "from-orange-500 to-orange-600" },
+  { key: "image_tools", icon: Image, value: "10+", color: "from-purple-500 to-purple-600" },
+  { key: "active_users", icon: Users, value: "10K+", color: "from-pink-500 to-pink-600" },
 ];
 
 export default function PremiumStats() {
   const [isVisible, setIsVisible] = useState(false);
-  const { t } = useContext(LanguageContext);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
