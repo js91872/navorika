@@ -138,7 +138,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-medium transition flex items-center gap-1.5 ${
+                className={`relative text-sm font-medium transition flex items-center gap-1.5 ${
                   active
                     ? 'text-brand-600 dark:text-brand-400'
                     : 'text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400'
