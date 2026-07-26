@@ -1,17 +1,19 @@
-import { Hero } from "@/components/home/Hero";
-import Categories from "@/components/home/Categories";
-import { FeaturedTools } from "@/components/home/FeaturedTools";
-import { PopularTools } from "@/components/home/PopularTools";
-import { WhyNavorika } from "@/components/home/WhyNavorika";
+import PremiumHero from "@/components/home/PremiumHero";
+import PremiumCategories from "@/components/home/PremiumCategories";
+import PremiumFeatures from "@/components/home/PremiumFeatures";
+import PremiumStats from "@/components/home/PremiumStats";
+import PremiumTools from "@/components/home/PremiumTools";
+import PremiumCTA from "@/components/home/PremiumCTA";
 
 export default function HomePage() {
   return (
-    <>
-      <Hero />
-      <Categories />
-      <FeaturedTools />
-      <PopularTools />
-      <WhyNavorika />
-    </>
+    <main className="min-h-screen">
+      <PremiumHero />
+      <PremiumStats />
+      <PremiumCategories />
+      <PremiumTools />
+      <PremiumFeatures />
+      <PremiumCTA />
+    </main>
   );
 }
