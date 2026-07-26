@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { 
-  TrendingUp,
-  FileText,
-  Image as ImageIcon,
-  Heart,
-  Rocket,
-  Code,
-  Building2,
+  Wallet,
+  Files,
+  Aperture,
+  Activity,
+  Zap,
+  Terminal,
+  HardHat,
   ArrowRight,
   Sparkles
 } from "lucide-react";
@@ -59,18 +59,16 @@ const categories = [
   },
 ];
 
-// Category icons with Lucide components (same as your tool icons)
 const categoryIcons: Record<string, any> = {
-  "Finance": TrendingUp,
-  "PDF Tools": FileText,
-  "Image Tools": ImageIcon,
-  "Health": Heart,
-  "productivity": Rocket,
-  "Developer Tools": Code,
-  "Construction": Building2,
+  "Finance": Wallet,
+  "PDF Tools": Files,
+  "Image Tools": Aperture,
+  "Health": Activity,
+  "productivity": Zap,
+  "Developer Tools": Terminal,
+  "Construction": HardHat,
 };
 
-// Category gradient colors (matching your tool card colors)
 const categoryColors: Record<string, string> = {
   "Finance": "from-blue-500 to-blue-600",
   "PDF Tools": "from-orange-500 to-orange-600",
