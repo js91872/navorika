@@ -13,7 +13,6 @@ interface NumberInputProps {
   max?: number;
   step?: number;
   placeholder?: string;
-  format?: boolean;
 }
 
 export default function NumberInput({
@@ -26,80 +25,50 @@ export default function NumberInput({
   max,
   step = 1,
   placeholder = "",
-  format = true,
 }: NumberInputProps) {
-  const [displayValue, setDisplayValue] = useState<string>("");
-  const [isFocused, setIsFocused] = useState(false);
+  const [displayValue, setDisplayValue] = useState<string>(String(value));
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Update display value when props change
+  // Update display when value prop changes from parent
   useEffect(() => {
-    if (!isFocused) {
-      if (format) {
-        setDisplayValue(value.toLocaleString());
-      } else {
-        setDisplayValue(String(value));
-      }
-    }
-  }, [value, isFocused, format]);
-
-  const parseNumber = (str: string): number => {
-    const cleaned = str.replace(/[^0-9.]/g, "");
-    const parsed = parseFloat(cleaned);
-    return isNaN(parsed) ? 0 : parsed;
-  };
-
-  const handleFocus = () => {
-    setIsFocused(true);
     setDisplayValue(String(value));
-    setTimeout(() => {
-      if (inputRef.current) {
-        inputRef.current.select();
-      }
-    }, 0);
-  };
+  }, [value]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
+    setDisplayValue(raw);
+    
+    // Allow empty, decimal point, and minus sign
     if (raw === "" || raw === "-" || raw === ".") {
-      setDisplayValue(raw);
       return;
     }
-    const cleaned = raw.replace(/[^0-9.]/g, "");
-    const numValue = parseFloat(cleaned);
+    
+    const numValue = parseFloat(raw);
     if (!isNaN(numValue)) {
-      setDisplayValue(cleaned);
-    } else {
-      setDisplayValue(cleaned);
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleBlur();
-      if (inputRef.current) {
-        inputRef.current.blur();
-      }
+      let finalValue = numValue;
+      if (min !== undefined && finalValue < min) finalValue = min;
+      if (max !== undefined && finalValue > max) finalValue = max;
+      onChange(finalValue);
     }
   };
 
   const handleBlur = () => {
-    setIsFocused(false);
-    let numValue: number;
-    if (displayValue === "" || displayValue === "-" || displayValue === ".") {
+    let numValue = parseFloat(displayValue);
+    
+    if (isNaN(numValue) || displayValue === "") {
       numValue = min !== undefined ? min : 0;
-    } else {
-      numValue = parseNumber(displayValue);
-      if (isNaN(numValue)) {
-        numValue = min !== undefined ? min : 0;
-      }
     }
+    
     if (min !== undefined && numValue < min) numValue = min;
     if (max !== undefined && numValue > max) numValue = max;
+    
+    // Round to step
     if (step > 0) {
       numValue = Math.round(numValue / step) * step;
     }
+    
     onChange(numValue);
+    setDisplayValue(String(numValue));
   };
 
   const increment = () => {
@@ -121,7 +90,7 @@ export default function NumberInput({
       </label>
       <div className="relative flex items-center">
         {prefix && (
-          <span className="absolute left-3 text-sm text-slate-500 dark:text-slate-400 pointer-events-none">
+          <span className="absolute left-3 text-sm text-slate-500 dark:text-slate-400 pointer-events-none z-10">
             {prefix}
           </span>
         )}
@@ -131,9 +100,7 @@ export default function NumberInput({
           inputMode="decimal"
           value={displayValue}
           onChange={handleChange}
-          onFocus={handleFocus}
           onBlur={handleBlur}
-          onKeyDown={handleKeyDown}
           placeholder={placeholder}
           className={cn(
             "w-full rounded-xl border border-slate-300 dark:border-slate-600",
@@ -146,7 +113,7 @@ export default function NumberInput({
           )}
         />
         {suffix && (
-          <span className="absolute right-3 text-sm text-slate-500 dark:text-slate-400 pointer-events-none">
+          <span className="absolute right-8 text-sm text-slate-500 dark:text-slate-400 pointer-events-none">
             {suffix}
           </span>
         )}
@@ -154,14 +121,14 @@ export default function NumberInput({
           <button
             type="button"
             onClick={increment}
-            className="h-4 w-6 rounded-t hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center text-xs text-slate-500"
+            className="h-4 w-6 rounded-t hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center text-xs text-slate-500 transition"
           >
             ▲
           </button>
           <button
             type="button"
             onClick={decrement}
-            className="h-4 w-6 rounded-b hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center text-xs text-slate-500"
+            className="h-4 w-6 rounded-b hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center text-xs text-slate-500 transition"
           >
             ▼
           </button>
