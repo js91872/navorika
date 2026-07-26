@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import { Sparkles, ArrowRight } from "lucide-react";
+import { LanguageContext } from "@/contexts/LanguageContext";
 import { getAllTools } from "@/lib/toolRegistry";
 
 export default function PremiumTools() {
   const [tools, setTools] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useContext(LanguageContext);
 
   useEffect(() => {
     setIsVisible(true);
@@ -51,21 +53,21 @@ export default function PremiumTools() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950">
+    <section className="py-24 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 dark:bg-purple-950/30 text-purple-700 dark:text-purple-400 text-sm font-medium mb-4">
             <Sparkles className="w-4 h-4" />
-            <span>Featured</span>
+            <span>{t('tools.featured')}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4">
-            Most Popular
+            {t('tools.title')}
             <span className="block bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mt-1">
-              Featured Tools
+              {t('tools.subheading')}
             </span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Hand-picked tools that our users love and use every day
+            {t('tools.description')}
           </p>
         </div>
 
@@ -107,7 +109,6 @@ export default function PremiumTools() {
                 </div>
               </div>
 
-              {/* Gradient line at bottom */}
               <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${getCategoryColor(tool.category)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
             </Link>
           ))}
@@ -118,7 +119,7 @@ export default function PremiumTools() {
             href="/tools"
             className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30"
           >
-            View All Tools
+            {t('tools.view_all')}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

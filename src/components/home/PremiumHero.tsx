@@ -1,13 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { Search, ArrowRight, Sparkles, Zap, Shield, Users } from "lucide-react";
+import { LanguageContext } from "@/contexts/LanguageContext";
 
 export default function PremiumHero() {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useContext(LanguageContext);
 
   useEffect(() => {
     setIsVisible(true);
@@ -24,31 +26,30 @@ export default function PremiumHero() {
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950/20 py-24 md:py-32">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 dark:bg-blue-400/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 dark:bg-purple-400/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/5 to-purple-500/5 dark:from-blue-400/5 dark:to-purple-400/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className={`text-center max-w-4xl mx-auto transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           {/* Premium Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 dark:border-blue-400/20 mb-6 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-400/10 dark:to-purple-400/10 border border-blue-500/20 dark:border-blue-400/20 mb-6 backdrop-blur-sm">
             <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              Trusted by 10,000+ users
+              {t('hero.badge')}
             </span>
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-slate-100 mb-6 leading-tight">
-            Smart Tools for
+            {t('hero.title')}
             <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Modern Professionals
+              {t('hero.subtitle')}
             </span>
           </h1>
           
           <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Access 40+ premium calculators and utilities designed to boost productivity, 
-            simplify complex tasks, and save you time.
+            {t('hero.description')}
           </p>
 
           {/* Search Bar */}
@@ -58,7 +59,7 @@ export default function PremiumHero() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for any tool..."
+                placeholder={t('hero.search_placeholder')}
                 className="w-full px-8 py-5 pl-14 rounded-2xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 shadow-xl shadow-slate-200/50 dark:shadow-slate-800/50"
               />
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 dark:text-slate-500 group-focus-within:text-blue-500 transition-colors" />
@@ -66,7 +67,7 @@ export default function PremiumHero() {
                 type="submit" 
                 className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 flex items-center gap-2"
               >
-                <span className="hidden sm:inline">Search</span>
+                <span className="hidden sm:inline">{t('hero.search_button')}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -75,16 +76,16 @@ export default function PremiumHero() {
           {/* Trust Indicators */}
           <div className="flex flex-wrap items-center justify-center gap-8 mt-12">
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <Zap className="w-5 h-5 text-blue-500" />
-              <span>Fast & Free</span>
+              <Zap className="w-5 h-5 text-blue-500 dark:text-blue-400" />
+              <span>{t('hero.fast')}</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <Shield className="w-5 h-5 text-purple-500" />
-              <span>Secure & Private</span>
+              <Shield className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+              <span>{t('hero.secure')}</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-              <Users className="w-5 h-5 text-pink-500" />
-              <span>10K+ Users</span>
+              <Users className="w-5 h-5 text-pink-500 dark:text-pink-400" />
+              <span>{t('hero.users')}</span>
             </div>
           </div>
         </div>
