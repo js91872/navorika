@@ -5,6 +5,9 @@ import {
   Code,
   Wand2,
   Wrench,
+  Heart,
+  Rocket,
+  Building2,
   LucideIcon
 } from "lucide-react";
 
@@ -24,32 +27,38 @@ export const categories: Category[] = [
   },
   {
     id: "pdf",
-    title: "PDF",
+    title: "PDF Tools",
     description: "Merge, split, compress and convert PDF files.",
     icon: FileText,
   },
   {
     id: "image",
-    title: "Images",
+    title: "Image Tools",
     description: "Compress, resize and convert images.",
     icon: ImageIcon,
   },
   {
+    id: "health",
+    title: "Health",
+    description: "Fitness, nutrition and wellness calculators.",
+    icon: Heart,
+  },
+  {
+    id: "productivity",
+    title: "Productivity",
+    description: "Calculate, generate and more.",
+    icon: Rocket,
+  },
+  {
     id: "developer",
-    title: "Developer",
+    title: "Developer Tools",
     description: "Developer productivity tools.",
     icon: Code,
   },
   {
-    id: "ai",
-    title: "AI",
-    description: "AI-powered productivity tools.",
-    icon: Wand2,
-  },
-  {
-    id: "utility",
-    title: "Utility",
-    description: "Everyday utilities and converters.",
-    icon: Wrench,
+    id: "construction",
+    title: "Construction",
+    description: "Construction calculators for concrete, paint and more.",
+    icon: Building2,
   },
 ];

@@ -6,8 +6,8 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 const categories = [
   { name: "Finance", slug: "finance", icon: "💰", color: "from-blue-500 to-blue-600" },
-  { name: "PDF Tools", slug: "pdf-tools", icon: "📄", color: "from-orange-500 to-orange-600" },
-  { name: "Image Tools", slug: "image-tools", icon: "🖼️", color: "from-purple-500 to-purple-600" },
+  { name: "PDF Tools", slug: "pdf", icon: "📄", color: "from-orange-500 to-orange-600" },
+  { name: "Image Tools", slug: "image", icon: "🖼️", color: "from-purple-500 to-purple-600" },
   { name: "Health", slug: "health", icon: "💪", color: "from-emerald-500 to-emerald-600" },
   { name: "Productivity", slug: "productivity", icon: "🚀", color: "from-indigo-500 to-indigo-600" },
   { name: "Developer Tools", slug: "developer", icon: "💻", color: "from-cyan-500 to-cyan-600" },
