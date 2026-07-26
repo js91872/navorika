@@ -20,34 +20,34 @@ export default function PremiumFeatures() {
   }, []);
 
   return (
-    <section className="py-24 bg-white dark:bg-slate-950">
+    <section className="py-16 bg-white dark:bg-slate-950">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+        <div className={`text-center mb-10 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
             Why Choose
-            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mt-1">
+            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Navorika?
             </span>
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             We combine powerful functionality with an exceptional user experience
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`group relative overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-8 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl transition-all duration-500 hover:-translate-y-1`}
+              className="group relative overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-800/50 p-5 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               style={{ animation: `fadeInUp 0.6s ease forwards ${index * 0.1 + 0.3}s`, opacity: 0 }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
               <div className="relative">
-                <feature.icon className={`w-10 h-10 mb-4 text-transparent bg-gradient-to-br ${feature.color} bg-clip-text`} />
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                <feature.icon className={`w-8 h-8 mb-2 text-transparent bg-gradient-to-br ${feature.color} bg-clip-text`} />
+                <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100 mb-1">
                   {feature.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-400">
                   {feature.desc}
                 </p>
               </div>

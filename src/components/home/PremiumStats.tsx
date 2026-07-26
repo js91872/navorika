@@ -18,20 +18,20 @@ export default function PremiumStats() {
   }, []);
 
   return (
-    <section className="py-16 bg-gradient-to-b from-transparent to-white dark:to-slate-950">
+    <section className="py-10 bg-gradient-to-b from-transparent to-white dark:to-slate-950">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           {stats.map((stat, index) => (
             <div 
               key={index}
-              className="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800/80 p-6 text-center border border-slate-200/50 dark:border-slate-700/50 hover:shadow-2xl hover:shadow-slate-200/50 dark:hover:shadow-slate-800/50 transition-all duration-300 hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-xl bg-white dark:bg-slate-800/80 p-5 text-center border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
               <div className="relative">
-                <stat.icon className={`w-8 h-8 mx-auto mb-3 text-transparent bg-gradient-to-br ${stat.color} bg-clip-text`} />
-                <div className="text-3xl font-bold text-slate-900 dark:text-slate-100">{stat.value}</div>
-                <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">{stat.label}</div>
+                <stat.icon className={`w-7 h-7 mx-auto mb-2 text-transparent bg-gradient-to-br ${stat.color} bg-clip-text`} />
+                <div className="text-2xl font-bold text-slate-900 dark:text-slate-100">{stat.value}</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{stat.label}</div>
               </div>
             </div>
           ))}
