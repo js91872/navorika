@@ -69,5 +69,12 @@ export const allTools: Tool[] = [
     description: 'Model Human Life Value (HLV), calculate optimal term insurance coverages, and evaluate health protection gaps.',
     path: '/tools/insurance-calculators',
     category: 'Finance'
+  },
+  {
+    id: 'business-calculators',
+    name: 'Business Finance Hub (13-in-1)',
+    description: 'Calculate Gross/Net profit margins, Break-even points, Markups, Discounts, Commission, and Business Valuations.',
+    path: '/tools/business-calculators',
+    category: 'Business'
   }
 ];
