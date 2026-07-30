@@ -41,5 +41,33 @@ export const allTools: Tool[] = [
     description: 'Compare Old vs New Indian Tax regimes, calculate GST/VAT, Gratuity, HRA exemptions, and Capital Gains instantly.',
     path: '/tools/tax-calculators',
     category: 'Finance'
+  },
+  {
+    id: 'salary-calculators',
+    name: 'Salary & Payroll Processing (8-in-1)',
+    description: 'Calculate real net in-hand salary payouts, evaluate CTC adjustments, compute performance bonuses, and appraise salary hikes.',
+    path: '/tools/salary-calculators',
+    category: 'Finance'
+  },
+  {
+    id: 'banking-calculators',
+    name: 'Banking Utilities & Validators',
+    description: 'Track bank interest yields, calculate savings account returns, and validate SWIFT/IBAN routing codes.',
+    path: '/tools/banking-calculators',
+    category: 'Finance'
+  },
+  {
+    id: 'credit-card-calculators',
+    name: 'Credit Card Intelligence Suite',
+    description: 'Calculate credit card payoff timelines, EMI conversions, interest accruals, and balance transfer savings.',
+    path: '/tools/credit-card-calculators',
+    category: 'Finance'
+  },
+  {
+    id: 'insurance-calculators',
+    name: 'Insurance & Protection Planner',
+    description: 'Model Human Life Value (HLV), calculate optimal term insurance coverages, and evaluate health protection gaps.',
+    path: '/tools/insurance-calculators',
+    category: 'Finance'
   }
 ];
