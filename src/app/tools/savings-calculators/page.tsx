@@ -120,12 +120,15 @@ export default function SavingsCalculators() {
     else if (targetMode === 'nps') setRate('10');
   };
 
+  // DRY Input Styling with Dark Mode classes
+  const inputClassName = "w-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-500 transition-colors";
+
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6">
       
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Savings & Wealth Calculators</h1>
-        <p className="text-slate-600 mt-2 text-sm max-w-2xl">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6 transition-colors">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Savings & Wealth Calculators</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm max-w-2xl">
           Track safe returns across guaranteed bank deposits, government post-office savings instruments, and long-term retirement frameworks.
         </p>
       </div>
@@ -146,7 +149,7 @@ export default function SavingsCalculators() {
             className={`px-2 py-3 rounded-xl border text-xs font-bold transition-all text-center ${
               mode === btn.id
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500'
             }`}
           >
             {btn.label}
@@ -156,71 +159,71 @@ export default function SavingsCalculators() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {/* Parameters input panel card */}
-        <div className="lg:col-span-1 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-          <h3 className="font-bold text-slate-900 text-base">Adjust Savings Parameters</h3>
+        <div className="lg:col-span-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-6 transition-colors">
+          <h3 className="font-bold text-slate-900 dark:text-white text-base">Adjust Savings Parameters</h3>
 
           {(mode === 'fd' || mode === 'emergency') && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">
                 {mode === 'fd' ? 'Lump Sum Deposit Amount' : 'Monthly Essential Expenses'}
               </label>
               <input
                 type="number"
                 value={deposit}
                 onChange={(e) => setDeposit(e.target.value)}
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                className={inputClassName}
               />
             </div>
           )}
 
           {mode === 'epf' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Monthly Basic Salary (+ DA)</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Monthly Basic Salary (+ DA)</label>
               <input
                 type="number"
                 value={salary}
                 onChange={(e) => setSalary(e.target.value)}
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                className={inputClassName}
               />
             </div>
           )}
 
           {mode !== 'fd' && mode !== 'emergency' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">
                 {mode === 'ppf' ? 'Annual Contribution Investment' : 'Monthly Deposit Amount'}
               </label>
               <input
                 type="number"
                 value={monthlyContribution}
                 onChange={(e) => setMonthlyContribution(e.target.value)}
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                className={inputClassName}
               />
             </div>
           )}
 
           {mode !== 'emergency' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Interest Yield Rate (% p.a.)</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Interest Yield Rate (% p.a.)</label>
               <input
                 type="number"
                 step="0.05"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                className={inputClassName}
               />
             </div>
           )}
 
           <div>
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">
               {mode === 'emergency' ? 'Target Buffer Cushion Size (Months)' : 'Time Horizon Period (Years)'}
             </label>
             <input
               type="number"
               value={years}
               onChange={(e) => setYears(e.target.value)}
-              className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+              className={inputClassName}
             />
           </div>
         </div>
@@ -228,53 +231,53 @@ export default function SavingsCalculators() {
         {/* Projections Matrix output view area */}
         <div className="lg:col-span-2 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors">
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                 {mode === 'emergency' ? 'Monthly Baseline Expense' : 'Total Capital Saved'}
               </div>
-              <div className="text-xl font-black text-slate-900">{formatCurrency(calculations.invested)}</div>
+              <div className="text-xl font-black text-slate-900 dark:text-white">{formatCurrency(calculations.invested)}</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Interest Earnings Yield</div>
-              <div className="text-xl font-black text-emerald-600">{formatCurrency(calculations.gains)}</div>
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors">
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Interest Earnings Yield</div>
+              <div className="text-xl font-black text-emerald-600 dark:text-emerald-400">{formatCurrency(calculations.gains)}</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors">
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                 {mode === 'emergency' ? 'Total Target Safety Net' : 'Maturity Wealth Balance'}
               </div>
-              <div className="text-xl font-black text-indigo-600">{formatCurrency(calculations.totalValue)}</div>
+              <div className="text-xl font-black text-indigo-600 dark:text-indigo-400">{formatCurrency(calculations.totalValue)}</div>
             </div>
           </div>
 
           {calculations.extraLabel && (
-            <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 text-center shadow-inner">
-              <div className="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-1">{calculations.extraLabel}</div>
-              <div className="text-2xl font-black text-indigo-900">{calculations.extraValue}</div>
+            <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-500/30 rounded-2xl p-6 text-center shadow-inner transition-colors">
+              <div className="text-xs font-bold text-indigo-700 dark:text-indigo-400 uppercase tracking-wider mb-1">{calculations.extraLabel}</div>
+              <div className="text-2xl font-black text-indigo-900 dark:text-indigo-300">{calculations.extraValue}</div>
             </div>
           )}
 
           {mode !== 'emergency' && calculations.totalValue > 0 && (
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-              <h4 className="font-bold text-sm text-slate-900 mb-4">Savings Breakdown Balance Analysis</h4>
-              <div className="h-4 w-full bg-slate-100 rounded-full overflow-hidden flex">
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors">
+              <h4 className="font-bold text-sm text-slate-900 dark:text-white mb-4">Savings Breakdown Balance Analysis</h4>
+              <div className="h-4 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden flex transition-colors">
                 <div style={{ width: `${Math.max(0, 100 - parseFloat(gainsPct))}%` }} className="h-full bg-indigo-600 transition-all" />
                 <div style={{ width: `${Math.max(0, parseFloat(gainsPct))}%` }} className="h-full bg-emerald-500 transition-all" />
               </div>
               <div className="flex gap-6 mt-4 text-xs font-semibold">
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded bg-indigo-600 inline-block"></span>
-                  <span className="text-slate-600">Total Invested Principal ({Math.max(0, 100 - parseFloat(gainsPct)).toFixed(1)}%)</span>
+                  <span className="text-slate-600 dark:text-slate-400">Total Invested Principal ({Math.max(0, 100 - parseFloat(gainsPct)).toFixed(1)}%)</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded bg-emerald-500 inline-block"></span>
-                  <span className="text-slate-600">Accumulated Interest Return ({Math.max(0, parseFloat(gainsPct)).toFixed(1)}%)</span>
+                  <span className="text-slate-600 dark:text-slate-400">Accumulated Interest Return ({Math.max(0, parseFloat(gainsPct)).toFixed(1)}%)</span>
                 </div>
               </div>
             </div>
           )}
 
-          <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-500">
-            <h4 className="font-bold text-slate-700 mb-2">Calculators Fully Supported inside this Savings Suite:</h4>
+          <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-xs text-slate-500 dark:text-slate-400 transition-colors">
+            <h4 className="font-bold text-slate-700 dark:text-slate-300 mb-2">Calculators Fully Supported inside this Savings Suite:</h4>
             <p className="leading-relaxed">
               Savings Calculator • Recurring Deposit (RD) Calculator • Fixed Deposit (FD) Calculator • PPF Calculator • EPF Calculator • NPS Calculator • Sukanya Samriddhi Calculator • Senior Citizen Savings Scheme Calculator • National Savings Certificate Calculator • Monthly Savings Calculator • Emergency Fund Calculator.
             </p>

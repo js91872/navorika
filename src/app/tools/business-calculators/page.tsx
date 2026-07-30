@@ -126,11 +126,14 @@ export default function BusinessCalculators() {
     return metrics;
   }, [mode, revenue, cogs, opEx, costPrice, markupPercent, discountPercent, baseInvoice, taxPercent, commissionPercent, fixedCosts, pricePerUnit, variableCostPerUnit, annualEbitda, valuationMultiple]);
 
+  // Reusable input class to keep JSX clean
+  const inputClassName = "w-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-500 transition-colors";
+
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Business Finance Hub</h1>
-        <p className="text-slate-600 mt-2 text-sm max-w-2xl">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6 transition-colors">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Business Finance Hub</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm max-w-2xl">
           Complete toolset for calculating profit margins, setting product prices, generating invoice breakdowns, and evaluating business break-even valuations.
         </p>
       </div>
@@ -148,7 +151,7 @@ export default function BusinessCalculators() {
             className={`px-3 py-3 rounded-xl border text-xs font-bold transition-all text-center ${
               mode === btn.id
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500'
             }`}
           >
             {btn.label}
@@ -158,42 +161,42 @@ export default function BusinessCalculators() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {/* Input Parameters Panel */}
-        <div className="lg:col-span-1 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-          <h3 className="font-bold text-slate-900 text-base">Adjust Parameters</h3>
+        <div className="lg:col-span-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-6 transition-colors">
+          <h3 className="font-bold text-slate-900 dark:text-white text-base">Adjust Parameters</h3>
 
           {mode === 'profit_margin' && (
             <>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Total Revenue (Sales)</label><input type="number" value={revenue} onChange={(e) => setRevenue(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Cost of Goods Sold (COGS)</label><input type="number" value={cogs} onChange={(e) => setCogs(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Operating Expenses (Fixed)</label><input type="number" value={opEx} onChange={(e) => setOpEx(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Total Revenue (Sales)</label><input type="number" value={revenue} onChange={(e) => setRevenue(e.target.value)} className={inputClassName} /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Cost of Goods Sold (COGS)</label><input type="number" value={cogs} onChange={(e) => setCogs(e.target.value)} className={inputClassName} /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Operating Expenses (Fixed)</label><input type="number" value={opEx} onChange={(e) => setOpEx(e.target.value)} className={inputClassName} /></div>
             </>
           )}
 
           {mode === 'pricing' && (
             <>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Base Cost Price</label><input type="number" value={costPrice} onChange={(e) => setCostPrice(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Markup Percentage (%)</label><input type="number" value={markupPercent} onChange={(e) => setMarkupPercent(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Discount Offered (%)</label><input type="number" value={discountPercent} onChange={(e) => setDiscountPercent(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Base Cost Price</label><input type="number" value={costPrice} onChange={(e) => setCostPrice(e.target.value)} className={inputClassName} /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Markup Percentage (%)</label><input type="number" value={markupPercent} onChange={(e) => setMarkupPercent(e.target.value)} className={inputClassName} /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Discount Offered (%)</label><input type="number" value={discountPercent} onChange={(e) => setDiscountPercent(e.target.value)} className={inputClassName} /></div>
             </>
           )}
 
           {mode === 'sales_billing' && (
             <>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Base Invoice Amount</label><input type="number" value={baseInvoice} onChange={(e) => setBaseInvoice(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Applicable Tax Rate (%)</label><input type="number" value={taxPercent} onChange={(e) => setTaxPercent(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Sales Commission Rate (%)</label><input type="number" value={commissionPercent} onChange={(e) => setCommissionPercent(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Base Invoice Amount</label><input type="number" value={baseInvoice} onChange={(e) => setBaseInvoice(e.target.value)} className={inputClassName} /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Applicable Tax Rate (%)</label><input type="number" value={taxPercent} onChange={(e) => setTaxPercent(e.target.value)} className={inputClassName} /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Sales Commission Rate (%)</label><input type="number" value={commissionPercent} onChange={(e) => setCommissionPercent(e.target.value)} className={inputClassName} /></div>
             </>
           )}
 
           {mode === 'viability' && (
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-2">
-                <div><label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Price / Unit</label><input type="number" value={pricePerUnit} onChange={(e) => setPricePerUnit(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-                <div><label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Var Cost / Unit</label><input type="number" value={variableCostPerUnit} onChange={(e) => setVariableCostPerUnit(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
+                <div><label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">Price / Unit</label><input type="number" value={pricePerUnit} onChange={(e) => setPricePerUnit(e.target.value)} className={inputClassName} /></div>
+                <div><label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">Var Cost / Unit</label><input type="number" value={variableCostPerUnit} onChange={(e) => setVariableCostPerUnit(e.target.value)} className={inputClassName} /></div>
               </div>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Total Fixed Costs (Monthly/Annual)</label><input type="number" value={fixedCosts} onChange={(e) => setFixedCosts(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-              <div className="pt-2 border-t border-slate-100"><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Annual EBITDA (For Valuation)</label><input type="number" value={annualEbitda} onChange={(e) => setAnnualEbitda(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Industry Valuation Multiple (x)</label><input type="number" step="0.5" value={valuationMultiple} onChange={(e) => setValuationMultiple(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Total Fixed Costs</label><input type="number" value={fixedCosts} onChange={(e) => setFixedCosts(e.target.value)} className={inputClassName} /></div>
+              <div className="pt-2 border-t border-slate-100 dark:border-slate-800"><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Annual EBITDA</label><input type="number" value={annualEbitda} onChange={(e) => setAnnualEbitda(e.target.value)} className={inputClassName} /></div>
+              <div><label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Valuation Multiple (x)</label><input type="number" step="0.5" value={valuationMultiple} onChange={(e) => setValuationMultiple(e.target.value)} className={inputClassName} /></div>
             </div>
           )}
         </div>
@@ -201,30 +204,30 @@ export default function BusinessCalculators() {
         {/* Output Metrics View */}
         <div className="lg:col-span-2 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">{calculations.label1}</div>
-              <div className={`text-3xl font-black ${calculations.val1 < 0 ? 'text-red-600' : 'text-slate-900'}`}>{calculations.isCurrency1 ? formatCurrency(calculations.val1) : `${calculations.val1.toLocaleString('en-IN')}${mode === 'profit_margin' ? '%' : ''}`}</div>
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors">
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">{calculations.label1}</div>
+              <div className={`text-3xl font-black ${calculations.val1 < 0 ? 'text-red-600 dark:text-red-400' : 'text-slate-900 dark:text-white'}`}>{calculations.isCurrency1 ? formatCurrency(calculations.val1) : `${calculations.val1.toLocaleString('en-IN')}${mode === 'profit_margin' ? '%' : ''}`}</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">{calculations.label2}</div>
-              <div className={`text-3xl font-black ${calculations.val2 < 0 ? 'text-red-600' : (calculations.isCurrency2 ? 'text-indigo-600' : 'text-emerald-600')}`}>{calculations.isCurrency2 ? formatCurrency(calculations.val2) : `${calculations.val2.toFixed(1)}%`}</div>
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors">
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">{calculations.label2}</div>
+              <div className={`text-3xl font-black ${calculations.val2 < 0 ? 'text-red-600 dark:text-red-400' : (calculations.isCurrency2 ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-400')}`}>{calculations.isCurrency2 ? formatCurrency(calculations.val2) : `${calculations.val2.toFixed(1)}%`}</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">{calculations.label3}</div>
-              <div className={`text-3xl font-black ${calculations.val3 < 0 ? 'text-red-600' : 'text-slate-900'}`}>{calculations.isCurrency3 ? formatCurrency(calculations.val3) : calculations.val3}</div>
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors">
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">{calculations.label3}</div>
+              <div className={`text-3xl font-black ${calculations.val3 < 0 ? 'text-red-600 dark:text-red-400' : 'text-slate-900 dark:text-white'}`}>{calculations.isCurrency3 ? formatCurrency(calculations.val3) : calculations.val3}</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">{calculations.label4}</div>
-              <div className={`text-3xl font-black ${calculations.val4 < 0 ? 'text-red-600' : (calculations.isCurrency4 ? 'text-indigo-600' : 'text-emerald-600')}`}>{calculations.isCurrency4 ? formatCurrency(calculations.val4) : `${calculations.val4.toFixed(1)}%`}</div>
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors">
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">{calculations.label4}</div>
+              <div className={`text-3xl font-black ${calculations.val4 < 0 ? 'text-red-600 dark:text-red-400' : (calculations.isCurrency4 ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-400')}`}>{calculations.isCurrency4 ? formatCurrency(calculations.val4) : `${calculations.val4.toFixed(1)}%`}</div>
             </div>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-inner text-slate-700">
+          <div className="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-inner text-slate-700 dark:text-slate-300 transition-colors">
             <div className="text-sm font-semibold leading-relaxed">{calculations.summary}</div>
           </div>
 
-          <div className="p-6 bg-white border border-slate-200 rounded-2xl text-xs text-slate-500 shadow-sm">
-            <h4 className="font-bold text-slate-700 mb-2">Calculators Fully Supported in this Suite:</h4>
+          <div className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-xs text-slate-500 dark:text-slate-400 shadow-sm transition-colors">
+            <h4 className="font-bold text-slate-700 dark:text-slate-300 mb-2">Calculators Fully Supported in this Suite:</h4>
             <p className="leading-relaxed">Profit Calculator • Profit Margin & Gross Margin • Net Profit • Break-even Point • Markup & Discount Calculator • Selling / Cost Price • Commission & Invoice Totals • Cash Flow • Business Valuation.</p>
           </div>
         </div>
