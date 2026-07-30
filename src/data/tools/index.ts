@@ -28,5 +28,5 @@ export const allTools: Tool[] = [
   { id: 'pdf-converter-matrix', name: 'PDF Extractors', description: 'Extract visual frames and raw text data mapped inside a PDF file.', path: '/tools/pdf-converter', category: 'PDF Tools' },
   { id: 'pdf-editor-hub', name: 'PDF Editor & Modifier Hub', description: 'Rotate pages, reorder layouts, and inject custom text or images directly into your PDFs.', path: '/tools/pdf-editor', category: 'PDF Tools' },
   { id: 'pdf-optimizer', name: 'PDF Compression & Optimizer', description: 'Optimize document buffers for fast web streaming or compact email attachments safely.', path: '/tools/pdf-optimizer', category: 'PDF Tools' },
-  { id: 'compress-pdf', name: 'Compress PDF File Size', description: 'Strips out structural metadata blocks to minimize document file sizes.', path: '/tools/pdf-optimizer', category: 'PDF Tools' }
+  { id: 'pdf-security', name: 'PDF Security & Permissions', description: 'Protect PDFs with passwords, add printing restrictions, or unlock secured files locally.', path: '/tools/pdf-security', category: 'PDF Tools' }
 ];
