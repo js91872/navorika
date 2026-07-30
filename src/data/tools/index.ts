@@ -34,5 +34,12 @@ export const allTools: Tool[] = [
     description: 'Map out financial independence with precise engines for inflation adjustments, pension plans, annuity yields, and safe withdrawal rules.',
     path: '/tools/retirement-calculators',
     category: 'Finance'
+  },
+  {
+    id: 'tax-calculators',
+    name: 'Tax & Payroll Utilities (11-in-1)',
+    description: 'Compare Old vs New Indian Tax regimes, calculate GST/VAT, Gratuity, HRA exemptions, and Capital Gains instantly.',
+    path: '/tools/tax-calculators',
+    category: 'Finance'
   }
 ];
