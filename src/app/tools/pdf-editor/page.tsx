@@ -193,7 +193,7 @@ export default function PDFEditorHub() {
           {mode === 'rotate' && (
             <div>
               <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Rotation Angle</label>
-              <select value={rotationDegree} onChange={(e) => setRotationDegree(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:border-indigo-500">
+              <select value={rotationDegree} onChange={(e) => setRotationDegree(e.target.value)} className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:border-indigo-500">
                 <option value="90">90 Degrees (Clockwise)</option>
                 <option value="180">180 Degrees (Upside Down)</option>
                 <option value="270">270 Degrees (Counter-Clockwise)</option>
@@ -204,7 +204,7 @@ export default function PDFEditorHub() {
           {mode === 'reorder' && (
             <div>
               <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">New Page Order</label>
-              <input type="text" value={pageOrder} onChange={(e) => setPageOrder(e.target.value)} placeholder="e.g. 4, 1, 2, 3" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+              <input type="text" value={pageOrder} onChange={(e) => setPageOrder(e.target.value)} placeholder="e.g. 4, 1, 2, 3" className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               <p className="text-[11px] text-slate-500 mt-2">Enter comma-separated page numbers. E.g., &quot;3, 1, 2&quot; will make page 3 the first page.</p>
             </div>
           )}
@@ -213,11 +213,11 @@ export default function PDFEditorHub() {
             <div className="space-y-4">
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Watermark Text</label>
-                <input type="text" value={textInput} onChange={(e) => setTextInput(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <input type="text" value={textInput} onChange={(e) => setTextInput(e.target.value)} className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Font Size</label>
-                <input type="number" value={textSize} onChange={(e) => setTextSize(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={textSize} onChange={(e) => setTextSize(e.target.value)} className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
             </div>
           )}

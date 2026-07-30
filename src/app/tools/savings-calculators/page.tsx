@@ -168,7 +168,7 @@ export default function SavingsCalculators() {
                 type="number"
                 value={deposit}
                 onChange={(e) => setDeposit(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
               />
             </div>
           )}
@@ -180,7 +180,7 @@ export default function SavingsCalculators() {
                 type="number"
                 value={salary}
                 onChange={(e) => setSalary(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
               />
             </div>
           )}
@@ -194,7 +194,7 @@ export default function SavingsCalculators() {
                 type="number"
                 value={monthlyContribution}
                 onChange={(e) => setMonthlyContribution(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
               />
             </div>
           )}
@@ -207,7 +207,7 @@ export default function SavingsCalculators() {
                 step="0.05"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
               />
             </div>
           )}
@@ -220,7 +220,7 @@ export default function SavingsCalculators() {
               type="number"
               value={years}
               onChange={(e) => setYears(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>

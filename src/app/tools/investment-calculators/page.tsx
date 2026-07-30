@@ -173,7 +173,7 @@ export default function InvestmentCalculators() {
                 type="number"
                 value={periodicAmount}
                 onChange={(e) => setPeriodicAmount(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
               />
             </div>
           )}
@@ -185,7 +185,7 @@ export default function InvestmentCalculators() {
                 type="number"
                 value={principal}
                 onChange={(e) => setPrincipal(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
               />
             </div>
           )}
@@ -198,7 +198,7 @@ export default function InvestmentCalculators() {
                   type="number"
                   value={initialAssetVal}
                   onChange={(e) => setInitialAssetVal(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
                 />
               </div>
               <div>
@@ -207,7 +207,7 @@ export default function InvestmentCalculators() {
                   type="number"
                   value={finalAssetVal}
                   onChange={(e) => setFinalAssetVal(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
                 />
               </div>
             </>
@@ -220,7 +220,7 @@ export default function InvestmentCalculators() {
                 type="number"
                 value={finalAssetVal}
                 onChange={(e) => setFinalAssetVal(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
               />
             </div>
           )}
@@ -232,7 +232,7 @@ export default function InvestmentCalculators() {
                 type="number"
                 value={targetGoalVal}
                 onChange={(e) => setTargetGoalVal(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
               />
             </div>
           )}
@@ -245,7 +245,7 @@ export default function InvestmentCalculators() {
                 step="0.1"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
               />
             </div>
           )}
@@ -256,7 +256,7 @@ export default function InvestmentCalculators() {
               type="number"
               value={years}
               onChange={(e) => setYears(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+              className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
               />
           </div>
         </div>

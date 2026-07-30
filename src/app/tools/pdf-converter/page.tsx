@@ -144,7 +144,7 @@ export default function PDFConverterMatrix() {
           <select
             value={conversionType}
             onChange={(e) => { setConversionType(e.target.value as ConversionType); setSelectedFile(null); setStatus(null); }}
-            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-indigo-500"
           >
             <option value="img_to_pdf">Images (JPG / PNG / WEBP) ➔ PDF Document</option>
             <option value="pdf_to_img">PDF Document ➔ Image Extraction (JPG / PNG)</option>
@@ -181,7 +181,7 @@ export default function PDFConverterMatrix() {
               onChange={(e) => setTextInput(e.target.value)}
               rows={6}
               placeholder="Type or paste your text contents here to convert them into a structured PDF document shell..."
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
             />
           </div>
         )}

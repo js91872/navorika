@@ -141,15 +141,15 @@ export default function BankingCalculators() {
                 <label className="text-xs font-bold uppercase text-slate-600 block mb-2">
                   {mode === 'rd_interest' ? 'Monthly Deposit Amount' : 'Principal / Initial Balance'}
                 </label>
-                <input type="number" value={bankPrincipal} onChange={(e) => setBankPrincipal(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={bankPrincipal} onChange={(e) => setBankPrincipal(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
                 <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Interest Rate (% p.a.)</label>
-                <input type="number" step="0.1" value={bankRate} onChange={(e) => setBankRate(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" step="0.1" value={bankRate} onChange={(e) => setBankRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
                 <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Duration Horizon (Months)</label>
-                <input type="number" value={bankMonths} onChange={(e) => setBankMonths(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={bankMonths} onChange={(e) => setBankMonths(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}
@@ -158,11 +158,11 @@ export default function BankingCalculators() {
             <>
               <div>
                 <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Monthly Maintenance Overhead</label>
-                <input type="number" value={maintenanceFee} onChange={(e) => setMaintenanceFee(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={maintenanceFee} onChange={(e) => setMaintenanceFee(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
                 <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Total Monthly ATM/Transactions Logged</label>
-                <input type="number" value={transactionCount} onChange={(e) => setTransactionCount(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={transactionCount} onChange={(e) => setTransactionCount(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}
@@ -175,7 +175,7 @@ export default function BankingCalculators() {
               </div>
               <div>
                 <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Enter Routing Code</label>
-                <input type="text" value={bankCode} onChange={(e) => setBankCode(e.target.value)} placeholder={`Type ${validationType}...`} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-sm font-bold uppercase text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="text" value={bankCode} onChange={(e) => setBankCode(e.target.value)} placeholder={`Type ${validationType}...`} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-3 text-sm font-bold uppercase text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}

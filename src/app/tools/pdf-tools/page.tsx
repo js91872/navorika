@@ -195,7 +195,7 @@ export default function PDFToolsHub() {
                 value={pageNumbersToDelete}
                 onChange={(e) => setPageNumbersToDelete(e.target.value)}
                 placeholder="e.g. 1, 4, 7"
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
               />
               <p className="text-[11px] text-slate-400 mt-1.5 leading-relaxed">
                 Provide strict 1-based structural numbers. For instance, inputting &quot;2, 5&quot; completely removes pages 2 and 5 from the final document layout output shell.

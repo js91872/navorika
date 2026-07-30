@@ -138,7 +138,7 @@ export default function PDFSecurityHub() {
             <div className="space-y-4">
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Set Document Password</label>
-                <input type="password" value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder="Enter strong security pass key..." className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <input type="password" value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder="Enter strong security pass key..." className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div className="space-y-2 pt-2">
                 <div className="flex items-center gap-3">
@@ -154,7 +154,7 @@ export default function PDFSecurityHub() {
           ) : (
             <div>
               <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Enter Current Password</label>
-              <input type="password" value={decryptionPassword} onChange={(e) => setDecryptionPassword(e.target.value)} placeholder="Type matching password to release document hold..." className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+              <input type="password" value={decryptionPassword} onChange={(e) => setDecryptionPassword(e.target.value)} placeholder="Type matching password to release document hold..." className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
             </div>
           )}
         </div>

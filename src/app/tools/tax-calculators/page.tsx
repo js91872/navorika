@@ -199,7 +199,7 @@ export default function TaxCalculators() {
                   type="number"
                   value={grossSalary}
                   onChange={(e) => setGrossSalary(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
@@ -208,7 +208,7 @@ export default function TaxCalculators() {
                   type="number"
                   value={investments80C}
                   onChange={(e) => setInvestments80C(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
@@ -217,7 +217,7 @@ export default function TaxCalculators() {
                   type="number"
                   value={otherDeductions}
                   onChange={(e) => setOtherDeductions(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>
@@ -231,7 +231,7 @@ export default function TaxCalculators() {
                   type="number"
                   value={baseAmount}
                   onChange={(e) => setBaseAmount(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
@@ -240,7 +240,7 @@ export default function TaxCalculators() {
                   type="number"
                   value={taxRate}
                   onChange={(e) => setTaxRate(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div className="flex border border-slate-200 rounded-xl p-0.5 bg-slate-50 mt-4">
@@ -264,15 +264,15 @@ export default function TaxCalculators() {
             <>
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Purchase Price (Cost)</label>
-                <input type="number" value={investments80C} onChange={(e) => setInvestments80C(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={investments80C} onChange={(e) => setInvestments80C(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Sale Price (Revenue)</label>
-                <input type="number" value={baseAmount} onChange={(e) => setBaseAmount(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={baseAmount} onChange={(e) => setBaseAmount(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Estimated Tax Bracket (%)</label>
-                <input type="number" step="0.5" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <input type="number" step="0.5" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}
@@ -280,14 +280,14 @@ export default function TaxCalculators() {
           {(mode === 'gratuity' || mode === 'hra') && (
             <div>
               <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Basic Salary (+ DA)</label>
-              <input type="number" value={basicSalary} onChange={(e) => setBasicSalary(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+              <input type="number" value={basicSalary} onChange={(e) => setBasicSalary(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
             </div>
           )}
 
           {mode === 'gratuity' && (
             <div>
               <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Years of Service</label>
-              <input type="number" value={yearsOfService} onChange={(e) => setYearsOfService(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+              <input type="number" value={yearsOfService} onChange={(e) => setYearsOfService(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
             </div>
           )}
 
@@ -295,11 +295,11 @@ export default function TaxCalculators() {
             <>
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">HRA Received from Employer</label>
-                <input type="number" value={hraReceived} onChange={(e) => setHraReceived(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={hraReceived} onChange={(e) => setHraReceived(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Actual Rent Paid</label>
-                <input type="number" value={rentPaid} onChange={(e) => setRentPaid(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={rentPaid} onChange={(e) => setRentPaid(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
               <div className="flex items-center gap-3 mt-4">
                 <input type="checkbox" checked={isMetro} onChange={(e) => setIsMetro(e.target.checked)} className="w-4 h-4 text-indigo-600 rounded border-slate-300" id="metro-check" />

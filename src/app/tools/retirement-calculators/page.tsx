@@ -134,7 +134,7 @@ export default function RetirementCalculators() {
                     type="number"
                     value={currentAge}
                     onChange={(e) => setCurrentAge(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
@@ -143,7 +143,7 @@ export default function RetirementCalculators() {
                     type="number"
                     value={targetAge}
                     onChange={(e) => setTargetAge(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
@@ -154,7 +154,7 @@ export default function RetirementCalculators() {
                   type="number"
                   value={monthlyExpense}
                   onChange={(e) => setMonthlyExpense(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
@@ -164,7 +164,7 @@ export default function RetirementCalculators() {
                   type="number"
                   value={existingCorpus}
                   onChange={(e) => setExistingCorpus(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>
@@ -178,7 +178,7 @@ export default function RetirementCalculators() {
                   type="number"
                   value={annuityPool}
                   onChange={(e) => setAnnuityPool(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
@@ -189,7 +189,7 @@ export default function RetirementCalculators() {
                   step="0.1"
                   value={annuityRate}
                   onChange={(e) => setAnnuityRate(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>

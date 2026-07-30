@@ -175,7 +175,7 @@ export default function SalaryCalculators() {
                   type="number"
                   value={grossAnnual}
                   onChange={(e) => setGrossAnnual(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
@@ -184,7 +184,7 @@ export default function SalaryCalculators() {
                   type="number"
                   value={monthlyDeductions}
                   onChange={(e) => setMonthlyDeductions(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>
@@ -198,7 +198,7 @@ export default function SalaryCalculators() {
                   type="number"
                   value={currentSalary}
                   onChange={(e) => setCurrentSalary(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
@@ -207,7 +207,7 @@ export default function SalaryCalculators() {
                   type="number"
                   value={newSalary}
                   onChange={(e) => setNewSalary(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>
@@ -217,11 +217,11 @@ export default function SalaryCalculators() {
             <>
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Annual Base Salary</label>
-                <input type="number" value={basePay} onChange={(e) => setBasePay(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={basePay} onChange={(e) => setBasePay(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Bonus Percentage Multiplier (%)</label>
-                <input type="number" value={bonusPercentage} onChange={(e) => setBonusPercentage(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={bonusPercentage} onChange={(e) => setBonusPercentage(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}
@@ -231,21 +231,21 @@ export default function SalaryCalculators() {
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Hourly Rate</label>
-                  <input type="number" value={hourlyRate} onChange={(e) => setHourlyRate(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={hourlyRate} onChange={(e) => setHourlyRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Hours Logged</label>
-                  <input type="number" value={hoursWorked} onChange={(e) => setHoursWorked(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={hoursWorked} onChange={(e) => setHoursWorked(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">OT Hours</label>
-                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">OT Hourly Rate</label>
-                  <input type="number" value={overtimeRate} onChange={(e) => setOvertimeRate(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={overtimeRate} onChange={(e) => setOvertimeRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
                 </div>
               </div>
             </div>
@@ -256,21 +256,21 @@ export default function SalaryCalculators() {
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Daily Rate</label>
-                  <input type="number" value={dailyRate} onChange={(e) => setDailyRate(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={dailyRate} onChange={(e) => setDailyRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Days Worked</label>
-                  <input type="number" value={daysWorked} onChange={(e) => setDaysWorked(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={daysWorked} onChange={(e) => setDaysWorked(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">OT Hours</label>
-                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">OT Hourly Rate</label>
-                  <input type="number" value={overtimeRate} onChange={(e) => setOvertimeRate(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={overtimeRate} onChange={(e) => setOvertimeRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
                 </div>
               </div>
             </div>
