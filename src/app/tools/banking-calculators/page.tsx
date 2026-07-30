@@ -106,9 +106,9 @@ export default function BankingCalculators() {
 
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Banking Utilities Suite</h1>
-        <p className="text-slate-600 text-sm mt-1">Free modules for Fixed Deposits, Recurring Deposits, bank charges, and routing validations.</p>
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Banking Utilities Suite</h1>
+        <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">Free modules for Fixed Deposits, Recurring Deposits, bank charges, and routing validations.</p>
       </div>
       
       {/* Tab select engine matrix */}
@@ -123,7 +123,7 @@ export default function BankingCalculators() {
           <button
             key={btn.id}
             onClick={() => setMode(btn.id as BankingMode)}
-            className={`px-3 py-3 rounded-xl border text-xs font-bold transition-all text-center ${mode === btn.id ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-slate-700 border-slate-200'}`}
+            className={`px-3 py-3 rounded-xl border text-xs font-bold transition-all text-center ${mode === btn.id ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white dark:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800'}`}
           >
             {btn.label}
           </button>
@@ -132,24 +132,24 @@ export default function BankingCalculators() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Dynamic Parameter form inputs featuring onChange hooks to allow direct clicking and modification */}
-        <div className="bg-white border rounded-2xl p-6 shadow-sm space-y-6">
-          <h3 className="font-bold text-slate-900 text-base">Adjust Parameters</h3>
+        <div className="bg-white dark:bg-slate-900 transition-colors border rounded-2xl p-6 shadow-sm space-y-6">
+          <h3 className="font-bold text-slate-900 dark:text-white text-base">Adjust Parameters</h3>
           
           {mode !== 'validators' && mode !== 'charges' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase text-slate-600 block mb-2">
+                <label className="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 block mb-2">
                   {mode === 'rd_interest' ? 'Monthly Deposit Amount' : 'Principal / Initial Balance'}
                 </label>
-                <input type="number" value={bankPrincipal} onChange={(e) => setBankPrincipal(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <input type="number" value={bankPrincipal} onChange={(e) => setBankPrincipal(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Interest Rate (% p.a.)</label>
-                <input type="number" step="0.1" value={bankRate} onChange={(e) => setBankRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 block mb-2">Interest Rate (% p.a.)</label>
+                <input type="number" step="0.1" value={bankRate} onChange={(e) => setBankRate(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Duration Horizon (Months)</label>
-                <input type="number" value={bankMonths} onChange={(e) => setBankMonths(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 block mb-2">Duration Horizon (Months)</label>
+                <input type="number" value={bankMonths} onChange={(e) => setBankMonths(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}
@@ -157,12 +157,12 @@ export default function BankingCalculators() {
           {mode === 'charges' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Monthly Maintenance Overhead</label>
-                <input type="number" value={maintenanceFee} onChange={(e) => setMaintenanceFee(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 block mb-2">Monthly Maintenance Overhead</label>
+                <input type="number" value={maintenanceFee} onChange={(e) => setMaintenanceFee(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Total Monthly ATM/Transactions Logged</label>
-                <input type="number" value={transactionCount} onChange={(e) => setTransactionCount(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 block mb-2">Total Monthly ATM/Transactions Logged</label>
+                <input type="number" value={transactionCount} onChange={(e) => setTransactionCount(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}
@@ -170,12 +170,12 @@ export default function BankingCalculators() {
           {mode === 'validators' && (
             <>
               <div className="flex gap-2 mb-4">
-                <button type="button" onClick={() => setValidationType('IBAN')} className={`flex-1 py-2 text-xs font-bold border rounded-lg ${validationType === 'IBAN' ? 'bg-indigo-50 border-indigo-200 text-indigo-600' : 'bg-slate-50 text-slate-500'}`}>IBAN Validator</button>
-                <button type="button" onClick={() => setValidationType('SWIFT')} className={`flex-1 py-2 text-xs font-bold border rounded-lg ${validationType === 'SWIFT' ? 'bg-indigo-50 border-indigo-200 text-indigo-600' : 'bg-slate-50 text-slate-500'}`}>SWIFT Finder</button>
+                <button type="button" onClick={() => setValidationType('IBAN')} className={`flex-1 py-2 text-xs font-bold border rounded-lg ${validationType === 'IBAN' ? 'bg-indigo-50 border-indigo-200 text-indigo-600' : 'bg-slate-50 dark:bg-slate-950 transition-colors text-slate-500'}`}>IBAN Validator</button>
+                <button type="button" onClick={() => setValidationType('SWIFT')} className={`flex-1 py-2 text-xs font-bold border rounded-lg ${validationType === 'SWIFT' ? 'bg-indigo-50 border-indigo-200 text-indigo-600' : 'bg-slate-50 dark:bg-slate-950 transition-colors text-slate-500'}`}>SWIFT Finder</button>
               </div>
               <div>
-                <label className="text-xs font-bold uppercase text-slate-600 block mb-2">Enter Routing Code</label>
-                <input type="text" value={bankCode} onChange={(e) => setBankCode(e.target.value)} placeholder={`Type ${validationType}...`} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-3 text-sm font-bold uppercase text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 block mb-2">Enter Routing Code</label>
+                <input type="text" value={bankCode} onChange={(e) => setBankCode(e.target.value)} placeholder={`Type ${validationType}...`} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-3 text-sm font-bold uppercase text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}
@@ -184,17 +184,17 @@ export default function BankingCalculators() {
         {/* Display Metrics Board */}
         <div className="lg:col-span-2 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className={`border rounded-2xl p-6 shadow-sm ${calculations.isErrorState ? 'bg-red-50 border-red-200' : 'bg-white border-slate-200'}`}>
+            <div className={`border rounded-2xl p-6 shadow-sm ${calculations.isErrorState ? 'bg-red-50 border-red-200' : 'bg-white dark:bg-slate-900 transition-colors border-slate-200 dark:border-slate-800'}`}>
               <div className="text-xs font-bold tracking-wider mb-2 uppercase text-slate-500">{calculations.outputLabel1}</div>
               <div className={`text-3xl font-black ${calculations.isErrorState ? 'text-red-600' : (calculations.outputVal1 === 'Valid Format' ? 'text-emerald-600' : 'text-indigo-600')}`}>{calculations.outputVal1}</div>
             </div>
-            <div className="border bg-white rounded-2xl p-6 shadow-sm border-slate-200">
+            <div className="border bg-white dark:bg-slate-900 transition-colors rounded-2xl p-6 shadow-sm border-slate-200 dark:border-slate-800">
               <div className="text-xs font-bold tracking-wider mb-2 uppercase text-slate-500">{calculations.outputLabel2}</div>
-              <div className="text-3xl font-black text-slate-900">{calculations.outputVal2}</div>
+              <div className="text-3xl font-black text-slate-900 dark:text-white">{calculations.outputVal2}</div>
             </div>
           </div>
           {calculations.summaryText && (
-            <div className="border border-slate-200 rounded-2xl p-6 bg-slate-50 text-slate-700 shadow-inner">
+            <div className="border border-slate-200 dark:border-slate-800 rounded-2xl p-6 bg-slate-50 dark:bg-slate-950 transition-colors text-slate-700 dark:text-slate-300 shadow-inner">
               <div className="text-sm font-semibold leading-relaxed">{calculations.summaryText}</div>
             </div>
           )}

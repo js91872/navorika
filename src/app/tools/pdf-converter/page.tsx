@@ -130,21 +130,21 @@ export default function PDFConverterMatrix() {
 
   return (
     <div className="max-w-3xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Universal PDF Converter</h1>
-        <p className="text-slate-600 mt-2 text-sm">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Universal PDF Converter</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm">
           Select your conversion pipeline from the drop-down menu below to execute file modifications instantly inside your local browser memory space.
         </p>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+      <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
         {/* Drop Down Operational Matrix Selector */}
         <div>
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Select Target Operation Pipeline</label>
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Select Target Operation Pipeline</label>
           <select
             value={conversionType}
             onChange={(e) => { setConversionType(e.target.value as ConversionType); setSelectedFile(null); setStatus(null); }}
-            className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
           >
             <option value="img_to_pdf">Images (JPG / PNG / WEBP) ➔ PDF Document</option>
             <option value="pdf_to_img">PDF Document ➔ Image Extraction (JPG / PNG)</option>
@@ -156,8 +156,8 @@ export default function PDFConverterMatrix() {
         {/* Conditional inputs */}
         {conversionType !== 'text_to_pdf' ? (
           <div>
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-3">Upload Source File Asset</label>
-            <div className="border-2 border-dashed border-slate-200 rounded-2xl p-8 text-center bg-slate-50 hover:bg-slate-100/60 transition-colors relative cursor-pointer group">
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-3">Upload Source File Asset</label>
+            <div className="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center bg-slate-50 dark:bg-slate-950 transition-colors hover:bg-slate-100/60 transition-colors relative cursor-pointer group">
               <input
                 type="file"
                 accept={conversionType === 'img_to_pdf' ? 'image/*' : '.pdf'}
@@ -165,7 +165,7 @@ export default function PDFConverterMatrix() {
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               />
               <div className="text-2xl mb-2">📁</div>
-              <p className="text-sm font-semibold text-slate-700">
+              <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                 {selectedFile ? `Selected: ${selectedFile.name}` : 'Click to browse or drop target asset file here'}
               </p>
               <p className="text-xs text-slate-400 mt-1">
@@ -175,13 +175,13 @@ export default function PDFConverterMatrix() {
           </div>
         ) : (
           <div>
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Enter Plain Text Content</label>
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Enter Plain Text Content</label>
             <textarea
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
               rows={6}
               placeholder="Type or paste your text contents here to convert them into a structured PDF document shell..."
-              className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
             />
           </div>
         )}

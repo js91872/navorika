@@ -118,15 +118,15 @@ export default function PDFToolsHub() {
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Pro PDF Utilities Hub</h1>
-        <p className="text-slate-600 mt-2 text-sm max-w-2xl">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Pro PDF Utilities Hub</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm max-w-2xl">
           Lightning-fast document modification tools operating entirely inside your browser cache. Secure client execution safeguards complete asset confidentiality.
         </p>
       </div>
 
       {/* Mode Switches */}
-      <div className="flex border border-slate-200 rounded-xl p-1 bg-white max-w-sm mb-8 shadow-sm">
+      <div className="flex border border-slate-200 dark:border-slate-800 rounded-xl p-1 bg-white dark:bg-slate-900 transition-colors max-w-sm mb-8 shadow-sm">
         <button
           onClick={() => { setMode('merge'); clearFiles(); }}
           className={`flex-1 py-2.5 text-xs font-bold rounded-lg transition-all ${mode === 'merge' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}
@@ -141,13 +141,13 @@ export default function PDFToolsHub() {
         </button>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+      <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
         {/* Upload Dropzone wrapper */}
         <div>
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-3">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-3">
             {mode === 'merge' ? 'Upload PDF Documents to Combine' : 'Select Source PDF Document'}
           </label>
-          <div className="border-2 border-dashed border-slate-200 rounded-2xl p-8 text-center bg-slate-50 hover:bg-slate-100/60 transition-colors relative cursor-pointer group">
+          <div className="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center bg-slate-50 dark:bg-slate-950 transition-colors hover:bg-slate-100/60 transition-colors relative cursor-pointer group">
             <input
               type="file"
               accept=".pdf"
@@ -156,7 +156,7 @@ export default function PDFToolsHub() {
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
             <div className="text-2xl mb-2">📄</div>
-            <p className="text-sm font-semibold text-slate-700">Click to browse or drop assets here</p>
+            <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Click to browse or drop assets here</p>
             <p className="text-xs text-slate-400 mt-1">Accepts localized standard unencrypted .pdf files</p>
           </div>
         </div>
@@ -168,9 +168,9 @@ export default function PDFToolsHub() {
               <span className="text-xs font-bold uppercase text-slate-500">File Inventory ({files.length})</span>
               <button onClick={clearFiles} className="text-xs font-bold text-red-500 hover:text-red-700">Clear All</button>
             </div>
-            <div className="bg-slate-50 border border-slate-200 rounded-xl divide-y divide-slate-200">
+            <div className="bg-slate-50 dark:bg-slate-950 transition-colors border border-slate-200 dark:border-slate-800 rounded-xl divide-y divide-slate-200">
               {files.map((file, i) => (
-                <div key={i} className="px-4 py-3 flex items-center justify-between text-xs font-medium text-slate-700">
+                <div key={i} className="px-4 py-3 flex items-center justify-between text-xs font-medium text-slate-700 dark:text-slate-300">
                   <span className="truncate max-w-xs sm:max-w-md">📄 {file.name}</span>
                   <span className="text-slate-400 font-mono">{(file.size / (1024 * 1024)).toFixed(2)} MB</span>
                 </div>
@@ -181,13 +181,13 @@ export default function PDFToolsHub() {
 
         {mode === 'delete_pages' && targetFile && (
           <div className="pt-2 space-y-4">
-            <div className="flex justify-between items-center text-xs font-medium bg-slate-50 border border-slate-200 px-4 py-3 rounded-xl text-slate-700">
+            <div className="flex justify-between items-center text-xs font-medium bg-slate-50 dark:bg-slate-950 transition-colors border border-slate-200 dark:border-slate-800 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-300">
               <span className="truncate">🎯 Target: {targetFile.name}</span>
               <button onClick={clearFiles} className="text-red-500 font-bold hover:text-red-700">Remove</button>
             </div>
 
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">
                 Specify Page Numbers to Delete (Comma Separated)
               </label>
               <input
@@ -195,7 +195,7 @@ export default function PDFToolsHub() {
                 value={pageNumbersToDelete}
                 onChange={(e) => setPageNumbersToDelete(e.target.value)}
                 placeholder="e.g. 1, 4, 7"
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
               />
               <p className="text-[11px] text-slate-400 mt-1.5 leading-relaxed">
                 Provide strict 1-based structural numbers. For instance, inputting &quot;2, 5&quot; completely removes pages 2 and 5 from the final document layout output shell.
@@ -234,7 +234,7 @@ export default function PDFToolsHub() {
       </div>
 
       {/* Trust privacy bar metadata footer */}
-      <div className="mt-8 p-5 rounded-2xl border border-slate-100 bg-white shadow-inner flex items-center gap-3 text-xs text-slate-500 font-medium">
+      <div className="mt-8 p-5 rounded-2xl border border-slate-100 bg-white dark:bg-slate-900 transition-colors shadow-inner flex items-center gap-3 text-xs text-slate-500 font-medium">
         <span className="text-emerald-500 text-base animate-pulse">🔒</span>
         <p>
           <span className="text-slate-800 font-bold">100% Secure Client Pipeline Sandbox:</span> Navorika runs document processing inside local worker compilation space. Absolutely zero bytes leave your local storage matrix.

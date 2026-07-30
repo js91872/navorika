@@ -90,28 +90,28 @@ export default function PDFOptimizerSuite() {
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Compress PDF</h1>
-        <p className="text-slate-600 mt-2 text-sm max-w-2xl">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Compress PDF</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm max-w-2xl">
           Reduce your PDF file size while maintaining structural formatting. Choose your preferred balance between file size and document quality.
         </p>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-8">
+      <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-8">
         
         {/* Upload Zone */}
         <div>
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-3">1. Upload PDF Document</label>
-          <div className="border-2 border-dashed border-slate-200 rounded-2xl p-8 text-center bg-slate-50 hover:bg-slate-100/60 transition-colors relative cursor-pointer">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-3">1. Upload PDF Document</label>
+          <div className="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center bg-slate-50 dark:bg-slate-950 transition-colors hover:bg-slate-100/60 transition-colors relative cursor-pointer">
             <input type="file" accept=".pdf" onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
             <div className="text-2xl mb-1">📉</div>
-            <p className="text-sm font-semibold text-slate-700">{selectedFile ? `Selected: ${selectedFile.name}` : 'Click to upload or drop file here'}</p>
+            <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">{selectedFile ? `Selected: ${selectedFile.name}` : 'Click to upload or drop file here'}</p>
           </div>
         </div>
 
         {/* Compression Tiers */}
         <div>
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-3">2. Select Compression Level</label>
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-3">2. Select Compression Level</label>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             
             <button
@@ -119,7 +119,7 @@ export default function PDFOptimizerSuite() {
               className={`relative p-5 rounded-xl border text-left transition-all ${
                 level === 'extreme'
                   ? 'bg-indigo-50 border-indigo-500 shadow-sm ring-1 ring-indigo-500'
-                  : 'bg-white border-slate-200 hover:border-indigo-300'
+                  : 'bg-white dark:bg-slate-900 transition-colors border-slate-200 dark:border-slate-800 hover:border-indigo-300'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
@@ -134,7 +134,7 @@ export default function PDFOptimizerSuite() {
               className={`relative p-5 rounded-xl border text-left transition-all ${
                 level === 'recommended'
                   ? 'bg-emerald-50 border-emerald-500 shadow-sm ring-1 ring-emerald-500'
-                  : 'bg-white border-slate-200 hover:border-indigo-300'
+                  : 'bg-white dark:bg-slate-900 transition-colors border-slate-200 dark:border-slate-800 hover:border-indigo-300'
               }`}
             >
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm">
@@ -152,7 +152,7 @@ export default function PDFOptimizerSuite() {
               className={`relative p-5 rounded-xl border text-left transition-all ${
                 level === 'low'
                   ? 'bg-indigo-50 border-indigo-500 shadow-sm ring-1 ring-indigo-500'
-                  : 'bg-white border-slate-200 hover:border-indigo-300'
+                  : 'bg-white dark:bg-slate-900 transition-colors border-slate-200 dark:border-slate-800 hover:border-indigo-300'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
@@ -167,14 +167,14 @@ export default function PDFOptimizerSuite() {
 
         {/* Stats Output */}
         {fileStats && (
-          <div className="grid grid-cols-3 gap-4 p-5 bg-slate-50 border border-slate-200 rounded-xl text-center shadow-inner">
+          <div className="grid grid-cols-3 gap-4 p-5 bg-slate-50 dark:bg-slate-950 transition-colors border border-slate-200 dark:border-slate-800 rounded-xl text-center shadow-inner">
             <div>
               <div className="text-[10px] uppercase tracking-wider font-bold text-slate-500 mb-1">Original Size</div>
-              <div className="text-base font-black text-slate-900">{fileStats.original}</div>
+              <div className="text-base font-black text-slate-900 dark:text-white">{fileStats.original}</div>
             </div>
             <div>
               <div className="text-[10px] uppercase tracking-wider font-bold text-slate-500 mb-1">Optimized Size</div>
-              <div className="text-base font-black text-slate-900">{fileStats.optimized}</div>
+              <div className="text-base font-black text-slate-900 dark:text-white">{fileStats.optimized}</div>
             </div>
             <div>
               <div className="text-[10px] uppercase tracking-wider font-bold text-slate-500 mb-1">Total Savings</div>

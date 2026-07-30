@@ -91,9 +91,9 @@ export default function RetirementCalculators() {
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6">
       
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Retirement & FIRE Hub</h1>
-        <p className="text-slate-600 mt-2 text-sm max-w-2xl">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Retirement & FIRE Hub</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm max-w-2xl">
           Evaluate inflation metrics, safe asset withdrawal rates, and structured annuity pensions to map out long-term financial independence.
         </p>
       </div>
@@ -112,7 +112,7 @@ export default function RetirementCalculators() {
             className={`px-3 py-3 rounded-xl border text-xs font-bold transition-all text-center ${
               mode === btn.id
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                : 'bg-white dark:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-300'
             }`}
           >
             {btn.label}
@@ -122,49 +122,49 @@ export default function RetirementCalculators() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {/* Controlled parameter fields mapping */}
-        <div className="lg:col-span-1 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-          <h3 className="font-bold text-slate-900 text-base">Adjust Parameters</h3>
+        <div className="lg:col-span-1 bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-6">
+          <h3 className="font-bold text-slate-900 dark:text-white text-base">Adjust Parameters</h3>
 
           {(mode === 'corpus' || mode === 'fire') && (
             <>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Current Age</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Current Age</label>
                   <input
                     type="number"
                     value={currentAge}
                     onChange={(e) => setCurrentAge(e.target.value)}
-                    className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Retirement Age</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Retirement Age</label>
                   <input
                     type="number"
                     value={targetAge}
                     onChange={(e) => setTargetAge(e.target.value)}
-                    className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Current Monthly Expense</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Current Monthly Expense</label>
                 <input
                   type="number"
                   value={monthlyExpense}
                   onChange={(e) => setMonthlyExpense(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Existing Saved Net Worth Corpus</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Existing Saved Net Worth Corpus</label>
                 <input
                   type="number"
                   value={existingCorpus}
                   onChange={(e) => setExistingCorpus(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>
@@ -173,23 +173,23 @@ export default function RetirementCalculators() {
           {(mode === 'pension' || mode === 'annuity') && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Total Accumulated Annuity/Pension Pool</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Total Accumulated Annuity/Pension Pool</label>
                 <input
                   type="number"
                   value={annuityPool}
                   onChange={(e) => setAnnuityPool(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Expected Annuity Return Rate (% p.a.)</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Expected Annuity Return Rate (% p.a.)</label>
                 <input
                   type="number"
                   step="0.1"
                   value={annuityRate}
                   onChange={(e) => setAnnuityRate(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>
@@ -198,7 +198,7 @@ export default function RetirementCalculators() {
 
         {/* Dynamic Outputs Projections View Panels */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white border border-slate-200 rounded-2xl p-8 text-center shadow-sm">
+          <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center shadow-sm">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
               {mode === 'corpus' || mode === 'fire' ? "Required Target Corpus Nest Egg" : "Total Capital Allocation Pool Assets"}
             </span>
@@ -219,8 +219,8 @@ export default function RetirementCalculators() {
             </div>
           )}
 
-          <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-500">
-            <h4 className="font-bold text-slate-700 mb-2">Calculators Fully Supported inside this retirement module:</h4>
+          <div className="p-6 bg-slate-50 dark:bg-slate-950 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl text-xs text-slate-500">
+            <h4 className="font-bold text-slate-700 dark:text-slate-300 mb-2">Calculators Fully Supported inside this retirement module:</h4>
             <p className="leading-relaxed">
               Retirement Calculator • Pension Calculator • FIRE Calculator • Retirement Corpus Calculator • Retirement Withdrawal Calculator • Annuity Calculator.
             </p>

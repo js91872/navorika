@@ -132,9 +132,9 @@ export default function SalaryCalculators() {
 
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Salary & Payroll Processing</h1>
-        <p className="text-slate-600 mt-2 text-sm max-w-2xl">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Salary & Payroll Processing</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm max-w-2xl">
           Comprehensive payroll modules running entirely client-side to calculate monthly take-home payouts, CTC breakdowns, appraisals, and detailed hourly/daily work sheets.
         </p>
       </div>
@@ -154,7 +154,7 @@ export default function SalaryCalculators() {
             className={`px-3 py-3 rounded-xl border text-xs font-bold transition-all text-center ${
               mode === btn.id
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                : 'bg-white dark:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-300'
             }`}
           >
             {btn.label}
@@ -164,27 +164,27 @@ export default function SalaryCalculators() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {/* Input Parameter Settings Card */}
-        <div className="lg:col-span-1 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-          <h3 className="font-bold text-slate-900 text-base">Adjust Parameters</h3>
+        <div className="lg:col-span-1 bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-6">
+          <h3 className="font-bold text-slate-900 dark:text-white text-base">Adjust Parameters</h3>
 
           {mode === 'in_hand' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Gross Annual CTC</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Gross Annual CTC</label>
                 <input
                   type="number"
                   value={grossAnnual}
                   onChange={(e) => setGrossAnnual(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Monthly Deductions (PF/ESI/Insurance)</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Monthly Deductions (PF/ESI/Insurance)</label>
                 <input
                   type="number"
                   value={monthlyDeductions}
                   onChange={(e) => setMonthlyDeductions(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>
@@ -193,21 +193,21 @@ export default function SalaryCalculators() {
           {mode === 'hike' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Current Annual Salary (Pre-Hike)</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Current Annual Salary (Pre-Hike)</label>
                 <input
                   type="number"
                   value={currentSalary}
                   onChange={(e) => setCurrentSalary(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">New Annual Salary (Post-Hike)</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">New Annual Salary (Post-Hike)</label>
                 <input
                   type="number"
                   value={newSalary}
                   onChange={(e) => setNewSalary(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>
@@ -216,12 +216,12 @@ export default function SalaryCalculators() {
           {mode === 'bonus' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Annual Base Salary</label>
-                <input type="number" value={basePay} onChange={(e) => setBasePay(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Annual Base Salary</label>
+                <input type="number" value={basePay} onChange={(e) => setBasePay(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Bonus Percentage Multiplier (%)</label>
-                <input type="number" value={bonusPercentage} onChange={(e) => setBonusPercentage(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Bonus Percentage Multiplier (%)</label>
+                <input type="number" value={bonusPercentage} onChange={(e) => setBonusPercentage(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}
@@ -231,21 +231,21 @@ export default function SalaryCalculators() {
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Hourly Rate</label>
-                  <input type="number" value={hourlyRate} onChange={(e) => setHourlyRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={hourlyRate} onChange={(e) => setHourlyRate(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Hours Logged</label>
-                  <input type="number" value={hoursWorked} onChange={(e) => setHoursWorked(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={hoursWorked} onChange={(e) => setHoursWorked(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">OT Hours</label>
-                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">OT Hourly Rate</label>
-                  <input type="number" value={overtimeRate} onChange={(e) => setOvertimeRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={overtimeRate} onChange={(e) => setOvertimeRate(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
                 </div>
               </div>
             </div>
@@ -256,21 +256,21 @@ export default function SalaryCalculators() {
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Daily Rate</label>
-                  <input type="number" value={dailyRate} onChange={(e) => setDailyRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={dailyRate} onChange={(e) => setDailyRate(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Days Worked</label>
-                  <input type="number" value={daysWorked} onChange={(e) => setDaysWorked(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={daysWorked} onChange={(e) => setDaysWorked(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">OT Hours</label>
-                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">OT Hourly Rate</label>
-                  <input type="number" value={overtimeRate} onChange={(e) => setOvertimeRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                  <input type="number" value={overtimeRate} onChange={(e) => setOvertimeRate(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
                 </div>
               </div>
             </div>
@@ -281,7 +281,7 @@ export default function SalaryCalculators() {
         {/* Output metrics section */}
         <div className="lg:col-span-2 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
               <div className="text-xs font-bold text-slate-500 tracking-wider mb-2 uppercase">
                 {calculations.outputLabel1}
               </div>
@@ -290,25 +290,25 @@ export default function SalaryCalculators() {
               </div>
             </div>
 
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
               <div className="text-xs font-bold text-slate-500 tracking-wider mb-2 uppercase">
                 {calculations.outputLabel2}
               </div>
-              <div className="text-3xl font-black text-slate-900">
+              <div className="text-3xl font-black text-slate-900 dark:text-white">
                 {mode === 'hike' ? `${calculations.outputVal2.toFixed(1)}%` : formatCurrency(calculations.outputVal2)}
               </div>
             </div>
           </div>
 
           {calculations.textSummaryValue && (
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-inner">
+            <div className="bg-slate-50 dark:bg-slate-950 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-inner">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">{calculations.textSummaryLabel}</div>
-              <div className="text-sm font-semibold text-slate-700 leading-relaxed">{calculations.textSummaryValue}</div>
+              <div className="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-relaxed">{calculations.textSummaryValue}</div>
             </div>
           )}
 
-          <div className="p-6 bg-white border border-slate-200 rounded-2xl text-xs text-slate-500 shadow-sm">
-            <h4 className="font-bold text-slate-700 mb-2">Calculators Fully Supported in this Suite:</h4>
+          <div className="p-6 bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl text-xs text-slate-500 shadow-sm">
+            <h4 className="font-bold text-slate-700 dark:text-slate-300 mb-2">Calculators Fully Supported in this Suite:</h4>
             <p className="leading-relaxed">
               Salary Calculator • In-Hand Salary Calculator • CTC Calculator • Salary Hike Calculator • Bonus Calculator • Overtime Calculator • Hourly Wage Calculator • Daily Wage Calculator • Payroll Calculator.
             </p>

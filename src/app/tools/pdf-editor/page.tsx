@@ -147,9 +147,9 @@ export default function PDFEditorHub() {
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">PDF Editor & Modifier</h1>
-        <p className="text-slate-600 mt-2 text-sm max-w-2xl">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">PDF Editor & Modifier</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm max-w-2xl">
           Apply structural modifications to your PDF files natively in your browser. Rotate layouts, reorder pages, and stamp custom text or images with zero server uploads.
         </p>
       </div>
@@ -167,7 +167,7 @@ export default function PDFEditorHub() {
             className={`px-3 py-3 rounded-xl border text-xs font-bold transition-all text-center ${
               mode === btn.id
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                : 'bg-white dark:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-300'
             }`}
           >
             {btn.label}
@@ -175,25 +175,25 @@ export default function PDFEditorHub() {
         ))}
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+      <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
         {/* Universal PDF Source Upload */}
         <div>
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-3">Target PDF Document</label>
-          <div className="border-2 border-dashed border-slate-200 rounded-2xl p-6 text-center bg-slate-50 hover:bg-slate-100/60 transition-colors relative cursor-pointer">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-3">Target PDF Document</label>
+          <div className="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-center bg-slate-50 dark:bg-slate-950 transition-colors hover:bg-slate-100/60 transition-colors relative cursor-pointer">
             <input type="file" accept=".pdf" onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
             <div className="text-2xl mb-1">📄</div>
-            <p className="text-sm font-semibold text-slate-700">{targetFile ? targetFile.name : 'Click to select source PDF'}</p>
+            <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">{targetFile ? targetFile.name : 'Click to select source PDF'}</p>
           </div>
         </div>
 
         {/* Dynamic Controls based on Mode */}
-        <div className="p-6 bg-slate-50 border border-slate-200 rounded-xl space-y-4">
-          <h3 className="font-bold text-slate-900 text-sm border-b border-slate-200 pb-2">Tool Parameters</h3>
+        <div className="p-6 bg-slate-50 dark:bg-slate-950 transition-colors border border-slate-200 dark:border-slate-800 rounded-xl space-y-4">
+          <h3 className="font-bold text-slate-900 dark:text-white text-sm border-b border-slate-200 dark:border-slate-800 pb-2">Tool Parameters</h3>
           
           {mode === 'rotate' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Rotation Angle</label>
-              <select value={rotationDegree} onChange={(e) => setRotationDegree(e.target.value)} className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:border-indigo-500">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Rotation Angle</label>
+              <select value={rotationDegree} onChange={(e) => setRotationDegree(e.target.value)} className="w-full bg-white dark:bg-slate-900 transition-colors text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:border-indigo-500">
                 <option value="90">90 Degrees (Clockwise)</option>
                 <option value="180">180 Degrees (Upside Down)</option>
                 <option value="270">270 Degrees (Counter-Clockwise)</option>
@@ -203,8 +203,8 @@ export default function PDFEditorHub() {
 
           {mode === 'reorder' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">New Page Order</label>
-              <input type="text" value={pageOrder} onChange={(e) => setPageOrder(e.target.value)} placeholder="e.g. 4, 1, 2, 3" className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">New Page Order</label>
+              <input type="text" value={pageOrder} onChange={(e) => setPageOrder(e.target.value)} placeholder="e.g. 4, 1, 2, 3" className="w-full bg-white dark:bg-slate-900 transition-colors text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               <p className="text-[11px] text-slate-500 mt-2">Enter comma-separated page numbers. E.g., &quot;3, 1, 2&quot; will make page 3 the first page.</p>
             </div>
           )}
@@ -212,22 +212,22 @@ export default function PDFEditorHub() {
           {mode === 'add_text' && (
             <div className="space-y-4">
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Watermark Text</label>
-                <input type="text" value={textInput} onChange={(e) => setTextInput(e.target.value)} className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Watermark Text</label>
+                <input type="text" value={textInput} onChange={(e) => setTextInput(e.target.value)} className="w-full bg-white dark:bg-slate-900 transition-colors text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Font Size</label>
-                <input type="number" value={textSize} onChange={(e) => setTextSize(e.target.value)} className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Font Size</label>
+                <input type="number" value={textSize} onChange={(e) => setTextSize(e.target.value)} className="w-full bg-white dark:bg-slate-900 transition-colors text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
             </div>
           )}
 
           {mode === 'add_image' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-3">Upload Image Stamp (PNG/JPG)</label>
-              <div className="border border-slate-200 rounded-xl p-4 bg-white relative cursor-pointer">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-3">Upload Image Stamp (PNG/JPG)</label>
+              <div className="border border-slate-200 dark:border-slate-800 rounded-xl p-4 bg-white dark:bg-slate-900 transition-colors relative cursor-pointer">
                 <input type="file" accept="image/png, image/jpeg" onChange={handleImageChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
-                <p className="text-sm font-semibold text-slate-700 text-center">{imageFile ? imageFile.name : 'Select image to stamp onto PDF'}</p>
+                <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 text-center">{imageFile ? imageFile.name : 'Select image to stamp onto PDF'}</p>
               </div>
             </div>
           )}

@@ -156,9 +156,9 @@ export default function TaxCalculators() {
 
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Tax & Payroll Utilities</h1>
-        <p className="text-slate-600 mt-2 text-sm max-w-2xl">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Tax & Payroll Utilities</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm max-w-2xl">
           Instantly evaluate your Indian Income Tax liabilities under both regimes, parse GST/VAT structures, and compute statutory payroll exemptions.
         </p>
       </div>
@@ -178,7 +178,7 @@ export default function TaxCalculators() {
             className={`px-3 py-3 rounded-xl border text-xs font-bold transition-all text-center ${
               mode === btn.id
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                : 'bg-white dark:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-300'
             }`}
           >
             {btn.label}
@@ -188,36 +188,36 @@ export default function TaxCalculators() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {/* Input parameters panel */}
-        <div className="lg:col-span-1 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-          <h3 className="font-bold text-slate-900 text-base">Adjustment Panel</h3>
+        <div className="lg:col-span-1 bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-6">
+          <h3 className="font-bold text-slate-900 dark:text-white text-base">Adjustment Panel</h3>
 
           {mode === 'income_tax' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Total Gross Salary / Income</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Total Gross Salary / Income</label>
                 <input
                   type="number"
                   value={grossSalary}
                   onChange={(e) => setGrossSalary(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Section 80C Investments (Old Regime)</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Section 80C Investments (Old Regime)</label>
                 <input
                   type="number"
                   value={investments80C}
                   onChange={(e) => setInvestments80C(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Other Deductions (HRA, 80D, etc.)</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Other Deductions (HRA, 80D, etc.)</label>
                 <input
                   type="number"
                   value={otherDeductions}
                   onChange={(e) => setOtherDeductions(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </>
@@ -226,33 +226,33 @@ export default function TaxCalculators() {
           {mode === 'gst' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Transaction Amount</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Transaction Amount</label>
                 <input
                   type="number"
                   value={baseAmount}
                   onChange={(e) => setBaseAmount(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">GST / Tax Rate (%)</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">GST / Tax Rate (%)</label>
                 <input
                   type="number"
                   value={taxRate}
                   onChange={(e) => setTaxRate(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
-              <div className="flex border border-slate-200 rounded-xl p-0.5 bg-slate-50 mt-4">
+              <div className="flex border border-slate-200 dark:border-slate-800 rounded-xl p-0.5 bg-slate-50 dark:bg-slate-950 transition-colors mt-4">
                 <button
                   onClick={() => setGstType('exclusive')}
-                  className={`flex-1 text-center py-2 text-xs font-bold rounded-lg transition-all ${gstType === 'exclusive' ? 'bg-white shadow-sm text-indigo-600' : 'text-slate-500'}`}
+                  className={`flex-1 text-center py-2 text-xs font-bold rounded-lg transition-all ${gstType === 'exclusive' ? 'bg-white dark:bg-slate-900 transition-colors shadow-sm text-indigo-600' : 'text-slate-500'}`}
                 >
                   GST Exclusive (+ Add)
                 </button>
                 <button
                   onClick={() => setGstType('inclusive')}
-                  className={`flex-1 text-center py-2 text-xs font-bold rounded-lg transition-all ${gstType === 'inclusive' ? 'bg-white shadow-sm text-indigo-600' : 'text-slate-500'}`}
+                  className={`flex-1 text-center py-2 text-xs font-bold rounded-lg transition-all ${gstType === 'inclusive' ? 'bg-white dark:bg-slate-900 transition-colors shadow-sm text-indigo-600' : 'text-slate-500'}`}
                 >
                   GST Inclusive (- Remove)
                 </button>
@@ -263,47 +263,47 @@ export default function TaxCalculators() {
           {mode === 'capital_gains' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Purchase Price (Cost)</label>
-                <input type="number" value={investments80C} onChange={(e) => setInvestments80C(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Purchase Price (Cost)</label>
+                <input type="number" value={investments80C} onChange={(e) => setInvestments80C(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Sale Price (Revenue)</label>
-                <input type="number" value={baseAmount} onChange={(e) => setBaseAmount(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Sale Price (Revenue)</label>
+                <input type="number" value={baseAmount} onChange={(e) => setBaseAmount(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Estimated Tax Bracket (%)</label>
-                <input type="number" step="0.5" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Estimated Tax Bracket (%)</label>
+                <input type="number" step="0.5" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
             </>
           )}
 
           {(mode === 'gratuity' || mode === 'hra') && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Basic Salary (+ DA)</label>
-              <input type="number" value={basicSalary} onChange={(e) => setBasicSalary(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Basic Salary (+ DA)</label>
+              <input type="number" value={basicSalary} onChange={(e) => setBasicSalary(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
             </div>
           )}
 
           {mode === 'gratuity' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Years of Service</label>
-              <input type="number" value={yearsOfService} onChange={(e) => setYearsOfService(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Years of Service</label>
+              <input type="number" value={yearsOfService} onChange={(e) => setYearsOfService(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
             </div>
           )}
 
           {mode === 'hra' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">HRA Received from Employer</label>
-                <input type="number" value={hraReceived} onChange={(e) => setHraReceived(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">HRA Received from Employer</label>
+                <input type="number" value={hraReceived} onChange={(e) => setHraReceived(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Actual Rent Paid</label>
-                <input type="number" value={rentPaid} onChange={(e) => setRentPaid(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Actual Rent Paid</label>
+                <input type="number" value={rentPaid} onChange={(e) => setRentPaid(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" />
               </div>
               <div className="flex items-center gap-3 mt-4">
                 <input type="checkbox" checked={isMetro} onChange={(e) => setIsMetro(e.target.checked)} className="w-4 h-4 text-indigo-600 rounded border-slate-300" id="metro-check" />
-                <label htmlFor="metro-check" className="text-sm font-bold text-slate-700">Residing in Metro City (50% Rule)</label>
+                <label htmlFor="metro-check" className="text-sm font-bold text-slate-700 dark:text-slate-300">Residing in Metro City (50% Rule)</label>
               </div>
             </>
           )}
@@ -313,34 +313,34 @@ export default function TaxCalculators() {
         {/* Projections Matrix Output Displays */}
         <div className="lg:col-span-2 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className={`border rounded-2xl p-6 shadow-sm ${mode === 'income_tax' && calculations.mainOutputValue <= calculations.secondaryOutputValue ? 'bg-indigo-50 border-indigo-200' : 'bg-white border-slate-200'}`}>
+            <div className={`border rounded-2xl p-6 shadow-sm ${mode === 'income_tax' && calculations.mainOutputValue <= calculations.secondaryOutputValue ? 'bg-indigo-50 border-indigo-200' : 'bg-white dark:bg-slate-900 transition-colors border-slate-200 dark:border-slate-800'}`}>
               <div className={`text-xs font-bold uppercase tracking-wider mb-2 ${mode === 'income_tax' && calculations.mainOutputValue <= calculations.secondaryOutputValue ? 'text-indigo-600' : 'text-slate-500'}`}>
                 {calculations.mainOutputLabel}
               </div>
-              <div className={`text-3xl font-black ${mode === 'income_tax' && calculations.mainOutputValue <= calculations.secondaryOutputValue ? 'text-indigo-900' : 'text-slate-900'}`}>
+              <div className={`text-3xl font-black ${mode === 'income_tax' && calculations.mainOutputValue <= calculations.secondaryOutputValue ? 'text-indigo-900' : 'text-slate-900 dark:text-white'}`}>
                 {mode === 'gratuity' && calculations.mainOutputValue === 0 ? 'Not Eligible' : formatCurrency(calculations.mainOutputValue)}
               </div>
             </div>
             
-            <div className={`border rounded-2xl p-6 shadow-sm ${mode === 'income_tax' && calculations.secondaryOutputValue < calculations.mainOutputValue ? 'bg-indigo-50 border-indigo-200' : 'bg-white border-slate-200'}`}>
+            <div className={`border rounded-2xl p-6 shadow-sm ${mode === 'income_tax' && calculations.secondaryOutputValue < calculations.mainOutputValue ? 'bg-indigo-50 border-indigo-200' : 'bg-white dark:bg-slate-900 transition-colors border-slate-200 dark:border-slate-800'}`}>
               <div className={`text-xs font-bold uppercase tracking-wider mb-2 ${mode === 'income_tax' && calculations.secondaryOutputValue < calculations.mainOutputValue ? 'text-indigo-600' : 'text-slate-500'}`}>
                 {calculations.secondaryOutputLabel}
               </div>
-              <div className={`text-3xl font-black ${mode === 'income_tax' && calculations.secondaryOutputValue < calculations.mainOutputValue ? 'text-indigo-900' : 'text-slate-900'}`}>
+              <div className={`text-3xl font-black ${mode === 'income_tax' && calculations.secondaryOutputValue < calculations.mainOutputValue ? 'text-indigo-900' : 'text-slate-900 dark:text-white'}`}>
                 {mode === 'gratuity' ? calculations.secondaryOutputValue : formatCurrency(calculations.secondaryOutputValue)}
               </div>
             </div>
           </div>
 
           {calculations.extraLabel && (
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center shadow-inner">
+            <div className="bg-slate-50 dark:bg-slate-950 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-center shadow-inner">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">{calculations.extraLabel}</div>
               <div className="text-xl font-black text-slate-800">{calculations.extraValue}</div>
             </div>
           )}
 
-          <div className="p-6 bg-white border border-slate-200 rounded-2xl text-xs text-slate-500 shadow-sm">
-            <h4 className="font-bold text-slate-700 mb-2">Calculators Available in this Module:</h4>
+          <div className="p-6 bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl text-xs text-slate-500 shadow-sm">
+            <h4 className="font-bold text-slate-700 dark:text-slate-300 mb-2">Calculators Available in this Module:</h4>
             <p className="leading-relaxed">
               Income Tax Calculator (Old & New Regime) • GST Calculator • VAT Calculator • Sales Tax Calculator • Capital Gains Tax Calculator • TDS Calculator Logic • HRA Exemption Calculator • Section 80C Limit Checker • Gratuity Calculator • Leave Encashment Standard Formulas.
             </p>

@@ -128,9 +128,9 @@ export default function InvestmentCalculators() {
 
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Investment Calculators Hub</h1>
-        <p className="text-slate-600 mt-2 text-sm max-w-2xl">
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Investment Calculators Hub</h1>
+        <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm max-w-2xl">
           A client-side suite fulfilling 15 precise calculators covering Mutual Funds, SIP, CAGR, XIRR, ROI, Portfolio returns, and Goal settings.
         </p>
       </div>
@@ -153,7 +153,7 @@ export default function InvestmentCalculators() {
             className={`px-3 py-3 rounded-xl border text-xs font-bold transition-all text-center ${
               mode === btn.id
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                : 'bg-white dark:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-300'
             }`}
           >
             {btn.label}
@@ -163,29 +163,29 @@ export default function InvestmentCalculators() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {/* Adjusted Controlled input fields showing values explicitly */}
-        <div className="lg:col-span-1 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-          <h3 className="font-bold text-slate-900 text-base">Adjust Projections</h3>
+        <div className="lg:col-span-1 bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-6">
+          <h3 className="font-bold text-slate-900 dark:text-white text-base">Adjust Projections</h3>
 
           {(mode === 'sip' || mode === 'dca') && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Monthly Investment Amount</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Monthly Investment Amount</label>
               <input
                 type="number"
                 value={periodicAmount}
                 onChange={(e) => setPeriodicAmount(e.target.value)}
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white"
               />
             </div>
           )}
 
           {(mode === 'lumpsum' || mode === 'compound_interest' || mode === 'simple_interest' || mode === 'roi') && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Principal Investment capital</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Principal Investment capital</label>
               <input
                 type="number"
                 value={principal}
                 onChange={(e) => setPrincipal(e.target.value)}
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white"
               />
             </div>
           )}
@@ -193,21 +193,21 @@ export default function InvestmentCalculators() {
           {mode === 'cagr' && (
             <>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Initial Asset Value</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Initial Asset Value</label>
                 <input
                   type="number"
                   value={initialAssetVal}
                   onChange={(e) => setInitialAssetVal(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white"
                 />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Final Asset Value</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Final Asset Value</label>
                 <input
                   type="number"
                   value={finalAssetVal}
                   onChange={(e) => setFinalAssetVal(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                  className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white"
                 />
               </div>
             </>
@@ -215,48 +215,48 @@ export default function InvestmentCalculators() {
 
           {mode === 'roi' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Final Accumulated Asset Portfolio Value</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Final Accumulated Asset Portfolio Value</label>
               <input
                 type="number"
                 value={finalAssetVal}
                 onChange={(e) => setFinalAssetVal(e.target.value)}
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white"
               />
             </div>
           )}
 
           {mode === 'goal' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Target Goal Wealth Amount</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Target Goal Wealth Amount</label>
               <input
                 type="number"
                 value={targetGoalVal}
                 onChange={(e) => setTargetGoalVal(e.target.value)}
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white"
               />
             </div>
           )}
 
           {mode !== 'cagr' && mode !== 'roi' && (
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Expected Returns Rate (% p.a.)</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Expected Returns Rate (% p.a.)</label>
               <input
                 type="number"
                 step="0.1"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
-                className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+                className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white"
               />
             </div>
           )}
 
           <div>
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block mb-2">Time Duration (Years)</label>
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Time Duration (Years)</label>
             <input
               type="number"
               value={years}
               onChange={(e) => setYears(e.target.value)}
-              className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900"
+              className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white"
               />
           </div>
         </div>
@@ -264,15 +264,15 @@ export default function InvestmentCalculators() {
         {/* Projections Matrix Output Displays */}
         <div className="lg:col-span-2 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Total Capital Outlay</div>
-              <div className="text-xl font-black text-slate-900">{formatCurrency(calculations.invested)}</div>
+              <div className="text-xl font-black text-slate-900 dark:text-white">{formatCurrency(calculations.invested)}</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Accumulated Growth Gain</div>
               <div className="text-xl font-black text-emerald-600">{formatCurrency(calculations.gains)}</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Total Future Wealth Balance</div>
               <div className="text-xl font-black text-indigo-600">{formatCurrency(calculations.totalValue)}</div>
             </div>
@@ -289,8 +289,8 @@ export default function InvestmentCalculators() {
             </div>
           )}
 
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-            <h4 className="font-bold text-sm text-slate-900 mb-4">Capital Growth Proportion Analysis</h4>
+          <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+            <h4 className="font-bold text-sm text-slate-900 dark:text-white mb-4">Capital Growth Proportion Analysis</h4>
             <div className="h-4 w-full bg-slate-100 rounded-full overflow-hidden flex">
               <div 
                 style={{ width: `${Math.max(0, 100 - parseFloat(gainsPct))}%` }} 
@@ -304,17 +304,17 @@ export default function InvestmentCalculators() {
             <div className="flex gap-6 mt-4 text-xs font-semibold">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded bg-indigo-600 inline-block"></span>
-                <span className="text-slate-600">Invested Principle Component ({Math.max(0, 100 - parseFloat(gainsPct)).toFixed(1)}%)</span>
+                <span className="text-slate-600 dark:text-slate-400">Invested Principle Component ({Math.max(0, 100 - parseFloat(gainsPct)).toFixed(1)}%)</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded bg-emerald-500 inline-block"></span>
-                <span className="text-slate-600">Compounded Growth Returns Yield ({Math.max(0, parseFloat(gainsPct)).toFixed(1)}%)</span>
+                <span className="text-slate-600 dark:text-slate-400">Compounded Growth Returns Yield ({Math.max(0, parseFloat(gainsPct)).toFixed(1)}%)</span>
               </div>
             </div>
           </div>
 
-          <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-500">
-            <h4 className="font-bold text-slate-700 mb-2">Calculators Fully Supported in this Module Grid:</h4>
+          <div className="p-6 bg-slate-50 dark:bg-slate-950 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl text-xs text-slate-500">
+            <h4 className="font-bold text-slate-700 dark:text-slate-300 mb-2">Calculators Fully Supported in this Module Grid:</h4>
             <p className="mb-3 leading-relaxed">
               SIP Calculator • Lumpsum Investment Calculator • Mutual Fund Calculator • CAGR Calculator • XIRR Calculator • ROI Calculator • Investment Return Calculator • Future Value Calculator • Present Value Calculator • Compound Interest Calculator • Simple Interest Calculator • Dollar Cost Averaging Calculator • Portfolio Return Calculator • Asset Allocation Calculator • Investment Goal Calculator.
             </p>

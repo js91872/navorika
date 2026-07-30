@@ -144,32 +144,32 @@ export default function AdvancedPageNumbersHub() {
         {/* Left Column: File Upload & Core Configuration */}
         <div className="lg:col-span-6 space-y-6">
           <div>
-            <label className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-3">1. Upload PDF Document</label>
-            <div className="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-8 text-center bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100/60 transition-colors relative cursor-pointer group">
+            <label className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 dark:text-slate-300 block mb-3">1. Upload PDF Document</label>
+            <div className="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-8 text-center bg-slate-50 dark:bg-slate-950 transition-colors dark:bg-slate-800/50 hover:bg-slate-100/60 transition-colors relative cursor-pointer group">
               <input type="file" accept=".pdf" onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
               <div className="text-3xl mb-2">📑</div>
-              <p className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">
+              <p className="text-sm font-bold text-slate-900 dark:text-white dark:text-white group-hover:text-indigo-600 transition-colors">
                 {selectedFile ? `Selected: ${selectedFile.name}` : 'Click to select target PDF file'}
               </p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Files process locally with absolute privacy</p>
             </div>
           </div>
 
-          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl space-y-5">
-            <h3 className="font-bold text-slate-900 dark:text-white text-sm border-b border-slate-200 dark:border-slate-700 pb-3 uppercase tracking-wider">Numbering Sequence</h3>
+          <div className="p-6 bg-slate-50 dark:bg-slate-950 transition-colors dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 dark:border-slate-700 rounded-2xl space-y-5">
+            <h3 className="font-bold text-slate-900 dark:text-white dark:text-white text-sm border-b border-slate-200 dark:border-slate-800 dark:border-slate-700 pb-3 uppercase tracking-wider">Numbering Sequence</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Number Style</label>
-                <select value={numberStyle} onChange={(e) => setNumberStyle(e.target.value as NumberStyle)} className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-400 block mb-2">Number Style</label>
+                <select value={numberStyle} onChange={(e) => setNumberStyle(e.target.value as NumberStyle)} className="w-full bg-white dark:bg-slate-900 transition-colors dark:bg-slate-900 text-slate-900 dark:text-white dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500">
                   <option value="arabic">Arabic (1, 2, 3)</option>
                   <option value="roman">Roman (I, II, III)</option>
                 </select>
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Position Zone</label>
-                <select value={position} onChange={(e) => setPosition(e.target.value as Position)} className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-400 block mb-2">Position Zone</label>
+                <select value={position} onChange={(e) => setPosition(e.target.value as Position)} className="w-full bg-white dark:bg-slate-900 transition-colors dark:bg-slate-900 text-slate-900 dark:text-white dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500">
                   <option value="top-left">Top Left</option>
                   <option value="top-center">Top Center</option>
                   <option value="top-right">Top Right</option>
@@ -182,12 +182,12 @@ export default function AdvancedPageNumbersHub() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Start From Page</label>
-                <input type="number" value={startPage} onChange={(e) => setStartPage(e.target.value)} className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-400 block mb-2">Start From Page</label>
+                <input type="number" value={startPage} onChange={(e) => setStartPage(e.target.value)} className="w-full bg-white dark:bg-slate-900 transition-colors dark:bg-slate-900 text-slate-900 dark:text-white dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Initial Number</label>
-                <input type="number" value={startNumber} onChange={(e) => setStartNumber(e.target.value)} className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-400 block mb-2">Initial Number</label>
+                <input type="number" value={startNumber} onChange={(e) => setStartNumber(e.target.value)} className="w-full bg-white dark:bg-slate-900 transition-colors dark:bg-slate-900 text-slate-900 dark:text-white dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
             </div>
 
@@ -200,36 +200,36 @@ export default function AdvancedPageNumbersHub() {
 
         {/* Right Column: Advanced Typography & Action Execution */}
         <div className="lg:col-span-6 space-y-6">
-          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl space-y-5">
-            <h3 className="font-bold text-slate-900 dark:text-white text-sm border-b border-slate-200 dark:border-slate-700 pb-3 uppercase tracking-wider">Typography & Layout</h3>
+          <div className="p-6 bg-slate-50 dark:bg-slate-950 transition-colors dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 dark:border-slate-700 rounded-2xl space-y-5">
+            <h3 className="font-bold text-slate-900 dark:text-white dark:text-white text-sm border-b border-slate-200 dark:border-slate-800 dark:border-slate-700 pb-3 uppercase tracking-wider">Typography & Layout</h3>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Prefix Text</label>
-                <input type="text" value={prefix} onChange={(e) => setPrefix(e.target.value)} placeholder="e.g. Page " className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-400 block mb-2">Prefix Text</label>
+                <input type="text" value={prefix} onChange={(e) => setPrefix(e.target.value)} placeholder="e.g. Page " className="w-full bg-white dark:bg-slate-900 transition-colors dark:bg-slate-900 text-slate-900 dark:text-white dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Suffix Text</label>
-                <input type="text" value={suffix} onChange={(e) => setSuffix(e.target.value)} placeholder="e.g. / 50" className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-400 block mb-2">Suffix Text</label>
+                <input type="text" value={suffix} onChange={(e) => setSuffix(e.target.value)} placeholder="e.g. / 50" className="w-full bg-white dark:bg-slate-900 transition-colors dark:bg-slate-900 text-slate-900 dark:text-white dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-3">
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Font</label>
-                <select value={fontFamily} onChange={(e) => setFontFamily(e.target.value)} className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-400 block mb-2">Font</label>
+                <select value={fontFamily} onChange={(e) => setFontFamily(e.target.value)} className="w-full bg-white dark:bg-slate-900 transition-colors dark:bg-slate-900 text-slate-900 dark:text-white dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-indigo-500">
                   <option value="Helvetica">Helvetica</option>
                   <option value="Times-Roman">Times</option>
                   <option value="Courier">Courier</option>
                 </select>
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Size (pt)</label>
-                <input type="number" value={fontSize} onChange={(e) => setFontSize(e.target.value)} className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-400 block mb-2">Size (pt)</label>
+                <input type="number" value={fontSize} onChange={(e) => setFontSize(e.target.value)} className="w-full bg-white dark:bg-slate-900 transition-colors dark:bg-slate-900 text-slate-900 dark:text-white dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">Margin</label>
-                <input type="number" value={marginEdge} onChange={(e) => setMarginEdge(e.target.value)} className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-indigo-500" />
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-400 block mb-2">Margin</label>
+                <input type="number" value={marginEdge} onChange={(e) => setMarginEdge(e.target.value)} className="w-full bg-white dark:bg-slate-900 transition-colors dark:bg-slate-900 text-slate-900 dark:text-white dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-indigo-500" />
               </div>
             </div>
           </div>

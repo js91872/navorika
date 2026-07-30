@@ -38,31 +38,31 @@ export default function CreditCardCalculators() {
 
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6">
-      <div className="mb-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Credit Card Intelligence Suite</h1>
+      <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Credit Card Intelligence Suite</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-          <h3 className="font-bold text-slate-900 text-base">Adjust Parameters</h3>
-          <div><label className="text-xs font-bold uppercase text-slate-600 block mb-2">Total Card Balance</label><input type="number" value={ccBalance} onChange={(e) => setCcBalance(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-          <div><label className="text-xs font-bold uppercase text-slate-600 block mb-2">Annual Interest Rate (APR %)</label><input type="number" step="0.5" value={ccInterestRate} onChange={(e) => setCcInterestRate(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
-          <div><label className="text-xs font-bold uppercase text-slate-600 block mb-2">Planned Monthly Payment</label><input type="number" value={ccMonthlyPayment} onChange={(e) => setCcMonthlyPayment(e.target.value)} className="w-full bg-slate-50 text-slate-900 text-slate-900 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none focus:border-indigo-500" /></div>
+        <div className="bg-white dark:bg-slate-900 transition-colors border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-6">
+          <h3 className="font-bold text-slate-900 dark:text-white text-base">Adjust Parameters</h3>
+          <div><label className="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 block mb-2">Total Card Balance</label><input type="number" value={ccBalance} onChange={(e) => setCcBalance(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" /></div>
+          <div><label className="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 block mb-2">Annual Interest Rate (APR %)</label><input type="number" step="0.5" value={ccInterestRate} onChange={(e) => setCcInterestRate(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" /></div>
+          <div><label className="text-xs font-bold uppercase text-slate-600 dark:text-slate-400 block mb-2">Planned Monthly Payment</label><input type="number" value={ccMonthlyPayment} onChange={(e) => setCcMonthlyPayment(e.target.value)} className="w-full bg-slate-50 dark:bg-slate-950 transition-colors text-slate-900 dark:text-white text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500" /></div>
         </div>
 
         <div className="lg:col-span-2 space-y-6">
           <div className="grid grid-cols-2 gap-4">
-            <div className={`border rounded-2xl p-6 shadow-sm ${calculations.isErrorState ? 'bg-red-50 border-red-200' : 'bg-white border-slate-200'}`}>
+            <div className={`border rounded-2xl p-6 shadow-sm ${calculations.isErrorState ? 'bg-red-50 border-red-200' : 'bg-white dark:bg-slate-900 transition-colors border-slate-200 dark:border-slate-800'}`}>
               <div className="text-xs font-bold tracking-wider mb-2 uppercase text-slate-500">Months to Payoff</div>
               <div className={`text-3xl font-black ${calculations.isErrorState ? 'text-red-600' : 'text-indigo-600'}`}>{calculations.months}</div>
             </div>
-            <div className="border bg-white border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div className="border bg-white dark:bg-slate-900 transition-colors border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
               <div className="text-xs font-bold tracking-wider mb-2 uppercase text-slate-500">Total Interest Accrued</div>
-              <div className="text-3xl font-black text-slate-900">{calculations.interest}</div>
+              <div className="text-3xl font-black text-slate-900 dark:text-white">{calculations.interest}</div>
             </div>
           </div>
           {calculations.summary && (
-            <div className={`border rounded-2xl p-6 shadow-inner ${calculations.isErrorState ? 'bg-red-50 border-red-200 text-red-700' : 'bg-slate-50 border-slate-200 text-slate-700'}`}>
+            <div className={`border rounded-2xl p-6 shadow-inner ${calculations.isErrorState ? 'bg-red-50 border-red-200 text-red-700' : 'bg-slate-50 dark:bg-slate-950 transition-colors border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300'}`}>
               <div className="text-sm font-semibold leading-relaxed">{calculations.summary}</div>
             </div>
           )}
