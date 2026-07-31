@@ -66,3 +66,16 @@ body {
 .dark ::-webkit-scrollbar-track {
   background: #0f172a;
 }
+
+/* Elite UI Micro-Interaction Utilities */
+.interactive-card {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.interactive-card:hover {
+  transform: translateY(-3px);
+}
+
+.interactive-card:active {
+  transform: translateY(-1px);
+}

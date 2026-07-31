@@ -1,74 +1,41 @@
-import { getAllTools } from "@/lib/toolRegistry";
+import { MetadataRoute } from 'next';
 
-const baseUrl = "https://navorika.com";
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = 'https://navorika.com';
 
-export default async function sitemap() {
-  const allTools = getAllTools();
-  
-  const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/tools`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/categories`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/guides`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-  ];
-  
-  const toolPages = allTools.map((tool) => ({
-    url: `${baseUrl}/tools/${tool.slug}`,
+  // Core static routes
+  const routes = [
+    '',
+    '/categories/finance',
+    '/categories/pdf-tools',
+    '/categories/image-tools',
+    '/categories/health',
+    '/categories/productivity',
+    '/categories/developer-tools',
+    '/privacy',
+    '/contact',
+    '/tools/pdf-security',
+    '/tools/pdf-converter',
+    '/tools/pdf-editor',
+    '/tools/pdf-optimizer',
+    '/tools/pdf-page-numbers',
+    '/tools/pdf-tools',
+    '/tools/business-calculators',
+    '/tools/savings-calculators',
+    '/tools/loan-emi-calculator',
+    '/tools/retirement-calculators',
+    '/tools/tax-calculators',
+    '/tools/credit-card-calculators',
+    '/tools/banking-calculators',
+    '/tools/salary-calculators',
+    '/tools/insurance-calculators',
+    '/tools/investment-calculators',
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.8,
+    changeFrequency: 'weekly' as const,
+    priority: route === '' ? 1.0 : 0.8,
   }));
-  
-  const categoryPages = [
-    "finance",
-    "health", 
-    "pdf",
-    "image",
-    "developer",
-    "productivity",
-    "construction",
-  ].map((category) => ({
-    url: `${baseUrl}/categories/${category}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
-  
-  const guideSlugs = [
-    "how-to-calculate-emi",
-    "understanding-compound-interest",
-    "bmi-calculator-guide",
-    "pdf-tools-mastery",
-    "tax-planning-guide",
-    "investment-basics",
-  ];
-  
-  const guidePages = guideSlugs.map((slug) => ({
-    url: `${baseUrl}/guides/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
-  
-  return [...staticPages, ...toolPages, ...categoryPages, ...guidePages];
+
+  return routes;
 }

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PremiumTools from '@/components/home/PremiumTools';
+import SearchBox from '@/components/home/SearchBox';
 
 export default function HomePage() {
   const categories = [
@@ -7,6 +8,7 @@ export default function HomePage() {
       name: 'Finance', 
       count: '12+ Tools', 
       desc: 'Mortgages, investments, loans & ROI calculations', 
+      href: '/categories/finance',
       color: 'from-amber-500/10 to-orange-500/10 border-amber-500/20 text-amber-600',
       iconBg: 'bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-100 dark:border-amber-500/20',
       svg: (
@@ -19,6 +21,7 @@ export default function HomePage() {
       name: 'PDF Tools', 
       count: '15+ Utilities', 
       desc: 'Merge, split, compress, convert & sign documents', 
+      href: '/categories/pdf-tools',
       color: 'from-rose-500/10 to-red-500/10 border-rose-500/20 text-rose-600',
       iconBg: 'bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-100 dark:border-rose-500/20',
       svg: (
@@ -31,6 +34,7 @@ export default function HomePage() {
       name: 'Image Tools', 
       count: '10+ Editors', 
       desc: 'Resize, compress, convert & watermark assets', 
+      href: '/categories/image-tools',
       color: 'from-indigo-500/10 to-blue-500/10 border-indigo-500/20 text-indigo-600',
       iconBg: 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-100 dark:border-indigo-500/20',
       svg: (
@@ -43,6 +47,7 @@ export default function HomePage() {
       name: 'Health', 
       count: '8+ Calculators', 
       desc: 'BMI, body fat, calorie goals & fitness metrics', 
+      href: '/categories/health',
       color: 'from-emerald-500/10 to-teal-500/10 border-emerald-500/20 text-emerald-600',
       iconBg: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-100 dark:border-emerald-500/20',
       svg: (
@@ -55,6 +60,7 @@ export default function HomePage() {
       name: 'Productivity', 
       count: '10+ Helpers', 
       desc: 'Timers, converters, generators & workflow aids', 
+      href: '/categories/productivity',
       color: 'from-violet-500/10 to-purple-500/10 border-violet-500/20 text-violet-600',
       iconBg: 'bg-violet-50 dark:bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-100 dark:border-violet-500/20',
       svg: (
@@ -67,6 +73,7 @@ export default function HomePage() {
       name: 'Developer Tools', 
       count: '14+ Utilities', 
       desc: 'JSON formatters, hash encoders & syntax checkers', 
+      href: '/categories/developer-tools',
       color: 'from-cyan-500/10 to-sky-500/10 border-cyan-500/20 text-cyan-600',
       iconBg: 'bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-100 dark:border-cyan-500/20',
       svg: (
@@ -97,23 +104,9 @@ export default function HomePage() {
             Access 40+ premium calculators, converters, and specialized utilities designed to simplify complex tasks instantly with zero latency.
           </p>
 
-          {/* Search bar anchor */}
+          {/* Interactive Search Component */}
           <div className="max-w-xl mx-auto mb-12">
-            <div className="relative flex items-center shadow-xl shadow-indigo-500/5 rounded-2xl p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-colors">
-              <span className="pl-4 text-slate-400 dark:text-slate-500">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </span>
-              <input 
-                type="text" 
-                placeholder="Search for any tool (e.g. Mortgage, PDF merge, BMI)..." 
-                className="w-full bg-transparent border-none px-3 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none text-sm sm:text-base transition-colors"
-              />
-              <button className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-xl text-sm hover:bg-indigo-700 transition-colors shadow-md">
-                Search
-              </button>
-            </div>
+            <SearchBox />
           </div>
 
           {/* Quick Metrics Bar */}
@@ -152,7 +145,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((cat, idx) => (
-            <div key={idx} className="group relative p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 dark:hover:shadow-none flex flex-col justify-between overflow-hidden">
+            <Link key={idx} href={cat.href} className="group relative p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 dark:hover:shadow-none flex flex-col justify-between overflow-hidden">
               <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${cat.color} rounded-bl-full pointer-events-none opacity-60 group-hover:scale-110 transition-transform`}></div>
               <div>
                 <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center mb-6 shadow-sm transition-colors ${cat.iconBg}`}>
@@ -168,7 +161,7 @@ export default function HomePage() {
                 <span>Browse utilities</span>
                 <span className="transform group-hover:translate-x-1 transition-transform">→</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
