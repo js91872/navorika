@@ -36,11 +36,11 @@ export const tools: ToolMeta[] = [
   { slug: "bioluminescent-reader", title: "Bioluminescent Reader", heading: "High-Contrast PDF Dark Mode", description: "Read documents in a zero-eye-strain environment using hardware-accelerated color matrix inversion.", category: "pdf-tools", keywords: ["pdf dark mode"], heroTitle: "Bioluminescent Dark Mode Reader", heroDescription: "An immersive, completely private local reading environment.", formulaExplanation: "Rasterizes document layers onto an HTML5 canvas and applies a WebGL-accelerated CSS filter matrix.", examples: [], faq: [], icon: "FileText" },
 
   // ==========================================
-  // UNIFIED OMNI IMAGE CONVERTER DOCK
+  // RENAMED UNIFIED IMAGE CONVERTER DOCK
   // ==========================================
   {
     slug: "image-converter",
-    title: "Omni Image Converter Engine",
+    title: "Universal Image Converter",
     heading: "Universal Matrix Image Converter",
     description: "Convert seamlessly between JPG, PNG, WEBP, HEIC, SVG, and PDF configurations via a multi-directional options layout.",
     category: "image-tools",
