@@ -51,5 +51,19 @@ export const tools: ToolMeta[] = [
     examples: [{ title: "Document Scanning", description: "Correct a page that was fed upside down through a flatbed document scanner." }],
     faq: [{ question: "Can I rotate only a single page instead of the full document?", answer: "Yes, our interface gives you explicit controls for both individual page modifications and global rotations." }],
     icon: "FileText"
+  },
+  {
+    slug: "delete-pdf-pages",
+    title: "Delete PDF Pages",
+    heading: "Remove Pages From PDF File",
+    description: "Select and permanently delete specific pages from a PDF file locally.",
+    category: "pdf-tools",
+    keywords: ["delete pdf pages", "remove pages from pdf", "cut pdf pages", "omit pdf sheets"],
+    heroTitle: "Delete PDF Pages with Complete Privacy",
+    heroDescription: "Strip out unnecessary pages or sensitive sheets from your document instantly.",
+    formulaExplanation: "Loads the original PDF structure into standard array streams, clones all indices *except* the targeted items, and writes a pristine new output mapping.",
+    examples: [{ title: "Redacting Templates", description: "Remove trailing instructional blank pages or cover letters from standard corporate contract agreements." }],
+    faq: [{ question: "Can I undo a deletion?", answer: "Your local source file is never altered. If you make a mistake, simply upload the original file again and adjust your selections." }],
+    icon: "FileText"
   }
 ];
