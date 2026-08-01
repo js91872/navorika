@@ -24,22 +24,9 @@ export const tools: ToolMeta[] = [
   { slug: "reorder-pdf", title: "Reorder PDF Pages", heading: "Reorder PDF Pages Visually", description: "Drag and drop document pages to instantly change their structural sequence locally.", category: "pdf-tools", keywords: ["reorder pdf"], heroTitle: "Rearrange PDF Pages with Absolute Privacy", heroDescription: "Visually reorder your document layout structure directly in your browser without uploading files.", formulaExplanation: "Utilizes native HTML5 drag-and-drop state mapping.", examples: [], faq: [], icon: "FileText" },
   { slug: "extract-pdf-pages", title: "Extract PDF Pages", heading: "Extract Specific PDF Pages", description: "Visually select the exact pages you want to pull out of a document to create a new file.", category: "pdf-tools", keywords: ["extract pdf"], heroTitle: "Extract Exact PDF Pages Locally", heroDescription: "Build a new pristine document by cherry-picking essential layouts.", formulaExplanation: "Clones the selected array indexes from the origin source.", examples: [], faq: [], icon: "FileText" },
   { slug: "interleave-pdf", title: "Interleave PDFs", heading: "Merge & Interleave PDF Files", description: "Dynamically alternate pages between two separate PDF documents automatically.", category: "pdf-tools", keywords: ["interleave pdf"], heroTitle: "Interleave Scanned Document Pages Instantly", heroDescription: "Perfect for rebuilding documents where odd and even pages were run through the scanner separately.", formulaExplanation: "Iterates through the structural limits of two origin files simultaneously.", examples: [], faq: [], icon: "FileText" },
-
-  // NEW ANNOTATION TOOLS
-  {
-    slug: "sign-pdf",
-    title: "Sign PDF",
-    heading: "Digitally Sign PDF Documents",
-    description: "Draw your electronic signature and stamp it securely onto any page layout locally.",
-    category: "pdf-tools",
-    keywords: ["sign pdf", "add signature to pdf", "electronic signature free"],
-    heroTitle: "Sign Documents with Zero Server Uploads",
-    heroDescription: "Draw your signature directly in the browser and embed it securely into your documents without risking your biometric data.",
-    formulaExplanation: "Captures HTML5 Canvas vector strokes, encodes them as transparent PNG layers, and natively injects them into the PDF XObject stream.",
-    examples: [{ title: "Freelance Contracts", description: "Sign client agreements instantly without printing and scanning." }],
-    faq: [{ question: "Is my signature saved?", answer: "No. The drawn strokes exist only in your browser memory and are deleted the moment you close the tab." }],
-    icon: "FileText"
-  },
+  { slug: "sign-pdf", title: "Sign PDF", heading: "Digitally Sign PDF Documents", description: "Draw your electronic signature and stamp it securely onto any page layout locally.", category: "pdf-tools", keywords: ["sign pdf", "add signature to pdf", "electronic signature free"], heroTitle: "Sign Documents with Zero Server Uploads", heroDescription: "Draw your signature directly in the browser and embed it securely into your documents without risking your biometric data.", formulaExplanation: "Captures HTML5 Canvas vector strokes, encodes them as transparent PNG layers, and natively injects them into the PDF XObject stream.", examples: [], faq: [], icon: "FileText" },
+  
+  // UPDATED IMAGE TOOL HEADING
   {
     slug: "add-image-to-pdf",
     title: "Add Image to PDF",
@@ -47,11 +34,9 @@ export const tools: ToolMeta[] = [
     description: "Upload and embed custom PNG or JPG images onto any PDF page coordinate.",
     category: "pdf-tools",
     keywords: ["add image to pdf", "insert photo in pdf", "overlay image on pdf"],
-    heroTitle: "Embed Graphics into PDFs Natively",
+    heroTitle: "Embed Graphics into PDFs Natively (Place Digital Signatures)",
     heroDescription: "Stamp corporate logos, photos, or diagrams over your PDF files securely in your browser.",
     formulaExplanation: "Parses local graphics files into byte streams and embeds them into the PDF rendering dictionary using exact Cartesian positioning logic.",
-    examples: [{ title: "Corporate Branding", description: "Add high-resolution company logos to the cover page of generated reports." }],
-    faq: [{ question: "Can I adjust the image size?", answer: "Yes, our interface provides direct parametric control over the width and height scaling of the stamped asset." }],
-    icon: "FileText"
+    examples: [], faq: [], icon: "FileText"
   }
 ];
