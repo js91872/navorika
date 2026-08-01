@@ -10,9 +10,7 @@ export const categories: CategoryMeta[] = [
 ];
 
 export const tools: ToolMeta[] = [
-  // ==========================================
-  // THE COMPLETE PDF TOOLS SUITE
-  // ==========================================
+  // ... [PDF TOOLS REMAIN EXACTLY THE SAME] ...
   { slug: "merge-pdf", title: "Merge PDF", heading: "Merge PDF Documents Instantly", description: "Combine multiple PDF files into a single organized document seamlessly.", category: "pdf-tools", keywords: ["merge pdf"], heroTitle: "Combine PDF Files with Zero Server Uploads", heroDescription: "An ultra-secure, client-side utility engineered to join multiple PDF assets instantly.", formulaExplanation: "Utilizes local browser byte-stream manipulation.", examples: [], faq: [], icon: "FileText" },
   { slug: "split-pdf", title: "Split PDF", heading: "Split PDF Files by Page", description: "Extract pages or split a large PDF into smaller standalone documents securely.", category: "pdf-tools", keywords: ["split pdf"], heroTitle: "Extract Pages Instantly", heroDescription: "Isolate critical pages natively in your browser tab.", formulaExplanation: "Parses the PDF document catalogs and extracts specified pages.", examples: [], faq: [], icon: "FileText" },
   { slug: "rotate-pdf", title: "Rotate PDF", heading: "Rotate PDF Pages Permanently", description: "Change the orientation of individual or all pages in a PDF file layout securely.", category: "pdf-tools", keywords: ["rotate pdf"], heroTitle: "Rotate PDF Pages with Absolute Privacy", heroDescription: "Fix upside-down or landscape page layouts instantly.", formulaExplanation: "Modifies the /Rotate attribute natively.", examples: [], faq: [], icon: "FileText" },
@@ -36,156 +34,32 @@ export const tools: ToolMeta[] = [
   { slug: "bioluminescent-reader", title: "Bioluminescent Reader", heading: "High-Contrast PDF Dark Mode", description: "Read documents in a zero-eye-strain environment using hardware-accelerated color matrix inversion.", category: "pdf-tools", keywords: ["pdf dark mode"], heroTitle: "Bioluminescent Dark Mode Reader", heroDescription: "An immersive, completely private local reading environment.", formulaExplanation: "Rasterizes document layers onto an HTML5 canvas and applies a WebGL-accelerated CSS filter matrix.", examples: [], faq: [], icon: "FileText" },
 
   // ==========================================
-  // IMAGE TOOLS SUITE
+  // IMAGE TOOLS SUITE (PREVIOUS + NEW)
   // ==========================================
-  {
-    slug: "image-converter",
-    title: "Universal Image Converter",
-    heading: "Universal Matrix Image Converter",
-    description: "Convert seamlessly between JPG, PNG, WEBP, HEIC, SVG, and PDF configurations via a multi-directional options layout.",
-    category: "image-tools",
-    keywords: ["image converter", "jpg to png", "png to webp", "webp to pdf", "heic to jpg", "svg to png", "png to svg"],
-    heroTitle: "Universal Multi-Directional Image Converter",
-    heroDescription: "Transform formats natively in your browser thread with absolute grid privacy.",
-    formulaExplanation: "Leverages internal canvas bit layouts, FileReader byte allocations, and rendering matrices completely client-side.",
-    examples: [], faq: [], icon: "Image"
-  },
-  { 
-    slug: "compress-image", 
-    title: "Compress Image", 
-    heading: "Optimize Image File Sizes", 
-    description: "Compress JPG, PNG, SVG, and GIFs while saving space and maintaining quality[cite: 13].", 
-    category: "image-tools", 
-    keywords: ["compress image", "reduce photo size", "optimize jpg"], 
-    heroTitle: "Compress Images Locally Without Data Loss", 
-    heroDescription: "Fine-tune asset weight reduction profiles natively inside your browser.", 
-    formulaExplanation: "Utilizes lossy and lossless canvas compression quantization loops.", 
-    examples: [], faq: [], icon: "Image" 
-  },
-  { 
-    slug: "resize-image", 
-    title: "Resize Image", 
-    heading: "Scale Visual Dimensions", 
-    description: "Define your dimensions, by percent or pixel, and resize your JPG, PNG, SVG, and GIF images[cite: 16].", 
-    category: "image-tools", 
-    keywords: ["resize image", "scale photo", "change image dimensions"], 
-    heroTitle: "Precision Image Resizer", 
-    heroDescription: "Adjust X and Y pixel boundaries flawlessly without uploading to a server.", 
-    formulaExplanation: "Calculates aspect ratio matrices and draws to a newly dimensioned HTML5 canvas.", 
-    examples: [], faq: [], icon: "Image" 
-  },
-  { 
-    slug: "crop-image", 
-    title: "Crop Image", 
-    heading: "Trim Image Margins Visually", 
-    description: "Crop JPG, PNG, or GIFs with ease; Choose pixels to define your rectangle or use our visual editor[cite: 17, 18].", 
-    category: "image-tools", 
-    keywords: ["crop image", "trim photo", "cut image"], 
-    heroTitle: "Crop Images with Interactive Bounding Boxes", 
-    heroDescription: "Select exactly which portion of your canvas to keep with zero latency.", 
-    formulaExplanation: "Captures designated coordinate constraints and maps them to a targeted extraction canvas buffer.", 
-    examples: [], faq: [], icon: "Image" 
-  },
-  { 
-    slug: "photo-editor", 
-    title: "Photo Editor", 
-    heading: "Apply Filters & Aesthetics", 
-    description: "Spice up your pictures with text, effects, frames or stickers[cite: 32].", 
-    category: "image-tools", 
-    keywords: ["photo editor", "edit image online", "image filters"], 
-    heroTitle: "Local Browser Photo Editor", 
-    heroDescription: "Apply custom CSS filter matrices to achieve specific aesthetics, like a heavy 90s grunge or vintage overlay, and manipulate backgrounds natively.", 
-    formulaExplanation: "Leverages layered HTML5 Canvas context manipulations for non-destructive visual adjustments.", 
-    examples: [], faq: [], icon: "Image" 
-  },
-  { 
-    slug: "blur-face", 
-    title: "Blur Face", 
-    heading: "Obfuscate Private Data", 
-    description: "Easily blur out faces in photos. You can also blur licence plates and other objects to hide private information[cite: 50, 51].", 
-    category: "image-tools", 
-    keywords: ["blur face", "hide identity photo", "censor image"], 
-    heroTitle: "Apply Privacy Blurs Instantly", 
-    heroDescription: "Protect sensitive visual information before sharing files online.", 
-    formulaExplanation: "Applies localized Gaussian blur algorithms to specific coordinate zones on the active pixel array.", 
-    examples: [], faq: [], icon: "Image" 
-  },
-  { 
-    slug: "watermark-image", 
-    title: "Watermark Image", 
-    heading: "Brand Your Assets", 
-    description: "Stamp an image or text over your images in seconds[cite: 44]. Choose the typography, transparency and position[cite: 44].", 
-    category: "image-tools", 
-    keywords: ["watermark image", "add logo to photo", "stamp image"], 
-    heroTitle: "Watermark Images with Total Privacy", 
-    heroDescription: "Embed your copyright layers securely without sending raw assets over the network.", 
-    formulaExplanation: "Composites alpha-channel layers onto the primary rasterized context.", 
-    examples: [], faq: [], icon: "Image" 
-  },
-  { 
-    slug: "rotate-image", 
-    title: "Rotate Image", 
-    heading: "Fix Orientation Issues", 
-    description: "Rotate many images JPG, PNG or GIF at same time[cite: 47]. Choose to rotate only landscape or portrait images! [cite: 47]", 
-    category: "image-tools", 
-    keywords: ["rotate image", "flip photo"], 
-    heroTitle: "Batch Rotate Orientations Locally", 
-    heroDescription: "Quickly correct upside-down or sideways photography.", 
-    formulaExplanation: "Transforms the canvas matrix using standard contextual rotation logic.", 
-    examples: [], faq: [], icon: "Image" 
-  },
-  { 
-    slug: "meme-generator", 
-    title: "Meme Generator", 
-    heading: "Caption Visual Assets", 
-    description: "Create your memes online with ease[cite: 45]. Caption meme images or upload your pictures to make custom memes[cite: 45].", 
-    category: "image-tools", 
-    keywords: ["meme generator", "add text to photo", "caption image"], 
-    heroTitle: "Generate Memes Offline", 
-    heroDescription: "Overlay striking typography directly onto image bases instantly.", 
-    formulaExplanation: "Draws customized text strokes and fills directly onto the visual coordinate grid.", 
-    examples: [], faq: [], icon: "Image" 
-  },
-  { 
-    slug: "html-to-image", 
-    title: "HTML to Image", 
-    heading: "Rasterize Web Markups", 
-    description: "Convert webpages in HTML to JPG or SVG[cite: 49].", 
-    category: "image-tools", 
-    keywords: ["html to image", "web to jpg", "render html"], 
-    heroTitle: "Render Markup to Static Assets", 
-    heroDescription: "Convert live code blocks into crisp, shareable graphical grids.", 
-    formulaExplanation: "Parses DOM string fragments into XML-backed visualization frames.", 
-    examples: [], faq: [], icon: "Image" 
-  },
-  { 
-    slug: "upscale-image", 
-    title: "Upscale Image", 
-    heading: "Enlarge Dimensions Losslessly", 
-    description: "Enlarge your images with high resolution[cite: 34]. Easily increase the size of your JPG and PNG images while maintaining visual quality[cite: 34].", 
-    category: "image-tools", 
-    keywords: ["upscale image", "enlarge photo", "increase resolution"], 
-    heroTitle: "Upscale Resolution Matrices", 
-    heroDescription: "Perfect for scaling up highly detailed AI-generated agricultural machinery and tractor renders without losing clarity.", 
-    formulaExplanation: "Applies local bi-cubic or near-neighbor interpolation mapping to estimate and fill expanded pixel gaps.", 
-    examples: [], faq: [], icon: "Image" 
-  },
+  { slug: "image-converter", title: "Universal Image Converter", heading: "Universal Matrix Image Converter", description: "Convert seamlessly between JPG, PNG, WEBP, HEIC, SVG, and PDF configurations via a multi-directional options layout.", category: "image-tools", keywords: ["image converter", "jpg to png", "png to webp", "webp to pdf", "heic to jpg", "svg to png", "png to svg"], heroTitle: "Universal Multi-Directional Image Converter", heroDescription: "Transform formats natively in your browser thread with absolute grid privacy.", formulaExplanation: "Leverages internal canvas bit layouts, FileReader byte allocations, and rendering matrices completely client-side.", examples: [], faq: [], icon: "Image" },
+  { slug: "compress-image", title: "Compress Image", heading: "Optimize Image File Sizes", description: "Compress JPG, PNG, SVG, and GIFs while saving space and maintaining quality.", category: "image-tools", keywords: ["compress image", "reduce photo size", "optimize jpg"], heroTitle: "Compress Images Locally Without Data Loss", heroDescription: "Fine-tune asset weight reduction profiles natively inside your browser.", formulaExplanation: "Utilizes lossy and lossless canvas compression quantization loops.", examples: [], faq: [], icon: "Image" },
+  { slug: "resize-image", title: "Resize Image", heading: "Scale Visual Dimensions", description: "Define your dimensions, by percent or pixel, and resize your JPG, PNG, SVG, and GIF images.", category: "image-tools", keywords: ["resize image", "scale photo", "change image dimensions"], heroTitle: "Precision Image Resizer", heroDescription: "Adjust X and Y pixel boundaries flawlessly without uploading to a server.", formulaExplanation: "Calculates aspect ratio matrices and draws to a newly dimensioned HTML5 canvas.", examples: [], faq: [], icon: "Image" },
+  { slug: "crop-image", title: "Crop Image", heading: "Trim Image Margins Visually", description: "Crop JPG, PNG, or GIFs with ease; Choose pixels to define your rectangle or use our visual editor.", category: "image-tools", keywords: ["crop image", "trim photo", "cut image"], heroTitle: "Crop Images with Interactive Bounding Boxes", heroDescription: "Select exactly which portion of your canvas to keep with zero latency.", formulaExplanation: "Captures designated coordinate constraints and maps them to a targeted extraction canvas buffer.", examples: [], faq: [], icon: "Image" },
+  { slug: "photo-editor", title: "Photo Editor", heading: "Apply Filters & Aesthetics", description: "Spice up your pictures with text, effects, frames or stickers.", category: "image-tools", keywords: ["photo editor", "edit image online", "image filters"], heroTitle: "Local Browser Photo Editor", heroDescription: "Apply custom CSS filter matrices to achieve specific aesthetics, like a heavy 90s grunge or vintage overlay, and manipulate backgrounds natively.", formulaExplanation: "Leverages layered HTML5 Canvas context manipulations for non-destructive visual adjustments.", examples: [], faq: [], icon: "Image" },
+  { slug: "blur-face", title: "Blur Face", heading: "Obfuscate Private Data", description: "Easily blur out faces in photos. You can also blur licence plates and other objects to hide private information.", category: "image-tools", keywords: ["blur face", "hide identity photo", "censor image"], heroTitle: "Apply Privacy Blurs Instantly", heroDescription: "Protect sensitive visual information before sharing files online.", formulaExplanation: "Applies localized Gaussian blur algorithms to specific coordinate zones on the active pixel array.", examples: [], faq: [], icon: "Image" },
+  { slug: "watermark-image", title: "Watermark Image", heading: "Brand Your Assets", description: "Stamp an image or text over your images in seconds. Choose the typography, transparency and position.", category: "image-tools", keywords: ["watermark image", "add logo to photo", "stamp image"], heroTitle: "Watermark Images with Total Privacy", heroDescription: "Embed your copyright layers securely without sending raw assets over the network.", formulaExplanation: "Composites alpha-channel layers onto the primary rasterized context.", examples: [], faq: [], icon: "Image" },
+  { slug: "rotate-image", title: "Rotate Image", heading: "Fix Orientation Issues", description: "Rotate many images JPG, PNG or GIF at same time. Choose to rotate only landscape or portrait images!", category: "image-tools", keywords: ["rotate image", "flip photo"], heroTitle: "Batch Rotate Orientations Locally", heroDescription: "Quickly correct upside-down or sideways photography.", formulaExplanation: "Transforms the canvas matrix using standard contextual rotation logic.", examples: [], faq: [], icon: "Image" },
+  { slug: "meme-generator", title: "Meme Generator", heading: "Caption Visual Assets", description: "Create your memes online with ease. Caption meme images or upload your pictures to make custom memes.", category: "image-tools", keywords: ["meme generator", "add text to photo", "caption image"], heroTitle: "Generate Memes Offline", heroDescription: "Overlay striking typography directly onto image bases instantly.", formulaExplanation: "Draws customized text strokes and fills directly onto the visual coordinate grid.", examples: [], faq: [], icon: "Image" },
+  { slug: "html-to-image", title: "HTML to Image", heading: "Rasterize Web Markups", description: "Convert webpages in HTML to JPG or SVG.", category: "image-tools", keywords: ["html to image", "web to jpg", "render html"], heroTitle: "Render Markup to Static Assets", heroDescription: "Convert live code blocks into crisp, shareable graphical grids.", formulaExplanation: "Parses DOM string fragments into XML-backed visualization frames.", examples: [], faq: [], icon: "Image" },
+  { slug: "upscale-image", title: "Upscale Image", heading: "Enlarge Dimensions Losslessly", description: "Enlarge your images with high resolution. Easily increase the size of your JPG and PNG images while maintaining visual quality.", category: "image-tools", keywords: ["upscale image", "enlarge photo", "increase resolution"], heroTitle: "Upscale Resolution Matrices", heroDescription: "Perfect for scaling up highly detailed AI-generated agricultural machinery and tractor renders without losing clarity.", formulaExplanation: "Applies local bi-cubic or near-neighbor interpolation mapping to estimate and fill expanded pixel gaps.", examples: [], faq: [], icon: "Image" },
+
+  // THE 6 NEW DEDICATED TOOLS
+  { slug: "compress-jpg", title: "Compress JPG", heading: "Optimize JPG File Size", description: "Shrink heavy JPEG photographs natively while retaining maximum visual fidelity.", category: "image-tools", keywords: ["compress jpg", "reduce jpg size", "optimize jpeg"], heroTitle: "Dedicated JPG Compression Engine", heroDescription: "Targeted lossless and lossy compression exclusively mapped for standard JPEG matrices.", formulaExplanation: "Adjusts the specific JPEG image/jpeg output quantization threshold.", examples: [], faq: [], icon: "Image" },
+  { slug: "compress-png", title: "Compress PNG", heading: "Optimize PNG File Size", description: "Reduce transparent PNG file weights locally without destroying the alpha channel.", category: "image-tools", keywords: ["compress png", "reduce png size"], heroTitle: "Dedicated PNG Compression Engine", heroDescription: "Maintain crisp transparent borders while drastically shrinking network payloads.", formulaExplanation: "Converts deep PNG buffers into lightweight transparent WEBP proxies under the hood for size.", examples: [], faq: [], icon: "Image" },
+  { slug: "compress-webp", title: "Compress WEBP", heading: "Optimize WEBP File Size", description: "Further compress modern WEBP graphics for ultra-fast web delivery.", category: "image-tools", keywords: ["compress webp", "reduce webp size"], heroTitle: "Dedicated WEBP Compression Engine", heroDescription: "Squeeze the last bytes out of next-gen image formats completely offline.", formulaExplanation: "Re-encodes WEBP frame segments with aggressive native compression heuristics.", examples: [], faq: [], icon: "Image" },
+  { slug: "batch-image-converter", title: "Batch Image Converter", heading: "Convert Multiple Images at Once", description: "Upload dozens of images and convert all of them into a single format instantly.", category: "image-tools", keywords: ["batch image converter", "bulk image convert", "convert multiple images"], heroTitle: "Bulk Matrix Transcoding Engine", heroDescription: "Transform hundreds of visual assets concurrently using raw device processing power.", formulaExplanation: "Utilizes asynchronous JavaScript promises to map canvas rendering arrays in bulk.", examples: [], faq: [], icon: "Image" },
+  { slug: "image-dpi-converter", title: "Image DPI Converter", heading: "Adjust Print Resolution (DPI)", description: "Modify the pixel density for high-quality printing (72, 150, 300 DPI).", category: "image-tools", keywords: ["image dpi converter", "change dpi", "300 dpi converter"], heroTitle: "Print-Ready DPI Conversion", heroDescription: "Scale your internal pixel maps to meet strict professional printing guidelines.", formulaExplanation: "Calculates physical print inches against pixel density mapping (Pixels = Inches × DPI).", examples: [], faq: [], icon: "Image" },
+  { slug: "change-image-resolution", title: "Change Image Resolution", heading: "Modify Internal Resolution", description: "Scale assets to specific megapixel bounds or standard HD/4K aspect ratios.", category: "image-tools", keywords: ["change image resolution", "megapixel converter", "hd image converter"], heroTitle: "Standardized Resolution Mapping", heroDescription: "Snap photos instantly to industry standard dimensions (1080p, 4K, 8K) offline.", formulaExplanation: "Utilizes targeted aspect ratio interpolation arrays.", examples: [], faq: [], icon: "Image" },
 
   // ==========================================
   // HIGH-PRECISION FINANCE CALCULATORS SUITE
   // ==========================================
-  {
-    slug: "sip-calculator",
-    title: "High-Precision SIP Calculator",
-    heading: "Calculate Mutual Fund SIP Returns",
-    description: "Estimate the future valuation performance of your systematic investment plans with accurate compound breakdowns.",
-    category: "finance-calculators",
-    keywords: ["sip calculator", "mutual fund returns estimator", "investment compound interest"],
-    heroTitle: "Systematic Investment Plan (SIP) Valuation Engine",
-    heroDescription: "Forecast compound portfolio capital gains securely inside your device memory sandboxes.",
-    formulaExplanation: "Computes projected assets using the math equation: M = P * [((1 + i)^n - 1) / i] * (1 + i)",
-    examples: [], faq: [], icon: "Calculator"
-  },
+  { slug: "sip-calculator", title: "High-Precision SIP Calculator", heading: "Calculate Mutual Fund SIP Returns", description: "Estimate the future valuation performance of your systematic investment plans with accurate compound breakdowns.", category: "finance-calculators", keywords: ["sip calculator", "mutual fund returns estimator", "investment compound interest"], heroTitle: "Systematic Investment Plan (SIP) Valuation Engine", heroDescription: "Forecast compound portfolio capital gains securely inside your device memory sandboxes.", formulaExplanation: "Computes projected assets using the math equation: M = P * [((1 + i)^n - 1) / i] * (1 + i)", examples: [], faq: [], icon: "Calculator" },
 
   // ==========================================
   // DEVELOPER TOOLS SUITE
