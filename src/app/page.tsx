@@ -2,8 +2,18 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, ArrowRight, Zap, Shield, SearchCode } from 'lucide-react';
+import { Search, ArrowRight, Zap, Shield, SearchCode, FileText, Image, Calculator, HeartPulse, Code, Hammer } from 'lucide-react';
 import { tools, categories } from '@/data/registry';
+
+// Dynamic icon mapper to resolve registry strings into Lucide nodes safely
+const iconMap: { [key: string]: any } = {
+  FileText: FileText,
+  Image: Image,
+  Calculator: Calculator,
+  HeartPulse: HeartPulse,
+  Code: Code,
+  Hammer: Hammer,
+};
 
 export default function HomePage() {
   const [query, setQuery] = useState('');
@@ -16,15 +26,15 @@ export default function HomePage() {
       ).slice(0, 5);
 
   return (
-    <main className="relative isolate overflow-hidden">
+    <main className="relative isolate overflow-hidden min-h-screen">
       {/* Premium Hero Grid Header Section */}
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-20 text-center lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 pt-24 pb-16 text-center lg:px-8">
         <div className="mx-auto max-w-3xl">
           <h1 className="text-5xl font-black tracking-tight text-slate-900 dark:text-white sm:text-6xl bg-gradient-to-b from-slate-900 via-slate-800 to-slate-600 dark:from-white dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
             The Ultra-Fast Utility Portal
           </h1>
           <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-            Zero latency, zero tracking server calls. Every calculator runs purely locally in your browser workspace.
+            Zero latency, zero tracking server calls. Every calculator and media processor runs purely locally in your browser workspace.
           </p>
         </div>
 
@@ -36,27 +46,64 @@ export default function HomePage() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search tools instantly (e.g., SIP, EMI, PDF...)"
+              placeholder="Search tools instantly (e.g., JPG to PNG, SIP, Compress PDF...)"
               className="w-full py-4 bg-transparent outline-none text-slate-900 dark:text-slate-100 text-base placeholder:text-slate-400"
             />
           </div>
 
           {/* Instant Client Suggestion Dropdown Drop */}
           {filteredTools.length > 0 && (
-            <div className="absolute left-0 right-0 mt-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden text-left">
+            <div className="absolute left-0 right-0 mt-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden text-left z-50">
               <div className="px-4 py-2 bg-slate-50 dark:bg-slate-800/50 text-xs font-semibold tracking-wider text-slate-400 uppercase">Suggested Tools</div>
               {filteredTools.map((tool) => (
                 <Link 
                   key={tool.slug} 
                   href={`/tools/${tool.slug}`}
-                  className="flex items-center justify-between px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition text-sm font-semibold text-slate-700 dark:text-slate-300 border-b border-slate-100 dark:border-slate-800/40 last:border-0"
+                  className="flex items-center justify-between px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition text-sm font-semibold text-slate-700 dark:text-slate-300 border-b border-slate-100 dark:border-slate-800/40 last:border-0 group"
                 >
                   <span>{tool.title}</span>
-                  <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-indigo-500" />
+                  <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-indigo-500 transition-colors" />
                 </Link>
               ))}
             </div>
           )}
+        </div>
+      </div>
+
+      {/* CORE WEB TILES CATEGORY MATRIX GRID */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pb-24">
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-wider mb-8">Browse Tool Suites</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((cat) => {
+            const SpecificIcon = iconMap[cat.icon] || FileText;
+            // Get the count of active tools registered inside this category block
+            const toolCount = tools.filter(t => t.category === cat.slug).length;
+
+            return (
+              <Link
+                key={cat.slug}
+                href={`/categories/${cat.slug}`}
+                className="group relative p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-md hover:shadow-xl transition-all flex flex-col justify-between overflow-hidden hover:-translate-y-1"
+              >
+                <div>
+                  <div className={`p-3 rounded-2xl bg-gradient-to-br ${cat.color} text-white w-fit mb-4 shadow-sm`}>
+                    <SpecificIcon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-black text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 transition-colors">
+                    {cat.name}
+                  </h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                    {cat.description}
+                  </p>
+                </div>
+                
+                <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800/60 text-xs font-bold uppercase tracking-wider text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
+                  <span>{toolCount} Tools Operational</span>
+                  <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
 
@@ -73,7 +120,7 @@ export default function HomePage() {
           <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-500 h-fit"><Shield className="h-5 w-5" /></div>
           <div>
             <h3 className="font-bold text-base text-slate-900 dark:text-slate-100">100% Client-Side Privacy</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Data never leaves your machine. Safe for financial calculations.</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Data never leaves your machine. Safe for corporate data profiles.</p>
           </div>
         </div>
         <div className="flex gap-4 p-5 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-100 dark:border-slate-900">
