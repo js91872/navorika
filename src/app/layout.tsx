@@ -1,25 +1,27 @@
-import "./globals.css";
-import { ThemeProvider } from "@/components/ui/ThemeContext";
-import Navbar from "@/components/header/Navbar";
+import type { Metadata } from 'next';
+import './globals.css';
+import Navbar from '@/components/Navbar';
 
-export const metadata = {
-  title: {
-    default: "Navorika Pro | High-Performance Utility & Calculator Hub",
-    template: "%s | Navorika Pro"
-  },
-  description: "Access an ultra-modern, zero-latency library of private client-side calculations and productivity layout tools.",
+export const metadata: Metadata = {
+  title: 'Navorika Pro | High-Performance Offline Tool Suite',
+  description: 'Ultra-fast, 100% secure client-side utility matrices running entirely in your browser tab.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="selection:bg-indigo-500 selection:text-white">
-        <ThemeProvider>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <div className="flex-grow">{children}</div>
-          </div>
-        </ThemeProvider>
+    <html lang="en">
+      <body className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 min-h-screen flex flex-col antialiased transition-colors duration-300">
+        {/* Global Navigation Header */}
+        <Navbar />
+        
+        {/* Main Application Rendering Context */}
+        <div className="flex-1 flex flex-col relative w-full">
+          {children}
+        </div>
       </body>
     </html>
   );

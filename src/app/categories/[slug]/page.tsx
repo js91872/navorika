@@ -17,13 +17,8 @@ const iconMap: { [key: string]: any } = {
 
 export default function CategoryPage() {
   const params = useParams();
-  
-  // Force clean string resolution to match against your registry category key fields
   const rawSlug = params?.slug;
   const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug || '';
-
-  // Debug check visible inside your browser inspector developer tools console
-  console.log("Navorika Core Navigation Router -> Target Category Slug Detected:", slug);
 
   const category = categories.find((c) => c.slug === slug);
   
@@ -31,7 +26,6 @@ export default function CategoryPage() {
     notFound();
   }
 
-  // Double-sided lookup backup check: ensures partial structural matching works if paths append slashes
   const categoryTools = tools.filter((t) => 
     t.category.trim().toLowerCase() === slug.trim().toLowerCase()
   );
@@ -64,7 +58,6 @@ export default function CategoryPage() {
       {categoryTools.length === 0 ? (
         <div className="text-center py-20 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-200 dark:border-slate-800">
           <p className="text-slate-500 font-bold uppercase tracking-wider mb-2">No tools registered in this category yet.</p>
-          <p className="text-xs text-slate-400 font-mono">Debug: Evaluated dynamic parameter matching criteria for `{slug}` category.</p>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
