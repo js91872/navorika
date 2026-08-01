@@ -1,16 +1,20 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { ArrowLeft, Image as ImageIcon, ShieldCheck, RefreshCw, Upload, X, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Image as ImageIcon, ShieldCheck, RefreshCw, Upload, X, ArrowRight, Loader2 } from 'lucide-react';
 import { tools } from '@/data/registry';
 import { PDFDocument } from 'pdf-lib';
+import heic2any from 'heic2any';
 
-const SUPPORTED_FORMATS = ['JPG', 'PNG', 'WEBP', 'SVG', 'PDF'];
+// HEIC is added as an input format, but excluded from outputs (browsers cannot encode TO heic easily offline)
+const FROM_FORMATS = ['JPG', 'PNG', 'WEBP', 'SVG', 'HEIC'];
+const TO_FORMATS = ['JPG', 'PNG', 'WEBP', 'SVG', 'PDF'];
 
 export default function OmniImageConverterTool() {
   const meta = tools.find(t => t.slug === 'image-converter');
   const [file, setFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  
   const [fromFormat, setFromFormat] = useState('JPG');
   const [toFormat, setToFormat] = useState('PNG');
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -20,10 +24,10 @@ export default function OmniImageConverterTool() {
       const selected = e.target.files[0];
       setFile(selected);
       
-      // Auto-detect input extension format mapping profiles safely
+      // Auto-detect input extension mapping
       const ext = selected.name.split('.').pop()?.toUpperCase();
       if (ext === 'JPEG') setFromFormat('JPG');
-      else if (SUPPORTED_FORMATS.includes(ext || '')) setFromFormat(ext || 'JPG');
+      else if (FROM_FORMATS.includes(ext || '')) setFromFormat(ext || 'JPG');
     }
   };
 
@@ -32,20 +36,37 @@ export default function OmniImageConverterTool() {
     setIsProcessing(true);
 
     try {
-      const imageBytes = await file.arrayBuffer();
+      let activeFile = file;
+
+      // ==========================================
+      // HEIC INTERCEPTION & DECODING PROTOCOL
+      // ==========================================
+      if (fromFormat === 'HEIC' || activeFile.name.toLowerCase().endsWith('.heic')) {
+        const convertedBlob = await heic2any({
+          blob: activeFile,
+          toType: "image/jpeg",
+          quality: 0.95
+        });
+        
+        // heic2any can return an array if the HEIC contains a burst/animation. Grab the first frame.
+        const singleBlob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+        activeFile = new File([singleBlob], activeFile.name.replace(/\.heic$/i, '.jpg'), { type: 'image/jpeg' });
+      }
+
+      const imageBytes = await activeFile.arrayBuffer();
       
       // Target A: PDF Document Compilation Wrappers
       if (toFormat === 'PDF') {
         const pdfDoc = await PDFDocument.create();
         let embeddedImage;
 
-        if (fromFormat === 'JPG' || file.type.includes('jpeg')) {
+        if (fromFormat === 'JPG' || fromFormat === 'HEIC' || activeFile.type.includes('jpeg')) {
           embeddedImage = await pdfDoc.embedJpg(imageBytes);
         } else if (fromFormat === 'PNG') {
           embeddedImage = await pdfDoc.embedPng(imageBytes);
         } else {
-          // Canvas conversion proxy fallback layer for secondary extensions
-          const img = await loadImageProxy(URL.createObjectURL(file));
+          // Canvas fallback for SVG/WEBP to PDF
+          const img = await loadImageProxy(URL.createObjectURL(activeFile));
           const canvas = document.createElement('canvas');
           canvas.width = img.width;
           canvas.height = img.height;
@@ -61,15 +82,15 @@ export default function OmniImageConverterTool() {
       
       // Target B: Mock Vector Path Tracer Matrix
       else if (toFormat === 'SVG') {
-        const url = URL.createObjectURL(file);
+        const url = URL.createObjectURL(activeFile);
         const img = await loadImageProxy(url);
         const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${img.width}" height="${img.height}"><image href="${url}" width="${img.width}" height="${img.height}"/></svg>`;
         downloadBlob(new Blob([svgString], { type: 'image/svg+xml' }), `${file.name.split('.')[0]}.svg`);
       }
       
-      // Target C: Canvas Matrix Pipeline Format Conversions
+      // Target C: Standard Canvas Matrix Operations (JPG, PNG, WEBP)
       else {
-        const img = await loadImageProxy(URL.createObjectURL(file));
+        const img = await loadImageProxy(URL.createObjectURL(activeFile));
         const canvas = document.createElement('canvas');
         canvas.width = img.width;
         canvas.height = img.height;
@@ -86,11 +107,11 @@ export default function OmniImageConverterTool() {
         ctx?.drawImage(img, 0, 0);
         canvas.toBlob((blob) => {
           if (blob) downloadBlob(blob, `${file.name.split('.')[0]}.${toFormat.toLowerCase()}`);
-        }, mimeType, 0.92);
+        }, mimeType, 0.95);
       }
     } catch (err) {
       console.error(err);
-      alert("Format mapping calculation exception context encountered.");
+      alert("Format mapping exception. Please ensure the file is a valid image.");
     }
     setIsProcessing(false);
   };
@@ -137,7 +158,7 @@ export default function OmniImageConverterTool() {
           <div className="flex flex-col gap-1 w-full max-w-[160px]">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Convert From</span>
             <select value={fromFormat} onChange={(e) => setFromFormat(e.target.value)} className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-3 py-2 rounded-xl font-bold outline-none text-sm text-slate-700 dark:text-slate-300">
-              {SUPPORTED_FORMATS.map(f => <option key={f} value={f}>{f}</option>)}
+              {FROM_FORMATS.map(f => <option key={f} value={f}>{f}</option>)}
             </select>
           </div>
 
@@ -146,7 +167,7 @@ export default function OmniImageConverterTool() {
           <div className="flex flex-col gap-1 w-full max-w-[160px]">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Convert To</span>
             <select value={toFormat} onChange={(e) => setToFormat(e.target.value)} className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-3 py-2 rounded-xl font-bold outline-none text-sm text-slate-700 dark:text-slate-300">
-              {SUPPORTED_FORMATS.filter(f => f !== fromFormat).map(f => <option key={f} value={f}>{f}</option>)}
+              {TO_FORMATS.filter(f => f !== fromFormat).map(f => <option key={f} value={f}>{f}</option>)}
             </select>
           </div>
         </div>
@@ -155,6 +176,7 @@ export default function OmniImageConverterTool() {
           <div onClick={() => fileInputRef.current?.click()} className="border-2 border-dashed border-purple-300 dark:border-purple-500/30 rounded-2xl p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900/5 transition-colors">
             <Upload className="h-10 w-10 text-purple-500 mb-4" />
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Select File</h3>
+            <p className="text-xs text-slate-400 mt-2 font-mono">Supports JPG, PNG, WEBP, SVG, and HEIC</p>
             <input type="file" className="hidden" ref={fileInputRef} onChange={handleFileChange} />
           </div>
         ) : (
@@ -170,7 +192,7 @@ export default function OmniImageConverterTool() {
             <div className="flex justify-end pt-4 border-t border-slate-100 dark:border-slate-800">
               <button onClick={executeConversion} disabled={isProcessing} className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-bold transition shadow-md">
                 {isProcessing ? <Loader2 className="h-5 w-5 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
-                {isProcessing ? 'Converting Layout...' : 'Convert & Download'}
+                {isProcessing ? 'Processing Format...' : 'Convert & Download'}
               </button>
             </div>
           </div>
