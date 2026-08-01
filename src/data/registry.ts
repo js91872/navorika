@@ -31,11 +31,11 @@ export const tools: ToolMeta[] = [
     description: "Extract pages or split a large PDF into smaller standalone documents securely.",
     category: "pdf-tools",
     keywords: ["split pdf", "extract pages pdf", "cut pdf file"],
-    heroTitle: "Extract Pages Instantly",
-    heroDescription: "Isolate critical pages from massive documents natively in your browser.",
-    formulaExplanation: "Parses the PDF trailer dictionary and creates new file structures from selected page indices.",
+    heroTitle: "Extract Pages Instantly with Zero Server Latency",
+    heroDescription: "Isolate critical pages from massive documents natively in your browser tab.",
+    formulaExplanation: "Parses the PDF document catalogs and extracts specified page byte arrays into a fresh PDF container download stream.",
     examples: [{ title: "Invoicing", description: "Extract page 4 of a 50-page batch to send to a client." }],
-    faq: [{ question: "Does this alter my original file?", answer: "No, a new copy is generated for download." }],
+    faq: [{ question: "Does this alter my original file?", answer: "No, your local original file stays exactly the same; a new extracted copy is generated." }],
     icon: "FileText"
   }
 ];
