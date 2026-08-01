@@ -10,7 +10,7 @@ export const categories: CategoryMeta[] = [
 ];
 
 export const tools: ToolMeta[] = [
-  // ... [PDF TOOLS REMAIN EXACTLY THE SAME] ...
+  // ... [PDF TOOLS SUITE - EXACTLY THE SAME] ...
   { slug: "merge-pdf", title: "Merge PDF", heading: "Merge PDF Documents Instantly", description: "Combine multiple PDF files into a single organized document seamlessly.", category: "pdf-tools", keywords: ["merge pdf"], heroTitle: "Combine PDF Files with Zero Server Uploads", heroDescription: "An ultra-secure, client-side utility engineered to join multiple PDF assets instantly.", formulaExplanation: "Utilizes local browser byte-stream manipulation.", examples: [], faq: [], icon: "FileText" },
   { slug: "split-pdf", title: "Split PDF", heading: "Split PDF Files by Page", description: "Extract pages or split a large PDF into smaller standalone documents securely.", category: "pdf-tools", keywords: ["split pdf"], heroTitle: "Extract Pages Instantly", heroDescription: "Isolate critical pages natively in your browser tab.", formulaExplanation: "Parses the PDF document catalogs and extracts specified pages.", examples: [], faq: [], icon: "FileText" },
   { slug: "rotate-pdf", title: "Rotate PDF", heading: "Rotate PDF Pages Permanently", description: "Change the orientation of individual or all pages in a PDF file layout securely.", category: "pdf-tools", keywords: ["rotate pdf"], heroTitle: "Rotate PDF Pages with Absolute Privacy", heroDescription: "Fix upside-down or landscape page layouts instantly.", formulaExplanation: "Modifies the /Rotate attribute natively.", examples: [], faq: [], icon: "FileText" },
@@ -34,7 +34,7 @@ export const tools: ToolMeta[] = [
   { slug: "bioluminescent-reader", title: "Bioluminescent Reader", heading: "High-Contrast PDF Dark Mode", description: "Read documents in a zero-eye-strain environment using hardware-accelerated color matrix inversion.", category: "pdf-tools", keywords: ["pdf dark mode"], heroTitle: "Bioluminescent Dark Mode Reader", heroDescription: "An immersive, completely private local reading environment.", formulaExplanation: "Rasterizes document layers onto an HTML5 canvas and applies a WebGL-accelerated CSS filter matrix.", examples: [], faq: [], icon: "FileText" },
 
   // ==========================================
-  // IMAGE TOOLS SUITE (PREVIOUS + NEW)
+  // ORIGINAL IMAGE TOOLS SUITE
   // ==========================================
   { slug: "image-converter", title: "Universal Image Converter", heading: "Universal Matrix Image Converter", description: "Convert seamlessly between JPG, PNG, WEBP, HEIC, SVG, and PDF configurations via a multi-directional options layout.", category: "image-tools", keywords: ["image converter", "jpg to png", "png to webp", "webp to pdf", "heic to jpg", "svg to png", "png to svg"], heroTitle: "Universal Multi-Directional Image Converter", heroDescription: "Transform formats natively in your browser thread with absolute grid privacy.", formulaExplanation: "Leverages internal canvas bit layouts, FileReader byte allocations, and rendering matrices completely client-side.", examples: [], faq: [], icon: "Image" },
   { slug: "compress-image", title: "Compress Image", heading: "Optimize Image File Sizes", description: "Compress JPG, PNG, SVG, and GIFs while saving space and maintaining quality.", category: "image-tools", keywords: ["compress image", "reduce photo size", "optimize jpg"], heroTitle: "Compress Images Locally Without Data Loss", heroDescription: "Fine-tune asset weight reduction profiles natively inside your browser.", formulaExplanation: "Utilizes lossy and lossless canvas compression quantization loops.", examples: [], faq: [], icon: "Image" },
@@ -47,14 +47,100 @@ export const tools: ToolMeta[] = [
   { slug: "meme-generator", title: "Meme Generator", heading: "Caption Visual Assets", description: "Create your memes online with ease. Caption meme images or upload your pictures to make custom memes.", category: "image-tools", keywords: ["meme generator", "add text to photo", "caption image"], heroTitle: "Generate Memes Offline", heroDescription: "Overlay striking typography directly onto image bases instantly.", formulaExplanation: "Draws customized text strokes and fills directly onto the visual coordinate grid.", examples: [], faq: [], icon: "Image" },
   { slug: "html-to-image", title: "HTML to Image", heading: "Rasterize Web Markups", description: "Convert webpages in HTML to JPG or SVG.", category: "image-tools", keywords: ["html to image", "web to jpg", "render html"], heroTitle: "Render Markup to Static Assets", heroDescription: "Convert live code blocks into crisp, shareable graphical grids.", formulaExplanation: "Parses DOM string fragments into XML-backed visualization frames.", examples: [], faq: [], icon: "Image" },
   { slug: "upscale-image", title: "Upscale Image", heading: "Enlarge Dimensions Losslessly", description: "Enlarge your images with high resolution. Easily increase the size of your JPG and PNG images while maintaining visual quality.", category: "image-tools", keywords: ["upscale image", "enlarge photo", "increase resolution"], heroTitle: "Upscale Resolution Matrices", heroDescription: "Perfect for scaling up highly detailed AI-generated agricultural machinery and tractor renders without losing clarity.", formulaExplanation: "Applies local bi-cubic or near-neighbor interpolation mapping to estimate and fill expanded pixel gaps.", examples: [], faq: [], icon: "Image" },
-
-  // THE 6 NEW DEDICATED TOOLS
   { slug: "compress-jpg", title: "Compress JPG", heading: "Optimize JPG File Size", description: "Shrink heavy JPEG photographs natively while retaining maximum visual fidelity.", category: "image-tools", keywords: ["compress jpg", "reduce jpg size", "optimize jpeg"], heroTitle: "Dedicated JPG Compression Engine", heroDescription: "Targeted lossless and lossy compression exclusively mapped for standard JPEG matrices.", formulaExplanation: "Adjusts the specific JPEG image/jpeg output quantization threshold.", examples: [], faq: [], icon: "Image" },
   { slug: "compress-png", title: "Compress PNG", heading: "Optimize PNG File Size", description: "Reduce transparent PNG file weights locally without destroying the alpha channel.", category: "image-tools", keywords: ["compress png", "reduce png size"], heroTitle: "Dedicated PNG Compression Engine", heroDescription: "Maintain crisp transparent borders while drastically shrinking network payloads.", formulaExplanation: "Converts deep PNG buffers into lightweight transparent WEBP proxies under the hood for size.", examples: [], faq: [], icon: "Image" },
   { slug: "compress-webp", title: "Compress WEBP", heading: "Optimize WEBP File Size", description: "Further compress modern WEBP graphics for ultra-fast web delivery.", category: "image-tools", keywords: ["compress webp", "reduce webp size"], heroTitle: "Dedicated WEBP Compression Engine", heroDescription: "Squeeze the last bytes out of next-gen image formats completely offline.", formulaExplanation: "Re-encodes WEBP frame segments with aggressive native compression heuristics.", examples: [], faq: [], icon: "Image" },
   { slug: "batch-image-converter", title: "Batch Image Converter", heading: "Convert Multiple Images at Once", description: "Upload dozens of images and convert all of them into a single format instantly.", category: "image-tools", keywords: ["batch image converter", "bulk image convert", "convert multiple images"], heroTitle: "Bulk Matrix Transcoding Engine", heroDescription: "Transform hundreds of visual assets concurrently using raw device processing power.", formulaExplanation: "Utilizes asynchronous JavaScript promises to map canvas rendering arrays in bulk.", examples: [], faq: [], icon: "Image" },
   { slug: "image-dpi-converter", title: "Image DPI Converter", heading: "Adjust Print Resolution (DPI)", description: "Modify the pixel density for high-quality printing (72, 150, 300 DPI).", category: "image-tools", keywords: ["image dpi converter", "change dpi", "300 dpi converter"], heroTitle: "Print-Ready DPI Conversion", heroDescription: "Scale your internal pixel maps to meet strict professional printing guidelines.", formulaExplanation: "Calculates physical print inches against pixel density mapping (Pixels = Inches × DPI).", examples: [], faq: [], icon: "Image" },
   { slug: "change-image-resolution", title: "Change Image Resolution", heading: "Modify Internal Resolution", description: "Scale assets to specific megapixel bounds or standard HD/4K aspect ratios.", category: "image-tools", keywords: ["change image resolution", "megapixel converter", "hd image converter"], heroTitle: "Standardized Resolution Mapping", heroDescription: "Snap photos instantly to industry standard dimensions (1080p, 4K, 8K) offline.", formulaExplanation: "Utilizes targeted aspect ratio interpolation arrays.", examples: [], faq: [], icon: "Image" },
+
+  // ==========================================
+  // NEW MASTER CONSOLIDATED IMAGE TOOLS
+  // ==========================================
+  { 
+    slug: "social-media-resizer", 
+    title: "Social Media Resizer", 
+    heading: "Auto-Crop for Social Platforms", 
+    description: "Instantly resize and pad images perfectly for Instagram, Facebook, YouTube, X, LinkedIn, and Pinterest.", 
+    category: "image-tools", 
+    keywords: ["instagram resizer", "facebook image resizer", "youtube thumbnail resizer", "twitter resizer", "linkedin image resizer", "pinterest resizer"], 
+    heroTitle: "Universal Social Media Cropper", 
+    heroDescription: "Snap your graphics to the exact optimal pixel dimensions for any major platform offline.", 
+    formulaExplanation: "Leverages a dictionary of strict platform aspect ratios and intelligently center-crops or pads canvas boundaries.", 
+    examples: [], faq: [], icon: "Image" 
+  },
+  { 
+    slug: "color-extraction-studio", 
+    title: "Color Extraction Studio", 
+    heading: "Pick & Generate Palettes", 
+    description: "Extract dominant colors, generate beautiful palettes, and pick exact hex codes directly from any image.", 
+    category: "image-tools", 
+    keywords: ["color picker from image", "image color palette generator", "dominant color extractor"], 
+    heroTitle: "Image Color Profiling Engine", 
+    heroDescription: "Analyze pixel matrices to build stunning CSS-ready palettes directly in your browser.", 
+    formulaExplanation: "Iterates through the image's Uint8ClampedArray pixel buffer to bucket and average dominant RGB frequency values.", 
+    examples: [], faq: [], icon: "Image" 
+  },
+  { 
+    slug: "id-photo-maker", 
+    title: "ID & Passport Photo Maker", 
+    heading: "Generate Compliant Identity Photos", 
+    description: "Crop and format professional profile pictures, passports, and ID photos with standard dimensional guides.", 
+    category: "image-tools", 
+    keywords: ["passport photo maker", "id photo maker", "profile picture maker"], 
+    heroTitle: "Professional Identity Photo Generator", 
+    heroDescription: "Ensure your official documentation photos meet strict biometric dimension requirements locally.", 
+    formulaExplanation: "Applies standardized government millimeter-to-pixel aspect ratio masking over the canvas context.", 
+    examples: [], faq: [], icon: "Image" 
+  },
+  { 
+    slug: "icon-sticker-maker", 
+    title: "Icon & Sticker Generator", 
+    heading: "Convert to ICO, Favicons & Stickers", 
+    description: "Instantly map transparency-ready graphics into strict .ICO formats or 512x512 WhatsApp sticker dimensions.", 
+    category: "image-tools", 
+    keywords: ["favicon generator", "ico converter", "whatsapp sticker maker"], 
+    heroTitle: "Web Icon & Chat Sticker Compiler", 
+    heroDescription: "Format standard vectors and PNGs into strict system-level icon binaries natively.", 
+    formulaExplanation: "Writes absolute byte headers for .ICO structures and enforces 512px limits for chat integration buffers.", 
+    examples: [], faq: [], icon: "Image" 
+  },
+  { 
+    slug: "qr-code-studio", 
+    title: "QR Code Studio", 
+    heading: "Generate & Scan QR Codes", 
+    description: "Instantly encode URLs and text into scannable QR matrices, or upload an existing QR code to decode its contents offline.", 
+    category: "image-tools", 
+    keywords: ["qr code generator", "qr code scanner", "barcode reader"], 
+    heroTitle: "Offline QR Code Engine", 
+    heroDescription: "Create custom QR graphics or extract data from images locally with zero external APIs.", 
+    formulaExplanation: "Translates string arrays into a 2D error-correcting barcode standard (ISO/IEC 18004).", 
+    examples: [], faq: [], icon: "Image" 
+  },
+  { 
+    slug: "photo-collage-maker", 
+    title: "Photo Collage Maker", 
+    heading: "Stitch Images Together Visually", 
+    description: "Combine multiple photographs into beautiful geometric grids and storyboards seamlessly.", 
+    category: "image-tools", 
+    keywords: ["photo collage maker", "combine photos", "image grid"], 
+    heroTitle: "Canvas Grid Storyboard Compiler", 
+    heroDescription: "Arrange, align, and stitch independent graphics into a single unified raster frame.", 
+    formulaExplanation: "Calculates synchronized bounding boxes and offsets multiple concurrent image draws onto a master canvas.", 
+    examples: [], faq: [], icon: "Image" 
+  },
+  { 
+    slug: "image-metadata-viewer", 
+    title: "EXIF Metadata Viewer", 
+    heading: "Extract Hidden Image Data", 
+    description: "Read the hidden EXIF hardware tags, GPS coordinates, and camera profiles embedded in your raw photos.", 
+    category: "image-tools", 
+    keywords: ["image metadata viewer", "exif reader", "photo data extractor"], 
+    heroTitle: "Secure EXIF Data Extraction", 
+    heroDescription: "Inspect the underlying hardware signatures of your files without uploading sensitive location tags to a server.", 
+    formulaExplanation: "Parses the binary APP1 segment of JPEG files to decode standard TIFF format tags.", 
+    examples: [], faq: [], icon: "Image" 
+  },
 
   // ==========================================
   // HIGH-PRECISION FINANCE CALCULATORS SUITE
