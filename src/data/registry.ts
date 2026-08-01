@@ -10,163 +10,45 @@ export const categories: CategoryMeta[] = [
 ];
 
 export const tools: ToolMeta[] = [
-  // ... Keep previous PDF tools intact ...
+  // ==========================================
+  // THE COMPLETE PDF TOOLS SUITE (RESTORED)
+  // ==========================================
+  { slug: "merge-pdf", title: "Merge PDF", heading: "Merge PDF Documents Instantly", description: "Combine multiple PDF files into a single organized document seamlessly.", category: "pdf-tools", keywords: ["merge pdf"], heroTitle: "Combine PDF Files with Zero Server Uploads", heroDescription: "An ultra-secure, client-side utility engineered to join multiple PDF assets instantly.", formulaExplanation: "Utilizes local browser byte-stream manipulation.", examples: [], faq: [], icon: "FileText" },
+  { slug: "split-pdf", title: "Split PDF", heading: "Split PDF Files by Page", description: "Extract pages or split a large PDF into smaller standalone documents securely.", category: "pdf-tools", keywords: ["split pdf"], heroTitle: "Extract Pages Instantly", heroDescription: "Isolate critical pages natively in your browser tab.", formulaExplanation: "Parses the PDF document catalogs and extracts specified pages.", examples: [], faq: [], icon: "FileText" },
+  { slug: "rotate-pdf", title: "Rotate PDF", heading: "Rotate PDF Pages Permanently", description: "Change the orientation of individual or all pages in a PDF file layout securely.", category: "pdf-tools", keywords: ["rotate pdf"], heroTitle: "Rotate PDF Pages with Absolute Privacy", heroDescription: "Fix upside-down or landscape page layouts instantly.", formulaExplanation: "Modifies the /Rotate attribute natively.", examples: [], faq: [], icon: "FileText" },
+  { slug: "delete-pdf-pages", title: "Delete PDF Pages", heading: "Remove Pages From PDF File", description: "Select and permanently delete specific pages from a PDF file locally.", category: "pdf-tools", keywords: ["delete pdf pages"], heroTitle: "Delete PDF Pages with Complete Privacy", heroDescription: "Strip out unnecessary pages instantly.", formulaExplanation: "Clones all indices except the targeted items.", examples: [], faq: [], icon: "FileText" },
+  { slug: "add-page-numbers", title: "Add Page Numbers", heading: "Add Page Numbers to PDFs", description: "Automatically stamp sequential page numbers onto your PDF documents locally.", category: "pdf-tools", keywords: ["add page numbers"], heroTitle: "Paginate Documents Locally", heroDescription: "Dynamically stamp professional page numbers.", formulaExplanation: "Uses embedded standard fonts to draw exact string coordinates.", examples: [], faq: [], icon: "FileText" },
+  { slug: "add-watermark", title: "Add Watermark", heading: "Stamp Watermarks on PDF", description: "Overlay custom text watermarks securely across your document pages.", category: "pdf-tools", keywords: ["add watermark to pdf"], heroTitle: "Watermark Documents with Zero Server Uploads", heroDescription: "Protect sensitive intellectual property by embedding semi-transparent stamps directly in your browser.", formulaExplanation: "Leverages canvas-style drawing mechanics to embed text.", examples: [], faq: [], icon: "FileText" },
+  { slug: "jpg-to-pdf", title: "JPG to PDF", heading: "Convert Images to PDF Layouts", description: "Convert JPG, PNG, or WEBP image frames into structured PDF document containers instantly.", category: "pdf-tools", keywords: ["jpg to pdf"], heroTitle: "Convert Images to PDF with Absolute Privacy", heroDescription: "Encapsulate your images inside clean document borders right inside your local machine.", formulaExplanation: "Decodes the raw graphics buffer layout array values.", examples: [], faq: [], icon: "FileText" },
+  { slug: "compress-pdf", title: "Compress PDF", heading: "Optimize and Shrink PDF Files", description: "Select custom quality levels to safely downsize and pack PDF binary weights inside the local browser viewport application.", category: "pdf-tools", keywords: ["compress pdf"], heroTitle: "Compress PDF Files with Precision Quality Multipliers", heroDescription: "Fine-tune asset weight reduction profiles locally to meet strict messaging limits without remote server latency.", formulaExplanation: "Leverages internal object stream indexing mechanics.", examples: [], faq: [], icon: "FileText" },
+  { slug: "pdf-to-jpg", title: "PDF to JPG", heading: "Convert PDF Pages to Images", description: "Extract every page of a PDF document into standard high-quality JPG images locally.", category: "pdf-tools", keywords: ["pdf to jpg"], heroTitle: "Convert PDF Pages to High-Quality JPG Images", heroDescription: "Rasterize vector document pages into crisp, shareable image grids completely inside your browser thread.", formulaExplanation: "Utilizes Mozilla's PDF.js architecture inside the client layout viewport.", examples: [], faq: [], icon: "FileText" },
+  { slug: "unlock-pdf", title: "Unlock PDF", heading: "Remove PDF Password Security", description: "Decrypt and remove password restrictions from your PDF files securely in your browser.", category: "pdf-tools", keywords: ["unlock pdf"], heroTitle: "Unlock Password-Protected PDF Files Locally", heroDescription: "Strip security locks from your authorized documents.", formulaExplanation: "Parses cross-reference tables.", examples: [], faq: [], icon: "FileText" },
+  { slug: "protect-pdf", title: "Protect PDF", heading: "Encrypt PDF with Password", description: "Encrypt and secure your sensitive PDF documents with custom passwords natively.", category: "pdf-tools", keywords: ["protect pdf"], heroTitle: "Encrypt PDF Files with Client-Side Security", heroDescription: "Lock sensitive documents using strong encryption directly on your device before sharing.", formulaExplanation: "Applies security object specifications onto the byte compilation graph.", examples: [], faq: [], icon: "FileText" },
+  { slug: "reorder-pdf", title: "Reorder PDF Pages", heading: "Reorder PDF Pages Visually", description: "Drag and drop document pages to instantly change their structural sequence locally.", category: "pdf-tools", keywords: ["reorder pdf"], heroTitle: "Rearrange PDF Pages with Absolute Privacy", heroDescription: "Visually reorder your document layout structure directly in your browser without uploading files.", formulaExplanation: "Utilizes native HTML5 drag-and-drop state mapping.", examples: [], faq: [], icon: "FileText" },
+  { slug: "extract-pdf-pages", title: "Extract PDF Pages", heading: "Extract Specific PDF Pages", description: "Visually select the exact pages you want to pull out of a document to create a new file.", category: "pdf-tools", keywords: ["extract pdf"], heroTitle: "Extract Exact PDF Pages Locally", heroDescription: "Build a new pristine document by cherry-picking essential layouts.", formulaExplanation: "Clones the selected array indexes from the origin source.", examples: [], faq: [], icon: "FileText" },
+  { slug: "interleave-pdf", title: "Interleave PDFs", heading: "Merge & Interleave PDF Files", description: "Dynamically alternate pages between two separate PDF documents automatically.", category: "pdf-tools", keywords: ["interleave pdf"], heroTitle: "Interleave Scanned Document Pages Instantly", heroDescription: "Perfect for rebuilding documents where odd and even pages were run through the scanner separately.", formulaExplanation: "Iterates through the structural limits of two origin files simultaneously.", examples: [], faq: [], icon: "FileText" },
+  { slug: "sign-pdf", title: "Sign PDF", heading: "Digitally Sign PDF Documents", description: "Draw your electronic signature and stamp it securely onto any page layout locally.", category: "pdf-tools", keywords: ["sign pdf", "add signature to pdf", "electronic signature free"], heroTitle: "Sign Documents with Zero Server Uploads", heroDescription: "Draw your signature directly in the browser and embed it securely into your documents without risking your biometric data.", formulaExplanation: "Captures HTML5 Canvas vector strokes.", examples: [], faq: [], icon: "FileText" },
+  { slug: "add-image-to-pdf", title: "Add Image to PDF", heading: "Insert Images into PDF", description: "Upload and embed custom PNG or JPG images onto any PDF page coordinate.", category: "pdf-tools", keywords: ["add image to pdf"], heroTitle: "Embed Graphics into PDFs Natively (Place Digital Signatures)", heroDescription: "Stamp corporate logos, photos, or diagrams over your PDF files securely in your browser.", formulaExplanation: "Parses local graphics files into byte streams.", examples: [], faq: [], icon: "FileText" },
+  { slug: "pdf-metadata-editor", title: "Edit PDF Metadata", heading: "Modify PDF Header Dictionaries", description: "Read, edit, and overwrite the hidden metadata tags of your PDF documents locally.", category: "pdf-tools", keywords: ["edit pdf metadata"], heroTitle: "Edit PDF Metadata with Total Privacy", heroDescription: "Modify document properties like Title, Author, Subject, and Keywords natively in your browser.", formulaExplanation: "Parses the document information dictionary and overwrites structural strings before re-serializing the file.", examples: [], faq: [], icon: "FileText" },
+  { slug: "flatten-pdf", title: "Flatten PDF Forms", heading: "Lock Fillable PDF Forms", description: "Convert interactive form fields and checkboxes into un-editable flat graphics.", category: "pdf-tools", keywords: ["flatten pdf"], heroTitle: "Flatten PDF Forms Instantly", heroDescription: "Lock your interactive forms to prevent future modifications by third parties.", formulaExplanation: "Iterates through all AcroForm fields, draws their appearance states statically onto the page canvas, and strips the interactive dictionary objects.", examples: [], faq: [], icon: "FileText" },
+  { slug: "crop-pdf", title: "Crop PDF Margins", heading: "Adjust PDF Bounding Boxes", description: "Trim white margins and adjust the structural dimensions of your PDF pages.", category: "pdf-tools", keywords: ["crop pdf"], heroTitle: "Crop PDF Pages Locally", heroDescription: "Adjust the visual bounding boxes of your document without losing vector resolution.", formulaExplanation: "Modifies the /CropBox and /MediaBox array coordinates to mask out edges dynamically.", examples: [], faq: [], icon: "FileText" },
+  { slug: "extract-pdf-text", title: "Pristine Text Extractor", heading: "Extract Raw Text from PDF", description: "Read embedded font stream arrays and export raw textual layouts directly into a downloadable .txt file.", category: "pdf-tools", keywords: ["extract text from pdf"], heroTitle: "Extract Pristine Text Layouts Locally", heroDescription: "Strip raw unformatted text out of complex document structures without relying on cloud OCR engines.", formulaExplanation: "Parses the internal textContent arrays via Mozilla PDF.js.", examples: [], faq: [], icon: "FileText" },
+  { slug: "bioluminescent-reader", title: "Bioluminescent Reader", heading: "High-Contrast PDF Dark Mode", description: "Read documents in a zero-eye-strain environment using hardware-accelerated color matrix inversion.", category: "pdf-tools", keywords: ["pdf dark mode"], heroTitle: "Bioluminescent Dark Mode Reader", heroDescription: "An immersive, completely private local reading environment engineered to eliminate screen glare and eye fatigue.", formulaExplanation: "Rasterizes document layers onto an HTML5 canvas and applies a WebGL-accelerated CSS filter matrix.", examples: [], faq: [], icon: "FileText" },
 
-  // IMAGE CONVERSION MATRIX (SEO OPTIMIZED ROUTES)
-  {
-    slug: "image-to-pdf",
-    title: "Image to PDF Converter",
-    heading: "Convert Graphics to PDF Layouts",
-    description: "Convert JPG, PNG, WEBP, or SVG images into structured PDF document containers instantly.",
-    category: "image-tools",
-    keywords: ["image to pdf", "convert photo to pdf", "jpg to pdf converter"],
-    heroTitle: "Convert Images to PDF with Absolute Privacy",
-    heroDescription: "Encapsulate your images inside clean document borders right inside your local machine thread.",
-    formulaExplanation: "Decodes the raw graphics buffer array values and wraps them inside an alternate /XObject PDF format.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "pdf-to-image",
-    title: "PDF to Image Converter",
-    heading: "Extract PDF Pages as High-Res Images",
-    description: "Rasterize vector document sheets into crisp, shareable high-quality JPG or PNG images locally.",
-    category: "image-tools",
-    keywords: ["pdf to image", "pdf to jpg converter", "extract pages as png"],
-    heroTitle: "Convert PDF Pages into Crisp Images Natively",
-    heroDescription: "Transform documents into visual grids completely inside your browser thread without data collection.",
-    formulaExplanation: "Leverages Mozilla PDF.js graphics context viewport matrix rasterization.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "convert-jpg-to-png",
-    title: "JPG to PNG Converter",
-    heading: "Convert JPG Images to PNG Natively",
-    description: "Convert standard JPG files into transparent-ready high-fidelity PNG assets instantly.",
-    category: "image-tools",
-    keywords: ["jpg to png", "convert jpg to png online", "free image converter"],
-    heroTitle: "Convert JPG to High-Fidelity PNG Graphics",
-    heroDescription: "Flawless browser-based image format transmutations operating at full processing speeds.",
-    formulaExplanation: "Draws source pixels to an uncompressed canvas element and exports via image/png mime-type.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "convert-png-to-jpg",
-    title: "PNG to JPG Converter",
-    heading: "Compress PNG Graphics into JPG",
-    description: "Convert bulk PNG images into highly compressed, lightweight web-ready JPG files locally.",
-    category: "image-tools",
-    keywords: ["png to jpg", "convert png to jpg free", "remove image alpha transparency"],
-    heroTitle: "Convert PNG to Compressed JPG Photos",
-    heroDescription: "Strip alpha transparency layers instantly to minimize file transmission weights.",
-    formulaExplanation: "Flattens transparent alpha layers onto a solid background and serializes standard JPEG structures.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "convert-webp-to-jpg",
-    title: "WEBP to JPG Converter",
-    heading: "Convert WEBP to Standard JPEG",
-    description: "Transform next-gen WEBP graphical sheets into standard universally compatible JPG files.",
-    category: "image-tools",
-    keywords: ["webp to jpg", "convert webp to jpeg", "offline image tool"],
-    heroTitle: "Convert Next-Gen WEBP back to JPG Format",
-    heroDescription: "Ensure immediate platform compatibility by returning modern formats to standard configurations.",
-    formulaExplanation: "Decodes webp frame segments directly inside the local engine renderer thread loop.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "convert-jpg-to-webp",
-    title: "JPG to WEBP Optimizer",
-    heading: "Convert JPG Images to WEBP",
-    description: "Modernize legacy JPEG photography arrays into cutting-edge, ultra-compressed web-scale WEBP frames.",
-    category: "image-tools",
-    keywords: ["jpg to webp", "compress images for web", "seo image speed optimization"],
-    heroTitle: "Convert JPG to Optimized Web-Scale WEBP Assets",
-    heroDescription: "Drastically reduce page loads by compressing traditional images into efficient file formats.",
-    formulaExplanation: "Passes array frames through the webp encoder matrix inside the local browser application.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "convert-png-to-webp",
-    title: "PNG to WEBP Optimizer",
-    heading: "Convert Transparent PNG to WEBP",
-    description: "Compress heavy lossless PNG structures into advanced alpha-supported lightweight WEBP layouts.",
-    category: "image-tools",
-    keywords: ["png to webp", "convert png to webp with transparency", "lossless image reduction"],
-    heroTitle: "Modernize Transparent PNG Files to Advanced WEBP",
-    heroDescription: "Maintain essential alpha layer transparencies while losing up to 70% of the raw file footprint.",
-    formulaExplanation: "Encodes alpha channel bits directly into next-gen bitstream structures completely offline.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "webp-to-png",
-    title: "WEBP to PNG Converter",
-    heading: "Extract WEBP Frames to PNG Layouts",
-    description: "Safely unpack WEBP images into editable, uncompressed transparent PNG graphic containers.",
-    category: "image-tools",
-    keywords: ["webp to png", "extract transparent webp", "image editing preparation"],
-    heroTitle: "Convert WEBP Back to Lossless PNG Graphics",
-    heroDescription: "Prepare compressed network assets for high-fidelity offline design edits effortlessly.",
-    formulaExplanation: "Decodes alpha bit channels into standard transparent canvas configurations.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "webp-to-pdf",
-    title: "WEBP to PDF Document Tool",
-    heading: "Convert WEBP Images to PDF Sheet",
-    description: "Compile webp graphic banners straight into standardized portable PDF documents.",
-    category: "image-tools",
-    keywords: ["webp to pdf", "save webp as pdf document", "local asset layout tool"],
-    heroTitle: "Convert WEBP Graphics to Standard PDF Documents",
-    heroDescription: "Encapsulate modern web-format items into clean document templates with absolute privacy.",
-    formulaExplanation: "Builds a canvas byte-stream mapping layer and packages it inside document wrappers.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "heic-to-jpg",
-    title: "HEIC to JPG Mobile Converter",
-    heading: "Convert iPhone HEIC Photos to JPG",
-    description: "Unshackle iOS mobile images by converting high-efficiency HEIC photos into standard JPEGs instantly.",
-    category: "image-tools",
-    keywords: ["heic to jpg", "convert apple photos to jpeg", "heic converter windows free"],
-    heroTitle: "Convert iOS HEIC Photos to Universal JPG Formats",
-    heroDescription: "Fix device cross-compatibility limitations by processing HEIC images locally inside your browser.",
-    formulaExplanation: "Uses client-side WASM compilation logic to process HEIF blocks into common canvas formats.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "heic-to-png",
-    title: "HEIC to PNG Mobile Converter",
-    heading: "Convert Apple HEIC Photos to PNG",
-    description: "Convert high-efficiency mobile camera HEIC objects into high-resolution lossless PNG files.",
-    category: "image-tools",
-    keywords: ["heic to png", "convert iphone heic to transparent png", "lossless mobile migration"],
-    heroTitle: "Convert Apple HEIC Files to Lossless PNG Formats",
-    heroDescription: "Easily prepare mobile content streams for design frameworks using full browser processing threads.",
-    formulaExplanation: "Parses binary camera object matrices directly inside the device memory sandbox environment.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "svg-to-png",
-    title: "SVG to PNG Rasterizer",
-    heading: "Convert Vector SVG to Raster PNG",
-    description: "Rasterize mathematical vector SVG code graphics into fixed resolution transparent PNG shapes.",
-    category: "image-tools",
-    keywords: ["svg to png", "rasterize vector file", "svg converter online free"],
-    heroTitle: "Rasterize Vector SVG Code Into Crisp PNG Grids",
-    heroDescription: "Bake scalable mathematical curves into standard image blocks perfectly sized for production networks.",
-    formulaExplanation: "Draws source markup strings to an XML-backed image block before rasterizing to canvas boundaries.",
-    examples: [], faq: [], icon: "ImageIcon"
-  },
-  {
-    slug: "png-to-svg",
-    title: "PNG to SVG Vectorizer",
-    heading: "Trace Raster PNG Images to Vector SVG",
-    description: "Vectorize fixed grid pixels into high-fidelity scalable path strings (/SVG mathematical shapes) instantly.",
-    category: "image-tools",
-    keywords: ["png to svg", "vectorize pixel art", "convert image to vector curves"],
-    heroTitle: "Trace Pixels into Scalable Mathematical SVG Contours",
-    heroDescription: "Turn standard, blocky raster grids into resolution-independent infinite vector layouts.",
-    formulaExplanation: "Scans edge pixel contrast gradients and constructs continuous bezier node string tracks.",
-    examples: [], faq: [], icon: "ImageIcon"
-  }
+  // ==========================================
+  // THE IMAGE CONVERSION MATRIX
+  // ==========================================
+  { slug: "image-to-pdf", title: "Image to PDF Converter", heading: "Convert Graphics to PDF Layouts", description: "Convert JPG, PNG, WEBP, or SVG images into structured PDF document containers instantly.", category: "image-tools", keywords: ["image to pdf"], heroTitle: "Convert Images to PDF with Absolute Privacy", heroDescription: "Encapsulate your images inside clean document borders right inside your local machine thread.", formulaExplanation: "Decodes the raw graphics buffer array values and wraps them inside an alternate /XObject PDF format.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "pdf-to-image", title: "PDF to Image Converter", heading: "Extract PDF Pages as High-Res Images", description: "Rasterize vector document sheets into crisp, shareable high-quality JPG or PNG images locally.", category: "image-tools", keywords: ["pdf to image"], heroTitle: "Convert PDF Pages into Crisp Images Natively", heroDescription: "Transform documents into visual grids completely inside your browser thread without data collection.", formulaExplanation: "Leverages Mozilla PDF.js graphics context viewport matrix rasterization.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "convert-jpg-to-png", title: "JPG to PNG Converter", heading: "Convert JPG Images to PNG Natively", description: "Convert standard JPG files into transparent-ready high-fidelity PNG assets instantly.", category: "image-tools", keywords: ["jpg to png"], heroTitle: "Convert JPG to High-Fidelity PNG Graphics", heroDescription: "Flawless browser-based image format transmutations operating at full processing speeds.", formulaExplanation: "Draws source pixels to an uncompressed canvas element and exports via image/png mime-type.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "convert-png-to-jpg", title: "PNG to JPG Converter", heading: "Compress PNG Graphics into JPG", description: "Convert bulk PNG images into highly compressed, lightweight web-ready JPG files locally.", category: "image-tools", keywords: ["png to jpg"], heroTitle: "Convert PNG to Compressed JPG Photos", heroDescription: "Strip alpha transparency layers instantly to minimize file transmission weights.", formulaExplanation: "Flattens transparent alpha layers onto a solid background and serializes standard JPEG structures.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "convert-webp-to-jpg", title: "WEBP to JPG Converter", heading: "Convert WEBP to Standard JPEG", description: "Transform next-gen WEBP graphical sheets into standard universally compatible JPG files.", category: "image-tools", keywords: ["webp to jpg"], heroTitle: "Convert Next-Gen WEBP back to JPG Format", heroDescription: "Ensure immediate platform compatibility by returning modern formats to standard configurations.", formulaExplanation: "Decodes webp frame segments directly inside the local engine renderer thread loop.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "convert-jpg-to-webp", title: "JPG to WEBP Optimizer", heading: "Convert JPG Images to WEBP", description: "Modernize legacy JPEG photography arrays into cutting-edge, ultra-compressed web-scale WEBP frames.", category: "image-tools", keywords: ["jpg to webp"], heroTitle: "Convert JPG to Optimized Web-Scale WEBP Assets", heroDescription: "Drastically reduce page loads by compressing traditional images into efficient file formats.", formulaExplanation: "Passes array frames through the webp encoder matrix inside the local browser application.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "convert-png-to-webp", title: "PNG to WEBP Optimizer", heading: "Convert Transparent PNG to WEBP", description: "Compress heavy lossless PNG structures into advanced alpha-supported lightweight WEBP layouts.", category: "image-tools", keywords: ["png to webp"], heroTitle: "Modernize Transparent PNG Files to Advanced WEBP", heroDescription: "Maintain essential alpha layer transparencies while losing up to 70% of the raw file footprint.", formulaExplanation: "Encodes alpha channel bits directly into next-gen bitstream structures completely offline.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "webp-to-png", title: "WEBP to PNG Converter", heading: "Extract WEBP Frames to PNG Layouts", description: "Safely unpack WEBP images into editable, uncompressed transparent PNG graphic containers.", category: "image-tools", keywords: ["webp to png"], heroTitle: "Convert WEBP Back to Lossless PNG Graphics", heroDescription: "Prepare compressed network assets for high-fidelity offline design edits effortlessly.", formulaExplanation: "Decodes alpha bit channels into standard transparent canvas configurations.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "webp-to-pdf", title: "WEBP to PDF Document Tool", heading: "Convert WEBP Images to PDF Sheet", description: "Compile webp graphic banners straight into standardized portable PDF documents.", category: "image-tools", keywords: ["webp to pdf"], heroTitle: "Convert WEBP Graphics to Standard PDF Documents", heroDescription: "Encapsulate modern web-format items into clean document templates with absolute privacy.", formulaExplanation: "Builds a canvas byte-stream mapping layer and packages it inside document wrappers.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "heic-to-jpg", title: "HEIC to JPG Mobile Converter", heading: "Convert iPhone HEIC Photos to JPG", description: "Unshackle iOS mobile images by converting high-efficiency HEIC photos into standard JPEGs instantly.", category: "image-tools", keywords: ["heic to jpg"], heroTitle: "Convert iOS HEIC Photos to Universal JPG Formats", heroDescription: "Fix device cross-compatibility limitations by processing HEIC images locally inside your browser.", formulaExplanation: "Uses client-side WASM compilation logic to process HEIF blocks into common canvas formats.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "heic-to-png", title: "HEIC to PNG Mobile Converter", heading: "Convert Apple HEIC Photos to PNG", description: "Convert high-efficiency mobile camera HEIC objects into high-resolution lossless PNG files.", category: "image-tools", keywords: ["heic to png"], heroTitle: "Convert Apple HEIC Files to Lossless PNG Formats", heroDescription: "Easily prepare mobile content streams for design frameworks using full browser processing threads.", formulaExplanation: "Parses binary camera object matrices directly inside the device memory sandbox environment.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "svg-to-png", title: "SVG to PNG Rasterizer", heading: "Convert Vector SVG to Raster PNG", description: "Rasterize mathematical vector SVG code graphics into fixed resolution transparent PNG shapes.", category: "image-tools", keywords: ["svg to png"], heroTitle: "Rasterize Vector SVG Code Into Crisp PNG Grids", heroDescription: "Bake scalable mathematical curves into standard image blocks perfectly sized for production networks.", formulaExplanation: "Draws source markup strings to an XML-backed image block before rasterizing to canvas boundaries.", examples: [], faq: [], icon: "ImageIcon" },
+  { slug: "png-to-svg", title: "PNG to SVG Vectorizer", heading: "Trace Raster PNG Images to Vector SVG", description: "Vectorize fixed grid pixels into high-fidelity scalable path strings (/SVG mathematical shapes) instantly.", category: "image-tools", keywords: ["png to svg"], heroTitle: "Trace Pixels into Scalable Mathematical SVG Contours", heroDescription: "Turn standard, blocky raster grids into resolution-independent infinite vector layouts.", formulaExplanation: "Scans edge pixel contrast gradients and constructs continuous bezier node string tracks.", examples: [], faq: [], icon: "ImageIcon" }
 ];
