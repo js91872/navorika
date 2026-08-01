@@ -122,7 +122,7 @@ export default function CompressPDFTool() {
             {/* Quality Preset Config Matrix */}
             <div className="mb-8">
               <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-4">
-                Select Compression Compression Profile
+                Select Compression Profile
               </label>
               <div className="grid sm:grid-cols-3 gap-4">
                 {[
