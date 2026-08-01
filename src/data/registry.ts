@@ -21,8 +21,6 @@ export const tools: ToolMeta[] = [
   { slug: "pdf-to-jpg", title: "PDF to JPG", heading: "Convert PDF Pages to Images", description: "Extract every page of a PDF document into standard high-quality JPG images locally.", category: "pdf-tools", keywords: ["pdf to jpg"], heroTitle: "Convert PDF Pages to High-Quality JPG Images", heroDescription: "Rasterize vector document pages into crisp, shareable image grids completely inside your browser thread.", formulaExplanation: "Utilizes Mozilla's PDF.js architecture inside the client layout viewport.", examples: [], faq: [], icon: "FileText" },
   { slug: "unlock-pdf", title: "Unlock PDF", heading: "Remove PDF Password Security", description: "Decrypt and remove password restrictions from your PDF files securely in your browser.", category: "pdf-tools", keywords: ["unlock pdf"], heroTitle: "Unlock Password-Protected PDF Files Locally", heroDescription: "Strip security locks from your authorized documents.", formulaExplanation: "Parses cross-reference tables.", examples: [], faq: [], icon: "FileText" },
   { slug: "protect-pdf", title: "Protect PDF", heading: "Encrypt PDF with Password", description: "Encrypt and secure your sensitive PDF documents with custom passwords natively.", category: "pdf-tools", keywords: ["protect pdf"], heroTitle: "Encrypt PDF Files with Client-Side Security", heroDescription: "Lock sensitive documents using strong encryption directly on your device before sharing.", formulaExplanation: "Applies security object specifications onto the byte compilation graph.", examples: [], faq: [], icon: "FileText" },
-
-  // NEW PRESENTATION INTEROPERABILITY TOOLS
   {
     slug: "powerpoint-to-pdf",
     title: "PowerPoint to PDF",
@@ -35,20 +33,6 @@ export const tools: ToolMeta[] = [
     formulaExplanation: "Decompresses open XML slide data packages using JavaScript buffers and formats layout nodes directly into multi-page PDF files.",
     examples: [{ title: "Deck Publishing", description: "Convert corporate investor updates into flat PDF decks for distribution." }],
     faq: [{ question: "Are animations maintained?", answer: "No, conversions compile slide states into static vector pages." }],
-    icon: "FileText"
-  },
-  {
-    slug: "pdf-to-powerpoint",
-    title: "PDF to PowerPoint",
-    heading: "Convert PDF Documents to PPTX Slides",
-    description: "Convert PDF pages into high-fidelity PowerPoint presentation layouts directly in your browser.",
-    category: "pdf-tools",
-    keywords: ["pdf to powerpoint", "pdf to pptx", "convert pdf to slides", "turn pdf into presentation"],
-    heroTitle: "Convert PDF Documents to PPTX Presentations Offline",
-    heroDescription: "Map multi-page documents directly into standard presentation slide dimensions safely.",
-    formulaExplanation: "Rasterizes input data arrays onto memory nodes using PDF.js and packs them as high-DPI slide frames via the PptxGenJS compilation system.",
-    examples: [{ title: "Report Presentations", description: "Turn structured business reports into instantly presentable widescreen lecture slide assets." }],
-    faq: [{ question: "Can I modify the text after conversion?", answer: "This tool maps document dimensions as pristine presentation backgrounds to perfectly retain complex graphics layouts." }],
     icon: "FileText"
   }
 ];
