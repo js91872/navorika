@@ -79,5 +79,19 @@ export const tools: ToolMeta[] = [
     examples: [{ title: "Academic Submissions", description: "Format a final thesis document to meet strict university pagination layout requirements." }],
     faq: [{ question: "Can I customize the numbering format?", answer: "Currently, it applies a professional 'Page 1 of X' format to the bottom center margin of the document." }],
     icon: "FileText"
+  },
+  {
+    slug: "add-watermark",
+    title: "Add Watermark",
+    heading: "Stamp Watermarks on PDF",
+    description: "Overlay custom text watermarks securely across your document pages.",
+    category: "pdf-tools",
+    keywords: ["add watermark to pdf", "stamp pdf", "confidential pdf watermark"],
+    heroTitle: "Watermark Documents with Zero Server Uploads",
+    heroDescription: "Protect sensitive intellectual property by embedding semi-transparent stamps directly in your browser.",
+    formulaExplanation: "Leverages canvas-style drawing mechanics to embed rotated, high-opacity text vectors directly over the original page content layer.",
+    examples: [{ title: "Legal Drafting", description: "Stamp 'DRAFT' or 'CONFIDENTIAL' across unreleased intellectual property contracts." }],
+    faq: [{ question: "Can the watermark be removed easily?", answer: "The text is baked into the PDF's content stream, making it highly persistent against casual editing, though no PDF modification is entirely irreversible to advanced forensics." }],
+    icon: "FileText"
   }
 ];
