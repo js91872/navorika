@@ -10,27 +10,28 @@ export const categories: CategoryMeta[] = [
 ];
 
 export const tools: ToolMeta[] = [
-  { slug: "merge-pdf", title: "Merge PDF", heading: "Merge PDF Documents Instantly", description: "Combine multiple PDF files into a single organized document seamlessly.", category: "pdf-tools", keywords: ["merge pdf", "combine pdf files"], heroTitle: "Combine PDF Files with Zero Server Uploads", heroDescription: "An ultra-secure, client-side utility engineered to join multiple PDF assets instantly.", formulaExplanation: "Utilizes local browser byte-stream manipulation.", examples: [], faq: [], icon: "FileText" },
+  { slug: "merge-pdf", title: "Merge PDF", heading: "Merge PDF Documents Instantly", description: "Combine multiple PDF files into a single organized document seamlessly.", category: "pdf-tools", keywords: ["merge pdf"], heroTitle: "Combine PDF Files with Zero Server Uploads", heroDescription: "An ultra-secure, client-side utility engineered to join multiple PDF assets instantly.", formulaExplanation: "Utilizes local browser byte-stream manipulation.", examples: [], faq: [], icon: "FileText" },
   { slug: "split-pdf", title: "Split PDF", heading: "Split PDF Files by Page", description: "Extract pages or split a large PDF into smaller standalone documents securely.", category: "pdf-tools", keywords: ["split pdf"], heroTitle: "Extract Pages Instantly", heroDescription: "Isolate critical pages natively in your browser tab.", formulaExplanation: "Parses the PDF document catalogs and extracts specified pages.", examples: [], faq: [], icon: "FileText" },
   { slug: "rotate-pdf", title: "Rotate PDF", heading: "Rotate PDF Pages Permanently", description: "Change the orientation of individual or all pages in a PDF file layout securely.", category: "pdf-tools", keywords: ["rotate pdf"], heroTitle: "Rotate PDF Pages with Absolute Privacy", heroDescription: "Fix upside-down or landscape page layouts instantly.", formulaExplanation: "Modifies the /Rotate attribute natively.", examples: [], faq: [], icon: "FileText" },
   { slug: "delete-pdf-pages", title: "Delete PDF Pages", heading: "Remove Pages From PDF File", description: "Select and permanently delete specific pages from a PDF file locally.", category: "pdf-tools", keywords: ["delete pdf pages"], heroTitle: "Delete PDF Pages with Complete Privacy", heroDescription: "Strip out unnecessary pages instantly.", formulaExplanation: "Clones all indices except the targeted items.", examples: [], faq: [], icon: "FileText" },
   { slug: "add-page-numbers", title: "Add Page Numbers", heading: "Add Page Numbers to PDFs", description: "Automatically stamp sequential page numbers onto your PDF documents locally.", category: "pdf-tools", keywords: ["add page numbers"], heroTitle: "Paginate Documents Locally", heroDescription: "Dynamically stamp professional page numbers.", formulaExplanation: "Uses embedded standard fonts to draw exact string coordinates.", examples: [], faq: [], icon: "FileText" },
   { slug: "add-watermark", title: "Add Watermark", heading: "Stamp Watermarks on PDF", description: "Overlay custom text watermarks securely across your document pages.", category: "pdf-tools", keywords: ["add watermark to pdf"], heroTitle: "Watermark Documents with Zero Server Uploads", heroDescription: "Protect sensitive intellectual property by embedding semi-transparent stamps directly in your browser.", formulaExplanation: "Leverages canvas-style drawing mechanics to embed text.", examples: [], faq: [], icon: "FileText" },
   { slug: "jpg-to-pdf", title: "JPG to PDF", heading: "Convert Images to PDF Layouts", description: "Convert JPG, PNG, or WEBP image frames into structured PDF document containers instantly.", category: "pdf-tools", keywords: ["jpg to pdf"], heroTitle: "Convert Images to PDF with Absolute Privacy", heroDescription: "Encapsulate your images inside clean document borders right inside your local machine.", formulaExplanation: "Decodes the raw graphics buffer layout array values.", examples: [], faq: [], icon: "FileText" },
+  { slug: "compress-pdf", title: "Compress PDF", heading: "Optimize and Shrink PDF Files", description: "Select custom quality levels to safely downsize and pack PDF binary weights inside the local browser viewport application.", category: "pdf-tools", keywords: ["compress pdf"], heroTitle: "Compress PDF Files with Precision Quality Multipliers", heroDescription: "Fine-tune asset weight reduction profiles locally to meet strict messaging limits without remote server latency.", formulaExplanation: "Leverages internal object stream indexing mechanics.", examples: [], faq: [], icon: "FileText" },
   
-  // UPDATED COMPRESS METADATA BLOCK
+  // NEW PDF TO JPG REGISTRY ENTRY
   {
-    slug: "compress-pdf",
-    title: "Compress PDF",
-    heading: "Optimize and Shrink PDF Files",
-    description: "Select custom quality levels to safely downsize and pack PDF binary weights inside the local browser viewport application.",
+    slug: "pdf-to-jpg",
+    title: "PDF to JPG",
+    heading: "Convert PDF Pages to Images",
+    description: "Extract every page of a PDF document into standard high-quality JPG images locally.",
     category: "pdf-tools",
-    keywords: ["compress pdf", "shrink pdf size", "pdf reduction tool", "optimize pdf online free"],
-    heroTitle: "Compress PDF Files with Precision Quality Multipliers",
-    heroDescription: "Fine-tune asset weight reduction profiles locally to meet strict messaging limits without remote server latency.",
-    formulaExplanation: "Leverages internal object stream indexing mechanics (`useObjectStreams`) alongside automated page tree compaction matrices to compress file structures natively.",
-    examples: [{ title: "Legal Delivery", description: "Downscale highly pixel-dense document pages into crisp, message-compliant attachment binaries." }],
-    faq: [{ question: "What is the difference between the balance profiles?", answer: "Best Quality removes unreferenced structural meta nodes. Optimum scales standard assets cleanly. Low Quality applies maximum array layout packing parameters to hit ultra-small file metrics." }],
+    keywords: ["pdf to jpg", "pdf to jpeg", "convert pdf to image", "extract pictures from pdf"],
+    heroTitle: "Convert PDF Pages to High-Quality JPG Images",
+    heroDescription: "Rasterize vector document pages into crisp, shareable image grids completely inside your browser thread.",
+    formulaExplanation: "Utilizes Mozilla's PDF.js architecture inside the client layout viewport to mathematically render embedded page layout object structures to HTML5 canvas vectors before exporting them as clean compressed binary arrays.",
+    examples: [{ title: "Presentation Extraction", description: "Turn slide documents into separate clean JPG image sheets to publish on social feeds." }],
+    faq: [{ question: "Can I choose which page to extract?", answer: "Our interface processes all document nodes and extracts pages into sequential image files dynamically." }],
     icon: "FileText"
   }
 ];
