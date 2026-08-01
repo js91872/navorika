@@ -65,5 +65,19 @@ export const tools: ToolMeta[] = [
     examples: [{ title: "Redacting Templates", description: "Remove trailing instructional blank pages or cover letters from standard corporate contract agreements." }],
     faq: [{ question: "Can I undo a deletion?", answer: "Your local source file is never altered. If you make a mistake, simply upload the original file again and adjust your selections." }],
     icon: "FileText"
+  },
+  {
+    slug: "add-page-numbers",
+    title: "Add Page Numbers",
+    heading: "Add Page Numbers to PDFs",
+    description: "Automatically stamp sequential page numbers onto your PDF documents locally.",
+    category: "pdf-tools",
+    keywords: ["add page numbers to pdf", "paginate pdf", "insert page numbers", "pdf page count"],
+    heroTitle: "Paginate Documents Locally and Securely",
+    heroDescription: "Dynamically stamp professional page numbers onto your PDF layouts with absolute privacy.",
+    formulaExplanation: "Uses embedded standard Helvetica fonts to draw exact string coordinates on the X and Y axes of the document page array.",
+    examples: [{ title: "Academic Submissions", description: "Format a final thesis document to meet strict university pagination layout requirements." }],
+    faq: [{ question: "Can I customize the numbering format?", answer: "Currently, it applies a professional 'Page 1 of X' format to the bottom center margin of the document." }],
+    icon: "FileText"
   }
 ];
