@@ -20,5 +20,43 @@ export const tools: ToolMeta[] = [
   { slug: "compress-pdf", title: "Compress PDF", heading: "Optimize and Shrink PDF Files", description: "Select custom quality levels to safely downsize and pack PDF binary weights inside the local browser viewport application.", category: "pdf-tools", keywords: ["compress pdf"], heroTitle: "Compress PDF Files with Precision Quality Multipliers", heroDescription: "Fine-tune asset weight reduction profiles locally to meet strict messaging limits without remote server latency.", formulaExplanation: "Leverages internal object stream indexing mechanics.", examples: [], faq: [], icon: "FileText" },
   { slug: "pdf-to-jpg", title: "PDF to JPG", heading: "Convert PDF Pages to Images", description: "Extract every page of a PDF document into standard high-quality JPG images locally.", category: "pdf-tools", keywords: ["pdf to jpg"], heroTitle: "Convert PDF Pages to High-Quality JPG Images", heroDescription: "Rasterize vector document pages into crisp, shareable image grids completely inside your browser thread.", formulaExplanation: "Utilizes Mozilla's PDF.js architecture inside the client layout viewport.", examples: [], faq: [], icon: "FileText" },
   { slug: "unlock-pdf", title: "Unlock PDF", heading: "Remove PDF Password Security", description: "Decrypt and remove password restrictions from your PDF files securely in your browser.", category: "pdf-tools", keywords: ["unlock pdf"], heroTitle: "Unlock Password-Protected PDF Files Locally", heroDescription: "Strip security locks from your authorized documents.", formulaExplanation: "Parses cross-reference tables.", examples: [], faq: [], icon: "FileText" },
-  { slug: "protect-pdf", title: "Protect PDF", heading: "Encrypt PDF with Password", description: "Encrypt and secure your sensitive PDF documents with custom passwords natively.", category: "pdf-tools", keywords: ["protect pdf"], heroTitle: "Encrypt PDF Files with Client-Side Security", heroDescription: "Lock sensitive documents using strong encryption directly on your device before sharing.", formulaExplanation: "Applies security object specifications onto the byte compilation graph.", examples: [], faq: [], icon: "FileText" }
+  { slug: "protect-pdf", title: "Protect PDF", heading: "Encrypt PDF with Password", description: "Encrypt and secure your sensitive PDF documents with custom passwords natively.", category: "pdf-tools", keywords: ["protect pdf"], heroTitle: "Encrypt PDF Files with Client-Side Security", heroDescription: "Lock sensitive documents using strong encryption directly on your device before sharing.", formulaExplanation: "Applies security object specifications onto the byte compilation graph.", examples: [], faq: [], icon: "FileText" },
+
+  // NEW DOCUMENT RESTRUCTURING TOOLS
+  {
+    slug: "reorder-pdf",
+    title: "Reorder PDF Pages",
+    heading: "Reorder PDF Pages Visually",
+    description: "Drag and drop document pages to instantly change their structural sequence locally.",
+    category: "pdf-tools",
+    keywords: ["reorder pdf pages", "move pdf pages", "arrange pdf online"],
+    heroTitle: "Rearrange PDF Pages with Absolute Privacy",
+    heroDescription: "Visually reorder your document layout structure directly in your browser without uploading files.",
+    formulaExplanation: "Utilizes native HTML5 drag-and-drop state mapping to dictate how the `pdf-lib` copy array iterates and writes the final sequence stream.",
+    examples: [], faq: [], icon: "FileText"
+  },
+  {
+    slug: "extract-pdf-pages",
+    title: "Extract PDF Pages",
+    heading: "Extract Specific PDF Pages",
+    description: "Visually select the exact pages you want to pull out of a document to create a new file.",
+    category: "pdf-tools",
+    keywords: ["extract pdf pages", "pull pages from pdf", "save specific pdf pages"],
+    heroTitle: "Extract Exact PDF Pages Locally",
+    heroDescription: "Build a new pristine document by cherry-picking essential layouts from large document bundles.",
+    formulaExplanation: "Clones the selected array indexes from the origin source into a fresh, optimized binary container.",
+    examples: [], faq: [], icon: "FileText"
+  },
+  {
+    slug: "interleave-pdf",
+    title: "Interleave PDFs",
+    heading: "Merge & Interleave PDF Files",
+    description: "Dynamically alternate pages between two separate PDF documents automatically.",
+    category: "pdf-tools",
+    keywords: ["interleave pdf", "merge alternate pages pdf", "combine scanned pdfs"],
+    heroTitle: "Interleave Scanned Document Pages Instantly",
+    heroDescription: "Perfect for rebuilding documents where odd and even pages were run through the scanner separately.",
+    formulaExplanation: "Iterates through the structural limits of two origin files simultaneously, injecting alternating index clones into the final output matrix.",
+    examples: [], faq: [], icon: "FileText"
+  }
 ];
