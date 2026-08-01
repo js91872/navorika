@@ -24,19 +24,50 @@ export const tools: ToolMeta[] = [
   { slug: "reorder-pdf", title: "Reorder PDF Pages", heading: "Reorder PDF Pages Visually", description: "Drag and drop document pages to instantly change their structural sequence locally.", category: "pdf-tools", keywords: ["reorder pdf"], heroTitle: "Rearrange PDF Pages with Absolute Privacy", heroDescription: "Visually reorder your document layout structure directly in your browser without uploading files.", formulaExplanation: "Utilizes native HTML5 drag-and-drop state mapping.", examples: [], faq: [], icon: "FileText" },
   { slug: "extract-pdf-pages", title: "Extract PDF Pages", heading: "Extract Specific PDF Pages", description: "Visually select the exact pages you want to pull out of a document to create a new file.", category: "pdf-tools", keywords: ["extract pdf"], heroTitle: "Extract Exact PDF Pages Locally", heroDescription: "Build a new pristine document by cherry-picking essential layouts.", formulaExplanation: "Clones the selected array indexes from the origin source.", examples: [], faq: [], icon: "FileText" },
   { slug: "interleave-pdf", title: "Interleave PDFs", heading: "Merge & Interleave PDF Files", description: "Dynamically alternate pages between two separate PDF documents automatically.", category: "pdf-tools", keywords: ["interleave pdf"], heroTitle: "Interleave Scanned Document Pages Instantly", heroDescription: "Perfect for rebuilding documents where odd and even pages were run through the scanner separately.", formulaExplanation: "Iterates through the structural limits of two origin files simultaneously.", examples: [], faq: [], icon: "FileText" },
-  { slug: "sign-pdf", title: "Sign PDF", heading: "Digitally Sign PDF Documents", description: "Draw your electronic signature and stamp it securely onto any page layout locally.", category: "pdf-tools", keywords: ["sign pdf", "add signature to pdf", "electronic signature free"], heroTitle: "Sign Documents with Zero Server Uploads", heroDescription: "Draw your signature directly in the browser and embed it securely into your documents without risking your biometric data.", formulaExplanation: "Captures HTML5 Canvas vector strokes, encodes them as transparent PNG layers, and natively injects them into the PDF XObject stream.", examples: [], faq: [], icon: "FileText" },
-  
-  // UPDATED IMAGE TOOL HEADING
+  { slug: "sign-pdf", title: "Sign PDF", heading: "Digitally Sign PDF Documents", description: "Draw your electronic signature and stamp it securely onto any page layout locally.", category: "pdf-tools", keywords: ["sign pdf"], heroTitle: "Sign Documents with Zero Server Uploads", heroDescription: "Draw your signature directly in the browser and embed it securely into your documents without risking your biometric data.", formulaExplanation: "Captures HTML5 Canvas vector strokes.", examples: [], faq: [], icon: "FileText" },
+  { slug: "add-image-to-pdf", title: "Add Image to PDF", heading: "Insert Images into PDF", description: "Upload and embed custom PNG or JPG images onto any PDF page coordinate.", category: "pdf-tools", keywords: ["add image to pdf"], heroTitle: "Embed Graphics into PDFs Natively (Place Digital Signatures)", heroDescription: "Stamp corporate logos, photos, or diagrams over your PDF files securely in your browser.", formulaExplanation: "Parses local graphics files into byte streams.", examples: [], faq: [], icon: "FileText" },
+
+  // NEW METADATA & STRUCTURE TOOLS
   {
-    slug: "add-image-to-pdf",
-    title: "Add Image to PDF",
-    heading: "Insert Images into PDF",
-    description: "Upload and embed custom PNG or JPG images onto any PDF page coordinate.",
+    slug: "pdf-metadata-editor",
+    title: "Edit PDF Metadata",
+    heading: "Modify PDF Header Dictionaries",
+    description: "Read, edit, and overwrite the hidden metadata tags of your PDF documents locally.",
     category: "pdf-tools",
-    keywords: ["add image to pdf", "insert photo in pdf", "overlay image on pdf"],
-    heroTitle: "Embed Graphics into PDFs Natively (Place Digital Signatures)",
-    heroDescription: "Stamp corporate logos, photos, or diagrams over your PDF files securely in your browser.",
-    formulaExplanation: "Parses local graphics files into byte streams and embeds them into the PDF rendering dictionary using exact Cartesian positioning logic.",
-    examples: [], faq: [], icon: "FileText"
+    keywords: ["edit pdf metadata", "change pdf author", "pdf properties editor", "pdf tags"],
+    heroTitle: "Edit PDF Metadata with Total Privacy",
+    heroDescription: "Modify document properties like Title, Author, Subject, and Keywords natively in your browser.",
+    formulaExplanation: "Parses the document information dictionary and overwrites structural strings before re-serializing the file.",
+    examples: [{ title: "SEO Optimization", description: "Inject relevant keywords into a document before publishing it to the web." }],
+    faq: [{ question: "Are my changes permanent?", answer: "Yes, downloading the file bakes your new properties directly into the binary header." }],
+    icon: "FileText"
+  },
+  {
+    slug: "flatten-pdf",
+    title: "Flatten PDF Forms",
+    heading: "Lock Fillable PDF Forms",
+    description: "Convert interactive form fields and checkboxes into un-editable flat graphics.",
+    category: "pdf-tools",
+    keywords: ["flatten pdf", "lock pdf form", "make pdf uneditable"],
+    heroTitle: "Flatten PDF Forms Instantly",
+    heroDescription: "Lock your interactive forms to prevent future modifications by third parties.",
+    formulaExplanation: "Iterates through all AcroForm fields, draws their appearance states statically onto the page canvas, and strips the interactive dictionary objects.",
+    examples: [{ title: "Contract Finalization", description: "Flatten a filled application form before sending it to a secure archival system." }],
+    faq: [{ question: "Can a flattened form be un-flattened?", answer: "No. The interactive fields are permanently converted to standard graphic elements." }],
+    icon: "FileText"
+  },
+  {
+    slug: "crop-pdf",
+    title: "Crop PDF Margins",
+    heading: "Adjust PDF Bounding Boxes",
+    description: "Trim white margins and adjust the structural dimensions of your PDF pages.",
+    category: "pdf-tools",
+    keywords: ["crop pdf", "trim pdf margins", "resize pdf pages"],
+    heroTitle: "Crop PDF Pages Locally",
+    heroDescription: "Adjust the visual bounding boxes of your document without losing vector resolution.",
+    formulaExplanation: "Modifies the /CropBox and /MediaBox array coordinates to mask out edges dynamically.",
+    examples: [{ title: "E-Reader Optimization", description: "Trim heavy white margins off an academic paper to make it readable on a small tablet." }],
+    faq: [{ question: "Does cropping delete the hidden data?", answer: "PDF cropping strictly adjusts the visible bounding box coordinates; data outside the crop box technically remains in the file stream." }],
+    icon: "FileText"
   }
 ];
