@@ -20,19 +20,5 @@ export const tools: ToolMeta[] = [
   { slug: "compress-pdf", title: "Compress PDF", heading: "Optimize and Shrink PDF Files", description: "Select custom quality levels to safely downsize and pack PDF binary weights inside the local browser viewport application.", category: "pdf-tools", keywords: ["compress pdf"], heroTitle: "Compress PDF Files with Precision Quality Multipliers", heroDescription: "Fine-tune asset weight reduction profiles locally to meet strict messaging limits without remote server latency.", formulaExplanation: "Leverages internal object stream indexing mechanics.", examples: [], faq: [], icon: "FileText" },
   { slug: "pdf-to-jpg", title: "PDF to JPG", heading: "Convert PDF Pages to Images", description: "Extract every page of a PDF document into standard high-quality JPG images locally.", category: "pdf-tools", keywords: ["pdf to jpg"], heroTitle: "Convert PDF Pages to High-Quality JPG Images", heroDescription: "Rasterize vector document pages into crisp, shareable image grids completely inside your browser thread.", formulaExplanation: "Utilizes Mozilla's PDF.js architecture inside the client layout viewport.", examples: [], faq: [], icon: "FileText" },
   { slug: "unlock-pdf", title: "Unlock PDF", heading: "Remove PDF Password Security", description: "Decrypt and remove password restrictions from your PDF files securely in your browser.", category: "pdf-tools", keywords: ["unlock pdf"], heroTitle: "Unlock Password-Protected PDF Files Locally", heroDescription: "Strip security locks from your authorized documents.", formulaExplanation: "Parses cross-reference tables.", examples: [], faq: [], icon: "FileText" },
-  { slug: "protect-pdf", title: "Protect PDF", heading: "Encrypt PDF with Password", description: "Encrypt and secure your sensitive PDF documents with custom passwords natively.", category: "pdf-tools", keywords: ["protect pdf"], heroTitle: "Encrypt PDF Files with Client-Side Security", heroDescription: "Lock sensitive documents using strong encryption directly on your device before sharing.", formulaExplanation: "Applies security object specifications onto the byte compilation graph.", examples: [], faq: [], icon: "FileText" },
-  {
-    slug: "powerpoint-to-pdf",
-    title: "PowerPoint to PDF",
-    heading: "Convert PPTX Presentations to PDF",
-    description: "Convert PowerPoint .pptx presentation slides into organized PDF document layouts locally.",
-    category: "pdf-tools",
-    keywords: ["powerpoint to pdf", "pptx to pdf", "convert ppt to pdf free", "slides to pdf"],
-    heroTitle: "Convert PowerPoint Slides to PDF Natively",
-    heroDescription: "Extract text blocks and structural nodes from presentation layers into structured documents privately.",
-    formulaExplanation: "Decompresses open XML slide data packages using JavaScript buffers and formats layout nodes directly into multi-page PDF files.",
-    examples: [{ title: "Deck Publishing", description: "Convert corporate investor updates into flat PDF decks for distribution." }],
-    faq: [{ question: "Are animations maintained?", answer: "No, conversions compile slide states into static vector pages." }],
-    icon: "FileText"
-  }
+  { slug: "protect-pdf", title: "Protect PDF", heading: "Encrypt PDF with Password", description: "Encrypt and secure your sensitive PDF documents with custom passwords natively.", category: "pdf-tools", keywords: ["protect pdf"], heroTitle: "Encrypt PDF Files with Client-Side Security", heroDescription: "Lock sensitive documents using strong encryption directly on your device before sharing.", formulaExplanation: "Applies security object specifications onto the byte compilation graph.", examples: [], faq: [], icon: "FileText" }
 ];
