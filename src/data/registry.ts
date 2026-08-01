@@ -37,5 +37,19 @@ export const tools: ToolMeta[] = [
     examples: [{ title: "Invoicing", description: "Extract page 4 of a 50-page batch to send to a client." }],
     faq: [{ question: "Does this alter my original file?", answer: "No, your local original file stays exactly the same; a new extracted copy is generated." }],
     icon: "FileText"
+  },
+  {
+    slug: "rotate-pdf",
+    title: "Rotate PDF",
+    heading: "Rotate PDF Pages Permanently",
+    description: "Change the orientation of individual or all pages in a PDF file layout securely.",
+    category: "pdf-tools",
+    keywords: ["rotate pdf", "turn pdf pages", "fix pdf orientation", "flip pdf"],
+    heroTitle: "Rotate PDF Pages with Absolute Privacy",
+    heroDescription: "Fix upside-down or landscape page layouts instantly inside your browser workspace.",
+    formulaExplanation: "Modifies the /Rotate attribute in the PDF page object dictionary array mapping natively using local JavaScript operations.",
+    examples: [{ title: "Document Scanning", description: "Correct a page that was fed upside down through a flatbed document scanner." }],
+    faq: [{ question: "Can I rotate only a single page instead of the full document?", answer: "Yes, our interface gives you explicit controls for both individual page modifications and global rotations." }],
+    icon: "FileText"
   }
 ];
