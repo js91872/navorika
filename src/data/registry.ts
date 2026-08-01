@@ -16,34 +16,21 @@ export const tools: ToolMeta[] = [
   { slug: "delete-pdf-pages", title: "Delete PDF Pages", heading: "Remove Pages From PDF File", description: "Select and permanently delete specific pages from a PDF file locally.", category: "pdf-tools", keywords: ["delete pdf pages"], heroTitle: "Delete PDF Pages with Complete Privacy", heroDescription: "Strip out unnecessary pages instantly.", formulaExplanation: "Clones all indices except the targeted items.", examples: [], faq: [], icon: "FileText" },
   { slug: "add-page-numbers", title: "Add Page Numbers", heading: "Add Page Numbers to PDFs", description: "Automatically stamp sequential page numbers onto your PDF documents locally.", category: "pdf-tools", keywords: ["add page numbers"], heroTitle: "Paginate Documents Locally", heroDescription: "Dynamically stamp professional page numbers.", formulaExplanation: "Uses embedded standard fonts to draw exact string coordinates.", examples: [], faq: [], icon: "FileText" },
   { slug: "add-watermark", title: "Add Watermark", heading: "Stamp Watermarks on PDF", description: "Overlay custom text watermarks securely across your document pages.", category: "pdf-tools", keywords: ["add watermark to pdf"], heroTitle: "Watermark Documents with Zero Server Uploads", heroDescription: "Protect sensitive intellectual property by embedding semi-transparent stamps directly in your browser.", formulaExplanation: "Leverages canvas-style drawing mechanics to embed text.", examples: [], faq: [], icon: "FileText" },
+  { slug: "jpg-to-pdf", title: "JPG to PDF", heading: "Convert Images to PDF Layouts", description: "Convert JPG, PNG, or WEBP image frames into structured PDF document containers instantly.", category: "pdf-tools", keywords: ["jpg to pdf"], heroTitle: "Convert Images to PDF with Absolute Privacy", heroDescription: "Encapsulate your images inside clean document borders right inside your local machine.", formulaExplanation: "Decodes the raw graphics buffer layout array values.", examples: [], faq: [], icon: "FileText" },
   
-  // NEW UTILITIES
-  {
-    slug: "jpg-to-pdf",
-    title: "JPG to PDF",
-    heading: "Convert Images to PDF Layouts",
-    description: "Convert JPG, PNG, or WEBP image frames into structured PDF document containers instantly.",
-    category: "pdf-tools",
-    keywords: ["jpg to pdf", "convert image to pdf", "png to pdf", "picture to pdf converter"],
-    heroTitle: "Convert Images to PDF with Absolute Privacy",
-    heroDescription: "Encapsulate your images inside clean document borders right inside your local machine.",
-    formulaExplanation: "Decodes the raw graphics buffer layout array values and mounts them directly into standard vector page boxes dynamically.",
-    examples: [{ title: "Receipt Documentation", description: "Combine smartphone photos of receipts into a single, clean expense document record." }],
-    faq: [{ question: "Are my high-resolution photos safe?", answer: "Yes. Processing runs entirely on your local CPU thread without data escaping the application view space." }],
-    icon: "FileText"
-  },
+  // UPDATED COMPRESS METADATA BLOCK
   {
     slug: "compress-pdf",
     title: "Compress PDF",
     heading: "Optimize and Shrink PDF Files",
-    description: "Reduce the layout file weight of your PDF documents safely inside the local browser application.",
+    description: "Select custom quality levels to safely downsize and pack PDF binary weights inside the local browser viewport application.",
     category: "pdf-tools",
-    keywords: ["compress pdf", "shrink pdf size", "reduce pdf file size", "optimize pdf documents"],
-    heroTitle: "Compress PDF Files Privately",
-    heroDescription: "Strip out redundant structural layout fields and metadata records to minimize document data footprint.",
-    formulaExplanation: "Parses internal document dictionary structures and applies standardized string optimization layouts natively.",
-    examples: [{ title: "Email Compliance", description: "Shrink an unoptimized 12MB corporate manual to under 2MB for seamless standard messaging distribution." }],
-    faq: [{ question: "Will my layout format change?", answer: "No, structural orientation, fonts, and baseline vectors are safely preserved during the local data reduction cycle." }],
+    keywords: ["compress pdf", "shrink pdf size", "pdf reduction tool", "optimize pdf online free"],
+    heroTitle: "Compress PDF Files with Precision Quality Multipliers",
+    heroDescription: "Fine-tune asset weight reduction profiles locally to meet strict messaging limits without remote server latency.",
+    formulaExplanation: "Leverages internal object stream indexing mechanics (`useObjectStreams`) alongside automated page tree compaction matrices to compress file structures natively.",
+    examples: [{ title: "Legal Delivery", description: "Downscale highly pixel-dense document pages into crisp, message-compliant attachment binaries." }],
+    faq: [{ question: "What is the difference between the balance profiles?", answer: "Best Quality removes unreferenced structural meta nodes. Optimum scales standard assets cleanly. Low Quality applies maximum array layout packing parameters to hit ultra-small file metrics." }],
     icon: "FileText"
   }
 ];
