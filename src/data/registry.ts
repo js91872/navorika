@@ -18,20 +18,37 @@ export const tools: ToolMeta[] = [
   { slug: "add-watermark", title: "Add Watermark", heading: "Stamp Watermarks on PDF", description: "Overlay custom text watermarks securely across your document pages.", category: "pdf-tools", keywords: ["add watermark to pdf"], heroTitle: "Watermark Documents with Zero Server Uploads", heroDescription: "Protect sensitive intellectual property by embedding semi-transparent stamps directly in your browser.", formulaExplanation: "Leverages canvas-style drawing mechanics to embed text.", examples: [], faq: [], icon: "FileText" },
   { slug: "jpg-to-pdf", title: "JPG to PDF", heading: "Convert Images to PDF Layouts", description: "Convert JPG, PNG, or WEBP image frames into structured PDF document containers instantly.", category: "pdf-tools", keywords: ["jpg to pdf"], heroTitle: "Convert Images to PDF with Absolute Privacy", heroDescription: "Encapsulate your images inside clean document borders right inside your local machine.", formulaExplanation: "Decodes the raw graphics buffer layout array values.", examples: [], faq: [], icon: "FileText" },
   { slug: "compress-pdf", title: "Compress PDF", heading: "Optimize and Shrink PDF Files", description: "Select custom quality levels to safely downsize and pack PDF binary weights inside the local browser viewport application.", category: "pdf-tools", keywords: ["compress pdf"], heroTitle: "Compress PDF Files with Precision Quality Multipliers", heroDescription: "Fine-tune asset weight reduction profiles locally to meet strict messaging limits without remote server latency.", formulaExplanation: "Leverages internal object stream indexing mechanics.", examples: [], faq: [], icon: "FileText" },
+  { slug: "pdf-to-jpg", title: "PDF to JPG", heading: "Convert PDF Pages to Images", description: "Extract every page of a PDF document into standard high-quality JPG images locally.", category: "pdf-tools", keywords: ["pdf to jpg"], heroTitle: "Convert PDF Pages to High-Quality JPG Images", heroDescription: "Rasterize vector document pages into crisp, shareable image grids completely inside your browser thread.", formulaExplanation: "Utilizes Mozilla's PDF.js architecture inside the client layout viewport.", examples: [], faq: [], icon: "FileText" },
   
-  // NEW PDF TO JPG REGISTRY ENTRY
+  // UNLOCK PDF REGISTRY ENTRY
   {
-    slug: "pdf-to-jpg",
-    title: "PDF to JPG",
-    heading: "Convert PDF Pages to Images",
-    description: "Extract every page of a PDF document into standard high-quality JPG images locally.",
+    slug: "unlock-pdf",
+    title: "Unlock PDF",
+    heading: "Remove PDF Password Security",
+    description: "Decrypt and remove password restrictions from your PDF files securely in your browser.",
     category: "pdf-tools",
-    keywords: ["pdf to jpg", "pdf to jpeg", "convert pdf to image", "extract pictures from pdf"],
-    heroTitle: "Convert PDF Pages to High-Quality JPG Images",
-    heroDescription: "Rasterize vector document pages into crisp, shareable image grids completely inside your browser thread.",
-    formulaExplanation: "Utilizes Mozilla's PDF.js architecture inside the client layout viewport to mathematically render embedded page layout object structures to HTML5 canvas vectors before exporting them as clean compressed binary arrays.",
-    examples: [{ title: "Presentation Extraction", description: "Turn slide documents into separate clean JPG image sheets to publish on social feeds." }],
-    faq: [{ question: "Can I choose which page to extract?", answer: "Our interface processes all document nodes and extracts pages into sequential image files dynamically." }],
+    keywords: ["unlock pdf", "remove pdf password", "pdf password remover", "decrypt pdf"],
+    heroTitle: "Unlock Password-Protected PDF Files Locally",
+    heroDescription: "Strip security locks from your owner-authorized documents without uploading passwords to external servers.",
+    formulaExplanation: "Parses encrypted PDF cross-reference dictionaries using the user-provided password and serializes an unencrypted binary object stream stream.",
+    examples: [{ title: "Bank Statements", description: "Remove recurring password prompts from monthly digital account statements for personal archiving." }],
+    faq: [{ question: "Is it safe to type my password here?", answer: "Yes, 100%. Decryption runs entirely inside your browser's local memory space. Neither your file nor your password is ever sent over the internet." }],
+    icon: "FileText"
+  },
+
+  // PROTECT PDF REGISTRY ENTRY
+  {
+    slug: "protect-pdf",
+    title: "Protect PDF",
+    heading: "Encrypt PDF with Password",
+    description: "Encrypt and secure your sensitive PDF documents with custom passwords natively.",
+    category: "pdf-tools",
+    keywords: ["protect pdf", "encrypt pdf", "add password to pdf", "secure pdf file"],
+    heroTitle: "Encrypt PDF Files with Client-Side Security",
+    heroDescription: "Lock sensitive documents using strong AES encryption directly on your device before sharing.",
+    formulaExplanation: "Applies standard PDF encryption dictionaries with user and owner key specifications onto the PDF object graph during binary compilation.",
+    examples: [{ title: "Financial Documents", description: "Password-protect tax forms and contract drafts prior to email transmission." }],
+    faq: [{ question: "What encryption strength is used?", answer: "Standard 128-bit PDF encryption is applied to lock viewing access behind your designated passphrase." }],
     icon: "FileText"
   }
 ];
