@@ -1,0 +1,272 @@
+=== PROJECT STRUCTURE ===
+.
+├── AGENTS.md
+├── CLAUDE.md
+├── div
+├── eslint.config.mjs
+├── next.config.ts
+├── next-env.d.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
+├── project_summary.txt
+├── public
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── README.md
+├── src
+│   ├── app
+│   │   ├── about
+│   │   │   └── page.tsx
+│   │   ├── api
+│   │   │   └── contact
+│   │   ├── categories
+│   │   │   ├── construction-calculators
+│   │   │   ├── health-calculators
+│   │   │   ├── page.tsx
+│   │   │   └── [slug]
+│   │   ├── debug
+│   │   │   └── page.tsx
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── guides
+│   │   │   └── page.tsx
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── tools
+│   │       ├── add-image-to-pdf
+│   │       ├── add-page-numbers
+│   │       ├── add-watermark
+│   │       ├── base64-encoder
+│   │       ├── batch-image-converter
+│   │       ├── bioluminescent-reader
+│   │       ├── blur-face
+│   │       ├── bmi-calculator
+│   │       ├── cashflow-budget-architect
+│   │       ├── change-image-resolution
+│   │       ├── code-minifier-beautifier
+│   │       ├── color-extraction-studio
+│   │       ├── compress-image
+│   │       ├── compress-jpg
+│   │       ├── compress-pdf
+│   │       ├── compress-png
+│   │       ├── compress-webp
+│   │       ├── convert-jpg-to-png
+│   │       ├── convert-jpg-to-webp
+│   │       ├── convert-png-to-jpg
+│   │       ├── convert-png-to-webp
+│   │       ├── convert-webp-to-jpg
+│   │       ├── crop-image
+│   │       ├── crop-pdf
+│   │       ├── delete-pdf-pages
+│   │       ├── developer-tools
+│   │       ├── developer-utils
+│   │       ├── extract-pdf-pages
+│   │       ├── extract-pdf-text
+│   │       ├── flatten-pdf
+│   │       ├── heic-to-jpg
+│   │       ├── heic-to-png
+│   │       ├── html-to-image
+│   │       ├── icon-sticker-maker
+│   │       ├── id-photo-maker
+│   │       ├── image-converter
+│   │       ├── image-dpi-converter
+│   │       ├── image-metadata-viewer
+│   │       ├── image-tools
+│   │       ├── image-to-pdf
+│   │       ├── interleave-pdf
+│   │       ├── investment-return-profiler
+│   │       ├── jpg-to-pdf
+│   │       ├── jwt-base64-deck
+│   │       ├── loan-amortization-suite
+│   │       ├── markup-formatter
+│   │       ├── meme-generator
+│   │       ├── merge-pdf
+│   │       ├── page.tsx
+│   │       ├── pdf-metadata-editor
+│   │       ├── pdf-to-image
+│   │       ├── pdf-to-jpg
+│   │       ├── pdf-tools
+│   │       ├── photo-collage-maker
+│   │       ├── photo-editor
+│   │       ├── png-to-svg
+│   │       ├── protect-pdf
+│   │       ├── qr-code-studio
+│   │       ├── reorder-pdf
+│   │       ├── resize-image
+│   │       ├── rotate-image
+│   │       ├── rotate-pdf
+│   │       ├── savings-retirement-hub
+│   │       ├── sign-pdf
+│   │       ├── sip-calculator
+│   │       ├── social-media-resizer
+│   │       ├── split-pdf
+│   │       ├── svg-to-png
+│   │       ├── taxation-compliance-deck
+│   │       ├── universal-json-studio
+│   │       ├── unlock-pdf
+│   │       ├── upscale-image
+│   │       ├── watermark-image
+│   │       ├── wealth-inflation-matrix
+│   │       ├── web-crypto-studio
+│   │       ├── webmaster-seo-builder
+│   │       ├── webp-to-pdf
+│   │       └── webp-to-png
+│   ├── components
+│   │   ├── footer
+│   │   │   └── Footer.tsx
+│   │   ├── header
+│   │   │   └── navbar.tsx
+│   │   ├── ImageConverterEngine.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── ThemeProvider.tsx
+│   │   └── ui
+│   │       └── ThemeContext.tsx
+│   ├── data
+│   │   ├── financeMeta.ts
+│   │   └── registry.ts
+│   └── types
+│       └── index.ts
+└── tsconfig.json
+
+97 directories, 35 files
+
+=== PACKAGE.JSON ===
+{
+  "name": "navorika",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "heic2any": "^0.0.4",
+    "jsqr": "^1.4.0",
+    "lucide-react": "^1.28.0",
+    "next": "16.2.12",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.2.108",
+    "qrcode": "^1.5.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.12",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+
+=== NEXT.CONFIG ===
+
+=== TAILWIND.CONFIG ===
+
+=== KEY TYPES ===
+
+=== TOOL REGISTRY ===
+
+=== SITE CONFIG ===
+
+=== LAYOUT ===
+import './globals.css';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import Navbar from '@/components/header/navbar';
+import Footer from '@/components/footer/Footer';
+
+export const metadata = {
+  title: 'NavorikaPro - Universal Client Suite',
+  description: 'High-speed local client computing engines and calculators.',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-[var(--color-background)] text-[var(--color-foreground)] antialiased min-h-screen flex flex-col selection:bg-indigo-500/30">
+        <ThemeProvider>
+          <Navbar />
+          <div className="w-full flex-1 flex flex-col">
+            {children}
+          </div>
+          <Footer />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+
+=== GLOBALS.CSS ===
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(210, 40%, 98%);
+  --color-foreground: hsl(222.2, 84%, 4.9%);
+  --color-card: hsl(0, 0%, 100%);
+  --color-card-foreground: hsl(222.2, 84%, 4.9%);
+  --color-border: hsl(214.3, 31.8%, 91.4%);
+  --color-primary: hsl(250, 84%, 54%);
+  --color-primary-foreground: hsl(210, 40%, 98%);
+  --color-muted: hsl(210, 40%, 96.1%);
+  --color-muted-foreground: hsl(215.4, 16.3%, 46.9%);
+}
+
+@layer base {
+  .dark {
+    --color-background: hsl(224, 71%, 4%);
+    --color-foreground: hsl(210, 40%, 98%);
+    --color-card: hsl(222.2, 47.4%, 11.2%);
+    --color-card-foreground: hsl(210, 40%, 98%);
+    --color-border: hsl(217.2, 32.6%, 17.5%);
+    --color-primary: hsl(250, 95%, 68%);
+    --color-primary-foreground: hsl(224, 71%, 4%);
+    --color-muted: hsl(217.2, 32.6%, 12%);
+    --color-muted-foreground: hsl(215, 20.2%, 65.1%);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    transition-property: color, background-color;
+    transition-duration: 200ms;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom smooth scrollbar (Pure CSS to prevent Tailwind v4 @apply crashes) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #1e293b;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #334155;
+}
+
+=== CALCULATORS (config) ===
+
+=== CALCULATIONS (lib) ===
+
+=== EMI CALCULATOR EXAMPLE ===

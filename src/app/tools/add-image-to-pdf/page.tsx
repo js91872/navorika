@@ -7,6 +7,18 @@ import { tools } from '@/data/registry';
 
 export default function AddImageToPDFTool() {
   const meta = tools.find(t => t.slug === 'add-image-to-pdf');
+  // Default meta if not found
+  const toolMeta = meta || {
+    heroTitle: "Add Image To Pdf",
+    heroDescription: "Process your PDF documents efficiently.",
+    formulaExplanation: "This tool processes your PDF documents locally in your browser for maximum privacy and security.",
+    faq: [
+      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
+      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
+      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
+    ]
+  };
+
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [pageCount, setPageCount] = useState<number>(1);
@@ -108,8 +120,8 @@ export default function AddImageToPDFTool() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
           <ShieldCheck className="h-4 w-4" /> Direct Layer Injection
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{meta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{meta.heroDescription}</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16 p-8">

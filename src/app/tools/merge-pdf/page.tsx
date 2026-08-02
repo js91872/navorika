@@ -7,7 +7,20 @@ import { PDFDocument } from 'pdf-lib';
 import { tools } from '@/data/registry';
 
 export default function MergePDFTool() {
+  // Default meta if not found
+
   const meta = tools.find(t => t.slug === 'merge-pdf');
+  // Default meta if not found - defined AFTER finding meta
+  const toolMeta = meta || {
+    heroTitle: 'Tool',
+    heroDescription: 'Process your documents efficiently.',
+    formulaExplanation: 'This tool processes your documents locally in your browser.',
+    faq: [
+      { question: 'How does this tool work?', answer: 'All processing happens locally in your browser. No data is ever uploaded to any server.' },
+      { question: 'Is my data safe?', answer: 'Yes! Your files and data never leave your computer.' },
+      { question: 'Do I need to install anything?', answer: 'No installation needed. Everything runs directly in your web browser.' }
+    ]
+  };
   const [files, setFiles] = useState<File[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -66,8 +79,8 @@ export default function MergePDFTool() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
           <ShieldCheck className="h-4 w-4" /> Local Processing Only
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{meta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{meta.heroDescription}</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
       </div>
 
       {/* App Workspace */}
@@ -128,10 +141,10 @@ export default function MergePDFTool() {
       {/* SEO & FAQ Data */}
       <div className="prose prose-slate dark:prose-invert max-w-none">
         <h2 className="text-2xl font-bold mb-4">How it Works</h2>
-        <p>{meta.formulaExplanation}</p>
+        <p>{toolMeta.formulaExplanation}</p>
         <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
         <div className="space-y-4">
-          {meta.faq.map((item, i) => (
+          {toolMeta.faq && toolMeta.faq.map((item, i) => (
             <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
               <h4 className="font-bold text-slate-900 dark:text-white mb-2">{item.question}</h4>
               <p className="text-sm text-slate-600 dark:text-slate-400 m-0">{item.answer}</p>

@@ -7,6 +7,17 @@ import { tools } from '@/data/registry';
 
 export default function AddWatermarkTool() {
   const meta = tools.find(t => t.slug === 'add-watermark');
+  // Default meta if not found - defined AFTER finding meta
+  const toolMeta = meta || {
+    heroTitle: 'Tool',
+    heroDescription: 'Process your documents efficiently.',
+    formulaExplanation: 'This tool processes your documents locally in your browser.',
+    faq: [
+      { question: 'How does this tool work?', answer: 'All processing happens locally in your browser. No data is ever uploaded to any server.' },
+      { question: 'Is my data safe?', answer: 'Yes! Your files and data never leave your computer.' },
+      { question: 'Do I need to install anything?', answer: 'No installation needed. Everything runs directly in your web browser.' }
+    ]
+  };
   const [file, setFile] = useState<File | null>(null);
   const [pageCount, setPageCount] = useState<number>(0);
   const [watermarkText, setWatermarkText] = useState<string>('CONFIDENTIAL');
@@ -30,59 +41,42 @@ export default function AddWatermarkTool() {
     }
   };
 
-  const processWatermark = async () => {
-    if (!file || !watermarkText.trim()) return;
+  const handleProcess = async () => {
+    if (!file) return;
+    
     setIsProcessing(true);
     try {
       const fileBuffer = await file.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(fileBuffer);
+      const pdf = await PDFDocument.load(fileBuffer);
+      const pages = pdf.getPages();
       
-      // Embed bold font for maximum visibility
-      const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
-      const pages = pdfDoc.getPages();
-
-      pages.forEach((page) => {
+      pages.forEach(page => {
         const { width, height } = page.getSize();
-        
-        // Dynamic font sizing based on page width to ensure it scales nicely
-        const fontSize = width > 500 ? 64 : 42;
-        const textWidth = font.widthOfTextAtSize(watermarkText, fontSize);
-        const textHeight = font.heightAtSize(fontSize);
-
-        // Center coordinates mapping (Accounting for 45-degree rotation offset)
-        const centerX = width / 2;
-        const centerY = height / 2;
-
         page.drawText(watermarkText, {
-          x: centerX - (textWidth / 2) * Math.cos(Math.PI / 4) + (textHeight / 2) * Math.sin(Math.PI / 4),
-          y: centerY - (textWidth / 2) * Math.sin(Math.PI / 4) - (textHeight / 2) * Math.cos(Math.PI / 4),
-          size: fontSize,
-          font: font,
-          color: rgb(0.8, 0.2, 0.2), // Light Red tint
-          opacity: 0.25, // Semi-transparent overlay
-          rotate: degrees(45), // Diagonal stamp
+          x: width / 2 - 50,
+          y: height / 2,
+          size: 40,
+          color: rgb(0.8, 0.2, 0.2),
+          opacity: 0.3,
+          rotate: degrees(-45),
         });
       });
 
-      const watermarkedBytes = await pdfDoc.save();
-      const blob = new Blob([watermarkedBytes], { type: 'application/pdf' });
+      const pdfBytes = await pdf.save();
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
-      
       const a = document.createElement('a');
       a.href = url;
-      a.download = `Navorika_Watermark_${Date.now()}.pdf`;
-      document.body.appendChild(a);
+      a.download = `watermarked_${file.name}`;
       a.click();
-      document.body.removeChild(a);
       URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Watermark failed:", error);
+    } catch (err) {
       alert("Failed to overlay watermark text onto the document stream.");
     }
     setIsProcessing(false);
   };
 
-  if (!meta) return null;
+  // Default meta if not found
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
@@ -94,8 +88,8 @@ export default function AddWatermarkTool() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
           <ShieldCheck className="h-4 w-4" /> Local Processing Only
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{meta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{meta.heroDescription}</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16">
@@ -119,56 +113,60 @@ export default function AddWatermarkTool() {
           </div>
         ) : (
           <div className="p-8">
-            <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 mb-8">
-              <div className="flex items-center gap-3 overflow-hidden">
-                <FileText className="h-5 w-5 text-red-500 flex-shrink-0" />
-                <div>
-                  <span className="text-sm font-semibold text-slate-700 dark:text-slate-300 truncate block">{file.name}</span>
-                  <span className="text-xs text-slate-400 font-bold block">{pageCount} Pages to watermark</span>
-                </div>
+            <div className="flex items-start gap-4 p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl mb-6">
+              <FileText className="h-8 w-8 text-indigo-500 shrink-0" />
+              <div className="flex-1">
+                <p className="font-bold text-slate-900 dark:text-white">{file.name}</p>
+                <p className="text-sm text-slate-500">{(file.size / 1024).toFixed(1)} KB • {pageCount} pages</p>
               </div>
-              <button onClick={() => setFile(null)} className="p-2 text-slate-400 hover:text-red-500 transition-colors rounded-lg">
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            <div className="max-w-md mb-8">
-              <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
-                Watermark Text Overlay
-              </label>
-              <div className="relative">
-                <Stamp className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
-                <input 
-                  type="text" 
-                  value={watermarkText}
-                  onChange={(e) => setWatermarkText(e.target.value)}
-                  placeholder="e.g. DRAFT or CONFIDENTIAL"
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:border-indigo-500 font-semibold uppercase tracking-widest text-slate-900 dark:text-white"
-                />
-              </div>
-              <p className="text-xs text-slate-400 mt-2">Text will be stamped diagonally across the center in semi-transparent red.</p>
-            </div>
-
-            <div className="flex justify-end border-t border-slate-100 dark:border-slate-800 pt-6">
               <button 
-                onClick={processWatermark}
-                disabled={isProcessing || !watermarkText.trim()}
-                className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 dark:disabled:bg-slate-800 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md"
+                onClick={() => { setFile(null); setPageCount(0); }}
+                className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors"
               >
-                {isProcessing ? <Loader2 className="h-5 w-5 animate-spin" /> : <Stamp className="h-5 w-5" />}
-                {isProcessing ? 'Stamping Document...' : 'Apply Watermark & Download'}
+                <X className="h-5 w-5 text-slate-500" />
               </button>
             </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
+                Watermark Text
+              </label>
+              <input
+                type="text"
+                value={watermarkText}
+                onChange={(e) => setWatermarkText(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-medium outline-none focus:border-indigo-500"
+                placeholder="Enter watermark text..."
+              />
+            </div>
+
+            <button
+              onClick={handleProcess}
+              disabled={!watermarkText.trim() || isProcessing}
+              className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isProcessing ? (
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                <>
+                  <Stamp className="h-5 w-5" />
+                  Add Watermark & Download
+                </>
+              )}
+            </button>
           </div>
         )}
       </div>
 
       <div className="prose prose-slate dark:prose-invert max-w-none">
         <h2 className="text-2xl font-bold mb-4">How it Works</h2>
-        <p>{meta.formulaExplanation}</p>
+        <p>{toolMeta.formulaExplanation}</p>
         <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
         <div className="space-y-4">
-          {meta.faq.map((item, i) => (
+          {toolMeta.faq && toolMeta.faq.map((item, i) => (
             <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
               <h4 className="font-bold text-slate-900 dark:text-white mb-2">{item.question}</h4>
               <p className="text-sm text-slate-600 dark:text-slate-400 m-0">{item.answer}</p>

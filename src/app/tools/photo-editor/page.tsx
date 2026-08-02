@@ -6,6 +6,18 @@ import { tools } from '@/data/registry';
 
 export default function PhotoEditorTool() {
   const meta = tools.find(t => t.slug === 'photo-editor');
+  // Default meta if not found
+  const toolMeta = meta || {
+    heroTitle: "Photo Editor",
+    heroDescription: "Process your documents efficiently with this tool.",
+    formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
+    faq: [
+      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
+      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
+      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
+    ]
+  };
+
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -80,8 +92,8 @@ export default function PhotoEditorTool() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-bold uppercase tracking-wider mb-4 border border-purple-500/20">
           <ShieldCheck className="h-4 w-4" /> Client Visual Filter Studio
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{meta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{meta.heroDescription}</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden p-8 grid md:grid-cols-3 gap-8">

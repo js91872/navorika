@@ -6,6 +6,18 @@ import { tools } from '@/data/registry';
 
 export default function PhotoCollageMakerTool() {
   const meta = tools.find(t => t.slug === 'photo-collage-maker');
+  // Default meta if not found
+  const toolMeta = meta || {
+    heroTitle: "Photo Collage Maker",
+    heroDescription: "Process your documents efficiently with this tool.",
+    formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
+    faq: [
+      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
+      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
+      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
+    ]
+  };
+
   const [files, setFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -84,7 +96,7 @@ export default function PhotoCollageMakerTool() {
   return (
     <main className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
       <a href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-purple-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Image Tools</a>
-      <div className="text-center mb-10"><h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{meta.heroTitle}</h1></div>
+      <div className="text-center mb-10"><h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1></div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden p-8 grid md:grid-cols-2 gap-8">
         <div className="space-y-6">

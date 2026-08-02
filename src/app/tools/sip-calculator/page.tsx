@@ -1,88 +1,223 @@
 'use client';
 
-import { useState } from 'react';
-import { ArrowLeft, Calculator, ShieldCheck, RefreshCw } from 'lucide-react';
-import { tools } from '@/data/registry';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, RefreshCw, TrendingUp, Wallet, PieChart, Download, Zap } from 'lucide-react';
 
-export default function SIPCalculatorTool() {
-  const meta = tools.find(t => t.slug === 'sip-calculator');
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
+import { Input } from '@/components/ui/Input';
+import { Slider } from '@/components/ui/Slider';
+import { ResultCard } from '@/components/ui/ResultCard';
+import { Badge } from '@/components/ui/Badge';
+import { Container } from '@/components/ui/Container';
+import { formatCurrency, formatCompact } from '@/lib/utils';
+import { calculateSIP } from '@/lib/calculations/sip';
+
+export default function SIPCalculatorEnhanced() {
   const [monthlyInvestment, setMonthlyInvestment] = useState(5000);
   const [expectedRate, setExpectedRate] = useState(12);
   const [timePeriod, setTimePeriod] = useState(10);
-  
-  const [investedAmount, setInvestedAmount] = useState<number | null>(null);
-  const [estReturns, setEstReturns] = useState<number | null>(null);
-  const [totalValue, setTotalValue] = useState<number | null>(null);
+  const [result, setResult] = useState<any>(null);
+  const [isCalculating, setIsCalculating] = useState(false);
 
-  const calculateSIP = () => {
-    const P = monthlyInvestment;
-    const i = (expectedRate / 100) / 12;
-    const n = timePeriod * 12;
-
-    const totalInvested = P * n;
-    // Standard compound interest equation allocation mapping matrix:
-    // M = P * [((1 + i)^n - 1) / i] * (1 + i)
-    const valuation = P * (((Math.pow(1 + i, n) - 1) / i) * (1 + i));
-    const returnsEstimate = valuation - totalInvested;
-
-    setInvestedAmount(Math.round(totalInvested));
-    setEstReturns(Math.round(returnsEstimate));
-    setTotalValue(Math.round(valuation));
+  const handleCalculate = () => {
+    setIsCalculating(true);
+    
+    setTimeout(() => {
+      const sipResult = calculateSIP({
+        monthlyInvestment,
+        expectedRate,
+        timePeriod,
+      });
+      setResult(sipResult);
+      setIsCalculating(false);
+    }, 400);
   };
 
-  if (!meta) return null;
+  const handleReset = () => {
+    setResult(null);
+    setMonthlyInvestment(5000);
+    setExpectedRate(12);
+    setTimePeriod(10);
+  };
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
-      <a href="/categories/finance-calculators" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition mb-8">
-        <ArrowLeft className="h-4 w-4" /> Back to Finance Calculators
-      </a>
-
-      <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4 border border-blue-500/20">
-          <ShieldCheck className="h-4 w-4" /> Client-Side Compound Engine
+    <Container maxWidth="xl" className="py-8">
+      {/* Header */}
+      <div className="flex items-center gap-4 mb-8 flex-wrap">
+        <Link href="/categories/finance-calculators">
+          <Button variant="ghost" size="sm" className="gap-2">
+            <ArrowLeft className="h-4 w-4" /> Back
+          </Button>
+        </Link>
+        <div className="flex-1">
+          <h1 className="text-3xl sm:text-4xl font-black tracking-tight bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+            SIP Calculator
+          </h1>
+          <p className="text-sm text-slate-600 dark:text-slate-400 font-medium mt-1">
+            Systematic Investment Planning with compound growth projections
+          </p>
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{meta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{meta.heroDescription}</p>
+        <Badge variant="indigo" className="hidden sm:inline-flex">
+          <Zap className="h-3 w-3 mr-1" /> Client-Side
+        </Badge>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 mb-16">
-        {/* Controls block form inputs */}
-        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-8 space-y-6">
-          <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Monthly Investment (₹)</label>
-            <input type="number" value={monthlyInvestment} onChange={(e) => setMonthlyInvestment(Number(e.target.value))} className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold outline-none text-slate-900 dark:text-white" />
-          </div>
-          <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Expected Return Rate (% p.a.)</label>
-            <input type="number" step="0.1" value={expectedRate} onChange={(e) => setExpectedRate(Number(e.target.value))} className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold outline-none text-slate-900 dark:text-white" />
-          </div>
-          <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Time Period (Years)</label>
-            <input type="number" value={timePeriod} onChange={(e) => setTimePeriod(Number(e.target.value))} className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-bold outline-none text-slate-900 dark:text-white" />
-          </div>
-          
-          <button onClick={calculateSIP} className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold transition shadow-md">
-            <RefreshCw className="h-4 w-4"/> Calculate Projections
-          </button>
+      <div className="grid lg:grid-cols-5 gap-8">
+        {/* Input Section */}
+        <div className="lg:col-span-3 space-y-6">
+          <Card variant="default" padding="lg">
+            <div className="space-y-6">
+              <Input
+                label="Monthly Investment"
+                type="number"
+                value={monthlyInvestment}
+                onChange={(e) => setMonthlyInvestment(Number(e.target.value))}
+                icon={<Wallet className="h-5 w-5" />}
+                unit="₹"
+                min={100}
+                max={1000000}
+                step={100}
+              />
+
+              <Slider
+                label="Expected Return Rate"
+                value={expectedRate}
+                onChange={setExpectedRate}
+                min={0}
+                max={30}
+                step={0.5}
+                unit="%"
+              />
+
+              <Slider
+                label="Time Period"
+                value={timePeriod}
+                onChange={setTimePeriod}
+                min={1}
+                max={40}
+                step={1}
+                unit=" Years"
+              />
+
+              <div className="flex gap-4 pt-4">
+                <Button
+                  onClick={handleCalculate}
+                  isLoading={isCalculating}
+                  icon={<RefreshCw className="h-4 w-4" />}
+                  className="flex-1"
+                >
+                  Calculate Projections
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={handleReset}
+                  disabled={isCalculating}
+                >
+                  Reset
+                </Button>
+              </div>
+            </div>
+          </Card>
         </div>
 
-        {/* Results layout view data display boxes */}
-        <div className="bg-slate-900 text-white rounded-3xl p-8 flex flex-col justify-center space-y-6 border border-slate-800">
-          <div>
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Invested Capital</span>
-            <p className="text-3xl font-black mt-1 text-slate-200">₹ {investedAmount !== null ? investedAmount.toLocaleString('en-IN') : '0'}</p>
-          </div>
-          <div>
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Estimated Wealth Yield</span>
-            <p className="text-3xl font-black mt-1 text-emerald-400">₹ {estReturns !== null ? estReturns.toLocaleString('en-IN') : '0'}</p>
-          </div>
-          <div className="pt-4 border-t border-slate-800">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Portfolio Wealth Valuation</span>
-            <p className="text-4xl font-black mt-1 text-blue-400">₹ {totalValue !== null ? totalValue.toLocaleString('en-IN') : '0'}</p>
-          </div>
+        {/* Results Section */}
+        <div className="lg:col-span-2 space-y-4">
+          <AnimatePresence mode="wait">
+            {result ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="space-y-4"
+              >
+                <Card variant="dark" padding="md">
+                  <div className="text-center">
+                    <p className="text-xs font-black uppercase tracking-widest text-slate-400">
+                      Total Portfolio Value
+                    </p>
+                    <div className="text-4xl font-black text-emerald-400 mt-1">
+                      {formatCurrency(result.totalValue)}
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-800">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
+                          Invested
+                        </p>
+                        <p className="text-lg font-bold text-slate-200">
+                          {formatCurrency(result.totalInvested)}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
+                          Returns
+                        </p>
+                        <p className="text-lg font-bold text-emerald-400">
+                          {formatCurrency(result.estimatedReturns)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+
+                <ResultCard
+                  label="Wealth Multiplier"
+                  value={`${(result.totalValue / result.totalInvested).toFixed(2)}x`}
+                  subValue="Total returns on investment"
+                  color="green"
+                  icon={<TrendingUp className="h-5 w-5" />}
+                />
+
+                <Card variant="glass" padding="sm">
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                      Year-by-Year Breakdown
+                    </p>
+                    <div className="max-h-48 overflow-y-auto space-y-1">
+                      {result.yearByYear.map((year: any) => (
+                        <div key={year.year} className="flex justify-between text-sm py-1 border-b border-slate-100 dark:border-slate-800 last:border-0">
+                          <span className="font-bold">Year {year.year}</span>
+                          <span className="text-emerald-600 dark:text-emerald-400 font-bold">
+                            {formatCompact(year.value)}
+                          </span>
+                          <span className="text-xs text-slate-500">
+                            +{formatCompact(year.returns)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Card>
+
+                <Button
+                  onClick={() => window.print()}
+                  variant="outline"
+                  fullWidth
+                  icon={<Download className="h-4 w-4" />}
+                >
+                  Export Report
+                </Button>
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex items-center justify-center h-full min-h-[300px]"
+              >
+                <Card variant="glass" padding="lg" className="text-center w-full">
+                  <div className="text-6xl mb-4">💰</div>
+                  <h3 className="text-lg font-bold">Plan Your Investment</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                    Enter your SIP details and click Calculate
+                  </p>
+                </Card>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
-    </main>
+    </Container>
   );
 }

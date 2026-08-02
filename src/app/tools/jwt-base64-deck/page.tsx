@@ -6,6 +6,18 @@ import { tools } from '@/data/registry';
 
 export default function JwtBase64Tool() {
   const meta = tools.find(t => t.slug === 'jwt-base64-deck');
+  // Default meta if not found
+  const toolMeta = meta || {
+    heroTitle: "Jwt Base64 Deck",
+    heroDescription: "Process your documents efficiently with this tool.",
+    formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
+    faq: [
+      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
+      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
+      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
+    ]
+  };
+
   const [mode, setMode] = useState<'base64' | 'jwt'>('jwt');
   const [input, setInput] = useState('');
   
@@ -61,8 +73,8 @@ export default function JwtBase64Tool() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
            <ShieldCheck className="h-4 w-4" /> Zero-API Token Inspector
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{meta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{meta.heroDescription}</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden p-8 border border-slate-200 dark:border-slate-800">

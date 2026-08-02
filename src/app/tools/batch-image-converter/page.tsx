@@ -6,6 +6,18 @@ import { tools } from '@/data/registry';
 
 export default function BatchImageConverterTool() {
   const meta = tools.find(t => t.slug === 'batch-image-converter');
+  // Default meta if not found
+  const toolMeta = meta || {
+    heroTitle: "Batch Image Converter",
+    heroDescription: "Process your documents efficiently with this tool.",
+    formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
+    faq: [
+      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
+      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
+      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
+    ]
+  };
+
   const [files, setFiles] = useState<File[]>([]);
   const [targetFormat, setTargetFormat] = useState('image/jpeg');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -72,8 +84,8 @@ export default function BatchImageConverterTool() {
       </a>
       
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{meta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{meta.heroDescription}</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-8 space-y-6">

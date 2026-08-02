@@ -6,6 +6,18 @@ import { tools } from '@/data/registry';
 
 export default function UniversalJsonStudioTool() {
   const meta = tools.find(t => t.slug === 'universal-json-studio');
+  // Default meta if not found
+  const toolMeta = meta || {
+    heroTitle: "Universal Json Studio",
+    heroDescription: "Process your documents efficiently with this tool.",
+    formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
+    faq: [
+      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
+      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
+      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
+    ]
+  };
+
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'valid' | 'invalid'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -62,8 +74,8 @@ export default function UniversalJsonStudioTool() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
           <ShieldCheck className="h-4 w-4" /> Native Engine Parsing
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{meta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{meta.heroDescription}</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden flex flex-col border border-slate-200 dark:border-slate-800">
