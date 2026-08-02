@@ -1,27 +1,22 @@
-import type { Metadata } from 'next';
 import './globals.css';
-import Navbar from '@/components/Navbar';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import Header from '@/components/Header';
 
-export const metadata: Metadata = {
-  title: 'Navorika Pro | High-Performance Offline Tool Suite',
-  description: 'Ultra-fast, 100% secure client-side utility matrices running entirely in your browser tab.',
+export const metadata = {
+  title: 'NavorikaPro - High Speed Utility Portal',
+  description: '100% Client-side privacy focused tools.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 min-h-screen flex flex-col antialiased transition-colors duration-300">
-        {/* Global Navigation Header */}
-        <Navbar />
-        
-        {/* Main Application Rendering Context */}
-        <div className="flex-1 flex flex-col relative w-full">
-          {children}
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-slate-50 dark:bg-[#0A0A0B] transition-colors duration-500 m-0 p-0 antialiased">
+        <ThemeProvider>
+          <Header />
+          <div className="pt-[80px] min-h-screen flex flex-col">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
