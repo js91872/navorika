@@ -2,15 +2,15 @@ import Link from 'next/link';
 import { tools } from '@/data/registry';
 import { Wrench, ArrowRight, Sparkles } from 'lucide-react';
 
-export default function AllToolsPage() {
+export default function AllToolsDirectoryPage() {
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-[#0A0A0B] text-slate-900 dark:text-slate-100 py-16 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <span className="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Master Index</span>
-          <h1 className="text-4xl font-black tracking-tight mt-2">All Tools & Calculators</h1>
+          <span className="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Master Directory</span>
+          <h1 className="text-4xl font-black tracking-tight mt-2">All Utilities & Calculators</h1>
           <p className="text-slate-600 dark:text-slate-400 mt-2 font-medium">
-            Browse all {tools.length} high-performance client utilities spanning every category.
+            Browse all {tools.length} high-performance client tools across every category suite.
           </p>
         </div>
 
