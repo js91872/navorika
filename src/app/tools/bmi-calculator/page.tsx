@@ -2,16 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Calculator, ShieldCheck, Download, Share2, Sparkles, HelpCircle, ArrowRight } from 'lucide-react';
+import { Download, Sparkles } from 'lucide-react';
 
 export default function BMICalculator() {
   const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
   const [weight, setWeight] = useState<number | ''>(70);
-  const [height, setHeight] = useState<number | ''>(175); // cm or inches total
+  const [height, setHeight] = useState<number | ''>(175);
   const [feet, setFeet] = useState<number | ''>(5);
-  const [inches, setInches] = useState<number | ''>('9');
+  const [inches, setInches] = useState<number | ''>(9);
 
-  // Calculation Logic
   const calculateBMI = () => {
     let w = Number(weight);
     let h = Number(height);
@@ -173,8 +172,8 @@ export default function BMICalculator() {
                 Depending on your selected unit system, the mathematical formulas are:
               </p>
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono space-y-2">
-                <p><strong>Metric:</strong> $\text{BMI} = \frac{\text{weight (kg)}}{\text{height (m)}^2}$</p>
-                <p><strong>Imperial:</strong> $\text{BMI} = \frac{\text{weight (lb)}}{\text{height (in)}^2} \times 703$</p>
+                <p><strong>Metric:</strong> BMI = weight (kg) / [height (m)]^2</p>
+                <p><strong>Imperial:</strong> BMI = [weight (lb) / height (in)^2] x 703</p>
               </div>
             </div>
 
