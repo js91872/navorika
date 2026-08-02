@@ -1,0 +1,80 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, Ruler, Activity, Shield } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
+import { Input } from '@/components/ui/Input';
+import { ResultCard } from '@/components/ui/ResultCard';
+import { Container } from '@/components/ui/Container';
+import { calculateBodyFat } from '@/lib/calculations/health';
+
+export default function BodyFatCalculator() {
+  const [gender, setGender] = useState<'male' | 'female'>('male');
+  const [waist, setWaist] = useState(80);
+  const [hip, setHip] = useState(90);
+  const [neck, setNeck] = useState(35);
+  const [height, setHeight] = useState(175);
+  const [result, setResult] = useState<any>(null);
+
+  const handleCalculate = () => {
+    const bodyFatResult = calculateBodyFat({
+      gender,
+      waist,
+      hip,
+      neck,
+      height,
+    });
+    setResult(bodyFatResult);
+  };
+
+  return (
+    <Container maxWidth="xl" className="py-8">
+      <Link href="/categories/health-calculators" className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:underline mb-6">
+        <ArrowLeft className="h-4 w-4" /> Back
+      </Link>
+      <h1 className="text-3xl font-black mb-2">Body Fat Calculator</h1>
+      <p className="text-slate-600 dark:text-slate-400 mb-8">Estimate your body fat percentage using the Navy method</p>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card>
+          <div className="space-y-4">
+            <div>
+              <label className="text-xs font-bold uppercase text-slate-500">Gender</label>
+              <div className="grid grid-cols-2 gap-2 mt-1">
+                {['male', 'female'].map((g) => (
+                  <button key={g} onClick={() => setGender(g as any)} className={`py-2 rounded-xl text-sm font-bold ${gender === g ? 'bg-indigo-600 text-white' : 'bg-slate-100'}`}>
+                    {g}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <Input label="Waist (cm)" type="number" value={waist} onChange={(e) => setWaist(Number(e.target.value))} />
+            {gender === 'female' && <Input label="Hip (cm)" type="number" value={hip} onChange={(e) => setHip(Number(e.target.value))} />}
+            <Input label="Neck (cm)" type="number" value={neck} onChange={(e) => setNeck(Number(e.target.value))} />
+            <Input label="Height (cm)" type="number" value={height} onChange={(e) => setHeight(Number(e.target.value))} />
+            <Button onClick={handleCalculate} fullWidth>Calculate Body Fat</Button>
+          </div>
+        </Card>
+
+        <div className="space-y-4">
+          {result && (
+            <>
+              <ResultCard label="Body Fat" value={`${result.bodyFat}%`} subValue={result.category} color="purple" icon={<Shield className="h-5 w-5" />} />
+              <Card className="p-4 bg-slate-50">
+                <h4 className="font-bold mb-2">Body Fat Categories</h4>
+                <ul className="text-sm space-y-1">
+                  <li>Essential Fat: {gender === 'male' ? '<6%' : '<14%'}</li>
+                  <li>Athlete: {gender === 'male' ? '6-14%' : '14-21%'}</li>
+                  <li>Fitness: {gender === 'male' ? '14-18%' : '21-25%'}</li>
+                  <li>Acceptable: {gender === 'male' ? '18-25%' : '25-32%'}</li>
+                </ul>
+              </Card>
+            </>
+          )}
+        </div>
+      </div>
+    </Container>
+  );
+}

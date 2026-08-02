@@ -3,11 +3,11 @@ export interface TaxInputs {
   regime: 'new' | 'old';
   age: number;
   deductions?: {
-    section80C: number;
-    section80D: number;
-    section24: number;
-    nps: number;
-    other: number;
+    section80C?: number;
+    section80D?: number;
+    section24?: number;
+    nps?: number;
+    other?: number;
   };
   hra?: {
     rentPaid: number;

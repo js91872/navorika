@@ -44,6 +44,14 @@ export function InvestmentChart({
     );
   }
 
+  // Format currency helper
+  const formatCurrency = (value: any) => {
+    if (typeof value === 'number') {
+      return `₹${value.toLocaleString('en-IN')}`;
+    }
+    return value || '';
+  };
+
   if (type === 'pie') {
     const pieData = data.slice(0, 6).map((item, index) => ({
       name: `Year ${item.year}`,
@@ -58,7 +66,10 @@ export function InvestmentChart({
             cx="50%"
             cy="50%"
             labelLine={false}
-            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+            label={({ name, percent }) => {
+              const percentage = percent ? (percent * 100).toFixed(0) : '0';
+              return `${name} ${percentage}%`;
+            }}
             outerRadius={80}
             fill="#8884d8"
             dataKey="value"
@@ -67,9 +78,7 @@ export function InvestmentChart({
               <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
             ))}
           </Pie>
-          <Tooltip
-            formatter={(value: number) => `₹${value.toLocaleString('en-IN')}`}
-          />
+          <Tooltip formatter={formatCurrency as any} />
           <Legend />
         </PieChart>
       </ResponsiveContainer>
@@ -93,14 +102,7 @@ export function InvestmentChart({
           label={{ value: 'Amount (₹)', angle: -90, position: 'left' }}
           tick={{ fontSize: 12 }}
         />
-        <Tooltip
-          formatter={(value: number) => `₹${value.toLocaleString('en-IN')}`}
-          contentStyle={{
-            backgroundColor: 'white',
-            border: '1px solid #e2e8f0',
-            borderRadius: '8px',
-          }}
-        />
+        <Tooltip formatter={formatCurrency as any} />
         <Legend />
         {data[0]?.contributions !== undefined && (
           <DataComponent

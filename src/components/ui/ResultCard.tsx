@@ -1,7 +1,6 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
 
 interface ResultCardProps {
   label: string;
@@ -30,17 +29,9 @@ export function ResultCard({
   color = 'default', 
   icon, 
   className,
-  animate = true 
 }: ResultCardProps) {
-  const Wrapper = animate ? motion.div : 'div';
-  const animationProps = animate ? {
-    initial: { scale: 0.95, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    transition: { type: 'spring', stiffness: 300, damping: 20 }
-  } : {};
-
   return (
-    <Wrapper {...animationProps} className={cn(
+    <div className={cn(
       'p-6 rounded-2xl border shadow-sm transition-all hover:shadow-md',
       colorMap[color],
       className
@@ -59,6 +50,6 @@ export function ResultCard({
           )}
         </div>
       </div>
-    </Wrapper>
+    </div>
   );
 }

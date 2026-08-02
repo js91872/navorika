@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils';
 import { forwardRef } from 'react';
 
-interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface SliderProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   label?: string;
   value: number;
   onChange: (value: number) => void;
@@ -16,6 +16,9 @@ interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const Slider = forwardRef<HTMLInputElement, SliderProps>(
   ({ label, value, onChange, min = 0, max = 100, step = 1, unit = '', showValue = true, className = '', ...props }, ref) => {
+    // Calculate percentage for gradient
+    const percentage = ((value - min) / (max - min)) * 100;
+
     return (
       <div className="space-y-2">
         {label && (
@@ -46,7 +49,7 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>(
               className
             )}
             style={{
-              background: `linear-gradient(to right, #6366f1 0%, #6366f1 ${((value - min) / (max - min)) * 100}%, #e2e8f0 ${((value - min) / (max - min)) * 100}%, #e2e8f0 100%)`,
+              background: `linear-gradient(to right, #6366f1 0%, #6366f1 ${percentage}%, #e2e8f0 ${percentage}%, #e2e8f0 100%)`,
             }}
             {...props}
           />
