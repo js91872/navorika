@@ -83,7 +83,7 @@ export default function ProtectPDFTool() {
 
       const encryptedBytes = await pdfDoc.save();
 
-      const blob = new Blob([encryptedBytes], { type: 'application/pdf' });
+      const blob = new Blob([encryptedBytes.buffer.buffer], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       
       const a = document.createElement('a');

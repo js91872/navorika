@@ -120,7 +120,7 @@ export default function ReorderPDFTool() {
       copiedPages.forEach((page) => reorderedPdf.addPage(page));
 
       const finalBytes = await reorderedPdf.save();
-      const blob = new Blob([finalBytes], { type: 'application/pdf' });
+      const blob = new Blob([finalBytes.buffer.buffer], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       
       const a = document.createElement('a');

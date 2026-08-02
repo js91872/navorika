@@ -89,7 +89,7 @@ export default function OmniImageConverterTool() {
 
         const page = pdfDoc.addPage([embeddedImage.width, embeddedImage.height]);
         page.drawImage(embeddedImage, { x: 0, y: 0, width: embeddedImage.width, height: embeddedImage.height });
-        downloadBlob(new Blob([await pdfDoc.save()], { type: 'application/pdf' }), `${file.name.split('.')[0]}.pdf`);
+        downloadBlob(new Blob([(await pdfDoc.save()).buffer.buffer], { type: 'application/pdf' }), `${file.name.split('.')[0]}.pdf`);
       }
       
       // Target B: Mock Vector Path Tracer Matrix
@@ -97,7 +97,7 @@ export default function OmniImageConverterTool() {
         const url = URL.createObjectURL(activeFile);
         const img = await loadImageProxy(url);
         const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${img.width}" height="${img.height}"><image href="${url}" width="${img.width}" height="${img.height}"/></svg>`;
-        downloadBlob(new Blob([svgString], { type: 'image/svg+xml' }), `${file.name.split('.')[0]}.svg`);
+        downloadBlob(new Blob([svgString.buffer], { type: 'image/svg+xml' }), `${file.name.split('.')[0]}.svg`);
       }
       
       // Target C: Standard Canvas Matrix Operations (JPG, PNG, WEBP)

@@ -123,7 +123,7 @@ export default function SignPDFTool() {
       });
 
       const finalBytes = await pdfDoc.save();
-      const blob = new Blob([finalBytes], { type: 'application/pdf' });
+      const blob = new Blob([finalBytes.buffer.buffer.buffer], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       
       const a = document.createElement('a');
