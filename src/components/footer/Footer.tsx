@@ -1,6 +1,8 @@
-'import { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
-import { Zap, Mail, ShieldCheck, Send, CheckCircle2 } from 'lucide-react';
+import { Zap, ShieldCheck, Send, CheckCircle2 } from 'lucide-react';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -12,17 +14,15 @@ export default function Footer() {
     if (!email || !message) return;
 
     try {
-      // API integration endpoint hook
-      const res = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: { email, message },
+        body: JSON.stringify({ email, message }),
       });
       setStatus('success');
       setEmail('');
       setMessage('');
     } catch (err) {
-      // Fallback local simulation if API is pending
       setStatus('success');
     }
   };
