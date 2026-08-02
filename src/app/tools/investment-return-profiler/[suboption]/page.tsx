@@ -2,97 +2,83 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { ArrowLeft, ShieldCheck, Calculator, RefreshCw } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { investmentSubTools } from '@/data/financeMeta';
 
-export default function DynamicSubOptionTool() {
+export default function InvestmentProfilerTool() {
   const params = useParams();
   const router = useRouter();
   const suboption = (params?.suboption as string) || 'cagr-calculator';
-  
   const seo = investmentSubTools[suboption] || investmentSubTools['cagr-calculator'];
 
-  // Universal Inputs for structural rendering
-  const [valA, setValA] = useState(100000);
-  const [valB, setValB] = useState(10);
-  const [valC, setValC] = useState(5);
-  const [result, setResult] = useState<number | null>(null);
+  // State handles numbers or empty strings flawlessly to prevent sticky zeros
+  const [valA, setValA] = useState<number | ''>(10000);
+  const [valB, setValB] = useState<number | ''>(25000);
+  const [valC, setValC] = useState<number | ''>(5);
+  const [valD, setValD] = useState<number | ''>(10);
+  const [result, setResult] = useState<any>(null);
 
-  useEffect(() => {
-    document.title = seo.title;
-    runMath();
-  }, [suboption, seo, valA, valB, valC]);
-
-  const runMath = () => {
-    // Basic dynamic math execution based on sub-route active state
-    if (suboption.includes('cagr')) setResult(Math.pow(valB/valA, 1/valC) - 1);
-    else if (suboption.includes('ppf') || suboption.includes('compound')) setResult(valA * Math.pow(1 + (valB/100), valC));
-    else if (suboption.includes('gst')) setResult(valA + (valA * (valB/100)));
-    else if (suboption.includes('budget')) setResult(valA * 0.5); // 50% needs
-    else setResult(valA * (valB/100) * valC); // generic fallback
+  const configs: Record<string, any> = {
+    'cagr-calculator': { labelA: 'Initial Investment Value (₹)', labelB: 'Final Ending Value (₹)', labelC: 'Duration (Years)', showD: false,
+      calc: (a: number, b: number, c: number) => ({ value: a > 0 ? ((Math.pow(b / a, 1 / (c || 1)) - 1) * 100).toFixed(2) : '0.00', unit: '% Annual Growth' }) },
+    'roi-calculator': { labelA: 'Total Amount Invested (₹)', labelB: 'Total Amount Returned (₹)', showC: false, showD: false,
+      calc: (a: number, b: number) => ({ value: a > 0 ? (((b - a) / a) * 100).toFixed(2) : '0.00', unit: '% Total ROI' }) },
+    'swp-calculator': { labelA: 'Total Corpus Amount (₹)', labelB: 'Monthly Withdrawal (₹)', labelC: 'Expected Return (% p.a.)', labelD: 'Tenure (Years)', showD: true,
+      calc: (a: number, b: number, c: number, d: number) => {
+        let balance = a; const r = (c / 100) / 12;
+        for(let i=0; i<d*12; i++) { balance = (balance * (1 + r)) - b; if(balance < 0) { balance = 0; break; } }
+        return { value: balance.toLocaleString('en-IN', {maximumFractionDigits:0}), unit: '₹ Final Corpus Balance' };
+      }},
+    'stock-average-calculator': { labelA: 'First Buy Price (₹)', labelB: 'Quantity Bought', labelC: 'Second Buy Price (₹)', labelD: 'Quantity Bought', showD: true,
+      calc: (a: number, b: number, c: number, d: number) => ({ value: (b + d) > 0 ? (((a * b) + (c * d)) / (b + d)).toFixed(2) : '0.00', unit: '₹ New Average Price' }) }
   };
 
-  const jsonLdSchema = {
-    "@context": "https://schema.org",
-    "@type": "FinancialCalculator",
-    "name": seo.title,
-    "description": seo.description,
-    "url": `https://navorika.com/tools/investment-return-profiler/${suboption}`,
-    "category": "Financial Application"
-  };
+  const config = configs[suboption] || configs['cagr-calculator'];
+
+  useEffect(() => { 
+    document.title = seo.title; 
+    // Normalize empty strings safely to 0 inside the formula math loops
+    const numA = valA === '' ? 0 : valA;
+    const numB = valB === '' ? 0 : valB;
+    const numC = valC === '' ? 0 : valC;
+    const numD = valD === '' ? 0 : valD;
+    setResult(config.calc(numA, numB, numC, numD)); 
+  }, [suboption, valA, valB, valC, valD]);
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }} />
-
-      <a href="/categories/finance-calculators" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition mb-8">
-        <ArrowLeft className="h-4 w-4" /> Back to Finance Suite
-      </a>
-
-      <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4 border border-blue-500/20">
-          <ShieldCheck className="h-4 w-4" /> Verified High-Precision Sandbox
-        </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">{seo.heading}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">{seo.description}</p>
-      </div>
+      <a href="/categories/finance-calculators" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Finance</a>
+      <div className="text-center mb-10"><h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{seo.heading}</h1><p className="text-lg text-slate-600 dark:text-slate-400">{seo.description}</p></div>
 
       <div className="flex flex-wrap gap-2 mb-8 bg-slate-100 dark:bg-slate-950 p-1.5 rounded-2xl w-fit border">
         {Object.keys(investmentSubTools).map((key) => (
-          <button 
-            key={key} 
-            onClick={() => router.push(`/tools/investment-return-profiler/${key}`)}
-            className={`px-4 py-2 rounded-xl text-xs font-bold capitalize transition-all ${suboption === key ? 'bg-white dark:bg-slate-900 text-blue-600 shadow' : 'text-slate-500 hover:text-slate-700'}`}
-          >
-            {key.replace(/-/g, ' ')}
-          </button>
+          <button key={key} onClick={() => router.push(`/tools/investment-return-profiler/${key}`)} className={`px-4 py-2 rounded-xl text-xs font-bold capitalize transition-all ${suboption === key ? 'bg-white text-blue-600 shadow' : 'text-slate-500'}`}>{key.replace(/-/g, ' ')}</button>
         ))}
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8 mb-12">
-        <div className="bg-white dark:bg-slate-900 border rounded-3xl p-8 space-y-6 shadow-sm">
-          <h3 className="text-sm font-black uppercase tracking-wider text-slate-400 flex items-center gap-2"><Calculator className="h-4 w-4"/> Calculator Parameters</h3>
+      <div className="grid lg:grid-cols-3 gap-8">
+        <div className="bg-white dark:bg-slate-900 border rounded-3xl p-8 space-y-4 shadow-sm">
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase mb-2">Primary Capital Value</label>
-            <input type="number" value={valA} onChange={e => setValA(Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border outline-none font-bold text-sm" />
+            <label className="block text-xs font-bold text-slate-500 uppercase mb-2">{config.labelA}</label>
+            <input type="number" value={valA} onChange={e=>setValA(e.target.value === '' ? '' : Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border font-bold outline-none focus:border-indigo-500" />
           </div>
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase mb-2">Rate / Percentage / Target Value</label>
-            <input type="number" step="0.5" value={valB} onChange={e => setValB(Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border outline-none font-bold text-sm" />
+            <label className="block text-xs font-bold text-slate-500 uppercase mb-2">{config.labelB}</label>
+            <input type="number" value={valB} onChange={e=>setValB(e.target.value === '' ? '' : Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border font-bold outline-none focus:border-indigo-500" />
           </div>
-          <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase mb-2">Time Horizon (Periods)</label>
-            <input type="number" value={valC} onChange={e => setValC(Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border outline-none font-bold text-sm" />
-          </div>
-          <button onClick={runMath} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition shadow"><RefreshCw className="h-4 w-4"/> Calculate Matrix</button>
+          {config.showC !== false && <div>
+            <label className="block text-xs font-bold text-slate-500 uppercase mb-2">{config.labelC}</label>
+            <input type="number" value={valC} onChange={e=>setValC(e.target.value === '' ? '' : Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border font-bold outline-none focus:border-indigo-500" />
+          </div>}
+          {config.showD && <div>
+            <label className="block text-xs font-bold text-slate-500 uppercase mb-2">{config.labelD}</label>
+            <input type="number" value={valD} onChange={e=>setValD(e.target.value === '' ? '' : Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border font-bold outline-none focus:border-indigo-500" />
+          </div>}
         </div>
-
         <div className="lg:col-span-2 bg-slate-950 text-white rounded-3xl p-8 flex flex-col justify-center border min-h-[300px]">
-           <span className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Calculated Output Projection</span>
-           <h2 className="text-5xl font-black text-emerald-400 break-all">
-             {suboption.includes('cagr') || suboption.includes('roi') ? `${result !== null ? (result * 100).toFixed(2) : 0}%` : `₹ ${result !== null ? Math.round(result).toLocaleString('en-IN') : 0}`}
-           </h2>
-           <p className="text-sm text-slate-500 mt-4">Computed natively on your device via standard algorithmic models.</p>
+           <span className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Calculated Result</span>
+           <h2 className="text-5xl font-black text-emerald-400 break-all">{result?.value}</h2>
+           <p className="text-lg font-bold text-slate-500 mt-2">{result?.unit}</p>
         </div>
       </div>
     </main>
