@@ -1,21 +1,23 @@
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import Header from '@/components/Header';
+import Navbar from '@/components/header/navbar';
+import Footer from '@/components/footer/Footer';
 
 export const metadata = {
-  title: 'NavorikaPro - High Speed Utility Portal',
-  description: '100% Client-side privacy focused tools.',
+  title: 'NavorikaPro - Universal Client Suite',
+  description: 'High-speed local client computing engines and calculators.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-slate-50 dark:bg-[#0A0A0B] transition-colors duration-500 m-0 p-0 antialiased">
+      <body className="bg-[var(--color-background)] text-[var(--color-foreground)] antialiased min-h-screen flex flex-col selection:bg-indigo-500/30">
         <ThemeProvider>
-          <Header />
-          <div className="pt-[80px] min-h-screen flex flex-col">
+          <Navbar />
+          <div className="w-full flex-1 flex flex-col">
             {children}
           </div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
