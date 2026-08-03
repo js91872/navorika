@@ -1,48 +1,43 @@
+'use client';
+
 import Link from 'next/link';
 import { tools } from '@/data/registry';
-import { Wrench, ArrowRight, Sparkles } from 'lucide-react';
 
-export default function AllToolsDirectoryPage() {
+const getToolIcon = (slug: string): string => {
+  const map: Record<string, string> = {
+    'pdf': '📄', 'image': '🖼️', 'compress': '📦', 'resize': '📐',
+    'crop': '✂️', 'rotate': '🔄', 'convert': '🔄', 'merge': '📑',
+    'split': '✂️', 'protect': '🔒', 'unlock': '🔓', 'sign': '✍️',
+    'watermark': '💧', 'bmi': '⚖️', 'bmr': '🔥', 'calorie': '🍎',
+    'heart': '❤️', 'sip': '💰', 'emi': '🏦', 'tax': '📊',
+    'gst': '🧾', 'ppf': '🏦', 'fd': '🏛️', 'json': '📋',
+    'base64': '🔐', 'qr': '📱', 'jwt': '🔑', 'crypto': '🔒',
+  };
+  for (const [key, icon] of Object.entries(map)) {
+    if (slug.includes(key)) return icon;
+  }
+  return '🔧';
+};
+
+export default function ToolsPage() {
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-[#0A0A0B] text-slate-900 dark:text-slate-100 py-16 px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
-          <span className="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Master Directory</span>
-          <h1 className="text-4xl font-black tracking-tight mt-2">All Utilities & Calculators</h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-2 font-medium">
-            Browse all {tools.length} high-performance client tools across every category suite.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <h1 className="text-3xl font-bold mb-8">All Tools</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {tools.map((tool) => (
-            <Link 
-              key={tool.slug} 
+            <Link
+              key={tool.slug}
               href={`/tools/${tool.slug}`}
-              className="group p-6 bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl hover:border-indigo-500 transition-all"
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-wider">
-                    {tool.category}
-                  </span>
-                  <Sparkles className="h-4 w-4 text-slate-400 group-hover:text-indigo-500 transition-colors" />
-                </div>
-                <h2 className="text-lg font-black mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                  {tool.title}
-                </h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium mb-6">
-                  {tool.description}
-                </p>
-              </div>
-              <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-white/5 text-[10px] font-black uppercase tracking-widest text-slate-400">
-                <span>Launch Utility</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform text-indigo-600 dark:text-indigo-400" />
-              </div>
+              <div className="text-2xl">{getToolIcon(tool.slug)}</div>
+              <h3 className="font-semibold mt-2">{tool.title}</h3>
+              <p className="text-sm text-[var(--muted-foreground)] mt-1">{tool.description}</p>
             </Link>
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

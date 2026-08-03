@@ -649,7 +649,7 @@ export const tools: Tool[] = [
     slug: 'taxation-compliance-deck',
     title: 'Taxation Compliance Deck',
     description: 'Taxation Compliance Deck tool for your workflow.',
-    category: 'developer-tools',
+    category: 'finance-calculators',
     keywords: ['taxation-compliance-deck', 'taxation', 'compliance', 'deck'],
   },
   {
