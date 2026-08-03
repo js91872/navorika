@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Running, Flame } from 'lucide-react';
+import { ArrowLeft, Footprints, Flame } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
@@ -33,7 +33,6 @@ export default function RunningCaloriesCalculator() {
   const handleCalculate = () => {
     const paceValue = PACE_VALUES[pace] || 6.0;
     const hours = distance / paceValue;
-    // Running MET: 8-12 depending on pace
     const met = 8 + (paceValue - 5) * 0.8;
     const caloriesPerHour = (met * 3.5 * weight) / 200;
     const totalCalories = caloriesPerHour * hours;
@@ -83,7 +82,7 @@ export default function RunningCaloriesCalculator() {
               max={100}
             />
             <Button onClick={handleCalculate} fullWidth>
-              <Running className="h-4 w-4 mr-2" /> Calculate Calories
+              <Footprints className="h-4 w-4 mr-2" /> Calculate Calories
             </Button>
           </div>
         </Card>

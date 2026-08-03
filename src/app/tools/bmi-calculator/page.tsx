@@ -175,7 +175,6 @@ export default function BMICalculatorEnhanced() {
                   type="number"
                   value={age}
                   onChange={(e) => setAge(Number(e.target.value))}
-                  icon={<Calendar className="h-5 w-5" />}
                   min={1}
                   max={120}
                 />
@@ -187,7 +186,6 @@ export default function BMICalculatorEnhanced() {
                 options={ACTIVITY_OPTIONS}
                 value={activity}
                 onChange={(e) => setActivity(e.target.value as any)}
-                icon={<Activity className="h-5 w-5" />}
               />
 
               {/* Weight & Height */}
@@ -197,7 +195,6 @@ export default function BMICalculatorEnhanced() {
                   type="number"
                   value={weight}
                   onChange={(e) => setWeight(Number(e.target.value))}
-                  icon={<Scale className="h-5 w-5" />}
                   min={1}
                   max={500}
                 />
@@ -208,7 +205,6 @@ export default function BMICalculatorEnhanced() {
                     type="number"
                     value={height}
                     onChange={(e) => setHeight(Number(e.target.value))}
-                    icon={<Ruler className="h-5 w-5" />}
                     min={50}
                     max={300}
                   />

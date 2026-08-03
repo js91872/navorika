@@ -50,7 +50,7 @@ export default function MergePDFTool() {
       }
 
       const mergedPdfFile = await mergedPdf.save();
-      const blob = new Blob([mergedPdfFile], { type: 'application/pdf' });
+      const blob = new Blob([mergedPdfFile.buffer as ArrayBuffer], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       
       const a = document.createElement('a');

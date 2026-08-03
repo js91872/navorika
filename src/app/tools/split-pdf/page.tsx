@@ -75,7 +75,7 @@ export default function SplitPDFTool() {
       copiedPages.forEach((page) => splitPdf.addPage(page));
 
       const splitPdfFile = await splitPdf.save();
-      const blob = new Blob([splitPdfFile], { type: 'application/pdf' });
+      const blob = new Blob([splitPdfFile.buffer as ArrayBuffer], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       
       const a = document.createElement('a');

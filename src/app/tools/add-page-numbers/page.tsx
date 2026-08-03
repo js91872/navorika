@@ -3,13 +3,12 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Download, Loader2, FileText, ShieldCheck, X, Hash } from 'lucide-react';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, rgb } from 'pdf-lib';
 import { tools } from '@/data/registry';
 
 export default function AddPageNumbersTool() {
   const meta = tools.find(t => t.slug === 'add-page-numbers');
   
-  // Default meta if not found
   const toolMeta = meta || {
     heroTitle: 'Add Page Numbers to PDF',
     heroDescription: 'Add page numbers to your PDF documents with customizable position and format.',
@@ -54,12 +53,13 @@ export default function AddPageNumbersTool() {
       const pdf = await PDFDocument.load(fileBuffer);
       const pages = pdf.getPages();
       
+      const color = rgb(0.2, 0.2, 0.8);
+      
       pages.forEach((page, index) => {
         const { width, height } = page.getSize();
         const pageNumber = startNumber + index;
         const text = `${pageNumber}`;
         
-        // Position the text
         let x = width / 2;
         let y = height / 2;
         
@@ -97,13 +97,13 @@ export default function AddPageNumbersTool() {
           x: x - 10,
           y: y - 10,
           size: 16,
-          color: { r: 0.2, g: 0.2, b: 0.8 },
+          color: color,
           opacity: 1,
         });
       });
 
-      const pdfBytes = await pdf.save();
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const finalBytes = await pdf.save();
+      const blob = new Blob([finalBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

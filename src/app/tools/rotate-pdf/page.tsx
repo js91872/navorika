@@ -74,7 +74,7 @@ export default function RotatePDFTool() {
       });
 
       const rotatedBytes = await pdf.save();
-      const blob = new Blob([rotatedBytes], { type: 'application/pdf' });
+      const blob = new Blob([rotatedBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       
       const a = document.createElement('a');

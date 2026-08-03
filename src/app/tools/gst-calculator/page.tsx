@@ -25,6 +25,12 @@ const TYPE_OPTIONS = [
   { value: 'inclusive', label: 'Inclusive (GST Included)' },
 ];
 
+// Convert GST_RATES to string values for Select component
+const GST_RATE_OPTIONS = GST_RATES.map(rate => ({
+  value: rate.value.toString(),
+  label: rate.label,
+}));
+
 export default function GSTCalculator() {
   const [amount, setAmount] = useState(1000);
   const [rate, setRate] = useState(18);
@@ -117,7 +123,7 @@ export default function GSTCalculator() {
 
               <Select
                 label="GST Rate"
-                options={GST_RATES}
+                options={GST_RATE_OPTIONS}
                 value={rate.toString()}
                 onChange={(e) => setRate(Number(e.target.value))}
               />

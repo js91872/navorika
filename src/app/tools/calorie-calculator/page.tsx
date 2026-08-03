@@ -75,9 +75,9 @@ export default function CalorieCalculator() {
         <div className="space-y-4">
           {result && (
             <>
-              <ResultCard label="Daily Calories" value={`${result.calories} kcal`} subColor="green" icon={<Utensils className="h-5 w-5" />} />
-              <ResultCard label="BMR" value={`${result.bmr} kcal`} subColor="purple" icon={<Flame className="h-5 w-5" />} />
-              <ResultCard label="TDEE" value={`${result.tdee} kcal`} subColor="blue" icon={<Target className="h-5 w-5" />} />
+              <ResultCard label="Daily Calories" value={`${result.calories} kcal`} color="green" icon={<Utensils className="h-5 w-5" />} />
+              <ResultCard label="BMR" value={`${result.bmr} kcal`} color="purple" icon={<Flame className="h-5 w-5" />} />
+              <ResultCard label="TDEE" value={`${result.tdee} kcal`} color="blue" icon={<Target className="h-5 w-5" />} />
             </>
           )}
         </div>

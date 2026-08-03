@@ -1,4 +1,19 @@
+'use client';
+
+import ImageConverterEngine from '@/components/ImageConverterEngineWrapper';
 import { tools } from '@/data/registry';
-import ImageConverterEngine from '@/components/ImageConverterEngine';
-export const metadata = { title: 'PDF to Image Converter | Navorika Sandbox' };
-export default function Page() { return <ImageConverterEngine meta={tools.find(t => t.slug === 'pdf-to-image')!} />; }
+
+export default function Page() {
+  const meta = tools.find(t => t.slug === '"$(basename $(dirname $file))"');
+  return <ImageConverterEngine meta={meta || { 
+    slug: 'image-converter',
+    title: 'Image Converter',
+    description: 'Convert your images to different formats.',
+    category: 'image-tools',
+    keywords: ['image', 'converter'],
+    heroTitle: 'Image Converter',
+    heroDescription: 'Convert your images to different formats easily.',
+    formulaExplanation: 'This tool converts images from one format to another.',
+    faq: []
+  }} />;
+}
