@@ -24,7 +24,7 @@ export default function Footer() {
               <span className="font-medium">100% CLIENT-SIDE SAFE</span>
             </div>
 
-            {/* Social Links - Using Emojis */}
+            {/* Social Links */}
             <div className="mt-4 flex items-center gap-3">
               <a
                 href="#"
@@ -63,16 +63,31 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="space-y-2 text-sm">
-              {['Home', 'Categories', 'Tools', 'Guides', 'About'].map((item) => (
-                <li key={item}>
-                  <Link
-                    href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                    className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/categories" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Categories
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Tools
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  About
+                </Link>
+              </li>
             </ul>
           </div>
 

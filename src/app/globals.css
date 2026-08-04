@@ -30,13 +30,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Selection */
   ::selection {
     background: rgba(99, 102, 241, 0.3);
     color: white;
   }
 
-  /* Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
