@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
-import { ComponentType, ReactNode } from 'react';
+import { ComponentType } from 'react';
 
 interface DynamicImportOptions {
   ssr?: boolean;
-  loading?: ComponentType; // Accept any component
+  loading?: ComponentType;
 }
 
 export const dynamicImport = <T extends ComponentType<any>>(
@@ -12,19 +12,20 @@ export const dynamicImport = <T extends ComponentType<any>>(
 ) => {
   return dynamic(importFn, {
     ssr: options.ssr,
-    loading: options.loading as any, // Type assertion to bypass strict typing
+    loading: options.loading as any,
   });
 };
 
 // Pre-defined dynamic imports for common components
+// These components may or may not exist - handle gracefully
 export const DynamicHero = dynamicImport(
-  () => import('@/components/home/EnhancedHero')
+  () => import('@/components/home/EnhancedHero').catch(() => ({ default: () => null }))
 );
 
 export const DynamicCategoryGrid = dynamicImport(
-  () => import('@/components/home/EnhancedCategoryGrid')
+  () => import('@/components/home/EnhancedCategoryGrid').catch(() => ({ default: () => null }))
 );
 
 export const DynamicToolGrid = dynamicImport(
-  () => import('@/components/home/EnhancedToolGrid')
+  () => import('@/components/home/EnhancedToolGrid').catch(() => ({ default: () => null }))
 );
