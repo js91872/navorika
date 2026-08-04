@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Search, Shield, Zap, Sparkles } from 'lucide-react';
 
 interface EnhancedHeroProps {
@@ -35,7 +34,7 @@ export default function EnhancedHero({ onSearchClick, toolCount }: EnhancedHeroP
 
         <button
           onClick={onSearchClick}
-          className="flex items-center gap-3 max-w-lg mx-auto w-full p-3 rounded-full bg-[var(--card)] border border-[var(--border]] hover:border-indigo-400/50 transition-all text-left"
+          className="flex items-center gap-3 max-w-lg mx-auto w-full p-3 rounded-full bg-[var(--card)] border border-[var(--border)] hover:border-indigo-400/50 transition-all text-left"
         >
           <Search className="h-5 w-5 text-[var(--muted-foreground)] ml-2" />
           <span className="flex-1 text-[var(--muted-foreground)]">Search any tool...</span>

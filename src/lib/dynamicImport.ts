@@ -17,15 +17,15 @@ export const dynamicImport = <T extends ComponentType<any>>(
 };
 
 // Pre-defined dynamic imports for common components
-// These components may or may not exist - handle gracefully
+// Note: These components must exist in the codebase
 export const DynamicHero = dynamicImport(
-  () => import('@/components/home/EnhancedHero').catch(() => ({ default: () => null }))
+  () => import('@/components/home/EnhancedHero')
 );
 
 export const DynamicCategoryGrid = dynamicImport(
-  () => import('@/components/home/EnhancedCategoryGrid').catch(() => ({ default: () => null }))
+  () => import('@/components/home/EnhancedCategoryGrid')
 );
 
 export const DynamicToolGrid = dynamicImport(
-  () => import('@/components/home/EnhancedToolGrid').catch(() => ({ default: () => null }))
+  () => import('@/components/home/EnhancedToolGrid')
 );
