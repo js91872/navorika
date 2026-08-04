@@ -1,31 +1,52 @@
 @import "tailwindcss";
 
-@layer base {
-  /* Light theme (default) */
-  :root {
-    --background: #ffffff;
-    --foreground: #0a0a0a;
-    --card: #ffffff;
-    --card-foreground: #0a0a0a;
-    --border: #e5e7eb;
-    --muted: #f3f4f6;
-    --muted-foreground: #6b7280;
-  }
+/* Local font declarations */
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/GeistVF.woff') format('woff');
+  font-weight: 100 900;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMonoVF.woff') format('woff');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@theme {
+  --color-background: hsl(210, 40%, 98%);
+  --color-foreground: hsl(222.2, 84%, 4.9%);
+  --color-card: hsl(0, 0%, 100%);
+  --color-card-foreground: hsl(222.2, 84%, 4.9%);
+  --color-border: hsl(214.3, 31.8%, 91.4%);
+  --color-primary: hsl(250, 84%, 54%);
+  --color-primary-foreground: hsl(210, 40%, 98%);
+  --color-muted: hsl(210, 40%, 96.1%);
+  --color-muted-foreground: hsl(215.4, 16.3%, 46.9%);
+}
+
+@layer base {
   .dark {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
-    --card: #111111;
-    --card-foreground: #ffffff;
-    --border: #1f2937;
-    --muted: #1a1a1a;
-    --muted-foreground: #9ca3af;
+    --color-background: hsl(224, 71%, 4%);
+    --color-foreground: hsl(210, 40%, 98%);
+    --color-card: hsl(222.2, 47.4%, 11.2%);
+    --color-card-foreground: hsl(210, 40%, 98%);
+    --color-border: hsl(217.2, 32.6%, 17.5%);
+    --color-primary: hsl(250, 95%, 68%);
+    --color-primary-foreground: hsl(224, 71%, 4%);
+    --color-muted: hsl(217.2, 32.6%, 12%);
+    --color-muted-foreground: hsl(215, 20.2%, 65.1%);
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    transition-property: color, background-color, border-color;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -35,17 +56,34 @@
     color: white;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background-color: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 9999px;
   }
-  .dark ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .light ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .light ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  *:focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.5);
+    outline-offset: 2px;
   }
 }

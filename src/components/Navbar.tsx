@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Sun, Moon, Search, BookOpen } from 'lucide-react';
+import { Sun, Moon, Search, BookOpen, Grid3x3, Home } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
 
 interface NavbarProps {
@@ -12,11 +12,11 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
   const { isDark, toggle } = useTheme();
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/categories', label: 'Categories' },
-    { href: '/tools', label: 'Tools' },
-    { href: '/guides', label: 'Guides' },
-    { href: '/about', label: 'About' },
+    { href: '/', label: 'Home', icon: <Home className="h-4 w-4" /> },
+    { href: '/categories', label: 'Categories', icon: <Grid3x3 className="h-4 w-4" /> },
+    { href: '/hubs/finance', label: 'Finance Hub', icon: null },
+    { href: '/glossary', label: 'Glossary', icon: <BookOpen className="h-4 w-4" /> },
+    { href: '/about', label: 'About', icon: null },
   ];
 
   return (
@@ -32,8 +32,9 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 rounded-full text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)] transition-all"
+                className="px-4 py-2 rounded-full text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)] transition-all flex items-center gap-1.5"
               >
+                {link.icon}
                 {link.label}
               </Link>
             ))}
