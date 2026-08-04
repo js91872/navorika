@@ -63,6 +63,13 @@ export const categories: Category[] = [
     icon: 'Hammer',
     color: 'from-cyan-500 to-blue-600',
   },
+  {
+    slug: 'concrete-calculator',
+    title: 'Concrete Calculator',
+    description: 'Calculate concrete volume and material mix for slabs, columns, and beams.',
+    category: 'construction-calculators',
+    keywords: ['concrete', 'calculator', 'construction', 'cement', 'volume'],
+  },
 ];
 
 export const tools: Tool[] = [
@@ -716,5 +723,12 @@ export const tools: Tool[] = [
     description: 'Plan your retirement corpus with inflation-adjusted projections.',
     category: 'finance-calculators',
     keywords: ['retirement', 'pension', 'savings', 'corpus', 'planning', 'retirement calculator'],
+  },
+  {
+    slug: 'concrete-calculator',
+    title: 'Concrete Calculator',
+    description: 'Calculate concrete volume and material mix for slabs, columns, and beams.',
+    category: 'construction-calculators',
+    keywords: ['concrete', 'calculator', 'construction', 'cement', 'volume'],
   },
 ];
