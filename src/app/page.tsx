@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Zap, Shield, Sparkles, Layers } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
+import { getToolIcon } from '@/lib/toolIcons';
 import SearchOverlay from '@/components/SearchOverlay';
 
 const iconMap: Record<string, string> = {
@@ -19,7 +20,7 @@ const iconMap: Record<string, string> = {
 
 export default function HomePage() {
   const [searchOpen, setSearchOpen] = useState(false);
-  const featuredTools = tools.slice(0, 8);
+  const featuredTools = tools.slice(0, 12);
 
   return (
     <>
@@ -127,7 +128,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ====== FEATURED TOOLS SECTION ====== */}
+        {/* ====== POPULAR TOOLS SECTION ====== */}
         <section className="bg-[var(--muted)]/30 border-y border-[var(--border)] py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-8">
@@ -155,15 +156,17 @@ export default function HomePage() {
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
-                  className="p-4 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-indigo-500/40 transition-all hover:shadow-md"
+                  className="p-4 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-indigo-500/40 transition-all hover:shadow-md group"
                 >
                   <div className="flex items-start justify-between">
-                    <span className="text-2xl">🔧</span>
+                    <span className="text-3xl">{getToolIcon(tool.slug)}</span>
                     <span className="text-xs text-[var(--muted-foreground)] bg-[var(--muted)] px-2 py-0.5 rounded-full">
                       {tool.category.split('-')[0]}
                     </span>
                   </div>
-                  <h3 className="font-semibold mt-2">{tool.title}</h3>
+                  <h3 className="font-semibold mt-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {tool.title}
+                  </h3>
                   <p className="text-sm text-[var(--muted-foreground)] mt-1 line-clamp-2">
                     {tool.description}
                   </p>

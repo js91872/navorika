@@ -289,13 +289,6 @@ export const tools: Tool[] = [
     keywords: ['delete-pdf-pages', 'delete', 'pdf', 'pages'],
   },
   {
-    slug: 'developer-tools',
-    title: 'Developer Tools',
-    description: 'Developer Tools tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['developer-tools', 'developer', 'tools'],
-  },
-  {
     slug: 'developer-utils',
     title: 'Developer Utilities',
     description: 'Developer Utils tool for your workflow.',
@@ -422,13 +415,6 @@ export const tools: Tool[] = [
     keywords: ['image-to-pdf', 'image', 'to', 'pdf'],
   },
   {
-    slug: 'image-tools',
-    title: 'Image Tools',
-    description: 'Image Tools tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['image-tools', 'image', 'tools'],
-  },
-  {
     slug: 'interleave-pdf',
     title: 'Interleave PDF',
     description: 'Interleave Pdf tool for your workflow.',
@@ -511,13 +497,6 @@ export const tools: Tool[] = [
     description: 'Pdf To Jpg tool for your workflow.',
     category: 'pdf-tools',
     keywords: ['pdf-to-jpg', 'pdf', 'to', 'jpg'],
-  },
-  {
-    slug: 'pdf-tools',
-    title: 'Pdf Tools',
-    description: 'Pdf Tools tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['pdf-tools', 'pdf', 'tools'],
   },
   {
     slug: 'photo-collage-maker',

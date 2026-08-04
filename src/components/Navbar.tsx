@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Sun, Moon, Search } from 'lucide-react';
+import { Sun, Moon, Search, BookOpen } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
 
 interface NavbarProps {
@@ -20,6 +20,9 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
           </Link>
           
           <div className="flex items-center gap-6">
+            <Link href="/guides" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors flex items-center gap-1">
+              <BookOpen className="h-4 w-4" /> Guides
+            </Link>
             <Link href="/categories" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
               Categories
             </Link>
