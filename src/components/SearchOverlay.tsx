@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { tools } from '@/data/registry';
+import { getToolIcon } from '@/lib/toolIcons';
 
 interface SearchOverlayProps {
   isOpen: boolean;
@@ -74,7 +75,10 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                       onClick={onClose}
                       className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-[var(--muted)] transition-colors group"
                     >
-                      <span className="text-[var(--foreground)] font-medium">{tool.title}</span>
+                      <span className="flex items-center gap-3 text-[var(--foreground)] font-medium">
+                        <span className="text-xl">{getToolIcon(tool.slug)}</span>
+                        {tool.title}
+                      </span>
                       <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-[var(--foreground)] transition-colors" />
                     </Link>
                   ))}
