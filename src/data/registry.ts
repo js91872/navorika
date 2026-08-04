@@ -74,7 +74,7 @@ export const categories: Category[] = [
     description: 'Material estimation and structural dimensions.',
     icon: 'Hammer',
     color: 'from-cyan-500 to-blue-600',
-  }
+  },
 ];
 
 export const tools: Tool[] = [
@@ -721,5 +721,12 @@ export const tools: Tool[] = [
     description: 'Webp To Png tool for your workflow.',
     category: 'image-tools',
     keywords: ['webp-to-png', 'webp', 'to', 'png'],
-  }
+  },
+  {
+    slug: 'retirement-calculator',
+    title: 'Retirement Calculator',
+    description: 'Plan your retirement corpus with inflation-adjusted projections.',
+    category: 'retirement-calculators',
+    keywords: ['retirement', 'pension', 'savings', 'corpus', 'planning', 'retirement calculator'],
+  },
 ];

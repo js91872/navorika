@@ -16,27 +16,10 @@ export interface RetirementResult {
   inflationAdjustedIncome: number;
   corpusShortfall: number;
   yearsOfCoverage: number;
-  annualBreakdown: Array<{
-    year: number;
-    age: number;
-    savings: number;
-    contributions: number;
-    returns: number;
-    balance: number;
-  }>;
-  postRetirement: Array<{
-    year: number;
-    age: number;
-    balance: number;
-    withdrawal: number;
-    remaining: number;
-  }>;
-  summary: {
-    totalContributions: number;
-    totalReturns: number;
-    withdrawalRate: number;
-    sustainabilityScore: number;
-  };
+  sustainabilityScore: number;
+  monthlyContributionNeeded: number;
+  totalContributions: number;
+  totalReturns: number;
 }
 
 export function calculateRetirement(inputs: RetirementInputs): RetirementResult {
@@ -57,11 +40,13 @@ export function calculateRetirement(inputs: RetirementInputs): RetirementResult 
   const monthlyRate = expectedReturn / 100 / 12;
   const inflationRateMonthly = inflationRate / 100 / 12;
 
+  // Calculate monthly expenses at retirement
   let monthlyExpenseAtRetirement = monthlyExpenses;
   for (let i = 0; i < yearsToRetirement * 12; i++) {
     monthlyExpenseAtRetirement *= (1 + inflationRateMonthly);
   }
 
+  // Calculate corpus needed
   let corpusNeeded = 0;
   let currentExpense = monthlyExpenseAtRetirement;
   for (let i = 0; i < yearsInRetirement * 12; i++) {
@@ -69,55 +54,32 @@ export function calculateRetirement(inputs: RetirementInputs): RetirementResult 
     currentExpense *= (1 + inflationRateMonthly);
   }
 
+  // Calculate accumulated savings
   let balance = currentSavings;
   let totalContributions = currentSavings;
-  const annualBreakdown: RetirementResult['annualBreakdown'] = [];
+  let totalReturns = 0;
 
   for (let year = 1; year <= yearsToRetirement; year++) {
-    const yearlyContributions = monthlyContribution * 12 * Math.pow(1 + contributionIncreaseRate / 100, year - 1);
+    const yearlyContribution = monthlyContribution * 12 * Math.pow(1 + contributionIncreaseRate / 100, year - 1);
     const yearlyReturn = balance * (expectedReturn / 100);
-    
-    balance += yearlyContributions + yearlyReturn;
-    totalContributions += yearlyContributions;
-
-    annualBreakdown.push({
-      year,
-      age: currentAge + year,
-      savings: Math.round(yearlyContributions),
-      contributions: Math.round(yearlyContributions),
-      returns: Math.round(yearlyReturn),
-      balance: Math.round(balance),
-    });
-  }
-
-  let postRetirementBalance = balance;
-  let currentWithdrawal = monthlyExpenseAtRetirement;
-  const postRetirement: RetirementResult['postRetirement'] = [];
-
-  for (let year = 1; year <= yearsInRetirement; year++) {
-    const yearlyWithdrawal = currentWithdrawal * 12;
-    
-    if (postRetirementBalance < 0) break;
-    
-    const yearlyReturn = postRetirementBalance * (expectedReturn / 100);
-    postRetirementBalance = postRetirementBalance + yearlyReturn - yearlyWithdrawal;
-    
-    postRetirement.push({
-      year,
-      age: retirementAge + year,
-      balance: Math.round(postRetirementBalance),
-      withdrawal: Math.round(yearlyWithdrawal),
-      remaining: Math.round(postRetirementBalance),
-    });
-
-    currentWithdrawal *= (1 + inflationRateMonthly);
+    balance += yearlyContribution + yearlyReturn;
+    totalContributions += yearlyContribution;
+    totalReturns += yearlyReturn;
   }
 
   const corpusShortfall = Math.max(0, corpusNeeded - balance);
   const monthlyIncome = balance * (expectedReturn / 100 / 12);
   const inflationAdjustedIncome = monthlyIncome / Math.pow(1 + inflationRate / 100, yearsToRetirement);
-  const yearsOfCoverage = postRetirement.filter(p => p.balance > 0).length;
+  const yearsOfCoverage = Math.min(yearsInRetirement, Math.floor(balance / (monthlyExpenseAtRetirement * 12)));
   const sustainabilityScore = Math.min(100, (yearsOfCoverage / yearsInRetirement) * 100);
+
+  // Calculate monthly contribution needed to reach goal
+  let monthlyContributionNeeded = 0;
+  if (corpusNeeded > balance) {
+    const shortfall = corpusNeeded - balance;
+    // Simple approximation for monthly contribution needed
+    monthlyContributionNeeded = shortfall / (yearsToRetirement * 12);
+  }
 
   return {
     retirementCorpus: Math.round(balance),
@@ -125,13 +87,9 @@ export function calculateRetirement(inputs: RetirementInputs): RetirementResult 
     inflationAdjustedIncome: Math.round(inflationAdjustedIncome),
     corpusShortfall: Math.round(corpusShortfall),
     yearsOfCoverage,
-    annualBreakdown,
-    postRetirement,
-    summary: {
-      totalContributions: Math.round(totalContributions),
-      totalReturns: Math.round(balance - totalContributions),
-      withdrawalRate: Number((monthlyIncome / balance * 100 * 12).toFixed(1)),
-      sustainabilityScore: Number(sustainabilityScore.toFixed(0)),
-    },
+    sustainabilityScore: Math.round(sustainabilityScore),
+    monthlyContributionNeeded: Math.round(monthlyContributionNeeded),
+    totalContributions: Math.round(totalContributions),
+    totalReturns: Math.round(totalReturns),
   };
 }
