@@ -28,28 +28,24 @@ export default function HomePage() {
       
       <div className="bg-[var(--background)] text-[var(--foreground)]">
         
-        {/* ====== HERO SECTION ====== */}
+        {/* ====== HERO SECTION – SEO Optimized ====== */}
         <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-32 md:pb-24">
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-400"></span>
-              </span>
-              Zero-latency · Local processing
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] mb-6">
-              Tools that feel like
-              <br />
-              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                extensions of your mind
-              </span>
+            {/* H1 – Primary keyword phrase */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] mb-4">
+              200+ Free Online Calculators, PDF Tools, Image Tools &amp; Productivity Utilities
             </h1>
             
-            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto text-lg mb-8">
-              {tools.length}+ utilities, calculators, and converters — all running
-              instantly in your browser. No uploads. No tracking.
+            {/* Subtitle – Secondary keyword phrase */}
+            <p className="text-xl font-semibold text-[var(--muted-foreground)] mb-4">
+              Fast. Free. No Signup.
+            </p>
+            
+            {/* Description – Tell Google what Navorika is */}
+            <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
+              Navorika is a free, client-side suite of 200+ online tools including calculators,
+              PDF editors, image converters, and developer utilities. Everything runs locally
+              in your browser — no uploads, no signup, no tracking.
             </p>
 
             {/* Search Bar */}
@@ -58,7 +54,7 @@ export default function HomePage() {
               className="flex items-center gap-3 max-w-lg mx-auto w-full p-3 rounded-full bg-[var(--card)] border border-[var(--border)] hover:border-indigo-400/50 transition-all text-left"
             >
               <span className="pl-2 text-[var(--muted-foreground)]">🔍</span>
-              <span className="flex-1 text-[var(--muted-foreground)]">Search any tool...</span>
+              <span className="flex-1 text-[var(--muted-foreground)]">Search 200+ tools...</span>
               <kbd className="px-2 py-1 rounded bg-[var(--muted)] text-[var(--muted-foreground)] text-xs font-mono">⌘K</kbd>
             </button>
 
@@ -75,6 +71,10 @@ export default function HomePage() {
               <span className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-amber-500" /> {tools.length}+ tools
               </span>
+              <span className="w-px h-4 bg-[var(--border)]" />
+              <span className="flex items-center gap-2">
+                🔒 No signup required
+              </span>
             </div>
           </div>
         </section>
@@ -84,13 +84,13 @@ export default function HomePage() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold">
-                Workspaces
+                Tool Categories
                 <span className="text-[var(--muted-foreground)] font-normal ml-2">
                   — {categories.length} suites
                 </span>
               </h2>
               <p className="text-[var(--muted-foreground)] text-sm mt-1">
-                Organized collections of tools for your workflow
+                Explore our comprehensive collection of free online tools
               </p>
             </div>
             <Link
@@ -134,13 +134,13 @@ export default function HomePage() {
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold">
-                  Popular Tools
+                  Popular Free Tools
                   <span className="text-[var(--muted-foreground)] font-normal ml-2">
                     — most used
                   </span>
                 </h2>
                 <p className="text-[var(--muted-foreground)] text-sm mt-1">
-                  Jump straight into the most popular tools
+                  Jump straight into our most popular online utilities
                 </p>
               </div>
               <Link
@@ -184,7 +184,7 @@ export default function HomePage() {
             <div className="relative z-10">
               <Layers className="h-12 w-12 text-white/80 mx-auto mb-4" />
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-                Ready to get started?
+                Ready to try our free tools?
               </h2>
               <p className="text-white/80 max-w-2xl mx-auto mb-6">
                 Explore all {tools.length}+ tools and find the perfect one for your needs.
