@@ -48,19 +48,7 @@ export const categories: Category[] = [
     color: 'from-rose-500 to-pink-600',
   },
   {
-    slug: 'retirement-calculators',
-    name: 'Retirement & Savings',
-    description: 'Plan your retirement and savings goals.',
-    icon: 'PiggyBank',
-    color: 'from-indigo-500 to-purple-600',
-  },
   {
-    slug: 'currency-converters',
-    name: 'Currency Converters',
-    description: 'Convert between 15+ currencies.',
-    icon: 'Globe',
-    color: 'from-blue-500 to-cyan-600',
-  },
   {
     slug: 'developer-tools',
     name: 'Developer Tools',
@@ -726,7 +714,7 @@ export const tools: Tool[] = [
     slug: 'retirement-calculator',
     title: 'Retirement Calculator',
     description: 'Plan your retirement corpus with inflation-adjusted projections.',
-    category: 'retirement-calculators',
+    category: 'finance-calculators',
     keywords: ['retirement', 'pension', 'savings', 'corpus', 'planning', 'retirement calculator'],
   },
 ];
