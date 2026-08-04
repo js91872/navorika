@@ -63,19 +63,19 @@ export const toolIcons: Record<string, string> = {
   'webp-to-png': '🔄',
 
   // Finance Calculators
-  'cashflow-budget-architect': '💰',
-  'fd-calculator': '🏦',
-  'gst-calculator': '🧾',
-  'investment-return-profiler': '📈',
-  'loan-amortization-suite': '🏠',
-  'ppf-calculator': '🏦',
-  'savings-retirement-hub': '💰',
-  'sip-calculator': '📊',
-  'taxation-compliance-deck': '📋',
-  'wealth-inflation-matrix': '📈',
-  'currency-converter': '💱',
+  'sip-calculator': '📈',
   'loan-emi-calculator': '🏠',
+  'gst-calculator': '🧾',
   'tax-calculator': '📋',
+  'ppf-calculator': '🏦',
+  'fd-calculator': '🏛️',
+  'currency-converter': '💱',
+  'cashflow-budget-architect': '💰',
+  'investment-return-profiler': '📈',
+  'loan-amortization-suite': '📊',
+  'savings-retirement-hub': '💰',
+  'wealth-inflation-matrix': '📈',
+  'taxation-compliance-deck': '📋',
 
   // Health Calculators
   'bmi-calculator': '⚖️',
@@ -109,24 +109,12 @@ export const toolIcons: Record<string, string> = {
 
   // Construction Calculators
   'construction-calculators': '🔨',
-
-  // Retirement Calculators
-  'retirement-calculator': '💰',
-  'retirement-calculators': '💰',
-
-  // Other
-  'page.tsx': '📄',
 };
 
 export const getToolIcon = (slug: string): string => {
-  // Check for exact match
   if (toolIcons[slug]) return toolIcons[slug];
-  
-  // Check for partial matches
   for (const [key, icon] of Object.entries(toolIcons)) {
     if (slug.includes(key)) return icon;
   }
-  
-  // Default fallback
   return '🔧';
 };
