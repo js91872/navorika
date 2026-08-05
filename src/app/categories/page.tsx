@@ -17,53 +17,53 @@ const iconMap: Record<string, string> = {
 };
 
 const colorMap: Record<string, { bg: string; border: string; glow: string; iconBg: string }> = {
-  'pdf-tools': { 
-    bg: 'from-blue-600/20 to-indigo-600/20', 
-    border: 'hover:border-blue-500/50', 
+  'pdf-tools': {
+    bg: 'from-blue-600/20 to-indigo-600/20',
+    border: 'hover:border-blue-500/50',
     glow: 'shadow-blue-500/20',
-    iconBg: 'bg-blue-500/20 text-blue-400'
+    iconBg: 'bg-blue-500/20 text-blue-400',
   },
-  'image-tools': { 
-    bg: 'from-purple-600/20 to-violet-600/20', 
-    border: 'hover:border-purple-500/50', 
+  'image-tools': {
+    bg: 'from-purple-600/20 to-violet-600/20',
+    border: 'hover:border-purple-500/50',
     glow: 'shadow-purple-500/20',
-    iconBg: 'bg-purple-500/20 text-purple-400'
+    iconBg: 'bg-purple-500/20 text-purple-400',
   },
-  'finance-calculators': { 
-    bg: 'from-emerald-600/20 to-teal-600/20', 
-    border: 'hover:border-emerald-500/50', 
+  'finance-calculators': {
+    bg: 'from-emerald-600/20 to-teal-600/20',
+    border: 'hover:border-emerald-500/50',
     glow: 'shadow-emerald-500/20',
-    iconBg: 'bg-emerald-500/20 text-emerald-400'
+    iconBg: 'bg-emerald-500/20 text-emerald-400',
   },
-  'health-calculators': { 
-    bg: 'from-rose-600/20 to-pink-600/20', 
-    border: 'hover:border-rose-500/50', 
+  'health-calculators': {
+    bg: 'from-rose-600/20 to-pink-600/20',
+    border: 'hover:border-rose-500/50',
     glow: 'shadow-rose-500/20',
-    iconBg: 'bg-rose-500/20 text-rose-400'
+    iconBg: 'bg-rose-500/20 text-rose-400',
   },
-  'developer-tools': { 
-    bg: 'from-amber-600/20 to-orange-600/20', 
-    border: 'hover:border-amber-500/50', 
+  'developer-tools': {
+    bg: 'from-amber-600/20 to-orange-600/20',
+    border: 'hover:border-amber-500/50',
     glow: 'shadow-amber-500/20',
-    iconBg: 'bg-amber-500/20 text-amber-400'
+    iconBg: 'bg-amber-500/20 text-amber-400',
   },
-  'retirement-calculators': { 
-    bg: 'from-indigo-600/20 to-purple-600/20', 
-    border: 'hover:border-indigo-500/50', 
+  'retirement-calculators': {
+    bg: 'from-indigo-600/20 to-purple-600/20',
+    border: 'hover:border-indigo-500/50',
     glow: 'shadow-indigo-500/20',
-    iconBg: 'bg-indigo-500/20 text-indigo-400'
+    iconBg: 'bg-indigo-500/20 text-indigo-400',
   },
-  'currency-converters': { 
-    bg: 'from-blue-600/20 to-cyan-600/20', 
-    border: 'hover:border-blue-500/50', 
+  'currency-converters': {
+    bg: 'from-blue-600/20 to-cyan-600/20',
+    border: 'hover:border-blue-500/50',
     glow: 'shadow-blue-500/20',
-    iconBg: 'bg-blue-500/20 text-blue-400'
+    iconBg: 'bg-blue-500/20 text-blue-400',
   },
-  'construction-calculators': { 
-    bg: 'from-cyan-600/20 to-blue-600/20', 
-    border: 'hover:border-cyan-500/50', 
+  'construction-calculators': {
+    bg: 'from-cyan-600/20 to-blue-600/20',
+    border: 'hover:border-cyan-500/50',
     glow: 'shadow-cyan-500/20',
-    iconBg: 'bg-cyan-500/20 text-cyan-400'
+    iconBg: 'bg-cyan-500/20 text-cyan-400',
   },
 };
 
@@ -95,11 +95,11 @@ export default function CategoriesPage() {
           {categories.map((category, index) => {
             const categoryTools = tools.filter(t => t.category === category.slug);
             const icon = iconMap[category.icon] || '📁';
-            const colors = colorMap[category.slug] || { 
-              bg: 'from-indigo-600/20 to-purple-600/20', 
-              border: 'hover:border-indigo-500/50', 
+            const colors = colorMap[category.slug] || {
+              bg: 'from-indigo-600/20 to-purple-600/20',
+              border: 'hover:border-indigo-500/50',
               glow: 'shadow-indigo-500/20',
-              iconBg: 'bg-indigo-500/20 text-indigo-400'
+              iconBg: 'bg-indigo-500/20 text-indigo-400',
             };
             const hasTools = categoryTools.length > 0;
 
@@ -116,7 +116,7 @@ export default function CategoriesPage() {
                   href={hasTools ? `/categories/${category.slug}` : '#'}
                   className={`block h-full ${!hasTools ? 'cursor-not-allowed opacity-60' : ''}`}
                 >
-                  <div className={`relative p-6 rounded-2xl bg-gradient-to-br ${colors.bg} bg-[var(--card)] border-2 border-[var(--border)] ${hasTools ? colors.border : ''} transition-all duration-500 h-full overflow-hidden shadow-lg ${hasTools ? `hover:shadow-xl ${colors.glow}` : ''}`}>
+                  <div className={`relative p-6 rounded-2xl bg-gradient-to-br ${colors.bg} bg-[var(--card)] border-2 border-[var(--border)] ${hasTools ? colors.border : ''} transition-all duration-500 h-full overflow-hidden shadow-lg ${hasTools ? `hover:shadow-2xl ${colors.glow}` : ''}`}>
                     {/* Animated glow on hover */}
                     {hasTools && (
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">

@@ -7,6 +7,17 @@ import { Search, X, Zap, Grid3x3, Filter } from 'lucide-react';
 import { tools, categories } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
 
+const colorMap: Record<string, string> = {
+  'pdf-tools': 'hover:border-blue-500/40',
+  'image-tools': 'hover:border-purple-500/40',
+  'finance-calculators': 'hover:border-emerald-500/40',
+  'health-calculators': 'hover:border-rose-500/40',
+  'developer-tools': 'hover:border-amber-500/40',
+  'retirement-calculators': 'hover:border-indigo-500/40',
+  'currency-converters': 'hover:border-cyan-500/40',
+  'construction-calculators': 'hover:border-teal-500/40',
+};
+
 export default function AllToolsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -29,16 +40,22 @@ export default function AllToolsPage() {
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-2">
-            <Grid3x3 className="h-8 w-8 text-indigo-500" />
-            <h1 className="text-4xl font-black tracking-tight">All Tools</h1>
+            <div className="p-3 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+              <Grid3x3 className="h-8 w-8" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-black tracking-tight">All Tools</h1>
+              <p className="text-[var(--muted-foreground)] ml-0 mt-1">
+                {filteredTools.length} tools · Instant execution
+              </p>
+            </div>
           </div>
-          <p className="text-[var(--muted-foreground)] ml-11">
-            {filteredTools.length} tools · Instant execution
-          </p>
         </div>
 
+        {/* Search + Filter */}
         <div className="flex flex-col sm:flex-row gap-4 mb-10">
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted-foreground)]" />
@@ -47,7 +64,7 @@ export default function AllToolsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search tools by name or description..."
-              className="w-full pl-12 pr-10 py-3.5 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:outline-none focus:border-indigo-500 transition-all"
+              className="w-full pl-12 pr-10 py-3.5 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:outline-none focus:border-indigo-500 transition-all shadow-sm hover:shadow-md"
             />
             {searchQuery && (
               <button
@@ -63,7 +80,7 @@ export default function AllToolsPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="pl-11 pr-8 py-3.5 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] text-[var(--foreground)] focus:outline-none focus:border-indigo-500 transition-all appearance-none min-w-[180px]"
+              className="pl-11 pr-8 py-3.5 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] text-[var(--foreground)] focus:outline-none focus:border-indigo-500 transition-all appearance-none min-w-[180px] shadow-sm hover:shadow-md"
             >
               <option value="all">All Categories</option>
               {categories.map(cat => (
@@ -73,6 +90,7 @@ export default function AllToolsPage() {
           </div>
         </div>
 
+        {/* Tools Grid */}
         <AnimatePresence mode="wait">
           {filteredTools.length === 0 ? (
             <motion.div
@@ -91,41 +109,47 @@ export default function AllToolsPage() {
               exit={{ opacity: 0 }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
             >
-              {filteredTools.map((tool, index) => (
-                <motion.div
-                  key={tool.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.025 }}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                >
-                  <Link
-                    href={`/tools/${tool.slug}`}
-                    className="block p-6 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] hover:border-indigo-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/10 h-full"
+              {filteredTools.map((tool, index) => {
+                const borderColor = colorMap[tool.category] || 'hover:border-indigo-500/40';
+                return (
+                  <motion.div
+                    key={tool.slug}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.025 }}
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    className="group"
                   >
-                    <div className="flex items-start justify-between">
-                      <span className="text-3xl">{getToolIcon(tool.slug)}</span>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] bg-[var(--muted)] px-3 py-1 rounded-full">
-                        {tool.category.split('-')[0]}
-                      </span>
-                    </div>
-                    <h3 className="font-bold text-[var(--foreground)] mt-3 line-clamp-1">
-                      {tool.title}
-                    </h3>
-                    <p className="text-sm text-[var(--muted-foreground)] mt-1.5 line-clamp-2 leading-relaxed">
-                      {tool.description}
-                    </p>
-                    <div className="mt-4 pt-4 border-t border-[var(--border)] flex items-center justify-between text-xs">
-                      <span className="text-[var(--muted-foreground)] flex items-center gap-1.5">
-                        <Zap className="h-3 w-3 text-indigo-500" /> Instant
-                      </span>
-                      <span className="text-[var(--muted-foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:translate-x-1 transition-all duration-300">
-                        →
-                      </span>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={`/tools/${tool.slug}`}
+                      className={`block p-6 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] ${borderColor} transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 h-full`}
+                    >
+                      <div className="flex items-start justify-between">
+                        <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
+                          {getToolIcon(tool.slug)}
+                        </span>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] bg-[var(--muted)] px-3 py-1 rounded-full">
+                          {tool.category.split('-')[0]}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors mt-3 line-clamp-1">
+                        {tool.title}
+                      </h3>
+                      <p className="text-sm text-[var(--muted-foreground)] group-hover:text-[var(--foreground)] transition-colors mt-1.5 line-clamp-2 leading-relaxed">
+                        {tool.description}
+                      </p>
+                      <div className="mt-4 pt-4 border-t border-[var(--border)] flex items-center justify-between text-xs">
+                        <span className="text-[var(--muted-foreground)] flex items-center gap-1.5">
+                          <Zap className="h-3 w-3 text-indigo-500" /> Instant
+                        </span>
+                        <span className="text-[var(--muted-foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:translate-x-1 transition-all duration-300">
+                          →
+                        </span>
+                      </div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           )}
         </AnimatePresence>
