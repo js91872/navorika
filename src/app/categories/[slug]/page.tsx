@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
+import { getToolIcon } from '@/lib/toolIcons';
 
 const iconMap: Record<string, string> = {
   FileText: '📄',
@@ -28,9 +29,7 @@ export default function CategoryPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl font-bold">Category Not Found</h1>
           <p className="text-[var(--muted-foreground)] mt-2">The category you're looking for doesn't exist.</p>
-          <Link href="/categories" className="inline-block mt-4 text-indigo-600 hover:underline">
-            ← Back to Categories
-          </Link>
+          <Link href="/categories" className="inline-block mt-4 text-indigo-600 hover:underline">← Back to Categories</Link>
         </div>
       </div>
     );
@@ -41,10 +40,7 @@ export default function CategoryPage() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 px-4">
       <div className="max-w-7xl mx-auto">
-        <Link
-          href="/categories"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8"
-        >
+        <Link href="/categories" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8">
           <ArrowRight className="h-4 w-4 rotate-180" /> Back to Categories
         </Link>
 
@@ -71,9 +67,14 @@ export default function CategoryPage() {
                 className="group p-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-lg font-black text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {tool.title}
-                  </h3>
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
+                      {getToolIcon(tool.slug)}
+                    </span>
+                    <h3 className="text-lg font-black text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      {tool.title}
+                    </h3>
+                  </div>
                   <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-indigo-500 transition-colors" />
                 </div>
                 <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
