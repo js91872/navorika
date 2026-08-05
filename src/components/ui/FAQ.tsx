@@ -17,6 +17,10 @@ interface FAQProps {
 export default function FAQ({ items, title = 'Frequently Asked Questions' }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  if (!items || items.length === 0) {
+    return null;
+  }
+
   return (
     <section className="mt-12 p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
       <h3 className="text-2xl font-bold mb-6">{title}</h3>
@@ -50,25 +54,6 @@ export default function FAQ({ items, title = 'Frequently Asked Questions' }: FAQ
           </div>
         ))}
       </div>
-
-      {/* JSON-LD Schema for FAQ */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: items.map(item => ({
-              '@type': 'Question',
-              name: item.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: item.answer,
-              },
-            })),
-          }),
-        }}
-      />
     </section>
   );
 }
