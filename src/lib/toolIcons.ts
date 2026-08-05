@@ -69,13 +69,14 @@ export const toolIcons: Record<string, string> = {
   'tax-calculator': '📋',
   'ppf-calculator': '🏦',
   'fd-calculator': '🏛️',
-  'currency-converter': '💱',
   'cashflow-budget-architect': '💰',
   'investment-return-profiler': '📈',
   'loan-amortization-suite': '📊',
   'savings-retirement-hub': '💰',
+  'retirement-calculator': '🐷',
   'wealth-inflation-matrix': '📈',
   'taxation-compliance-deck': '📋',
+  'currency-converter': '💱',
 
   // Health Calculators
   'bmi-calculator': '⚖️',
