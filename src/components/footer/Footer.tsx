@@ -23,38 +23,6 @@ export default function Footer() {
               <Shield className="h-4 w-4" />
               <span className="font-medium">100% CLIENT-SIDE SAFE</span>
             </div>
-
-            {/* Social Links */}
-            <div className="mt-4 flex items-center gap-3">
-              <a
-                href="#"
-                className="p-2 rounded-full bg-[var(--muted)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-indigo-500/10 transition-all text-xl"
-                aria-label="GitHub"
-              >
-                🐙
-              </a>
-              <a
-                href="#"
-                className="p-2 rounded-full bg-[var(--muted)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-indigo-500/10 transition-all text-xl"
-                aria-label="Twitter"
-              >
-                🐦
-              </a>
-              <a
-                href="#"
-                className="p-2 rounded-full bg-[var(--muted)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-indigo-500/10 transition-all text-xl"
-                aria-label="LinkedIn"
-              >
-                🔗
-              </a>
-              <a
-                href="#"
-                className="p-2 rounded-full bg-[var(--muted)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-indigo-500/10 transition-all text-xl"
-                aria-label="YouTube"
-              >
-                ▶️
-              </a>
-            </div>
           </div>
 
           {/* Navigation */}
@@ -120,7 +88,7 @@ export default function Footer() {
                   placeholder="Enter your email"
                   className="flex-1 px-3 py-2 text-sm rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:outline-none focus:border-indigo-500 transition-all"
                 />
-                <button className="p-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition-all">
+                <button className="p-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition-all hover:scale-105">
                   <ArrowRight className="h-4 w-4" />
                 </button>
               </div>
