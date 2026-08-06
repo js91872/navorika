@@ -1,10 +1,10 @@
 export const metadata = {
-  title: 'About NavorikaPro – Universal Client-Side Computing Engine',
-  description: 'Learn about NavorikaPro – the world\'s most advanced client-side computing platform. 100% private, zero-latency, and built for the future.',
-  keywords: 'about, client-side computing, privacy-first, zero-latency, web tools',
+  title: 'About NavorikaPro – 200+ Free Online Tools & Calculators | Client-Side Privacy',
+  description: 'NavorikaPro is a free platform with 200+ online tools, calculators, PDF editors, and utilities. 100% client-side, no data uploads, no signup required. Built for privacy and speed.',
+  keywords: 'about, free online tools, client-side computing, privacy-first tools, no data uploads, free calculators, PDF tools online',
   openGraph: {
-    title: 'About NavorikaPro – Universal Client-Side Computing Engine',
-    description: 'Learn about NavorikaPro – the world\'s most advanced client-side computing platform.',
+    title: 'About NavorikaPro – 200+ Free Online Tools & Calculators',
+    description: 'NavorikaPro is a free platform with 200+ online tools, calculators, PDF editors, and utilities. 100% client-side, no data uploads, no signup required.',
     url: 'https://navorika.vercel.app/about',
     siteName: 'NavorikaPro',
     images: [
@@ -19,8 +19,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About NavorikaPro – Universal Client-Side Computing Engine',
-    description: 'Learn about NavorikaPro – the world\'s most advanced client-side computing platform.',
+    title: 'About NavorikaPro – 200+ Free Online Tools & Calculators',
+    description: 'NavorikaPro is a free platform with 200+ online tools, calculators, PDF editors, and utilities.',
     images: ['https://navorika.vercel.app/og-image.png'],
   },
 };
