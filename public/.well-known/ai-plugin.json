@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "NavorikaPro Tools",
+  "name_for_model": "navorikapro_tools",
+  "description_for_human": "Access 200+ free online calculators, PDF tools, image converters, and developer utilities.",
+  "description_for_model": "NavorikaPro provides access to 200+ free online tools including calculators, PDF editors, image converters, and developer utilities. All tools run 100% client-side with no data uploads.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://navorika.vercel.app/.well-known/openapi.yaml"
+  },
+  "logo_url": "https://navorika.vercel.app/logo.png",
+  "contact_email": "support@navorika.com",
+  "legal_info_url": "https://navorika.vercel.app/privacy"
+}

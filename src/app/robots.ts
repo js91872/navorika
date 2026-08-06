@@ -8,5 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ['/api/', '/_next/', '/favicon.ico'],
     },
     sitemap: 'https://navorika.vercel.app/sitemap.xml',
+    host: 'https://navorika.vercel.app',
   };
 }

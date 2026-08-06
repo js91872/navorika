@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: NavorikaPro Tools API
+  description: Access 200+ free online tools including calculators, PDF editors, and utilities.
+  version: 1.0.0
+servers:
+  - url: https://navorika.vercel.app
+paths:
+  /tools/{slug}:
+    get:
+      summary: Get tool information
+      description: Get detailed information about a specific tool including its description, category, and usage.
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The tool slug (e.g., 'sip-calculator', 'bmi-calculator')
+      responses:
+        '200':
+          description: Tool information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  category:
+                    type: string
+                  keywords:
+                    type: array
+                    items:
+                      type: string
+  /tools:
+    get:
+      summary: List all tools
+      description: Get a list of all available tools with their titles, descriptions, and categories.
+      responses:
+        '200':
+          description: List of tools
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    category:
+                      type: string
+                    slug:
+                      type: string
+  /categories:
+    get:
+      summary: List all categories
+      description: Get a list of all tool categories.
+      responses:
+        '200':
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    slug:
+                      type: string
+                    description:
+                      type: string
+components:
+  schemas:
+    Tool:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        slug:
+          type: string
+        keywords:
+          type: array
+          items:
+            type: string

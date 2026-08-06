@@ -5,14 +5,15 @@ import Footer from '@/components/footer/Footer';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import Schema from '@/components/seo/Schema';
 import SEO from '@/components/seo/SEO';
+import AISearch from '@/components/seo/AISearch';
 
 export const metadata = {
-  title: 'NavorikaPro - 200+ Free Online Tools, Calculators & Utilities',
-  description: '200+ free online tools including calculators, PDF editors, image converters, and developer utilities. 100% client-side, no uploads, no signup.',
-  keywords: 'free online tools, calculators, pdf tools, image tools, developer tools',
+  title: 'NavorikaPro – 200+ Free Online Tools, Calculators & Utilities',
+  description: '200+ free online tools including calculators, PDF editors, image converters, and developer utilities. 100% client-side, no data uploads, no signup required.',
+  keywords: 'free online tools, calculators, pdf tools, image tools, developer tools, client-side, privacy-first, no signup',
   openGraph: {
-    title: 'NavorikaPro - 200+ Free Online Tools, Calculators & Utilities',
-    description: '200+ free online tools including calculators, PDF editors, image converters, and developer utilities.',
+    title: 'NavorikaPro – 200+ Free Online Tools & Calculators',
+    description: 'Free online tools, calculators, PDF editors, image converters, and utilities. 100% client-side. No data uploads. No signup.',
     url: 'https://navorika.vercel.app',
     siteName: 'NavorikaPro',
     images: [
@@ -27,8 +28,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NavorikaPro - 200+ Free Online Tools, Calculators & Utilities',
-    description: '200+ free online tools including calculators, PDF editors, image converters, and developer utilities.',
+    title: 'NavorikaPro – 200+ Free Online Tools & Calculators',
+    description: 'Free online tools, calculators, PDF editors, image converters, and utilities. 100% client-side. No data uploads.',
     images: ['https://navorika.vercel.app/og-image.png'],
   },
   robots: {
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <SEO />
           <Schema />
+          <AISearch />
           <Navbar />
           <main className="flex-1 pt-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
             <Breadcrumb />

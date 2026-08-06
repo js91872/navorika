@@ -31,35 +31,20 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/categories" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
-                  Categories
-                </Link>
-              </li>
-              <li>
-                <Link href="/tools" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
-                  Tools
-                </Link>
-              </li>
-              <li>
-                <Link href="/guides" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
-                  Guides
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
-                  About
-                </Link>
-              </li>
+              {['Home', 'Categories', 'Tools', 'Guides', 'About'].map((item) => (
+                <li key={item}>
+                  <Link
+                    href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                    className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Legal & Newsletter */}
+          {/* Legal */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)] mb-4">
               Legal
@@ -76,23 +61,6 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-
-            {/* Newsletter */}
-            <div className="mt-6">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)] mb-3">
-                Stay Updated
-              </h4>
-              <div className="flex items-center gap-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-3 py-2 text-sm rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:outline-none focus:border-indigo-500 transition-all"
-                />
-                <button className="p-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition-all hover:scale-105">
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 

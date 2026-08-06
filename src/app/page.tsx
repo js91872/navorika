@@ -80,7 +80,7 @@ export default function HomePage() {
       
       <div className="bg-[var(--background)] text-[var(--foreground)]">
         
-        {/* ====== HERO SECTION ====== */}
+        {/* ====== HERO ====== */}
         <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-32 md:pb-24">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-500/5 rounded-full blur-3xl" />
@@ -131,7 +131,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ====== CATEGORIES SECTION – Upgraded ====== */}
+        {/* ====== CATEGORIES – Premium Cards ====== */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -153,7 +153,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {categories.map((category, index) => {
               const categoryTools = tools.filter(t => t.category === category.slug);
               const icon = iconMap[category.icon] || '📁';
@@ -235,7 +235,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {featuredTools.map((tool) => (
                 <Link
                   key={tool.slug}

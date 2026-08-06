@@ -1,6 +1,6 @@
 // Comprehensive icon mapping for all tools
 export const toolIcons: Record<string, string> = {
-  // PDF Tools
+  // ====== PDF TOOLS ======
   'add-image-to-pdf': '📄',
   'add-page-numbers': '🔢',
   'add-watermark': '💧',
@@ -25,7 +25,7 @@ export const toolIcons: Record<string, string> = {
   'unlock-pdf': '🔓',
   'webp-to-pdf': '🖼️',
 
-  // Image Tools
+  // ====== IMAGE TOOLS ======
   'batch-image-converter': '🔄',
   'blur-face': '🎭',
   'change-image-resolution': '📐',
@@ -62,23 +62,23 @@ export const toolIcons: Record<string, string> = {
   'watermark-image': '💧',
   'webp-to-png': '🔄',
 
-  // Finance Calculators
+  // ====== FINANCE TOOLS ======
   'sip-calculator': '📈',
   'loan-emi-calculator': '🏠',
   'gst-calculator': '🧾',
   'tax-calculator': '📋',
   'ppf-calculator': '🏦',
   'fd-calculator': '🏛️',
+  'currency-converter': '💱',
+  'retirement-calculator': '🐷',
   'cashflow-budget-architect': '💰',
   'investment-return-profiler': '📈',
   'loan-amortization-suite': '📊',
   'savings-retirement-hub': '💰',
-  'retirement-calculator': '🐷',
   'wealth-inflation-matrix': '📈',
   'taxation-compliance-deck': '📋',
-  'currency-converter': '💱',
 
-  // Health Calculators
+  // ====== HEALTH TOOLS ======
   'bmi-calculator': '⚖️',
   'bmr-calculator': '🔥',
   'body-fat-calculator': '📊',
@@ -95,7 +95,7 @@ export const toolIcons: Record<string, string> = {
   'waist-to-hip-ratio-calculator': '📏',
   'walking-calories-calculator': '🚶',
 
-  // Developer Tools
+  // ====== DEVELOPER TOOLS ======
   'base64-encoder': '🔐',
   'code-minifier-beautifier': '💻',
   'developer-tools': '💻',
@@ -108,7 +108,9 @@ export const toolIcons: Record<string, string> = {
   'bioluminescent-reader': '🧬',
   'qr-code-studio': '📱',
 
-  // Construction Calculators
+  // ====== CONSTRUCTION TOOLS ======
+  'concrete-calculator': '🏗️',
+  'brick-calculator': '🧱',
   'construction-calculators': '🔨',
 };
 
