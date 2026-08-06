@@ -26,10 +26,10 @@ export function validateUrl(url: string): boolean {
 
 export function sanitizeObject<T extends Record<string, any>>(
   obj: T,
-  allowedKeys: string[]
+  allowedKeys: (keyof T)[]
 ): Partial<T> {
   const result: Partial<T> = {};
-  allowedKeys.forEach(key => {
+  allowedKeys.forEach((key) => {
     if (obj[key] !== undefined) {
       result[key] = obj[key];
     }
