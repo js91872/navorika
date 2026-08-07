@@ -254,3 +254,26 @@ export default function AboutPage() {
     </main>
   );
 }
+
+      {/* ====== GITHUB SECTION ====== */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Github className="h-8 w-8 text-[var(--muted-foreground)]" />
+            <h2 className="text-2xl font-bold">Open Source</h2>
+          </div>
+          <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto mb-6">
+            NavorikaPro is proudly open source. View the code, contribute, or self-host.
+          </p>
+          <a
+            href="https://github.com/js91872/navorika"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--border)] text-[var(--foreground)] hover:border-indigo-500/40 hover:bg-[var(--muted)] transition-all"
+          >
+            <Github className="h-4 w-4" />
+            Star on GitHub
+            <span className="text-xs text-[var(--muted-foreground)]">⭐</span>
+          </a>
+        </div>
+      </section>
