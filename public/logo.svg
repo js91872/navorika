@@ -1,16 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    <!-- Primary gradient -->
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="50%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
     </linearGradient>
+    <!-- Glow gradient -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0"/>
+    </radialGradient>
   </defs>
-  <!-- Icon -->
-  <rect x="0" y="10" width="40" height="40" rx="10" fill="url(#grad)" />
-  <path d="M20 20 L30 25 L20 30 L10 25 Z" fill="white" />
-  <path d="M20 35 L30 30 L20 25 L10 30 Z" fill="white" opacity="0.7" />
+
+  <!-- Glow behind icon -->
+  <circle cx="24" cy="30" r="28" fill="url(#glow)"/>
+
+  <!-- Background hexagon -->
+  <polygon points="24,8 40,16 40,32 24,40 8,32 8,16" fill="url(#logoGrad)" stroke="white" stroke-width="1.5"/>
+  
+  <!-- Inner diamond shape (N symbol) -->
+  <polygon points="24,16 32,22 24,28 16,22" fill="white" opacity="0.9"/>
+  <polygon points="24,28 32,34 24,40 16,34" fill="white" opacity="0.4"/>
+
   <!-- Text -->
-  <text x="50" y="38" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="900" fill="#0a0a0a">
-    Navorika<tspan fill="url(#grad)">Pro</tspan>
+  <text x="54" y="38" font-family="'Inter', -apple-system, sans-serif" font-size="28" font-weight="800" fill="#0a0a0a" letter-spacing="-0.5">
+    Navorika
+  </text>
+  <text x="174" y="38" font-family="'Inter', -apple-system, sans-serif" font-size="28" font-weight="800" fill="url(#logoGrad)" letter-spacing="-0.5">
+    Pro
   </text>
 </svg>
