@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Shield, ArrowRight, Github } from 'lucide-react';
+import { Shield, ArrowRight } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
 
 export default function Footer() {
@@ -18,22 +18,9 @@ export default function Footer() {
               Universal client computing engine offering absolute data privacy,
               instantaneous execution, and world-class productivity tools.
             </p>
-            <div className="mt-4 flex items-center gap-4">
-              <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400">
-                <Shield className="h-4 w-4" />
-                <span className="font-medium">100% CLIENT-SIDE SAFE</span>
-              </div>
-              {/* GitHub Link in Footer */}
-              <a
-                href="https://github.com/js91872/navorika"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-                aria-label="View on GitHub"
-              >
-                <Github className="h-4 w-4" />
-                <span>Open Source</span>
-              </a>
+            <div className="mt-4 flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400">
+              <Shield className="h-4 w-4" />
+              <span className="font-medium">100% CLIENT-SIDE SAFE</span>
             </div>
           </div>
 
@@ -85,14 +72,6 @@ export default function Footer() {
             <Link href="/tools" className="hover:text-[var(--foreground)] transition-colors">Tools</Link>
             <Link href="/guides" className="hover:text-[var(--foreground)] transition-colors">Guides</Link>
             <Link href="/about" className="hover:text-[var(--foreground)] transition-colors">About</Link>
-            <a
-              href="https://github.com/js91872/navorika"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[var(--foreground)] transition-colors flex items-center gap-1"
-            >
-              <Github className="h-3 w-3" /> Source
-            </a>
           </div>
         </div>
       </div>

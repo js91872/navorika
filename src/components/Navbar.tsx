@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Search, Menu, X, Home, Grid3x3, BookOpen, Info } from 'lucide-react';
+import { Sun, Moon, Search, Menu, X } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
+import Logo from '@/components/ui/Logo';
 
 interface NavbarProps {
   onSearchClick?: () => void;
@@ -24,11 +25,11 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { href: '/', label: 'Home', icon: <Home className="h-4 w-4" /> },
-    { href: '/categories', label: 'Categories', icon: <Grid3x3 className="h-4 w-4" /> },
-    { href: '/tools', label: 'Tools', icon: null },
-    { href: '/guides', label: 'Guides', icon: <BookOpen className="h-4 w-4" /> },
-    { href: '/about', label: 'About', icon: <Info className="h-4 w-4" /> },
+    { href: '/', label: 'Home' },
+    { href: '/categories', label: 'Categories' },
+    { href: '/tools', label: 'Tools' },
+    { href: '/guides', label: 'Guides' },
+    { href: '/about', label: 'About' },
   ];
 
   return (
@@ -45,14 +46,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group shrink-0">
-            <span className="text-xl font-black tracking-tight text-[var(--foreground)] transition-all duration-300 group-hover:scale-105">
-              Navorika<span className="text-indigo-600 dark:text-indigo-400">Pro</span>
-            </span>
-            <span className="hidden sm:inline-block px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-wider border border-indigo-500/20">
-              β
-            </span>
-          </Link>
+          <Logo variant="default" showTagline={false} />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
@@ -62,13 +56,12 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1.5 ${
+                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     isActive
                       ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-500/10'
                       : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]/50'
                   }`}
                 >
-                  {link.icon}
                   {link.label}
                   {isActive && (
                     <motion.span
@@ -107,17 +100,12 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
               )}
             </button>
 
-            {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -146,7 +134,6 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
                           : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]/50'
                       }`}
                     >
-                      {link.icon}
                       {link.label}
                     </Link>
                   );
