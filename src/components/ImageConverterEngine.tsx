@@ -7,7 +7,6 @@ import * as pdfjsLib from 'pdfjs-dist';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
-// Simplified type that matches what we get from tools
 interface ToolType {
   slug: string;
   title: string;
@@ -26,7 +25,6 @@ export default function ImageConverterEngine({ meta }: { meta: ToolType | undefi
   const [previewUrl, setPreviewUrl] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Default values if meta is undefined
   const toolMeta = meta || {
     slug: 'image-converter',
     title: 'Image Converter',
@@ -36,11 +34,27 @@ export default function ImageConverterEngine({ meta }: { meta: ToolType | undefi
     heroTitle: 'Image Converter',
     heroDescription: 'Convert your images to different formats easily.',
     formulaExplanation: 'This tool converts images from one format to another.',
-    faq: [
-      { question: 'How does this tool work?', answer: 'All processing happens locally in your browser. No data is ever uploaded to any server.' },
-      { question: 'Is my data safe?', answer: 'Yes! Your files and data never leave your computer.' }
-    ]
+    faq: []
   };
+
+  // Determine the correct back link based on category
+  const getBackLink = () => {
+    const category = toolMeta.category || 'image-tools';
+    const categoryNames: Record<string, string> = {
+      'pdf-tools': 'PDF Tools',
+      'image-tools': 'Image Tools',
+      'finance-calculators': 'Finance Calculators',
+      'health-calculators': 'Health Calculators',
+      'developer-tools': 'Developer Tools',
+      'construction-calculators': 'Construction Calculators'
+    };
+    return {
+      href: `/categories/${category}`,
+      label: `Back to ${categoryNames[category] || 'Tools'}`
+    };
+  };
+
+  const backLink = getBackLink();
 
   useEffect(() => {
     return () => { if (previewUrl) URL.revokeObjectURL(previewUrl); };
@@ -61,7 +75,7 @@ export default function ImageConverterEngine({ meta }: { meta: ToolType | undefi
     try {
       const slug = toolMeta.slug;
       
-      if (slug === 'image-to-pdf' || slug === 'webp-to-pdf') {
+      if (slug === 'image-to-pdf' || slug === 'webp-to-pdf' || slug === 'add-image-to-pdf') {
         const pdfDoc = await PDFDocument.create();
         const imageBytes = await file.arrayBuffer();
         let embeddedImage;
@@ -113,26 +127,32 @@ export default function ImageConverterEngine({ meta }: { meta: ToolType | undefi
         URL.revokeObjectURL(url);
       }
     } catch (err) {
-      alert('Failed to convert image. Please try again.');
+      alert('Failed to convert. Please try again.');
     }
     setIsProcessing(false);
   };
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
-      <a href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8">
-        <ArrowLeft className="h-4 w-4" /> Back to Image Tools
+    <div className="max-w-4xl mx-auto">
+      {/* Back Link */}
+      <a 
+        href={backLink.href} 
+        className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8"
+      >
+        <ArrowLeft className="h-4 w-4" /> {backLink.label}
       </a>
 
+      {/* Tool Header */}
       <div className="text-center mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
           <ShieldCheck className="h-4 w-4" /> Local Processing Only
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
+        <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle || toolMeta.title}</h2>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription || toolMeta.description}</p>
       </div>
 
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16">
+      {/* Upload Area */}
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-8">
         <div className="p-8">
           <div 
             onClick={() => fileInputRef.current?.click()}
@@ -147,41 +167,38 @@ export default function ImageConverterEngine({ meta }: { meta: ToolType | undefi
                 </div>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setFile(null); setPreviewUrl(''); }}
-                  className="p-2 hover:bg-slate-200 rounded-xl"
+                  className="p-2 hover:bg-slate-200 rounded-xl transition-colors"
                 >
                   <X className="h-5 w-5 text-slate-500" />
                 </button>
               </div>
             ) : (
               <>
-                <Upload className="h-10 w-10 text-indigo-500 mb-4" />
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Upload Image</h3>
-                <p className="text-sm text-slate-500 mt-2">Supports JPG, PNG, WEBP, and more</p>
+                <Upload className="h-12 w-12 text-indigo-400 mb-4" />
+                <p className="text-lg font-semibold text-slate-700 dark:text-slate-300">Upload Image</p>
+                <p className="text-sm text-slate-500">Supports JPG, PNG, WEBP, and more</p>
               </>
             )}
-            <input 
-              type="file" 
-              accept="image/*" 
-              className="hidden" 
-              ref={fileInputRef}
-              onChange={handleFileChange}
-            />
           </div>
+          <input 
+            ref={fileInputRef}
+            type="file" 
+            accept="image/*,.pdf" 
+            onChange={handleFileChange}
+            className="hidden"
+          />
 
-          {file && previewUrl && (
-            <div className="mt-6">
-              <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
-                <img src={previewUrl} alt="Preview" className="max-h-96 mx-auto object-contain" />
-              </div>
+          {file && (
+            <div className="mt-6 flex flex-col items-center gap-4">
               <button
                 onClick={executeConversion}
                 disabled={isProcessing}
-                className="w-full mt-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-8 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold hover:shadow-xl transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isProcessing ? (
                   <>
                     <Loader2 className="h-5 w-5 animate-spin" />
-                    Converting...
+                    Processing...
                   </>
                 ) : (
                   <>
@@ -190,24 +207,16 @@ export default function ImageConverterEngine({ meta }: { meta: ToolType | undefi
                   </>
                 )}
               </button>
+              <button
+                onClick={() => { setFile(null); setPreviewUrl(''); }}
+                className="text-sm text-slate-500 hover:text-slate-700 transition-colors flex items-center gap-1"
+              >
+                <RefreshCw className="h-4 w-4" /> Start Over
+              </button>
             </div>
           )}
         </div>
       </div>
-
-      <div className="prose prose-slate dark:prose-invert max-w-none">
-        <h2 className="text-2xl font-bold mb-4">How it Works</h2>
-        <p>{toolMeta.formulaExplanation}</p>
-        <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
-        <div className="space-y-4">
-          {toolMeta.faq && toolMeta.faq.map((item, i) => (
-            <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-              <h4 className="font-bold text-slate-900 dark:text-white mb-2">{item.question}</h4>
-              <p className="text-sm text-slate-600 dark:text-slate-400 m-0">{item.answer}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </main>
+    </div>
   );
 }

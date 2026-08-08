@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
+import { toolDescriptions } from '@/lib/toolDescriptions';
 
 const iconMap: Record<string, string> = {
   FileText: '📄',
@@ -60,38 +61,43 @@ export default function CategoryPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categoryTools.map((tool) => (
-              <Link
-                key={tool.slug}
-                href={`/tools/${tool.slug}`}
-                className="group p-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                      {getToolIcon(tool.slug)}
-                    </span>
-                    <h3 className="text-lg font-black text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                      {tool.title}
-                    </h3>
+            {categoryTools.map((tool) => {
+              const icon = getToolIcon(tool.slug);
+              const description = toolDescriptions[tool.slug] || tool.description;
+              
+              return (
+                <Link
+                  key={tool.slug}
+                  href={`/tools/${tool.slug}`}
+                  className="group p-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
+                        {icon}
+                      </span>
+                      <h3 className="text-lg font-black text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                        {tool.title}
+                      </h3>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-indigo-500 transition-colors" />
                   </div>
-                  <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-indigo-500 transition-colors" />
-                </div>
-                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                  {tool.description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {tool.keywords && tool.keywords.slice(0, 3).map((keyword) => (
-                    <span
-                      key={keyword}
-                      className="px-2 py-1 rounded-full bg-[var(--muted)] text-[var(--muted-foreground)] text-[10px] font-bold uppercase tracking-wider"
-                    >
-                      {keyword}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            ))}
+                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    {description}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {tool.keywords && tool.keywords.slice(0, 3).map((keyword) => (
+                      <span
+                        key={keyword}
+                        className="px-2 py-1 rounded-full bg-[var(--muted)] text-[var(--muted-foreground)] text-[10px] font-bold uppercase tracking-wider"
+                      >
+                        {keyword}
+                      </span>
+                    ))}
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>

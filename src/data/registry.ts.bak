@@ -1,0 +1,821 @@
+export interface Tool {
+  slug: string;
+  title: string;
+  description: string;
+  category: string;
+  keywords: string[];
+  heroTitle?: string;
+  heroDescription?: string;
+  formulaExplanation?: string;
+  faq?: Array<{ question: string; answer: string }>;
+}
+
+export interface Category {
+  slug: string;
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+}
+
+export const categories: Category[] = [
+  {
+    slug: 'pdf-tools',
+    name: 'PDF Tools',
+    description: 'Merge, split, compress, and convert documents locally.',
+    icon: 'FileText',
+    color: 'from-blue-500 to-indigo-600',
+  },
+  {
+    slug: 'image-tools',
+    name: 'Image Tools',
+    description: 'Resize, convert, compress, and edit photos instantly.',
+    icon: 'Image',
+    color: 'from-violet-500 to-purple-600',
+  },
+  {
+    slug: 'finance-calculators',
+    name: 'Finance Calculators',
+    description: 'Calculate SIP, EMI, loans, GST, tax, PPF, FD, and more.',
+    icon: 'Calculator',
+    color: 'from-emerald-500 to-teal-600',
+  },
+  {
+    slug: 'health-calculators',
+    name: 'Health Calculators',
+    description: 'BMI, BMR, TDEE, body fat, fitness, and nutrition metrics.',
+    icon: 'HeartPulse',
+    color: 'from-rose-500 to-pink-600',
+  },
+  {
+    slug: 'developer-tools',
+    name: 'Developer Tools',
+    description: 'JSON, base64, JWT, QR codes, and more.',
+    icon: 'Code',
+    color: 'from-amber-500 to-orange-600',
+  },
+  {
+    slug: 'construction-calculators',
+    name: 'Construction Calculators',
+    description: 'Material estimation and structural dimensions.',
+    icon: 'Hammer',
+    color: 'from-cyan-500 to-blue-600',
+  },
+];
+
+export const tools: Tool[] = [
+  {
+    slug: 'add-image-to-pdf',
+    title: 'Add Image to PDF',
+    description: 'Add Image To Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['add-image-to-pdf', 'add', 'image', 'to', 'pdf'],
+  },
+  {
+    slug: 'add-page-numbers',
+    title: 'Add Page Numbers',
+    description: 'Add Page Numbers tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['add-page-numbers', 'add', 'page', 'numbers'],
+  },
+  {
+    slug: 'add-watermark',
+    title: 'Add Watermark',
+    description: 'Add Watermark tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['add-watermark', 'add', 'watermark'],
+  },
+  {
+    slug: 'base64-encoder',
+    title: 'Base64 Encoder',
+    description: 'Base64 Encoder tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['base64-encoder', 'base64', 'encoder'],
+  },
+  {
+    slug: 'batch-image-converter',
+    title: 'Batch Image Converter',
+    description: 'Batch Image Converter tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['batch-image-converter', 'batch', 'image', 'converter'],
+  },
+  {
+    slug: 'bioluminescent-reader',
+    title: 'Bioluminescent Reader',
+    description: 'Bioluminescent Reader tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['bioluminescent-reader', 'bioluminescent', 'reader'],
+  },
+  {
+    slug: 'blur-face',
+    title: 'Blur Face',
+    description: 'Blur Face tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['blur-face', 'blur', 'face'],
+  },
+  {
+    slug: 'bmi-calculator',
+    title: 'BMI Calculator',
+    description: 'Bmi Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['bmi-calculator', 'bmi', 'calculator'],
+  },
+  {
+    slug: 'bmr-calculator',
+    title: 'BMR Calculator',
+    description: 'Bmr Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['bmr-calculator', 'bmr', 'calculator'],
+  },
+  {
+    slug: 'body-fat-calculator',
+    title: 'Body Fat Calculator',
+    description: 'Body Fat Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['body-fat-calculator', 'body', 'fat', 'calculator'],
+  },
+  {
+    slug: 'calorie-calculator',
+    title: 'Calorie Calculator',
+    description: 'Calorie Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['calorie-calculator', 'calorie', 'calculator'],
+  },
+  {
+    slug: 'calories-burned-calculator',
+    title: 'Calories Burned Calculator',
+    description: 'Calories Burned Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['calories-burned-calculator', 'calories', 'burned', 'calculator'],
+  },
+  {
+    slug: 'cashflow-budget-architect',
+    title: 'Cashflow Budget Architect',
+    description: 'Cashflow Budget Architect tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['cashflow-budget-architect', 'cashflow', 'budget', 'architect'],
+  },
+  {
+    slug: 'change-image-resolution',
+    title: 'Change Image Resolution',
+    description: 'Change Image Resolution tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['change-image-resolution', 'change', 'image', 'resolution'],
+  },
+  {
+    slug: 'code-minifier-beautifier',
+    title: 'Code Minifier & Beautifier',
+    description: 'Code Minifier Beautifier tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['code-minifier-beautifier', 'code', 'minifier', 'beautifier'],
+  },
+  {
+    slug: 'color-extraction-studio',
+    title: 'Color Extraction Studio',
+    description: 'Color Extraction Studio tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['color-extraction-studio', 'color', 'extraction', 'studio'],
+  },
+  {
+    slug: 'compress-image',
+    title: 'Compress Image',
+    description: 'Compress Image tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['compress-image', 'compress', 'image'],
+  },
+  {
+    slug: 'compress-jpg',
+    title: 'Compress JPG',
+    description: 'Compress Jpg tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['compress-jpg', 'compress', 'jpg'],
+  },
+  {
+    slug: 'compress-pdf',
+    title: 'Compress PDF',
+    description: 'Compress Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['compress-pdf', 'compress', 'pdf'],
+  },
+  {
+    slug: 'compress-png',
+    title: 'Compress PNG',
+    description: 'Compress Png tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['compress-png', 'compress', 'png'],
+  },
+  {
+    slug: 'compress-webp',
+    title: 'Compress WEBP',
+    description: 'Compress Webp tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['compress-webp', 'compress', 'webp'],
+  },
+  {
+    slug: 'convert-jpg-to-png',
+    title: 'Convert JPG to PNG',
+    description: 'Convert Jpg To Png tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['convert-jpg-to-png', 'convert', 'jpg', 'to', 'png'],
+  },
+  {
+    slug: 'convert-jpg-to-webp',
+    title: 'Convert JPG to WEBP',
+    description: 'Convert Jpg To Webp tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['convert-jpg-to-webp', 'convert', 'jpg', 'to', 'webp'],
+  },
+  {
+    slug: 'convert-png-to-jpg',
+    title: 'Convert PNG to JPG',
+    description: 'Convert Png To Jpg tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['convert-png-to-jpg', 'convert', 'png', 'to', 'jpg'],
+  },
+  {
+    slug: 'convert-png-to-webp',
+    title: 'Convert PNG to WEBP',
+    description: 'Convert Png To Webp tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['convert-png-to-webp', 'convert', 'png', 'to', 'webp'],
+  },
+  {
+    slug: 'convert-webp-to-jpg',
+    title: 'Convert WEBP to JPG',
+    description: 'Convert Webp To Jpg tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['convert-webp-to-jpg', 'convert', 'webp', 'to', 'jpg'],
+  },
+  {
+    slug: 'crop-image',
+    title: 'Crop Image',
+    description: 'Crop Image tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['crop-image', 'crop', 'image'],
+  },
+  {
+    slug: 'crop-pdf',
+    title: 'Crop PDF',
+    description: 'Crop Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['crop-pdf', 'crop', 'pdf'],
+  },
+  {
+    slug: 'currency-converter',
+    title: 'Currency Converter',
+    description: 'Currency Converter tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['currency-converter', 'currency', 'converter'],
+  },
+  {
+    slug: 'delete-pdf-pages',
+    title: 'Delete PDF Pages',
+    description: 'Delete Pdf Pages tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['delete-pdf-pages', 'delete', 'pdf', 'pages'],
+  },
+  {
+    slug: 'developer-utils',
+    title: 'Developer Utilities',
+    description: 'Developer Utils tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['developer-utils', 'developer', 'utils'],
+  },
+  {
+    slug: 'extract-pdf-pages',
+    title: 'Extract PDF Pages',
+    description: 'Extract Pdf Pages tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['extract-pdf-pages', 'extract', 'pdf', 'pages'],
+  },
+  {
+    slug: 'extract-pdf-text',
+    title: 'Extract PDF Text',
+    description: 'Extract Pdf Text tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['extract-pdf-text', 'extract', 'pdf', 'text'],
+  },
+  {
+    slug: 'fd-calculator',
+    title: 'FD Calculator',
+    description: 'Fd Calculator tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['fd-calculator', 'fd', 'calculator'],
+  },
+  {
+    slug: 'flatten-pdf',
+    title: 'Flatten PDF',
+    description: 'Flatten Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['flatten-pdf', 'flatten', 'pdf'],
+  },
+  {
+    slug: 'gst-calculator',
+    title: 'GST Calculator',
+    description: 'Gst Calculator tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['gst-calculator', 'gst', 'calculator'],
+  },
+  {
+    slug: 'healthy-weight-calculator',
+    title: 'Healthy Weight Calculator',
+    description: 'Healthy Weight Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['healthy-weight-calculator', 'healthy', 'weight', 'calculator'],
+  },
+  {
+    slug: 'heart-rate-calculator',
+    title: 'Heart Rate Calculator',
+    description: 'Heart Rate Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['heart-rate-calculator', 'heart', 'rate', 'calculator'],
+  },
+  {
+    slug: 'heic-to-jpg',
+    title: 'HEIC to JPG',
+    description: 'Heic To Jpg tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['heic-to-jpg', 'heic', 'to', 'jpg'],
+  },
+  {
+    slug: 'heic-to-png',
+    title: 'HEIC to PNG',
+    description: 'Heic To Png tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['heic-to-png', 'heic', 'to', 'png'],
+  },
+  {
+    slug: 'html-to-image',
+    title: 'HTML to Image',
+    description: 'Html To Image tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['html-to-image', 'html', 'to', 'image'],
+  },
+  {
+    slug: 'icon-sticker-maker',
+    title: 'Icon Sticker Maker',
+    description: 'Icon Sticker Maker tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['icon-sticker-maker', 'icon', 'sticker', 'maker'],
+  },
+  {
+    slug: 'id-photo-maker',
+    title: 'ID Photo Maker',
+    description: 'Id Photo Maker tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['id-photo-maker', 'id', 'photo', 'maker'],
+  },
+  {
+    slug: 'ideal-weight-calculator',
+    title: 'Ideal Weight Calculator',
+    description: 'Ideal Weight Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['ideal-weight-calculator', 'ideal', 'weight', 'calculator'],
+  },
+  {
+    slug: 'image-converter',
+    title: 'Image Converter',
+    description: 'Image Converter tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['image-converter', 'image', 'converter'],
+  },
+  {
+    slug: 'image-dpi-converter',
+    title: 'Image DPI Converter',
+    description: 'Image Dpi Converter tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['image-dpi-converter', 'image', 'dpi', 'converter'],
+  },
+  {
+    slug: 'image-metadata-viewer',
+    title: 'Image Metadata Viewer',
+    description: 'Image Metadata Viewer tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['image-metadata-viewer', 'image', 'metadata', 'viewer'],
+  },
+  {
+    slug: 'image-to-pdf',
+    title: 'Image to PDF',
+    description: 'Image To Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['image-to-pdf', 'image', 'to', 'pdf'],
+  },
+  {
+    slug: 'interleave-pdf',
+    title: 'Interleave PDF',
+    description: 'Interleave Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['interleave-pdf', 'interleave', 'pdf'],
+  },
+  {
+    slug: 'investment-return-profiler',
+    title: 'Investment Return Profiler',
+    description: 'Investment Return Profiler tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['investment-return-profiler', 'investment', 'return', 'profiler'],
+  },
+  {
+    slug: 'jpg-to-pdf',
+    title: 'JPG to PDF',
+    description: 'Jpg To Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['jpg-to-pdf', 'jpg', 'to', 'pdf'],
+  },
+  {
+    slug: 'jwt-base64-deck',
+    title: 'JWT Base64 Deck',
+    description: 'Jwt Base64 Deck tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['jwt-base64-deck', 'jwt', 'base64', 'deck'],
+  },
+  {
+    slug: 'lean-body-mass-calculator',
+    title: 'Lean Body Mass Calculator',
+    description: 'Lean Body Mass Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['lean-body-mass-calculator', 'lean', 'body', 'mass', 'calculator'],
+  },
+  {
+    slug: 'loan-amortization-suite',
+    title: 'Loan Amortization Suite',
+    description: 'Loan Amortization Suite tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['loan-amortization-suite', 'loan', 'amortization', 'suite'],
+  },
+  {
+    slug: 'markup-formatter',
+    title: 'Markup Formatter',
+    description: 'Markup Formatter tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['markup-formatter', 'markup', 'formatter'],
+  },
+  {
+    slug: 'meme-generator',
+    title: 'Meme Generator',
+    description: 'Meme Generator tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['meme-generator', 'meme', 'generator'],
+  },
+  {
+    slug: 'merge-pdf',
+    title: 'Merge PDF',
+    description: 'Merge Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['merge-pdf', 'merge', 'pdf'],
+  },
+  {
+    slug: 'pdf-metadata-editor',
+    title: 'PDF Metadata Editor',
+    description: 'Pdf Metadata Editor tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['pdf-metadata-editor', 'pdf', 'metadata', 'editor'],
+  },
+  {
+    slug: 'pdf-to-image',
+    title: 'PDF to Image',
+    description: 'Pdf To Image tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['pdf-to-image', 'pdf', 'to', 'image'],
+  },
+  {
+    slug: 'pdf-to-jpg',
+    title: 'PDF to JPG',
+    description: 'Pdf To Jpg tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['pdf-to-jpg', 'pdf', 'to', 'jpg'],
+  },
+  {
+    slug: 'photo-collage-maker',
+    title: 'Photo Collage Maker',
+    description: 'Photo Collage Maker tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['photo-collage-maker', 'photo', 'collage', 'maker'],
+  },
+  {
+    slug: 'photo-editor',
+    title: 'Photo Editor',
+    description: 'Photo Editor tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['photo-editor', 'photo', 'editor'],
+  },
+  {
+    slug: 'png-to-svg',
+    title: 'PNG to SVG',
+    description: 'Png To Svg tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['png-to-svg', 'png', 'to', 'svg'],
+  },
+  {
+    slug: 'ppf-calculator',
+    title: 'PPF Calculator',
+    description: 'Ppf Calculator tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['ppf-calculator', 'ppf', 'calculator'],
+  },
+  {
+    slug: 'protect-pdf',
+    title: 'Protect PDF',
+    description: 'Protect Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['protect-pdf', 'protect', 'pdf'],
+  },
+  {
+    slug: 'qr-code-studio',
+    title: 'QR Code Studio',
+    description: 'Qr Code Studio tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['qr-code-studio', 'qr', 'code', 'studio'],
+  },
+  {
+    slug: 'reorder-pdf',
+    title: 'Reorder PDF',
+    description: 'Reorder Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['reorder-pdf', 'reorder', 'pdf'],
+  },
+  {
+    slug: 'resize-image',
+    title: 'Resize Image',
+    description: 'Resize Image tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['resize-image', 'resize', 'image'],
+  },
+  {
+    slug: 'rotate-image',
+    title: 'Rotate Image',
+    description: 'Rotate Image tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['rotate-image', 'rotate', 'image'],
+  },
+  {
+    slug: 'rotate-pdf',
+    title: 'Rotate PDF',
+    description: 'Rotate Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['rotate-pdf', 'rotate', 'pdf'],
+  },
+  {
+    slug: 'running-calories-calculator',
+    title: 'Running Calories Calculator',
+    description: 'Running Calories Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['running-calories-calculator', 'running', 'calories', 'calculator'],
+  },
+  {
+    slug: 'savings-retirement-hub',
+    title: 'Savings & Retirement Hub',
+    description: 'Savings Retirement Hub tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['savings-retirement-hub', 'savings', 'retirement', 'hub'],
+  },
+  {
+    slug: 'sign-pdf',
+    title: 'Sign PDF',
+    description: 'Sign Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['sign-pdf', 'sign', 'pdf'],
+  },
+  {
+    slug: 'sip-calculator',
+    title: 'SIP Calculator',
+    description: 'Sip Calculator tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['sip-calculator', 'sip', 'calculator'],
+  },
+  {
+    slug: 'social-media-resizer',
+    title: 'Social Media Resizer',
+    description: 'Social Media Resizer tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['social-media-resizer', 'social', 'media', 'resizer'],
+  },
+  {
+    slug: 'split-pdf',
+    title: 'Split PDF',
+    description: 'Split Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['split-pdf', 'split', 'pdf'],
+  },
+  {
+    slug: 'svg-to-png',
+    title: 'SVG to PNG',
+    description: 'Svg To Png tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['svg-to-png', 'svg', 'to', 'png'],
+  },
+  {
+    slug: 'target-heart-rate-calculator',
+    title: 'Target Heart Rate Calculator',
+    description: 'Target Heart Rate Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['target-heart-rate-calculator', 'target', 'heart', 'rate', 'calculator'],
+  },
+  {
+    slug: 'taxation-compliance-deck',
+    title: 'Taxation Compliance Deck',
+    description: 'Taxation Compliance Deck tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['taxation-compliance-deck', 'taxation', 'compliance', 'deck'],
+  },
+  {
+    slug: 'tdee-calculator',
+    title: 'TDEE Calculator',
+    description: 'Tdee Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['tdee-calculator', 'tdee', 'calculator'],
+  },
+  {
+    slug: 'universal-json-studio',
+    title: 'Universal JSON Studio',
+    description: 'Universal Json Studio tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['universal-json-studio', 'universal', 'json', 'studio'],
+  },
+  {
+    slug: 'unlock-pdf',
+    title: 'Unlock PDF',
+    description: 'Unlock Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['unlock-pdf', 'unlock', 'pdf'],
+  },
+  {
+    slug: 'upscale-image',
+    title: 'Upscale Image',
+    description: 'Upscale Image tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['upscale-image', 'upscale', 'image'],
+  },
+  {
+    slug: 'waist-to-height-ratio-calculator',
+    title: 'Waist to Height Ratio Calculator',
+    description: 'Waist To Height Ratio Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['waist-to-height-ratio-calculator', 'waist', 'to', 'height', 'ratio', 'calculator'],
+  },
+  {
+    slug: 'waist-to-hip-ratio-calculator',
+    title: 'Waist to Hip Ratio Calculator',
+    description: 'Waist To Hip Ratio Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['waist-to-hip-ratio-calculator', 'waist', 'to', 'hip', 'ratio', 'calculator'],
+  },
+  {
+    slug: 'walking-calories-calculator',
+    title: 'Walking Calories Calculator',
+    description: 'Walking Calories Calculator tool for your workflow.',
+    category: 'health-calculators',
+    keywords: ['walking-calories-calculator', 'walking', 'calories', 'calculator'],
+  },
+  {
+    slug: 'watermark-image',
+    title: 'Watermark Image',
+    description: 'Watermark Image tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['watermark-image', 'watermark', 'image'],
+  },
+  {
+    slug: 'wealth-inflation-matrix',
+    title: 'Wealth & Inflation Matrix',
+    description: 'Wealth Inflation Matrix tool for your workflow.',
+    category: 'finance-calculators',
+    keywords: ['wealth-inflation-matrix', 'wealth', 'inflation', 'matrix'],
+  },
+  {
+    slug: 'web-crypto-studio',
+    title: 'Web Crypto Studio',
+    description: 'Web Crypto Studio tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['web-crypto-studio', 'web', 'crypto', 'studio'],
+  },
+  {
+    slug: 'webmaster-seo-builder',
+    title: 'Webmaster SEO Builder',
+    description: 'Webmaster Seo Builder tool for your workflow.',
+    category: 'developer-tools',
+    keywords: ['webmaster-seo-builder', 'webmaster', 'seo', 'builder'],
+  },
+  {
+    slug: 'webp-to-pdf',
+    title: 'WEBP to PDF',
+    description: 'Webp To Pdf tool for your workflow.',
+    category: 'pdf-tools',
+    keywords: ['webp-to-pdf', 'webp', 'to', 'pdf'],
+  },
+  {
+    slug: 'webp-to-png',
+    title: 'WEBP to PNG',
+    description: 'Webp To Png tool for your workflow.',
+    category: 'image-tools',
+    keywords: ['webp-to-png', 'webp', 'to', 'png'],
+  },
+  {
+    slug: 'retirement-calculator',
+    title: 'Retirement Calculator',
+    description: 'Plan your retirement corpus with inflation-adjusted projections.',
+    category: 'finance-calculators',
+    keywords: ['retirement', 'pension', 'savings', 'corpus', 'planning', 'retirement calculator'],
+  },
+];
+
+// Construction Tools
+{
+  slug: 'construction-cost-calculator',
+  title: 'Construction Cost Calculator',
+  description: 'Calculate total construction cost including materials, labor, and overhead.',
+  category: 'construction-calculators',
+  keywords: ['construction cost', 'building cost', 'project estimate', 'cost calculator'],
+  heroTitle: 'Construction Cost Calculator',
+  heroDescription: 'Get accurate construction cost estimates including materials, labor, and overhead for your building project.',
+  formulaExplanation: 'Total Cost = Base Cost + Labor + Materials + Overhead',
+  faq: [
+    {
+      question: 'What factors affect construction costs?',
+      answer: 'Construction costs depend on area, location, material quality, labor rates, and project complexity.'
+    },
+    {
+      question: 'How accurate is this calculator?',
+      answer: 'This calculator provides estimates based on industry standards. Actual costs may vary by location and market conditions.'
+    }
+  ]
+},
+{
+  slug: 'house-construction-cost-calculator',
+  title: 'House Construction Cost Calculator',
+  description: 'Estimate building costs per square foot for residential construction.',
+  category: 'construction-calculators',
+  keywords: ['house cost', 'home building', 'residential construction', 'cost per sqft'],
+  heroTitle: 'House Construction Cost Calculator',
+  heroDescription: 'Plan your home building budget with accurate per-square-foot cost estimation.',
+  formulaExplanation: 'Total House Cost = Area × Cost per Sqft + Additional Costs',
+  faq: [
+    {
+      question: 'What is the average cost to build a house?',
+      answer: 'The average cost varies by location but typically ranges from $100-$200 per square foot for standard construction.'
+    }
+  ]
+},
+{
+  slug: 'cement-calculator',
+  title: 'Cement Calculator',
+  description: 'Estimate cement bags required for your construction project.',
+  category: 'construction-calculators',
+  keywords: ['cement', 'bags', 'concrete mix', 'construction material'],
+  heroTitle: 'Cement Calculator',
+  heroDescription: 'Calculate the exact number of cement bags needed for your concrete work.',
+  formulaExplanation: 'Cement Bags = Volume × Mix Ratio × Density Factor',
+  faq: [
+    {
+      question: 'How many cement bags per cubic yard?',
+      answer: 'Typically, 6-7 bags of 94lb cement are needed per cubic yard of concrete mix.'
+    }
+  ]
+},
+{
+  slug: 'sand-calculator',
+  title: 'Sand Calculator',
+  description: 'Estimate sand volume required for construction projects.',
+  category: 'construction-calculators',
+  keywords: ['sand', 'construction', 'volume', 'material estimate'],
+  heroTitle: 'Sand Calculator',
+  heroDescription: 'Calculate the exact sand volume needed for your construction project.',
+  formulaExplanation: 'Sand Volume = Area × Thickness × Wastage Factor',
+  faq: [
+    {
+      question: 'How much sand do I need?',
+      answer: 'The amount depends on your project type and size. This calculator helps you determine the exact volume needed.'
+    }
+  ]
+},
+{
+  slug: 'steel-weight-calculator',
+  title: 'Steel Weight Calculator',
+  description: 'Calculate weight of steel bars, beams, and structural steel.',
+  category: 'construction-calculators',
+  keywords: ['steel', 'weight', 'structural steel', 'rebar', 'beam'],
+  heroTitle: 'Steel Weight Calculator',
+  heroDescription: 'Calculate the exact weight of steel for your construction project.',
+  formulaExplanation: 'Steel Weight = Volume × Density (7850 kg/m³)',
+  faq: [
+    {
+      question: 'What is the density of steel?',
+      answer: 'The density of mild steel is approximately 7850 kg/m³ or 490 lb/ft³.'
+    }
+  ]
+},
+{
+  slug: 'rebar-calculator',
+  title: 'Rebar Calculator',
+  description: 'Calculate rebar quantity and weight for reinforced concrete.',
+  category: 'construction-calculators',
+  keywords: ['rebar', 'reinforcement', 'concrete', 'steel bar'],
+  heroTitle: 'Rebar Calculator',
+  heroDescription: 'Calculate exact rebar quantities for your concrete reinforcement needs.',
+  formulaExplanation: 'Rebar Length = Perimeter × Number of Bars + Lap Splice',
+  faq: [
+    {
+      question: 'How much rebar do I need?',
+      answer: 'The amount depends on your concrete structure. This calculator helps you determine the exact quantity needed.'
+    }
+  ]
+}
+]

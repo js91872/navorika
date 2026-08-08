@@ -3,9 +3,10 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, Zap, Grid3x3, Filter } from 'lucide-react';
+import { Search, X, Grid3x3, Filter } from 'lucide-react';
 import { tools, categories } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
+import { toolDescriptions } from '@/lib/toolDescriptions';
 
 const colorMap: Record<string, string> = {
   'pdf-tools': 'hover:border-blue-500/40',
@@ -28,7 +29,7 @@ export default function AllToolsPage() {
       const q = searchQuery.toLowerCase();
       result = result.filter(t =>
         t.title.toLowerCase().includes(q) ||
-        t.description.toLowerCase().includes(q)
+        (toolDescriptions[t.slug] || t.description).toLowerCase().includes(q)
       );
     }
     if (selectedCategory !== 'all') {
@@ -36,6 +37,10 @@ export default function AllToolsPage() {
     }
     return result;
   }, [searchQuery, selectedCategory]);
+
+  const getDescription = (slug: string, fallback: string) => {
+    return toolDescriptions[slug] || fallback;
+  };
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
@@ -49,7 +54,7 @@ export default function AllToolsPage() {
             <div>
               <h1 className="text-4xl font-black tracking-tight">All Tools</h1>
               <p className="text-[var(--muted-foreground)] ml-0 mt-1">
-                {filteredTools.length} tools · Instant execution
+                {filteredTools.length} tools · Instant browser processing
               </p>
             </div>
           </div>
@@ -99,52 +104,45 @@ export default function AllToolsPage() {
               exit={{ opacity: 0 }}
               className="text-center py-20 text-[var(--muted-foreground)]"
             >
-              <p className="text-lg">No tools found</p>
-              <p className="text-sm mt-1">Try adjusting your search or filter</p>
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-xl font-semibold mb-2">No tools found</h3>
+              <p className="text-sm">Try adjusting your search or filter</p>
             </motion.div>
           ) : (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
             >
               {filteredTools.map((tool, index) => {
-                const borderColor = colorMap[tool.category] || 'hover:border-indigo-500/40';
+                const icon = getToolIcon(tool.slug);
+                const description = getDescription(tool.slug, tool.description);
+                const colorClass = colorMap[tool.category] || 'hover:border-indigo-500/40';
+                
                 return (
                   <motion.div
                     key={tool.slug}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.025 }}
-                    whileHover={{ y: -6, scale: 1.02 }}
-                    className="group"
+                    transition={{ duration: 0.3, delay: index * 0.03 }}
                   >
                     <Link
                       href={`/tools/${tool.slug}`}
-                      className={`block p-6 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] ${borderColor} transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 h-full`}
+                      className={`group block p-5 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] ${colorClass} transition-all hover:shadow-lg hover:-translate-y-1 duration-300`}
                     >
-                      <div className="flex items-start justify-between">
-                        <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                          {getToolIcon(tool.slug)}
-                        </span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] bg-[var(--muted)] px-3 py-1 rounded-full">
-                          {tool.category.split('-')[0]}
-                        </span>
-                      </div>
-                      <h3 className="font-bold text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors mt-3 line-clamp-1">
-                        {tool.title}
-                      </h3>
-                      <p className="text-sm text-[var(--muted-foreground)] group-hover:text-[var(--foreground)] transition-colors mt-1.5 line-clamp-2 leading-relaxed">
-                        {tool.description}
-                      </p>
-                      <div className="mt-4 pt-4 border-t border-[var(--border)] flex items-center justify-between text-xs">
-                        <span className="text-[var(--muted-foreground)] flex items-center gap-1.5">
-                          <Zap className="h-3 w-3 text-indigo-500" /> Instant
-                        </span>
-                        <span className="text-[var(--muted-foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:translate-x-1 transition-all duration-300">
-                          →
-                        </span>
+                      <div className="flex items-start gap-4">
+                        <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300 text-2xl">
+                          {icon}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-1">
+                            {tool.title}
+                          </h3>
+                          <p className="text-sm text-[var(--muted-foreground)] mt-1 line-clamp-2 leading-relaxed">
+                            {description}
+                          </p>
+                        </div>
                       </div>
                     </Link>
                   </motion.div>

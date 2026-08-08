@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Shield, ArrowRight } from 'lucide-react';
+import { Shield } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
 
 export default function Footer() {
@@ -23,16 +23,6 @@ export default function Footer() {
                 <Shield className="h-4 w-4" />
                 <span className="font-medium">100% CLIENT-SIDE SAFE</span>
               </div>
-              <a
-                href="https://github.com/js91872/navorika"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-                aria-label="View on GitHub"
-              >
-                <span className="text-sm">🐙</span>
-                <span>Open Source</span>
-              </a>
             </div>
           </div>
 
@@ -84,14 +74,6 @@ export default function Footer() {
             <Link href="/tools" className="hover:text-[var(--foreground)] transition-colors">Tools</Link>
             <Link href="/guides" className="hover:text-[var(--foreground)] transition-colors">Guides</Link>
             <Link href="/about" className="hover:text-[var(--foreground)] transition-colors">About</Link>
-            <a
-              href="https://github.com/js91872/navorika"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[var(--foreground)] transition-colors flex items-center gap-1"
-            >
-              <span className="text-sm">🐙</span> Source
-            </a>
           </div>
         </div>
       </div>

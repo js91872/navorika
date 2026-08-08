@@ -1,3 +1,5 @@
+// src/data/registry.ts
+
 export interface Tool {
   slug: string;
   title: string;
@@ -10,13 +12,548 @@ export interface Tool {
   faq?: Array<{ question: string; answer: string }>;
 }
 
-export interface Category {
-  slug: string;
-  name: string;
-  description: string;
-  icon: string;
-  color: string;
-}
+export const tools: Tool[] = [
+  // ====== PDF TOOLS ======
+  {
+    slug: 'add-image-to-pdf',
+    title: 'Add Image to PDF',
+    description: 'Add images to PDF documents instantly. Insert JPG, PNG, WebP, and other images into any PDF file online.',
+    category: 'pdf-tools',
+    keywords: ['pdf', 'add image', 'insert image', 'jpg to pdf', 'png to pdf'],
+    heroTitle: 'Add Image to PDF Online',
+    heroDescription: 'Insert images into your PDF documents easily and quickly. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload your PDF, select the image you want to add, and download the updated PDF instantly.',
+    faq: [
+      {
+        question: 'How do I add an image to a PDF?',
+        answer: 'Upload your PDF, select the image you want to add (JPG, PNG, WebP, etc.), and download your updated PDF instantly.'
+      },
+      {
+        question: 'What image formats are supported?',
+        answer: 'We support JPG, PNG, WebP, BMP, GIF, and SVG image formats for adding to PDFs.'
+      },
+      {
+        question: 'Can I add multiple images to a PDF?',
+        answer: 'Yes, you can add multiple images to your PDF by repeating the process or selecting multiple images at once.'
+      },
+      {
+        question: 'Is my data safe when using this tool?',
+        answer: 'Yes, all processing happens locally in your browser. No files are uploaded to our servers.'
+      },
+      {
+        question: 'Do I need to create an account?',
+        answer: 'No, you can use this tool without any signup or registration.'
+      },
+      {
+        question: 'Can I add images to scanned PDFs?',
+        answer: 'Yes, you can add images to any PDF document, including scanned files.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'add-page-numbers',
+    title: 'Add Page Numbers to PDF',
+    description: 'Add page numbers to PDF documents automatically. Customize position, format, and starting number.',
+    category: 'pdf-tools',
+    keywords: ['pdf', 'page numbers', 'numbering', 'footer', 'header'],
+    heroTitle: 'Add Page Numbers to PDF Online',
+    heroDescription: 'Add page numbers to your PDF documents in seconds. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload your PDF, choose the position and format for page numbers, and download your numbered PDF.',
+    faq: [
+      {
+        question: 'Can I remove existing page numbers before adding new ones?',
+        answer: 'Yes, you can choose to remove existing page numbers and add new ones in your preferred format.'
+      },
+      {
+        question: 'What page number formats are available?',
+        answer: 'We support numeric (1, 2, 3), roman numerals (i, ii, iii), and alphanumeric (A, B, C) formats.'
+      },
+      {
+        question: 'Can I add page numbers to specific pages only?',
+        answer: 'Currently, we support adding page numbers to all pages. For specific pages, you can split and merge PDFs separately.'
+      },
+      {
+        question: 'Is my document secure?',
+        answer: 'Yes, all processing is local. Your files never leave your browser.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'add-watermark',
+    title: 'Add Watermark to PDF',
+    description: 'Add text or image watermarks to PDF files online free. Protect your documents with custom watermarks.',
+    category: 'pdf-tools',
+    keywords: ['pdf', 'watermark', 'protect', 'copyright', 'branding'],
+    heroTitle: 'Add Watermark to PDF Online',
+    heroDescription: 'Protect your PDF documents with custom watermarks. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload your PDF, enter your watermark text or upload an image, and download your watermarked PDF.',
+    faq: [
+      {
+        question: 'Can I add both text and image watermarks?',
+        answer: 'Yes, you can add either text or image watermarks to your PDF documents.'
+      },
+      {
+        question: 'Will the watermark be visible on all pages?',
+        answer: 'Yes, the watermark will be applied to all pages of your PDF document.'
+      },
+      {
+        question: 'Can I customize the watermark position and size?',
+        answer: 'Yes, you can adjust the position, size, opacity, and rotation of the watermark.'
+      },
+      {
+        question: 'Is my document secure?',
+        answer: 'Yes, all processing is local. Your files never leave your device.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'compress-pdf',
+    title: 'Compress PDF',
+    description: 'Compress PDF files online without losing quality. Reduce PDF file size for email, web, and sharing.',
+    category: 'pdf-tools',
+    keywords: ['pdf', 'compress', 'reduce size', 'optimize', 'shrink'],
+    heroTitle: 'Compress PDF Online',
+    heroDescription: 'Reduce the file size of your PDF documents quickly and efficiently. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload your PDF, select compression level, and download your compressed PDF instantly.',
+    faq: [
+      {
+        question: 'How much can I reduce PDF size?',
+        answer: 'Compression varies by file. Typical reductions are 30-70% depending on the content and image quality.'
+      },
+      {
+        question: 'Does compression affect quality?',
+        answer: 'We balance compression with quality. For most documents, the quality difference is minimal while file size is significantly reduced.'
+      },
+      {
+        question: 'Is this tool free?',
+        answer: 'Yes, this tool is completely free to use with no limits on number of compressions.'
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Yes, all processing happens locally in your browser. No files are uploaded to our servers.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'merge-pdf',
+    title: 'Merge PDF',
+    description: 'Merge multiple PDF files into one document. Combine PDF files easily online without uploading.',
+    category: 'pdf-tools',
+    keywords: ['pdf', 'merge', 'combine', 'join', 'concatenate'],
+    heroTitle: 'Merge PDF Files Online',
+    heroDescription: 'Combine multiple PDF files into a single document. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload multiple PDF files, arrange them in your preferred order, and download your merged PDF.',
+    faq: [
+      {
+        question: 'How many PDFs can I merge?',
+        answer: 'You can merge as many PDFs as needed, up to reasonable file size limits for your browser.'
+      },
+      {
+        question: 'Will the merged PDF maintain quality?',
+        answer: 'Yes, we maintain original quality when merging PDF files.'
+      },
+      {
+        question: 'Can I reorder the PDFs before merging?',
+        answer: 'Yes, you can drag and drop to reorder files before merging.'
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Yes, all processing happens locally in your browser. No files are uploaded to our servers.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'split-pdf',
+    title: 'Split PDF',
+    description: 'Split PDF files into multiple documents. Extract specific pages or split PDF into separate files online.',
+    category: 'pdf-tools',
+    keywords: ['pdf', 'split', 'extract', 'separate', 'divide'],
+    heroTitle: 'Split PDF Online',
+    heroDescription: 'Split your PDF files into multiple documents or extract specific pages. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload your PDF, choose page ranges to extract, and download your split PDF files.',
+    faq: [
+      {
+        question: 'Can I split PDF by page ranges?',
+        answer: 'Yes, you can choose specific page ranges to extract into separate PDF files.'
+      },
+      {
+        question: 'Can I remove pages from a PDF?',
+        answer: 'Yes, you can extract the pages you want, effectively removing unwanted pages from the original.'
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Yes, all processing happens locally in your browser. No files are uploaded to our servers.'
+      }
+    ]
+  },
+  
+  // ====== IMAGE TOOLS ======
+  {
+    slug: 'resize-image',
+    title: 'Resize Image',
+    description: 'Resize images online with precision. Scale images to exact dimensions without losing quality.',
+    category: 'image-tools',
+    keywords: ['image', 'resize', 'scale', 'dimensions', 'pixels'],
+    heroTitle: 'Resize Image Online',
+    heroDescription: 'Change the dimensions of your images quickly and easily. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload your image, enter desired dimensions, and download your resized image instantly.',
+    faq: [
+      {
+        question: 'What image formats are supported?',
+        answer: 'We support JPG, PNG, WebP, GIF, and BMP formats.'
+      },
+      {
+        question: 'Does resizing affect image quality?',
+        answer: 'We use high-quality resizing algorithms to maintain image quality as much as possible.'
+      },
+      {
+        question: 'Can I maintain aspect ratio?',
+        answer: 'Yes, you can choose to maintain aspect ratio or set custom dimensions.'
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Yes, all processing happens locally in your browser. No files are uploaded to our servers.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'compress-image',
+    title: 'Compress Image',
+    description: 'Compress images online while maintaining quality. Reduce file size for faster loading and sharing.',
+    category: 'image-tools',
+    keywords: ['image', 'compress', 'reduce size', 'optimize', 'shrink'],
+    heroTitle: 'Compress Image Online',
+    heroDescription: 'Reduce the file size of your images without sacrificing quality. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload your image, choose compression level, and download your compressed image instantly.',
+    faq: [
+      {
+        question: 'How much can I compress an image?',
+        answer: 'Compression depends on the image content and format. Typical reductions are 30-80%.'
+      },
+      {
+        question: 'Will compression affect image quality?',
+        answer: 'We balance compression with quality. Higher compression may have some quality reduction.'
+      },
+      {
+        question: 'What formats are supported?',
+        answer: 'We support JPG, PNG, WebP, and other common image formats.'
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Yes, all processing happens locally in your browser. No files are uploaded to our servers.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'crop-image',
+    title: 'Crop Image',
+    description: 'Crop images online with precision. Cut, trim, and resize images to exact dimensions easily.',
+    category: 'image-tools',
+    keywords: ['image', 'crop', 'trim', 'cut', 'resize'],
+    heroTitle: 'Crop Image Online',
+    heroDescription: 'Crop your images to the perfect dimensions. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload your image, drag to select the crop area, and download your cropped image instantly.',
+    faq: [
+      {
+        question: 'Can I crop to specific aspect ratios?',
+        answer: 'Yes, we offer preset aspect ratios including square, 4:3, 16:9, and custom options.'
+      },
+      {
+        question: 'What formats are supported?',
+        answer: 'We support JPG, PNG, WebP, GIF, and BMP formats.'
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Yes, all processing happens locally in your browser. No files are uploaded to our servers.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'image-converter',
+    title: 'Image Converter',
+    description: 'Convert images between JPG, PNG, WebP, and more. Transform your images to any format online.',
+    category: 'image-tools',
+    keywords: ['image', 'converter', 'jpg', 'png', 'webp', 'format'],
+    heroTitle: 'Image Converter Online',
+    heroDescription: 'Convert your images to any format quickly and easily. Free online tool with no uploads required.',
+    formulaExplanation: 'Upload your image, select the output format, and download your converted image instantly.',
+    faq: [
+      {
+        question: 'What formats can I convert to?',
+        answer: 'You can convert to JPG, PNG, WebP, GIF, and other common formats.'
+      },
+      {
+        question: 'Does conversion affect quality?',
+        answer: 'Quality depends on the source format and output format. Some conversions are lossy while others are lossless.'
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Yes, all processing happens locally in your browser. No files are uploaded to our servers.'
+      }
+    ]
+  },
+  
+  // ====== FINANCE TOOLS ======
+  {
+    slug: 'sip-calculator',
+    title: 'SIP Calculator',
+    description: 'Calculate Systematic Investment Plan (SIP) returns. Plan your mutual fund investments with accurate projections.',
+    category: 'finance-calculators',
+    keywords: ['sip', 'mutual fund', 'investment', 'returns', 'compounding'],
+    heroTitle: 'SIP Calculator Online',
+    heroDescription: 'Calculate your Systematic Investment Plan returns with accurate projections. Free online tool.',
+    formulaExplanation: 'SIP returns are calculated using compound interest formula: M = P × [((1 + r)^n - 1) / r] × (1 + r)',
+    faq: [
+      {
+        question: 'What is SIP?',
+        answer: 'SIP (Systematic Investment Plan) is a method of investing in mutual funds where you invest a fixed amount regularly (monthly, quarterly, etc.).'
+      },
+      {
+        question: 'How is SIP return calculated?',
+        answer: 'SIP returns are calculated using compound interest formula, assuming regular monthly investments at the given rate of return.'
+      },
+      {
+        question: 'Is this a financial advice tool?',
+        answer: 'This is an educational calculator. Please consult a financial advisor for investment advice.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'loan-emi-calculator',
+    title: 'EMI Calculator',
+    description: 'Calculate monthly EMI for home, car, and personal loans. Plan your loan repayments accurately.',
+    category: 'finance-calculators',
+    keywords: ['emi', 'loan', 'home loan', 'car loan', 'personal loan', 'interest'],
+    heroTitle: 'EMI Calculator Online',
+    heroDescription: 'Calculate your monthly EMI for any loan. Free online tool with accurate calculations.',
+    formulaExplanation: 'EMI = P × r × (1+r)^n / ((1+r)^n - 1) where P is loan amount, r is monthly interest rate, and n is number of months.',
+    faq: [
+      {
+        question: 'What is EMI?',
+        answer: 'EMI (Equated Monthly Installment) is the fixed monthly payment you make towards repaying a loan.'
+      },
+      {
+        question: 'How is EMI calculated?',
+        answer: 'EMI is calculated using the formula: P × r × (1+r)^n / ((1+r)^n - 1).'
+      },
+      {
+        question: 'Can I see the complete repayment schedule?',
+        answer: 'Yes, we provide a complete amortization schedule showing each payment.'
+      }
+    ]
+  },
+  
+  // ====== HEALTH TOOLS ======
+  {
+    slug: 'bmi-calculator',
+    title: 'BMI Calculator',
+    description: 'Calculate your Body Mass Index (BMI) instantly. Get health category assessment and weight management recommendations.',
+    category: 'health-calculators',
+    keywords: ['bmi', 'body mass index', 'weight', 'health', 'fitness'],
+    heroTitle: 'BMI Calculator Online',
+    heroDescription: 'Calculate your Body Mass Index instantly and get personalized health recommendations. Free online tool.',
+    formulaExplanation: 'BMI = Weight (kg) / Height (m)²',
+    faq: [
+      {
+        question: 'What is BMI?',
+        answer: 'BMI (Body Mass Index) is a measure of body fat based on height and weight. It\'s used to screen for weight categories.'
+      },
+      {
+        question: 'How is BMI calculated?',
+        answer: 'BMI is calculated by dividing weight in kilograms by height in meters squared (kg/m²).'
+      },
+      {
+        question: 'Is BMI accurate for athletes?',
+        answer: 'BMI may not be accurate for athletes or people with high muscle mass. It\'s a general screening tool.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'bmr-calculator',
+    title: 'BMR Calculator',
+    description: 'Calculate your Basal Metabolic Rate (BMR) daily calorie needs. Understand your body\'s energy requirements at rest.',
+    category: 'health-calculators',
+    keywords: ['bmr', 'basal metabolic rate', 'calories', 'metabolism', 'weight loss'],
+    heroTitle: 'BMR Calculator Online',
+    heroDescription: 'Calculate your Basal Metabolic Rate and understand your daily calorie needs. Free online tool.',
+    formulaExplanation: 'BMR is calculated using the Mifflin-St Jeor equation based on gender, age, weight, and height.',
+    faq: [
+      {
+        question: 'What is BMR?',
+        answer: 'BMR (Basal Metabolic Rate) is the number of calories your body needs to maintain basic life functions at rest.'
+      },
+      {
+        question: 'How is BMR calculated?',
+        answer: 'We use the Mifflin-St Jeor equation, which considers gender, age, weight, and height for accurate BMR calculation.'
+      },
+      {
+        question: 'Why is BMR important?',
+        answer: 'Understanding your BMR is essential for weight management, nutrition planning, and setting calorie goals.'
+      }
+    ]
+  },
+  
+  // ====== CONSTRUCTION TOOLS ======
+  {
+    slug: 'construction-cost-calculator',
+    title: 'Construction Cost Calculator',
+    description: 'Calculate total construction costs including materials, labor, overhead, and contingency. Get accurate building estimates.',
+    category: 'construction-calculators',
+    keywords: ['construction', 'cost', 'building', 'estimate', 'budget', 'project'],
+    heroTitle: 'Construction Cost Calculator Online',
+    heroDescription: 'Get accurate construction cost estimates with detailed breakdown. Free online tool for contractors and homeowners.',
+    formulaExplanation: 'Total Cost = Base Cost + Labor + Materials + Overhead + Contingency',
+    faq: [
+      {
+        question: 'What factors affect construction costs?',
+        answer: 'Construction costs depend on area, location, material quality, labor rates, and project complexity.'
+      },
+      {
+        question: 'How accurate is this calculator?',
+        answer: 'This calculator provides estimates based on industry standards. Actual costs may vary by location and market conditions.'
+      },
+      {
+        question: 'What is contingency in construction costs?',
+        answer: 'Contingency is a buffer added to cover unexpected costs or changes during construction. Typically 5-15% of the total cost.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'concrete-calculator',
+    title: 'Concrete Calculator',
+    description: 'Calculate concrete volume needed for slabs, footings, and columns. Estimate materials for your construction project.',
+    category: 'construction-calculators',
+    keywords: ['concrete', 'volume', 'slab', 'footing', 'column', 'construction'],
+    heroTitle: 'Concrete Calculator Online',
+    heroDescription: 'Calculate the exact concrete volume needed for your construction project. Free online tool.',
+    formulaExplanation: 'Concrete Volume = Length × Width × Depth',
+    faq: [
+      {
+        question: 'How much concrete do I need?',
+        answer: 'The amount depends on your project dimensions. Use our calculator to get the exact volume needed.'
+      },
+      {
+        question: 'What is the standard concrete mix ratio?',
+        answer: 'The standard mix ratio is 1:2:3 (cement:sand:aggregate) for general construction purposes.'
+      },
+      {
+        question: 'Should I order extra concrete?',
+        answer: 'Yes, we recommend ordering 5-10% extra to account for spillage, uneven surfaces, and waste.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'cement-calculator',
+    title: 'Cement Calculator',
+    description: 'Estimate cement bags required for your construction project. Calculate exact cement needs with proper mix ratios.',
+    category: 'construction-calculators',
+    keywords: ['cement', 'bags', 'concrete', 'construction', 'material estimate'],
+    heroTitle: 'Cement Calculator Online',
+    heroDescription: 'Calculate the exact number of cement bags needed for your concrete work. Free online tool.',
+    formulaExplanation: 'Cement Bags = Volume × Mix Ratio × Density Factor',
+    faq: [
+      {
+        question: 'How many cement bags per cubic meter?',
+        answer: 'Typically, 7-8 bags of 50kg cement are needed per cubic meter of concrete mix.'
+      },
+      {
+        question: 'What mix ratio should I use?',
+        answer: 'Common mix ratios are 1:2:3 (general), 1:1.5:3 (strong), and 1:3:6 (foundation).'
+      },
+      {
+        question: 'Should I add extra bags for wastage?',
+        answer: 'Yes, consider adding 5-10% extra for wastage, spillage, and uneven surfaces.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'sand-calculator',
+    title: 'Sand Calculator',
+    description: 'Estimate sand volume required for construction projects. Calculate sand needs for concrete, mortar, and backfilling.',
+    category: 'construction-calculators',
+    keywords: ['sand', 'volume', 'construction', 'material estimate', 'concrete'],
+    heroTitle: 'Sand Calculator Online',
+    heroDescription: 'Calculate the exact sand volume and weight needed for your construction project. Free online tool.',
+    formulaExplanation: 'Sand Volume = Area × Thickness × Wastage Factor',
+    faq: [
+      {
+        question: 'How much sand do I need?',
+        answer: 'The amount depends on your project type and size. This calculator helps you determine the exact volume needed.'
+      },
+      {
+        question: 'What is the density of sand?',
+        answer: 'The density of dry sand is typically 1400-1600 kg/m³, while wet sand is 1600-1800 kg/m³.'
+      },
+      {
+        question: 'Should I order extra sand?',
+        answer: 'Yes, we recommend ordering 5-10% extra to account for wastage and compaction.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'steel-weight-calculator',
+    title: 'Steel Weight Calculator',
+    description: 'Calculate weight of steel bars, beams, and structural steel. Estimate steel materials for construction projects.',
+    category: 'construction-calculators',
+    keywords: ['steel', 'weight', 'structural steel', 'rebar', 'beam', 'construction'],
+    heroTitle: 'Steel Weight Calculator Online',
+    heroDescription: 'Calculate the exact weight of steel for your construction project. Free online tool for contractors.',
+    formulaExplanation: 'Steel Weight = Volume × Density (7850 kg/m³)',
+    faq: [
+      {
+        question: 'What is the density of steel?',
+        answer: 'The density of mild steel is approximately 7850 kg/m³ or 490 lb/ft³.'
+      },
+      {
+        question: 'How is steel weight calculated?',
+        answer: 'Steel weight is calculated by multiplying volume by density. For bars, it\'s cross-sectional area × length × density.'
+      },
+      {
+        question: 'What steel shapes are supported?',
+        answer: 'We support round, square, rectangular, and I-beam shapes for weight calculation.'
+      }
+    ]
+  },
+  
+  {
+    slug: 'rebar-calculator',
+    title: 'Rebar Calculator',
+    description: 'Calculate rebar quantity and weight for reinforced concrete. Plan your reinforcement materials accurately.',
+    category: 'construction-calculators',
+    keywords: ['rebar', 'reinforcement', 'concrete', 'steel bar', 'construction'],
+    heroTitle: 'Rebar Calculator Online',
+    heroDescription: 'Calculate exact rebar quantities for your concrete reinforcement needs. Free online tool.',
+    formulaExplanation: 'Rebar Length = Perimeter × Number of Bars + Lap Splice',
+    faq: [
+      {
+        question: 'How much rebar do I need?',
+        answer: 'The amount depends on your concrete structure. This calculator helps you determine the exact quantity needed.'
+      },
+      {
+        question: 'What is standard rebar spacing?',
+        answer: 'Standard rebar spacing is typically 150-200mm for slabs and 100-150mm for structural elements.'
+      },
+      {
+        question: 'Should I add extra rebar for wastage?',
+        answer: 'Yes, consider adding 5-10% extra for lapping, wastage, and extras.'
+      }
+    ]
+  }
+];
 
 export const categories: Category[] = [
   {
@@ -57,662 +594,8 @@ export const categories: Category[] = [
   {
     slug: 'construction-calculators',
     name: 'Construction Calculators',
-    description: 'Material estimation and structural dimensions.',
-    icon: 'Hammer',
+    description: 'Material estimation, cost planning, and project management tools.',
+    icon: 'Wrench',
     color: 'from-cyan-500 to-blue-600',
-  },
-];
-
-export const tools: Tool[] = [
-  {
-    slug: 'add-image-to-pdf',
-    title: 'Add Image to PDF',
-    description: 'Add Image To Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['add-image-to-pdf', 'add', 'image', 'to', 'pdf'],
-  },
-  {
-    slug: 'add-page-numbers',
-    title: 'Add Page Numbers',
-    description: 'Add Page Numbers tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['add-page-numbers', 'add', 'page', 'numbers'],
-  },
-  {
-    slug: 'add-watermark',
-    title: 'Add Watermark',
-    description: 'Add Watermark tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['add-watermark', 'add', 'watermark'],
-  },
-  {
-    slug: 'base64-encoder',
-    title: 'Base64 Encoder',
-    description: 'Base64 Encoder tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['base64-encoder', 'base64', 'encoder'],
-  },
-  {
-    slug: 'batch-image-converter',
-    title: 'Batch Image Converter',
-    description: 'Batch Image Converter tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['batch-image-converter', 'batch', 'image', 'converter'],
-  },
-  {
-    slug: 'bioluminescent-reader',
-    title: 'Bioluminescent Reader',
-    description: 'Bioluminescent Reader tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['bioluminescent-reader', 'bioluminescent', 'reader'],
-  },
-  {
-    slug: 'blur-face',
-    title: 'Blur Face',
-    description: 'Blur Face tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['blur-face', 'blur', 'face'],
-  },
-  {
-    slug: 'bmi-calculator',
-    title: 'BMI Calculator',
-    description: 'Bmi Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['bmi-calculator', 'bmi', 'calculator'],
-  },
-  {
-    slug: 'bmr-calculator',
-    title: 'BMR Calculator',
-    description: 'Bmr Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['bmr-calculator', 'bmr', 'calculator'],
-  },
-  {
-    slug: 'body-fat-calculator',
-    title: 'Body Fat Calculator',
-    description: 'Body Fat Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['body-fat-calculator', 'body', 'fat', 'calculator'],
-  },
-  {
-    slug: 'calorie-calculator',
-    title: 'Calorie Calculator',
-    description: 'Calorie Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['calorie-calculator', 'calorie', 'calculator'],
-  },
-  {
-    slug: 'calories-burned-calculator',
-    title: 'Calories Burned Calculator',
-    description: 'Calories Burned Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['calories-burned-calculator', 'calories', 'burned', 'calculator'],
-  },
-  {
-    slug: 'cashflow-budget-architect',
-    title: 'Cashflow Budget Architect',
-    description: 'Cashflow Budget Architect tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['cashflow-budget-architect', 'cashflow', 'budget', 'architect'],
-  },
-  {
-    slug: 'change-image-resolution',
-    title: 'Change Image Resolution',
-    description: 'Change Image Resolution tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['change-image-resolution', 'change', 'image', 'resolution'],
-  },
-  {
-    slug: 'code-minifier-beautifier',
-    title: 'Code Minifier & Beautifier',
-    description: 'Code Minifier Beautifier tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['code-minifier-beautifier', 'code', 'minifier', 'beautifier'],
-  },
-  {
-    slug: 'color-extraction-studio',
-    title: 'Color Extraction Studio',
-    description: 'Color Extraction Studio tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['color-extraction-studio', 'color', 'extraction', 'studio'],
-  },
-  {
-    slug: 'compress-image',
-    title: 'Compress Image',
-    description: 'Compress Image tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['compress-image', 'compress', 'image'],
-  },
-  {
-    slug: 'compress-jpg',
-    title: 'Compress JPG',
-    description: 'Compress Jpg tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['compress-jpg', 'compress', 'jpg'],
-  },
-  {
-    slug: 'compress-pdf',
-    title: 'Compress PDF',
-    description: 'Compress Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['compress-pdf', 'compress', 'pdf'],
-  },
-  {
-    slug: 'compress-png',
-    title: 'Compress PNG',
-    description: 'Compress Png tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['compress-png', 'compress', 'png'],
-  },
-  {
-    slug: 'compress-webp',
-    title: 'Compress WEBP',
-    description: 'Compress Webp tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['compress-webp', 'compress', 'webp'],
-  },
-  {
-    slug: 'convert-jpg-to-png',
-    title: 'Convert JPG to PNG',
-    description: 'Convert Jpg To Png tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['convert-jpg-to-png', 'convert', 'jpg', 'to', 'png'],
-  },
-  {
-    slug: 'convert-jpg-to-webp',
-    title: 'Convert JPG to WEBP',
-    description: 'Convert Jpg To Webp tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['convert-jpg-to-webp', 'convert', 'jpg', 'to', 'webp'],
-  },
-  {
-    slug: 'convert-png-to-jpg',
-    title: 'Convert PNG to JPG',
-    description: 'Convert Png To Jpg tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['convert-png-to-jpg', 'convert', 'png', 'to', 'jpg'],
-  },
-  {
-    slug: 'convert-png-to-webp',
-    title: 'Convert PNG to WEBP',
-    description: 'Convert Png To Webp tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['convert-png-to-webp', 'convert', 'png', 'to', 'webp'],
-  },
-  {
-    slug: 'convert-webp-to-jpg',
-    title: 'Convert WEBP to JPG',
-    description: 'Convert Webp To Jpg tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['convert-webp-to-jpg', 'convert', 'webp', 'to', 'jpg'],
-  },
-  {
-    slug: 'crop-image',
-    title: 'Crop Image',
-    description: 'Crop Image tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['crop-image', 'crop', 'image'],
-  },
-  {
-    slug: 'crop-pdf',
-    title: 'Crop PDF',
-    description: 'Crop Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['crop-pdf', 'crop', 'pdf'],
-  },
-  {
-    slug: 'currency-converter',
-    title: 'Currency Converter',
-    description: 'Currency Converter tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['currency-converter', 'currency', 'converter'],
-  },
-  {
-    slug: 'delete-pdf-pages',
-    title: 'Delete PDF Pages',
-    description: 'Delete Pdf Pages tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['delete-pdf-pages', 'delete', 'pdf', 'pages'],
-  },
-  {
-    slug: 'developer-utils',
-    title: 'Developer Utilities',
-    description: 'Developer Utils tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['developer-utils', 'developer', 'utils'],
-  },
-  {
-    slug: 'extract-pdf-pages',
-    title: 'Extract PDF Pages',
-    description: 'Extract Pdf Pages tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['extract-pdf-pages', 'extract', 'pdf', 'pages'],
-  },
-  {
-    slug: 'extract-pdf-text',
-    title: 'Extract PDF Text',
-    description: 'Extract Pdf Text tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['extract-pdf-text', 'extract', 'pdf', 'text'],
-  },
-  {
-    slug: 'fd-calculator',
-    title: 'FD Calculator',
-    description: 'Fd Calculator tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['fd-calculator', 'fd', 'calculator'],
-  },
-  {
-    slug: 'flatten-pdf',
-    title: 'Flatten PDF',
-    description: 'Flatten Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['flatten-pdf', 'flatten', 'pdf'],
-  },
-  {
-    slug: 'gst-calculator',
-    title: 'GST Calculator',
-    description: 'Gst Calculator tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['gst-calculator', 'gst', 'calculator'],
-  },
-  {
-    slug: 'healthy-weight-calculator',
-    title: 'Healthy Weight Calculator',
-    description: 'Healthy Weight Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['healthy-weight-calculator', 'healthy', 'weight', 'calculator'],
-  },
-  {
-    slug: 'heart-rate-calculator',
-    title: 'Heart Rate Calculator',
-    description: 'Heart Rate Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['heart-rate-calculator', 'heart', 'rate', 'calculator'],
-  },
-  {
-    slug: 'heic-to-jpg',
-    title: 'HEIC to JPG',
-    description: 'Heic To Jpg tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['heic-to-jpg', 'heic', 'to', 'jpg'],
-  },
-  {
-    slug: 'heic-to-png',
-    title: 'HEIC to PNG',
-    description: 'Heic To Png tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['heic-to-png', 'heic', 'to', 'png'],
-  },
-  {
-    slug: 'html-to-image',
-    title: 'HTML to Image',
-    description: 'Html To Image tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['html-to-image', 'html', 'to', 'image'],
-  },
-  {
-    slug: 'icon-sticker-maker',
-    title: 'Icon Sticker Maker',
-    description: 'Icon Sticker Maker tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['icon-sticker-maker', 'icon', 'sticker', 'maker'],
-  },
-  {
-    slug: 'id-photo-maker',
-    title: 'ID Photo Maker',
-    description: 'Id Photo Maker tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['id-photo-maker', 'id', 'photo', 'maker'],
-  },
-  {
-    slug: 'ideal-weight-calculator',
-    title: 'Ideal Weight Calculator',
-    description: 'Ideal Weight Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['ideal-weight-calculator', 'ideal', 'weight', 'calculator'],
-  },
-  {
-    slug: 'image-converter',
-    title: 'Image Converter',
-    description: 'Image Converter tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['image-converter', 'image', 'converter'],
-  },
-  {
-    slug: 'image-dpi-converter',
-    title: 'Image DPI Converter',
-    description: 'Image Dpi Converter tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['image-dpi-converter', 'image', 'dpi', 'converter'],
-  },
-  {
-    slug: 'image-metadata-viewer',
-    title: 'Image Metadata Viewer',
-    description: 'Image Metadata Viewer tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['image-metadata-viewer', 'image', 'metadata', 'viewer'],
-  },
-  {
-    slug: 'image-to-pdf',
-    title: 'Image to PDF',
-    description: 'Image To Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['image-to-pdf', 'image', 'to', 'pdf'],
-  },
-  {
-    slug: 'interleave-pdf',
-    title: 'Interleave PDF',
-    description: 'Interleave Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['interleave-pdf', 'interleave', 'pdf'],
-  },
-  {
-    slug: 'investment-return-profiler',
-    title: 'Investment Return Profiler',
-    description: 'Investment Return Profiler tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['investment-return-profiler', 'investment', 'return', 'profiler'],
-  },
-  {
-    slug: 'jpg-to-pdf',
-    title: 'JPG to PDF',
-    description: 'Jpg To Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['jpg-to-pdf', 'jpg', 'to', 'pdf'],
-  },
-  {
-    slug: 'jwt-base64-deck',
-    title: 'JWT Base64 Deck',
-    description: 'Jwt Base64 Deck tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['jwt-base64-deck', 'jwt', 'base64', 'deck'],
-  },
-  {
-    slug: 'lean-body-mass-calculator',
-    title: 'Lean Body Mass Calculator',
-    description: 'Lean Body Mass Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['lean-body-mass-calculator', 'lean', 'body', 'mass', 'calculator'],
-  },
-  {
-    slug: 'loan-amortization-suite',
-    title: 'Loan Amortization Suite',
-    description: 'Loan Amortization Suite tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['loan-amortization-suite', 'loan', 'amortization', 'suite'],
-  },
-  {
-    slug: 'markup-formatter',
-    title: 'Markup Formatter',
-    description: 'Markup Formatter tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['markup-formatter', 'markup', 'formatter'],
-  },
-  {
-    slug: 'meme-generator',
-    title: 'Meme Generator',
-    description: 'Meme Generator tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['meme-generator', 'meme', 'generator'],
-  },
-  {
-    slug: 'merge-pdf',
-    title: 'Merge PDF',
-    description: 'Merge Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['merge-pdf', 'merge', 'pdf'],
-  },
-  {
-    slug: 'pdf-metadata-editor',
-    title: 'PDF Metadata Editor',
-    description: 'Pdf Metadata Editor tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['pdf-metadata-editor', 'pdf', 'metadata', 'editor'],
-  },
-  {
-    slug: 'pdf-to-image',
-    title: 'PDF to Image',
-    description: 'Pdf To Image tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['pdf-to-image', 'pdf', 'to', 'image'],
-  },
-  {
-    slug: 'pdf-to-jpg',
-    title: 'PDF to JPG',
-    description: 'Pdf To Jpg tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['pdf-to-jpg', 'pdf', 'to', 'jpg'],
-  },
-  {
-    slug: 'photo-collage-maker',
-    title: 'Photo Collage Maker',
-    description: 'Photo Collage Maker tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['photo-collage-maker', 'photo', 'collage', 'maker'],
-  },
-  {
-    slug: 'photo-editor',
-    title: 'Photo Editor',
-    description: 'Photo Editor tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['photo-editor', 'photo', 'editor'],
-  },
-  {
-    slug: 'png-to-svg',
-    title: 'PNG to SVG',
-    description: 'Png To Svg tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['png-to-svg', 'png', 'to', 'svg'],
-  },
-  {
-    slug: 'ppf-calculator',
-    title: 'PPF Calculator',
-    description: 'Ppf Calculator tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['ppf-calculator', 'ppf', 'calculator'],
-  },
-  {
-    slug: 'protect-pdf',
-    title: 'Protect PDF',
-    description: 'Protect Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['protect-pdf', 'protect', 'pdf'],
-  },
-  {
-    slug: 'qr-code-studio',
-    title: 'QR Code Studio',
-    description: 'Qr Code Studio tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['qr-code-studio', 'qr', 'code', 'studio'],
-  },
-  {
-    slug: 'reorder-pdf',
-    title: 'Reorder PDF',
-    description: 'Reorder Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['reorder-pdf', 'reorder', 'pdf'],
-  },
-  {
-    slug: 'resize-image',
-    title: 'Resize Image',
-    description: 'Resize Image tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['resize-image', 'resize', 'image'],
-  },
-  {
-    slug: 'rotate-image',
-    title: 'Rotate Image',
-    description: 'Rotate Image tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['rotate-image', 'rotate', 'image'],
-  },
-  {
-    slug: 'rotate-pdf',
-    title: 'Rotate PDF',
-    description: 'Rotate Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['rotate-pdf', 'rotate', 'pdf'],
-  },
-  {
-    slug: 'running-calories-calculator',
-    title: 'Running Calories Calculator',
-    description: 'Running Calories Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['running-calories-calculator', 'running', 'calories', 'calculator'],
-  },
-  {
-    slug: 'savings-retirement-hub',
-    title: 'Savings & Retirement Hub',
-    description: 'Savings Retirement Hub tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['savings-retirement-hub', 'savings', 'retirement', 'hub'],
-  },
-  {
-    slug: 'sign-pdf',
-    title: 'Sign PDF',
-    description: 'Sign Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['sign-pdf', 'sign', 'pdf'],
-  },
-  {
-    slug: 'sip-calculator',
-    title: 'SIP Calculator',
-    description: 'Sip Calculator tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['sip-calculator', 'sip', 'calculator'],
-  },
-  {
-    slug: 'social-media-resizer',
-    title: 'Social Media Resizer',
-    description: 'Social Media Resizer tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['social-media-resizer', 'social', 'media', 'resizer'],
-  },
-  {
-    slug: 'split-pdf',
-    title: 'Split PDF',
-    description: 'Split Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['split-pdf', 'split', 'pdf'],
-  },
-  {
-    slug: 'svg-to-png',
-    title: 'SVG to PNG',
-    description: 'Svg To Png tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['svg-to-png', 'svg', 'to', 'png'],
-  },
-  {
-    slug: 'target-heart-rate-calculator',
-    title: 'Target Heart Rate Calculator',
-    description: 'Target Heart Rate Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['target-heart-rate-calculator', 'target', 'heart', 'rate', 'calculator'],
-  },
-  {
-    slug: 'taxation-compliance-deck',
-    title: 'Taxation Compliance Deck',
-    description: 'Taxation Compliance Deck tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['taxation-compliance-deck', 'taxation', 'compliance', 'deck'],
-  },
-  {
-    slug: 'tdee-calculator',
-    title: 'TDEE Calculator',
-    description: 'Tdee Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['tdee-calculator', 'tdee', 'calculator'],
-  },
-  {
-    slug: 'universal-json-studio',
-    title: 'Universal JSON Studio',
-    description: 'Universal Json Studio tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['universal-json-studio', 'universal', 'json', 'studio'],
-  },
-  {
-    slug: 'unlock-pdf',
-    title: 'Unlock PDF',
-    description: 'Unlock Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['unlock-pdf', 'unlock', 'pdf'],
-  },
-  {
-    slug: 'upscale-image',
-    title: 'Upscale Image',
-    description: 'Upscale Image tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['upscale-image', 'upscale', 'image'],
-  },
-  {
-    slug: 'waist-to-height-ratio-calculator',
-    title: 'Waist to Height Ratio Calculator',
-    description: 'Waist To Height Ratio Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['waist-to-height-ratio-calculator', 'waist', 'to', 'height', 'ratio', 'calculator'],
-  },
-  {
-    slug: 'waist-to-hip-ratio-calculator',
-    title: 'Waist to Hip Ratio Calculator',
-    description: 'Waist To Hip Ratio Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['waist-to-hip-ratio-calculator', 'waist', 'to', 'hip', 'ratio', 'calculator'],
-  },
-  {
-    slug: 'walking-calories-calculator',
-    title: 'Walking Calories Calculator',
-    description: 'Walking Calories Calculator tool for your workflow.',
-    category: 'health-calculators',
-    keywords: ['walking-calories-calculator', 'walking', 'calories', 'calculator'],
-  },
-  {
-    slug: 'watermark-image',
-    title: 'Watermark Image',
-    description: 'Watermark Image tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['watermark-image', 'watermark', 'image'],
-  },
-  {
-    slug: 'wealth-inflation-matrix',
-    title: 'Wealth & Inflation Matrix',
-    description: 'Wealth Inflation Matrix tool for your workflow.',
-    category: 'finance-calculators',
-    keywords: ['wealth-inflation-matrix', 'wealth', 'inflation', 'matrix'],
-  },
-  {
-    slug: 'web-crypto-studio',
-    title: 'Web Crypto Studio',
-    description: 'Web Crypto Studio tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['web-crypto-studio', 'web', 'crypto', 'studio'],
-  },
-  {
-    slug: 'webmaster-seo-builder',
-    title: 'Webmaster SEO Builder',
-    description: 'Webmaster Seo Builder tool for your workflow.',
-    category: 'developer-tools',
-    keywords: ['webmaster-seo-builder', 'webmaster', 'seo', 'builder'],
-  },
-  {
-    slug: 'webp-to-pdf',
-    title: 'WEBP to PDF',
-    description: 'Webp To Pdf tool for your workflow.',
-    category: 'pdf-tools',
-    keywords: ['webp-to-pdf', 'webp', 'to', 'pdf'],
-  },
-  {
-    slug: 'webp-to-png',
-    title: 'WEBP to PNG',
-    description: 'Webp To Png tool for your workflow.',
-    category: 'image-tools',
-    keywords: ['webp-to-png', 'webp', 'to', 'png'],
-  },
-  {
-    slug: 'retirement-calculator',
-    title: 'Retirement Calculator',
-    description: 'Plan your retirement corpus with inflation-adjusted projections.',
-    category: 'finance-calculators',
-    keywords: ['retirement', 'pension', 'savings', 'corpus', 'planning', 'retirement calculator'],
-  },
+  }
 ];

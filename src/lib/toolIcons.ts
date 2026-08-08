@@ -1,6 +1,6 @@
-// Comprehensive icon mapping for all tools
+// Simple emoji-based icon mapping
 export const toolIcons: Record<string, string> = {
-  // ====== PDF TOOLS ======
+  // PDF Tools
   'add-image-to-pdf': '📄',
   'add-page-numbers': '🔢',
   'add-watermark': '💧',
@@ -25,7 +25,7 @@ export const toolIcons: Record<string, string> = {
   'unlock-pdf': '🔓',
   'webp-to-pdf': '🖼️',
 
-  // ====== IMAGE TOOLS ======
+  // Image Tools
   'batch-image-converter': '🔄',
   'blur-face': '🎭',
   'change-image-resolution': '📐',
@@ -49,36 +49,32 @@ export const toolIcons: Record<string, string> = {
   'image-dpi-converter': '📐',
   'image-metadata-viewer': '🏷️',
   'image-tools': '🖼️',
-  'image-to-pdf': '🖼️',
-  'meme-generator': '😂',
+  'image-to-pdf': '📄',
   'photo-collage-maker': '🖼️',
   'photo-editor': '✏️',
   'png-to-svg': '🔄',
   'resize-image': '📐',
   'rotate-image': '🔄',
-  'social-media-resizer': '📱',
+  'social-media-resizer': '📐',
   'svg-to-png': '🔄',
   'upscale-image': '🔍',
   'watermark-image': '💧',
   'webp-to-png': '🔄',
 
-  // ====== FINANCE TOOLS ======
-  'sip-calculator': '📈',
-  'loan-emi-calculator': '🏠',
-  'gst-calculator': '🧾',
-  'tax-calculator': '📋',
-  'ppf-calculator': '🏦',
-  'fd-calculator': '🏛️',
+  // Finance Tools
   'currency-converter': '💱',
-  'retirement-calculator': '🐷',
-  'cashflow-budget-architect': '💰',
-  'investment-return-profiler': '📈',
+  'fd-calculator': '🏦',
+  'gst-calculator': '🧾',
+  'investment-return-calculator': '📈',
   'loan-amortization-suite': '📊',
-  'savings-retirement-hub': '💰',
-  'wealth-inflation-matrix': '📈',
-  'taxation-compliance-deck': '📋',
+  'loan-emi-calculator': '🧮',
+  'ppf-calculator': '🐖',
+  'retirement-calculator': '👛',
+  'sip-calculator': '📈',
+  'tax-calculator': '🧾',
+  'finance-calculators': '🧮',
 
-  // ====== HEALTH TOOLS ======
+  // Health Tools
   'bmi-calculator': '⚖️',
   'bmr-calculator': '🔥',
   'body-fat-calculator': '📊',
@@ -94,30 +90,38 @@ export const toolIcons: Record<string, string> = {
   'waist-to-height-ratio-calculator': '📏',
   'waist-to-hip-ratio-calculator': '📏',
   'walking-calories-calculator': '🚶',
+  'health-calculators': '❤️',
 
-  // ====== DEVELOPER TOOLS ======
+  // Developer Tools
   'base64-encoder': '🔐',
   'code-minifier-beautifier': '💻',
-  'developer-tools': '💻',
-  'developer-utils': '🛠️',
-  'jwt-base64-deck': '🔑',
-  'markup-formatter': '📝',
-  'universal-json-studio': '📋',
-  'web-crypto-studio': '🔒',
-  'webmaster-seo-builder': '🔍',
-  'bioluminescent-reader': '🧬',
+  'jwt-decoder': '🔓',
+  'markup-formatter': '💻',
   'qr-code-studio': '📱',
+  'universal-json-studio': '{}',
+  'web-crypto-studio': '🔒',
+  'webmaster-seo-builder': '🌐',
+  'developer-tools': '💻',
 
-  // ====== CONSTRUCTION TOOLS ======
-  'concrete-calculator': '🏗️',
+  // Construction Tools
   'brick-calculator': '🧱',
-  'construction-calculators': '🔨',
+  'cement-calculator': '📦',
+  'concrete-calculator': '🏗️',
+  'construction-cost-calculator': '🏗️',
+  'excavation-calculator': '🚜',
+  'gravel-calculator': '🪨',
+  'house-construction-cost-calculator': '🏠',
+  'rebar-calculator': '🔩',
+  'roof-area-calculator': '🏠',
+  'sand-calculator': '🏖️',
+  'steel-weight-calculator': '⚙️',
+  'tile-calculator': '🧱',
+  'construction-calculators': '🔧',
+
+  // Generic fallback
+  'default': '🔧',
 };
 
-export const getToolIcon = (slug: string): string => {
-  if (toolIcons[slug]) return toolIcons[slug];
-  for (const [key, icon] of Object.entries(toolIcons)) {
-    if (slug.includes(key)) return icon;
-  }
-  return '🔧';
-};
+export function getToolIcon(slug: string): string {
+  return toolIcons[slug] || toolIcons['default'] || '🔧';
+}

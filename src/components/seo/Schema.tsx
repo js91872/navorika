@@ -1,11 +1,8 @@
 'use client';
-
 import { usePathname } from 'next/navigation';
-
 export default function Schema() {
   const pathname = usePathname();
   const baseUrl = 'https://navorika.vercel.app';
-
   // Organization Schema
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -15,7 +12,6 @@ export default function Schema() {
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
     sameAs: [
-      'https://github.com/js91872/navorika',
     ],
     potentialAction: {
       '@type': 'SearchAction',
@@ -23,7 +19,6 @@ export default function Schema() {
       'query-input': 'required name=search_term_string',
     },
   };
-
   // Website Schema
   const websiteSchema = {
     '@context': 'https://schema.org',
@@ -37,7 +32,6 @@ export default function Schema() {
       'query-input': 'required name=search_term_string',
     },
   };
-
   // Breadcrumb Schema
   const segments = pathname.split('/').filter(Boolean);
   const breadcrumbItems = [
@@ -48,7 +42,6 @@ export default function Schema() {
       return { name, url: href };
     })
   ];
-
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -59,7 +52,6 @@ export default function Schema() {
       item: item.url,
     })),
   };
-
   return (
     <>
       <script

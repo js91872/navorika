@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import EnhancedToolWrapper from './EnhancedToolWrapper';
 
 // Dynamically import ImageConverterEngine with SSR disabled
 const ImageConverterEngine = dynamic(
@@ -16,5 +17,9 @@ const ImageConverterEngine = dynamic(
 );
 
 export default function ImageConverterEngineWrapper(props: any) {
-  return <ImageConverterEngine {...props} />;
+  return (
+    <EnhancedToolWrapper meta={props.meta}>
+      <ImageConverterEngine {...props} />
+    </EnhancedToolWrapper>
+  );
 }
