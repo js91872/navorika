@@ -12,7 +12,7 @@ export default function ArticleSchema({
   title, 
   description, 
   date, 
-  image = 'https://navorika.vercel.app/og-image.png',
+  image = 'https://navorika.com/og-image.png',
   author = 'NavorikaPro Team',
 }: ArticleSchemaProps) {
   const schema = {
@@ -29,7 +29,7 @@ export default function ArticleSchema({
       name: 'NavorikaPro',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://navorika.vercel.app/logo.png',
+        url: 'https://navorika.com/logo.png',
       },
     },
     datePublished: date,

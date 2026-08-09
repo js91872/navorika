@@ -8,7 +8,7 @@ export default function IconStickerMakerTool() {
   const meta = tools.find(t => t.slug === 'icon-sticker-maker');
   // Default meta if not found
   const toolMeta = meta || {
-    heroTitle: "Icon Sticker Maker",
+    heroTitle: "Icon Icon Sticker Maker Sticker Maker",
     heroDescription: "Process your documents efficiently with this tool.",
     formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
     faq: [

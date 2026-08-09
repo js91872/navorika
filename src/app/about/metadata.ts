@@ -5,11 +5,11 @@ export const metadata = {
   openGraph: {
     title: 'About NavorikaPro – 200+ Free Online Tools & Calculators',
     description: 'NavorikaPro is a free platform with 200+ online tools, calculators, PDF editors, and utilities. 100% client-side, no data uploads, no signup required.',
-    url: 'https://navorika.vercel.app/about',
+    url: 'https://navorika.com/about',
     siteName: 'NavorikaPro',
     images: [
       {
-        url: 'https://navorika.vercel.app/og-image.png',
+        url: 'https://navorika.com/og-image.png',
         width: 1200,
         height: 630,
       },
@@ -21,6 +21,6 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'About NavorikaPro – 200+ Free Online Tools & Calculators',
     description: 'NavorikaPro is a free platform with 200+ online tools, calculators, PDF editors, and utilities.',
-    images: ['https://navorika.vercel.app/og-image.png'],
+    images: ['https://navorika.com/og-image.png'],
   },
 };

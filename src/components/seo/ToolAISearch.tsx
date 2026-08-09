@@ -11,7 +11,7 @@ interface ToolAISearchProps {
 }
 
 export default function ToolAISearch({ tool }: ToolAISearchProps) {
-  const baseUrl = 'https://navorika.vercel.app';
+  const baseUrl = 'https://navorika.com';
   
   // AI-optimized descriptions for each tool
   const getAIDescription = () => {

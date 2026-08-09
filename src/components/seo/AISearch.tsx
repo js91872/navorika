@@ -1,7 +1,7 @@
 'use client';
 
 export default function AISearch() {
-  const baseUrl = 'https://navorika.vercel.app';
+  const baseUrl = 'https://navorika.com';
 
   // AI search optimization
   const aiMeta = {
@@ -58,7 +58,6 @@ export default function AISearch() {
             url: baseUrl,
             logo: `${baseUrl}/logo.png`,
             sameAs: [
-              'https://github.com/js91872/navorika',
             ],
             potentialAction: {
               '@type': 'SearchAction',

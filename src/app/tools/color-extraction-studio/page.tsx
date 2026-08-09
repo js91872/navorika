@@ -8,7 +8,7 @@ export default function ColorExtractionTool() {
   const meta = tools.find(t => t.slug === 'color-extraction-studio');
   // Default meta if not found
   const toolMeta = meta || {
-    heroTitle: "Color Extraction Studio",
+    heroTitle: "Color Extractor",
     heroDescription: "Process your documents efficiently with this tool.",
     formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
     faq: [

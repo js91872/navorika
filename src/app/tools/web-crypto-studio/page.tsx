@@ -8,7 +8,7 @@ export default function WebCryptoStudioTool() {
   const meta = tools.find(t => t.slug === 'web-crypto-studio');
   // Default meta if not found
   const toolMeta = meta || {
-    heroTitle: "Web Crypto Studio",
+    heroTitle: "Web Crypto Tools",
     heroDescription: "Process your documents efficiently with this tool.",
     formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
     faq: [

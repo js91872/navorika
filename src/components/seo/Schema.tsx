@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Schema() {
   const pathname = usePathname();
-  const baseUrl = 'https://navorika.vercel.app';
+  const baseUrl = 'https://navorika.com';
 
   // Organization Schema
   const organizationSchema = {
@@ -15,7 +15,6 @@ export default function Schema() {
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
     sameAs: [
-      'https://github.com/js91872/navorika',
     ],
     potentialAction: {
       '@type': 'SearchAction',

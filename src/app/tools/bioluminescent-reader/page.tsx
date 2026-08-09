@@ -9,7 +9,7 @@ export default function BioluminescentReaderTool() {
   const meta = tools.find(t => t.slug === 'bioluminescent-reader');
   
   const toolMeta = meta || {
-    heroTitle: 'Bioluminescent Reader',
+    heroTitle: 'Bioluminescence Reader',
     heroDescription: 'Read and analyze bioluminescent data from your samples.',
     formulaExplanation: 'This tool analyzes bioluminescent data patterns and provides insights into biological luminescence.',
     faq: [

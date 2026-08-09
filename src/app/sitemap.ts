@@ -1,44 +1,63 @@
-import { MetadataRoute } from 'next';
-import { categories, tools } from '@/data/registry';
-import { guides } from '@/data/guides';
+import type { MetadataRoute } from 'next';
+import { tools, categories } from '@/data/registry';
+
+const baseUrl = 'https://navorika.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://navorika.vercel.app';
-
-  // Static pages
   const staticPages = [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 1.0 },
-    { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
-    { url: `${baseUrl}/categories`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${baseUrl}/tools`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
-    { url: `${baseUrl}/guides`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
-    { url: `${baseUrl}/sitemap`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.3 },
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/tools`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/categories`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/guides`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
   ];
 
-  // Category pages
-  const categoryPages = categories.map((category) => ({
-    url: `${baseUrl}/categories/${category.slug}`,
+  // Add all tool pages
+  const toolPages = tools.map((tool) => ({
+    url: `${baseUrl}/tools/${tool.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
 
-  // Tool pages
-  const toolPages = tools.map((tool) => ({
-    url: `${baseUrl}/tools/${tool.slug}`,
+  // Add all category pages
+  const categoryPages = categories.map((category) => ({
+    url: `${baseUrl}/categories/${category.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));
 
-  // Guide pages
-  const guidePages = guides.map((guide) => ({
-    url: `${baseUrl}/guides/${guide.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
-
-  return [...staticPages, ...categoryPages, ...toolPages, ...guidePages];
+  return [...staticPages, ...toolPages, ...categoryPages];
 }

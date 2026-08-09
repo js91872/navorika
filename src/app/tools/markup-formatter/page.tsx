@@ -8,7 +8,7 @@ export default function MarkupFormatterTool() {
   const meta = tools.find(t => t.slug === 'markup-formatter');
   // Default meta if not found
   const toolMeta = meta || {
-    heroTitle: "Markup Formatter",
+    heroTitle: "HTML Formatter",
     heroDescription: "Process your documents efficiently with this tool.",
     formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
     faq: [

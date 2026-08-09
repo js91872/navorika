@@ -40,11 +40,11 @@ export function generateOrganizationSchema(): Record<string, any> {
     '@type': 'Organization',
     name: 'NavorikaPro',
     description: '200+ free online calculators, PDF tools, image converters, and developer utilities.',
-    url: 'https://navorika.vercel.app',
-    logo: 'https://navorika.vercel.app/logo.png',
+    url: 'https://navorika.com',
+    logo: 'https://navorika.com/logo.png',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://navorika.vercel.app/tools?q={search_term_string}',
+      target: 'https://navorika.com/tools?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };
@@ -56,10 +56,10 @@ export function generateWebsiteSchema(): Record<string, any> {
     '@type': 'WebSite',
     name: 'NavorikaPro',
     description: '200+ free online calculators, PDF tools, image converters, and developer utilities.',
-    url: 'https://navorika.vercel.app',
+    url: 'https://navorika.com',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://navorika.vercel.app/tools?q={search_term_string}',
+      target: 'https://navorika.com/tools?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };

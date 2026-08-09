@@ -4,7 +4,7 @@ export function generateToolSchema(tool: any) {
     '@type': 'WebApplication',
     name: tool.title,
     description: tool.description,
-    url: `https://navorika.vercel.app/tools/${tool.slug}`,
+    url: `https://navorika.com/tools/${tool.slug}`,
     applicationCategory: tool.category
       .split('-')
       .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -55,6 +55,6 @@ export function generateCategorySchema(category: any) {
     '@type': 'CollectionPage',
     name: category.name,
     description: category.description,
-    url: `https://navorika.vercel.app/categories/${category.slug}`,
+    url: `https://navorika.com/categories/${category.slug}`,
   };
 }

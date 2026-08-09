@@ -1968,7 +1968,7 @@ QR (Quick Response) codes are two-dimensional barcodes that can store various ty
 ## How to Create QR Codes
 
 ### Step 1: Open the QR Generator
-- Navigate to QR Code Studio
+- Navigate to QR Code Generator
 
 ### Step 2: Select Type
 - URL, Text, Contact, etc.
@@ -2046,14 +2046,14 @@ QR codes are versatile tools for connecting offline and online worlds. Use them 
   {
     id: '19',
     slug: 'jwt-base64-deck-guide',
-    title: 'JWT Base64 Deck Guide: Understanding JSON Web Tokens',
+    title: 'JWT Decoder Guide: Understanding JSON Web Tokens',
     description: 'Learn how JWTs work and how to decode them using Base64.',
     category: 'developer',
     readTime: 7,
     date: '2025-12-22',
     author: 'Navorika Team',
     tags: ['JWT', 'Authentication', 'Security'],
-    content: `# JWT Base64 Deck Guide: Understanding JSON Web Tokens
+    content: `# JWT Decoder Guide: Understanding JSON Web Tokens
 
 ## What is JWT?
 
@@ -2124,7 +2124,7 @@ Verifies the token hasn't been tampered with.
 ## Conclusion
 
 JWTs are a secure way to handle authentication. Understanding how they work and how to decode them is essential for modern web development.`,
-    seoTitle: 'JWT Base64 Deck Guide - Understanding JSON Web Tokens',
+    seoTitle: 'JWT Decoder Guide - Understanding JSON Web Tokens',
     seoDescription: 'Learn how JWTs work and how to decode them. Includes structure explanation and practical examples.',
   },
   {
@@ -2145,7 +2145,7 @@ SEO (Search Engine Optimization) is the practice of improving your website to in
 
 ## SEO Tools We Offer
 
-### 1. Webmaster SEO Builder
+### 1. SEO Meta Tag Generator
 - Built for website owners
 - Generates SEO metadata
 - Optimizes content structure
@@ -2184,7 +2184,7 @@ SEO (Search Engine Optimization) is the practice of improving your website to in
 
 ## How to Use Our SEO Tools
 
-### Webmaster SEO Builder:
+### SEO Meta Tag Generator:
 1. Enter your website URL
 2. Add keywords and description
 3. Generate SEO metadata

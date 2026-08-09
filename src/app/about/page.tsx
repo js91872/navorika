@@ -4,18 +4,18 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Shield, Zap, Globe, Lock, Rocket, Sparkles,
-  CheckCircle, ArrowRight, Heart, Cpu, Target, Eye,
-  Github as GitHubIcon
+  CheckCircle, ArrowRight, Heart, Cpu, Target, Eye
 } from 'lucide-react';
 import { tools } from '@/data/registry';
 
 export default function AboutPage() {
   const toolCount = tools.length;
+  const displayCount = toolCount >= 100 ? '100+' : '90+';
 
   const stats = [
     { icon: <Cpu className="h-6 w-6" />, value: toolCount, label: 'Tools' },
     { icon: <Shield className="h-6 w-6" />, value: '100%', label: 'Client-Side' },
-    { icon: <Zap className="h-6 w-6" />, value: '0ms', label: 'Latency' },
+    { icon: <Zap className="h-6 w-6" />, value: 'Instant', label: 'Processing' },
     { icon: <Lock className="h-6 w-6" />, value: '0', label: 'Data Uploads' },
   ];
 
@@ -23,7 +23,7 @@ export default function AboutPage() {
     {
       icon: <Lock className="h-8 w-8" />,
       title: 'Privacy First',
-      description: 'Your data never leaves your device. All 200+ tools process everything locally in your browser. No uploads, no storage, no tracking.',
+      description: 'Your data never leaves your device. All tools process everything locally in your browser. No uploads, no storage, no tracking.',
     },
     {
       icon: <Zap className="h-8 w-8" />,
@@ -38,7 +38,7 @@ export default function AboutPage() {
     {
       icon: <Heart className="h-8 w-8" />,
       title: 'Free Forever',
-      description: 'No hidden costs, no premium plans. All 200+ tools are completely free to use.',
+      description: 'No hidden costs, no premium plans. All tools are completely free to use.',
     },
   ];
 
@@ -55,7 +55,7 @@ export default function AboutPage() {
     },
     {
       icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
-      title: '200+ Tools Across Categories',
+      title: `${displayCount} Tools Across Categories`,
       description: 'Calculators, PDF editors, image converters, developer utilities, health tools, and more.',
     },
     {
@@ -91,7 +91,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-6"
           >
-            NavorikaPro – 200+ Free Online Tools
+            NavorikaPro – {displayCount} Free Online Tools
             <br />
             <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Built for Privacy &amp; Speed
@@ -104,7 +104,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed"
           >
-            NavorikaPro is a free, client-side platform with 200+ online tools,
+            NavorikaPro is a free, client-side platform with {displayCount} online tools,
             calculators, PDF editors, image converters, and developer utilities.
             100% private. Zero data uploads. No signup required.
           </motion.p>
@@ -233,29 +233,6 @@ export default function AboutPage() {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* GITHUB SECTION - Using simple icon instead of lucide */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <span className="text-4xl">🐙</span>
-            <h2 className="text-2xl font-bold">Open Source</h2>
-          </div>
-          <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto mb-6">
-            NavorikaPro is proudly open source. View the code, contribute, or self-host.
-          </p>
-          <a
-            href="https://github.com/js91872/navorika"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--border)] text-[var(--foreground)] hover:border-indigo-500/40 hover:bg-[var(--muted)] transition-all"
-          >
-            <span className="text-xl">🐙</span>
-            Star on GitHub
-            <span className="text-xs text-[var(--muted-foreground)]">⭐</span>
-          </a>
         </div>
       </section>
 

@@ -19,7 +19,7 @@ export default function SocialMediaResizerTool() {
   const meta = tools.find(t => t.slug === 'social-media-resizer');
   // Default meta if not found
   const toolMeta = meta || {
-    heroTitle: "Social Media Resizer",
+    heroTitle: "Social Media Image Resizer",
     heroDescription: "Process your documents efficiently with this tool.",
     formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
     faq: [
