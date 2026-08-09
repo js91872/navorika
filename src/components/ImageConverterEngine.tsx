@@ -1,125 +1,44 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { ImageIcon, ArrowLeft, Upload, X, ShieldCheck, Download, Loader2, RefreshCw } from 'lucide-react';
-import { PDFDocument } from 'pdf-lib';
-import * as pdfjsLib from 'pdfjs-dist';
+import { useState, useRef } from 'react';
+import { ArrowLeft, Upload, X, ShieldCheck, Download, Loader2, RefreshCw } from 'lucide-react';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
-
-// Simplified type that matches what we get from tools
-interface ToolType {
-  slug: string;
-  title: string;
-  description: string;
-  category: string;
-  keywords: string[];
-  heroTitle?: string;
-  heroDescription?: string;
-  formulaExplanation?: string;
-  faq?: Array<{ question: string; answer: string }>;
-}
-
-export default function ImageConverterEngine({ meta }: { meta: ToolType | undefined }) {
+export default function ImageConverterEngine({ meta }: { meta?: any }) {
   const [file, setFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [previewUrl, setPreviewUrl] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Default values if meta is undefined
   const toolMeta = meta || {
     slug: 'image-converter',
     title: 'Image Converter',
     description: 'Convert your images to different formats.',
     category: 'image-tools',
-    keywords: ['image', 'converter'],
-    heroTitle: 'Image Converter',
-    heroDescription: 'Convert your images to different formats easily.',
-    formulaExplanation: 'This tool converts images from one format to another.',
-    faq: [
-      { question: 'How does this tool work?', answer: 'All processing happens locally in your browser. No data is ever uploaded to any server.' },
-      { question: 'Is my data safe?', answer: 'Yes! Your files and data never leave your computer.' }
-    ]
   };
-
-  useEffect(() => {
-    return () => { if (previewUrl) URL.revokeObjectURL(previewUrl); };
-  }, [previewUrl]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const selected = e.target.files[0];
-      setFile(selected);
-      setPreviewUrl(URL.createObjectURL(selected));
+      setFile(e.target.files[0]);
     }
   };
 
   const executeConversion = async () => {
     if (!file) return;
     setIsProcessing(true);
-
     try {
-      const slug = toolMeta.slug;
-      
-      if (slug === 'image-to-pdf' || slug === 'webp-to-pdf') {
-        const pdfDoc = await PDFDocument.create();
-        const imageBytes = await file.arrayBuffer();
-        let embeddedImage;
-
-        if (file.type === 'image/jpeg' || file.name.endsWith('.jpg') || file.name.endsWith('.jpeg')) {
-          embeddedImage = await pdfDoc.embedJpg(imageBytes);
-        } else if (file.type === 'image/png' || file.name.endsWith('.png')) {
-          embeddedImage = await pdfDoc.embedPng(imageBytes);
-        } else {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          const img = new Image();
-          img.src = URL.createObjectURL(file);
-          await new Promise(resolve => img.onload = resolve);
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx?.drawImage(img, 0, 0);
-          const pngData = canvas.toDataURL('image/png');
-          const pngBytes = await fetch(pngData).then(res => res.arrayBuffer());
-          embeddedImage = await pdfDoc.embedPng(pngBytes);
-        }
-
-        const page = pdfDoc.addPage([600, 800]);
-        const { width, height } = page.getSize();
-        const scaledWidth = Math.min(width - 40, embeddedImage.width);
-        const scaledHeight = (scaledWidth / embeddedImage.width) * embeddedImage.height;
-        
-        page.drawImage(embeddedImage, {
-          x: (width - scaledWidth) / 2,
-          y: (height - scaledHeight) / 2,
-          width: scaledWidth,
-          height: scaledHeight,
-        });
-
-        const pdfBytes = await pdfDoc.save();
-        const blob = new Blob([pdfBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `converted_${file.name.split('.')[0]}.pdf`;
-        a.click();
-        URL.revokeObjectURL(url);
-      } else {
-        const url = URL.createObjectURL(file);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `converted_${file.name}`;
-        a.click();
-        URL.revokeObjectURL(url);
-      }
+      const url = URL.createObjectURL(file);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `converted_${file.name}`;
+      a.click();
+      URL.revokeObjectURL(url);
     } catch (err) {
-      alert('Failed to convert image. Please try again.');
+      alert('Failed to convert. Please try again.');
     }
     setIsProcessing(false);
   };
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
+    <div className="max-w-4xl mx-auto">
       <a href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8">
         <ArrowLeft className="h-4 w-4" /> Back to Image Tools
       </a>
@@ -128,11 +47,11 @@ export default function ImageConverterEngine({ meta }: { meta: ToolType | undefi
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
           <ShieldCheck className="h-4 w-4" /> Local Processing Only
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.title}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.description}</p>
       </div>
 
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
         <div className="p-8">
           <div 
             onClick={() => fileInputRef.current?.click()}
@@ -140,48 +59,44 @@ export default function ImageConverterEngine({ meta }: { meta: ToolType | undefi
           >
             {file ? (
               <div className="flex items-center gap-3">
-                <ImageIcon className="h-10 w-10 text-indigo-500" />
                 <div className="text-left">
                   <p className="font-bold text-slate-900 dark:text-white">{file.name}</p>
                   <p className="text-sm text-slate-500">{(file.size / 1024).toFixed(1)} KB</p>
                 </div>
                 <button 
-                  onClick={(e) => { e.stopPropagation(); setFile(null); setPreviewUrl(''); }}
-                  className="p-2 hover:bg-slate-200 rounded-xl"
+                  onClick={(e) => { e.stopPropagation(); setFile(null); }}
+                  className="p-2 hover:bg-slate-200 rounded-xl transition-colors"
                 >
                   <X className="h-5 w-5 text-slate-500" />
                 </button>
               </div>
             ) : (
               <>
-                <Upload className="h-10 w-10 text-indigo-500 mb-4" />
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Upload Image</h3>
-                <p className="text-sm text-slate-500 mt-2">Supports JPG, PNG, WEBP, and more</p>
+                <Upload className="h-12 w-12 text-indigo-400 mb-4" />
+                <p className="text-lg font-semibold text-slate-700 dark:text-slate-300">Upload Image</p>
+                <p className="text-sm text-slate-500">Supports JPG, PNG, WEBP, and more</p>
               </>
             )}
-            <input 
-              type="file" 
-              accept="image/*" 
-              className="hidden" 
-              ref={fileInputRef}
-              onChange={handleFileChange}
-            />
           </div>
+          <input 
+            ref={fileInputRef}
+            type="file" 
+            accept="image/*,.pdf" 
+            onChange={handleFileChange}
+            className="hidden"
+          />
 
-          {file && previewUrl && (
-            <div className="mt-6">
-              <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
-                <img src={previewUrl} alt="Preview" className="max-h-96 mx-auto object-contain" />
-              </div>
+          {file && (
+            <div className="mt-6 flex flex-col items-center gap-4">
               <button
                 onClick={executeConversion}
                 disabled={isProcessing}
-                className="w-full mt-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-8 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold hover:shadow-xl transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isProcessing ? (
                   <>
                     <Loader2 className="h-5 w-5 animate-spin" />
-                    Converting...
+                    Processing...
                   </>
                 ) : (
                   <>
@@ -190,24 +105,16 @@ export default function ImageConverterEngine({ meta }: { meta: ToolType | undefi
                   </>
                 )}
               </button>
+              <button
+                onClick={() => { setFile(null); }}
+                className="text-sm text-slate-500 hover:text-slate-700 transition-colors flex items-center gap-1"
+              >
+                <RefreshCw className="h-4 w-4" /> Start Over
+              </button>
             </div>
           )}
         </div>
       </div>
-
-      <div className="prose prose-slate dark:prose-invert max-w-none">
-        <h2 className="text-2xl font-bold mb-4">How it Works</h2>
-        <p>{toolMeta.formulaExplanation}</p>
-        <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
-        <div className="space-y-4">
-          {toolMeta.faq && toolMeta.faq.map((item, i) => (
-            <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-              <h4 className="font-bold text-slate-900 dark:text-white mb-2">{item.question}</h4>
-              <p className="text-sm text-slate-600 dark:text-slate-400 m-0">{item.answer}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </main>
+    </div>
   );
 }
