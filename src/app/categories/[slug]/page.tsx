@@ -2,26 +2,142 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Lock, Rocket } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
 
-const iconMap: Record<string, string> = {
-  FileText: '📄',
-  Image: '🖼️',
-  Calculator: '📊',
-  HeartPulse: '❤️',
-  Code: '⚡',
-  PiggyBank: '💰',
-  Globe: '🌍',
-  Hammer: '🔨',
+// Category-specific content (same as before)
+const categoryContent: Record<string, { 
+  heroTitle: string;
+  heroDescription: string;
+  benefits: string[];
+  howItWorks: string;
+  faqs: Array<{ question: string; answer: string }>;
+}> = {
+  'pdf-tools': {
+    heroTitle: 'Free Online PDF Tools',
+    heroDescription: 'Navorika provides browser-based PDF tools for merging, splitting, compressing, converting, securing, and editing PDF files. All processing happens locally in your browser — no uploads, no signup, completely private.',
+    benefits: [
+      'Merge multiple PDFs into one document',
+      'Split PDFs into separate files',
+      'Compress PDFs for email and sharing',
+      'Convert PDFs to images and back',
+      'Add watermarks and page numbers',
+      'Protect PDFs with passwords'
+    ],
+    howItWorks: 'All PDF tools run locally in your browser using pdf-lib and pdf.js. Your documents never leave your device. Simply upload your PDF, select your action, and download the result — all processing happens instantly on your machine.',
+    faqs: [
+      { question: 'Are my PDF documents secure?', answer: 'Yes, all processing happens locally in your browser. Your documents never leave your device.' },
+      { question: 'Do I need to create an account?', answer: 'No, you can use all PDF tools without any signup or registration.' },
+      { question: 'What file formats are supported?', answer: 'We support all standard PDF formats and can convert to/from JPG, PNG, WebP, and other formats.' },
+      { question: 'Is there a file size limit?', answer: 'Files are processed locally, so limits depend on your browser and device capabilities.' },
+      { question: 'Are the tools really free?', answer: 'Yes, all PDF tools are completely free with no hidden costs or premium plans.' }
+    ]
+  },
+  'image-tools': {
+    heroTitle: 'Free Online Image Tools',
+    heroDescription: 'Navorika provides browser-based image tools for resizing, compressing, converting, editing, and optimizing your images. All processing happens locally in your browser — no uploads, no signup, completely private.',
+    benefits: [
+      'Resize images to any dimensions',
+      'Compress images for web optimization',
+      'Convert between JPG, PNG, WebP, and more',
+      'Crop and rotate images',
+      'Extract colors and metadata',
+      'Create icons and stickers'
+    ],
+    howItWorks: 'All image tools run locally in your browser using Canvas API and WebAssembly. Your images never leave your device. Simply upload your image, make your adjustments, and download the result — all processing happens instantly.',
+    faqs: [
+      { question: 'Are my images secure?', answer: 'Yes, all processing happens locally in your browser. Your images never leave your device.' },
+      { question: 'Do I need to create an account?', answer: 'No, you can use all image tools without any signup or registration.' },
+      { question: 'What image formats are supported?', answer: 'We support JPG, PNG, WebP, SVG, HEIC, and more.' },
+      { question: 'What is the maximum image size?', answer: 'Processing is local, so limits depend on your browser and device capabilities.' }
+    ]
+  },
+  'finance-calculators': {
+    heroTitle: 'Free Online Finance Calculators',
+    heroDescription: 'Navorika provides browser-based finance calculators for SIP, EMI, loans, GST, taxes, FD, PPF, and more. All calculations happen locally in your browser — no data uploads, no signup, completely private.',
+    benefits: [
+      'Calculate SIP returns and projections',
+      'Plan loan EMIs and amortization',
+      'Compute GST and tax calculations',
+      'Plan FD and PPF investments',
+      'Calculate retirement savings',
+      'Track investment returns'
+    ],
+    howItWorks: 'All finance calculators run locally in your browser using standard financial formulas. Your data never leaves your device. Simply enter your numbers, and get instant results — all calculations happen on your machine.',
+    faqs: [
+      { question: 'Is my financial data secure?', answer: 'Yes, all calculations happen locally in your browser. Your data never leaves your device.' },
+      { question: 'Do I need to create an account?', answer: 'No, you can use all finance calculators without any signup or registration.' },
+      { question: 'Are the calculations accurate?', answer: 'Yes, we use standard financial formulas used by professionals and financial institutions.' },
+      { question: 'Is this financial advice?', answer: 'No, these calculators are for educational and planning purposes. Consult a financial advisor for professional advice.' }
+    ]
+  },
+  'health-calculators': {
+    heroTitle: 'Free Online Health Calculators',
+    heroDescription: 'Navorika provides browser-based health calculators for BMI, BMR, TDEE, body fat, heart rate, and more. All calculations happen locally in your browser — no data uploads, no signup, completely private.',
+    benefits: [
+      'Calculate BMI and body composition',
+      'Determine BMR and daily calorie needs',
+      'Calculate TDEE and activity levels',
+      'Measure body fat percentage',
+      'Track heart rate zones',
+      'Monitor fitness and health metrics'
+    ],
+    howItWorks: 'All health calculators run locally in your browser using evidence-based medical formulas. Your data never leaves your device. Simply enter your metrics, and get instant results — all calculations happen on your machine.',
+    faqs: [
+      { question: 'Is my health data secure?', answer: 'Yes, all calculations happen locally in your browser. Your health data never leaves your device.' },
+      { question: 'Do I need to create an account?', answer: 'No, you can use all health calculators without any signup or registration.' },
+      { question: 'Are these medical diagnoses?', answer: 'No, these calculators are for educational and informational purposes only. Consult a healthcare professional for medical advice.' },
+      { question: 'Are the calculations accurate?', answer: 'We use standard formulas validated by health professionals and institutions.' }
+    ]
+  },
+  'developer-tools': {
+    heroTitle: 'Free Online Developer Tools',
+    heroDescription: 'Navorika provides browser-based developer tools for JSON, base64, JWT, QR codes, code minification, and more. All processing happens locally in your browser — no uploads, no signup, completely private.',
+    benefits: [
+      'Encode and decode Base64',
+      'View and format JSON data',
+      'Decode JWT tokens',
+      'Generate QR codes',
+      'Minify HTML, CSS, and JavaScript',
+      'Encrypt and hash data'
+    ],
+    howItWorks: 'All developer tools run locally in your browser using native JavaScript APIs. Your data never leaves your device. Simply paste your code, process it, and get instant results — all processing happens on your machine.',
+    faqs: [
+      { question: 'Is my code secure?', answer: 'Yes, all processing happens locally in your browser. Your code never leaves your device.' },
+      { question: 'Do I need to create an account?', answer: 'No, you can use all developer tools without any signup or registration.' },
+      { question: 'What languages are supported?', answer: 'We support HTML, CSS, JavaScript, JSON, and more.' },
+      { question: 'Are these tools free?', answer: 'Yes, all developer tools are completely free with no hidden costs.' }
+    ]
+  },
+  'construction-calculators': {
+    heroTitle: 'Free Online Construction Calculators',
+    heroDescription: 'Navorika provides browser-based construction calculators for concrete, cement, bricks, steel, rebar, sand, and more. All calculations happen locally in your browser — no data uploads, no signup, completely private.',
+    benefits: [
+      'Calculate concrete volume and mix',
+      'Estimate cement bags needed',
+      'Calculate bricks and materials',
+      'Determine steel and rebar weight',
+      'Plan construction costs',
+      'Estimate sand and aggregate'
+    ],
+    howItWorks: 'All construction calculators run locally in your browser using standard construction formulas. Your data never leaves your device. Simply enter your dimensions and specifications, and get instant results — all calculations happen on your machine.',
+    faqs: [
+      { question: 'Are the calculations accurate?', answer: 'Yes, we use standard construction formulas and industry standards.' },
+      { question: 'Do I need to create an account?', answer: 'No, you can use all construction calculators without any signup or registration.' },
+      { question: 'Is my data secure?', answer: 'Yes, all calculations happen locally in your browser. Your data never leaves your device.' },
+      { question: 'Are these tools free?', answer: 'Yes, all construction calculators are completely free with no hidden costs.' }
+    ]
+  }
 };
 
 export default function CategoryPage() {
   const params = useParams();
   const slug = params?.slug as string;
+  
   const category = categories.find(c => c.slug === slug);
   const categoryTools = tools.filter(t => t.category === slug);
+  const content = categoryContent[slug];
 
   if (!category) {
     return (
@@ -35,8 +151,6 @@ export default function CategoryPage() {
     );
   }
 
-  const icon = iconMap[category.icon] || '📁';
-
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 px-4">
       <div className="max-w-7xl mx-auto">
@@ -44,54 +158,101 @@ export default function CategoryPage() {
           <ArrowRight className="h-4 w-4 rotate-180" /> Back to Categories
         </Link>
 
+        {/* Hero Section */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-black text-[var(--foreground)]">{content?.heroTitle || category.name}</h1>
+          <p className="text-lg text-[var(--muted-foreground)] mt-4 max-w-3xl leading-relaxed">
+            {content?.heroDescription || category.description}
+          </p>
+          <p className="text-sm text-[var(--muted-foreground)] mt-2">{categoryTools.length} tools</p>
+        </div>
+
+        {/* Trust Badges */}
+        <div className="mb-8 flex flex-wrap items-center gap-3">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm font-medium border border-emerald-500/20">
+            <ShieldCheck className="h-4 w-4" /> Private by Design
+          </span>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-medium border border-blue-500/20">
+            <Zap className="h-4 w-4" /> Local Processing
+          </span>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm font-medium border border-purple-500/20">
+            <Lock className="h-4 w-4" /> No Uploads
+          </span>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-sm font-medium border border-amber-500/20">
+            <Rocket className="h-4 w-4" /> 100% Free
+          </span>
+        </div>
+
+        {/* Tools Grid - NOW HIGHER UP, before SEO content */}
         <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">{icon}</span>
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-black text-[var(--foreground)]">{category.name}</h1>
-              <p className="text-[var(--muted-foreground)] mt-1">{categoryTools.length} tools</p>
-            </div>
+          <h2 className="text-2xl font-bold mb-4">{categoryTools.length} Available Tools</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categoryTools.map((tool) => {
+              const icon = getToolIcon(tool.slug);
+              
+              return (
+                <Link
+                  key={tool.slug}
+                  href={`/tools/${tool.slug}`}
+                  className="group p-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
+                        {icon || '🔧'}
+                      </span>
+                      <h3 className="text-lg font-black text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                        {tool.title}
+                      </h3>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-indigo-500 transition-colors" />
+                  </div>
+                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    {tool.description}
+                  </p>
+                </Link>
+              );
+            })}
           </div>
         </div>
 
-        {categoryTools.length === 0 ? (
-          <div className="p-12 text-center rounded-2xl border-2 border-dashed border-[var(--border)] text-[var(--muted-foreground)] text-sm font-medium">
-            No tools found in this category.
+        {/* Benefits Section - SEO CONTENT AFTER TOOLS */}
+        {content?.benefits && (
+          <div className="mb-12 border-t border-[var(--border)] pt-12">
+            <h2 className="text-2xl font-bold mb-4">Key Benefits</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {content.benefits.map((benefit, index) => (
+                <div key={index} className="flex items-start gap-3 p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]">
+                  <span className="text-green-500 text-xl flex-shrink-0 mt-0.5">✅</span>
+                  <span className="text-sm text-[var(--foreground)] leading-relaxed">{benefit}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categoryTools.map((tool) => (
-              <Link
-                key={tool.slug}
-                href={`/tools/${tool.slug}`}
-                className="group p-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                      {getToolIcon(tool.slug)}
-                    </span>
-                    <h3 className="text-lg font-black text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                      {tool.title}
-                    </h3>
-                  </div>
-                  <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-indigo-500 transition-colors" />
+        )}
+
+        {/* How It Works - SEO CONTENT AFTER TOOLS */}
+        {content?.howItWorks && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-4">How It Works</h2>
+            <div className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
+              <p className="text-[var(--muted-foreground)] leading-relaxed">{content.howItWorks}</p>
+            </div>
+          </div>
+        )}
+
+        {/* FAQ Section - SEO CONTENT AFTER TOOLS */}
+        {content?.faqs && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {content.faqs.map((item, idx) => (
+                <div key={idx} className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
+                  <h3 className="font-semibold text-[var(--foreground)] mb-2">{item.question}</h3>
+                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{item.answer}</p>
                 </div>
-                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                  {tool.description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {tool.keywords && tool.keywords.slice(0, 3).map((keyword) => (
-                    <span
-                      key={keyword}
-                      className="px-2 py-1 rounded-full bg-[var(--muted)] text-[var(--muted-foreground)] text-[10px] font-bold uppercase tracking-wider"
-                    >
-                      {keyword}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            ))}
+              ))}
+            </div>
           </div>
         )}
       </div>
