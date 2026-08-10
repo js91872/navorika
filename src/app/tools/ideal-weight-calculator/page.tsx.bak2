@@ -1,0 +1,77 @@
+'use client';
+
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, Scale, Target } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
+import { Input } from '@/components/ui/Input';
+import { ResultCard } from '@/components/ui/ResultCard';
+import { Container } from '@/components/ui/Container';
+import { calculateIdealWeight } from '@/lib/calculations/health';
+
+  const [gender, setGender] = useState<'male' | 'female'>('male');
+  const [height, setHeight] = useState(175);
+  const [result, setResult] = useState<any>(null);
+
+  const handleCalculate = () => {
+    const weightResult = calculateIdealWeight({ gender, height });
+    setResult(weightResult);
+  };
+
+  return (
+    <Container maxWidth="xl" className="py-8">
+      <Link href="/categories/health-calculators" className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:underline mb-6">
+        <ArrowLeft className="h-4 w-4" /> Back
+      </Link>
+      <h1 className="text-3xl font-black mb-2">Ideal Weight Calculator</h1>
+      <p className="text-slate-600 dark:text-slate-400 mb-8">Find your ideal weight using multiple formulas</p>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card>
+          <div className="space-y-4">
+            <div>
+              <label className="text-xs font-bold uppercase text-slate-500">Gender</label>
+              <div className="grid grid-cols-2 gap-2 mt-1">
+                {['male', 'female'].map((g) => (
+                  <button key={g} onClick={() => setGender(g as any)} className={`py-2 rounded-xl text-sm font-bold ${gender === g ? 'bg-indigo-600 text-white' : 'bg-slate-100'}`}>
+                    {g}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <Input label="Height (cm)" type="number" value={height} onChange={(e) => setHeight(Number(e.target.value))} />
+            <Button onClick={handleCalculate} fullWidth>Calculate Ideal Weight</Button>
+          </div>
+        </Card>
+
+        <div className="space-y-4">
+          {result && (
+            <>
+              <ResultCard label="BMI Method" value={`${result.bmi} kg`} subValue="BMI = 22" color="green" icon={<Target className="h-5 w-5" />} />
+              <div className="grid grid-cols-2 gap-4">
+                <ResultCard label="Robinson" value={`${result.robinson} kg`} color="purple" />
+                <ResultCard label="Miller" value={`${result.miller} kg`} color="blue" />
+                <ResultCard label="Devine" value={`${result.devine} kg`} color="amber" />
+                <ResultCard label="Hamwi" value={`${result.hamwi} kg`} color="rose" />
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </Container>
+  );
+}
+
+export default function IdealWeightCalculator() {
+  const meta = tools.find(t => t.slug === 'ideal-weight-calculator');
+  return (
+    <EnhancedToolWrapper meta={meta}>
+      <IdealWeightCalculatorContent />
+    </EnhancedToolWrapper>
+  );
+}

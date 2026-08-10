@@ -1,0 +1,153 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { ArrowLeft, ShieldCheck, Upload, X, Download, MessageSquare } from 'lucide-react';
+import { tools } from '@/data/registry';
+
+export default function IconStickerMakerTool() {
+  const meta = tools.find(t => t.slug === 'icon-sticker-maker');
+  // Default meta if not found
+  const toolMeta = meta || {
+    heroTitle: "Icon Icon Sticker Maker Sticker Maker",
+    heroDescription: "Process your documents efficiently with this tool.",
+    formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
+    faq: [
+      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
+      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
+      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
+    ]
+  };
+
+  const [file, setFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState('');
+  
+  const [formatType, setFormatType] = useState('whatsapp');
+  
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (previewUrl && canvasRef.current) {
+      const img = new Image();
+      img.onload = () => drawCanvas(img);
+      img.src = previewUrl;
+    }
+  }, [previewUrl, formatType]);
+
+  const drawCanvas = (img: HTMLImageElement) => {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext('2d');
+    if (!ctx || !canvas) return;
+
+    // Define strict grid sizes based on target
+    let targetSize = 512;
+    if (formatType === 'favicon-32') targetSize = 32;
+    if (formatType === 'favicon-192') targetSize = 192;
+    if (formatType === 'favicon-512') targetSize = 512;
+
+    canvas.width = targetSize;
+    canvas.height = targetSize;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Ensure transparency
+
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
+    // Calculate aspect ratio fit (Contain strategy to prevent cropping on stickers/icons)
+    const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+    
+    // Apply a slight padding (5%) specifically for WhatsApp stickers so they don't touch the edges
+    const paddingMultiplier = formatType === 'whatsapp' ? 0.9 : 1.0;
+    
+    const drawW = img.width * scale * paddingMultiplier;
+    const drawH = img.height * scale * paddingMultiplier;
+    const drawX = (canvas.width - drawW) / 2;
+    const drawY = (canvas.height - drawH) / 2;
+
+    ctx.drawImage(img, drawX, drawY, drawW, drawH);
+  };
+
+  const handleDownload = () => {
+    if (!canvasRef.current || !file) return;
+    
+    // WhatsApp requires WebP for animated/official stickers, but PNG works for static imports in custom apps.
+    // Favicons traditionally use ICO, but all modern browsers support PNG favicons.
+    const mime = formatType === 'whatsapp' ? 'image/webp' : 'image/png';
+    const ext = formatType === 'whatsapp' ? 'webp' : 'png';
+
+    canvasRef.current.toBlob((blob) => {
+      if (blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Navorika_${formatType}_${Date.now()}.${ext}`;
+        document.body.appendChild(a);
+        a.click();
+      }
+    }, mime, 1.0); 
+  };
+
+  if (!meta) return null;
+
+  return (
+    <main className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
+      <a href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-purple-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Image Tools</a>
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
+      </div>
+
+      <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden p-8 grid md:grid-cols-2 gap-8">
+        
+        {/* Controls */}
+        <div className="space-y-6 flex flex-col justify-between">
+          {!file ? (
+            <div onClick={() => fileInputRef.current?.click()} className="border-2 border-dashed border-purple-300 rounded-2xl p-12 text-center cursor-pointer h-64 flex flex-col justify-center">
+              <Upload className="h-8 w-8 text-purple-500 mx-auto mb-2" />
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">Load Image (PNG recommended)</h4>
+              <input type="file" accept="image/*" className="hidden" ref={fileInputRef} onChange={(e) => {
+                if (e.target.files?.[0]) {
+                  setFile(e.target.files[0]);
+                  setPreviewUrl(URL.createObjectURL(e.target.files[0]));
+                }
+              }} />
+            </div>
+          ) : (
+            <div className="space-y-6">
+              <div className="flex justify-between items-center bg-slate-50 dark:bg-slate-950 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
+                <span className="text-xs font-semibold truncate w-48">{file.name}</span>
+                <button onClick={() => { setFile(null); setPreviewUrl(''); }} className="text-slate-400 hover:text-red-500"><X className="h-3 w-3" /></button>
+              </div>
+
+              <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-100 dark:border-slate-800 space-y-4">
+                <div>
+                  <label className="text-[10px] font-bold uppercase text-slate-500">Target Output Profile</label>
+                  <select value={formatType} onChange={(e) => setFormatType(e.target.value)} className="w-full mt-1 p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-bold">
+                    <option value="whatsapp">WhatsApp Sticker (512x512 WEBP)</option>
+                    <option value="favicon-512">High-Res Icon (512x512 PNG)</option>
+                    <option value="favicon-192">PWA App Icon (192x192 PNG)</option>
+                    <option value="favicon-32">Browser Favicon (32x32 PNG)</option>
+                  </select>
+                </div>
+              </div>
+              
+              <button onClick={handleDownload} className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition shadow-md">
+                <Download className="h-4 w-4"/> Generate System Asset
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Viewport */}
+        <div className="border border-slate-100 dark:border-slate-800 rounded-2xl bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmRhHBcAwqQFAuQxWwWETUohgQgwFqVSEF+C7nIQAAAABJRU5ErkJggg==')] p-4 flex items-center justify-center min-h-[400px] relative">
+          {file ? (
+            <canvas ref={canvasRef} className="max-w-[300px] object-contain shadow-2xl rounded-lg" />
+          ) : (
+            <div className="text-center text-xs font-bold text-slate-500 uppercase tracking-widest bg-white/80 dark:bg-slate-900/80 p-4 rounded-xl backdrop-blur"><MessageSquare className="h-8 w-8 opacity-50 mx-auto mb-2" /> Awaiting Transparent Image</div>
+          )}
+        </div>
+
+      </div>
+    </main>
+  );
+}

@@ -1,0 +1,23 @@
+'use client';
+
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+
+import ImageConverterEngine from '@/components/ImageConverterEngineWrapper';
+import { tools } from '@/data/registry';
+
+export const dynamic = 'force-dynamic';
+
+  const meta = tools.find(t => t.slug === 'convert-jpg-to-webp');
+  return <ImageConverterEngine meta={meta} />;
+}
+
+export default function Page() {
+  const meta = tools.find(t => t.slug === 'convert-jpg-to-webp');
+  return (
+    <EnhancedToolWrapper meta={meta}>
+      <PageContent />
+    </EnhancedToolWrapper>
+  );
+}

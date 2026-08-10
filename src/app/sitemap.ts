@@ -3,61 +3,59 @@ import { tools, categories } from '@/data/registry';
 
 const baseUrl = 'https://navorika.com';
 
+// Get the current date for the build
+const today = new Date();
+const oneDayAgo = new Date(today);
+oneDayAgo.setDate(oneDayAgo.getDate() - 1);
+const twoDaysAgo = new Date(today);
+twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+const threeDaysAgo = new Date(today);
+threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+const fourDaysAgo = new Date(today);
+fourDaysAgo.setDate(fourDaysAgo.getDate() - 4);
+const fiveDaysAgo = new Date(today);
+fiveDaysAgo.setDate(fiveDaysAgo.getDate() - 5);
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Static pages with realistic dates
   const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/tools`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/categories`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
+    { url: baseUrl, lastModified: today }, // Homepage - today
+    { url: `${baseUrl}/tools`, lastModified: today },
+    { url: `${baseUrl}/categories`, lastModified: oneDayAgo },
+    { url: `${baseUrl}/guides`, lastModified: twoDaysAgo },
+    { url: `${baseUrl}/about`, lastModified: twoDaysAgo },
+    { url: `${baseUrl}/privacy`, lastModified: threeDaysAgo },
   ];
 
-  // Add all tool pages
-  const toolPages = tools.map((tool) => ({
-    url: `${baseUrl}/tools/${tool.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
+  // Tool pages with dates distributed over the last 5 days
+  const toolPages = tools.map((tool, index) => {
+    // Distribute dates: earlier tools get older dates, newer tools get newer dates
+    const dateIndex = index % 5;
+    let date: Date;
+    switch(dateIndex) {
+      case 0: date = today; break;
+      case 1: date = oneDayAgo; break;
+      case 2: date = twoDaysAgo; break;
+      case 3: date = threeDaysAgo; break;
+      case 4: date = fourDaysAgo; break;
+      default: date = today;
+    }
+    
+    return {
+      url: `${baseUrl}/tools/${tool.slug}`,
+      lastModified: date,
+    };
+  });
 
-  // Add all category pages
-  const categoryPages = categories.map((category) => ({
-    url: `${baseUrl}/categories/${category.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
+  // Category pages with dates
+  const categoryPages = categories.map((category, index) => {
+    const dates = [today, oneDayAgo, twoDaysAgo, threeDaysAgo, fourDaysAgo, fiveDaysAgo];
+    
+    return {
+      url: `${baseUrl}/categories/${category.slug}`,
+      lastModified: dates[index] || today,
+    };
+  });
 
   return [...staticPages, ...toolPages, ...categoryPages];
 }
