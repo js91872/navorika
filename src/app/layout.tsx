@@ -8,11 +8,11 @@ import SEO from '@/components/seo/SEO';
 import AISearch from '@/components/seo/AISearch';
 
 export const metadata = {
-  title: 'NavorikaPro – 200+ Free Online Tools, Calculators & Utilities',
-  description: '200+ free online tools including calculators, PDF editors, image converters, and developer utilities. 100% client-side, no data uploads, no signup required.',
+  title: 'NavorikaPro – 100+ Free Online Tools, Calculators & Utilities',
+  description: '100+ free online tools including calculators, PDF editors, image converters, and developer utilities. 100% client-side, no data uploads, no signup required.',
   keywords: 'free online tools, calculators, pdf tools, image tools, developer tools, client-side, privacy-first, no signup',
   openGraph: {
-    title: 'NavorikaPro – 200+ Free Online Tools & Calculators',
+    title: 'NavorikaPro – 100+ Free Online Tools & Calculators',
     description: 'Free online tools, calculators, PDF editors, image converters, and utilities. 100% client-side. No data uploads. No signup.',
     url: 'https://navorika.com',
     siteName: 'NavorikaPro',
@@ -28,7 +28,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NavorikaPro – 200+ Free Online Tools & Calculators',
+    title: 'NavorikaPro – 100+ Free Online Tools & Calculators',
     description: 'Free online tools, calculators, PDF editors, image converters, and utilities. 100% client-side. No data uploads.',
     images: ['https://navorika.com/og-image.png'],
   },

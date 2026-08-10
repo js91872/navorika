@@ -39,7 +39,7 @@ export function generateOrganizationSchema(): Record<string, any> {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'NavorikaPro',
-    description: '200+ free online calculators, PDF tools, image converters, and developer utilities.',
+    description: '100+ free online calculators, PDF tools, image converters, and developer utilities.',
     url: 'https://navorika.com',
     logo: 'https://navorika.com/logo.png',
     potentialAction: {
@@ -55,7 +55,7 @@ export function generateWebsiteSchema(): Record<string, any> {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'NavorikaPro',
-    description: '200+ free online calculators, PDF tools, image converters, and developer utilities.',
+    description: '100+ free online calculators, PDF tools, image converters, and developer utilities.',
     url: 'https://navorika.com',
     potentialAction: {
       '@type': 'SearchAction',

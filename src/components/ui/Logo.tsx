@@ -108,7 +108,7 @@ export default function Logo({
           </div>
           {showTagline && (
             <span className="text-[9px] font-bold text-[var(--muted-foreground)] tracking-[0.15em] uppercase leading-none">
-              200+ Free Tools · Client-Side
+              100+ Free Tools · Client-Side
             </span>
           )}
         </div>
