@@ -16,13 +16,13 @@ export default function Footer() {
             <Logo variant="default" showTagline={true} />
             <p className="mt-3 text-sm text-[var(--muted-foreground)] max-w-sm leading-relaxed">
               Navorika is a free platform offering 100+ online tools, calculators, PDF editors, 
-              image converters, and developer utilities. All tools run locally in your browser — 
-              no uploads, no signup, 100% private.
+              image converters, and developer utilities. <strong>Private by design</strong> — 
+              all tools run locally in your browser with no uploads, no signup, and no tracking.
             </p>
             <div className="mt-4 flex items-center gap-4">
               <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400">
                 <Shield className="h-4 w-4" />
-                <span className="font-medium">100% PRIVACY · NO DATA UPLOADS</span>
+                <span className="font-medium">Private by design · No data uploads</span>
               </div>
             </div>
           </div>

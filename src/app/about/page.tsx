@@ -23,7 +23,7 @@ export default function AboutPage() {
     {
       icon: <Lock className="h-8 w-8" />,
       title: 'Privacy First',
-      description: 'Your data never leaves your device. All tools process everything locally in your browser. No uploads, no storage, no tracking.',
+      description: 'Private by design. Your files and calculations stay on your device. Navorika processes all tools locally in your browser without uploading your data. No storage, no tracking, complete privacy.',
     },
     {
       icon: <Zap className="h-8 w-8" />,
