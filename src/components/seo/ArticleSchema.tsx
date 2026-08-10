@@ -13,7 +13,7 @@ export default function ArticleSchema({
   description, 
   date, 
   image = 'https://navorika.com/og-image.png',
-  author = 'NavorikaPro Team',
+  author = 'Navorika Team',
 }: ArticleSchemaProps) {
   const schema = {
     '@context': 'https://schema.org',
@@ -26,7 +26,7 @@ export default function ArticleSchema({
     },
     publisher: {
       '@type': 'Organization',
-      name: 'NavorikaPro',
+      name: 'Navorika',
       logo: {
         '@type': 'ImageObject',
         url: 'https://navorika.com/logo.png',

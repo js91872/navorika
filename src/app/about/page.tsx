@@ -82,7 +82,7 @@ export default function AboutPage() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6"
           >
             <Eye className="h-4 w-4" />
-            About NavorikaPro
+            About Navorika
           </motion.div>
 
           <motion.h1
@@ -91,7 +91,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-6"
           >
-            NavorikaPro – {displayCount} Free Online Tools
+            Navorika – {displayCount} Free Online Tools
             <br />
             <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Built for Privacy &amp; Speed
@@ -104,7 +104,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed"
           >
-            NavorikaPro is a free, client-side platform with {displayCount} online tools,
+            Navorika is a free, client-side platform with {displayCount} online tools,
             calculators, PDF editors, image converters, and developer utilities.
             100% private. Zero data uploads. No signup required.
           </motion.p>
@@ -181,7 +181,7 @@ export default function AboutPage() {
       <section className="bg-[var(--muted)]/30 border-y border-[var(--border)] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">Why Choose NavorikaPro?</h2>
+            <h2 className="text-3xl font-bold">Why Choose Navorika?</h2>
             <p className="text-[var(--muted-foreground)] mt-2">Built differently. Built better.</p>
           </div>
 
@@ -242,7 +242,7 @@ export default function AboutPage() {
           <Sparkles className="h-12 w-12 text-amber-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-3">Ready to experience the future?</h2>
           <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto mb-6">
-            Join thousands of users who trust NavorikaPro for their daily productivity.
+            Join thousands of users who trust Navorika for their daily productivity.
           </p>
           <Link
             href="/tools"

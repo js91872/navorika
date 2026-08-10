@@ -25,7 +25,7 @@ export default function ToolAISearch({ tool }: ToolAISearchProps) {
       <meta name="description" content={getAIDescription()} />
       <meta name="keywords" content={[...tool.keywords, 'free online tool', 'calculator', 'client-side'].join(', ')} />
       
-      <meta property="og:title" content={`${tool.title} – Free Online Tool | NavorikaPro`} />
+      <meta property="og:title" content={`${tool.title} – Free Online Tool | Navorika`} />
       <meta property="og:description" content={getAIDescription()} />
       <meta property="og:url" content={`${baseUrl}/tools/${tool.slug}`} />
       <meta property="og:type" content="website" />

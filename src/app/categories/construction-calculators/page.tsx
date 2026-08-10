@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { tools } from '@/data/registry';
 
 export const metadata = {
-  title: "Construction Calculators | Navorika Pro",
+  title: "Construction Calculators | Navorika",
   description: "Advanced local utilities deployed within the Construction Calculators workspace.",
 };
 

@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     {
       icon: <Shield className="h-6 w-6 text-indigo-500" />,
       title: 'Privacy First by Design',
-      content: 'At NavorikaPro, privacy is not an afterthought—it\'s the foundation. Our platform is built from the ground up to process everything locally in your browser. We never receive, store, or have access to your files, data, or personal information.',
+      content: 'At Navorika, privacy is not an afterthought—it\'s the foundation. Our platform is built from the ground up to process everything locally in your browser. We never receive, store, or have access to your files, data, or personal information.',
     },
     {
       icon: <Lock className="h-6 w-6 text-indigo-500" />,
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
     {
       icon: <Eye className="h-6 w-6 text-indigo-500" />,
       title: 'What Happens to Your Data',
-      content: 'Everything you do on NavorikaPro stays on your device. Here\'s what happens:',
+      content: 'Everything you do on Navorika stays on your device. Here\'s what happens:',
       list: [
         'Files are processed locally in your browser using WebAssembly and JavaScript',
         'No data is ever uploaded to any server',
@@ -40,7 +40,7 @@ export default function PrivacyPage() {
     {
       icon: <Database className="h-6 w-6 text-indigo-500" />,
       title: 'Local Processing Explained',
-      content: 'NavorikaPro uses cutting-edge client-side technologies to ensure everything runs locally:',
+      content: 'Navorika uses cutting-edge client-side technologies to ensure everything runs locally:',
       list: [
         'PDF processing: Uses pdf-lib and pdf.js running entirely in your browser',
         'Image processing: Uses Canvas API and WebAssembly',

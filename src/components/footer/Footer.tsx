@@ -15,13 +15,14 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Logo variant="default" showTagline={true} />
             <p className="mt-3 text-sm text-[var(--muted-foreground)] max-w-sm leading-relaxed">
-              Universal client computing engine offering absolute data privacy,
-              instantaneous execution, and world-class productivity tools.
+              Navorika is a free platform offering 100+ online tools, calculators, PDF editors, 
+              image converters, and developer utilities. All tools run locally in your browser — 
+              no uploads, no signup, 100% private.
             </p>
             <div className="mt-4 flex items-center gap-4">
               <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400">
                 <Shield className="h-4 w-4" />
-                <span className="font-medium">100% CLIENT-SIDE SAFE</span>
+                <span className="font-medium">100% PRIVACY · NO DATA UPLOADS</span>
               </div>
             </div>
           </div>
@@ -67,7 +68,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[var(--muted-foreground)]">
-          <span>© {currentYear} NavorikaPro. All rights reserved.</span>
+          <span>© {currentYear} Navorika. All rights reserved.</span>
           <div className="flex items-center gap-6 text-xs">
             <Link href="/" className="hover:text-[var(--foreground)] transition-colors">Home</Link>
             <Link href="/categories" className="hover:text-[var(--foreground)] transition-colors">Categories</Link>

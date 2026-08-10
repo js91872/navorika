@@ -42,7 +42,7 @@ export function generateArticleSchema(article: any) {
     description: article.description,
     author: {
       '@type': 'Organization',
-      name: 'NavorikaPro',
+      name: 'Navorika',
     },
     datePublished: article.date,
     dateModified: article.date,

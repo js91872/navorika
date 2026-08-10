@@ -10,7 +10,7 @@ export default function Schema() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'NavorikaPro',
+    name: 'Navorika',
     description: '100+ free online calculators, PDF tools, image converters, and developer utilities.',
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
@@ -27,7 +27,7 @@ export default function Schema() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'NavorikaPro',
+    name: 'Navorika',
     description: '100+ free online tools, calculators, and utilities.',
     url: baseUrl,
     potentialAction: {
