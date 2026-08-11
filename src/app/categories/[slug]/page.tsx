@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Zap, Lock, Rocket, CheckCircle } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Lock, Rocket, CheckCircle, Grid } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
 
@@ -220,65 +220,99 @@ export default function CategoryPage() {
           </div>
         )}
 
-        {/* Popular Tools */}
-        {popularTools.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Popular {category.name}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {popularTools.map((tool) => {
+        {/* TOOL SECTION - WITH DISTINCTIVE STYLING */}
+        <div className="mb-8">
+          {/* Section header with icon and divider */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+              <Grid className="h-6 w-6" />
+            </div>
+            <h2 className="text-2xl font-bold">Available Tools</h2>
+            <span className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-sm font-medium">
+              {categoryTools.length} tools
+            </span>
+          </div>
+
+          {/* Popular Tools - with distinct purple gradient border */}
+          {popularTools.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-sm font-semibold text-[var(--muted-foreground)] uppercase tracking-wider mb-3 flex items-center gap-2">
+                <span className="w-1 h-4 bg-indigo-500 rounded-full"></span>
+                Popular Tools
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {popularTools.map((tool) => {
+                  const icon = getToolIcon(tool.slug);
+                  return (
+                    <Link
+                      key={tool.slug}
+                      href={`/tools/${tool.slug}`}
+                      className="group relative p-4 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 border-2 border-indigo-500/20 rounded-xl hover:border-indigo-500/60 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/10 overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/5 to-purple-500/0 group-hover:translate-x-full transition-transform duration-700"></div>
+                      <div className="flex items-center gap-3 relative z-10">
+                        <span className="text-2xl">{icon || '🔧'}</span>
+                        <div>
+                          <h3 className="font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            {tool.title}
+                          </h3>
+                          <p className="text-xs text-[var(--muted-foreground)] line-clamp-1">{tool.description}</p>
+                        </div>
+                        <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-indigo-500 group-hover:translate-x-1 transition-all ml-auto flex-shrink-0" />
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* All Tools - with distinct card styling */}
+          <div className="mt-6">
+            <h3 className="text-sm font-semibold text-[var(--muted-foreground)] uppercase tracking-wider mb-3 flex items-center gap-2">
+              <span className="w-1 h-4 bg-indigo-500 rounded-full"></span>
+              All Tools
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {categoryTools.map((tool) => {
                 const icon = getToolIcon(tool.slug);
+                
                 return (
                   <Link
                     key={tool.slug}
                     href={`/tools/${tool.slug}`}
-                    className="group p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl hover:border-indigo-500/40 transition-all hover:-translate-y-1"
+                    className="group relative p-6 bg-[var(--card)] border-2 border-[var(--border)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 overflow-hidden"
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{icon || '🔧'}</span>
-                      <div>
-                        <h3 className="font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {/* Shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    
+                    {/* Top accent line */}
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div className="flex items-start justify-between mb-4 relative z-10">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 transition-colors duration-300">
+                          <span className="text-2xl group-hover:scale-110 transition-transform duration-300 block">
+                            {icon || '🔧'}
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-black text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                           {tool.title}
                         </h3>
-                        <p className="text-xs text-[var(--muted-foreground)] line-clamp-1">{tool.description}</p>
+                      </div>
+                      <div className="p-1.5 rounded-full bg-[var(--muted)] group-hover:bg-indigo-500/10 transition-colors duration-300">
+                        <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-indigo-500 group-hover:translate-x-0.5 transition-all" />
                       </div>
                     </div>
+                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed relative z-10">
+                      {tool.description}
+                    </p>
+                    {/* Bottom indicator */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-500/0 via-indigo-500/30 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </Link>
                 );
               })}
             </div>
-          </div>
-        )}
-
-        {/* All Tools Grid */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">All {category.name}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categoryTools.map((tool) => {
-              const icon = getToolIcon(tool.slug);
-              
-              return (
-                <Link
-                  key={tool.slug}
-                  href={`/tools/${tool.slug}`}
-                  className="group p-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                        {icon || '🔧'}
-                      </span>
-                      <h3 className="text-lg font-black text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                        {tool.title}
-                      </h3>
-                    </div>
-                    <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-indigo-500 transition-colors" />
-                  </div>
-                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                    {tool.description}
-                  </p>
-                </Link>
-              );
-            })}
           </div>
         </div>
 
