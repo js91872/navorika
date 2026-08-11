@@ -17,6 +17,7 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
   const icon = getToolIcon(meta.slug);
   const toolName = meta.title || 'Tool';
   const hasFaq = meta.faq && meta.faq.length > 0;
+  const hasFormula = meta.formulaExplanation && meta.formulaExplanation.length > 0;
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
@@ -72,18 +73,25 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
         <div className="border-t border-[var(--border)] pt-12 space-y-10">
           
           {/* How it Works */}
-          {meta.formulaExplanation && (
+          {hasFormula && meta.formulaExplanation && (
             <section>
               <h2 className="text-2xl font-bold mb-4">How it Works</h2>
               <div className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
-                <p className="text-[var(--muted-foreground)] leading-relaxed">
-                  {meta.formulaExplanation}
-                </p>
+                <div className="space-y-2">
+                  {meta.formulaExplanation.split('\n').filter(step => step.trim()).map((step: string, index: number) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xs font-bold">
+                        {index + 1}
+                      </span>
+                      <p className="text-sm text-[var(--muted-foreground)]">{step.replace(/^\d+\.\s*/, '')}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </section>
           )}
 
-          {/* Benefits - Generic for all tools */}
+          {/* Benefits */}
           <section>
             <h2 className="text-2xl font-bold mb-4">Key Benefits</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -103,15 +111,23 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
                 <span className="text-green-500 text-xl flex-shrink-0 mt-0.5">✅</span>
                 <span className="text-sm text-[var(--foreground)] leading-relaxed">No signup or registration needed</span>
               </div>
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]">
+                <span className="text-green-500 text-xl flex-shrink-0 mt-0.5">✅</span>
+                <span className="text-sm text-[var(--foreground)] leading-relaxed">Instant processing in your browser</span>
+              </div>
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]">
+                <span className="text-green-500 text-xl flex-shrink-0 mt-0.5">✅</span>
+                <span className="text-sm text-[var(--foreground)] leading-relaxed">Supports all common formats</span>
+              </div>
             </div>
           </section>
 
           {/* FAQ Section */}
-          {hasFaq && (
+          {hasFaq && meta.faq && (
             <section>
               <h2 className="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                {meta.faq.map((item, idx) => (
+                {meta.faq.map((item: { question: string; answer: string }, idx: number) => (
                   <div key={idx} className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
                     <h3 className="font-semibold text-[var(--foreground)] mb-2">{item.question}</h3>
                     <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{item.answer}</p>
