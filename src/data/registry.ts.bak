@@ -49,14 +49,6 @@ export const categories: Category[] = [
     description: 'JSON, base64, JWT, QR codes, and more.',
     icon: 'Code',
     color: 'from-amber-500 to-orange-600'},
-
-  {
-    slug: 'construction-calculators',
-    name: 'Construction Calculators',
-    description: 'Free construction calculators for concrete volume, rebar, steel weight, sand quantity and building cost estimation.',
-    icon: 'Wrench',
-    color: 'from-cyan-500 to-blue-600',
-  },
 ];
 
 export const tools: Tool[] = [
