@@ -569,12 +569,6 @@ export const tools: Tool[] = [
     category: 'finance-calculators',
     keywords: ['tax-calculator', 'tax', 'calculator']},
   {
-    slug: 'taxation-compliance-deck',
-    title: 'Tax Calculator - Calculate Income Tax Online Free',
-    description: 'Calculate income tax, GST, and compliance requirements online free. Get accurate tax calculations for individuals and businesses.',
-    category: 'finance-calculators',
-    keywords: ['taxation-compliance-deck', 'taxation', 'compliance', 'deck']},
-  {
     slug: 'tdee-calculator',
     title: 'TDEE Calculator Online - Calculate Daily Energy Expenditure Free',
     description: 'Calculate your Total Daily Energy Expenditure (TDEE) online free. Understand your complete daily calorie requirements.',
