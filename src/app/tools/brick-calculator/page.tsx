@@ -1,113 +1,214 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft, Ruler, Package } from 'lucide-react';
 import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+import { Input } from '@/components/ui/Input';
+import { Select } from '@/components/ui/Select';
+import { Button } from '@/components/ui/Button';
 
-export default function BrickCalculator() {
+function BrickCalculatorContent() {
   const meta = tools.find(t => t.slug === 'brick-calculator');
-  const [wallLength, setWallLength] = useState(10);
-  const [wallHeight, setWallHeight] = useState(3);
-  const [wallThickness, setWallThickness] = useState(0.23);
-  const [brickLength, setBrickLength] = useState(19);
-  const [brickHeight, setBrickHeight] = useState(9);
-  const [brickWidth, setBrickWidth] = useState(9);
-  const [mortar, setMortar] = useState(10);
+  const [length, setLength] = useState<number>(10);
+  const [width, setWidth] = useState<number>(10);
+  const [height, setHeight] = useState<number>(3);
+  const [unit, setUnit] = useState<'m' | 'ft'>('m');
+  const [brickSize, setBrickSize] = useState<'standard' | 'modular' | 'custom'>('standard');
+  const [mortarThickness, setMortarThickness] = useState<number>(10);
+  const [wastage, setWastage] = useState<number>(5);
   const [result, setResult] = useState<any>(null);
 
-  const handleCalculate = () => {
-    const wallVolume = wallLength * wallHeight * wallThickness;
-    const brickVolume = (brickLength / 100) * (brickHeight / 100) * (brickWidth / 100);
-    const mortarVolume = (wallVolume * mortar) / 100;
-    const effectiveBrickVolume = brickVolume + mortarVolume;
-    const bricks = Math.ceil(wallVolume / effectiveBrickVolume);
+  const brickDimensions = {
+    standard: { length: 0.23, width: 0.11, height: 0.07 },
+    modular: { length: 0.19, width: 0.09, height: 0.09 },
+    custom: { length: 0.23, width: 0.11, height: 0.07 }
+  };
 
-    setResult({ bricks, mortarVolume, wallVolume });
+  const calculateBricks = () => {
+    let len = length;
+    let wid = width;
+    let hei = height;
+
+    if (unit === 'ft') {
+      len = length * 0.3048;
+      wid = width * 0.3048;
+      hei = height * 0.3048;
+    }
+
+    const dims = brickDimensions[brickSize];
+    const mortarM = mortarThickness / 1000;
+
+    const brickLength = dims.length + mortarM;
+    const brickWidth = dims.width + mortarM;
+    const brickHeight = dims.height + mortarM;
+
+    const bricksPerM2 = 1 / (brickLength * brickHeight);
+    const area = len * wid;
+    const volume = len * wid * hei;
+    const totalBricks = Math.ceil(area * bricksPerM2 * (1 + wastage / 100));
+
+    setResult({
+      totalBricks,
+      area,
+      volume,
+      bricksPerM2,
+      wallHeight: hei,
+      wallLength: len,
+      wallWidth: wid
+    });
+  };
+
+  const resetCalculator = () => {
+    setResult(null);
+    setLength(10);
+    setWidth(10);
+    setHeight(3);
+    setBrickSize('standard');
+    setMortarThickness(10);
+    setWastage(5);
   };
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link href="/tools" className="inline-flex items-center gap-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Tools
-        </Link>
+    <div className="max-w-4xl mx-auto">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
+        <h2 className="text-2xl font-bold mb-2">Brick Calculator</h2>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate the number of bricks needed for your construction project.</p>
 
-        <h1 className="text-3xl font-bold mb-2">Brick Calculator</h1>
-        <p className="text-[var(--muted-foreground)] mb-8">Calculate the number of bricks needed for your wall</p>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">
-            <div className="grid grid-cols-3 gap-4">
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Wall Length (m)</label>
-                <input type="number" value={wallLength} onChange={(e) => setWallLength(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Wall Height (m)</label>
-                <input type="number" value={wallHeight} onChange={(e) => setWallHeight(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Wall Thickness (m)</label>
-                <input type="number" step="0.01" value={wallThickness} onChange={(e) => setWallThickness(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4">
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Brick Length (cm)</label>
-                <input type="number" value={brickLength} onChange={(e) => setBrickLength(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Brick Height (cm)</label>
-                <input type="number" value={brickHeight} onChange={(e) => setBrickHeight(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Brick Width (cm)</label>
-                <input type="number" value={brickWidth} onChange={(e) => setBrickWidth(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-              </div>
-            </div>
-
-            <div>
-              <label className="text-sm font-medium text-[var(--muted-foreground)]">Mortar Thickness (%)</label>
-              <input type="number" value={mortar} onChange={(e) => setMortar(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-            </div>
-
-            <button onClick={handleCalculate} className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-colors">
-              Calculate Bricks
-            </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium mb-2">Unit System</label>
+            <Select
+              value={unit}
+              onChange={(e) => setUnit(e.target.value as 'm' | 'ft')}
+              options={[
+                { value: 'm', label: 'Metric (meters)' },
+                { value: 'ft', label: 'Imperial (feet)' }
+              ]}
+            />
           </div>
 
-          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-            {result ? (
-              <div className="space-y-4">
-                <h3 className="font-bold text-lg">Results</h3>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 rounded-xl bg-[var(--muted)]">
-                    <div className="text-xs text-[var(--muted-foreground)]">Bricks Required</div>
-                    <div className="text-lg font-bold">{result.bricks} bricks</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[var(--muted)]">
-                    <div className="text-xs text-[var(--muted-foreground)]">Wall Volume</div>
-                    <div className="text-lg font-bold">{result.wallVolume.toFixed(2)} m³</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[var(--muted)] col-span-2">
-                    <div className="text-xs text-[var(--muted-foreground)]">Mortar Required</div>
-                    <div className="text-lg font-bold">{result.mortarVolume.toFixed(2)} m³</div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="h-full flex items-center justify-center text-[var(--muted-foreground)]">
-                <div className="text-center">
-                  <Package className="h-12 w-12 mx-auto mb-3 opacity-30" />
-                  <p>Enter dimensions and click Calculate</p>
-                </div>
-              </div>
-            )}
+          <div>
+            <label className="block text-sm font-medium mb-2">Wall Length</label>
+            <Input
+              type="number"
+              value={length}
+              onChange={(e) => setLength(Number(e.target.value))}
+              min={0.1}
+              step={0.1}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Wall Width</label>
+            <Input
+              type="number"
+              value={width}
+              onChange={(e) => setWidth(Number(e.target.value))}
+              min={0.1}
+              step={0.1}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Wall Height</label>
+            <Input
+              type="number"
+              value={height}
+              onChange={(e) => setHeight(Number(e.target.value))}
+              min={0.1}
+              step={0.1}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Brick Size</label>
+            <Select
+              value={brickSize}
+              onChange={(e) => setBrickSize(e.target.value as 'standard' | 'modular' | 'custom')}
+              options={[
+                { value: 'standard', label: 'Standard (230×110×70mm)' },
+                { value: 'modular', label: 'Modular (190×90×90mm)' },
+                { value: 'custom', label: 'Custom Size' }
+              ]}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Mortar Thickness (mm)</label>
+            <Input
+              type="number"
+              value={mortarThickness}
+              onChange={(e) => setMortarThickness(Number(e.target.value))}
+              min={5}
+              max={15}
+              step={1}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Wastage (%)</label>
+            <Input
+              type="number"
+              value={wastage}
+              onChange={(e) => setWastage(Number(e.target.value))}
+              min={0}
+              max={20}
+              step={1}
+            />
           </div>
         </div>
+
+        <div className="flex gap-4 mt-6">
+          <Button onClick={calculateBricks} className="flex-1">
+            Calculate Bricks
+          </Button>
+          <Button variant="outline" onClick={resetCalculator}>
+            Reset
+          </Button>
+        </div>
+
+        {result && (
+          <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+            <h3 className="font-bold text-lg mb-4">Brick Calculation Results</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg md:col-span-2">
+                <p className="text-sm text-slate-500 dark:text-slate-400">Total Bricks Needed</p>
+                <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">
+                  {result.totalBricks.toLocaleString()}
+                </p>
+              </div>
+              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
+                <p className="text-sm text-slate-500 dark:text-slate-400">Wall Area</p>
+                <p className="text-lg font-bold">{result.area.toFixed(2)} m²</p>
+              </div>
+              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
+                <p className="text-sm text-slate-500 dark:text-slate-400">Wall Volume</p>
+                <p className="text-lg font-bold">{result.volume.toFixed(2)} m³</p>
+              </div>
+              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
+                <p className="text-sm text-slate-500 dark:text-slate-400">Bricks per m²</p>
+                <p className="text-lg font-bold">{result.bricksPerM2.toFixed(0)}</p>
+              </div>
+              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
+                <p className="text-sm text-slate-500 dark:text-slate-400">Wall Height</p>
+                <p className="text-lg font-bold">{result.wallHeight.toFixed(2)} m</p>
+              </div>
+            </div>
+            <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+              <p className="text-sm text-amber-600 dark:text-amber-400">💡 Remember to add {wastage}% wastage. Order {Math.ceil(result.totalBricks * 1.1).toLocaleString()} bricks to be safe.</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
+  );
+}
+
+export default function BrickCalculator() {
+  const meta = tools.find(t => t.slug === 'brick-calculator');
+  return (
+    <EnhancedToolWrapper meta={meta}>
+      <BrickCalculatorContent />
+    </EnhancedToolWrapper>
   );
 }
