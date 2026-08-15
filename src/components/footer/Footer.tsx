@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Shield } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
+import SocialLinks from './SocialLinks';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,6 +25,8 @@ export default function Footer() {
                 <span className="font-medium">100% CLIENT-SIDE SAFE</span>
               </div>
             </div>
+            {/* Social Links */}
+            <SocialLinks />
           </div>
 
           {/* Navigation */}

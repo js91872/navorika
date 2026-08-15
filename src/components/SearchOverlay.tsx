@@ -1,11 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { X, Search } from 'lucide-react';
 import { tools } from '@/data/registry';
-import { getToolIcon } from '@/lib/toolIcons';
 
 interface SearchOverlayProps {
   isOpen: boolean;
@@ -14,83 +12,90 @@ interface SearchOverlayProps {
 
 export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState('');
+  const [results, setResults] = useState<any[]>([]);
+  const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        if (!isOpen) onClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+    if (isOpen) {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  }, [isOpen]);
 
-  const filteredTools = query.trim() === '' 
-    ? [] 
-    : tools.filter(t => 
-        t.title.toLowerCase().includes(query.toLowerCase()) ||
-        t.description.toLowerCase().includes(query.toLowerCase())
-      ).slice(0, 8);
+  useEffect(() => {
+    if (query.length > 0) {
+      const filtered = tools.filter(tool =>
+        tool.title.toLowerCase().includes(query.toLowerCase()) ||
+        tool.description.toLowerCase().includes(query.toLowerCase()) ||
+        tool.keywords.some(k => k.toLowerCase().includes(query.toLowerCase()))
+      );
+      setResults(filtered.slice(0, 8));
+    } else {
+      setResults([]);
+    }
+  }, [query]);
+
+  const handleSelect = (slug: string) => {
+    onClose();
+    router.push(`/tools/${slug}`);
+  };
+
+  if (!isOpen) return null;
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl"
-          onClick={onClose}
-        >
-          <motion.div
-            initial={{ scale: 0.95, y: 20, opacity: 0 }}
-            animate={{ scale: 1, y: 0, opacity: 1 }}
-            exit={{ scale: 0.95, y: 20, opacity: 0 }}
-            className="max-w-2xl mx-auto mt-[20vh] px-4"
-            onClick={(e) => e.stopPropagation()}
+    <div className="fixed inset-0 z-[100] bg-[var(--background)]/95 backdrop-blur-sm">
+      <div className="max-w-3xl mx-auto px-4 pt-20">
+        <div className="relative">
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search 100+ tools..."
+            className="w-full px-6 py-4 pl-14 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] focus:border-indigo-500 outline-none text-lg"
+          />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted-foreground)]" />
+          <button
+            onClick={onClose}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-[var(--muted)] transition-colors"
           >
-            <div className="bg-[var(--card)] rounded-3xl border border-[var(--border)] shadow-2xl overflow-hidden">
-              <div className="flex items-center gap-3 p-4 border-b border-[var(--border)]">
-                <Search className="h-5 w-5 text-[var(--muted-foreground)]" />
-                <input
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search any tool..."
-                  className="flex-1 bg-transparent outline-none text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] text-lg"
-                  autoFocus
-                />
-                <button onClick={onClose} className="p-2 rounded-full hover:bg-[var(--muted)] transition-colors">
-                  <X className="h-5 w-5 text-[var(--muted-foreground)]" />
-                </button>
-              </div>
-              {filteredTools.length > 0 && (
-                <div className="p-2 max-h-96 overflow-y-auto">
-                  {filteredTools.map((tool) => (
-                    <Link
-                      key={tool.slug}
-                      href={`/tools/${tool.slug}`}
-                      onClick={onClose}
-                      className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-[var(--muted)] transition-colors group"
-                    >
-                      <span className="flex items-center gap-3 text-[var(--foreground)] font-medium">
-                        <span className="text-xl">{getToolIcon(tool.slug)}</span>
-                        {tool.title}
-                      </span>
-                      <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-[var(--foreground)] transition-colors" />
-                    </Link>
-                  ))}
+            <X className="h-6 w-6 text-[var(--muted-foreground)]" />
+          </button>
+        </div>
+
+        {results.length > 0 && (
+          <div className="mt-6 bg-[var(--card)] rounded-2xl border border-[var(--border)] overflow-hidden">
+            {results.map((tool) => (
+              <button
+                key={tool.slug}
+                onClick={() => handleSelect(tool.slug)}
+                className="w-full px-6 py-4 text-left hover:bg-[var(--muted)] transition-colors flex items-center justify-between border-b border-[var(--border)] last:border-0"
+              >
+                <div>
+                  <div className="font-medium">{tool.title}</div>
+                  <div className="text-sm text-[var(--muted-foreground)]">{tool.description}</div>
                 </div>
-              )}
-              {query && filteredTools.length === 0 && (
-                <div className="p-8 text-center text-[var(--muted-foreground)]">No tools found</div>
-              )}
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+                <span className="text-sm text-[var(--muted-foreground)]">→</span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {query.length > 0 && results.length === 0 && (
+          <div className="mt-6 text-center text-[var(--muted-foreground)] py-8">
+            <p>No results found for "{query}"</p>
+            <button
+              onClick={() => {
+                onClose();
+                router.push(`/search?q=${encodeURIComponent(query)}`);
+              }}
+              className="mt-2 text-indigo-500 hover:underline"
+            >
+              View all results
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

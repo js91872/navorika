@@ -6,6 +6,7 @@ import Breadcrumb from '@/components/ui/Breadcrumb';
 import Schema from '@/components/seo/Schema';
 import SEO from '@/components/seo/SEO';
 import AISearch from '@/components/seo/AISearch';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 export const metadata = {
   title: 'Navorika – 100+ Free Online Tools, Calculators & Utilities',
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>{metadata.title}</title>
       </head>
       <body className="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen flex flex-col transition-colors duration-300">
+        <GoogleAnalytics />
         <ThemeProvider>
           <SEO />
           <Schema />

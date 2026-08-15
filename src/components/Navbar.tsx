@@ -3,10 +3,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Sun, Moon, Home, Layers, Wrench, BookOpen, Info, Mail } from 'lucide-react';
+import { Menu, X, Sun, Moon, Home, Layers, Wrench, BookOpen, Info, Mail, Search } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
-export default function Navbar() {
+interface NavbarProps {
+  onSearchClick?: () => void;
+}
+
+export default function Navbar({ onSearchClick }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -33,7 +37,6 @@ export default function Navbar() {
 
   const isActive = (href: string) => pathname === href;
 
-  // Don't render theme-dependent content until mounted
   if (!mounted) return null;
 
   return (
@@ -102,8 +105,17 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right side - Theme toggle */}
+          {/* Right side - Search, Theme toggle, Mobile menu */}
           <div className="flex items-center gap-2">
+            {/* Search Button */}
+            <button
+              onClick={onSearchClick}
+              className="p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:scale-110"
+              aria-label="Search"
+            >
+              <Search className="h-5 w-5" />
+            </button>
+
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:scale-110"
