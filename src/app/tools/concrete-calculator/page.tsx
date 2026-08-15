@@ -1,109 +1,18 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Ruler, Package, Calculator } from 'lucide-react';
-import { tools } from '@/data/registry';
 import { calculateConcrete } from '@/lib/calculations/construction';
 
-export default function ConcreteCalculator() {
+export default function ConcreteCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'concrete-calculator');
-  const [length, setLength] = useState(10);
-  const [width, setWidth] = useState(10);
-  const [height, setHeight] = useState(0.15);
-  const [unit, setUnit] = useState<'feet' | 'meters'>('meters');
-  const [wastage, setWastage] = useState(5);
-  const [result, setResult] = useState<any>(null);
-
-  const handleCalculate = () => {
-    const calcResult = calculateConcrete({ length, width, height, unit, wastage });
-    setResult(calcResult);
-  };
-
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link href="/tools" className="inline-flex items-center gap-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Tools
-        </Link>
-
-        <h1 className="text-3xl font-bold mb-2">Concrete Calculator</h1>
-        <p className="text-[var(--muted-foreground)] mb-8">Calculate concrete volume and material mix for your project</p>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Inputs */}
-          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Length</label>
-                <input type="number" value={length} onChange={(e) => setLength(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Width</label>
-                <input type="number" value={width} onChange={(e) => setWidth(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-              </div>
-            </div>
-            <div>
-              <label className="text-sm font-medium text-[var(--muted-foreground)]">Height/Thickness</label>
-              <input type="number" step="0.01" value={height} onChange={(e) => setHeight(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Unit</label>
-                <select value={unit} onChange={(e) => setUnit(e.target.value as any)} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]">
-                  <option value="meters">Meters</option>
-                  <option value="feet">Feet</option>
-                </select>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-[var(--muted-foreground)]">Wastage (%)</label>
-                <input type="number" value={wastage} onChange={(e) => setWastage(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-              </div>
-            </div>
-            <button onClick={handleCalculate} className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-colors">
-              Calculate
-            </button>
-          </div>
-
-          {/* Results */}
-          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-            {result ? (
-              <div className="space-y-4">
-                <h3 className="font-bold text-lg">Material Mix (M20)</h3>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 rounded-xl bg-[var(--muted)]">
-                    <div className="text-xs text-[var(--muted-foreground)]">Concrete Volume</div>
-                    <div className="text-lg font-bold">{result.volume} m³</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[var(--muted)]">
-                    <div className="text-xs text-[var(--muted-foreground)]">Cement</div>
-                    <div className="text-lg font-bold">{result.cement} m³</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[var(--muted)]">
-                    <div className="text-xs text-[var(--muted-foreground)]">Sand</div>
-                    <div className="text-lg font-bold">{result.sand} m³</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[var(--muted)]">
-                    <div className="text-xs text-[var(--muted-foreground)]">Aggregate</div>
-                    <div className="text-lg font-bold">{result.aggregate} m³</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[var(--muted)] col-span-2">
-                    <div className="text-xs text-[var(--muted-foreground)]">Water</div>
-                    <div className="text-lg font-bold">{result.water} m³</div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="h-full flex items-center justify-center text-[var(--muted-foreground)]">
-                <div className="text-center">
-                  <Ruler className="h-12 w-12 mx-auto mb-3 opacity-30" />
-                  <p>Enter dimensions and click Calculate</p>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+    <EnhancedToolWrapper meta={meta}>
+      <ConcreteCalculator />
+    </EnhancedToolWrapper>
   );
 }

@@ -63,9 +63,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <head>
         <title>{metadata.title}</title>
+        {/* Google Analytics - Direct head injection */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH4XRJSDLZ"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-ZH4XRJSDLZ');
+            `,
+          }}
+        />
       </head>
       <body className="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen flex flex-col transition-colors duration-300">
-        <GoogleAnalytics />
         <ThemeProvider>
           <SEO />
           <Schema />

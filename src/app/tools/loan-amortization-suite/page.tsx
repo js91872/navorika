@@ -1,15 +1,16 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function LoanAmortizationBaseRedirect() {
-  const router = useRouter();
-
-  useEffect(() => {
-    // Forward the root index crawler request to the primary dynamic sub-route endpoint immediately
-    router.replace('/tools/loan-amortization-suite/emi-calculator');
-  }, [router]);
-
-  return null;
+export default function LoanAmortizationBaseRedirectWrapper() {
+  const meta = tools.find(t => t.slug === 'loan-amortization-suite');
+  return (
+    <EnhancedToolWrapper meta={meta}>
+      <LoanAmortizationBaseRedirect />
+    </EnhancedToolWrapper>
+  );
 }

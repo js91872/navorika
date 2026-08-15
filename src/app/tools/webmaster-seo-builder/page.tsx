@@ -1,147 +1,16 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState } from 'react';
 import { ArrowLeft, ShieldCheck, Globe, Link as LinkIcon, Search, FileText, Copy, Check } from 'lucide-react';
-import { tools } from '@/data/registry';
 
-export default function WebmasterSeoTool() {
+export default function WebmasterSeoToolWrapper() {
   const meta = tools.find(t => t.slug === 'webmaster-seo-builder');
-  // Default meta if not found
-  const toolMeta = meta || {
-    heroTitle: "Webmaster Seo Builder",
-    heroDescription: "Process your documents efficiently with this tool.",
-    formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
-    faq: [
-      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
-      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
-      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
-    ]
-  };
-
-  const [mode, setMode] = useState<'utm' | 'meta' | 'robots'>('utm');
-  const [copied, setCopied] = useState(false);
-
-  // UTM State
-  const [utm, setUtm] = useState({ url: 'https://navorika.com', source: 'google', medium: 'cpc', campaign: 'summer_sale' });
-  
-  // Meta State
-  const [metaTags, setMetaTags] = useState({ title: 'Navorika - Free Tools', desc: 'Secure offline utilities.', image: 'https://navorika.com/og.jpg' });
-
-  // Robots State
-  const [robots, setRobots] = useState({ agent: '*', disallow: '/private/', sitemap: 'https://navorika.com/sitemap.xml' });
-
-  const getUtmResult = () => {
-    if (!utm.url) return '';
-    try {
-      const url = new URL(utm.url);
-      if (utm.source) url.searchParams.set('utm_source', utm.source);
-      if (utm.medium) url.searchParams.set('utm_medium', utm.medium);
-      if (utm.campaign) url.searchParams.set('utm_campaign', utm.campaign);
-      return url.toString();
-    } catch {
-      return 'Please enter a valid starting URL (e.g., https://...)';
-    }
-  };
-
-  const getMetaResult = () => {
-    return `<title>${metaTags.title}</title>
-<meta name="description" content="${metaTags.desc}">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="${metaTags.title}">
-<meta property="og:description" content="${metaTags.desc}">
-<meta property="og:image" content="${metaTags.image}">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${metaTags.title}">
-<meta name="twitter:description" content="${metaTags.desc}">
-<meta name="twitter:image" content="${metaTags.image}">`;
-  };
-
-  const getRobotsResult = () => {
-    return `User-agent: ${robots.agent || '*'}
-Disallow: ${robots.disallow}
-
-Sitemap: ${robots.sitemap}`;
-  };
-
-  const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  if (!meta) return null;
-
   return (
-    <main className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
-      <a href="/categories/developer-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-emerald-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Developer Tools</a>
-      
-      <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
-           <ShieldCheck className="h-4 w-4" /> Client-Side Generator
-        </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
-      </div>
-
-      <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden p-8 border border-slate-200 dark:border-slate-800">
-        
-        <div className="flex flex-wrap gap-4 border-b border-slate-100 dark:border-slate-800 pb-6 mb-6">
-          <button onClick={() => setMode('utm')} className={`flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition ${mode === 'utm' ? 'bg-emerald-600 text-white shadow' : 'text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800'}`}><LinkIcon className="h-4 w-4"/> UTM Link Builder</button>
-          <button onClick={() => setMode('meta')} className={`flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition ${mode === 'meta' ? 'bg-emerald-600 text-white shadow' : 'text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800'}`}><Search className="h-4 w-4"/> Meta Tags</button>
-          <button onClick={() => setMode('robots')} className={`flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition ${mode === 'robots' ? 'bg-emerald-600 text-white shadow' : 'text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800'}`}><FileText className="h-4 w-4"/> Robots.txt</button>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Inputs Column */}
-          <div className="space-y-4">
-            {mode === 'utm' && (
-              <>
-                <div><label className="text-xs font-bold uppercase text-slate-500">Target URL</label><input type="text" value={utm.url} onChange={e => setUtm({...utm, url: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm" /></div>
-                <div><label className="text-xs font-bold uppercase text-slate-500">Campaign Source</label><input type="text" value={utm.source} onChange={e => setUtm({...utm, source: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm" placeholder="e.g. google, newsletter" /></div>
-                <div><label className="text-xs font-bold uppercase text-slate-500">Campaign Medium</label><input type="text" value={utm.medium} onChange={e => setUtm({...utm, medium: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm" placeholder="e.g. cpc, banner, email" /></div>
-                <div><label className="text-xs font-bold uppercase text-slate-500">Campaign Name</label><input type="text" value={utm.campaign} onChange={e => setUtm({...utm, campaign: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm" placeholder="e.g. spring_sale" /></div>
-              </>
-            )}
-            
-            {mode === 'meta' && (
-              <>
-                <div><label className="text-xs font-bold uppercase text-slate-500">Page Title</label><input type="text" value={metaTags.title} onChange={e => setMetaTags({...metaTags, title: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm" /></div>
-                <div><label className="text-xs font-bold uppercase text-slate-500">Page Description</label><textarea value={metaTags.desc} onChange={e => setMetaTags({...metaTags, desc: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm h-24" /></div>
-                <div><label className="text-xs font-bold uppercase text-slate-500">OG Image URL</label><input type="text" value={metaTags.image} onChange={e => setMetaTags({...metaTags, image: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm" /></div>
-              </>
-            )}
-
-            {mode === 'robots' && (
-              <>
-                <div><label className="text-xs font-bold uppercase text-slate-500">User-Agent</label><input type="text" value={robots.agent} onChange={e => setRobots({...robots, agent: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm" /></div>
-                <div><label className="text-xs font-bold uppercase text-slate-500">Disallow Path</label><input type="text" value={robots.disallow} onChange={e => setRobots({...robots, disallow: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm" /></div>
-                <div><label className="text-xs font-bold uppercase text-slate-500">Sitemap URL</label><input type="text" value={robots.sitemap} onChange={e => setRobots({...robots, sitemap: e.target.value})} className="w-full mt-1 p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm" /></div>
-              </>
-            )}
-          </div>
-
-          {/* Results Column */}
-          <div className="flex flex-col space-y-4">
-            <div className="flex justify-between items-center">
-              <label className="text-xs font-bold uppercase text-emerald-500">Generated Output</label>
-              <button 
-                onClick={() => handleCopy(mode === 'utm' ? getUtmResult() : mode === 'meta' ? getMetaResult() : getRobotsResult())} 
-                className="flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-emerald-600 transition"
-              >
-                {copied ? <Check className="h-4 w-4 text-emerald-500"/> : <Copy className="h-4 w-4"/>} {copied ? 'Copied' : 'Copy'}
-              </button>
-            </div>
-            <textarea 
-              readOnly 
-              value={mode === 'utm' ? getUtmResult() : mode === 'meta' ? getMetaResult() : getRobotsResult()} 
-              className="w-full flex-1 p-6 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm font-mono break-all resize-none text-emerald-600 dark:text-emerald-400 font-bold" 
-            />
-          </div>
-        </div>
-
-      </div>
-    </main>
+    <EnhancedToolWrapper meta={meta}>
+      <WebmasterSeoTool />
+    </EnhancedToolWrapper>
   );
 }

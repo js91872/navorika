@@ -1,5 +1,8 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Dumbbell, Weight } from 'lucide-react';
@@ -10,42 +13,11 @@ import { ResultCard } from '@/components/ui/ResultCard';
 import { Container } from '@/components/ui/Container';
 import { calculateLeanBodyMass } from '@/lib/calculations/health';
 
-export default function LeanBodyMassCalculator() {
-  const [weight, setWeight] = useState(70);
-  const [bodyFat, setBodyFat] = useState(18);
-  const [result, setResult] = useState<any>(null);
-
-  const handleCalculate = () => {
-    const lbmResult = calculateLeanBodyMass({ weight, bodyFat });
-    setResult(lbmResult);
-  };
-
+export default function LeanBodyMassCalculatorWrapper() {
+  const meta = tools.find(t => t.slug === 'lean-body-mass-calculator');
   return (
-    <Container maxWidth="xl" className="py-8">
-      <Link href="/categories/health-calculators" className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:underline mb-6">
-        <ArrowLeft className="h-4 w-4" /> Back
-      </Link>
-      <h1 className="text-3xl font-black mb-2">Lean Body Mass Calculator</h1>
-      <p className="text-slate-600 dark:text-slate-400 mb-8">Calculate your lean body mass and fat mass</p>
-
-      <div className="grid md:grid-cols-2 gap-8">
-        <Card>
-          <div className="space-y-4">
-            <Input label="Weight (kg)" type="number" value={weight} onChange={(e) => setWeight(Number(e.target.value))} />
-            <Input label="Body Fat (%)" type="number" value={bodyFat} onChange={(e) => setBodyFat(Number(e.target.value))} />
-            <Button onClick={handleCalculate} fullWidth>Calculate LBM</Button>
-          </div>
-        </Card>
-
-        <div className="space-y-4">
-          {result && (
-            <>
-              <ResultCard label="Lean Body Mass" value={`${result.lbm} kg`} subValue="Muscle, bone, organs" color="green" icon={<Dumbbell className="h-5 w-5" />} />
-              <ResultCard label="Fat Mass" value={`${result.fatMass} kg`} subValue="Body fat" color="rose" icon={<Weight className="h-5 w-5" />} />
-            </>
-          )}
-        </div>
-      </div>
-    </Container>
+    <EnhancedToolWrapper meta={meta}>
+      <LeanBodyMassCalculator />
+    </EnhancedToolWrapper>
   );
 }

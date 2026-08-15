@@ -1,5 +1,8 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Ruler, AlertCircle } from 'lucide-react';
@@ -10,49 +13,11 @@ import { ResultCard } from '@/components/ui/ResultCard';
 import { Container } from '@/components/ui/Container';
 import { calculateWHR } from '@/lib/calculations/health';
 
-export default function WaistToHipRatioCalculator() {
-  const [waist, setWaist] = useState(80);
-  const [hip, setHip] = useState(95);
-  const [result, setResult] = useState<any>(null);
-
-  const handleCalculate = () => {
-    const whrResult = calculateWHR({ waist, hip });
-    setResult(whrResult);
-  };
-
+export default function WaistToHipRatioCalculatorWrapper() {
+  const meta = tools.find(t => t.slug === 'waist-to-hip-ratio-calculator');
   return (
-    <Container maxWidth="xl" className="py-8">
-      <Link href="/categories/health-calculators" className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:underline mb-6">
-        <ArrowLeft className="h-4 w-4" /> Back
-      </Link>
-      <h1 className="text-3xl font-black mb-2">Waist-to-Hip Ratio Calculator</h1>
-      <p className="text-slate-600 dark:text-slate-400 mb-8">Assess your health risk based on body fat distribution</p>
-
-      <div className="grid md:grid-cols-2 gap-8">
-        <Card>
-          <div className="space-y-4">
-            <Input label="Waist (cm)" type="number" value={waist} onChange={(e) => setWaist(Number(e.target.value))} />
-            <Input label="Hip (cm)" type="number" value={hip} onChange={(e) => setHip(Number(e.target.value))} />
-            <Button onClick={handleCalculate} fullWidth>Calculate Ratio</Button>
-          </div>
-        </Card>
-
-        <div className="space-y-4">
-          {result && (
-            <>
-              <ResultCard label="Waist-to-Hip Ratio" value={result.ratio} subValue={`Risk: ${result.risk}`} color={result.risk === 'Low' ? 'green' : result.risk === 'Moderate' ? 'amber' : 'rose'} icon={<Ruler className="h-5 w-5" />} />
-              <Card className="p-4 bg-slate-50">
-                <h4 className="font-bold mb-2 flex items-center gap-2"><AlertCircle className="h-4 w-4" /> Health Risk Guide</h4>
-                <ul className="text-sm space-y-1">
-                  <li>Low Risk: &lt; 0.85 (women) / &lt; 0.95 (men)</li>
-                  <li>Moderate Risk: 0.85-0.95 (women) / 0.95-1.0 (men)</li>
-                  <li>High Risk: &gt; 0.95 (women) / &gt; 1.0 (men)</li>
-                </ul>
-              </Card>
-            </>
-          )}
-        </div>
-      </div>
-    </Container>
+    <EnhancedToolWrapper meta={meta}>
+      <WaistToHipRatioCalculator />
+    </EnhancedToolWrapper>
   );
 }

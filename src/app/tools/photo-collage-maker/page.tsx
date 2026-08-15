@@ -1,130 +1,16 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState, useRef } from 'react';
 import { ArrowLeft, Upload, LayoutGrid, Download, X } from 'lucide-react';
-import { tools } from '@/data/registry';
 
-export default function PhotoCollageMakerTool() {
+export default function PhotoCollageMakerToolWrapper() {
   const meta = tools.find(t => t.slug === 'photo-collage-maker');
-  // Default meta if not found
-  const toolMeta = meta || {
-    heroTitle: "Photo Collage Maker",
-    heroDescription: "Process your documents efficiently with this tool.",
-    formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
-    faq: [
-      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
-      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
-      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
-    ]
-  };
-
-  const [files, setFiles] = useState<File[]>([]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const newFiles = Array.from(e.target.files).slice(0, 4 - files.length);
-      setFiles(prev => [...prev, ...newFiles]);
-    }
-  };
-
-  const generateCollage = async () => {
-    if (files.length === 0 || !canvasRef.current) return;
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    canvas.width = 1080;
-    canvas.height = 1080;
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    const padding = 20;
-    const gridW = (canvas.width - padding * 3) / 2;
-    const gridH = (canvas.height - padding * 3) / 2;
-
-    const positions = [
-      { x: padding, y: padding },
-      { x: gridW + padding * 2, y: padding },
-      { x: padding, y: gridH + padding * 2 },
-      { x: gridW + padding * 2, y: gridH + padding * 2 }
-    ];
-
-    for (let i = 0; i < files.length; i++) {
-      const img = new Image();
-      const url = URL.createObjectURL(files[i]);
-      await new Promise<void>(resolve => {
-        img.onload = () => {
-          // Cover logic for grid cell
-          const scale = Math.max(gridW / img.width, gridH / img.height);
-          const drawW = img.width * scale;
-          const drawH = img.height * scale;
-          const drawX = positions[i].x + (gridW - drawW) / 2;
-          const drawY = positions[i].y + (gridH - drawH) / 2;
-          
-          ctx.save();
-          ctx.beginPath();
-          ctx.rect(positions[i].x, positions[i].y, gridW, gridH);
-          ctx.clip();
-          ctx.drawImage(img, drawX, drawY, drawW, drawH);
-          ctx.restore();
-          
-          URL.revokeObjectURL(url);
-          resolve();
-        };
-        img.src = url;
-      });
-    }
-  };
-
-  const downloadCollage = () => {
-    if (!canvasRef.current) return;
-    canvasRef.current.toBlob(blob => {
-      if (blob) {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `Navorika_Collage_${Date.now()}.jpg`;
-        a.click();
-      }
-    }, 'image/jpeg', 0.95);
-  };
-
-  if (!meta) return null;
-
   return (
-    <main className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
-      <a href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-purple-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Image Tools</a>
-      <div className="text-center mb-10"><h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1></div>
-
-      <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden p-8 grid md:grid-cols-2 gap-8">
-        <div className="space-y-6">
-          <div onClick={() => files.length < 4 && fileInputRef.current?.click()} className={`border-2 border-dashed rounded-2xl p-8 text-center transition ${files.length >= 4 ? 'border-slate-200 opacity-50 cursor-not-allowed' : 'border-purple-300 cursor-pointer hover:bg-purple-50'}`}>
-            <Upload className="h-8 w-8 text-purple-500 mx-auto mb-2" />
-            <h4 className="text-sm font-bold">Upload up to 4 Photos</h4>
-            <input type="file" multiple accept="image/*" className="hidden" ref={fileInputRef} onChange={handleFileChange} disabled={files.length >= 4} />
-          </div>
-
-          <div className="space-y-2">
-            {files.map((f, i) => (
-               <div key={i} className="flex justify-between items-center bg-slate-50 dark:bg-slate-950 p-3 rounded-lg text-xs font-mono">
-                 <span className="truncate">{f.name}</span>
-                 <button onClick={() => setFiles(files.filter((_, idx) => idx !== i))} className="text-red-500"><X className="h-4 w-4"/></button>
-               </div>
-            ))}
-          </div>
-
-          <div className="flex gap-4">
-             <button onClick={generateCollage} className="flex-1 bg-slate-800 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2"><LayoutGrid className="h-4 w-4"/> Build Grid</button>
-             <button onClick={downloadCollage} className="flex-1 bg-purple-600 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2"><Download className="h-4 w-4"/> Export</button>
-          </div>
-        </div>
-
-        <div className="border rounded-2xl bg-slate-50 dark:bg-slate-950 p-4 flex items-center justify-center min-h-[400px]">
-           <canvas ref={canvasRef} className="max-w-full max-h-[350px] object-contain shadow-lg rounded" />
-        </div>
-      </div>
-    </main>
+    <EnhancedToolWrapper meta={meta}>
+      <PhotoCollageMakerTool />
+    </EnhancedToolWrapper>
   );
 }

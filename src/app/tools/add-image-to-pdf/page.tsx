@@ -1,11 +1,17 @@
 'use client';
 
-import ImageConverterEngineWrapper from '@/components/ImageConverterEngineWrapper';
 import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import ImageConverterEngineWrapper from '@/components/ImageConverterEngineWrapper';
 
 export const dynamic = 'force-dynamic';
 
-export default function AddImageToPDFPage() {
+export default function AddImageToPDFPageWrapper() {
   const meta = tools.find(t => t.slug === 'add-image-to-pdf');
-  return <ImageConverterEngineWrapper meta={meta} />;
+  return (
+    <EnhancedToolWrapper meta={meta}>
+      <AddImageToPDFPage />
+    </EnhancedToolWrapper>
+  );
 }

@@ -1,128 +1,16 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState, useRef } from 'react';
 import { ArrowLeft, ShieldCheck, Upload, X, Layers, ArrowRight } from 'lucide-react';
-import { tools } from '@/data/registry';
 
-export default function BatchImageConverterTool() {
+export default function BatchImageConverterToolWrapper() {
   const meta = tools.find(t => t.slug === 'batch-image-converter');
-  // Default meta if not found
-  const toolMeta = meta || {
-    heroTitle: "Batch Image Converter",
-    heroDescription: "Process your documents efficiently with this tool.",
-    formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
-    faq: [
-      { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },
-      { question: "Is my data safe?", answer: "Yes! Your files and data never leave your computer." },
-      { question: "Do I need to install anything?", answer: "No installation needed. Everything runs directly in your web browser." }
-    ]
-  };
-
-  const [files, setFiles] = useState<File[]>([]);
-  const [targetFormat, setTargetFormat] = useState('image/jpeg');
-  const [isProcessing, setIsProcessing] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFiles(prev => [...prev, ...Array.from(e.target.files!)]);
-    }
-  };
-
-  const processBatch = async () => {
-    if (files.length === 0) return;
-    setIsProcessing(true);
-
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const img = new Image();
-      const url = URL.createObjectURL(file);
-      
-      await new Promise<void>((resolve) => {
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          canvas.width = img.width;
-          canvas.height = img.height;
-          const ctx = canvas.getContext('2d');
-          
-          if (ctx) {
-            if (targetFormat === 'image/jpeg') {
-              ctx.fillStyle = '#FFFFFF';
-              ctx.fillRect(0, 0, canvas.width, canvas.height);
-            }
-            ctx.drawImage(img, 0, 0);
-            
-            canvas.toBlob((blob) => {
-              if (blob) {
-                const outUrl = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = outUrl;
-                a.download = `Navorika_Batch_${i+1}_${file.name.split('.')[0]}.${targetFormat.split('/')[1]}`;
-                document.body.appendChild(a);
-                a.click();
-                URL.revokeObjectURL(outUrl);
-              }
-              resolve();
-            }, targetFormat, 0.95);
-          } else {
-            resolve();
-          }
-        };
-        img.src = url;
-      });
-      URL.revokeObjectURL(url);
-    }
-    setIsProcessing(false);
-  };
-
-  if (!meta) return null;
-
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
-      <a href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-purple-600 transition mb-8">
-        <ArrowLeft className="h-4 w-4" /> Back to Image Tools
-      </a>
-      
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
-      </div>
-
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-8 space-y-6">
-        
-        <div className="flex items-center gap-4 bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Target Output Format:</span>
-          <select value={targetFormat} onChange={(e) => setTargetFormat(e.target.value)} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-sm outline-none font-bold">
-            <option value="image/jpeg">JPG</option>
-            <option value="image/png">PNG</option>
-            <option value="image/webp">WEBP</option>
-          </select>
-        </div>
-
-        <div onClick={() => fileInputRef.current?.click()} className="border-2 border-dashed border-purple-300 dark:border-purple-500/30 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900/5 transition-colors">
-          <Upload className="h-8 w-8 text-purple-500 mb-2" />
-          <h3 className="text-sm font-bold text-slate-900 dark:text-white">Click to Add Files</h3>
-          <input type="file" multiple accept="image/*" className="hidden" ref={fileInputRef} onChange={handleFileChange} />
-        </div>
-
-        {files.length > 0 && (
-          <div className="space-y-4">
-            <div className="max-h-64 overflow-y-auto space-y-2 border border-slate-100 dark:border-slate-800 p-2 rounded-xl">
-              {files.map((f, i) => (
-                <div key={i} className="flex justify-between items-center bg-slate-50 dark:bg-slate-950 p-3 rounded-lg text-xs font-mono text-slate-600 dark:text-slate-400">
-                  <span className="truncate max-w-[200px]">{f.name}</span>
-                  <button onClick={() => setFiles(files.filter((_, idx) => idx !== i))} className="hover:text-red-500"><X className="h-3 w-3"/></button>
-                </div>
-              ))}
-            </div>
-            
-            <button onClick={processBatch} disabled={isProcessing} className="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-bold transition shadow-md">
-              <Layers className="h-5 w-5" />
-              {isProcessing ? 'Processing Batch...' : `Convert ${files.length} Files`}
-            </button>
-          </div>
-        )}
-      </div>
-    </main>
+    <EnhancedToolWrapper meta={meta}>
+      <BatchImageConverterTool />
+    </EnhancedToolWrapper>
   );
 }

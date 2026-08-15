@@ -5,24 +5,17 @@ import Link from 'next/link';
 import { ArrowLeft, Upload, Download, Loader2, FileText, ShieldCheck, X } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
 import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
-export default function CompressPDFTool() {
+function CompressPDFContent() {
   const meta = tools.find(t => t.slug === 'compress-pdf');
   
-  const toolMeta = meta || {
-    heroTitle: 'Compress PDF',
-    heroDescription: 'Reduce PDF file size while maintaining quality for easy sharing.',
-    formulaExplanation: 'This tool optimizes PDF files by removing redundant data, compressing images, and streamlining the document structure.',
-    faq: [
-      { question: 'How much can I compress a PDF?', answer: 'Compression rates vary from 20% to 90% depending on the content type and quality settings.' },
-      { question: 'Does compression affect quality?', answer: 'We offer different quality presets so you can balance between file size and visual quality.' }
-    ]
-  };
-
   const [file, setFile] = useState<File | null>(null);
   const [compressionLevel, setCompressionLevel] = useState<'low' | 'medium' | 'high'>('medium');
   const [isProcessing, setIsProcessing] = useState(false);
   const [originalSize, setOriginalSize] = useState<number>(0);
+  const [compressedSize, setCompressedSize] = useState<number>(0);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +24,8 @@ export default function CompressPDFTool() {
       if (selected.type !== 'application/pdf') return;
       setFile(selected);
       setOriginalSize(selected.size);
+      setCompressedSize(0);
+      setDownloadUrl(null);
     }
   };
 
@@ -48,123 +43,167 @@ export default function CompressPDFTool() {
         objectsPerTick: 50,
       });
 
-      const blob = new Blob([compressedBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
+      const blob = new Blob([compressedBytes], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `compressed_${file.name}`;
-      a.click();
-      URL.revokeObjectURL(url);
-    } catch (err) {
+      setDownloadUrl(url);
+      setCompressedSize(blob.size);
+    } catch (error) {
+      console.error('Compression error:', error);
       alert('Failed to compress PDF. Please try again.');
+    } finally {
+      setIsProcessing(false);
     }
-    setIsProcessing(false);
+  };
+
+  const formatSize = (bytes: number) => {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  };
+
+  const resetTool = () => {
+    setFile(null);
+    setCompressedSize(0);
+    setDownloadUrl(null);
+    setOriginalSize(0);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
-      <Link href="/categories/pdf-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8">
-        <ArrowLeft className="h-4 w-4" /> Back to PDF Tools
-      </Link>
-
-      <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
-          <ShieldCheck className="h-4 w-4" /> Local Processing Only
-        </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
-      </div>
-
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16">
-        {!file ? (
-          <div className="p-8">
-            <div 
-              onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-indigo-300 dark:border-indigo-500/30 rounded-2xl p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-colors"
-            >
-              <Upload className="h-10 w-10 text-indigo-500 mb-4" />
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Select PDF to Compress</h3>
-              <p className="text-sm text-slate-500 mt-2">Reduce file size while maintaining quality</p>
-              <input 
-                type="file" 
-                accept="application/pdf" 
-                className="hidden" 
-                ref={fileInputRef}
-                onChange={handleFileChange}
-              />
-            </div>
-          </div>
-        ) : (
-          <div className="p-8">
-            <div className="flex items-start gap-4 p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl mb-6">
-              <FileText className="h-8 w-8 text-indigo-500 shrink-0" />
-              <div className="flex-1">
-                <p className="font-bold text-slate-900 dark:text-white">{file.name}</p>
-                <p className="text-sm text-slate-500">{(originalSize / 1024).toFixed(1)} KB</p>
+    <div className="max-w-4xl mx-auto">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
+        <div className="space-y-6">
+          {/* Upload Area */}
+          <div 
+            className="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-8 text-center hover:border-indigo-500 transition-colors cursor-pointer"
+            onClick={() => fileInputRef.current?.click()}
+          >
+            {!file ? (
+              <div>
+                <div className="text-6xl mb-4">📄</div>
+                <p className="text-lg font-medium mb-2">Upload PDF to compress</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Click to select or drag and drop</p>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".pdf"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
               </div>
-              <button 
-                onClick={() => { setFile(null); setOriginalSize(0); }}
-                className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors"
-              >
-                <X className="h-5 w-5 text-slate-500" />
-              </button>
-            </div>
+            ) : (
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <FileText className="h-8 w-8 text-indigo-500" />
+                  <div className="text-left">
+                    <p className="font-medium">{file.name}</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Size: {formatSize(originalSize)}</p>
+                  </div>
+                </div>
+                <button
+                  onClick={(e) => { e.stopPropagation(); resetTool(); }}
+                  className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                >
+                  <X className="h-5 w-5 text-slate-500" />
+                </button>
+              </div>
+            )}
+          </div>
 
-            <div className="mb-6">
-              <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
-                Compression Level
-              </label>
-              <div className="grid grid-cols-3 gap-4">
+          {/* Compression Level */}
+          {file && (
+            <div>
+              <label className="block text-sm font-medium mb-2">Compression Level</label>
+              <div className="grid grid-cols-3 gap-3">
                 {['low', 'medium', 'high'].map((level) => (
                   <button
                     key={level}
-                    onClick={() => setCompressionLevel(level as any)}
-                    className={`py-3 rounded-xl text-sm font-bold transition-all ${
+                    onClick={() => setCompressionLevel(level as 'low' | 'medium' | 'high')}
+                    className={`px-4 py-2 rounded-xl border-2 transition-all capitalize ${
                       compressionLevel === level
-                        ? 'bg-indigo-600 text-white'
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                        ? 'border-indigo-500 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400'
+                        : 'border-slate-200 dark:border-slate-700 hover:border-indigo-500/30'
                     }`}
                   >
-                    {level.charAt(0).toUpperCase() + level.slice(1)}
+                    {level}
                   </button>
                 ))}
               </div>
             </div>
+          )}
 
-            <button
-              onClick={handleCompress}
-              disabled={isProcessing}
-              className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isProcessing ? (
-                <>
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                  Compressing...
-                </>
-              ) : (
-                <>
+          {/* Action Buttons */}
+          {file && (
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={handleCompress}
+                disabled={isProcessing}
+                className="flex-1 px-6 py-3 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {isProcessing ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    Compressing...
+                  </>
+                ) : (
+                  <>
+                    Compress PDF
+                  </>
+                )}
+              </button>
+              {downloadUrl && (
+                <a
+                  href={downloadUrl}
+                  download={`compressed-${file?.name || 'file.pdf'}`}
+                  className="px-6 py-3 rounded-xl bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                >
                   <Download className="h-5 w-5" />
-                  Compress & Download
-                </>
+                  Download
+                </a>
               )}
-            </button>
-          </div>
-        )}
-      </div>
-
-      <div className="prose prose-slate dark:prose-invert max-w-none">
-        <h2 className="text-2xl font-bold mb-4">How it Works</h2>
-        <p>{toolMeta.formulaExplanation}</p>
-        <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
-        <div className="space-y-4">
-          {toolMeta.faq && toolMeta.faq.map((item, i) => (
-            <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-              <h4 className="font-bold text-slate-900 dark:text-white mb-2">{item.question}</h4>
-              <p className="text-sm text-slate-600 dark:text-slate-400 m-0">{item.answer}</p>
             </div>
-          ))}
+          )}
+
+          {/* Results */}
+          {compressedSize > 0 && (
+            <div className="p-4 bg-emerald-50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-800">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-emerald-600 dark:text-emerald-400">Compression Complete!</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    Original: {formatSize(originalSize)} → Compressed: {formatSize(compressedSize)}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                    {Math.round((1 - compressedSize / originalSize) * 100)}%
+                  </p>
+                  <p className="text-xs text-slate-500">reduction</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Info */}
+          <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+            <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
+              <ShieldCheck className="h-4 w-4 text-emerald-500" />
+              Your PDF is processed locally in your browser. No data is uploaded to any server.
+            </p>
+          </div>
         </div>
       </div>
-    </main>
+    </div>
+  );
+}
+
+export default function CompressPDFPage() {
+  const meta = tools.find(t => t.slug === 'compress-pdf');
+  return (
+    <EnhancedToolWrapper meta={meta}>
+      <CompressPDFContent />
+    </EnhancedToolWrapper>
   );
 }

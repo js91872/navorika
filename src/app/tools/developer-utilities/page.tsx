@@ -1,30 +1,15 @@
 'use client';
 
 import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import Link from 'next/link';
 
-export default function DeveloperUtilitiesPage() {
-  const devTools = tools.filter(t => t.category === 'developer-tools');
-  
+export default function DeveloperUtilitiesPageWrapper() {
+  const meta = tools.find(t => t.slug === 'developer-utilities');
   return (
-    <div className="max-w-6xl mx-auto p-8">
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-8">
-        <h1 className="text-3xl font-bold mb-4">Developer Utilities</h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">A collection of developer tools and utilities.</p>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {devTools.map((tool) => (
-            <Link
-              key={tool.slug}
-              href={`/tools/${tool.slug}`}
-              className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors border border-slate-200 dark:border-slate-700"
-            >
-              <h3 className="font-semibold text-sm">{tool.title}</h3>
-              <p className="text-xs text-slate-500 mt-1 line-clamp-2">{tool.description}</p>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </div>
+    <EnhancedToolWrapper meta={meta}>
+      <DeveloperUtilitiesPage />
+    </EnhancedToolWrapper>
   );
 }

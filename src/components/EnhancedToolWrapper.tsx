@@ -19,7 +19,7 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
   const icon = getToolIcon(meta.slug);
   const toolName = meta.title || 'Tool';
   const seo = seoContent[meta.slug];
-  const hasFaq = meta.faq && meta.faq.length > 0;
+  
   const hasFormula = meta.formulaExplanation && meta.formulaExplanation.length > 0;
 
   const lastUpdated = new Date().toLocaleDateString('en-US', {
@@ -28,7 +28,9 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
     day: 'numeric'
   });
 
-  // Get benefits and use cases from seo or use defaults
+  // Get data from seo-content (primary) or use defaults
+  const intro = seo?.intro || `${toolName} is a free online tool that helps you with ${meta.slug.replace('-', ' ')}. Fast, private, and no signup required.`;
+  const howItWorks = seo?.howItWorks || 'This tool processes your data entirely in your browser. No data is stored or transmitted.';
   const benefits = seo?.benefits || [
     '100% free to use',
     'Complete privacy - no data uploads',
@@ -37,19 +39,20 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
     'Works on all devices',
     'Accurate and reliable'
   ];
-
   const useCases = seo?.useCases || [
     'Quick and accurate calculations',
     'Professional and personal use',
     'Educational and learning purposes',
     'Planning and decision making'
   ];
-
   const tips = seo?.tips || [
     'For accurate results, double-check your inputs',
     'Processing happens locally for maximum privacy',
     'Works offline once the page is loaded'
   ];
+  const faqItems = (seo?.faq && seo.faq.length > 0) ? seo.faq : (meta?.faq || []);
+  const stepByStep = seo?.stepByStep || [];
+  const relatedTools = seo?.relatedTools || [];
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
@@ -112,9 +115,14 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
           slug={meta.slug}
           category={meta.category}
           description={meta.description}
+          intro={intro}
+          howItWorks={howItWorks}
           benefits={benefits}
           useCases={useCases}
           tips={tips}
+          stepByStep={stepByStep}
+          faq={faqItems}
+          relatedTools={relatedTools}
         />
       </div>
     </main>

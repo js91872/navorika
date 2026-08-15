@@ -1,68 +1,17 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Banknote, TrendingUp } from 'lucide-react';
-import { tools } from '@/data/registry';
 
-export default function FDCalculator() {
+export default function FDCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'fd-calculator');
-  const [principal, setPrincipal] = useState(100000);
-  const [rate, setRate] = useState(7.5);
-  const [tenure, setTenure] = useState(5);
-  const [result, setResult] = useState<any>(null);
-
-  const calculate = () => {
-    const r = rate / 100;
-    const n = tenure;
-    const maturity = principal * Math.pow(1 + r, n);
-    const interest = maturity - principal;
-    setResult({ maturity: Math.round(maturity), interest: Math.round(interest) });
-  };
-
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 px-4">
-      <div className="max-w-4xl mx-auto">
-        <Link href="/tools" className="inline-flex items-center gap-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Tools
-        </Link>
-        <h1 className="text-3xl font-bold mb-2">FD Calculator</h1>
-        <p className="text-[var(--muted-foreground)] mb-8">Calculate Fixed Deposit returns</p>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">
-            <div>
-              <label className="text-sm font-medium">Principal (₹)</label>
-              <input type="number" value={principal} onChange={(e) => setPrincipal(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-            </div>
-            <div>
-              <label className="text-sm font-medium">Rate (% p.a.)</label>
-              <input type="number" step="0.1" value={rate} onChange={(e) => setRate(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-            </div>
-            <div>
-              <label className="text-sm font-medium">Tenure (years)</label>
-              <input type="number" value={tenure} onChange={(e) => setTenure(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
-            </div>
-            <button onClick={calculate} className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors">Calculate</button>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] flex items-center justify-center">
-            {result ? (
-              <div className="text-center">
-                <Banknote className="h-12 w-12 text-emerald-500 mx-auto mb-3" />
-                <div className="text-4xl font-bold">₹{result.maturity.toLocaleString()}</div>
-                <p className="text-sm text-[var(--muted-foreground)] mt-2">Maturity Amount</p>
-                <p className="text-sm text-emerald-500">Interest: ₹{result.interest.toLocaleString()}</p>
-              </div>
-            ) : (
-              <div className="text-center text-[var(--muted-foreground)]">
-                <TrendingUp className="h-12 w-12 mx-auto mb-3" />
-                <p>Enter details and click Calculate</p>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+    <EnhancedToolWrapper meta={meta}>
+      <FDCalculator />
+    </EnhancedToolWrapper>
   );
 }
