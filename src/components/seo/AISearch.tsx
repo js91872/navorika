@@ -12,7 +12,7 @@ export default function AISearch() {
         __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          name: 'NavorikaPro',
+          name: 'Navorika',
           description: '200+ free online tools, calculators, PDF editors, image converters, and developer utilities.',
           url: baseUrl,
           potentialAction: {

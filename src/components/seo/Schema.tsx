@@ -16,7 +16,7 @@ export default function Schema() {
   schemas.push({
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'NavorikaPro',
+    name: 'Navorika',
     description: '200+ free online tools, calculators, PDF editors, image converters, and developer utilities.',
     url: baseUrl,
     logo: `${baseUrl}/favicon.svg`,
@@ -36,7 +36,7 @@ export default function Schema() {
   schemas.push({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'NavorikaPro',
+    name: 'Navorika',
     description: '200+ free online tools, calculators, and utilities.',
     url: baseUrl,
     potentialAction: {
