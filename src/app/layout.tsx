@@ -43,6 +43,9 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+  alternates: {
+    canonical: 'https://navorika.com',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

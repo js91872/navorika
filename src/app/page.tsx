@@ -3,262 +3,355 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
-  ArrowRight, 
   Shield, 
   Zap, 
+  Lock, 
   Sparkles,
-  Search,
+  ArrowRight,
+  CheckCircle,
+  Users,
   FileText,
   Image,
   Calculator,
-  HeartPulse,
+  Heart,
   Code,
   Wrench,
-  CheckCircle,
-  Lock,
-  Rocket,
-  Users,
-  Clock,
-  ShieldCheck,
-  Globe,
-  Laptop
+  Rocket
 } from 'lucide-react';
 import { tools, categories } from '@/data/registry';
+import SearchBar from '@/components/SearchBar';
 
-const categoryIcons: Record<string, any> = {
-  'pdf-tools': FileText,
-  'image-tools': Image,
-  'finance-calculators': Calculator,
-  'health-calculators': HeartPulse,
-  'developer-tools': Code,
-  'construction-calculators': Wrench,
-};
-
-const categoryColors: Record<string, string> = {
-  'pdf-tools': 'from-blue-500 to-indigo-600',
-  'image-tools': 'from-violet-500 to-purple-600',
-  'finance-calculators': 'from-emerald-500 to-teal-600',
-  'health-calculators': 'from-rose-500 to-pink-600',
-  'developer-tools': 'from-amber-500 to-orange-600',
-  'construction-calculators': 'from-cyan-500 to-blue-600',
-};
-
-export default function Home() {
+export default function HomePage() {
   const totalTools = tools.length;
   const displayCount = totalTools >= 100 ? '100+' : `${totalTools}+`;
+  
+  // Featured tools for the grid
+  const featuredTools = [
+    { slug: 'compress-pdf', title: 'Compress PDF', icon: '📄', category: 'PDF Tools' },
+    { slug: 'resize-image', title: 'Resize Image', icon: '🖼️', category: 'Image Tools' },
+    { slug: 'bmi-calculator', title: 'BMI Calculator', icon: '⚖️', category: 'Health' },
+    { slug: 'sip-calculator', title: 'SIP Calculator', icon: '📊', category: 'Finance' },
+    { slug: 'merge-pdf', title: 'Merge PDF', icon: '📑', category: 'PDF Tools' },
+    { slug: 'concrete-calculator', title: 'Concrete Calculator', icon: '🏗️', category: 'Construction' },
+  ];
+
+  const stats = [
+    { value: displayCount, label: 'Free Tools', icon: <Sparkles className="h-6 w-6 text-amber-500" /> },
+    { value: '100%', label: 'Client-Side', icon: <Zap className="h-6 w-6 text-indigo-500" /> },
+    { value: '0', label: 'Data Uploads', icon: <Shield className="h-6 w-6 text-emerald-500" /> },
+    { value: '0', label: 'Signup Required', icon: <Lock className="h-6 w-6 text-purple-500" /> },
+  ];
+
+  const benefits = [
+    {
+      icon: <Shield className="h-8 w-8 text-emerald-500" />,
+      title: '100% Private',
+      description: 'All processing happens in your browser. Your data never leaves your device. No uploads, no tracking, complete privacy.'
+    },
+    {
+      icon: <Zap className="h-8 w-8 text-indigo-500" />,
+      title: 'Instant Results',
+      description: 'No server delays. Every tool responds instantly because it runs right where you are. Zero latency, pure speed.'
+    },
+    {
+      icon: <Sparkles className="h-8 w-8 text-amber-500" />,
+      title: 'Completely Free',
+      description: `No hidden costs, no premium plans. All ${displayCount} tools are 100% free to use. No credit card, no strings attached.`
+    },
+    {
+      icon: <Users className="h-8 w-8 text-rose-500" />,
+      title: 'No Signup Required',
+      description: 'Start using any tool instantly. No accounts, no emails, no passwords to remember. Just open and use.'
+    },
+  ];
+
+  const faqs = [
+    {
+      q: 'Is Navorika really free?',
+      a: `Yes! All ${displayCount} tools are completely free with no hidden costs, premium plans, or credit card required. Forever free.`
+    },
+    {
+      q: 'How is my data protected?',
+      a: 'All processing happens locally in your browser. No files are uploaded to any server. Your data never leaves your device — private by design.'
+    },
+    {
+      q: 'Do I need to create an account?',
+      a: 'No. You can use any tool instantly without signup or registration. Just open and start using it. No emails, no passwords.'
+    },
+    {
+      q: `What tools are available?`,
+      a: `We offer ${displayCount} tools across 6 categories: PDF Tools, Image Tools, Finance Calculators, Health Calculators, Developer Tools, and Construction Calculators.`
+    },
+    {
+      q: 'Does it work on mobile?',
+      a: 'Yes! All tools are fully responsive and work perfectly on mobile phones, tablets, and desktop computers. Any device, anywhere.'
+    },
+  ];
+
+  const categoryIcons = {
+    'pdf-tools': <FileText className="h-6 w-6" />,
+    'image-tools': <Image className="h-6 w-6" />,
+    'finance-calculators': <Calculator className="h-6 w-6" />,
+    'health-calculators': <Heart className="h-6 w-6" />,
+    'developer-tools': <Code className="h-6 w-6" />,
+    'construction-calculators': <Wrench className="h-6 w-6" />,
+  };
+
+  const categoryColors = {
+    'pdf-tools': 'from-blue-600 to-indigo-600',
+    'image-tools': 'from-violet-600 to-purple-600',
+    'finance-calculators': 'from-emerald-600 to-teal-600',
+    'health-calculators': 'from-rose-600 to-pink-600',
+    'developer-tools': 'from-amber-600 to-orange-600',
+    'construction-calculators': 'from-cyan-600 to-blue-600',
+  };
 
   return (
-    <main className="flex-1 pt-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-      <div className="bg-[var(--background)] text-[var(--foreground)]">
-        
-        {/* HERO SECTION */}
-        <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-32 md:pb-24">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-500/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-[600px] h-[300px] bg-purple-500/5 rounded-full blur-3xl"></div>
-          </div>
+    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative overflow-hidden px-4 pt-20 pb-16 md:pt-32 md:pb-24">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[300px] bg-emerald-500/5 rounded-full blur-3xl" />
+        </div>
 
-          <div className="max-w-4xl mx-auto text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6">
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6"
+            >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-400"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
               </span>
-              Private by design · Zero-latency
-            </div>
+              {displayCount} Tools · 100% Free · Private by Design
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] mb-4">
-              {displayCount} Free Online Tools, Calculators &amp; Utilities
-            </h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-6"
+            >
+              {displayCount} Free Online Tools
+              <br />
+              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                Instant, Private & Free
+              </span>
+            </motion.h1>
 
-            <p className="text-2xl font-bold mb-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Private by Design. Fast. Free. No Signup.
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg sm:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed"
+            >
+              {displayCount} tools including PDF editors, image converters, calculators, 
+              and developer utilities. <span className="font-semibold text-[var(--foreground)]">Everything runs locally in your browser</span> — 
+              no uploads, no signup, no tracking.
+            </motion.p>
 
-            <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-              <strong>Private by design.</strong> Your files and calculations stay on your device. 
-              Navorika processes all {displayCount} tools locally in your browser without uploading your data. 
-              No signup, no tracking, complete privacy.
-            </p>
+            {/* Search Bar - Now Working! */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-8 max-w-xl mx-auto"
+            >
+              <SearchBar placeholder={`Search ${displayCount} tools...`} />
+            </motion.div>
 
-            <button className="flex items-center gap-3 max-w-lg mx-auto w-full p-3 rounded-full bg-[var(--card)] border border-[var(--border)] hover:border-indigo-400/50 transition-all text-left shadow-lg hover:shadow-indigo-500/10">
-              <span className="pl-2 text-[var(--muted-foreground)]">🔍</span>
-              <span className="flex-1 text-[var(--muted-foreground)]">Search {displayCount} tools...</span>
-              <kbd className="px-2 py-1 rounded bg-[var(--muted)] text-[var(--muted-foreground)] text-xs font-mono">⌘K</kbd>
-            </button>
-
-            <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-sm text-[var(--muted-foreground)]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--muted-foreground)]"
+            >
               <span className="flex items-center gap-2">
                 <Shield className="h-4 w-4 text-emerald-500" />
-                Private by design
+                Private by Design
               </span>
-              <span className="w-px h-4 bg-[var(--border)]"></span>
+              <span className="w-px h-4 bg-[var(--border)]" />
               <span className="flex items-center gap-2">
                 <Zap className="h-4 w-4 text-indigo-500" />
-                100% client-side
+                Instant Processing
               </span>
-              <span className="w-px h-4 bg-[var(--border)]"></span>
+              <span className="w-px h-4 bg-[var(--border)]" />
               <span className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-amber-500" />
-                {displayCount} tools
+                <Lock className="h-4 w-4 text-purple-500" />
+                No Data Uploads
               </span>
-              <span className="w-px h-4 bg-[var(--border)]"></span>
-              <span className="flex items-center gap-2">🔒 No signup required</span>
-            </div>
-          </div>
-        </section>
+            </motion.div>
 
-        {/* PRIVATE BY DESIGN - CORE MESSAGE */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[var(--border)]">
-          <div className="text-center max-w-3xl mx-auto">
-            <Shield className="h-16 w-16 text-emerald-500 mx-auto mb-6" />
-            <h2 className="text-3xl font-bold mb-4">Private by Design</h2>
-            <p className="text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
-              Your files and calculations stay on your device. Navorika processes all {displayCount} tools 
-              locally in your browser without uploading your data. No servers, no storage, no tracking — 
-              complete privacy, always.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                <CheckCircle className="h-4 w-4" /> No file uploads
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                <CheckCircle className="h-4 w-4" /> No signup required
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                <CheckCircle className="h-4 w-4" /> Zero tracking
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                <CheckCircle className="h-4 w-4" /> Client-side processing
-              </span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
+            >
+              {stats.map((stat, index) => (
+                <div key={index} className="p-4 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center">
+                  <div className="flex justify-center mb-2">{stat.icon}</div>
+                  <div className="text-2xl font-black">{stat.value}</div>
+                  <div className="text-xs text-[var(--muted-foreground)]">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* FREE ONLINE TOOLS FOR EVERYDAY TASKS */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[var(--border)]">
+      {/* ===== WHY Navorika ===== */}
+      <section className="max-w-6xl mx-auto px-4 py-16 border-t border-[var(--border)]">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold">Why Choose Navorika?</h2>
+          <p className="text-[var(--muted-foreground)] mt-2">Built differently. Built better.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {benefits.map((benefit, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-indigo-500/40 transition-all text-center group"
+            >
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                {benefit.icon}
+              </div>
+              <h3 className="font-bold mb-2">{benefit.title}</h3>
+              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{benefit.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== CATEGORIES ===== */}
+      <section className="bg-[var(--muted)]/30 border-y border-[var(--border)] py-16">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Free Online Tools for Everyday Tasks</h2>
-            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
-              Whether you need to compress a PDF, resize an image, calculate your BMI, or generate a QR code, 
-              Navorika has you covered. All tools are completely free, private, and work directly in your browser.
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold">Tools by Category</h2>
+            <p className="text-[var(--muted-foreground)] mt-2">Explore {displayCount} tools across 6 categories</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <div className="text-4xl mb-4">📄</div>
-              <h3 className="font-bold text-lg mb-2">PDF Tools</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Merge, split, compress, and convert PDF documents without uploading files.</p>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <div className="text-4xl mb-4">🖼️</div>
-              <h3 className="font-bold text-lg mb-2">Image Tools</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Resize, compress, crop, and convert images in formats like JPG, PNG, and WebP.</p>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <div className="text-4xl mb-4">📊</div>
-              <h3 className="font-bold text-lg mb-2">Finance Calculators</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Calculate SIP returns, EMI, GST, taxes, and plan your investments.</p>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <div className="text-4xl mb-4">❤️</div>
-              <h3 className="font-bold text-lg mb-2">Health Calculators</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Check your BMI, BMR, TDEE, body fat, and other health metrics.</p>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <div className="text-4xl mb-4">💻</div>
-              <h3 className="font-bold text-lg mb-2">Developer Tools</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Encode Base64, decode JWT, format JSON, generate QR codes, and more.</p>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <div className="text-4xl mb-4">🔧</div>
-              <h3 className="font-bold text-lg mb-2">Construction Tools</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Calculate concrete, cement, bricks, steel weight, and construction costs.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* HOW IT WORKS - CLIENT-SIDE PROCESSING */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[var(--border)]">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">How Client-Side Processing Works</h2>
-            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
-              All tools run locally in your browser. Your data never leaves your device.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl mb-4">1</div>
-              <h3 className="font-bold mb-2">Choose a Tool</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Browse our collection of {displayCount} free online tools</p>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl mb-4">2</div>
-              <h3 className="font-bold mb-2">Process Locally</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">All processing happens in your browser — no uploads, no servers</p>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl mb-4">3</div>
-              <h3 className="font-bold mb-2">Download Results</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Your data stays private and secure — always</p>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ SECTION */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[var(--border)]">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
-              Everything you need to know about Navorika
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto space-y-4">
-            <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <h3 className="font-bold mb-2">Is Navorika really free?</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Yes, all {displayCount} tools are completely free to use with no hidden costs or premium plans. No credit card required.</p>
-            </div>
-            <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <h3 className="font-bold mb-2">How is my data protected?</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">All processing happens locally in your browser. No files are uploaded to any server. Your data never leaves your device — <strong>private by design</strong>.</p>
-            </div>
-            <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <h3 className="font-bold mb-2">Do I need to create an account?</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">No, you can use any tool instantly without signup or registration. Just open the tool and start using it.</p>
-            </div>
-            <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <h3 className="font-bold mb-2">What file formats are supported?</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">We support JPG, PNG, WebP, PDF, SVG, HEIC, and many more formats across our tools.</p>
-            </div>
-            <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <h3 className="font-bold mb-2">Which tools are available?</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">We offer {displayCount} tools across 6 categories: PDF Tools, Image Tools, Finance Calculators, Health Calculators, Developer Tools, and Construction Calculators.</p>
-            </div>
-            <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
-              <h3 className="font-bold mb-2">Do you offer mobile support?</h3>
-              <p className="text-sm text-[var(--muted-foreground)]">Yes, all tools are fully responsive and work on mobile, tablet, and desktop devices.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA SECTION */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[var(--border)]">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-8 sm:p-12 text-center">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-10"></div>
-            <div className="relative z-10">
-              <Rocket className="h-12 w-12 text-white/80 mx-auto mb-4" />
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Ready to try our free tools?</h2>
-              <p className="text-white/80 max-w-2xl mx-auto mb-6">Explore all {displayCount} tools and find the perfect one for your needs. Private by design. No signup, no uploads, 100% free.</p>
-              <Link className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold hover:shadow-xl transition-all hover:scale-105" href="/tools">
-                Browse all tools <ArrowRight className="h-4 w-4" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categories.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/categories/${category.slug}`}
+                className="group relative p-6 rounded-2xl bg-[var(--card)] border-2 border-[var(--border)] hover:border-indigo-500/50 transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-r ${categoryColors[category.slug as keyof typeof categoryColors] || 'from-indigo-600 to-purple-600'} opacity-0 group-hover:opacity-5 transition-opacity`} />
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center mb-3">
+                    {categoryIcons[category.slug as keyof typeof categoryIcons] || <Wrench className="h-6 w-6" />}
+                  </div>
+                  <h3 className="text-lg font-bold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {category.name}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mt-1 leading-relaxed">
+                    {category.description}
+                  </p>
+                  <div className="mt-4 flex items-center text-sm text-indigo-500 opacity-0 group-hover:opacity-100 transition-all">
+                    <span>Explore tools</span>
+                    <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </Link>
-            </div>
+            ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* ===== POPULAR TOOLS ===== */}
+      <section className="max-w-6xl mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold">Popular Tools</h2>
+          <p className="text-[var(--muted-foreground)] mt-2">Most used tools by our community</p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          {featuredTools.map((tool) => (
+            <Link
+              key={tool.slug}
+              href={`/tools/${tool.slug}`}
+              className="group p-4 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-indigo-500/50 transition-all hover:shadow-lg hover:-translate-y-1 text-center"
+            >
+              <div className="text-3xl mb-2">{tool.icon}</div>
+              <h3 className="text-sm font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                {tool.title}
+              </h3>
+              <p className="text-xs text-[var(--muted-foreground)]">{tool.category}</p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <Link
+            href="/tools"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold hover:shadow-xl transition-all hover:scale-105"
+          >
+            View All Tools <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* ===== FAQ ===== */}
+      <section className="bg-[var(--muted)]/30 border-y border-[var(--border)] py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold">Frequently Asked Questions</h2>
+            <p className="text-[var(--muted-foreground)] mt-2">Everything you need to know about Navorika</p>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
+              >
+                <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
+                <p className="text-[var(--muted-foreground)] leading-relaxed">{faq.a}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CTA ===== */}
+      <section className="max-w-6xl mx-auto px-4 py-16">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-8 sm:p-12 text-center">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-10" />
+          
+          <div className="relative z-10">
+            <Rocket className="h-12 w-12 text-white/80 mx-auto mb-4" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+              Ready to experience the best free tools?
+            </h2>
+            <p className="text-white/80 max-w-2xl mx-auto mb-6">
+              Join thousands of users who trust Navorika for their daily productivity needs.
+            </p>
+            <Link
+              href="/tools"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold hover:shadow-xl transition-all hover:scale-105"
+            >
+              Start Using Tools <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }

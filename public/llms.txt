@@ -1,0 +1,36 @@
+# Navorika - 100+ Free Online Tools
+
+Navorika is a free platform offering 100+ online tools, calculators, PDF editors, image converters, and developer utilities. All tools run 100% client-side in your browser with no data uploads, no signup, and no tracking.
+
+## Key Features
+- 100+ free online tools
+- 100% client-side processing
+- No data uploads
+- No signup required
+- Complete privacy
+- Works on all devices
+
+## Tool Categories
+- PDF Tools: Merge, split, compress, and convert PDF documents
+- Image Tools: Resize, compress, crop, and convert images
+- Finance Calculators: SIP, EMI, GST, tax, PPF, FD calculators
+- Health Calculators: BMI, BMR, TDEE, body fat, fitness calculators
+- Developer Tools: Base64, JWT, JSON, QR code generators
+- Construction Calculators: Concrete, cement, brick, steel weight calculators
+
+## Popular Tools
+- BMI Calculator: https://navorika.com/tools/bmi-calculator
+- PDF Compressor: https://navorika.com/tools/compress-pdf
+- Image Resizer: https://navorika.com/tools/resize-image
+- SIP Calculator: https://navorika.com/tools/sip-calculator
+- Concrete Calculator: https://navorika.com/tools/concrete-calculator
+
+## Related Links
+- Homepage: https://navorika.com
+- All Tools: https://navorika.com/tools
+- Categories: https://navorika.com/categories
+- About: https://navorika.com/about
+- Privacy Policy: https://navorika.com/privacy
+
+## Contact
+- Email: admin@navorika.com

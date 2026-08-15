@@ -15,14 +15,13 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Logo variant="default" showTagline={true} />
             <p className="mt-3 text-sm text-[var(--muted-foreground)] max-w-sm leading-relaxed">
-              Navorika is a free platform offering 100+ online tools, calculators, PDF editors, 
-              image converters, and developer utilities. <strong>Private by design</strong> — 
-              all tools run locally in your browser with no uploads, no signup, and no tracking.
+              Universal client computing engine offering absolute data privacy,
+              instantaneous execution, and world-class productivity tools.
             </p>
             <div className="mt-4 flex items-center gap-4">
               <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400">
                 <Shield className="h-4 w-4" />
-                <span className="font-medium">Private by design · No data uploads</span>
+                <span className="font-medium">100% CLIENT-SIDE SAFE</span>
               </div>
             </div>
           </div>
@@ -33,16 +32,36 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="space-y-2 text-sm">
-              {['Home', 'Categories', 'Tools', 'Guides', 'About'].map((item) => (
-                <li key={item}>
-                  <Link
-                    href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                    className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/categories" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Categories
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Tools
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -59,7 +78,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/sitemap" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
-                  Sitemap
+                  XML Sitemap
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -68,13 +92,14 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[var(--muted-foreground)]">
-          <span>© {currentYear} Navorika. All rights reserved.</span>
+          <span>© {currentYear} NavorikaPro. All rights reserved.</span>
           <div className="flex items-center gap-6 text-xs">
             <Link href="/" className="hover:text-[var(--foreground)] transition-colors">Home</Link>
             <Link href="/categories" className="hover:text-[var(--foreground)] transition-colors">Categories</Link>
             <Link href="/tools" className="hover:text-[var(--foreground)] transition-colors">Tools</Link>
             <Link href="/guides" className="hover:text-[var(--foreground)] transition-colors">Guides</Link>
             <Link href="/about" className="hover:text-[var(--foreground)] transition-colors">About</Link>
+            <Link href="/contact" className="hover:text-[var(--foreground)] transition-colors">Contact</Link>
           </div>
         </div>
       </div>

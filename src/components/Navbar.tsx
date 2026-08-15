@@ -1,157 +1,151 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Search, Menu, X } from 'lucide-react';
-import { useTheme } from '@/components/ThemeProvider';
-import Logo from '@/components/ui/Logo';
+import { Menu, X, Sun, Moon, Home, Layers, Wrench, BookOpen, Info, Mail } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
-interface NavbarProps {
-  onSearchClick?: () => void;
-}
-
-export default function Navbar({ onSearchClick }: NavbarProps) {
-  const { isDark, toggle } = useTheme();
-  const pathname = usePathname();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    setMounted(true);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/categories', label: 'Categories' },
-    { href: '/tools', label: 'Tools' },
-    { href: '/guides', label: 'Guides' },
-    { href: '/about', label: 'About' },
+    { href: '/', label: 'Home', icon: <Home className="h-4 w-4" /> },
+    { href: '/categories', label: 'Categories', icon: <Layers className="h-4 w-4" /> },
+    { href: '/tools', label: 'Tools', icon: <Wrench className="h-4 w-4" /> },
+    { href: '/guides', label: 'Guides', icon: <BookOpen className="h-4 w-4" /> },
+    { href: '/about', label: 'About', icon: <Info className="h-4 w-4" /> },
+    { href: '/contact', label: 'Contact', icon: <Mail className="h-4 w-4" /> },
   ];
 
+  const isActive = (href: string) => pathname === href;
+
+  // Don't render theme-dependent content until mounted
+  if (!mounted) return null;
+
   return (
-    <motion.nav
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-[var(--background)]/80 backdrop-blur-xl border-b border-[var(--border)] shadow-lg'
-          : 'bg-[var(--background)]/60 backdrop-blur-sm border-b border-[var(--border)]'
-      }`}
-    >
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled ? 'bg-[var(--background)]/95 backdrop-blur-sm border-b border-[var(--border)]' : 'bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Logo variant="default" showTagline={false} />
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative">
+              <div className="relative transition-all duration-500 group-hover:scale-105 h-10 w-10">
+                <svg className="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#6366f1" />
+                      <stop offset="50%" stopColor="#8b5cf6" />
+                      <stop offset="100%" stopColor="#a855f7" />
+                    </linearGradient>
+                    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#6366f1" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="24" cy="24" r="22" fill="url(#glowGrad)" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <polygon points="24,6 40,14 40,30 24,38 8,30 8,14" fill="url(#logoGrad)" stroke="white" strokeWidth="2" className="transition-all duration-300 group-hover:shadow-lg" />
+                  <polygon points="24,14 32,20 24,26 16,20" fill="white" opacity="0.9" />
+                  <polygon points="24,26 32,32 24,38 16,32" fill="white" opacity="0.4" />
+                  <circle cx="16" cy="14" r="1.5" fill="white" opacity="0.6" />
+                  <circle cx="32" cy="14" r="1.5" fill="white" opacity="0.6" />
+                  <circle cx="16" cy="34" r="1.5" fill="white" opacity="0.6" />
+                  <circle cx="32" cy="34" r="1.5" fill="white" opacity="0.6" />
+                </svg>
+              </div>
+              <div className="absolute inset-0 rounded-full border-2 border-indigo-500/20 opacity-0 group-hover:opacity-100 animate-ping duration-1000 h-10 w-10" />
+            </div>
+            <div className="flex flex-col">
+              <div className="flex items-center gap-0.5">
+                <span className="font-black tracking-tight text-[var(--foreground)] transition-colors duration-300 text-xl">
+                  Navorika
+                </span>
+                <span className="font-black tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent text-xl">
+                  Pro
+                </span>
+              </div>
+            </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    isActive
-                      ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-500/10'
-                      : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]/50'
-                  }`}
-                >
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  isActive(link.href)
+                    ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-500/10'
+                    : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]/50'
+                }`}
+              >
+                <span className="flex items-center gap-1.5">
+                  {link.icon}
                   {link.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="navbar-active"
-                      className="absolute inset-0 rounded-full bg-indigo-500/10 -z-10"
-                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
+                </span>
+              </Link>
+            ))}
           </div>
 
-          {/* Right side: Search + Theme Toggle */}
+          {/* Right side - Theme toggle */}
           <div className="flex items-center gap-2">
             <button
-              onClick={onSearchClick}
-              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--muted)] border border-[var(--border)] text-[var(--muted-foreground)] text-sm hover:bg-[var(--muted)]/80 hover:border-indigo-500/30 transition-all duration-300 group"
-            >
-              <Search className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              <span className="font-medium">Search</span>
-              <kbd className="px-1.5 py-0.5 rounded bg-[var(--border)] text-[10px] font-mono text-[var(--muted-foreground)]">
-                ⌘K
-              </kbd>
-            </button>
-
-            <button
-              onClick={toggle}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:scale-110"
               aria-label="Toggle theme"
             >
-              {isDark ? (
-                <Sun className="h-5 w-5 hover:rotate-90 transition-transform duration-500" />
-              ) : (
-                <Moon className="h-5 w-5 hover:-rotate-90 transition-transform duration-500" />
-              )}
+              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
 
+            {/* Mobile menu button */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden border-t border-[var(--border)]"
-            >
-              <div className="py-4 space-y-1">
-                {navLinks.map((link) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
-                        isActive
-                          ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-500/10'
-                          : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]/50'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-                <button
-                  onClick={() => {
-                    onSearchClick?.();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]/50 transition-all duration-300 w-full text-left"
-                >
-                  <Search className="h-4 w-4" /> Search
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
-    </motion.nav>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="md:hidden bg-[var(--background)] border-b border-[var(--border)] shadow-lg">
+          <div className="px-4 py-4 space-y-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                  isActive(link.href)
+                    ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400'
+                    : 'text-[var(--muted-foreground)] hover:bg-[var(--muted)]/50 hover:text-[var(--foreground)]'
+                }`}
+              >
+                {link.icon}
+                <span className="font-medium">{link.label}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }

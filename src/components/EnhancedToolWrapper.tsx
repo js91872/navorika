@@ -18,15 +18,14 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
   const icon = getToolIcon(meta.slug);
   const toolName = meta.title || 'Tool';
   const seo = seoContent[meta.slug];
-  const hasFaq = (meta.faq && meta.faq.length > 0) || (seo?.faq && seo.faq.length > 0);
+  const hasFaq = meta.faq && meta.faq.length > 0;
   const hasFormula = meta.formulaExplanation && meta.formulaExplanation.length > 0;
 
-  // Debug - visible in console
-  console.log('🔍 SEO Debug:', {
-    slug: meta.slug,
-    seoExists: !!seo,
-    hasFaq,
-    hasFormula
+  // Last updated date - you can make this dynamic
+  const lastUpdated = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 
   return (
@@ -40,6 +39,11 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
           <span className="text-[var(--muted-foreground)]">/</span>
           <span className="text-[var(--foreground)] font-medium">{toolName}</span>
         </nav>
+
+        {/* Last Updated - NEW */}
+        <div className="text-xs text-[var(--muted-foreground)] mb-4">
+          Last updated: {lastUpdated}
+        </div>
 
         {/* Header with Icon and Title */}
         <div className="mb-8">
@@ -203,11 +207,11 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
           )}
 
           {/* FAQ Section */}
-          {hasFaq && (
+          {hasFaq && meta.faq && (
             <section>
               <h2 className="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                {(meta.faq && meta.faq.length > 0 ? meta.faq : seo?.faq || []).map((item: { question: string; answer: string }, idx: number) => (
+                {meta.faq.map((item: { question: string; answer: string }, idx: number) => (
                   <div key={idx} className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
                     <h3 className="font-semibold text-[var(--foreground)] mb-2">{item.question}</h3>
                     <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{item.answer}</p>
