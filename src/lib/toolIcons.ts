@@ -108,10 +108,28 @@ export const toolIcons: Record<string, string> = {
   'bioluminescent-reader': '🧬',
   'qr-code-studio': '📱',
 
-  // ====== CONSTRUCTION TOOLS ======
-  'concrete-calculator': '🏗️',
+  // ====== CONSTRUCTION TOOLS - ALL 20 ======
+  'asphalt-calculator': '🛣️',
   'brick-calculator': '🧱',
+  'cement-calculator': '🏗️',
+  'concrete-calculator': '🏗️',
+  'construction-cost-calculator': '💰',
   'construction-calculators': '🔨',
+  'excavation-calculator': '🚜',
+  'flooring-calculator': '🏠',
+  'gravel-calculator': '🪨',
+  'house-construction-cost-calculator': '🏠',
+  'land-area-converter': '📐',
+  'paint-calculator': '🎨',
+  'rebar-calculator': '🔩',
+  'roof-area-calculator': '🏠',
+  'sand-calculator': '🏖️',
+  'solar-panel-calculator': '☀️',
+  'steel-weight-calculator': '🔩',
+  'tile-calculator': '🧱',
+  'voltage-drop-calculator': '⚡',
+  'water-tank-calculator': '💧',
+  'wire-size-calculator': '🔌',
 };
 
 export const getToolIcon = (slug: string): string => {

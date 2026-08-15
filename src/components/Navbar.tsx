@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Sun, Moon, Home, Layers, Wrench, BookOpen, Info, Mail, Search } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import Logo from '@/components/ui/Logo';
 
 interface NavbarProps {
   onSearchClick?: () => void;
@@ -44,46 +45,9 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
       scrolled ? 'bg-[var(--background)]/95 backdrop-blur-sm border-b border-[var(--border)]' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <div className="relative transition-all duration-500 group-hover:scale-105 h-10 w-10">
-                <svg className="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#6366f1" />
-                      <stop offset="50%" stopColor="#8b5cf6" />
-                      <stop offset="100%" stopColor="#a855f7" />
-                    </linearGradient>
-                    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#6366f1" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
-                    </radialGradient>
-                  </defs>
-                  <circle cx="24" cy="24" r="22" fill="url(#glowGrad)" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <polygon points="24,6 40,14 40,30 24,38 8,30 8,14" fill="url(#logoGrad)" stroke="white" strokeWidth="2" className="transition-all duration-300 group-hover:shadow-lg" />
-                  <polygon points="24,14 32,20 24,26 16,20" fill="white" opacity="0.9" />
-                  <polygon points="24,26 32,32 24,38 16,32" fill="white" opacity="0.4" />
-                  <circle cx="16" cy="14" r="1.5" fill="white" opacity="0.6" />
-                  <circle cx="32" cy="14" r="1.5" fill="white" opacity="0.6" />
-                  <circle cx="16" cy="34" r="1.5" fill="white" opacity="0.6" />
-                  <circle cx="32" cy="34" r="1.5" fill="white" opacity="0.6" />
-                </svg>
-              </div>
-              <div className="absolute inset-0 rounded-full border-2 border-indigo-500/20 opacity-0 group-hover:opacity-100 animate-ping duration-1000 h-10 w-10" />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-0.5">
-                <span className="font-black tracking-tight text-[var(--foreground)] transition-colors duration-300 text-xl">
-                  Navorika
-                </span>
-                <span className="font-black tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent text-xl">
-                  Pro
-                </span>
-              </div>
-            </div>
-          </Link>
+        <div className="flex items-center justify-between h-20">
+          {/* Logo - Larger with XL size */}
+          <Logo size="lg" />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
@@ -105,9 +69,8 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
             ))}
           </div>
 
-          {/* Right side - Search, Theme toggle, Mobile menu */}
+          {/* Right side */}
           <div className="flex items-center gap-2">
-            {/* Search Button */}
             <button
               onClick={onSearchClick}
               className="p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:scale-110"
@@ -124,7 +87,6 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
 
-            {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"

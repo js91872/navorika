@@ -14,8 +14,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <Logo variant="default" showTagline={true} />
-            <p className="mt-3 text-sm text-[var(--muted-foreground)] max-w-sm leading-relaxed">
+            <Logo showTagline={true} size="lg" />
+            <p className="mt-4 text-sm text-[var(--muted-foreground)] max-w-sm leading-relaxed">
               Universal client computing engine offering absolute data privacy,
               instantaneous execution, and world-class productivity tools.
             </p>
@@ -25,7 +25,6 @@ export default function Footer() {
                 <span className="font-medium">100% CLIENT-SIDE SAFE</span>
               </div>
             </div>
-            {/* Social Links */}
             <SocialLinks />
           </div>
 

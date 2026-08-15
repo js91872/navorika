@@ -1,15 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
   <defs>
-    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#6366f1"/>
-      <stop offset="100%" stopColor="#8b5cf6"/>
+    <linearGradient id="faviconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#a855f7" />
     </linearGradient>
   </defs>
-  
-  <!-- Background hexagon -->
-  <polygon points="32,6 48,14 48,30 32,38 16,30 16,14" fill="url(#favGrad)"/>
-  
-  <!-- N shape -->
-  <polygon points="32,14 40,20 32,26 24,20" fill="white" opacity="0.9"/>
-  <polygon points="32,26 40,32 32,38 24,32" fill="white" opacity="0.4"/>
+  <!-- Hexagon background -->
+  <polygon points="24,4 42,13 42,35 24,44 6,35 6,13" fill="url(#faviconGrad)" stroke="white" stroke-width="2"/>
+  <!-- Inner geometric pattern -->
+  <polygon points="24,12 32,18 32,30 24,36 16,30 16,18" fill="white" opacity="0.9"/>
+  <polygon points="24,18 28,22 28,26 24,30 20,26 20,22" fill="url(#faviconGrad)" opacity="0.6"/>
+  <!-- Center dot -->
+  <circle cx="24" cy="24" r="3" fill="white"/>
+  <!-- Decorative dots -->
+  <circle cx="16" cy="14" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="32" cy="14" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="16" cy="34" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="32" cy="34" r="1.5" fill="white" opacity="0.7"/>
 </svg>
