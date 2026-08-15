@@ -3,6 +3,7 @@
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Ruler, AlertCircle } from 'lucide-react';
@@ -17,7 +18,7 @@ export default function WaistToHipRatioCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'waist-to-hip-ratio-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <WaistToHipRatioCalculator />
+      <WaistToHipRatioCalculatorWrapper />
     </EnhancedToolWrapper>
   );
 }

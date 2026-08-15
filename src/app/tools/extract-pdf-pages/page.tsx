@@ -1,11 +1,12 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Download, Loader2, FileText, ShieldCheck, X, FileUp, FileDown } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
 function ExtractPdfPagesContent() {
   const [file, setFile] = useState<File | null>(null);
@@ -58,7 +59,7 @@ function ExtractPdfPagesContent() {
       }
 
       const pdfBytes = await newPdf.save();
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const blob = new Blob([new Uint8Array(pdfBytes)], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       setDownloadUrl(url);
     } catch (error) {
@@ -188,7 +189,7 @@ function ExtractPdfPagesContent() {
   );
 }
 
-export default function ExtractPdfPagesPage() {
+export default function ExtractPdfPagesPageWrapper() {
   const meta = tools.find(t => t.slug === 'extract-pdf-pages');
   return (
     <EnhancedToolWrapper meta={meta}>

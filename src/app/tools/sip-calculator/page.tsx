@@ -3,6 +3,7 @@
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,7 +23,7 @@ export default function SIPCalculatorEnhancedWrapper() {
   const meta = tools.find(t => t.slug === 'sip-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <SIPCalculatorEnhanced />
+      <SIPCalculatorEnhancedWrapper />
     </EnhancedToolWrapper>
   );
 }

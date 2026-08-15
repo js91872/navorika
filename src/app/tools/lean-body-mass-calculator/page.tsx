@@ -3,6 +3,7 @@
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Dumbbell, Weight } from 'lucide-react';
@@ -17,7 +18,7 @@ export default function LeanBodyMassCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'lean-body-mass-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <LeanBodyMassCalculator />
+      <LeanBodyMassCalculatorWrapper />
     </EnhancedToolWrapper>
   );
 }

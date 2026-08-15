@@ -3,6 +3,7 @@
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Footprints, Flame } from 'lucide-react';
@@ -31,7 +32,7 @@ export default function RunningCaloriesCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'running-calories-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <RunningCaloriesCalculator />
+      <RunningCaloriesCalculatorWrapper />
     </EnhancedToolWrapper>
   );
 }

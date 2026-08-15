@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -151,7 +152,7 @@ function CementCalculatorContent() {
   );
 }
 
-export default function CementCalculator() {
+export default function CementCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'cement-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

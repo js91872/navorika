@@ -3,6 +3,7 @@
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
+
 import { useState, useRef, useEffect } from 'react';
 import { ArrowLeft, ShieldCheck, Upload, X, Crop, MonitorSmartphone } from 'lucide-react';
 
@@ -21,7 +22,7 @@ export default function SocialMediaResizerToolWrapper() {
   const meta = tools.find(t => t.slug === 'social-media-resizer');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <SocialMediaResizerTool />
+      <SocialMediaResizerToolWrapper />
     </EnhancedToolWrapper>
   );
 }

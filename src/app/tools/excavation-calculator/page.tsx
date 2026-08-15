@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -167,7 +168,7 @@ function ExcavationCalculatorContent() {
   );
 }
 
-export default function ExcavationCalculator() {
+export default function ExcavationCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'excavation-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

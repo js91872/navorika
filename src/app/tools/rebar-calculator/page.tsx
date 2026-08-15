@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -203,7 +204,7 @@ function RebarCalculatorContent() {
   );
 }
 
-export default function RebarCalculator() {
+export default function RebarCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'rebar-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

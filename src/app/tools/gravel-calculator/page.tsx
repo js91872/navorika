@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -171,7 +172,7 @@ function GravelCalculatorContent() {
   );
 }
 
-export default function GravelCalculator() {
+export default function GravelCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'gravel-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

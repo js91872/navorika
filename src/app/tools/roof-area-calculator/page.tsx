@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -170,7 +171,7 @@ function RoofAreaCalculatorContent() {
   );
 }
 
-export default function RoofAreaCalculator() {
+export default function RoofAreaCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'roof-area-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

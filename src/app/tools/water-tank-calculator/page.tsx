@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -209,7 +210,7 @@ function WaterTankCalculatorContent() {
   );
 }
 
-export default function WaterTankCalculator() {
+export default function WaterTankCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'water-tank-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

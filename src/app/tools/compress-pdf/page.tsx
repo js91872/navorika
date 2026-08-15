@@ -1,11 +1,12 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Download, Loader2, FileText, ShieldCheck, X } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
 function CompressPDFContent() {
   const meta = tools.find(t => t.slug === 'compress-pdf');
@@ -43,7 +44,7 @@ function CompressPDFContent() {
         objectsPerTick: 50,
       });
 
-      const blob = new Blob([compressedBytes], { type: 'application/pdf' });
+      const blob = new Blob([new Uint8Array(compressedBytes)], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       setDownloadUrl(url);
       setCompressedSize(blob.size);
@@ -199,7 +200,7 @@ function CompressPDFContent() {
   );
 }
 
-export default function CompressPDFPage() {
+export default function CompressPDFPageWrapper() {
   const meta = tools.find(t => t.slug === 'compress-pdf');
   return (
     <EnhancedToolWrapper meta={meta}>

@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -144,7 +145,7 @@ function LandAreaConverterContent() {
   );
 }
 
-export default function LandAreaConverter() {
+export default function LandAreaConverterWrapper() {
   const meta = tools.find(t => t.slug === 'land-area-converter');
   return (
     <EnhancedToolWrapper meta={meta}>

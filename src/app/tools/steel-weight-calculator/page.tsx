@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -225,7 +226,7 @@ function SteelWeightCalculatorContent() {
   );
 }
 
-export default function SteelWeightCalculator() {
+export default function SteelWeightCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'steel-weight-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

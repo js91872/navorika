@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useRef } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState, useRef } from 'react';
 
 function BlurFaceContent() {
   const [image, setImage] = useState<string | null>(null);
@@ -125,7 +126,7 @@ function BlurFaceContent() {
   );
 }
 
-export default function BlurFacePage() {
+export default function BlurFacePageWrapper() {
   const meta = tools.find(t => t.slug === 'blur-face');
   return (
     <EnhancedToolWrapper meta={meta}>

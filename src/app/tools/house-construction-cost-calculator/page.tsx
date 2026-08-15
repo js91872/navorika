@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -189,7 +190,7 @@ function HouseConstructionCostCalculatorContent() {
   );
 }
 
-export default function HouseConstructionCostCalculator() {
+export default function HouseConstructionCostCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'house-construction-cost-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

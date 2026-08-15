@@ -1,5 +1,8 @@
 'use client';
 
+import { tools } from '@/data/registry';
+import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -26,8 +29,6 @@ import { Badge } from '@/components/ui/Badge';
 import { Container } from '@/components/ui/Container';
 import { cn } from '@/lib/utils';
 import { calculateBMI, getBMIEmoji } from '@/lib/calculations/bmi';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-import { tools } from '@/data/registry';
 
 const ACTIVITY_OPTIONS = [
   { value: 'sedentary', label: 'Sedentary (Little or no exercise)' },
@@ -330,7 +331,7 @@ function BMICalculatorContent() {
   );
 }
 
-export default function BMICalculatorPage() {
+export default function BMICalculatorPageWrapper() {
   const meta = tools.find(t => t.slug === 'bmi-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

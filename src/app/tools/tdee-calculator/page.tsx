@@ -3,6 +3,7 @@
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Calculator, Activity, Flame, Zap } from 'lucide-react';
@@ -26,7 +27,7 @@ export default function TDEECalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'tdee-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <TDEECalculator />
+      <TDEECalculatorWrapper />
     </EnhancedToolWrapper>
   );
 }

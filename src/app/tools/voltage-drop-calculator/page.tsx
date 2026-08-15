@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -196,7 +197,7 @@ function VoltageDropCalculatorContent() {
   );
 }
 
-export default function VoltageDropCalculator() {
+export default function VoltageDropCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'voltage-drop-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

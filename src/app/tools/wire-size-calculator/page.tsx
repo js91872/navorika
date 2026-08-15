@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -212,7 +213,7 @@ function WireSizeCalculatorContent() {
   );
 }
 
-export default function WireSizeCalculator() {
+export default function WireSizeCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'wire-size-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

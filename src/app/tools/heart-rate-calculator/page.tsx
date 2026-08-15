@@ -3,6 +3,7 @@
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Heart, Activity } from 'lucide-react';
@@ -16,7 +17,7 @@ export default function HeartRateCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'heart-rate-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <HeartRateCalculator />
+      <HeartRateCalculatorWrapper />
     </EnhancedToolWrapper>
   );
 }

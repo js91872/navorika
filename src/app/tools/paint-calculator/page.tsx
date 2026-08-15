@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -194,7 +195,7 @@ function PaintCalculatorContent() {
   );
 }
 
-export default function PaintCalculator() {
+export default function PaintCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'paint-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>

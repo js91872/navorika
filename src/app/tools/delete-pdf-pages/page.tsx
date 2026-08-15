@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { PDFDocument } from 'pdf-lib';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState, useRef } from 'react';
+import { PDFDocument } from 'pdf-lib';
 
 function DeletePDFPagesTool() {
   const [file, setFile] = useState<File | null>(null);
@@ -59,7 +60,7 @@ function DeletePDFPagesTool() {
       }
 
       const pdfBytes = await newPdf.save();
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const blob = new Blob([new Uint8Array(pdfBytes)], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       setDownloadUrl(url);
     } catch (error) {
@@ -181,7 +182,7 @@ export default function DeletePDFPagesToolWrapper() {
   const meta = tools.find(t => t.slug === 'delete-pdf-pages');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <DeletePDFPagesTool />
+      <DeletePDFPagesToolWrapper />
     </EnhancedToolWrapper>
   );
 }

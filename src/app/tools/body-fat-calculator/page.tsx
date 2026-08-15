@@ -3,6 +3,7 @@
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Ruler, Activity, Shield } from 'lucide-react';
@@ -17,7 +18,7 @@ export default function BodyFatCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'body-fat-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <BodyFatCalculator />
+      <BodyFatCalculatorWrapper />
     </EnhancedToolWrapper>
   );
 }

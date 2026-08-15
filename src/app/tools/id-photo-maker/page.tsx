@@ -3,6 +3,7 @@
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
 
+
 import { useState, useRef, useEffect } from 'react';
 import { ArrowLeft, ShieldCheck, Upload, X, User, Download, Crop } from 'lucide-react';
 
@@ -19,7 +20,7 @@ export default function IdPhotoMakerToolWrapper() {
   const meta = tools.find(t => t.slug === 'id-photo-maker');
   return (
     <EnhancedToolWrapper meta={meta}>
-      <IdPhotoMakerTool />
+      <IdPhotoMakerToolWrapper />
     </EnhancedToolWrapper>
   );
 }

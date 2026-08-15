@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { tools } from '@/data/registry';
 import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+
+import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -156,7 +157,7 @@ function SandCalculatorContent() {
   );
 }
 
-export default function SandCalculator() {
+export default function SandCalculatorWrapper() {
   const meta = tools.find(t => t.slug === 'sand-calculator');
   return (
     <EnhancedToolWrapper meta={meta}>
