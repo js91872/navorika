@@ -97,19 +97,16 @@ export default function Logo({ variant = 'default', showTagline = false, size = 
         <div className="absolute inset-0 rounded-full border-2 border-indigo-500/20 opacity-0 group-hover:opacity-100 animate-ping duration-1000" />
       </div>
 
-      {/* Text */}
+      {/* Text - Removed "Pro" */}
       <div className="flex flex-col">
         <div className="flex items-center gap-0.5">
           <span className={`font-black tracking-tight text-[var(--foreground)] transition-colors duration-300 ${textSizeClass}`}>
             Navorika
           </span>
-          <span className={`font-black tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent ${textSizeClass}`}>
-            Pro
-          </span>
         </div>
         {showTagline && (
           <span className="text-[10px] font-bold text-[var(--muted-foreground)] tracking-[0.15em] uppercase leading-none">
-            200+ Free Tools · Client-Side
+            100+ Free Tools · Client-Side
           </span>
         )}
       </div>
