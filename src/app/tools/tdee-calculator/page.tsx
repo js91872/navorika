@@ -1,9 +1,5 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
-
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Calculator, Activity, Flame, Zap } from 'lucide-react';
@@ -23,11 +19,71 @@ const ACTIVITY_OPTIONS = [
   { value: 'very-active', label: 'Very Active (Athlete/Physical job)' },
 ];
 
-export default function TDEECalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'tdee-calculator');
+export default function TDEECalculator() {
+  const [age, setAge] = useState(30);
+  const [gender, setGender] = useState<'male' | 'female'>('male');
+  const [weight, setWeight] = useState(70);
+  const [height, setHeight] = useState(175);
+  const [activityLevel, setActivityLevel] = useState<'sedentary' | 'light' | 'moderate' | 'active' | 'very-active'>('moderate');
+  const [result, setResult] = useState<any>(null);
+
+  const handleCalculate = () => {
+    const tdeeResult = calculateTDEE({
+      age,
+      gender,
+      weight,
+      height,
+      activityLevel,
+    });
+    setResult(tdeeResult);
+  };
+
   return (
-    <EnhancedToolWrapper meta={meta}>
-      <TDEECalculatorWrapper />
-    </EnhancedToolWrapper>
+    <Container maxWidth="xl" className="py-8">
+      <Link href="/categories/health-calculators" className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:underline mb-6">
+        <ArrowLeft className="h-4 w-4" /> Back to Health Calculators
+      </Link>
+
+      <h1 className="text-3xl font-black mb-2">TDEE Calculator</h1>
+      <p className="text-slate-600 dark:text-slate-400 mb-8">Calculate your Total Daily Energy Expenditure</p>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card>
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <Input label="Age" type="number" value={age} onChange={(e) => setAge(Number(e.target.value))} />
+              <div>
+                <label className="text-xs font-bold uppercase text-slate-500">Gender</label>
+                <div className="grid grid-cols-2 gap-2 mt-1">
+                  {['male', 'female'].map((g) => (
+                    <button key={g} onClick={() => setGender(g as any)} className={`py-2 rounded-xl text-sm font-bold ${gender === g ? 'bg-indigo-600 text-white' : 'bg-slate-100'}`}>
+                      {g}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <Input label="Weight (kg)" type="number" value={weight} onChange={(e) => setWeight(Number(e.target.value))} />
+            <Input label="Height (cm)" type="number" value={height} onChange={(e) => setHeight(Number(e.target.value))} />
+            <Select label="Activity Level" options={ACTIVITY_OPTIONS} value={activityLevel} onChange={(e) => setActivityLevel(e.target.value as any)} />
+            <Button onClick={handleCalculate} fullWidth>Calculate TDEE</Button>
+          </div>
+        </Card>
+
+        <div className="space-y-4">
+          {result && (
+            <>
+              <ResultCard label="BMR" value={`${result.bmr} kcal`} subValue="Basal Metabolic Rate" color="purple" icon={<Flame className="h-5 w-5" />} />
+              <ResultCard label="TDEE" value={`${result.tdee} kcal`} subValue={`Activity Multiplier: ${result.activityMultiplier}x`} color="green" icon={<Zap className="h-5 w-5" />} />
+              <Card className="text-center p-4 bg-slate-50">
+                <p className="text-sm text-slate-600">Maintain weight: <strong>{result.tdee} kcal</strong></p>
+                <p className="text-sm text-slate-600">Lose weight: <strong>{result.tdee - 500} kcal</strong></p>
+                <p className="text-sm text-slate-600">Gain weight: <strong>{result.tdee + 300} kcal</strong></p>
+              </Card>
+            </>
+          )}
+        </div>
+      </div>
+    </Container>
   );
 }

@@ -1,9 +1,5 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
-
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Heart, Scale } from 'lucide-react';
@@ -13,11 +9,53 @@ import { Input } from '@/components/ui/Input';
 import { ResultCard } from '@/components/ui/ResultCard';
 import { Container } from '@/components/ui/Container';
 
-export default function HealthyWeightCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'healthy-weight-calculator');
+export default function HealthyWeightCalculator() {
+  const [height, setHeight] = useState(175);
+  const [weight, setWeight] = useState(70);
+  const [result, setResult] = useState<any>(null);
+
+  const handleCalculate = () => {
+    const heightM = height / 100;
+    const bmi = weight / (heightM * heightM);
+    const minWeight = 18.5 * heightM * heightM;
+    const maxWeight = 24.9 * heightM * heightM;
+    const idealWeight = 22 * heightM * heightM;
+
+    let status = '';
+    if (bmi < 18.5) status = 'Underweight';
+    else if (bmi < 25) status = 'Normal Weight';
+    else if (bmi < 30) status = 'Overweight';
+    else status = 'Obese';
+
+    setResult({ bmi, minWeight, maxWeight, idealWeight, status });
+  };
+
   return (
-    <EnhancedToolWrapper meta={meta}>
-      <HealthyWeightCalculatorWrapper />
-    </EnhancedToolWrapper>
+    <Container maxWidth="xl" className="py-8">
+      <Link href="/categories/health-calculators" className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:underline mb-6">
+        <ArrowLeft className="h-4 w-4" /> Back
+      </Link>
+      <h1 className="text-3xl font-black mb-2">Healthy Weight Calculator</h1>
+      <p className="text-slate-600 dark:text-slate-400 mb-8">Find your healthy weight range based on BMI</p>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card>
+          <div className="space-y-4">
+            <Input label="Height (cm)" type="number" value={height} onChange={(e) => setHeight(Number(e.target.value))} />
+            <Input label="Weight (kg)" type="number" value={weight} onChange={(e) => setWeight(Number(e.target.value))} />
+            <Button onClick={handleCalculate} fullWidth>Calculate Healthy Weight</Button>
+          </div>
+        </Card>
+
+        <div className="space-y-4">
+          {result && (
+            <>
+              <ResultCard label="Current BMI" value={result.bmi.toFixed(1)} subValue={result.status} color={result.status === 'Normal Weight' ? 'green' : result.status === 'Underweight' ? 'amber' : 'rose'} />
+              <ResultCard label="Healthy Weight Range" value={`${result.minWeight.toFixed(1)} - ${result.maxWeight.toFixed(1)} kg`} subValue={`Ideal: ${result.idealWeight.toFixed(1)} kg`} color="blue" icon={<Scale className="h-5 w-5" />} />
+            </>
+          )}
+        </div>
+      </div>
+    </Container>
   );
 }

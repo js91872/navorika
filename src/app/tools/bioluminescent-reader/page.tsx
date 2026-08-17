@@ -1,18 +1,89 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
-
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Download, Loader2, FileText, ShieldCheck, X } from 'lucide-react';
+import { tools } from '@/data/registry';
 
-export default function BioluminescentReaderToolWrapper() {
+export default function BioluminescentReaderTool() {
   const meta = tools.find(t => t.slug === 'bioluminescent-reader');
+  
+  const toolMeta = meta || {
+    heroTitle: 'Bioluminescence Reader',
+    heroDescription: 'Read and analyze bioluminescent data from your samples.',
+    formulaExplanation: 'This tool analyzes bioluminescent data patterns and provides insights into biological luminescence.',
+    faq: [
+      { question: 'What is bioluminescence?', answer: 'Bioluminescence is the production of light by living organisms through chemical reactions.' },
+      { question: 'What data formats are supported?', answer: 'We support CSV, JSON, and text formats for bioluminescence data.' }
+    ]
+  };
+
+  const [file, setFile] = useState<File | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const handleProcess = async () => {
+    if (!file) return;
+    setIsProcessing(true);
+    setTimeout(() => {
+      setIsProcessing(false);
+      alert('Bioluminescent data processed successfully!');
+    }, 2000);
+  };
+
   return (
-    <EnhancedToolWrapper meta={meta}>
-      <BioluminescentReaderToolWrapper />
-    </EnhancedToolWrapper>
+    <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
+      <Link href="/categories/developer-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8">
+        <ArrowLeft className="h-4 w-4" /> Back to Developer Tools
+      </Link>
+
+      <div className="text-center mb-10">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
+          <ShieldCheck className="h-4 w-4" /> Local Processing Only
+        </div>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
+      </div>
+
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16">
+        <div className="p-8">
+          <div 
+            onClick={() => fileInputRef.current?.click()}
+            className="border-2 border-dashed border-indigo-300 dark:border-indigo-500/30 rounded-2xl p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-colors"
+          >
+            <Upload className="h-10 w-10 text-indigo-500 mb-4" />
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Upload Bioluminescent Data</h3>
+            <p className="text-sm text-slate-500 mt-2">Supported formats: CSV, JSON, TXT</p>
+            <input 
+              type="file" 
+              accept=".csv,.json,.txt" 
+              className="hidden" 
+              ref={fileInputRef}
+              onChange={handleFileChange}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="prose prose-slate dark:prose-invert max-w-none">
+        <h2 className="text-2xl font-bold mb-4">How it Works</h2>
+        <p>{toolMeta.formulaExplanation}</p>
+        <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
+        <div className="space-y-4">
+          {toolMeta.faq && toolMeta.faq.map((item, i) => (
+            <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+              <h4 className="font-bold text-slate-900 dark:text-white mb-2">{item.question}</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-400 m-0">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
   );
 }

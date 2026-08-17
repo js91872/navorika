@@ -1,12 +1,9 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
-
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, RefreshCw, Globe } from 'lucide-react';
+import { tools } from '@/data/registry';
 
 const RATES: Record<string, number> = {
   USD: 1,
@@ -28,11 +25,89 @@ const RATES: Record<string, number> = {
 
 const CURRENCIES = Object.keys(RATES);
 
-export default function CurrencyConverterWrapper() {
+export default function CurrencyConverter() {
   const meta = tools.find(t => t.slug === 'currency-converter');
+  const [amount, setAmount] = useState(1);
+  const [from, setFrom] = useState('USD');
+  const [to, setTo] = useState('INR');
+  const [result, setResult] = useState<number | null>(null);
+
+  const convert = () => {
+    const fromRate = RATES[from];
+    const toRate = RATES[to];
+    setResult((amount / fromRate) * toRate);
+  };
+
   return (
-    <EnhancedToolWrapper meta={meta}>
-      <CurrencyConverterWrapper />
-    </EnhancedToolWrapper>
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 px-4">
+      <div className="max-w-4xl mx-auto">
+        <Link href="/tools" className="inline-flex items-center gap-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] mb-6">
+          <ArrowLeft className="h-4 w-4" /> Back to Tools
+        </Link>
+        <h1 className="text-3xl font-bold mb-2">Currency Converter</h1>
+        <p className="text-[var(--muted-foreground)] mb-8">Convert between 15+ currencies</p>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">
+            <div>
+              <label className="text-sm font-medium">Amount</label>
+              <input 
+                type="number" 
+                value={amount} 
+                onChange={(e) => setAmount(Number(e.target.value))} 
+                className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" 
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="text-sm font-medium">From</label>
+                <select 
+                  value={from} 
+                  onChange={(e) => setFrom(e.target.value)} 
+                  className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]"
+                >
+                  {CURRENCIES.map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="text-sm font-medium">To</label>
+                <select 
+                  value={to} 
+                  onChange={(e) => setTo(e.target.value)} 
+                  className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]"
+                >
+                  {CURRENCIES.map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
+              </div>
+            </div>
+            <button 
+              onClick={convert} 
+              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+            >
+              <RefreshCw className="h-4 w-4" /> Convert
+            </button>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] flex items-center justify-center">
+            {result !== null ? (
+              <div className="text-center">
+                <Globe className="h-12 w-12 text-indigo-500 mx-auto mb-3" />
+                <div className="text-4xl font-bold">
+                  {result.toFixed(2)} <span className="text-lg font-normal text-[var(--muted-foreground)]">{to}</span>
+                </div>
+                <p className="text-sm text-[var(--muted-foreground)] mt-2">
+                  {amount} {from} = {result.toFixed(2)} {to}
+                </p>
+              </div>
+            ) : (
+              <div className="text-center text-[var(--muted-foreground)]">
+                <Globe className="h-12 w-12 mx-auto mb-3 opacity-30" />
+                <p>Enter amount and click Convert</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,9 +1,5 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
-
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Ruler } from 'lucide-react';
@@ -14,11 +10,49 @@ import { ResultCard } from '@/components/ui/ResultCard';
 import { Container } from '@/components/ui/Container';
 import { calculateWHRatio } from '@/lib/calculations/health';
 
-export default function WaistToHeightRatioCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'waist-to-height-ratio-calculator');
+export default function WaistToHeightRatioCalculator() {
+  const [waist, setWaist] = useState(80);
+  const [height, setHeight] = useState(175);
+  const [result, setResult] = useState<any>(null);
+
+  const handleCalculate = () => {
+    const whrResult = calculateWHRatio({ waist, height });
+    setResult(whrResult);
+  };
+
   return (
-    <EnhancedToolWrapper meta={meta}>
-      <WaistToHeightRatioCalculatorWrapper />
-    </EnhancedToolWrapper>
+    <Container maxWidth="xl" className="py-8">
+      <Link href="/categories/health-calculators" className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:underline mb-6">
+        <ArrowLeft className="h-4 w-4" /> Back
+      </Link>
+      <h1 className="text-3xl font-black mb-2">Waist-to-Height Ratio Calculator</h1>
+      <p className="text-slate-600 dark:text-slate-400 mb-8">A simple predictor of cardiometabolic risk</p>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card>
+          <div className="space-y-4">
+            <Input label="Waist (cm)" type="number" value={waist} onChange={(e) => setWaist(Number(e.target.value))} />
+            <Input label="Height (cm)" type="number" value={height} onChange={(e) => setHeight(Number(e.target.value))} />
+            <Button onClick={handleCalculate} fullWidth>Calculate Ratio</Button>
+          </div>
+        </Card>
+
+        <div className="space-y-4">
+          {result && (
+            <>
+              <ResultCard label="Waist-to-Height Ratio" value={result.ratio} subValue={`Risk: ${result.risk}`} color={result.risk === 'Low' ? 'green' : 'amber'} icon={<Ruler className="h-5 w-5" />} />
+              <Card className="p-4 bg-slate-50">
+                <h4 className="font-bold mb-2">Guidelines</h4>
+                <ul className="text-sm space-y-1">
+                  <li>Healthy: &lt; 0.5</li>
+                  <li>Moderate Risk: 0.5 - 0.6</li>
+                  <li>High Risk: &gt; 0.6</li>
+                </ul>
+              </Card>
+            </>
+          )}
+        </div>
+      </div>
+    </Container>
   );
 }

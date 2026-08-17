@@ -1,9 +1,5 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
-
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -11,13 +7,288 @@ import {
   ArrowLeft, PiggyBank, TrendingUp, Shield, Calendar,
   IndianRupee, Clock, AlertCircle, CheckCircle
 } from 'lucide-react';
+import { tools } from '@/data/registry';
 import { calculateRetirement } from '@/lib/calculations/retirement';
 
-export default function RetirementCalculatorWrapper() {
+export default function RetirementCalculator() {
   const meta = tools.find(t => t.slug === 'retirement-calculator');
+  const [result, setResult] = useState<any>(null);
+
+  // Input states
+  const [currentAge, setCurrentAge] = useState(30);
+  const [retirementAge, setRetirementAge] = useState(60);
+  const [lifeExpectancy, setLifeExpectancy] = useState(85);
+  const [currentSavings, setCurrentSavings] = useState(500000);
+  const [monthlyExpenses, setMonthlyExpenses] = useState(30000);
+  const [inflationRate, setInflationRate] = useState(6);
+  const [expectedReturn, setExpectedReturn] = useState(12);
+  const [monthlyContribution, setMonthlyContribution] = useState(10000);
+  const [contributionIncreaseRate, setContributionIncreaseRate] = useState(5);
+
+  const handleCalculate = () => {
+    const retirementResult = calculateRetirement({
+      currentAge,
+      retirementAge,
+      lifeExpectancy,
+      currentSavings,
+      monthlyExpenses,
+      inflationRate,
+      expectedReturn,
+      monthlyContribution,
+      contributionIncreaseRate,
+    });
+    setResult(retirementResult);
+  };
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
+
   return (
-    <EnhancedToolWrapper meta={meta}>
-      <RetirementCalculatorWrapper />
-    </EnhancedToolWrapper>
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Back Link */}
+        <Link
+          href="/categories/retirement-calculators"
+          className="inline-flex items-center gap-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-6"
+        >
+          <ArrowLeft className="h-4 w-4" /> Back to Retirement Calculators
+        </Link>
+
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="p-3 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+              <PiggyBank className="h-8 w-8" />
+            </div>
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-black">Retirement Calculator</h1>
+              <p className="text-[var(--muted-foreground)]">Plan your retirement with precision. Know exactly how much you need.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Calculator Grid */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Inputs */}
+          <div className="space-y-4">
+            <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
+              <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+                <Calendar className="h-5 w-5 text-indigo-500" />
+                Your Details
+              </h2>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium text-[var(--muted-foreground)]">Current Age</label>
+                  <input
+                    type="number"
+                    value={currentAge}
+                    onChange={(e) => setCurrentAge(Number(e.target.value))}
+                    className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)]"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-[var(--muted-foreground)]">Retirement Age</label>
+                  <input
+                    type="number"
+                    value={retirementAge}
+                    onChange={(e) => setRetirementAge(Number(e.target.value))}
+                    className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)]"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <label className="text-sm font-medium text-[var(--muted-foreground)]">Life Expectancy</label>
+                <input
+                  type="number"
+                  value={lifeExpectancy}
+                  onChange={(e) => setLifeExpectancy(Number(e.target.value))}
+                  className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)]"
+                />
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
+              <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+                <IndianRupee className="h-5 w-5 text-emerald-500" />
+                Financial Details
+              </h2>
+              <div className="space-y-3">
+                <div>
+                  <label className="text-sm font-medium text-[var(--muted-foreground)]">Current Savings (₹)</label>
+                  <input
+                    type="number"
+                    value={currentSavings}
+                    onChange={(e) => setCurrentSavings(Number(e.target.value))}
+                    className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)]"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-[var(--muted-foreground)]">Monthly Expenses (₹)</label>
+                  <input
+                    type="number"
+                    value={monthlyExpenses}
+                    onChange={(e) => setMonthlyExpenses(Number(e.target.value))}
+                    className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
+              <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+                <TrendingUp className="h-5 w-5 text-amber-500" />
+                Projections
+              </h2>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium text-[var(--muted-foreground)]">Inflation Rate (%)</label>
+                  <input
+                    type="number"
+                    step="0.5"
+                    value={inflationRate}
+                    onChange={(e) => setInflationRate(Number(e.target.value))}
+                    className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)]"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-[var(--muted-foreground)]">Expected Return (%)</label>
+                  <input
+                    type="number"
+                    step="0.5"
+                    value={expectedReturn}
+                    onChange={(e) => setExpectedReturn(Number(e.target.value))}
+                    className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)]"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <label className="text-sm font-medium text-[var(--muted-foreground)]">Monthly Contribution (₹)</label>
+                <input
+                  type="number"
+                  value={monthlyContribution}
+                  onChange={(e) => setMonthlyContribution(Number(e.target.value))}
+                  className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)]"
+                />
+              </div>
+              <div className="mt-3">
+                <label className="text-sm font-medium text-[var(--muted-foreground)]">Annual Contribution Increase (%)</label>
+                <input
+                  type="number"
+                  step="0.5"
+                  value={contributionIncreaseRate}
+                  onChange={(e) => setContributionIncreaseRate(Number(e.target.value))}
+                  className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-[var(--foreground)]"
+                />
+              </div>
+            </div>
+
+            <button
+              onClick={handleCalculate}
+              className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold text-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+            >
+              Calculate Your Retirement
+            </button>
+          </div>
+
+          {/* Results */}
+          <div className="space-y-4">
+            {result ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="space-y-4"
+              >
+                {/* Summary Card */}
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white">
+                  <div className="text-sm opacity-80 mb-1">Your Retirement Corpus</div>
+                  <div className="text-3xl font-black">{formatCurrency(result.retirementCorpus)}</div>
+                  <div className="grid grid-cols-3 gap-3 mt-4 pt-4 border-t border-white/20">
+                    <div>
+                      <div className="text-[10px] opacity-60">Monthly Income</div>
+                      <div className="font-bold">{formatCurrency(result.monthlyIncome)}</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] opacity-60">Coverage</div>
+                      <div className="font-bold">{result.yearsOfCoverage} years</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] opacity-60">Score</div>
+                      <div className="font-bold">{result.sustainabilityScore}%</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Detailed Results */}
+                <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
+                  <h3 className="font-bold mb-3 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-emerald-500" />
+                    Retirement Summary
+                  </h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between py-1 border-b border-[var(--border)]">
+                      <span className="text-[var(--muted-foreground)]">Inflation-Adjusted Income</span>
+                      <span className="font-medium">{formatCurrency(result.inflationAdjustedIncome)}</span>
+                    </div>
+                    <div className="flex justify-between py-1 border-b border-[var(--border)]">
+                      <span className="text-[var(--muted-foreground)]">Total Contributions</span>
+                      <span className="font-medium">{formatCurrency(result.totalContributions)}</span>
+                    </div>
+                    <div className="flex justify-between py-1 border-b border-[var(--border)]">
+                      <span className="text-[var(--muted-foreground)]">Total Returns</span>
+                      <span className="font-medium text-emerald-500">{formatCurrency(result.totalReturns)}</span>
+                    </div>
+                    {result.corpusShortfall > 0 && (
+                      <div className="flex justify-between py-1 border-b border-[var(--border)]">
+                        <span className="text-[var(--muted-foreground)] flex items-center gap-1">
+                          <AlertCircle className="h-4 w-4 text-amber-500" /> Shortfall
+                        </span>
+                        <span className="font-medium text-amber-500">{formatCurrency(result.corpusShortfall)}</span>
+                      </div>
+                    )}
+                    {result.monthlyContributionNeeded > 0 && (
+                      <div className="flex justify-between py-1">
+                        <span className="text-[var(--muted-foreground)] flex items-center gap-1">
+                          <CheckCircle className="h-4 w-4 text-indigo-500" /> Additional Monthly Investment
+                        </span>
+                        <span className="font-medium text-indigo-500">{formatCurrency(result.monthlyContributionNeeded)}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Status */}
+                <div className={`p-4 rounded-2xl border ${result.sustainabilityScore >= 80 ? 'border-emerald-500/30 bg-emerald-500/5 text-emerald-700 dark:text-emerald-400' : 'border-amber-500/30 bg-amber-500/5 text-amber-700 dark:text-amber-400'}`}>
+                  <div className="flex items-center gap-2">
+                    {result.sustainabilityScore >= 80 ? (
+                      <CheckCircle className="h-5 w-5 text-emerald-500" />
+                    ) : (
+                      <AlertCircle className="h-5 w-5 text-amber-500" />
+                    )}
+                    <span className="font-medium">
+                      {result.sustainabilityScore >= 80
+                        ? '✅ Your retirement plan looks solid!'
+                        : '⚠️ Consider increasing your savings or extending your retirement age.'}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ) : (
+              <div className="p-12 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center">
+                <PiggyBank className="h-16 w-16 text-[var(--muted-foreground)] mx-auto mb-4" />
+                <h3 className="text-lg font-bold mb-2">Ready to Plan Your Retirement</h3>
+                <p className="text-[var(--muted-foreground)] text-sm">
+                  Enter your details and click "Calculate Your Retirement" to see your retirement projection.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,19 +1,175 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
-
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Download, Loader2, FileText, ShieldCheck, X, MoveVertical, GripVertical } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
+import { tools } from '@/data/registry';
 
-export default function ReorderPDFToolWrapper() {
+export default function ReorderPDFTool() {
   const meta = tools.find(t => t.slug === 'reorder-pdf');
+  
+  const [file, setFile] = useState<File | null>(null);
+  const [pageOrder, setPageOrder] = useState<number[]>([]);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const selected = e.target.files[0];
+      if (selected.type !== 'application/pdf') return;
+      
+      setFile(selected);
+      const fileBuffer = await selected.arrayBuffer();
+      const pdf = await PDFDocument.load(fileBuffer);
+      const pageCount = pdf.getPageCount();
+      setPageOrder(Array.from({ length: pageCount }, (_, i) => i));
+    }
+  };
+
+  const handleDragStart = (index: number) => {
+    // Simple drag start
+  };
+
+  const handleDragOver = (e: React.DragEvent, targetIndex: number) => {
+    e.preventDefault();
+  };
+
+  const handleProcess = async () => {
+    if (!file) return;
+    setIsProcessing(true);
+
+    try {
+      const fileBuffer = await file.arrayBuffer();
+      const pdf = await PDFDocument.load(fileBuffer);
+      const newPdf = await PDFDocument.create();
+      
+      // Copy pages in new order (or original order if not reordered)
+      const order = pageOrder.length > 0 ? pageOrder : Array.from({ length: pdf.getPageCount() }, (_, i) => i);
+      for (const originalIndex of order) {
+        const [page] = await newPdf.copyPages(pdf, [originalIndex]);
+        newPdf.addPage(page);
+      }
+
+      const finalBytes = await newPdf.save();
+      const blob = new Blob([finalBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `reordered_${file.name}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      alert('Failed to reorder PDF. Please try again.');
+    }
+    setIsProcessing(false);
+  };
+
   return (
-    <EnhancedToolWrapper meta={meta}>
-      <ReorderPDFToolWrapper />
-    </EnhancedToolWrapper>
+    <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
+      <Link href="/categories/pdf-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8">
+        <ArrowLeft className="h-4 w-4" /> Back to PDF Tools
+      </Link>
+
+      <div className="text-center mb-10">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
+          <ShieldCheck className="h-4 w-4" /> Local Processing Only
+        </div>
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">Reorder PDF Pages</h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400">Reorder pages in your PDF documents.</p>
+      </div>
+
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16">
+        {!file ? (
+          <div className="p-8">
+            <div 
+              onClick={() => fileInputRef.current?.click()}
+              className="border-2 border-dashed border-indigo-300 dark:border-indigo-500/30 rounded-2xl p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-colors"
+            >
+              <Upload className="h-10 w-10 text-indigo-500 mb-4" />
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Select PDF Document</h3>
+              <p className="text-sm text-slate-500 mt-2">Drag and drop to reorder pages</p>
+              <input 
+                type="file" 
+                accept="application/pdf" 
+                className="hidden" 
+                ref={fileInputRef}
+                onChange={handleFileChange}
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="p-8">
+            <div className="flex items-start gap-4 p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl mb-6">
+              <FileText className="h-8 w-8 text-indigo-500 shrink-0" />
+              <div className="flex-1">
+                <p className="font-bold text-slate-900 dark:text-white">{file.name}</p>
+                <p className="text-sm text-slate-500">{(file.size / 1024).toFixed(1)} KB • {pageOrder.length} pages</p>
+              </div>
+              <button 
+                onClick={() => { setFile(null); setPageOrder([]); }}
+                className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors"
+              >
+                <X className="h-5 w-5 text-slate-500" />
+              </button>
+            </div>
+
+            {pageOrder.length > 0 && (
+              <div className="mb-6">
+                <p className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-4">
+                  Page order: {pageOrder.map(p => p + 1).join(' → ')}
+                </p>
+                <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
+                  {pageOrder.map((_, index) => (
+                    <div
+                      key={index}
+                      className="p-2 border-2 rounded-xl text-center text-sm font-bold bg-slate-100 dark:bg-slate-800"
+                    >
+                      {index + 1}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-slate-400 mt-2">Note: Drag & drop reordering coming soon</p>
+              </div>
+            )}
+
+            <button
+              onClick={handleProcess}
+              disabled={isProcessing || pageOrder.length === 0}
+              className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isProcessing ? (
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                <>
+                  <MoveVertical className="h-5 w-5" />
+                  Reorder & Download
+                </>
+              )}
+            </button>
+          </div>
+        )}
+      </div>
+
+      <div className="prose prose-slate dark:prose-invert max-w-none">
+        <h2 className="text-2xl font-bold mb-4">How it Works</h2>
+        <p>Reorder pages in your PDF document.</p>
+        <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
+        <div className="space-y-4">
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+            <h4 className="font-bold text-slate-900 dark:text-white mb-2">How does reordering work?</h4>
+            <p className="text-sm text-slate-600 dark:text-slate-400">Currently supporting basic reorder. Full drag & drop coming soon.</p>
+          </div>
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+            <h4 className="font-bold text-slate-900 dark:text-white mb-2">Is my file secure?</h4>
+            <p className="text-sm text-slate-600 dark:text-slate-400">Yes! All processing happens locally in your browser.</p>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }

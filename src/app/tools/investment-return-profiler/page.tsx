@@ -1,16 +1,11 @@
 'use client';
-
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function BaseRedirectWrapper() {
-  const meta = tools.find(t => t.slug === 'investment-return-profiler');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <BaseRedirectWrapper />
-    </EnhancedToolWrapper>
-  );
+export default function BaseRedirect() {
+  const router = useRouter();
+  useEffect(() => {
+    router.replace('/tools/investment-return-profiler/cagr-calculator');
+  }, [router]);
+  return null;
 }
