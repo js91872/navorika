@@ -4,6 +4,19 @@ import { useState } from 'react';
 import { ArrowLeft, Code, ShieldCheck, RefreshCw, Copy, Check } from 'lucide-react';
 import { tools } from '@/data/registry';
 
+function encodeUtf8Base64(value: string) {
+  const bytes = new TextEncoder().encode(value);
+  let binary = '';
+  for (const byte of bytes) binary += String.fromCharCode(byte);
+  return btoa(binary);
+}
+
+function decodeUtf8Base64(value: string) {
+  const binary = atob(value.replace(/\s/g, ''));
+  const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
+  return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+}
+
 export default function Base64EncoderTool() {
   const meta = tools.find(t => t.slug === 'base64-encoder');
   // Default meta if not found
@@ -26,9 +39,9 @@ export default function Base64EncoderTool() {
   const processText = () => {
     try {
       if (mode === 'encode') {
-        setOutput(btoa(input));
+        setOutput(encodeUtf8Base64(input));
       } else {
-        setOutput(atob(input));
+        setOutput(decodeUtf8Base64(input));
       }
     } catch (err) {
       setOutput('Invalid string format for translation processing.');

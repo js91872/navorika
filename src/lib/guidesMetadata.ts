@@ -1,14 +1,37 @@
-export interface GuideMetadata {
+type GuideCategory = 'Finance' | 'Health' | 'PDF' | 'Image' | 'Developer';
+
+interface GuideDefinition {
   slug: string;
   title: string;
   description: string;
-  category: string;
+  category: GuideCategory;
   publishedDate: string;
   readTime: string;
   author: string;
 }
 
-export const guidesMetadata: GuideMetadata[] = [
+export interface GuideMetadata extends GuideDefinition {
+  datePublished: string;
+  dateModified: string;
+  keywords: string[];
+  featuredImage: {
+    src: string;
+    width: 1200;
+    height: 630;
+    alt: string;
+    caption: string;
+  };
+}
+
+const categoryImages: Record<GuideCategory, { src: string; caption: string }> = {
+  Finance: { src: '/images/guides/finance-guides.webp', caption: 'Planning, calculation, and long-term financial decision-making.' },
+  Health: { src: '/images/guides/health-guides.webp', caption: 'Health measurements are screening and planning aids, not medical diagnoses.' },
+  PDF: { src: '/images/guides/pdf-guides.webp', caption: 'Organize and process documents with privacy-conscious browser tools.' },
+  Image: { src: '/images/guides/image-guides.webp', caption: 'Choose image dimensions, formats, and compression for the intended output.' },
+  Developer: { src: '/images/guides/developer-guides.webp', caption: 'Understand web data and technical workflows before applying automation.' },
+};
+
+const guideDefinitions: GuideDefinition[] = [
   {
     slug: 'how-to-calculate-sip-returns',
     title: 'How to Calculate SIP Returns: A Complete Guide',
@@ -199,6 +222,24 @@ export const guidesMetadata: GuideMetadata[] = [
     author: 'Navorika Team'
   }
 ];
+
+export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
+  const image = categoryImages[guide.category];
+  const subject = guide.title.split(':')[0].replace(/[?]/g, '').trim();
+  return {
+    ...guide,
+    datePublished: '2026-08-01',
+    dateModified: '2026-08-19',
+    keywords: [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
+    featuredImage: {
+      src: image.src,
+      width: 1200,
+      height: 630,
+      alt: `Editorial illustration for ${guide.title}`,
+      caption: image.caption,
+    },
+  };
+});
 
 export function getGuideMetadata(slug: string): GuideMetadata | undefined {
   return guidesMetadata.find(g => g.slug === slug);

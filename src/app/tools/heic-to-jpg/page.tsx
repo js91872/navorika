@@ -1,11 +1,5 @@
-'use client';
+import HeicConverterTool from '@/components/tools/HeicConverterTool';
 
-import ImageConverterEngineWrapper from '@/components/ImageConverterEngineWrapper';
-import { tools } from '@/data/registry';
-
-export const dynamic = 'force-dynamic';
-
-export default function HeicToJpgPage() {
-  const meta = tools.find(t => t.slug === 'heic-to-jpg');
-  return <ImageConverterEngineWrapper meta={meta} />;
+export default function Page() {
+  return <HeicConverterTool title="Convert HEIC to JPG" description="Decode a HEIC or HEIF image and export the first image as an adjustable-quality JPG." outputFormat="jpeg" />;
 }

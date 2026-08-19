@@ -58,13 +58,13 @@ export default function CropImageTool() {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Navorika_Cropped_${Date.now()}_${file.name}`;
+            a.download = `Navorika_Cropped_${Date.now()}.png`;
             document.body.appendChild(a);
             a.click();
             URL.revokeObjectURL(url);
           }
           setIsProcessing(false);
-        }, file.type);
+        }, 'image/png');
       }
     };
     img.src = previewUrl;

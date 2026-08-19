@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Grid3x3, Sparkles } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 const iconMap: Record<string, string> = {
   FileText: '📄',
@@ -80,7 +81,7 @@ export default function CategoriesPage() {
             <div>
               <h1 className="text-4xl font-black tracking-tight">Categories</h1>
               <p className="text-[var(--muted-foreground)] mt-1">
-                {categories.length} workspaces · {tools.length} tools
+                {categories.length} workspaces · {tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length} tools
               </p>
             </div>
           </div>
@@ -93,7 +94,7 @@ export default function CategoriesPage() {
         {/* Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {categories.map((category, index) => {
-            const categoryTools = tools.filter(t => t.category === category.slug);
+            const categoryTools = tools.filter(t => t.category === category.slug && !toolsUnderReview.has(t.slug));
             const icon = iconMap[category.icon] || '📁';
             const colors = colorMap[category.slug] || {
               bg: 'from-indigo-600/20 to-purple-600/20',

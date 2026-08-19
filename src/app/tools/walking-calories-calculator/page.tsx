@@ -32,10 +32,12 @@ export default function WalkingCaloriesCalculator() {
 
   const handleCalculate = () => {
     const paceValue = PACE_VALUES[pace] || 3.0;
-    const hours = distance / paceValue;
+    const kilometresPerHour = paceValue * 1.60934;
+    const hours = distance / kilometresPerHour;
     const met = paceValue * 1.2;
-    const caloriesPerHour = (met * 3.5 * weight) / 200;
-    const totalCalories = caloriesPerHour * hours;
+    const caloriesPerMinute = (met * 3.5 * weight) / 200;
+    const caloriesPerHour = caloriesPerMinute * 60;
+    const totalCalories = caloriesPerMinute * hours * 60;
 
     setResult({
       pace: paceValue,

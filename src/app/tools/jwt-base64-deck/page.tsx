@@ -4,6 +4,23 @@ import { useState } from 'react';
 import { ArrowLeft, ShieldCheck, Key, RefreshCw, Copy, Trash2, LockOpen } from 'lucide-react';
 import { tools } from '@/data/registry';
 
+function encodeUtf8Base64(value: string) {
+  const bytes = new TextEncoder().encode(value);
+  let binary = '';
+  for (const byte of bytes) binary += String.fromCharCode(byte);
+  return btoa(binary);
+}
+
+function decodeBase64Utf8(value: string) {
+  const binary = atob(value.replace(/\s/g, ''));
+  return new TextDecoder('utf-8', { fatal: true }).decode(Uint8Array.from(binary, (character) => character.charCodeAt(0)));
+}
+
+function decodeBase64UrlUtf8(value: string) {
+  const base64 = value.replace(/-/g, '+').replace(/_/g, '/');
+  return decodeBase64Utf8(base64 + '='.repeat((4 - (base64.length % 4)) % 4));
+}
+
 export default function JwtBase64Tool() {
   const meta = tools.find(t => t.slug === 'jwt-base64-deck');
   // Default meta if not found
@@ -32,28 +49,25 @@ export default function JwtBase64Tool() {
 
   const processBase64 = () => {
     try {
-      if (b64Mode === 'encode') setB64Output(btoa(input));
-      else setB64Output(atob(input));
+      if (b64Mode === 'encode') setB64Output(encodeUtf8Base64(input));
+      else setB64Output(decodeBase64Utf8(input));
     } catch (e) {
       setB64Output('Error: Invalid Base64 String');
     }
   };
 
-  const processJwt = () => {
-    if (!input) return;
+  const processJwt = (token: string) => {
+    if (!token) {
+      setJwtHeader(''); setJwtPayload(''); setJwtError('');
+      return;
+    }
     setJwtError('');
     try {
-      const parts = input.split('.');
+      const parts = token.trim().split('.');
       if (parts.length !== 3) throw new Error('Invalid JWT format (must have 3 parts separated by dots).');
       
-      const decodeB64Url = (str: string) => {
-        const b64 = str.replace(/-/g, '+').replace(/_/g, '/');
-        const pad = b64.length % 4 === 0 ? '' : '='.repeat(4 - (b64.length % 4));
-        return atob(b64 + pad);
-      };
-
-      setJwtHeader(JSON.stringify(JSON.parse(decodeB64Url(parts[0])), null, 2));
-      setJwtPayload(JSON.stringify(JSON.parse(decodeB64Url(parts[1])), null, 2));
+      setJwtHeader(JSON.stringify(JSON.parse(decodeBase64UrlUtf8(parts[0])), null, 2));
+      setJwtPayload(JSON.stringify(JSON.parse(decodeBase64UrlUtf8(parts[1])), null, 2));
     } catch (e: any) {
       setJwtError(e.message || 'Failed to decode token.');
       setJwtHeader('');
@@ -88,7 +102,7 @@ export default function JwtBase64Tool() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4 flex flex-col">
               <label className="text-xs font-bold uppercase text-slate-500">Paste JWT Token</label>
-              <textarea value={input} onChange={e => { setInput(e.target.value); processJwt(); }} className="w-full flex-1 min-h-[300px] p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm font-mono break-all" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." />
+              <textarea value={input} onChange={e => { const value = e.target.value; setInput(value); processJwt(value); }} className="w-full flex-1 min-h-[300px] p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 outline-none text-sm font-mono break-all" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." />
               {jwtError && <p className="text-red-500 text-sm font-bold">{jwtError}</p>}
             </div>
             <div className="space-y-4">

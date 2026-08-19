@@ -71,13 +71,13 @@ export default function PhotoEditorTool() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `Navorika_Edited_${file.name}`;
+        a.download = 'Navorika_Edited.png';
         document.body.appendChild(a);
         a.click();
         URL.revokeObjectURL(url);
       }
       setIsProcessing(false);
-    }, file.type, 0.95);
+    }, 'image/png');
   };
 
   if (!meta) return null;

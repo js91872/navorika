@@ -1,14 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Download, Loader2, FileText, ShieldCheck, X, FileUp, FileDown } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
 
-function ExtractPdfPagesContent() {
+export default function ExtractPdfPagesPage() {
   const [file, setFile] = useState<File | null>(null);
   const [pages, setPages] = useState<string>('');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -186,14 +183,5 @@ function ExtractPdfPagesContent() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function ExtractPdfPagesPageWrapper() {
-  const meta = tools.find(t => t.slug === 'extract-pdf-pages');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <ExtractPdfPagesContent />
-    </EnhancedToolWrapper>
   );
 }

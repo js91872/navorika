@@ -1,15 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function SolarPanelCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'solar-panel-calculator');
+export default function SolarPanelCalculator() {
   const [dailyUsage, setDailyUsage] = useState<number>(30);
   const [sunHours, setSunHours] = useState<number>(5);
   const [panelWattage, setPanelWattage] = useState<number>(400);
@@ -138,20 +134,11 @@ function SolarPanelCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-              <p className="text-sm text-green-600 dark:text-green-400">💡 {result.panelsNeeded} x {result.panelWattage}W panels = {result.actualSystemSize.toFixed(1)} kW system</p>
+              <p className="text-sm text-green-600 dark:text-green-400">This is a preliminary energy-balance estimate. A qualified designer must assess local irradiance, roof geometry, shading, weather, equipment, grid rules, and electrical safety.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function SolarPanelCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'solar-panel-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <SolarPanelCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

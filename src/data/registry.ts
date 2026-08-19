@@ -10,6 +10,8 @@ export interface Tool {
   faq?: Array<{ question: string; answer: string }>;
 }
 
+export type RegisteredTool = Tool & Required<Pick<Tool, 'heroTitle' | 'heroDescription'>>;
+
 export interface Category {
   slug: string;
   name: string;
@@ -63,7 +65,7 @@ export const categories: Category[] = [
   }
 ];
 
-export const tools: Tool[] = [
+export const tools: RegisteredTool[] = ([
   // ====== PDF TOOLS ======
   {
     slug: 'add-image-to-pdf',
@@ -82,7 +84,7 @@ export const tools: Tool[] = [
   {
     slug: 'add-watermark',
     title: 'Add Watermark',
-    description: 'Add text or image watermarks to PDF files online free. Protect your documents with custom watermarks.',
+    description: 'Add a centered diagonal text watermark to every PDF page locally in your browser.',
     category: 'pdf-tools',
     keywords: ['add-watermark', 'add', 'watermark', 'pdf']
   },
@@ -96,7 +98,7 @@ export const tools: Tool[] = [
   {
     slug: 'crop-pdf',
     title: 'Crop PDF',
-    description: 'Crop PDF pages online for free. Trim margins and crop content from PDF documents.',
+    description: 'Set custom crop-box margins on every PDF page locally in your browser.',
     category: 'pdf-tools',
     keywords: ['crop-pdf', 'crop', 'pdf']
   },
@@ -124,7 +126,7 @@ export const tools: Tool[] = [
   {
     slug: 'flatten-pdf',
     title: 'Flatten PDF',
-    description: 'Flatten PDF files permanently online free. Remove editable fields and make PDFs non-editable.',
+    description: 'Flatten supported interactive PDF form fields into static page content.',
     category: 'pdf-tools',
     keywords: ['flatten-pdf', 'flatten', 'pdf']
   },
@@ -173,7 +175,7 @@ export const tools: Tool[] = [
   {
     slug: 'protect-pdf',
     title: 'Protect PDF',
-    description: 'Add password protection to PDF files online free. Secure your documents with encryption.',
+    description: 'Temporarily unavailable while genuine browser-based PDF encryption is being validated.',
     category: 'pdf-tools',
     keywords: ['protect-pdf', 'protect', 'pdf']
   },
@@ -194,7 +196,7 @@ export const tools: Tool[] = [
   {
     slug: 'sign-pdf',
     title: 'Sign PDF',
-    description: 'Sign PDF documents electronically online free. Add digital signatures to PDF files securely.',
+    description: 'Draw and place a visible handwritten signature image on one PDF page locally.',
     category: 'pdf-tools',
     keywords: ['sign-pdf', 'sign', 'pdf']
   },
@@ -208,7 +210,7 @@ export const tools: Tool[] = [
   {
     slug: 'unlock-pdf',
     title: 'Unlock PDF',
-    description: 'Unlock password-protected PDF documents online free. Remove PDF passwords and security restrictions.',
+    description: 'Temporarily unavailable while genuine browser-based PDF decryption is being validated.',
     category: 'pdf-tools',
     keywords: ['unlock-pdf', 'unlock', 'pdf']
   },
@@ -231,49 +233,49 @@ export const tools: Tool[] = [
   {
     slug: 'blur-face',
     title: 'Blur Face',
-    description: 'Blur faces in images automatically online free. Protect privacy by detecting and blurring faces.',
+    description: 'Temporarily unavailable until validated on-device face detection is added.',
     category: 'image-tools',
     keywords: ['blur-face', 'blur', 'face', 'image']
   },
   {
     slug: 'change-image-resolution',
     title: 'Change Image Resolution',
-    description: 'Change image resolution and dimensions online free. Resize images to specific pixel dimensions.',
+    description: 'Resize an image to a standard HD, FHD, QHD, UHD, or square pixel preset.',
     category: 'image-tools',
     keywords: ['change-image-resolution', 'change', 'image', 'resolution']
   },
   {
     slug: 'color-extraction-studio',
     title: 'Color Extraction Studio',
-    description: 'Extract colors from images easily online free. Generate color palettes and get hex codes.',
+    description: 'Pick a pixel from an image and copy its exact hexadecimal RGB color locally.',
     category: 'image-tools',
     keywords: ['color-extraction-studio', 'color', 'extraction', 'studio']
   },
   {
     slug: 'compress-image',
     title: 'Compress Image',
-    description: 'Compress images online for free. Reduce image file size without losing quality.',
+    description: 'Re-encode JPEG and WebP with adjustable quality, or convert PNG to compressed WebP locally.',
     category: 'image-tools',
     keywords: ['compress-image', 'compress', 'image']
   },
   {
     slug: 'compress-jpg',
     title: 'Compress JPG',
-    description: 'Compress JPG images online for free. Reduce JPG file size without losing quality.',
+    description: 'Re-encode JPEG images with adjustable lossy quality locally in your browser.',
     category: 'image-tools',
     keywords: ['compress-jpg', 'compress', 'jpg']
   },
   {
     slug: 'compress-png',
     title: 'Compress PNG',
-    description: 'Compress PNG images online for free. Reduce PNG file size without losing quality.',
+    description: 'Losslessly re-encode a PNG locally and compare the actual output size.',
     category: 'image-tools',
     keywords: ['compress-png', 'compress', 'png']
   },
   {
     slug: 'compress-webp',
     title: 'Compress WebP',
-    description: 'Compress WebP images online for free. Reduce WebP file size without losing quality.',
+    description: 'Re-encode WebP images with adjustable browser quality and local processing.',
     category: 'image-tools',
     keywords: ['compress-webp', 'compress', 'webp']
   },
@@ -336,7 +338,7 @@ export const tools: Tool[] = [
   {
     slug: 'html-to-image',
     title: 'HTML to Image',
-    description: 'Convert HTML code to images online free. Render HTML as JPG, PNG, or WebP images.',
+    description: 'Temporarily unavailable pending a safe, deterministic HTML rendering engine.',
     category: 'image-tools',
     keywords: ['html-to-image', 'html', 'to', 'image']
   },
@@ -350,28 +352,28 @@ export const tools: Tool[] = [
   {
     slug: 'id-photo-maker',
     title: 'ID Photo Maker',
-    description: 'Create professional passport, visa, and ID photos online free. Make ID photos with correct dimensions.',
+    description: 'Crop a photo into convenient ID-size pixel presets with zoom and position controls.',
     category: 'image-tools',
     keywords: ['id-photo-maker', 'id', 'photo', 'maker']
   },
   {
     slug: 'image-converter',
     title: 'Image Converter',
-    description: 'Convert images between JPG, PNG, WebP, and more online free. Transform your images to any format.',
+    description: 'Convert JPG, PNG, and WebP images locally with previews and format-aware quality controls.',
     category: 'image-tools',
     keywords: ['image-converter', 'image', 'converter']
   },
   {
     slug: 'image-dpi-converter',
     title: 'Image DPI Converter',
-    description: 'Change image DPI online free. Adjust DPI for printing and professional applications.',
+    description: 'Temporarily unavailable pending verified JPEG and PNG density-metadata writers.',
     category: 'image-tools',
     keywords: ['image-dpi-converter', 'image', 'dpi', 'converter']
   },
   {
     slug: 'image-metadata-viewer',
     title: 'Image Metadata Viewer',
-    description: 'View image metadata and EXIF data online free. Check camera settings and image properties.',
+    description: 'View file properties and decoded pixel dimensions locally; EXIF is not parsed.',
     category: 'image-tools',
     keywords: ['image-metadata-viewer', 'image', 'metadata', 'viewer']
   },
@@ -392,7 +394,7 @@ export const tools: Tool[] = [
   {
     slug: 'photo-collage-maker',
     title: 'Photo Collage Maker',
-    description: 'Create custom photo collages from your images online free. Design beautiful collages.',
+    description: 'Create a local PNG grid collage from up to 12 JPG, PNG, or WebP images.',
     category: 'image-tools',
     keywords: ['photo-collage-maker', 'photo', 'collage', 'maker']
   },
@@ -406,7 +408,7 @@ export const tools: Tool[] = [
   {
     slug: 'png-to-svg',
     title: 'PNG to SVG',
-    description: 'Convert PNG images to SVG vectors online free. Create scalable SVG graphics from PNG images.',
+    description: 'Temporarily unavailable pending a genuine raster-to-vector tracing engine.',
     category: 'image-tools',
     keywords: ['png-to-svg', 'png', 'to', 'svg']
   },
@@ -427,28 +429,28 @@ export const tools: Tool[] = [
   {
     slug: 'social-media-resizer',
     title: 'Social Media Resizer',
-    description: 'Resize images for social media platforms online free. Create perfect images for Instagram, Facebook.',
+    description: 'Fit or crop images into built-in social-media pixel presets with local PNG export.',
     category: 'image-tools',
     keywords: ['social-media-resizer', 'social', 'media', 'resizer']
   },
   {
     slug: 'svg-to-png',
     title: 'SVG to PNG',
-    description: 'Convert SVG images to PNG online free. Transform scalable SVG files to PNG format.',
+    description: 'Rasterize a browser-compatible SVG at its intrinsic dimensions and export PNG.',
     category: 'image-tools',
     keywords: ['svg-to-png', 'svg', 'to', 'png']
   },
   {
     slug: 'upscale-image',
     title: 'Upscale Image',
-    description: 'Upscale images online using AI. Enlarge images without losing quality using advanced upscaling.',
+    description: 'Enlarge images by 2×, 3×, or 4× using high-quality browser interpolation.',
     category: 'image-tools',
     keywords: ['upscale-image', 'upscale', 'image']
   },
   {
     slug: 'watermark-image',
     title: 'Watermark Image',
-    description: 'Add text or image watermarks to photos online free. Protect your images with custom watermarks.',
+    description: 'Add customizable text, color, opacity, and position to an image with local PNG export.',
     category: 'image-tools',
     keywords: ['watermark-image', 'watermark', 'image']
   },
@@ -471,7 +473,7 @@ export const tools: Tool[] = [
   {
     slug: 'currency-converter',
     title: 'Currency Converter',
-    description: 'Convert currencies online free. Get real-time exchange rates for all major currencies.',
+    description: 'Convert major currencies using dated ECB reference exchange rates.',
     category: 'finance-calculators',
     keywords: ['currency-converter', 'currency', 'converter']
   },
@@ -540,8 +542,8 @@ export const tools: Tool[] = [
   },
   {
     slug: 'tax-calculator',
-    title: 'Tax Calculator',
-    description: 'Calculate income tax, GST, and compliance requirements online free. Get accurate tax calculations for individuals and businesses.',
+    title: 'India Income Tax Calculator',
+    description: 'Estimate AY 2026–27 income tax under India’s new regime with rebate, marginal relief, and cess.',
     category: 'finance-calculators',
     keywords: ['tax-calculator', 'tax', 'calculator']
   },
@@ -671,28 +673,28 @@ export const tools: Tool[] = [
   {
     slug: 'base64-encoder',
     title: 'Base64 Encoder',
-    description: 'Encode and decode Base64 strings online free. Convert text and files to Base64 format.',
+    description: 'Encode UTF-8 text to Base64 or decode Base64 back to UTF-8 text locally.',
     category: 'developer-tools',
     keywords: ['base64-encoder', 'base64', 'encoder']
   },
   {
     slug: 'bioluminescent-reader',
     title: 'Bioluminescent Reader',
-    description: 'View and analyze bioluminescent data online free. Read and interpret bioluminescence patterns.',
+    description: 'Temporarily unavailable pending a defined scientific schema and validated analysis model.',
     category: 'developer-tools',
     keywords: ['bioluminescent-reader', 'bioluminescent', 'reader']
   },
   {
     slug: 'code-minifier-beautifier',
     title: 'Code Minifier Beautifier',
-    description: 'Minify and beautify code online free. Optimize JavaScript, CSS, and HTML code.',
+    description: 'Temporarily unavailable pending parser-backed HTML, CSS, and JavaScript processing.',
     category: 'developer-tools',
     keywords: ['code-minifier-beautifier', 'code', 'minifier', 'beautifier']
   },
   {
     slug: 'developer-utilities',
     title: 'Developer Utilities',
-    description: 'Collection of developer utilities and tools. JSON formatter, base64, JWT, and more.',
+    description: 'Compatibility redirect to the Developer Tools category.',
     category: 'developer-tools',
     keywords: ['developer-utilities', 'developer', 'utilities']
   },
@@ -706,21 +708,21 @@ export const tools: Tool[] = [
   {
     slug: 'jwt-base64-deck',
     title: 'JWT Base64 Deck',
-    description: 'Decode and analyze JWT tokens online free. View header, payload, and signature.',
+    description: 'Decode JWT header and payload JSON locally without verifying the token signature.',
     category: 'developer-tools',
     keywords: ['jwt-base64-deck', 'jwt', 'base64', 'deck']
   },
   {
     slug: 'markup-formatter',
     title: 'Markup Formatter',
-    description: 'Format and beautify markup code online free. Clean and organize HTML, XML, and SVG.',
+    description: 'Temporarily unavailable pending grammar-aware SQL, XML, and YAML formatters.',
     category: 'developer-tools',
     keywords: ['markup-formatter', 'markup', 'formatter']
   },
   {
     slug: 'qr-code-studio',
     title: 'QR Code Studio',
-    description: 'Generate and customize QR codes online free. Create QR codes with colors and logos.',
+    description: 'Generate colored QR codes or decode a QR code from an uploaded image locally.',
     category: 'developer-tools',
     keywords: ['qr-code-studio', 'qr', 'code', 'studio']
   },
@@ -734,14 +736,14 @@ export const tools: Tool[] = [
   {
     slug: 'web-crypto-studio',
     title: 'Web Crypto Studio',
-    description: 'Encrypt, decrypt, hash, and sign data using Web Crypto API online free. Secure your data with modern cryptography.',
+    description: 'Generate SHA-256 hashes, cryptographic random passwords, and UUID v4 identifiers locally.',
     category: 'developer-tools',
     keywords: ['web-crypto-studio', 'web', 'crypto', 'studio']
   },
   {
     slug: 'webmaster-seo-builder',
     title: 'Webmaster SEO Builder',
-    description: 'Build SEO-friendly websites and content online free. Optimize your website for search engines effectively.',
+    description: 'Generate UTM URLs, basic social meta tags, and a simple robots.txt block locally.',
     category: 'developer-tools',
     keywords: ['webmaster-seo-builder', 'webmaster', 'seo', 'builder']
   },
@@ -927,4 +929,8 @@ export const tools: Tool[] = [
     heroTitle: 'Wire Size Calculator',
     heroDescription: 'Find the correct wire gauge size for your electrical project based on load and distance.'
   }
-];
+] satisfies Tool[]).map((tool) => ({
+  ...tool,
+  heroTitle: tool.heroTitle?.trim() || tool.title,
+  heroDescription: tool.heroDescription?.trim() || tool.description,
+}));

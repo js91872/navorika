@@ -1,15 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function ConstructionCostCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'construction-cost-calculator');
+export default function ConstructionCostCalculator() {
   const [area, setArea] = useState<number>(1000);
   const [unit, setUnit] = useState<'sqft' | 'sqm'>('sqft');
   const [costPerUnit, setCostPerUnit] = useState<number>(150);
@@ -20,14 +16,15 @@ function ConstructionCostCalculatorContent() {
   const [result, setResult] = useState<any>(null);
 
   const calculateCost = () => {
-    const areaInSqft = unit === 'sqft' ? area : area * 10.764;
+    const areaInSqft = unit === 'sqft' ? area : area * 10.763910416709722;
     const baseCost = areaInSqft * costPerUnit;
-    
-    const labor = baseCost * (laborPercent / 100);
-    const materials = baseCost * (materialPercent / 100);
+    const allocationTotal = laborPercent + materialPercent;
+    const labor = allocationTotal > 0 ? baseCost * (laborPercent / allocationTotal) : 0;
+    const materials = allocationTotal > 0 ? baseCost * (materialPercent / allocationTotal) : 0;
     const overhead = baseCost * (overheadPercent / 100);
-    const contingency = baseCost * (contingencyPercent / 100);
-    const total = baseCost + labor + materials + overhead + contingency;
+    const subtotal = baseCost + overhead;
+    const contingency = subtotal * (contingencyPercent / 100);
+    const total = subtotal + contingency;
     const perSqft = total / areaInSqft;
 
     setResult({
@@ -91,7 +88,7 @@ function ConstructionCostCalculatorContent() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Cost per sq ft</label>
+            <label className="block text-sm font-medium mb-2">Direct Construction Rate (USD/sq ft)</label>
             <Input
               type="number"
               value={costPerUnit}
@@ -101,7 +98,7 @@ function ConstructionCostCalculatorContent() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Labor (% of base cost)</label>
+            <label className="block text-sm font-medium mb-2">Labor Allocation Weight</label>
             <Input
               type="number"
               value={laborPercent}
@@ -112,7 +109,7 @@ function ConstructionCostCalculatorContent() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Materials (% of base cost)</label>
+            <label className="block text-sm font-medium mb-2">Material Allocation Weight</label>
             <Input
               type="number"
               value={materialPercent}
@@ -192,20 +189,11 @@ function ConstructionCostCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800">
-              <p className="text-sm text-emerald-600 dark:text-emerald-400">💡 This is an estimate based on industry standards. Actual costs may vary by location and market conditions.</p>
+              <p className="text-sm text-emerald-600 dark:text-emerald-400">Labor and material values allocate the direct cost; they are not added again. Enter a current project-specific USD rate and confirm scope, taxes, escalation, exclusions, and contingency professionally.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function ConstructionCostCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'construction-cost-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <ConstructionCostCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

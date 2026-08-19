@@ -186,19 +186,6 @@ export default function RotatePDFTool() {
         )}
       </div>
 
-      <div className="prose prose-slate dark:prose-invert max-w-none">
-        <h2 className="text-2xl font-bold mb-4">How it Works</h2>
-        <p>{toolMeta.formulaExplanation}</p>
-        <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
-        <div className="space-y-4">
-          {toolMeta.faq && toolMeta.faq.map((item, i) => (
-            <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-              <h4 className="font-bold text-slate-900 dark:text-white mb-2">{item.question}</h4>
-              <p className="text-sm text-slate-600 dark:text-slate-400 m-0">{item.answer}</p>
-            </div>
-          ))}
-        </div>
-      </div>
     </main>
   );
 }

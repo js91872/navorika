@@ -7,6 +7,7 @@ import { tools } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
 import { toolFAQs } from '@/data/faqs';
 import FAQ from '@/components/ui/FAQ';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 interface ToolSEOWrapperProps {
   slug: string;
@@ -25,7 +26,7 @@ export default function ToolSEOWrapper({ slug, children }: ToolSEOWrapperProps) 
   const categoryName = tool.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   
   const relatedTools = tools
-    .filter(t => t.category === tool.category && t.slug !== tool.slug)
+    .filter(t => t.category === tool.category && t.slug !== tool.slug && !toolsUnderReview.has(t.slug))
     .slice(0, 6);
 
   const content = {

@@ -1,21 +1,18 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function VoltageDropCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'voltage-drop-calculator');
+export default function VoltageDropCalculator() {
   const [voltage, setVoltage] = useState<number>(120);
   const [current, setCurrent] = useState<number>(20);
   const [length, setLength] = useState<number>(50);
   const [unit, setUnit] = useState<'m' | 'ft'>('m');
   const [wireGauge, setWireGauge] = useState<string>('12');
   const [phase, setPhase] = useState<'single' | 'three'>('single');
+  const [maxDropPercent, setMaxDropPercent] = useState<number>(3);
   const [result, setResult] = useState<any>(null);
 
   const wireResistance: { [key: string]: number } = {
@@ -37,17 +34,12 @@ function VoltageDropCalculatorContent() {
     }
 
     const resistance = wireResistance[wireGauge] || 0.0040;
-    const totalLength = len * 2;
-    
-    let vDrop = 0;
-    if (phase === 'single') {
-      vDrop = 2 * current * resistance * totalLength;
-    } else {
-      vDrop = Math.sqrt(3) * current * resistance * totalLength;
-    }
+    const vDrop = phase === 'single'
+      ? 2 * current * resistance * len
+      : Math.sqrt(3) * current * resistance * len;
 
     const vDropPercent = (vDrop / voltage) * 100;
-    const isAcceptable = vDropPercent <= 3;
+    const isAcceptable = vDropPercent <= maxDropPercent;
 
     setResult({
       vDrop,
@@ -58,6 +50,7 @@ function VoltageDropCalculatorContent() {
       length: len,
       wireGauge,
       phase
+      , maxDropPercent
     });
   };
 
@@ -68,6 +61,7 @@ function VoltageDropCalculatorContent() {
     setLength(50);
     setWireGauge('12');
     setPhase('single');
+    setMaxDropPercent(3);
   };
 
   return (
@@ -155,6 +149,10 @@ function VoltageDropCalculatorContent() {
               ]}
             />
           </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Planning Limit (%)</label>
+            <Input type="number" value={maxDropPercent} onChange={(e) => setMaxDropPercent(Number(e.target.value))} min={0.1} max={20} step={0.1} />
+          </div>
         </div>
 
         <div className="flex gap-4 mt-6">
@@ -183,25 +181,16 @@ function VoltageDropCalculatorContent() {
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg md:col-span-2">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Status</p>
                 <p className={`text-lg font-bold ${result.isAcceptable ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-                  {result.isAcceptable ? '✅ Acceptable (≤3%)' : '❌ Too High (>3%)'}
+                  {result.isAcceptable ? `Within entered limit (≤${result.maxDropPercent}%)` : `Above entered limit (>${result.maxDropPercent}%)`}
                 </p>
               </div>
             </div>
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-blue-600 dark:text-blue-400">💡 For {result.phase} phase, {result.wireGauge} AWG at {result.length.toFixed(1)}m drops {result.vDrop.toFixed(2)}V ({result.vDropPercent.toFixed(2)}%)</p>
+              <p className="text-sm text-blue-600 dark:text-blue-400">Uses approximate copper resistance at 20°C and one-way route length. Verify conductor temperature, AC reactance, power factor, terminations, ampacity, and applicable electrical code with a qualified professional.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function VoltageDropCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'voltage-drop-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <VoltageDropCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

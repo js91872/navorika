@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { ArrowLeft, ShieldCheck, Upload, X, User, Download, Crop } from 'lucide-react';
 import { tools } from '@/data/registry';
 
-// Standard 300 DPI resolutions for professional printing
+// Convenience pixel-dimension presets; users must verify current official requirements.
 const PRESETS = [
   { id: 'us_passport', name: 'US Passport / Visa (2x2 in)', w: 600, h: 600 },
   { id: 'uk_passport', name: 'UK / Europe / AU (35x45 mm)', w: 413, h: 531 },
@@ -93,7 +93,7 @@ export default function IdPhotoMakerTool() {
         document.body.appendChild(a);
         a.click();
       }
-    }, 'image/jpeg', 1.0); // Passports require high quality JPG
+    }, 'image/jpeg', 1.0);
   };
 
   if (!meta) return null;
@@ -103,7 +103,7 @@ export default function IdPhotoMakerTool() {
       <a href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-purple-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Image Tools</a>
       <div className="text-center mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-bold uppercase tracking-wider mb-4 border border-purple-500/20">
-           <ShieldCheck className="h-4 w-4" /> 300 DPI Biometric Crop
+           <ShieldCheck className="h-4 w-4" /> Local Dimension Presets
         </div>
         <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">{toolMeta.heroDescription}</p>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 const iconMap: Record<string, string> = {
   FileText: '📄',
@@ -21,7 +22,7 @@ export default function EnhancedCategoryGrid() {
       <h2 className="text-3xl font-bold mb-8">Workspaces</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {categories.map((category) => {
-          const toolCount = tools.filter(t => t.category === category.slug).length;
+          const toolCount = tools.filter(t => t.category === category.slug && !toolsUnderReview.has(t.slug)).length;
           const icon = iconMap[category.icon] || '📁';
           return (
             <Link

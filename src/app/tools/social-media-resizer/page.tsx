@@ -108,11 +108,11 @@ export default function SocialMediaResizerTool() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `Navorika_${currentPlatform.name}_${currentFormat.name.replace(' ', '')}_${file.name}`;
+        a.download = `Navorika_${currentPlatform.name}_${currentFormat.name.replaceAll(' ', '')}.png`;
         document.body.appendChild(a);
         a.click();
       }
-    }, file.type, 0.95);
+    }, 'image/png');
   };
 
   if (!meta) return null;

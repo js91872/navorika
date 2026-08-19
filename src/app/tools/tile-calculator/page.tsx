@@ -1,15 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function TileCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'tile-calculator');
+export default function TileCalculator() {
   const [length, setLength] = useState<number>(10);
   const [width, setWidth] = useState<number>(10);
   const [tileLength, setTileLength] = useState<number>(60);
@@ -46,12 +42,18 @@ function TileCalculatorContent() {
 
     const area = len * wid;
     const tileArea = tileLen * tileWid;
-    const tilesNeeded = Math.ceil(area / tileArea * (1 + wastage / 100));
+    const tilesAlongLength = Math.ceil((len + gapM) / tileWithGapL);
+    const tilesAlongWidth = Math.ceil((wid + gapM) / tileWithGapW);
+    const fittedTiles = tilesAlongLength * tilesAlongWidth;
+    const tilesNeeded = Math.ceil(fittedTiles * (1 + wastage / 100));
 
     setResult({
       area,
       tileArea,
       tilesNeeded,
+      fittedTiles,
+      tilesAlongLength,
+      tilesAlongWidth,
       gap,
       wastage,
       tileDimensions: `${tileLength}x${tileWidth} ${tileUnit}`
@@ -193,26 +195,21 @@ function TileCalculatorContent() {
                 <p className="text-sm text-slate-500 dark:text-slate-400">Total Tiles Needed</p>
                 <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">{result.tilesNeeded.toLocaleString()}</p>
               </div>
-              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg md:col-span-2">
-                <p className="text-sm text-slate-500 dark:text-slate-400">Boxes Needed</p>
-                <p className="text-xl font-bold">{Math.ceil(result.tilesNeeded / 10)} boxes (10 tiles/box)</p>
+              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
+                <p className="text-sm text-slate-500 dark:text-slate-400">Fitted Grid</p>
+                <p className="text-xl font-bold">{result.tilesAlongLength} × {result.tilesAlongWidth}</p>
+              </div>
+              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
+                <p className="text-sm text-slate-500 dark:text-slate-400">Tiles Before Waste</p>
+                <p className="text-xl font-bold">{result.fittedTiles}</p>
               </div>
             </div>
             <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <p className="text-sm text-amber-600 dark:text-amber-400">💡 Order {Math.ceil(result.tilesNeeded * 1.1).toLocaleString()} tiles with {result.wastage}% wastage included.</p>
+              <p className="text-sm text-amber-600 dark:text-amber-400">The total already includes {result.wastage}% waste. Divide it by the actual tiles-per-box shown by the manufacturer and round boxes upward.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function TileCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'tile-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <TileCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

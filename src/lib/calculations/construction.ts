@@ -15,13 +15,15 @@ export function calculateConcrete(inputs: {
   
   const volume = l * w * h;
   const withWastage = volume * (1 + wastage / 100);
+  const dryVolume = withWastage * 1.54;
   
   // M20 mix ratio (1:1.5:3) - Cement: Sand: Aggregate
   const totalParts = 1 + 1.5 + 3;
-  const cement = (withWastage * 1) / totalParts;
-  const sand = (withWastage * 1.5) / totalParts;
-  const aggregate = (withWastage * 3) / totalParts;
-  const water = cement * 0.45; // Water-cement ratio 0.45
+  const cement = (dryVolume * 1) / totalParts;
+  const sand = (dryVolume * 1.5) / totalParts;
+  const aggregate = (dryVolume * 3) / totalParts;
+  const cementMassKg = cement * 1440;
+  const water = (cementMassKg * 0.45) / 1000;
   
   return {
     volume: Math.round(withWastage * 100) / 100,

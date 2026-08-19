@@ -39,11 +39,11 @@ export default function ChangeResolutionTool() {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Navorika_${tW}x${tH}_${file.name}`;
+            a.download = `Navorika_${tW}x${tH}.png`;
             document.body.appendChild(a);
             a.click();
           }
-        }, file.type, 1.0);
+        }, 'image/png');
       }
     };
     img.src = URL.createObjectURL(file);

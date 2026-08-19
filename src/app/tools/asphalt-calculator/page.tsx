@@ -1,14 +1,12 @@
 'use client';
 
 import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function AsphaltCalculatorContent() {
+export default function AsphaltCalculator() {
   const meta = tools.find(t => t.slug === 'asphalt-calculator');
   const [length, setLength] = useState<number>(20);
   const [width, setWidth] = useState<number>(10);
@@ -183,20 +181,11 @@ function AsphaltCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <p className="text-sm text-amber-600 dark:text-amber-400">💡 Order {result.truckLoads} trucks to be safe. Asphalt must be laid while hot!</p>
+              <p className="text-sm text-amber-600 dark:text-amber-400">Confirm mix density, compacted thickness, waste, plant scheduling, and lawful truck payload with the contractor.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function AsphaltCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'asphalt-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <AsphaltCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

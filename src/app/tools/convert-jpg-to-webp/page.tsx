@@ -1,11 +1,5 @@
-'use client';
-
-import ImageConverterEngine from '@/components/ImageConverterEngineWrapper';
-import { tools } from '@/data/registry';
-
-export const dynamic = 'force-dynamic';
+import ImageFormatConverterTool from '@/components/tools/ImageFormatConverterTool';
 
 export default function Page() {
-  const meta = tools.find(t => t.slug === 'convert-jpg-to-webp');
-  return <ImageConverterEngine meta={meta} />;
+  return <ImageFormatConverterTool title="Convert JPG to WebP" description="Re-encode a JPG as WebP with adjustable browser quality." inputLabel="JPG image" inputMime="image/jpeg" outputFormat="webp" />;
 }

@@ -1,14 +1,12 @@
 'use client';
 
 import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function SandCalculatorContent() {
+export default function SandCalculator() {
   const meta = tools.find(t => t.slug === 'sand-calculator');
   const [length, setLength] = useState<number>(10);
   const [width, setWidth] = useState<number>(10);
@@ -148,20 +146,11 @@ function SandCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <p className="text-sm text-amber-600 dark:text-amber-400">💡 Always order 5-10% extra sand to account for wastage and compaction.</p>
+              <p className="text-sm text-amber-600 dark:text-amber-400">Confirm moisture, compaction, waste, packaging, and delivery quantities with the supplier.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function SandCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'sand-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <SandCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

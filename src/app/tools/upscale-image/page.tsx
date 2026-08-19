@@ -71,13 +71,13 @@ export default function UpscaleImageTool() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `Navorika_Upscaled_${scaleMultiplier}x_${file.name}`;
+        a.download = `Navorika_Enlarged_${scaleMultiplier}x.png`;
         document.body.appendChild(a);
         a.click();
         URL.revokeObjectURL(url);
       }
       setIsProcessing(false);
-    }, file.type, 1.0);
+    }, 'image/png');
   };
 
   if (!meta) return null;

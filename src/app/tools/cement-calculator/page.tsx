@@ -1,16 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
 
-function CementCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'cement-calculator');
+export default function CementCalculator() {
   const [volume, setVolume] = useState<number>(1);
   const [unit, setUnit] = useState<'cubic' | 'cubic_m' | 'cubic_ft'>('cubic_m');
   const [mixRatio, setMixRatio] = useState<'1:2:3' | '1:1.5:3' | '1:3:6'>('1:2:3');
@@ -25,21 +20,23 @@ function CementCalculatorContent() {
 
   const calculateCement = () => {
     let volumeInM3 = volume;
-    if (unit === 'cubic_ft') volumeInM3 = volume / 35.315;
-    else if (unit === 'cubic') volumeInM3 = volume * 0.0283;
+    if (unit === 'cubic_ft') volumeInM3 = volume * 0.028316846592;
+    else if (unit === 'cubic') volumeInM3 = volume * 0.764554857984;
 
     const ratio = ratioMap[mixRatio];
     const totalParts = ratio.cement + ratio.sand + ratio.aggregate;
     
-    const cementPart = (volumeInM3 * ratio.cement) / totalParts;
-    const sandPart = (volumeInM3 * ratio.sand) / totalParts;
-    const aggregatePart = (volumeInM3 * ratio.aggregate) / totalParts;
+    const dryVolume = volumeInM3 * 1.54;
+    const cementPart = (dryVolume * ratio.cement) / totalParts;
+    const sandPart = (dryVolume * ratio.sand) / totalParts;
+    const aggregatePart = (dryVolume * ratio.aggregate) / totalParts;
 
     const cementWeight = cementPart * 1440;
     const cementBags = cementWeight / bagSize;
 
     setResult({
       totalVolume: volumeInM3,
+      dryVolume,
       cementBags: Math.ceil(cementBags),
       cementWeight: cementWeight,
       sandVolume: sandPart,
@@ -58,7 +55,7 @@ function CementCalculatorContent() {
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
         <h2 className="text-2xl font-bold mb-2">Cement Calculator</h2>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate the exact number of cement bags needed for your concrete work.</p>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">Estimate nominal cement, sand, and aggregate quantities from wet concrete volume.</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -133,6 +130,10 @@ function CementCalculatorContent() {
                 <p className="text-sm text-slate-500 dark:text-slate-400">Cement Weight</p>
                 <p className="text-2xl font-bold">{result.cementWeight.toFixed(0)} kg</p>
               </div>
+              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg md:col-span-2">
+                <p className="text-sm text-slate-500 dark:text-slate-400">Assumed Dry Material Volume</p>
+                <p className="text-lg font-bold">{result.dryVolume.toFixed(3)} m³</p>
+              </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Sand Required</p>
                 <p className="text-lg font-bold">{result.sandVolume.toFixed(3)} m³</p>
@@ -143,20 +144,11 @@ function CementCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800">
-              <p className="text-sm text-emerald-600 dark:text-emerald-400">💡 Consider adding 5-10% extra for wastage and spillage.</p>
+              <p className="text-sm text-emerald-600 dark:text-emerald-400">Uses a 1.54 dry-volume factor and 1,440 kg/m³ cement bulk density. Confirm the approved mix design, moisture corrections, waste, and batch measurements with a qualified professional.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function CementCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'cement-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <CementCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

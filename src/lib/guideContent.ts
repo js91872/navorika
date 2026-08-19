@@ -1,3 +1,6 @@
+import { additionalGuideContent } from './guideContentAdditional';
+import { guideContentEnhancements } from './guideContentEnhancements';
+
 export interface GuideSection {
   title: string;
   content: string;
@@ -48,7 +51,7 @@ export const guideContent: Record<string, GuideContent> = {
     faqs: [
       { question: 'How is SIP return calculated?', answer: 'SIP returns are calculated using the future value of annuity formula, which accounts for regular monthly investments and compounding. The XIRR method is also used for calculating SIP returns.' },
       { question: 'What is XIRR in SIP?', answer: 'XIRR (Extended Internal Rate of Return) is a method to calculate returns on investments with multiple cash flows, such as SIP. It considers the timing of each investment.' },
-      { question: 'What is a good SIP return?', answer: 'Historically, equity SIPs have delivered 12-15% returns over the long term. However, returns vary based on market conditions and fund performance.' },
+      { question: 'What return should I assume for a SIP projection?', answer: 'There is no universally reliable rate. Test a range of conservative and optimistic assumptions, and remember that market-linked returns are not guaranteed.' },
       { question: 'Can I change my SIP amount?', answer: 'Yes, most mutual funds allow you to increase or decrease your SIP amount, though terms vary by fund house.' }
     ],
     summary: 'SIP is a powerful wealth-building tool. Understanding SIP returns helps you set realistic expectations and make informed investment decisions. Use our SIP Calculator to plan your investments.',
@@ -112,7 +115,7 @@ export const guideContent: Record<string, GuideContent> = {
     ],
     faqs: [
       { question: 'How much can I compress a PDF?', answer: 'Compression rates vary from 20% to 90% depending on content and quality settings.' },
-      { question: 'Does compression affect quality?', answer: 'Higher compression may reduce quality. We offer different quality presets to balance file size and visual quality.' }
+      { question: 'Does compression affect quality?', answer: 'It can. Rasterization or stronger image compression may reduce sharpness, searchability, accessibility, or colour fidelity, so compare the result with the original.' }
     ],
     summary: 'PDF compression helps you share and store documents efficiently. Use our PDF Compressor to reduce file sizes while maintaining quality.',
     schema: { "@context": "https://schema.org", "@type": "Article", headline: "PDF Compression Guide", description: "Learn how to compress PDF files effectively without losing quality.", author: { "@type": "Organization", name: "Navorika" }, datePublished: "2026-08-01", dateModified: "2026-08-11" }
@@ -130,7 +133,7 @@ export const guideContent: Record<string, GuideContent> = {
       }
     ],
     faqs: [
-      { question: 'How many PDFs can I merge?', answer: 'You can merge as many PDFs as needed, up to reasonable file size limits.' },
+      { question: 'How many PDFs can I merge?', answer: 'The practical limit depends on document complexity and the memory available to your browser. Merge in smaller batches if a large job becomes unstable.' },
       { question: 'Will the merged PDF maintain quality?', answer: 'Yes, we maintain original quality when merging PDF files.' }
     ],
     summary: 'Merging PDF files simplifies document management and sharing. Use our Merge PDF tool to combine multiple files into one.',
@@ -150,7 +153,7 @@ export const guideContent: Record<string, GuideContent> = {
     ],
     faqs: [
       { question: 'How much can I compress an image?', answer: 'Compression depends on content and format. Typical reductions are 30-80%.' },
-      { question: 'Will compression affect image quality?', answer: 'Higher compression may reduce quality. We balance compression with visual quality.' }
+      { question: 'Will compression affect image quality?', answer: 'Lossy compression can introduce artifacts. Compare the output at its intended display size and choose the lowest file size that still meets your visual requirement.' }
     ],
     summary: 'Image compression is essential for web optimization. Use our Image Compressor to reduce file sizes while maintaining quality.',
     schema: { "@context": "https://schema.org", "@type": "Article", headline: "Image Compression Guide", description: "Learn how to compress images for faster loading times and better performance.", author: { "@type": "Organization", name: "Navorika" }, datePublished: "2026-08-01", dateModified: "2026-08-11" }
@@ -168,8 +171,8 @@ export const guideContent: Record<string, GuideContent> = {
       }
     ],
     faqs: [
-      { question: 'What resolution should I use for web?', answer: '72 DPI is standard for web images, with dimensions based on your layout requirements.' },
-      { question: 'Does resizing affect image quality?', answer: 'Resizing can affect quality, especially when enlarging. We use high-quality algorithms to maintain quality.' }
+      { question: 'What resolution should I use for web?', answer: 'Choose pixel dimensions for the rendered layout and device density. A 72 DPI metadata label does not determine on-screen quality.' },
+      { question: 'Does resizing affect image quality?', answer: 'Yes, especially when enlarging or repeatedly resampling. Keep a master and review each export at the intended display size.' }
     ],
     summary: 'Resizing images properly is crucial for web and print applications. Use our Image Resizer to resize images without losing quality.',
     schema: { "@context": "https://schema.org", "@type": "Article", headline: "How to Resize Images", description: "Learn how to resize images for web, print, and social media.", author: { "@type": "Organization", name: "Navorika" }, datePublished: "2026-08-01", dateModified: "2026-08-11" }
@@ -240,7 +243,7 @@ export const guideContent: Record<string, GuideContent> = {
       },
       {
         title: 'How JWT Decoding Works',
-        content: 'Decoding a JWT involves:\n\n1. Splitting the token into three parts\n2. Base64Url decoding the header and payload\n3. Verifying the signature (optional)\n4. Reading the claims data'
+        content: 'Decoding a JWT involves:\n\n1. Splitting the token into three parts\n2. Base64Url decoding the header and payload\n3. Reading the untrusted claims data\n4. Separately verifying the signature and application-specific claims before trusting the token'
       }
     ],
     faqs: [
@@ -254,5 +257,12 @@ export const guideContent: Record<string, GuideContent> = {
 };
 
 export function getGuideContent(slug: string): GuideContent | null {
-  return guideContent[slug] || null;
+  const content = guideContent[slug] || additionalGuideContent[slug];
+  if (!content) return null;
+  const enhancement = guideContentEnhancements[slug];
+  return enhancement ? {
+    ...content,
+    sections: [...content.sections, ...enhancement.sections],
+    faqs: [...content.faqs, ...enhancement.faqs],
+  } : content;
 }

@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import { tools } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 export default function EnhancedToolGrid() {
-  const featuredTools = tools.slice(0, 8);
+  const featuredTools = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).slice(0, 8);
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

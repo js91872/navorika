@@ -1,15 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function SteelWeightCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'steel-weight-calculator');
+export default function SteelWeightCalculator() {
   const [shape, setShape] = useState<'round' | 'square' | 'rectangular' | 'i-beam'>('round');
   const [diameter, setDiameter] = useState<number>(12);
   const [width, setWidth] = useState<number>(100);
@@ -217,20 +213,11 @@ function SteelWeightCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-blue-600 dark:text-blue-400">💡 Steel density used: 7850 kg/m³. This is standard for mild steel.</p>
+              <p className="text-sm text-blue-600 dark:text-blue-400">Uses a fixed density of 7,850 kg/m³ and ideal sharp-edged geometry. Verify published section mass for manufactured profiles.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function SteelWeightCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'steel-weight-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <SteelWeightCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

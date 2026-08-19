@@ -1,20 +1,16 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function BrickCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'brick-calculator');
+export default function BrickCalculator() {
   const [length, setLength] = useState<number>(10);
   const [width, setWidth] = useState<number>(10);
   const [height, setHeight] = useState<number>(3);
   const [unit, setUnit] = useState<'m' | 'ft'>('m');
-  const [brickSize, setBrickSize] = useState<'standard' | 'modular' | 'custom'>('standard');
+  const [brickSize, setBrickSize] = useState<'standard' | 'modular'>('standard');
   const [mortarThickness, setMortarThickness] = useState<number>(10);
   const [wastage, setWastage] = useState<number>(5);
   const [result, setResult] = useState<any>(null);
@@ -22,7 +18,6 @@ function BrickCalculatorContent() {
   const brickDimensions = {
     standard: { length: 0.23, width: 0.11, height: 0.07 },
     modular: { length: 0.19, width: 0.09, height: 0.09 },
-    custom: { length: 0.23, width: 0.11, height: 0.07 }
   };
 
   const calculateBricks = () => {
@@ -43,16 +38,17 @@ function BrickCalculatorContent() {
     const brickWidth = dims.width + mortarM;
     const brickHeight = dims.height + mortarM;
 
-    const bricksPerM2 = 1 / (brickLength * brickHeight);
-    const area = len * wid;
+    const nominalBrickVolume = brickLength * brickWidth * brickHeight;
+    const bricksPerM3 = 1 / nominalBrickVolume;
+    const area = len * hei;
     const volume = len * wid * hei;
-    const totalBricks = Math.ceil(area * bricksPerM2 * (1 + wastage / 100));
+    const totalBricks = Math.ceil(volume * bricksPerM3 * (1 + wastage / 100));
 
     setResult({
       totalBricks,
       area,
       volume,
-      bricksPerM2,
+      bricksPerM3,
       wallHeight: hei,
       wallLength: len,
       wallWidth: wid
@@ -100,7 +96,7 @@ function BrickCalculatorContent() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Wall Width</label>
+            <label className="block text-sm font-medium mb-2">Wall Thickness</label>
             <Input
               type="number"
               value={width}
@@ -125,11 +121,10 @@ function BrickCalculatorContent() {
             <label className="block text-sm font-medium mb-2">Brick Size</label>
             <Select
               value={brickSize}
-              onChange={(e) => setBrickSize(e.target.value as 'standard' | 'modular' | 'custom')}
+              onChange={(e) => setBrickSize(e.target.value as 'standard' | 'modular')}
               options={[
                 { value: 'standard', label: 'Standard (230×110×70mm)' },
                 { value: 'modular', label: 'Modular (190×90×90mm)' },
-                { value: 'custom', label: 'Custom Size' }
               ]}
             />
           </div>
@@ -187,8 +182,8 @@ function BrickCalculatorContent() {
                 <p className="text-lg font-bold">{result.volume.toFixed(2)} m³</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
-                <p className="text-sm text-slate-500 dark:text-slate-400">Bricks per m²</p>
-                <p className="text-lg font-bold">{result.bricksPerM2.toFixed(0)}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Nominal Bricks per m³</p>
+                <p className="text-lg font-bold">{result.bricksPerM3.toFixed(0)}</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Wall Height</p>
@@ -196,20 +191,11 @@ function BrickCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <p className="text-sm text-amber-600 dark:text-amber-400">💡 Remember to add {wastage}% wastage. Order {Math.ceil(result.totalBricks * 1.1).toLocaleString()} bricks to be safe.</p>
+              <p className="text-sm text-amber-600 dark:text-amber-400">The total already includes the entered {wastage}% waste allowance. Subtract openings and confirm actual brick dimensions, bond, wall build-up, and supplier quantities.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function BrickCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'brick-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <BrickCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

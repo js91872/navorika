@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Ruler, Package, Calculator } from 'lucide-react';
+import { ArrowLeft, Ruler } from 'lucide-react';
 import { tools } from '@/data/registry';
 import { calculateConcrete } from '@/lib/calculations/construction';
 
@@ -69,7 +69,7 @@ export default function ConcreteCalculator() {
           <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
             {result ? (
               <div className="space-y-4">
-                <h3 className="font-bold text-lg">Material Mix (M20)</h3>
+                <h3 className="font-bold text-lg">Nominal Material Mix (1:1.5:3)</h3>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3 rounded-xl bg-[var(--muted)]">
                     <div className="text-xs text-[var(--muted-foreground)]">Concrete Volume</div>
@@ -88,10 +88,11 @@ export default function ConcreteCalculator() {
                     <div className="text-lg font-bold">{result.aggregate} m³</div>
                   </div>
                   <div className="p-3 rounded-xl bg-[var(--muted)] col-span-2">
-                    <div className="text-xs text-[var(--muted-foreground)]">Water</div>
-                    <div className="text-lg font-bold">{result.water} m³</div>
+                    <div className="text-xs text-[var(--muted-foreground)]">Water at 0.45 mass ratio</div>
+                    <div className="text-lg font-bold">{(result.water * 1000).toFixed(0)} L</div>
                   </div>
                 </div>
+                <p className="text-sm text-[var(--muted-foreground)]">Uses a 1.54 dry-volume factor and 1,440 kg/m³ cement bulk density. This is a planning estimate, not an engineered concrete mix design.</p>
               </div>
             ) : (
               <div className="h-full flex items-center justify-center text-[var(--muted-foreground)]">
