@@ -1,15 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function WaterTankCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'water-tank-calculator');
+export default function WaterTankCalculator() {
   const [shape, setShape] = useState<'rectangular' | 'cylindrical' | 'spherical'>('rectangular');
   const [length, setLength] = useState<number>(2);
   const [width, setWidth] = useState<number>(1.5);
@@ -201,20 +197,11 @@ function WaterTankCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-blue-600 dark:text-blue-400">💡 {result.volumeLiters.toFixed(0)} liters = {result.volumeGallons.toFixed(0)} gallons</p>
+              <p className="text-sm text-blue-600 dark:text-blue-400">This is theoretical geometric capacity; usable capacity may be lower because of freeboard, fittings, wall thickness, and operating limits.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function WaterTankCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'water-tank-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <WaterTankCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

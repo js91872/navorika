@@ -19,6 +19,7 @@
 
 # production
 /build
+*.tar.gz
 
 # misc
 .DS_Store
@@ -39,5 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-deploy.tar.gz
-deploy.tar.gz
+
+# local migration and recovery artifacts
+*.tmp
+*.backup
+*.backup_*
+*.restored

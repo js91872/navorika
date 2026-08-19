@@ -1,11 +1,5 @@
-'use client';
-
-import ImageConverterEngine from '@/components/ImageConverterEngineWrapper';
-import { tools } from '@/data/registry';
-
-export const dynamic = 'force-dynamic';
+import ImageFormatConverterTool from '@/components/tools/ImageFormatConverterTool';
 
 export default function Page() {
-  const meta = tools.find(t => t.slug === 'convert-jpg-to-png');
-  return <ImageConverterEngine meta={meta} />;
+  return <ImageFormatConverterTool title="Convert JPG to PNG" description="Decode a JPG and export the same pixels as a lossless PNG." inputLabel="JPG image" inputMime="image/jpeg" outputFormat="png" />;
 }

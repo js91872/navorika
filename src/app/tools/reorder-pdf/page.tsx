@@ -2,42 +2,52 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Upload, Download, Loader2, FileText, ShieldCheck, X, MoveVertical, GripVertical } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowUp, Loader2, FileText, ShieldCheck, Upload, X, MoveVertical } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
-import { tools } from '@/data/registry';
 
 export default function ReorderPDFTool() {
-  const meta = tools.find(t => t.slug === 'reorder-pdf');
-  
   const [file, setFile] = useState<File | null>(null);
   const [pageOrder, setPageOrder] = useState<number[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [error, setError] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const selected = e.target.files[0];
-      if (selected.type !== 'application/pdf') return;
-      
-      setFile(selected);
-      const fileBuffer = await selected.arrayBuffer();
-      const pdf = await PDFDocument.load(fileBuffer);
-      const pageCount = pdf.getPageCount();
-      setPageOrder(Array.from({ length: pageCount }, (_, i) => i));
+      if (selected.type !== 'application/pdf') {
+        setError('Please select a PDF file.');
+        return;
+      }
+
+      try {
+        const fileBuffer = await selected.arrayBuffer();
+        const pdf = await PDFDocument.load(fileBuffer);
+        setFile(selected);
+        setPageOrder(Array.from({ length: pdf.getPageCount() }, (_, i) => i));
+        setError('');
+      } catch {
+        setFile(null);
+        setPageOrder([]);
+        setError('This PDF could not be opened. It may be damaged or password-protected.');
+      }
     }
   };
 
-  const handleDragStart = (index: number) => {
-    // Simple drag start
-  };
-
-  const handleDragOver = (e: React.DragEvent, targetIndex: number) => {
-    e.preventDefault();
+  const movePage = (index: number, direction: -1 | 1) => {
+    const target = index + direction;
+    if (target < 0 || target >= pageOrder.length) return;
+    setPageOrder(current => {
+      const updated = [...current];
+      [updated[index], updated[target]] = [updated[target], updated[index]];
+      return updated;
+    });
   };
 
   const handleProcess = async () => {
     if (!file) return;
     setIsProcessing(true);
+    setError('');
 
     try {
       const fileBuffer = await file.arrayBuffer();
@@ -60,10 +70,11 @@ export default function ReorderPDFTool() {
       a.download = `reordered_${file.name}`;
       a.click();
       URL.revokeObjectURL(url);
-    } catch (err) {
-      alert('Failed to reorder PDF. Please try again.');
+    } catch {
+      setError('The reordered PDF could not be created. Try another readable, unencrypted PDF.');
+    } finally {
+      setIsProcessing(false);
     }
-    setIsProcessing(false);
   };
 
   return (
@@ -89,7 +100,7 @@ export default function ReorderPDFTool() {
             >
               <Upload className="h-10 w-10 text-indigo-500 mb-4" />
               <h3 className="text-xl font-bold text-slate-900 dark:text-white">Select PDF Document</h3>
-              <p className="text-sm text-slate-500 mt-2">Drag and drop to reorder pages</p>
+              <p className="text-sm text-slate-500 mt-2">Choose a PDF, then move pages into the order you need</p>
               <input 
                 type="file" 
                 accept="application/pdf" 
@@ -108,7 +119,8 @@ export default function ReorderPDFTool() {
                 <p className="text-sm text-slate-500">{(file.size / 1024).toFixed(1)} KB • {pageOrder.length} pages</p>
               </div>
               <button 
-                onClick={() => { setFile(null); setPageOrder([]); }}
+                onClick={() => { setFile(null); setPageOrder([]); setError(''); }}
+                aria-label="Remove selected PDF"
                 className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors"
               >
                 <X className="h-5 w-5 text-slate-500" />
@@ -120,19 +132,28 @@ export default function ReorderPDFTool() {
                 <p className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-4">
                   Page order: {pageOrder.map(p => p + 1).join(' → ')}
                 </p>
-                <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
-                  {pageOrder.map((_, index) => (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {pageOrder.map((page, index) => (
                     <div
-                      key={index}
-                      className="p-2 border-2 rounded-xl text-center text-sm font-bold bg-slate-100 dark:bg-slate-800"
+                      key={page}
+                      className="p-3 border-2 border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800"
                     >
-                      {index + 1}
+                      <p className="text-center text-sm font-bold text-slate-900 dark:text-white mb-2">Page {page + 1}</p>
+                      <div className="flex justify-center gap-2">
+                        <button type="button" onClick={() => movePage(index, -1)} disabled={index === 0} aria-label={`Move page ${page + 1} earlier`} className="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 disabled:opacity-30 hover:border-indigo-400">
+                          <ArrowUp className="h-4 w-4" />
+                        </button>
+                        <button type="button" onClick={() => movePage(index, 1)} disabled={index === pageOrder.length - 1} aria-label={`Move page ${page + 1} later`} className="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 disabled:opacity-30 hover:border-indigo-400">
+                          <ArrowDown className="h-4 w-4" />
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-slate-400 mt-2">Note: Drag & drop reordering coming soon</p>
               </div>
             )}
+
+            {error && <p role="alert" className="mb-4 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
             <button
               onClick={handleProcess}
@@ -155,21 +176,6 @@ export default function ReorderPDFTool() {
         )}
       </div>
 
-      <div className="prose prose-slate dark:prose-invert max-w-none">
-        <h2 className="text-2xl font-bold mb-4">How it Works</h2>
-        <p>Reorder pages in your PDF document.</p>
-        <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
-        <div className="space-y-4">
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-            <h4 className="font-bold text-slate-900 dark:text-white mb-2">How does reordering work?</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400">Currently supporting basic reorder. Full drag & drop coming soon.</p>
-          </div>
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-            <h4 className="font-bold text-slate-900 dark:text-white mb-2">Is my file secure?</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400">Yes! All processing happens locally in your browser.</p>
-          </div>
-        </div>
-      </div>
     </main>
   );
 }

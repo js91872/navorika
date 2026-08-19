@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, ShieldCheck, Zap, Lock, Rocket, CheckCircle, Grid } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 // Category content for all categories
 const categoryContent: Record<string, any> = {
@@ -36,7 +37,7 @@ export default function CategoryPage() {
   const slug = params?.slug as string;
   
   const category = categories.find(c => c.slug === slug);
-  const categoryTools = tools.filter(t => t.category === slug);
+  const categoryTools = tools.filter(t => t.category === slug && !toolsUnderReview.has(t.slug));
   const content = categoryContent[slug];
 
   if (!category) {

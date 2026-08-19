@@ -1,19 +1,5 @@
-'use client';
-
-import ImageConverterEngine from '@/components/ImageConverterEngineWrapper';
-import { tools } from '@/data/registry';
+import ImageFormatConverterTool from '@/components/tools/ImageFormatConverterTool';
 
 export default function Page() {
-  const meta = tools.find(t => t.slug === '"$(basename $(dirname $file))"');
-  return <ImageConverterEngine meta={meta || { 
-    slug: 'image-converter',
-    title: 'Image Converter',
-    description: 'Convert your images to different formats.',
-    category: 'image-tools',
-    keywords: ['image', 'converter'],
-    heroTitle: 'Image Converter',
-    heroDescription: 'Convert your images to different formats easily.',
-    formulaExplanation: 'This tool converts images from one format to another.',
-    faq: []
-  }} />;
+  return <ImageFormatConverterTool title="Convert WebP to PNG" description="Decode a still WebP image and export it as a lossless PNG." inputLabel="WebP image" inputMime="image/webp" outputFormat="png" />;
 }

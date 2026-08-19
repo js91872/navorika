@@ -7,9 +7,10 @@ import {
   CheckCircle, ArrowRight, Heart, Cpu, Target, Eye
 } from 'lucide-react';
 import { tools } from '@/data/registry';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 export default function AboutPage() {
-  const toolCount = tools.length;
+  const toolCount = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length;
   const displayCount = toolCount >= 100 ? '100+' : '90+';
 
   const stats = [

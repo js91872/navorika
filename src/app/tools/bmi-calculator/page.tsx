@@ -1,341 +1,114 @@
-'use client';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { BookOpen, ArrowUpRight } from 'lucide-react';
+import { guidesMetadata } from '@/lib/guidesMetadata';
+import { getToolIcon } from '@/lib/toolIcons';
+import BMICalculatorClient from './BMICalculatorClient';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
+const url = 'https://navorika.com/tools/bmi-calculator';
+const faqs = [
+  ['How is BMI calculated?', 'Metric BMI is weight in kilograms divided by height in metres squared. With pounds and inches, divide weight by height squared and multiply by 703.'],
+  ['What is a healthy BMI for an adult?', 'For adults aged 20 and older, a BMI from 18.5 to less than 25 is categorized as healthy weight. BMI is a screening measure and should be considered with other health information.'],
+  ['Does age or sex change the adult BMI formula?', 'No. Adult BMI uses the same height-and-weight formula and category thresholds regardless of age, sex, or race. Children and teenagers require age- and sex-specific BMI percentiles.'],
+  ['Is BMI an exact measure of body fat?', 'No. BMI does not directly measure body fat or distinguish fat, muscle, and bone mass. It is best used as one screening measure among several.'],
+  ['Does Navorika store my height or weight?', 'No. The calculation runs locally in your browser. Your measurements are not uploaded or saved by this calculator.'],
+] as const;
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Download, 
-  ShieldAlert, 
-  ArrowLeft, 
-  RefreshCw,
-  Scale,
-  Ruler,
-  Calendar,
-  Activity,
-  User,
-  Heart,
-  Zap
-} from 'lucide-react';
+const relatedTools = [
+  ['/tools/bmr-calculator', 'BMR Calculator', 'bmr-calculator'],
+  ['/tools/healthy-weight-calculator', 'Healthy Weight Calculator', 'healthy-weight-calculator'],
+  ['/tools/body-fat-calculator', 'Body Fat Calculator', 'body-fat-calculator'],
+  ['/tools/waist-to-height-ratio-calculator', 'Waist-to-Height Ratio Calculator', 'waist-to-height-ratio-calculator'],
+] as const;
 
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { Input } from '@/components/ui/Input';
-import { Select } from '@/components/ui/Select';
-import { Slider } from '@/components/ui/Slider';
-import { ResultCard } from '@/components/ui/ResultCard';
-import { Badge } from '@/components/ui/Badge';
-import { Container } from '@/components/ui/Container';
-import { cn } from '@/lib/utils';
-import { calculateBMI, getBMIEmoji } from '@/lib/calculations/bmi';
+const relatedGuideSlugs = ['bmi-calculator-guide', 'calorie-deficit-guide', 'macronutrients-guide'];
+const relatedGuides = relatedGuideSlugs.flatMap((slug) => {
+  const guide = guidesMetadata.find((item) => item.slug === slug);
+  return guide ? [guide] : [];
+});
 
-const ACTIVITY_OPTIONS = [
-  { value: 'sedentary', label: 'Sedentary (Little or no exercise)' },
-  { value: 'moderate', label: 'Moderate (Light exercise 3-5 days/week)' },
-  { value: 'active', label: 'Active (Hard exercise 6-7 days/week)' },
-  { value: 'athlete', label: 'Athlete / High Muscle Mass' },
-];
+export const metadata: Metadata = {
+  title: 'BMI Calculator: Body Mass Index & Healthy Weight Range',
+  description: 'Calculate adult BMI in kg and cm or pounds and feet. See your BMI category and healthy-weight range with a clear, private calculator.',
+  keywords: ['BMI calculator', 'body mass index calculator', 'adult BMI calculator', 'BMI calculator kg cm', 'BMI calculator pounds feet', 'healthy weight range calculator'],
+  alternates: { canonical: url },
+  openGraph: { type: 'website', url, title: 'Adult BMI Calculator and Healthy Weight Range', description: 'Calculate BMI privately and understand standard adult BMI categories.', siteName: 'Navorika' },
+  twitter: { card: 'summary_large_image', title: 'Adult BMI Calculator and Healthy Weight Range', description: 'A clear, private BMI calculator for adults using metric or imperial units.' },
+};
 
-function BMICalculatorContent() {
-  const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
-  const [gender, setGender] = useState<'male' | 'female'>('male');
-  const [activity, setActivity] = useState<'sedentary' | 'moderate' | 'active' | 'athlete'>('moderate');
-  const [weight, setWeight] = useState<number>(70);
-  const [height, setHeight] = useState<number>(175);
-  const [feet, setFeet] = useState<number>(5);
-  const [inches, setInches] = useState<number>(9);
-  const [age, setAge] = useState<number>(30);
-  const [result, setResult] = useState<any>(null);
-  const [isCalculating, setIsCalculating] = useState(false);
-  const [currentDate, setCurrentDate] = useState('');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebApplication', '@id': `${url}#application`, name: 'Navorika BMI Calculator', url, description: metadata.description, applicationCategory: 'HealthApplication', operatingSystem: 'Any', browserRequirements: 'JavaScript enabled', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+    { '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://navorika.com' },
+      { '@type': 'ListItem', position: 2, name: 'Health Calculators', item: 'https://navorika.com/categories/health-calculators' },
+      { '@type': 'ListItem', position: 3, name: 'BMI Calculator', item: url },
+    ] },
+    { '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
+  ],
+};
 
-  useEffect(() => {
-    setCurrentDate(new Date().toLocaleDateString('en-IN', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }));
-  }, []);
-
-  const handleCalculate = () => {
-    setIsCalculating(true);
-    
-    setTimeout(() => {
-      const bmiResult = calculateBMI({
-        weight,
-        height,
-        age,
-        gender,
-        activity,
-        unit,
-        feet,
-        inches,
-      });
-
-      setResult({
-        ...bmiResult,
-        gender,
-        age,
-        activity,
-        unit,
-        weight,
-        height: unit === 'metric' ? height : `${feet}'${inches}"`,
-      });
-      
-      setIsCalculating(false);
-    }, 400);
-  };
-
-  const handleReset = () => {
-    setResult(null);
-    setWeight(70);
-    setHeight(175);
-    setFeet(5);
-    setInches(9);
-    setAge(30);
-    setGender('male');
-    setActivity('moderate');
-  };
-
+export default function BMICalculatorPage() {
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
-        <div className="space-y-6">
-          {/* Gender Selection */}
-          <div className="grid grid-cols-2 gap-3">
-            <button
-              onClick={() => setGender('male')}
-              className={cn(
-                "p-4 rounded-xl border-2 transition-all text-center",
-                gender === 'male' 
-                  ? "border-blue-500 bg-blue-500/10 text-blue-600 dark:text-blue-400" 
-                  : "border-[var(--border)] hover:border-blue-500/30"
-              )}
-            >
-              <span className="text-2xl block">👨</span>
-              <span className="font-medium text-sm">Male</span>
-            </button>
-            <button
-              onClick={() => setGender('female')}
-              className={cn(
-                "p-4 rounded-xl border-2 transition-all text-center",
-                gender === 'female' 
-                  ? "border-pink-500 bg-pink-500/10 text-pink-600 dark:text-pink-400" 
-                  : "border-[var(--border)] hover:border-pink-500/30"
-              )}
-            >
-              <span className="text-2xl block">👩</span>
-              <span className="font-medium text-sm">Female</span>
-            </button>
+    <article className="pb-20 pt-10 sm:pt-14">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <header className="mx-auto mb-10 max-w-4xl">
+        <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center gap-2 text-sm text-[var(--muted-foreground)]">
+          <Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/categories/health-calculators">Health calculators</Link><span aria-hidden="true">/</span><span aria-current="page">BMI calculator</span>
+        </nav>
+        <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-indigo-600 dark:text-indigo-400">Free adult health calculator</p>
+        <h1 className="text-balance text-4xl font-black tracking-tight sm:text-5xl">BMI Calculator</h1>
+        <p className="mt-4 max-w-3xl text-lg leading-8 text-[var(--muted-foreground)]">Calculate your body mass index with metric or imperial units, then compare the result with standard adult BMI categories. The calculation stays in your browser.</p>
+        <div className="mt-5 flex flex-wrap gap-2 text-xs font-semibold">{['Private by design', 'Instant result', 'No signup', 'Adults 20+'].map((label) => <span key={label} className="rounded-full border border-[var(--border)] bg-[var(--card)] px-3 py-1.5">{label}</span>)}</div>
+      </header>
+
+      <BMICalculatorClient />
+
+      <div className="mx-auto mt-16 max-w-4xl space-y-12 text-[var(--muted-foreground)]">
+        <section><h2 className="text-2xl font-bold text-[var(--foreground)]">What BMI measures</h2><div className="mt-4 space-y-4 leading-7"><p>Body mass index compares an adult’s weight with the square of their height. It is a quick screening measure for weight categories, but it is not a direct measurement of body fat and does not diagnose a health condition.</p><p>BMI cannot distinguish muscle, fat, and bone mass. Athletes, older adults, pregnant people, and people from different backgrounds may need additional context from a qualified health professional.</p></div></section>
+
+        <section><h2 className="text-2xl font-bold text-[var(--foreground)]">BMI formula</h2><div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"><h3 className="font-bold text-[var(--foreground)]">Metric</h3><p className="mt-2 font-mono text-sm">BMI = kg ÷ m²</p><p className="mt-3 text-sm leading-6">Example: 70 kg and 1.75 m gives a BMI of 22.9.</p></div>
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"><h3 className="font-bold text-[var(--foreground)]">Imperial</h3><p className="mt-2 font-mono text-sm">BMI = 703 × lb ÷ in²</p><p className="mt-3 text-sm leading-6">Convert feet to total inches before applying the formula.</p></div>
+        </div></section>
+
+        <section><h2 className="text-2xl font-bold text-[var(--foreground)]">Adult BMI categories</h2><div className="mt-4 overflow-hidden rounded-2xl border border-[var(--border)]"><table className="w-full text-left text-sm"><thead className="bg-[var(--muted)] text-[var(--foreground)]"><tr><th className="px-5 py-3">BMI</th><th className="px-5 py-3">Category</th></tr></thead><tbody className="divide-y divide-[var(--border)] bg-[var(--card)]"><tr><td className="px-5 py-3">Below 18.5</td><td className="px-5 py-3">Underweight</td></tr><tr><td className="px-5 py-3">18.5 to below 25</td><td className="px-5 py-3">Healthy weight</td></tr><tr><td className="px-5 py-3">25 to below 30</td><td className="px-5 py-3">Overweight</td></tr><tr><td className="px-5 py-3">30 or higher</td><td className="px-5 py-3">Obesity</td></tr></tbody></table></div><p className="mt-3 text-sm">These categories are intended for adults aged 20 and older. Children and teenagers require age- and sex-specific percentiles.</p></section>
+
+        <section><h2 className="text-2xl font-bold text-[var(--foreground)]">Frequently asked questions</h2><div className="mt-4 divide-y divide-[var(--border)] rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6">{faqs.map(([question, answer]) => <details key={question} className="py-5"><summary className="cursor-pointer font-semibold text-[var(--foreground)]">{question}</summary><p className="mt-3 max-w-3xl text-sm leading-6">{answer}</p></details>)}</div></section>
+
+        <aside className="rounded-2xl border border-amber-500/20 bg-amber-500/10 p-6 text-sm leading-6"><strong className="text-[var(--foreground)]">Health note:</strong> This calculator provides general educational information, not medical advice. Discuss health concerns with a qualified healthcare professional.</aside>
+
+        <section>
+          <h2 className="text-2xl font-bold text-[var(--foreground)]">Related health calculators</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {relatedTools.map(([href, label, slug]) => (
+              <Link key={href} className="group flex items-center gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 text-[var(--foreground)] transition-all hover:-translate-y-0.5 hover:border-indigo-500/50 hover:shadow-md" href={href}>
+                <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-500/10 text-2xl">{getToolIcon(slug)}</span>
+                <span className="font-semibold">{label}</span>
+                <ArrowUpRight aria-hidden="true" className="ml-auto size-4 text-[var(--muted-foreground)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+            ))}
           </div>
+        </section>
 
-          {/* Unit Selection */}
-          <div className="grid grid-cols-2 gap-3">
-            <button
-              onClick={() => setUnit('metric')}
-              className={cn(
-                "p-3 rounded-xl border-2 transition-all text-center",
-                unit === 'metric' 
-                  ? "border-indigo-500 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400" 
-                  : "border-[var(--border)] hover:border-indigo-500/30"
-              )}
-            >
-              📏 Metric
-            </button>
-            <button
-              onClick={() => setUnit('imperial')}
-              className={cn(
-                "p-3 rounded-xl border-2 transition-all text-center",
-                unit === 'imperial' 
-                  ? "border-indigo-500 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400" 
-                  : "border-[var(--border)] hover:border-indigo-500/30"
-              )}
-            >
-              📐 Imperial
-            </button>
+        <section>
+          <div className="flex items-end justify-between gap-4">
+            <div><p className="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Learn more</p><h2 className="mt-1 text-2xl font-bold text-[var(--foreground)]">Related guides</h2></div>
+            <Link href="/guides" className="text-sm font-semibold text-indigo-600 hover:underline dark:text-indigo-400">View all guides</Link>
           </div>
-
-          {/* Age */}
-          <div>
-            <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              Age (years)
-            </label>
-            <Input
-              type="number"
-              value={age}
-              onChange={(e) => setAge(Number(e.target.value))}
-              min={2}
-              max={120}
-              className="w-full"
-            />
+          <div className="mt-4 grid gap-4 lg:grid-cols-3">
+            {relatedGuides.map((guide) => (
+              <Link key={guide.slug} href={`/guides/${guide.slug}`} className="group flex h-full flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition-all hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-lg">
+                <span className="grid size-10 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400"><BookOpen aria-hidden="true" className="size-5" /></span>
+                <h3 className="mt-4 font-bold leading-6 text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400">{guide.title}</h3>
+                <p className="mt-2 line-clamp-3 text-sm leading-6">{guide.description}</p>
+                <span className="mt-auto pt-4 text-xs font-semibold text-[var(--muted-foreground)]">{guide.readTime}</span>
+              </Link>
+            ))}
           </div>
-
-          {/* Weight */}
-          <div>
-            <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-              <Scale className="h-4 w-4" />
-              Weight ({unit === 'metric' ? 'kg' : 'lbs'})
-            </label>
-            <Input
-              type="number"
-              value={weight}
-              onChange={(e) => setWeight(Number(e.target.value))}
-              min={1}
-              step={0.5}
-              className="w-full"
-            />
-          </div>
-
-          {/* Height */}
-          <div>
-            <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-              <Ruler className="h-4 w-4" />
-              Height ({unit === 'metric' ? 'cm' : 'ft/in'})
-            </label>
-            {unit === 'metric' ? (
-              <Input
-                type="number"
-                value={height}
-                onChange={(e) => setHeight(Number(e.target.value))}
-                min={50}
-                max={300}
-                className="w-full"
-              />
-            ) : (
-              <div className="grid grid-cols-2 gap-3">
-                <Input
-                  type="number"
-                  value={feet}
-                  onChange={(e) => setFeet(Number(e.target.value))}
-                  min={1}
-                  max={8}
-                  placeholder="Feet"
-                />
-                <Input
-                  type="number"
-                  value={inches}
-                  onChange={(e) => setInches(Number(e.target.value))}
-                  min={0}
-                  max={11}
-                  placeholder="Inches"
-                />
-              </div>
-            )}
-          </div>
-
-          {/* Activity Level */}
-          <div>
-            <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-              <Activity className="h-4 w-4" />
-              Activity Level
-            </label>
-            <Select
-              value={activity}
-              onChange={(e) => setActivity(e.target.value as any)}
-              options={ACTIVITY_OPTIONS}
-            />
-          </div>
-
-          {/* Action Buttons */}
-          <div className="grid grid-cols-2 gap-3 pt-4">
-            <Button onClick={handleCalculate} className="w-full">
-              <Heart className="h-4 w-4 mr-2" />
-              Calculate BMI
-            </Button>
-            <Button variant="outline" onClick={handleReset} className="w-full">
-              <RefreshCw className="h-4 w-4 mr-2" />
-              Reset
-            </Button>
-          </div>
-
-          {/* Results */}
-          <AnimatePresence mode="wait">
-            {isCalculating && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center py-8"
-              >
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
-                <p className="text-sm text-[var(--muted-foreground)] mt-4">Calculating your BMI...</p>
-              </motion.div>
-            )}
-
-            {result && !isCalculating && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="space-y-4"
-              >
-                <Card className="p-6">
-                  <div className="text-center">
-                    <div className="text-6xl mb-2">{getBMIEmoji(result.bmi)}</div>
-                    <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">
-                      {result.bmi.toFixed(1)}
-                    </div>
-                    <div className="text-sm text-[var(--muted-foreground)] mt-1">
-                      Your BMI Score
-                    </div>
-                  </div>
-
-                  <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
-                    <div className="p-3 bg-[var(--muted)]/30 rounded-lg text-center">
-                      <div className="text-[var(--muted-foreground)]">Category</div>
-                      <div className="font-bold text-lg">{result.category}</div>
-                    </div>
-                    <div className="p-3 bg-[var(--muted)]/30 rounded-lg text-center">
-                      <div className="text-[var(--muted-foreground)]">Health Risk</div>
-                      <div className="font-bold text-lg">{result.risk}</div>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="space-y-2">
-                    <h4 className="font-bold">BMI Categories</h4>
-                    <div className="grid grid-cols-4 gap-2">
-                      <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 text-center">
-                        <div className="text-lg">📉</div>
-                        <div className="text-xs font-bold">Underweight</div>
-                        <div className="text-xs text-slate-500">&lt; 18.5</div>
-                      </div>
-                      <div className="p-2 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-center">
-                        <div className="text-lg">✅</div>
-                        <div className="text-xs font-bold">Normal</div>
-                        <div className="text-xs text-slate-500">18.5 - 24.9</div>
-                      </div>
-                      <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-center">
-                        <div className="text-lg">⚠️</div>
-                        <div className="text-xs font-bold">Overweight</div>
-                        <div className="text-xs text-slate-500">25 - 29.9</div>
-                      </div>
-                      <div className="p-2 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-center">
-                        <div className="text-lg">🚨</div>
-                        <div className="text-xs font-bold">Obese</div>
-                        <div className="text-xs text-slate-500">30+</div>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+        </section>
       </div>
-    </div>
-  );
-}
-
-export default function BMICalculatorPageWrapper() {
-  const meta = tools.find(t => t.slug === 'bmi-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <BMICalculatorContent />
-    </EnhancedToolWrapper>
+    </article>
   );
 }

@@ -1,20 +1,17 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function RoofAreaCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'roof-area-calculator');
+export default function RoofAreaCalculator() {
   const [length, setLength] = useState<number>(10);
   const [width, setWidth] = useState<number>(10);
   const [pitch, setPitch] = useState<number>(4);
   const [unit, setUnit] = useState<'m' | 'ft'>('m');
   const [overhang, setOverhang] = useState<number>(0.3);
+  const [waste, setWaste] = useState<number>(10);
   const [result, setResult] = useState<any>(null);
 
   const calculateRoof = () => {
@@ -26,22 +23,22 @@ function RoofAreaCalculatorContent() {
       wid = width * 0.3048;
     }
 
+    const overhangM = unit === 'ft' ? overhang * 0.3048 : overhang;
+
     const pitchFactor = Math.sqrt(1 + Math.pow(pitch / 12, 2));
-    const totalLength = len + (2 * overhang);
-    const totalWidth = wid + (2 * overhang);
+    const totalLength = len + (2 * overhangM);
+    const totalWidth = wid + (2 * overhangM);
     const flatArea = totalLength * totalWidth;
     const roofArea = flatArea * pitchFactor;
 
-    const shinglesNeeded = roofArea * 1.1;
-    const bundlesNeeded = Math.ceil(shinglesNeeded / 3.33);
-    const squaresNeeded = Math.ceil(roofArea / 9.29);
+    const roofingArea = roofArea * (1 + waste / 100);
+    const squaresNeeded = roofingArea / 9.290304;
 
     setResult({
       roofArea,
       flatArea,
       pitchFactor,
-      shinglesNeeded,
-      bundlesNeeded,
+      roofingArea,
       squaresNeeded,
       totalLength,
       totalWidth,
@@ -55,6 +52,7 @@ function RoofAreaCalculatorContent() {
     setWidth(10);
     setPitch(4);
     setOverhang(0.3);
+    setWaste(10);
   };
 
   return (
@@ -112,7 +110,7 @@ function RoofAreaCalculatorContent() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Overhang (meters)</label>
+            <label className="block text-sm font-medium mb-2">Overhang ({unit === 'ft' ? 'feet' : 'meters'})</label>
             <Input
               type="number"
               value={overhang}
@@ -120,6 +118,10 @@ function RoofAreaCalculatorContent() {
               min={0}
               step={0.05}
             />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Waste Allowance (%)</label>
+            <Input type="number" value={waste} onChange={(e) => setWaste(Number(e.target.value))} min={0} max={30} step={1} />
           </div>
         </div>
 
@@ -149,33 +151,20 @@ function RoofAreaCalculatorContent() {
                 <p className="text-lg font-bold">{result.pitchFactor.toFixed(3)}</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
-                <p className="text-sm text-slate-500 dark:text-slate-400">Squares (100 sq ft)</p>
-                <p className="text-lg font-bold">{result.squaresNeeded}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Roofing Squares with Waste</p>
+                <p className="text-lg font-bold">{result.squaresNeeded.toFixed(2)}</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
-                <p className="text-sm text-slate-500 dark:text-slate-400">Shingles Needed</p>
-                <p className="text-lg font-bold">{result.shinglesNeeded.toFixed(2)} m²</p>
-              </div>
-              <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
-                <p className="text-sm text-slate-500 dark:text-slate-400">Bundles of Shingles</p>
-                <p className="text-lg font-bold">{result.bundlesNeeded} bundles</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Order Area with Waste</p>
+                <p className="text-lg font-bold">{result.roofingArea.toFixed(2)} m²</p>
               </div>
             </div>
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-blue-600 dark:text-blue-400">💡 Always add 10-15% extra for waste, cutting, and ridge caps.</p>
+              <p className="text-sm text-blue-600 dark:text-blue-400">Models a simple roof with one uniform pitch. Confirm hips, valleys, ridges, penetrations, starter courses, coverage per bundle, and local installation requirements.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function RoofAreaCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'roof-area-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <RoofAreaCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, FileText, Globe, CheckCircle } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
+import { guidesMetadata } from '@/lib/guidesMetadata';
 
 export default function SitemapPage() {
   const pages = [
@@ -21,12 +23,14 @@ export default function SitemapPage() {
     label: c.name,
   }));
 
-  const allTools = tools.slice(0, 20).map(t => ({
+  const availableTools = tools.filter((tool) => !toolsUnderReview.has(tool.slug));
+  const allTools = availableTools.slice(0, 20).map(t => ({
     href: `/tools/${t.slug}`,
     label: t.title,
   }));
 
-  const totalTools = tools.length;
+  const totalTools = availableTools.length;
+  const allGuides = guidesMetadata.map((guide) => ({ href: `/guides/${guide.slug}`, label: guide.title }));
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
@@ -48,7 +52,7 @@ export default function SitemapPage() {
             <div>
               <h1 className="text-3xl sm:text-4xl font-black tracking-tight">XML Sitemap</h1>
               <p className="text-[var(--muted-foreground)] mt-1">
-                Complete site structure with {pages.length + allCategories.length + allTools.length} pages
+                Complete site structure with {pages.length + allCategories.length + totalTools + allGuides.length} pages
               </p>
             </div>
           </div>
@@ -128,6 +132,11 @@ export default function SitemapPage() {
           )}
         </section>
 
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2"><FileText className="h-5 w-5 text-emerald-500" />Guides ({allGuides.length})</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">{allGuides.map((guide) => <Link key={guide.href} href={guide.href} className="p-3 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-indigo-500/40 transition-all flex items-center justify-between group"><span className="font-medium">{guide.label}</span><span className="text-[var(--muted-foreground)] group-hover:translate-x-1 transition-transform">→</span></Link>)}</div>
+        </section>
+
         {/* Total Stats */}
         <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -144,7 +153,7 @@ export default function SitemapPage() {
               <div className="text-xs text-[var(--muted-foreground)]">Tools</div>
             </div>
             <div>
-              <div className="text-2xl font-black">{pages.length + allCategories.length + totalTools}</div>
+              <div className="text-2xl font-black">{pages.length + allCategories.length + totalTools + allGuides.length}</div>
               <div className="text-xs text-[var(--muted-foreground)]">Total Pages</div>
             </div>
           </div>

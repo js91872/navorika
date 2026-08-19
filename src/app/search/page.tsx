@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Search, X } from 'lucide-react';
 import { tools } from '@/data/registry';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 function SearchResults() {
   const searchParams = useSearchParams();
@@ -16,9 +17,11 @@ function SearchResults() {
   useEffect(() => {
     if (query) {
       const filtered = tools.filter(tool =>
-        tool.title.toLowerCase().includes(query.toLowerCase()) ||
-        tool.description.toLowerCase().includes(query.toLowerCase()) ||
-        tool.keywords.some(k => k.toLowerCase().includes(query.toLowerCase()))
+        !toolsUnderReview.has(tool.slug) && (
+          tool.title.toLowerCase().includes(query.toLowerCase()) ||
+          tool.description.toLowerCase().includes(query.toLowerCase()) ||
+          tool.keywords.some(k => k.toLowerCase().includes(query.toLowerCase()))
+        )
       );
       setResults(filtered);
     } else {

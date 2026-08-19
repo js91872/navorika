@@ -3,53 +3,70 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Download, Loader2, FileText, ShieldCheck, X } from 'lucide-react';
-import { tools } from '@/data/registry';
-import { PDFDocument } from 'pdf-lib';
 
 export default function ExtractPdfTextPage() {
-  const meta = tools.find(t => t.slug === 'extract-pdf-text');
-  
   const [file, setFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [extractedText, setExtractedText] = useState('');
+  const [error, setError] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const selected = e.target.files[0];
-      if (selected.type !== 'application/pdf') return;
+      if (selected.type !== 'application/pdf') {
+        setError('Please select a PDF file.');
+        return;
+      }
       setFile(selected);
+      setExtractedText('');
+      setError('');
     }
   };
 
   const handleExtract = async () => {
     if (!file) return;
     setIsProcessing(true);
+    setError('');
 
     try {
-      const fileBuffer = await file.arrayBuffer();
-      const pdf = await PDFDocument.load(fileBuffer);
-      const pages = pdf.getPages();
-      
-      // Extract text (simplified)
-      const textContent = pages.map((page, index) => {
-        return `Page ${index + 1}: [Text extraction placeholder - full implementation coming soon]`;
-      }).join('\n\n');
+      const pdfjs = await import('pdfjs-dist');
+      pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
+      const loadingTask = pdfjs.getDocument({ data: new Uint8Array(await file.arrayBuffer()) });
+      const document = await loadingTask.promise;
+      const pageTexts: string[] = [];
 
-      // Create text file
-      const blob = new Blob([textContent], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `extracted_text_${file.name.replace('.pdf', '.txt')}`;
-      a.click();
-      URL.revokeObjectURL(url);
-      
-      alert('✅ Text extraction completed! Full implementation coming soon.');
-    } catch (err) {
-      alert('Failed to extract text. Please try again.');
+      for (let pageNumber = 1; pageNumber <= document.numPages; pageNumber += 1) {
+        const page = await document.getPage(pageNumber);
+        const content = await page.getTextContent();
+        let pageText = '';
+        for (const item of content.items) {
+          if (!('str' in item)) continue;
+          pageText += item.str;
+          pageText += item.hasEOL ? '\n' : ' ';
+        }
+        pageTexts.push(`--- Page ${pageNumber} ---\n${pageText.trim()}`);
+      }
+
+      setExtractedText(pageTexts.join('\n\n'));
+      await loadingTask.destroy();
+    } catch {
+      setExtractedText('');
+      setError('Text could not be extracted. The PDF may be password-protected, damaged, image-only, or use unsupported text encoding.');
+    } finally {
+      setIsProcessing(false);
     }
-    setIsProcessing(false);
+  };
+
+  const handleDownload = () => {
+    if (!file || !extractedText) return;
+    const blob = new Blob([extractedText], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${file.name.replace(/\.pdf$/i, '')}_text.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -98,7 +115,8 @@ export default function ExtractPdfTextPage() {
                 <p className="text-sm text-slate-500">{(file.size / 1024).toFixed(1)} KB</p>
               </div>
               <button 
-                onClick={() => { setFile(null); }}
+                onClick={() => { setFile(null); setExtractedText(''); setError(''); }}
+                aria-label="Remove selected PDF"
                 className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors"
               >
                 <X className="h-5 w-5 text-slate-500" />
@@ -117,29 +135,27 @@ export default function ExtractPdfTextPage() {
                 </>
               ) : (
                 <>
-                  <Download className="h-5 w-5" />
-                  Extract Text & Download
+                  <FileText className="h-5 w-5" />
+                  Extract Text
                 </>
               )}
             </button>
+
+            {error && <p role="alert" className="mt-4 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
+
+            {extractedText && (
+              <div className="mt-6">
+                <div className="flex items-center justify-between gap-4 mb-3">
+                  <h2 className="font-bold text-slate-900 dark:text-white">Extracted text preview</h2>
+                  <button type="button" onClick={handleDownload} className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-bold">
+                    <Download className="h-4 w-4" /> Download TXT
+                  </button>
+                </div>
+                <textarea readOnly value={extractedText} aria-label="Extracted PDF text" className="w-full min-h-80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-sm text-slate-700 dark:text-slate-300 font-mono" />
+              </div>
+            )}
           </div>
         )}
-      </div>
-
-      <div className="prose prose-slate dark:prose-invert max-w-none">
-        <h2 className="text-2xl font-bold mb-4">How it Works</h2>
-        <p>Extract all text content from your PDF documents.</p>
-        <h3 className="text-xl font-bold mt-8 mb-4">Frequently Asked Questions</h3>
-        <div className="space-y-4">
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-            <h4 className="font-bold text-slate-900 dark:text-white mb-2">What text is extracted?</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400">All visible text content from the PDF is extracted.</p>
-          </div>
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-            <h4 className="font-bold text-slate-900 dark:text-white mb-2">Is my data secure?</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400">Yes! All processing happens locally in your browser.</p>
-          </div>
-        </div>
       </div>
     </main>
   );

@@ -1,13 +1,12 @@
 # Navorika - 100+ Free Online Tools
 
-Navorika is a free platform offering 100+ online tools, calculators, PDF editors, image converters, and developer utilities. All tools run 100% client-side in your browser with no data uploads, no signup, and no tracking.
+Navorika is a free portal for browser-based calculators, PDF utilities, image tools, developer utilities, and construction calculators. Tool pages include plain-language instructions, formulas or processing details, limitations, and related resources where relevant.
 
 ## Key Features
 - 100+ free online tools
-- 100% client-side processing
-- No data uploads
+- Local browser processing for supported tools
+- Clear privacy information on each tool page
 - No signup required
-- Complete privacy
 - Works on all devices
 
 ## Tool Categories
@@ -25,12 +24,29 @@ Navorika is a free platform offering 100+ online tools, calculators, PDF editors
 - SIP Calculator: https://navorika.com/tools/sip-calculator
 - Concrete Calculator: https://navorika.com/tools/concrete-calculator
 
+## Guides and Articles
+- All Guides: https://navorika.com/guides
+- SIP Returns Guide: https://navorika.com/guides/how-to-calculate-sip-returns
+- EMI Calculation Guide: https://navorika.com/guides/how-to-calculate-emi
+- BMI Guide: https://navorika.com/guides/bmi-calculator-guide
+- BMR and TDEE Guide: https://navorika.com/guides/bmr-tdee-guide
+- PDF Compression Guide: https://navorika.com/guides/pdf-compression-guide
+- Image Formats Guide: https://navorika.com/guides/image-formats-guide
+- JSON Formatting Guide: https://navorika.com/guides/json-formatting-guide
+- Technical SEO Tools Guide: https://navorika.com/guides/seo-tools-guide
+
 ## Related Links
 - Homepage: https://navorika.com
 - All Tools: https://navorika.com/tools
 - Categories: https://navorika.com/categories
 - About: https://navorika.com/about
 - Privacy Policy: https://navorika.com/privacy
+- Health Calculators: https://navorika.com/categories/health-calculators
+- Finance Calculators: https://navorika.com/categories/finance-calculators
+- PDF Tools: https://navorika.com/categories/pdf-tools
+- Image Tools: https://navorika.com/categories/image-tools
+- Developer Tools: https://navorika.com/categories/developer-tools
+- Construction Calculators: https://navorika.com/categories/construction-calculators
 
 ## Contact
 - Email: admin@navorika.com

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { X, Search } from 'lucide-react';
 import { tools } from '@/data/registry';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 interface SearchOverlayProps {
   isOpen: boolean;
@@ -25,9 +26,11 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   useEffect(() => {
     if (query.length > 0) {
       const filtered = tools.filter(tool =>
-        tool.title.toLowerCase().includes(query.toLowerCase()) ||
-        tool.description.toLowerCase().includes(query.toLowerCase()) ||
-        tool.keywords.some(k => k.toLowerCase().includes(query.toLowerCase()))
+        !toolsUnderReview.has(tool.slug) && (
+          tool.title.toLowerCase().includes(query.toLowerCase()) ||
+          tool.description.toLowerCase().includes(query.toLowerCase()) ||
+          tool.keywords.some(k => k.toLowerCase().includes(query.toLowerCase()))
+        )
       );
       setResults(filtered.slice(0, 8));
     } else {

@@ -1,15 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function FlooringCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'flooring-calculator');
+export default function FlooringCalculator() {
   const [length, setLength] = useState<number>(10);
   const [width, setWidth] = useState<number>(10);
   const [unit, setUnit] = useState<'m' | 'ft'>('m');
@@ -36,10 +32,10 @@ function FlooringCalculatorContent() {
       wid = width * 0.3048;
     }
 
-    const areaSqft = len * wid * 10.764;
+    const areaSqft = len * wid * 10.763910416709722;
     const areaSqftWithWastage = areaSqft * (1 + wastage / 100);
     const materialCost = areaSqftWithWastage * costPerSqft;
-    const laborCostTotal = areaSqftWithWastage * laborCost;
+    const laborCostTotal = areaSqft * laborCost;
     const totalCost = materialCost + laborCostTotal;
 
     setResult({
@@ -203,20 +199,11 @@ function FlooringCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800">
-              <p className="text-sm text-emerald-600 dark:text-emerald-400">💡 Cost per sq ft: {formatCurrency(result.costPerSqft)} + {formatCurrency(result.laborCost)} labor = {formatCurrency(result.costPerSqft + result.laborCost)}/sq ft</p>
+              <p className="text-sm text-emerald-600 dark:text-emerald-400">Material pricing applies to the order area with waste; labor pricing applies to the measured floor area. Confirm both rates and taxable extras locally.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function FlooringCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'flooring-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <FlooringCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

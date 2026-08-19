@@ -1,11 +1,5 @@
-'use client';
-
-import ImageConverterEngine from '@/components/ImageConverterEngineWrapper';
-import { tools } from '@/data/registry';
-
-export const dynamic = 'force-dynamic';
+import ImageFormatConverterTool from '@/components/tools/ImageFormatConverterTool';
 
 export default function Page() {
-  const meta = tools.find(t => t.slug === 'convert-png-to-jpg');
-  return <ImageConverterEngine meta={meta} />;
+  return <ImageFormatConverterTool title="Convert PNG to JPG" description="Convert a PNG to JPG with transparent areas filled white." inputLabel="PNG image" inputMime="image/png" outputFormat="jpeg" />;
 }

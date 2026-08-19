@@ -175,28 +175,6 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
-  'bmi-calculator': {
-    metaTitle: 'Bmi Calculator - Free Online Bmi Calculator | Navorika',
-    metaDescription: 'Use our free Bmi Calculator to get accurate results instantly. Fast, private, and no signup required.',
-    intro: 'The Body Mass Index (BMI) is a widely recognized and scientifically validated measure of body fat based on your height and weight. It serves as an important screening tool to identify potential weight-related health issues in adults. Our free BMI calculator helps you determine your BMI score instantly and provides personalized health recommendations based on your results.',
-    howItWorks: 'This tool processes your data entirely in your browser. No data is stored or transmitted.',
-    benefits: ['100% free - no hidden costs', 'Private by design - no data stored', 'Works on any device', 'No signup required', 'Instant processing', 'Based on validated formulas'],
-    useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
-    stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
-    tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['bmr-calculator', 'tdee-calculator', 'body-fat-calculator', 'ideal-weight-calculator'],
-    faq: [
-      {'question': 'What is Bmi Calculator?', 'answer': 'Bmi Calculator is a free online tool that helps you with bmi calculator quickly and easily.'},
-      {'question': 'Is Bmi Calculator really free?', 'answer': 'Yes, Bmi Calculator is completely free to use with no hidden costs.'},
-      {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
-      {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
-      {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}
-    ],
-    schemaType: 'WebApplication',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'All',
-    browserRequirements: 'Modern browser with JavaScript enabled'
-  },
   'bmr-calculator': {
     metaTitle: 'Bmr Calculator - Free Online Bmr Calculator | Navorika',
     metaDescription: 'Use our free Bmr Calculator to get accurate results instantly. Fast, private, and no signup required.',
@@ -1495,28 +1473,6 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
-  'protect-pdf': {
-    metaTitle: 'Protect Pdf - Free Online Protect Pdf | Navorika',
-    metaDescription: 'Use our free Protect Pdf to get accurate results instantly. Fast, private, and no signup required.',
-    intro: 'Protect Pdf is a free online tool that helps you perform protect pdf quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
-    howItWorks: 'This tool processes your data entirely in your browser. No data is stored or transmitted.',
-    benefits: ['100% free - no hidden costs', 'Private by design - no data stored', 'Works on any device', 'No signup required', 'Instant processing', 'Based on validated formulas'],
-    useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
-    stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
-    tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['merge-pdf', 'split-pdf', 'pdf-to-image', 'image-to-pdf'],
-    faq: [
-      {'question': 'What is Protect Pdf?', 'answer': 'Protect Pdf is a free online tool that helps you with protect pdf quickly and easily.'},
-      {'question': 'Is Protect Pdf really free?', 'answer': 'Yes, Protect Pdf is completely free to use with no hidden costs.'},
-      {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
-      {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
-      {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}
-    ],
-    schemaType: 'WebApplication',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'All',
-    browserRequirements: 'Modern browser with JavaScript enabled'
-  },
   'qr-code-studio': {
     metaTitle: 'Qr Code Studio - Free Online Qr Code Studio | Navorika',
     metaDescription: 'Use our free Qr Code Studio to get accurate results instantly. Fast, private, and no signup required.',
@@ -1948,28 +1904,6 @@ export const seoContent: Record<string, SEOContent> = {
     faq: [
       {'question': 'What is Universal Json Studio?', 'answer': 'Universal Json Studio is a free online tool that helps you with universal json studio quickly and easily.'},
       {'question': 'Is Universal Json Studio really free?', 'answer': 'Yes, Universal Json Studio is completely free to use with no hidden costs.'},
-      {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
-      {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
-      {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}
-    ],
-    schemaType: 'WebApplication',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'All',
-    browserRequirements: 'Modern browser with JavaScript enabled'
-  },
-  'unlock-pdf': {
-    metaTitle: 'Unlock Pdf - Free Online Unlock Pdf | Navorika',
-    metaDescription: 'Use our free Unlock Pdf to get accurate results instantly. Fast, private, and no signup required.',
-    intro: 'Unlock Pdf is a free online tool that helps you perform unlock pdf quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
-    howItWorks: 'This tool processes your data entirely in your browser. No data is stored or transmitted.',
-    benefits: ['100% free - no hidden costs', 'Private by design - no data stored', 'Works on any device', 'No signup required', 'Instant processing', 'Based on validated formulas'],
-    useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
-    stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
-    tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['merge-pdf', 'split-pdf', 'pdf-to-image', 'image-to-pdf'],
-    faq: [
-      {'question': 'What is Unlock Pdf?', 'answer': 'Unlock Pdf is a free online tool that helps you with unlock pdf quickly and easily.'},
-      {'question': 'Is Unlock Pdf really free?', 'answer': 'Yes, Unlock Pdf is completely free to use with no hidden costs.'},
       {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
       {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
       {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}

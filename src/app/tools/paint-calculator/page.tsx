@@ -1,15 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function PaintCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'paint-calculator');
+export default function PaintCalculator() {
   const [length, setLength] = useState<number>(10);
   const [width, setWidth] = useState<number>(10);
   const [height, setHeight] = useState<number>(3);
@@ -186,20 +182,11 @@ function PaintCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-blue-600 dark:text-blue-400">💡 {result.cansNeeded} x 5L cans = {result.cansNeeded * 5} Liters total. Order extra for touch-ups.</p>
+              <p className="text-sm text-blue-600 dark:text-blue-400">The estimate includes all four walls and the ceiling, without subtracting doors or windows. Confirm product coverage and available container sizes.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function PaintCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'paint-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <PaintCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

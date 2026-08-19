@@ -3,13 +3,14 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
 import Breadcrumb from '@/components/ui/Breadcrumb';
-import Schema from '@/components/seo/Schema';
-import SEO from '@/components/seo/SEO';
-import AISearch from '@/components/seo/AISearch';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Navorika – 100+ Free Online Tools, Calculators & Utilities',
+export const metadata: Metadata = {
+  metadataBase: new URL('https://navorika.com'),
+  title: {
+    default: 'Navorika – Free Online Tools, Calculators & Utilities',
+    template: '%s | Navorika',
+  },
   description: '100+ free online tools including calculators, PDF editors, image converters, and developer utilities. 100% client-side, no data uploads, no signup required.',
   keywords: 'free online tools, calculators, pdf tools, image tools, developer tools, client-side, privacy-first, no signup',
   openGraph: {
@@ -44,9 +45,6 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: 'https://navorika.com',
-  },
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -62,7 +60,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>{metadata.title}</title>
         {/* Google Analytics - Direct head injection */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH4XRJSDLZ"></script>
         <script
@@ -78,9 +75,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen flex flex-col transition-colors duration-300">
         <ThemeProvider>
-          <SEO />
-          <Schema />
-          <AISearch />
           <Navbar />
           <main className="flex-1 pt-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
             <Breadcrumb />

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { tools } from '@/data/registry';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 interface SearchOverlayProps {
   isOpen: boolean;
@@ -28,9 +29,11 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
   const filteredTools = query.trim() === '' 
     ? [] 
-    : tools.filter(t => 
-        t.title.toLowerCase().includes(query.toLowerCase()) ||
-        t.description.toLowerCase().includes(query.toLowerCase())
+    : tools.filter(t =>
+        !toolsUnderReview.has(t.slug) && (
+          t.title.toLowerCase().includes(query.toLowerCase()) ||
+          t.description.toLowerCase().includes(query.toLowerCase())
+        )
       ).slice(0, 8);
 
   return (

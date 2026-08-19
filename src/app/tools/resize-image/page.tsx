@@ -80,13 +80,13 @@ export default function ResizeImageTool() {
               const downloadUrl = URL.createObjectURL(blob);
               const a = document.createElement('a');
               a.href = downloadUrl;
-              a.download = `Navorika_Resized_${width}x${height}_${file.name}`;
+              a.download = `Navorika_Resized_${width}x${height}.png`;
               document.body.appendChild(a);
               a.click();
               URL.revokeObjectURL(downloadUrl);
             }
             setIsProcessing(false);
-          }, file.type, 0.95);
+          }, 'image/png');
         }
       };
       

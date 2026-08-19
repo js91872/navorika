@@ -1,19 +1,2 @@
-'use client';
-
-import ImageConverterEngine from '@/components/ImageConverterEngineWrapper';
-import { tools } from '@/data/registry';
-
-export default function Page() {
-  const meta = tools.find(t => t.slug === '"$(basename $(dirname $file))"');
-  return <ImageConverterEngine meta={meta || { 
-    slug: 'image-converter',
-    title: 'Image Converter',
-    description: 'Convert your images to different formats.',
-    category: 'image-tools',
-    keywords: ['image', 'converter'],
-    heroTitle: 'Image Converter',
-    heroDescription: 'Convert your images to different formats easily.',
-    formulaExplanation: 'This tool converts images from one format to another.',
-    faq: []
-  }} />;
-}
+import ToolUnavailable from '@/components/tools/ToolUnavailable';
+export default function Page() { return <ToolUnavailable title="HTML to Image" backHref="/categories/image-tools" backLabel="Back to Image Tools" unavailableReason="The previous route did not render HTML and only exposed a generic image converter." requirement="A sandboxed renderer with explicit CSS, font, asset, script, cross-origin, viewport, and output-format behavior is required." />; }

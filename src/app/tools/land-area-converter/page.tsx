@@ -1,15 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function LandAreaConverterContent() {
-  const meta = tools.find(t => t.slug === 'land-area-converter');
+export default function LandAreaConverter() {
   const [value, setValue] = useState<number>(1);
   const [fromUnit, setFromUnit] = useState<'sqft' | 'sqm' | 'acre' | 'hectare' | 'sqyd'>('acre');
   const [toUnit, setToUnit] = useState<'sqft' | 'sqm' | 'acre' | 'hectare' | 'sqyd'>('sqft');
@@ -17,9 +13,9 @@ function LandAreaConverterContent() {
 
   const conversionFactors: { [key: string]: number } = {
     sqft: 1,
-    sqm: 10.764,
+    sqm: 10.763910416709722,
     acre: 43560,
-    hectare: 107639,
+    hectare: 107639.10416709722,
     sqyd: 9
   };
 
@@ -136,20 +132,11 @@ function LandAreaConverterContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-blue-600 dark:text-blue-400">💡 1 Acre = 43,560 sq ft | 1 Hectare = 107,639 sq ft</p>
+              <p className="text-sm text-blue-600 dark:text-blue-400">Conversions use fixed international area-unit relationships and rounded display values.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function LandAreaConverterWrapper() {
-  const meta = tools.find(t => t.slug === 'land-area-converter');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <LandAreaConverterContent />
-    </EnhancedToolWrapper>
   );
 }

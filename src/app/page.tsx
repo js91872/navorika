@@ -20,14 +20,15 @@ import {
 } from 'lucide-react';
 import { tools, categories } from '@/data/registry';
 import SearchBar from '@/components/SearchBar';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 export default function HomePage() {
-  const totalTools = tools.length;
+  const totalTools = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length;
   const displayCount = totalTools >= 100 ? '100+' : `${totalTools}+`;
   
   // Featured tools for the grid
   const featuredTools = [
-    { slug: 'compress-pdf', title: 'Compress PDF', icon: '📄', category: 'PDF Tools' },
+    { slug: 'rotate-pdf', title: 'Rotate PDF', icon: '🔄', category: 'PDF Tools' },
     { slug: 'resize-image', title: 'Resize Image', icon: '🖼️', category: 'Image Tools' },
     { slug: 'bmi-calculator', title: 'BMI Calculator', icon: '⚖️', category: 'Health' },
     { slug: 'sip-calculator', title: 'SIP Calculator', icon: '📊', category: 'Finance' },

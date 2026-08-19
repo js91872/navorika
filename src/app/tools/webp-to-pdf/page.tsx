@@ -1,19 +1,5 @@
-'use client';
-
-import ImageConverterEngine from '@/components/ImageConverterEngineWrapper';
-import { tools } from '@/data/registry';
+import ImageToPdfTool from '@/components/tools/ImageToPdfTool';
 
 export default function Page() {
-  const meta = tools.find(t => t.slug === '"$(basename $(dirname $file))"');
-  return <ImageConverterEngine meta={meta || { 
-    slug: 'image-converter',
-    title: 'Image Converter',
-    description: 'Convert your images to different formats.',
-    category: 'image-tools',
-    keywords: ['image', 'converter'],
-    heroTitle: 'Image Converter',
-    heroDescription: 'Convert your images to different formats easily.',
-    formulaExplanation: 'This tool converts images from one format to another.',
-    faq: []
-  }} />;
+  return <ImageToPdfTool title="WebP to PDF" description="Convert one or more WebP images into an ordered PDF locally in your browser." accept="image/webp,.webp" />;
 }

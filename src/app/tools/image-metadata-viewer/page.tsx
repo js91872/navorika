@@ -1,19 +1,11 @@
 'use client';
+import { useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, FileImage, ShieldCheck, Upload } from 'lucide-react';
 
-import ImageConverterEngine from '@/components/ImageConverterEngineWrapper';
-import { tools } from '@/data/registry';
-
+type Details = { name: string; type: string; size: number; width: number; height: number; modified: string };
 export default function Page() {
-  const meta = tools.find(t => t.slug === '"$(basename $(dirname $file))"');
-  return <ImageConverterEngine meta={meta || { 
-    slug: 'image-converter',
-    title: 'Image Converter',
-    description: 'Convert your images to different formats.',
-    category: 'image-tools',
-    keywords: ['image', 'converter'],
-    heroTitle: 'Image Converter',
-    heroDescription: 'Convert your images to different formats easily.',
-    formulaExplanation: 'This tool converts images from one format to another.',
-    faq: []
-  }} />;
+  const [details, setDetails] = useState<Details | null>(null); const [error, setError] = useState('');
+  const inspect = async (file?: File) => { if (!file || !file.type.startsWith('image/')) { setError('Choose a browser-readable image.'); return; } try { const bitmap = await createImageBitmap(file); setDetails({ name: file.name, type: file.type || 'Unknown', size: file.size, width: bitmap.width, height: bitmap.height, modified: new Date(file.lastModified).toLocaleString() }); bitmap.close(); setError(''); } catch { setDetails(null); setError('This browser could not decode the image.'); } };
+  return <main className="max-w-3xl mx-auto px-6 py-12"><Link href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 mb-8"><ArrowLeft className="h-4 w-4" /> Back to Image Tools</Link><div className="text-center mb-8"><div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 mb-4"><ShieldCheck className="h-4 w-4" /> LOCAL INSPECTION</div><h1 className="text-4xl font-black">Image File & Dimension Viewer</h1><p className="mt-3 text-slate-500">Read browser-visible file properties and decoded pixel dimensions. This is not an EXIF viewer.</p></div><section className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-8"><label className="flex flex-col items-center p-10 border-2 border-dashed rounded-2xl cursor-pointer"><Upload className="h-9 w-9 text-indigo-500 mb-3" /><span className="font-bold">Choose image</span><input type="file" accept="image/*" className="hidden" onChange={e => void inspect(e.target.files?.[0])} /></label>{details && <dl className="mt-6 grid sm:grid-cols-2 gap-3">{Object.entries({ 'File name': details.name, 'MIME type': details.type, 'File size': `${(details.size / 1024).toFixed(1)} KB`, 'Pixel dimensions': `${details.width} × ${details.height}`, 'Aspect ratio': (details.width / details.height).toFixed(4), 'Last modified': details.modified }).map(([label,value]) => <div key={label} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800"><dt className="text-xs font-bold text-slate-500 uppercase">{label}</dt><dd className="mt-1 font-semibold break-all">{value}</dd></div>)}</dl>}<div className="mt-5 flex gap-2 text-sm text-amber-700 dark:text-amber-400"><FileImage className="h-5 w-5 shrink-0" /> EXIF, GPS, camera settings, ICC profiles, DPI metadata, and embedded thumbnails are not parsed.</div>{error && <p className="mt-4 text-red-600">{error}</p>}</section></main>;
 }

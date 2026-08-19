@@ -1,64 +1,18 @@
 'use client';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, Copy, Fingerprint, KeyRound, Lock, ShieldCheck } from 'lucide-react';
 
-import { useState, useEffect } from 'react';
-import { ArrowLeft, ShieldCheck, Fingerprint, KeyRound, Lock, Copy, Check } from 'lucide-react';
-import { tools } from '@/data/registry';
-
-export default function WebCryptoStudioTool() {
-  const meta = tools.find(t => t.slug === 'web-crypto-studio');
-  const [uuid, setUuid] = useState<string>('');
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-    setUuid(crypto.randomUUID());
-  }, []);
-
-  const copy = (text: string) => navigator.clipboard.writeText(text);
-
-  if (!meta) return null;
-
-  return (
-    <main className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
-      <a href="/categories/developer-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8">
-        <ArrowLeft className="h-4 w-4" /> Back to Developer Tools
-      </a>
-
-      <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/20">
-          <ShieldCheck className="h-4 w-4" /> WebCrypto Hardware API
-        </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">Web Crypto Studio</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">Encrypt, decrypt, hash, and sign data using Web Crypto API</p>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-8">
-        <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8 border border-slate-200 dark:border-slate-800">
-          <h3 className="text-lg font-black flex items-center gap-2 mb-4"><Fingerprint className="h-5 w-5 text-emerald-500" /> Secure Hash Generator</h3>
-          <label className="text-xs font-bold uppercase text-slate-500">Input String</label>
-          <input type="text" placeholder="Enter text to hash..." className="w-full p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:border-indigo-500" />
-        </div>
-
-        <div className="space-y-8 flex flex-col">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8 border border-slate-200 dark:border-slate-800">
-            <h3 className="text-lg font-black flex items-center gap-2 mb-4"><KeyRound className="h-5 w-5 text-emerald-500" /> Password Generator</h3>
-            <p className="font-mono text-sm text-center py-4 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-700">
-              {isClient ? 'Click Generate to create a password' : 'Loading...'}
-            </p>
-          </div>
-
-          <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8 border border-slate-200 dark:border-slate-800">
-            <h3 className="text-lg font-black flex items-center gap-2 mb-4"><Lock className="h-5 w-5 text-emerald-500" /> UUID Generator</h3>
-            <p className="font-mono text-sm text-center py-4 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-700">
-              {isClient ? uuid : 'Loading...'}
-            </p>
-            <div className="flex gap-2 mt-4">
-              <button onClick={() => copy(uuid)} className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 py-2 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">Copy</button>
-              <button onClick={() => setUuid(crypto.randomUUID())} className="flex-1 bg-emerald-600 text-white py-2 rounded-xl font-bold hover:bg-emerald-700 transition-all">Generate</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%^&*_-+=';
+function randomPassword(length: number) { const output:string[]=[]; const limit=Math.floor(0x100000000/alphabet.length)*alphabet.length; while(output.length<length){const values=new Uint32Array(length-output.length);crypto.getRandomValues(values);for(const value of values){if(value<limit)output.push(alphabet[value%alphabet.length]);if(output.length===length)break;}}return output.join(''); }
+export default function Page() {
+  const [hashInput,setHashInput]=useState(''); const [hash,setHash]=useState(''); const [length,setLength]=useState(20); const [password,setPassword]=useState(''); const [uuid,setUuid]=useState('');
+  useEffect(()=>{setUuid(crypto.randomUUID());setPassword(randomPassword(20));},[]);
+  const makeHash=async()=>{const bytes=new TextEncoder().encode(hashInput);const digest=await crypto.subtle.digest('SHA-256',bytes);setHash(Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join(''));};
+  const copy=(text:string)=>void navigator.clipboard.writeText(text);
+  return <main className="max-w-5xl mx-auto px-6 py-12"><Link href="/categories/developer-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 mb-8"><ArrowLeft className="h-4 w-4"/> Back to Developer Tools</Link><div className="text-center mb-10"><div className="inline-flex gap-2 text-xs font-bold text-emerald-600"><ShieldCheck className="h-4 w-4"/> BROWSER WEB CRYPTO</div><h1 className="text-4xl font-black mt-4">Web Crypto Studio</h1><p className="mt-3 text-slate-500">Generate SHA-256 hashes, random passwords, and UUID v4 identifiers locally.</p></div><div className="grid lg:grid-cols-2 gap-6">
+    <section className="bg-white dark:bg-slate-900 rounded-3xl border p-6"><h2 className="font-black flex gap-2"><Fingerprint className="h-5 w-5 text-emerald-500"/> SHA-256</h2><textarea value={hashInput} onChange={e=>setHashInput(e.target.value)} className="mt-4 w-full min-h-32 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border" placeholder="Text to hash"/><button onClick={()=>void makeHash()} className="mt-3 w-full py-3 rounded-xl bg-emerald-600 text-white font-bold">Generate hash</button>{hash&&<div className="mt-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 break-all font-mono text-xs">{hash}<button aria-label="Copy hash" onClick={()=>copy(hash)} className="ml-2"><Copy className="h-4 w-4"/></button></div>}</section>
+    <div className="space-y-6"><section className="bg-white dark:bg-slate-900 rounded-3xl border p-6"><h2 className="font-black flex gap-2"><KeyRound className="h-5 w-5 text-emerald-500"/> Random password</h2><label className="mt-4 block text-sm font-bold">Length: {length}<input type="range" min={12} max={64} value={length} onChange={e=>setLength(Number(e.target.value))} className="w-full mt-2"/></label><p className="mt-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 break-all font-mono">{password}</p><div className="grid grid-cols-2 gap-2 mt-3"><button onClick={()=>setPassword(randomPassword(length))} className="py-2 rounded-xl bg-emerald-600 text-white font-bold">Generate</button><button onClick={()=>copy(password)} className="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold">Copy</button></div><p className="mt-3 text-xs text-slate-500">Uses Web Crypto random values with rejection sampling to avoid modulo bias. This is not a password manager.</p></section>
+    <section className="bg-white dark:bg-slate-900 rounded-3xl border p-6"><h2 className="font-black flex gap-2"><Lock className="h-5 w-5 text-emerald-500"/> UUID v4</h2><p className="mt-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 font-mono text-sm break-all">{uuid}</p><div className="grid grid-cols-2 gap-2 mt-3"><button onClick={()=>setUuid(crypto.randomUUID())} className="py-2 rounded-xl bg-emerald-600 text-white font-bold">Generate</button><button onClick={()=>copy(uuid)} className="py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold">Copy</button></div></section></div>
+  </div></main>;
 }

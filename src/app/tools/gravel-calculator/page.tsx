@@ -1,14 +1,12 @@
 'use client';
 
 import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function GravelCalculatorContent() {
+export default function GravelCalculator() {
   const meta = tools.find(t => t.slug === 'gravel-calculator');
   const [length, setLength] = useState<number>(10);
   const [width, setWidth] = useState<number>(10);
@@ -163,20 +161,11 @@ function GravelCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <p className="text-sm text-amber-600 dark:text-amber-400">💡 Order 10-15% extra for compaction and settling.</p>
+              <p className="text-sm text-amber-600 dark:text-amber-400">Confirm material density, compaction, waste, and delivery payload with the supplier.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function GravelCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'gravel-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <GravelCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

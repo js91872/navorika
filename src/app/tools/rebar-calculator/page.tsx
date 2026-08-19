@@ -1,15 +1,11 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function RebarCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'rebar-calculator');
+export default function RebarCalculator() {
   const [length, setLength] = useState<number>(10);
   const [width, setWidth] = useState<number>(10);
   const [barSize, setBarSize] = useState<number>(12);
@@ -40,12 +36,12 @@ function RebarCalculatorContent() {
     let totalLength = 0;
 
     if (direction === 'both' || direction === 'lengthwise') {
-      barsLengthwise = Math.floor(widthM / spacingM) + 1;
+      barsLengthwise = Math.ceil(widthM / spacingM) + 1;
       totalLength += barsLengthwise * lengthM;
     }
 
     if (direction === 'both' || direction === 'widthwise') {
-      barsWidthwise = Math.floor(lengthM / spacingM) + 1;
+      barsWidthwise = Math.ceil(lengthM / spacingM) + 1;
       totalLength += barsWidthwise * widthM;
     }
 
@@ -195,20 +191,11 @@ function RebarCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800">
-              <p className="text-sm text-emerald-600 dark:text-emerald-400">💡 Consider adding 5-10% extra for lapping, wastage, and extras.</p>
+              <p className="text-sm text-emerald-600 dark:text-emerald-400">Counts are rounded upward so calculated spacing does not exceed the entered maximum. Laps, anchorage, hooks, supports, multiple layers, openings, and waste are not included.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function RebarCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'rebar-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <RebarCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

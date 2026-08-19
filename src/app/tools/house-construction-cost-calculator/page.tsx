@@ -1,49 +1,36 @@
 'use client';
 
-import { tools } from '@/data/registry';
-import EnhancedToolWrapper from '@/components/EnhancedToolWrapper';
-
 import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 
-function HouseConstructionCostCalculatorContent() {
-  const meta = tools.find(t => t.slug === 'house-construction-cost-calculator');
+export default function HouseConstructionCostCalculator() {
   const [area, setArea] = useState<number>(2000);
   const [unit, setUnit] = useState<'sqft' | 'sqm'>('sqft');
-  const [quality, setQuality] = useState<'standard' | 'premium' | 'luxury'>('standard');
   const [floors, setFloors] = useState<number>(1);
+  const [constructionRate, setConstructionRate] = useState<number>(150);
+  const [siteAndSoftCosts, setSiteAndSoftCosts] = useState<number>(25000);
+  const [contingencyPercent, setContingencyPercent] = useState<number>(10);
   const [landCost, setLandCost] = useState<number>(50000);
   const [result, setResult] = useState<any>(null);
 
-  const qualityMultipliers = {
-    standard: { base: 150, finishing: 40, interior: 30, landscaping: 10 },
-    premium: { base: 250, finishing: 70, interior: 60, landscaping: 20 },
-    luxury: { base: 400, finishing: 120, interior: 100, landscaping: 35 }
-  };
-
   const calculateCost = () => {
-    const areaInSqft = unit === 'sqft' ? area : area * 10.764;
+    const areaInSqft = unit === 'sqft' ? area : area * 10.763910416709722;
     const totalArea = areaInSqft * floors;
-    const multipliers = qualityMultipliers[quality];
-
-    const baseCost = totalArea * multipliers.base;
-    const finishingCost = totalArea * multipliers.finishing;
-    const interiorCost = totalArea * multipliers.interior;
-    const landscapingCost = totalArea * multipliers.landscaping;
-    const permitCost = totalArea * 5;
-    const totalCost = baseCost + finishingCost + interiorCost + landscapingCost + permitCost + landCost;
-    const costPerSqft = totalCost / totalArea;
+    const directConstructionCost = totalArea * constructionRate;
+    const contingency = directConstructionCost * (contingencyPercent / 100);
+    const projectCostExcludingLand = directConstructionCost + contingency + siteAndSoftCosts;
+    const totalCost = projectCostExcludingLand + landCost;
+    const constructionCostPerSqft = projectCostExcludingLand / totalArea;
 
     setResult({
       totalCost,
-      costPerSqft,
-      baseCost,
-      finishingCost,
-      permitCost,
-      interiorCost,
-      landscapingCost,
+      constructionCostPerSqft,
+      directConstructionCost,
+      contingency,
+      siteAndSoftCosts,
+      projectCostExcludingLand,
       landCost,
       totalArea
     });
@@ -61,8 +48,10 @@ function HouseConstructionCostCalculatorContent() {
   const resetCalculator = () => {
     setResult(null);
     setArea(2000);
-    setQuality('standard');
     setFloors(1);
+    setConstructionRate(150);
+    setSiteAndSoftCosts(25000);
+    setContingencyPercent(10);
     setLandCost(50000);
   };
 
@@ -96,16 +85,18 @@ function HouseConstructionCostCalculatorContent() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Construction Quality</label>
-            <Select
-              value={quality}
-              onChange={(e) => setQuality(e.target.value as 'standard' | 'premium' | 'luxury')}
-              options={[
-                { value: 'standard', label: 'Standard ($150/sqft)' },
-                { value: 'premium', label: 'Premium ($250/sqft)' },
-                { value: 'luxury', label: 'Luxury ($400/sqft)' }
-              ]}
-            />
+            <label className="block text-sm font-medium mb-2">Construction Rate (USD/sq ft)</label>
+            <Input type="number" value={constructionRate} onChange={(e) => setConstructionRate(Number(e.target.value))} min={0} />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Site & Soft Costs (USD)</label>
+            <Input type="number" value={siteAndSoftCosts} onChange={(e) => setSiteAndSoftCosts(Number(e.target.value))} min={0} />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Contingency (%)</label>
+            <Input type="number" value={contingencyPercent} onChange={(e) => setContingencyPercent(Number(e.target.value))} min={0} max={100} />
           </div>
 
           <div>
@@ -144,24 +135,20 @@ function HouseConstructionCostCalculatorContent() {
             <h3 className="font-bold text-lg mb-4">Cost Breakdown</h3>
             <div className="space-y-3">
               <div className="flex justify-between py-2 border-b border-slate-200 dark:border-slate-700">
-                <span className="text-slate-600 dark:text-slate-400">Base Construction</span>
-                <span className="font-medium">{formatCurrency(result.baseCost)}</span>
+                <span className="text-slate-600 dark:text-slate-400">Direct Construction</span>
+                <span className="font-medium">{formatCurrency(result.directConstructionCost)}</span>
               </div>
               <div className="flex justify-between py-2 border-b border-slate-200 dark:border-slate-700">
-                <span className="text-slate-600 dark:text-slate-400">Finishing</span>
-                <span className="font-medium">{formatCurrency(result.finishingCost)}</span>
+                <span className="text-slate-600 dark:text-slate-400">Contingency</span>
+                <span className="font-medium">{formatCurrency(result.contingency)}</span>
               </div>
               <div className="flex justify-between py-2 border-b border-slate-200 dark:border-slate-700">
-                <span className="text-slate-600 dark:text-slate-400">Interior Design</span>
-                <span className="font-medium">{formatCurrency(result.interiorCost)}</span>
+                <span className="text-slate-600 dark:text-slate-400">Site & Soft Costs</span>
+                <span className="font-medium">{formatCurrency(result.siteAndSoftCosts)}</span>
               </div>
               <div className="flex justify-between py-2 border-b border-slate-200 dark:border-slate-700">
-                <span className="text-slate-600 dark:text-slate-400">Landscaping</span>
-                <span className="font-medium">{formatCurrency(result.landscapingCost)}</span>
-              </div>
-              <div className="flex justify-between py-2 border-b border-slate-200 dark:border-slate-700">
-                <span className="text-slate-600 dark:text-slate-400">Permits & Fees</span>
-                <span className="font-medium">{formatCurrency(result.permitCost)}</span>
+                <span className="text-slate-600 dark:text-slate-400">Project Excluding Land</span>
+                <span className="font-medium">{formatCurrency(result.projectCostExcludingLand)}</span>
               </div>
               <div className="flex justify-between py-2 border-b border-slate-200 dark:border-slate-700">
                 <span className="text-slate-600 dark:text-slate-400">Land Cost</span>
@@ -173,7 +160,7 @@ function HouseConstructionCostCalculatorContent() {
               </div>
               <div className="flex justify-between py-2 bg-slate-100 dark:bg-slate-700 rounded-lg px-3">
                 <span className="text-sm">Cost per sq ft</span>
-                <span className="font-medium">{formatCurrency(result.costPerSqft)}</span>
+                <span className="font-medium">{formatCurrency(result.constructionCostPerSqft)}</span>
               </div>
               <div className="flex justify-between py-2 bg-slate-100 dark:bg-slate-700 rounded-lg px-3">
                 <span className="text-sm">Total Area</span>
@@ -181,20 +168,11 @@ function HouseConstructionCostCalculatorContent() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-blue-600 dark:text-blue-400">💡 This estimate includes construction, finishing, interior design, landscaping, and permits.</p>
+              <p className="text-sm text-blue-600 dark:text-blue-400">All rates are user-entered planning assumptions in USD. Define exactly what the construction rate and soft-cost allowance include before comparing estimates.</p>
             </div>
           </div>
         )}
       </div>
     </div>
-  );
-}
-
-export default function HouseConstructionCostCalculatorWrapper() {
-  const meta = tools.find(t => t.slug === 'house-construction-cost-calculator');
-  return (
-    <EnhancedToolWrapper meta={meta}>
-      <HouseConstructionCostCalculatorContent />
-    </EnhancedToolWrapper>
   );
 }

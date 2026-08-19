@@ -7,6 +7,7 @@ import { Search, X, Grid3x3, Filter, ArrowRight } from 'lucide-react';
 import { tools, categories } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
 import { toolDescriptions } from '@/lib/toolDescriptions';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 const colorMap: Record<string, string> = {
   'pdf-tools': 'hover:border-blue-500/50',
@@ -33,7 +34,7 @@ export default function AllToolsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const filteredTools = useMemo(() => {
-    let result = tools;
+    let result = tools.filter((tool) => !toolsUnderReview.has(tool.slug));
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       result = result.filter(t =>
