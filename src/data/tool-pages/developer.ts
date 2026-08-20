@@ -3,6 +3,54 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const local = 'Input is processed locally in your browser and is not sent to Navorika.';
 
 export const developerToolPages: Record<string, ToolPageContent> = {
+  'code-minifier-beautifier': {
+    slug: 'code-minifier-beautifier',
+    name: 'JavaScript, CSS and HTML Code Minifier & Beautifier',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Format, pretty-print, and minify JavaScript, CSS, and HTML code locally in your browser with Prettier, Terser, and CleanCSS.',
+    longTailKeywords: ['JavaScript minifier online', 'CSS code beautifier 2 spaces', 'HTML minifier terser browser', 'pretty print JavaScript code', 'clean CSS minifier tool'],
+    intro: ['Code Minifier & Beautifier provides client-side formatting and compression for JavaScript, CSS, and HTML source code using AST-aware engines.', local],
+    formula: [
+      { title: 'Beautification', body: 'Source code is parsed into an AST and reprinted with consistent indentation (2 or 4 spaces) using Prettier.' },
+      { title: 'Minification', body: 'JavaScript is compressed via Terser; CSS is minified with CleanCSS; HTML is collapsed with html-minifier-terser.' },
+    ],
+    steps: ['Choose JavaScript, CSS, or HTML.', 'Paste or load your source code snippet.', 'Select Beautify (2 or 4 spaces) or Minify.', 'Review validation status, metrics, and copy the processed result.'],
+    interpretation: ['Beautification standardizes spacing and syntax tree hierarchy without altering runtime behavior.', 'Minification strips whitespace, redundant tokens, and comments to reduce payload size.'],
+    limitations: ['Minification removes comments and shortens identifiers, which can make debugging compiled output difficult without source maps.', 'Code containing syntax errors cannot be parsed or minified.'],
+    faqs: [
+      { question: 'Is my source code uploaded to any server?', answer: 'No. All parsing, formatting, and minification runs locally in your browser.' },
+      { question: 'Which minification engines are used?', answer: 'JavaScript uses Terser, CSS uses CleanCSS, and HTML uses html-minifier-terser.' },
+      { question: 'Does formatting change code functionality?', answer: 'No. AST-based formatting only adjusts formatting and indentation.' },
+      { question: 'Can it handle modern ES6+ syntax?', answer: 'Yes. The Babel parser supports modern ECMAScript features.' },
+    ],
+    relatedTools: [{ slug: 'universal-json-studio', name: 'JSON Studio' }, { slug: 'markup-formatter', name: 'Markup Formatter' }, { slug: 'base64-encoder', name: 'Base64 Encoder' }],
+    relatedGuides: ['json-formatting-guide', 'base64-encoding-guide'],
+  },
+  'markup-formatter': {
+    slug: 'markup-formatter',
+    name: 'SQL, XML and YAML Markup Formatter & Validator',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Format, validate, and beautify SQL queries across multiple dialects, XML documents, and YAML configurations locally in your browser.',
+    longTailKeywords: ['SQL query formatter online', 'XML validator and beautifier', 'YAML syntax validator formatter', 'PostgreSQL query formatter', 'browser markup formatter'],
+    intro: ['Markup Formatter validates and pretty-prints SQL queries, XML hierarchies, and YAML data structures using grammar-aware parsers.', local],
+    formula: [
+      { title: 'SQL Formatting', body: 'Parses database queries with dialect-specific keyword casing and clause indentation via sql-formatter.' },
+      { title: 'XML & YAML', body: 'Validates XML via DOMParser and formats with xml-formatter; parses and normalizes YAML using the yaml document parser.' },
+    ],
+    steps: ['Select SQL, XML, or YAML.', 'Choose dialect options or indentation width (2 or 4 spaces).', 'Paste markup and click Format & Validate.', 'Inspect validation feedback and copy formatted output.'],
+    interpretation: ['Valid XML confirms balanced tags and well-formed syntax; valid YAML confirms correct indentation and mapping structures.', 'SQL formatting aligns clauses (SELECT, FROM, WHERE, JOIN) for human readability.'],
+    limitations: ['XML validation confirms well-formed markup but does not perform DTD or XML Schema (XSD) validation.', 'SQL formatting does not execute queries or verify database schema existence.'],
+    faqs: [
+      { question: 'Which SQL dialects are supported?', answer: 'Standard SQL, PostgreSQL, MySQL, SQLite, MariaDB, T-SQL, BigQuery, Snowflake, and PL/SQL.' },
+      { question: 'Does XML formatting validate tags?', answer: 'Yes. Browser DOMParser verifies tag closure and structure before formatting.' },
+      { question: 'Does YAML formatting preserve data types?', answer: 'Yes. The YAML parser respects types and structural hierarchy.' },
+      { question: 'Are files or queries sent to a server?', answer: 'No. Everything runs 100% locally in your browser.' },
+    ],
+    relatedTools: [{ slug: 'code-minifier-beautifier', name: 'Code Minifier Beautifier' }, { slug: 'universal-json-studio', name: 'JSON Studio' }, { slug: 'base64-encoder', name: 'Base64 Encoder' }],
+    relatedGuides: ['json-formatting-guide', 'seo-tools-guide'],
+  },
   'web-crypto-studio': {
     slug:'web-crypto-studio',name:'SHA-256, Secure Password and UUID Generator',category:'Developer Tools',applicationCategory:'DeveloperApplication',description:'Generate SHA-256 hex digests, unbiased cryptographic random passwords, and UUID v4 identifiers locally.',longTailKeywords:['SHA-256 hash generator browser','cryptographic password generator online','UUID v4 generator locally','Web Crypto random password','text to SHA256 hex'],intro:['Web Crypto Studio exposes three browser-native operations: SHA-256 digesting, random password generation with rejection sampling, and UUID v4 generation.',local],steps:['Enter text to generate a SHA-256 digest, or choose a password length, or generate a UUID.','Copy the result.','Store passwords in a trusted password manager and validate identifiers in their target system.'],interpretation:['SHA-256 is a one-way digest, not encryption.','Passwords use crypto.getRandomValues and a fixed displayed alphabet.','crypto.randomUUID creates RFC 4122 version 4 identifiers in supporting browsers.'],limitations:['This tool does not encrypt, decrypt, sign, verify, derive keys, store secrets, or manage passwords.','Clipboard contents can be read by other software or browser extensions with permission.'],faqs:[{question:'Can SHA-256 be decrypted?',answer:'No; it is a one-way digest.'},{question:'Is the password cryptographically random?',answer:'It uses Web Crypto values and rejection sampling.'},{question:'Does Navorika save passwords?',answer:'No.'},{question:'Does it encrypt data?',answer:'No.'}],relatedTools:[{slug:'base64-encoder',name:'Base64 Encoder'},{slug:'jwt-base64-deck',name:'JWT Decoder'},{slug:'universal-json-studio',name:'JSON Studio'},{slug:'developer-utils',name:'Developer Utils'}],relatedGuides:['base64-encoding-guide','jwt-decoding-guide'],
   },
