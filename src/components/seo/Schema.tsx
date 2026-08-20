@@ -17,7 +17,7 @@ export default function Schema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Navorika',
-    description: '200+ free online tools, calculators, PDF editors, image converters, and developer utilities.',
+    description: '100+ free online tools, calculators, PDF editors, image converters, and developer utilities.',
     url: baseUrl,
     logo: `${baseUrl}/favicon.svg`,
     sameAs: [
@@ -37,7 +37,7 @@ export default function Schema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Navorika',
-    description: '200+ free online tools, calculators, and utilities.',
+    description: '100+ free online tools, calculators, and utilities.',
     url: baseUrl,
     potentialAction: {
       '@type': 'SearchAction',
