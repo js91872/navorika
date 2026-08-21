@@ -6,6 +6,11 @@ import Breadcrumb from '@/components/ui/Breadcrumb';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  verification: {
+  other: {
+    'msvalidate.01': '6D321C11DD86042A7ABBC4EA63387AC3',
+  },
+},
   metadataBase: new URL('https://navorika.com'),
   title: {
     default: 'Navorika – Free Online Tools, Calculators & Utilities',
