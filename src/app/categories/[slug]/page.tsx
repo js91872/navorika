@@ -102,7 +102,7 @@ export default function CategoryPage() {
             <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
               <Grid className="h-6 w-6" />
             </div>
-            <h2 className="text-2xl font-bold">All {category.name}</h2>
+            <h2 className="text-2xl font-bold">Tools</h2>
             <span className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-sm font-medium">
               {categoryTools.length} tools
             </span>
