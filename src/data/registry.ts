@@ -964,6 +964,15 @@ export const tools: RegisteredTool[] = ([
     heroTitle: 'CSS clamp() Font Size Generator',
     heroDescription: 'Generate copy-ready CSS clamp() values for fluid responsive typography.'
   },
+  {
+    slug: 'fuel-cost-split-calculator',
+    title: 'Fuel Cost & Passenger Split Calculator',
+    description: 'Calculate trip fuel consumption, fuel cost, total travel expenses, and an equal cost per passenger.',
+    category: 'everyday-calculators',
+    keywords: ['fuel cost calculator', 'trip cost calculator', 'fuel split calculator', 'petrol cost calculator', 'gas cost per person', 'road trip cost'],
+    heroTitle: 'Fuel Cost & Passenger Split Calculator',
+    heroDescription: 'Estimate fuel needed, total journey cost, and how much each passenger should pay.'
+  },
 
 ] satisfies Tool[]).map((tool) => ({
   ...tool,
