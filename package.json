@@ -18,6 +18,8 @@
   "dependencies": {
     "clean-css": "^5.3.3",
     "clsx": "^2.1.1",
+    "cron-parser": "^5.10.0",
+    "cronstrue": "^3.24.0",
     "framer-motion": "^12.43.0",
     "heic2any": "^0.0.4",
     "html-minifier-terser": "^7.2.0",
