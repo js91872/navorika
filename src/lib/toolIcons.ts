@@ -113,6 +113,8 @@ export const toolIcons: Record<string, string> = {
   'fuel-cost-split-calculator': '⛽',
   'barbell-plate-calculator': '🏋️',
   'aquarium-volume-calculator': '🐠',
+  'tire-size-calculator': '🛞',
+  'dimensional-weight-calculator': '📦',
   'electricity-cost-calculator': '⚡',
   'unit-price-calculator': '🏷️',
 
@@ -124,6 +126,7 @@ export const toolIcons: Record<string, string> = {
   // ====== CONSTRUCTION TOOLS - ALL 20 ======
   'asphalt-calculator': '🛣️',
   'brick-calculator': '🧱',
+  'board-foot-calculator': '🪵',
   'cement-calculator': '🏗️',
   'concrete-calculator': '🏗️',
   'construction-cost-calculator': '💰',
