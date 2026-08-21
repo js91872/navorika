@@ -4,6 +4,53 @@ const local =
   'Inputs are processed locally in your browser and are not sent to Navorika.';
 
 export const everydayToolPages: Record<string, ToolPageContent> = {
+  'tire-size-calculator': {
+    slug: 'tire-size-calculator',
+    name: 'Tire Size Calculator',
+    category: 'Everyday Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Compare original and replacement tire sizes including diameter, circumference, sidewall, revolutions, ride-height change and speedometer difference.',
+    longTailKeywords: ['tire size calculator', 'tire comparison calculator', 'tire diameter calculator', 'speedometer error tire size calculator', 'tyre size comparison'],
+    intro: ['Tire Size Calculator compares two metric tire specifications and shows how changing tire dimensions affects overall diameter, circumference, revolutions and indicated speed.', local],
+    formula: [
+      { title: 'Sidewall height', body: 'Sidewall height = tire width × aspect ratio ÷ 100.' },
+      { title: 'Overall diameter', body: 'Overall diameter = rim diameter converted to millimetres + two sidewalls.' },
+      { title: 'Speed difference', body: 'Estimated actual speed = indicated speed × new tire diameter ÷ original tire diameter.' },
+    ],
+    steps: ['Enter the original tire width, aspect ratio and rim diameter.', 'Enter the proposed replacement tire size.', 'Enter an indicated speed for the speedometer comparison.', 'Review diameter, circumference, revolutions, clearance and estimated actual speed.'],
+    interpretation: ['A larger overall diameter travels farther per wheel revolution, while a smaller diameter travels less distance per revolution.', 'Clearance change represents half of the overall diameter difference.'],
+    limitations: ['This calculator compares nominal tire dimensions only and does not establish safe vehicle fitment.', 'Actual mounted dimensions vary by tire model, wheel width, pressure, load and manufacturer tolerances.', 'Verify wheel width, offset, load rating, speed rating and vehicle manufacturer requirements.'],
+    faqs: [
+      { question: 'How is tire diameter calculated?', answer: 'Two sidewall heights are added to the wheel or rim diameter after converting the rim diameter from inches to millimetres.' },
+      { question: 'Why does tire size affect speedometer readings?', answer: 'Changing tire circumference changes the distance travelled per wheel revolution.' },
+      { question: 'Does a similar diameter guarantee fitment?', answer: 'No. Width, wheel offset, suspension clearance, steering clearance and ratings must also be checked.' },
+    ],
+    relatedTools: [{ slug: 'fuel-cost-split-calculator', name: 'Fuel Cost & Passenger Split Calculator' }],
+    relatedGuides: [],
+  },
+  'dimensional-weight-calculator': {
+    slug: 'dimensional-weight-calculator',
+    name: 'Dimensional Weight Calculator',
+    category: 'Everyday Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Calculate dimensional or volumetric shipping weight using package dimensions and a custom divisor, then compare it with actual weight.',
+    longTailKeywords: ['dimensional weight calculator', 'dim weight calculator', 'volumetric weight calculator', 'shipping dimensional weight calculator', 'package billable weight calculator'],
+    intro: ['Dimensional Weight Calculator estimates the space-based shipping weight of a package and compares it with its actual weight.', local],
+    formula: [
+      { title: 'Dimensional weight', body: 'Dimensional weight = length × width × height ÷ carrier divisor.' },
+      { title: 'Billable comparison', body: 'The calculator displays the greater of entered actual weight and calculated dimensional weight.' },
+    ],
+    steps: ['Choose metric or imperial measurements.', 'Enter package length, width and height.', 'Enter actual package weight.', 'Enter the dimensional divisor required by the relevant carrier and service.', 'Compare actual, dimensional and estimated billable weight.'],
+    interpretation: ['Large lightweight packages can have dimensional weight greater than their scale weight.', 'The divisor materially affects the result and should be obtained from the carrier for the specific service.'],
+    limitations: ['Carrier formulas, divisors, rounding rules and oversize policies vary.', 'This calculator does not quote shipping charges or guarantee the weight a carrier will bill.', 'Use the current rules published by the relevant carrier.'],
+    faqs: [
+      { question: 'What is dimensional weight?', answer: 'Dimensional weight is a shipping weight calculated from the amount of space a package occupies rather than only its scale weight.' },
+      { question: 'Which dimensional divisor should I use?', answer: 'Use the divisor specified by your carrier for the shipment, route and service.' },
+      { question: 'Is dimensional weight always the billable weight?', answer: 'Not necessarily. Carriers commonly compare dimensional and actual weight and apply their own billing and rounding rules.' },
+    ],
+    relatedTools: [{ slug: 'unit-price-calculator', name: 'Unit Price Calculator' }],
+    relatedGuides: [],
+  },
   'electricity-cost-calculator': {
     slug: 'electricity-cost-calculator',
     name: 'Electricity Cost Calculator',

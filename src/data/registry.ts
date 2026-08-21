@@ -1017,6 +1017,33 @@ export const tools: RegisteredTool[] = ([
     keywords: ['unit price calculator', 'price per unit calculator', 'compare package prices', 'best value calculator'],
     heroTitle: 'Unit Price Calculator',
     heroDescription: 'Compare two products by price per unit and instantly identify the better value.'
+  },
+  {
+    slug: 'board-foot-calculator',
+    title: 'Board Foot Calculator',
+    description: 'Calculate lumber board feet from thickness, width, length, quantity, and optional price per board foot.',
+    category: 'construction-calculators',
+    keywords: ['board foot calculator', 'board feet calculator', 'lumber calculator', 'calculate board feet', 'lumber cost calculator'],
+    heroTitle: 'Board Foot Calculator',
+    heroDescription: 'Calculate board feet and estimated lumber cost from board dimensions and quantity.'
+  },
+  {
+    slug: 'tire-size-calculator',
+    title: 'Tire Size Calculator',
+    description: 'Compare tire sizes, diameter, circumference, sidewall height, revolutions, clearance and speedometer difference.',
+    category: 'everyday-calculators',
+    keywords: ['tire size calculator', 'tyre size calculator', 'tire comparison calculator', 'speedometer error calculator', 'tire diameter calculator'],
+    heroTitle: 'Tire Size Calculator',
+    heroDescription: 'Compare original and replacement tire dimensions and calculate speedometer and clearance differences.'
+  },
+  {
+    slug: 'dimensional-weight-calculator',
+    title: 'Dimensional Weight Calculator',
+    description: 'Calculate dimensional or volumetric shipping weight and compare it with actual package weight.',
+    category: 'everyday-calculators',
+    keywords: ['dimensional weight calculator', 'dim weight calculator', 'volumetric weight calculator', 'shipping weight calculator', 'package dimensional weight'],
+    heroTitle: 'Dimensional Weight Calculator',
+    heroDescription: 'Calculate dimensional shipping weight and identify the estimated billable package weight.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,

@@ -3,6 +3,37 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const planningLimits = ['Results are planning estimates, not engineering, supplier, hauling, compaction, or safety advice.', 'Confirm measured dimensions, material density, waste, load capacity, local units, and supplier minimums before ordering.'];
 
 export const constructionToolPages: Record<string, ToolPageContent> = {
+  'board-foot-calculator': {
+    slug: 'board-foot-calculator',
+    name: 'Board Foot Calculator',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Calculate lumber board feet from board thickness, width, length and quantity with imperial or metric dimensions and optional material cost.',
+    longTailKeywords: ['board foot calculator', 'board feet calculator', 'lumber board foot calculator', 'calculate board feet', 'board foot cost calculator'],
+    intro: [
+      'Board Foot Calculator converts lumber dimensions and quantity into board feet and can estimate total material cost from an entered price per board foot.',
+      'Imperial dimensions use the standard board-foot relationship; metric dimensions are converted through cubic volume.'
+    ],
+    formula: [
+      { title: 'Imperial board feet', body: 'Board feet = thickness in inches × width in inches × length in feet ÷ 12 × quantity.' },
+      { title: 'Metric conversion', body: 'Metric dimensions are converted to cubic metres and then converted using one board foot = 0.002359737216 cubic metres.' },
+      { title: 'Estimated cost', body: 'Total cost = total board feet × entered price per board foot.' },
+    ],
+    steps: ['Choose imperial or metric dimensions.', 'Enter lumber thickness, width and length.', 'Enter the number of pieces.', 'Optionally enter a price per board foot.', 'Review board feet per piece, total board feet and estimated cost.'],
+    interpretation: ['Board foot is a volume measure commonly used for lumber.', 'A nominal board size may differ from its actual dressed dimensions, so use the dimensions appropriate to the pricing method being used.'],
+    limitations: ['Confirm whether a lumber supplier prices from nominal or actual dimensions.', 'Waste, defects, kerf, moisture, surfacing and supplier minimum quantities are not automatically included.', ...planningLimits],
+    faqs: [
+      { question: 'What is one board foot?', answer: 'One board foot is a lumber volume equal to 144 cubic inches.' },
+      { question: 'What is the board foot formula?', answer: 'For thickness and width in inches and length in feet: thickness × width × length ÷ 12.' },
+      { question: 'Can I use metric dimensions?', answer: 'Yes. The calculator converts metric lumber volume to board feet.' },
+      { question: 'Does it calculate lumber cost?', answer: 'Yes. Enter an optional price per board foot to estimate total cost.' },
+    ],
+    relatedTools: [
+      { slug: 'wallpaper-calculator', name: 'Wallpaper Calculator' },
+      { slug: 'flooring-calculator', name: 'Flooring Calculator' },
+    ],
+    relatedGuides: [],
+  },
   'wallpaper-calculator': {
     slug: 'wallpaper-calculator',
     name: 'Wallpaper Calculator',
