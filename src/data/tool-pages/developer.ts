@@ -3,6 +3,222 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const local = 'Input is processed locally in your browser and is not sent to Navorika.';
 
 export const developerToolPages: Record<string, ToolPageContent> = {
+  'css-clamp-font-generator': {
+    slug: 'css-clamp-font-generator',
+    name: 'CSS clamp() Font Size Generator',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Generate fluid responsive font sizes with CSS clamp() using minimum and maximum font sizes and viewport widths.',
+    longTailKeywords: [
+      'css clamp generator',
+      'css clamp font size calculator',
+      'fluid typography calculator',
+      'responsive font size generator',
+      'fluid type clamp calculator',
+    ],
+    intro: [
+      'CSS clamp() Font Size Generator creates fluid typography that scales smoothly between minimum and maximum font sizes across a chosen viewport range.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'Fluid slope',
+        body: 'Slope = (maximum font size - minimum font size) ÷ (maximum viewport width - minimum viewport width).',
+      },
+      {
+        title: 'Viewport coefficient',
+        body: 'The slope is multiplied by 100 to convert the fluid portion into a vw coefficient.',
+      },
+      {
+        title: 'Preferred value',
+        body: 'The linear intercept is combined with the viewport coefficient to create the preferred middle value used by clamp().',
+      },
+      {
+        title: 'Final CSS',
+        body: 'font-size: clamp(minimum size, fluid preferred size, maximum size).',
+      },
+    ],
+    steps: [
+      'Enter the minimum and maximum font sizes in pixels.',
+      'Enter the viewport widths where fluid scaling should begin and end.',
+      'Review the generated clamp() expression and live typography preview.',
+      'Copy either the complete font-size declaration or only the clamp() value.',
+    ],
+    interpretation: [
+      'Below the minimum viewport width, clamp() prevents the text from becoming smaller than the selected minimum font size.',
+      'Between the minimum and maximum viewport widths, the generated preferred value scales the font fluidly with viewport width.',
+      'Above the maximum viewport width, clamp() prevents the text from growing beyond the selected maximum size.',
+    ],
+    limitations: [
+      'The rem conversion assumes a 16px root font size.',
+      'The generated value controls font size only; line height, letter spacing, container width, and font metrics can also affect typography.',
+      'Minimum and maximum viewport widths must be different, and the maximum values must be greater than their corresponding minimum values.',
+    ],
+    faqs: [
+      {
+        question: 'What does CSS clamp() do for font size?',
+        answer: 'It lets you define a minimum font size, a fluid preferred value, and a maximum font size in one CSS declaration.',
+      },
+      {
+        question: 'Why use clamp() instead of media queries?',
+        answer: 'For many typography systems, clamp() allows text to scale continuously across viewport widths without requiring several breakpoint-specific font-size rules.',
+      },
+      {
+        question: 'What does vw mean in the generated formula?',
+        answer: 'One vw equals one percent of the viewport width. The generated vw coefficient creates the fluid portion of the font-size calculation.',
+      },
+      {
+        question: 'Does the generated font size have limits?',
+        answer: 'Yes. The first and third clamp() arguments enforce the minimum and maximum sizes.',
+      },
+      {
+        question: 'Does Navorika send my settings to a server?',
+        answer: 'No. The calculation and preview run locally in your browser.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'aspect-ratio-padding-calculator', name: 'Aspect Ratio Padding Calculator' },
+      { slug: 'code-minifier-beautifier', name: 'Code Minifier & Beautifier' },
+      { slug: 'markup-formatter', name: 'Markup Formatter' },
+      { slug: 'cron-expression-humanizer', name: 'Cron Expression Humanizer' },
+    ],
+    relatedGuides: ['seo-tools-guide'],
+  },
+  'cron-expression-humanizer': {
+    slug: 'cron-expression-humanizer',
+    name: 'Cron Expression Humanizer & Calculator',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Validate standard five-field cron expressions, translate them into plain English, and preview upcoming execution times locally in your browser.',
+    longTailKeywords: [
+      'cron expression humanizer',
+      'cron expression calculator',
+      'cron schedule explained',
+      'next cron run calculator',
+      'cron expression validator online',
+    ],
+    intro: [
+      'Cron Expression Humanizer helps developers and system administrators interpret standard five-field cron schedules without manually decoding every field.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'Cron field order',
+        body: 'A standard five-field expression is minute, hour, day of month, month, and day of week.',
+      },
+      {
+        title: 'Next occurrences',
+        body: 'The validated cron schedule is iterated forward from the current time to calculate the next scheduled execution dates.',
+      },
+    ],
+    steps: [
+      'Enter a standard five-field cron expression or choose a common preset.',
+      'Review whether the expression is valid.',
+      'Read the human-friendly schedule description.',
+      'Inspect the next five run times and copy the normalized expression.',
+    ],
+    interpretation: [
+      'For example, 0 9 * * 1-5 represents a job scheduled at 9:00 AM on weekdays.',
+      'Upcoming run times are displayed in the browser device’s local time zone.',
+    ],
+    limitations: [
+      'This interface intentionally accepts standard five-field cron syntax only.',
+      'Some platforms use Quartz or provider-specific cron syntax with seconds, years, or special restrictions that may behave differently.',
+      'Displayed next-run times depend on the device time zone and daylight-saving rules.',
+    ],
+    faqs: [
+      {
+        question: 'What does 0 9 * * 1-5 mean?',
+        answer: 'It represents a schedule at 9:00 AM from Monday through Friday.',
+      },
+      {
+        question: 'Does this support six-field cron expressions with seconds?',
+        answer: 'No. This tool intentionally focuses on standard five-field cron expressions.',
+      },
+      {
+        question: 'Which time zone is used for upcoming run times?',
+        answer: 'The browser device’s local time zone.',
+      },
+      {
+        question: 'Does Navorika execute the cron job?',
+        answer: 'No. This tool only validates and interprets the expression; it does not schedule or execute jobs.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'developer-utils', name: 'Developer Utils' },
+      { slug: 'code-minifier-beautifier', name: 'Code Minifier & Beautifier' },
+      { slug: 'markup-formatter', name: 'Markup Formatter' },
+      { slug: 'aspect-ratio-padding-calculator', name: 'Aspect Ratio Padding Calculator' },
+    ],
+    relatedGuides: ['seo-tools-guide'],
+  },
+  'aspect-ratio-padding-calculator': {
+    slug: 'aspect-ratio-padding-calculator',
+    name: 'Aspect Ratio Padding Calculator',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Calculate aspect ratios, responsive CSS padding percentages, and copy-ready aspect-ratio declarations from width and height values.',
+    longTailKeywords: [
+      'aspect ratio calculator CSS',
+      'responsive padding percentage calculator',
+      'CSS aspect ratio generator',
+      'padding top aspect ratio calculator',
+      '16 9 padding percentage',
+    ],
+    intro: [
+      'Aspect Ratio Padding Calculator converts width and height values into a simplified ratio, a responsive padding percentage, and modern CSS aspect-ratio syntax.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'Padding percentage',
+        body: 'Responsive padding percentage = height ÷ width × 100.',
+      },
+      {
+        title: 'Aspect ratio',
+        body: 'The aspect ratio is width ÷ height and can also be reduced to a simplified width:height pair.',
+      },
+    ],
+    steps: [
+      'Enter the width and height or choose a common preset such as 16:9 or 4:3.',
+      'Review the simplified aspect ratio and calculated padding percentage.',
+      'Preview the resulting shape.',
+      'Copy modern aspect-ratio CSS or the legacy padding-based fallback.',
+    ],
+    interpretation: [
+      'A 16:9 ratio produces 56.25% vertical padding when the classic responsive-padding technique is used.',
+      'Modern browsers support the CSS aspect-ratio property, which is usually simpler than the older padding technique.',
+    ],
+    limitations: [
+      'Width and height must both be greater than zero.',
+      'The padding technique assumes percentage vertical padding is calculated relative to the containing block width.',
+      'The preview illustrates proportions only; final layout still depends on surrounding CSS.',
+    ],
+    faqs: [
+      {
+        question: 'What is the padding percentage for a 16:9 aspect ratio?',
+        answer: '56.25%, calculated as 9 ÷ 16 × 100.',
+      },
+      {
+        question: 'Should I use aspect-ratio or padding-top?',
+        answer: 'Use the CSS aspect-ratio property for modern layouts. The padding technique is mainly useful as a legacy fallback or when maintaining older code.',
+      },
+      {
+        question: 'Can I enter custom dimensions?',
+        answer: 'Yes. Any positive width and height values can be used.',
+      },
+      {
+        question: 'Does Navorika upload my values?',
+        answer: 'No. The calculation runs locally in your browser.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'developer-utils', name: 'Developer Utils' },
+      { slug: 'code-minifier-beautifier', name: 'Code Minifier & Beautifier' },
+      { slug: 'markup-formatter', name: 'Markup Formatter' },
+    ],
+    relatedGuides: ['seo-tools-guide'],
+  },
   'code-minifier-beautifier': {
     slug: 'code-minifier-beautifier',
     name: 'JavaScript, CSS and HTML Code Minifier & Beautifier',

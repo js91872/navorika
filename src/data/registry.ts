@@ -62,6 +62,13 @@ export const categories: Category[] = [
     description: 'Calculate concrete, cement, steel, sand, paint, and more.',
     icon: 'Wrench',
     color: 'from-cyan-500 to-blue-600'
+  },
+  {
+    slug: 'everyday-calculators',
+    name: 'Everyday Calculators',
+    description: 'Practical calculators for travel, time, conversions, planning, and everyday decisions.',
+    icon: 'Globe',
+    color: 'from-sky-500 to-cyan-600'
   }
 ];
 
@@ -928,7 +935,36 @@ export const tools: RegisteredTool[] = ([
     keywords: ['wire', 'gauge', 'electrical', 'AWG', 'circuit', 'ampacity'],
     heroTitle: 'Wire Size Calculator',
     heroDescription: 'Find the correct wire gauge size for your electrical project based on load and distance.'
-  }
+  },
+  {
+    slug: 'aspect-ratio-padding-calculator',
+    title: 'Aspect Ratio Padding Calculator',
+    description: 'Calculate CSS aspect ratios, responsive padding percentages, and copy-ready aspect-ratio code.',
+    category: 'developer-tools',
+    keywords: ['aspect ratio calculator', 'aspect ratio padding', 'css aspect ratio', 'padding percentage calculator', 'responsive aspect ratio'],
+    heroTitle: 'Aspect Ratio Padding Calculator',
+    heroDescription: 'Calculate responsive CSS padding percentages and modern aspect-ratio values from any width and height.'
+  },
+
+  {
+    slug: 'cron-expression-humanizer',
+    title: 'Cron Expression Humanizer',
+    description: 'Validate cron expressions, translate schedules into plain English, and preview upcoming run times.',
+    category: 'developer-tools',
+    keywords: ['cron expression humanizer', 'cron calculator', 'cron parser', 'cron schedule', 'cron expression generator'],
+    heroTitle: 'Cron Expression Humanizer',
+    heroDescription: 'Understand standard cron expressions in plain English and preview the next scheduled run times.'
+  },
+  {
+    slug: 'css-clamp-font-generator',
+    title: 'CSS clamp() Font Size Generator',
+    description: 'Generate responsive fluid typography with CSS clamp() from minimum and maximum font sizes and viewport widths.',
+    category: 'developer-tools',
+    keywords: ['css clamp generator', 'clamp calculator', 'fluid typography calculator', 'responsive font size', 'css clamp font size'],
+    heroTitle: 'CSS clamp() Font Size Generator',
+    heroDescription: 'Generate copy-ready CSS clamp() values for fluid responsive typography.'
+  },
+
 ] satisfies Tool[]).map((tool) => ({
   ...tool,
   heroTitle: tool.heroTitle?.trim() || tool.title,
