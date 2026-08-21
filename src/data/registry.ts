@@ -973,7 +973,51 @@ export const tools: RegisteredTool[] = ([
     heroTitle: 'Fuel Cost & Passenger Split Calculator',
     heroDescription: 'Estimate fuel needed, total journey cost, and how much each passenger should pay.'
   },
-
+  {
+    slug: 'barbell-plate-calculator',
+    title: 'Barbell Plate Calculator',
+    description: 'Calculate which weight plates to load on each side of a barbell for any target weight.',
+    category: 'everyday-calculators',
+    keywords: ['barbell plate calculator', 'plate calculator', 'weight plates per side', 'barbell loading calculator', 'gym plate calculator'],
+    heroTitle: 'Barbell Plate Calculator',
+    heroDescription: 'Find the exact weight plates to load on each side of your barbell in kilograms or pounds.'
+  },
+  {
+    slug: 'aquarium-volume-calculator',
+    title: 'Aquarium Volume Calculator',
+    description: 'Calculate fish tank capacity and estimated actual water volume in litres, gallons, and cubic feet.',
+    category: 'everyday-calculators',
+    keywords: ['aquarium volume calculator', 'fish tank volume', 'aquarium gallons calculator', 'tank litres calculator', 'fish tank capacity'],
+    heroTitle: 'Aquarium Volume Calculator',
+    heroDescription: 'Calculate aquarium capacity and estimated actual water volume from your tank dimensions.'
+  },
+  {
+    slug: 'wallpaper-calculator',
+    title: 'Wallpaper Calculator',
+    description: 'Estimate how many wallpaper rolls you need from room dimensions, roll size, openings, and waste allowance.',
+    category: 'construction-calculators',
+    keywords: ['wallpaper calculator', 'wallpaper rolls calculator', 'wall coverage calculator', 'wallpaper estimate'],
+    heroTitle: 'Wallpaper Calculator',
+    heroDescription: 'Calculate how many wallpaper rolls you need for your room or wall project.'
+  },
+  {
+    slug: 'electricity-cost-calculator',
+    title: 'Electricity Cost Calculator',
+    description: 'Estimate appliance energy consumption and electricity running cost from watts, usage time, and tariff.',
+    category: 'everyday-calculators',
+    keywords: ['electricity cost calculator', 'appliance electricity cost', 'kwh calculator', 'energy cost calculator'],
+    heroTitle: 'Electricity Cost Calculator',
+    heroDescription: 'Calculate appliance electricity consumption and estimated running cost.'
+  },
+  {
+    slug: 'unit-price-calculator',
+    title: 'Unit Price Calculator',
+    description: 'Compare products by unit price and find which package offers better value.',
+    category: 'everyday-calculators',
+    keywords: ['unit price calculator', 'price per unit calculator', 'compare package prices', 'best value calculator'],
+    heroTitle: 'Unit Price Calculator',
+    heroDescription: 'Compare two products by price per unit and instantly identify the better value.'
+  }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,
   heroTitle: tool.heroTitle?.trim() || tool.title,

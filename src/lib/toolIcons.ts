@@ -108,6 +108,19 @@ export const toolIcons: Record<string, string> = {
   'bioluminescent-reader': '🧬',
   'qr-code-studio': '📱',
 
+  // ====== EVERYDAY TOOLS ======
+  'everyday-calculators': '🌟',
+  'fuel-cost-split-calculator': '⛽',
+  'barbell-plate-calculator': '🏋️',
+  'aquarium-volume-calculator': '🐠',
+  'electricity-cost-calculator': '⚡',
+  'unit-price-calculator': '🏷️',
+
+  // ====== NEW DEVELOPER TOOLS ======
+  'aspect-ratio-padding-calculator': '📐',
+  'cron-expression-humanizer': '⏰',
+  'css-clamp-font-generator': '🔤',
+
   // ====== CONSTRUCTION TOOLS - ALL 20 ======
   'asphalt-calculator': '🛣️',
   'brick-calculator': '🧱',
@@ -128,6 +141,7 @@ export const toolIcons: Record<string, string> = {
   'steel-weight-calculator': '🔩',
   'tile-calculator': '🧱',
   'voltage-drop-calculator': '⚡',
+  'wallpaper-calculator': '🧻',
   'water-tank-calculator': '💧',
   'wire-size-calculator': '🔌',
 };
