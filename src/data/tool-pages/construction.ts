@@ -3,6 +3,37 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const planningLimits = ['Results are planning estimates, not engineering, supplier, hauling, compaction, or safety advice.', 'Confirm measured dimensions, material density, waste, load capacity, local units, and supplier minimums before ordering.'];
 
 export const constructionToolPages: Record<string, ToolPageContent> = {
+  'wallpaper-calculator': {
+    slug: 'wallpaper-calculator',
+    name: 'Wallpaper Calculator',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Estimate wallpaper rolls required from room perimeter, wall height, openings, wallpaper roll dimensions, and waste allowance.',
+    longTailKeywords: ['wallpaper calculator', 'wallpaper rolls calculator', 'how many wallpaper rolls do I need', 'wallpaper coverage calculator'],
+    intro: [
+      'Wallpaper Calculator estimates room wall area, wallpaper strip requirements, and a recommended number of rolls.',
+      'Inputs are processed locally in your browser and are not sent to Navorika.',
+    ],
+    formula: [
+      { title: 'Wall area', body: 'Gross wall area = room perimeter × wall height.' },
+      { title: 'Net area', body: 'Net wall area = gross wall area - entered doors and windows area.' },
+      { title: 'Strip method', body: 'Required strips are estimated from room perimeter ÷ roll width, while strips per roll are calculated from roll length ÷ wall height.' },
+    ],
+    steps: ['Choose metres or feet.', 'Enter room length, width, and wall height.', 'Enter wallpaper roll width and length.', 'Enter approximate door/window area and waste allowance.', 'Review recommended roll quantity.'],
+    interpretation: ['The calculator checks both area coverage and the number of full-height strips available from each roll.', 'The larger roll requirement is used as the recommendation.'],
+    limitations: ['Pattern repeats, matching, trimming, damaged sections, irregular walls, alcoves, and complex openings may increase material usage.', 'Measure actual wallpaper roll dimensions rather than assuming all products use the same size.'],
+    faqs: [
+      { question: 'How many wallpaper rolls do I need?', answer: 'Enter your room and roll measurements; the calculator estimates both wall area and full-height strip requirements.' },
+      { question: 'Should I include waste?', answer: 'Yes. A waste allowance helps account for trimming, errors, and pattern matching.' },
+      { question: 'Should doors and windows be deducted?', answer: 'They can be entered as an approximate combined area.' },
+    ],
+    relatedTools: [
+      { slug: 'paint-calculator', name: 'Paint Calculator' },
+      { slug: 'flooring-calculator', name: 'Flooring Calculator' },
+      { slug: 'tile-calculator', name: 'Tile Calculator' },
+    ],
+    relatedGuides: [],
+  },
   'construction-cost-calculator': {
     slug: 'construction-cost-calculator', name: 'Construction Cost Calculator with Direct Rate and Contingency', category: 'Construction Calculators', applicationCategory: 'FinanceApplication', description: 'Estimate project cost from area, a user-entered direct USD rate, labor/material allocation weights, overhead, and contingency without double-counting direct costs.',
     longTailKeywords: ['construction cost calculator custom rate', 'building cost per square foot calculator', 'construction overhead contingency calculator', 'labor material cost allocation calculator', 'project cost estimate square meters to square feet'],

@@ -66,6 +66,12 @@ const colorMap: Record<string, { bg: string; border: string; glow: string; iconB
     glow: 'shadow-cyan-500/20',
     iconBg: 'bg-cyan-500/20 text-cyan-400',
   },
+  'everyday-calculators': {
+    bg: 'from-sky-600/20 to-cyan-600/20',
+    border: 'hover:border-sky-500/50',
+    glow: 'shadow-sky-500/20',
+    iconBg: 'bg-sky-500/20 text-sky-400',
+  },
 };
 
 export default function CategoriesPage() {
