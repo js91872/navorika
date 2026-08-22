@@ -1,21 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  fill="none"
+>
   <defs>
-    <linearGradient id="faviconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6366f1" />
-      <stop offset="50%" stop-color="#8b5cf6" />
-      <stop offset="100%" stop-color="#a855f7" />
+    <linearGradient
+      id="navorikaGradient"
+      x1="9"
+      y1="8"
+      x2="55"
+      y2="56"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0%" stop-color="#4F46FF"/>
+      <stop offset="28%" stop-color="#7C3AED"/>
+      <stop offset="55%" stop-color="#A855F7"/>
+      <stop offset="78%" stop-color="#D946EF"/>
+      <stop offset="100%" stop-color="#EC4899"/>
     </linearGradient>
+
+    <linearGradient
+      id="stemGradient"
+      x1="8"
+      y1="14"
+      x2="54"
+      y2="52"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0%" stop-color="#4338CA"/>
+      <stop offset="42%" stop-color="#7C3AED"/>
+      <stop offset="75%" stop-color="#C026D3"/>
+      <stop offset="100%" stop-color="#DB2777"/>
+    </linearGradient>
+
+    <mask id="cut">
+      <rect width="64" height="64" fill="white"/>
+      <path
+        d="M14 11L50 53"
+        stroke="black"
+        stroke-width="16"
+        stroke-linecap="round"
+      />
+    </mask>
   </defs>
-  <!-- Hexagon background -->
-  <polygon points="24,4 42,13 42,35 24,44 6,35 6,13" fill="url(#faviconGrad)" stroke="white" stroke-width="2"/>
-  <!-- Inner geometric pattern -->
-  <polygon points="24,12 32,18 32,30 24,36 16,30 16,18" fill="white" opacity="0.9"/>
-  <polygon points="24,18 28,22 28,26 24,30 20,26 20,22" fill="url(#faviconGrad)" opacity="0.6"/>
-  <!-- Center dot -->
-  <circle cx="24" cy="24" r="3" fill="white"/>
-  <!-- Decorative dots -->
-  <circle cx="16" cy="14" r="1.5" fill="white" opacity="0.7"/>
-  <circle cx="32" cy="14" r="1.5" fill="white" opacity="0.7"/>
-  <circle cx="16" cy="34" r="1.5" fill="white" opacity="0.7"/>
-  <circle cx="32" cy="34" r="1.5" fill="white" opacity="0.7"/>
+
+  <g mask="url(#cut)">
+    <path
+      d="M10 20L25 35V50C25 56.1 21.1 60 16 60C10.9 60 8 56.1 8 51V22C8 20.9 8.9 20 10 20Z"
+      fill="url(#stemGradient)"
+    />
+
+    <path
+      d="M47 4C52 4 56 8 56 13V46L41 30V13C41 8 43 4 47 4Z"
+      fill="url(#stemGradient)"
+    />
+  </g>
+
+  <path
+    d="M15 11L49 53"
+    stroke="url(#navorikaGradient)"
+    stroke-width="13"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 </svg>
