@@ -678,6 +678,20 @@ export const tools: RegisteredTool[] = ([
 
   // ====== DEVELOPER TOOLS ======
   {
+    slug: 'uuid-generator',
+    title: 'UUID Generator',
+    description: 'Generate UUID v4 and UUID v7 identifiers online. Create single or bulk UUIDs with formatting, casing, copy, TXT and CSV export.',
+    category: 'developer-tools',
+    keywords: [
+      'uuid generator',
+      'guid generator',
+      'uuid v4 generator',
+      'uuid v7 generator',
+      'bulk uuid generator',
+      'online uuid generator'
+    ]
+  },
+  {
     slug: 'base64-encoder',
     title: 'Base64 Encoder',
     description: 'Encode UTF-8 text to Base64 or decode Base64 back to UTF-8 text locally.',

@@ -330,4 +330,83 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     faqs: [{ question: 'Does successful decoding mean a JWT is valid?', answer: 'No. Anyone can construct decodable header and payload segments.' }, { question: 'Is the signature verified?', answer: 'No.' }, { question: 'Are Unicode claims supported?', answer: 'Yes. Segments are decoded as UTF-8.' }, { question: 'Is the token uploaded?', answer: 'No.' }],
     relatedTools: [{ slug: 'base64-encoder', name: 'Base64 Encoder' }, { slug: 'universal-json-studio', name: 'JSON Studio' }, { slug: 'developer-utils', name: 'Developer Utils' }], relatedGuides: ['jwt-decoding-guide', 'base64-encoding-guide', 'json-formatting-guide'],
   },
+
+  'uuid-generator': {
+    slug: 'uuid-generator',
+    name: 'UUID Generator – v4, v7, GUID & Bulk UUID Generator',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Generate UUID v4 and UUID v7 identifiers online for free. Create single or bulk UUIDs and GUID-compatible IDs with custom casing, formatting, copy, TXT and CSV export.',
+    longTailKeywords: [
+      'uuid generator',
+      'guid generator',
+      'online uuid generator',
+      'uuid v4 generator',
+      'uuid v7 generator',
+      'bulk uuid generator',
+      'random uuid generator',
+      'generate uuid online',
+    ],
+    intro: [
+      'Navorika UUID Generator creates UUID v4 and UUID v7 identifiers directly in your browser, with bulk generation, GUID-compatible formatting, casing controls, and downloadable output.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'UUID v4',
+        body: 'UUID version 4 uses random data with the UUID version field set to 4 and the RFC variant bits set to the standard 10 pattern.',
+      },
+      {
+        title: 'UUID v7',
+        body: 'UUID version 7 stores the Unix timestamp in milliseconds in the most significant 48 bits, sets the version field to 7, and fills the remaining available bits with random data.',
+      },
+    ],
+    steps: [
+      'Choose UUID v4 or UUID v7.',
+      'Enter the number of identifiers to generate, from 1 to 1,000.',
+      'Choose standard, compact, or brace formatting and lowercase or uppercase output.',
+      'Generate the UUIDs, then copy individual values, copy all, or download TXT or CSV output.',
+    ],
+    interpretation: [
+      'UUID v4 is appropriate when you need randomly generated identifiers without embedded time ordering.',
+      'UUID v7 is useful when time-sortable identifiers can improve ordering and database index locality.',
+      'GUID is commonly used as another name for UUID-compatible identifiers, especially in Microsoft ecosystems.',
+    ],
+    limitations: [
+      'UUID uniqueness is probabilistic rather than mathematically guaranteed across every possible system.',
+      'UUID v7 contains a millisecond timestamp and therefore reveals approximate creation time.',
+      'Formatting options such as uppercase, braces, or removing hyphens change presentation but do not create a different UUID version.',
+      'Bulk generation is intentionally limited to 1,000 UUIDs per batch to keep the browser interface responsive.',
+    ],
+    faqs: [
+      {
+        question: 'What is the difference between UUID v4 and UUID v7?',
+        answer: 'UUID v4 is primarily random, while UUID v7 includes a Unix timestamp in milliseconds in its leading bits and is designed to sort naturally by generation time.',
+      },
+      {
+        question: 'Is a GUID the same as a UUID?',
+        answer: 'GUID and UUID usually refer to the same 128-bit identifier format in practical software development, although GUID is terminology commonly associated with Microsoft platforms.',
+      },
+      {
+        question: 'Can I generate UUIDs in bulk?',
+        answer: 'Yes. Navorika can generate up to 1,000 UUIDs in a single batch and lets you copy or download the results.',
+      },
+      {
+        question: 'Are generated UUIDs sent to Navorika?',
+        answer: 'No. Generation runs locally in your browser using the Web Crypto API.',
+      },
+      {
+        question: 'Does UUID v7 reveal when it was created?',
+        answer: 'Yes. UUID v7 includes a Unix timestamp measured in milliseconds, so its approximate creation time can be derived from the identifier.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'web-crypto-studio', name: 'Web Crypto Studio' },
+      { slug: 'base64-encoder', name: 'Base64 Encoder' },
+      { slug: 'universal-json-studio', name: 'JSON Studio' },
+      { slug: 'cron-expression-humanizer', name: 'Cron Expression Humanizer' },
+    ],
+    relatedGuides: ['seo-tools-guide'],
+  },
+
 };
