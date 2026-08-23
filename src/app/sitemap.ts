@@ -13,9 +13,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const toolPages = tools
     .filter(({ slug }) => !financeSuiteRoots.has(slug) && !toolsUnderReview.has(slug))
     .map(({ slug }) => ({ url: `${baseUrl}/tools/${slug}` }));
-  const financeSuitePages = getFinanceSuiteUrls()
-    .filter((path) => !path.includes('/taxation-compliance-deck/'))
-    .map((path) => ({ url: `${baseUrl}${path}` }));
+  const duplicateFinanceSuitePaths = new Set([
+  '/tools/savings-retirement-hub/fd-calculator',
+  '/tools/savings-retirement-hub/ppf-calculator',
+]);
+
+const financeSuitePages = getFinanceSuiteUrls()
+  .filter((path) => !path.includes('/taxation-compliance-deck/'))
+  .filter((path) => !duplicateFinanceSuitePaths.has(path))
+  .map((path) => ({ url: `${baseUrl}${path}` }));
   const categoryPages = categories.map(({ slug }) => ({ url: `${baseUrl}/categories/${slug}` }));
   const guidePages = guidesMetadata.map(({ slug, dateModified }) => ({ url: `${baseUrl}/guides/${slug}`, lastModified: new Date(dateModified) }));
 
