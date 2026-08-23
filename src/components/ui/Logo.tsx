@@ -1,5 +1,6 @@
 'use client';
 
+import { useId } from 'react';
 import Link from 'next/link';
 
 interface LogoProps {
@@ -8,104 +9,141 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
-export default function Logo({ variant = 'default', showTagline = false, size = 'md' }: LogoProps) {
-  const sizeClasses = {
-    sm: 'h-8 w-8 text-base',
-    md: 'h-10 w-10 text-xl',
-    lg: 'h-14 w-14 text-2xl',
-    xl: 'h-20 w-20 text-4xl'
-  };
+export default function Logo({
+  variant = 'default',
+  showTagline = false,
+  size = 'md',
+}: LogoProps) {
+  const rawId = useId();
+  const uid = rawId.replace(/:/g, '');
+
+  const gradientId = `navorika-gradient-${uid}`;
+  const stemGradientId = `navorika-stem-${uid}`;
+  const maskId = `navorika-cut-${uid}`;
 
   const iconSize = {
     sm: 28,
     md: 36,
     lg: 48,
-    xl: 64
+    xl: 64,
   };
 
   const textSize = {
     sm: 'text-lg',
     md: 'text-2xl',
     lg: 'text-3xl',
-    xl: 'text-5xl'
+    xl: 'text-5xl',
   };
 
   const iconSizeNum = iconSize[size];
-  const textSizeClass = textSize[size];
 
   return (
-    <Link href="/" className="flex items-center gap-3 group">
-      {/* Icon */}
-      <div className={`relative ${sizeClasses[size]} flex-shrink-0`}>
-        <div className="relative transition-all duration-500 group-hover:scale-105">
-          <svg 
-            width={iconSizeNum} 
-            height={iconSizeNum} 
-            viewBox="0 0 48 48" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            className="drop-shadow-lg"
+    <Link
+      href="/"
+      className="group flex items-center gap-3"
+      aria-label="Navorika home"
+    >
+      <svg
+        width={iconSizeNum}
+        height={iconSizeNum}
+        viewBox="0 0 64 64"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        className="shrink-0 overflow-visible drop-shadow-sm transition-transform duration-300 group-hover:scale-105"
+      >
+        <defs>
+          {/* Main Navorika portal gradient */}
+          <linearGradient
+            id={gradientId}
+            x1="9"
+            y1="8"
+            x2="55"
+            y2="56"
+            gradientUnits="userSpaceOnUse"
           >
-            <defs>
-              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#6366f1" />
-                <stop offset="50%" stopColor="#8b5cf6" />
-                <stop offset="100%" stopColor="#a855f7" />
-              </linearGradient>
-              <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
-              </radialGradient>
-              <filter id="logoShadow">
-                <feDropShadow dx="0" dy="2" stdDeviation="4" floodOpacity="0.2"/>
-              </filter>
-            </defs>
-            
-            {/* Glow effect */}
-            <circle cx="24" cy="24" r="22" fill="url(#glowGrad)" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            {/* Main shape - Hexagon with gradient */}
-            <polygon 
-              points="24,4 42,13 42,35 24,44 6,35 6,13" 
-              fill="url(#logoGrad)" 
-              stroke="white" 
-              strokeWidth="2" 
-              className="transition-all duration-300 group-hover:shadow-2xl" 
-              filter="url(#logoShadow)"
-            />
-            
-            {/* Inner geometric pattern */}
-            <polygon points="24,12 32,18 32,30 24,36 16,30 16,18" fill="white" opacity="0.9" />
-            <polygon points="24,18 28,22 28,26 24,30 20,26 20,22" fill="url(#logoGrad)" opacity="0.6" />
-            
-            {/* Center dot */}
-            <circle cx="24" cy="24" r="3" fill="white" />
-            
-            {/* Decorative dots */}
-            <circle cx="16" cy="14" r="1.5" fill="white" opacity="0.7" />
-            <circle cx="32" cy="14" r="1.5" fill="white" opacity="0.7" />
-            <circle cx="16" cy="34" r="1.5" fill="white" opacity="0.7" />
-            <circle cx="32" cy="34" r="1.5" fill="white" opacity="0.7" />
-            
-            {/* Sparkle effects */}
-            <circle cx="8" cy="8" r="1.5" fill="#a855f7" opacity="0.4" />
-            <circle cx="40" cy="40" r="1.5" fill="#6366f1" opacity="0.4" />
-          </svg>
-        </div>
-        
-        {/* Pulsing ring animation */}
-        <div className="absolute inset-0 rounded-full border-2 border-indigo-500/20 opacity-0 group-hover:opacity-100 animate-ping duration-1000" />
-      </div>
+            <stop offset="0%" stopColor="#4F46FF" />
+            <stop offset="28%" stopColor="#7C3AED" />
+            <stop offset="55%" stopColor="#A855F7" />
+            <stop offset="78%" stopColor="#D946EF" />
+            <stop offset="100%" stopColor="#EC4899" />
+          </linearGradient>
 
-      {/* Text - Removed "Pro" */}
+          {/* Slightly deeper side-stroke gradient */}
+          <linearGradient
+            id={stemGradientId}
+            x1="8"
+            y1="14"
+            x2="54"
+            y2="52"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#4338CA" />
+            <stop offset="42%" stopColor="#7C3AED" />
+            <stop offset="75%" stopColor="#C026D3" />
+            <stop offset="100%" stopColor="#DB2777" />
+          </linearGradient>
+
+          {/*
+            Cut a narrow transparent channel behind the ribbon.
+            This creates the distinctive negative-space separation
+            visible in concept #6.
+          */}
+          <mask id={maskId}>
+            <rect width="64" height="64" fill="white" />
+
+            <path
+              d="M14 11L50 53"
+              stroke="black"
+              strokeWidth="16"
+              strokeLinecap="round"
+            />
+          </mask>
+        </defs>
+
+        {/* Side pillars */}
+        <g mask={`url(#${maskId})`}>
+          {/* Left lower pillar */}
+          <path
+            d="M10 20L25 35V50C25 56.1 21.1 60 16 60C10.9 60 8 56.1 8 51V22C8 20.9 8.9 20 10 20Z"
+            fill={`url(#${stemGradientId})`}
+          />
+
+          {/* Right upper pillar */}
+          <path
+            d="M47 4C52 4 56 8 56 13V46L41 30V13C41 8 43 4 47 4Z"
+            fill={`url(#${stemGradientId})`}
+          />
+        </g>
+
+        {/* Main flowing diagonal ribbon */}
+        <path
+          d="M15 11L49 53"
+          stroke={`url(#${gradientId})`}
+          strokeWidth="13"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+
+        {/* Subtle ribbon highlight */}
+        <path
+          d="M15.5 10.5L49.5 52.5"
+          stroke="white"
+          strokeOpacity="0.10"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+      </svg>
+
       <div className="flex flex-col">
-        <div className="flex items-center gap-0.5">
-          <span className={`font-black tracking-tight text-[var(--foreground)] transition-colors duration-300 ${textSizeClass}`}>
-            Navorika
-          </span>
-        </div>
+        <span
+          className={`font-black tracking-tight text-[var(--foreground)] transition-colors duration-300 ${textSize[size]}`}
+        >
+          Navorika
+        </span>
+
         {showTagline && (
-          <span className="text-[10px] font-bold text-[var(--muted-foreground)] tracking-[0.15em] uppercase leading-none">
+          <span className="text-[10px] font-bold uppercase leading-none tracking-[0.15em] text-[var(--muted-foreground)]">
             100+ Free Tools · Client-Side
           </span>
         )}
