@@ -5,7 +5,7 @@ import { ArrowLeft, ShieldCheck, Upload, X, Pipette, Copy, Check } from 'lucide-
 import { tools } from '@/data/registry';
 
 export default function ColorExtractionTool() {
-  const meta = tools.find(t => t.slug === 'color-extraction-studio');
+  const meta = tools.find(t => t.slug === 'image-color-picker');
   // Default meta if not found
   const toolMeta = meta || {
     heroTitle: "Color Extractor",

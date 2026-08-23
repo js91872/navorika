@@ -29,7 +29,7 @@ export const toolIcons: Record<string, string> = {
   'batch-image-converter': '🔄',
   'blur-face': '🎭',
   'change-image-resolution': '📐',
-  'color-extraction-studio': '🎨',
+  'image-color-picker': '🎨',
   'compress-image': '📦',
   'compress-jpg': '📦',
   'compress-png': '📦',
@@ -102,11 +102,11 @@ export const toolIcons: Record<string, string> = {
   'developer-utils': '🛠️',
   'jwt-decoder': '🔑',
   'markup-formatter': '📝',
-  'universal-json-studio': '📋',
+  'json-formatter': '📋',
   'web-crypto-studio': '🔒',
   'webmaster-seo-builder': '🔍',
   'bioluminescent-reader': '🧬',
-  'qr-code-studio': '📱',
+  'qr-code-generator': '📱',
 
   // ====== EVERYDAY TOOLS ======
   'everyday-calculators': '🌟',

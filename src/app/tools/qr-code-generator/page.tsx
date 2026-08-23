@@ -7,10 +7,10 @@ import QRCode from 'qrcode';
 import jsQR from 'jsqr';
 
 export default function QrCodeStudioTool() {
-  const meta = tools.find(t => t.slug === 'qr-code-studio');
+  const meta = tools.find(t => t.slug === 'qr-code-generator');
   // Default meta if not found
   const toolMeta = meta || {
-    heroTitle: "Qr Code Studio",
+    heroTitle: "QR Code Generator",
     heroDescription: "Process your documents efficiently with this tool.",
     formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
     faq: [

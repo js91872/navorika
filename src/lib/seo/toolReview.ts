@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 
 export const toolsUnderReview = new Set([
+  'markup-formatter',
+  'code-minifier-beautifier',
   'add-image-to-pdf',
   'blur-face',
   'bioluminescent-reader',

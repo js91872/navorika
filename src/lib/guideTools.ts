@@ -13,12 +13,12 @@ export const guideTools: Record<string, string[]> = {
   'heart-rate-zones-guide': ['heart-rate-calculator', 'target-heart-rate-calculator'],
   'ppf-vs-fd-comparison': ['ppf-calculator', 'fd-calculator', 'sip-calculator'],
   'base64-encoding-guide': ['base64-encoder', 'jwt-decoder'],
-  'qr-code-guide': ['qr-code-studio'],
+  'qr-code-guide': ['qr-code-generator'],
   'calorie-deficit-guide': ['calorie-calculator', 'calories-burned-calculator', 'bmi-calculator'],
   'jwt-decoding-guide': ['jwt-decoder', 'base64-encoder'],
   'tax-planning-guide-2026': ['tax-calculator', 'gst-calculator', 'ppf-calculator'],
   'macronutrients-guide': ['calorie-calculator', 'bmi-calculator', 'bmr-calculator'],
-  'json-formatting-guide': ['universal-json-studio'],
+  'json-formatting-guide': ['json-formatter'],
   'image-formats-guide': ['image-converter', 'compress-image', 'resize-image'],
   'seo-tools-guide': ['webmaster-seo-builder']
 };

@@ -252,11 +252,18 @@ export const tools: RegisteredTool[] = ([
     keywords: ['change-image-resolution', 'change', 'image', 'resolution']
   },
   {
-    slug: 'color-extraction-studio',
-    title: 'Color Extraction Studio',
+    slug: 'image-color-picker',
+    title: 'Image Color Picker',
     description: 'Pick a pixel from an image and copy its exact hexadecimal RGB color locally.',
     category: 'image-tools',
-    keywords: ['color-extraction-studio', 'color', 'extraction', 'studio']
+    keywords: [
+      'image color picker',
+      'color picker from image',
+      'image color extractor',
+      'hex color picker',
+      'pick color from image',
+      'image hex color picker'
+    ]
   },
   {
     slug: 'compress-image',
@@ -693,10 +700,17 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'base64-encoder',
-    title: 'Base64 Encoder',
+    title: 'Base64 Encoder & Decoder',
     description: 'Encode UTF-8 text to Base64 or decode Base64 back to UTF-8 text locally.',
     category: 'developer-tools',
-    keywords: ['base64-encoder', 'base64', 'encoder']
+    keywords: [
+      'base64 encoder',
+      'base64 decoder',
+      'base64 encode',
+      'base64 decode',
+      'base64 encoder decoder',
+      'encode text to base64'
+    ]
   },
   {
     slug: 'bioluminescent-reader',
@@ -731,7 +745,14 @@ export const tools: RegisteredTool[] = ([
     title: 'JWT Decoder',
     description: 'Decode JWT header and payload JSON locally without verifying the token signature.',
     category: 'developer-tools',
-    keywords: ['jwt-decoder', 'jwt', 'base64', 'deck']
+    keywords: [
+      'jwt decoder',
+      'decode jwt',
+      'jwt token decoder',
+      'jwt decoder online',
+      'decode jwt token',
+      'jwt payload decoder'
+    ]
   },
   {
     slug: 'markup-formatter',
@@ -741,18 +762,33 @@ export const tools: RegisteredTool[] = ([
     keywords: ['markup-formatter', 'markup', 'formatter']
   },
   {
-    slug: 'qr-code-studio',
-    title: 'QR Code Studio',
+    slug: 'qr-code-generator',
+    title: 'QR Code Generator',
     description: 'Generate colored QR codes or decode a QR code from an uploaded image locally.',
     category: 'developer-tools',
-    keywords: ['qr-code-studio', 'qr', 'code', 'studio']
+    keywords: [
+      'qr code generator',
+      'qr code generator online',
+      'free qr code generator',
+      'create qr code',
+      'qr code maker',
+      'qr code decoder'
+    ]
   },
   {
-    slug: 'universal-json-studio',
-    title: 'Universal JSON Studio',
+    slug: 'json-formatter',
+    title: 'JSON Formatter',
     description: 'View, edit, and format JSON data online free. Parse and validate JSON with powerful editing tools.',
     category: 'developer-tools',
-    keywords: ['universal-json-studio', 'universal', 'json', 'studio']
+    keywords: [
+      'json formatter',
+      'json formatter online',
+      'json beautifier',
+      'json validator',
+      'json minifier',
+      'format json',
+      'pretty print json'
+    ]
   },
   {
     slug: 'web-crypto-studio',

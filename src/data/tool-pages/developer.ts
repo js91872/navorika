@@ -78,8 +78,6 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     ],
     relatedTools: [
       { slug: 'aspect-ratio-padding-calculator', name: 'Aspect Ratio Padding Calculator' },
-      { slug: 'code-minifier-beautifier', name: 'Code Minifier & Beautifier' },
-      { slug: 'markup-formatter', name: 'Markup Formatter' },
       { slug: 'cron-expression-humanizer', name: 'Cron Expression Humanizer' },
     ],
     relatedGuides: ['seo-tools-guide'],
@@ -146,8 +144,6 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     ],
     relatedTools: [
       { slug: 'developer-utils', name: 'Developer Utils' },
-      { slug: 'code-minifier-beautifier', name: 'Code Minifier & Beautifier' },
-      { slug: 'markup-formatter', name: 'Markup Formatter' },
       { slug: 'aspect-ratio-padding-calculator', name: 'Aspect Ratio Padding Calculator' },
     ],
     relatedGuides: ['seo-tools-guide'],
@@ -214,8 +210,6 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     ],
     relatedTools: [
       { slug: 'developer-utils', name: 'Developer Utils' },
-      { slug: 'code-minifier-beautifier', name: 'Code Minifier & Beautifier' },
-      { slug: 'markup-formatter', name: 'Markup Formatter' },
     ],
     relatedGuides: ['seo-tools-guide'],
   },
@@ -240,7 +234,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
       { question: 'Does formatting change code functionality?', answer: 'No. AST-based formatting only adjusts formatting and indentation.' },
       { question: 'Can it handle modern ES6+ syntax?', answer: 'Yes. The Babel parser supports modern ECMAScript features.' },
     ],
-    relatedTools: [{ slug: 'universal-json-studio', name: 'JSON Studio' }, { slug: 'markup-formatter', name: 'Markup Formatter' }, { slug: 'base64-encoder', name: 'Base64 Encoder' }],
+    relatedTools: [{ slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'base64-encoder', name: 'Base64 Encoder' }],
     relatedGuides: ['json-formatting-guide', 'base64-encoding-guide'],
   },
   'markup-formatter': {
@@ -264,11 +258,11 @@ export const developerToolPages: Record<string, ToolPageContent> = {
       { question: 'Does YAML formatting preserve data types?', answer: 'Yes. The YAML parser respects types and structural hierarchy.' },
       { question: 'Are files or queries sent to a server?', answer: 'No. Everything runs 100% locally in your browser.' },
     ],
-    relatedTools: [{ slug: 'code-minifier-beautifier', name: 'Code Minifier Beautifier' }, { slug: 'universal-json-studio', name: 'JSON Studio' }, { slug: 'base64-encoder', name: 'Base64 Encoder' }],
+    relatedTools: [ { slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'base64-encoder', name: 'Base64 Encoder' }],
     relatedGuides: ['json-formatting-guide', 'seo-tools-guide'],
   },
   'web-crypto-studio': {
-    slug:'web-crypto-studio',name:'SHA-256, Secure Password and UUID Generator',category:'Developer Tools',applicationCategory:'DeveloperApplication',description:'Generate SHA-256 hex digests, unbiased cryptographic random passwords, and UUID v4 identifiers locally.',longTailKeywords:['SHA-256 hash generator browser','cryptographic password generator online','UUID v4 generator locally','Web Crypto random password','text to SHA256 hex'],intro:['Web Crypto Studio exposes three browser-native operations: SHA-256 digesting, random password generation with rejection sampling, and UUID v4 generation.',local],steps:['Enter text to generate a SHA-256 digest, or choose a password length, or generate a UUID.','Copy the result.','Store passwords in a trusted password manager and validate identifiers in their target system.'],interpretation:['SHA-256 is a one-way digest, not encryption.','Passwords use crypto.getRandomValues and a fixed displayed alphabet.','crypto.randomUUID creates RFC 4122 version 4 identifiers in supporting browsers.'],limitations:['This tool does not encrypt, decrypt, sign, verify, derive keys, store secrets, or manage passwords.','Clipboard contents can be read by other software or browser extensions with permission.'],faqs:[{question:'Can SHA-256 be decrypted?',answer:'No; it is a one-way digest.'},{question:'Is the password cryptographically random?',answer:'It uses Web Crypto values and rejection sampling.'},{question:'Does Navorika save passwords?',answer:'No.'},{question:'Does it encrypt data?',answer:'No.'}],relatedTools:[{slug:'base64-encoder',name:'Base64 Encoder'},{slug:'jwt-decoder',name:'JWT Decoder'},{slug:'universal-json-studio',name:'JSON Studio'},{slug:'developer-utils',name:'Developer Utils'}],relatedGuides:['base64-encoding-guide','jwt-decoding-guide'],
+    slug:'web-crypto-studio',name:'SHA-256, Secure Password and UUID Generator',category:'Developer Tools',applicationCategory:'DeveloperApplication',description:'Generate SHA-256 hex digests, unbiased cryptographic random passwords, and UUID v4 identifiers locally.',longTailKeywords:['SHA-256 hash generator browser','cryptographic password generator online','UUID v4 generator locally','Web Crypto random password','text to SHA256 hex'],intro:['Web Crypto Studio exposes three browser-native operations: SHA-256 digesting, random password generation with rejection sampling, and UUID v4 generation.',local],steps:['Enter text to generate a SHA-256 digest, or choose a password length, or generate a UUID.','Copy the result.','Store passwords in a trusted password manager and validate identifiers in their target system.'],interpretation:['SHA-256 is a one-way digest, not encryption.','Passwords use crypto.getRandomValues and a fixed displayed alphabet.','crypto.randomUUID creates RFC 4122 version 4 identifiers in supporting browsers.'],limitations:['This tool does not encrypt, decrypt, sign, verify, derive keys, store secrets, or manage passwords.','Clipboard contents can be read by other software or browser extensions with permission.'],faqs:[{question:'Can SHA-256 be decrypted?',answer:'No; it is a one-way digest.'},{question:'Is the password cryptographically random?',answer:'It uses Web Crypto values and rejection sampling.'},{question:'Does Navorika save passwords?',answer:'No.'},{question:'Does it encrypt data?',answer:'No.'}],relatedTools:[{slug:'base64-encoder',name:'Base64 Encoder'},{slug:'jwt-decoder',name:'JWT Decoder'},{slug:'json-formatter',name:'JSON Formatter'},{slug:'developer-utils',name:'Developer Utils'}],relatedGuides:['base64-encoding-guide','jwt-decoding-guide'],
   },
   'base64-encoder': {
     slug: 'base64-encoder', name: 'UTF-8 Base64 Text Encoder and Decoder', category: 'Developer Tools', applicationCategory: 'DeveloperApplication', description: 'Encode Unicode text as standard Base64 or decode Base64 bytes as strict UTF-8, entirely in your browser.',
@@ -278,26 +272,26 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     steps: ['Choose Encode or Decode.', 'Enter UTF-8 text or standard Base64 input.', 'Process and copy the output.'],
     interpretation: ['Base64 is reversible encoding, not encryption or hashing.', 'This interface handles text, not arbitrary file uploads or Base64URL JWT segments.'], limitations: ['Do not treat Base64 as a security control.', 'Very large input can consume browser memory.', 'Decoded binary that is not valid UTF-8 is rejected.'],
     faqs: [{ question: 'Does it support emoji and non-Latin text?', answer: 'Yes. Text is encoded as UTF-8 first.' }, { question: 'Is Base64 encryption?', answer: 'No.' }, { question: 'Can it encode files?', answer: 'No. This interface processes text.' }, { question: 'Is input uploaded?', answer: 'No.' }],
-    relatedTools: [{ slug: 'universal-json-studio', name: 'JSON Studio' }, { slug: 'qr-code-studio', name: 'QR Code Studio' }], relatedGuides: ['base64-encoding-guide', 'jwt-decoding-guide'],
+    relatedTools: [{ slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'qr-code-generator', name: 'QR Code Generator' }], relatedGuides: ['base64-encoding-guide', 'jwt-decoding-guide'],
   },
-  'universal-json-studio': {
-    slug: 'universal-json-studio', name: 'JSON Formatter, Minifier and Syntax Validator', category: 'Developer Tools', applicationCategory: 'DeveloperApplication', description: 'Parse, validate, pretty-print with two or four spaces, or minify JSON locally in your browser.',
+  'json-formatter': {
+    slug: 'json-formatter', name: 'JSON Formatter, Minifier and Syntax Validator', category: 'Developer Tools', applicationCategory: 'DeveloperApplication', description: 'Parse, validate, pretty-print with two or four spaces, or minify JSON locally in your browser.',
     longTailKeywords: ['JSON formatter and validator online', 'pretty print JSON 2 spaces', 'minify JSON without upload', 'JSON syntax error checker', 'browser JSON beautifier'],
-    intro: ['JSON Studio uses the browser JSON parser, then serializes valid values with compact, two-space, or four-space formatting.', local],
+    intro: ['JSON Formatter uses the browser JSON parser, then serializes valid values with compact, two-space, or four-space formatting.', local],
     formula: [{ title: 'Validation', body: 'JSON.parse accepts syntactically valid JSON input.' }, { title: 'Formatting', body: 'JSON.stringify serializes the parsed value with the selected indentation.' }],
     steps: ['Paste JSON text.', 'Choose two-space formatting, four-space formatting, or minification.', 'Review validity status and copy the normalized result.'],
     interpretation: ['Successful parsing confirms JSON syntax, not that the data matches an application schema.', 'Formatting normalizes serialization while preserving the parsed data model.'], limitations: ['No JSON Schema validation, comments, JSON5 syntax, streaming, or semantic comparison.', 'Large documents may exhaust browser memory.', 'Integers beyond JavaScript’s safe range can lose precision.'],
     faqs: [{ question: 'Does it validate against a schema?', answer: 'No. It validates JSON syntax only.' }, { question: 'Are comments supported?', answer: 'No.' }, { question: 'Can large integers lose precision?', answer: 'Yes, beyond JavaScript’s safe integer range.' }, { question: 'Is JSON uploaded?', answer: 'No.' }],
-    relatedTools: [{ slug: 'base64-encoder', name: 'Base64 Encoder' }, { slug: 'qr-code-studio', name: 'QR Code Studio' }], relatedGuides: ['json-formatting-guide', 'base64-encoding-guide'],
+    relatedTools: [{ slug: 'base64-encoder', name: 'Base64 Encoder' }, { slug: 'qr-code-generator', name: 'QR Code Generator' }], relatedGuides: ['json-formatting-guide', 'base64-encoding-guide'],
   },
-  'qr-code-studio': {
-    slug: 'qr-code-studio', name: 'Generate or Decode a QR Code Locally', category: 'Developer Tools', applicationCategory: 'UtilitiesApplication', description: 'Generate a colored QR code from text or decode a QR code from an uploaded image without sending data to a server.',
+  'qr-code-generator': {
+    slug: 'qr-code-generator', name: 'Generate or Decode a QR Code Locally', category: 'Developer Tools', applicationCategory: 'UtilitiesApplication', description: 'Generate a colored QR code from text or decode a QR code from an uploaded image without sending data to a server.',
     longTailKeywords: ['generate QR code locally', 'decode QR code from image privately', 'colored QR code generator PNG', 'QR scanner without upload', 'browser QR code reader'],
-    intro: ['QR Code Studio generates a raster QR image from text and can inspect uploaded image pixels for a readable QR symbol.', local],
+    intro: ['QR Code Generator generates a raster QR image from text and can inspect uploaded image pixels for a readable QR symbol.', local],
     steps: ['Choose Generate to enter text and colors, or Scan to select an image.', 'Generate or decode the QR content.', 'Test generated codes with multiple scanners before publishing or printing.'],
     interpretation: ['QR content is plain encoded data; an unknown code can contain an untrusted URL or instruction.', 'Contrast, print size, damage, focus, and quiet zone affect reliability.'], limitations: ['Logo embedding is not supported.', 'Decoding can fail on distorted, low-contrast, or multiple-code images.', 'Generation does not validate payload safety.'],
     faqs: [{ question: 'Can I add a logo?', answer: 'No.' }, { question: 'Does scanning open links?', answer: 'No. It displays decoded content.' }, { question: 'Should generated codes be tested?', answer: 'Yes.' }, { question: 'Is content uploaded?', answer: 'No.' }],
-    relatedTools: [{ slug: 'base64-encoder', name: 'Base64 Encoder' }, { slug: 'universal-json-studio', name: 'JSON Studio' }], relatedGuides: ['qr-code-guide', 'base64-encoding-guide'],
+    relatedTools: [{ slug: 'base64-encoder', name: 'Base64 Encoder' }, { slug: 'json-formatter', name: 'JSON Formatter' }], relatedGuides: ['qr-code-guide', 'base64-encoding-guide'],
   },
   'developer-utils': {
     slug: 'developer-utils', name: 'Regex Tester, Unix Timestamp Converter & CSS Gradient Builder', category: 'Developer Tools', applicationCategory: 'DeveloperApplication', description: 'Test JavaScript regular expressions, convert Unix seconds or milliseconds to local time, and generate two-color CSS gradients.',
@@ -307,7 +301,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     interpretation: ['Regex behavior follows the browser JavaScript RegExp engine and supplied flags.', 'Ten-digit or shorter epoch input is treated as seconds; longer input is treated as milliseconds and displayed in the browser’s locale and time zone.', 'Gradient output is a CSS background declaration.'],
     limitations: ['Untrusted or pathological regular expressions can cause heavy CPU use or freeze the page.', 'The timestamp length heuristic can misclassify unusual historical or future values.', 'Local date output depends on device locale and time-zone settings.', 'Gradient support is limited to two colors and one angle.'],
     faqs: [{ question: 'Which regex flavor is used?', answer: 'The browser JavaScript RegExp implementation.' }, { question: 'Which time zone is shown?', answer: 'The browser device’s local time zone.' }, { question: 'Are epoch seconds supported?', answer: 'Yes; inputs up to ten digits are treated as seconds.' }, { question: 'Is input uploaded?', answer: 'No.' }],
-    relatedTools: [{ slug: 'universal-json-studio', name: 'JSON Studio' }, { slug: 'base64-encoder', name: 'Base64 Encoder' }, { slug: 'webmaster-seo-builder', name: 'Webmaster SEO Builder' }], relatedGuides: ['json-formatting-guide', 'seo-tools-guide'],
+    relatedTools: [{ slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'base64-encoder', name: 'Base64 Encoder' }, { slug: 'webmaster-seo-builder', name: 'Webmaster SEO Builder' }], relatedGuides: ['json-formatting-guide', 'seo-tools-guide'],
   },
   'webmaster-seo-builder': {
     slug: 'webmaster-seo-builder', name: 'UTM URL, Meta Tag and Robots.txt Builder', category: 'Developer Tools', applicationCategory: 'DeveloperApplication', description: 'Generate campaign URLs, basic HTML social metadata, or a simple robots.txt block locally in your browser.',
@@ -317,7 +311,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     interpretation: ['UTM parameters label campaign traffic but do not create analytics tracking by themselves.', 'Meta output includes title, description, Open Graph, and Twitter card fields.', 'robots.txt is a crawl directive, not authentication or a reliable way to hide sensitive URLs.'],
     limitations: ['Generated HTML values are not escaped for direct insertion; review quotes and special characters before use.', 'The robots builder supports one user-agent and one disallow path only.', 'Search engines may ignore unsupported or malformed directives, and robots.txt does not prevent indexing in every circumstance.', 'Metadata generation does not guarantee rankings or rich-result eligibility.'],
     faqs: [{ question: 'Does a UTM URL enable analytics?', answer: 'No. Your analytics system must already collect and report campaign parameters.' }, { question: 'Can robots.txt protect private content?', answer: 'No. Use authentication and authorization.' }, { question: 'Should generated HTML be reviewed?', answer: 'Yes, especially when values contain quotes or special characters.' }, { question: 'Does this guarantee better rankings?', answer: 'No.' }],
-    relatedTools: [{ slug: 'qr-code-studio', name: 'QR Code Studio' }, { slug: 'developer-utils', name: 'Developer Utils' }, { slug: 'universal-json-studio', name: 'JSON Studio' }], relatedGuides: ['seo-tools-guide', 'qr-code-guide'],
+    relatedTools: [{ slug: 'qr-code-generator', name: 'QR Code Generator' }, { slug: 'developer-utils', name: 'Developer Utils' }, { slug: 'json-formatter', name: 'JSON Formatter' }], relatedGuides: ['seo-tools-guide', 'qr-code-guide'],
   },
   'jwt-decoder': {
     slug: 'jwt-decoder', name: 'JWT Decoder – Decode JWT Tokens Online', category: 'Developer Tools', applicationCategory: 'DeveloperApplication', description: 'Decode UTF-8 JSON from JWT header and payload segments locally, without validating the signature or trusting claims.',
@@ -328,7 +322,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     interpretation: ['The alg field is merely token-supplied data and must not be trusted by itself.', 'Claims such as exp, iss, aud, sub, and roles are assertions, not proof, until verification succeeds.'],
     limitations: ['This tool does not verify signatures, keys, algorithms, issuer, audience, expiry, not-before time, nonce, or revocation.', 'Do not paste production access tokens into tools you do not trust, even when processing is described as local.', 'Only JWTs whose first two segments decode to valid UTF-8 JSON are displayed.', 'The included Base64 tab uses standard Base64, not Base64URL.'],
     faqs: [{ question: 'Does successful decoding mean a JWT is valid?', answer: 'No. Anyone can construct decodable header and payload segments.' }, { question: 'Is the signature verified?', answer: 'No.' }, { question: 'Are Unicode claims supported?', answer: 'Yes. Segments are decoded as UTF-8.' }, { question: 'Is the token uploaded?', answer: 'No.' }],
-    relatedTools: [{ slug: 'base64-encoder', name: 'Base64 Encoder' }, { slug: 'universal-json-studio', name: 'JSON Studio' }, { slug: 'developer-utils', name: 'Developer Utils' }], relatedGuides: ['jwt-decoding-guide', 'base64-encoding-guide', 'json-formatting-guide'],
+    relatedTools: [{ slug: 'base64-encoder', name: 'Base64 Encoder' }, { slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'developer-utils', name: 'Developer Utils' }], relatedGuides: ['jwt-decoding-guide', 'base64-encoding-guide', 'json-formatting-guide'],
   },
 
   'uuid-generator': {
@@ -402,7 +396,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     ],
     relatedTools: [
       { slug: 'base64-encoder', name: 'Base64 Encoder' },
-      { slug: 'universal-json-studio', name: 'JSON Studio' },
+      { slug: 'json-formatter', name: 'JSON Formatter' },
       { slug: 'cron-expression-humanizer', name: 'Cron Expression Humanizer' },
     ],
     relatedGuides: ['seo-tools-guide'],

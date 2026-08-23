@@ -5,11 +5,11 @@ import { ArrowLeft, ShieldCheck, FileJson, CheckCircle2, XCircle, Copy, Minimize
 import { tools } from '@/data/registry';
 
 export default function UniversalJsonStudioTool() {
-  const meta = tools.find(t => t.slug === 'universal-json-studio');
+  const meta = tools.find(t => t.slug === 'json-formatter');
   // Default meta if not found
   const toolMeta = meta || {
-    heroTitle: "Universal Json Studio",
-    heroDescription: "Process your documents efficiently with this tool.",
+    heroTitle: "JSON Formatter & Validator",
+    heroDescription: "Format, validate, beautify and minify JSON instantly in your browser.",
     formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
     faq: [
       { question: "How does this tool work?", answer: "All processing happens locally in your browser. No data is ever uploaded to any server." },

@@ -96,7 +96,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['jwt-decoder', 'qr-code-generator', 'json-formatter'],
     faq: [
       {'question': 'What is Base64 Encoder?', 'answer': 'Base64 Encoder is a free online tool that helps you with base64 encoder quickly and easily.'},
       {'question': 'Is Base64 Encoder really free?', 'answer': 'Yes, Base64 Encoder is completely free to use with no hidden costs.'},
@@ -140,7 +140,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-generator', 'json-formatter'],
     faq: [
       {'question': 'What is Bioluminescent Reader?', 'answer': 'Bioluminescent Reader is a free online tool that helps you with bioluminescent reader quickly and easily.'},
       {'question': 'Is Bioluminescent Reader really free?', 'answer': 'Yes, Bioluminescent Reader is completely free to use with no hidden costs.'},
@@ -316,7 +316,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-generator', 'json-formatter'],
     faq: [
       {'question': 'What is Code Minifier Beautifier?', 'answer': 'Code Minifier Beautifier is a free online tool that helps you with code minifier beautifier quickly and easily.'},
       {'question': 'Is Code Minifier Beautifier really free?', 'answer': 'Yes, Code Minifier Beautifier is completely free to use with no hidden costs.'},
@@ -329,10 +329,10 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
-  'color-extraction-studio': {
-    metaTitle: 'Color Extraction Studio - Free Online Color Extraction Studio | Navorika',
-    metaDescription: 'Use our free Color Extraction Studio to get accurate results instantly. Fast, private, and no signup required.',
-    intro: 'Color Extraction Studio is a free online tool that helps you perform color extraction studio quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
+  'image-color-picker': {
+    metaTitle: 'Image Color Picker - Free Online Image Color Picker | Navorika',
+    metaDescription: 'Use our free Image Color Picker to get accurate results instantly. Fast, private, and no signup required.',
+    intro: 'Image Color Picker is a free online tool that helps you perform image color picking quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
     howItWorks: 'This tool processes your data entirely in your browser. No data is stored or transmitted.',
     benefits: ['100% free - no hidden costs', 'Private by design - no data stored', 'Works on any device', 'No signup required', 'Instant processing', 'Based on validated formulas'],
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
@@ -340,8 +340,8 @@ export const seoContent: Record<string, SEOContent> = {
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
     relatedTools: ['resize-image', 'compress-image', 'convert-jpg-to-png', 'crop-image'],
     faq: [
-      {'question': 'What is Color Extraction Studio?', 'answer': 'Color Extraction Studio is a free online tool that helps you with color extraction studio quickly and easily.'},
-      {'question': 'Is Color Extraction Studio really free?', 'answer': 'Yes, Color Extraction Studio is completely free to use with no hidden costs.'},
+      {'question': 'What is Image Color Picker?', 'answer': 'Image Color Picker is a free online tool that helps you with image color picking quickly and easily.'},
+      {'question': 'Is Image Color Picker really free?', 'answer': 'Yes, Image Color Picker is completely free to use with no hidden costs.'},
       {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
       {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
       {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}
@@ -712,7 +712,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-generator', 'json-formatter'],
     faq: [
       {'question': 'What is Developer Utilities?', 'answer': 'Developer Utilities is a free online tool that helps you with developer utilities quickly and easily.'},
       {'question': 'Is Developer Utilities really free?', 'answer': 'Yes, Developer Utilities is completely free to use with no hidden costs.'},
@@ -1174,7 +1174,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'qr-code-generator', 'json-formatter'],
     faq: [
       {'question': 'What is JWT Decoder?', 'answer': 'JWT Decoder is a free online tool that decodes JWT header and payload data directly in your browser.'},
       {'question': 'Is JWT Decoder really free?', 'answer': 'Yes, JWT Decoder is completely free to use with no hidden costs.'},
@@ -1262,7 +1262,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-generator', 'json-formatter'],
     faq: [
       {'question': 'What is Markup Formatter?', 'answer': 'Markup Formatter is a free online tool that helps you with markup formatter quickly and easily.'},
       {'question': 'Is Markup Formatter really free?', 'answer': 'Yes, Markup Formatter is completely free to use with no hidden costs.'},
@@ -1473,19 +1473,19 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
-  'qr-code-studio': {
-    metaTitle: 'Qr Code Studio - Free Online Qr Code Studio | Navorika',
-    metaDescription: 'Use our free Qr Code Studio to get accurate results instantly. Fast, private, and no signup required.',
-    intro: 'Qr Code Studio is a free online tool that helps you perform qr code studio quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
+  'qr-code-generator': {
+    metaTitle: 'QR Code Generator - Free Online QR Code Generator | Navorika',
+    metaDescription: 'Use our free QR Code Generator to get accurate results instantly. Fast, private, and no signup required.',
+    intro: 'QR Code Generator is a free online tool that helps you perform QR code generation quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
     howItWorks: 'This tool processes your data entirely in your browser. No data is stored or transmitted.',
     benefits: ['100% free - no hidden costs', 'Private by design - no data stored', 'Works on any device', 'No signup required', 'Instant processing', 'Based on validated formulas'],
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-decoder', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'json-formatter'],
     faq: [
-      {'question': 'What is Qr Code Studio?', 'answer': 'Qr Code Studio is a free online tool that helps you with qr code studio quickly and easily.'},
-      {'question': 'Is Qr Code Studio really free?', 'answer': 'Yes, Qr Code Studio is completely free to use with no hidden costs.'},
+      {'question': 'What is QR Code Generator?', 'answer': 'QR Code Generator is a free online tool that helps you with QR code generation quickly and easily.'},
+      {'question': 'Is QR Code Generator really free?', 'answer': 'Yes, QR Code Generator is completely free to use with no hidden costs.'},
       {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
       {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
       {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}
@@ -1891,19 +1891,19 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
-  'universal-json-studio': {
-    metaTitle: 'Universal Json Studio - Free Online Universal Json Studio | Navorika',
-    metaDescription: 'Use our free Universal Json Studio to get accurate results instantly. Fast, private, and no signup required.',
-    intro: 'Universal Json Studio is a free online tool that helps you perform universal json studio quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
+  'json-formatter': {
+    metaTitle: 'JSON Formatter - Free Online JSON Formatter | Navorika',
+    metaDescription: 'Use our free JSON Formatter to get accurate results instantly. Fast, private, and no signup required.',
+    intro: 'JSON Formatter is a free online tool for formatting, validating, beautifying, and minifying JSON. All processing happens locally in your browser, so your JSON data is not uploaded to Navorika.',
     howItWorks: 'This tool processes your data entirely in your browser. No data is stored or transmitted.',
     benefits: ['100% free - no hidden costs', 'Private by design - no data stored', 'Works on any device', 'No signup required', 'Instant processing', 'Based on validated formulas'],
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-generator'],
     faq: [
-      {'question': 'What is Universal Json Studio?', 'answer': 'Universal Json Studio is a free online tool that helps you with universal json studio quickly and easily.'},
-      {'question': 'Is Universal Json Studio really free?', 'answer': 'Yes, Universal Json Studio is completely free to use with no hidden costs.'},
+      {'question': 'What is JSON Formatter?', 'answer': 'JSON Formatter lets you format, validate, beautify, and minify JSON directly in your browser.'},
+      {'question': 'Is JSON Formatter really free?', 'answer': 'Yes, JSON Formatter is completely free to use with no hidden costs.'},
       {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
       {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
       {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}
@@ -2054,7 +2054,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-generator', 'json-formatter'],
     faq: [
       {'question': 'What is Web Crypto Studio?', 'answer': 'Web Crypto Studio is a free online tool that helps you with web crypto studio quickly and easily.'},
       {'question': 'Is Web Crypto Studio really free?', 'answer': 'Yes, Web Crypto Studio is completely free to use with no hidden costs.'},
@@ -2076,7 +2076,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-generator', 'json-formatter'],
     faq: [
       {'question': 'What is Webmaster Seo Builder?', 'answer': 'Webmaster Seo Builder is a free online tool that helps you with webmaster seo builder quickly and easily.'},
       {'question': 'Is Webmaster Seo Builder really free?', 'answer': 'Yes, Webmaster Seo Builder is completely free to use with no hidden costs.'},

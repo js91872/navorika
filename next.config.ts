@@ -10,6 +10,22 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/tools/qr-code-studio',
+        destination: '/tools/qr-code-generator',
+        permanent: true,
+      },
+      {
+        source: '/tools/color-extraction-studio',
+        destination: '/tools/image-color-picker',
+        permanent: true,
+      },
+
+      {
+        source: '/tools/universal-json-studio',
+        destination: '/tools/json-formatter',
+        permanent: true,
+      },
+      {
         source: '/tools/jwt-base64-deck',
         destination: '/tools/jwt-decoder',
         permanent: true,

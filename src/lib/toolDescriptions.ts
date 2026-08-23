@@ -42,7 +42,7 @@ export const toolDescriptions: Record<string, string> = {
   'blur-face': 'Temporarily unavailable until validated on-device face detection is added.',
   'batch-image-converter': 'Convert multiple images at once online free. Batch convert JPG, PNG, WebP, and HEIC formats.',
   'change-image-resolution': 'Resize an image to a standard HD, FHD, QHD, UHD, or square pixel preset.',
-  'color-extraction-studio': 'Pick one image pixel and copy its exact hexadecimal RGB color locally.',
+  'image-color-picker': 'Pick one image pixel and copy its exact hexadecimal RGB color locally.',
   'icon-sticker-maker': 'Create custom icons and stickers from images online free. Design unique stickers and icons.',
   'id-photo-maker': 'Crop a photo into convenient ID-size pixel presets with zoom and position controls.',
   'social-media-resizer': 'Fit or crop images into built-in social-media pixel presets with local PNG export.',
@@ -91,9 +91,9 @@ export const toolDescriptions: Record<string, string> = {
   'lean-body-mass-calculator': 'Calculate your lean body mass and muscle content online free.',
   
   // Developer Tools
-  'qr-code-studio': 'Generate colored QR codes or decode a QR code from an uploaded image locally.',
+  'qr-code-generator': 'Generate colored QR codes or decode a QR code from an uploaded image locally.',
   'jwt-decoder': 'Decode JWT header and payload JSON locally without verifying the token signature.',
-  'universal-json-studio': 'View, edit, and format JSON data online free. Parse and validate JSON.',
+  'json-formatter': 'View, edit, and format JSON data online free. Parse and validate JSON.',
   'base64-encoder': 'Encode UTF-8 text to Base64 or decode Base64 back to UTF-8 text locally.',
   'code-minifier-beautifier': 'Temporarily unavailable pending parser-backed code processing.',
   'markup-formatter': 'Temporarily unavailable pending grammar-aware formatters.',
