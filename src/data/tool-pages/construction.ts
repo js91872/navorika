@@ -3,6 +3,168 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const planningLimits = ['Results are planning estimates, not engineering, supplier, hauling, compaction, or safety advice.', 'Confirm measured dimensions, material density, waste, load capacity, local units, and supplier minimums before ordering.'];
 
 export const constructionToolPages: Record<string, ToolPageContent> = {
+  'construction-estimate-builder': {
+    slug: 'construction-estimate-builder',
+    name: 'Construction Estimate Builder',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Create an itemized construction estimate from materials, labor, equipment, subcontractors, overhead, contingency, markup, tax, and discount, with downloadable PDF and JPG output.',
+    longTailKeywords: [
+      'construction estimate template',
+      'construction estimate builder',
+      'construction estimate generator',
+      'free construction estimate template',
+      'construction cost estimate template',
+      'itemized construction estimate'
+    ],
+    intro: [
+      'Construction Estimate Builder lets you create a detailed project estimate from user-entered line items instead of relying on generic cost-per-square-foot assumptions.',
+      'All project details, customer information, quantities, rates, and estimate data are processed locally in the browser.'
+    ],
+    formula: [
+      {
+        title: 'Line-item direct cost',
+        body: 'Each line amount equals quantity × unit cost. Direct cost is the sum of all materials, labor, equipment, subcontractor, and other line items.'
+      },
+      {
+        title: 'Overhead and contingency',
+        body: 'Overhead is applied to direct cost. Contingency is applied to direct cost plus overhead.'
+      },
+      {
+        title: 'Markup and total',
+        body: 'Markup is applied after direct cost, overhead, and contingency. Any entered discount is deducted before tax, then tax is applied to the remaining taxable amount.'
+      }
+    ],
+    steps: [
+      'Enter the project and estimate details.',
+      'Add as many materials, labor, equipment, subcontractor, or other line items as required.',
+      'Enter quantity and unit cost for each line item.',
+      'Set overhead, contingency, markup, tax, and optional discount assumptions.',
+      'Review the category breakdown and final estimate total.',
+      'Download the estimate as JPG or PDF, or print it directly from the browser.'
+    ],
+    interpretation: [
+      'The estimate is driven entirely by the rates and quantities you enter, so it can be used in different countries and currencies.',
+      'Overhead, contingency, markup, and tax are shown separately so users can understand how each assumption affects the final amount.',
+      'The exported estimate includes a QR code and Navorika link for convenient access to the tool again.'
+    ],
+    limitations: [
+      'Navorika does not supply market prices, labor rates, tax rates, or contractual terms.',
+      'The calculator does not determine project scope, engineering requirements, permits, escalation, financing, exclusions, measurement rules, or procurement risk.',
+      'Tax treatment, markup method, overhead allocation, and contingency conventions vary by project and jurisdiction.',
+      'The output is a planning estimate and is not a professional quantity survey, bid, contract, valuation, or engineering estimate.'
+    ],
+    faqs: [
+      {
+        question: 'Can I use this as a construction estimate template?',
+        answer: 'Yes. The tool provides an interactive alternative to a static construction estimate template and lets you add project-specific line items and costs.'
+      },
+      {
+        question: 'Can I add unlimited estimate items?',
+        answer: 'You can add multiple materials, labor, equipment, subcontractor, and other line items directly in the browser.'
+      },
+      {
+        question: 'Does Navorika provide construction prices?',
+        answer: 'No. Enter your own current supplier, labor, subcontractor, rental, and project-specific rates.'
+      },
+      {
+        question: 'Can I download the estimate?',
+        answer: 'Yes. You can export the estimate as a JPG or PDF or print it directly.'
+      },
+      {
+        question: 'Is my project or customer data uploaded?',
+        answer: 'No. The estimate runs locally in your browser.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'contractor-estimate-generator', name: 'Contractor Estimate Generator' },
+      { slug: 'construction-cost-calculator', name: 'Construction Cost Calculator' },
+      { slug: 'house-construction-cost-calculator', name: 'House Construction Cost Calculator' },
+      { slug: 'board-foot-calculator', name: 'Board Foot Calculator' }
+    ],
+    relatedGuides: [],
+  },
+
+  'contractor-estimate-generator': {
+    slug: 'contractor-estimate-generator',
+    name: 'Contractor Estimate Generator',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Generate an itemized contractor estimate with business and customer details, line-item pricing, overhead, contingency, markup, tax, discount, terms, and downloadable PDF/JPG output.',
+    longTailKeywords: [
+      'contractor estimate template',
+      'general contractor estimate template',
+      'free contractor estimate template',
+      'contractor estimate generator',
+      'construction quote template',
+      'contractor quote generator'
+    ],
+    intro: [
+      'Contractor Estimate Generator turns project quantities and rates into a customer-facing estimate that can be saved, printed, or shared without requiring a spreadsheet or document template.',
+      'Customer, contractor, pricing, and project information remain in the browser and are not sent to Navorika.'
+    ],
+    formula: [
+      {
+        title: 'Line items',
+        body: 'Each estimate line equals quantity × entered unit cost.'
+      },
+      {
+        title: 'Project additions',
+        body: 'Overhead, contingency, and markup are calculated separately from direct line-item cost.'
+      },
+      {
+        title: 'Final estimate',
+        body: 'Any discount is deducted from the subtotal before the entered tax percentage is applied.'
+      }
+    ],
+    steps: [
+      'Enter the estimate number, project name, customer name, contractor or business name, and project description.',
+      'Add each material, labor, equipment, subcontractor, or other item with quantity and unit cost.',
+      'Enter applicable overhead, contingency, markup, discount, and tax assumptions.',
+      'Add payment terms, exclusions, validity period, or other notes.',
+      'Review the estimate and export it as PDF or JPG or print it.'
+    ],
+    interpretation: [
+      'This tool is designed as an interactive alternative to static contractor estimate templates.',
+      'The category breakdown helps show how much of the direct estimate comes from materials, labor, equipment, subcontractors, and other costs.',
+      'The downloadable document can be used as a draft estimate for further review or customer communication.'
+    ],
+    limitations: [
+      'The generator does not create legally binding contract terms or determine local tax requirements.',
+      'It does not verify scope completeness, measurements, prices, labor productivity, specification, code compliance, or profitability.',
+      'Users should review the estimate against project drawings, specifications, supplier quotations, contractual requirements, and applicable laws.',
+      'The output is not a substitute for professional estimating, quantity surveying, legal, tax, or engineering advice.'
+    ],
+    faqs: [
+      {
+        question: 'Can I create a contractor estimate without Excel or Word?',
+        answer: 'Yes. You can build the estimate directly in the browser and export the finished result.'
+      },
+      {
+        question: 'Can I include my business and customer name?',
+        answer: 'Yes. Contractor mode includes dedicated contractor, customer, project, estimate number, description, and notes fields.'
+      },
+      {
+        question: 'Does the generator calculate markup?',
+        answer: 'Yes. Enter your own markup percentage along with overhead, contingency, tax, and optional discount.'
+      },
+      {
+        question: 'Can I save the contractor estimate as PDF?',
+        answer: 'Yes. PDF and JPG exports are available, and you can also print the estimate.'
+      },
+      {
+        question: 'Does Navorika save customer information?',
+        answer: 'No. The estimate is processed locally in your browser.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'construction-estimate-builder', name: 'Construction Estimate Builder' },
+      { slug: 'construction-cost-calculator', name: 'Construction Cost Calculator' },
+      { slug: 'house-construction-cost-calculator', name: 'House Construction Cost Calculator' },
+      { slug: 'unit-price-calculator', name: 'Unit Price Calculator' }
+    ],
+    relatedGuides: [],
+  },
   'board-foot-calculator': {
     slug: 'board-foot-calculator',
     name: 'Board Foot Calculator',

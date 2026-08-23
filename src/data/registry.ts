@@ -1044,6 +1044,38 @@ export const tools: RegisteredTool[] = ([
     keywords: ['dimensional weight calculator', 'dim weight calculator', 'volumetric weight calculator', 'shipping weight calculator', 'package dimensional weight'],
     heroTitle: 'Dimensional Weight Calculator',
     heroDescription: 'Calculate dimensional shipping weight and identify the estimated billable package weight.'
+  },
+  {
+    slug: 'construction-estimate-builder',
+    title: 'Construction Estimate Builder',
+    description: 'Build a detailed construction estimate with materials, labor, equipment, subcontractors, overhead, contingency, markup, tax, and downloadable PDF/JPG output.',
+    category: 'construction-calculators',
+    keywords: [
+      'construction estimate template',
+      'construction estimate builder',
+      'construction estimator',
+      'construction cost estimate',
+      'free construction estimate template',
+      'construction estimate generator'
+    ],
+    heroTitle: 'Construction Estimate Builder',
+    heroDescription: 'Create a detailed construction estimate with line items, overhead, contingency, markup, tax, and downloadable output.'
+  },
+  {
+    slug: 'contractor-estimate-generator',
+    title: 'Contractor Estimate Generator',
+    description: 'Create a professional contractor estimate with customer details, itemized costs, markup, tax, notes, and downloadable PDF/JPG output.',
+    category: 'construction-calculators',
+    keywords: [
+      'contractor estimate template',
+      'general contractor estimate template',
+      'contractor estimate generator',
+      'free contractor estimate',
+      'construction quote template',
+      'contractor quote generator'
+    ],
+    heroTitle: 'Contractor Estimate Generator',
+    heroDescription: 'Generate a professional contractor estimate with customer details, line items, totals, terms, and downloadable output.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,
