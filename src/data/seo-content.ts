@@ -96,7 +96,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['jwt-base64-deck', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
     faq: [
       {'question': 'What is Base64 Encoder?', 'answer': 'Base64 Encoder is a free online tool that helps you with base64 encoder quickly and easily.'},
       {'question': 'Is Base64 Encoder really free?', 'answer': 'Yes, Base64 Encoder is completely free to use with no hidden costs.'},
@@ -140,7 +140,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-base64-deck', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
     faq: [
       {'question': 'What is Bioluminescent Reader?', 'answer': 'Bioluminescent Reader is a free online tool that helps you with bioluminescent reader quickly and easily.'},
       {'question': 'Is Bioluminescent Reader really free?', 'answer': 'Yes, Bioluminescent Reader is completely free to use with no hidden costs.'},
@@ -316,7 +316,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-base64-deck', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
     faq: [
       {'question': 'What is Code Minifier Beautifier?', 'answer': 'Code Minifier Beautifier is a free online tool that helps you with code minifier beautifier quickly and easily.'},
       {'question': 'Is Code Minifier Beautifier really free?', 'answer': 'Yes, Code Minifier Beautifier is completely free to use with no hidden costs.'},
@@ -712,7 +712,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-base64-deck', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
     faq: [
       {'question': 'What is Developer Utilities?', 'answer': 'Developer Utilities is a free online tool that helps you with developer utilities quickly and easily.'},
       {'question': 'Is Developer Utilities really free?', 'answer': 'Yes, Developer Utilities is completely free to use with no hidden costs.'},
@@ -1165,10 +1165,10 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
-  'jwt-base64-deck': {
-    metaTitle: 'Jwt Base64 Deck - Free Online Jwt Base64 Deck | Navorika',
-    metaDescription: 'Use our free Jwt Base64 Deck to get accurate results instantly. Fast, private, and no signup required.',
-    intro: 'Jwt Base64 Deck is a free online tool that helps you perform jwt base64 deck quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
+  'jwt-decoder': {
+    metaTitle: 'JWT Decoder - Free Online JWT Decoder | Navorika',
+    metaDescription: 'Use our free JWT Decoder to get accurate results instantly. Fast, private, and no signup required.',
+    intro: 'JWT Decoder is a free online tool for decoding JWT header and payload data quickly and securely. All processing happens locally in your browser - no token data is stored or transmitted to any server.',
     howItWorks: 'This tool processes your data entirely in your browser. No data is stored or transmitted.',
     benefits: ['100% free - no hidden costs', 'Private by design - no data stored', 'Works on any device', 'No signup required', 'Instant processing', 'Based on validated formulas'],
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
@@ -1176,8 +1176,8 @@ export const seoContent: Record<string, SEOContent> = {
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
     relatedTools: ['base64-encoder', 'qr-code-studio', 'universal-json-studio'],
     faq: [
-      {'question': 'What is Jwt Base64 Deck?', 'answer': 'Jwt Base64 Deck is a free online tool that helps you with jwt base64 deck quickly and easily.'},
-      {'question': 'Is Jwt Base64 Deck really free?', 'answer': 'Yes, Jwt Base64 Deck is completely free to use with no hidden costs.'},
+      {'question': 'What is JWT Decoder?', 'answer': 'JWT Decoder is a free online tool that decodes JWT header and payload data directly in your browser.'},
+      {'question': 'Is JWT Decoder really free?', 'answer': 'Yes, JWT Decoder is completely free to use with no hidden costs.'},
       {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
       {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
       {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}
@@ -1262,7 +1262,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-base64-deck', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
     faq: [
       {'question': 'What is Markup Formatter?', 'answer': 'Markup Formatter is a free online tool that helps you with markup formatter quickly and easily.'},
       {'question': 'Is Markup Formatter really free?', 'answer': 'Yes, Markup Formatter is completely free to use with no hidden costs.'},
@@ -1482,7 +1482,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-base64-deck', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'universal-json-studio'],
     faq: [
       {'question': 'What is Qr Code Studio?', 'answer': 'Qr Code Studio is a free online tool that helps you with qr code studio quickly and easily.'},
       {'question': 'Is Qr Code Studio really free?', 'answer': 'Yes, Qr Code Studio is completely free to use with no hidden costs.'},
@@ -1900,7 +1900,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-base64-deck', 'qr-code-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio'],
     faq: [
       {'question': 'What is Universal Json Studio?', 'answer': 'Universal Json Studio is a free online tool that helps you with universal json studio quickly and easily.'},
       {'question': 'Is Universal Json Studio really free?', 'answer': 'Yes, Universal Json Studio is completely free to use with no hidden costs.'},
@@ -2054,7 +2054,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-base64-deck', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
     faq: [
       {'question': 'What is Web Crypto Studio?', 'answer': 'Web Crypto Studio is a free online tool that helps you with web crypto studio quickly and easily.'},
       {'question': 'Is Web Crypto Studio really free?', 'answer': 'Yes, Web Crypto Studio is completely free to use with no hidden costs.'},
@@ -2076,7 +2076,7 @@ export const seoContent: Record<string, SEOContent> = {
     useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
     stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
     tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-base64-deck', 'qr-code-studio', 'universal-json-studio'],
+    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-studio', 'universal-json-studio'],
     faq: [
       {'question': 'What is Webmaster Seo Builder?', 'answer': 'Webmaster Seo Builder is a free online tool that helps you with webmaster seo builder quickly and easily.'},
       {'question': 'Is Webmaster Seo Builder really free?', 'answer': 'Yes, Webmaster Seo Builder is completely free to use with no hidden costs.'},

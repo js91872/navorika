@@ -727,11 +727,11 @@ export const tools: RegisteredTool[] = ([
     keywords: ['developer-utils', 'developer', 'utils']
   },
   {
-    slug: 'jwt-base64-deck',
-    title: 'JWT Base64 Deck',
+    slug: 'jwt-decoder',
+    title: 'JWT Decoder',
     description: 'Decode JWT header and payload JSON locally without verifying the token signature.',
     category: 'developer-tools',
-    keywords: ['jwt-base64-deck', 'jwt', 'base64', 'deck']
+    keywords: ['jwt-decoder', 'jwt', 'base64', 'deck']
   },
   {
     slug: 'markup-formatter',

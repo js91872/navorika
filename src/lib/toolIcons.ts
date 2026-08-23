@@ -100,7 +100,7 @@ export const toolIcons: Record<string, string> = {
   'code-minifier-beautifier': '💻',
   'developer-tools': '💻',
   'developer-utils': '🛠️',
-  'jwt-base64-deck': '🔑',
+  'jwt-decoder': '🔑',
   'markup-formatter': '📝',
   'universal-json-studio': '📋',
   'web-crypto-studio': '🔒',

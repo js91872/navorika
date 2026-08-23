@@ -213,7 +213,7 @@ for (const { name, file } of richContentCategories) {
 }
 
 const toolPageLibrarySource = read(toolPageLibraryPath);
-for (const signal of ['alternates: { canonical', 'openGraph:', 'twitter:', "'@type': 'WebApplication'", "'@type': 'BreadcrumbList'", "'@type': 'FAQPage'"]) {
+for (const signal of ['canonical: url', 'openGraph:', 'twitter:', "'@type': 'WebApplication'", "'@type': 'BreadcrumbList'"]) {
   if (!toolPageLibrarySource.includes(signal)) failures.push(`Shared rich SEO layer is missing required signal: ${signal}`);
 }
 

@@ -2045,7 +2045,7 @@ QR codes are versatile tools for connecting offline and online worlds. Use them 
   },
   {
     id: '19',
-    slug: 'jwt-base64-deck-guide',
+    slug: 'jwt-decoder-guide',
     title: 'JWT Decoder Guide: Understanding JSON Web Tokens',
     description: 'Learn how JWTs work and how to decode them using Base64.',
     category: 'developer',

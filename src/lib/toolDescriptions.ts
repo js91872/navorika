@@ -92,7 +92,7 @@ export const toolDescriptions: Record<string, string> = {
   
   // Developer Tools
   'qr-code-studio': 'Generate colored QR codes or decode a QR code from an uploaded image locally.',
-  'jwt-base64-deck': 'Decode JWT header and payload JSON locally without verifying the token signature.',
+  'jwt-decoder': 'Decode JWT header and payload JSON locally without verifying the token signature.',
   'universal-json-studio': 'View, edit, and format JSON data online free. Parse and validate JSON.',
   'base64-encoder': 'Encode UTF-8 text to Base64 or decode Base64 back to UTF-8 text locally.',
   'code-minifier-beautifier': 'Temporarily unavailable pending parser-backed code processing.',
