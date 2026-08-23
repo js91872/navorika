@@ -130,6 +130,8 @@ export const toolIcons: Record<string, string> = {
   'cement-calculator': '🏗️',
   'concrete-calculator': '🏗️',
   'construction-cost-calculator': '💰',
+  'construction-estimate-builder': '🧾',
+  'contractor-estimate-generator': '📋',
   'construction-calculators': '🔨',
   'excavation-calculator': '🚜',
   'flooring-calculator': '🏠',
