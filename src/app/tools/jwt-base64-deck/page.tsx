@@ -25,7 +25,7 @@ export default function JwtBase64Tool() {
   const meta = tools.find(t => t.slug === 'jwt-base64-deck');
   // Default meta if not found
   const toolMeta = meta || {
-    heroTitle: "Jwt Base64 Deck",
+    heroTitle: "JWT Decoder",
     heroDescription: "Process your documents efficiently with this tool.",
     formulaExplanation: "This tool processes your data locally in your browser for maximum privacy and speed.",
     faq: [
@@ -85,7 +85,7 @@ export default function JwtBase64Tool() {
       
       <div className="text-center mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
-           <ShieldCheck className="h-4 w-4" /> Zero-API Token Inspector
+           <ShieldCheck className="h-4 w-4" /> Decode Header and Payload Locally
         </div>
         <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
         <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>

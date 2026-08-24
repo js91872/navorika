@@ -700,14 +700,35 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'developer-utils',
-    title: 'Developer Utils',
-    description: 'Essential developer utilities for coding and debugging. Format, encode, and validate code.',
+    title: 'Developer Utilities Hub',
+    description: 'A browser-based suite for regex testing, Unix timestamp conversion, and CSS gradient building.',
     category: 'developer-tools',
     keywords: ['developer-utils', 'developer', 'utils']
   },
   {
+    slug: 'regex-tester',
+    title: 'Regex Tester',
+    description: 'Test JavaScript regular expressions, flags, and matches locally in your browser.',
+    category: 'developer-tools',
+    keywords: ['regex tester', 'regular expression tester', 'javascript regex']
+  },
+  {
+    slug: 'unix-timestamp-converter',
+    title: 'Unix Timestamp Converter',
+    description: 'Convert Unix seconds or milliseconds to a local date and time in your browser.',
+    category: 'developer-tools',
+    keywords: ['unix timestamp converter', 'epoch converter', 'timestamp to date']
+  },
+  {
+    slug: 'css-gradient-generator',
+    title: 'CSS Gradient Generator',
+    description: 'Build a two-color linear gradient and copy the generated CSS declaration.',
+    category: 'developer-tools',
+    keywords: ['css gradient generator', 'linear gradient generator', 'gradient css']
+  },
+  {
     slug: 'jwt-base64-deck',
-    title: 'JWT Base64 Deck',
+    title: 'JWT Decoder',
     description: 'Decode JWT header and payload JSON locally without verifying the token signature.',
     category: 'developer-tools',
     keywords: ['jwt-base64-deck', 'jwt', 'base64', 'deck']
@@ -728,8 +749,8 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'universal-json-studio',
-    title: 'Universal JSON Studio',
-    description: 'View, edit, and format JSON data online free. Parse and validate JSON with powerful editing tools.',
+    title: 'JSON Formatter & Validator',
+    description: 'Format, beautify, minify, and validate JSON syntax locally in your browser.',
     category: 'developer-tools',
     keywords: ['universal-json-studio', 'universal', 'json', 'studio']
   },
@@ -742,10 +763,31 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'webmaster-seo-builder',
-    title: 'Webmaster SEO Builder',
-    description: 'Generate UTM URLs, basic social meta tags, and a simple robots.txt block locally.',
+    title: 'Webmaster SEO Tools',
+    description: 'Explore browser-based SEO utilities for campaign URLs, page metadata, and crawler directives.',
     category: 'developer-tools',
-    keywords: ['webmaster-seo-builder', 'webmaster', 'seo', 'builder']
+    keywords: ['webmaster SEO tools', 'SEO utilities', 'webmaster tools']
+  },
+  {
+    slug: 'utm-builder',
+    title: 'UTM Builder',
+    description: 'Add campaign source, medium, and name parameters to a valid URL.',
+    category: 'developer-tools',
+    keywords: ['utm builder', 'utm link generator', 'campaign url builder']
+  },
+  {
+    slug: 'meta-tag-generator',
+    title: 'Meta Tag Generator',
+    description: 'Generate basic HTML, Open Graph, and Twitter card metadata locally.',
+    category: 'developer-tools',
+    keywords: ['meta tag generator', 'open graph generator', 'twitter card generator']
+  },
+  {
+    slug: 'robots-txt-generator',
+    title: 'Robots.txt Generator',
+    description: 'Generate a simple robots.txt block for one user-agent and disallow path.',
+    category: 'developer-tools',
+    keywords: ['robots txt generator', 'robots.txt builder', 'crawler directive generator']
   },
 
   // ====== CONSTRUCTION CALCULATORS ======

@@ -24,7 +24,8 @@ import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 export default function HomePage() {
   const totalTools = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length;
-  const displayCount = totalTools >= 100 ? '100+' : `${totalTools}+`;
+  const displayCount = `${totalTools}`;
+  const categoryCount = categories.length;
   
   // Featured tools for the grid
   const featuredTools = [
@@ -38,21 +39,21 @@ export default function HomePage() {
 
   const stats = [
     { value: displayCount, label: 'Free Tools', icon: <Sparkles className="h-6 w-6 text-amber-500" /> },
-    { value: '100%', label: 'Client-Side', icon: <Zap className="h-6 w-6 text-indigo-500" /> },
-    { value: '0', label: 'Data Uploads', icon: <Shield className="h-6 w-6 text-emerald-500" /> },
+    { value: 'Most', label: 'Process Locally', icon: <Zap className="h-6 w-6 text-indigo-500" /> },
+    { value: 'Clear', label: 'Data Sources', icon: <Shield className="h-6 w-6 text-emerald-500" /> },
     { value: '0', label: 'Signup Required', icon: <Lock className="h-6 w-6 text-purple-500" /> },
   ];
 
   const benefits = [
     {
       icon: <Shield className="h-8 w-8 text-emerald-500" />,
-      title: '100% Private',
-      description: 'All processing happens in your browser. Your data never leaves your device. No uploads, no tracking, complete privacy.'
+      title: 'Privacy-First',
+      description: 'Most tools process data locally in your browser. Tools that require live external data clearly identify their data source.'
     },
     {
       icon: <Zap className="h-8 w-8 text-indigo-500" />,
       title: 'Instant Results',
-      description: 'No server delays. Every tool responds instantly because it runs right where you are. Zero latency, pure speed.'
+      description: 'Browser-based tools respond quickly, while utilities that need current external data retrieve only what their feature requires.'
     },
     {
       icon: <Sparkles className="h-8 w-8 text-amber-500" />,
@@ -73,7 +74,7 @@ export default function HomePage() {
     },
     {
       q: 'How is my data protected?',
-      a: 'All processing happens locally in your browser. No files are uploaded to any server. Your data never leaves your device — private by design.'
+      a: 'Most tools process data locally in your browser. Tools that require live external data clearly identify their source and what is requested.'
     },
     {
       q: 'Do I need to create an account?',
@@ -81,7 +82,7 @@ export default function HomePage() {
     },
     {
       q: `What tools are available?`,
-      a: `We offer ${displayCount} tools across 6 categories: PDF Tools, Image Tools, Finance Calculators, Health Calculators, Developer Tools, and Construction Calculators.`
+      a: `We offer ${displayCount} active tools across ${categoryCount} categories: ${categories.map((category) => category.name).join(', ')}.`
     },
     {
       q: 'Does it work on mobile?',
@@ -152,9 +153,9 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg sm:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed"
             >
-              {displayCount} tools including PDF editors, image converters, calculators, 
-              and developer utilities. <span className="font-semibold text-[var(--foreground)]">Everything runs locally in your browser</span> — 
-              no uploads, no signup, no tracking.
+              {displayCount} tools including PDF editors, image converters, calculators,
+              and developer utilities. <span className="font-semibold text-[var(--foreground)]">Most process data locally in your browser</span>;
+              tools using live external data identify their source.
             </motion.p>
 
             {/* Search Bar - Now Working! */}
@@ -185,7 +186,7 @@ export default function HomePage() {
               <span className="w-px h-4 bg-[var(--border)]" />
               <span className="flex items-center gap-2">
                 <Lock className="h-4 w-4 text-purple-500" />
-                No Data Uploads
+                Clear Data Sources
               </span>
             </motion.div>
 
@@ -239,7 +240,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold">Tools by Category</h2>
-            <p className="text-[var(--muted-foreground)] mt-2">Explore {displayCount} tools across 6 categories</p>
+            <p className="text-[var(--muted-foreground)] mt-2">Explore {displayCount} tools across {categoryCount} categories</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

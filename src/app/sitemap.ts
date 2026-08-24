@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter(({ slug }) => !financeSuiteRoots.has(slug) && !toolsUnderReview.has(slug))
     .map(({ slug }) => ({ url: `${baseUrl}/tools/${slug}` }));
   const financeSuitePages = getFinanceSuiteUrls()
-    .filter((path) => !path.includes('/taxation-compliance-deck/'))
+    .filter((path) => !path.includes('/taxation-compliance-deck/') && !path.endsWith('/fd-calculator') && !path.endsWith('/ppf-calculator'))
     .map((path) => ({ url: `${baseUrl}${path}` }));
   const categoryPages = categories.map(({ slug }) => ({ url: `${baseUrl}/categories/${slug}` }));
   const guidePages = guidesMetadata.map(({ slug, dateModified }) => ({ url: `${baseUrl}/guides/${slug}`, lastModified: new Date(dateModified) }));

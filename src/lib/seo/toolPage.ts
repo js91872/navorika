@@ -50,11 +50,6 @@ export function createToolJsonLd(tool: ToolPageContent) {
           { '@type': 'ListItem', position: 3, name: tool.name, item: url },
         ],
       },
-      {
-        '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: tool.faqs.map(({ question, answer }) => ({
-          '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer },
-        })),
-      },
     ],
   };
 }

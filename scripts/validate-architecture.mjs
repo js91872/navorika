@@ -59,7 +59,7 @@ for (const image of ['finance-guides.webp', 'health-guides.webp', 'pdf-guides.we
 }
 
 const guidePageSource = read(guidePagePath);
-for (const signal of ['generateStaticParams', 'generateMetadata', "'@type': 'Article'", "'@type': 'BreadcrumbList'", "'@type': 'FAQPage'", 'featuredImage.alt', 'citation:', 'Sources and further reading']) {
+for (const signal of ['generateStaticParams', 'generateMetadata', "'@type': 'Article'", "'@type': 'BreadcrumbList'", 'featuredImage.alt', 'citation:', 'Sources and further reading']) {
   if (!guidePageSource.includes(signal)) failures.push(`Guide route is missing required crawl/SEO signal: ${signal}`);
 }
 
@@ -213,8 +213,12 @@ for (const { name, file } of richContentCategories) {
 }
 
 const toolPageLibrarySource = read(toolPageLibraryPath);
-for (const signal of ['alternates: { canonical', 'openGraph:', 'twitter:', "'@type': 'WebApplication'", "'@type': 'BreadcrumbList'", "'@type': 'FAQPage'"]) {
+for (const signal of ['alternates: { canonical', 'openGraph:', 'twitter:', "'@type': 'WebApplication'", "'@type': 'BreadcrumbList'"]) {
   if (!toolPageLibrarySource.includes(signal)) failures.push(`Shared rich SEO layer is missing required signal: ${signal}`);
+}
+
+if (guidePageSource.includes("'@type': 'FAQPage'") || toolPageLibrarySource.includes("'@type': 'FAQPage'")) {
+  failures.push('FAQ structured data must not be emitted by the shared tool or guide architecture');
 }
 
 if (warnings.length) {

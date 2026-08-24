@@ -16,13 +16,13 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Logo showTagline={true} size="lg" />
             <p className="mt-4 text-sm text-[var(--muted-foreground)] max-w-sm leading-relaxed">
-              Universal client computing engine offering absolute data privacy,
-              instantaneous execution, and world-class productivity tools.
+              Privacy-first calculators and utilities. Most tools process data locally;
+              tools that need live external data identify their source.
             </p>
             <div className="mt-4 flex items-center gap-4">
               <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400">
                 <Shield className="h-4 w-4" />
-                <span className="font-medium">100% CLIENT-SIDE SAFE</span>
+                <span className="font-medium">PRIVACY-FIRST BY DESIGN</span>
               </div>
             </div>
             <SocialLinks />

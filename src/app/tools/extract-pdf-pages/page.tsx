@@ -40,8 +40,18 @@ export default function ExtractPdfPagesPage() {
       const pdf = await PDFDocument.load(buffer);
       const newPdf = await PDFDocument.create();
       
-      // Parse page numbers
-      const pageNumbers = pages.split(',').map(p => parseInt(p.trim())).filter(p => !isNaN(p) && p > 0 && p <= totalPages);
+      // Parse comma-separated page numbers and inclusive ranges such as 5-7.
+      const pageNumbers = [...new Set(pages.split(',').flatMap((token) => {
+        const value = token.trim();
+        const range = value.match(/^(\d+)\s*-\s*(\d+)$/);
+        if (range) {
+          const start = Number(range[1]);
+          const end = Number(range[2]);
+          if (start > end) return [];
+          return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+        }
+        return /^\d+$/.test(value) ? [Number(value)] : [];
+      }).filter((pageNumber) => pageNumber > 0 && pageNumber <= totalPages))];
       
       if (pageNumbers.length === 0) {
         alert('Please enter valid page numbers.');
@@ -79,6 +89,10 @@ export default function ExtractPdfPagesPage() {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <header className="mb-8">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white">Extract PDF Pages</h1>
+        <p className="mt-2 text-slate-600 dark:text-slate-400">Create a new PDF from selected page numbers or page ranges.</p>
+      </header>
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
         <div className="space-y-6">
           {/* Upload Area */}

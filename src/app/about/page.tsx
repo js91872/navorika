@@ -11,25 +11,25 @@ import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 export default function AboutPage() {
   const toolCount = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length;
-  const displayCount = toolCount >= 100 ? '100+' : '90+';
+  const displayCount = `${toolCount}`;
 
   const stats = [
     { icon: <Cpu className="h-6 w-6" />, value: toolCount, label: 'Tools' },
-    { icon: <Shield className="h-6 w-6" />, value: '100%', label: 'Client-Side' },
+    { icon: <Shield className="h-6 w-6" />, value: 'Most', label: 'Process Locally' },
     { icon: <Zap className="h-6 w-6" />, value: 'Instant', label: 'Processing' },
-    { icon: <Lock className="h-6 w-6" />, value: '0', label: 'Data Uploads' },
+    { icon: <Lock className="h-6 w-6" />, value: 'Clear', label: 'Data Sources' },
   ];
 
   const values = [
     {
       icon: <Lock className="h-8 w-8" />,
       title: 'Privacy First',
-      description: 'Private by design. Your files and calculations stay on your device. Navorika processes all tools locally in your browser without uploading your data. No storage, no tracking, complete privacy.',
+      description: 'Most tools process files and inputs locally in your browser. Tools that require live external data identify their source and what they request.',
     },
     {
       icon: <Zap className="h-8 w-8" />,
       title: 'Instant Execution',
-      description: 'No server delays. Every tool responds instantly because it runs right where you are.',
+      description: 'Browser-based tools respond quickly, while utilities that require current data make focused external requests.',
     },
     {
       icon: <Rocket className="h-8 w-8" />,
@@ -46,8 +46,8 @@ export default function AboutPage() {
   const reasons = [
     {
       icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
-      title: 'No Data Uploads',
-      description: 'Everything runs locally in your browser. We never see, store, or process your files on any server.',
+      title: 'Local Where Practical',
+      description: 'File tools are designed to process locally. Live-data tools clearly identify the external source they contact.',
     },
     {
       icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
@@ -61,8 +61,8 @@ export default function AboutPage() {
     },
     {
       icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
-      title: '100% Client-Side',
-      description: 'All code runs in your browser. No external API calls, no background uploads, no tracking scripts.',
+      title: 'Clear Data Boundaries',
+      description: 'Navorika distinguishes local processing from features such as live exchange rates that require an external data source.',
     },
   ];
 
@@ -105,9 +105,9 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed"
           >
-            Navorika is a free, client-side platform with {displayCount} online tools,
+            Navorika is a privacy-first platform with {displayCount} active online tools,
             calculators, PDF editors, image converters, and developer utilities.
-            100% private. Zero data uploads. No signup required.
+            Most tools process locally, and live-data sources are identified. No signup is required.
           </motion.p>
 
           <motion.div

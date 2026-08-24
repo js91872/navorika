@@ -53,7 +53,6 @@ export default async function GuidePage({ params }: Props) {
     '@graph': [
       { '@type': 'Article', '@id': `${url}#article`, headline: guide.title, description: guide.description, image: { '@type': 'ImageObject', url: `${baseUrl}${guide.featuredImage.src}`, width: 1200, height: 630, caption: guide.featuredImage.caption }, datePublished: guide.datePublished, dateModified: guide.dateModified, author: { '@type': 'Organization', name: guide.author, url: baseUrl }, publisher: { '@type': 'Organization', name: 'Navorika', url: baseUrl, logo: { '@type': 'ImageObject', url: `${baseUrl}/logo.svg` } }, mainEntityOfPage: { '@type': 'WebPage', '@id': url }, articleSection: guide.category, keywords: guide.keywords.join(', '), citation: sources.map(({ url: sourceUrl }) => sourceUrl), isAccessibleForFree: true },
       { '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl }, { '@type': 'ListItem', position: 2, name: 'Guides', item: `${baseUrl}/guides` }, { '@type': 'ListItem', position: 3, name: guide.title, item: url }] },
-      { '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: content.faqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
     ],
   };
 
