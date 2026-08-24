@@ -65,7 +65,7 @@ export default function SavingsHubTool() {
 
       <div className="flex flex-wrap gap-2 mb-8 bg-slate-100 dark:bg-slate-950 p-1.5 rounded-2xl w-fit border">
         {Object.keys(savingsSubTools).map((key) => (
-          <button key={key} onClick={() => router.push(`/tools/savings-retirement-hub/${key}`)} className={`px-4 py-2 rounded-xl text-xs font-bold capitalize transition-all ${suboption === key ? 'bg-white text-blue-600 shadow' : 'text-slate-500'}`}>{key.replace(/-/g, ' ')}</button>
+          <button key={key} onClick={() => router.push(key === 'ppf-calculator' || key === 'fd-calculator' ? `/tools/${key}` : `/tools/savings-retirement-hub/${key}`)} className={`px-4 py-2 rounded-xl text-xs font-bold capitalize transition-all ${suboption === key ? 'bg-white text-blue-600 shadow' : 'text-slate-500'}`}>{key.replace(/-/g, ' ')}</button>
         ))}
       </div>
 

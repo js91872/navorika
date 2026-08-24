@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
   },
 
   staticPageGenerationTimeout: 120,
-
   async redirects() {
     return [
       {
@@ -38,6 +37,11 @@ const nextConfig: NextConfig = {
       {
         source: '/tools/savings-retirement-hub/ppf-calculator',
         destination: '/tools/ppf-calculator',
+        permanent: true,
+      },
+      {
+        source: '/tools/taxation-compliance-deck/gst-calculator',
+        destination: '/tools/gst-calculator',
         permanent: true,
       },
     ];

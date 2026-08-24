@@ -35,9 +35,11 @@ export const toolsUnderReview = new Set([
 ]);
 
 export function createReviewMetadata(toolName: string): Metadata {
+  const slug = toolName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   return {
     title: `${toolName} Under Review`,
     description: `${toolName} is being rebuilt and is temporarily excluded from search indexing.`,
+    alternates: { canonical: `https://navorika.com/tools/${slug}` },
     robots: { index: false, follow: true },
   };
 }

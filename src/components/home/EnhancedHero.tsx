@@ -16,7 +16,7 @@ export default function EnhancedHero({ onSearchClick, toolCount }: EnhancedHeroP
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-400" />
           </span>
-          Zero-latency · Local processing
+          Fast · Privacy-first processing
         </div>
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] mb-6">
@@ -28,8 +28,8 @@ export default function EnhancedHero({ onSearchClick, toolCount }: EnhancedHeroP
         </h1>
 
         <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto text-lg mb-8">
-          {toolCount}+ utilities, calculators, and converters — all running
-          instantly in your browser. No uploads. No tracking.
+          {toolCount} utilities, calculators, and converters. Most process data
+          locally; tools using live external data identify their source.
         </p>
 
         <button
@@ -42,11 +42,11 @@ export default function EnhancedHero({ onSearchClick, toolCount }: EnhancedHeroP
         </button>
 
         <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-sm text-[var(--muted-foreground)]">
-          <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-emerald-500" /> 100% client-side</span>
+          <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-emerald-500" /> Privacy-first</span>
           <span className="w-px h-4 bg-[var(--border)]" />
-          <span className="flex items-center gap-2"><Zap className="h-4 w-4 text-indigo-500" /> No data uploaded</span>
+          <span className="flex items-center gap-2"><Zap className="h-4 w-4 text-indigo-500" /> Mostly local</span>
           <span className="w-px h-4 bg-[var(--border)]" />
-          <span className="flex items-center gap-2"><Sparkles className="h-4 w-4 text-amber-500" /> {toolCount}+ tools</span>
+          <span className="flex items-center gap-2"><Sparkles className="h-4 w-4 text-amber-500" /> {toolCount} tools</span>
         </div>
       </div>
     </section>

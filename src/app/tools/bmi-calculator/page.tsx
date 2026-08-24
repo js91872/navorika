@@ -45,7 +45,6 @@ const jsonLd = {
       { '@type': 'ListItem', position: 2, name: 'Health Calculators', item: 'https://navorika.com/categories/health-calculators' },
       { '@type': 'ListItem', position: 3, name: 'BMI Calculator', item: url },
     ] },
-    { '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
   ],
 };
 

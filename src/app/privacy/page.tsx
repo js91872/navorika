@@ -5,60 +5,54 @@ import { motion } from 'framer-motion';
 import { Shield, CheckCircle, ArrowLeft, Lock, Eye, Database, Cookie } from 'lucide-react';
 
 export default function PrivacyPage() {
-  const lastUpdated = 'August 4, 2026';
+  const lastUpdated = 'August 24, 2026';
 
   const sections = [
     {
       icon: <Shield className="h-6 w-6 text-indigo-500" />,
       title: 'Privacy First by Design',
-      content: 'At Navorika, privacy is not an afterthought—it\'s the foundation. Our platform is built from the ground up to process everything locally in your browser. We never receive, store, or have access to your files, data, or personal information.',
+      content: 'Most Navorika tools process files and inputs locally in your browser. Tools that require live external data identify their source. Information you deliberately submit through the contact form is sent to Navorika.',
     },
     {
       icon: <Lock className="h-6 w-6 text-indigo-500" />,
-      title: 'What We Do Not Collect',
-      content: 'We do not collect, store, or process any of the following on our servers:',
+      title: 'Tool Inputs and Files',
+      content: 'Local-processing tools do not send the selected file or entered calculation values to Navorika. Exceptions are stated by the relevant feature, including:',
       list: [
-        'Your files or documents uploaded to our tools',
-        'Your personal data (name, email, address, phone)',
-        'Your usage patterns or analytics',
-        'Your location or IP address',
-        'Cookies or tracking data',
+        'The currency converter requests the selected currency pair from its named rate provider',
+        'The contact form sends the email address and message you choose to submit',
+        'Site analytics may receive standard page and device information',
       ],
     },
     {
       icon: <Eye className="h-6 w-6 text-indigo-500" />,
       title: 'What Happens to Your Data',
-      content: 'Everything you do on Navorika stays on your device. Here\'s what happens:',
+      content: 'For tools labeled as local processing, the primary operation happens in your browser:',
       list: [
         'Files are processed locally in your browser using WebAssembly and JavaScript',
-        'No data is ever uploaded to any server',
-        'No logs are created or stored',
-        'No third-party scripts or trackers are loaded',
-        'Your data is never shared, sold, or used for any purpose',
+        'Selected files are handled by browser APIs and tool libraries',
+        'Generated downloads are created on your device',
+        'Live-data and contact features are separate and clearly described',
       ],
     },
     {
       icon: <Database className="h-6 w-6 text-indigo-500" />,
       title: 'Local Processing Explained',
-      content: 'Navorika uses cutting-edge client-side technologies to ensure everything runs locally:',
+      content: 'Navorika uses browser technologies for most tool operations:',
       list: [
         'PDF processing: Uses pdf-lib and pdf.js running entirely in your browser',
         'Image processing: Uses Canvas API and WebAssembly',
-        'Calculations: All formulas execute in JavaScript on your device',
-        'No server-side processing: Zero data leaves your computer',
-        'No external API calls: Everything is self-contained',
+        'Calculations: Most formulas execute in JavaScript on your device',
+        'External data: Live-rate tools contact the source identified in the tool',
       ],
     },
     {
       icon: <Cookie className="h-6 w-6 text-indigo-500" />,
-      title: 'Cookies & Tracking',
-      content: 'We believe in absolute privacy, which means:',
+      title: 'Analytics and Local Storage',
+      content: 'The site uses analytics to understand site usage and local storage for preferences:',
       list: [
-        'No tracking cookies are used',
-        'No analytics scripts are loaded',
         'No third-party advertising',
-        'No social media tracking',
-        'Only essential local storage for theme preference (dark/light mode)',
+        'Google Analytics is loaded on site pages',
+        'Theme preference may be stored locally in your browser',
       ],
     },
   ];
@@ -89,7 +83,7 @@ export default function PrivacyPage() {
           </div>
           <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm">
             <CheckCircle className="h-5 w-5 inline mr-2" />
-            <span className="font-medium">100% Client-Side Processing – Your data never leaves your device.</span>
+            <span className="font-medium">Most tools process data locally. Live-data tools identify their external source.</span>
           </div>
         </div>
 

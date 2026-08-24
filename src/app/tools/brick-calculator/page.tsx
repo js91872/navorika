@@ -68,7 +68,7 @@ export default function BrickCalculator() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
-        <h2 className="text-2xl font-bold mb-2">Brick Calculator</h2>
+        <h1 className="text-2xl font-bold mb-2">Brick Calculator</h1>
         <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate the number of bricks needed for your construction project.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

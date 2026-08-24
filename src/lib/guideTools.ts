@@ -20,7 +20,7 @@ export const guideTools: Record<string, string[]> = {
   'macronutrients-guide': ['calorie-calculator', 'bmi-calculator', 'bmr-calculator'],
   'json-formatting-guide': ['json-formatter'],
   'image-formats-guide': ['image-converter', 'compress-image', 'resize-image'],
-  'seo-tools-guide': ['webmaster-seo-builder']
+  'seo-tools-guide': ['webmaster-seo-builder', 'utm-builder', 'meta-tag-generator', 'robots-txt-generator']
 };
 
 export function getGuideTools(slug: string): string[] {

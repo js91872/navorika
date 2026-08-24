@@ -143,8 +143,8 @@ export default function Logo({
         </span>
 
         {showTagline && (
-          <span className="text-[10px] font-bold uppercase leading-none tracking-[0.15em] text-[var(--muted-foreground)]">
-            100+ Free Tools · Client-Side
+          <span className="text-[10px] font-bold text-[var(--muted-foreground)] tracking-[0.15em] uppercase leading-none">
+            Free Tools · Privacy-First
           </span>
         )}
       </div>
