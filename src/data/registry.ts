@@ -849,6 +849,15 @@ export const tools: RegisteredTool[] = ([
 
   // ====== CONSTRUCTION CALCULATORS ======
   {
+    slug: 'dumpster-weight-calculator',
+    title: 'Dumpster Weight Calculator – Estimate Tonnage & Overage Fees',
+    description: 'Estimate dumpster debris weight, included tonnage, excess weight and potential overage fees for concrete, drywall, shingles, lumber and mixed construction debris.',
+    category: 'construction-calculators',
+    keywords: ['dumpster weight calculator', 'dumpster tonnage calculator', 'dumpster overage calculator', 'construction debris weight calculator', 'dumpster weight allowance'],
+    heroTitle: 'Dumpster Weight & Overage Fee Calculator',
+    heroDescription: 'Estimate debris tonnage, compare it with the included weight allowance, and calculate potential dumpster overage fees.'
+  },
+  {
     slug: 'asphalt-calculator',
     title: 'Asphalt Calculator',
     description: 'Calculate asphalt quantity for driveways, roads, and parking lots.',

@@ -3,6 +3,61 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const planningLimits = ['Results are planning estimates, not engineering, supplier, hauling, compaction, or safety advice.', 'Confirm measured dimensions, material density, waste, load capacity, local units, and supplier minimums before ordering.'];
 
 export const constructionToolPages: Record<string, ToolPageContent> = {
+  'dumpster-weight-calculator': {
+    slug: 'dumpster-weight-calculator',
+    name: 'Dumpster Weight Calculator – Estimate Tonnage & Overage Fees',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Estimate dumpster debris weight, included tonnage, excess weight and potential overage fees for concrete, drywall, shingles, lumber and mixed construction debris.',
+    longTailKeywords: [
+      'dumpster weight calculator',
+      'dumpster tonnage calculator',
+      'dumpster overage fee calculator',
+      'construction debris weight calculator',
+      'dumpster weight limit',
+      'dumpster weight allowance',
+      'concrete dumpster weight',
+      'drywall dumpster weight',
+      'roofing shingles dumpster weight',
+    ],
+    intro: [
+      'Estimate the combined weight of multiple construction and household debris materials, then compare the result with the tonnage included in a dumpster rental.',
+      'The calculator runs locally in the browser and uses editable rental terms plus clearly stated planning factors for debris weight.',
+    ],
+    formula: [
+      { title: 'Debris weight', body: 'Quantity × estimated pounds per selected material unit, with an optional condition adjustment for moisture-sensitive estimates.' },
+      { title: 'Overage weight', body: 'Maximum of zero or estimated tons minus the included weight allowance.' },
+      { title: 'Potential fee', body: 'Estimated overage tons × the user-entered fee per ton.' },
+    ],
+    steps: [
+      'Choose a dumpster size for volume context and enter the included tonnage and contractual overage rate.',
+      'Add each debris material with its quantity and a supported unit.',
+      'Select an estimated material condition and review weight, allowance, overage, fee, and known-volume guidance.',
+    ],
+    interpretation: [
+      'The weight result is an estimate in pounds and US short tons, not a scale measurement.',
+      'Dumpster volume and included weight are separate constraints; dense debris can exceed tonnage before the container is full.',
+      'Potential fees use the entered rate and do not include taxes, minimum charges, prohibited-load fees, or other contract terms.',
+    ],
+    limitations: [
+      'Material factors are rounded planning assumptions and vary with composition, moisture, thickness, compaction, contamination, and demolition method.',
+      'Area-based drywall and shingle factors assume typical thickness or a single layer; verify unusual assemblies separately.',
+      'The rental company scale ticket, contract, fill rules, and local hauling requirements determine actual charges and permitted loads.',
+    ],
+    faqs: [
+      { question: 'Can a dumpster be overweight without being full?', answer: 'Yes. Dense materials can reach a tonnage allowance while using only part of the dumpster volume.' },
+      { question: 'How is estimated overage calculated?', answer: 'Estimated tons above the included allowance are multiplied by the fee per ton you enter.' },
+      { question: 'Are the material weights exact?', answer: 'No. They are rounded planning assumptions; actual scale weight can differ substantially.' },
+    ],
+    relatedTools: [
+      { slug: 'concrete-calculator', name: 'Concrete Calculator' },
+      { slug: 'gravel-calculator', name: 'Gravel Calculator' },
+      { slug: 'roof-area-calculator', name: 'Roof Area Calculator' },
+      { slug: 'excavation-calculator', name: 'Excavation Calculator' },
+    ],
+    relatedGuides: [],
+  },
+
   'construction-estimate-builder': {
     slug: 'construction-estimate-builder',
     name: 'Construction Estimate Builder',

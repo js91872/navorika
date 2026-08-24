@@ -133,6 +133,7 @@ export const toolIcons: Record<string, string> = {
   'construction-estimate-builder': '🧾',
   'contractor-estimate-generator': '📋',
   'construction-calculators': '🔨',
+  'dumpster-weight-calculator': '🗑️',
   'excavation-calculator': '🚜',
   'flooring-calculator': '🏠',
   'gravel-calculator': '🪨',
