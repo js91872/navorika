@@ -842,6 +842,54 @@ export const tools: RegisteredTool[] = ([
 
   // ====== CONSTRUCTION CALCULATORS ======
   {
+    slug: 'air-compressor-cfm-calculator',
+    title: 'Air Compressor CFM & Tank Runtime Calculator',
+    description: 'Compare compressor SCFM with air tool demand, duty cycle and tank capacity to estimate whether your compressor can keep up.',
+    category: 'construction-calculators',
+    keywords: [
+      'air compressor cfm calculator',
+      'compressor size calculator',
+      'air tool cfm calculator',
+      'compressor tank runtime calculator',
+      'compressor duty cycle calculator',
+      'what size air compressor do i need'
+    ],
+    heroTitle: 'Air Compressor CFM & Tank Runtime Calculator',
+    heroDescription: 'Compare compressor output with air tool demand and estimate whether your compressor can keep up.'
+  },
+  {
+    slug: 'ladder-safe-reach-calculator',
+    title: 'Ladder Safe Reach & 4:1 Calculator',
+    description: 'Estimate extension ladder base distance, setup angle, vertical height and approximate working reach using 4:1 geometry.',
+    category: 'construction-calculators',
+    keywords: [
+      'ladder height calculator',
+      'ladder reach calculator',
+      'ladder 4 to 1 calculator',
+      'ladder angle calculator',
+      'ladder distance from wall',
+      'extension ladder calculator'
+    ],
+    heroTitle: 'Ladder Safe Reach & 4:1 Calculator',
+    heroDescription: 'Estimate ladder base distance, angle, vertical height and approximate reach.'
+  },
+  {
+    slug: 'saw-kerf-calculator',
+    title: 'Saw Kerf & Board Width Calculator',
+    description: 'Calculate how many equal-width pieces can be cut from a board after accounting for saw kerf, cut loss and remaining offcut.',
+    category: 'construction-calculators',
+    keywords: [
+      'saw kerf calculator',
+      'kerf calculator',
+      'board width calculator',
+      'wood cutting calculator',
+      'saw blade kerf calculator',
+      'rip cut calculator'
+    ],
+    heroTitle: 'Saw Kerf & Board Width Calculator',
+    heroDescription: 'Calculate board yield, saw kerf loss, number of pieces and remaining offcut.'
+  },
+  {
     slug: 'dumpster-weight-calculator',
     title: 'Dumpster Weight Calculator – Estimate Tonnage & Overage Fees',
     description: 'Estimate dumpster debris weight, included tonnage, excess weight and potential overage fees for concrete, drywall, shingles, lumber and mixed construction debris.',

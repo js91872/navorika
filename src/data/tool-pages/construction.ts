@@ -3,6 +3,219 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const planningLimits = ['Results are planning estimates, not engineering, supplier, hauling, compaction, or safety advice.', 'Confirm measured dimensions, material density, waste, load capacity, local units, and supplier minimums before ordering.'];
 
 export const constructionToolPages: Record<string, ToolPageContent> = {
+  'air-compressor-cfm-calculator': {
+    slug: 'air-compressor-cfm-calculator',
+    name: 'Air Compressor CFM & Tank Runtime Calculator',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Compare compressor SCFM with air tool demand, usage duty cycle and tank capacity to estimate whether a compressor can keep up with an impact wrench, nailer, grinder, sander or spray gun.',
+    longTailKeywords: [
+      'air compressor cfm calculator',
+      'air tool cfm calculator',
+      'compressor size calculator',
+      'compressor tank runtime calculator',
+      'air compressor duty cycle calculator',
+      'what size compressor for impact wrench',
+      'what size compressor for spray gun',
+      'what size compressor for nail gun',
+      'how much cfm do i need',
+    ],
+    intro: [
+      'Compare the airflow produced by an air compressor with the average air demand of a pneumatic tool.',
+      'The calculator accounts for tool usage percentage and provides a planning estimate for compressor capacity, airflow margin and tank-runtime behavior.',
+    ],
+    formula: [
+      {
+        title: 'Average tool demand',
+        body: 'Rated tool CFM × estimated percentage of time the tool is actively consuming air.',
+      },
+      {
+        title: 'Airflow margin',
+        body: 'Compressor SCFM minus estimated average tool CFM.',
+      },
+      {
+        title: 'Recommended planning capacity',
+        body: 'Estimated average demand plus a modest airflow margin for planning purposes.',
+      },
+    ],
+    steps: [
+      'Enter compressor SCFM, pressure rating and tank size.',
+      'Choose a common air tool or enter the actual CFM and PSI from its manufacturer specification.',
+      'Estimate how much of each minute the tool is actively consuming air.',
+      'Review average demand, compressor margin, capacity status and the approximate tank-runtime indication.',
+    ],
+    interpretation: [
+      'A comfortable result means estimated average tool demand is materially below the entered compressor output.',
+      'A borderline result means real-world hose, fitting, regulator and pressure losses may become important.',
+      'If estimated demand exceeds compressor output, stored tank air can support temporary operation but cannot permanently replace insufficient pump capacity.',
+    ],
+    limitations: [
+      'Compressor SCFM should be compared at or near the pressure required by the tool whenever possible.',
+      'Actual airflow varies with compressor condition, altitude, temperature, hose length and diameter, fittings, regulators, leakage and manufacturer test methods.',
+      'Tank-runtime output is a simplified planning estimate and does not reproduce the exact pressure-switch or pump-recovery behavior of every compressor.',
+    ],
+    faqs: [
+      {
+        question: 'How much CFM does my air compressor need?',
+        answer: 'The compressor should supply at least the average airflow required by the tool at the required pressure, with additional margin where practical.',
+      },
+      {
+        question: 'Does a bigger air tank increase CFM?',
+        answer: 'No. A larger tank stores more compressed air but does not increase the compressor pump output.',
+      },
+      {
+        question: 'Why does tool duty cycle matter?',
+        answer: 'Intermittently used tools can have lower average air consumption than tools that run continuously.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'voltage-drop-calculator', name: 'Voltage Drop Calculator' },
+      { slug: 'wire-size-calculator', name: 'Wire Size Calculator' },
+    ],
+    relatedGuides: [],
+  },
+
+  'ladder-safe-reach-calculator': {
+    slug: 'ladder-safe-reach-calculator',
+    name: 'Ladder Safe Reach & 4:1 Calculator',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Estimate extension ladder base distance, setup angle, vertical height and approximate reach using 4:1 ladder geometry.',
+    longTailKeywords: [
+      'ladder height calculator',
+      'ladder reach calculator',
+      'ladder 4 to 1 calculator',
+      'ladder angle calculator',
+      'ladder distance from wall calculator',
+      'extension ladder length calculator',
+      'ladder working height calculator',
+    ],
+    intro: [
+      'Estimate the geometry of an extension or leaning ladder using the commonly referenced 4:1 setup relationship.',
+      'The calculator separates ladder length, vertical height, horizontal base distance and approximate reach so they are not confused with one another.',
+    ],
+    formula: [
+      {
+        title: '4:1 relationship',
+        body: 'Horizontal base distance is approximately one unit for every four units of vertical rise.',
+      },
+      {
+        title: 'Vertical height',
+        body: 'The ladder, wall and ground form a right triangle, so the ladder length is the hypotenuse rather than the vertical height.',
+      },
+      {
+        title: 'Approximate reach',
+        body: 'A planning estimate combines usable ladder height with entered user height; permitted standing levels must still come from the ladder manufacturer.',
+      },
+    ],
+    steps: [
+      'Select the ladder type.',
+      'Enter ladder length and user height.',
+      'Review the calculated base distance, vertical height, setup angle and approximate reach.',
+      'Use manufacturer instructions and applicable safety requirements before physically positioning or climbing a ladder.',
+    ],
+    interpretation: [
+      'For a leaning ladder, the 4:1 geometry produces an angle of roughly 76 degrees relative to the ground.',
+      'Ladder length is greater than vertical height because part of the ladder length spans the horizontal base distance.',
+      'Approximate reach is not a permitted standing-height recommendation.',
+    ],
+    limitations: [
+      'This calculator does not assess ground condition, ladder rating, electrical hazards, tie-off requirements, ladder damage, user capability or workplace conditions.',
+      'Manufacturer labels and applicable safety rules determine permitted setup and standing levels.',
+      'Step-ladder reach values are approximate planning figures because designs and permitted standing levels vary.',
+    ],
+    faqs: [
+      {
+        question: 'What is the 4:1 ladder rule?',
+        answer: 'It describes a setup relationship of about one unit of horizontal distance for every four units of vertical rise.',
+      },
+      {
+        question: 'What angle does the 4:1 ladder rule create?',
+        answer: 'The geometry produces an angle of approximately 76 degrees relative to the ground.',
+      },
+      {
+        question: 'Is ladder length the same as working height?',
+        answer: 'No. Ladder length, vertical height, permitted standing height and user reach are different measurements.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'roof-area-calculator', name: 'Roof Area Calculator' },
+      { slug: 'paint-calculator', name: 'Paint Calculator' },
+    ],
+    relatedGuides: [],
+  },
+
+  'saw-kerf-calculator': {
+    slug: 'saw-kerf-calculator',
+    name: 'Saw Kerf & Board Width Calculator',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Calculate how many equal-width pieces fit in a board after accounting for saw blade kerf, material removed by cuts and the remaining offcut.',
+    longTailKeywords: [
+      'saw kerf calculator',
+      'kerf calculator',
+      'board width calculator',
+      'saw blade kerf calculator',
+      'wood cutting calculator',
+      'rip cut calculator',
+      'board cutting calculator',
+      'how many boards can i cut',
+    ],
+    intro: [
+      'Calculate the maximum number of equal-width strips or boards that can be cut from a known stock width.',
+      'The calculator accounts for saw kerf so the material removed by the blade is not accidentally treated as usable finished width.',
+    ],
+    formula: [
+      {
+        title: 'Material required',
+        body: 'Number of pieces × finished piece width + number of cuts × saw kerf.',
+      },
+      {
+        title: 'Kerf loss',
+        body: 'Number of cuts × entered kerf width.',
+      },
+      {
+        title: 'Offcut',
+        body: 'Stock width minus finished-piece width and calculated kerf loss.',
+      },
+    ],
+    steps: [
+      'Measure the usable width of the stock.',
+      'Enter the desired finished width of each equal piece.',
+      'Enter the actual or nominal kerf width of the saw blade.',
+      'Review piece count, kerf loss, material utilization and remaining offcut.',
+    ],
+    interpretation: [
+      'Kerf becomes increasingly important as the number of cuts increases.',
+      'The calculator reports only complete equal-width pieces that fit inside the entered stock width.',
+      'Remaining offcut may still be reusable depending on the project.',
+    ],
+    limitations: [
+      'Actual kerf can differ from blade-body thickness because of tooth geometry, blade runout, wear and machine setup.',
+      'The calculation does not automatically reserve stock for jointing, edge trimming, sanding, defects or finishing tolerance.',
+      'Use actual measurements and verify a cut plan before processing valuable material.',
+    ],
+    faqs: [
+      {
+        question: 'What is saw kerf?',
+        answer: 'Kerf is the width of material removed by a saw blade during a cut.',
+      },
+      {
+        question: 'Is blade thickness the same as kerf?',
+        answer: 'Not always. Tooth geometry and blade behavior can make the actual cut wider than the blade body.',
+      },
+      {
+        question: 'Why should kerf be included in a cut list?',
+        answer: 'Every cut removes material, so ignoring kerf can make the planned finished widths exceed the available stock.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'board-foot-calculator', name: 'Board Foot Calculator' },
+      { slug: 'construction-estimate-builder', name: 'Construction Estimate Builder' },
+    ],
+    relatedGuides: [],
+  },
+
   'dumpster-weight-calculator': {
     slug: 'dumpster-weight-calculator',
     name: 'Dumpster Weight Calculator – Estimate Tonnage & Overage Fees',
