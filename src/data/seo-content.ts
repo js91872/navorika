@@ -1825,28 +1825,6 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
-  'target-heart-rate-calculator': {
-    metaTitle: 'Target Heart Rate Calculator - Free Online Target Heart Rate Calculator | Navorika',
-    metaDescription: 'Use our free Target Heart Rate Calculator to get accurate results instantly. Fast, private, and no signup required.',
-    intro: 'Target Heart Rate Calculator is a free online tool that helps you perform target heart rate calculator quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
-    howItWorks: 'This tool processes your data entirely in your browser. No data is stored or transmitted.',
-    benefits: ['100% free - no hidden costs', 'Private by design - no data stored', 'Works on any device', 'No signup required', 'Instant processing', 'Based on validated formulas'],
-    useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
-    stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
-    tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['bmr-calculator', 'tdee-calculator', 'body-fat-calculator', 'ideal-weight-calculator'],
-    faq: [
-      {'question': 'What is Target Heart Rate Calculator?', 'answer': 'Target Heart Rate Calculator is a free online tool that helps you with target heart rate calculator quickly and easily.'},
-      {'question': 'Is Target Heart Rate Calculator really free?', 'answer': 'Yes, Target Heart Rate Calculator is completely free to use with no hidden costs.'},
-      {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
-      {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
-      {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}
-    ],
-    schemaType: 'WebApplication',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'All',
-    browserRequirements: 'Modern browser with JavaScript enabled'
-  },
   'tax-calculator': {
     metaTitle: 'Tax Calculator - Free Online Tax Calculator | Navorika',
     metaDescription: 'Use our free Tax Calculator to get accurate results instantly. Fast, private, and no signup required.',

@@ -89,7 +89,6 @@ export const toolIcons: Record<string, string> = {
   'ideal-weight-calculator': '⚖️',
   'lean-body-mass-calculator': '💪',
   'running-calories-calculator': '🏃',
-  'target-heart-rate-calculator': '❤️',
   'tdee-calculator': '🔥',
   'waist-to-height-ratio-calculator': '📏',
   'waist-to-hip-ratio-calculator': '📏',

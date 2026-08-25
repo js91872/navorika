@@ -10,7 +10,7 @@ export const guideTools: Record<string, string[]> = {
   'how-to-resize-images': ['resize-image', 'crop-image', 'rotate-image'],
   'gst-calculation-guide': ['gst-calculator', 'tax-calculator'],
   'pdf-security-guide': ['protect-pdf', 'unlock-pdf', 'sign-pdf'],
-  'heart-rate-zones-guide': ['heart-rate-calculator', 'target-heart-rate-calculator'],
+  'heart-rate-zones-guide': ['heart-rate-calculator'],
   'ppf-vs-fd-comparison': ['ppf-calculator', 'fd-calculator', 'sip-calculator'],
   'base64-encoding-guide': ['base64-encoder', 'jwt-decoder'],
   'qr-code-guide': ['qr-code-generator'],

@@ -44,6 +44,11 @@ const nextConfig: NextConfig = {
         destination: '/tools/gst-calculator',
         permanent: true,
       },
+      {
+        source: '/tools/target-heart-rate-calculator',
+        destination: '/tools/heart-rate-calculator',
+        permanent: true,
+      },
     ];
   },
 };

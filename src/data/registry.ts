@@ -622,9 +622,9 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'heart-rate-calculator',
     title: 'Heart Rate Calculator',
-    description: 'Calculate your target heart rate zones online free. Optimize your workout intensity.',
+    description: 'Convert a manual pulse count to BPM and estimate maximum heart rate, reserve, and exercise zones by age.',
     category: 'health-calculators',
-    keywords: ['heart-rate-calculator', 'heart', 'rate', 'calculator']
+    keywords: ['heart rate calculator', 'pulse to bpm', 'beats per minute', 'maximum heart rate', 'exercise zones']
   },
   {
     slug: 'ideal-weight-calculator',
@@ -646,13 +646,6 @@ export const tools: RegisteredTool[] = ([
     description: 'Calculate calories burned while running online free. Track your running calorie expenditure.',
     category: 'health-calculators',
     keywords: ['running-calories-calculator', 'running', 'calories', 'calculator']
-  },
-  {
-    slug: 'target-heart-rate-calculator',
-    title: 'Target Heart Rate Calculator',
-    description: 'Calculate your target heart rate zone online free. Optimize your workout intensity.',
-    category: 'health-calculators',
-    keywords: ['target-heart-rate-calculator', 'target', 'heart', 'rate', 'calculator']
   },
   {
     slug: 'tdee-calculator',
