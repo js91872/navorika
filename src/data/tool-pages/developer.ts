@@ -3,6 +3,217 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const local = 'Input is processed locally in your browser and is not sent to Navorika.';
 
 export const developerToolPages: Record<string, ToolPageContent> = {
+  'cidr-subnet-wildcard-calculator': {
+    slug: 'cidr-subnet-wildcard-calculator',
+    name: 'CIDR, Subnet & Wildcard Mask Calculator',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert IPv4 CIDR notation into subnet masks, Cisco wildcard masks, network and broadcast addresses, usable host ranges and address counts.',
+    longTailKeywords: [
+      'cidr calculator',
+      'subnet calculator',
+      'wildcard mask calculator',
+      'cisco wildcard mask calculator',
+      'ipv4 subnet calculator',
+      'cidr to subnet mask',
+      'subnet mask to wildcard mask',
+    ],
+    intro: [
+      'Calculate IPv4 network information directly from an address and CIDR prefix.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'Subnet mask',
+        body: 'The CIDR prefix defines how many of the 32 IPv4 bits belong to the network portion.',
+      },
+      {
+        title: 'Wildcard mask',
+        body: 'Wildcard mask = bitwise inverse of the subnet mask.',
+      },
+      {
+        title: 'Host range',
+        body: 'Network and broadcast boundaries are calculated from the masked IPv4 address and remaining host bits.',
+      },
+    ],
+    steps: [
+      'Enter an IPv4 address followed by a CIDR prefix such as 192.168.1.0/27.',
+      'Review subnet mask, wildcard mask, network address and broadcast address.',
+      'Check the host range, total address count and usable address count.',
+      'Copy values for documentation or network configuration.',
+    ],
+    interpretation: [
+      'A /24 network has 24 network bits and 8 host bits.',
+      'A wildcard mask contains zeros where corresponding subnet-mask bits are ones, and vice versa.',
+      'The calculator recognizes /31 point-to-point semantics and /32 single-address networks.',
+    ],
+    limitations: [
+      'The calculator supports IPv4 only.',
+      'Network policy, routing and ACL correctness depend on the actual device and configuration.',
+    ],
+    faqs: [
+      {
+        question: 'What is the wildcard mask for /24?',
+        answer: '0.0.0.255.',
+      },
+      {
+        question: 'How many usable hosts are in a /27?',
+        answer: 'A conventional /27 provides 30 usable host addresses.',
+      },
+      {
+        question: 'Does this support IPv6?',
+        answer: 'No. This calculator currently handles IPv4 CIDR networks only.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'developer-utils', name: 'Developer Utils' },
+      { slug: 'unix-timestamp-converter', name: 'Unix Timestamp Converter' },
+    ],
+    relatedGuides: [],
+  },
+
+  'aws-glacier-retrieval-calculator': {
+    slug: 'aws-glacier-retrieval-calculator',
+    name: 'AWS S3 Glacier Retrieval Cost Calculator',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Estimate S3 Glacier Flexible Retrieval and Deep Archive restore costs from data volume, object count and current AWS regional pricing.',
+    longTailKeywords: [
+      'aws glacier cost calculator',
+      'glacier retrieval cost calculator',
+      's3 glacier retrieval calculator',
+      'deep archive retrieval cost',
+      'aws deep archive calculator',
+      'glacier restore cost',
+      's3 archive retrieval cost',
+    ],
+    intro: [
+      'Estimate archive restore cost without navigating through a full cloud infrastructure pricing model.',
+      'AWS prices vary by Region and can change, so the calculator uses editable user-entered pricing rather than claiming one universal rate.',
+    ],
+    formula: [
+      {
+        title: 'Retrieval cost',
+        body: 'Data retrieved in GB × entered retrieval price per GB.',
+      },
+      {
+        title: 'Request cost',
+        body: 'Object count ÷ 1,000 × entered restore-request price per 1,000 requests.',
+      },
+      {
+        title: 'Temporary copy',
+        body: 'Restored data × monthly temporary-storage rate × restore days ÷ 30.',
+      },
+    ],
+    steps: [
+      'Choose Glacier Flexible Retrieval or Deep Archive.',
+      'Choose a supported retrieval tier.',
+      'Enter data volume and number of archived objects.',
+      'Enter the current AWS rates for your Region.',
+      'Optionally include temporary restored-copy storage.',
+      'Review the estimated cost breakdown and typical retrieval-time range.',
+    ],
+    interpretation: [
+      'Retrieval speed and price depend on storage class and retrieval tier.',
+      'Glacier Flexible Retrieval supports Expedited, Standard and Bulk options.',
+      'Deep Archive supports Standard and Bulk retrieval but not Expedited retrieval.',
+    ],
+    limitations: [
+      'The calculator does not automatically fetch current AWS prices.',
+      'It does not include every possible AWS charge such as taxes, data transfer, lifecycle, early deletion, Batch Operations or unrelated API requests.',
+      'Actual retrieval times and charges are determined by AWS.',
+    ],
+    faqs: [
+      {
+        question: 'Why are AWS prices entered manually?',
+        answer: 'Pricing varies by Region and changes over time, so editable rates make the calculation more durable.',
+      },
+      {
+        question: 'Can Deep Archive use Expedited retrieval?',
+        answer: 'No. Deep Archive supports Standard and Bulk retrieval tiers.',
+      },
+      {
+        question: 'Does the calculator include temporary restored-copy storage?',
+        answer: 'Yes, optionally, using the monthly rate and restore duration you enter.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'developer-utils', name: 'Developer Utils' },
+      { slug: 'dimensional-weight-calculator', name: 'Dimensional Weight Calculator' },
+    ],
+    relatedGuides: [],
+  },
+
+  'json-to-csv-flattener': {
+    slug: 'json-to-csv-flattener',
+    name: 'JSON to CSV Converter & Nested JSON Flattener',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert nested JSON objects or arrays into flat CSV columns, preview the result and download CSV locally in your browser.',
+    longTailKeywords: [
+      'json to csv',
+      'json to csv converter',
+      'nested json to csv',
+      'flatten json online',
+      'json flatten tool',
+      'json array to csv',
+      'convert json to excel csv',
+    ],
+    intro: [
+      'Paste JSON and immediately see how nested object keys are flattened into CSV columns.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'Nested keys',
+        body: 'Nested object paths become flattened column names using dot or underscore notation.',
+      },
+      {
+        title: 'CSV rows',
+        body: 'Each top-level object becomes one CSV row and missing values remain blank.',
+      },
+      {
+        title: 'Arrays',
+        body: 'Arrays can be retained as JSON text or joined into one cell.',
+      },
+    ],
+    steps: [
+      'Paste a JSON object or array of objects.',
+      'Choose dot or underscore notation for nested keys.',
+      'Choose how arrays should be represented.',
+      'Preview the flattened table and CSV output.',
+      'Copy or download the resulting CSV.',
+    ],
+    interpretation: [
+      'Nested fields such as address.city become individual columns rather than remaining embedded objects.',
+      'The generated CSV can be opened in spreadsheet applications and many data-analysis tools.',
+    ],
+    limitations: [
+      'Highly irregular JSON structures may require additional data modeling after conversion.',
+      'Nested arrays of objects are represented within cells rather than exploded into multiple relational tables.',
+      'Very large browser inputs may be limited by device memory.',
+    ],
+    faqs: [
+      {
+        question: 'Can this flatten nested JSON?',
+        answer: 'Yes. Nested object paths become flat CSV column names.',
+      },
+      {
+        question: 'Is my JSON uploaded?',
+        answer: 'No. Conversion happens locally in the browser.',
+      },
+      {
+        question: 'Can I download the CSV?',
+        answer: 'Yes. The converted dataset can be downloaded as a CSV file.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'json-formatter', name: 'JSON Formatter' },
+      { slug: 'developer-utils', name: 'Developer Utils' },
+    ],
+    relatedGuides: [],
+  },
+
   'css-clamp-font-generator': {
     slug: 'css-clamp-font-generator',
     name: 'CSS clamp() Font Size Generator',

@@ -95,6 +95,9 @@ export const toolIcons: Record<string, string> = {
   'walking-calories-calculator': '🚶',
 
   // ====== DEVELOPER TOOLS ======
+  'cidr-subnet-wildcard-calculator': '🌐',
+  'json-to-csv-flattener': '📊',
+  'aws-glacier-retrieval-calculator': '🧊',
   'base64-encoder': '🔐',
   'code-minifier-beautifier': '💻',
   'developer-tools': '💻',

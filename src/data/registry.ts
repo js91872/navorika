@@ -840,6 +840,52 @@ export const tools: RegisteredTool[] = ([
     keywords: ['robots txt generator', 'robots.txt builder', 'crawler directive generator']
   },
 
+  {
+    slug: 'cidr-subnet-wildcard-calculator',
+    title: 'CIDR, Subnet & Wildcard Mask Calculator',
+    description: 'Convert IPv4 CIDR notation into subnet masks, Cisco wildcard masks, network and broadcast addresses, host ranges and address counts.',
+    category: 'developer-tools',
+    keywords: [
+      'cidr calculator',
+      'subnet calculator',
+      'wildcard mask calculator',
+      'cisco wildcard mask',
+      'ipv4 subnet calculator'
+    ],
+    heroTitle: 'CIDR, Subnet & Wildcard Mask Calculator',
+    heroDescription: 'Calculate subnet masks, wildcard masks, IPv4 ranges and usable hosts instantly.'
+  },
+  {
+    slug: 'json-to-csv-flattener',
+    title: 'JSON to CSV Converter & Nested JSON Flattener',
+    description: 'Convert nested JSON into CSV, flatten object keys into columns, preview the result and download CSV locally in your browser.',
+    category: 'developer-tools',
+    keywords: [
+      'json to csv',
+      'json to csv converter',
+      'flatten json',
+      'nested json to csv',
+      'json csv converter'
+    ],
+    heroTitle: 'JSON to CSV & Nested JSON Flattener',
+    heroDescription: 'Flatten nested JSON into clean CSV columns and download the result locally.'
+  },
+  {
+    slug: 'aws-glacier-retrieval-calculator',
+    title: 'AWS S3 Glacier Retrieval Cost Calculator',
+    description: 'Estimate S3 Glacier Flexible Retrieval and Deep Archive restore costs using current regional retrieval, request and temporary-storage rates.',
+    category: 'developer-tools',
+    keywords: [
+      'aws glacier cost calculator',
+      'glacier retrieval cost calculator',
+      'deep archive retrieval cost',
+      's3 glacier calculator',
+      'aws restore cost'
+    ],
+    heroTitle: 'AWS S3 Glacier Retrieval Cost Calculator',
+    heroDescription: 'Estimate archive retrieval, request and temporary restored-copy costs using your current AWS regional rates.'
+  },
+
   // ====== CONSTRUCTION CALCULATORS ======
   {
     slug: 'air-compressor-cfm-calculator',
