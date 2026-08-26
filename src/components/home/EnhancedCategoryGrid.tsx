@@ -14,6 +14,7 @@ const iconMap: Record<string, string> = {
   PiggyBank: '💰',
   Globe: '🌍',
   Hammer: '🔨',
+  Wrench: '🔧',
 };
 
 export default function EnhancedCategoryGrid() {

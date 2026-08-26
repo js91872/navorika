@@ -16,6 +16,7 @@ import {
   Heart,
   Code,
   Wrench,
+  Globe,
   Rocket
 } from 'lucide-react';
 import { tools, categories } from '@/data/registry';
@@ -97,6 +98,7 @@ export default function HomePage() {
     'health-calculators': <Heart className="h-6 w-6" />,
     'developer-tools': <Code className="h-6 w-6" />,
     'construction-calculators': <Wrench className="h-6 w-6" />,
+    'everyday-calculators': <Globe className="h-6 w-6" />,
   };
 
   const categoryColors = {

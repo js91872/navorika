@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { X, Search } from 'lucide-react';
-import { tools } from '@/data/registry';
+import { tools, type RegisteredTool } from '@/data/registry';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 interface SearchOverlayProps {
@@ -13,13 +13,21 @@ interface SearchOverlayProps {
 
 export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<RegisteredTool[]>([]);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 100);
+      setQuery('');
+      setResults([]);
+
+      const timer = window.setTimeout(
+        () => inputRef.current?.focus(),
+        100,
+      );
+
+      return () => window.clearTimeout(timer);
     }
   }, [isOpen]);
 

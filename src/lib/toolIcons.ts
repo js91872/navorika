@@ -1,5 +1,17 @@
 // Comprehensive icon mapping for all tools
 export const toolIcons: Record<string, string> = {
+  // ====== AUTO-AUDITED TOOL ICONS ======
+  'css-gradient-generator': '🎨',
+  'developer-utilities': '🛠️',
+  'finance-calculators': '🛠️',
+  'health-calculators': '🛠️',
+  'meta-tag-generator': '🔍',
+  'regex-tester': '🔤',
+  'robots-txt-generator': '🤖',
+  'unix-timestamp-converter': '🕒',
+  'utm-builder': '🔗',
+  'uuid-generator': '🆔',
+
   // ====== PDF TOOLS ======
   'add-image-to-pdf': '📄',
   'add-page-numbers': '🔢',

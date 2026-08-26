@@ -1,7 +1,6 @@
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/footer/Footer';
+import ClientLayout from '@/components/ClientLayout';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import type { Metadata } from 'next';
 
@@ -105,12 +104,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen flex flex-col transition-colors duration-300">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }} />
         <ThemeProvider>
-          <Navbar />
-          <main className="flex-1 pt-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+          <ClientLayout>
             <Breadcrumb />
             {children}
-          </main>
-          <Footer />
+          </ClientLayout>
         </ThemeProvider>
       </body>
     </html>
