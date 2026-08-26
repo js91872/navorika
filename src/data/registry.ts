@@ -936,6 +936,37 @@ export const tools: RegisteredTool[] = ([
     heroDescription: 'Calculate board yield, saw kerf loss, number of pieces and remaining offcut.'
   },
   {
+    slug: 'osha-portable-toilet-calculator',
+    title: 'OSHA Portable Toilet Calculator',
+    description: 'Calculate construction-jobsite toilet fixture minimums from workforce size using OSHA 29 CFR 1926.51(c)(1), Table D-1.',
+    category: 'construction-calculators',
+    keywords: [
+      'osha portable toilet calculator',
+      'osha toilet requirements construction',
+      'portable toilets per worker',
+      'construction toilet ratio',
+      'osha porta potty requirements'
+    ],
+    heroTitle: 'OSHA Portable Toilet Calculator',
+    heroDescription: 'Calculate OSHA construction-jobsite sanitation fixture minimums from workforce size.'
+  },
+  {
+    slug: 'egress-window-code-checker',
+    title: 'Egress Window Code Checker',
+    description: 'Check net clear window opening width, height, area and sill height against commonly referenced IRC emergency escape and rescue opening dimensions.',
+    category: 'construction-calculators',
+    keywords: [
+      'egress window calculator',
+      'egress window code checker',
+      'egress window requirements',
+      'basement egress window calculator',
+      'egress window size calculator',
+      'legal bedroom egress window'
+    ],
+    heroTitle: 'Egress Window Code Checker',
+    heroDescription: 'Check window clear opening dimensions against commonly referenced IRC egress criteria.'
+  },
+  {
     slug: 'dumpster-weight-calculator',
     title: 'Dumpster Weight Calculator – Estimate Tonnage & Overage Fees',
     description: 'Estimate dumpster debris weight, included tonnage, excess weight and potential overage fees for concrete, drywall, shingles, lumber and mixed construction debris.',

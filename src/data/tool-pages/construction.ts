@@ -3,6 +3,145 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const planningLimits = ['Results are planning estimates, not engineering, supplier, hauling, compaction, or safety advice.', 'Confirm measured dimensions, material density, waste, load capacity, local units, and supplier minimums before ordering.'];
 
 export const constructionToolPages: Record<string, ToolPageContent> = {
+  'osha-portable-toilet-calculator': {
+    slug: 'osha-portable-toilet-calculator',
+    name: 'OSHA Portable Toilet Calculator',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Calculate construction-jobsite toilet fixture minimums from workforce size using the thresholds in OSHA 29 CFR 1926.51(c)(1), Table D-1.',
+    longTailKeywords: [
+      'osha portable toilet calculator',
+      'osha toilet requirements construction',
+      'portable toilets per worker',
+      'construction toilet ratio',
+      'osha porta potty requirements',
+      'how many portable toilets construction site',
+    ],
+    intro: [
+      'Estimate the numerical OSHA construction-jobsite sanitation minimum from the number of employees.',
+      'The calculator separates the regulatory fixture ratio from portable-unit configuration so users do not assume every rental unit is identical.',
+    ],
+    formula: [
+      {
+        title: '20 or fewer employees',
+        body: 'Table D-1 specifies at least one toilet facility.',
+      },
+      {
+        title: 'More than 20 and fewer than 200',
+        body: 'One toilet seat and one urinal per 40 workers, rounded up to the next whole fixture set.',
+      },
+      {
+        title: '200 or more',
+        body: 'One toilet seat and one urinal per 50 workers, rounded up to the next whole fixture set.',
+      },
+    ],
+    steps: [
+      'Enter the number of employees on the construction jobsite.',
+      'Review the applicable OSHA workforce range.',
+      'Review the calculated toilet-seat, urinal or facility minimum.',
+      'Confirm actual portable-unit configuration and any state or local requirements before ordering.',
+    ],
+    interpretation: [
+      'The result is based on OSHA construction sanitation thresholds rather than event attendance ratios.',
+      'For larger workforces, the regulatory table describes toilet seats and urinals rather than a universal portable-unit design.',
+      'Sanitary condition and reasonable access remain important even when the numerical minimum is satisfied.',
+    ],
+    limitations: [
+      'State-plan OSHA requirements, local sanitation rules, contracts and project requirements can be more stringent.',
+      'The calculator does not determine servicing frequency, accessibility requirements or event sanitation quantities.',
+      'Actual portable toilets differ in whether they contain a seat, urinal or both.',
+    ],
+    faqs: [
+      {
+        question: 'How many toilets are required for 20 construction workers?',
+        answer: 'OSHA Table D-1 specifies at least one toilet facility for 20 or fewer employees.',
+      },
+      {
+        question: 'What ratio applies below 200 workers after the first threshold?',
+        answer: 'The table specifies one toilet seat and one urinal per 40 workers.',
+      },
+      {
+        question: 'What ratio applies for 200 or more workers?',
+        answer: 'The table specifies one toilet seat and one urinal per 50 workers.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'construction-estimate-builder', name: 'Construction Estimate Builder' },
+      { slug: 'dumpster-weight-calculator', name: 'Dumpster Weight Calculator' },
+    ],
+    relatedGuides: [],
+  },
+
+  'egress-window-code-checker': {
+    slug: 'egress-window-code-checker',
+    name: 'Egress Window Code Checker',
+    category: 'Construction Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Check net clear opening width, height, area and sill height against commonly referenced IRC emergency escape and rescue opening dimensions.',
+    longTailKeywords: [
+      'egress window calculator',
+      'egress window code checker',
+      'egress window size calculator',
+      'basement egress window requirements',
+      'legal bedroom egress window',
+      'egress window clear opening calculator',
+    ],
+    intro: [
+      'Enter actual net clear opening dimensions to check the measurable emergency escape and rescue opening thresholds commonly referenced from IRC R310.',
+      'The result is a dimension check only and does not determine whether a room legally qualifies as a bedroom.',
+    ],
+    formula: [
+      {
+        title: 'Net clear area',
+        body: 'Clear width in inches × clear height in inches ÷ 144 = clear opening area in square feet.',
+      },
+      {
+        title: 'Standard area threshold',
+        body: 'The referenced minimum net clear opening is 5.7 square feet.',
+      },
+      {
+        title: 'Grade-floor exception',
+        body: 'A qualifying grade-floor emergency escape and rescue opening can use a 5.0-square-foot minimum.',
+      },
+    ],
+    steps: [
+      'Measure the actual net clear opening width and height produced by normal window operation.',
+      'Measure the height from the floor to the bottom of the clear opening.',
+      'Choose the grade-floor exception only if it applies under the locally adopted code.',
+      'Review each width, height, area and sill-height criterion separately.',
+    ],
+    interpretation: [
+      'The referenced minimum clear width is 20 inches.',
+      'The referenced minimum clear height is 24 inches.',
+      'The referenced maximum height from the floor to the bottom of the clear opening is 44 inches.',
+      'Minimum width and minimum height do not replace the separate minimum clear-area requirement.',
+    ],
+    limitations: [
+      'Building-code edition and local amendments vary by jurisdiction.',
+      'The checker does not evaluate window wells, ladders, operational constraints, decks, smoke alarms, ventilation, ceiling height or permitting.',
+      'Passing these selected measurements does not itself establish legal-bedroom status.',
+    ],
+    faqs: [
+      {
+        question: 'Is a 20 by 24 inch opening enough?',
+        answer: 'No. Although those dimensions satisfy the individual minimum width and height, they produce only about 3.33 square feet of clear area.',
+      },
+      {
+        question: 'What is the standard clear opening area?',
+        answer: 'The referenced IRC minimum is generally 5.7 square feet, with a 5.0-square-foot grade-floor exception when applicable.',
+      },
+      {
+        question: 'Does passing this checker make the room a legal bedroom?',
+        answer: 'No. Other local building-code and permitting requirements can apply.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'ladder-safe-reach-calculator', name: 'Ladder Safe Reach Calculator' },
+      { slug: 'paint-calculator', name: 'Paint Calculator' },
+    ],
+    relatedGuides: [],
+  },
+
   'air-compressor-cfm-calculator': {
     slug: 'air-compressor-cfm-calculator',
     name: 'Air Compressor CFM & Tank Runtime Calculator',

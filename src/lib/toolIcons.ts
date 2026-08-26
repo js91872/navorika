@@ -138,6 +138,8 @@ export const toolIcons: Record<string, string> = {
   'air-compressor-cfm-calculator': '💨',
   'ladder-safe-reach-calculator': '🪜',
   'saw-kerf-calculator': '🪚',
+  'osha-portable-toilet-calculator': '🚻',
+  'egress-window-code-checker': '🪟',
   'dumpster-weight-calculator': '🗑️',
   'excavation-calculator': '🚜',
   'flooring-calculator': '🏠',
