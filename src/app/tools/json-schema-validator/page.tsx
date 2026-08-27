@@ -1,0 +1,2 @@
+import JsonSchemaValidator from '@/components/tools/JsonSchemaValidator'; import ExpansionToolPage from '@/components/tools/ExpansionToolPage';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="JSON validation tool" title="JSON Schema Validator" description="Validate JSON data against a useful documented subset of JSON Schema and inspect readable error paths."><JsonSchemaValidator /></ExpansionToolPage>}

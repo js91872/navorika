@@ -80,7 +80,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/sitemap" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
-                  XML Sitemap
+                  Sitemap
                 </Link>
               </li>
               <li>

@@ -1,0 +1,2 @@
+import CsvToJsonConverter from '@/components/tools/CsvToJsonConverter'; import ExpansionToolPage from '@/components/tools/ExpansionToolPage';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Data conversion tool" title="CSV to JSON Converter" description="Parse quoted CSV correctly, preview rows, infer simple value types and download formatted JSON locally in your browser."><CsvToJsonConverter /></ExpansionToolPage>}
