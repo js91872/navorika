@@ -15,7 +15,7 @@ export default function SitemapPage() {
     { href: '/tools', label: 'All Tools' },
     { href: '/guides', label: 'Guides' },
     { href: '/privacy', label: 'Privacy Policy' },
-    { href: '/sitemap', label: 'XML Sitemap' },
+    { href: '/sitemap', label: 'Sitemap' },
   ];
 
   const allCategories = categories.map(c => ({
@@ -50,7 +50,7 @@ export default function SitemapPage() {
               <Globe className="h-8 w-8" />
             </div>
             <div>
-              <h1 className="text-3xl sm:text-4xl font-black tracking-tight">XML Sitemap</h1>
+              <h1 className="text-3xl sm:text-4xl font-black tracking-tight">Sitemap</h1>
               <p className="text-[var(--muted-foreground)] mt-1">
                 Complete site structure with {pages.length + allCategories.length + totalTools + allGuides.length} pages
               </p>
