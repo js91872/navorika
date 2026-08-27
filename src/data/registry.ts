@@ -856,6 +856,41 @@ export const tools: RegisteredTool[] = ([
     heroDescription: 'Calculate subnet masks, wildcard masks, IPv4 ranges and usable hosts instantly.'
   },
   {
+    slug: 'csv-to-json-converter', title: 'CSV to JSON Converter',
+    description: 'Convert properly quoted CSV into formatted JSON with delimiter controls, header handling, type inference, preview and download.',
+    category: 'developer-tools', keywords: ['csv to json converter', 'convert csv to json', 'csv parser', 'csv json download'],
+    heroTitle: 'CSV to JSON Converter', heroDescription: 'Parse CSV safely and turn rows into clean, downloadable JSON.'
+  },
+  { slug:'ip-range-calculator',title:'IP Range Calculator',description:'Calculate IPv4 range size, boundaries, smallest containing CIDR and an exact CIDR block decomposition.',category:'developer-tools',keywords:['ip range calculator','ipv4 range to cidr','address range size'],heroTitle:'IP Range Calculator',heroDescription:'Analyze an IPv4 start and end range and copy exact CIDR blocks.' },
+  { slug:'vlsm-subnet-calculator',title:'VLSM Subnet Calculator',description:'Allocate non-overlapping variable-length IPv4 subnets largest-first from usable-host requirements.',category:'developer-tools',keywords:['vlsm calculator','variable length subnet calculator','subnet allocation'],heroTitle:'VLSM Subnet Calculator',heroDescription:'Plan largest-first IPv4 subnet allocations inside a parent CIDR.' },
+  { slug:'mac-address-generator',title:'MAC Address Generator',description:'Generate random unicast MAC addresses using Web Crypto with local-bit, case and separator controls.',category:'developer-tools',keywords:['mac address generator','random mac generator','locally administered mac'],heroTitle:'MAC Address Generator',heroDescription:'Generate formatted random unicast MAC addresses for testing.' },
+  { slug:'cron-next-run-calculator',title:'Cron Next Run Calculator',description:'Validate standard five-field cron expressions and calculate upcoming runs in common IANA time zones.',category:'developer-tools',keywords:['cron next run calculator','cron schedule preview','next cron time'],heroTitle:'Cron Next Run Calculator',heroDescription:'Preview the next five or ten standard cron run times.' },
+  { slug:'http-status-code-lookup',title:'HTTP Status Code Lookup',description:'Search common standardized HTTP status codes by number, phrase, class, meaning, use and caveat.',category:'developer-tools',keywords:['http status code lookup','http response codes','status code meaning'],heroTitle:'HTTP Status Code Lookup',heroDescription:'Search a curated reference of common standardized HTTP codes.' },
+  {
+    slug: 'json-diff-compare', title: 'JSON Diff & Compare Tool',
+    description: 'Structurally compare two JSON documents and find added, removed, changed and unchanged values at nested paths.',
+    category: 'developer-tools', keywords: ['json diff', 'json compare', 'compare json online', 'nested json difference'],
+    heroTitle: 'JSON Diff & Compare Tool', heroDescription: 'Compare nested JSON structures with readable paths and change summaries.'
+  },
+  {
+    slug: 'url-encoder-decoder', title: 'URL Encoder & Decoder',
+    description: 'Encode and decode URLs or URL components locally with copy, swap, clear and malformed-input handling.',
+    category: 'developer-tools', keywords: ['url encoder', 'url decoder', 'percent encoding', 'encodeURIComponent tool'],
+    heroTitle: 'URL Encoder & Decoder', heroDescription: 'Encode or decode URLs and individual URL components safely.'
+  },
+  {
+    slug: 'html-entity-encoder-decoder', title: 'HTML Entity Encoder & Decoder',
+    description: 'Encode reserved HTML characters and decode named or numeric HTML entities safely as plain text.',
+    category: 'developer-tools', keywords: ['html entity encoder', 'html entity decoder', 'escape html', 'decode numeric entities'],
+    heroTitle: 'HTML Entity Encoder & Decoder', heroDescription: 'Escape HTML characters or decode entities without rendering markup.'
+  },
+  {
+    slug: 'json-schema-validator', title: 'JSON Schema Validator',
+    description: 'Validate JSON data against a documented browser-based JSON Schema subset with readable error paths.',
+    category: 'developer-tools', keywords: ['json schema validator', 'validate json schema', 'json validation errors', 'json schema checker'],
+    heroTitle: 'JSON Schema Validator', heroDescription: 'Check JSON data against common schema keywords and readable paths.'
+  },
+  {
     slug: 'json-to-csv-flattener',
     title: 'JSON to CSV Converter & Nested JSON Flattener',
     description: 'Convert nested JSON into CSV, flatten object keys into columns, preview the result and download CSV locally in your browser.',
@@ -887,6 +922,16 @@ export const tools: RegisteredTool[] = ([
   },
 
   // ====== CONSTRUCTION CALCULATORS ======
+  {slug:'roof-pitch-calculator',title:'Roof Pitch Calculator',description:'Convert rise and run into X:12 pitch, angle, slope percentage, rafter multiplier and optional rafter length.',category:'construction-calculators',keywords:['roof pitch calculator','roof angle calculator','rafter multiplier'],heroTitle:'Roof Pitch Calculator',heroDescription:'Convert roof rise and run into useful slope and rafter geometry.'},
+  {slug:'stair-stringer-calculator',title:'Stair & Stringer Calculator',description:'Calculate risers, actual riser height, treads, total run, stringer length and stair angle.',category:'construction-calculators',keywords:['stair calculator','stringer length calculator','riser tread calculator'],heroTitle:'Stair & Stringer Calculator',heroDescription:'Plan consistent stair risers, treads, run and stringer geometry.'},
+  {slug:'deck-board-calculator',title:'Deck Board Calculator',description:'Estimate deck board rows, pieces, linear feet and waste using actual width, gap, length and orientation.',category:'construction-calculators',keywords:['deck board calculator','decking quantity calculator','deck board spacing'],heroTitle:'Deck Board Calculator',heroDescription:'Estimate deck boards with actual width, gaps, stock length and waste.'},
+  {slug:'fence-calculator',title:'Fence Calculator',description:'Estimate fence panels, sections, line posts, corner and gate posts, rails and waste.',category:'construction-calculators',keywords:['fence calculator','fence panel calculator','fence post spacing calculator'],heroTitle:'Fence Calculator',heroDescription:'Plan fence sections, panels, posts, gates and rails.'},
+  {slug:'post-hole-concrete-calculator',title:'Post Hole Concrete Calculator',description:'Calculate concrete volume after round or rectangular post displacement and estimate bags from entered yield.',category:'construction-calculators',keywords:['post hole concrete calculator','fence post concrete bags','concrete displacement'],heroTitle:'Post Hole Concrete Calculator',heroDescription:'Estimate net post-hole concrete volume and bag quantity.'},
+  {slug:'drywall-calculator',title:'Drywall Calculator',description:'Estimate drywall sheets, waste, screws, tape and compound from wall, ceiling and opening areas.',category:'construction-calculators',keywords:['drywall calculator','sheetrock sheet calculator','drywall material estimate'],heroTitle:'Drywall Calculator',heroDescription:'Estimate sheets and planning allowances for drywall materials.'},
+  {slug:'paver-calculator',title:'Paver Calculator',description:'Calculate rectangular paver count, waste-adjusted quantity and optional pallets from project area.',category:'construction-calculators',keywords:['paver calculator','patio paver quantity','pavers per square foot'],heroTitle:'Paver Calculator',heroDescription:'Convert project and paver dimensions into quantities and pallets.'},
+  {slug:'polymeric-sand-calculator',title:'Polymeric Sand Calculator',description:'Estimate paver joint volume, polymeric sand weight and bags with editable density and waste.',category:'construction-calculators',keywords:['polymeric sand calculator','paver joint sand calculator','polymeric sand bags'],heroTitle:'Polymeric Sand Calculator',heroDescription:'Estimate sand volume, weight and bags for paver joints.'},
+  {slug:'mulch-calculator',title:'Mulch Calculator',description:'Calculate mulch volume in cubic feet, cubic yards and liters plus bags from bed area and depth.',category:'construction-calculators',keywords:['mulch calculator','cubic yards of mulch','mulch bag calculator'],heroTitle:'Mulch Calculator',heroDescription:'Estimate mulch volume and bags for landscape beds.'},
+  {slug:'topsoil-calculator',title:'Topsoil Calculator',description:'Calculate topsoil cubic feet, yards, meters and optional tonnage from area, depth and editable density.',category:'construction-calculators',keywords:['topsoil calculator','yards of topsoil','soil tonnage calculator'],heroTitle:'Topsoil Calculator',heroDescription:'Estimate topsoil volume and density-based weight.'},
   {
     slug: 'air-compressor-cfm-calculator',
     title: 'Air Compressor CFM & Tank Runtime Calculator',

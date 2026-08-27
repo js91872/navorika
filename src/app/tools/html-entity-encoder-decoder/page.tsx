@@ -1,0 +1,2 @@
+import HtmlEntityEncoderDecoder from '@/components/tools/HtmlEntityEncoderDecoder'; import ExpansionToolPage from '@/components/tools/ExpansionToolPage';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Markup text utility" title="HTML Entity Encoder & Decoder" description="Encode reserved HTML characters and safely decode named or numeric entities as plain text without rendering HTML."><HtmlEntityEncoderDecoder /></ExpansionToolPage>}

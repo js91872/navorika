@@ -1,0 +1,2 @@
+import JsonDiffCompare from '@/components/tools/JsonDiffCompare'; import ExpansionToolPage from '@/components/tools/ExpansionToolPage';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Structural comparison tool" title="JSON Diff & Compare Tool" description="Compare two JSON documents by nested path and identify added, removed, changed and unchanged values."><JsonDiffCompare /></ExpansionToolPage>}

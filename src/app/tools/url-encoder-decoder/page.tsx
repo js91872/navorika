@@ -1,0 +1,2 @@
+import UrlEncoderDecoder from '@/components/tools/UrlEncoderDecoder'; import ExpansionToolPage from '@/components/tools/ExpansionToolPage';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Web text utility" title="URL Encoder & Decoder" description="Encode or decode full URLs and URL components with clear errors for malformed percent-encoded input."><UrlEncoderDecoder /></ExpansionToolPage>}
