@@ -95,7 +95,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[var(--muted-foreground)]">
           <span>© {currentYear} Navorika. All rights reserved.</span>
-          <div className="flex items-center gap-6 text-xs">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:justify-end">
             <Link href="/" className="hover:text-[var(--foreground)] transition-colors">Home</Link>
             <Link href="/categories" className="hover:text-[var(--foreground)] transition-colors">Categories</Link>
             <Link href="/tools" className="hover:text-[var(--foreground)] transition-colors">Tools</Link>
