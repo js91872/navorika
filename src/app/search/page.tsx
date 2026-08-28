@@ -20,8 +20,8 @@ function SearchResults() {
       if (toolsUnderReview.has(tool.slug)) return false;
       const category = categories.find((item) => item.slug === tool.category);
       const cluster = getClusterForTool(tool.slug);
-      const toolkitTerms = getToolkitsForTool(tool.slug).flatMap((toolkit) => [toolkit.name, toolkit.description]);
-      const searchText = [tool.title, tool.description, category?.name, category?.description, cluster?.name, cluster?.description, ...tool.keywords, ...toolkitTerms].filter(Boolean).join(' ').toLowerCase();
+      const toolkitTerms = getToolkitsForTool(tool.slug).map((toolkit) => toolkit.name);
+      const searchText = [tool.title, tool.description, category?.name, cluster?.name, ...tool.keywords, ...toolkitTerms].filter(Boolean).join(' ').toLowerCase();
       return terms.every((term) => searchText.includes(term));
     });
   }, [query]);

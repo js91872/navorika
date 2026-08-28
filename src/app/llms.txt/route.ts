@@ -4,6 +4,7 @@ import { guidesMetadata } from '@/lib/guidesMetadata';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 const baseUrl = 'https://navorika.com';
+export const dynamic = 'force-static';
 
 export function GET() {
   const categorySections = categories.map((category) => {

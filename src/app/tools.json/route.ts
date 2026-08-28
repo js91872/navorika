@@ -3,6 +3,7 @@ import { getClusterForTool, getToolkitsForTool } from '@/data/taxonomy';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 const baseUrl = 'https://navorika.com';
+export const dynamic = 'force-static';
 
 export function GET() {
   const catalog = tools.map((tool) => {
