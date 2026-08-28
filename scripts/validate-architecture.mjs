@@ -15,8 +15,12 @@ const guideToolsPath = join(root, 'src/lib/guideTools.ts');
 const guideSourcesPath = join(root, 'src/lib/guideSources.ts');
 const guidePagePath = join(root, 'src/app/guides/[slug]/page.tsx');
 const sitemapPath = join(root, 'src/app/sitemap.ts');
-const llmsPath = join(root, 'public/llms.txt');
+const llmsPath = join(root, 'src/app/llms.txt/route.ts');
 const toolPageLibraryPath = join(root, 'src/lib/seo/toolPage.ts');
+const taxonomyPath = join(root, 'src/data/taxonomy.ts');
+const toolkitPagePath = join(root, 'src/app/toolkits/[slug]/page.tsx');
+const toolCatalogPath = join(root, 'src/app/tools.json/route.ts');
+const generatedLlmsPath = join(root, 'src/app/llms.txt/route.ts');
 const failures = [];
 const warnings = [];
 
@@ -32,6 +36,8 @@ const toolsDeclaration = registrySource.indexOf('export const tools');
 const toolRegistrySource = registrySource.slice(toolsDeclaration);
 const toolSlugs = [...toolRegistrySource.matchAll(/\bslug:\s*'([^']+)'/g)].map((match) => match[1]);
 const toolTitles = [...toolRegistrySource.matchAll(/\btitle:\s*'([^']*)'/g)].map((match) => match[1].trim());
+const toolDescriptions = [...toolRegistrySource.matchAll(/\bdescription:\s*'([^']*)'/g)].map((match) => match[1].trim());
+const toolCategories = [...toolRegistrySource.matchAll(/\bcategory:\s*'([^']+)'/g)].map((match) => match[1]);
 const categoryRegistrySource = registrySource.slice(0, toolsDeclaration);
 const categorySlugs = [...categoryRegistrySource.matchAll(/\bslug:\s*'([^']+)'/g)].map((match) => match[1]);
 const guideSlugs = [...read(guidesPath).matchAll(/\bslug:\s*'([^']+)'/g)].map((match) => match[1]);
@@ -64,7 +70,7 @@ for (const signal of ['generateStaticParams', 'generateMetadata', "'@type': 'Art
 }
 
 if (!read(sitemapPath).includes('guidesMetadata.map')) failures.push('XML sitemap does not enumerate individual guides');
-if (!read(llmsPath).includes('## Guides and Articles')) failures.push('llms.txt does not expose the guide library');
+if (!read(llmsPath).includes('guidesMetadata')) failures.push('Generated llms.txt does not expose the guide library');
 
 const guideToolReferences = [...read(guideToolsPath).matchAll(/:\s*\[([^\]]*)\]/g)].flatMap((match) => [...match[1].matchAll(/'([^']+)'/g)].map((tool) => tool[1]));
 
@@ -78,6 +84,12 @@ for (const slug of guideToolReferences.filter((slug) => !toolSlugs.includes(slug
 
 if (toolTitles.length !== toolSlugs.length || toolTitles.some((title) => !title)) {
   failures.push('Every registry tool must have a non-empty title');
+}
+if (toolDescriptions.length !== toolSlugs.length || toolDescriptions.some((description) => !description)) {
+  failures.push('Every registry tool must have a non-empty description');
+}
+for (const category of toolCategories.filter((category) => !categorySlugs.includes(category))) {
+  failures.push(`Registry tool references an unknown category: ${category}`);
 }
 
 for (const signal of [
@@ -221,6 +233,51 @@ if (guidePageSource.includes("'@type': 'FAQPage'") || toolPageLibrarySource.incl
   failures.push('FAQ structured data must not be emitted by the shared tool or guide architecture');
 }
 
+const taxonomySource = read(taxonomyPath);
+const clustersSource = taxonomySource.slice(taxonomySource.indexOf('export const clusters'), taxonomySource.indexOf('export const toolkits'));
+const clusterRecords = [...clustersSource.matchAll(/\{ id: '([^']+)', name: '[^']+', description: '[^']+', category: '([^']+)', toolSlugs: \[([^\]]*)\] \}/g)].map((match) => ({ id: match[1], category: match[2], tools: [...match[3].matchAll(/'([^']+)'/g)].map((item) => item[1]) }));
+const clusterIds = clusterRecords.map(({ id }) => id);
+const clusteredTools = clusterRecords.flatMap(({ tools: clusterTools }) => clusterTools);
+for (const id of duplicates(clusterIds)) failures.push(`Duplicate cluster id: ${id}`);
+for (const slug of duplicates(clusteredTools)) failures.push(`Tool belongs to more than one cluster: ${slug}`);
+for (const slug of toolSlugs.filter((slug) => !clusteredTools.includes(slug))) failures.push(`Registered tool has no cluster: ${slug}`);
+for (const slug of clusteredTools.filter((slug) => !toolSlugs.includes(slug))) failures.push(`Cluster references an unknown tool: ${slug}`);
+for (const { id, category, tools: clusterTools } of clusterRecords) {
+  if (!categorySlugs.includes(category)) failures.push(`Cluster ${id} references an unknown category: ${category}`);
+  for (const slug of clusterTools) {
+    const registryIndex = toolSlugs.indexOf(slug);
+    if (registryIndex >= 0 && toolCategories[registryIndex] !== category) failures.push(`Cluster ${id} contains tool from another category: ${slug}`);
+  }
+}
+
+const toolkitSlugs = [...taxonomySource.matchAll(/^\s{4}slug: '([^']+)', name:/gm)].map((match) => match[1]);
+const toolkitToolReferences = [...taxonomySource.matchAll(/toolSlugs: \[([^\]]*)\]/g)].slice(clusterRecords.length).flatMap((match) => [...match[1].matchAll(/'([^']+)'/g)].map((item) => item[1]));
+const toolkitGuideReferences = [...taxonomySource.matchAll(/guideSlugs: \[([^\]]*)\]/g)].flatMap((match) => [...match[1].matchAll(/'([^']+)'/g)].map((item) => item[1]));
+const toolkitCategoryReferences = [...taxonomySource.matchAll(/categorySlugs: \[([^\]]*)\]/g)].flatMap((match) => [...match[1].matchAll(/'([^']+)'/g)].map((item) => item[1]));
+for (const slug of duplicates(toolkitSlugs)) failures.push(`Duplicate toolkit slug: ${slug}`);
+for (const slug of toolkitToolReferences.filter((slug) => !toolSlugs.includes(slug))) failures.push(`Toolkit references an unknown tool: ${slug}`);
+for (const slug of toolkitGuideReferences.filter((slug) => !guideSlugs.includes(slug))) failures.push(`Toolkit references an unknown guide: ${slug}`);
+for (const slug of toolkitCategoryReferences.filter((slug) => !categorySlugs.includes(slug))) failures.push(`Toolkit references an unknown category: ${slug}`);
+
+const complementaryBlocks = taxonomySource.slice(taxonomySource.indexOf('export const complementaryTools'), taxonomySource.indexOf('const clusterByTool'));
+const complementarySources = [...complementaryBlocks.matchAll(/^\s{2}'([^']+)':/gm)].map((match) => match[1]);
+const complementaryReferences = [...complementaryBlocks.matchAll(/:\s*\[([^\]]*)\]/g)].flatMap((match) => [...match[1].matchAll(/'([^']+)'/g)].map((item) => item[1]));
+for (const slug of [...complementarySources, ...complementaryReferences].filter((slug) => !toolSlugs.includes(slug))) failures.push(`Complementary workflow references an unknown tool: ${slug}`);
+
+for (const [path, label] of [[toolkitPagePath, 'toolkit route'], [toolCatalogPath, 'tools.json route'], [generatedLlmsPath, 'generated llms.txt route']]) {
+  if (!existsSync(path)) failures.push(`Missing ${label}`);
+}
+if (existsSync(join(root, 'public/robots.txt'))) failures.push('Static public/robots.txt duplicates the Next.js robots metadata route');
+if (existsSync(join(root, 'public/llms.txt'))) failures.push('Static public/llms.txt bypasses the generated registry-backed route');
+const sitemapSource = read(sitemapPath);
+for (const signal of ['tools', 'categories', 'toolkits', 'guidesMetadata', 'toolsUnderReview']) {
+  if (!sitemapSource.includes(signal)) failures.push(`Sitemap is missing authoritative source: ${signal}`);
+}
+const toolkitPageSource = read(toolkitPagePath);
+for (const signal of ['generateStaticParams', 'generateMetadata', "'@type': 'CollectionPage'", "'@type': 'ItemList'", "'@type': 'BreadcrumbList'"]) {
+  if (!toolkitPageSource.includes(signal)) failures.push(`Toolkit route is missing required crawl/SEO signal: ${signal}`);
+}
+
 if (warnings.length) {
   console.warn(`Architecture warnings (${warnings.length}):`);
   warnings.forEach((warning) => console.warn(`- ${warning}`));
@@ -232,4 +289,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Architecture validation passed: ${toolSlugs.length} registered tools, ${pageSlugs.length} tool routes, ${seoSlugs.length} tool SEO records, ${guideSlugs.length} complete guides.`);
+console.log(`Architecture validation passed: ${toolSlugs.length} registered tools, ${pageSlugs.length} tool routes, ${clusterRecords.length} clusters, ${toolkitSlugs.length} toolkits, ${seoSlugs.length} tool SEO records, ${guideSlugs.length} complete guides.`);

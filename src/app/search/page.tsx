@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useMemo, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Search, X } from 'lucide-react';
-import { tools } from '@/data/registry';
+import { categories, tools, type RegisteredTool } from '@/data/registry';
+import { getClusterForTool, getToolkitsForTool } from '@/data/taxonomy';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 function SearchResults() {
@@ -12,21 +13,17 @@ function SearchResults() {
   const router = useRouter();
   const query = searchParams.get('q') || '';
   const [searchQuery, setSearchQuery] = useState(query);
-  const [results, setResults] = useState<any[]>([]);
-
-  useEffect(() => {
-    if (query) {
-      const filtered = tools.filter(tool =>
-        !toolsUnderReview.has(tool.slug) && (
-          tool.title.toLowerCase().includes(query.toLowerCase()) ||
-          tool.description.toLowerCase().includes(query.toLowerCase()) ||
-          tool.keywords.some(k => k.toLowerCase().includes(query.toLowerCase()))
-        )
-      );
-      setResults(filtered);
-    } else {
-      setResults([]);
-    }
+  const results: RegisteredTool[] = useMemo(() => {
+    if (!query) return [];
+    const terms = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    return tools.filter((tool) => {
+      if (toolsUnderReview.has(tool.slug)) return false;
+      const category = categories.find((item) => item.slug === tool.category);
+      const cluster = getClusterForTool(tool.slug);
+      const toolkitTerms = getToolkitsForTool(tool.slug).map((toolkit) => toolkit.name);
+      const searchText = [tool.title, tool.description, category?.name, cluster?.name, ...tool.keywords, ...toolkitTerms].filter(Boolean).join(' ').toLowerCase();
+      return terms.every((term) => searchText.includes(term));
+    });
   }, [query]);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -38,7 +35,6 @@ function SearchResults() {
 
   const clearSearch = () => {
     setSearchQuery('');
-    setResults([]);
     router.push('/');
   };
 
@@ -84,7 +80,7 @@ function SearchResults() {
       {query && (
         <div>
           <p className="text-sm text-[var(--muted-foreground)] mb-4">
-            Found {results.length} result{results.length !== 1 ? 's' : ''} for "{query}"
+            Found {results.length} result{results.length !== 1 ? 's' : ''} for &ldquo;{query}&rdquo;
           </p>
 
           {results.length === 0 ? (
