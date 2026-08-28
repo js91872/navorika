@@ -33,7 +33,6 @@ export function createToolMetadata(tool: ToolPageContent): Metadata {
 
 export function createToolJsonLd(tool: ToolPageContent) {
   const url = `${baseUrl}/tools/${tool.slug}`;
-  const categorySlug = tool.category.toLowerCase().replaceAll(' ', '-');
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -46,7 +45,7 @@ export function createToolJsonLd(tool: ToolPageContent) {
       {
         '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
-          { '@type': 'ListItem', position: 2, name: tool.category, item: `${baseUrl}/categories/${categorySlug}` },
+          { '@type': 'ListItem', position: 2, name: 'Tools', item: `${baseUrl}/tools` },
           { '@type': 'ListItem', position: 3, name: tool.name, item: url },
         ],
       },

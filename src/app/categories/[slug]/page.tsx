@@ -1,199 +1,96 @@
-'use client';
-
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Zap, Lock, Rocket, CheckCircle, Grid } from 'lucide-react';
+import { notFound } from 'next/navigation';
+import { ArrowRight, BookOpen, Layers3 } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
-import { getToolIcon } from '@/lib/toolIcons';
+import { getClustersForCategory, getToolkitsForCategory } from '@/data/taxonomy';
+import { guidesMetadata } from '@/lib/guidesMetadata';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
+import { getToolIcon } from '@/lib/toolIcons';
 
-// Category content for all categories
-const categoryContent: Record<string, any> = {
-  'health-calculators': {
-    heroTitle: 'Free Online Health Calculators',
-    heroDescription: 'Navorika provides browser-based health calculators for BMI, BMR, TDEE, body fat, heart rate, and more. All calculations happen locally in your browser — no data uploads, no signup, completely private.',
-    intro: 'Monitor your health and fitness with Navorika\'s comprehensive suite of 15 health calculators. From Body Mass Index (BMI) and Basal Metabolic Rate (BMR) to Total Daily Energy Expenditure (TDEE) and body fat percentage, our calculators use evidence-based formulas validated by health professionals.',
-    benefits: [
-      'Calculate BMI and body composition',
-      'Determine BMR and daily calorie needs',
-      'Calculate TDEE and activity levels',
-      'Measure body fat percentage',
-      'Track heart rate zones',
-      'Monitor fitness and health metrics'
-    ],
-    howItWorks: 'All health calculators run locally in your browser using evidence-based medical formulas. Your data never leaves your device. Simply enter your metrics and get instant results.',
-    popularTools: ['bmi-calculator', 'bmr-calculator', 'tdee-calculator', 'body-fat-calculator'],
-    faqs: [
-      { question: 'Is my health data secure?', answer: 'Yes, all calculations happen locally in your browser. Your health data never leaves your device.' },
-      { question: 'Do I need to create an account?', answer: 'No, you can use all health calculators without any signup or registration.' },
-      { question: 'Are these medical diagnoses?', answer: 'No, these calculators are for educational purposes only. Consult a healthcare professional for medical advice.' }
-    ],
-    disclaimer: 'These calculators provide estimates for informational purposes only. Always consult a qualified healthcare professional for personalized medical advice.'
-  }
+const baseUrl = 'https://navorika.com';
+
+const categoryIntros: Record<string, string> = {
+  'pdf-tools': 'Organize, prepare, convert, and sign documents through focused browser workflows. Tools temporarily under review are excluded until their behavior is validated.',
+  'image-tools': 'Prepare images for web, print, identity, and social use by choosing the right format, dimensions, quality, and editing workflow.',
+  'finance-calculators': 'Explore borrowing, investing, tax, budgeting, and retirement scenarios. Results are planning estimates and not individualized financial advice.',
+  'health-calculators': 'Use body, energy, activity, and heart-rate estimates as educational screening and planning aids—not as medical diagnoses.',
+  'developer-tools': 'Format data, inspect encoded values, test patterns, and prepare web publishing assets with focused developer utilities.',
+  'construction-calculators': 'Move from measurements to material, coverage, utility, and early cost estimates for construction and home-improvement planning.',
 };
 
-export default function CategoryPage() {
-  const params = useParams();
-  const slug = params?.slug as string;
-  
-  const category = categories.find(c => c.slug === slug);
-  const categoryTools = tools.filter(t => t.category === slug && !toolsUnderReview.has(t.slug));
-  const content = categoryContent[slug];
+const guideCategory: Record<string, string> = {
+  'pdf-tools': 'PDF', 'image-tools': 'Image', 'finance-calculators': 'Finance',
+  'health-calculators': 'Health', 'developer-tools': 'Developer',
+};
 
-  if (!category) {
-    return (
-      <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl font-bold">Category Not Found</h1>
-          <p className="text-[var(--muted-foreground)] mt-2">The category you're looking for doesn't exist.</p>
-          <Link href="/categories" className="inline-block mt-4 text-indigo-600 hover:underline">← Back to Categories</Link>
-        </div>
-      </div>
-    );
-  }
+export function generateStaticParams() {
+  return categories.map(({ slug }) => ({ slug }));
+}
+
+export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const category = categories.find((item) => item.slug === slug);
+  if (!category) notFound();
+
+  const categoryTools = tools.filter((tool) => tool.category === slug && !toolsUnderReview.has(tool.slug));
+  const categoryClusters = getClustersForCategory(slug)
+    .map((cluster) => ({ ...cluster, tools: categoryTools.filter((tool) => cluster.toolSlugs.includes(tool.slug)) }))
+    .filter((cluster) => cluster.tools.length > 0);
+  const categoryToolkits = getToolkitsForCategory(slug);
+  const relatedGuides = guidesMetadata.filter((guide) => guide.category === guideCategory[slug]).slice(0, 4);
+  const url = `${baseUrl}/categories/${slug}`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'CollectionPage', '@id': `${url}#collection`, name: category.name, description: category.description, url, mainEntity: { '@type': 'ItemList', numberOfItems: categoryTools.length, itemListElement: categoryTools.map((tool, index) => ({ '@type': 'ListItem', position: index + 1, name: tool.title, url: `${baseUrl}/tools/${tool.slug}` })) } },
+      { '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
+        { '@type': 'ListItem', position: 2, name: 'Categories', item: `${baseUrl}/categories` },
+        { '@type': 'ListItem', position: 3, name: category.name, item: url },
+      ] },
+    ],
+  };
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 px-4">
-      <div className="max-w-7xl mx-auto">
-        <Link href="/categories" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8">
-          <ArrowRight className="h-4 w-4 rotate-180" /> Back to Categories
-        </Link>
+    <main className="min-h-screen pb-20 pt-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replaceAll('<', '\\u003c') }} />
+      <header className="mx-auto max-w-5xl">
+        <p className="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Tool category</p>
+        <h1 className="mt-3 text-balance text-4xl font-black tracking-tight sm:text-5xl">{category.name}</h1>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--muted-foreground)]">{categoryIntros[slug] ?? category.description}</p>
+        <p className="mt-3 text-sm font-semibold text-[var(--muted-foreground)]">{categoryTools.length} available tools across {categoryClusters.length} focused subtopics</p>
+      </header>
 
-        {/* Hero Section */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-black text-[var(--foreground)]">
-            {content?.heroTitle || category.name}
-          </h1>
-          <p className="text-lg text-[var(--muted-foreground)] mt-4 max-w-3xl leading-relaxed">
-            {content?.heroDescription || category.description}
-          </p>
-          <p className="text-sm text-[var(--muted-foreground)] mt-2">{categoryTools.length} tools</p>
+      {categoryToolkits.length > 0 && <section className="mx-auto mt-12 max-w-5xl" aria-labelledby="category-toolkits">
+        <div className="flex items-center gap-3"><Layers3 className="size-6 text-indigo-600" /><h2 id="category-toolkits" className="text-2xl font-black">Start with a workflow</h2></div>
+        <p className="mt-2 text-[var(--muted-foreground)]">Toolkits connect tools that are commonly useful for the same goal.</p>
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+          {categoryToolkits.map((toolkit) => <Link key={toolkit.slug} href={`/toolkits/${toolkit.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg">
+            <h3 className="text-lg font-bold group-hover:text-indigo-600">{toolkit.name}</h3>
+            <p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">{toolkit.description}</p>
+            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600">Explore toolkit <ArrowRight className="size-4" /></span>
+          </Link>)}
         </div>
+      </section>}
 
-        {/* Trust Badges */}
-        <div className="mb-8 flex flex-wrap items-center gap-3">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm font-medium border border-emerald-500/20">
-            <ShieldCheck className="h-4 w-4" /> Private by Design
-          </span>
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-medium border border-blue-500/20">
-            <Zap className="h-4 w-4" /> Local Processing
-          </span>
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm font-medium border border-purple-500/20">
-            <Lock className="h-4 w-4" /> No Uploads
-          </span>
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-sm font-medium border border-amber-500/20">
-            <Rocket className="h-4 w-4" /> 100% Free
-          </span>
+      <section className="mx-auto mt-14 max-w-5xl" aria-labelledby="category-clusters">
+        <h2 id="category-clusters" className="text-3xl font-black">Browse by subtopic</h2>
+        <div className="mt-7 space-y-10">
+          {categoryClusters.map((cluster) => <section key={cluster.id} id={cluster.id} className="scroll-mt-24">
+            <div className="max-w-3xl"><h3 className="text-2xl font-bold">{cluster.name}</h3><p className="mt-2 leading-7 text-[var(--muted-foreground)]">{cluster.description}</p></div>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {cluster.tools.map((tool) => <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg">
+                <div className="flex items-start gap-3"><span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-500/10 text-2xl" aria-hidden="true">{getToolIcon(tool.slug) || '🔧'}</span><div><h4 className="font-bold group-hover:text-indigo-600">{tool.title}</h4><p className="mt-1 line-clamp-3 text-sm leading-6 text-[var(--muted-foreground)]">{tool.description}</p></div></div>
+              </Link>)}
+            </div>
+          </section>)}
         </div>
+      </section>
 
-        {/* Introduction */}
-        {content?.intro && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">About {category.name}</h2>
-            <div className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
-              <p className="text-[var(--muted-foreground)] leading-relaxed">{content.intro}</p>
-            </div>
-          </div>
-        )}
-
-        {/* TOOLS SECTION */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
-              <Grid className="h-6 w-6" />
-            </div>
-            <h2 className="text-2xl font-bold">All {category.name}</h2>
-            <span className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-sm font-medium">
-              {categoryTools.length} tools
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categoryTools.map((tool) => {
-              const icon = getToolIcon(tool.slug);
-              
-              return (
-                <Link
-                  key={tool.slug}
-                  href={`/tools/${tool.slug}`}
-                  className="group relative p-6 bg-[var(--card)] border-2 border-[var(--border)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                  
-                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  <div className="flex items-start justify-between mb-4 relative z-10">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 transition-colors duration-300">
-                        <span className="text-2xl group-hover:scale-110 transition-transform duration-300 block">
-                          {icon || '🔧'}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-black text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                        {tool.title}
-                      </h3>
-                    </div>
-                    <div className="p-1.5 rounded-full bg-[var(--muted)] group-hover:bg-indigo-500/10 transition-colors duration-300">
-                      <ArrowRight className="h-4 w-4 text-[var(--muted-foreground)] group-hover:text-indigo-500 group-hover:translate-x-0.5 transition-all" />
-                    </div>
-                  </div>
-                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed relative z-10">
-                    {tool.description}
-                  </p>
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-500/0 via-indigo-500/30 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* How It Works */}
-        {content?.howItWorks && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">How It Works</h2>
-            <div className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
-              <p className="text-[var(--muted-foreground)] leading-relaxed">{content.howItWorks}</p>
-            </div>
-          </div>
-        )}
-
-        {/* Benefits */}
-        {content?.benefits && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Key Benefits</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {content.benefits.map((benefit: string, index: number) => (
-                <div key={index} className="flex items-start gap-3 p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]">
-                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-[var(--foreground)] leading-relaxed">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* FAQ Section */}
-        {content?.faqs && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
-            <div className="space-y-4">
-              {content.faqs.map((item: { question: string; answer: string }, idx: number) => (
-                <div key={idx} className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
-                  <h3 className="font-semibold text-[var(--foreground)] mb-2">{item.question}</h3>
-                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Disclaimer */}
-        {content?.disclaimer && (
-          <div className="mb-8 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
-            <p className="text-sm text-amber-600 dark:text-amber-400">{content.disclaimer}</p>
-          </div>
-        )}
-      </div>
-    </div>
+      {relatedGuides.length > 0 && <section className="mx-auto mt-16 max-w-5xl border-t border-[var(--border)] pt-12" aria-labelledby="category-guides">
+        <div className="flex items-center gap-3"><BookOpen className="size-6 text-violet-600" /><h2 id="category-guides" className="text-2xl font-black">Useful guides</h2></div>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{relatedGuides.map((guide) => <Link key={guide.slug} href={`/guides/${guide.slug}`} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:border-violet-500/40 hover:shadow-lg"><h3 className="font-bold leading-6">{guide.title}</h3><p className="mt-3 text-sm text-[var(--muted-foreground)]">{guide.readTime}</p></Link>)}</div>
+      </section>}
+    </main>
   );
 }

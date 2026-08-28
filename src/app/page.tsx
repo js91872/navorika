@@ -19,6 +19,7 @@ import {
   Rocket
 } from 'lucide-react';
 import { tools, categories } from '@/data/registry';
+import { toolkits } from '@/data/taxonomy';
 import SearchBar from '@/components/SearchBar';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 
@@ -272,11 +273,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ===== WORKFLOW TOOLKITS ===== */}
+      <section className="max-w-6xl mx-auto px-4 py-16">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div><p className="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Start with a goal</p><h2 className="mt-2 text-3xl font-bold sm:text-4xl">Workflow toolkits</h2><p className="mt-2 max-w-2xl text-[var(--muted-foreground)]">Move between tools that support the same project, calculation, or publishing task.</p></div>
+          <Link href="/toolkits" className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600">View all toolkits <ArrowRight className="size-4" /></Link>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{toolkits.slice(0, 4).map((toolkit) => <Link key={toolkit.slug} href={`/toolkits/${toolkit.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg"><h3 className="font-bold group-hover:text-indigo-600">{toolkit.name}</h3><p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">{toolkit.description}</p></Link>)}</div>
+      </section>
+
       {/* ===== POPULAR TOOLS ===== */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold">Popular Tools</h2>
-          <p className="text-[var(--muted-foreground)] mt-2">Most used tools by our community</p>
+          <h2 className="text-3xl sm:text-4xl font-bold">Featured Tools</h2>
+          <p className="text-[var(--muted-foreground)] mt-2">Useful starting points across major categories</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
