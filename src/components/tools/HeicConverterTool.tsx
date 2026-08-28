@@ -50,7 +50,8 @@ export default function HeicConverterTool({ outputFormat, title, description }: 
       const images = Array.isArray(converted) ? converted : [converted];
       if (!images.length) throw new Error('No image decoded.');
       const expectedMime = `image/${outputFormat}`;
-      const first = images[0].type === expectedMime ? images[0] : new Blob([images[0]], { type: expectedMime });
+      const first = images[0];
+      if (first.type !== expectedMime) throw new Error('The decoder returned an unexpected image format.');
       setMultipleImages(images.length > 1);
       setResultSize(first.size);
       setResultUrl(URL.createObjectURL(first));

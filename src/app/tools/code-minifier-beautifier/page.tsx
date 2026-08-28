@@ -106,11 +106,16 @@ export default function CodeMinifierBeautifierPage() {
     setLastAction(null);
   };
 
-  const handleCopy = () => {
+  const handleCopy = async () => {
     if (!input) return;
-    navigator.clipboard.writeText(input);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(input);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setStatus('error');
+      setStatusMessage('Clipboard access was denied. Select and copy the code manually.');
+    }
   };
 
   const handleClear = () => {
@@ -194,7 +199,7 @@ export default function CodeMinifierBeautifierPage() {
               <Sparkles className="h-3.5 w-3.5" /> Load Sample
             </button>
             <button
-              onClick={handleCopy}
+              onClick={() => void handleCopy()}
               disabled={!input}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition disabled:opacity-50 shadow"
             >

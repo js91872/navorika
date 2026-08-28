@@ -1,13 +1,14 @@
-import { createReviewMetadata } from '@/lib/seo/toolReview';
+import ToolPageContent from '@/components/seo/ToolPageContent';
+import { developerToolPages } from '@/data/tool-pages/developer';
+import { createToolMetadata } from '@/lib/seo/toolPage';
 
-export const metadata = createReviewMetadata(
-  'Markup Formatter'
-);
+const tool = developerToolPages['markup-formatter'];
+export const metadata = createToolMetadata(tool);
 
 export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return <>{children}<ToolPageContent tool={tool} /></>;
 }

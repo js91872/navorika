@@ -44,6 +44,7 @@ export default function ImageFormatConverterTool({ description, inputLabel, inpu
     setFile(selected);
     clearResult();
     setError('');
+    if (inputRef.current) inputRef.current.value = '';
   };
 
   const convert = async () => {
@@ -51,8 +52,11 @@ export default function ImageFormatConverterTool({ description, inputLabel, inpu
     setIsProcessing(true);
     setError('');
     clearResult();
+    let bitmap: ImageBitmap | null = null;
     try {
-      const bitmap = await createImageBitmap(file);
+      if (typeof createImageBitmap !== 'function') throw new Error('Image decoding is unavailable.');
+      bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
+      if (bitmap.width < 1 || bitmap.height < 1) throw new Error('The image has invalid dimensions.');
       const canvas = document.createElement('canvas');
       canvas.width = bitmap.width;
       canvas.height = bitmap.height;
@@ -63,7 +67,6 @@ export default function ImageFormatConverterTool({ description, inputLabel, inpu
         context.fillRect(0, 0, canvas.width, canvas.height);
       }
       context.drawImage(bitmap, 0, 0);
-      bitmap.close();
       const mime = outputMime[selectedOutput];
       const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, mime, selectedOutput === 'png' ? undefined : quality));
       if (!blob || blob.type !== mime) throw new Error('This browser cannot encode the requested format.');
@@ -72,6 +75,7 @@ export default function ImageFormatConverterTool({ description, inputLabel, inpu
     } catch {
       setError('The image could not be converted. It may be damaged, too large, or unsupported by this browser.');
     } finally {
+      bitmap?.close();
       setIsProcessing(false);
     }
   };
@@ -89,7 +93,7 @@ export default function ImageFormatConverterTool({ description, inputLabel, inpu
     <div className="text-center mb-10"><div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20"><ShieldCheck className="h-4 w-4" /> Local Processing Only</div><h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{title}</h1><p className="text-lg text-slate-600 dark:text-slate-400">{description}</p></div>
     <section className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16"><div className="p-8">
       {!file ? <button type="button" onClick={() => inputRef.current?.click()} className="w-full border-2 border-dashed border-indigo-300 dark:border-indigo-500/30 rounded-2xl p-12 flex flex-col items-center justify-center text-center hover:bg-indigo-50 dark:hover:bg-indigo-500/5"><Upload className="h-10 w-10 text-indigo-500 mb-4" /><span className="text-xl font-bold">Choose {inputLabel}</span></button> : <>
-        <div className="flex items-center gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60"><ImageIcon className="h-7 w-7 text-indigo-500" /><div className="flex-1 min-w-0"><p className="font-bold truncate">{file.name}</p><p className="text-xs text-slate-500">{formatBytes(file.size)}</p></div><button type="button" onClick={() => { setFile(null); setSourceUrl(''); clearResult(); }} aria-label="Remove image" className="p-2"><X className="h-5 w-5" /></button></div>
+        <div className="flex items-center gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60"><ImageIcon className="h-7 w-7 text-indigo-500" /><div className="flex-1 min-w-0"><p className="font-bold truncate">{file.name}</p><p className="text-xs text-slate-500">{formatBytes(file.size)}</p></div><button type="button" onClick={() => { setFile(null); setSourceUrl(current => { if (current) URL.revokeObjectURL(current); return ''; }); clearResult(); }} aria-label="Remove image" className="p-2"><X className="h-5 w-5" /></button></div>
         <div className="mt-5 grid sm:grid-cols-2 gap-4"><div><p className="text-sm font-bold mb-2">Source</p><div className="h-56 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 p-3 flex items-center justify-center"><img src={sourceUrl} alt="Source image preview" className="max-h-full max-w-full object-contain" /></div></div><div><p className="text-sm font-bold mb-2">Converted preview</p><div className="h-56 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 p-3 flex items-center justify-center">{resultUrl ? <img src={resultUrl} alt={`Converted ${outputExtension[selectedOutput]} preview`} className="max-h-full max-w-full object-contain" /> : <span className="text-sm text-slate-400">Convert to preview output</span>}</div></div></div>
         {!outputFormat && <label className="mt-5 block text-sm font-bold">Output format<select value={selectedOutput} onChange={event => { setSelectedOutput(event.target.value as OutputFormat); clearResult(); }} className="mt-2 w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"><option value="jpeg">JPG</option><option value="png">PNG</option><option value="webp">WebP</option></select></label>}
         {selectedOutput !== 'png' && <label className="mt-5 block text-sm font-bold">Encoder quality: {Math.round(quality * 100)}%<input type="range" min={0.5} max={1} step={0.01} value={quality} onChange={event => { setQuality(Number(event.target.value)); clearResult(); }} className="mt-2 w-full" /></label>}

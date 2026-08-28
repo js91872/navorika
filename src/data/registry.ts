@@ -77,7 +77,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'add-image-to-pdf',
     title: 'Add Image to PDF',
-    description: 'Add images to PDF documents instantly. Insert JPG, PNG, WebP, and other images into any PDF file online.',
+    description: 'Place one JPG, PNG, or WebP image on a selected page of a readable, unencrypted PDF locally.',
     category: 'pdf-tools',
     keywords: ['add-image-to-pdf', 'add', 'image', 'to', 'pdf']
   },
@@ -98,7 +98,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'compress-pdf',
     title: 'Compress PDF',
-    description: 'Compress PDF files online for free. Reduce PDF file size without losing quality.',
+    description: 'Rasterize PDF pages as compressed JPEG images locally and compare the actual output size.',
     category: 'pdf-tools',
     keywords: ['compress-pdf', 'compress', 'pdf']
   },
@@ -126,7 +126,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'extract-pdf-text',
     title: 'Extract PDF Text',
-    description: 'Extract text from PDF documents online free. Get editable text content from PDF files.',
+    description: 'Extract embedded text from readable, text-based PDFs locally and download it as a TXT file.',
     category: 'pdf-tools',
     keywords: ['extract-pdf-text', 'extract', 'pdf', 'text']
   },
@@ -147,7 +147,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'jpg-to-pdf',
     title: 'JPG to PDF',
-    description: 'Convert JPG images to PDF documents online free. Transform your JPG files into professional PDF files.',
+    description: 'Combine one or more JPG images into an ordered PDF locally, with one image per page.',
     category: 'pdf-tools',
     keywords: ['jpg-to-pdf', 'jpg', 'to', 'pdf']
   },
@@ -168,14 +168,14 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'pdf-to-image',
     title: 'PDF to Image',
-    description: 'Convert PDF pages to images online free. Transform each page of your PDF into separate images.',
+    description: 'Render one selected page from a readable PDF as a previewed PNG or JPG image locally.',
     category: 'pdf-tools',
     keywords: ['pdf-to-image', 'pdf', 'to', 'image']
   },
   {
     slug: 'pdf-to-jpg',
     title: 'PDF to JPG',
-    description: 'Convert PDF pages to JPG images online free. Transform PDF documents into high-quality JPG images.',
+    description: 'Render one selected page from a readable PDF as a JPG with adjustable resolution and quality.',
     category: 'pdf-tools',
     keywords: ['pdf-to-jpg', 'pdf', 'to', 'jpg']
   },
@@ -189,7 +189,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'reorder-pdf',
     title: 'Reorder PDF',
-    description: 'Reorder PDF pages online for free. Change page order in your PDF documents easily.',
+    description: 'Reorder pages in a readable, unencrypted PDF and download the rebuilt document locally.',
     category: 'pdf-tools',
     keywords: ['reorder-pdf', 'reorder', 'pdf']
   },
@@ -224,7 +224,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'webp-to-pdf',
     title: 'WebP to PDF',
-    description: 'Convert WebP images to PDF documents online free. Transform modern WebP files into professional PDF documents.',
+    description: 'Decode one or more WebP images locally and combine them into an ordered PDF.',
     category: 'pdf-tools',
     keywords: ['webp-to-pdf', 'webp', 'to', 'pdf']
   },
@@ -296,21 +296,21 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'convert-jpg-to-png',
     title: 'Convert JPG to PNG',
-    description: 'Convert JPG images to PNG online free. Transform JPG files to transparent PNG format.',
+    description: 'Decode a JPG and export the same pixels as a lossless PNG locally in your browser.',
     category: 'image-tools',
     keywords: ['convert-jpg-to-png', 'jpg', 'to', 'png']
   },
   {
     slug: 'convert-jpg-to-webp',
     title: 'Convert JPG to WebP',
-    description: 'Convert JPG images to WebP online free. Transform JPG files to modern WebP format.',
+    description: 'Re-encode a JPG as WebP locally with adjustable browser quality and an output preview.',
     category: 'image-tools',
     keywords: ['convert-jpg-to-webp', 'jpg', 'to', 'webp']
   },
   {
     slug: 'convert-png-to-jpg',
     title: 'Convert PNG to JPG',
-    description: 'Convert PNG images to JPG online free. Transform PNG files to JPG format.',
+    description: 'Convert a PNG to adjustable-quality JPG locally, replacing transparent areas with white.',
     category: 'image-tools',
     keywords: ['convert-png-to-jpg', 'png', 'to', 'jpg']
   },
@@ -338,14 +338,14 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'heic-to-jpg',
     title: 'HEIC to JPG',
-    description: 'Convert HEIC files to JPG online free. Transform Apple HEIC images to widely-supported JPG format.',
+    description: 'Decode a HEIC or HEIF file locally and export its first image as an adjustable-quality JPG.',
     category: 'image-tools',
     keywords: ['heic-to-jpg', 'heic', 'to', 'jpg']
   },
   {
     slug: 'heic-to-png',
     title: 'HEIC to PNG',
-    description: 'Convert HEIC files to PNG online free. Transform Apple HEIC images to transparent PNG format.',
+    description: 'Decode a HEIC or HEIF file locally and export its first image as a PNG.',
     category: 'image-tools',
     keywords: ['heic-to-png', 'heic', 'to', 'png']
   },
@@ -394,7 +394,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'image-to-pdf',
     title: 'Image to PDF',
-    description: 'Convert images to PDF documents online free. Combine JPG, PNG, and WebP images into a single PDF file.',
+    description: 'Combine JPG, PNG, and WebP images into one ordered PDF locally, with one image per page.',
     category: 'image-tools',
     keywords: ['image-to-pdf', 'image', 'to', 'pdf']
   },
@@ -471,7 +471,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'webp-to-png',
     title: 'WebP to PNG',
-    description: 'Convert WebP images to PNG online free. Transform modern WebP files to transparent PNG format.',
+    description: 'Decode a still WebP image and export its pixels as a lossless PNG locally.',
     category: 'image-tools',
     keywords: ['webp-to-png', 'webp', 'to', 'png']
   },
@@ -715,7 +715,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'code-minifier-beautifier',
     title: 'Code Minifier Beautifier',
-    description: 'Temporarily unavailable pending parser-backed HTML, CSS, and JavaScript processing.',
+    description: 'Format and minify JavaScript, CSS, and HTML locally with parser-backed processing engines.',
     category: 'developer-tools',
     keywords: ['code-minifier-beautifier', 'code', 'minifier', 'beautifier']
   },
@@ -771,7 +771,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'markup-formatter',
     title: 'Markup Formatter',
-    description: 'Temporarily unavailable pending grammar-aware SQL, XML, and YAML formatters.',
+    description: 'Format and validate SQL, XML, and YAML locally with grammar-aware processing engines.',
     category: 'developer-tools',
     keywords: ['markup-formatter', 'markup', 'formatter']
   },

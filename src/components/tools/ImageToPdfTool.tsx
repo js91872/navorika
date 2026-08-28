@@ -6,10 +6,10 @@ import { ArrowDown, ArrowLeft, ArrowUp, Download, FileImage, Loader2, ShieldChec
 import { PDFDocument } from 'pdf-lib';
 import { decodeWebpToPng } from '@/lib/images/browser';
 
-type Props = { accept: string; description: string; title: string };
-const supportedTypes = new Set(['image/jpeg', 'image/png', 'image/webp']);
+type SupportedType = 'image/jpeg' | 'image/png' | 'image/webp';
+type Props = { accept: string; allowedTypes: SupportedType[]; description: string; title: string };
 
-export default function ImageToPdfTool({ accept, description, title }: Props) {
+export default function ImageToPdfTool({ accept, allowedTypes, description, title }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
@@ -18,8 +18,8 @@ export default function ImageToPdfTool({ accept, description, title }: Props) {
   const addFiles = (selected: FileList | null) => {
     if (!selected) return;
     const images = Array.from(selected);
-    if (images.some(file => !supportedTypes.has(file.type))) {
-      setError('Use JPG, PNG, or WebP images only.');
+    if (images.length === 0 || images.some(file => !allowedTypes.includes(file.type as SupportedType))) {
+      setError(`Use ${allowedTypes.map(type => type.replace('image/', '').replace('jpeg', 'JPG').toUpperCase()).join(' or ')} images only.`);
       return;
     }
     setFiles(current => [...current, ...images]);
@@ -56,7 +56,7 @@ export default function ImageToPdfTool({ accept, description, title }: Props) {
       anchor.href = url;
       anchor.download = files.length === 1 ? `${files[0].name.replace(/\.[^.]+$/, '')}.pdf` : 'images.pdf';
       anchor.click();
-      URL.revokeObjectURL(url);
+      window.setTimeout(() => URL.revokeObjectURL(url), 0);
     } catch {
       setError('The PDF could not be created. An image may be damaged, too large, or use unsupported encoding.');
     } finally {
