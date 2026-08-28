@@ -81,7 +81,7 @@ export default function AddImageToPdfPage() {
       anchor.href = url;
       anchor.download = `image_added_${pdfFile.name}`;
       anchor.click();
-      URL.revokeObjectURL(url);
+      window.setTimeout(() => URL.revokeObjectURL(url), 0);
     } catch {
       setError('The image could not be added. Check both files and try a smaller image.');
     } finally {

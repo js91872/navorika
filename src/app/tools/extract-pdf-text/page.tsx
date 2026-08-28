@@ -66,7 +66,7 @@ export default function ExtractPdfTextPage() {
     a.href = url;
     a.download = `${file.name.replace(/\.pdf$/i, '')}_text.txt`;
     a.click();
-    URL.revokeObjectURL(url);
+    window.setTimeout(() => URL.revokeObjectURL(url), 0);
   };
 
   return (

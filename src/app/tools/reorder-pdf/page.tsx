@@ -69,7 +69,7 @@ export default function ReorderPDFTool() {
       a.href = url;
       a.download = `reordered_${file.name}`;
       a.click();
-      URL.revokeObjectURL(url);
+      window.setTimeout(() => URL.revokeObjectURL(url), 0);
     } catch {
       setError('The reordered PDF could not be created. Try another readable, unencrypted PDF.');
     } finally {
