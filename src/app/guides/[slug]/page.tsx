@@ -8,6 +8,7 @@ import { getGuideContent } from '@/lib/guideContent';
 import { getGuideTools } from '@/lib/guideTools';
 import { getGuideMetadata, guidesMetadata } from '@/lib/guidesMetadata';
 import { getGuideSources } from '@/lib/guideSources';
+import { guideRelations } from '@/lib/guideRelations';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 import { getToolIcon } from '@/lib/toolIcons';
 
@@ -45,7 +46,13 @@ export default async function GuidePage({ params }: Props) {
   if (!guide || !content) notFound();
 
   const relatedTools = getGuideTools(slug).map((toolSlug) => tools.find((tool) => tool.slug === toolSlug)).filter((tool): tool is RegisteredTool => Boolean(tool && !toolsUnderReview.has(tool.slug)));
-  const relatedGuides = guidesMetadata.filter((item) => item.category === guide.category && item.slug !== slug).slice(0, 3);
+  const curatedRelatedGuides = (guideRelations[slug] ?? []).flatMap((relatedSlug) => {
+    const item = guidesMetadata.find((candidate) => candidate.slug === relatedSlug);
+    return item ? [item] : [];
+  });
+  const relatedGuides = curatedRelatedGuides.length > 0
+    ? curatedRelatedGuides.slice(0, 3)
+    : guidesMetadata.filter((item) => item.category === guide.category && item.slug !== slug).slice(0, 3);
   const sources = getGuideSources(slug);
   const url = `${baseUrl}/guides/${slug}`;
   const jsonLd = {
@@ -79,7 +86,7 @@ export default async function GuidePage({ params }: Props) {
 
         {(guide.category === 'Health' || guide.category === 'Finance') && <aside className="mt-8 flex gap-3 rounded-2xl border border-amber-500/25 bg-amber-500/10 p-5 text-sm leading-6 text-[var(--muted-foreground)]"><ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" /><p>{guide.category === 'Health' ? 'Educational information only—not medical diagnosis or individualized treatment. Consult a qualified professional when personal health decisions or symptoms are involved.' : 'Educational estimates only—not individualized financial, investment, accounting, or tax advice. Verify current rules and important decisions with authoritative sources or a qualified professional.'}</p></aside>}
 
-        <div className="prose prose-slate dark:prose-invert mt-10 max-w-none prose-headings:scroll-mt-24 prose-p:leading-8">
+        <div className="prose prose-slate dark:prose-invert mt-10 max-w-none break-words prose-headings:scroll-mt-24 prose-p:leading-8">
           <p className="lead text-xl leading-8 text-[var(--muted-foreground)]">{content.intro}</p>
           {content.sections.map((section) => <section key={section.title}><h2>{section.title}</h2><div className="whitespace-pre-line leading-8 text-[var(--muted-foreground)]">{section.content}</div></section>)}
           <div className="not-prose mt-10 rounded-2xl border border-indigo-500/20 bg-indigo-500/10 p-6"><h2 className="text-xl font-bold text-indigo-700 dark:text-indigo-300">Key takeaway</h2><p className="mt-2 leading-7 text-[var(--muted-foreground)]">{content.summary}</p></div>
@@ -89,7 +96,7 @@ export default async function GuidePage({ params }: Props) {
 
         <section className="mt-14 border-t border-[var(--border)] pt-12" aria-labelledby="guide-sources"><h2 id="guide-sources" className="text-2xl font-black">Sources and further reading</h2><ul className="mt-4 space-y-2 text-sm">{sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer" className="font-semibold text-indigo-600 hover:underline">{source.name}</a></li>)}</ul><p className="mt-4 text-sm leading-6 text-[var(--muted-foreground)]">Sources support the general explanations above. Rules, rates, standards, and professional guidance may change; verify the current source before acting.</p></section>
 
-        {relatedTools.length > 0 && <section className="mt-14 border-t border-[var(--border)] pt-12" aria-labelledby="related-tools"><h2 id="related-tools" className="text-3xl font-black">Related tools</h2><div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{relatedTools.map((tool) => <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg"><div className="flex items-start gap-3"><span className="text-2xl" aria-hidden="true">{getToolIcon(tool.slug) || '🔧'}</span><div><h3 className="font-bold group-hover:text-indigo-600">{tool.title}</h3><p className="mt-1 line-clamp-2 text-sm text-[var(--muted-foreground)]">{tool.description}</p></div></div></Link>)}</div></section>}
+        {relatedTools.length > 0 && <section className="mt-14 border-t border-[var(--border)] pt-12" aria-labelledby="related-tools"><h2 id="related-tools" className="text-3xl font-black">Related tools</h2><div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{relatedTools.map((tool) => <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg"><div className="flex min-w-0 items-start gap-3"><span className="text-2xl" aria-hidden="true">{getToolIcon(tool.slug) || '🔧'}</span><div className="min-w-0"><h3 className="break-words font-bold group-hover:text-indigo-600">{tool.title}</h3><p className="mt-1 line-clamp-2 text-sm text-[var(--muted-foreground)]">{tool.description}</p></div></div></Link>)}</div></section>}
 
         {relatedGuides.length > 0 && <section className="mt-14 border-t border-[var(--border)] pt-12" aria-labelledby="related-guides"><h2 id="related-guides" className="text-3xl font-black">Continue reading</h2><div className="mt-6 grid gap-4 md:grid-cols-3">{relatedGuides.map((item) => <Link key={item.slug} href={`/guides/${item.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:border-indigo-500/40 hover:shadow-lg"><h3 className="font-bold group-hover:text-indigo-600">{item.title}</h3><span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600">Read guide <ArrowRight className="h-4 w-4" /></span></Link>)}</div></section>}
       </article>

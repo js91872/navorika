@@ -10,6 +10,7 @@ const toolPagesRoot = join(root, 'src/data/tool-pages');
 const guidesPath = join(root, 'src/lib/guidesMetadata.ts');
 const guideContentPath = join(root, 'src/lib/guideContent.ts');
 const additionalGuideContentPath = join(root, 'src/lib/guideContentAdditional.ts');
+const gscGuideContentPath = join(root, 'src/lib/guideContentGsc.ts');
 const guideEnhancementsPath = join(root, 'src/lib/guideContentEnhancements.ts');
 const guideToolsPath = join(root, 'src/lib/guideTools.ts');
 const guideSourcesPath = join(root, 'src/lib/guideSources.ts');
@@ -44,11 +45,14 @@ const guideSlugs = [...read(guidesPath).matchAll(/\bslug:\s*'([^']+)'/g)].map((m
 
 for (const slug of duplicates(guideSlugs)) failures.push(`Duplicate guide metadata slug: ${slug}`);
 
-const guideContentSources = [read(guideContentPath), read(additionalGuideContentPath)];
+const guideContentSources = [read(guideContentPath), read(additionalGuideContentPath), read(gscGuideContentPath)];
 const guideContentSlugs = guideContentSources.flatMap((source) => [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|article\()/gm)].map((match) => match[1]));
 const enhancedGuideSlugs = [...read(guideEnhancementsPath).matchAll(/^\s{2}'([^']+)':\s*\{/gm)].map((match) => match[1]);
 const sourcedGuideSlugs = [...read(guideSourcesPath).matchAll(/^\s{2}'([^']+)':\s*\[/gm)].map((match) => match[1]);
-for (const slug of duplicates(guideContentSlugs)) failures.push(`Duplicate guide content slug: ${slug}`);
+for (const source of guideContentSources) {
+  const sourceSlugs = [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|article\()/gm)].map((match) => match[1]);
+  for (const slug of duplicates(sourceSlugs)) failures.push(`Duplicate guide content slug in one registry: ${slug}`);
+}
 for (const slug of guideSlugs.filter((slug) => !guideContentSlugs.includes(slug))) failures.push(`Published guide has no article content: ${slug}`);
 for (const slug of guideContentSlugs.filter((slug) => !guideSlugs.includes(slug))) failures.push(`Guide content has no metadata entry: ${slug}`);
 for (const slug of enhancedGuideSlugs.filter((slug) => !guideSlugs.includes(slug))) failures.push(`Guide enhancement has no metadata entry: ${slug}`);

@@ -1,4 +1,4 @@
-type GuideCategory = 'Finance' | 'Health' | 'PDF' | 'Image' | 'Developer';
+type GuideCategory = 'Finance' | 'Health' | 'PDF' | 'Image' | 'Developer' | 'Construction' | 'Everyday';
 
 interface GuideDefinition {
   slug: string;
@@ -29,6 +29,8 @@ const categoryImages: Record<GuideCategory, { src: string; caption: string }> = 
   PDF: { src: '/images/guides/pdf-guides.webp', caption: 'Organize and process documents with privacy-conscious browser tools.' },
   Image: { src: '/images/guides/image-guides.webp', caption: 'Choose image dimensions, formats, and compression for the intended output.' },
   Developer: { src: '/images/guides/developer-guides.webp', caption: 'Understand web data and technical workflows before applying automation.' },
+  Construction: { src: '/images/guides/developer-guides.webp', caption: 'Measure carefully, state assumptions, and verify planning quantities against site conditions and supplier specifications.' },
+  Everyday: { src: '/images/guides/finance-guides.webp', caption: 'Make everyday cost and shipping estimates from transparent inputs and unit conversions.' },
 };
 
 const guideDefinitions: GuideDefinition[] = [
@@ -220,6 +222,66 @@ const guideDefinitions: GuideDefinition[] = [
     publishedDate: 'August 2026',
     readTime: '8 min read',
     author: 'Navorika Team'
+  },
+  {
+    slug: 'house-construction-cost-guide',
+    title: 'How to Estimate House Construction Cost',
+    description: 'Estimate house construction cost from built-up area, custom rates, project scope, quality, contingency, and local quotations.',
+    category: 'Construction', publishedDate: 'August 2026', readTime: '12 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'water-tank-size-capacity-guide',
+    title: 'Water Tank Size & Capacity Calculation Guide',
+    description: 'Calculate rectangular and cylindrical tank capacity in litres, gallons, and cubic metres, with usable-volume planning examples.',
+    category: 'Construction', publishedDate: 'August 2026', readTime: '13 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'how-to-calculate-roof-area',
+    title: 'How to Calculate Roof Area: Pitch, Measurements & Examples',
+    description: 'Calculate simple pitched roof surface area from footprint, pitch multiplier, overhangs, and a project-specific waste allowance.',
+    category: 'Construction', publishedDate: 'August 2026', readTime: '11 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'flooring-calculation-guide',
+    title: 'How to Calculate Flooring: Area, Packs & Waste',
+    description: 'Plan flooring for one or more rooms using measured area, pack coverage, layout cuts, and an appropriate waste allowance.',
+    category: 'Construction', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'asphalt-calculation-guide',
+    title: 'How to Calculate Asphalt Volume & Tonnage',
+    description: 'Estimate asphalt volume and tonnage from area, compacted thickness, mix density, unit conversions, and planning allowances.',
+    category: 'Construction', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'gravel-calculation-guide',
+    title: 'How to Calculate Gravel: Volume, Yards & Tonnes',
+    description: 'Estimate gravel from area and depth, convert cubic feet to yards, and account for density, compaction, and waste.',
+    category: 'Construction', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'electricity-cost-calculation-guide',
+    title: 'How to Calculate Electricity Cost from Watts & kWh',
+    description: 'Calculate appliance electricity cost from watts, runtime, kilowatt-hours, and your own tariff for daily, monthly, and annual estimates.',
+    category: 'Everyday', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'brick-calculation-guide',
+    title: 'How to Calculate Bricks for a Wall',
+    description: 'Estimate brick quantities from wall dimensions, openings, actual brick size, mortar joints, wall thickness, and breakage allowance.',
+    category: 'Construction', publishedDate: 'August 2026', readTime: '11 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'dimensional-weight-guide',
+    title: 'Dimensional Weight Guide: Calculate Billable Weight',
+    description: 'Understand dimensional or volumetric weight, divisor differences, actual weight, and how carriers determine billable weight.',
+    category: 'Everyday', publishedDate: 'August 2026', readTime: '9 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'construction-estimate-quote-guide',
+    title: 'Construction Estimate & Quote Guide',
+    description: 'Build clear construction estimates and quotes with scope, quantities, line items, labour, overhead, markup, assumptions, and exclusions.',
+    category: 'Construction', publishedDate: 'August 2026', readTime: '13 min read', author: 'Navorika Team'
   }
 ];
 
@@ -228,8 +290,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const subject = guide.title.split(':')[0].replace(/[?]/g, '').trim();
   return {
     ...guide,
-    datePublished: '2026-08-01',
-    dateModified: '2026-08-19',
+    datePublished: guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    dateModified: new Set(['how-to-calculate-emi', 'heart-rate-zones-guide', 'base64-encoding-guide', 'jwt-decoding-guide', 'json-formatting-guide']).has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: image.src,

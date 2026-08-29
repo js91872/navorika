@@ -18,7 +18,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     interpretation: ['Header mode creates one JSON object per data row.', 'Without headers, each CSV row becomes a JSON array.'],
     limitations: ['Type inference is deliberately simple and leaves dates and leading-zero identifiers as strings.', 'Malformed unclosed quotes are reported instead of guessed.'],
     faqs: [{ question: 'Does it handle commas inside quoted fields?', answer: 'Yes. Delimiters inside correctly quoted fields are preserved.' }, { question: 'Can it parse tab-separated data?', answer: 'Yes. Choose Tab as the delimiter.' }, { question: 'Is the CSV uploaded?', answer: 'No. Conversion runs locally in your browser.' }],
-    relatedTools: [{ slug: 'json-to-csv-flattener', name: 'JSON to CSV Flattener' }, { slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'json-diff-compare', name: 'JSON Diff & Compare' }], relatedGuides: [],
+    relatedTools: [{ slug: 'json-to-csv-flattener', name: 'JSON to CSV Flattener' }, { slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'json-diff-compare', name: 'JSON Diff & Compare' }], relatedGuides: ['json-formatting-guide'],
   },
   'json-diff-compare': {
     slug: 'json-diff-compare', name: 'JSON Diff & Compare Tool', category: 'Developer Tools', applicationCategory: 'DeveloperApplication',
@@ -30,7 +30,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     interpretation: ['Added paths exist only on the compared side; removed paths exist only on the original side.', 'Unchanged count measures equal leaf values rather than lines of formatted text.'],
     limitations: ['Arrays are compared by index and do not attempt identity matching or move detection.', 'JSON object key order is not treated as a difference.'],
     faqs: [{ question: 'Does formatting affect the comparison?', answer: 'No. Both inputs are parsed before comparison.' }, { question: 'How are arrays handled?', answer: 'Values are compared at matching indexes.' }, { question: 'Can I copy the result?', answer: 'Yes. Copy summary includes counts and every reported path.' }],
-    relatedTools: [{ slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'json-schema-validator', name: 'JSON Schema Validator' }, { slug: 'csv-to-json-converter', name: 'CSV to JSON Converter' }], relatedGuides: [],
+    relatedTools: [{ slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'json-schema-validator', name: 'JSON Schema Validator' }, { slug: 'csv-to-json-converter', name: 'CSV to JSON Converter' }], relatedGuides: ['json-formatting-guide'],
   },
   'url-encoder-decoder': {
     slug: 'url-encoder-decoder', name: 'URL Encoder & Decoder', category: 'Developer Tools', applicationCategory: 'DeveloperApplication',
@@ -64,7 +64,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     interpretation: ['A valid result means no violation was found within the documented subset.', 'Paths begin at $ and identify the affected property or array index.'],
     limitations: ['This is not a full JSON Schema implementation and does not process references, formats, conditionals or draft-specific vocabularies.', 'Regular-expression patterns use JavaScript RegExp behavior.'],
     faqs: [{ question: 'Which schema draft is this?', answer: 'It is a deliberately documented subset, not a claim of compliance with a complete draft.' }, { question: 'Does it support required properties?', answer: 'Yes, along with properties and additionalProperties false.' }, { question: 'Does validation leave my browser?', answer: 'No. Both JSON documents stay local.' }],
-    relatedTools: [{ slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'json-diff-compare', name: 'JSON Diff & Compare' }, { slug: 'csv-to-json-converter', name: 'CSV to JSON Converter' }], relatedGuides: [],
+    relatedTools: [{ slug: 'json-formatter', name: 'JSON Formatter' }, { slug: 'json-diff-compare', name: 'JSON Diff & Compare' }, { slug: 'csv-to-json-converter', name: 'CSV to JSON Converter' }], relatedGuides: ['json-formatting-guide'],
   },
   'cidr-subnet-wildcard-calculator': {
     slug: 'cidr-subnet-wildcard-calculator',
@@ -274,7 +274,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
       { slug: 'json-formatter', name: 'JSON Formatter' },
       { slug: 'developer-utils', name: 'Developer Utils' },
     ],
-    relatedGuides: [],
+    relatedGuides: ['json-formatting-guide'],
   },
 
   'css-clamp-font-generator': {

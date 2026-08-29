@@ -49,7 +49,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { question: 'Is dimensional weight always the billable weight?', answer: 'Not necessarily. Carriers commonly compare dimensional and actual weight and apply their own billing and rounding rules.' },
     ],
     relatedTools: [{ slug: 'unit-price-calculator', name: 'Unit Price Calculator' }],
-    relatedGuides: [],
+    relatedGuides: ['dimensional-weight-guide'],
   },
   'electricity-cost-calculator': {
     slug: 'electricity-cost-calculator',
@@ -72,7 +72,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { question: 'Can I calculate yearly appliance cost?', answer: 'Yes. The calculator displays a 365-day estimate.' },
     ],
     relatedTools: [{ slug: 'fuel-cost-split-calculator', name: 'Fuel Cost & Passenger Split Calculator' }],
-    relatedGuides: [],
+    relatedGuides: ['electricity-cost-calculation-guide'],
   },
   'unit-price-calculator': {
     slug: 'unit-price-calculator',
