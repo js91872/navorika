@@ -40,6 +40,9 @@ export const clusters: ToolCluster[] = [
 
   { id: 'finance-budget', name: 'Budgeting and Cash Flow', description: 'Model spending, purchasing power, currency, and household cash flow.', category: 'finance-calculators', toolSlugs: ['cashflow-budget-architect', 'currency-converter', 'wealth-inflation-matrix'] },
   { id: 'finance-invest', name: 'Investing and Returns', description: 'Project recurring investments, fixed returns, and comparable investment outcomes.', category: 'finance-calculators', toolSlugs: ['sip-calculator', 'fd-calculator', 'ppf-calculator', 'investment-return-profiler'] },
+  { id: 'saas-metrics', name: 'SaaS Metrics', description: 'Model cash runway, burn, acquisition efficiency, churn, growth, profitability, and recurring-revenue retention.', category: 'finance-calculators', toolSlugs: ['startup-runway-calculator', 'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator', 'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator'] },
+  { id: 'real-estate-investing', name: 'Real Estate Investing', description: 'Estimate rental operations, property yields, refinance outcomes, and renovation-project returns.', category: 'finance-calculators', toolSlugs: ['rental-property-cash-flow-calculator', 'rental-yield-calculator', 'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator', 'fix-and-flip-profit-calculator'] },
+  { id: 'investment-decisions', name: 'Investment and Debt Decisions', description: 'Understand loss recovery and compare structured multi-debt payoff strategies.', category: 'finance-calculators', toolSlugs: ['drawdown-recovery-calculator', 'debt-snowball-vs-avalanche-calculator'] },
   { id: 'finance-loans', name: 'Loans and Amortization', description: 'Estimate repayments, interest costs, and amortization schedules.', category: 'finance-calculators', toolSlugs: ['loan-emi-calculator', 'loan-amortization-suite'] },
   { id: 'finance-retirement', name: 'Savings and Retirement', description: 'Plan longer-term savings targets and retirement funding.', category: 'finance-calculators', toolSlugs: ['retirement-calculator', 'savings-retirement-hub'] },
   { id: 'finance-tax', name: 'Tax and Business Finance', description: 'Estimate tax, GST, and compliance-related figures for planning.', category: 'finance-calculators', toolSlugs: ['gst-calculator', 'tax-calculator', 'taxation-compliance-deck'] },
@@ -57,7 +60,7 @@ export const clusters: ToolCluster[] = [
   { id: 'developer-debugging', name: 'Testing and HTTP Reference', description: 'Test regular expressions and look up standardized HTTP response behavior.', category: 'developer-tools', toolSlugs: ['regex-tester', 'http-status-code-lookup'] },
   { id: 'developer-security', name: 'Security, Tokens, and IDs', description: 'Generate identifiers, inspect tokens, use browser cryptography, and create scannable codes.', category: 'developer-tools', toolSlugs: ['uuid-generator', 'jwt-decoder', 'qr-code-generator', 'web-crypto-studio'] },
   { id: 'developer-web', name: 'Web and SEO', description: 'Build responsive CSS, metadata, campaign URLs, and crawler directives.', category: 'developer-tools', toolSlugs: ['aspect-ratio-padding-calculator', 'css-clamp-font-generator', 'css-gradient-generator', 'meta-tag-generator', 'robots-txt-generator', 'utm-builder', 'webmaster-seo-builder'] },
-  { id: 'developer-cloud-costs', name: 'Cloud Storage Cost Planning', description: 'Estimate retrieval, request, and temporary-storage costs for cloud archive workflows.', category: 'developer-tools', toolSlugs: ['aws-glacier-retrieval-calculator'] },
+  { id: 'ai-cloud-costs', name: 'AI and Cloud Cost Planning', description: 'Estimate AI token demand, LLM API pricing, GPU compute, hosting, CDN, and archive-retrieval costs.', category: 'developer-tools', toolSlugs: ['ai-token-calculator', 'llm-api-cost-calculator', 'gpu-compute-cost-calculator', 'cloud-hosting-cost-calculator', 'cdn-cost-calculator', 'aws-glacier-retrieval-calculator'] },
   { id: 'developer-scientific-data', name: 'Scientific Data Utilities', description: 'Support defined scientific data schemas and validated browser-based analysis models.', category: 'developer-tools', toolSlugs: ['bioluminescent-reader'] },
 
   { id: 'construction-concrete', name: 'Concrete and Masonry', description: 'Estimate concrete, cement, brick, reinforcement, sand, and post-hole concrete needs.', category: 'construction-calculators', toolSlugs: ['brick-calculator', 'cement-calculator', 'concrete-calculator', 'post-hole-concrete-calculator', 'rebar-calculator', 'sand-calculator'] },
@@ -109,6 +112,9 @@ export const toolkits: Toolkit[] = [
     groups: [
       { name: 'Investment returns', description: 'Project and compare common recurring and fixed-return approaches.', toolSlugs: ['sip-calculator', 'fd-calculator', 'ppf-calculator', 'investment-return-profiler'] },
       { name: 'Long-term planning', description: 'Connect purchasing power, savings targets, and retirement needs.', toolSlugs: ['wealth-inflation-matrix', 'retirement-calculator', 'savings-retirement-hub'] },
+      { name: 'SaaS business metrics', description: 'Connect runway, burn, acquisition efficiency, churn, growth, and revenue retention.', toolSlugs: ['startup-runway-calculator', 'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator', 'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator'] },
+      { name: 'Real estate investing', description: 'Compare rental income, property yields, cash invested, refinance, and flip scenarios.', toolSlugs: ['rental-property-cash-flow-calculator', 'rental-yield-calculator', 'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator', 'fix-and-flip-profit-calculator'] },
+      { name: 'Investment risk', description: 'Understand the asymmetric gain required to recover from a portfolio drawdown.', toolSlugs: ['drawdown-recovery-calculator'] },
     ], guideSlugs: ['how-to-calculate-sip-returns', 'ppf-vs-fd-comparison'],
     faqs: [{ question: 'Are the projected returns guaranteed?', answer: 'No. The calculators show scenarios from the inputs and assumptions you provide. Actual rates, returns, taxes, fees, and inflation can differ.' }],
   },
@@ -118,7 +124,7 @@ export const toolkits: Toolkit[] = [
     intro: 'Evaluate whether a payment fits the wider budget, not just whether a lender offers it. These tools bring loan repayment, cash-flow, currency, and tax estimates into one planning path.',
     categorySlugs: ['finance-calculators'],
     groups: [
-      { name: 'Borrowing', description: 'Estimate monthly payments, total interest, and repayment schedules.', toolSlugs: ['loan-emi-calculator', 'loan-amortization-suite'] },
+      { name: 'Borrowing', description: 'Estimate monthly payments, total interest, repayment schedules, and payoff-strategy tradeoffs.', toolSlugs: ['loan-emi-calculator', 'loan-amortization-suite', 'debt-snowball-vs-avalanche-calculator'] },
       { name: 'Cash flow and tax', description: 'Review affordability alongside cash flow, currency, GST, and tax estimates.', toolSlugs: ['cashflow-budget-architect', 'currency-converter', 'gst-calculator', 'tax-calculator'] },
     ], guideSlugs: ['how-to-calculate-emi', 'gst-calculation-guide', 'tax-planning-guide-2026'],
   },
@@ -132,6 +138,7 @@ export const toolkits: Toolkit[] = [
       { name: 'Networking and schedules', description: 'Plan IPv4 ranges and subnets, generate MAC addresses, and understand cron schedules.', toolSlugs: ['cidr-subnet-wildcard-calculator', 'ip-range-calculator', 'vlsm-subnet-calculator', 'mac-address-generator', 'cron-next-run-calculator', 'cron-expression-humanizer', 'unix-timestamp-converter', 'http-status-code-lookup'] },
       { name: 'Tokens and identifiers', description: 'Generate identifiers and QR codes, inspect JWT payloads, and use browser cryptography.', toolSlugs: ['uuid-generator', 'jwt-decoder', 'qr-code-generator', 'web-crypto-studio'] },
       { name: 'Publishing and SEO', description: 'Prepare responsive CSS, metadata, campaign links, crawler rules, and reusable web assets.', toolSlugs: ['aspect-ratio-padding-calculator', 'css-clamp-font-generator', 'meta-tag-generator', 'robots-txt-generator', 'utm-builder', 'webmaster-seo-builder', 'css-gradient-generator'] },
+      { name: 'AI and cloud costs', description: 'Estimate token volume, model API rates, GPU workloads, hosting, delivery, and archive retrieval.', toolSlugs: ['ai-token-calculator', 'llm-api-cost-calculator', 'gpu-compute-cost-calculator', 'cloud-hosting-cost-calculator', 'cdn-cost-calculator', 'aws-glacier-retrieval-calculator'] },
     ], guideSlugs: ['json-formatting-guide', 'base64-encoding-guide', 'jwt-decoding-guide', 'seo-tools-guide'],
   },
   {
@@ -201,6 +208,26 @@ export const complementaryTools: Record<string, string[]> = {
   'construction-estimate-builder': ['contractor-estimate-generator', 'construction-cost-calculator', 'dumpster-weight-calculator'],
   'contractor-estimate-generator': ['construction-estimate-builder', 'house-construction-cost-calculator'],
   'meta-tag-generator': ['robots-txt-generator', 'utm-builder', 'webmaster-seo-builder'],
+  'ai-token-calculator': ['llm-api-cost-calculator', 'gpu-compute-cost-calculator'],
+  'llm-api-cost-calculator': ['ai-token-calculator', 'gpu-compute-cost-calculator', 'cloud-hosting-cost-calculator'],
+  'gpu-compute-cost-calculator': ['llm-api-cost-calculator', 'cloud-hosting-cost-calculator'],
+  'cloud-hosting-cost-calculator': ['cdn-cost-calculator', 'aws-glacier-retrieval-calculator'],
+  'cdn-cost-calculator': ['cloud-hosting-cost-calculator', 'aws-glacier-retrieval-calculator'],
+  'startup-runway-calculator': ['saas-burn-rate-calculator', 'rule-of-40-calculator'],
+  'saas-burn-rate-calculator': ['startup-runway-calculator', 'rule-of-40-calculator'],
+  'ltv-cac-ratio-calculator': ['cac-payback-calculator', 'churn-impact-calculator'],
+  'cac-payback-calculator': ['ltv-cac-ratio-calculator', 'net-revenue-retention-calculator'],
+  'churn-impact-calculator': ['net-revenue-retention-calculator', 'ltv-cac-ratio-calculator'],
+  'rule-of-40-calculator': ['saas-burn-rate-calculator', 'startup-runway-calculator'],
+  'net-revenue-retention-calculator': ['churn-impact-calculator', 'ltv-cac-ratio-calculator'],
+  'rental-property-cash-flow-calculator': ['cap-rate-calculator', 'cash-on-cash-return-calculator'],
+  'rental-yield-calculator': ['cap-rate-calculator', 'rental-property-cash-flow-calculator'],
+  'cap-rate-calculator': ['rental-yield-calculator', 'rental-property-cash-flow-calculator'],
+  'cash-on-cash-return-calculator': ['rental-property-cash-flow-calculator', 'brrrr-calculator'],
+  'brrrr-calculator': ['cash-on-cash-return-calculator', 'fix-and-flip-profit-calculator'],
+  'fix-and-flip-profit-calculator': ['brrrr-calculator', 'rental-property-cash-flow-calculator'],
+  'drawdown-recovery-calculator': ['investment-return-profiler', 'wealth-inflation-matrix'],
+  'debt-snowball-vs-avalanche-calculator': ['loan-emi-calculator', 'loan-amortization-suite'],
 };
 
 const clusterByTool = new Map(clusters.flatMap((cluster) => cluster.toolSlugs.map((slug) => [slug, cluster] as const)));
