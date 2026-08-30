@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateVoltageDrop as calculateVoltageDropEstimate, COPPER_RESISTANCE_OHM_PER_M } from '@/lib/calculations/energyElectrical';
 
 export default function VoltageDropCalculator() {
   const [voltage, setVoltage] = useState<number>(120);
@@ -14,48 +15,18 @@ export default function VoltageDropCalculator() {
   const [phase, setPhase] = useState<'single' | 'three'>('single');
   const [maxDropPercent, setMaxDropPercent] = useState<number>(3);
   const [result, setResult] = useState<any>(null);
-
-  const wireResistance: { [key: string]: number } = {
-    '18': 0.016,
-    '16': 0.010,
-    '14': 0.0064,
-    '12': 0.0040,
-    '10': 0.0025,
-    '8': 0.0016,
-    '6': 0.0010,
-    '4': 0.00064,
-    '2': 0.00040
-  };
+  const [error, setError] = useState('');
 
   const calculateVoltageDrop = () => {
-    let len = length;
-    if (unit === 'ft') {
-      len = length * 0.3048;
-    }
-
-    const resistance = wireResistance[wireGauge] || 0.0040;
-    const vDrop = phase === 'single'
-      ? 2 * current * resistance * len
-      : Math.sqrt(3) * current * resistance * len;
-
-    const vDropPercent = (vDrop / voltage) * 100;
-    const isAcceptable = vDropPercent <= maxDropPercent;
-
-    setResult({
-      vDrop,
-      vDropPercent,
-      isAcceptable,
-      voltage,
-      current,
-      length: len,
-      wireGauge,
-      phase
-      , maxDropPercent
-    });
+    try {
+      const estimate = calculateVoltageDropEstimate({ voltage, current, length, unit, resistanceOhmPerM: COPPER_RESISTANCE_OHM_PER_M[wireGauge], phase, maxDropPercent });
+      setResult({ vDrop: estimate.voltageDrop, vDropPercent: estimate.voltageDropPercent, isAcceptable: estimate.isAcceptable, voltage, current, length: estimate.lengthM, wireGauge, phase, maxDropPercent }); setError('');
+    } catch (cause) { setResult(null); setError(cause instanceof Error ? cause.message : 'Enter valid circuit details.'); }
   };
 
   const resetCalculator = () => {
     setResult(null);
+    setError('');
     setVoltage(120);
     setCurrent(20);
     setLength(50);
@@ -163,6 +134,7 @@ export default function VoltageDropCalculator() {
             Reset
           </Button>
         </div>
+        {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
           <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">

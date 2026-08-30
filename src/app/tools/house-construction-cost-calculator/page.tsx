@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateHouseConstructionCost } from '@/lib/calculations/projectEstimators';
 
 export default function HouseConstructionCostCalculator() {
   const [area, setArea] = useState<number>(2000);
@@ -14,26 +15,12 @@ export default function HouseConstructionCostCalculator() {
   const [contingencyPercent, setContingencyPercent] = useState<number>(10);
   const [landCost, setLandCost] = useState<number>(50000);
   const [result, setResult] = useState<any>(null);
+  const [error, setError] = useState('');
 
   const calculateCost = () => {
-    const areaInSqft = unit === 'sqft' ? area : area * 10.763910416709722;
-    const totalArea = areaInSqft * floors;
-    const directConstructionCost = totalArea * constructionRate;
-    const contingency = directConstructionCost * (contingencyPercent / 100);
-    const projectCostExcludingLand = directConstructionCost + contingency + siteAndSoftCosts;
-    const totalCost = projectCostExcludingLand + landCost;
-    const constructionCostPerSqft = projectCostExcludingLand / totalArea;
-
-    setResult({
-      totalCost,
-      constructionCostPerSqft,
-      directConstructionCost,
-      contingency,
-      siteAndSoftCosts,
-      projectCostExcludingLand,
-      landCost,
-      totalArea
-    });
+    try {
+      setResult(calculateHouseConstructionCost({ area, areaUnit: unit, floors, ratePerSqft: constructionRate, siteAndSoftCosts, contingencyPercent, landCost })); setError('');
+    } catch (cause) { setResult(null); setError(cause instanceof Error ? cause.message : 'Enter valid project details.'); }
   };
 
   const formatCurrency = (amount: number) => {
@@ -47,6 +34,7 @@ export default function HouseConstructionCostCalculator() {
 
   const resetCalculator = () => {
     setResult(null);
+    setError('');
     setArea(2000);
     setFloors(1);
     setConstructionRate(150);
@@ -129,6 +117,7 @@ export default function HouseConstructionCostCalculator() {
             Reset
           </Button>
         </div>
+        {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
           <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">

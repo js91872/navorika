@@ -636,6 +636,12 @@ export default function ConstructionEstimateTool({ mode }: Props) {
           ))}
         </section>
 
+        <p className="mt-3 text-xs leading-5 text-slate-500">
+          Markup is added to direct cost after overhead and contingency. It is
+          not a target profit margin: for example, 25% markup implies a 20%
+          margin before discount and tax.
+        </p>
+
         <section className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/60 p-5">
             <h3 className="font-bold text-lg mb-4">Category breakdown</h3>
@@ -675,6 +681,11 @@ export default function ConstructionEstimateTool({ mode }: Props) {
               <div className="flex justify-between">
                 <span>Markup</span>
                 <strong>{money(totals.markup)}</strong>
+              </div>
+
+              <div className="flex justify-between text-sm text-slate-600 dark:text-slate-300">
+                <span>Implied pre-discount margin</span>
+                <strong>{totals.impliedMarginPercent.toFixed(2)}%</strong>
               </div>
 
               {totals.discount > 0 && (

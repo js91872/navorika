@@ -116,7 +116,7 @@ export default function OshaPortableToiletPage() {
           <aside className="rounded-2xl border border-amber-500/20 bg-amber-500/10 p-5 text-sm leading-6 text-[var(--foreground)]">
             <strong>Compliance note:</strong> This calculator is an
             informational planning aid, not legal or safety advice. Confirm
-            current OSHA requirements, state-plan rules, local sanitation
+            current federal OSHA requirements, any OSHA-approved state-plan rules, local sanitation
             requirements and actual facility configuration for your jobsite.
           </aside>
         </article>

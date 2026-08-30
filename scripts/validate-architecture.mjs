@@ -22,6 +22,9 @@ const taxonomyPath = join(root, 'src/data/taxonomy.ts');
 const toolkitPagePath = join(root, 'src/app/toolkits/[slug]/page.tsx');
 const toolCatalogPath = join(root, 'src/app/tools.json/route.ts');
 const generatedLlmsPath = join(root, 'src/app/llms.txt/route.ts');
+const packagePath = join(root, 'package.json');
+const calculationRoot = join(root, 'src/lib/calculations');
+const calculationRunnerPath = join(root, 'scripts/run-calculation-tests.mjs');
 const failures = [];
 const warnings = [];
 
@@ -280,6 +283,72 @@ for (const signal of ['tools', 'categories', 'toolkits', 'guidesMetadata', 'tool
 const toolkitPageSource = read(toolkitPagePath);
 for (const signal of ['generateStaticParams', 'generateMetadata', "'@type': 'CollectionPage'", "'@type': 'ItemList'", "'@type': 'BreadcrumbList'"]) {
   if (!toolkitPageSource.includes(signal)) failures.push(`Toolkit route is missing required crawl/SEO signal: ${signal}`);
+}
+
+const packageJson = JSON.parse(read(packagePath));
+if (packageJson.scripts?.['test:calculations'] !== 'node --experimental-strip-types scripts/run-calculation-tests.mjs') {
+  failures.push('package.json must expose the standard calculation test runner as test:calculations');
+}
+if (!existsSync(calculationRunnerPath)) failures.push('Missing scripts/run-calculation-tests.mjs');
+
+const calculationFiles = readdirSync(calculationRoot).filter((file) => file.endsWith('.ts'));
+const calculationTestFiles = readdirSync(calculationRoot).filter((file) => file.endsWith('.test.mjs'));
+if (calculationTestFiles.length === 0) failures.push('No calculation test modules exist');
+const calculationTestNames = [];
+for (const file of calculationTestFiles) {
+  const source = read(join(calculationRoot, file));
+  const moduleImports = [...source.matchAll(/from ['"]\.\/([^'"]+\.ts)['"]/g)].map((match) => match[1]);
+  if (moduleImports.length === 0) failures.push(`Calculation test imports no calculation module: ${file}`);
+  for (const moduleFile of moduleImports) {
+    if (!calculationFiles.includes(moduleFile)) failures.push(`Calculation test imports a missing module: ${file} -> ${moduleFile}`);
+  }
+  calculationTestNames.push(...[...source.matchAll(/test\(['"]([^'"]+)['"]/g)].map((match) => match[1]));
+}
+for (const name of duplicates(calculationTestNames)) failures.push(`Duplicate calculation test name: ${name}`);
+for (const file of calculationFiles.filter((file) => !file.endsWith('.test.ts'))) {
+  const source = read(join(calculationRoot, file));
+  if (/from ['"]react['"]|from ['"]react\//.test(source)) failures.push(`Calculation module imports React: ${file}`);
+}
+
+const selectedCalculationRoutes = {
+  'loan-emi-calculator': 'calculations/emi',
+  'electricity-cost-calculator': 'calculations/energyElectrical',
+  'solar-panel-calculator': 'calculations/energyElectrical',
+  'wire-size-calculator': 'calculations/energyElectrical',
+  'voltage-drop-calculator': 'calculations/energyElectrical',
+  'house-construction-cost-calculator': 'calculations/projectEstimators',
+  'water-tank-calculator': 'calculations/projectEstimators',
+  'asphalt-calculator': 'calculations/projectEstimators',
+  'roof-area-calculator': 'calculations/projectEstimators',
+  'flooring-calculator': 'calculations/projectEstimators',
+  'dimensional-weight-calculator': 'calculations/projectEstimators',
+  'concrete-calculator': 'calculations/construction',
+  'brick-calculator': 'calculations/constructionQuantities',
+  'rebar-calculator': 'calculations/constructionQuantities',
+  'gravel-calculator': 'calculations/constructionQuantities',
+  'excavation-calculator': 'calculations/constructionQuantities',
+};
+for (const [slug, moduleSignal] of Object.entries(selectedCalculationRoutes)) {
+  if (!read(join(toolsRoot, slug, 'page.tsx')).includes(moduleSignal)) failures.push(`Selected calculation route bypasses its calculation module: ${slug}`);
+}
+
+const selectedSharedCalculationRoutes = {
+  'cement-calculator': { pageSignal: 'CementTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'sand-calculator': { pageSignal: 'SandTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'paint-calculator': { pageSignal: 'PaintTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'tile-calculator': { pageSignal: 'TileTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'steel-weight-calculator': { pageSignal: 'SteelTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'drywall-calculator': { pageSignal: 'DrywallCalculator', bridge: 'DrywallCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+  'paver-calculator': { pageSignal: 'PaverCalculator', bridge: 'PaverCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+  'polymeric-sand-calculator': { pageSignal: 'PolymericSandCalculator', bridge: 'PolymericSandCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+  'deck-board-calculator': { pageSignal: 'DeckBoardCalculator', bridge: 'DeckBoardCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+  'fence-calculator': { pageSignal: 'FenceCalculator', bridge: 'FenceCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+};
+const toolComponentsRoot = join(root, 'src', 'components', 'tools');
+for (const [slug, expectation] of Object.entries(selectedSharedCalculationRoutes)) {
+  if (!read(join(toolsRoot, slug, 'page.tsx')).includes(expectation.pageSignal)) failures.push(`Selected calculation route bypasses its shared implementation: ${slug}`);
+  if (expectation.bridge && !read(join(toolComponentsRoot, expectation.bridge)).includes(expectation.implementation.replace('.tsx', ''))) failures.push(`Selected calculation bridge bypasses its shared implementation: ${slug}`);
+  if (!read(join(toolComponentsRoot, expectation.implementation)).includes(expectation.moduleSignal)) failures.push(`Selected shared calculation implementation bypasses its calculation module: ${slug}`);
 }
 
 if (warnings.length) {

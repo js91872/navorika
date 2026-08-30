@@ -14,7 +14,7 @@ const fieldClass =
 
 function number(value: string): number {
   const parsed = Number(value);
-  return Number.isFinite(parsed) ? Math.max(0, parsed) : 0;
+  return value.trim() !== '' && Number.isFinite(parsed) ? parsed : Number.NaN;
 }
 
 export default function EgressWindowCodeChecker() {
@@ -23,16 +23,14 @@ export default function EgressWindowCodeChecker() {
   const [sill, setSill] = useState('42');
   const [gradeFloor, setGradeFloor] = useState(false);
 
-  const result = useMemo(
-    () =>
-      calculateEgressWindow({
-        clearWidthInches: number(width),
-        clearHeightInches: number(height),
-        sillHeightInches: number(sill),
-        gradeFloorOpening: gradeFloor,
-      }),
-    [width, height, sill, gradeFloor],
-  );
+  const outcome = useMemo(() => {
+    try {
+      return { result: calculateEgressWindow({ clearWidthInches: number(width), clearHeightInches: number(height), sillHeightInches: number(sill), gradeFloorOpening: gradeFloor }), error: '' };
+    } catch (caught) {
+      return { result: null, error: caught instanceof Error ? caught.message : 'Check the opening dimensions.' };
+    }
+  }, [width, height, sill, gradeFloor]);
+  const result = outcome.result;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(330px,0.8fr)]">
@@ -129,11 +127,11 @@ export default function EgressWindowCodeChecker() {
               />
 
               <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-xs font-semibold">
-                Clear width: {number(width).toFixed(1)} in
+                Clear width: {Number.isFinite(number(width)) ? number(width).toFixed(1) : '—'} in
               </span>
 
               <span className="absolute left-1 top-1/3 -rotate-90 text-xs font-semibold">
-                Height: {number(height).toFixed(1)} in
+                Height: {Number.isFinite(number(height)) ? number(height).toFixed(1) : '—'} in
               </span>
             </div>
 
@@ -146,6 +144,9 @@ export default function EgressWindowCodeChecker() {
 
       <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
         <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-lg">
+          {!result ? (
+            <p role="alert" className="rounded-2xl border border-red-500/30 bg-red-500/10 p-5 text-sm text-red-700 dark:text-red-300">{outcome.error}</p>
+          ) : (<>
           <div
             className={`rounded-2xl border p-5 ${
               result.passed
@@ -205,6 +206,7 @@ export default function EgressWindowCodeChecker() {
               </div>
             ))}
           </div>
+          </>)}
         </section>
 
         <section className="rounded-3xl border border-amber-500/20 bg-amber-500/10 p-5 text-sm leading-6">

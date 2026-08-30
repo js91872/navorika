@@ -22,8 +22,8 @@ export const investmentSubTools: Record<string, SubToolSEO> = {
 
 export const savingsSubTools: Record<string, SubToolSEO> = {
   "ppf-calculator": { title: "PPF Calculator - Provident Fund", heading: "PPF Calculator", description: "Calculate tax-free maturity amounts for Public Provident Funds.", keywords: ["ppf calculator", "provident fund"] },
-  "epf-calculator": { title: "EPF Calculator - Employee Provident Fund", heading: "EPF Calculator", description: "Forecast employer and employee PF contributions.", keywords: ["epf calculator"] },
-  "nps-calculator": { title: "NPS Calculator - National Pension System", heading: "NPS Calculator", description: "Estimate your retirement pension corpus and annuity.", keywords: ["nps calculator"] },
+  "epf-calculator": { title: "EPF Calculator - Employee Provident Fund", heading: "EPF Calculator", description: "Estimate employee EPF, employer EPF, EPS allocation, and interest from transparent assumptions.", keywords: ["epf calculator"] },
+  "nps-calculator": { title: "NPS Calculator - National Pension System", heading: "NPS Calculator", description: "Project an NPS corpus, configurable annuity allocation, and estimated pension from separate return assumptions.", keywords: ["nps calculator"] },
   "fd-calculator": { title: "FD Calculator - Fixed Deposit Returns", heading: "FD Calculator", description: "Determine accurate bank fixed deposit maturity values.", keywords: ["fd calculator", "fixed deposit"] },
   "gratuity-calculator": { title: "Gratuity Calculator", heading: "Gratuity Calculator", description: "Compute your statutory end-of-service gratuity payout.", keywords: ["gratuity calculator"] }
 };

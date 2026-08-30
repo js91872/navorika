@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateRoofArea as calculateRoofAreaEstimate } from '@/lib/calculations/projectEstimators';
 
 export default function RoofAreaCalculator() {
   const [length, setLength] = useState<number>(10);
@@ -13,41 +14,16 @@ export default function RoofAreaCalculator() {
   const [overhang, setOverhang] = useState<number>(0.3);
   const [waste, setWaste] = useState<number>(10);
   const [result, setResult] = useState<any>(null);
+  const [error, setError] = useState('');
 
   const calculateRoof = () => {
-    let len = length;
-    let wid = width;
-
-    if (unit === 'ft') {
-      len = length * 0.3048;
-      wid = width * 0.3048;
-    }
-
-    const overhangM = unit === 'ft' ? overhang * 0.3048 : overhang;
-
-    const pitchFactor = Math.sqrt(1 + Math.pow(pitch / 12, 2));
-    const totalLength = len + (2 * overhangM);
-    const totalWidth = wid + (2 * overhangM);
-    const flatArea = totalLength * totalWidth;
-    const roofArea = flatArea * pitchFactor;
-
-    const roofingArea = roofArea * (1 + waste / 100);
-    const squaresNeeded = roofingArea / 9.290304;
-
-    setResult({
-      roofArea,
-      flatArea,
-      pitchFactor,
-      roofingArea,
-      squaresNeeded,
-      totalLength,
-      totalWidth,
-      pitch
-    });
+    try { setResult(calculateRoofAreaEstimate({ length, width, unit, pitchRisePer12: pitch, overhang, wastePercent: waste })); setError(''); }
+    catch (cause) { setResult(null); setError(cause instanceof Error ? cause.message : 'Enter valid roof details.'); }
   };
 
   const resetCalculator = () => {
     setResult(null);
+    setError('');
     setLength(10);
     setWidth(10);
     setPitch(4);
@@ -133,6 +109,7 @@ export default function RoofAreaCalculator() {
             Reset
           </Button>
         </div>
+        {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
           <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">

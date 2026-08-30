@@ -4,24 +4,23 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { tools } from '@/data/registry';
+import { calculateEMI, type EMIResult } from '@/lib/calculations/emi';
 
 export default function LoanEMICalculator() {
   const [principal, setPrincipal] = useState(500000);
   const [rate, setRate] = useState(8.5);
   const [tenure, setTenure] = useState(20);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<EMIResult | null>(null);
+  const [error, setError] = useState('');
 
   const calculate = () => {
-    const monthlyRate = (rate / 100) / 12;
-    const months = tenure * 12;
-    const emi = principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
-    const totalPayment = emi * months;
-    const totalInterest = totalPayment - principal;
-    setResult({
-      emi: Math.round(emi),
-      totalPayment: Math.round(totalPayment),
-      totalInterest: Math.round(totalInterest),
-    });
+    try {
+      setResult(calculateEMI({ principal, rate, tenure, tenureUnit: 'years' }));
+      setError('');
+    } catch (cause) {
+      setResult(null);
+      setError(cause instanceof Error ? cause.message : 'Enter valid loan details.');
+    }
   };
 
   return (
@@ -48,12 +47,13 @@ export default function LoanEMICalculator() {
               <input type="number" value={tenure} onChange={(e) => setTenure(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
             </div>
             <button onClick={calculate} className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors">Calculate EMI</button>
+            {error && <p role="alert" className="text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
           </div>
 
           <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] flex items-center justify-center">
             {result ? (
               <div className="text-center w-full">
-                <div className="text-4xl font-bold">₹{result.emi.toLocaleString()}</div>
+                <div className="text-4xl font-bold">₹{result.monthlyPayment.toLocaleString()}</div>
                 <p className="text-sm text-[var(--muted-foreground)] mt-2">Monthly EMI</p>
                 <div className="mt-4 pt-4 border-t border-[var(--border)] grid grid-cols-2 gap-4 text-sm">
                   <div><p className="text-[var(--muted-foreground)]">Total Payment</p><p className="font-semibold">₹{result.totalPayment.toLocaleString()}</p></div>

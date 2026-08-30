@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateExcavation as calculateExcavationQuantity } from '@/lib/calculations/constructionQuantities';
+
+type ExcavationResult = ReturnType<typeof calculateExcavationQuantity>;
 
 export default function ExcavationCalculator() {
   const [length, setLength] = useState<number>(10);
@@ -13,34 +16,17 @@ export default function ExcavationCalculator() {
   const [swellPercent, setSwellPercent] = useState<number>(20);
   const [looseDensity, setLooseDensity] = useState<number>(1600);
   const [truckPayload, setTruckPayload] = useState<number>(15000);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<ExcavationResult | null>(null);
+  const [error, setError] = useState('');
 
   const calculateExcavation = () => {
-    let len = length;
-    let wid = width;
-    let dep = depth;
-
-    if (unit === 'ft') {
-      len = length * 0.3048;
-      wid = width * 0.3048;
-      dep = depth * 0.3048;
+    try {
+      setResult(calculateExcavationQuantity({ length, width, depth, unit, swellPercent, looseDensityKgM3: looseDensity, truckPayloadKg: truckPayload }));
+      setError('');
+    } catch (caught) {
+      setResult(null);
+      setError(caught instanceof Error ? caught.message : 'Check the excavation inputs.');
     }
-
-    const volumeM3 = len * wid * dep;
-    const looseVolume = volumeM3 * (1 + swellPercent / 100);
-    const weight = looseVolume * looseDensity;
-    const truckLoads = Math.ceil(weight / truckPayload);
-
-    setResult({
-      volumeM3,
-      looseVolume,
-      weight,
-      truckLoads,
-      swellPercent,
-      looseDensity,
-      truckPayload,
-      dimensions: { length: len, width: wid, depth: dep }
-    });
   };
 
   const resetCalculator = () => {
@@ -51,6 +37,7 @@ export default function ExcavationCalculator() {
     setSwellPercent(20);
     setLooseDensity(1600);
     setTruckPayload(15000);
+    setError('');
   };
 
   return (
@@ -119,6 +106,7 @@ export default function ExcavationCalculator() {
           </div>
         </div>
 
+        {error && <p role="alert" className="mt-6 text-sm text-red-600">{error}</p>}
         <div className="flex gap-4 mt-6">
           <Button onClick={calculateExcavation} className="flex-1">
             Calculate Excavation
@@ -134,22 +122,22 @@ export default function ExcavationCalculator() {
             <div className="grid grid-cols-2 gap-4">
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Entered Swell</p>
-                <p className="text-lg font-bold">{result.swellPercent}%</p>
+                <p className="text-lg font-bold">{swellPercent}%</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Volume (m³)</p>
-                <p className="text-lg font-bold">{result.volumeM3.toFixed(2)} m³</p>
+                <p className="text-lg font-bold">{result.bankVolumeM3.toFixed(2)} m³</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Loose Volume</p>
-                <p className="text-lg font-bold">{result.looseVolume.toFixed(2)} m³</p>
+                <p className="text-lg font-bold">{result.looseVolumeM3.toFixed(2)} m³</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Weight</p>
-                <p className="text-lg font-bold">{result.weight.toFixed(0)} kg</p>
+                <p className="text-lg font-bold">{result.looseWeightKg.toFixed(0)} kg</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg md:col-span-2">
-                <p className="text-sm text-slate-500 dark:text-slate-400">Truck Loads ({(result.truckPayload / 1000).toFixed(1)} t payload)</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Truck Loads ({(truckPayload / 1000).toFixed(1)} t payload)</p>
                 <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{result.truckLoads} trucks</p>
               </div>
             </div>

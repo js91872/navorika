@@ -6,6 +6,8 @@ import { ArrowLeft, Ruler } from 'lucide-react';
 import { tools } from '@/data/registry';
 import { calculateConcrete } from '@/lib/calculations/construction';
 
+type ConcreteResult = ReturnType<typeof calculateConcrete>;
+
 export default function ConcreteCalculator() {
   const meta = tools.find(t => t.slug === 'concrete-calculator');
   const [length, setLength] = useState(10);
@@ -13,11 +15,17 @@ export default function ConcreteCalculator() {
   const [height, setHeight] = useState(0.15);
   const [unit, setUnit] = useState<'feet' | 'meters'>('meters');
   const [wastage, setWastage] = useState(5);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<ConcreteResult | null>(null);
+  const [error, setError] = useState('');
 
   const handleCalculate = () => {
-    const calcResult = calculateConcrete({ length, width, height, unit, wastage });
-    setResult(calcResult);
+    try {
+      setResult(calculateConcrete({ length, width, height, unit, wastage }));
+      setError('');
+    } catch (caught) {
+      setResult(null);
+      setError(caught instanceof Error ? caught.message : 'Check the entered dimensions.');
+    }
   };
 
   return (
@@ -60,6 +68,7 @@ export default function ConcreteCalculator() {
                 <input type="number" value={wastage} onChange={(e) => setWastage(Number(e.target.value))} className="w-full px-3 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)]" />
               </div>
             </div>
+            {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
             <button onClick={handleCalculate} className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-colors">
               Calculate
             </button>
@@ -92,7 +101,7 @@ export default function ConcreteCalculator() {
                     <div className="text-lg font-bold">{(result.water * 1000).toFixed(0)} L</div>
                   </div>
                 </div>
-                <p className="text-sm text-[var(--muted-foreground)]">Uses a 1.54 dry-volume factor and 1,440 kg/m³ cement bulk density. This is a planning estimate, not an engineered concrete mix design.</p>
+                <p className="text-sm text-[var(--muted-foreground)]">Uses a nominal 1:1.5:3 volumetric ratio, 1.54 dry-volume factor, 1,440 kg/m³ cement bulk density and the entered waste allowance. It does not establish a concrete strength grade or replace an engineered/supplier mix design.</p>
               </div>
             ) : (
               <div className="h-full flex items-center justify-center text-[var(--muted-foreground)]">

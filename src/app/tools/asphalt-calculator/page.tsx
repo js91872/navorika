@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateAsphalt as calculateAsphaltEstimate } from '@/lib/calculations/projectEstimators';
 
 export default function AsphaltCalculator() {
   const meta = tools.find(t => t.slug === 'asphalt-calculator');
@@ -16,40 +17,18 @@ export default function AsphaltCalculator() {
   const [asphaltDensity, setAsphaltDensity] = useState<number>(2240);
   const [wastage, setWastage] = useState<number>(5);
   const [result, setResult] = useState<any>(null);
+  const [error, setError] = useState('');
 
   const calculateAsphalt = () => {
-    let len = length;
-    let wid = width;
-
-    if (unit === 'ft') {
-      len = length * 0.3048;
-      wid = width * 0.3048;
-    }
-
-    let thick = thickness;
-    if (thicknessUnit === 'inch') {
-      thick = thickness * 25.4;
-    }
-    const thickM = thick / 1000;
-
-    const volume = len * wid * thickM;
-    const weight = volume * asphaltDensity;
-    const tons = weight / 1000;
-    const tonsWithWaste = tons * (1 + wastage / 100);
-    const truckLoads = Math.ceil(tonsWithWaste / 20);
-
-    setResult({
-      volume,
-      weight,
-      tons: tonsWithWaste,
-      truckLoads,
-      area: len * wid,
-      thickness: thick
-    });
+    try {
+      const estimate = calculateAsphaltEstimate({ length, width, unit, thickness, thicknessUnit, densityKgM3: asphaltDensity, wastePercent: wastage });
+      setResult({ volume: estimate.volumeM3, weight: estimate.weightKg, tons: estimate.tonnes, truckLoads: estimate.truckLoads, area: estimate.areaM2, thickness: estimate.thicknessMm }); setError('');
+    } catch (cause) { setResult(null); setError(cause instanceof Error ? cause.message : 'Enter valid asphalt details.'); }
   };
 
   const resetCalculator = () => {
     setResult(null);
+    setError('');
     setLength(20);
     setWidth(10);
     setThickness(75);
@@ -154,6 +133,7 @@ export default function AsphaltCalculator() {
             Reset
           </Button>
         </div>
+        {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
           <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">

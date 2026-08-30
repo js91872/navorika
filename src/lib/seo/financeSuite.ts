@@ -30,3 +30,11 @@ export function getFinanceSuiteUrls() {
     Object.keys(tools).map((suboption) => `/tools/${suite}/${suboption}`)
   );
 }
+
+export function getFinanceSuiteStaticParams(suite: string) {
+  return Object.keys(financeSuites[suite] ?? {}).map((suboption) => ({ suboption }));
+}
+
+export function isFinanceSuiteSuboption(suite: string, suboption: string) {
+  return Object.hasOwn(financeSuites[suite] ?? {}, suboption);
+}

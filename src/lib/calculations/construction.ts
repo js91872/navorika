@@ -7,17 +7,21 @@ export function calculateConcrete(inputs: {
   wastage?: number;
 }): { volume: number; cement: number; sand: number; aggregate: number; water: number } {
   const { length, width, height, unit, wastage = 5 } = inputs;
-  
+  for (const [name, value] of [['Length', length], ['Width', width], ['Height', height]] as const) {
+    if (!Number.isFinite(value) || value <= 0) throw new RangeError(`${name} must be greater than zero.`);
+  }
+  if (!Number.isFinite(wastage) || wastage < 0) throw new RangeError('Wastage cannot be negative.');
+
   // Convert to meters if feet
-  const l = unit === 'feet' ? length / 3.281 : length;
-  const w = unit === 'feet' ? width / 3.281 : width;
-  const h = unit === 'feet' ? height / 3.281 : height;
+  const l = unit === 'feet' ? length * 0.3048 : length;
+  const w = unit === 'feet' ? width * 0.3048 : width;
+  const h = unit === 'feet' ? height * 0.3048 : height;
   
   const volume = l * w * h;
   const withWastage = volume * (1 + wastage / 100);
   const dryVolume = withWastage * 1.54;
   
-  // M20 mix ratio (1:1.5:3) - Cement: Sand: Aggregate
+  // Nominal volumetric planning ratio, not an engineered strength-grade mix.
   const totalParts = 1 + 1.5 + 3;
   const cement = (dryVolume * 1) / totalParts;
   const sand = (dryVolume * 1.5) / totalParts;
@@ -45,13 +49,16 @@ export function calculateBricks(inputs: {
   mortar: number;
 }): { bricks: number; mortar: number } {
   const { wallLength, wallHeight, wallThickness, brickLength, brickHeight, brickWidth, mortar } = inputs;
-  
+  for (const [name, value] of [['Wall length', wallLength], ['Wall height', wallHeight], ['Wall thickness', wallThickness], ['Brick length', brickLength], ['Brick height', brickHeight], ['Brick width', brickWidth]] as const) {
+    if (!Number.isFinite(value) || value <= 0) throw new RangeError(`${name} must be greater than zero.`);
+  }
+  if (!Number.isFinite(mortar) || mortar < 0 || mortar >= 100) throw new RangeError('Mortar percentage must be at least 0 and less than 100.');
+
   const wallVolume = wallLength * wallHeight * wallThickness;
   const brickVolume = (brickLength / 100) * (brickHeight / 100) * (brickWidth / 100);
   const mortarVolume = (wallVolume * mortar) / 100;
-  const effectiveBrickVolume = brickVolume + mortarVolume;
-  
-  const bricks = Math.ceil(wallVolume / effectiveBrickVolume);
+  const netBrickVolume = wallVolume - mortarVolume;
+  const bricks = Math.ceil(netBrickVolume / brickVolume);
   
   return {
     bricks: bricks,

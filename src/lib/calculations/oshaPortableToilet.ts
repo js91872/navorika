@@ -9,8 +9,10 @@ export interface OshaPortableToiletResult {
 }
 
 function normalizeWorkers(value: number): number {
-  if (!Number.isFinite(value)) return 1;
-  return Math.max(1, Math.ceil(value));
+  if (!Number.isFinite(value) || value <= 0) {
+    throw new RangeError('Employee count must be greater than zero.');
+  }
+  return Math.ceil(value);
 }
 
 export function calculateOshaPortableToilets(

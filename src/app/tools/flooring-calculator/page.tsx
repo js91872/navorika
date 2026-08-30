@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateFlooring as calculateFlooringEstimate } from '@/lib/calculations/projectEstimators';
 
 export default function FlooringCalculator() {
   const [length, setLength] = useState<number>(10);
@@ -14,6 +15,7 @@ export default function FlooringCalculator() {
   const [laborCost, setLaborCost] = useState<number>(3);
   const [wastage, setWastage] = useState<number>(10);
   const [result, setResult] = useState<any>(null);
+  const [error, setError] = useState('');
 
   const flooringCosts = {
     hardwood: { name: 'Hardwood', avgCost: 8 },
@@ -24,30 +26,10 @@ export default function FlooringCalculator() {
   };
 
   const calculateFlooring = () => {
-    let len = length;
-    let wid = width;
-
-    if (unit === 'ft') {
-      len = length * 0.3048;
-      wid = width * 0.3048;
-    }
-
-    const areaSqft = len * wid * 10.763910416709722;
-    const areaSqftWithWastage = areaSqft * (1 + wastage / 100);
-    const materialCost = areaSqftWithWastage * costPerSqft;
-    const laborCostTotal = areaSqft * laborCost;
-    const totalCost = materialCost + laborCostTotal;
-
-    setResult({
-      areaSqft,
-      areaSqftWithWastage,
-      materialCost,
-      laborCostTotal,
-      totalCost,
-      costPerSqft,
-      laborCost,
-      flooringType: flooringCosts[flooringType].name
-    });
+    try {
+      const estimate = calculateFlooringEstimate({ length, width, unit, materialRateSqft: costPerSqft, laborRateSqft: laborCost, wastePercent: wastage });
+      setResult({ ...estimate, areaSqftWithWastage: estimate.orderAreaSqft, laborCostTotal: estimate.laborCost, costPerSqft, flooringType: flooringCosts[flooringType].name }); setError('');
+    } catch (cause) { setResult(null); setError(cause instanceof Error ? cause.message : 'Enter valid flooring details.'); }
   };
 
   const formatCurrency = (amount: number) => {
@@ -61,6 +43,7 @@ export default function FlooringCalculator() {
 
   const resetCalculator = () => {
     setResult(null);
+    setError('');
     setLength(10);
     setWidth(10);
     setFlooringType('hardwood');
@@ -172,6 +155,7 @@ export default function FlooringCalculator() {
             Reset
           </Button>
         </div>
+        {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
           <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
