@@ -6,7 +6,7 @@ const faqs = [
   {
     question: 'What is the 4:1 ladder rule?',
     answer:
-      'For a leaning ladder, a common setup guideline is approximately one unit of horizontal distance from the wall for every four units of vertical rise.',
+      'Under OSHA 29 CFR 1926.1053(b)(5)(i), a non-self-supporting ladder is placed with horizontal distance approximately one-quarter of its working length.',
   },
   {
     question: 'What angle does the 4:1 rule create?',
@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'How far should a 20-foot ladder be from the wall?',
     answer:
-      'The exact base distance depends on the vertical height reached. A 20-foot ladder positioned using 4:1 geometry has a base distance of roughly 4.85 feet.',
+      'Using the OSHA working-length relationship, a 20-foot working length gives an approximate 5-foot base distance.',
   },
   {
     question: 'Can ladder length be used as working height?',
@@ -65,7 +65,8 @@ export default function LadderSafeReachPage() {
             <p className="mt-4 leading-7">
               For an extension or leaning ladder, the 4:1 relationship places
               the base approximately one foot away from the supporting surface
-              for every four feet of vertical rise.
+              for every four feet of ladder working length under OSHA 29 CFR
+              1926.1053(b)(5)(i).
             </p>
           </section>
 

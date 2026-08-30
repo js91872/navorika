@@ -322,6 +322,11 @@ const selectedCalculationRoutes = {
   'roof-area-calculator': 'calculations/projectEstimators',
   'flooring-calculator': 'calculations/projectEstimators',
   'dimensional-weight-calculator': 'calculations/projectEstimators',
+  'concrete-calculator': 'calculations/construction',
+  'brick-calculator': 'calculations/constructionQuantities',
+  'rebar-calculator': 'calculations/constructionQuantities',
+  'gravel-calculator': 'calculations/constructionQuantities',
+  'excavation-calculator': 'calculations/constructionQuantities',
 };
 for (const [slug, moduleSignal] of Object.entries(selectedCalculationRoutes)) {
   if (!read(join(toolsRoot, slug, 'page.tsx')).includes(moduleSignal)) failures.push(`Selected calculation route bypasses its calculation module: ${slug}`);

@@ -12,15 +12,18 @@ export interface LadderResult {
   recommendedRoofExtensionFeet: number;
 }
 
-function safe(value: number): number {
-  return Number.isFinite(value) ? Math.max(0, value) : 0;
+function positive(value: number, name: string): number {
+  if (!Number.isFinite(value) || value <= 0) {
+    throw new RangeError(`${name} must be greater than zero.`);
+  }
+  return value;
 }
 
 export function calculateLadderSafeReach(
   input: LadderInput,
 ): LadderResult {
-  const ladderLength = safe(input.ladderLengthFeet);
-  const userHeight = safe(input.userHeightFeet);
+  const ladderLength = positive(input.ladderLengthFeet, 'Ladder length');
+  const userHeight = positive(input.userHeightFeet, 'User height');
 
   if (input.ladderType === 'step') {
     /*
@@ -39,24 +42,14 @@ export function calculateLadderSafeReach(
   }
 
   /*
-   * 4:1 setup rule:
-   * approximately one foot of horizontal base distance for every four feet
-   * of vertical working height.
-   *
-   * Solving:
-   * ladder² = height² + (height/4)²
+   * OSHA 29 CFR 1926.1053(b)(5)(i): horizontal distance is approximately
+   * one-quarter of the ladder's working length (the hypotenuse here).
    */
-  const verticalHeight =
-    ladderLength > 0
-      ? ladderLength / Math.sqrt(1 + 1 / 16)
-      : 0;
-
-  const baseDistance = verticalHeight / 4;
+  const baseDistance = ladderLength / 4;
+  const verticalHeight = Math.sqrt(ladderLength ** 2 - baseDistance ** 2);
 
   const ladderAngle =
-    ladderLength > 0
-      ? Math.atan2(verticalHeight, baseDistance) * (180 / Math.PI)
-      : 0;
+    Math.atan2(verticalHeight, baseDistance) * (180 / Math.PI);
 
   /*
    * Approximate reach only. Safe standing level depends on ladder type,

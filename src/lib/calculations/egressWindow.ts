@@ -20,16 +20,19 @@ export interface EgressWindowResult {
   criteria: EgressCriterion[];
 }
 
-function safe(value: number): number {
-  return Number.isFinite(value) ? Math.max(0, value) : 0;
+function dimension(value: number, name: string, allowZero = false): number {
+  if (!Number.isFinite(value) || value < 0 || (!allowZero && value === 0)) {
+    throw new RangeError(`${name} must be ${allowZero ? 'zero or greater' : 'greater than zero'}.`);
+  }
+  return value;
 }
 
 export function calculateEgressWindow(
   input: EgressWindowInput,
 ): EgressWindowResult {
-  const width = safe(input.clearWidthInches);
-  const height = safe(input.clearHeightInches);
-  const sill = safe(input.sillHeightInches);
+  const width = dimension(input.clearWidthInches, 'Clear width');
+  const height = dimension(input.clearHeightInches, 'Clear height');
+  const sill = dimension(input.sillHeightInches, 'Sill height', true);
 
   const clearAreaSqFt = (width * height) / 144;
 

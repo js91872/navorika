@@ -14,16 +14,20 @@ const fieldClass =
 
 function number(value: string): number {
   const parsed = Number(value);
-  return Number.isFinite(parsed) ? Math.max(1, parsed) : 1;
+  return value.trim() !== '' && Number.isFinite(parsed) ? parsed : Number.NaN;
 }
 
 export default function OshaPortableToiletCalculator() {
   const [workers, setWorkers] = useState('25');
 
-  const result = useMemo(
-    () => calculateOshaPortableToilets(number(workers)),
-    [workers],
-  );
+  const outcome = useMemo(() => {
+    try {
+      return { result: calculateOshaPortableToilets(number(workers)), error: '' };
+    } catch (caught) {
+      return { result: null, error: caught instanceof Error ? caught.message : 'Enter a valid workforce.' };
+    }
+  }, [workers]);
+  const result = outcome.result;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.8fr)]">
@@ -115,6 +119,9 @@ export default function OshaPortableToiletCalculator() {
 
       <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
         <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-lg">
+          {!result ? (
+            <p role="alert" className="rounded-2xl border border-red-500/30 bg-red-500/10 p-5 text-sm text-red-700 dark:text-red-300">{outcome.error}</p>
+          ) : (<>
           <div className="flex items-center gap-3">
             <span className="grid size-11 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600">
               <Users className="size-6" />
@@ -180,6 +187,7 @@ export default function OshaPortableToiletCalculator() {
               </div>
             </dl>
           )}
+          </>)}
         </section>
 
         <section className="rounded-3xl border border-amber-500/20 bg-amber-500/10 p-5 text-sm leading-6">

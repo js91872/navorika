@@ -115,7 +115,8 @@ export default function EgressWindowPage() {
           </section>
 
           <aside className="rounded-2xl border border-amber-500/20 bg-amber-500/10 p-5 text-sm leading-6 text-[var(--foreground)]">
-            <strong>Code disclaimer:</strong> Building codes vary by
+            <strong>Code disclaimer:</strong> The dimensional reference used is
+            2021 IRC R310.2.1–R310.2.3. Building codes vary by
             jurisdiction and adopted edition. This tool checks selected
             dimensional criteria only. Confirm requirements with the local
             building authority before construction, alteration or bedroom use.

@@ -9,7 +9,7 @@ const fieldClass =
 
 function number(value: string): number {
   const parsed = Number(value);
-  return Number.isFinite(parsed) ? Math.max(0, parsed) : 0;
+  return value.trim() !== '' && Number.isFinite(parsed) ? parsed : Number.NaN;
 }
 
 export default function LadderSafeReachCalculator() {
@@ -18,15 +18,14 @@ export default function LadderSafeReachCalculator() {
   const [ladderType, setLadderType] =
     useState<'extension' | 'step'>('extension');
 
-  const result = useMemo(
-    () =>
-      calculateLadderSafeReach({
-        ladderLengthFeet: number(ladderLength),
-        userHeightFeet: number(userHeight),
-        ladderType,
-      }),
-    [ladderLength, userHeight, ladderType],
-  );
+  const outcome = useMemo(() => {
+    try {
+      return { result: calculateLadderSafeReach({ ladderLengthFeet: number(ladderLength), userHeightFeet: number(userHeight), ladderType }), error: '' };
+    } catch (caught) {
+      return { result: null, error: caught instanceof Error ? caught.message : 'Check the ladder inputs.' };
+    }
+  }, [ladderLength, userHeight, ladderType]);
+  const result = outcome.result;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
@@ -73,7 +72,7 @@ export default function LadderSafeReachCalculator() {
           </label>
         </div>
 
-        {ladderType === 'extension' && (
+        {ladderType === 'extension' && result && (
           <div className="mt-8 rounded-3xl border border-[var(--border)] bg-[var(--background)] p-6">
             <div className="mx-auto flex max-w-md items-end justify-center">
               <div className="relative h-64 w-72">
@@ -103,6 +102,9 @@ export default function LadderSafeReachCalculator() {
 
       <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
         <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-lg">
+          {!result ? (
+            <p role="alert" className="rounded-2xl border border-red-500/30 bg-red-500/10 p-5 text-sm text-red-700 dark:text-red-300">{outcome.error}</p>
+          ) : (<>
           <div className="flex items-center gap-3">
             <Triangle className="size-6 text-indigo-600" />
             <div>
@@ -152,6 +154,7 @@ export default function LadderSafeReachCalculator() {
               </dd>
             </div>
           </dl>
+          </>)}
         </section>
 
         <section className="rounded-3xl border border-amber-500/20 bg-amber-500/10 p-5 text-sm leading-6">

@@ -32,6 +32,7 @@ export interface EstimateTotals {
   taxableAmount: number;
   tax: number;
   grandTotal: number;
+  impliedMarginPercent: number;
   categoryTotals: Record<EstimateCategory, number>;
 }
 
@@ -48,6 +49,7 @@ export function calculateEstimate(
   };
 
   for (const item of items) {
+    if (!(item.category in categoryTotals)) throw new RangeError(`Unknown estimate category: ${item.category}`);
     const quantity = Number.isFinite(item.quantity) ? Math.max(0, item.quantity) : 0;
     const unitCost = Number.isFinite(item.unitCost) ? Math.max(0, item.unitCost) : 0;
     categoryTotals[item.category] += quantity * unitCost;
@@ -58,17 +60,22 @@ export function calculateEstimate(
     0
   );
 
-  const overhead =
-    directCost * (Math.max(0, adjustments.overheadPercent) / 100);
+  const percent = (value: number, name: string) => {
+    if (!Number.isFinite(value) || value < 0) throw new RangeError(`${name} cannot be negative or non-finite.`);
+    return value / 100;
+  };
+  if (!Number.isFinite(adjustments.discount) || adjustments.discount < 0) throw new RangeError('Discount cannot be negative or non-finite.');
+
+  const overhead = directCost * percent(adjustments.overheadPercent, 'Overhead');
 
   const contingency =
     (directCost + overhead) *
-    (Math.max(0, adjustments.contingencyPercent) / 100);
+    percent(adjustments.contingencyPercent, 'Contingency');
 
   const markupBase = directCost + overhead + contingency;
 
   const markup =
-    markupBase * (Math.max(0, adjustments.markupPercent) / 100);
+    markupBase * percent(adjustments.markupPercent, 'Markup');
 
   const subtotalBeforeTax = markupBase + markup;
 
@@ -80,7 +87,7 @@ export function calculateEstimate(
   const taxableAmount = Math.max(0, subtotalBeforeTax - discount);
 
   const tax =
-    taxableAmount * (Math.max(0, adjustments.taxPercent) / 100);
+    taxableAmount * percent(adjustments.taxPercent, 'Tax');
 
   return {
     directCost,
@@ -92,6 +99,7 @@ export function calculateEstimate(
     taxableAmount,
     tax,
     grandTotal: taxableAmount + tax,
+    impliedMarginPercent: subtotalBeforeTax > 0 ? markup / subtotalBeforeTax * 100 : 0,
     categoryTotals,
   };
 }

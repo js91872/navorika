@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateBrickQuantity } from '@/lib/calculations/constructionQuantities';
+
+type BrickResult = ReturnType<typeof calculateBrickQuantity>;
 
 export default function BrickCalculator() {
   const [length, setLength] = useState<number>(10);
@@ -13,7 +16,8 @@ export default function BrickCalculator() {
   const [brickSize, setBrickSize] = useState<'standard' | 'modular'>('standard');
   const [mortarThickness, setMortarThickness] = useState<number>(10);
   const [wastage, setWastage] = useState<number>(5);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<BrickResult | null>(null);
+  const [error, setError] = useState('');
 
   const brickDimensions = {
     standard: { length: 0.23, width: 0.11, height: 0.07 },
@@ -21,38 +25,14 @@ export default function BrickCalculator() {
   };
 
   const calculateBricks = () => {
-    let len = length;
-    let wid = width;
-    let hei = height;
-
-    if (unit === 'ft') {
-      len = length * 0.3048;
-      wid = width * 0.3048;
-      hei = height * 0.3048;
-    }
-
     const dims = brickDimensions[brickSize];
-    const mortarM = mortarThickness / 1000;
-
-    const brickLength = dims.length + mortarM;
-    const brickWidth = dims.width + mortarM;
-    const brickHeight = dims.height + mortarM;
-
-    const nominalBrickVolume = brickLength * brickWidth * brickHeight;
-    const bricksPerM3 = 1 / nominalBrickVolume;
-    const area = len * hei;
-    const volume = len * wid * hei;
-    const totalBricks = Math.ceil(volume * bricksPerM3 * (1 + wastage / 100));
-
-    setResult({
-      totalBricks,
-      area,
-      volume,
-      bricksPerM3,
-      wallHeight: hei,
-      wallLength: len,
-      wallWidth: wid
-    });
+    try {
+      setResult(calculateBrickQuantity({ wallLength: length, wallThickness: width, wallHeight: height, unit, brickLengthM: dims.length, brickWidthM: dims.width, brickHeightM: dims.height, mortarJointMm: mortarThickness, wastePercent: wastage }));
+      setError('');
+    } catch (caught) {
+      setResult(null);
+      setError(caught instanceof Error ? caught.message : 'Check the wall and brick dimensions.');
+    }
   };
 
   const resetCalculator = () => {
@@ -63,6 +43,7 @@ export default function BrickCalculator() {
     setBrickSize('standard');
     setMortarThickness(10);
     setWastage(5);
+    setError('');
   };
 
   return (
@@ -154,6 +135,7 @@ export default function BrickCalculator() {
           </div>
         </div>
 
+        {error && <p role="alert" className="mt-6 text-sm text-red-600">{error}</p>}
         <div className="flex gap-4 mt-6">
           <Button onClick={calculateBricks} className="flex-1">
             Calculate Bricks
@@ -175,19 +157,19 @@ export default function BrickCalculator() {
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Wall Area</p>
-                <p className="text-lg font-bold">{result.area.toFixed(2)} m²</p>
+                <p className="text-lg font-bold">{result.wallAreaM2.toFixed(2)} m²</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Wall Volume</p>
-                <p className="text-lg font-bold">{result.volume.toFixed(2)} m³</p>
+                <p className="text-lg font-bold">{result.wallVolumeM3.toFixed(2)} m³</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Nominal Bricks per m³</p>
-                <p className="text-lg font-bold">{result.bricksPerM3.toFixed(0)}</p>
+                <p className="text-lg font-bold">{result.nominalBricksPerM3.toFixed(0)}</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Wall Height</p>
-                <p className="text-lg font-bold">{result.wallHeight.toFixed(2)} m</p>
+                <p className="text-lg font-bold">{(unit === 'ft' ? height * 0.3048 : height).toFixed(2)} m</p>
               </div>
             </div>
             <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">

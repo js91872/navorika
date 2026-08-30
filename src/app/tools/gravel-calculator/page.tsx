@@ -5,6 +5,9 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateBulkMaterial } from '@/lib/calculations/constructionQuantities';
+
+type GravelResult = ReturnType<typeof calculateBulkMaterial>;
 
 export default function GravelCalculator() {
   const meta = tools.find(t => t.slug === 'gravel-calculator');
@@ -13,7 +16,11 @@ export default function GravelCalculator() {
   const [depth, setDepth] = useState<number>(0.15);
   const [unit, setUnit] = useState<'m' | 'ft'>('m');
   const [gravelType, setGravelType] = useState<'pea' | 'crushed' | 'river'>('pea');
-  const [result, setResult] = useState<any>(null);
+  const [density, setDensity] = useState(1600);
+  const [wastePercent, setWastePercent] = useState(5);
+  const [truckPayloadKg, setTruckPayloadKg] = useState(15000);
+  const [result, setResult] = useState<GravelResult | null>(null);
+  const [error, setError] = useState('');
 
   const gravelDensities = {
     pea: { name: 'Pea Gravel', density: 1600 },
@@ -22,30 +29,13 @@ export default function GravelCalculator() {
   };
 
   const calculateGravel = () => {
-    let len = length;
-    let wid = width;
-    let dep = depth;
-
-    if (unit === 'ft') {
-      len = length * 0.3048;
-      wid = width * 0.3048;
-      dep = depth * 0.3048;
+    try {
+      setResult(calculateBulkMaterial({ length, width, depth, unit, densityKgM3: density, wastePercent, truckPayloadKg }));
+      setError('');
+    } catch (caught) {
+      setResult(null);
+      setError(caught instanceof Error ? caught.message : 'Check the material inputs.');
     }
-
-    const volume = len * wid * dep;
-    const density = gravelDensities[gravelType].density;
-    const weight = volume * density;
-    const tons = weight / 1000;
-    const truckLoads = Math.ceil(tons / 15);
-
-    setResult({
-      volume,
-      weight,
-      tons,
-      truckLoads,
-      gravelType: gravelDensities[gravelType].name,
-      area: len * wid
-    });
   };
 
   const resetCalculator = () => {
@@ -54,6 +44,10 @@ export default function GravelCalculator() {
     setWidth(10);
     setDepth(0.15);
     setGravelType('pea');
+    setDensity(1600);
+    setWastePercent(5);
+    setTruckPayloadKg(15000);
+    setError('');
   };
 
   return (
@@ -79,7 +73,11 @@ export default function GravelCalculator() {
             <label className="block text-sm font-medium mb-2">Gravel Type</label>
             <Select
               value={gravelType}
-              onChange={(e) => setGravelType(e.target.value as 'pea' | 'crushed' | 'river')}
+              onChange={(e) => {
+                const next = e.target.value as 'pea' | 'crushed' | 'river';
+                setGravelType(next);
+                setDensity(gravelDensities[next].density);
+              }}
               options={[
                 { value: 'pea', label: 'Pea Gravel' },
                 { value: 'crushed', label: 'Crushed Stone' },
@@ -120,8 +118,21 @@ export default function GravelCalculator() {
               step={0.01}
             />
           </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Bulk Density (kg/m³)</label>
+            <Input type="number" value={density} onChange={(e) => setDensity(Number(e.target.value))} min={1} step={10} />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Waste / Settlement Allowance (%)</label>
+            <Input type="number" value={wastePercent} onChange={(e) => setWastePercent(Number(e.target.value))} min={0} step={1} />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Truck Payload (kg)</label>
+            <Input type="number" value={truckPayloadKg} onChange={(e) => setTruckPayloadKg(Number(e.target.value))} min={1} step={100} />
+          </div>
         </div>
 
+        {error && <p role="alert" className="mt-6 text-sm text-red-600">{error}</p>}
         <div className="flex gap-4 mt-6">
           <Button onClick={calculateGravel} className="flex-1">
             Calculate Gravel
@@ -137,31 +148,31 @@ export default function GravelCalculator() {
             <div className="grid grid-cols-2 gap-4">
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Gravel Type</p>
-                <p className="text-lg font-bold">{result.gravelType}</p>
+                <p className="text-lg font-bold">{gravelDensities[gravelType].name}</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Area</p>
-                <p className="text-lg font-bold">{result.area.toFixed(2)} m²</p>
+                <p className="text-lg font-bold">{result.areaM2.toFixed(2)} m²</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Volume</p>
-                <p className="text-lg font-bold">{result.volume.toFixed(2)} m³</p>
+                <p className="text-lg font-bold">{result.measuredVolumeM3.toFixed(2)} m³ measured / {result.orderVolumeM3.toFixed(2)} m³ to order</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Weight</p>
-                <p className="text-lg font-bold">{result.weight.toFixed(0)} kg</p>
+                <p className="text-lg font-bold">{result.weightKg.toFixed(0)} kg</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg md:col-span-2">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Tons Needed</p>
-                <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{result.tons.toFixed(1)} tons</p>
+                <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{result.tonnes.toFixed(1)} metric tonnes</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg md:col-span-2">
-                <p className="text-sm text-slate-500 dark:text-slate-400">Truck Loads (15 tons)</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Truck Loads ({(truckPayloadKg / 1000).toFixed(1)} t payload)</p>
                 <p className="text-xl font-bold">{result.truckLoads} trucks</p>
               </div>
             </div>
             <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-              <p className="text-sm text-amber-600 dark:text-amber-400">Confirm material density, compaction, waste, and delivery payload with the supplier.</p>
+              <p className="text-sm text-amber-600 dark:text-amber-400">Weight uses the editable bulk density and includes the entered {wastePercent}% allowance. Confirm delivered density, compaction/settlement and lawful payload with the supplier.</p>
             </div>
           </div>
         )}

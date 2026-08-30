@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateRebarGrid } from '@/lib/calculations/constructionQuantities';
+
+type RebarResult = ReturnType<typeof calculateRebarGrid>;
 
 export default function RebarCalculator() {
   const [length, setLength] = useState<number>(10);
@@ -12,50 +15,17 @@ export default function RebarCalculator() {
   const [spacing, setSpacing] = useState<number>(150);
   const [cover, setCover] = useState<number>(25);
   const [direction, setDirection] = useState<'both' | 'lengthwise' | 'widthwise'>('both');
-  const [result, setResult] = useState<any>(null);
-
-  const barWeights: { [key: number]: number } = {
-    8: 0.395,
-    10: 0.617,
-    12: 0.888,
-    16: 1.579,
-    20: 2.467,
-    25: 3.854,
-    32: 6.313
-  };
+  const [result, setResult] = useState<RebarResult | null>(null);
+  const [error, setError] = useState('');
 
   const calculateRebar = () => {
-    const coverM = cover / 1000;
-    const spacingM = spacing / 1000;
-    const lengthM = length - (2 * coverM);
-    const widthM = width - (2 * coverM);
-    const weightPerMeter = barWeights[barSize] || 0.888;
-
-    let barsLengthwise = 0;
-    let barsWidthwise = 0;
-    let totalLength = 0;
-
-    if (direction === 'both' || direction === 'lengthwise') {
-      barsLengthwise = Math.ceil(widthM / spacingM) + 1;
-      totalLength += barsLengthwise * lengthM;
+    try {
+      setResult(calculateRebarGrid({ slabLengthM: length, slabWidthM: width, barDiameterMm: barSize, maximumSpacingMm: spacing, clearCoverMm: cover, direction }));
+      setError('');
+    } catch (caught) {
+      setResult(null);
+      setError(caught instanceof Error ? caught.message : 'Check the grid dimensions.');
     }
-
-    if (direction === 'both' || direction === 'widthwise') {
-      barsWidthwise = Math.ceil(lengthM / spacingM) + 1;
-      totalLength += barsWidthwise * widthM;
-    }
-
-    const totalBars = barsLengthwise + barsWidthwise;
-    const totalWeight = totalLength * weightPerMeter;
-
-    setResult({
-      totalBars,
-      totalLength,
-      totalWeight,
-      barsLengthwise,
-      barsWidthwise,
-      weightPerMeter
-    });
   };
 
   const resetCalculator = () => {
@@ -66,13 +36,14 @@ export default function RebarCalculator() {
     setSpacing(150);
     setCover(25);
     setDirection('both');
+    setError('');
   };
 
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
         <h1 className="text-2xl font-bold mb-2">Rebar Calculator</h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate rebar quantity and weight for reinforced concrete structures.</p>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">Estimate straight-bar grid quantity and theoretical weight for a rectangular slab. This is a material takeoff, not reinforcement design.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -150,6 +121,7 @@ export default function RebarCalculator() {
           </div>
         </div>
 
+        {error && <p role="alert" className="mt-6 text-sm text-red-600">{error}</p>}
         <div className="flex gap-4 mt-6">
           <Button onClick={calculateRebar} className="flex-1">
             Calculate Rebar
@@ -169,15 +141,15 @@ export default function RebarCalculator() {
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Total Length</p>
-                <p className="text-xl font-bold">{result.totalLength.toFixed(1)} m</p>
+                <p className="text-xl font-bold">{result.totalLengthM.toFixed(1)} m</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Total Weight</p>
-                <p className="text-2xl font-bold">{result.totalWeight.toFixed(0)} kg</p>
+                <p className="text-2xl font-bold">{result.totalWeightKg.toFixed(0)} kg</p>
               </div>
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
                 <p className="text-sm text-slate-500 dark:text-slate-400">Weight in Tons</p>
-                <p className="text-lg font-bold">{(result.totalWeight / 1000).toFixed(2)} tons</p>
+                <p className="text-lg font-bold">{(result.totalWeightKg / 1000).toFixed(2)} metric tonnes</p>
               </div>
             </div>
             <div className="mt-4 grid grid-cols-2 gap-3">
@@ -191,7 +163,7 @@ export default function RebarCalculator() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800">
-              <p className="text-sm text-emerald-600 dark:text-emerald-400">Counts are rounded upward so calculated spacing does not exceed the entered maximum. Laps, anchorage, hooks, supports, multiple layers, openings, and waste are not included.</p>
+              <p className="text-sm text-emerald-600 dark:text-emerald-400">Counts are rounded upward so calculated spacing does not exceed the entered maximum. Mass uses the common theoretical d²/162 kg/m approximation. Laps, anchorage, hooks, supports, multiple layers, openings, and waste are not included; follow the structural drawings.</p>
             </div>
           </div>
         )}
