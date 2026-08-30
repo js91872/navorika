@@ -5,6 +5,7 @@ import { Box, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
+import { calculateDimensionalWeight } from '@/lib/calculations/projectEstimators';
 
 type System = 'metric' | 'imperial';
 
@@ -21,25 +22,8 @@ export default function DimensionalWeightCalculator() {
   const [divisor, setDivisor] = useState(5000);
 
   const result = useMemo(() => {
-    if (
-      [length, width, height, actualWeight, divisor].some(
-        (v) => !Number.isFinite(v) || v <= 0
-      )
-    ) {
-      return { valid: false, error: 'All dimensions, weight and divisor must be greater than zero.' } as const;
-    }
-
-    const volume = length * width * height;
-    const dimensionalWeight = volume / divisor;
-    const billableWeight = Math.max(actualWeight, dimensionalWeight);
-
-    return {
-      valid: true,
-      volume,
-      dimensionalWeight,
-      billableWeight,
-      chargedBy: dimensionalWeight > actualWeight ? 'Dimensional weight' : 'Actual weight',
-    } as const;
+    try { return { valid: true, ...calculateDimensionalWeight({ length, width, height, actualWeight, divisor }) } as const; }
+    catch (cause) { return { valid: false, error: cause instanceof Error ? cause.message : 'Enter valid package details.' } as const; }
   }, [length, width, height, actualWeight, divisor]);
 
   const switchSystem = (next: System) => {

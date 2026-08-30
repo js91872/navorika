@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateTankCapacity } from '@/lib/calculations/projectEstimators';
 
 export default function WaterTankCalculator() {
   const [shape, setShape] = useState<'rectangular' | 'cylindrical' | 'spherical'>('rectangular');
@@ -14,48 +15,16 @@ export default function WaterTankCalculator() {
   const [radius, setRadius] = useState<number>(1);
   const [unit, setUnit] = useState<'m' | 'ft'>('m');
   const [result, setResult] = useState<any>(null);
+  const [error, setError] = useState('');
 
   const calculateTank = () => {
-    let len = length, wid = width, hei = height, dia = diameter, rad = radius;
-    
-    if (unit === 'ft') {
-      len = length * 0.3048;
-      wid = width * 0.3048;
-      hei = height * 0.3048;
-      dia = diameter * 0.3048;
-      rad = radius * 0.3048;
-    }
-
-    let volumeM3 = 0;
-    let volumeLiters = 0;
-    let volumeGallons = 0;
-
-    switch(shape) {
-      case 'rectangular':
-        volumeM3 = len * wid * hei;
-        break;
-      case 'cylindrical':
-        volumeM3 = Math.PI * Math.pow(dia/2, 2) * hei;
-        break;
-      case 'spherical':
-        volumeM3 = (4/3) * Math.PI * Math.pow(rad, 3);
-        break;
-    }
-
-    volumeLiters = volumeM3 * 1000;
-    volumeGallons = volumeLiters * 0.264172;
-
-    setResult({
-      volumeM3,
-      volumeLiters,
-      volumeGallons,
-      shape,
-      dimensions: { length: len, width: wid, height: hei, diameter: dia, radius: rad }
-    });
+    try { setResult(calculateTankCapacity({ shape, unit, length, width, height, diameter, radius })); setError(''); }
+    catch (cause) { setResult(null); setError(cause instanceof Error ? cause.message : 'Enter valid tank dimensions.'); }
   };
 
   const resetCalculator = () => {
     setResult(null);
+    setError('');
     setShape('rectangular');
     setLength(2);
     setWidth(1.5);
@@ -178,6 +147,7 @@ export default function WaterTankCalculator() {
             Reset
           </Button>
         </div>
+        {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
           <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">

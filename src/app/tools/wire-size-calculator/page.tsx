@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { recommendWireSize } from '@/lib/calculations/energyElectrical';
 
 export default function WireSizeCalculator() {
   const [current, setCurrent] = useState<number>(20);
@@ -15,22 +16,7 @@ export default function WireSizeCalculator() {
   const [loadFactor, setLoadFactor] = useState<number>(125);
   const [maxDropPercent, setMaxDropPercent] = useState<number>(3);
   const [result, setResult] = useState<any>(null);
-
-  const wireSizeTable: Record<string, { copper: number; aluminum: number; copperOhmPerM: number; aluminumOhmPerM: number }> = {
-    '14': { copper: 15, aluminum: 0, copperOhmPerM: 0.008286, aluminumOhmPerM: 0.0136 },
-    '12': { copper: 20, aluminum: 15, copperOhmPerM: 0.005211, aluminumOhmPerM: 0.00855 },
-    '10': { copper: 30, aluminum: 25, copperOhmPerM: 0.003277, aluminumOhmPerM: 0.00538 },
-    '8': { copper: 40, aluminum: 35, copperOhmPerM: 0.002061, aluminumOhmPerM: 0.00338 },
-    '6': { copper: 55, aluminum: 40, copperOhmPerM: 0.001296, aluminumOhmPerM: 0.00213 },
-    '4': { copper: 70, aluminum: 55, copperOhmPerM: 0.000815, aluminumOhmPerM: 0.00134 },
-    '3': { copper: 85, aluminum: 65, copperOhmPerM: 0.000646, aluminumOhmPerM: 0.00106 },
-    '2': { copper: 95, aluminum: 75, copperOhmPerM: 0.000513, aluminumOhmPerM: 0.000842 },
-    '1': { copper: 110, aluminum: 85, copperOhmPerM: 0.000406, aluminumOhmPerM: 0.000667 },
-    '0': { copper: 125, aluminum: 100, copperOhmPerM: 0.000322, aluminumOhmPerM: 0.000529 },
-    '00': { copper: 145, aluminum: 115, copperOhmPerM: 0.000256, aluminumOhmPerM: 0.00042 },
-    '000': { copper: 165, aluminum: 130, copperOhmPerM: 0.000203, aluminumOhmPerM: 0.000333 },
-    '0000': { copper: 195, aluminum: 150, copperOhmPerM: 0.000161, aluminumOhmPerM: 0.000264 }
-  };
+  const [error, setError] = useState('');
 
   const wireSizeLabels: { [key: string]: string } = {
     '18': '18 AWG',
@@ -51,49 +37,14 @@ export default function WireSizeCalculator() {
   };
 
   const calculateWireSize = () => {
-    const lengthM = unit === 'ft' ? length * 0.3048 : length;
-    const designCurrent = current * (loadFactor / 100);
-    let recommendedGauge = '';
-    let ampacity = 0;
-    let voltageDrop = 0;
-    let voltageDropPercent = 0;
-
-    for (const [gauge, data] of Object.entries(wireSizeTable)) {
-      const referenceAmpacity = data[conductor];
-      const resistance = conductor === 'copper' ? data.copperOhmPerM : data.aluminumOhmPerM;
-      const drop = phase === 'single' ? 2 * current * resistance * lengthM : Math.sqrt(3) * current * resistance * lengthM;
-      const dropPercent = drop / voltage * 100;
-      if (referenceAmpacity >= designCurrent && dropPercent <= maxDropPercent) {
-        recommendedGauge = gauge; ampacity = referenceAmpacity; voltageDrop = drop; voltageDropPercent = dropPercent; break;
-      }
-    }
-
-    if (!recommendedGauge) {
-      const data = wireSizeTable['0000'];
-      recommendedGauge = '0000'; ampacity = data[conductor];
-      const resistance = conductor === 'copper' ? data.copperOhmPerM : data.aluminumOhmPerM;
-      voltageDrop = phase === 'single' ? 2 * current * resistance * lengthM : Math.sqrt(3) * current * resistance * lengthM;
-      voltageDropPercent = voltageDrop / voltage * 100;
-    }
-
-    setResult({
-      recommendedGauge,
-      ampacity,
-      conductor,
-      current,
-      voltage,
-      phase,
-      designCurrent,
-      voltageDrop,
-      voltageDropPercent,
-      meetsCriteria: ampacity >= designCurrent && voltageDropPercent <= maxDropPercent,
-      maxDropPercent,
-      lengthM
-    });
+    try {
+      setResult({ ...recommendWireSize({ voltage, current, length, unit, conductor, phase, loadFactorPercent: loadFactor, maxDropPercent }), conductor, current, voltage, phase, maxDropPercent }); setError('');
+    } catch (cause) { setResult(null); setError(cause instanceof Error ? cause.message : 'Enter valid circuit details.'); }
   };
 
   const resetCalculator = () => {
     setResult(null);
+    setError('');
     setCurrent(20);
     setVoltage(120);
     setLength(50);
@@ -199,6 +150,7 @@ export default function WireSizeCalculator() {
             Reset
           </Button>
         </div>
+        {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
           <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">

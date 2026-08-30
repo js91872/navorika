@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:baseline": "node scripts/validate-lint-baseline.mjs",
-    "test:calculations": "node --experimental-strip-types src/lib/calculations/retirementFinance.test.mjs",
+    "test:calculations": "node --experimental-strip-types scripts/run-calculation-tests.mjs",
     "typecheck": "tsc --noEmit",
     "validate:architecture": "node scripts/validate-architecture.mjs",
     "check": "npm run validate:architecture && npm run typecheck && npm run lint:baseline && npm run build"

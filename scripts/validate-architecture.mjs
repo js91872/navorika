@@ -22,6 +22,9 @@ const taxonomyPath = join(root, 'src/data/taxonomy.ts');
 const toolkitPagePath = join(root, 'src/app/toolkits/[slug]/page.tsx');
 const toolCatalogPath = join(root, 'src/app/tools.json/route.ts');
 const generatedLlmsPath = join(root, 'src/app/llms.txt/route.ts');
+const packagePath = join(root, 'package.json');
+const calculationRoot = join(root, 'src/lib/calculations');
+const calculationRunnerPath = join(root, 'scripts/run-calculation-tests.mjs');
 const failures = [];
 const warnings = [];
 
@@ -280,6 +283,48 @@ for (const signal of ['tools', 'categories', 'toolkits', 'guidesMetadata', 'tool
 const toolkitPageSource = read(toolkitPagePath);
 for (const signal of ['generateStaticParams', 'generateMetadata', "'@type': 'CollectionPage'", "'@type': 'ItemList'", "'@type': 'BreadcrumbList'"]) {
   if (!toolkitPageSource.includes(signal)) failures.push(`Toolkit route is missing required crawl/SEO signal: ${signal}`);
+}
+
+const packageJson = JSON.parse(read(packagePath));
+if (packageJson.scripts?.['test:calculations'] !== 'node --experimental-strip-types scripts/run-calculation-tests.mjs') {
+  failures.push('package.json must expose the standard calculation test runner as test:calculations');
+}
+if (!existsSync(calculationRunnerPath)) failures.push('Missing scripts/run-calculation-tests.mjs');
+
+const calculationFiles = readdirSync(calculationRoot).filter((file) => file.endsWith('.ts'));
+const calculationTestFiles = readdirSync(calculationRoot).filter((file) => file.endsWith('.test.mjs'));
+if (calculationTestFiles.length === 0) failures.push('No calculation test modules exist');
+const calculationTestNames = [];
+for (const file of calculationTestFiles) {
+  const source = read(join(calculationRoot, file));
+  const moduleImports = [...source.matchAll(/from ['"]\.\/([^'"]+\.ts)['"]/g)].map((match) => match[1]);
+  if (moduleImports.length === 0) failures.push(`Calculation test imports no calculation module: ${file}`);
+  for (const moduleFile of moduleImports) {
+    if (!calculationFiles.includes(moduleFile)) failures.push(`Calculation test imports a missing module: ${file} -> ${moduleFile}`);
+  }
+  calculationTestNames.push(...[...source.matchAll(/test\(['"]([^'"]+)['"]/g)].map((match) => match[1]));
+}
+for (const name of duplicates(calculationTestNames)) failures.push(`Duplicate calculation test name: ${name}`);
+for (const file of calculationFiles.filter((file) => !file.endsWith('.test.ts'))) {
+  const source = read(join(calculationRoot, file));
+  if (/from ['"]react['"]|from ['"]react\//.test(source)) failures.push(`Calculation module imports React: ${file}`);
+}
+
+const selectedCalculationRoutes = {
+  'loan-emi-calculator': 'calculations/emi',
+  'electricity-cost-calculator': 'calculations/energyElectrical',
+  'solar-panel-calculator': 'calculations/energyElectrical',
+  'wire-size-calculator': 'calculations/energyElectrical',
+  'voltage-drop-calculator': 'calculations/energyElectrical',
+  'house-construction-cost-calculator': 'calculations/projectEstimators',
+  'water-tank-calculator': 'calculations/projectEstimators',
+  'asphalt-calculator': 'calculations/projectEstimators',
+  'roof-area-calculator': 'calculations/projectEstimators',
+  'flooring-calculator': 'calculations/projectEstimators',
+  'dimensional-weight-calculator': 'calculations/projectEstimators',
+};
+for (const [slug, moduleSignal] of Object.entries(selectedCalculationRoutes)) {
+  if (!read(join(toolsRoot, slug, 'page.tsx')).includes(moduleSignal)) failures.push(`Selected calculation route bypasses its calculation module: ${slug}`);
 }
 
 if (warnings.length) {

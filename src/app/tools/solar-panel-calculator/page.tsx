@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
+import { calculateSolarSystem } from '@/lib/calculations/energyElectrical';
 
 export default function SolarPanelCalculator() {
   const [dailyUsage, setDailyUsage] = useState<number>(30);
@@ -11,30 +12,19 @@ export default function SolarPanelCalculator() {
   const [panelWattage, setPanelWattage] = useState<number>(400);
   const [systemLosses, setSystemLosses] = useState<number>(20);
   const [result, setResult] = useState<any>(null);
+  const [error, setError] = useState('');
 
   const calculateSolar = () => {
-    const dailyKwh = dailyUsage;
-    const dailyWattHours = dailyKwh * 1000;
-    
-    const systemSize = dailyWattHours / (sunHours * (1 - systemLosses / 100));
-    const panelsNeeded = Math.ceil(systemSize / panelWattage);
-    const actualSystemSize = panelsNeeded * panelWattage / 1000;
-    const annualProduction = actualSystemSize * sunHours * 365 * (1 - systemLosses / 100);
-
-    setResult({
-      dailyKwh,
-      systemSize: systemSize / 1000,
-      panelsNeeded,
-      actualSystemSize,
-      annualProduction,
-      panelWattage,
-      sunHours,
-      systemLosses
-    });
+    try {
+      const estimate = calculateSolarSystem({ dailyKwh: dailyUsage, peakSunHours: sunHours, panelWatts: panelWattage, systemLossPercent: systemLosses });
+      setResult({ ...estimate, systemSize: estimate.requiredSystemKw, actualSystemSize: estimate.actualSystemSizeKw, annualProduction: estimate.annualProductionKwh });
+      setError('');
+    } catch (cause) { setResult(null); setError(cause instanceof Error ? cause.message : 'Enter valid solar assumptions.'); }
   };
 
   const resetCalculator = () => {
     setResult(null);
+    setError('');
     setDailyUsage(30);
     setSunHours(5);
     setPanelWattage(400);
@@ -107,6 +97,7 @@ export default function SolarPanelCalculator() {
             Reset
           </Button>
         </div>
+        {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
           <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">

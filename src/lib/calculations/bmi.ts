@@ -13,6 +13,9 @@ export interface BMIResult {
 }
 
 export function calculateBMI({ weight, height, unit, feet = 0, inches = 0 }: BMIInputs): BMIResult {
+  if (!Number.isFinite(weight) || weight <= 0) throw new RangeError('Weight must be greater than zero.');
+  if (unit === 'metric' && (!Number.isFinite(height) || height <= 0)) throw new RangeError('Height must be greater than zero.');
+  if (unit === 'imperial' && (![feet, inches].every(Number.isFinite) || feet < 0 || inches < 0 || feet * 12 + inches <= 0)) throw new RangeError('Height must be greater than zero.');
   const heightInMetres = height / 100;
   const totalInches = feet * 12 + inches;
   const bmi = unit === 'metric' ? weight / heightInMetres ** 2 : (703 * weight) / totalInches ** 2;

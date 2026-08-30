@@ -5,6 +5,7 @@ import { Zap, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
+import { calculateElectricityCost } from '@/lib/calculations/energyElectrical';
 
 export default function ElectricityCostCalculator() {
   const [watts, setWatts] = useState(1000);
@@ -14,36 +15,14 @@ export default function ElectricityCostCalculator() {
   const [currency, setCurrency] = useState('₹');
 
   const result = useMemo(() => {
-    if (
-      [watts, hoursPerDay, days, rate].some((v) => !Number.isFinite(v)) ||
-      watts < 0 ||
-      hoursPerDay < 0 ||
-      hoursPerDay > 24 ||
-      days < 0 ||
-      rate < 0
-    ) {
+    try {
+      return { valid: true, ...calculateElectricityCost({ watts, hoursPerDay, days, ratePerKwh: rate }) } as const;
+    } catch (cause) {
       return {
         valid: false,
-        error: 'Enter valid non-negative values; hours per day cannot exceed 24.',
+        error: cause instanceof Error ? cause.message : 'Enter valid usage details.',
       } as const;
     }
-
-    const dailyKwh = (watts / 1000) * hoursPerDay;
-    const totalKwh = dailyKwh * days;
-    const totalCost = totalKwh * rate;
-    const dailyCost = dailyKwh * rate;
-    const monthlyCost = dailyCost * 30;
-    const yearlyCost = dailyCost * 365;
-
-    return {
-      valid: true,
-      dailyKwh,
-      totalKwh,
-      totalCost,
-      dailyCost,
-      monthlyCost,
-      yearlyCost,
-    } as const;
   }, [watts, hoursPerDay, days, rate]);
 
   const money = (v: number) => `${currency}${v.toFixed(2)}`;
