@@ -332,6 +332,25 @@ for (const [slug, moduleSignal] of Object.entries(selectedCalculationRoutes)) {
   if (!read(join(toolsRoot, slug, 'page.tsx')).includes(moduleSignal)) failures.push(`Selected calculation route bypasses its calculation module: ${slug}`);
 }
 
+const selectedSharedCalculationRoutes = {
+  'cement-calculator': { pageSignal: 'CementTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'sand-calculator': { pageSignal: 'SandTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'paint-calculator': { pageSignal: 'PaintTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'tile-calculator': { pageSignal: 'TileTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'steel-weight-calculator': { pageSignal: 'SteelTakeoffCalculator', implementation: 'SupplierTakeoffTools.tsx', moduleSignal: 'calculations/supplierTakeoffs' },
+  'drywall-calculator': { pageSignal: 'DrywallCalculator', bridge: 'DrywallCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+  'paver-calculator': { pageSignal: 'PaverCalculator', bridge: 'PaverCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+  'polymeric-sand-calculator': { pageSignal: 'PolymericSandCalculator', bridge: 'PolymericSandCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+  'deck-board-calculator': { pageSignal: 'DeckBoardCalculator', bridge: 'DeckBoardCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+  'fence-calculator': { pageSignal: 'FenceCalculator', bridge: 'FenceCalculator.tsx', implementation: 'ConstructionExpansionTools.tsx', moduleSignal: 'calculations/constructionExpansion' },
+};
+const toolComponentsRoot = join(root, 'src', 'components', 'tools');
+for (const [slug, expectation] of Object.entries(selectedSharedCalculationRoutes)) {
+  if (!read(join(toolsRoot, slug, 'page.tsx')).includes(expectation.pageSignal)) failures.push(`Selected calculation route bypasses its shared implementation: ${slug}`);
+  if (expectation.bridge && !read(join(toolComponentsRoot, expectation.bridge)).includes(expectation.implementation.replace('.tsx', ''))) failures.push(`Selected calculation bridge bypasses its shared implementation: ${slug}`);
+  if (!read(join(toolComponentsRoot, expectation.implementation)).includes(expectation.moduleSignal)) failures.push(`Selected shared calculation implementation bypasses its calculation module: ${slug}`);
+}
+
 if (warnings.length) {
   console.warn(`Architecture warnings (${warnings.length}):`);
   warnings.forEach((warning) => console.warn(`- ${warning}`));
