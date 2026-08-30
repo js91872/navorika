@@ -21,6 +21,7 @@ const categoryIntros: Record<string, string> = {
 const guideCategory: Record<string, string> = {
   'pdf-tools': 'PDF', 'image-tools': 'Image', 'finance-calculators': 'Finance',
   'health-calculators': 'Health', 'developer-tools': 'Developer',
+  'construction-calculators': 'Construction', 'everyday-calculators': 'Everyday',
 };
 
 export function generateStaticParams() {

@@ -5,8 +5,8 @@ import { guidesMetadata } from '@/lib/guidesMetadata';
 import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Expert Guides for Calculators, PDF, Images and Developer Tools',
-  description: 'Practical, in-depth guides for finance and health calculations, PDF workflows, image optimization, structured data, and web utilities.',
+  title: 'Practical Guides for Calculators, Construction & Developer Tools',
+  description: 'In-depth guides for construction and everyday calculations, finance and health planning, documents, images, and developer workflows.',
   alternates: { canonical: 'https://navorika.com/guides' },
   openGraph: { type: 'website', url: 'https://navorika.com/guides', title: 'Navorika Guides & Articles', description: 'Detailed explanations, examples, FAQs, and related tools for everyday calculations and digital workflows.', siteName: 'Navorika' },
 };
@@ -25,7 +25,7 @@ export default function GuidesPage() {
         <div className="mb-10">
           <h1 className="text-4xl font-black tracking-tight">Guides & Articles</h1>
           <p className="text-[var(--muted-foreground)] mt-1">
-            Expert guides to help you make the most of your tools
+            Practical explanations, formulas, examples, and limitations for using Navorika tools well
           </p>
         </div>
 

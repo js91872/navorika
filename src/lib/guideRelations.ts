@@ -1,0 +1,17 @@
+export const guideRelations: Record<string, string[]> = {
+  'house-construction-cost-guide': ['construction-estimate-quote-guide', 'brick-calculation-guide', 'flooring-calculation-guide'],
+  'water-tank-size-capacity-guide': ['house-construction-cost-guide', 'gravel-calculation-guide'],
+  'how-to-calculate-roof-area': ['house-construction-cost-guide', 'construction-estimate-quote-guide'],
+  'flooring-calculation-guide': ['brick-calculation-guide', 'house-construction-cost-guide', 'construction-estimate-quote-guide'],
+  'asphalt-calculation-guide': ['gravel-calculation-guide', 'construction-estimate-quote-guide'],
+  'gravel-calculation-guide': ['asphalt-calculation-guide', 'construction-estimate-quote-guide'],
+  'electricity-cost-calculation-guide': ['house-construction-cost-guide'],
+  'brick-calculation-guide': ['house-construction-cost-guide', 'construction-estimate-quote-guide', 'flooring-calculation-guide'],
+  'dimensional-weight-guide': ['json-formatting-guide'],
+  'construction-estimate-quote-guide': ['house-construction-cost-guide', 'brick-calculation-guide', 'flooring-calculation-guide'],
+  'base64-encoding-guide': ['jwt-decoding-guide', 'json-formatting-guide'],
+  'jwt-decoding-guide': ['base64-encoding-guide', 'json-formatting-guide'],
+  'json-formatting-guide': ['jwt-decoding-guide', 'base64-encoding-guide'],
+  'heart-rate-zones-guide': ['calorie-deficit-guide', 'bmr-tdee-guide'],
+  'how-to-calculate-emi': ['how-to-calculate-sip-returns', 'ppf-vs-fd-comparison'],
+};

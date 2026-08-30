@@ -25,6 +25,16 @@ export const guideSources: Record<string, GuideSource[]> = {
   'json-formatting-guide': [{ name: 'IETF RFC 8259 — The JSON Data Interchange Format', url: 'https://www.rfc-editor.org/rfc/rfc8259' }],
   'image-formats-guide': [webImageFormats],
   'seo-tools-guide': [{ name: 'Google Search Central — SEO Starter Guide', url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide' }, { name: 'Google Search Central — Structured data guidelines', url: 'https://developers.google.com/search/docs/appearance/structured-data/sd-policies' }],
+  'house-construction-cost-guide': [{ name: 'RICS — New Rules of Measurement', url: 'https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/construction-standards/nrm' }],
+  'water-tank-size-capacity-guide': [{ name: 'NIST — Guide for the Use of the International System of Units', url: 'https://www.nist.gov/pml/special-publication-811' }],
+  'how-to-calculate-roof-area': [{ name: 'OSHA — Fall protection in residential construction', url: 'https://www.osha.gov/residential-fall-protection/guidance' }],
+  'flooring-calculation-guide': [{ name: 'NIST — SI units for area', url: 'https://www.nist.gov/pml/owm/metric-si/si-units-area' }],
+  'asphalt-calculation-guide': [{ name: 'Federal Highway Administration — Asphalt pavement resources', url: 'https://www.fhwa.dot.gov/pavement/asphalt/' }],
+  'gravel-calculation-guide': [{ name: 'Federal Highway Administration — Aggregate resources', url: 'https://www.fhwa.dot.gov/pavement/' }],
+  'electricity-cost-calculation-guide': [{ name: 'U.S. Energy Information Administration — Measuring electricity', url: 'https://www.eia.gov/energyexplained/electricity/measuring-electricity.php' }],
+  'brick-calculation-guide': [{ name: 'The Brick Industry Association — Technical Notes', url: 'https://www.gobrick.com/resources/technical-notes' }],
+  'dimensional-weight-guide': [{ name: 'UPS — Package dimensions, size limits and weight guide', url: 'https://www.ups.com/us/en/support/shipping-support/shipping-dimensions-weight' }],
+  'construction-estimate-quote-guide': [{ name: 'RICS — New Rules of Measurement', url: 'https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/construction-standards/nrm' }],
 };
 
 export function getGuideSources(slug: string) {
