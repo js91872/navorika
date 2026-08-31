@@ -121,6 +121,8 @@ export const toolIcons: Record<string, string> = {
   'json-to-csv-flattener': '📊',
   'aws-glacier-retrieval-calculator': '🧊',
   'base64-encoder': '🔐',
+  'xml-to-word-converter': '📄',
+  'word-to-xml-converter': '🧾',
   'code-minifier-beautifier': '💻',
   'developer-tools': '💻',
   'developer-utils': '🛠️',

@@ -706,6 +706,20 @@ export const tools: RegisteredTool[] = ([
     ]
   },
   {
+    slug: 'xml-to-word-converter',
+    title: 'XML to Word Converter',
+    description: 'Convert validated XML into a genuine DOCX using readable hierarchy, repeated-record table, or formatted code modes locally.',
+    category: 'developer-tools',
+    keywords: ['xml to word converter', 'xml to docx', 'convert xml to word', 'xml table to docx']
+  },
+  {
+    slug: 'word-to-xml-converter',
+    title: 'Word to XML Converter',
+    description: 'Extract clean structured XML or raw WordprocessingML from a valid DOCX file locally in your browser.',
+    category: 'developer-tools',
+    keywords: ['word to xml converter', 'docx to xml', 'extract wordprocessingml', 'word document xml']
+  },
+  {
     slug: 'bioluminescent-reader',
     title: 'Bioluminescent Reader',
     description: 'Temporarily unavailable pending a defined scientific schema and validated analysis model.',

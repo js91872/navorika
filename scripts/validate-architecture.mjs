@@ -164,6 +164,24 @@ for (const slug of ['protect-pdf', 'unlock-pdf']) {
   }
 }
 
+const xmlWordRoutes = [
+  ['xml-to-word-converter', 'XmlToWordTool', "@/lib/converters/xml-word/xml-to-docx"],
+  ['word-to-xml-converter', 'WordToXmlTool', "@/lib/converters/xml-word/docx-to-xml"],
+];
+for (const [slug, component, lazyModule] of xmlWordRoutes) {
+  const pageSource = read(join(toolsRoot, slug, 'page.tsx'));
+  const componentPath = join(root, 'src/components/tools/xml-word', `${component}.tsx`);
+  if (!pageSource.includes(`@/components/tools/xml-word/${component}`)) failures.push(`${slug} must use the shared XML/Word UI cluster`);
+  if (!existsSync(componentPath) || !read(componentPath).includes(`import('${lazyModule}')`)) failures.push(`${slug} must lazy-load its shared converter implementation`);
+}
+for (const file of ['config.ts', 'security.ts', 'xml-parser.ts', 'xml-to-docx.ts', 'docx-to-xml.ts']) {
+  if (!existsSync(join(root, 'src/lib/converters/xml-word', file))) failures.push(`Missing shared XML/Word converter module: ${file}`);
+}
+const converterPackageSource = read(packagePath);
+for (const dependency of ['"docx"', '"fast-xml-parser"', '"jszip"']) {
+  if (!converterPackageSource.includes(dependency)) failures.push(`XML/Word converters require package dependency ${dependency}`);
+}
+
 const seoSource = read(seoPath);
 const seoSlugs = [...seoSource.matchAll(/^\s{2}'([^']+)':\s*\{/gm)].map((match) => match[1]);
 
