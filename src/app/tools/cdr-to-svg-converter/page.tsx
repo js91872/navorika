@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="CDR export" title="CDR to SVG Converter" description="Read a supported CDR and export its first page as genuine SVG through LibreOffice and Poppler."><CorelServerTool config={corelServerConfigs.cdrSvg}/></ExpansionToolPage>}

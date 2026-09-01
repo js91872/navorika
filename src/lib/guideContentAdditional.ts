@@ -25,7 +25,121 @@ function article(
   };
 }
 
+function corelArticle(headline: string, description: string, intro: string, sections: GuideSection[], faqs: GuideFAQ[], summary: string): GuideContent {
+  const content = article(headline, description, intro, sections, faqs, summary);
+  return { ...content, schema: { ...content.schema, datePublished: '2026-08-29', dateModified: '2026-08-29' } };
+}
+
 export const additionalGuideContent: Record<string, GuideContent> = {
+  'word-to-cdr-formatting-guide': corelArticle(
+    'How to Convert Word to CDR Without Losing Formatting',
+    'Prepare Word documents for CorelDRAW through PDF while managing fonts, page geometry, tables, images, and Unicode text.',
+    'Word and CorelDRAW use different document models. The dependable automatic bridge is normally DOC or DOCX to PDF, followed by PDF import into CorelDRAW. The final CDR is created only when you inspect the imported document and save it from CorelDRAW.',
+    [
+      { title: 'Start with a controlled Word document', content: 'Set the final page size and orientation before conversion. Remove comments and tracked changes, update fields, verify headers and footers, and keep linked images available. Complex floating objects are more fragile than inline images. Tables should fit inside the page margins without relying on screen-only wrapping.' },
+      { title: 'Use PDF as the layout bridge', content: 'PDF is usually strongest for brochures, forms, certificates, price lists, and multipage documents because it records page geometry. A server converter can only use fonts installed in its environment, so compare line endings, table height, page count, and image position against the Word original before continuing.' },
+      { title: 'Import into CorelDRAW deliberately', content: 'When CorelDRAW imports PDF, choose whether text should remain text or become curves when the version offers that choice. Retaining text supports editing but requires compatible fonts. Curves stabilize letter shapes but increase nodes, enlarge some documents, and prevent normal text editing and search.' },
+      { title: 'Unicode and complex-script checks', content: 'Punjabi/Gurmukhi, Hindi/Devanagari, Arabic, and other shaping scripts require the correct Unicode font and shaping support. Never assume that visually similar legacy-encoded text is Unicode. Check conjuncts, matras, vowel marks, right-to-left order, punctuation, and numerals on every page.' },
+      { title: 'Preflight before Save As CDR', content: 'Check page dimensions, bleed, font substitutions, missing glyphs, image resolution, transparency, and overprint. Keep the imported PDF as a reference layer if helpful. Only after the result is correct should you use Save As in CorelDRAW and select the required CDR version.' },
+    ],
+    [{ question: 'Can an online tool create a native CDR from Word?', answer: 'Only with a verified CDR-writing backend. This workflow creates CorelDRAW-ready PDF/SVG/EPS and leaves native CDR saving to CorelDRAW.' }, { question: 'Why did my page count change?', answer: 'A missing or metrically different font can change line wrapping, paragraph height, table flow, and page breaks.' }, { question: 'Should all text be converted to curves?', answer: 'Only when visual stability matters more than editing, accessibility, search, and file simplicity.' }],
+    'Use PDF as the controlled bridge, compare every page, resolve fonts and complex scripts, then save the verified document as native CDR in CorelDRAW.',
+  ),
+  'pdf-to-cdr-editing-guide': corelArticle(
+    'How to Convert PDF to CDR for Editing in CorelDRAW',
+    'Import native or scanned PDF content into CorelDRAW while understanding vectors, text, images, clipping, fonts, and multipage files.',
+    'PDF can contain editable vectors, text, raster scans, or all three. Converting PDF to CDR is therefore not one universal operation: CorelDRAW imports what the PDF actually contains, then you decide how much cleanup and editing is needed.',
+    [
+      { title: 'Determine whether the PDF is vector or scanned', content: 'Zoom in and try selecting text in a trusted PDF viewer. Crisp paths and selectable text suggest native page content. A scanned PDF usually contains one large image per page; importing it does not automatically recreate editable letters or shapes.' },
+      { title: 'Choose PDF, SVG, or EPS interchange', content: 'Direct PDF import keeps multiple pages and is normally the first choice. SVG is useful for a focused vector page and web-style artwork. EPS can serve older print workflows but has weaker support for modern transparency and usually represents one page.' },
+      { title: 'Handle fonts and text decisions', content: 'Embedded PDF fonts may be subsetted, which can limit editing. If the font is unavailable, CorelDRAW may substitute it or offer curves. Keep text editable for revisions only when the correct font and shaping behavior are available; otherwise curves can preserve appearance at the cost of editability.' },
+      { title: 'Inspect clipping, images, and effects', content: 'PDFs frequently use clipping masks, transparency groups, gradients, and embedded raster images. Ungroup carefully and avoid assuming every object is an independent original design element. Compare the imported result with the PDF at high zoom.' },
+      { title: 'Manage multipage documents and save', content: 'Import all required pages, confirm page order and size, and check crop/bleed boxes. Scanned pages may need separate tracing or recreation. Save a new CDR rather than overwriting the source, and retain the original PDF as a visual reference.' },
+    ],
+    [{ question: 'Will a scanned PDF become editable vector artwork?', answer: 'No. It remains raster unless you trace or manually recreate it.' }, { question: 'Why does SVG export only one page?', answer: 'SVG is a single-canvas format in this bounded workflow; use PDF for multipage documents.' }, { question: 'Can font embedding guarantee editing?', answer: 'No. A subset may contain only used glyphs and licensing or application support can still limit editing.' }],
+    'Identify the actual PDF content, choose the right interchange format, preflight fonts and effects, and create the native CDR only after CorelDRAW import is verified.',
+  ),
+  'raster-image-to-cdr-guide': corelArticle(
+    'How to Convert PNG or JPG to CDR',
+    'Choose between embedding raster artwork and vector tracing when preparing PNG or JPEG for CorelDRAW.',
+    'A raster image is a grid of pixels. Placing it in SVG, PDF, or CDR does not automatically turn it into editable curves. A trustworthy workflow makes the distinction between preserving the image and approximating it through tracing.',
+    [
+      { title: 'When embedding is the correct choice', content: 'Photographs, textured artwork, gradients, and highly detailed paintings are usually best kept as raster images. Embed or place the original at sufficient pixel dimensions, avoid repeated JPEG recompression, and use an intentional color profile and background.' },
+      { title: 'When tracing works well', content: 'Tracing is strongest for high-contrast logos, signatures, line drawings, stamps, simple icons, and flat-color artwork. Start with a clean, high-resolution source. Remove noise and correct perspective before tracing; otherwise every artifact can become a path.' },
+      { title: 'Detail, smoothing, and color count', content: 'More detail creates more nodes and larger files. Fewer colors simplify editing but can remove subtle edges. Background removal is useful for a clean white backdrop but can erase intended highlights. Automatic output should be treated as a draft for node cleanup.' },
+      { title: 'PNG and JPEG differences', content: 'PNG can preserve hard edges and transparency without lossy artifacts. JPEG is compact for photos but introduces blocks and halos, has no alpha transparency, and can trace poorly around sharp logos. Use an original PNG or vector master when available.' },
+      { title: 'Finish in CorelDRAW', content: 'Import SVG for traced paths or place PDF/SVG for preserved raster artwork. Check dimensions, remove unwanted shapes, smooth only where necessary, and simplify nodes. Save the verified project as CDR; do not rename the interchange file.' },
+    ],
+    [{ question: 'Is vectorized output identical to the original?', answer: 'No. Tracing approximates pixel regions and always involves detail and cleanup tradeoffs.' }, { question: 'Can a photograph be vectorized?', answer: 'Technically yes, but the result is usually complex and stylized rather than a faithful editable photograph.' }, { question: 'Which source is better for a logo?', answer: 'A genuine SVG/PDF/vector master is best; otherwise use the cleanest high-resolution PNG available.' }],
+    'Embed photos and complex art; trace clean logos and line work; then inspect and clean the CorelDRAW import before saving CDR.',
+  ),
+  'svg-vs-cdr-guide': corelArticle(
+    'SVG vs CDR: Which Vector Format Should You Use?',
+    'Compare SVG and CDR for open interchange, CorelDRAW projects, web delivery, collaboration, editing, and printing.',
+    'SVG and CDR can both contain vectors, but they solve different problems. SVG is an open XML-based interchange and web format. CDR is CorelDRAW’s proprietary project format and is most useful while working inside the Corel ecosystem.',
+    [
+      { title: 'SVG strengths', content: 'SVG is documented, text-based, resolution-independent, scriptable, and broadly supported by browsers and design applications. It is effective for logos, icons, diagrams, cutting paths, and collaboration. Untrusted SVG can contain active content, so sanitize it before web embedding.' },
+      { title: 'CDR strengths', content: 'CDR can preserve CorelDRAW-specific pages, layers, effects, color settings, object properties, and editing history more naturally than an interchange export. Its main drawback is dependence on compatible CorelDRAW versions or partial third-party readers.' },
+      { title: 'Text, gradients, and effects', content: 'Both formats can represent text, fills, strokes, gradients, masks, and transparency, but application importers interpret features differently. SVG filters and CSS may not map to CorelDRAW effects. CDR-specific blends, lenses, and color-management settings may not export cleanly to SVG.' },
+      { title: 'Web, print, and handoff choices', content: 'Use sanitized SVG for genuine vector web delivery. Keep CDR as the editable CorelDRAW master. For commercial printing, a preflighted PDF is often a stronger delivery format because it records page boxes, fonts, color spaces, and output intent more explicitly.' },
+    ],
+    [{ question: 'Can I rename SVG to CDR?', answer: 'No. Import the SVG into CorelDRAW and use Save As to create a native CDR.' }, { question: 'Is SVG suitable for printing?', answer: 'It can be, but PDF is often more predictable for page-based professional print handoff.' }, { question: 'Which is more future-proof?', answer: 'SVG is an open standard; retain SVG/PDF exports alongside proprietary CDR project files.' }],
+    'Use SVG for open vector interchange and web delivery, CDR for CorelDRAW-native editing, and preflighted PDF for many print handoffs.',
+  ),
+  'open-cdr-without-coreldraw': corelArticle(
+    'How to Open a CDR File Without CorelDRAW',
+    'Preview and export supported CDR files with open-source readers while understanding version and rendering limitations.',
+    'CDR is proprietary and has changed across CorelDRAW generations. Open-source readers such as the libcdr filter used by LibreOffice can interpret many files, but they cannot promise complete support for every effect, font, color setting, or new version.',
+    [
+      { title: 'Start with the file header and version clue', content: 'Older CDR files often use a RIFF container with codes such as CDR6 through CDRF. Newer files may be ZIP-based. A header check helps explain compatibility, but it does not validate every internal object or identify all newer versions exactly.' },
+      { title: 'Use a capability-detected viewer', content: 'A responsible online viewer should enable CDR processing only when a real reader is installed. It should validate the signature, isolate temporary files, limit runtime and size, and remove uploads after conversion. A failed preview is better than a fabricated image.' },
+      { title: 'Choose PDF, SVG, PNG, or JPG', content: 'PDF is useful for multipage viewing and print review. SVG can expose editable shapes from the first page, though conversions may differ. PNG preserves crisp previews and possible transparency; JPG creates smaller opaque previews. None of these outputs is a native editable CDR project.' },
+      { title: 'Check the preview critically', content: 'Compare page count, dimensions, font appearance, gradients, clipping, transparency, and images. Missing fonts can alter line breaks and glyphs. Proprietary effects may flatten, simplify, or disappear. Obtain a PDF exported by the original author when fidelity matters.' },
+    ],
+    [{ question: 'Can LibreOffice open every CDR?', answer: 'No. Its libcdr import filter supports many files but coverage varies by version and features.' }, { question: 'Is an online CDR viewer safe for confidential work?', answer: 'Use only a service with clear limits and deletion behavior; highly confidential artwork may require an offline controlled environment.' }, { question: 'Can I edit the preview?', answer: 'SVG/PDF may expose editable content, but they do not reconstruct every original CorelDRAW object.' }],
+    'Use a real capability-gated reader, export an open preview format, inspect fidelity, and request an author-exported PDF when accuracy is critical.',
+  ),
+  'newer-cdr-older-coreldraw': corelArticle(
+    'How to Open a Newer CDR File in an Older CorelDRAW Version',
+    'Check CDR compatibility and use safe resaving or open interchange when an older CorelDRAW cannot read a newer file.',
+    'CorelDRAW versions do not always open files saved by later releases. There is no reliable header rename or generic online trick that rewrites a modern CDR into an older native version; true down-saving requires a compatible CDR writer, usually CorelDRAW itself.',
+    [
+      { title: 'Identify the container and likely generation', content: 'A RIFF header code can identify many older generations, while a ZIP container signals a newer family. This information helps diagnose a version error but does not guarantee the exact application release or feature compatibility.' },
+      { title: 'Ask the sender to use Save As', content: 'The strongest workflow is for the creator to open the file in their CorelDRAW version, choose Save As, select the oldest version that supports the required features, and review any compatibility warnings. They should retain the original modern file.' },
+      { title: 'Use PDF or SVG interchange when down-saving is impossible', content: 'Request a preflighted PDF for layout and print or SVG for focused vector artwork. EPS can help older print workflows. These formats may flatten or simplify newer features but are honest interchange files and are safer than a fake older CDR.' },
+      { title: 'Plan for fonts and unsupported effects', content: 'Older releases may not support newer effects, variable fonts, color features, or object types even after down-saving. Convert text to curves only for final visual stability, keep an editable text copy, and rasterize effects only at adequate output resolution.' },
+    ],
+    [{ question: 'Can changing the CDR header make it open?', answer: 'No. Internal structures and features differ; header modification can corrupt or misidentify the file.' }, { question: 'Can Navorika convert X8 CDR to X7 CDR?', answer: 'No. The version route is an honest checker, not a native CDR rewriter.' }, { question: 'What should a print shop request?', answer: 'A preflighted PDF plus the original CDR and packaged fonts/assets where licensing allows.' }],
+    'Use the original CorelDRAW application to down-save when possible; otherwise exchange a verified PDF/SVG/EPS and keep the original CDR intact.',
+  ),
+  'best-coreldraw-print-format': corelArticle(
+    'Best File Format for CorelDRAW Printing: CDR vs PDF vs EPS vs SVG',
+    'Choose CDR, PDF, EPS, or SVG for print production based on editability, fonts, color, transparency, and handoff.',
+    'The best format depends on who will edit the file, which output device is used, and whether the handoff is a working project or a final production file. No extension substitutes for preflight, proofing, and communication with the printer.',
+    [
+      { title: 'CDR for editable CorelDRAW production', content: 'Use CDR as the internal working master when the production team uses a compatible CorelDRAW release. It can preserve pages, layers, effects, spot colors, and editable objects, but version mismatch and missing linked assets/fonts can break handoff.' },
+      { title: 'PDF for final page-based handoff', content: 'A suitable PDF preset can embed or subset fonts, preserve vectors and images, define bleed and page boxes, and support process or spot color workflows. PDF is often the most portable final format, but the correct standard and settings depend on the printer.' },
+      { title: 'EPS for legacy single-page workflows', content: 'EPS remains useful for some signage, RIP, and legacy placement workflows. It is single-page and PostScript-based, and modern transparency may flatten. Do not choose EPS merely because it sounds more “professional” than PDF.' },
+      { title: 'SVG for vectors and cutting workflows', content: 'SVG is excellent for open vector shapes, web assets, and many cutter workflows, but CSS, filters, text, units, and page assumptions can vary between applications. Convert strokes or text only when the receiving workflow requires it and retain editable masters.' },
+      { title: 'Preflight checklist', content: 'Confirm final size, bleed, trim, safe area, color space, spot colors, overprint, minimum line weight, image resolution, font status, transparency, black construction, and imposed-versus-reader spreads. Obtain a proof for critical color or finishing.' },
+    ],
+    [{ question: 'Is PDF always best for printing?', answer: 'It is often the strongest final handoff, but use the PDF standard and settings specified by the printer.' }, { question: 'Should I send both CDR and PDF?', answer: 'Often yes: CDR as an editable source and PDF as the approved visual/production reference.' }, { question: 'Is 300 DPI always required?', answer: 'It is a common target for continuous-tone images at final size, but line art, large signage, viewing distance, and device resolution change requirements.' }],
+    'Keep CDR as the editable master, use the printer’s requested preflighted PDF for final delivery, and reserve EPS/SVG for workflows that genuinely need them.',
+  ),
+  'preserve-fonts-coreldraw-conversion': corelArticle(
+    'How to Preserve Fonts When Converting Word or PDF to CorelDRAW',
+    'Manage embedded, missing, custom, Punjabi, Hindi, Arabic, and other Unicode fonts during CorelDRAW conversion.',
+    'Font problems are the most common cause of changed line breaks, missing glyphs, and incorrect complex-script rendering. A font name alone is not enough: the exact file, version, metrics, shaping behavior, licensing, and application support all matter.',
+    [
+      { title: 'Inventory fonts before conversion', content: 'Record every family, weight, style, and variable-font axis used. Distinguish real bold/italic faces from synthetic styling. Package fonts only when licensing permits, and retain a reference PDF or printout showing the intended appearance.' },
+      { title: 'Understand embedding and subsetting', content: 'PDF can embed fonts or subsets. A subset may preserve appearance for used glyphs but not support editing new text. Some fonts prohibit embedding. Check PDF font properties and never assume embedded means fully editable in CorelDRAW.' },
+      { title: 'Complex scripts and legacy encodings', content: 'Punjabi/Gurmukhi, Hindi/Devanagari, Arabic, and other scripts require Unicode text, suitable fonts, and correct shaping. Legacy keyboard/font encodings can display meaningful shapes while storing unrelated character codes. Conversion may reveal broken ordering or missing conjuncts.' },
+      { title: 'Text versus curves', content: 'Keep text live when revisions, accessibility, search, or language corrections are expected. Convert final approved text to curves only when font availability is uncertain and visual stability is essential. Curves are not searchable or editable as words and can increase file complexity.' },
+      { title: 'A multilingual proofing routine', content: 'Compare source and output line by line. Check names, phone numbers, dates, prices, punctuation, vowel marks, conjuncts, right-to-left order, mixed Latin text, and numerals. Use a fluent proofreader for customer-facing multilingual work.' },
+    ],
+    [{ question: 'Why did text reflow after DOCX conversion?', answer: 'The converter likely used a different font or font version with different character widths and vertical metrics.' }, { question: 'Are Google Fonts always safe for print handoff?', answer: 'They are broadly available, but still package or embed the exact permitted files and test the receiving application.' }, { question: 'Can curves be converted back to accurate text?', answer: 'Not reliably. OCR can guess shapes, but language, spelling, and formatting must be verified.' }],
+    'Inventory exact fonts, use PDF embedding where appropriate, proof complex scripts carefully, and curve only final text whose editability is no longer required.',
+  ),
   'bmr-tdee-guide': article(
     'BMR and TDEE Guide',
     'Understand basal metabolic rate, total daily energy expenditure, activity multipliers, and calorie planning.',

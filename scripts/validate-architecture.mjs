@@ -49,11 +49,11 @@ const guideSlugs = [...read(guidesPath).matchAll(/\bslug:\s*'([^']+)'/g)].map((m
 for (const slug of duplicates(guideSlugs)) failures.push(`Duplicate guide metadata slug: ${slug}`);
 
 const guideContentSources = [read(guideContentPath), read(additionalGuideContentPath), read(gscGuideContentPath)];
-const guideContentSlugs = guideContentSources.flatMap((source) => [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|article\()/gm)].map((match) => match[1]));
+const guideContentSlugs = guideContentSources.flatMap((source) => [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|(?:corelArticle|article)\()/gm)].map((match) => match[1]));
 const enhancedGuideSlugs = [...read(guideEnhancementsPath).matchAll(/^\s{2}'([^']+)':\s*\{/gm)].map((match) => match[1]);
 const sourcedGuideSlugs = [...read(guideSourcesPath).matchAll(/^\s{2}'([^']+)':\s*\[/gm)].map((match) => match[1]);
 for (const source of guideContentSources) {
-  const sourceSlugs = [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|article\()/gm)].map((match) => match[1]);
+  const sourceSlugs = [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|(?:corelArticle|article)\()/gm)].map((match) => match[1]);
   for (const slug of duplicates(sourceSlugs)) failures.push(`Duplicate guide content slug in one registry: ${slug}`);
 }
 for (const slug of guideSlugs.filter((slug) => !guideContentSlugs.includes(slug))) failures.push(`Published guide has no article content: ${slug}`);
@@ -181,6 +181,24 @@ const converterPackageSource = read(packagePath);
 for (const dependency of ['"docx"', '"fast-xml-parser"', '"jszip"']) {
   if (!converterPackageSource.includes(dependency)) failures.push(`XML/Word converters require package dependency ${dependency}`);
 }
+
+const corelToolSlugs = ['coreldraw-tools','pdf-to-cdr-converter','word-to-cdr-converter','png-to-cdr-converter','jpg-to-cdr-converter','svg-to-cdr-converter','ai-to-cdr-converter','eps-to-cdr-converter','cdr-viewer','cdr-version-converter','cdr-to-pdf-converter','cdr-to-svg-converter','cdr-to-png-converter','cdr-to-jpg-converter','cdr-to-eps-converter'];
+for (const slug of corelToolSlugs) {
+  const pageSource = read(join(toolsRoot, slug, 'page.tsx'));
+  if (!pageSource.includes('@/components/tools/coreldraw/')) failures.push(`${slug} must use the shared CorelDRAW UI platform`);
+}
+for (const file of ['types.ts','formats.ts','validation.ts','archive-validation.ts','capabilities.ts','job-manager.ts','process.ts','conversion-pipeline.ts','cdr-writer.ts','raster-vectorizer.ts']) {
+  if (!existsSync(join(root, 'src/lib/converters/coreldraw', file))) failures.push(`Missing shared CorelDRAW converter module: ${file}`);
+}
+const corelTypesSource = read(join(root, 'src/lib/converters/coreldraw/types.ts'));
+if (!corelTypesSource.includes('cdrWrite: false')) failures.push('Native CDR writing must remain explicitly disabled without a verified provider');
+if (corelTypesSource.includes("CorelOutputFormat = 'cdr'")) failures.push('CorelDRAW pipeline must not expose fake native CDR output');
+const corelApiSource = read(join(root, 'src/app/api/coreldraw/convert/route.ts'));
+for (const signal of ['withCorelJob', 'assertCorelUpload', 'assertSafeZipArchive', "'X-Robots-Tag': 'noindex, nofollow, noarchive'", 'rateLimit']) {
+  if (!corelApiSource.includes(signal)) failures.push(`CorelDRAW API is missing security signal: ${signal}`);
+}
+if (!existsSync(join(root, 'docs/CORELDRAW_CONVERTER_DEPLOYMENT.md'))) failures.push('Missing CorelDRAW VPS deployment documentation');
+if (!converterPackageSource.includes('"test:coreldraw"')) failures.push('package.json must expose the CorelDRAW regression suite');
 
 const seoSource = read(seoPath);
 const seoSlugs = [...seoSource.matchAll(/^\s{2}'([^']+)':\s*\{/gm)].map((match) => match[1]);

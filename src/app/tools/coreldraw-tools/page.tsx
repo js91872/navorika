@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelDrawHub from '@/components/tools/coreldraw/CorelDrawHub';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="CorelDRAW workflow hub" title="Free CorelDRAW Tools & CDR Converters" description="Prepare import-ready artwork, view supported CDR files, export open formats, and check CDR compatibility honestly."><CorelDrawHub/></ExpansionToolPage>}

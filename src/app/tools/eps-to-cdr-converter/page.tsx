@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="PostScript interchange" title="EPS to CDR Converter" description="Validate EPS and prepare genuine PDF, SVG, or EPS output that CorelDRAW can import."><CorelServerTool config={corelServerConfigs.eps}/></ExpansionToolPage>}

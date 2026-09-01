@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import RasterToCorelTool from '@/components/tools/coreldraw/RasterToCorelTool';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Local raster preparation" title="JPG to CDR Converter" description="Prepare JPG/JPEG artwork as embedded raster output or simplified traced SVG paths for CorelDRAW."><RasterToCorelTool format="jpg"/></ExpansionToolPage>}

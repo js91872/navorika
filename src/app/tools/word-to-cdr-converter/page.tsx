@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="DOC/DOCX conversion" title="Word to CDR Converter" description="Convert Word through PDF into honest CorelDRAW-ready output with layout, editable-vector, and print guidance."><CorelServerTool config={corelServerConfigs.word}/></ExpansionToolPage>}

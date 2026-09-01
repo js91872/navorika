@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="CDR raster export" title="CDR to PNG Converter" description="Render the first readable CDR page as PNG at an adjustable 72–600 DPI."><CorelServerTool config={corelServerConfigs.cdrPng}/></ExpansionToolPage>}

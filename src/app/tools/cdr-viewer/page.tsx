@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Capability-gated CDR reader" title="CDR Viewer" description="Preview supported CorelDRAW files through the detected server reader and export a temporary PDF, SVG, or PNG."><CorelServerTool config={corelServerConfigs.viewer}/></ExpansionToolPage>}

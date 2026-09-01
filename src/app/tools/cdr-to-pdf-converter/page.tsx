@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="CDR export" title="CDR to PDF Converter" description="Convert supported CorelDRAW CDR files to genuine PDF through the detected LibreOffice/libcdr reader."><CorelServerTool config={corelServerConfigs.cdrPdf}/></ExpansionToolPage>}

@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CdrVersionChecker from '@/components/tools/coreldraw/CdrVersionChecker';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Local compatibility check" title="CDR Version Checker" description="Identify RIFF or ZIP-based CDR containers and likely CorelDRAW generations without pretending to rewrite the native file."><CdrVersionChecker/></ExpansionToolPage>}

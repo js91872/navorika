@@ -4,6 +4,14 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'word-to-cdr-formatting-guide': [{ name: 'LibreOffice Help — PDF export', url: 'https://help.libreoffice.org/latest/en-US/text/shared/01/ref_pdf_export.html' }, { name: 'Unicode Consortium — Unicode Standard', url: 'https://www.unicode.org/standard/standard.html' }],
+  'pdf-to-cdr-editing-guide': [pdfSpecification, { name: 'CorelDRAW Help', url: 'https://product.corel.com/help/CorelDRAW/' }],
+  'raster-image-to-cdr-guide': [webImageFormats, { name: 'W3C — SVG 2 specification', url: 'https://www.w3.org/TR/SVG2/' }],
+  'svg-vs-cdr-guide': [{ name: 'W3C — SVG 2 specification', url: 'https://www.w3.org/TR/SVG2/' }, { name: 'CorelDRAW Help', url: 'https://product.corel.com/help/CorelDRAW/' }],
+  'open-cdr-without-coreldraw': [{ name: 'The Document Foundation — LibreOffice CorelDRAW import release notes', url: 'https://wiki.documentfoundation.org/ReleaseNotes/3.6#CorelDRAW_Import' }, { name: 'libcdr project', url: 'https://wiki.documentfoundation.org/DLP/Libraries/libcdr' }],
+  'newer-cdr-older-coreldraw': [{ name: 'CorelDRAW Help', url: 'https://product.corel.com/help/CorelDRAW/' }, pdfSpecification],
+  'best-coreldraw-print-format': [pdfSpecification, { name: 'W3C — SVG 2 specification', url: 'https://www.w3.org/TR/SVG2/' }],
+  'preserve-fonts-coreldraw-conversion': [{ name: 'Unicode Consortium — Unicode Standard', url: 'https://www.unicode.org/standard/standard.html' }, pdfSpecification],
   'how-to-calculate-sip-returns': [{ name: 'SEBI Investor — Mutual fund investor education', url: 'https://investor.sebi.gov.in/' }],
   'how-to-calculate-emi': [{ name: 'Reserve Bank of India — Financial education', url: 'https://www.rbi.org.in/financialeducation/' }],
   'bmi-calculator-guide': [{ name: 'World Health Organization — Obesity and overweight', url: 'https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight' }],

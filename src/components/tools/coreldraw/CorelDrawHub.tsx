@@ -1,0 +1,12 @@
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { tools } from '@/data/registry';
+import { getToolIcon } from '@/lib/toolIcons';
+
+const sections = [
+  { title: 'Convert to CorelDRAW', description: 'Prepare genuine PDF, SVG, or EPS interchange files that CorelDRAW can import.', slugs: ['pdf-to-cdr-converter','word-to-cdr-converter','png-to-cdr-converter','jpg-to-cdr-converter','svg-to-cdr-converter','ai-to-cdr-converter','eps-to-cdr-converter'] },
+  { title: 'Convert from CorelDRAW', description: 'Read supported CDR files through the detected server backend and export useful open formats.', slugs: ['cdr-to-pdf-converter','cdr-to-svg-converter','cdr-to-png-converter','cdr-to-jpg-converter','cdr-to-eps-converter'] },
+  { title: 'CDR utilities', description: 'Inspect, preview, and understand CDR files without pretending to rewrite proprietary CDR versions.', slugs: ['cdr-viewer','cdr-version-converter'] },
+];
+
+export default function CorelDrawHub() { return <div className="mx-auto max-w-6xl space-y-12"><div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 leading-7 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100"><strong>Technically honest outputs:</strong> Navorika does not rename files to `.cdr` or claim native CDR generation. “To CDR” tools prepare real PDF, SVG, or EPS files for import into CorelDRAW. Open the output, verify fonts and layout, then use CorelDRAW’s Save As command to create the native CDR.</div>{sections.map((section) => <section key={section.title}><h2 className="text-2xl font-black">{section.title}</h2><p className="mt-2 max-w-3xl leading-7 text-[var(--muted-foreground)]">{section.description}</p><div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{section.slugs.flatMap((slug) => { const tool = tools.find((item) => item.slug === slug); return tool ? [<Link key={slug} href={`/tools/${slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg"><div className="flex gap-3"><span className="text-2xl" aria-hidden="true">{getToolIcon(slug)}</span><div><h3 className="font-bold group-hover:text-indigo-600">{tool.title}</h3><p className="mt-1 text-sm leading-6 text-[var(--muted-foreground)]">{tool.description}</p></div></div><span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-indigo-600">Open tool <ArrowRight className="size-4" /></span></Link>] : []; })}</div></section>)}</div>; }

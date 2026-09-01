@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import RasterToCorelTool from '@/components/tools/coreldraw/RasterToCorelTool';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Local raster preparation" title="PNG to CDR Converter" description="Embed PNG artwork or trace simplified color regions into genuine SVG paths for CorelDRAW."><RasterToCorelTool format="png"/></ExpansionToolPage>}

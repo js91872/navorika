@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Illustrator interchange" title="AI to CDR Converter" description="Prepare supported PDF-compatible or PostScript AI artwork for CorelDRAW without claiming native CDR output."><CorelServerTool config={corelServerConfigs.ai}/></ExpansionToolPage>}

@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="CDR print export" title="CDR to EPS Converter" description="Read a supported CDR and export its first page as genuine EPS for print-oriented interchange."><CorelServerTool config={corelServerConfigs.cdrEps}/></ExpansionToolPage>}

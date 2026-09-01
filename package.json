@@ -13,6 +13,7 @@
     "lint:baseline": "node scripts/validate-lint-baseline.mjs",
     "test:calculations": "node --experimental-strip-types scripts/run-calculation-tests.mjs",
     "test:xml-word": "tsx --test src/lib/converters/xml-word/xml-word.test.ts",
+    "test:coreldraw": "tsx --test src/lib/converters/coreldraw/coreldraw.test.ts",
     "typecheck": "tsc --noEmit",
     "validate:architecture": "node scripts/validate-architecture.mjs",
     "check": "npm run validate:architecture && npm run typecheck && npm run lint:baseline && npm run build"

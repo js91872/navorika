@@ -55,6 +55,7 @@ export const clusters: ToolCluster[] = [
   { id: 'developer-code-formatting', name: 'Code Formatting and Utility Hubs', description: 'Access general developer suites and parser-backed code or markup formatting workflows.', category: 'developer-tools', toolSlugs: ['code-minifier-beautifier', 'developer-utilities', 'developer-utils', 'markup-formatter'] },
   { id: 'developer-json', name: 'JSON and Tabular Data', description: 'Format, validate, compare, flatten, and convert JSON and CSV data.', category: 'developer-tools', toolSlugs: ['json-formatter', 'json-schema-validator', 'json-diff-compare', 'json-to-csv-flattener', 'csv-to-json-converter'] },
   { id: 'developer-xml-documents', name: 'XML and Document Conversion', description: 'Validate XML, create genuine DOCX documents, and extract clean or raw XML from modern Word files.', category: 'developer-tools', toolSlugs: ['xml-to-word-converter', 'word-to-xml-converter'] },
+  { id: 'coreldraw-cdr-tools', name: 'CorelDRAW and CDR Tools', description: 'Prepare CorelDRAW-ready interchange files, preview supported CDR documents, inspect versions, and export open formats without fake native CDR files.', category: 'developer-tools', toolSlugs: ['coreldraw-tools', 'pdf-to-cdr-converter', 'word-to-cdr-converter', 'png-to-cdr-converter', 'jpg-to-cdr-converter', 'svg-to-cdr-converter', 'ai-to-cdr-converter', 'eps-to-cdr-converter', 'cdr-viewer', 'cdr-version-converter', 'cdr-to-pdf-converter', 'cdr-to-svg-converter', 'cdr-to-png-converter', 'cdr-to-jpg-converter', 'cdr-to-eps-converter'] },
   { id: 'developer-encoding', name: 'Text and URL Encoding', description: 'Encode and decode Base64, URLs, and HTML entities locally.', category: 'developer-tools', toolSlugs: ['base64-encoder', 'url-encoder-decoder', 'html-entity-encoder-decoder'] },
   { id: 'developer-networking', name: 'IPv4 Networking', description: 'Plan CIDR, subnet, wildcard, VLSM, IP range, and MAC-address workflows.', category: 'developer-tools', toolSlugs: ['cidr-subnet-wildcard-calculator', 'ip-range-calculator', 'vlsm-subnet-calculator', 'mac-address-generator'] },
   { id: 'developer-scheduling', name: 'Cron and Time', description: 'Understand cron schedules, calculate upcoming runs, and convert Unix timestamps.', category: 'developer-tools', toolSlugs: ['cron-next-run-calculator', 'cron-expression-humanizer', 'unix-timestamp-converter'] },
@@ -137,11 +138,12 @@ export const toolkits: Toolkit[] = [
     groups: [
       { name: 'JSON and data conversion', description: 'Format, validate, compare, flatten, and convert JSON, CSV, and encoded text.', toolSlugs: ['json-formatter', 'json-schema-validator', 'json-diff-compare', 'json-to-csv-flattener', 'csv-to-json-converter', 'base64-encoder', 'url-encoder-decoder', 'html-entity-encoder-decoder'] },
       { name: 'XML and document conversion', description: 'Format markup, turn XML data into DOCX, and extract structured or raw XML from DOCX packages.', toolSlugs: ['xml-to-word-converter', 'word-to-xml-converter', 'markup-formatter'] },
+      { name: 'CorelDRAW and CDR workflows', description: 'Prepare import-ready artwork, inspect supported CDR files, and export genuine open document or image formats.', toolSlugs: ['coreldraw-tools', 'pdf-to-cdr-converter', 'word-to-cdr-converter', 'png-to-cdr-converter', 'jpg-to-cdr-converter', 'svg-to-cdr-converter', 'ai-to-cdr-converter', 'eps-to-cdr-converter', 'cdr-viewer', 'cdr-version-converter', 'cdr-to-pdf-converter', 'cdr-to-svg-converter', 'cdr-to-png-converter', 'cdr-to-jpg-converter', 'cdr-to-eps-converter'] },
       { name: 'Networking and schedules', description: 'Plan IPv4 ranges and subnets, generate MAC addresses, and understand cron schedules.', toolSlugs: ['cidr-subnet-wildcard-calculator', 'ip-range-calculator', 'vlsm-subnet-calculator', 'mac-address-generator', 'cron-next-run-calculator', 'cron-expression-humanizer', 'unix-timestamp-converter', 'http-status-code-lookup'] },
       { name: 'Tokens and identifiers', description: 'Generate identifiers and QR codes, inspect JWT payloads, and use browser cryptography.', toolSlugs: ['uuid-generator', 'jwt-decoder', 'qr-code-generator', 'web-crypto-studio'] },
       { name: 'Publishing and SEO', description: 'Prepare responsive CSS, metadata, campaign links, crawler rules, and reusable web assets.', toolSlugs: ['aspect-ratio-padding-calculator', 'css-clamp-font-generator', 'meta-tag-generator', 'robots-txt-generator', 'utm-builder', 'webmaster-seo-builder', 'css-gradient-generator'] },
       { name: 'AI and cloud costs', description: 'Estimate token volume, model API rates, GPU workloads, hosting, delivery, and archive retrieval.', toolSlugs: ['ai-token-calculator', 'llm-api-cost-calculator', 'gpu-compute-cost-calculator', 'cloud-hosting-cost-calculator', 'cdn-cost-calculator', 'aws-glacier-retrieval-calculator'] },
-    ], guideSlugs: ['json-formatting-guide', 'base64-encoding-guide', 'jwt-decoding-guide', 'seo-tools-guide'],
+    ], guideSlugs: ['json-formatting-guide', 'base64-encoding-guide', 'jwt-decoding-guide', 'seo-tools-guide', 'word-to-cdr-formatting-guide', 'pdf-to-cdr-editing-guide', 'raster-image-to-cdr-guide', 'svg-vs-cdr-guide', 'open-cdr-without-coreldraw', 'newer-cdr-older-coreldraw', 'best-coreldraw-print-format', 'preserve-fonts-coreldraw-conversion'],
   },
   {
     slug: 'image-optimization-tools', name: 'Image Optimization Tools', seoTitle: 'Free Image Optimization Tools',
@@ -177,6 +179,21 @@ export const toolkits: Toolkit[] = [
 ];
 
 export const complementaryTools: Record<string, string[]> = {
+  'coreldraw-tools': ['pdf-to-cdr-converter', 'word-to-cdr-converter', 'cdr-viewer', 'cdr-version-converter'],
+  'pdf-to-cdr-converter': ['word-to-cdr-converter', 'svg-to-cdr-converter', 'cdr-to-pdf-converter'],
+  'word-to-cdr-converter': ['pdf-to-cdr-converter', 'svg-to-cdr-converter', 'cdr-viewer'],
+  'png-to-cdr-converter': ['jpg-to-cdr-converter', 'svg-to-cdr-converter', 'image-color-picker'],
+  'jpg-to-cdr-converter': ['png-to-cdr-converter', 'svg-to-cdr-converter', 'image-converter'],
+  'svg-to-cdr-converter': ['png-to-cdr-converter', 'pdf-to-cdr-converter', 'cdr-to-svg-converter'],
+  'ai-to-cdr-converter': ['eps-to-cdr-converter', 'svg-to-cdr-converter', 'pdf-to-cdr-converter'],
+  'eps-to-cdr-converter': ['ai-to-cdr-converter', 'pdf-to-cdr-converter', 'svg-to-cdr-converter'],
+  'cdr-viewer': ['cdr-to-pdf-converter', 'cdr-to-svg-converter', 'cdr-version-converter'],
+  'cdr-version-converter': ['cdr-viewer', 'cdr-to-pdf-converter', 'coreldraw-tools'],
+  'cdr-to-pdf-converter': ['cdr-viewer', 'cdr-to-svg-converter', 'pdf-to-cdr-converter'],
+  'cdr-to-svg-converter': ['cdr-viewer', 'cdr-to-pdf-converter', 'svg-to-cdr-converter'],
+  'cdr-to-png-converter': ['cdr-viewer', 'cdr-to-jpg-converter', 'cdr-to-pdf-converter'],
+  'cdr-to-jpg-converter': ['cdr-viewer', 'cdr-to-png-converter', 'cdr-to-pdf-converter'],
+  'cdr-to-eps-converter': ['cdr-viewer', 'cdr-to-pdf-converter', 'eps-to-cdr-converter'],
   'xml-to-word-converter': ['word-to-xml-converter', 'markup-formatter', 'json-formatter'],
   'word-to-xml-converter': ['xml-to-word-converter', 'markup-formatter', 'extract-pdf-text'],
   'concrete-calculator': ['cement-calculator', 'rebar-calculator', 'sand-calculator', 'gravel-calculator'],

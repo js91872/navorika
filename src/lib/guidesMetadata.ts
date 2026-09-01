@@ -282,6 +282,46 @@ const guideDefinitions: GuideDefinition[] = [
     title: 'Construction Estimate & Quote Guide',
     description: 'Build clear construction estimates and quotes with scope, quantities, line items, labour, overhead, markup, assumptions, and exclusions.',
     category: 'Construction', publishedDate: 'August 2026', readTime: '13 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'word-to-cdr-formatting-guide', title: 'How to Convert Word to CDR Without Losing Formatting',
+    description: 'Prepare DOC or DOCX for CorelDRAW through PDF while managing page size, tables, images, Unicode fonts, and text-to-curves decisions.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '12 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'pdf-to-cdr-editing-guide', title: 'How to Convert PDF to CDR for Editing in CorelDRAW',
+    description: 'Understand native vectors, scanned pages, fonts, multipage import, embedded images, and saving a PDF workflow as CDR.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '11 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'raster-image-to-cdr-guide', title: 'How to Convert PNG or JPG to CDR',
+    description: 'Choose between embedding raster artwork and tracing it into vectors for logos, signatures, line drawings, and photographs.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'svg-vs-cdr-guide', title: 'SVG vs CDR: Which Vector Format Should You Use?',
+    description: 'Compare open SVG interchange with proprietary CorelDRAW CDR projects for editing, web delivery, collaboration, and printing.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '9 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'open-cdr-without-coreldraw', title: 'How to Open a CDR File Without CorelDRAW',
+    description: 'Use capability-aware open-source viewing and export workflows while understanding which CDR features may not render exactly.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'newer-cdr-older-coreldraw', title: 'How to Open a Newer CDR File in an Older CorelDRAW Version',
+    description: 'Check CDR container/version clues and use safe resaving or PDF/SVG interchange when an older CorelDRAW release cannot open the file.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'best-coreldraw-print-format', title: 'Best File Format for CorelDRAW Printing: CDR vs PDF vs EPS vs SVG',
+    description: 'Choose a production format for commercial printing, signage, cutting, proofs, and handoff based on fonts, color, transparency, and editability.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '11 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'preserve-fonts-coreldraw-conversion', title: 'How to Preserve Fonts When Converting Word or PDF to CorelDRAW',
+    description: 'Manage embedded, missing, custom, Punjabi, Hindi, Arabic, and other Unicode fonts and understand when converting text to curves is appropriate.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '12 min read', author: 'Navorika Team'
   }
 ];
 

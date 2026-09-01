@@ -1,5 +1,13 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'word-to-cdr-formatting-guide': ['word-to-cdr-converter', 'pdf-to-cdr-converter', 'coreldraw-tools'],
+  'pdf-to-cdr-editing-guide': ['pdf-to-cdr-converter', 'svg-to-cdr-converter', 'cdr-to-pdf-converter'],
+  'raster-image-to-cdr-guide': ['png-to-cdr-converter', 'jpg-to-cdr-converter', 'svg-to-cdr-converter'],
+  'svg-vs-cdr-guide': ['svg-to-cdr-converter', 'cdr-to-svg-converter', 'coreldraw-tools'],
+  'open-cdr-without-coreldraw': ['cdr-viewer', 'cdr-to-pdf-converter', 'cdr-version-converter'],
+  'newer-cdr-older-coreldraw': ['cdr-version-converter', 'cdr-viewer', 'cdr-to-pdf-converter'],
+  'best-coreldraw-print-format': ['coreldraw-tools', 'pdf-to-cdr-converter', 'cdr-to-pdf-converter', 'cdr-to-eps-converter'],
+  'preserve-fonts-coreldraw-conversion': ['word-to-cdr-converter', 'pdf-to-cdr-converter', 'svg-to-cdr-converter'],
   'how-to-calculate-sip-returns': ['sip-calculator', 'fd-calculator', 'ppf-calculator'],
   'how-to-calculate-emi': ['loan-emi-calculator', 'loan-amortization-suite', 'cashflow-budget-architect'],
   'bmi-calculator-guide': ['bmi-calculator', 'bmr-calculator', 'body-fat-calculator'],

@@ -720,6 +720,81 @@ export const tools: RegisteredTool[] = ([
     keywords: ['word to xml converter', 'docx to xml', 'extract wordprocessingml', 'word document xml']
   },
   {
+    slug: 'coreldraw-tools', title: 'CorelDRAW Tools & CDR Converters',
+    description: 'Open the complete collection of technically honest CDR viewers and CorelDRAW-ready PDF, SVG, EPS, PNG, and JPG converters.',
+    category: 'developer-tools', keywords: ['coreldraw tools', 'cdr converter online', 'coreldraw converter', 'cdr file tools']
+  },
+  {
+    slug: 'pdf-to-cdr-converter', title: 'PDF to CDR Converter',
+    description: 'Prepare a PDF for CorelDRAW as the original multipage PDF or a genuine first-page SVG or EPS without creating a fake CDR.',
+    category: 'developer-tools', keywords: ['pdf to cdr', 'pdf to coreldraw', 'convert pdf to cdr', 'pdf to cdr converter']
+  },
+  {
+    slug: 'word-to-cdr-converter', title: 'Word to CDR Converter',
+    description: 'Convert DOC or DOCX through LibreOffice into a CorelDRAW-ready PDF, first-page SVG, or EPS with honest font and layout guidance.',
+    category: 'developer-tools', keywords: ['word to cdr', 'docx to cdr', 'doc to cdr', 'word to coreldraw']
+  },
+  {
+    slug: 'png-to-cdr-converter', title: 'PNG to CDR Converter',
+    description: 'Embed a PNG in CorelDRAW-ready SVG or PDF, or trace simplified color regions into genuine SVG paths locally.',
+    category: 'developer-tools', keywords: ['png to cdr', 'png to coreldraw', 'convert png to cdr', 'image to coreldraw']
+  },
+  {
+    slug: 'jpg-to-cdr-converter', title: 'JPG to CDR Converter',
+    description: 'Prepare JPG or JPEG artwork as embedded CorelDRAW-ready SVG/PDF or simplified traced SVG paths locally.',
+    category: 'developer-tools', keywords: ['jpg to cdr', 'jpeg to cdr', 'jpg to coreldraw', 'image to cdr']
+  },
+  {
+    slug: 'svg-to-cdr-converter', title: 'SVG to CDR Converter',
+    description: 'Validate SVG artwork and prepare genuine SVG, PDF, or EPS interchange output for import into CorelDRAW.',
+    category: 'developer-tools', keywords: ['svg to cdr', 'svg to coreldraw', 'convert svg to cdr', 'svg cdr converter']
+  },
+  {
+    slug: 'ai-to-cdr-converter', title: 'AI to CDR Converter',
+    description: 'Convert supported PDF-compatible or PostScript Adobe Illustrator files to genuine CorelDRAW-ready PDF, SVG, or EPS output.',
+    category: 'developer-tools', keywords: ['ai to cdr', 'illustrator to coreldraw', 'convert ai to cdr', 'ai cdr converter']
+  },
+  {
+    slug: 'eps-to-cdr-converter', title: 'EPS to CDR Converter',
+    description: 'Validate PostScript EPS artwork and prepare PDF, SVG, or EPS interchange files that CorelDRAW can import.',
+    category: 'developer-tools', keywords: ['eps to cdr', 'eps to coreldraw', 'convert eps to cdr', 'eps cdr converter']
+  },
+  {
+    slug: 'cdr-viewer', title: 'CDR Viewer',
+    description: 'Open supported CorelDRAW CDR files through a detected server reader and generate a temporary PDF, SVG, or PNG preview.',
+    category: 'developer-tools', keywords: ['cdr viewer', 'cdr viewer online', 'open cdr online', 'coreldraw file viewer']
+  },
+  {
+    slug: 'cdr-version-converter', title: 'CDR Version Checker',
+    description: 'Inspect a CDR header locally to identify RIFF or ZIP containers and estimate compatible CorelDRAW generations without fake version rewriting.',
+    category: 'developer-tools', keywords: ['cdr version converter', 'cdr version checker', 'coreldraw compatibility checker', 'open newer cdr']
+  },
+  {
+    slug: 'cdr-to-pdf-converter', title: 'CDR to PDF Converter',
+    description: 'Convert a supported CorelDRAW CDR file into a genuine PDF through the server’s detected LibreOffice CDR reader.',
+    category: 'developer-tools', keywords: ['cdr to pdf', 'convert cdr to pdf', 'coreldraw to pdf', 'cdr to pdf converter online']
+  },
+  {
+    slug: 'cdr-to-svg-converter', title: 'CDR to SVG Converter',
+    description: 'Read a supported CDR file and export its first page as genuine SVG through LibreOffice and Poppler.',
+    category: 'developer-tools', keywords: ['cdr to svg', 'coreldraw to svg', 'cdr svg converter', 'convert cdr to svg']
+  },
+  {
+    slug: 'cdr-to-png-converter', title: 'CDR to PNG Converter',
+    description: 'Render the first readable page of a supported CDR file as a genuine PNG at 72–600 DPI.',
+    category: 'developer-tools', keywords: ['cdr to png', 'coreldraw to png', 'convert cdr to png', 'cdr png converter']
+  },
+  {
+    slug: 'cdr-to-jpg-converter', title: 'CDR to JPG Converter',
+    description: 'Render the first readable page of a supported CDR file as JPG with adjustable resolution and quality.',
+    category: 'developer-tools', keywords: ['cdr to jpg', 'cdr to jpeg', 'coreldraw to jpg', 'convert cdr to jpg']
+  },
+  {
+    slug: 'cdr-to-eps-converter', title: 'CDR to EPS Converter',
+    description: 'Read a supported CDR file and export its first page as genuine EPS for print-oriented interchange.',
+    category: 'developer-tools', keywords: ['cdr to eps', 'coreldraw to eps', 'convert cdr to eps', 'cdr eps converter']
+  },
+  {
     slug: 'bioluminescent-reader',
     title: 'Bioluminescent Reader',
     description: 'Temporarily unavailable pending a defined scientific schema and validated analysis model.',

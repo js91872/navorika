@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="CorelDRAW-ready document" title="PDF to CDR Converter" description="Prepare a real PDF, SVG, or EPS for CorelDRAW—never a renamed fake CDR."><CorelServerTool config={corelServerConfigs.pdf}/></ExpansionToolPage>}

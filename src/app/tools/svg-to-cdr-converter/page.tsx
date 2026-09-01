@@ -1,0 +1,2 @@
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage'; import CorelServerTool from '@/components/tools/coreldraw/CorelServerTool'; import { corelServerConfigs } from '@/components/tools/coreldraw/configs';
+export default function Page(){return <ExpansionToolPage category="developer-tools" eyebrow="Vector interchange" title="SVG to CDR Converter" description="Validate SVG and prepare genuine SVG, PDF, or EPS output for CorelDRAW import."><CorelServerTool config={corelServerConfigs.svg}/></ExpansionToolPage>}
