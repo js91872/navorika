@@ -52,7 +52,7 @@ export const clusters: ToolCluster[] = [
   { id: 'health-activity', name: 'Activity and Calories', description: 'Estimate energy used during common walking and running activities.', category: 'health-calculators', toolSlugs: ['calories-burned-calculator', 'running-calories-calculator', 'walking-calories-calculator'] },
   { id: 'health-heart', name: 'Heart Rate and Training', description: 'Convert pulse counts and estimate heart-rate ranges and training zones for exercise planning.', category: 'health-calculators', toolSlugs: ['heart-rate-calculator'] },
 
-  { id: 'developer-code-formatting', name: 'Code Formatting and Utility Hubs', description: 'Access general developer suites and parser-backed code or markup formatting workflows.', category: 'developer-tools', toolSlugs: ['code-minifier-beautifier', 'developer-utilities', 'developer-utils', 'markup-formatter'] },
+  { id: 'developer-code-formatting', name: 'Code Formatting and Utility Hubs', description: 'Access general developer suites and parser-backed code or markup formatting workflows.', category: 'developer-tools', toolSlugs: ['code-minifier-beautifier', 'developer-utils', 'markup-formatter'] },
   { id: 'developer-json', name: 'JSON and Tabular Data', description: 'Format, validate, compare, flatten, and convert JSON and CSV data.', category: 'developer-tools', toolSlugs: ['json-formatter', 'json-schema-validator', 'json-diff-compare', 'json-to-csv-flattener', 'csv-to-json-converter'] },
   { id: 'developer-xml-documents', name: 'XML and Document Conversion', description: 'Validate XML, create genuine DOCX documents, and extract clean or raw XML from modern Word files.', category: 'developer-tools', toolSlugs: ['xml-to-word-converter', 'word-to-xml-converter'] },
   { id: 'coreldraw-cdr-tools', name: 'CorelDRAW and CDR Tools', description: 'Prepare CorelDRAW-ready interchange files, preview supported CDR documents, inspect versions, and export open formats without fake native CDR files.', category: 'developer-tools', toolSlugs: ['coreldraw-tools', 'pdf-to-cdr-converter', 'word-to-cdr-converter', 'png-to-cdr-converter', 'jpg-to-cdr-converter', 'svg-to-cdr-converter', 'ai-to-cdr-converter', 'eps-to-cdr-converter', 'cdr-viewer', 'cdr-version-converter', 'cdr-to-pdf-converter', 'cdr-to-svg-converter', 'cdr-to-png-converter', 'cdr-to-jpg-converter', 'cdr-to-eps-converter'] },
@@ -67,7 +67,7 @@ export const clusters: ToolCluster[] = [
 
   { id: 'construction-concrete', name: 'Concrete and Masonry', description: 'Estimate concrete, cement, brick, reinforcement, sand, and post-hole concrete needs.', category: 'construction-calculators', toolSlugs: ['brick-calculator', 'cement-calculator', 'concrete-calculator', 'post-hole-concrete-calculator', 'rebar-calculator', 'sand-calculator'] },
   { id: 'construction-finishes', name: 'Interior Surfaces and Finishes', description: 'Plan flooring, tile, paint, drywall, and wallpaper quantities for interior work.', category: 'construction-calculators', toolSlugs: ['drywall-calculator', 'flooring-calculator', 'paint-calculator', 'tile-calculator', 'wallpaper-calculator'] },
-  { id: 'construction-roofing', name: 'Roofing Geometry and Materials', description: 'Calculate roof area, pitch, angle, slope, and rafter planning values.', category: 'construction-calculators', toolSlugs: ['roof-area-calculator', 'roof-pitch-calculator'] },
+  { id: 'construction-roofing', name: 'Roofing Geometry and Materials', description: 'Calculate roof area, pitch, angles, gambrel geometry, truss quantity, and rafter planning values.', category: 'construction-calculators', toolSlugs: ['12-foot-gambrel-roof-truss-calculator', 'roof-area-calculator', 'roof-pitch-calculator'] },
   { id: 'construction-site', name: 'Site and Earthworks', description: 'Estimate site area, excavation, asphalt, aggregate, and storage quantities.', category: 'construction-calculators', toolSlugs: ['asphalt-calculator', 'excavation-calculator', 'gravel-calculator', 'land-area-converter', 'water-tank-calculator'] },
   { id: 'construction-outdoor-projects', name: 'Decks, Fences, and Hardscaping', description: 'Estimate boards, fencing, pavers, joint sand, and related outdoor-project materials.', category: 'construction-calculators', toolSlugs: ['deck-board-calculator', 'fence-calculator', 'paver-calculator', 'polymeric-sand-calculator'] },
   { id: 'construction-landscaping', name: 'Landscaping Materials', description: 'Estimate mulch and topsoil volume, bags, and optional material weight.', category: 'construction-calculators', toolSlugs: ['mulch-calculator', 'topsoil-calculator'] },
@@ -102,7 +102,7 @@ export const toolkits: Toolkit[] = [
     categorySlugs: ['construction-calculators'],
     groups: [
       { name: 'Rooms and surfaces', description: 'Plan coverage and material allowances for floors, walls, drywall, and wallpaper.', toolSlugs: ['flooring-calculator', 'tile-calculator', 'paint-calculator', 'drywall-calculator', 'wallpaper-calculator'] },
-      { name: 'Roofing and outdoor projects', description: 'Estimate roof geometry and materials for decks, fences, pavers, and landscaping.', toolSlugs: ['roof-area-calculator', 'roof-pitch-calculator', 'deck-board-calculator', 'fence-calculator', 'paver-calculator', 'polymeric-sand-calculator', 'mulch-calculator', 'topsoil-calculator'] },
+      { name: 'Roofing and outdoor projects', description: 'Estimate roof geometry and materials for decks, fences, pavers, and landscaping.', toolSlugs: ['12-foot-gambrel-roof-truss-calculator', 'roof-area-calculator', 'roof-pitch-calculator', 'deck-board-calculator', 'fence-calculator', 'paver-calculator', 'polymeric-sand-calculator', 'mulch-calculator', 'topsoil-calculator'] },
       { name: 'Home utilities', description: 'Estimate practical electrical, solar, and water-storage requirements.', toolSlugs: ['wire-size-calculator', 'voltage-drop-calculator', 'solar-panel-calculator', 'water-tank-calculator'] },
     ], guideSlugs: [],
   },
@@ -222,7 +222,9 @@ export const complementaryTools: Record<string, string[]> = {
   'ip-range-calculator': ['cidr-subnet-wildcard-calculator', 'vlsm-subnet-calculator'],
   'vlsm-subnet-calculator': ['cidr-subnet-wildcard-calculator', 'ip-range-calculator'],
   'cron-next-run-calculator': ['cron-expression-humanizer', 'unix-timestamp-converter'],
-  'roof-pitch-calculator': ['roof-area-calculator'],
+  '12-foot-gambrel-roof-truss-calculator': ['roof-area-calculator', 'roof-pitch-calculator', 'board-foot-calculator', 'construction-cost-calculator'],
+  'roof-pitch-calculator': ['12-foot-gambrel-roof-truss-calculator', 'roof-area-calculator'],
+  'roof-area-calculator': ['12-foot-gambrel-roof-truss-calculator', 'roof-pitch-calculator'],
   'post-hole-concrete-calculator': ['fence-calculator', 'concrete-calculator'],
   'paver-calculator': ['polymeric-sand-calculator', 'asphalt-calculator'],
   'deck-board-calculator': ['board-foot-calculator', 'saw-kerf-calculator'],

@@ -809,13 +809,6 @@ export const tools: RegisteredTool[] = ([
     keywords: ['code-minifier-beautifier', 'code', 'minifier', 'beautifier']
   },
   {
-    slug: 'developer-utilities',
-    title: 'Developer Utilities',
-    description: 'Compatibility redirect to the Developer Tools category.',
-    category: 'developer-tools',
-    keywords: ['developer-utilities', 'developer', 'utilities']
-  },
-  {
     slug: 'developer-utils',
     title: 'Developer Utilities Hub',
     description: 'A browser-based suite for regex testing, Unix timestamp conversion, and CSS gradient building.',
@@ -1033,6 +1026,7 @@ export const tools: RegisteredTool[] = ([
   { slug: 'debt-snowball-vs-avalanche-calculator', title: 'Debt Snowball vs Avalanche Calculator', description: 'Compare month-by-month debt snowball and avalanche payoff time, interest, amount paid, and payoff order.', category: 'finance-calculators', keywords: ['debt snowball vs avalanche calculator', 'debt payoff strategy', 'avalanche interest savings'], heroTitle: 'Debt Snowball vs Avalanche Calculator', heroDescription: 'Simulate multiple debts under snowball and avalanche payoff strategies.' },
 
   // ====== CONSTRUCTION CALCULATORS ======
+  {slug:'12-foot-gambrel-roof-truss-calculator',title:'12 Foot Gambrel Roof Truss Calculator',description:'Calculate gambrel rafter lengths, roof height, break point, truss quantity and roofing area with a responsive live diagram.',category:'construction-calculators',keywords:['12 foot gambrel roof truss calculator','12 ft gambrel roof calculator','gambrel roof','roof truss','barn roof','gambrel rafter calculator','gambrel roof angle calculator'],heroTitle:'12 Foot Gambrel Roof Truss Calculator',heroDescription:'Calculate gambrel rafter lengths, roof height, knee position, roof area and truss quantity.'},
   {slug:'roof-pitch-calculator',title:'Roof Pitch Calculator',description:'Convert rise and run into X:12 pitch, angle, slope percentage, rafter multiplier and optional rafter length.',category:'construction-calculators',keywords:['roof pitch calculator','roof angle calculator','rafter multiplier'],heroTitle:'Roof Pitch Calculator',heroDescription:'Convert roof rise and run into useful slope and rafter geometry.'},
   {slug:'stair-stringer-calculator',title:'Stair & Stringer Calculator',description:'Calculate risers, actual riser height, treads, total run, stringer length and stair angle.',category:'construction-calculators',keywords:['stair calculator','stringer length calculator','riser tread calculator'],heroTitle:'Stair & Stringer Calculator',heroDescription:'Plan consistent stair risers, treads, run and stringer geometry.'},
   {slug:'deck-board-calculator',title:'Deck Board Calculator',description:'Estimate deck board rows, pieces, linear feet and waste using actual width, gap, length and orientation.',category:'construction-calculators',keywords:['deck board calculator','decking quantity calculator','deck board spacing'],heroTitle:'Deck Board Calculator',heroDescription:'Estimate deck boards with actual width, gaps, stock length and waste.'},

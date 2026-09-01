@@ -2,7 +2,6 @@
 export const toolIcons: Record<string, string> = {
   // ====== AUTO-AUDITED TOOL ICONS ======
   'css-gradient-generator': '🎨',
-  'developer-utilities': '🛠️',
   'finance-calculators': '🛠️',
   'health-calculators': '🛠️',
   'meta-tag-generator': '🔍',
@@ -180,6 +179,7 @@ export const toolIcons: Record<string, string> = {
   'osha-portable-toilet-calculator': '🚻',
   'egress-window-code-checker': '🪟',
   'dumpster-weight-calculator': '🗑️',
+  '12-foot-gambrel-roof-truss-calculator': '🏚️',
   'roof-pitch-calculator': '📐',
   'stair-stringer-calculator': '🪜',
   'deck-board-calculator': '🪵',
