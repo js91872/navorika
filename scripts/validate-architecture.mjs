@@ -25,6 +25,10 @@ const generatedLlmsPath = join(root, 'src/app/llms.txt/route.ts');
 const packagePath = join(root, 'package.json');
 const calculationRoot = join(root, 'src/lib/calculations');
 const calculationRunnerPath = join(root, 'scripts/run-calculation-tests.mjs');
+const toolUxPath = join(root, 'src/data/toolUx.ts');
+const uxTestRunnerPath = join(root, 'scripts/run-ux-tests.mjs');
+const clientLayoutPath = join(root, 'src/components/ClientLayout.tsx');
+const navbarPath = join(root, 'src/components/Navbar.tsx');
 const failures = [];
 const warnings = [];
 
@@ -45,6 +49,31 @@ const toolCategories = [...toolRegistrySource.matchAll(/\bcategory:\s*'([^']+)'/
 const categoryRegistrySource = registrySource.slice(0, toolsDeclaration);
 const categorySlugs = [...categoryRegistrySource.matchAll(/\bslug:\s*'([^']+)'/g)].map((match) => match[1]);
 const guideSlugs = [...read(guidesPath).matchAll(/\bslug:\s*'([^']+)'/g)].map((match) => match[1]);
+const toolUxSlugs = [...read(toolUxPath).matchAll(/^\s{2}'([^']+)':\s*\{/gm)].map((match) => match[1]);
+const toolUxSource = read(toolUxPath);
+
+for (const slug of toolUxSlugs.filter((slug) => !toolSlugs.includes(slug))) failures.push(`Tool UX config references an unknown tool: ${slug}`);
+for (const mode of [...toolUxSource.matchAll(/processingMode:\s*'([^']+)'/g)].map((match) => match[1])) {
+  if (!['local', 'server', 'external-data', 'mixed'].includes(mode)) failures.push(`Tool UX config uses unknown processing mode: ${mode}`);
+}
+for (const action of [...toolUxSource.matchAll(/'(copy-result|copy-summary|download-csv|download-txt|download-json|print)'/g)].map((match) => match[1])) {
+  if (!['copy-result', 'copy-summary', 'download-csv', 'download-txt', 'download-json', 'print'].includes(action)) failures.push(`Tool UX config uses unknown result action: ${action}`);
+}
+if (!existsSync(uxTestRunnerPath)) failures.push('Missing scripts/run-ux-tests.mjs');
+
+for (const path of [
+  join(root, 'src/app/page.tsx'),
+  join(root, 'src/app/tools/page.tsx'),
+  join(root, 'src/app/search/page.tsx'),
+  join(root, 'src/app/tools/json-formatter/page.tsx'),
+  join(root, 'src/components/tools/ExpansionToolPage.tsx'),
+]) {
+  if (read(path).includes('<main')) failures.push(`Shared page shell must rely on the single ClientLayout main landmark: ${path.replace(`${root}/`, '')}`);
+}
+if (!read(clientLayoutPath).includes('<main')) failures.push('ClientLayout must provide the primary main landmark');
+if (/if\s*\(\s*!mounted\s*\)\s*return null/.test(read(navbarPath))) failures.push('Navbar must render stable structural HTML before hydration');
+if (read(join(root, 'src/app/page.tsx')).includes("'use client'") || read(join(root, 'src/app/page.tsx')).includes('framer-motion')) failures.push('Homepage static content must remain server-rendered without Framer Motion');
+if (read(join(root, 'src/app/tools/page.tsx')).includes("'use client'") || read(join(root, 'src/app/tools/page.tsx')).includes('framer-motion')) failures.push('/tools server shell must not become a client or Framer Motion component');
 
 for (const slug of duplicates(guideSlugs)) failures.push(`Duplicate guide metadata slug: ${slug}`);
 

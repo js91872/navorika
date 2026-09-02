@@ -5,6 +5,10 @@ import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 import { calculateRoofArea as calculateRoofAreaEstimate } from '@/lib/calculations/projectEstimators';
+import PrivacyBadges from '@/components/ui/PrivacyBadges';
+import ResultActions from '@/components/ui/ResultActions';
+
+type RoofResult = ReturnType<typeof calculateRoofAreaEstimate>;
 
 export default function RoofAreaCalculator() {
   const [length, setLength] = useState<number>(10);
@@ -13,7 +17,7 @@ export default function RoofAreaCalculator() {
   const [unit, setUnit] = useState<'m' | 'ft'>('m');
   const [overhang, setOverhang] = useState<number>(0.3);
   const [waste, setWaste] = useState<number>(10);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<RoofResult | null>(null);
   const [error, setError] = useState('');
 
   const calculateRoof = () => {
@@ -35,12 +39,13 @@ export default function RoofAreaCalculator() {
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
         <h1 className="text-2xl font-bold mb-2">Roof Area Calculator</h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate roof area, slope, and materials needed for roofing.</p>
+        <p className="text-slate-600 dark:text-slate-400">Calculate roof area, slope, and a waste-adjusted ordering area.</p>
+        <PrivacyBadges slug="roof-area-calculator" className="mb-6 mt-4" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium mb-2">Unit System</label>
             <Select
+              label="Unit System"
               value={unit}
               onChange={(e) => setUnit(e.target.value as 'm' | 'ft')}
               options={[
@@ -51,8 +56,9 @@ export default function RoofAreaCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Building Length</label>
             <Input
+              label="Building Length"
+              inputMode="decimal"
               type="number"
               value={length}
               onChange={(e) => setLength(Number(e.target.value))}
@@ -62,8 +68,9 @@ export default function RoofAreaCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Building Width</label>
             <Input
+              label="Building Width"
+              inputMode="decimal"
               type="number"
               value={width}
               onChange={(e) => setWidth(Number(e.target.value))}
@@ -73,8 +80,9 @@ export default function RoofAreaCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Roof Pitch (rise per 12)</label>
             <Input
+              label="Roof Pitch (rise per 12)"
+              inputMode="decimal"
               type="number"
               value={pitch}
               onChange={(e) => setPitch(Number(e.target.value))}
@@ -82,12 +90,13 @@ export default function RoofAreaCalculator() {
               max={12}
               step={0.5}
             />
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">e.g., 4/12 pitch means 4" rise per 12" run</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">For example, 4/12 pitch means 4 inches of rise per 12 inches of run.</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Overhang ({unit === 'ft' ? 'feet' : 'meters'})</label>
             <Input
+              label={`Overhang (${unit === 'ft' ? 'feet' : 'meters'})`}
+              inputMode="decimal"
               type="number"
               value={overhang}
               onChange={(e) => setOverhang(Number(e.target.value))}
@@ -96,8 +105,7 @@ export default function RoofAreaCalculator() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-2">Waste Allowance (%)</label>
-            <Input type="number" value={waste} onChange={(e) => setWaste(Number(e.target.value))} min={0} max={30} step={1} />
+            <Input label="Waste Allowance (%)" inputMode="decimal" type="number" value={waste} onChange={(e) => setWaste(Number(e.target.value))} min={0} max={30} step={1} />
           </div>
         </div>
 
@@ -112,7 +120,7 @@ export default function RoofAreaCalculator() {
         {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
-          <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+          <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl" aria-live="polite">
             <h3 className="font-bold text-lg mb-4">Roof Calculation Results</h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="p-3 bg-white dark:bg-slate-700 rounded-lg">
@@ -136,6 +144,7 @@ export default function RoofAreaCalculator() {
                 <p className="text-lg font-bold">{result.roofingArea.toFixed(2)} m²</p>
               </div>
             </div>
+            <ResultActions className="mt-5" actions={[{ kind: 'copy', label: 'Copy summary', getContent: () => `Roof area estimate\nFlat area: ${result.flatArea.toFixed(2)} m²\nRoof area: ${result.roofArea.toFixed(2)} m²\nOrder area with waste: ${result.roofingArea.toFixed(2)} m²\nRoofing squares: ${result.squaresNeeded.toFixed(2)}` }]} />
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
               <p className="text-sm text-blue-600 dark:text-blue-400">Models a simple roof with one uniform pitch. Confirm hips, valleys, ridges, penetrations, starter courses, coverage per bundle, and local installation requirements.</p>
             </div>

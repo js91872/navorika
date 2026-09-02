@@ -1,8 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowLeft, ShieldCheck, FileJson, CheckCircle2, XCircle, Copy, Minimize2, AlignLeft, Trash2 } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowLeft, ShieldCheck, FileJson, CheckCircle2, XCircle, Minimize2, AlignLeft, Trash2 } from 'lucide-react';
 import { tools } from '@/data/registry';
+import PrivacyBadges from '@/components/ui/PrivacyBadges';
+import ResultActions from '@/components/ui/ResultActions';
 
 export default function UniversalJsonStudioTool() {
   const meta = tools.find(t => t.slug === 'json-formatter');
@@ -21,7 +24,6 @@ export default function UniversalJsonStudioTool() {
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'valid' | 'invalid'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [copied, setCopied] = useState(false);
 
   const processJson = (action: 'beautify-2' | 'beautify-4' | 'minify') => {
     if (!input.trim()) {
@@ -45,17 +47,10 @@ export default function UniversalJsonStudioTool() {
       setInput(result);
       setStatus('valid');
       setErrorMessage('Valid JSON');
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus('invalid');
-      setErrorMessage(err.message || 'Invalid JSON format');
+      setErrorMessage(err instanceof Error ? err.message : 'Invalid JSON format');
     }
-  };
-
-  const handleCopy = () => {
-    if (!input) return;
-    navigator.clipboard.writeText(input);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   const handleClear = () => {
@@ -67,8 +62,8 @@ export default function UniversalJsonStudioTool() {
   if (!meta) return null;
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
-      <a href="/categories/developer-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-emerald-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Developer Tools</a>
+    <div className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
+      <Link href="/categories/developer-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-emerald-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Developer Tools</Link>
       
       <div className="text-center mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
@@ -76,6 +71,7 @@ export default function UniversalJsonStudioTool() {
         </div>
         <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
         <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
+        <PrivacyBadges slug="json-formatter" className="mt-5 justify-center" />
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden flex flex-col border border-slate-200 dark:border-slate-800">
@@ -95,9 +91,10 @@ export default function UniversalJsonStudioTool() {
           </div>
           
           <div className="flex items-center gap-2">
-            <button onClick={handleCopy} className="flex items-center gap-2 px-4 py-2 text-sm font-bold bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition shadow">
-              <Copy className="h-4 w-4"/> {copied ? 'Copied!' : 'Copy'}
-            </button>
+            <ResultActions actions={[
+              { kind: 'copy', label: 'Copy JSON', getContent: () => input },
+              { kind: 'download', label: 'Download JSON', filename: 'formatted.json', mimeType: 'application/json;charset=utf-8', getContent: () => input },
+            ]} />
             <button onClick={handleClear} className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-slate-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition">
               <Trash2 className="h-4 w-4"/> Clear
             </button>
@@ -106,7 +103,7 @@ export default function UniversalJsonStudioTool() {
 
         {/* Validation Status Bar */}
         {status !== 'idle' && (
-          <div className={`px-4 py-2 text-sm font-bold flex items-center gap-2 ${status === 'valid' ? 'bg-emerald-500/10 text-emerald-600' : 'bg-red-500/10 text-red-600'}`}>
+          <div role="status" aria-live="polite" className={`px-4 py-2 text-sm font-bold flex items-center gap-2 ${status === 'valid' ? 'bg-emerald-500/10 text-emerald-600' : 'bg-red-500/10 text-red-600'}`}>
             {status === 'valid' ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
             {errorMessage}
           </div>
@@ -115,6 +112,7 @@ export default function UniversalJsonStudioTool() {
         {/* Editor Area */}
         <div className="relative flex-1">
           <textarea 
+            aria-label="JSON input and formatted output"
             value={input}
             onChange={(e) => {
                setInput(e.target.value);
@@ -132,6 +130,6 @@ export default function UniversalJsonStudioTool() {
           )}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

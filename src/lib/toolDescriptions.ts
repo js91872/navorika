@@ -98,7 +98,6 @@ export const toolDescriptions: Record<string, string> = {
   'markup-formatter': 'Temporarily unavailable pending grammar-aware formatters.',
   'web-crypto-studio': 'Generate SHA-256 hashes, random passwords, and UUID v4 identifiers locally.',
   'webmaster-seo-builder': 'Generate UTM URLs, basic social meta tags, and a simple robots.txt block locally.',
-  'developer-utilities': 'Compatibility redirect to the Developer Tools category.',
   
   // Construction Tools
   'concrete-calculator': 'Calculate concrete volume needed for slabs, footings, and columns online free.',

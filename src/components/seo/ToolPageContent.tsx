@@ -6,6 +6,8 @@ import { createToolJsonLd, type ToolPageContent as ToolContent } from '@/lib/seo
 import { complementaryTools, getClusterForTool, getRelatedTools, getToolkitsForTool } from '@/data/taxonomy';
 import { tools } from '@/data/registry';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
+import { toolUx } from '@/data/toolUx';
+import { buildWorkflowItems } from '@/lib/toolWorkflow';
 
 export default function ToolPageContent({ tool }: { tool: ToolContent }) {
   const productLabel = tool.category.toLowerCase().includes('calculators') ? 'calculator' : 'tool';
@@ -15,15 +17,23 @@ export default function ToolPageContent({ tool }: { tool: ToolContent }) {
   });
   const cluster = getClusterForTool(tool.slug);
   const toolkits = getToolkitsForTool(tool.slug);
-  const relatedTools = getRelatedTools(tool.slug, 6, tool.relatedTools.map(({ slug }) => slug));
-  const useWithTools = (complementaryTools[tool.slug] ?? []).flatMap((slug) => {
-    const item = tools.find((candidate) => candidate.slug === slug);
-    return item && !toolsUnderReview.has(slug) ? [item] : [];
-  }).slice(0, 4);
+  const useWithTools = buildWorkflowItems(
+    tool.slug,
+    complementaryTools[tool.slug] ?? [],
+    tools.filter(({ slug }) => !toolsUnderReview.has(slug)),
+    toolUx[tool.slug]?.workflowLabels,
+  );
+  const workflowSlugs = new Set(useWithTools.map(({ slug }) => slug));
+  const relatedTools = getRelatedTools(tool.slug, 10, tool.relatedTools.map(({ slug }) => slug))
+    .filter(({ slug }) => !workflowSlugs.has(slug))
+    .slice(0, 6);
 
   return (
     <article className="mx-auto max-w-4xl space-y-12 pb-20 pt-14 text-[var(--muted-foreground)]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(createToolJsonLd(tool)).replaceAll('<', '\\u003c') }} />
+
+      {useWithTools.length > 0 && <section aria-labelledby={`${tool.slug}-workflow-title`}><p className="text-sm font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">Suggested next steps</p><h2 id={`${tool.slug}-workflow-title`} className="mt-1 text-2xl font-bold text-[var(--foreground)]">Continue this workflow</h2><p className="mt-2 text-sm leading-6">Move to a practical next or previous step without transferring your entered values.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{useWithTools.map((item) => <Link key={item.slug} href={`/tools/${item.slug}`} className="group flex min-h-16 items-center gap-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4 transition-all hover:-translate-y-0.5 hover:border-emerald-500/50"><span className="grid size-11 place-items-center rounded-xl bg-emerald-500/10 text-2xl" aria-hidden="true">{getToolIcon(item.slug)}</span><span className="font-semibold text-[var(--foreground)]">{item.label}</span><ArrowUpRight className="ml-auto size-4" aria-hidden="true" /></Link>)}</div></section>}
+
       <section><h2 className="text-2xl font-bold text-[var(--foreground)]">About {tool.name}</h2><div className="mt-4 space-y-4 leading-7">{tool.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></section>
 
       {tool.formula && <section><h2 className="text-2xl font-bold text-[var(--foreground)]">How the calculation works</h2><div className="mt-4 grid gap-4 sm:grid-cols-2">{tool.formula.map(({ title, body }) => <div key={title} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"><h3 className="font-bold text-[var(--foreground)]">{title}</h3><p className="mt-2 text-sm leading-6">{body}</p></div>)}</div></section>}
@@ -37,8 +47,6 @@ export default function ToolPageContent({ tool }: { tool: ToolContent }) {
       {(cluster || toolkits.length > 0) && <section><h2 className="text-2xl font-bold text-[var(--foreground)]">Explore this topic</h2><div className="mt-4 flex flex-wrap gap-3">{cluster && <Link href={`/categories/${cluster.category}#${cluster.id}`} className="rounded-full border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] hover:border-indigo-500/50">{cluster.name}</Link>}{toolkits.map((toolkit) => <Link key={toolkit.slug} href={`/toolkits/${toolkit.slug}`} className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-700 hover:border-indigo-500/50 dark:text-indigo-300">{toolkit.name}</Link>)}</div></section>}
 
       <section><h2 className="text-2xl font-bold text-[var(--foreground)]">Frequently asked questions</h2><div className="mt-4 divide-y divide-[var(--border)] rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6">{tool.faqs.map(({ question, answer }) => <details key={question} className="py-5"><summary className="cursor-pointer font-semibold text-[var(--foreground)]">{question}</summary><p className="mt-3 text-sm leading-6">{answer}</p></details>)}</div></section>
-
-      {useWithTools.length > 0 && <section><h2 className="text-2xl font-bold text-[var(--foreground)]">Use with</h2><p className="mt-2 text-sm leading-6">These tools support a practical next or previous step in the same workflow.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{useWithTools.map((item) => <Link key={item.slug} href={`/tools/${item.slug}`} className="group flex items-center gap-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4 transition-all hover:-translate-y-0.5 hover:border-emerald-500/50"><span className="grid size-11 place-items-center rounded-xl bg-emerald-500/10 text-2xl">{getToolIcon(item.slug)}</span><span className="font-semibold text-[var(--foreground)]">{item.title}</span><ArrowUpRight className="ml-auto size-4" /></Link>)}</div></section>}
 
       {relatedTools.length > 0 && <section><h2 className="text-2xl font-bold text-[var(--foreground)]">Related tools</h2><p className="mt-2 text-sm leading-6">Selected from curated relationships first, then the same subtopic and category.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{relatedTools.map((item) => <Link key={item.slug} href={`/tools/${item.slug}`} className="group flex items-center gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 transition-all hover:-translate-y-0.5 hover:border-indigo-500/50"><span className="grid size-11 place-items-center rounded-xl bg-indigo-500/10 text-2xl">{getToolIcon(item.slug)}</span><span className="font-semibold text-[var(--foreground)]">{item.title}</span><ArrowUpRight className="ml-auto size-4" /></Link>)}</div></section>}
 

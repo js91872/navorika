@@ -14,12 +14,10 @@ interface NavbarProps {
 export default function Navbar({ onSearchClick }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
@@ -37,8 +35,6 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
   ];
 
   const isActive = (href: string) => pathname === href;
-
-  if (!mounted) return null;
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -73,23 +69,26 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
           <div className="flex items-center gap-2">
             <button
               onClick={onSearchClick}
-              className="p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:scale-110"
-              aria-label="Search"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-3 hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
+              aria-label="Search tools"
             >
               <Search className="h-5 w-5" />
+              <span className="hidden text-sm font-semibold lg:inline">Search</span>
+              <kbd className="hidden rounded bg-[var(--muted)] px-1.5 py-0.5 text-[10px] xl:inline">⌘/Ctrl K</kbd>
             </button>
 
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:scale-110"
+              className="grid min-h-11 min-w-11 place-items-center rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:scale-110"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              <Sun className="hidden h-5 w-5 dark:block" aria-hidden="true" />
+              <Moon className="h-5 w-5 dark:hidden" aria-hidden="true" />
             </button>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
+              className="grid min-h-11 min-w-11 place-items-center rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] md:hidden"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

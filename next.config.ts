@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/tools/developer-utilities',
+        destination: '/categories/developer-tools',
+        permanent: true,
+      },
+      {
         source: '/tools/qr-code-studio',
         destination: '/tools/qr-code-generator',
         permanent: true,

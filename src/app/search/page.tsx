@@ -4,27 +4,15 @@ import { useMemo, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Search, X } from 'lucide-react';
-import { categories, tools, type RegisteredTool } from '@/data/registry';
-import { getClusterForTool, getToolkitsForTool } from '@/data/taxonomy';
-import { toolsUnderReview } from '@/lib/seo/toolReview';
+import { toolSearchIndex } from '@/data/toolSearchIndex';
+import { searchTools } from '@/lib/toolSearch';
 
 function SearchResults() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get('q') || '';
   const [searchQuery, setSearchQuery] = useState(query);
-  const results: RegisteredTool[] = useMemo(() => {
-    if (!query) return [];
-    const terms = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
-    return tools.filter((tool) => {
-      if (toolsUnderReview.has(tool.slug)) return false;
-      const category = categories.find((item) => item.slug === tool.category);
-      const cluster = getClusterForTool(tool.slug);
-      const toolkitTerms = getToolkitsForTool(tool.slug).map((toolkit) => toolkit.name);
-      const searchText = [tool.title, tool.description, category?.name, cluster?.name, ...tool.keywords, ...toolkitTerms].filter(Boolean).join(' ').toLowerCase();
-      return terms.every((term) => searchText.includes(term));
-    });
-  }, [query]);
+  const results = useMemo(() => searchTools(query, toolSearchIndex), [query]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,7 +100,7 @@ function SearchResults() {
                       </h3>
                       <p className="text-sm text-[var(--muted-foreground)] mt-1">{tool.description}</p>
                       <span className="inline-block mt-2 text-xs font-medium px-2 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                        {tool.category.replace('-', ' ').replace('calculators', '').replace('tools', '').trim() || tool.category}
+                        {tool.categoryName || tool.category.replaceAll('-', ' ')}
                       </span>
                     </div>
                     <span className="text-[var(--muted-foreground)] text-sm ml-4">→</span>
@@ -146,10 +134,10 @@ function SearchResults() {
 
 export default function SearchPage() {
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
       <Suspense fallback={<div className="text-center py-12">Loading...</div>}>
         <SearchResults />
       </Suspense>
-    </main>
+    </div>
   );
 }

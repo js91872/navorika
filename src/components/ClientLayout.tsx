@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
 import SearchOverlay from '@/components/SearchOverlay';
+import ToolVisitTracker from '@/components/tools/ToolVisitTracker';
 
 export default function ClientLayout({
   children,
@@ -46,12 +47,14 @@ export default function ClientLayout({
     <>
       <Navbar onSearchClick={() => setSearchOpen(true)} />
 
+      <ToolVisitTracker />
+
       <SearchOverlay
         isOpen={searchOpen}
         onClose={() => setSearchOpen(false)}
       />
 
-      <main className="flex-1 pt-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <main className="flex-1 pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         {children}
       </main>
 

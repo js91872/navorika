@@ -1,17 +1,13 @@
-'use client';
-
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { 
   Shield, 
   Zap, 
   Lock, 
   Sparkles,
   ArrowRight,
-  CheckCircle,
   Users,
   FileText,
-  Image,
+  Image as ImageIcon,
   Calculator,
   Heart,
   Code,
@@ -23,6 +19,7 @@ import { tools, categories } from '@/data/registry';
 import { toolkits } from '@/data/taxonomy';
 import SearchBar from '@/components/SearchBar';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
+import RecentTools from '@/components/home/RecentTools';
 
 export default function HomePage() {
   const totalTools = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length;
@@ -94,7 +91,7 @@ export default function HomePage() {
 
   const categoryIcons = {
     'pdf-tools': <FileText className="h-6 w-6" />,
-    'image-tools': <Image className="h-6 w-6" />,
+    'image-tools': <ImageIcon className="h-6 w-6" />,
     'finance-calculators': <Calculator className="h-6 w-6" />,
     'health-calculators': <Heart className="h-6 w-6" />,
     'developer-tools': <Code className="h-6 w-6" />,
@@ -112,7 +109,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       
       {/* ===== HERO SECTION ===== */}
       <section className="relative overflow-hidden px-4 pt-20 pb-16 md:pt-32 md:pb-24">
@@ -124,59 +121,34 @@ export default function HomePage() {
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6"
-            >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
               </span>
               {displayCount} Tools · 100% Free · Private by Design
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-6"
-            >
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-6">
               {displayCount} Free Online Tools
               <br />
               <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 Instant, Private & Free
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg sm:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed"
-            >
+            <p className="text-lg sm:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed">
               {displayCount} tools including PDF editors, image converters, calculators,
               and developer utilities. <span className="font-semibold text-[var(--foreground)]">Most process data locally in your browser</span>;
               tools using live external data identify their source.
-            </motion.p>
+            </p>
 
             {/* Search Bar - Now Working! */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-8 max-w-xl mx-auto"
-            >
+            <div className="mt-8 max-w-xl mx-auto">
               <SearchBar placeholder={`Search ${displayCount} tools...`} />
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--muted-foreground)]"
-            >
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--muted-foreground)]">
               <span className="flex items-center gap-2">
                 <Shield className="h-4 w-4 text-emerald-500" />
                 Private by Design
@@ -191,14 +163,9 @@ export default function HomePage() {
                 <Lock className="h-4 w-4 text-purple-500" />
                 Clear Data Sources
               </span>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
-            >
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
               {stats.map((stat, index) => (
                 <div key={index} className="p-4 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center">
                   <div className="flex justify-center mb-2">{stat.icon}</div>
@@ -206,10 +173,12 @@ export default function HomePage() {
                   <div className="text-xs text-[var(--muted-foreground)]">{stat.label}</div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
+
+      <RecentTools />
 
       {/* ===== WHY Navorika ===== */}
       <section className="max-w-6xl mx-auto px-4 py-16 border-t border-[var(--border)]">
@@ -220,20 +189,13 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {benefits.map((benefit, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-indigo-500/40 transition-all text-center group"
-            >
+            <div key={index} className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-indigo-500/40 transition-all text-center group">
               <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 {benefit.icon}
               </div>
               <h3 className="font-bold mb-2">{benefit.title}</h3>
               <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{benefit.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -327,17 +289,10 @@ export default function HomePage() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
-              >
+              <div key={index} className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
                 <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
                 <p className="text-[var(--muted-foreground)] leading-relaxed">{faq.a}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -366,6 +321,6 @@ export default function HomePage() {
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

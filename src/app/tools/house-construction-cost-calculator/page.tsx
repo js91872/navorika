@@ -5,6 +5,10 @@ import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 import { calculateHouseConstructionCost } from '@/lib/calculations/projectEstimators';
+import PrivacyBadges from '@/components/ui/PrivacyBadges';
+import ResultActions from '@/components/ui/ResultActions';
+import { rowsToCsv } from '@/lib/resultExport';
+import { getHouseConstructionRows, getHouseConstructionSummary, type HouseConstructionResult } from '@/lib/houseConstructionPresentation';
 
 export default function HouseConstructionCostCalculator() {
   const [area, setArea] = useState<number>(2000);
@@ -14,7 +18,7 @@ export default function HouseConstructionCostCalculator() {
   const [siteAndSoftCosts, setSiteAndSoftCosts] = useState<number>(25000);
   const [contingencyPercent, setContingencyPercent] = useState<number>(10);
   const [landCost, setLandCost] = useState<number>(50000);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<HouseConstructionResult | null>(null);
   const [error, setError] = useState('');
 
   const calculateCost = () => {
@@ -47,13 +51,16 @@ export default function HouseConstructionCostCalculator() {
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
         <h1 className="text-2xl font-bold mb-2">House Construction Cost Calculator</h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">Estimate your home building costs with detailed breakdown by quality level.</p>
+        <p className="text-slate-600 dark:text-slate-400">Estimate a house-building budget from your area, rate, allowances, contingency, and land cost.</p>
+        <PrivacyBadges slug="house-construction-cost-calculator" className="mb-6 mt-4" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium mb-2">House Area</label>
+            <span className="mb-2 block text-sm font-medium">House Area</span>
             <div className="flex gap-3">
               <Input
+                aria-label="House area"
+                inputMode="decimal"
                 type="number"
                 value={area}
                 onChange={(e) => setArea(Number(e.target.value))}
@@ -61,6 +68,7 @@ export default function HouseConstructionCostCalculator() {
                 min={1}
               />
               <Select
+                aria-label="Area unit"
                 value={unit}
                 onChange={(e) => setUnit(e.target.value as 'sqft' | 'sqm')}
                 options={[
@@ -72,41 +80,30 @@ export default function HouseConstructionCostCalculator() {
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-2">Construction Rate (USD/sq ft)</label>
-            <Input type="number" value={constructionRate} onChange={(e) => setConstructionRate(Number(e.target.value))} min={0} />
-          </div>
+          <Input label="Construction Rate (USD/sq ft)" inputMode="decimal" type="number" value={constructionRate} onChange={(e) => setConstructionRate(Number(e.target.value))} min={0} />
 
-          <div>
-            <label className="block text-sm font-medium mb-2">Site & Soft Costs (USD)</label>
-            <Input type="number" value={siteAndSoftCosts} onChange={(e) => setSiteAndSoftCosts(Number(e.target.value))} min={0} />
-          </div>
+          <Input label="Site & Soft Costs (USD)" inputMode="decimal" type="number" value={siteAndSoftCosts} onChange={(e) => setSiteAndSoftCosts(Number(e.target.value))} min={0} />
 
-          <div>
-            <label className="block text-sm font-medium mb-2">Contingency (%)</label>
-            <Input type="number" value={contingencyPercent} onChange={(e) => setContingencyPercent(Number(e.target.value))} min={0} max={100} />
-          </div>
+          <Input label="Contingency (%)" inputMode="decimal" type="number" value={contingencyPercent} onChange={(e) => setContingencyPercent(Number(e.target.value))} min={0} max={100} />
 
-          <div>
-            <label className="block text-sm font-medium mb-2">Number of Floors</label>
-            <Input
+          <Input
+              label="Number of Floors"
+              inputMode="numeric"
               type="number"
               value={floors}
               onChange={(e) => setFloors(Number(e.target.value))}
               min={1}
               max={3}
             />
-          </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-2">Land Cost</label>
-            <Input
+          <Input
+              label="Land Cost"
+              inputMode="decimal"
               type="number"
               value={landCost}
               onChange={(e) => setLandCost(Number(e.target.value))}
               min={0}
             />
-          </div>
         </div>
 
         <div className="flex gap-4 mt-6">
@@ -120,7 +117,7 @@ export default function HouseConstructionCostCalculator() {
         {error && <p role="alert" className="mt-3 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         {result && (
-          <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+          <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl" aria-live="polite">
             <h3 className="font-bold text-lg mb-4">Cost Breakdown</h3>
             <div className="space-y-3">
               <div className="flex justify-between py-2 border-b border-slate-200 dark:border-slate-700">
@@ -156,6 +153,11 @@ export default function HouseConstructionCostCalculator() {
                 <span className="font-medium">{result.totalArea.toFixed(0)} sq ft</span>
               </div>
             </div>
+            <ResultActions className="mt-5" actions={[
+              { kind: 'copy', label: 'Copy summary', getContent: () => getHouseConstructionSummary(result, formatCurrency) },
+              { kind: 'download', label: 'Download CSV', filename: 'house-construction-estimate.csv', mimeType: 'text/csv;charset=utf-8', getContent: () => rowsToCsv(getHouseConstructionRows(result)) },
+              { kind: 'print', label: 'Print / Save PDF' },
+            ]} />
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
               <p className="text-sm text-blue-600 dark:text-blue-400">All rates are user-entered planning assumptions in USD. Define exactly what the construction rate and soft-cost allowance include before comparing estimates.</p>
             </div>

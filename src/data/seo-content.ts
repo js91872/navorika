@@ -703,28 +703,6 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
-  'developer-utilities': {
-    metaTitle: 'Developer Utilities - Free Online Developer Utilities | Navorika',
-    metaDescription: 'Use our free Developer Utilities to get accurate results instantly. Fast, private, and no signup required.',
-    intro: 'Developer Utilities is a free online tool that helps you perform developer utilities quickly and accurately. All processing happens locally in your browser - no data is stored or transmitted to any server.',
-    howItWorks: 'This tool processes your data entirely in your browser. No data is stored or transmitted.',
-    benefits: ['100% free - no hidden costs', 'Private by design - no data stored', 'Works on any device', 'No signup required', 'Instant processing', 'Based on validated formulas'],
-    useCases: ['Quick and accurate results', 'Professional and personal use', 'Educational purposes', 'Planning and decision making'],
-    stepByStep: ['Step 1: Enter your input values', 'Step 2: Click the calculate/process button', 'Step 3: Review your results instantly', 'Step 4: Download or use your results'],
-    tips: ['For accurate results, measure carefully', 'Processing happens locally for privacy', 'Works offline once loaded'],
-    relatedTools: ['base64-encoder', 'jwt-decoder', 'qr-code-generator', 'json-formatter'],
-    faq: [
-      {'question': 'What is Developer Utilities?', 'answer': 'Developer Utilities is a free online tool that helps you with developer utilities quickly and easily.'},
-      {'question': 'Is Developer Utilities really free?', 'answer': 'Yes, Developer Utilities is completely free to use with no hidden costs.'},
-      {'question': 'Is my data private?', 'answer': 'Yes, all processing happens locally in your browser. Your data never leaves your device.'},
-      {'question': 'Do I need to sign up?', 'answer': 'No, you can use this tool instantly without any signup or registration.'},
-      {'question': 'Does it work on mobile?', 'answer': 'Yes, this tool works on all devices including mobile phones, tablets, and desktops.'}
-    ],
-    schemaType: 'WebApplication',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'All',
-    browserRequirements: 'Modern browser with JavaScript enabled'
-  },
   'extract-pdf-pages': {
     metaTitle: 'Extract Pdf Pages - Free Online Extract Pdf Pages | Navorika',
     metaDescription: 'Use our free Extract Pdf Pages to get accurate results instantly. Fast, private, and no signup required.',

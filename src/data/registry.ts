@@ -4,6 +4,7 @@ export interface Tool {
   description: string;
   category: string;
   keywords: string[];
+  aliases?: string[];
   heroTitle?: string;
   heroDescription?: string;
   formulaExplanation?: string;
@@ -524,7 +525,8 @@ export const tools: RegisteredTool[] = ([
     title: 'Loan EMI Calculator',
     description: 'Calculate loan EMI, interest, and repayment schedule online free. Plan your loan payments.',
     category: 'finance-calculators',
-    keywords: ['loan-emi-calculator', 'loan', 'emi', 'calculator']
+    keywords: ['loan-emi-calculator', 'loan', 'emi', 'calculator'],
+    aliases: ['loan emi', 'monthly loan payment']
   },
   {
     slug: 'ppf-calculator',
@@ -884,7 +886,8 @@ export const tools: RegisteredTool[] = ([
       'json minifier',
       'format json',
       'pretty print json'
-    ]
+    ],
+    aliases: ['json beautifier', 'json pretty print']
   },
   {
     slug: 'web-crypto-studio',
@@ -1203,6 +1206,7 @@ export const tools: RegisteredTool[] = ([
     description: 'Calculate building costs per square foot for residential construction.',
     category: 'construction-calculators',
     keywords: ['house cost', 'home building', 'residential construction', 'cost per sqft'],
+    aliases: ['home building cost', 'building cost calculator'],
     heroTitle: 'House Construction Cost Calculator',
     heroDescription: 'Plan your home building budget with accurate per-square-foot cost estimation.'
   },
@@ -1239,6 +1243,7 @@ export const tools: RegisteredTool[] = ([
     description: 'Calculate roof area, slope, and materials needed for roofing.',
     category: 'construction-calculators',
     keywords: ['roof', 'roofing', 'shingles', 'pitch', 'slope', 'area'],
+    aliases: ['roofing area calculator', 'roof square footage'],
     heroTitle: 'Roof Area Calculator',
     heroDescription: 'Calculate roof area including pitch and overhang for accurate material estimation.'
   },

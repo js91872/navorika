@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { forwardRef, useState } from 'react';
+import { forwardRef, useId, useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -14,15 +14,18 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, helper, icon, iconPosition = 'left', unit, className = '', type = 'text', ...props }, ref) => {
+  ({ label, error, helper, icon, iconPosition = 'left', unit, className = '', type = 'text', id, 'aria-describedby': describedBy, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
+    const generatedId = useId();
+    const inputId = id ?? generatedId;
+    const messageId = `${inputId}-message`;
     const isPassword = type === 'password';
     const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
 
     return (
       <div className="space-y-2">
         {label && (
-          <label className="block text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          <label htmlFor={inputId} className="block text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
             {label}
           </label>
         )}
@@ -32,7 +35,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           )}
           <input
             ref={ref}
+            id={inputId}
             type={inputType}
+            aria-invalid={error ? true : undefined}
+            aria-describedby={[describedBy, (error || helper) && messageId].filter(Boolean).join(' ') || undefined}
             className={cn(
               'w-full px-4 py-3 rounded-2xl bg-slate-100 dark:bg-white/5',
               'border border-slate-200 dark:border-white/10',
@@ -55,6 +61,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {isPassword && (
             <button
               type="button"
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
             >
@@ -65,8 +72,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">{icon}</span>
           )}
         </div>
-        {error && <p className="text-sm text-red-500 font-medium">{error}</p>}
-        {helper && !error && <p className="text-xs text-slate-400">{helper}</p>}
+        {error && <p id={messageId} className="text-sm text-red-500 font-medium">{error}</p>}
+        {helper && !error && <p id={messageId} className="text-xs text-slate-400">{helper}</p>}
       </div>
     );
   }

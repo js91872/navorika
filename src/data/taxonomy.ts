@@ -230,6 +230,7 @@ export const complementaryTools: Record<string, string[]> = {
   'deck-board-calculator': ['board-foot-calculator', 'saw-kerf-calculator'],
   'construction-estimate-builder': ['contractor-estimate-generator', 'construction-cost-calculator', 'dumpster-weight-calculator'],
   'contractor-estimate-generator': ['construction-estimate-builder', 'house-construction-cost-calculator'],
+  'house-construction-cost-calculator': ['construction-estimate-builder', 'concrete-calculator', 'brick-calculator', 'flooring-calculator'],
   'meta-tag-generator': ['robots-txt-generator', 'utm-builder', 'webmaster-seo-builder'],
   'ai-token-calculator': ['llm-api-cost-calculator', 'gpu-compute-cost-calculator'],
   'llm-api-cost-calculator': ['ai-token-calculator', 'gpu-compute-cost-calculator', 'cloud-hosting-cost-calculator'],

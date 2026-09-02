@@ -4,7 +4,6 @@ export const toolsUnderReview = new Set([
   'blur-face',
   'bioluminescent-reader',
   'html-to-image',
-  'developer-utilities',
   'image-dpi-converter',
   'png-to-svg',
   'protect-pdf',
