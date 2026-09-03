@@ -246,6 +246,29 @@ export const tools: RegisteredTool[] = ([
     keywords: ['blur-face', 'blur', 'face', 'image']
   },
   {
+    slug: 'resize-image-to-1000x1000',
+    title: '1000 x 1000 Image Converter',
+    description: 'Resize an image to exactly 1000 × 1000 pixels with crop, fit, or stretch controls and export as JPG, PNG, or WebP.',
+    category: 'image-tools',
+    keywords: [
+      '1000 x 1000 image converter',
+      '1000 x 1000 pixel image converter',
+      '1000 x 1000 pixels image converter',
+      'resize image to 1000x1000',
+      'resize image to 1000 x 1000',
+      'convert image to 1000x1000',
+      'convert image to 1000 x 1000 pixels',
+      'make image 1000x1000',
+      '1000x1000 photo resizer',
+      '1000x1000 image resizer'
+    ],
+    aliases: [
+      '1000x1000 image converter',
+      '1000x1000 pixel converter',
+      '1000 by 1000 image converter'
+    ]
+  },
+  {
     slug: 'change-image-resolution',
     title: 'Change Image Resolution',
     description: 'Resize an image to a standard HD, FHD, QHD, UHD, or square pixel preset.',
