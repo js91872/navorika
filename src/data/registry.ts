@@ -731,6 +731,13 @@ export const tools: RegisteredTool[] = ([
     ]
   },
   {
+    slug: 'merge-xml-files',
+    title: 'Merge XML Files',
+    description: 'Combine up to 500 XML files with a maximum total size of 10 MB into one valid XML document locally in your browser.',
+    category: 'developer-tools',
+    keywords: ['merge xml files', 'combine xml files', 'xml merger online', 'join xml files', 'merge multiple xml files']
+  },
+  {
     slug: 'xml-to-word-converter',
     title: 'XML to Word Converter',
     description: 'Convert validated XML into a genuine DOCX using readable hierarchy, repeated-record table, or formatted code modes locally.',

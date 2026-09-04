@@ -3,6 +3,82 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const local = 'Input is processed locally in your browser and is not sent to Navorika.';
 
 export const developerToolPages: Record<string, ToolPageContent> = {
+  'merge-xml-files': {
+    slug: 'merge-xml-files',
+    name: 'Merge XML Files Online – Combine Multiple XML Files',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Merge up to 500 XML files with a combined size of 10 MB into one valid XML document privately in your browser.',
+    longTailKeywords: [
+      'merge xml files',
+      'combine xml files online',
+      'xml merger online',
+      'join multiple xml files',
+      'merge xml files with same root',
+      'combine xml documents into one'
+    ],
+    intro: [
+      'Combine multiple valid XML documents without manually removing XML declarations or copying individual records.',
+      'Choose matching-root mode for related datasets or wrapper mode when the source documents use different root elements.',
+      local
+    ],
+    formula: [
+      {
+        title: 'Matching-root merge',
+        body: 'The tool retains the first document root and appends the child nodes from every document in the selected order.'
+      },
+      {
+        title: 'Wrapper-root merge',
+        body: 'Each complete source root is placed inside one new user-named wrapper element.'
+      },
+      {
+        title: 'Output validation',
+        body: 'The completed output is parsed again before download to confirm that it remains a well-formed XML document.'
+      }
+    ],
+    steps: [
+      'Add between 2 and 500 XML files with a combined size of no more than 10 MB.',
+      'Reorder the files to control the sequence of the merged content.',
+      'Choose matching-root mode or wrapper-root mode.',
+      'Merge, review the preview, and download the validated XML file.'
+    ],
+    interpretation: [
+      'Matching-root mode combines child records and requires every document to use the same root name and namespace.',
+      'Wrapper mode preserves each source root as a separate child beneath the new wrapper element.',
+      'The downloaded file contains the complete result even when the on-screen preview is shortened.'
+    ],
+    limitations: [
+      'The maximum combined input size is 10 MB and the maximum number of files is 500.',
+      'Matching-root mode does not attempt to reconcile incompatible schemas, root attributes, namespace designs, or conflicting business records.',
+      'The tool validates XML structure but cannot determine whether the merged data satisfies a private XSD or business system requirement.',
+      'DTD-based and external-entity-dependent documents may not be suitable for browser-based merging.'
+    ],
+    faqs: [
+      {
+        question: 'Can I merge XML files with different root elements?',
+        answer: 'Yes. Select wrapper mode and provide a valid name for the new common root element.'
+      },
+      {
+        question: 'Does the tool remove duplicate records?',
+        answer: 'No. Records are retained in file order because XML does not have a universal field that identifies duplicates.'
+      },
+      {
+        question: 'Are my XML files uploaded?',
+        answer: 'No. Reading, validation, merging, preview generation and download all run locally in your browser.'
+      },
+      {
+        question: 'How many XML files can I combine?',
+        answer: 'You can combine up to 500 files as long as their total selected size does not exceed 10 MB.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'xml-to-word-converter', name: 'XML to Word Converter' },
+      { slug: 'word-to-xml-converter', name: 'Word to XML Converter' },
+      { slug: 'markup-formatter', name: 'Markup Formatter' },
+      { slug: 'json-formatter', name: 'JSON Formatter' }
+    ],
+    relatedGuides: []
+  },
   'xml-to-word-converter': {
     slug: 'xml-to-word-converter', name: 'XML to Word Converter – Convert XML to DOCX', category: 'Developer Tools', applicationCategory: 'DeveloperApplication',
     description: 'Convert validated XML to a genuine DOCX locally using hierarchy, repeated-record table, or formatted XML code layouts.',
