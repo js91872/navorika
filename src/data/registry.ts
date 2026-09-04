@@ -700,6 +700,60 @@ export const tools: RegisteredTool[] = ([
     category: 'health-calculators',
     keywords: ['walking-calories-calculator', 'walking', 'calories', 'calculator']
   },
+  {
+    slug: 'dog-age-breed-specific-calculator',
+    title: 'Dog Age Calculator — Breed Specific',
+    description: 'Calculate a dog’s human-equivalent age using breed-size life stage curves across puppy, young adult, mature adult, and senior phases.',
+    category: 'health-calculators',
+    keywords: ['dog age calculator', 'dog age breed specific calculator', 'dog years to human years', 'dog age chart by breed size', 'puppy age in human years'],
+    heroTitle: 'Dog Age Calculator — Breed Specific',
+    heroDescription: 'Calculate your dog\'s age in human years based on breed size and biological life-stage progression.'
+  },
+  {
+    slug: 'puppy-growth-predictor',
+    title: 'Puppy Growth Predictor',
+    description: 'Estimate your puppy’s adult weight and track developmental milestones based on current age, weight, and breed adult size category.',
+    category: 'health-calculators',
+    keywords: ['puppy growth predictor', 'puppy adult weight calculator', 'how big will my puppy get', 'puppy weight chart', 'puppy milestone tracker'],
+    heroTitle: 'Puppy Growth Predictor',
+    heroDescription: 'Predict adult dog weight and milestone progression from your puppy\'s current age and weight.'
+  },
+  {
+    slug: 'cat-calorie-calculator',
+    title: 'Cat Calorie Calculator',
+    description: 'Calculate resting energy requirements (RER) and maintenance energy requirements (MER) in kcal/day for cats based on body weight, life stage, and neuter status.',
+    category: 'health-calculators',
+    keywords: ['cat calorie calculator', 'feline calorie requirements', 'how many calories should my cat eat', 'cat RER calculator', 'cat MER calculator'],
+    heroTitle: 'Cat Calorie Calculator',
+    heroDescription: 'Calculate daily RER and MER calorie targets for cats based on weight, life stage, and activity level.'
+  },
+  {
+    slug: 'caffeine-half-life-calculator',
+    title: 'Caffeine Half-Life Calculator',
+    description: 'Model caffeine metabolism over time, estimate remaining blood caffeine levels, and plan wind-down timing using standard pharmacokinetic elimination.',
+    category: 'health-calculators',
+    keywords: ['caffeine half life calculator', 'caffeine metabolism calculator', 'how long does caffeine stay in your system', 'coffee half life', 'caffeine wind down time'],
+    heroTitle: 'Caffeine Half-Life Calculator',
+    heroDescription: 'Track caffeine decay over time and estimate remaining caffeine at bedtime using pharmacokinetic modeling.'
+  },
+  {
+    slug: 'hrv-baseline-deviation-calculator',
+    title: 'HRV Baseline Deviation Calculator',
+    description: 'Compare today’s heart rate variability (rMSSD) against your 7-day to 60-day rolling baseline and standard deviation to calculate Z-score and percentage deviation.',
+    category: 'health-calculators',
+    keywords: ['hrv baseline deviation calculator', 'heart rate variability baseline', 'rmssd z score calculator', 'hrv normal range', 'hrv percentage deviation'],
+    heroTitle: 'HRV Baseline Deviation Calculator',
+    heroDescription: 'Measure heart rate variability deviations and Z-scores against your personal rolling baseline.'
+  },
+  {
+    slug: 'wilks-dots-powerlifting-calculator',
+    title: 'Wilks to DOTS Powerlifting Score Calculator',
+    description: 'Calculate and compare standard Wilks and DOTS strength scores from bodyweight, lifted total, and biological sex using published polynomial formulas.',
+    category: 'health-calculators',
+    keywords: ['wilks to dots calculator', 'powerlifting score calculator', 'wilks score calculator', 'dots score calculator', 'wilks vs dots'],
+    heroTitle: 'Wilks to DOTS Powerlifting Score Calculator',
+    heroDescription: 'Compare normalized Wilks (1994) and DOTS strength scores side-by-side from bodyweight and total lifted.'
+  },
 
   // ====== DEVELOPER TOOLS ======
   {

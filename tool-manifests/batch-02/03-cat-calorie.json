@@ -1,0 +1,30 @@
+{
+  "name": "Cat Calorie Calculator",
+  "slug": "cat-calorie-calculator",
+  "category": "Health Calculators",
+  "description": "Estimate a cat's daily calorie requirement from body weight and general life-stage or activity factor.",
+  "search_intent": "Estimate daily calorie needs for an adult, indoor, active, weight-management or growing cat.",
+  "keywords": [
+    "cat calorie calculator",
+    "cat calories per day calculator",
+    "how many calories should my cat eat",
+    "cat food calorie calculator"
+  ],
+  "inputs": [
+    {"key":"weightKg","label":"Cat weight (kg)","default":4.5,"min":0.5,"max":30,"step":0.1},
+    {"key":"factor","label":"Life stage / activity factor","default":"neutered-adult","help":"Choose a general maintenance category."}
+  ],
+  "outputs": [
+    {"key":"rer","label":"Resting energy requirement","format":"number"},
+    {"key":"dailyCalories","label":"Estimated daily calories","format":"number"}
+  ],
+  "calculation": "Resting Energy Requirement (RER) = 70 × body weight in kg^0.75. Estimated daily calories = RER × selected maintenance/life-stage factor. Use conservative, clearly labeled factors for common non-clinical categories. Do not provide therapeutic feeding prescriptions or disease-specific calorie recommendations.",
+  "related_tools": [
+    "calorie-calculator"
+  ],
+  "limitations": [
+    "Individual calorie needs vary by age, body condition, activity, environment and health.",
+    "This tool is a general estimate and is not a veterinary feeding prescription.",
+    "Pregnancy, illness and medically supervised weight-loss plans require professional guidance."
+  ]
+}

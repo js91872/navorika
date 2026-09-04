@@ -1,0 +1,32 @@
+{
+  "name": "Wilks to DOTS Powerlifting Score Calculator",
+  "slug": "wilks-dots-powerlifting-calculator",
+  "category": "Health Calculators",
+  "description": "Calculate and compare standardized powerlifting performance scores from bodyweight and total lifted.",
+  "search_intent": "Calculate standardized Wilks-style and DOTS powerlifting scores from bodyweight and total.",
+  "keywords": [
+    "wilks calculator",
+    "dots calculator",
+    "wilks vs dots calculator",
+    "powerlifting score calculator"
+  ],
+  "inputs": [
+    {"key":"sex","label":"Scoring category","default":"male"},
+    {"key":"bodyweightKg","label":"Bodyweight (kg)","default":90,"min":20,"max":300,"step":0.1},
+    {"key":"totalKg","label":"Powerlifting total (kg)","default":600,"min":0,"step":0.5}
+  ],
+  "outputs": [
+    {"key":"dotsScore","label":"DOTS score","format":"number"},
+    {"key":"wilksScore","label":"Wilks-style score","format":"number"},
+    {"key":"totalBodyweightRatio","label":"Total / bodyweight ratio","format":"number"}
+  ],
+  "calculation": "Implement the published coefficient equations used by the selected standardized scoring systems using bodyweight in kilograms and competition total in kilograms. Keep coefficient constants isolated in the pure calculation module with clear comments and tests. Do not invent coefficients. If Navorika already contains a relevant strength-scoring formula, reuse it. Validate known reference values before exposing results.",
+  "related_tools": [
+    "barbell-plate-calculator"
+  ],
+  "limitations": [
+    "Competition federations may use different scoring systems or updated coefficients.",
+    "Scores should be compared only using the same formula and category.",
+    "This tool does not determine competition eligibility or official results."
+  ]
+}

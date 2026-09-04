@@ -1,0 +1,31 @@
+{
+  "name": "Puppy Growth Predictor",
+  "slug": "puppy-growth-predictor",
+  "category": "Health Calculators",
+  "description": "Estimate an adult dog weight range from a puppy's current age, weight and expected breed-size category.",
+  "search_intent": "Estimate how large a puppy may grow based on its current age, weight and breed-size category.",
+  "keywords": [
+    "puppy growth predictor",
+    "puppy adult weight calculator",
+    "how big will my puppy get calculator",
+    "puppy size predictor"
+  ],
+  "inputs": [
+    {"key":"ageWeeks","label":"Puppy age (weeks)","default":16,"min":4,"max":104,"step":1},
+    {"key":"currentWeight","label":"Current puppy weight","default":15,"min":0.1,"step":0.1},
+    {"key":"breedSize","label":"Expected breed-size category","default":"medium","help":"Small, medium, large or giant."}
+  ],
+  "outputs": [
+    {"key":"estimatedAdultWeight","label":"Estimated adult weight","format":"number"},
+    {"key":"lowEstimate","label":"Estimated lower range","format":"number"},
+    {"key":"highEstimate","label":"Estimated upper range","format":"number"},
+    {"key":"growthProgress","label":"Approximate growth completed","format":"percent"}
+  ],
+  "calculation": "Use breed-size-specific age-to-growth-completion percentages. Estimated adult weight = current weight ÷ estimated fraction of adult weight reached at the entered age. Provide a reasonable uncertainty range around the estimate and expose the growth-progress percentage used. Avoid unrealistic extrapolation for very young puppies and clearly label the result as approximate.",
+  "related_tools": [],
+  "limitations": [
+    "Growth varies considerably by breed, sex, genetics, nutrition and health.",
+    "Mixed-breed adult size can be difficult to predict.",
+    "This tool provides an approximate growth estimate, not veterinary advice."
+  ]
+}

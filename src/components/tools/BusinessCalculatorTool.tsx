@@ -10,18 +10,39 @@ import { calculateMeetingRoi } from '@/lib/calculations/meetingRoi';
 import { calculateEvVsGas, calculateHeatPumpVsFurnace } from '@/lib/calculations/consumerEnergy';
 import { calculateShortTermRental, calculateHouseHacking } from '@/lib/calculations/personalRealEstate';
 import { calculateTotalCompensation } from '@/lib/calculations/compensation';
+import { calculateDogAge, calculatePuppyGrowth, calculateCatCalories } from '@/lib/calculations/petHealth';
+import { calculateCaffeineHalfLife, calculateHrvDeviation } from '@/lib/calculations/healthBiometrics';
+import { calculateWilksDots } from '@/lib/calculations/powerlifting';
 import ResultActions, { type ResultAction } from '@/components/ui/ResultActions';
 import { toolUx } from '@/data/toolUx';
 import { rowsToCsv } from '@/lib/resultExport';
 
-type ValueMap = Record<string, number>;
-type ResultMap = Record<string, number | null | boolean>;
-type Format = 'currency' | 'number' | 'percent' | 'months';
-interface Field { key: string; label: string; defaultValue: number; min?: number; max?: number; step?: number; help?: string }
+type ValueMap = Record<string, number | string>;
+type ResultMap = Record<string, number | string | null | boolean>;
+type Format = 'currency' | 'number' | 'percent' | 'months' | 'text';
+interface FieldOption { value: string; label: string }
+interface Field {
+  key: string;
+  label: string;
+  defaultValue: number | string;
+  type?: 'number' | 'select';
+  options?: FieldOption[];
+  min?: number;
+  max?: number;
+  step?: number;
+  help?: string;
+}
 interface Result { key: string; label: string; format: Format }
 interface Config { fields: Field[]; results: Result[]; calculate: (values: ValueMap) => ResultMap; note: string }
 
-const v = (values: ValueMap, key: string) => values[key] ?? 0;
+const v = (values: ValueMap, key: string) => {
+  const val = values[key];
+  return typeof val === 'number' ? val : Number(val) || 0;
+};
+const s = (values: ValueMap, key: string, fallback = '') => {
+  const val = values[key];
+  return typeof val === 'string' ? val : typeof val === 'number' ? String(val) : fallback;
+};
 
 const configs: Record<string, Config> = {
   'ai-token-calculator': {
@@ -331,13 +352,143 @@ const configs: Record<string, Config> = {
     }),
     note: 'Equity values and bonuses are planning estimates. Stock price volatility, tax withholding, vesting cliffs, and non-guaranteed bonuses can alter actual take-home compensation.',
   },
+  'dog-age-breed-specific-calculator': {
+    fields: [
+      { key: 'dogAge', label: 'Dog age (years)', defaultValue: 5, min: 0, max: 30, step: 0.1 },
+      {
+        key: 'breedSize',
+        label: 'Breed-size category',
+        defaultValue: 'medium',
+        type: 'select',
+        options: [
+          { value: 'small', label: 'Small (under 20 lbs / 9 kg)' },
+          { value: 'medium', label: 'Medium (21–50 lbs / 9.5–23 kg)' },
+          { value: 'large', label: 'Large (51–90 lbs / 23.5–41 kg)' },
+          { value: 'giant', label: 'Giant (over 90 lbs / 41+ kg)' },
+        ],
+        help: 'Smaller breeds generally mature faster in year 1 but age more slowly in subsequent years.',
+      },
+    ],
+    results: [
+      { key: 'humanEquivalent', label: 'Estimated human-equivalent age', format: 'number' },
+      { key: 'lifeStage', label: 'Approximate life stage', format: 'text' },
+    ],
+    calculate: (x) => calculateDogAge({ dogAge: v(x, 'dogAge'), breedSize: s(x, 'breedSize', 'medium') }),
+    note: 'Human-equivalent age is an educational approximation. Genetics, individual weight, lifestyle, and veterinary care significantly influence biological aging.',
+  },
+  'puppy-growth-predictor': {
+    fields: [
+      { key: 'ageWeeks', label: 'Puppy age (weeks)', defaultValue: 16, min: 4, max: 104, step: 1 },
+      { key: 'currentWeight', label: 'Current puppy weight (lbs or kg)', defaultValue: 15, min: 0.1, step: 0.1, help: 'Outputs will reflect the same unit entered.' },
+      {
+        key: 'breedSize',
+        label: 'Expected breed-size category',
+        defaultValue: 'medium',
+        type: 'select',
+        options: [
+          { value: 'small', label: 'Small breed (adult under 22 lbs / 10 kg)' },
+          { value: 'medium', label: 'Medium breed (adult 22–55 lbs / 10–25 kg)' },
+          { value: 'large', label: 'Large breed (adult 55–100 lbs / 25–45 kg)' },
+          { value: 'giant', label: 'Giant breed (adult over 100 lbs / 45+ kg)' },
+        ],
+        help: 'Small breeds reach full size much faster (9–10 months) than giant breeds (18–24 months).',
+      },
+    ],
+    results: [
+      { key: 'estimatedAdultWeight', label: 'Estimated adult weight', format: 'number' },
+      { key: 'lowEstimate', label: 'Estimated lower range', format: 'number' },
+      { key: 'highEstimate', label: 'Estimated upper range', format: 'number' },
+      { key: 'growthProgress', label: 'Approximate growth completed', format: 'percent' },
+    ],
+    calculate: (x) => calculatePuppyGrowth({ ageWeeks: v(x, 'ageWeeks'), currentWeight: v(x, 'currentWeight'), breedSize: s(x, 'breedSize', 'medium') }),
+    note: 'Growth curves are population estimates based on typical breed-size timelines. Nutrition, genetics, and health status cause individual variation.',
+  },
+  'cat-calorie-calculator': {
+    fields: [
+      { key: 'weightKg', label: 'Cat weight (kg)', defaultValue: 4.5, min: 0.5, max: 30, step: 0.1 },
+      {
+        key: 'factor',
+        label: 'Life stage / activity factor',
+        defaultValue: 'neutered-adult',
+        type: 'select',
+        options: [
+          { value: 'neutered-adult', label: 'Neutered adult (1.2× RER)' },
+          { value: 'intact-adult', label: 'Intact adult (1.4× RER)' },
+          { value: 'inactive-prone', label: 'Inactive adult (1.0× RER)' },
+          { value: 'active-adult', label: 'Highly active adult (1.6× RER)' },
+          { value: 'kitten-young', label: 'Kitten under 4 months (2.5× RER)' },
+          { value: 'kitten-older', label: 'Kitten 4 to 12 months (2.0× RER)' },
+          { value: 'senior', label: 'Senior cat (1.1× RER)' },
+        ],
+        help: 'Multiplies Resting Energy Requirement (70 × weight^0.75) by the life-stage factor.',
+      },
+    ],
+    results: [
+      { key: 'rer', label: 'Resting energy requirement (kcal/day)', format: 'number' },
+      { key: 'dailyCalories', label: 'Estimated daily calories (kcal/day)', format: 'number' },
+    ],
+    calculate: (x) => calculateCatCalories({ weightKg: v(x, 'weightKg'), factor: s(x, 'factor', 'neutered-adult') }),
+    note: 'General informational energy estimates based on standard feline equations. Not a therapeutic feeding prescription, disease-specific diet, or medical weight-loss plan. Consult a veterinarian for personalized nutritional supervision.',
+  },
+  'caffeine-half-life-calculator': {
+    fields: [
+      { key: 'doseMg', label: 'Caffeine consumed (mg)', defaultValue: 200, min: 0, step: 10, help: 'Typical 8oz brewed coffee is ~95mg; espresso ~63mg; energy drink ~160mg.' },
+      { key: 'hoursElapsed', label: 'Hours since consumption', defaultValue: 6, min: 0, step: 0.25 },
+      { key: 'halfLifeHours', label: 'Estimated caffeine half-life (hours)', defaultValue: 5, min: 1, max: 12, step: 0.25, help: 'Typical adult half-life is 4–6 hours (average ~5 hours).' },
+    ],
+    results: [
+      { key: 'remainingMg', label: 'Estimated caffeine remaining (mg)', format: 'number' },
+      { key: 'remainingPercent', label: 'Estimated caffeine remaining (%)', format: 'percent' },
+      { key: 'eliminatedMg', label: 'Estimated caffeine metabolized (mg)', format: 'number' },
+    ],
+    calculate: (x) => calculateCaffeineHalfLife({ doseMg: v(x, 'doseMg'), hoursElapsed: v(x, 'hoursElapsed'), halfLifeHours: v(x, 'halfLifeHours') }),
+    note: 'Pharmacokinetic half-life estimate. Individual clearance rates vary with genetics (CYP1A2), pregnancy, oral contraceptives, smoking, medications, and age.',
+  },
+  'hrv-baseline-deviation-calculator': {
+    fields: [
+      { key: 'baselineHrv', label: 'Personal baseline HRV (ms)', defaultValue: 55, min: 0.1, step: 1, help: 'Your established rolling 7–30 day average HRV (e.g., rMSSD or SDNN).' },
+      { key: 'currentHrv', label: 'Current HRV reading (ms)', defaultValue: 48, min: 0, step: 1, help: 'Measured under consistent resting morning conditions.' },
+    ],
+    results: [
+      { key: 'absoluteDifference', label: 'Absolute difference (ms)', format: 'number' },
+      { key: 'percentDeviation', label: 'Deviation from baseline', format: 'percent' },
+      { key: 'ratio', label: 'Current-to-baseline ratio', format: 'number' },
+      { key: 'direction', label: 'Direction versus baseline', format: 'text' },
+    ],
+    calculate: (x) => calculateHrvDeviation({ baselineHrv: v(x, 'baselineHrv'), currentHrv: v(x, 'currentHrv') }),
+    note: 'Mathematical comparison only. Device sensors, sleep, circadian rhythm, and measurement posture affect readings. Does not diagnose recovery, fitness, stress, or health status.',
+  },
+  'wilks-dots-powerlifting-calculator': {
+    fields: [
+      {
+        key: 'sex',
+        label: 'Scoring category',
+        defaultValue: 'male',
+        type: 'select',
+        options: [
+          { value: 'male', label: 'Male' },
+          { value: 'female', label: 'Female' },
+        ],
+      },
+      { key: 'bodyweightKg', label: 'Bodyweight (kg)', defaultValue: 90, min: 20, max: 300, step: 0.1 },
+      { key: 'totalKg', label: 'Powerlifting competition total (kg)', defaultValue: 600, min: 0, step: 0.5, help: 'Sum of best valid squat, bench press, and deadlift in kg.' },
+    ],
+    results: [
+      { key: 'dotsScore', label: 'DOTS score', format: 'number' },
+      { key: 'wilksScore', label: 'Wilks-style score', format: 'number' },
+      { key: 'totalBodyweightRatio', label: 'Total / bodyweight ratio', format: 'number' },
+    ],
+    calculate: (x) => calculateWilksDots({ sex: s(x, 'sex', 'male'), bodyweightKg: v(x, 'bodyweightKg'), totalKg: v(x, 'totalKg') }),
+    note: 'Uses published standard coefficients for DOTS and original 1994 Wilks scoring. Different federations or eras may use updated coefficients. For training and comparative analysis only.',
+  },
 };
 
 const inputClass = 'mt-2 w-full min-w-0 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20';
 
-function display(value: number | null | boolean | undefined, format: Format) {
+function display(value: number | string | null | boolean | undefined, format: Format) {
   if (value === null || value === undefined || typeof value === 'boolean') return 'Not applicable';
-  if (!Number.isFinite(value)) return 'Not applicable';
+  if (format === 'text') return String(value);
+  if (typeof value !== 'number' || !Number.isFinite(value)) return 'Not applicable';
   if (format === 'currency') return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(value);
   if (format === 'percent') return `${value.toLocaleString(undefined, { maximumFractionDigits: 3 })}%`;
   if (format === 'months') return `${value.toLocaleString(undefined, { maximumFractionDigits: 2 })} months`;
@@ -365,7 +516,21 @@ export default function BusinessCalculatorTool({ slug }: { slug: string }) {
       {slug === 'llm-api-cost-calculator' && <label className="mt-6 block text-sm font-semibold">Model or provider label<input className={inputClass} type="text" value={scenarioLabel} onChange={(event) => setScenarioLabel(event.target.value)} /></label>}
       <div className="mt-6 grid min-w-0 gap-4 sm:grid-cols-2">
         {config.fields.map((item) => <label key={item.key} className="min-w-0 text-sm font-semibold">{item.label}
-          <input className={inputClass} type="number" inputMode="decimal" min={item.min} max={item.max} step={item.step ?? 'any'} value={values[item.key]} onChange={(event) => setValues((current) => ({ ...current, [item.key]: Number(event.target.value) }))}/>
+          {item.type === 'select' ? (
+            <select
+              className={inputClass}
+              value={s(values, item.key, String(item.defaultValue))}
+              onChange={(event) => setValues((current) => ({ ...current, [item.key]: event.target.value }))}
+            >
+              {item.options?.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input className={inputClass} type="number" inputMode="decimal" min={item.min} max={item.max} step={item.step ?? 'any'} value={values[item.key] ?? ''} onChange={(event) => setValues((current) => ({ ...current, [item.key]: Number(event.target.value) }))}/>
+          )}
           {item.help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted-foreground)]">{item.help}</span>}
         </label>)}
       </div>

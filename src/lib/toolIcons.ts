@@ -104,6 +104,12 @@ export const toolIcons: Record<string, string> = {
   'waist-to-height-ratio-calculator': '📏',
   'waist-to-hip-ratio-calculator': '📏',
   'walking-calories-calculator': '🚶',
+  'dog-age-breed-specific-calculator': '🐕',
+  'puppy-growth-predictor': '🐶',
+  'cat-calorie-calculator': '🐱',
+  'caffeine-half-life-calculator': '☕',
+  'hrv-baseline-deviation-calculator': '💓',
+  'wilks-dots-powerlifting-calculator': '🏋️',
 
   // ====== DEVELOPER TOOLS ======
   'cidr-subnet-wildcard-calculator': '🌐',

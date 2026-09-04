@@ -135,6 +135,36 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'currency-converter': 'Convert travel currencies' },
   },
+  'dog-age-breed-specific-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'puppy-growth-predictor': 'Predict adult weight', 'cat-calorie-calculator': 'Estimate feline calorie requirements' },
+  },
+  'puppy-growth-predictor': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'dog-age-breed-specific-calculator': 'Calculate canine age progression', 'cat-calorie-calculator': 'Estimate feline calorie requirements' },
+  },
+  'cat-calorie-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'calorie-calculator': 'Calculate human calorie requirements', 'dog-age-breed-specific-calculator': 'Calculate canine age progression' },
+  },
+  'caffeine-half-life-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'heart-rate-calculator': 'Calculate exercise heart rate zones', 'hrv-baseline-deviation-calculator': 'Compare HRV to baseline' },
+  },
+  'hrv-baseline-deviation-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'heart-rate-calculator': 'Calculate exercise heart rate zones', 'caffeine-half-life-calculator': 'Model caffeine clearance' },
+  },
+  'wilks-dots-powerlifting-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'barbell-plate-calculator': 'Plan barbell plate loading', 'calories-burned-calculator': 'Calculate exercise calorie burn' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

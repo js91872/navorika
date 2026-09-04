@@ -1,0 +1,30 @@
+{
+  "name": "Dog Age Calculator — Breed Specific",
+  "slug": "dog-age-breed-specific-calculator",
+  "category": "Health Calculators",
+  "description": "Estimate a dog's human-equivalent age using its actual age and approximate breed-size category.",
+  "search_intent": "Convert dog age to human-equivalent age with an adjustment for small, medium, large and giant breeds.",
+  "keywords": [
+    "dog age calculator",
+    "dog years calculator",
+    "dog age in human years",
+    "breed specific dog age calculator"
+  ],
+  "inputs": [
+    {"key":"dogAge","label":"Dog age (years)","default":5,"min":0,"max":30,"step":0.1},
+    {"key":"breedSize","label":"Breed size","default":"medium","help":"Small, medium, large or giant breed-size category."}
+  ],
+  "outputs": [
+    {"key":"humanEquivalent","label":"Estimated human-equivalent age","format":"number"},
+    {"key":"lifeStage","label":"Approximate life stage","format":"text"}
+  ],
+  "calculation": "Use a transparent breed-size lookup/interpolation model rather than the outdated simple 7× rule. Define age-to-human-equivalent mappings for small, medium, large and giant dogs, interpolate between whole-year values where necessary, and classify approximate life stage. Keep the model clearly described as an estimate rather than a veterinary diagnostic calculation.",
+  "related_tools": [
+    "age-calculator"
+  ],
+  "limitations": [
+    "Breed, genetics, weight, health and lifestyle can materially affect aging.",
+    "Human-equivalent age is an approximation and should not be used for veterinary diagnosis.",
+    "Mixed breeds may not fit one size category precisely."
+  ]
+}

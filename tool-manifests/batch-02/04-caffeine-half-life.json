@@ -1,0 +1,32 @@
+{
+  "name": "Caffeine Half-Life Calculator",
+  "slug": "caffeine-half-life-calculator",
+  "category": "Health Calculators",
+  "description": "Estimate how much caffeine may remain in the body over time using an adjustable caffeine half-life.",
+  "search_intent": "Estimate caffeine remaining after a given number of hours and explore when caffeine levels may substantially decline.",
+  "keywords": [
+    "caffeine half life calculator",
+    "caffeine remaining calculator",
+    "how much caffeine is left in my system",
+    "caffeine sleep calculator"
+  ],
+  "inputs": [
+    {"key":"doseMg","label":"Caffeine consumed (mg)","default":200,"min":0},
+    {"key":"hoursElapsed","label":"Hours since consumption","default":6,"min":0,"step":0.25},
+    {"key":"halfLifeHours","label":"Estimated caffeine half-life (hours)","default":5,"min":1,"max":12,"step":0.25}
+  ],
+  "outputs": [
+    {"key":"remainingMg","label":"Estimated caffeine remaining","format":"number"},
+    {"key":"remainingPercent","label":"Estimated caffeine remaining","format":"percent"},
+    {"key":"eliminatedMg","label":"Estimated caffeine metabolized","format":"number"}
+  ],
+  "calculation": "Remaining caffeine = initial caffeine dose × 0.5^(hours elapsed ÷ half-life hours). Remaining percentage = remaining caffeine ÷ initial dose × 100 when the initial dose is positive. Eliminated caffeine = initial dose − remaining caffeine. Handle zero dose safely.",
+  "related_tools": [
+    "sleep-cycle-calculator"
+  ],
+  "limitations": [
+    "Actual caffeine metabolism varies substantially among individuals.",
+    "Pregnancy, medications, smoking, genetics, liver function and other factors can change caffeine half-life.",
+    "The result is a pharmacokinetic estimate, not a medical or sleep guarantee."
+  ]
+}

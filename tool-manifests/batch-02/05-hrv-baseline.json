@@ -1,0 +1,32 @@
+{
+  "name": "HRV Baseline Deviation Calculator",
+  "slug": "hrv-baseline-deviation-calculator",
+  "category": "Health Calculators",
+  "description": "Compare today's heart-rate variability reading with a personal baseline and quantify the percentage deviation.",
+  "search_intent": "Calculate how far a current HRV reading differs from a personal HRV baseline.",
+  "keywords": [
+    "hrv baseline calculator",
+    "hrv deviation calculator",
+    "hrv percentage change calculator",
+    "heart rate variability baseline"
+  ],
+  "inputs": [
+    {"key":"baselineHrv","label":"Baseline HRV (ms)","default":55,"min":0.1},
+    {"key":"currentHrv","label":"Current HRV (ms)","default":48,"min":0}
+  ],
+  "outputs": [
+    {"key":"absoluteDifference","label":"Absolute difference","format":"number"},
+    {"key":"percentDeviation","label":"Deviation from baseline","format":"percent"},
+    {"key":"ratio","label":"Current-to-baseline ratio","format":"number"},
+    {"key":"direction","label":"Direction versus baseline","format":"text"}
+  ],
+  "calculation": "Absolute difference = current HRV − baseline HRV. Percentage deviation = (current HRV − baseline HRV) ÷ baseline HRV × 100. Ratio = current HRV ÷ baseline HRV. Direction reports above, below or equal to baseline. Baseline must be greater than zero. Do not classify readings as healthy, unhealthy, recovered or overtrained.",
+  "related_tools": [
+    "heart-rate-calculator"
+  ],
+  "limitations": [
+    "HRV varies by measurement method, device, time of day, sleep and many personal factors.",
+    "Changes from baseline do not by themselves diagnose health, recovery, stress or overtraining.",
+    "Compare readings measured under consistent conditions."
+  ]
+}

@@ -48,9 +48,10 @@ export const clusters: ToolCluster[] = [
   { id: 'finance-tax', name: 'Tax and Business Finance', description: 'Estimate tax, GST, and compliance-related figures for planning.', category: 'finance-calculators', toolSlugs: ['gst-calculator', 'tax-calculator', 'taxation-compliance-deck'] },
 
   { id: 'health-body', name: 'Body Composition', description: 'Estimate weight ranges and body-composition screening measures.', category: 'health-calculators', toolSlugs: ['bmi-calculator', 'body-fat-calculator', 'healthy-weight-calculator', 'ideal-weight-calculator', 'lean-body-mass-calculator', 'waist-to-height-ratio-calculator', 'waist-to-hip-ratio-calculator'] },
-  { id: 'health-energy', name: 'Energy and Nutrition', description: 'Estimate resting energy, daily expenditure, and calorie targets.', category: 'health-calculators', toolSlugs: ['bmr-calculator', 'calorie-calculator', 'tdee-calculator'] },
-  { id: 'health-activity', name: 'Activity and Calories', description: 'Estimate energy used during common walking and running activities.', category: 'health-calculators', toolSlugs: ['calories-burned-calculator', 'running-calories-calculator', 'walking-calories-calculator'] },
-  { id: 'health-heart', name: 'Heart Rate and Training', description: 'Convert pulse counts and estimate heart-rate ranges and training zones for exercise planning.', category: 'health-calculators', toolSlugs: ['heart-rate-calculator'] },
+  { id: 'health-energy', name: 'Energy and Nutrition', description: 'Estimate resting energy, daily expenditure, and calorie targets.', category: 'health-calculators', toolSlugs: ['bmr-calculator', 'calorie-calculator', 'tdee-calculator', 'caffeine-half-life-calculator'] },
+  { id: 'health-activity', name: 'Activity and Calories', description: 'Estimate energy used during common walking, running, and strength activities.', category: 'health-calculators', toolSlugs: ['calories-burned-calculator', 'running-calories-calculator', 'walking-calories-calculator', 'wilks-dots-powerlifting-calculator'] },
+  { id: 'health-heart', name: 'Heart Rate and Training', description: 'Convert pulse counts and estimate heart-rate ranges and training zones for exercise planning.', category: 'health-calculators', toolSlugs: ['heart-rate-calculator', 'hrv-baseline-deviation-calculator'] },
+  { id: 'pet-health', name: 'Pet Health and Nutrition', description: 'Estimate canine age progression, puppy adult weight curves, and feline energy requirements.', category: 'health-calculators', toolSlugs: ['dog-age-breed-specific-calculator', 'puppy-growth-predictor', 'cat-calorie-calculator'] },
 
   { id: 'developer-code-formatting', name: 'Code Formatting and Utility Hubs', description: 'Access general developer suites and parser-backed code or markup formatting workflows.', category: 'developer-tools', toolSlugs: ['code-minifier-beautifier', 'developer-utils', 'markup-formatter'] },
   { id: 'developer-json', name: 'JSON and Tabular Data', description: 'Format, validate, compare, flatten, and convert JSON and CSV data.', category: 'developer-tools', toolSlugs: ['json-formatter', 'json-schema-validator', 'json-diff-compare', 'json-to-csv-flattener', 'csv-to-json-converter'] },
@@ -172,7 +173,7 @@ export const toolkits: Toolkit[] = [
     categorySlugs: ['health-calculators'],
     groups: [
       { name: 'Body and energy', description: 'Estimate body composition, resting energy, and daily calorie needs.', toolSlugs: ['bmi-calculator', 'body-fat-calculator', 'lean-body-mass-calculator', 'bmr-calculator', 'tdee-calculator', 'calorie-calculator'] },
-      { name: 'Activity and heart rate', description: 'Connect activity energy estimates with pulse conversion and heart-rate training ranges.', toolSlugs: ['walking-calories-calculator', 'running-calories-calculator', 'calories-burned-calculator', 'heart-rate-calculator'] },
+      { name: 'Activity and heart rate', description: 'Connect activity energy estimates with pulse conversion, heart-rate training ranges, and strength performance.', toolSlugs: ['walking-calories-calculator', 'running-calories-calculator', 'calories-burned-calculator', 'heart-rate-calculator', 'hrv-baseline-deviation-calculator', 'wilks-dots-powerlifting-calculator'] },
     ], guideSlugs: ['bmi-calculator-guide', 'bmr-tdee-guide', 'heart-rate-zones-guide', 'calorie-deficit-guide'],
     faqs: [{ question: 'Do these calculators provide medical advice?', answer: 'No. They provide educational estimates from standard inputs and formulas. A qualified clinician should interpret results for personal medical decisions.' }],
   },
@@ -259,6 +260,12 @@ export const complementaryTools: Record<string, string[]> = {
   'house-hacking-effective-rent-calculator': ['rental-property-cash-flow-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator'],
   'job-offer-total-comp-calculator': ['tax-calculator', 'investment-return-profiler', 'retirement-calculator'],
   'schengen-90-180-day-calculator': ['currency-converter'],
+  'dog-age-breed-specific-calculator': ['puppy-growth-predictor', 'cat-calorie-calculator'],
+  'puppy-growth-predictor': ['dog-age-breed-specific-calculator', 'cat-calorie-calculator'],
+  'cat-calorie-calculator': ['calorie-calculator', 'dog-age-breed-specific-calculator'],
+  'caffeine-half-life-calculator': ['heart-rate-calculator', 'hrv-baseline-deviation-calculator'],
+  'hrv-baseline-deviation-calculator': ['heart-rate-calculator', 'caffeine-half-life-calculator'],
+  'wilks-dots-powerlifting-calculator': ['barbell-plate-calculator', 'calories-burned-calculator'],
 };
 
 const clusterByTool = new Map(clusters.flatMap((cluster) => cluster.toolSlugs.map((slug) => [slug, cluster] as const)));
