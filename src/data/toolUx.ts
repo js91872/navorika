@@ -105,6 +105,36 @@ export const toolUx: Record<string, ToolUxConfig> = {
   'base64-encoder': { processingMode: 'local', noUpload: true, noAccount: true },
   'jwt-decoder': { processingMode: 'local', noUpload: true, noAccount: true },
   'uuid-generator': { processingMode: 'local', noUpload: true, noAccount: true },
+  'ev-vs-gas-break-even-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'electricity-cost-calculator': 'Estimate electricity cost', 'fuel-cost-split-calculator': 'Calculate fuel split', 'solar-panel-calculator': 'Model solar charging' },
+  },
+  'heat-pump-vs-furnace-cost-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'electricity-cost-calculator': 'Estimate electricity cost', 'solar-panel-calculator': 'Plan solar power', 'construction-cost-calculator': 'Estimate overall construction' },
+  },
+  'short-term-rental-break-even-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'rental-property-cash-flow-calculator': 'Estimate long-term cash flow', 'rental-yield-calculator': 'Compare rental yield', 'cap-rate-calculator': 'Calculate capitalization rate' },
+  },
+  'house-hacking-effective-rent-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'rental-property-cash-flow-calculator': 'Estimate rental cash flow', 'cash-on-cash-return-calculator': 'Measure cash-on-cash return', 'brrrr-calculator': 'Model a BRRRR project' },
+  },
+  'job-offer-total-comp-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'tax-calculator': 'Estimate tax impact', 'investment-return-profiler': 'Project investment growth', 'retirement-calculator': 'Plan retirement savings' },
+  },
+  'schengen-90-180-day-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'currency-converter': 'Convert travel currencies' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

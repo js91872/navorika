@@ -1058,6 +1058,10 @@ export const tools: RegisteredTool[] = ([
   { slug: 'drawdown-recovery-calculator', title: 'Drawdown Recovery Calculator', description: 'Calculate portfolio drawdown and the larger percentage gain required to recover from a loss.', category: 'finance-calculators', keywords: ['drawdown recovery calculator', 'loss recovery percentage', 'portfolio recovery gain'], heroTitle: 'Drawdown Recovery Calculator', heroDescription: 'See the gain required to recover from a portfolio percentage or value loss.' },
   { slug: 'debt-snowball-vs-avalanche-calculator', title: 'Debt Snowball vs Avalanche Calculator', description: 'Compare month-by-month debt snowball and avalanche payoff time, interest, amount paid, and payoff order.', category: 'finance-calculators', keywords: ['debt snowball vs avalanche calculator', 'debt payoff strategy', 'avalanche interest savings'], heroTitle: 'Debt Snowball vs Avalanche Calculator', heroDescription: 'Simulate multiple debts under snowball and avalanche payoff strategies.' },
   { slug: 'meeting-roi-calculator', title: 'Meeting ROI Calculator', description: 'Calculate the labor cost of a meeting from attendees, compensation, overhead, duration and frequency, then compare the cost with estimated value created.', category: 'finance-calculators', keywords: ['meeting roi calculator', 'meeting cost calculator', 'cost of meetings calculator', 'meeting expense calculator', 'employee meeting cost calculator', 'meeting cost per hour', 'annual meeting cost calculator'], heroTitle: 'Meeting ROI Calculator', heroDescription: 'Estimate meeting labor cost, annual expense, break-even value and ROI.' },
+  { slug: 'ev-vs-gas-break-even-calculator', title: 'EV vs Gas Break-Even Calculator', description: 'Compare electric and gasoline vehicle purchase and operating costs and estimate when fuel and maintenance savings recover an EV price premium.', category: 'finance-calculators', keywords: ['ev vs gas break even calculator', 'electric car vs gas cost calculator', 'ev savings calculator', 'ev payback calculator'], heroTitle: 'EV vs Gas Break-Even Calculator', heroDescription: 'Compare EV and gas vehicle ownership costs and calculate break-even years and mileage.' },
+  { slug: 'short-term-rental-break-even-calculator', title: 'Short-Term Rental Break-Even Calculator', description: 'Estimate short-term rental revenue, operating costs, monthly profit and the occupancy rate required to break even.', category: 'finance-calculators', keywords: ['short term rental break even calculator', 'airbnb break even calculator', 'vacation rental occupancy calculator', 'short term rental profit calculator'], heroTitle: 'Short-Term Rental Break-Even Calculator', heroDescription: 'Calculate short-term rental break-even occupancy, costs, and monthly profitability.' },
+  { slug: 'house-hacking-effective-rent-calculator', title: 'House Hacking Effective Rent Calculator', description: 'Estimate your effective personal housing cost after rent received from roommates, units or other occupants.', category: 'finance-calculators', keywords: ['house hacking calculator', 'house hacking effective rent calculator', 'house hacking cost calculator', 'live in rental income calculator'], heroTitle: 'House Hacking Effective Rent Calculator', heroDescription: 'Calculate effective personal housing cost and expense offset from tenant rental income.' },
+  { slug: 'job-offer-total-comp-calculator', title: 'Job Offer Total Compensation Calculator', description: 'Normalize salary, bonus, equity, retirement contributions and recurring benefits into estimated annual total compensation.', category: 'finance-calculators', keywords: ['job offer total compensation calculator', 'total comp calculator', 'salary equity bonus calculator', 'job offer comparison calculator'], heroTitle: 'Job Offer Total Compensation Calculator', heroDescription: 'Normalize base salary, target bonus, annualized equity, and benefits into total annual compensation.' },
 
   // ====== CONSTRUCTION CALCULATORS ======
   {slug:'12-foot-gambrel-roof-truss-calculator',title:'12 Foot Gambrel Roof Truss Calculator',description:'Calculate gambrel rafter lengths, roof height, break point, truss quantity and roofing area with a responsive live diagram.',category:'construction-calculators',keywords:['12 foot gambrel roof truss calculator','12 ft gambrel roof calculator','gambrel roof','roof truss','barn roof','gambrel rafter calculator','gambrel roof angle calculator'],heroTitle:'12 Foot Gambrel Roof Truss Calculator',heroDescription:'Calculate gambrel rafter lengths, roof height, knee position, roof area and truss quantity.'},
@@ -1449,6 +1453,24 @@ export const tools: RegisteredTool[] = ([
     keywords: ['dimensional weight calculator', 'dim weight calculator', 'volumetric weight calculator', 'shipping weight calculator', 'package dimensional weight'],
     heroTitle: 'Dimensional Weight Calculator',
     heroDescription: 'Calculate dimensional shipping weight and identify the estimated billable package weight.'
+  },
+  {
+    slug: 'heat-pump-vs-furnace-cost-calculator',
+    title: 'Heat Pump vs Furnace Cost Calculator',
+    description: 'Compare estimated annual heating energy costs for an electric heat pump and a fuel furnace using efficiency, energy prices and heating demand.',
+    category: 'everyday-calculators',
+    keywords: ['heat pump vs furnace cost calculator', 'heat pump savings calculator', 'heat pump payback calculator', 'furnace vs heat pump cost'],
+    heroTitle: 'Heat Pump vs Furnace Cost Calculator',
+    heroDescription: 'Compare heat pump versus furnace operating costs and estimate annual savings and payback.'
+  },
+  {
+    slug: 'schengen-90-180-day-calculator',
+    title: 'Schengen 90/180 Day Calculator',
+    description: 'Track entered Schengen stays against the rolling 90-days-in-180-days rule and estimate days used and remaining for a selected reference date.',
+    category: 'everyday-calculators',
+    keywords: ['schengen 90 180 calculator', 'schengen days calculator', '90 180 day rule calculator', 'schengen stay calculator'],
+    heroTitle: 'Schengen 90/180 Day Calculator',
+    heroDescription: 'Track Schengen travel days used and remaining under the rolling 90-days-in-180-days rule.'
   },
   {
     slug: 'construction-estimate-builder',

@@ -1,0 +1,36 @@
+{
+  "name": "Short-Term Rental Break-Even Calculator",
+  "slug": "short-term-rental-break-even-calculator",
+  "category": "Finance Calculators",
+  "description": "Estimate short-term rental revenue, operating costs, monthly profit and the occupancy rate required to break even.",
+  "search_intent": "Calculate Airbnb or short-term rental break-even occupancy and monthly profitability.",
+  "keywords": [
+    "short term rental break even calculator",
+    "airbnb break even calculator",
+    "vacation rental occupancy calculator",
+    "short term rental profit calculator"
+  ],
+  "inputs": [
+    {"key":"nightlyRate","label":"Average nightly rate","default":180,"min":0},
+    {"key":"availableNights","label":"Available nights per month","default":30,"min":1,"max":31},
+    {"key":"occupancy","label":"Expected occupancy (%)","default":65,"min":0,"max":100},
+    {"key":"variableCost","label":"Variable cost per occupied night","default":35,"min":0},
+    {"key":"fixedCosts","label":"Monthly fixed operating costs","default":2200,"min":0},
+    {"key":"platformFee","label":"Platform/payment fees (%)","default":3,"min":0,"max":100}
+  ],
+  "outputs": [
+    {"key":"occupiedNights","label":"Occupied nights","format":"number"},
+    {"key":"grossRevenue","label":"Gross booking revenue","format":"currency"},
+    {"key":"platformFees","label":"Platform/payment fees","format":"currency"},
+    {"key":"totalCosts","label":"Total monthly costs","format":"currency"},
+    {"key":"monthlyProfit","label":"Estimated monthly profit","format":"currency"},
+    {"key":"breakEvenOccupancy","label":"Break-even occupancy","format":"percent"}
+  ],
+  "calculation": "Occupied nights = available nights × occupancy fraction. Gross revenue = occupied nights × nightly rate. Platform fees = gross revenue × fee percentage. Variable costs = occupied nights × variable cost per night. Monthly profit = gross revenue − platform fees − variable costs − fixed costs. Contribution per occupied night = nightly rate × (1 − platform fee fraction) − variable cost. Break-even occupied nights = fixed costs ÷ contribution per occupied night. Break-even occupancy = break-even occupied nights ÷ available nights × 100. If contribution per occupied night is zero or negative, break-even occupancy is not applicable.",
+  "related_tools": ["rental-property-cash-flow-calculator","rental-yield-calculator","cap-rate-calculator"],
+  "limitations": [
+    "Taxes, financing, seasonality and property appreciation are not automatically included.",
+    "Occupancy and nightly rates are user assumptions.",
+    "Local short-term rental rules are not evaluated."
+  ]
+}

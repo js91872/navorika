@@ -1,0 +1,36 @@
+{
+  "name": "Heat Pump vs Furnace Cost Calculator",
+  "slug": "heat-pump-vs-furnace-cost-calculator",
+  "category": "Everyday Calculators",
+  "description": "Compare estimated annual heating energy costs for an electric heat pump and a fuel furnace using efficiency, energy prices and heating demand.",
+  "search_intent": "Compare heat pump versus furnace operating costs and estimate annual savings and payback.",
+  "keywords": [
+    "heat pump vs furnace cost calculator",
+    "heat pump savings calculator",
+    "heat pump payback calculator",
+    "furnace vs heat pump cost"
+  ],
+  "inputs": [
+    {"key":"heatingDemand","label":"Annual useful heating demand (kWh)","default":15000,"min":0},
+    {"key":"cop","label":"Heat pump seasonal COP","default":3,"min":0.1},
+    {"key":"electricityRate","label":"Electricity price per kWh","default":0.16,"min":0},
+    {"key":"furnaceEfficiency","label":"Furnace efficiency (%)","default":90,"min":1,"max":100},
+    {"key":"fuelEnergyPrice","label":"Furnace fuel price per kWh equivalent","default":0.08,"min":0},
+    {"key":"heatPumpInstall","label":"Heat pump installed cost","default":12000,"min":0},
+    {"key":"furnaceInstall","label":"Furnace installed cost","default":7000,"min":0}
+  ],
+  "outputs": [
+    {"key":"heatPumpAnnualCost","label":"Heat pump annual energy cost","format":"currency"},
+    {"key":"furnaceAnnualCost","label":"Furnace annual fuel cost","format":"currency"},
+    {"key":"annualSavings","label":"Annual energy savings","format":"currency"},
+    {"key":"installPremium","label":"Heat pump installation premium","format":"currency"},
+    {"key":"paybackYears","label":"Simple payback","format":"number"}
+  ],
+  "calculation": "Heat pump electricity use = useful heating demand ÷ seasonal COP. Heat pump cost = electricity use × electricity price. Furnace fuel input = useful heating demand ÷ furnace efficiency fraction. Furnace cost = fuel input × fuel energy price. Annual savings = furnace cost − heat pump cost. Installation premium = heat pump installed cost − furnace installed cost. Payback years = positive installation premium ÷ positive annual savings. Return not applicable when there is a positive premium but no positive annual savings.",
+  "related_tools": ["electricity-cost-calculator","solar-panel-calculator","construction-cost-calculator"],
+  "limitations": [
+    "This is a simplified seasonal energy comparison.",
+    "Climate, backup resistance heat, fuel standing charges, maintenance and equipment life are excluded.",
+    "COP varies with outdoor temperature and equipment design."
+  ]
+}

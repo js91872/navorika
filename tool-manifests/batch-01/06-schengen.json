@@ -1,0 +1,57 @@
+{
+  "name": "Schengen 90/180 Day Calculator",
+  "slug": "schengen-90-180-day-calculator",
+  "category": "Everyday Calculators",
+  "description": "Track entered Schengen stays against the rolling 90-days-in-180-days rule and estimate days used and remaining for a selected reference date.",
+  "search_intent": "Calculate Schengen days used and remaining under the rolling 90/180-day short-stay rule.",
+  "keywords": [
+    "schengen 90 180 calculator",
+    "schengen days calculator",
+    "90 180 day rule calculator",
+    "schengen stay calculator"
+  ],
+  "inputs": [
+    {
+      "key": "referenceDate",
+      "label": "Reference date",
+      "help": "Date used to evaluate the rolling 180-day window."
+    },
+    {
+      "key": "trips",
+      "label": "Previous Schengen stays",
+      "help": "Multiple arrival and departure date ranges."
+    }
+  ],
+  "outputs": [
+    {
+      "key": "daysUsed",
+      "label": "Days used in rolling 180-day window",
+      "format": "number"
+    },
+    {
+      "key": "daysRemaining",
+      "label": "Days remaining",
+      "format": "number"
+    },
+    {
+      "key": "windowStart",
+      "label": "Rolling-window start date",
+      "format": "date"
+    },
+    {
+      "key": "compliant",
+      "label": "Within 90-day allowance",
+      "format": "boolean"
+    }
+  ],
+  "calculation": "For the selected reference date, examine the inclusive 180-calendar-day period ending on that date. Count each calendar day in entered Schengen stays that overlaps that rolling window, counting arrival and departure dates as stay days and avoiding double-counting overlapping trip ranges. Days remaining = 90 \u2212 days used, floored at zero for display. A user exceeding 90 days must still be clearly flagged as non-compliant rather than hiding excess days. Date handling must be timezone-safe and based on calendar dates, not browser-local elapsed hours.",
+  "related_tools": [
+    "currency-converter"
+  ],
+  "limitations": [
+    "This is a planning aid and not immigration or legal advice.",
+    "The user is responsible for entering complete and accurate travel history.",
+    "Visa type, residence permits, bilateral agreements and special legal circumstances are not automatically evaluated.",
+    "Users should verify important travel decisions with official Schengen/EU sources."
+  ]
+}

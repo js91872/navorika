@@ -1,0 +1,36 @@
+{
+  "name": "Job Offer Total Compensation Calculator",
+  "slug": "job-offer-total-comp-calculator",
+  "category": "Finance Calculators",
+  "description": "Normalize salary, bonus, equity, retirement contributions and recurring benefits into estimated annual total compensation.",
+  "search_intent": "Compare job offers by annualizing salary, bonus, equity and employer-paid compensation.",
+  "keywords": [
+    "job offer total compensation calculator",
+    "total comp calculator",
+    "salary equity bonus calculator",
+    "job offer comparison calculator"
+  ],
+  "inputs": [
+    {"key":"salary","label":"Annual base salary","default":100000,"min":0},
+    {"key":"bonus","label":"Target annual bonus","default":10000,"min":0},
+    {"key":"equityTotal","label":"Total equity grant value","default":40000,"min":0},
+    {"key":"vestingYears","label":"Equity vesting period (years)","default":4,"min":0.1},
+    {"key":"retirement","label":"Annual employer retirement contribution","default":5000,"min":0},
+    {"key":"benefits","label":"Other annual employer-paid benefits","default":5000,"min":0},
+    {"key":"signingBonus","label":"One-time signing bonus","default":10000,"min":0}
+  ],
+  "outputs": [
+    {"key":"annualizedEquity","label":"Annualized equity","format":"currency"},
+    {"key":"recurringComp","label":"Estimated recurring annual compensation","format":"currency"},
+    {"key":"firstYearComp","label":"Estimated first-year compensation","format":"currency"},
+    {"key":"monthlyEquivalent","label":"Recurring monthly equivalent","format":"currency"},
+    {"key":"baseSalaryShare","label":"Base salary share","format":"percent"}
+  ],
+  "calculation": "Annualized equity = total stated equity grant value ÷ vesting years. Recurring annual compensation = salary + target bonus + annualized equity + employer retirement contribution + annual benefits. First-year compensation = recurring annual compensation + signing bonus. Monthly equivalent = recurring annual compensation ÷ 12. Base salary share = salary ÷ recurring compensation × 100 when recurring compensation is positive.",
+  "related_tools": ["tax-calculator","investment-return-profiler","retirement-calculator"],
+  "limitations": [
+    "Equity value is uncertain and may change substantially.",
+    "Taxes, vesting cliffs, refresh grants and benefit quality are not fully modeled.",
+    "Target bonuses may not be guaranteed."
+  ]
+}

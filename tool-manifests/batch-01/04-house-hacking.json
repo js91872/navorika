@@ -1,0 +1,37 @@
+{
+  "name": "House Hacking Effective Rent Calculator",
+  "slug": "house-hacking-effective-rent-calculator",
+  "category": "Finance Calculators",
+  "description": "Estimate your effective personal housing cost after rent received from roommates, units or other occupants.",
+  "search_intent": "Calculate effective housing cost or effective rent after house-hacking rental income.",
+  "keywords": [
+    "house hacking calculator",
+    "house hacking effective rent calculator",
+    "house hacking cost calculator",
+    "live in rental income calculator"
+  ],
+  "inputs": [
+    {"key":"mortgage","label":"Monthly mortgage payment","default":2200,"min":0},
+    {"key":"taxInsurance","label":"Monthly property tax and insurance","default":600,"min":0},
+    {"key":"hoa","label":"Monthly HOA","default":0,"min":0},
+    {"key":"utilities","label":"Owner-paid utilities","default":300,"min":0},
+    {"key":"maintenance","label":"Monthly maintenance reserve","default":250,"min":0},
+    {"key":"other","label":"Other monthly housing costs","default":0,"min":0},
+    {"key":"rentReceived","label":"Expected monthly rent received","default":1800,"min":0},
+    {"key":"vacancy","label":"Rental vacancy allowance (%)","default":5,"min":0,"max":100}
+  ],
+  "outputs": [
+    {"key":"grossHousingCost","label":"Gross monthly housing cost","format":"currency"},
+    {"key":"effectiveRentIncome","label":"Vacancy-adjusted rent received","format":"currency"},
+    {"key":"effectiveHousingCost","label":"Effective monthly housing cost","format":"currency"},
+    {"key":"annualEffectiveCost","label":"Annual effective housing cost","format":"currency"},
+    {"key":"costOffsetPercent","label":"Housing cost offset by rent","format":"percent"}
+  ],
+  "calculation": "Gross housing cost = mortgage + tax/insurance + HOA + utilities + maintenance + other costs. Effective rent income = rent received × (1 − vacancy allowance). Effective housing cost = gross housing cost − effective rent income. Annual effective cost = effective housing cost × 12. Cost offset percent = effective rent income ÷ gross housing cost × 100 when gross housing cost is positive. Effective housing cost may legitimately be negative.",
+  "related_tools": ["rental-property-cash-flow-calculator","cash-on-cash-return-calculator","brrrr-calculator"],
+  "limitations": [
+    "This is a cash-flow planning calculation, not a complete investment return model.",
+    "Principal paydown, appreciation, taxes and transaction costs are excluded.",
+    "Rental income and vacancy are estimates."
+  ]
+}

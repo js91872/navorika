@@ -1,0 +1,126 @@
+{
+  "name": "Meeting ROI Calculator",
+  "slug": "meeting-roi-calculator",
+  "category": "Finance Calculators / Business Productivity",
+  "description": "Calculate the labor cost of a meeting from attendees, compensation, overhead, duration and frequency, then compare the cost with estimated value created.",
+  "search_intent": "Calculate meeting cost, annual meeting expense, break-even meeting value and estimated meeting ROI.",
+  "keywords": [
+    "meeting roi calculator",
+    "meeting cost calculator",
+    "cost of meetings calculator",
+    "employee meeting cost calculator",
+    "meeting expense calculator"
+  ],
+  "inputs": [
+    {
+      "key": "attendees",
+      "label": "Number of attendees",
+      "default": 8,
+      "min": 1,
+      "step": 1
+    },
+    {
+      "key": "compensation",
+      "label": "Average annual compensation",
+      "default": 80000,
+      "min": 0
+    },
+    {
+      "key": "overhead",
+      "label": "Employer overhead / benefits (%)",
+      "default": 25,
+      "min": 0,
+      "max": 200
+    },
+    {
+      "key": "workingHours",
+      "label": "Working hours per year",
+      "default": 2080,
+      "min": 1
+    },
+    {
+      "key": "duration",
+      "label": "Meeting duration (minutes)",
+      "default": 60,
+      "min": 1
+    },
+    {
+      "key": "meetingsPerWeek",
+      "label": "Meetings per week",
+      "default": 1,
+      "min": 0
+    },
+    {
+      "key": "weeksPerYear",
+      "label": "Working weeks per year",
+      "default": 48,
+      "min": 1,
+      "max": 52
+    },
+    {
+      "key": "valueCreated",
+      "label": "Estimated value created per meeting",
+      "default": 1000,
+      "min": 0
+    }
+  ],
+  "outputs": [
+    {
+      "key": "loadedHourlyCost",
+      "label": "Loaded hourly cost per attendee",
+      "format": "currency"
+    },
+    {
+      "key": "attendeeHours",
+      "label": "Total attendee-hours",
+      "format": "number"
+    },
+    {
+      "key": "meetingCost",
+      "label": "Cost per meeting",
+      "format": "currency"
+    },
+    {
+      "key": "weeklyCost",
+      "label": "Weekly meeting cost",
+      "format": "currency"
+    },
+    {
+      "key": "monthlyCost",
+      "label": "Monthly equivalent cost",
+      "format": "currency"
+    },
+    {
+      "key": "annualCost",
+      "label": "Annual meeting cost",
+      "format": "currency"
+    },
+    {
+      "key": "breakEvenValue",
+      "label": "Break-even value per meeting",
+      "format": "currency"
+    },
+    {
+      "key": "netValue",
+      "label": "Net value per meeting",
+      "format": "currency"
+    },
+    {
+      "key": "roiPercent",
+      "label": "Estimated ROI",
+      "format": "percent"
+    }
+  ],
+  "calculation": "Loaded annual compensation = annual compensation × (1 + overhead / 100). Loaded hourly cost = loaded annual compensation ÷ working hours per year. Total attendee-hours = attendees × meeting duration ÷ 60. Meeting cost = loaded hourly cost × attendee-hours. Weekly cost = meeting cost × meetings per week. Annual meeting count = meetings per week × working weeks per year. Annual meeting cost = meeting cost × annual meeting count. Monthly equivalent = annual meeting cost ÷ 12. Break-even value = meeting cost. Net value = value created − meeting cost. ROI = ((value created − meeting cost) ÷ meeting cost) × 100. ROI is null when meeting cost is zero.",
+  "related_tools": [
+    "startup-runway-calculator",
+    "saas-burn-rate-calculator",
+    "cac-payback-calculator"
+  ],
+  "limitations": [
+    "Value created is a subjective user-entered assumption.",
+    "Average compensation may hide significant differences among attendees.",
+    "Preparation, follow-up, travel, room, software and opportunity costs are not automatically modeled.",
+    "The output is a planning estimate rather than an accounting conclusion."
+  ]
+}

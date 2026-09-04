@@ -7,6 +7,9 @@ import { calculateBrrrr, calculateCapRate, calculateCashOnCash, calculateFlip, c
 import { calculateBurnRate, calculateCacPayback, calculateChurnImpact, calculateLtvCac, calculateNrr, calculateRuleOf40, calculateStartupRunway } from '@/lib/calculations/saasMetrics';
 import { calculateDrawdown } from '@/lib/calculations/financialDecisions';
 import { calculateMeetingRoi } from '@/lib/calculations/meetingRoi';
+import { calculateEvVsGas, calculateHeatPumpVsFurnace } from '@/lib/calculations/consumerEnergy';
+import { calculateShortTermRental, calculateHouseHacking } from '@/lib/calculations/personalRealEstate';
+import { calculateTotalCompensation } from '@/lib/calculations/compensation';
 import ResultActions, { type ResultAction } from '@/components/ui/ResultActions';
 import { toolUx } from '@/data/toolUx';
 import { rowsToCsv } from '@/lib/resultExport';
@@ -181,6 +184,152 @@ const configs: Record<string, Config> = {
       estimatedValuePerMeeting: v(x, 'estimatedValue'),
     }),
     note: 'Cost estimates model direct loaded employee compensation and exclude preparation, follow-up, room, software, and opportunity costs. Value created is an entered planning assumption, not an accounting fact.',
+  },
+  'ev-vs-gas-break-even-calculator': {
+    fields: [
+      { key: 'evPrice', label: 'EV purchase price ($)', defaultValue: 45000, min: 0, step: 500 },
+      { key: 'gasPriceVehicle', label: 'Gas vehicle purchase price ($)', defaultValue: 35000, min: 0, step: 500 },
+      { key: 'annualMiles', label: 'Annual driving distance (miles)', defaultValue: 12000, min: 0, step: 500 },
+      { key: 'evEfficiency', label: 'EV efficiency (kWh/100 miles)', defaultValue: 30, min: 0, step: 1 },
+      { key: 'electricityRate', label: 'Electricity price per kWh ($)', defaultValue: 0.16, min: 0, step: 0.01 },
+      { key: 'gasMpg', label: 'Gas vehicle fuel economy (MPG)', defaultValue: 30, min: 0, step: 1 },
+      { key: 'fuelPrice', label: 'Gasoline price per gallon ($)', defaultValue: 3.5, min: 0, step: 0.05 },
+      { key: 'evMaintenance', label: 'EV annual maintenance ($)', defaultValue: 500, min: 0, step: 50 },
+      { key: 'gasMaintenance', label: 'Gas annual maintenance ($)', defaultValue: 900, min: 0, step: 50 },
+    ],
+    results: [
+      { key: 'pricePremium', label: 'EV purchase-price premium', format: 'currency' },
+      { key: 'evAnnualEnergy', label: 'EV annual energy cost', format: 'currency' },
+      { key: 'gasAnnualFuel', label: 'Gas annual fuel cost', format: 'currency' },
+      { key: 'annualSavings', label: 'Annual operating savings', format: 'currency' },
+      { key: 'breakEvenYears', label: 'Break-even time (years)', format: 'number' },
+      { key: 'breakEvenMiles', label: 'Break-even mileage', format: 'number' },
+    ],
+    calculate: (x) => calculateEvVsGas({
+      evPrice: v(x, 'evPrice'),
+      gasPriceVehicle: v(x, 'gasPriceVehicle'),
+      annualMiles: v(x, 'annualMiles'),
+      evEfficiency: v(x, 'evEfficiency'),
+      electricityRate: v(x, 'electricityRate'),
+      gasMpg: v(x, 'gasMpg'),
+      fuelPrice: v(x, 'fuelPrice'),
+      evMaintenance: v(x, 'evMaintenance'),
+      gasMaintenance: v(x, 'gasMaintenance'),
+    }),
+    note: 'Excludes financing, taxes, depreciation, insurance, and tax incentives. Real-world efficiency varies with weather, speed, and driving style.',
+  },
+  'heat-pump-vs-furnace-cost-calculator': {
+    fields: [
+      { key: 'heatingDemand', label: 'Annual useful heating demand (kWh)', defaultValue: 15000, min: 0, step: 500 },
+      { key: 'cop', label: 'Heat pump seasonal COP', defaultValue: 3, min: 0.1, step: 0.1 },
+      { key: 'electricityRate', label: 'Electricity price per kWh ($)', defaultValue: 0.16, min: 0, step: 0.01 },
+      { key: 'furnaceEfficiency', label: 'Furnace efficiency (%)', defaultValue: 90, min: 1, max: 100, step: 1 },
+      { key: 'fuelEnergyPrice', label: 'Furnace fuel price per kWh equivalent ($)', defaultValue: 0.08, min: 0, step: 0.005 },
+      { key: 'heatPumpInstall', label: 'Heat pump installed cost ($)', defaultValue: 12000, min: 0, step: 500 },
+      { key: 'furnaceInstall', label: 'Furnace installed cost ($)', defaultValue: 7000, min: 0, step: 500 },
+    ],
+    results: [
+      { key: 'heatPumpAnnualCost', label: 'Heat pump annual energy cost', format: 'currency' },
+      { key: 'furnaceAnnualCost', label: 'Furnace annual fuel cost', format: 'currency' },
+      { key: 'annualSavings', label: 'Annual energy savings', format: 'currency' },
+      { key: 'installPremium', label: 'Heat pump installation premium', format: 'currency' },
+      { key: 'paybackYears', label: 'Simple payback (years)', format: 'number' },
+    ],
+    calculate: (x) => calculateHeatPumpVsFurnace({
+      heatingDemand: v(x, 'heatingDemand'),
+      cop: v(x, 'cop'),
+      electricityRate: v(x, 'electricityRate'),
+      furnaceEfficiency: v(x, 'furnaceEfficiency'),
+      fuelEnergyPrice: v(x, 'fuelEnergyPrice'),
+      heatPumpInstall: v(x, 'heatPumpInstall'),
+      furnaceInstall: v(x, 'furnaceInstall'),
+    }),
+    note: 'Simplified seasonal energy model. Excludes backup auxiliary heat, equipment maintenance, service life, and delivery/connection standing fees.',
+  },
+  'short-term-rental-break-even-calculator': {
+    fields: [
+      { key: 'nightlyRate', label: 'Average nightly rate ($)', defaultValue: 180, min: 0, step: 5 },
+      { key: 'availableNights', label: 'Available nights per month', defaultValue: 30, min: 1, max: 31, step: 1 },
+      { key: 'occupancy', label: 'Expected occupancy (%)', defaultValue: 65, min: 0, max: 100, step: 1 },
+      { key: 'variableCost', label: 'Variable cost per occupied night ($)', defaultValue: 35, min: 0, step: 1 },
+      { key: 'fixedCosts', label: 'Monthly fixed operating costs ($)', defaultValue: 2200, min: 0, step: 50 },
+      { key: 'platformFee', label: 'Platform/payment fees (%)', defaultValue: 3, min: 0, max: 100, step: 0.5 },
+    ],
+    results: [
+      { key: 'occupiedNights', label: 'Occupied nights', format: 'number' },
+      { key: 'grossRevenue', label: 'Gross booking revenue', format: 'currency' },
+      { key: 'platformFees', label: 'Platform/payment fees', format: 'currency' },
+      { key: 'totalCosts', label: 'Total monthly costs', format: 'currency' },
+      { key: 'monthlyProfit', label: 'Estimated monthly profit', format: 'currency' },
+      { key: 'breakEvenOccupancy', label: 'Break-even occupancy', format: 'percent' },
+    ],
+    calculate: (x) => calculateShortTermRental({
+      nightlyRate: v(x, 'nightlyRate'),
+      availableNights: v(x, 'availableNights'),
+      occupancy: v(x, 'occupancy'),
+      variableCost: v(x, 'variableCost'),
+      fixedCosts: v(x, 'fixedCosts'),
+      platformFee: v(x, 'platformFee'),
+    }),
+    note: 'Excludes income taxes, debt service principal paydown, seasonality fluctuations, and local short-term rental compliance fees.',
+  },
+  'house-hacking-effective-rent-calculator': {
+    fields: [
+      { key: 'mortgage', label: 'Monthly mortgage payment ($)', defaultValue: 2200, min: 0, step: 50 },
+      { key: 'taxInsurance', label: 'Monthly property tax and insurance ($)', defaultValue: 600, min: 0, step: 25 },
+      { key: 'hoa', label: 'Monthly HOA ($)', defaultValue: 0, min: 0, step: 25 },
+      { key: 'utilities', label: 'Owner-paid utilities ($)', defaultValue: 300, min: 0, step: 25 },
+      { key: 'maintenance', label: 'Monthly maintenance reserve ($)', defaultValue: 250, min: 0, step: 25 },
+      { key: 'other', label: 'Other monthly housing costs ($)', defaultValue: 0, min: 0, step: 25 },
+      { key: 'rentReceived', label: 'Expected monthly rent received ($)', defaultValue: 1800, min: 0, step: 50 },
+      { key: 'vacancy', label: 'Rental vacancy allowance (%)', defaultValue: 5, min: 0, max: 100, step: 1 },
+    ],
+    results: [
+      { key: 'grossHousingCost', label: 'Gross monthly housing cost', format: 'currency' },
+      { key: 'effectiveRentIncome', label: 'Vacancy-adjusted rent received', format: 'currency' },
+      { key: 'effectiveHousingCost', label: 'Effective monthly housing cost', format: 'currency' },
+      { key: 'annualEffectiveCost', label: 'Annual effective housing cost', format: 'currency' },
+      { key: 'costOffsetPercent', label: 'Housing cost offset by rent', format: 'percent' },
+    ],
+    calculate: (x) => calculateHouseHacking({
+      mortgage: v(x, 'mortgage'),
+      taxInsurance: v(x, 'taxInsurance'),
+      hoa: v(x, 'hoa'),
+      utilities: v(x, 'utilities'),
+      maintenance: v(x, 'maintenance'),
+      other: v(x, 'other'),
+      rentReceived: v(x, 'rentReceived'),
+      vacancy: v(x, 'vacancy'),
+    }),
+    note: 'Cash-flow planning calculation. Excludes principal accumulation, property appreciation, income taxes, and transaction closing costs.',
+  },
+  'job-offer-total-comp-calculator': {
+    fields: [
+      { key: 'salary', label: 'Annual base salary ($)', defaultValue: 100000, min: 0, step: 1000 },
+      { key: 'bonus', label: 'Target annual bonus ($)', defaultValue: 10000, min: 0, step: 500 },
+      { key: 'equityTotal', label: 'Total equity grant value ($)', defaultValue: 40000, min: 0, step: 1000 },
+      { key: 'vestingYears', label: 'Equity vesting period (years)', defaultValue: 4, min: 0.1, step: 0.5 },
+      { key: 'retirement', label: 'Annual employer retirement contribution ($)', defaultValue: 5000, min: 0, step: 250 },
+      { key: 'benefits', label: 'Other annual employer-paid benefits ($)', defaultValue: 5000, min: 0, step: 250 },
+      { key: 'signingBonus', label: 'One-time signing bonus ($)', defaultValue: 10000, min: 0, step: 500 },
+    ],
+    results: [
+      { key: 'annualizedEquity', label: 'Annualized equity', format: 'currency' },
+      { key: 'recurringComp', label: 'Estimated recurring annual compensation', format: 'currency' },
+      { key: 'firstYearComp', label: 'Estimated first-year compensation', format: 'currency' },
+      { key: 'monthlyEquivalent', label: 'Recurring monthly equivalent', format: 'currency' },
+      { key: 'baseSalaryShare', label: 'Base salary share', format: 'percent' },
+    ],
+    calculate: (x) => calculateTotalCompensation({
+      salary: v(x, 'salary'),
+      bonus: v(x, 'bonus'),
+      equityTotal: v(x, 'equityTotal'),
+      vestingYears: v(x, 'vestingYears'),
+      retirement: v(x, 'retirement'),
+      benefits: v(x, 'benefits'),
+      signingBonus: v(x, 'signingBonus'),
+    }),
+    note: 'Equity values and bonuses are planning estimates. Stock price volatility, tax withholding, vesting cliffs, and non-guaranteed bonuses can alter actual take-home compensation.',
   },
 };
 

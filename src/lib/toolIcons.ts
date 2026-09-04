@@ -228,6 +228,12 @@ export const toolIcons: Record<string, string> = {
   'drawdown-recovery-calculator': '📈',
   'debt-snowball-vs-avalanche-calculator': '🏔️',
   'meeting-roi-calculator': '👥',
+  'ev-vs-gas-break-even-calculator': '⚡',
+  'heat-pump-vs-furnace-cost-calculator': '♨️',
+  'short-term-rental-break-even-calculator': '🏖️',
+  'house-hacking-effective-rent-calculator': '🏡',
+  'job-offer-total-comp-calculator': '💼',
+  'schengen-90-180-day-calculator': '🇪🇺',
 };
 
 export const getToolIcon = (slug: string): string => {

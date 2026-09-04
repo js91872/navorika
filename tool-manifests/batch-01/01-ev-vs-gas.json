@@ -1,0 +1,39 @@
+{
+  "name": "EV vs Gas Break-Even Calculator",
+  "slug": "ev-vs-gas-break-even-calculator",
+  "category": "Finance Calculators",
+  "description": "Compare electric and gasoline vehicle purchase and operating costs and estimate when fuel and maintenance savings recover an EV price premium.",
+  "search_intent": "Compare EV versus gasoline vehicle ownership costs and calculate break-even years and mileage.",
+  "keywords": [
+    "ev vs gas break even calculator",
+    "electric car vs gas cost calculator",
+    "ev savings calculator",
+    "ev payback calculator"
+  ],
+  "inputs": [
+    {"key":"evPrice","label":"EV purchase price","default":45000,"min":0},
+    {"key":"gasPriceVehicle","label":"Gas vehicle purchase price","default":35000,"min":0},
+    {"key":"annualMiles","label":"Annual driving distance","default":12000,"min":0},
+    {"key":"evEfficiency","label":"EV efficiency (kWh/100 miles)","default":30,"min":0},
+    {"key":"electricityRate","label":"Electricity price per kWh","default":0.16,"min":0},
+    {"key":"gasMpg","label":"Gas vehicle fuel economy (MPG)","default":30,"min":0},
+    {"key":"fuelPrice","label":"Gasoline price per gallon","default":3.5,"min":0},
+    {"key":"evMaintenance","label":"EV annual maintenance","default":500,"min":0},
+    {"key":"gasMaintenance","label":"Gas annual maintenance","default":900,"min":0}
+  ],
+  "outputs": [
+    {"key":"pricePremium","label":"EV purchase-price premium","format":"currency"},
+    {"key":"evAnnualEnergy","label":"EV annual energy cost","format":"currency"},
+    {"key":"gasAnnualFuel","label":"Gas annual fuel cost","format":"currency"},
+    {"key":"annualSavings","label":"Annual operating savings","format":"currency"},
+    {"key":"breakEvenYears","label":"Break-even time","format":"number"},
+    {"key":"breakEvenMiles","label":"Break-even mileage","format":"number"}
+  ],
+  "calculation": "EV annual energy cost = annual miles × EV kWh per 100 miles ÷ 100 × electricity rate. Gas annual fuel cost = annual miles ÷ MPG × fuel price. Annual operating savings = gas fuel + gas maintenance − EV electricity − EV maintenance. EV purchase premium = EV purchase price − gas vehicle price. Break-even years = positive purchase premium ÷ positive annual savings. Break-even mileage = break-even years × annual miles. If there is no positive premium, break-even is immediate/0. If annual savings are zero or negative while a positive EV premium exists, break-even is not applicable.",
+  "related_tools": ["electricity-cost-calculator","fuel-cost-split-calculator","solar-panel-calculator"],
+  "limitations": [
+    "Insurance, taxes, financing, depreciation, incentives and resale value are not automatically modeled.",
+    "Fuel and electricity prices can change.",
+    "Real-world efficiency varies by climate, speed, charging losses and driving conditions."
+  ]
+}

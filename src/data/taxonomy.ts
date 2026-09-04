@@ -38,10 +38,10 @@ export const clusters: ToolCluster[] = [
   { id: 'image-edit', name: 'Image Editing', description: 'Crop, rotate, retouch, watermark, and protect visual content.', category: 'image-tools', toolSlugs: ['blur-face', 'crop-image', 'photo-editor', 'rotate-image', 'watermark-image'] },
   { id: 'image-create', name: 'Image Creation and Publishing', description: 'Create visual assets, sample colors, and prepare images for identity, social, and web use.', category: 'image-tools', toolSlugs: ['image-color-picker', 'html-to-image', 'icon-sticker-maker', 'id-photo-maker', 'meme-generator', 'photo-collage-maker', 'social-media-resizer'] },
 
-  { id: 'finance-budget', name: 'Budgeting and Cash Flow', description: 'Model spending, purchasing power, currency, and household cash flow.', category: 'finance-calculators', toolSlugs: ['cashflow-budget-architect', 'currency-converter', 'wealth-inflation-matrix'] },
+  { id: 'finance-budget', name: 'Budgeting and Cash Flow', description: 'Model spending, purchasing power, currency, and household cash flow.', category: 'finance-calculators', toolSlugs: ['cashflow-budget-architect', 'currency-converter', 'wealth-inflation-matrix', 'ev-vs-gas-break-even-calculator', 'job-offer-total-comp-calculator'] },
   { id: 'finance-invest', name: 'Investing and Returns', description: 'Project recurring investments, fixed returns, and comparable investment outcomes.', category: 'finance-calculators', toolSlugs: ['sip-calculator', 'fd-calculator', 'ppf-calculator', 'investment-return-profiler'] },
   { id: 'saas-metrics', name: 'SaaS Metrics', description: 'Model cash runway, burn, acquisition efficiency, churn, growth, profitability, and recurring-revenue retention.', category: 'finance-calculators', toolSlugs: ['startup-runway-calculator', 'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator', 'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator', 'meeting-roi-calculator'] },
-  { id: 'real-estate-investing', name: 'Real Estate Investing', description: 'Estimate rental operations, property yields, refinance outcomes, and renovation-project returns.', category: 'finance-calculators', toolSlugs: ['rental-property-cash-flow-calculator', 'rental-yield-calculator', 'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator', 'fix-and-flip-profit-calculator'] },
+  { id: 'real-estate-investing', name: 'Real Estate Investing', description: 'Estimate rental operations, property yields, refinance outcomes, and renovation-project returns.', category: 'finance-calculators', toolSlugs: ['rental-property-cash-flow-calculator', 'rental-yield-calculator', 'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator', 'fix-and-flip-profit-calculator', 'short-term-rental-break-even-calculator', 'house-hacking-effective-rent-calculator'] },
   { id: 'investment-decisions', name: 'Investment and Debt Decisions', description: 'Understand loss recovery and compare structured multi-debt payoff strategies.', category: 'finance-calculators', toolSlugs: ['drawdown-recovery-calculator', 'debt-snowball-vs-avalanche-calculator'] },
   { id: 'finance-loans', name: 'Loans and Amortization', description: 'Estimate repayments, interest costs, and amortization schedules.', category: 'finance-calculators', toolSlugs: ['loan-emi-calculator', 'loan-amortization-suite'] },
   { id: 'finance-retirement', name: 'Savings and Retirement', description: 'Plan longer-term savings targets and retirement funding.', category: 'finance-calculators', toolSlugs: ['retirement-calculator', 'savings-retirement-hub'] },
@@ -77,8 +77,8 @@ export const clusters: ToolCluster[] = [
   { id: 'construction-structural', name: 'Structural and Electrical', description: 'Plan steel, wire, voltage-drop, and solar requirements before detailed design.', category: 'construction-calculators', toolSlugs: ['solar-panel-calculator', 'steel-weight-calculator', 'voltage-drop-calculator', 'wire-size-calculator'] },
   { id: 'construction-estimating', name: 'Project and Contractor Estimating', description: 'Create early building-cost estimates and detailed contractor documents with itemized project costs.', category: 'construction-calculators', toolSlugs: ['construction-cost-calculator', 'house-construction-cost-calculator', 'construction-estimate-builder', 'contractor-estimate-generator'] },
 
-  { id: 'everyday-travel-automotive', name: 'Travel and Automotive', description: 'Estimate trip fuel sharing and compare tire dimensions, clearance, and speedometer effects.', category: 'everyday-calculators', toolSlugs: ['fuel-cost-split-calculator', 'tire-size-calculator'] },
-  { id: 'everyday-home-utilities', name: 'Home and Utility Planning', description: 'Estimate aquarium capacity and appliance electricity consumption and cost.', category: 'everyday-calculators', toolSlugs: ['aquarium-volume-calculator', 'electricity-cost-calculator'] },
+  { id: 'everyday-travel-automotive', name: 'Travel and Automotive', description: 'Estimate trip fuel sharing and compare tire dimensions, clearance, and speedometer effects.', category: 'everyday-calculators', toolSlugs: ['fuel-cost-split-calculator', 'tire-size-calculator', 'schengen-90-180-day-calculator'] },
+  { id: 'everyday-home-utilities', name: 'Home and Utility Planning', description: 'Estimate aquarium capacity and appliance electricity consumption and cost.', category: 'everyday-calculators', toolSlugs: ['aquarium-volume-calculator', 'electricity-cost-calculator', 'heat-pump-vs-furnace-cost-calculator'] },
   { id: 'everyday-shopping-shipping', name: 'Shopping and Shipping', description: 'Compare package value and calculate dimensional shipping weight.', category: 'everyday-calculators', toolSlugs: ['unit-price-calculator', 'dimensional-weight-calculator'] },
   { id: 'everyday-strength-training', name: 'Strength Training', description: 'Plan balanced barbell plate loading for a target total weight.', category: 'everyday-calculators', toolSlugs: ['barbell-plate-calculator'] },
 ];
@@ -103,7 +103,7 @@ export const toolkits: Toolkit[] = [
     groups: [
       { name: 'Rooms and surfaces', description: 'Plan coverage and material allowances for floors, walls, drywall, and wallpaper.', toolSlugs: ['flooring-calculator', 'tile-calculator', 'paint-calculator', 'drywall-calculator', 'wallpaper-calculator'] },
       { name: 'Roofing and outdoor projects', description: 'Estimate roof geometry and materials for decks, fences, pavers, and landscaping.', toolSlugs: ['12-foot-gambrel-roof-truss-calculator', 'roof-area-calculator', 'roof-pitch-calculator', 'deck-board-calculator', 'fence-calculator', 'paver-calculator', 'polymeric-sand-calculator', 'mulch-calculator', 'topsoil-calculator'] },
-      { name: 'Home utilities', description: 'Estimate practical electrical, solar, and water-storage requirements.', toolSlugs: ['wire-size-calculator', 'voltage-drop-calculator', 'solar-panel-calculator', 'water-tank-calculator'] },
+      { name: 'Home utilities', description: 'Estimate practical electrical, solar, and water-storage requirements.', toolSlugs: ['wire-size-calculator', 'voltage-drop-calculator', 'solar-panel-calculator', 'water-tank-calculator', 'heat-pump-vs-furnace-cost-calculator'] },
     ], guideSlugs: [],
   },
   {
@@ -115,7 +115,7 @@ export const toolkits: Toolkit[] = [
       { name: 'Investment returns', description: 'Project and compare common recurring and fixed-return approaches.', toolSlugs: ['sip-calculator', 'fd-calculator', 'ppf-calculator', 'investment-return-profiler'] },
       { name: 'Long-term planning', description: 'Connect purchasing power, savings targets, and retirement needs.', toolSlugs: ['wealth-inflation-matrix', 'retirement-calculator', 'savings-retirement-hub'] },
       { name: 'SaaS business metrics', description: 'Connect runway, burn, acquisition efficiency, churn, growth, and revenue retention.', toolSlugs: ['startup-runway-calculator', 'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator', 'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator', 'meeting-roi-calculator'] },
-      { name: 'Real estate investing', description: 'Compare rental income, property yields, cash invested, refinance, and flip scenarios.', toolSlugs: ['rental-property-cash-flow-calculator', 'rental-yield-calculator', 'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator', 'fix-and-flip-profit-calculator'] },
+      { name: 'Real estate investing', description: 'Compare rental income, property yields, cash invested, refinance, and flip scenarios.', toolSlugs: ['rental-property-cash-flow-calculator', 'rental-yield-calculator', 'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator', 'fix-and-flip-profit-calculator', 'short-term-rental-break-even-calculator', 'house-hacking-effective-rent-calculator'] },
       { name: 'Investment risk', description: 'Understand the asymmetric gain required to recover from a portfolio drawdown.', toolSlugs: ['drawdown-recovery-calculator'] },
     ], guideSlugs: ['how-to-calculate-sip-returns', 'ppf-vs-fd-comparison'],
     faqs: [{ question: 'Are the projected returns guaranteed?', answer: 'No. The calculators show scenarios from the inputs and assumptions you provide. Actual rates, returns, taxes, fees, and inflation can differ.' }],
@@ -127,7 +127,7 @@ export const toolkits: Toolkit[] = [
     categorySlugs: ['finance-calculators'],
     groups: [
       { name: 'Borrowing', description: 'Estimate monthly payments, total interest, repayment schedules, and payoff-strategy tradeoffs.', toolSlugs: ['loan-emi-calculator', 'loan-amortization-suite', 'debt-snowball-vs-avalanche-calculator'] },
-      { name: 'Cash flow and tax', description: 'Review affordability alongside cash flow, currency, GST, and tax estimates.', toolSlugs: ['cashflow-budget-architect', 'currency-converter', 'gst-calculator', 'tax-calculator'] },
+      { name: 'Cash flow and tax', description: 'Review affordability alongside cash flow, currency, GST, and tax estimates.', toolSlugs: ['cashflow-budget-architect', 'currency-converter', 'gst-calculator', 'tax-calculator', 'ev-vs-gas-break-even-calculator', 'job-offer-total-comp-calculator'] },
     ], guideSlugs: ['how-to-calculate-emi', 'gst-calculation-guide', 'tax-planning-guide-2026'],
   },
   {
@@ -253,6 +253,12 @@ export const complementaryTools: Record<string, string[]> = {
   'drawdown-recovery-calculator': ['investment-return-profiler', 'wealth-inflation-matrix'],
   'debt-snowball-vs-avalanche-calculator': ['loan-emi-calculator', 'loan-amortization-suite'],
   'meeting-roi-calculator': ['startup-runway-calculator', 'saas-burn-rate-calculator', 'cac-payback-calculator'],
+  'ev-vs-gas-break-even-calculator': ['electricity-cost-calculator', 'fuel-cost-split-calculator', 'solar-panel-calculator'],
+  'heat-pump-vs-furnace-cost-calculator': ['electricity-cost-calculator', 'solar-panel-calculator', 'construction-cost-calculator'],
+  'short-term-rental-break-even-calculator': ['rental-property-cash-flow-calculator', 'rental-yield-calculator', 'cap-rate-calculator'],
+  'house-hacking-effective-rent-calculator': ['rental-property-cash-flow-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator'],
+  'job-offer-total-comp-calculator': ['tax-calculator', 'investment-return-profiler', 'retirement-calculator'],
+  'schengen-90-180-day-calculator': ['currency-converter'],
 };
 
 const clusterByTool = new Map(clusters.flatMap((cluster) => cluster.toolSlugs.map((slug) => [slug, cluster] as const)));
