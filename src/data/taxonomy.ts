@@ -40,7 +40,7 @@ export const clusters: ToolCluster[] = [
 
   { id: 'finance-budget', name: 'Budgeting and Cash Flow', description: 'Model spending, purchasing power, currency, and household cash flow.', category: 'finance-calculators', toolSlugs: ['cashflow-budget-architect', 'currency-converter', 'wealth-inflation-matrix'] },
   { id: 'finance-invest', name: 'Investing and Returns', description: 'Project recurring investments, fixed returns, and comparable investment outcomes.', category: 'finance-calculators', toolSlugs: ['sip-calculator', 'fd-calculator', 'ppf-calculator', 'investment-return-profiler'] },
-  { id: 'saas-metrics', name: 'SaaS Metrics', description: 'Model cash runway, burn, acquisition efficiency, churn, growth, profitability, and recurring-revenue retention.', category: 'finance-calculators', toolSlugs: ['startup-runway-calculator', 'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator', 'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator'] },
+  { id: 'saas-metrics', name: 'SaaS Metrics', description: 'Model cash runway, burn, acquisition efficiency, churn, growth, profitability, and recurring-revenue retention.', category: 'finance-calculators', toolSlugs: ['startup-runway-calculator', 'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator', 'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator', 'meeting-roi-calculator'] },
   { id: 'real-estate-investing', name: 'Real Estate Investing', description: 'Estimate rental operations, property yields, refinance outcomes, and renovation-project returns.', category: 'finance-calculators', toolSlugs: ['rental-property-cash-flow-calculator', 'rental-yield-calculator', 'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator', 'fix-and-flip-profit-calculator'] },
   { id: 'investment-decisions', name: 'Investment and Debt Decisions', description: 'Understand loss recovery and compare structured multi-debt payoff strategies.', category: 'finance-calculators', toolSlugs: ['drawdown-recovery-calculator', 'debt-snowball-vs-avalanche-calculator'] },
   { id: 'finance-loans', name: 'Loans and Amortization', description: 'Estimate repayments, interest costs, and amortization schedules.', category: 'finance-calculators', toolSlugs: ['loan-emi-calculator', 'loan-amortization-suite'] },
@@ -114,7 +114,7 @@ export const toolkits: Toolkit[] = [
     groups: [
       { name: 'Investment returns', description: 'Project and compare common recurring and fixed-return approaches.', toolSlugs: ['sip-calculator', 'fd-calculator', 'ppf-calculator', 'investment-return-profiler'] },
       { name: 'Long-term planning', description: 'Connect purchasing power, savings targets, and retirement needs.', toolSlugs: ['wealth-inflation-matrix', 'retirement-calculator', 'savings-retirement-hub'] },
-      { name: 'SaaS business metrics', description: 'Connect runway, burn, acquisition efficiency, churn, growth, and revenue retention.', toolSlugs: ['startup-runway-calculator', 'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator', 'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator'] },
+      { name: 'SaaS business metrics', description: 'Connect runway, burn, acquisition efficiency, churn, growth, and revenue retention.', toolSlugs: ['startup-runway-calculator', 'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator', 'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator', 'meeting-roi-calculator'] },
       { name: 'Real estate investing', description: 'Compare rental income, property yields, cash invested, refinance, and flip scenarios.', toolSlugs: ['rental-property-cash-flow-calculator', 'rental-yield-calculator', 'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator', 'fix-and-flip-profit-calculator'] },
       { name: 'Investment risk', description: 'Understand the asymmetric gain required to recover from a portfolio drawdown.', toolSlugs: ['drawdown-recovery-calculator'] },
     ], guideSlugs: ['how-to-calculate-sip-returns', 'ppf-vs-fd-comparison'],
@@ -252,6 +252,7 @@ export const complementaryTools: Record<string, string[]> = {
   'fix-and-flip-profit-calculator': ['brrrr-calculator', 'rental-property-cash-flow-calculator'],
   'drawdown-recovery-calculator': ['investment-return-profiler', 'wealth-inflation-matrix'],
   'debt-snowball-vs-avalanche-calculator': ['loan-emi-calculator', 'loan-amortization-suite'],
+  'meeting-roi-calculator': ['startup-runway-calculator', 'saas-burn-rate-calculator', 'cac-payback-calculator'],
 };
 
 const clusterByTool = new Map(clusters.flatMap((cluster) => cluster.toolSlugs.map((slug) => [slug, cluster] as const)));

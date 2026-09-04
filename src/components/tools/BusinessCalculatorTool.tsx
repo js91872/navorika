@@ -6,6 +6,7 @@ import { calculateAiTokens, calculateCdnCost, calculateCloudHostingCost, calcula
 import { calculateBrrrr, calculateCapRate, calculateCashOnCash, calculateFlip, calculateRentalCashFlow, calculateRentalYield } from '@/lib/calculations/realEstate';
 import { calculateBurnRate, calculateCacPayback, calculateChurnImpact, calculateLtvCac, calculateNrr, calculateRuleOf40, calculateStartupRunway } from '@/lib/calculations/saasMetrics';
 import { calculateDrawdown } from '@/lib/calculations/financialDecisions';
+import { calculateMeetingRoi } from '@/lib/calculations/meetingRoi';
 import ResultActions, { type ResultAction } from '@/components/ui/ResultActions';
 import { toolUx } from '@/data/toolUx';
 import { rowsToCsv } from '@/lib/resultExport';
@@ -146,6 +147,40 @@ const configs: Record<string, Config> = {
     results: [{ key: 'drawdownPercent', label: 'Drawdown', format: 'percent' }, { key: 'amountLost', label: 'Amount lost', format: 'currency' }, { key: 'recoveryGainPercent', label: 'Required recovery gain', format: 'percent' }, { key: 'requiredGain', label: 'Required gain in value', format: 'currency' }, { key: 'targetValue', label: 'Recovery target', format: 'currency' }],
     calculate: (x) => calculateDrawdown({ lossPercent: v(x, 'loss'), startValue: v(x, 'start'), currentValue: v(x, 'current') }),
     note: 'A loss and an equal percentage gain do not cancel because the gain starts from a smaller base. A 100% loss has no finite percentage recovery and is shown as not applicable.',
+  },
+  'meeting-roi-calculator': {
+    fields: [
+      { key: 'attendees', label: 'Number of attendees', defaultValue: 8, min: 1, step: 1 },
+      { key: 'compensation', label: 'Average annual compensation ($)', defaultValue: 80000, min: 0, step: 1000 },
+      { key: 'overhead', label: 'Employer overhead / benefits (%)', defaultValue: 25, min: 0, max: 200, step: 1 },
+      { key: 'workingHours', label: 'Working hours per year', defaultValue: 2080, min: 1, step: 1 },
+      { key: 'duration', label: 'Meeting duration (minutes)', defaultValue: 60, min: 1, step: 1 },
+      { key: 'meetingsPerWeek', label: 'Meetings per week', defaultValue: 1, min: 0, step: 1 },
+      { key: 'workingWeeks', label: 'Working weeks per year', defaultValue: 48, min: 1, max: 52, step: 1 },
+      { key: 'estimatedValue', label: 'Estimated value created per meeting ($)', defaultValue: 1000, min: 0, step: 50 },
+    ],
+    results: [
+      { key: 'hourlyLoadedCost', label: 'Loaded hourly cost per attendee', format: 'currency' },
+      { key: 'attendeeHours', label: 'Total attendee-hours', format: 'number' },
+      { key: 'costPerMeeting', label: 'Cost per meeting', format: 'currency' },
+      { key: 'weeklyMeetingCost', label: 'Weekly meeting cost', format: 'currency' },
+      { key: 'monthlyMeetingCost', label: 'Monthly equivalent meeting cost', format: 'currency' },
+      { key: 'annualMeetingCost', label: 'Annual meeting cost', format: 'currency' },
+      { key: 'breakEvenValuePerMeeting', label: 'Break-even value per meeting', format: 'currency' },
+      { key: 'netValuePerMeeting', label: 'Net value per meeting', format: 'currency' },
+      { key: 'estimatedRoiPercent', label: 'Estimated ROI', format: 'percent' },
+    ],
+    calculate: (x) => calculateMeetingRoi({
+      attendees: v(x, 'attendees'),
+      annualCompensation: v(x, 'compensation'),
+      overheadPercent: v(x, 'overhead'),
+      workingHoursPerYear: v(x, 'workingHours'),
+      durationMinutes: v(x, 'duration'),
+      meetingsPerWeek: v(x, 'meetingsPerWeek'),
+      workingWeeksPerYear: v(x, 'workingWeeks'),
+      estimatedValuePerMeeting: v(x, 'estimatedValue'),
+    }),
+    note: 'Cost estimates model direct loaded employee compensation and exclude preparation, follow-up, room, software, and opportunity costs. Value created is an entered planning assumption, not an accounting fact.',
   },
 };
 

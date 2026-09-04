@@ -59,6 +59,11 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'startup-runway-calculator': 'Project cash runway', 'rule-of-40-calculator': 'Check the Rule of 40' },
   },
+  'meeting-roi-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'startup-runway-calculator': 'Project startup runway', 'saas-burn-rate-calculator': 'Review detailed burn rate', 'cac-payback-calculator': 'Calculate CAC payback' },
+  },
   'ltv-cac-ratio-calculator': {
     processingMode: 'local', noUpload: true, noAccount: true,
     resultActions: ['copy-summary', 'download-csv'],

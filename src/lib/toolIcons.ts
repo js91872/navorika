@@ -227,6 +227,7 @@ export const toolIcons: Record<string, string> = {
   'fix-and-flip-profit-calculator': '🔨',
   'drawdown-recovery-calculator': '📈',
   'debt-snowball-vs-avalanche-calculator': '🏔️',
+  'meeting-roi-calculator': '👥',
 };
 
 export const getToolIcon = (slug: string): string => {
