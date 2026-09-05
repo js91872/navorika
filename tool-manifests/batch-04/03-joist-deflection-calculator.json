@@ -1,0 +1,86 @@
+{
+  "name": "Joist Deflection Calculator",
+  "slug": "joist-deflection-calculator",
+  "category": "Engineering Calculators",
+  "description": "Estimate simple beam or joist deflection under uniformly distributed load.",
+  "search_intent": "Calculate approximate joist deflection and compare it with common span-ratio limits.",
+  "keywords": [
+    "joist deflection calculator",
+    "floor joist deflection calculator",
+    "beam deflection calculator",
+    "l over 360 calculator",
+    "joist sag calculator"
+  ],
+  "inputs": [
+    {
+      "key": "span",
+      "label": "Clear span",
+      "default": 12,
+      "min": 0
+    },
+    {
+      "key": "uniformLoad",
+      "label": "Uniform load",
+      "default": 40,
+      "min": 0
+    },
+    {
+      "key": "spacing",
+      "label": "Joist spacing",
+      "default": 16,
+      "min": 0
+    },
+    {
+      "key": "elasticModulus",
+      "label": "Modulus of elasticity",
+      "default": 1600000,
+      "min": 0
+    },
+    {
+      "key": "width",
+      "label": "Joist width",
+      "default": 1.5,
+      "min": 0
+    },
+    {
+      "key": "depth",
+      "label": "Joist depth",
+      "default": 9.25,
+      "min": 0
+    }
+  ],
+  "outputs": [
+    {
+      "key": "lineLoad",
+      "label": "Load per joist",
+      "format": "number"
+    },
+    {
+      "key": "momentOfInertia",
+      "label": "Section moment of inertia",
+      "format": "number"
+    },
+    {
+      "key": "deflection",
+      "label": "Estimated midspan deflection",
+      "format": "number"
+    },
+    {
+      "key": "l360Limit",
+      "label": "L/360 limit",
+      "format": "number"
+    },
+    {
+      "key": "ratio",
+      "label": "Approximate span/deflection ratio",
+      "format": "text"
+    }
+  ],
+  "calculation": "For a simply supported rectangular joist with uniformly distributed load: tributary line load = area load × joist spacing converted to consistent units. Moment of inertia I = b×d^3/12. Maximum deflection delta = 5wL^4/(384EI). L/360 limit = span/360. Report span-to-deflection ratio when deflection > 0. Use consistent internal units and clearly label assumptions.",
+  "limitations": [
+    "Educational engineering estimate only, not structural design approval.",
+    "Assumes a simply supported prismatic member and uniformly distributed static load.",
+    "Does not account for composite action, notches, holes, load duration, vibration, shear deformation, connection stiffness or local building-code requirements.",
+    "Users should consult a qualified structural professional for safety-critical design."
+  ]
+}

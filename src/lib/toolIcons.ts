@@ -246,6 +246,12 @@ export const toolIcons: Record<string, string> = {
   'house-hacking-effective-rent-calculator': '🏡',
   'job-offer-total-comp-calculator': '💼',
   'schengen-90-180-day-calculator': '🇪🇺',
+  'soffit-fascia-calculator': '🏠',
+  'attic-insulation-payback-calculator': '❄️',
+  'joist-deflection-calculator': '📏',
+  'hvac-duct-cfm-calculator': '💨',
+  'shed-ramp-angle-calculator': '📐',
+  'construction-material-waste-calculator': '🗑️',
 };
 
 export const getToolIcon = (slug: string): string => {

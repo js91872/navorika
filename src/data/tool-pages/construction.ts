@@ -892,4 +892,160 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     faqs: [{ question: 'Should I enter loose or compacted thickness?', answer: 'Enter the intended finished compacted thickness.' }, { question: 'Is the default density universal?', answer: 'No. Obtain the design or supplier density for the selected mix.' }, { question: 'Does it design pavement structure?', answer: 'No.' }, { question: 'Are tons metric tonnes?', answer: 'Yes.' }],
     relatedTools: [{ slug: 'gravel-calculator', name: 'Gravel Calculator' }, { slug: 'sand-calculator', name: 'Sand Calculator' }], relatedGuides: ['asphalt-calculation-guide', 'gravel-calculation-guide'],
   },
+  'soffit-fascia-calculator': {
+    slug: 'soffit-fascia-calculator',
+    ...expansionPage({
+      name: 'Soffit & Fascia Calculator',
+      description: 'Estimate soffit area, fascia length, material pieces, and waste allowance for roof eaves.',
+      keywords: ['soffit calculator', 'fascia calculator', 'soffit and fascia calculator', 'soffit material calculator', 'fascia board calculator'],
+      intro: 'Calculate total soffit surface area, fascia linear footage, panel counts, and board quantities with custom waste allowances for roof eaves.',
+      formula: 'Soffit area = eave length × soffit depth; Soffit area with waste = soffit area × (1 + waste% / 100); Soffit pieces = ceil(area with waste ÷ panel coverage); Fascia length with waste = eave length × (1 + waste% / 100); Fascia boards = ceil(length with waste ÷ board length).',
+      interpretation: 'Soffit pieces and fascia boards round up to the next whole piece to account for standard supplier units and end-cuts.',
+      limitations: [
+        'Estimates straight eave runs only; roof geometry, gables, hip returns, and rake boards require separate takeoffs.',
+        'Manufacturer panel dimensions, vented vs solid exposure, and seam overlaps may alter piece requirements.',
+        'Confirm physical field measurements and local building code ventilation requirements before purchasing.',
+      ],
+      relatedTools: [
+        { slug: 'roof-area-calculator', name: 'Roof Area Calculator' },
+        { slug: 'roof-pitch-calculator', name: 'Roof Pitch Calculator' },
+        { slug: 'construction-cost-calculator', name: 'Construction Cost Calculator' },
+      ],
+      faq: [
+        { question: 'How do you calculate soffit area?', answer: 'Multiply the total linear length of the eaves by the soffit depth (overhang width from the wall to the fascia board).' },
+        { question: 'How much waste should I add for soffit and fascia?', answer: 'A 10% to 15% waste factor is typical to account for miter cuts at corners, seam overlapping, and offcuts.' },
+        { question: 'Does this include gable overhangs (rakes)?', answer: 'No. Gable rakes slope with the roof pitch and should be calculated separately and added to the total run.' },
+      ],
+    }),
+  },
+  'attic-insulation-payback-calculator': {
+    slug: 'attic-insulation-payback-calculator',
+    ...expansionPage({
+      name: 'Attic Insulation Payback Calculator',
+      description: 'Estimate attic insulation project cost, annual energy savings, and simple payback period.',
+      keywords: ['attic insulation payback calculator', 'insulation savings calculator', 'insulation roi calculator', 'attic insulation cost savings', 'insulation payback period'],
+      intro: 'Estimate installation costs, utility bill savings, and payback period from upgrading attic insulation with optional rebates and incentives.',
+      formula: 'Gross cost = attic area × installed cost per unit; Net cost = max(0, gross cost - rebates); Annual savings = annual energy cost × (savings% / 100); Monthly savings = annual savings ÷ 12; Simple payback = net cost ÷ annual savings.',
+      interpretation: 'Simple payback estimates the number of years for cumulative heating and cooling bill reductions to equal initial net project expenditure.',
+      limitations: [
+        'Simple payback planning estimate, not a dynamic whole-building energy simulation.',
+        'Actual savings depend on climate zone, current insulation R-value, air leakage, HVAC efficiency, fuel type, and thermostat settings.',
+        'Does not include inflation in energy prices, equipment maintenance, or financing interest.',
+      ],
+      relatedTools: [
+        { slug: 'house-construction-cost-calculator', name: 'House Construction Cost Calculator' },
+        { slug: 'heat-pump-vs-furnace-cost-calculator', name: 'Heat Pump vs Furnace Cost Calculator' },
+        { slug: 'electricity-cost-calculator', name: 'Electricity Cost Calculator' },
+      ],
+      faq: [
+        { question: 'What is a typical payback period for attic insulation?', answer: 'Attic insulation upgrades commonly pay back in 3 to 10 years, depending on existing insulation levels, local energy rates, and available utility rebates.' },
+        { question: 'How much energy does attic insulation save?', answer: 'The EPA estimates air sealing and adding attic insulation saves an average of 15% on heating and cooling costs (roughly 11% of total home energy).' },
+        { question: 'What if utility rebates exceed project cost?', answer: 'If rebates cover the entire installation, net cost and payback period are 0 years, providing immediate net positive cash flow.' },
+      ],
+    }),
+  },
+  'joist-deflection-calculator': {
+    slug: 'joist-deflection-calculator',
+    ...expansionPage({
+      name: 'Joist Deflection Calculator',
+      description: 'Estimate simple beam or joist deflection under uniformly distributed load and compare against L/360 limits.',
+      keywords: ['joist deflection calculator', 'floor joist deflection calculator', 'beam deflection calculator', 'l over 360 calculator', 'joist sag calculator'],
+      intro: 'Calculate midspan bending deflection, moment of inertia, tributary line load, and span-to-deflection ratios for simply supported floor joists.',
+      formula: 'Tributary line load w = uniform load (psf) × spacing (ft); Moment of inertia I = b × d³ ÷ 12; Maximum deflection delta = 5wL⁴ ÷ (384EI); Allowable limit = L ÷ 360; Ratio = L ÷ delta.',
+      interpretation: 'Higher span-to-deflection ratios (e.g. L/480 or L/720) indicate stiffer floors with less noticeable bounce, vibration, and finish cracking.',
+      limitations: [
+        'Educational engineering estimate for simply supported, prismatic rectangular members with static uniform loads.',
+        'Does not evaluate shear deformation, vibration/bounce dynamics, composite subfloor action, duration of load factors, holes, notches, or connection stiffness.',
+        'Does not certify structural safety or building code compliance; consult a licensed structural engineer for actual building design.',
+      ],
+      relatedTools: [
+        { slug: 'stair-stringer-calculator', name: 'Stair & Stringer Calculator' },
+        { slug: 'steel-weight-calculator', name: 'Steel Weight Calculator' },
+        { slug: 'deck-board-calculator', name: 'Deck Board Calculator' },
+      ],
+      faq: [
+        { question: 'What is the L/360 deflection standard?', answer: 'L/360 is the traditional building code deflection limit for floor live loads (span in inches divided by 360), designed to prevent plaster cracking and excessive sag.' },
+        { question: 'Should I use nominal or actual lumber dimensions?', answer: 'Always use actual dimensions (e.g. 1.5 inches by 9.25 inches for a nominal 2x10 joist).' },
+        { question: 'What modulus of elasticity (E) should I use?', answer: 'Standard dimension framing lumber (such as No. 2 Douglas Fir or Southern Pine) typically has an E between 1,400,000 psi and 1,700,000 psi. Engineered lumber (LVL) is often 1,900,000 to 2,000,000 psi.' },
+      ],
+    }),
+  },
+  'hvac-duct-cfm-calculator': {
+    slug: 'hvac-duct-cfm-calculator',
+    ...expansionPage({
+      name: 'HVAC Duct CFM Calculator',
+      description: 'Estimate airflow through round or rectangular HVAC ducts from duct cross-sectional area and air velocity.',
+      keywords: ['duct cfm calculator', 'hvac cfm calculator', 'duct airflow calculator', 'round duct cfm calculator', 'rectangular duct cfm calculator'],
+      intro: 'Calculate volumetric airflow rate in cubic feet per minute (CFM) for round and rectangular HVAC ducts using internal cross-sectional area and air velocity.',
+      formula: 'Round area (sq ft) = π × (diameter / 2)² ÷ 144; Rectangular area (sq ft) = (width × height) ÷ 144; Airflow CFM = duct area (sq ft) × velocity (ft/min).',
+      interpretation: 'Airflow is directly proportional to internal cross-sectional duct area and air velocity. Branch ducts typically operate at 600 to 800 FPM, while main supply trunks run at 700 to 1,000 FPM.',
+      limitations: [
+        'Calculates theoretical airflow from cross-sectional area and air velocity only (Q = A × V).',
+        'Does not size complete duct systems, calculate static pressure drops, friction loss, equivalent fitting lengths, or fan curves.',
+        'Use ACCA Manual D or ASHRAE fundamentals for comprehensive HVAC residential and commercial duct sizing.',
+      ],
+      relatedTools: [
+        { slug: 'air-compressor-cfm-calculator', name: 'Air Compressor CFM Calculator' },
+        { slug: 'voltage-drop-calculator', name: 'Voltage Drop Calculator' },
+        { slug: 'wire-size-calculator', name: 'Wire Size Calculator' },
+      ],
+      faq: [
+        { question: 'What is CFM in HVAC?', answer: 'CFM stands for Cubic Feet per Minute, measuring the volume of conditioned air circulated through ducts and spaces.' },
+        { question: 'What is standard residential duct air velocity?', answer: 'Residential branch ducts typically aim for 600 to 700 FPM to keep air noise quiet, while supply trunks run 700 to 900 FPM.' },
+        { question: 'How do I convert round duct diameter to CFM?', answer: 'Find the cross-sectional area in square feet: π × (diameter ÷ 2)² ÷ 144, then multiply by air velocity in feet per minute (FPM).' },
+      ],
+    }),
+  },
+  'shed-ramp-angle-calculator': {
+    slug: 'shed-ramp-angle-calculator',
+    ...expansionPage({
+      name: 'Shed Ramp Angle Calculator',
+      description: 'Calculate shed ramp slope angle, grade percentage, rise-to-run ratio, and ramp surface length.',
+      keywords: ['shed ramp angle calculator', 'shed ramp calculator', 'ramp slope calculator', 'mower shed ramp calculator', 'ramp length calculator'],
+      intro: 'Determine slope angle in degrees, percentage grade, slope ratio, and overall surface length for storage sheds, lawn mowers, ATV, and equipment ramps.',
+      formula: 'Slope angle = arctan(rise ÷ run) in degrees; Slope percentage = (rise ÷ run) × 100; Ramp surface length = √(rise² + run²); Slope ratio = 1 : (run ÷ rise).',
+      interpretation: 'A lower slope angle (under 12° to 15°) prevents lawn mower deck bottoming, equipment rollover, and slipping during wet conditions.',
+      limitations: [
+        'Pure geometric right-triangle calculation; does not certify ADA accessibility, structural load capacity, or local building code compliance.',
+        'Safe ramp slope depends on equipment ground clearance, wheel wheelbase, surface traction, and weather conditions.',
+        'Ramps steeper than 15° can be hazardous for heavy equipment and walking with loads.',
+      ],
+      relatedTools: [
+        { slug: 'stair-stringer-calculator', name: 'Stair & Stringer Calculator' },
+        { slug: 'roof-pitch-calculator', name: 'Roof Pitch Calculator' },
+        { slug: 'ladder-safe-reach-calculator', name: 'Ladder Safe Reach Calculator' },
+      ],
+      faq: [
+        { question: 'What is a good slope angle for a shed ramp?', answer: 'For riding lawn mowers and snowblowers, an angle of 10° to 15° (approximately a 1:4 to 1:6 ratio) is recommended to prevent mower deck scraping and slipping.' },
+        { question: 'How long should a shed ramp be for a 12-inch rise?', answer: 'For a 12-inch rise, a 48-inch run gives a 14° slope (1:4 ratio) with a 49.5-inch surface length. A 60-inch run gives an easier 11.3° slope (1:5 ratio) with a 61.2-inch ramp surface.' },
+        { question: 'Is a shed ramp governed by ADA guidelines?', answer: 'ADA requires 1:12 slope (4.76°) for pedestrian handicap ramps. Equipment utility ramps can be steeper but require sufficient deck clearance and traction.' },
+      ],
+    }),
+  },
+  'construction-material-waste-calculator': {
+    slug: 'construction-material-waste-calculator',
+    ...expansionPage({
+      name: 'Construction Material Waste Calculator',
+      description: 'Calculate material order quantities and waste allowance costs from net project requirements.',
+      keywords: ['construction waste calculator', 'material waste calculator', 'waste factor calculator', 'construction material allowance calculator', 'material overage calculator'],
+      intro: 'Apply a percentage waste allowance to net material quantities to calculate recommended order amounts, scrap quantities, and itemized material costs.',
+      formula: 'Waste quantity = net quantity × (waste% ÷ 100); Order quantity = net quantity + waste quantity; Net cost = net quantity × unit cost; Waste cost = waste quantity × unit cost; Total cost = order quantity × unit cost.',
+      interpretation: 'Applies contingency overage to account for pattern matching, offcuts, irregular room shapes, edge trim, and transport damage.',
+      limitations: [
+        'Waste allowance percentages vary widely by material type, installer skill, geometric complexity, and layout pattern.',
+        'Calculated quantities must typically be rounded up to whole commercial purchasing units (cartons, boxes, sheets, bundles, or pallets).',
+        'Verify packaging specifications and supplier minimum order quantities before placing orders.',
+      ],
+      relatedTools: [
+        { slug: 'construction-cost-calculator', name: 'Construction Cost Calculator' },
+        { slug: 'house-construction-cost-calculator', name: 'House Construction Cost Calculator' },
+        { slug: 'drywall-calculator', name: 'Drywall Calculator' },
+      ],
+      faq: [
+        { question: 'What is standard construction waste percentage?', answer: 'Standard allowances are typically 5% for simple dimensional lumber and decking, 10% for drywall, siding, and roofing, and 15% to 20% for ceramic tile and stone with diagonal cuts.' },
+        { question: 'Why is waste allowance necessary?', answer: 'End cuts, miter angles, broken pieces, edge trimming, and future repair stock require ordering more material than exact measured net square footage.' },
+        { question: 'How do I convert order quantity into packages?', answer: 'Divide the total recommended order quantity by the coverage per box, roll, or pallet from the manufacturer, then round up to the next whole package.' },
+      ],
+    }),
+  },
 };

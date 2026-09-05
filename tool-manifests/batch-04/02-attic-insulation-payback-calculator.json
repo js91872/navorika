@@ -1,0 +1,80 @@
+{
+  "name": "Attic Insulation Payback Calculator",
+  "slug": "attic-insulation-payback-calculator",
+  "category": "Construction Calculators",
+  "description": "Estimate attic insulation project cost, annual energy savings and simple payback period.",
+  "search_intent": "Estimate whether adding attic insulation can pay back through energy-cost savings.",
+  "keywords": [
+    "attic insulation payback calculator",
+    "insulation savings calculator",
+    "insulation roi calculator",
+    "attic insulation cost savings",
+    "insulation payback period"
+  ],
+  "inputs": [
+    {
+      "key": "atticArea",
+      "label": "Attic area",
+      "default": 1500,
+      "min": 0
+    },
+    {
+      "key": "installedCostPerArea",
+      "label": "Installed cost per square unit",
+      "default": 1.8,
+      "min": 0
+    },
+    {
+      "key": "annualHeatingCoolingCost",
+      "label": "Annual heating and cooling cost",
+      "default": 1800,
+      "min": 0
+    },
+    {
+      "key": "estimatedSavingsPercent",
+      "label": "Estimated energy savings (%)",
+      "default": 12,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "key": "rebates",
+      "label": "Rebates or incentives",
+      "default": 0,
+      "min": 0
+    }
+  ],
+  "outputs": [
+    {
+      "key": "grossProjectCost",
+      "label": "Gross project cost",
+      "format": "currency"
+    },
+    {
+      "key": "netProjectCost",
+      "label": "Net project cost",
+      "format": "currency"
+    },
+    {
+      "key": "annualSavings",
+      "label": "Estimated annual savings",
+      "format": "currency"
+    },
+    {
+      "key": "monthlySavings",
+      "label": "Estimated monthly savings",
+      "format": "currency"
+    },
+    {
+      "key": "paybackYears",
+      "label": "Simple payback period",
+      "format": "number"
+    }
+  ],
+  "calculation": "Gross project cost = attic area × installed cost per area. Net project cost = max(0, gross project cost - rebates). Annual savings = annual heating/cooling cost × savingsPercent/100. Monthly savings = annual savings / 12. Simple payback years = net project cost / annual savings when annual savings > 0; otherwise null/not applicable.",
+  "limitations": [
+    "This is a simple-payback estimator and not a building energy simulation.",
+    "Actual energy savings depend on climate, existing insulation, air sealing, HVAC efficiency and occupant behavior.",
+    "Do not guarantee savings percentages."
+  ]
+}

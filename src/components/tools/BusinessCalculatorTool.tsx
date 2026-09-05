@@ -13,6 +13,12 @@ import { calculateTotalCompensation } from '@/lib/calculations/compensation';
 import { calculateDogAge, calculatePuppyGrowth, calculateCatCalories } from '@/lib/calculations/petHealth';
 import { calculateCaffeineHalfLife, calculateHrvDeviation } from '@/lib/calculations/healthBiometrics';
 import { calculateWilksDots } from '@/lib/calculations/powerlifting';
+import { calculateSoffitFascia } from '@/lib/calculations/soffitFascia';
+import { calculateAtticInsulation } from '@/lib/calculations/atticInsulation';
+import { calculateJoistDeflection } from '@/lib/calculations/joistDeflection';
+import { calculateHvacDuctCfm } from '@/lib/calculations/hvacDuctCfm';
+import { calculateShedRamp } from '@/lib/calculations/shedRamp';
+import { calculateMaterialWaste } from '@/lib/calculations/materialWaste';
 import ResultActions, { type ResultAction } from '@/components/ui/ResultActions';
 import { toolUx } from '@/data/toolUx';
 import { rowsToCsv } from '@/lib/resultExport';
@@ -480,6 +486,153 @@ const configs: Record<string, Config> = {
     ],
     calculate: (x) => calculateWilksDots({ sex: s(x, 'sex', 'male'), bodyweightKg: v(x, 'bodyweightKg'), totalKg: v(x, 'totalKg') }),
     note: 'Uses published standard coefficients for DOTS and original 1994 Wilks scoring. Different federations or eras may use updated coefficients. For training and comparative analysis only.',
+  },
+  'soffit-fascia-calculator': {
+    fields: [
+      { key: 'eaveLength', label: 'Total eave length (ft)', defaultValue: 120, min: 0, step: 1 },
+      { key: 'soffitDepth', label: 'Soffit depth (ft)', defaultValue: 2, min: 0, step: 0.25 },
+      { key: 'fasciaBoardLength', label: 'Fascia board length (ft)', defaultValue: 12, min: 0, step: 1 },
+      { key: 'soffitPanelCoverage', label: 'Soffit panel coverage (sq ft/piece)', defaultValue: 12, min: 0, step: 1 },
+      { key: 'wastePercent', label: 'Waste allowance (%)', defaultValue: 10, min: 0, max: 50, step: 1 },
+    ],
+    results: [
+      { key: 'soffitArea', label: 'Soffit net area (sq ft)', format: 'number' },
+      { key: 'soffitAreaWithWaste', label: 'Soffit area with waste (sq ft)', format: 'number' },
+      { key: 'soffitPieces', label: 'Estimated soffit panels', format: 'number' },
+      { key: 'fasciaLengthWithWaste', label: 'Fascia length with waste (ft)', format: 'number' },
+      { key: 'fasciaBoards', label: 'Estimated fascia boards', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateSoffitFascia({
+        eaveLength: v(x, 'eaveLength'),
+        soffitDepth: v(x, 'soffitDepth'),
+        fasciaBoardLength: v(x, 'fasciaBoardLength'),
+        soffitPanelCoverage: v(x, 'soffitPanelCoverage'),
+        wastePercent: v(x, 'wastePercent'),
+      }),
+    note: 'Roof geometry, gables, hip returns, and rake boards may require separate measurement. Verify manufacturer panel dimensions and field measurements before ordering.',
+  },
+  'attic-insulation-payback-calculator': {
+    fields: [
+      { key: 'atticArea', label: 'Attic area (sq ft)', defaultValue: 1500, min: 0, step: 50 },
+      { key: 'installedCostPerArea', label: 'Installed cost per sq ft ($)', defaultValue: 1.8, min: 0, step: 0.05 },
+      { key: 'annualHeatingCoolingCost', label: 'Annual heating & cooling cost ($)', defaultValue: 1800, min: 0, step: 25 },
+      { key: 'estimatedSavingsPercent', label: 'Estimated energy savings (%)', defaultValue: 12, min: 0, max: 100, step: 1 },
+      { key: 'rebates', label: 'Rebates or incentives ($)', defaultValue: 0, min: 0, step: 25 },
+    ],
+    results: [
+      { key: 'grossProjectCost', label: 'Gross project cost', format: 'currency' },
+      { key: 'netProjectCost', label: 'Net project cost', format: 'currency' },
+      { key: 'annualSavings', label: 'Estimated annual savings', format: 'currency' },
+      { key: 'monthlySavings', label: 'Estimated monthly savings', format: 'currency' },
+      { key: 'paybackYears', label: 'Simple payback period (years)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateAtticInsulation({
+        atticArea: v(x, 'atticArea'),
+        installedCostPerArea: v(x, 'installedCostPerArea'),
+        annualHeatingCoolingCost: v(x, 'annualHeatingCoolingCost'),
+        estimatedSavingsPercent: v(x, 'estimatedSavingsPercent'),
+        rebates: v(x, 'rebates'),
+      }),
+    note: 'This is a simple-payback estimator and not a building energy simulation. Actual savings depend on climate zone, current insulation level, air sealing, HVAC efficiency, and occupant habits.',
+  },
+  'joist-deflection-calculator': {
+    fields: [
+      { key: 'span', label: 'Clear span (ft)', defaultValue: 12, min: 0, step: 0.5 },
+      { key: 'uniformLoad', label: 'Uniform load (psf)', defaultValue: 40, min: 0, step: 5, help: 'Total dead + live area load (e.g. 10 psf dead + 30 psf live = 40 psf).' },
+      { key: 'spacing', label: 'Joist spacing (inches on-center)', defaultValue: 16, min: 0, step: 1 },
+      { key: 'elasticModulus', label: 'Modulus of elasticity E (psi)', defaultValue: 1600000, min: 0, step: 50000, help: 'Typical framing lumber: 1,300,000 to 1,800,000 psi.' },
+      { key: 'width', label: 'Joist width b (inches)', defaultValue: 1.5, min: 0, step: 0.125, help: 'Actual dimension (e.g. 1.5" for nominal 2x lumber).' },
+      { key: 'depth', label: 'Joist depth d (inches)', defaultValue: 9.25, min: 0, step: 0.125, help: 'Actual dimension (e.g. 7.25" for 2x8, 9.25" for 2x10, 11.25" for 2x12).' },
+    ],
+    results: [
+      { key: 'lineLoad', label: 'Tributary line load (lb/ft)', format: 'number' },
+      { key: 'momentOfInertia', label: 'Moment of inertia I (in⁴)', format: 'number' },
+      { key: 'deflection', label: 'Estimated midspan deflection (inches)', format: 'number' },
+      { key: 'l360Limit', label: 'L/360 deflection limit (inches)', format: 'number' },
+      { key: 'ratio', label: 'Span / deflection ratio', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateJoistDeflection({
+        span: v(x, 'span'),
+        uniformLoad: v(x, 'uniformLoad'),
+        spacing: v(x, 'spacing'),
+        elasticModulus: v(x, 'elasticModulus'),
+        width: v(x, 'width'),
+        depth: v(x, 'depth'),
+      }),
+    note: 'Simplified engineering estimate for simply supported, uniformly loaded rectangular members. Does not evaluate shear deflection, vibration, composite action, load duration, notches, holes, or building code compliance. Consult a licensed structural engineer for safety-critical framing.',
+  },
+  'hvac-duct-cfm-calculator': {
+    fields: [
+      {
+        key: 'ductShape',
+        label: 'Duct shape',
+        defaultValue: 'round',
+        type: 'select',
+        options: [
+          { value: 'round', label: 'Round duct' },
+          { value: 'rectangular', label: 'Rectangular duct' },
+        ],
+      },
+      { key: 'diameter', label: 'Round duct diameter (inches)', defaultValue: 8, min: 0, step: 1 },
+      { key: 'width', label: 'Rectangular duct width (inches)', defaultValue: 12, min: 0, step: 1 },
+      { key: 'height', label: 'Rectangular duct height (inches)', defaultValue: 8, min: 0, step: 1 },
+      { key: 'velocity', label: 'Air velocity (FPM)', defaultValue: 700, min: 0, step: 25, help: 'Typical branch ducts run 600–800 FPM; main trunks run 800–1,000 FPM.' },
+    ],
+    results: [
+      { key: 'ductArea', label: 'Duct cross-sectional area (sq ft)', format: 'number' },
+      { key: 'cfm', label: 'Estimated airflow (CFM)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateHvacDuctCfm({
+        ductShape: s(x, 'ductShape', 'round'),
+        diameter: v(x, 'diameter'),
+        width: v(x, 'width'),
+        height: v(x, 'height'),
+        velocity: v(x, 'velocity'),
+      }),
+    note: 'Calculates theoretical airflow from cross-sectional area and air velocity (Q = A × V). Does not size ducts from static pressure, friction loss, equivalent length, fittings, or fan curves. Use ACCA Manual D for complete HVAC design.',
+  },
+  'shed-ramp-angle-calculator': {
+    fields: [
+      { key: 'rise', label: 'Vertical rise (inches)', defaultValue: 12, min: 0, step: 0.5 },
+      { key: 'run', label: 'Horizontal run (inches)', defaultValue: 48, min: 0, step: 1 },
+    ],
+    results: [
+      { key: 'angleDegrees', label: 'Ramp slope angle (degrees)', format: 'number' },
+      { key: 'slopePercent', label: 'Ramp slope', format: 'percent' },
+      { key: 'rampLength', label: 'Ramp surface length (inches)', format: 'number' },
+      { key: 'riseRunRatio', label: 'Rise-to-run ratio', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateShedRamp({
+        rise: v(x, 'rise'),
+        run: v(x, 'run'),
+      }),
+    note: 'Geometric calculation only, not an ADA accessibility or building code compliance checker. Safe ramp angle depends on intended equipment (e.g. lawn mower deck clearance), wheel traction, and weather conditions.',
+  },
+  'construction-material-waste-calculator': {
+    fields: [
+      { key: 'netQuantity', label: 'Net material quantity', defaultValue: 1000, min: 0, step: 1, help: 'Measured net requirement (sq ft, linear ft, pieces, or units).' },
+      { key: 'wastePercent', label: 'Waste allowance (%)', defaultValue: 10, min: 0, max: 100, step: 1 },
+      { key: 'unitCost', label: 'Unit cost ($)', defaultValue: 2.5, min: 0, step: 0.05 },
+    ],
+    results: [
+      { key: 'wasteQuantity', label: 'Waste allowance quantity', format: 'number' },
+      { key: 'orderQuantity', label: 'Recommended order quantity', format: 'number' },
+      { key: 'netMaterialCost', label: 'Net material cost', format: 'currency' },
+      { key: 'wasteCost', label: 'Waste allowance cost', format: 'currency' },
+      { key: 'totalMaterialCost', label: 'Total material cost', format: 'currency' },
+    ],
+    calculate: (x) =>
+      calculateMaterialWaste({
+        netQuantity: v(x, 'netQuantity'),
+        wastePercent: v(x, 'wastePercent'),
+        unitCost: v(x, 'unitCost'),
+      }),
+    note: 'General allowance calculation for material ordering. Material layout, cuts, pattern matching, and jobsite damage affect actual scrap. Final purchasing may require rounding to full bundles, cartons, sheets, or pallets.',
   },
 };
 

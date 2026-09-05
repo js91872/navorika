@@ -1,0 +1,80 @@
+{
+  "name": "Soffit & Fascia Calculator",
+  "slug": "soffit-fascia-calculator",
+  "category": "Construction Calculators",
+  "description": "Estimate soffit area, fascia length, material quantity and waste allowance for roof eaves.",
+  "search_intent": "Calculate soffit and fascia materials needed for a house or roof perimeter.",
+  "keywords": [
+    "soffit calculator",
+    "fascia calculator",
+    "soffit and fascia calculator",
+    "soffit material calculator",
+    "fascia board calculator"
+  ],
+  "inputs": [
+    {
+      "key": "eaveLength",
+      "label": "Total eave length",
+      "default": 120,
+      "min": 0
+    },
+    {
+      "key": "soffitDepth",
+      "label": "Soffit depth",
+      "default": 2,
+      "min": 0
+    },
+    {
+      "key": "fasciaBoardLength",
+      "label": "Fascia board length",
+      "default": 12,
+      "min": 0
+    },
+    {
+      "key": "soffitPanelCoverage",
+      "label": "Soffit panel coverage per piece",
+      "default": 12,
+      "min": 0
+    },
+    {
+      "key": "wastePercent",
+      "label": "Waste allowance (%)",
+      "default": 10,
+      "min": 0,
+      "max": 50
+    }
+  ],
+  "outputs": [
+    {
+      "key": "soffitArea",
+      "label": "Soffit area",
+      "format": "number"
+    },
+    {
+      "key": "soffitAreaWithWaste",
+      "label": "Soffit area with waste",
+      "format": "number"
+    },
+    {
+      "key": "soffitPieces",
+      "label": "Estimated soffit pieces",
+      "format": "number"
+    },
+    {
+      "key": "fasciaLengthWithWaste",
+      "label": "Fascia length with waste",
+      "format": "number"
+    },
+    {
+      "key": "fasciaBoards",
+      "label": "Estimated fascia boards",
+      "format": "number"
+    }
+  ],
+  "calculation": "Soffit area = total eave length × soffit depth. Apply waste multiplier 1 + wastePercent/100. Soffit pieces = ceiling(soffit area with waste / soffit panel coverage). Fascia required length = eave length × waste multiplier. Fascia board count = ceiling(fascia required length / board length). Preserve user-selected units consistently.",
+  "limitations": [
+    "Roof geometry, gables, returns and rake boards may require separate measurement.",
+    "Actual manufacturer panel coverage can differ.",
+    "Estimator only; verify field measurements before ordering."
+  ]
+}

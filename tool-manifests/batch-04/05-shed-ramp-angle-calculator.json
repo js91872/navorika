@@ -1,0 +1,56 @@
+{
+  "name": "Shed Ramp Angle Calculator",
+  "slug": "shed-ramp-angle-calculator",
+  "category": "Construction Calculators",
+  "description": "Calculate shed ramp angle, slope, rise-to-run ratio and ramp length.",
+  "search_intent": "Find the ramp angle and required length for a shed, mower or equipment ramp.",
+  "keywords": [
+    "shed ramp angle calculator",
+    "shed ramp calculator",
+    "ramp slope calculator",
+    "mower shed ramp calculator",
+    "ramp length calculator"
+  ],
+  "inputs": [
+    {
+      "key": "rise",
+      "label": "Vertical rise",
+      "default": 12,
+      "min": 0
+    },
+    {
+      "key": "run",
+      "label": "Horizontal run",
+      "default": 48,
+      "min": 0
+    }
+  ],
+  "outputs": [
+    {
+      "key": "angleDegrees",
+      "label": "Ramp angle",
+      "format": "number"
+    },
+    {
+      "key": "slopePercent",
+      "label": "Slope",
+      "format": "percent"
+    },
+    {
+      "key": "rampLength",
+      "label": "Ramp surface length",
+      "format": "number"
+    },
+    {
+      "key": "riseRunRatio",
+      "label": "Rise-to-run ratio",
+      "format": "text"
+    }
+  ],
+  "calculation": "Angle degrees = atan(rise/run) converted to degrees when run > 0. Slope percent = rise/run × 100. Ramp length = sqrt(rise² + run²). Rise-to-run ratio should be normalized as approximately 1 : run/rise when rise > 0. Preserve units consistently.",
+  "limitations": [
+    "This is a geometry calculator, not an accessibility or building-code compliance checker.",
+    "Safe ramp slope depends on intended equipment, surface traction and local requirements.",
+    "Very steep ramps can be unsafe even if geometrically valid."
+  ]
+}

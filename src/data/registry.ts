@@ -1647,6 +1647,96 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'UTF-8 vs UTF-16 Byte Calculator',
     heroDescription: 'Compare encoded byte sizes, code points, and UTF-16 code units across UTF-8 and UTF-16 string storage.'
+  },
+  {
+    slug: 'soffit-fascia-calculator',
+    title: 'Soffit & Fascia Calculator',
+    description: 'Estimate soffit area, fascia length, material quantity and waste allowance for roof eaves.',
+    category: 'construction-calculators',
+    keywords: [
+      'soffit calculator',
+      'fascia calculator',
+      'soffit and fascia calculator',
+      'soffit material calculator',
+      'fascia board calculator'
+    ],
+    heroTitle: 'Soffit & Fascia Calculator',
+    heroDescription: 'Calculate soffit surface area, fascia linear footage, panel counts, and board quantities with custom waste allowances.'
+  },
+  {
+    slug: 'attic-insulation-payback-calculator',
+    title: 'Attic Insulation Payback Calculator',
+    description: 'Estimate attic insulation project cost, annual energy savings and simple payback period.',
+    category: 'construction-calculators',
+    keywords: [
+      'attic insulation payback calculator',
+      'insulation savings calculator',
+      'insulation roi calculator',
+      'attic insulation cost savings',
+      'insulation payback period'
+    ],
+    heroTitle: 'Attic Insulation Payback Calculator',
+    heroDescription: 'Estimate net installation costs, annual heating and cooling bill reductions, and simple payback years.'
+  },
+  {
+    slug: 'joist-deflection-calculator',
+    title: 'Joist Deflection Calculator',
+    description: 'Estimate simple beam or joist deflection under uniformly distributed load.',
+    category: 'construction-calculators',
+    keywords: [
+      'joist deflection calculator',
+      'floor joist deflection calculator',
+      'beam deflection calculator',
+      'l over 360 calculator',
+      'joist sag calculator'
+    ],
+    heroTitle: 'Joist Deflection Calculator',
+    heroDescription: 'Calculate midspan bending deflection, moment of inertia, tributary load, and L/360 code ratios for floor joists.'
+  },
+  {
+    slug: 'hvac-duct-cfm-calculator',
+    title: 'HVAC Duct CFM Calculator',
+    description: 'Estimate airflow through round or rectangular HVAC ducts from duct area and air velocity.',
+    category: 'construction-calculators',
+    keywords: [
+      'duct cfm calculator',
+      'hvac cfm calculator',
+      'duct airflow calculator',
+      'round duct cfm calculator',
+      'rectangular duct cfm calculator'
+    ],
+    heroTitle: 'HVAC Duct CFM Calculator',
+    heroDescription: 'Calculate volumetric airflow in CFM from round or rectangular duct cross-sectional area and air velocity.'
+  },
+  {
+    slug: 'shed-ramp-angle-calculator',
+    title: 'Shed Ramp Angle Calculator',
+    description: 'Calculate shed ramp angle, slope, rise-to-run ratio and ramp length.',
+    category: 'construction-calculators',
+    keywords: [
+      'shed ramp angle calculator',
+      'shed ramp calculator',
+      'ramp slope calculator',
+      'mower shed ramp calculator',
+      'ramp length calculator'
+    ],
+    heroTitle: 'Shed Ramp Angle Calculator',
+    heroDescription: 'Find ramp slope angle in degrees, slope percentage, slope ratio, and surface length for equipment sheds.'
+  },
+  {
+    slug: 'construction-material-waste-calculator',
+    title: 'Construction Material Waste Calculator',
+    description: 'Calculate material order quantity and waste allowance from net project requirements.',
+    category: 'construction-calculators',
+    keywords: [
+      'construction waste calculator',
+      'material waste calculator',
+      'waste factor calculator',
+      'construction material allowance calculator',
+      'material overage calculator'
+    ],
+    heroTitle: 'Construction Material Waste Calculator',
+    heroDescription: 'Calculate recommended material order quantity, waste scrap allowance, and itemized material costs.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,

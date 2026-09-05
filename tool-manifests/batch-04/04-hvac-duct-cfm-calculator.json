@@ -1,0 +1,63 @@
+{
+  "name": "HVAC Duct CFM Calculator",
+  "slug": "hvac-duct-cfm-calculator",
+  "category": "Engineering Calculators",
+  "description": "Estimate airflow through round or rectangular HVAC ducts from duct area and air velocity.",
+  "search_intent": "Calculate duct airflow in CFM using duct dimensions and air velocity.",
+  "keywords": [
+    "duct cfm calculator",
+    "hvac cfm calculator",
+    "duct airflow calculator",
+    "round duct cfm calculator",
+    "rectangular duct cfm calculator"
+  ],
+  "inputs": [
+    {
+      "key": "ductShape",
+      "label": "Duct shape",
+      "default": "round"
+    },
+    {
+      "key": "diameter",
+      "label": "Round duct diameter",
+      "default": 8,
+      "min": 0
+    },
+    {
+      "key": "width",
+      "label": "Rectangular duct width",
+      "default": 12,
+      "min": 0
+    },
+    {
+      "key": "height",
+      "label": "Rectangular duct height",
+      "default": 8,
+      "min": 0
+    },
+    {
+      "key": "velocity",
+      "label": "Air velocity (FPM)",
+      "default": 700,
+      "min": 0
+    }
+  ],
+  "outputs": [
+    {
+      "key": "ductArea",
+      "label": "Duct cross-sectional area",
+      "format": "number"
+    },
+    {
+      "key": "cfm",
+      "label": "Estimated airflow",
+      "format": "number"
+    }
+  ],
+  "calculation": "Round duct area = pi × (diameter/2)^2 converted from square inches to square feet. Rectangular duct area = width × height / 144 when dimensions are inches. Airflow CFM = cross-sectional area in ft² × velocity in ft/min. Return null for invalid dimensions.",
+  "limitations": [
+    "This calculates airflow from area and velocity only.",
+    "It does not size ducts from static pressure, friction loss, fittings or fan performance.",
+    "Actual HVAC design should consider Manual D or other applicable engineering methods."
+  ]
+}

@@ -195,6 +195,36 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'base64-encoder': 'Encode text to Base64', 'url-encoder-decoder': 'URL encode and decode' },
   },
+  'soffit-fascia-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'roof-area-calculator': 'Calculate roof surface area', 'roof-pitch-calculator': 'Convert roof rise and run slope' },
+  },
+  'attic-insulation-payback-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'heat-pump-vs-furnace-cost-calculator': 'Compare heating system costs', 'electricity-cost-calculator': 'Calculate appliance electricity cost' },
+  },
+  'joist-deflection-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'stair-stringer-calculator': 'Calculate stair stringer geometry', 'steel-weight-calculator': 'Calculate structural steel weight' },
+  },
+  'hvac-duct-cfm-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'air-compressor-cfm-calculator': 'Match compressor CFM output', 'voltage-drop-calculator': 'Calculate electrical voltage drop' },
+  },
+  'shed-ramp-angle-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'stair-stringer-calculator': 'Calculate stair stringer geometry', 'roof-pitch-calculator': 'Calculate roof slope and pitch' },
+  },
+  'construction-material-waste-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'construction-cost-calculator': 'Estimate early project costs', 'drywall-calculator': 'Estimate drywall sheets and materials' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

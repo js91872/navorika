@@ -68,15 +68,15 @@ export const clusters: ToolCluster[] = [
 
   { id: 'construction-concrete', name: 'Concrete and Masonry', description: 'Estimate concrete, cement, brick, reinforcement, sand, and post-hole concrete needs.', category: 'construction-calculators', toolSlugs: ['brick-calculator', 'cement-calculator', 'concrete-calculator', 'post-hole-concrete-calculator', 'rebar-calculator', 'sand-calculator'] },
   { id: 'construction-finishes', name: 'Interior Surfaces and Finishes', description: 'Plan flooring, tile, paint, drywall, and wallpaper quantities for interior work.', category: 'construction-calculators', toolSlugs: ['drywall-calculator', 'flooring-calculator', 'paint-calculator', 'tile-calculator', 'wallpaper-calculator'] },
-  { id: 'construction-roofing', name: 'Roofing Geometry and Materials', description: 'Calculate roof area, pitch, angles, gambrel geometry, truss quantity, and rafter planning values.', category: 'construction-calculators', toolSlugs: ['12-foot-gambrel-roof-truss-calculator', 'roof-area-calculator', 'roof-pitch-calculator'] },
+  { id: 'construction-roofing', name: 'Roofing Geometry and Materials', description: 'Calculate roof area, pitch, angles, gambrel geometry, truss quantity, and rafter planning values.', category: 'construction-calculators', toolSlugs: ['12-foot-gambrel-roof-truss-calculator', 'roof-area-calculator', 'roof-pitch-calculator', 'soffit-fascia-calculator'] },
   { id: 'construction-site', name: 'Site and Earthworks', description: 'Estimate site area, excavation, asphalt, aggregate, and storage quantities.', category: 'construction-calculators', toolSlugs: ['asphalt-calculator', 'excavation-calculator', 'gravel-calculator', 'land-area-converter', 'water-tank-calculator'] },
-  { id: 'construction-outdoor-projects', name: 'Decks, Fences, and Hardscaping', description: 'Estimate boards, fencing, pavers, joint sand, and related outdoor-project materials.', category: 'construction-calculators', toolSlugs: ['deck-board-calculator', 'fence-calculator', 'paver-calculator', 'polymeric-sand-calculator'] },
+  { id: 'construction-outdoor-projects', name: 'Decks, Fences, and Hardscaping', description: 'Estimate boards, fencing, pavers, joint sand, and related outdoor-project materials.', category: 'construction-calculators', toolSlugs: ['deck-board-calculator', 'fence-calculator', 'paver-calculator', 'polymeric-sand-calculator', 'shed-ramp-angle-calculator'] },
   { id: 'construction-landscaping', name: 'Landscaping Materials', description: 'Estimate mulch and topsoil volume, bags, and optional material weight.', category: 'construction-calculators', toolSlugs: ['mulch-calculator', 'topsoil-calculator'] },
   { id: 'construction-carpentry', name: 'Carpentry and Cutting', description: 'Plan stairs, lumber volume, equal-width cuts, kerf loss, and offcuts.', category: 'construction-calculators', toolSlugs: ['stair-stringer-calculator', 'board-foot-calculator', 'saw-kerf-calculator'] },
   { id: 'construction-jobsite', name: 'Jobsite Planning and Safety', description: 'Plan safe ladder reach, sanitation minimums, egress openings, and debris weight.', category: 'construction-calculators', toolSlugs: ['ladder-safe-reach-calculator', 'osha-portable-toilet-calculator', 'egress-window-code-checker', 'dumpster-weight-calculator'] },
-  { id: 'construction-equipment', name: 'Construction Equipment Capacity', description: 'Match compressor output, air-tool demand, duty cycle, and tank runtime.', category: 'construction-calculators', toolSlugs: ['air-compressor-cfm-calculator'] },
-  { id: 'construction-structural', name: 'Structural and Electrical', description: 'Plan steel, wire, voltage-drop, and solar requirements before detailed design.', category: 'construction-calculators', toolSlugs: ['solar-panel-calculator', 'steel-weight-calculator', 'voltage-drop-calculator', 'wire-size-calculator'] },
-  { id: 'construction-estimating', name: 'Project and Contractor Estimating', description: 'Create early building-cost estimates and detailed contractor documents with itemized project costs.', category: 'construction-calculators', toolSlugs: ['construction-cost-calculator', 'house-construction-cost-calculator', 'construction-estimate-builder', 'contractor-estimate-generator'] },
+  { id: 'construction-equipment', name: 'Construction Equipment Capacity', description: 'Match compressor output, air-tool demand, duct airflow, and equipment capacity.', category: 'construction-calculators', toolSlugs: ['air-compressor-cfm-calculator', 'hvac-duct-cfm-calculator'] },
+  { id: 'construction-structural', name: 'Structural and Electrical', description: 'Plan steel, wire, voltage-drop, and solar requirements before detailed design.', category: 'construction-calculators', toolSlugs: ['solar-panel-calculator', 'steel-weight-calculator', 'voltage-drop-calculator', 'wire-size-calculator', 'joist-deflection-calculator'] },
+  { id: 'construction-estimating', name: 'Project and Contractor Estimating', description: 'Create early building-cost estimates and detailed contractor documents with itemized project costs.', category: 'construction-calculators', toolSlugs: ['construction-cost-calculator', 'house-construction-cost-calculator', 'construction-estimate-builder', 'contractor-estimate-generator', 'attic-insulation-payback-calculator', 'construction-material-waste-calculator'] },
 
   { id: 'everyday-travel-automotive', name: 'Travel and Automotive', description: 'Estimate trip fuel sharing and compare tire dimensions, clearance, and speedometer effects.', category: 'everyday-calculators', toolSlugs: ['fuel-cost-split-calculator', 'tire-size-calculator', 'schengen-90-180-day-calculator'] },
   { id: 'everyday-home-utilities', name: 'Home and Utility Planning', description: 'Estimate aquarium capacity and appliance electricity consumption and cost.', category: 'everyday-calculators', toolSlugs: ['aquarium-volume-calculator', 'electricity-cost-calculator', 'heat-pump-vs-furnace-cost-calculator'] },
@@ -92,8 +92,8 @@ export const toolkits: Toolkit[] = [
     categorySlugs: ['construction-calculators'],
     groups: [
       { name: 'Concrete and masonry', description: 'Estimate core mix, reinforcement, masonry, and post-hole quantities before ordering.', toolSlugs: ['concrete-calculator', 'cement-calculator', 'rebar-calculator', 'brick-calculator', 'sand-calculator', 'gravel-calculator', 'post-hole-concrete-calculator'] },
-      { name: 'Site and project costs', description: 'Translate site dimensions into earthwork, paving, debris, and early building-cost estimates.', toolSlugs: ['excavation-calculator', 'asphalt-calculator', 'paver-calculator', 'dumpster-weight-calculator', 'construction-cost-calculator', 'house-construction-cost-calculator'] },
-      { name: 'Professional estimates', description: 'Turn itemized material, labor, equipment, markup, and tax inputs into contractor-ready estimates.', toolSlugs: ['construction-estimate-builder', 'contractor-estimate-generator'] },
+      { name: 'Site and project costs', description: 'Translate site dimensions into earthwork, paving, debris, and early building-cost estimates.', toolSlugs: ['excavation-calculator', 'asphalt-calculator', 'paver-calculator', 'dumpster-weight-calculator', 'construction-cost-calculator', 'house-construction-cost-calculator', 'joist-deflection-calculator', 'hvac-duct-cfm-calculator'] },
+      { name: 'Professional estimates', description: 'Turn itemized material, labor, equipment, markup, and tax inputs into contractor-ready estimates.', toolSlugs: ['construction-estimate-builder', 'contractor-estimate-generator', 'construction-material-waste-calculator'] },
     ], guideSlugs: [],
   },
   {
@@ -103,8 +103,8 @@ export const toolkits: Toolkit[] = [
     categorySlugs: ['construction-calculators'],
     groups: [
       { name: 'Rooms and surfaces', description: 'Plan coverage and material allowances for floors, walls, drywall, and wallpaper.', toolSlugs: ['flooring-calculator', 'tile-calculator', 'paint-calculator', 'drywall-calculator', 'wallpaper-calculator'] },
-      { name: 'Roofing and outdoor projects', description: 'Estimate roof geometry and materials for decks, fences, pavers, and landscaping.', toolSlugs: ['12-foot-gambrel-roof-truss-calculator', 'roof-area-calculator', 'roof-pitch-calculator', 'deck-board-calculator', 'fence-calculator', 'paver-calculator', 'polymeric-sand-calculator', 'mulch-calculator', 'topsoil-calculator'] },
-      { name: 'Home utilities', description: 'Estimate practical electrical, solar, and water-storage requirements.', toolSlugs: ['wire-size-calculator', 'voltage-drop-calculator', 'solar-panel-calculator', 'water-tank-calculator', 'heat-pump-vs-furnace-cost-calculator'] },
+      { name: 'Roofing and outdoor projects', description: 'Estimate roof geometry and materials for decks, fences, pavers, and landscaping.', toolSlugs: ['12-foot-gambrel-roof-truss-calculator', 'roof-area-calculator', 'roof-pitch-calculator', 'deck-board-calculator', 'fence-calculator', 'paver-calculator', 'polymeric-sand-calculator', 'mulch-calculator', 'topsoil-calculator', 'soffit-fascia-calculator', 'shed-ramp-angle-calculator'] },
+      { name: 'Home utilities', description: 'Estimate practical electrical, solar, and water-storage requirements.', toolSlugs: ['wire-size-calculator', 'voltage-drop-calculator', 'solar-panel-calculator', 'water-tank-calculator', 'heat-pump-vs-furnace-cost-calculator', 'attic-insulation-payback-calculator'] },
     ], guideSlugs: [],
   },
   {
@@ -273,6 +273,12 @@ export const complementaryTools: Record<string, string[]> = {
   'typescript-to-zod-schema-converter': ['json-schema-validator', 'json-to-csv-flattener'],
   'git-commit-message-formatter': ['gitignore-generator', 'developer-utils'],
   'utf8-vs-utf16-byte-calculator': ['base64-encoder', 'url-encoder-decoder'],
+  'soffit-fascia-calculator': ['roof-area-calculator', 'roof-pitch-calculator'],
+  'attic-insulation-payback-calculator': ['heat-pump-vs-furnace-cost-calculator', 'electricity-cost-calculator'],
+  'joist-deflection-calculator': ['stair-stringer-calculator', 'steel-weight-calculator'],
+  'hvac-duct-cfm-calculator': ['air-compressor-cfm-calculator', 'voltage-drop-calculator'],
+  'shed-ramp-angle-calculator': ['stair-stringer-calculator', 'roof-pitch-calculator'],
+  'construction-material-waste-calculator': ['construction-cost-calculator', 'drywall-calculator'],
 };
 
 const clusterByTool = new Map(clusters.flatMap((cluster) => cluster.toolSlugs.map((slug) => [slug, cluster] as const)));

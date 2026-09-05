@@ -1,0 +1,68 @@
+{
+  "name": "Construction Material Waste Calculator",
+  "slug": "construction-material-waste-calculator",
+  "category": "Construction Calculators",
+  "description": "Calculate material order quantity and waste allowance from net project requirements.",
+  "search_intent": "Add a construction waste factor to net material requirements and estimate extra material to order.",
+  "keywords": [
+    "construction waste calculator",
+    "material waste calculator",
+    "waste factor calculator",
+    "construction material allowance calculator",
+    "material overage calculator"
+  ],
+  "inputs": [
+    {
+      "key": "netQuantity",
+      "label": "Net material quantity",
+      "default": 1000,
+      "min": 0
+    },
+    {
+      "key": "wastePercent",
+      "label": "Waste allowance (%)",
+      "default": 10,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "key": "unitCost",
+      "label": "Unit cost",
+      "default": 2.5,
+      "min": 0
+    }
+  ],
+  "outputs": [
+    {
+      "key": "wasteQuantity",
+      "label": "Waste allowance quantity",
+      "format": "number"
+    },
+    {
+      "key": "orderQuantity",
+      "label": "Recommended order quantity",
+      "format": "number"
+    },
+    {
+      "key": "netMaterialCost",
+      "label": "Net material cost",
+      "format": "currency"
+    },
+    {
+      "key": "wasteCost",
+      "label": "Waste allowance cost",
+      "format": "currency"
+    },
+    {
+      "key": "totalMaterialCost",
+      "label": "Estimated total material cost",
+      "format": "currency"
+    }
+  ],
+  "calculation": "Waste quantity = net quantity × wastePercent/100. Order quantity = net quantity + waste quantity. Net cost = net quantity × unit cost. Waste cost = waste quantity × unit cost. Total material cost = order quantity × unit cost.",
+  "limitations": [
+    "Appropriate waste percentages differ by material, layout, workmanship and project complexity.",
+    "Ordering units may need rounding to full packs, boards, rolls or pallets.",
+    "Use supplier packaging and field measurements for final purchasing."
+  ]
+}
