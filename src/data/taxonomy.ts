@@ -65,6 +65,7 @@ export const clusters: ToolCluster[] = [
   { id: 'developer-web', name: 'Web and SEO', description: 'Build responsive CSS, metadata, campaign URLs, and crawler directives.', category: 'developer-tools', toolSlugs: ['aspect-ratio-padding-calculator', 'css-clamp-font-generator', 'css-flexbox-generator', 'css-gradient-generator', 'meta-tag-generator', 'robots-txt-generator', 'utm-builder', 'webmaster-seo-builder'] },
   { id: 'ai-cloud-costs', name: 'AI and Cloud Cost Planning', description: 'Estimate AI token demand, LLM API pricing, GPU compute, hosting, CDN, and archive-retrieval costs.', category: 'developer-tools', toolSlugs: ['ai-token-calculator', 'llm-api-cost-calculator', 'gpu-compute-cost-calculator', 'cloud-hosting-cost-calculator', 'cdn-cost-calculator', 'aws-glacier-retrieval-calculator'] },
   { id: 'developer-scientific-data', name: 'Scientific Data Utilities', description: 'Support defined scientific data schemas and validated browser-based analysis models.', category: 'developer-tools', toolSlugs: ['bioluminescent-reader'] },
+  { id: 'cad-engineering-tools', name: 'CAD and 3D Engineering', description: 'Convert, inspect, and share 3D CAD models and engineering documentation.', category: 'developer-tools', toolSlugs: ['step-to-3d-pdf-converter'] },
 
   { id: 'construction-concrete', name: 'Concrete and Masonry', description: 'Estimate concrete, cement, brick, reinforcement, sand, and post-hole concrete needs.', category: 'construction-calculators', toolSlugs: ['brick-calculator', 'cement-calculator', 'concrete-calculator', 'post-hole-concrete-calculator', 'rebar-calculator', 'sand-calculator'] },
   { id: 'construction-finishes', name: 'Interior Surfaces and Finishes', description: 'Plan flooring, tile, paint, drywall, and wallpaper quantities for interior work.', category: 'construction-calculators', toolSlugs: ['drywall-calculator', 'flooring-calculator', 'paint-calculator', 'tile-calculator', 'wallpaper-calculator'] },
@@ -285,6 +286,7 @@ export const complementaryTools: Record<string, string[]> = {
   'hvac-duct-cfm-calculator': ['air-compressor-cfm-calculator', 'voltage-drop-calculator'],
   'shed-ramp-angle-calculator': ['stair-stringer-calculator', 'roof-pitch-calculator'],
   'construction-material-waste-calculator': ['construction-cost-calculator', 'drywall-calculator'],
+  'step-to-3d-pdf-converter': ['pdf-to-cdr-converter', 'compress-pdf', 'merge-pdf'],
 };
 
 const clusterByTool = new Map(clusters.flatMap((cluster) => cluster.toolSlugs.map((slug) => [slug, cluster] as const)));

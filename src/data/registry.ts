@@ -1691,6 +1691,23 @@ export const tools: RegisteredTool[] = ([
     heroDescription: 'Compare encoded byte sizes, code points, and UTF-16 code units across UTF-8 and UTF-16 string storage.'
   },
   {
+    slug: 'step-to-3d-pdf-converter',
+    title: 'STEP to 3D PDF Converter',
+    description: 'Convert STEP and STP CAD files to 3D PDF online with interactive embedded PRC geometry.',
+    category: 'developer-tools',
+    keywords: [
+      'step to 3d pdf',
+      'step file to 3d pdf',
+      'stp to 3d pdf',
+      'convert step to 3d pdf online',
+      'step to interactive pdf',
+      'step 3d pdf converter',
+      'cad to pdf'
+    ],
+    heroTitle: 'STEP to 3D PDF Converter',
+    heroDescription: 'Convert STEP and STP CAD models into 3D PDF documents with embedded interactive PRC geometry.'
+  },
+  {
     slug: 'soffit-fascia-calculator',
     title: 'Soffit & Fascia Calculator',
     description: 'Estimate soffit area, fascia length, material quantity and waste allowance for roof eaves.',

@@ -258,6 +258,7 @@ export const toolIcons: Record<string, string> = {
   'hvac-duct-cfm-calculator': '💨',
   'shed-ramp-angle-calculator': '📐',
   'construction-material-waste-calculator': '🗑️',
+  'step-to-3d-pdf-converter': '🧊',
 };
 
 export const getToolIcon = (slug: string): string => {

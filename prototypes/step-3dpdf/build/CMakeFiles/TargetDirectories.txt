@@ -1,0 +1,3 @@
+/home/jaspal/navorika/prototypes/step-3dpdf/build/CMakeFiles/stepinfo.dir
+/home/jaspal/navorika/prototypes/step-3dpdf/build/CMakeFiles/edit_cache.dir
+/home/jaspal/navorika/prototypes/step-3dpdf/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,3 @@
+/home/jaspal/navorika/src/lib/converters/step-3dpdf/native/build/CMakeFiles/step-to-obj.dir
+/home/jaspal/navorika/src/lib/converters/step-3dpdf/native/build/CMakeFiles/edit_cache.dir
+/home/jaspal/navorika/src/lib/converters/step-3dpdf/native/build/CMakeFiles/rebuild_cache.dir

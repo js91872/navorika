@@ -14,6 +14,8 @@
     "test:calculations": "node --experimental-strip-types scripts/run-calculation-tests.mjs",
     "test:xml-word": "tsx --test src/lib/converters/xml-word/xml-word.test.ts",
     "test:coreldraw": "tsx --test src/lib/converters/coreldraw/coreldraw.test.ts",
+    "test:step-3dpdf": "tsx --test src/lib/converters/step-3dpdf/step-3dpdf.test.ts",
+    "build:step-to-obj": "./scripts/build-step-to-obj.sh",
     "test:ux": "node --experimental-strip-types scripts/run-ux-tests.mjs",
     "typecheck": "tsc --noEmit",
     "validate:architecture": "node scripts/validate-architecture.mjs",
