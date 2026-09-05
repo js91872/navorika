@@ -1796,6 +1796,96 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'Construction Material Waste Calculator',
     heroDescription: 'Calculate recommended material order quantity, waste scrap allowance, and itemized material costs.'
+  },
+  {
+    slug: 'ipv6-subnet-calculator',
+    title: 'IPv6 Subnet Calculator',
+    description: 'Calculate IPv6 subnet capacity, prefix relationships and subnet counts from IPv6 prefix lengths.',
+    category: 'developer-tools',
+    keywords: [
+      'ipv6 subnet calculator',
+      'ipv6 prefix calculator',
+      'ipv6 subnet size calculator',
+      'ipv6 subnetting calculator',
+      'ipv6 prefix capacity'
+    ],
+    heroTitle: 'IPv6 Subnet Calculator',
+    heroDescription: 'Calculate IPv6 subnet capacity, prefix relationships, and subnet counts from IPv6 prefix lengths.'
+  },
+  {
+    slug: 'tcp-udp-port-range-calculator',
+    title: 'TCP UDP Port Range Calculator',
+    description: 'Calculate the inclusive number of TCP or UDP port numbers in a selected numeric range.',
+    category: 'developer-tools',
+    keywords: [
+      'port range calculator',
+      'tcp port range calculator',
+      'udp port range calculator',
+      'how many ports in range',
+      'tcp udp port count'
+    ],
+    heroTitle: 'TCP UDP Port Range Calculator',
+    heroDescription: 'Calculate the inclusive number of TCP or UDP port numbers in a selected numeric range.'
+  },
+  {
+    slug: 'cidr-summarization-calculator',
+    title: 'CIDR Summarization Calculator',
+    description: 'Summarize contiguous IPv4 CIDR networks into the smallest exact set of aggregate CIDR blocks.',
+    category: 'developer-tools',
+    keywords: [
+      'cidr summarization calculator',
+      'route summarization calculator',
+      'cidr aggregation calculator',
+      'ipv4 route summary calculator',
+      'supernet calculator'
+    ],
+    heroTitle: 'CIDR Summarization Calculator',
+    heroDescription: 'Summarize contiguous IPv4 CIDR networks into the smallest exact set of aggregate CIDR blocks.'
+  },
+  {
+    slug: 'ip-address-classifier',
+    title: 'IP Address Classifier',
+    description: 'Classify an IPv4 or IPv6 address as private, public/global, loopback, link-local, multicast, documentation or another recognized special-use category.',
+    category: 'developer-tools',
+    keywords: [
+      'ip address classifier',
+      'private or public ip checker',
+      'ip address type checker',
+      'ip range classifier',
+      'ipv4 ipv6 address type'
+    ],
+    heroTitle: 'IP Address Classifier',
+    heroDescription: 'Classify an IPv4 or IPv6 address as private, public/global, loopback, link-local, multicast, or documentation.'
+  },
+  {
+    slug: 'common-port-service-lookup',
+    title: 'Common Port Service Lookup',
+    description: 'Look up common TCP and UDP port numbers and their commonly associated services.',
+    category: 'developer-tools',
+    keywords: [
+      'port service lookup',
+      'common port numbers',
+      'what service uses port 443',
+      'tcp udp service ports',
+      'standard network ports'
+    ],
+    heroTitle: 'Common Port Service Lookup',
+    heroDescription: 'Look up common TCP and UDP port numbers and their commonly associated services.'
+  },
+  {
+    slug: 'url-parser',
+    title: 'URL Parser',
+    description: 'Parse a URL locally into protocol, hostname, port, pathname, query parameters and fragment.',
+    category: 'developer-tools',
+    keywords: [
+      'url parser',
+      'parse url online',
+      'url components parser',
+      'url query parser',
+      'breakdown url online'
+    ],
+    heroTitle: 'URL Parser',
+    heroDescription: 'Parse a URL locally into protocol, hostname, port, pathname, query parameters, and fragment.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,

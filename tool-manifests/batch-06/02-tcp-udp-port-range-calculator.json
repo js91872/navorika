@@ -1,0 +1,52 @@
+{
+  "name": "TCP UDP Port Range Calculator",
+  "slug": "tcp-udp-port-range-calculator",
+  "category": "Developer Tools",
+  "description": "Calculate the inclusive number of TCP or UDP port numbers in a selected numeric range.",
+  "search_intent": "Count ports in a TCP or UDP port range and classify the selected range.",
+  "keywords": [
+    "port range calculator",
+    "tcp port range calculator",
+    "udp port range calculator",
+    "how many ports in range"
+  ],
+  "inputs": [
+    {
+      "key": "startPort",
+      "label": "Start port",
+      "default": 1024,
+      "min": 0,
+      "max": 65535
+    },
+    {
+      "key": "endPort",
+      "label": "End port",
+      "default": 49151,
+      "min": 0,
+      "max": 65535
+    }
+  ],
+  "outputs": [
+    {
+      "key": "portCount",
+      "label": "Ports in range",
+      "format": "number"
+    },
+    {
+      "key": "range",
+      "label": "Inclusive range",
+      "format": "text"
+    },
+    {
+      "key": "classification",
+      "label": "Port range classification",
+      "format": "text"
+    }
+  ],
+  "calculation": "Inclusive port count = end port - start port + 1 when start <= end. Validate integer ports from 0 through 65535. Classification should identify whether the range lies within or crosses commonly recognized system/well-known, registered, or dynamic/private port-number bands.",
+  "limitations": [
+    "This tool counts numeric port values; it does not test whether ports are open.",
+    "TCP and UDP can use the same numeric port independently.",
+    "Port registration does not guarantee that a service is actually running."
+  ]
+}

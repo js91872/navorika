@@ -1,0 +1,28 @@
+{
+  "name": "IP Address Classifier",
+  "slug": "ip-address-classifier",
+  "category": "Developer Tools",
+  "description": "Classify an IPv4 or IPv6 address as private, public/global, loopback, link-local, multicast, documentation or another recognized special-use category.",
+  "search_intent": "Determine what type of IPv4 or IPv6 address an IP address is.",
+  "keywords": [
+    "ip address classifier",
+    "private or public ip checker",
+    "ip address type checker",
+    "ip range classifier"
+  ],
+  "inputs": [
+    {"key":"ipAddress","label":"IP address","type":"text","default":"192.168.1.10"}
+  ],
+  "outputs": [
+    {"key":"version","label":"IP version","format":"text"},
+    {"key":"classification","label":"Classification","format":"text"},
+    {"key":"scope","label":"Scope / special use","format":"text"},
+    {"key":"matchedRange","label":"Matched range","format":"text"}
+  ],
+  "calculation": "Parse the IP address without DNS or network requests. Match it against an explicitly maintained set of recognized IPv4 and IPv6 special-purpose ranges. Report the most specific applicable classification and range. Do not determine public reachability by making an external connection.",
+  "limitations": [
+    "Classification is based on address ranges, not actual network reachability.",
+    "Special-purpose allocations can evolve and should be documented from authoritative standards.",
+    "A syntactically global address is not proof that a device is reachable from the public Internet."
+  ]
+}

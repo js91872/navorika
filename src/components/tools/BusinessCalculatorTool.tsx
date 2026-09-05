@@ -25,24 +25,32 @@ import { calculateImageFileSize } from '@/lib/calculations/imageFileSize';
 import { calculateImageScaling } from '@/lib/calculations/imageScaling';
 import { calculatePhotoStorage } from '@/lib/calculations/photoStorage';
 import { calculateImageBandwidth } from '@/lib/calculations/imageBandwidth';
+import { calculateIpv6Subnet } from '@/lib/calculations/ipv6Subnet';
+import { calculatePortRange } from '@/lib/calculations/portRange';
+import { calculateCidrSummarization } from '@/lib/calculations/cidrSummarization';
+import { calculateIpClassifier } from '@/lib/calculations/ipClassifier';
+import { calculatePortServiceLookup } from '@/lib/calculations/portServiceLookup';
+import { calculateUrlParser } from '@/lib/calculations/urlParser';
 import ResultActions, { type ResultAction } from '@/components/ui/ResultActions';
 import { toolUx } from '@/data/toolUx';
 import { rowsToCsv } from '@/lib/resultExport';
 
 type ValueMap = Record<string, number | string>;
-type ResultMap = Record<string, number | string | null | boolean>;
+type ResultMap = Record<string, any>;
 type Format = 'currency' | 'number' | 'percent' | 'months' | 'text';
 interface FieldOption { value: string; label: string }
 interface Field {
   key: string;
   label: string;
   defaultValue: number | string;
-  type?: 'number' | 'select';
+  type?: 'number' | 'select' | 'text' | 'textarea';
   options?: FieldOption[];
   min?: number;
   max?: number;
   step?: number;
   help?: string;
+  placeholder?: string;
+  rows?: number;
 }
 interface Result { key: string; label: string; format: Format }
 interface Config { fields: Field[]; results: Result[]; calculate: (values: ValueMap) => ResultMap; note: string }
@@ -758,6 +766,110 @@ const configs: Record<string, Config> = {
       }),
     note: 'Calculates raw image transfer volume using binary conversions (1 MB = 1,024 KB, 1 GB = 1,024 MB). Actual network egress will vary based on CDN edge caching, browser caching, responsive image srcsets, repeat visitor ratios, and lazy-loading.',
   },
+  'ipv6-subnet-calculator': {
+    fields: [
+      { key: 'parentPrefix', label: 'Parent prefix length (/0–/128)', defaultValue: 48, min: 0, max: 128, step: 1, help: 'Leading routing prefix (e.g. /48 site allocation or /56 delegation).' },
+      { key: 'subnetPrefix', label: 'Subnet prefix length (/0–/128)', defaultValue: 64, min: 0, max: 128, step: 1, help: 'Target subnet size (e.g. /64 standard LAN or /128 single address).' },
+    ],
+    results: [
+      { key: 'subnetBits', label: 'Subnet bits', format: 'number' },
+      { key: 'subnetCount', label: 'Number of subnets', format: 'text' },
+      { key: 'hostBits', label: 'Interface/host bits per subnet', format: 'number' },
+      { key: 'addressesPerSubnet', label: 'Addresses per subnet', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateIpv6Subnet({
+        parentPrefix: v(x, 'parentPrefix'),
+        subnetPrefix: v(x, 'subnetPrefix'),
+      }),
+    note: 'IPv6 prefix mathematics uses exact 128-bit integer capacity. A /64 prefix is the standard LAN allocation recommended by RFC 4291/7217 for SLAAC autoconfiguration, providing 18.4 quintillion addresses per subnet. Subnet counts and address capacities exceeding 2^53 are computed using exact BigInt arithmetic.',
+  },
+  'tcp-udp-port-range-calculator': {
+    fields: [
+      { key: 'startPort', label: 'Start port (0–65535)', defaultValue: 1024, min: 0, max: 65535, step: 1 },
+      { key: 'endPort', label: 'End port (0–65535)', defaultValue: 49151, min: 0, max: 65535, step: 1 },
+    ],
+    results: [
+      { key: 'portCount', label: 'Ports in range', format: 'number' },
+      { key: 'range', label: 'Inclusive range', format: 'text' },
+      { key: 'classification', label: 'Port range classification', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculatePortRange({
+        startPort: v(x, 'startPort'),
+        endPort: v(x, 'endPort'),
+      }),
+    note: 'Calculates the inclusive numeric port span across the 16-bit port number space (0–65535). Categorization identifies standard IANA port segments: System/Well-Known (0–1023), User/Registered (1024–49151), and Dynamic/Private/Ephemeral (49152–65535). Numeric counting does not test port accessibility or protocol state.',
+  },
+  'cidr-summarization-calculator': {
+    fields: [
+      { key: 'cidrList', label: 'IPv4 CIDR networks', defaultValue: '192.168.0.0/25\n192.168.0.128/25', type: 'textarea', rows: 5, help: 'Enter one IPv4 CIDR prefix per line (e.g. 192.168.0.0/25).' },
+    ],
+    results: [
+      { key: 'inputNetworks', label: 'Valid input networks', format: 'number' },
+      { key: 'summaryNetworks', label: 'Summarized CIDRs', format: 'text' },
+      { key: 'summaryCount', label: 'Summary count', format: 'number' },
+      { key: 'addressesCovered', label: 'Addresses covered', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateCidrSummarization({
+        cidrList: s(x, 'cidrList'),
+      }),
+    note: 'Exact IPv4 route aggregation normalizes subnets to network boundaries, eliminates contained redundant networks, and iteratively merges adjacent equal-sized sibling blocks where the parent exactly covers the address space. Non-sibling or misaligned networks are never combined into wider blocks that cover unsupplied addresses.',
+  },
+  'ip-address-classifier': {
+    fields: [
+      { key: 'ipAddress', label: 'IP address (IPv4 or IPv6)', defaultValue: '192.168.1.10', type: 'text', placeholder: 'e.g. 192.168.1.1 or 2001:db8::1', help: 'Evaluated locally without external network probes or DNS resolution.' },
+    ],
+    results: [
+      { key: 'version', label: 'IP version', format: 'text' },
+      { key: 'classification', label: 'Classification', format: 'text' },
+      { key: 'scope', label: 'Scope / special use', format: 'text' },
+      { key: 'matchedRange', label: 'Matched range', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateIpClassifier({
+        ipAddress: s(x, 'ipAddress'),
+      }),
+    note: 'Classification evaluates IP syntax against authoritative IANA Special-Purpose Address Registries (RFC 6890, RFC 1918, RFC 4291, RFC 3927). A classification of Global Unicast indicates syntactic public allocation; reachability depends on network topology and firewall configurations. No network connections are initiated.',
+  },
+  'common-port-service-lookup': {
+    fields: [
+      { key: 'port', label: 'Port number (0–65535)', defaultValue: 443, min: 0, max: 65535, step: 1 },
+      { key: 'protocol', label: 'Protocol', defaultValue: 'TCP', type: 'select', options: [{ value: 'TCP', label: 'TCP' }, { value: 'UDP', label: 'UDP' }, { value: 'Both', label: 'TCP & UDP' }] },
+    ],
+    results: [
+      { key: 'portNumber', label: 'Port', format: 'number' },
+      { key: 'protocol', label: 'Protocol', format: 'text' },
+      { key: 'service', label: 'Common service', format: 'text' },
+      { key: 'rangeClass', label: 'Port range', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculatePortServiceLookup({
+        port: v(x, 'port'),
+        protocol: s(x, 'protocol'),
+      }),
+    note: 'Searches a curated local reference of standardized and commonly observed service port assignments. If no match is found, the lookup explicitly states that no common entry exists rather than estimating or inventing a service. Service assignment does not indicate an active listener on your local machine.',
+  },
+  'url-parser': {
+    fields: [
+      { key: 'url', label: 'Target URL', defaultValue: 'https://example.com:8080/products/item?id=42&utm_source=test#details', type: 'text', help: 'Must be an absolute URL including scheme (e.g. https://).' },
+    ],
+    results: [
+      { key: 'protocol', label: 'Protocol', format: 'text' },
+      { key: 'hostname', label: 'Hostname', format: 'text' },
+      { key: 'port', label: 'Port', format: 'text' },
+      { key: 'pathname', label: 'Path', format: 'text' },
+      { key: 'query', label: 'Query string', format: 'text' },
+      { key: 'fragment', label: 'Fragment', format: 'text' },
+      { key: 'queryParameters', label: 'Query parameters', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateUrlParser({
+        url: s(x, 'url'),
+      }),
+    note: 'Standards-compliant WHATWG/RFC 3986 URL parsing executed entirely in your browser. Extracts protocol, host, explicit/default port, pathname, search parameters (preserving duplicate parameter keys), and fragment identifier. User credentials presence is detected without exposing passwords. No network requests are made.',
+  },
 };
 
 const inputClass = 'mt-2 w-full min-w-0 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20';
@@ -792,30 +904,58 @@ export default function BusinessCalculatorTool({ slug }: { slug: string }) {
       <div className="flex items-center gap-3"><Calculator className="size-6 text-indigo-600"/><h2 className="text-xl font-bold">Planning inputs</h2></div>
       {slug === 'llm-api-cost-calculator' && <label className="mt-6 block text-sm font-semibold">Model or provider label<input className={inputClass} type="text" value={scenarioLabel} onChange={(event) => setScenarioLabel(event.target.value)} /></label>}
       <div className="mt-6 grid min-w-0 gap-4 sm:grid-cols-2">
-        {config.fields.map((item) => <label key={item.key} className="min-w-0 text-sm font-semibold">{item.label}
-          {item.type === 'select' ? (
-            <select
-              className={inputClass}
-              value={s(values, item.key, String(item.defaultValue))}
-              onChange={(event) => setValues((current) => ({ ...current, [item.key]: event.target.value }))}
-            >
-              {item.options?.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          ) : (
-            <input className={inputClass} type="number" inputMode="decimal" min={item.min} max={item.max} step={item.step ?? 'any'} value={values[item.key] ?? ''} onChange={(event) => setValues((current) => ({ ...current, [item.key]: Number(event.target.value) }))}/>
-          )}
-          {item.help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted-foreground)]">{item.help}</span>}
-        </label>)}
+        {config.fields.map((item) => (
+          <label key={item.key} className={`min-w-0 text-sm font-semibold ${item.type === 'textarea' ? 'sm:col-span-2' : ''}`}>
+            {item.label}
+            {item.type === 'select' ? (
+              <select
+                className={inputClass}
+                value={s(values, item.key, String(item.defaultValue))}
+                onChange={(event) => setValues((current) => ({ ...current, [item.key]: event.target.value }))}
+              >
+                {item.options?.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+            ) : item.type === 'textarea' ? (
+              <textarea
+                className={`${inputClass} font-mono`}
+                rows={item.rows ?? 4}
+                placeholder={item.placeholder}
+                value={s(values, item.key, String(item.defaultValue))}
+                onChange={(event) => setValues((current) => ({ ...current, [item.key]: event.target.value }))}
+              />
+            ) : item.type === 'text' ? (
+              <input
+                className={`${inputClass} font-mono`}
+                type="text"
+                placeholder={item.placeholder}
+                value={s(values, item.key, String(item.defaultValue))}
+                onChange={(event) => setValues((current) => ({ ...current, [item.key]: event.target.value }))}
+              />
+            ) : (
+              <input
+                className={inputClass}
+                type="number"
+                inputMode="decimal"
+                min={item.min}
+                max={item.max}
+                step={item.step ?? 'any'}
+                value={values[item.key] ?? ''}
+                onChange={(event) => setValues((current) => ({ ...current, [item.key]: event.target.value === '' ? '' : Number(event.target.value) }))}
+              />
+            )}
+            {item.help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted-foreground)]">{item.help}</span>}
+          </label>
+        ))}
       </div>
       <button type="button" className="mt-6 rounded-xl border border-[var(--border)] px-4 py-2 text-sm font-semibold hover:bg-[var(--muted)]" onClick={() => { setValues(defaults); setScenarioLabel('Custom model or provider'); }}>Reset example</button>
     </section>
     <aside className="min-w-0 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-5 sm:p-7">
       <h2 className="break-words text-xl font-bold">{slug === 'llm-api-cost-calculator' ? `${scenarioLabel || 'Custom scenario'} estimate` : 'Estimated results'}</h2>
-      <dl className="mt-5 grid gap-3">{config.results.map((item) => <div key={item.key} className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4"><dt className="text-sm text-[var(--muted-foreground)]">{item.label}</dt><dd className="mt-1 break-words text-xl font-black">{display(result[item.key], item.format)}</dd></div>)}</dl>
+      <dl className="mt-5 grid gap-3">{config.results.map((item) => <div key={item.key} className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4"><dt className="text-sm text-[var(--muted-foreground)]">{item.label}</dt><dd className="mt-1 break-words text-xl font-black whitespace-pre-wrap">{display(result[item.key], item.format)}</dd></div>)}</dl>
       <ResultActions actions={actions} className="mt-5" />
       <div className="mt-5 flex gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/10 p-4 text-sm leading-6"><Info className="mt-0.5 size-5 shrink-0"/><p>{config.note}</p></div>
     </aside>

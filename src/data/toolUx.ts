@@ -255,6 +255,36 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'image-file-size-estimator': 'Estimate uncompressed memory size', 'photo-storage-calculator': 'Calculate photo storage capacity' },
   },
+  'ipv6-subnet-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'cidr-subnet-wildcard-calculator': 'Calculate IPv4 CIDR and wildcard masks', 'vlsm-subnet-calculator': 'Calculate IPv4 VLSM subnets' },
+  },
+  'tcp-udp-port-range-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'common-port-service-lookup': 'Look up common port services', 'cidr-subnet-wildcard-calculator': 'Calculate network subnets' },
+  },
+  'cidr-summarization-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'cidr-subnet-wildcard-calculator': 'Calculate CIDR subnets', 'ip-range-calculator': 'Convert IP ranges to CIDRs' },
+  },
+  'ip-address-classifier': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'ipv6-subnet-calculator': 'Calculate IPv6 prefixes', 'cidr-subnet-wildcard-calculator': 'Calculate IPv4 CIDR masks' },
+  },
+  'common-port-service-lookup': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'tcp-udp-port-range-calculator': 'Calculate port ranges', 'http-status-code-lookup': 'Look up HTTP status codes' },
+  },
+  'url-parser': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'url-encoder-decoder': 'Encode or decode URL strings', 'utm-builder': 'Build campaign UTM tracking links' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

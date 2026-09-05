@@ -259,6 +259,12 @@ export const toolIcons: Record<string, string> = {
   'shed-ramp-angle-calculator': '📐',
   'construction-material-waste-calculator': '🗑️',
   'step-to-3d-pdf-converter': '🧊',
+  'ipv6-subnet-calculator': '🌐',
+  'tcp-udp-port-range-calculator': '🔢',
+  'cidr-summarization-calculator': '🔀',
+  'ip-address-classifier': '🏷️',
+  'common-port-service-lookup': '🔌',
+  'url-parser': '🔗',
 };
 
 export const getToolIcon = (slug: string): string => {

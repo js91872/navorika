@@ -1,0 +1,61 @@
+{
+  "name": "Common Port Service Lookup",
+  "slug": "common-port-service-lookup",
+  "category": "Developer Tools",
+  "description": "Look up common TCP and UDP port numbers and their commonly associated services.",
+  "search_intent": "Find the common service or purpose associated with a TCP or UDP port number.",
+  "keywords": [
+    "port service lookup",
+    "common port numbers",
+    "what service uses port 443",
+    "tcp udp service ports"
+  ],
+  "inputs": [
+    {
+      "key": "port",
+      "label": "Port number",
+      "default": 443,
+      "min": 0,
+      "max": 65535
+    },
+    {
+      "key": "protocol",
+      "label": "Protocol",
+      "type": "select",
+      "options": [
+        "TCP",
+        "UDP",
+        "Either"
+      ],
+      "default": "TCP"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "portNumber",
+      "label": "Port",
+      "format": "number"
+    },
+    {
+      "key": "protocol",
+      "label": "Protocol",
+      "format": "text"
+    },
+    {
+      "key": "service",
+      "label": "Common service",
+      "format": "text"
+    },
+    {
+      "key": "rangeClass",
+      "label": "Port range",
+      "format": "text"
+    }
+  ],
+  "calculation": "Validate integer port 0 through 65535. Search a curated local reference table for the selected TCP/UDP protocol and port. If no curated service match exists, report that no common entry is included rather than inventing a service. Also classify the numeric port range.",
+  "limitations": [
+    "A port number does not prove which application is actually using it.",
+    "The reference should focus on common assignments rather than pretending to reproduce every registered service.",
+    "This tool performs no network scan or connection attempt."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "CIDR Summarization Calculator",
+  "slug": "cidr-summarization-calculator",
+  "category": "Developer Tools",
+  "description": "Summarize contiguous IPv4 CIDR networks into the smallest exact set of aggregate CIDR blocks.",
+  "search_intent": "Combine compatible IPv4 CIDR networks into fewer exact route-summary prefixes.",
+  "keywords": [
+    "cidr summarization calculator",
+    "route summarization calculator",
+    "cidr aggregation calculator",
+    "ipv4 route summary calculator"
+  ],
+  "inputs": [
+    {"key":"cidrList","label":"IPv4 CIDR networks","type":"textarea","default":"192.168.0.0/25\n192.168.0.128/25"}
+  ],
+  "outputs": [
+    {"key":"inputNetworks","label":"Valid input networks","format":"number"},
+    {"key":"summaryNetworks","label":"Summarized CIDRs","format":"text"},
+    {"key":"summaryCount","label":"Summary count","format":"number"},
+    {"key":"addressesCovered","label":"Addresses covered","format":"number"}
+  ],
+  "calculation": "Parse valid IPv4 CIDRs, normalize them to network boundaries, remove exact duplicates and contained networks, and merge sibling CIDR blocks only when they are adjacent, equal-sized, correctly aligned and their parent block represents exactly their combined address space. Repeat until no further exact merges are possible.",
+  "limitations": [
+    "IPv4 only.",
+    "The calculator must not create a broader summary containing addresses that were not covered by the supplied networks.",
+    "Route aggregation decisions in a live network also depend on topology and routing policy."
+  ]
+}

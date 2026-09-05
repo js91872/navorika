@@ -1,0 +1,31 @@
+{
+  "name": "URL Parser",
+  "slug": "url-parser",
+  "category": "Developer Tools",
+  "description": "Parse a URL locally into protocol, hostname, port, pathname, query parameters and fragment.",
+  "search_intent": "Break a URL into its individual components and query parameters.",
+  "keywords": [
+    "url parser",
+    "parse url online",
+    "url components parser",
+    "url query parser"
+  ],
+  "inputs": [
+    {"key":"url","label":"URL","type":"text","default":"https://example.com:8080/products/item?id=42&utm_source=test#details"}
+  ],
+  "outputs": [
+    {"key":"protocol","label":"Protocol","format":"text"},
+    {"key":"hostname","label":"Hostname","format":"text"},
+    {"key":"port","label":"Port","format":"text"},
+    {"key":"pathname","label":"Path","format":"text"},
+    {"key":"query","label":"Query string","format":"text"},
+    {"key":"fragment","label":"Fragment","format":"text"},
+    {"key":"queryParameters","label":"Query parameters","format":"text"}
+  ],
+  "calculation": "Use standards-based URL parsing locally in the browser or a deterministic equivalent. Extract protocol, hostname, explicit/effective port where appropriate, pathname, query string, fragment and query parameters. Preserve repeated query parameter keys. Malformed or unsupported input must return a clear validation result rather than throwing.",
+  "limitations": [
+    "Parsing a URL does not verify that the host or resource exists.",
+    "The tool makes no request to the entered URL.",
+    "Relative URLs require an explicit base URL and should not be silently interpreted as absolute URLs."
+  ]
+}

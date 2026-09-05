@@ -1224,4 +1224,378 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: ['base64-encoding-guide']
   },
+  'ipv6-subnet-calculator': {
+    slug: 'ipv6-subnet-calculator',
+    name: 'IPv6 Subnet Calculator – Prefix Size & Subnet Capacity',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Calculate IPv6 subnet capacity, prefix relationships and subnet counts from IPv6 prefix lengths.',
+    longTailKeywords: [
+      'ipv6 subnet calculator',
+      'ipv6 prefix calculator',
+      'ipv6 subnet size calculator',
+      'ipv6 subnetting calculator',
+      'ipv6 prefix capacity',
+      'how many subnets in ipv6 /48'
+    ],
+    intro: [
+      'Calculate IPv6 subnet capacity and prefix relationships directly in your browser using exact 128-bit BigInt mathematics.',
+      'Determine how many smaller subnets fit into a parent prefix (such as carving a /48 site allocation into /64 LANs) and inspect available interface address counts without precision loss.',
+      local
+    ],
+    formula: [
+      { title: 'Subnet bits', body: 'Subnet bits = Subnet Prefix Length − Parent Prefix Length.' },
+      { title: 'Subnet count', body: 'Number of subnets = 2^(Subnet bits), computed with exact BigInt arithmetic.' },
+      { title: 'Interface / Host bits', body: 'Interface bits = 128 − Subnet Prefix Length.' },
+      { title: 'Addresses per subnet', body: 'Addresses per subnet = 2^(Interface bits), representing the full 128-bit address space partition.' }
+    ],
+    steps: [
+      'Enter your allocated parent IPv6 prefix length (for example, 48 for an enterprise site assignment or 56 for residential delegation).',
+      'Enter the desired child subnet prefix length (typically 64 for standard local-area networks).',
+      'Review the calculated subnet bits and total number of assignable subnets.',
+      'Inspect the interface bits and theoretical address capacity per subnet.',
+      'Copy the summary or download the calculation table as a CSV.'
+    ],
+    interpretation: [
+      'A /48 assignment divided into /64 subnets yields 16 subnet bits, providing 65,536 individual /64 subnets.',
+      'Each standard /64 network provides 64 interface bits, accommodating 18,446,744,073,709,551,616 addresses.',
+      'Unlike IPv4 where host counts are tightly budgeted, IPv6 allocation emphasizes hierarchical routing efficiency and SLAAC compatibility rather than address conservation.'
+    ],
+    limitations: [
+      'IPv6 does not use IPv4-style broadcast addresses or subnet masks; prefix lengths describe boundary masks.',
+      'The mathematical address count should not be interpreted as a recommendation to populate every address.',
+      'A /64 is conventional and required for SLAAC (RFC 4862) auto-configuration, but specific point-to-point links may use /127 (RFC 6164).'
+    ],
+    faqs: [
+      {
+        question: 'Why is a /64 the standard subnet size in IPv6?',
+        answer: 'RFC 4291 and RFC 4862 specify that Stateless Address Autoconfiguration (SLAAC) requires a 64-bit interface identifier. Subnets smaller than /64 break standard SLAAC.'
+      },
+      {
+        question: 'Does IPv6 reserve network and broadcast addresses?',
+        answer: 'IPv6 does not have a broadcast address. It uses multicast groups (such as ff02::1 for all nodes). The subnet router anycast address (all interface bits zero) is reserved.'
+      },
+      {
+        question: 'How does BigInt prevent calculation errors for IPv6?',
+        answer: 'Standard JavaScript Numbers lose integer precision beyond 2^53 - 1 (9 quadrillion). An IPv6 /64 contains 2^64 (18.4 quintillion) addresses, requiring 128-bit BigInt arithmetic for exact counts.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'cidr-subnet-wildcard-calculator', name: 'CIDR, Subnet & Wildcard Mask Calculator' },
+      { slug: 'vlsm-subnet-calculator', name: 'VLSM Subnet Calculator' },
+      { slug: 'ip-range-calculator', name: 'IP Range to CIDR Calculator' }
+    ],
+    relatedGuides: []
+  },
+  'tcp-udp-port-range-calculator': {
+    slug: 'tcp-udp-port-range-calculator',
+    name: 'TCP UDP Port Range Calculator – Port Counting & Classification',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Calculate the inclusive number of TCP or UDP port numbers in a selected numeric range.',
+    longTailKeywords: [
+      'port range calculator',
+      'tcp port range calculator',
+      'udp port range calculator',
+      'how many ports in range',
+      'firewall port range calculator',
+      'port classification 0-65535'
+    ],
+    intro: [
+      'Calculate the inclusive count of port numbers across any span within the 16-bit transport layer address space (0 to 65535).',
+      'Identify whether your selected port range lies within or crosses standard IANA system, registered, or dynamic/ephemeral port bands.',
+      local
+    ],
+    formula: [
+      { title: 'Inclusive port count', body: 'Port count = End Port − Start Port + 1 (when start ≤ end).' },
+      { title: 'System / Well-Known band', body: 'Ports 0 through 1023, traditionally reserved for privileged system services.' },
+      { title: 'User / Registered band', body: 'Ports 1024 through 49151, assigned by IANA for specific vendor applications and services.' },
+      { title: 'Dynamic / Private band', body: 'Ports 49152 through 65535, used for outbound ephemeral client connections and private custom services.' }
+    ],
+    steps: [
+      'Enter the starting integer port number between 0 and 65535.',
+      'Enter the ending integer port number between 0 and 65535.',
+      'Review the total inclusive port count for firewall rule planning.',
+      'Check whether the range crosses standard port classification boundaries.',
+      'Export the summary or download the port breakdown as a CSV.'
+    ],
+    interpretation: [
+      'Ranges that cross from 0–1023 into 1024–49151 span both system and registered port bands, which often require distinct firewall policies.',
+      'Dynamic ports (49152–65535) are commonly used as source ports for client connections and rarely need inbound firewall openings.',
+      'Both TCP and UDP utilize the same 16-bit numbering space independently, meaning port 443 TCP and port 443 UDP are separate endpoints.'
+    ],
+    limitations: [
+      'This tool calculates numeric port values; it does not test whether ports are open, blocked, or filtered on a host.',
+      'TCP and UDP protocol stacks operate separately on the same numeric port.',
+      'Numeric categorization reflects IANA recommendations, but applications can bind to non-standard ports.'
+    ],
+    faqs: [
+      {
+        question: 'Why are there 65,536 possible ports in TCP and UDP?',
+        answer: 'The TCP and UDP packet headers allocate a 16-bit field for both source and destination port numbers (2^16 = 65,536 possible values, from 0 to 65535).'
+      },
+      {
+        question: 'What is the difference between TCP and UDP ports?',
+        answer: 'TCP is connection-oriented with acknowledgments, while UDP is connectionless. They use the same numerical port range independently on any given network interface.'
+      },
+      {
+        question: 'What are ephemeral ports?',
+        answer: 'Ephemeral ports (typically 49152–65535) are temporary port numbers automatically assigned by the client operating system for outgoing requests.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'common-port-service-lookup', name: 'Common Port Service Lookup' },
+      { slug: 'cidr-subnet-wildcard-calculator', name: 'CIDR, Subnet & Wildcard Mask Calculator' },
+      { slug: 'http-status-code-lookup', name: 'HTTP Status Code Lookup' }
+    ],
+    relatedGuides: []
+  },
+  'cidr-summarization-calculator': {
+    slug: 'cidr-summarization-calculator',
+    name: 'CIDR Summarization Calculator – IPv4 Route Aggregation',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Summarize contiguous IPv4 CIDR networks into the smallest exact set of aggregate CIDR blocks.',
+    longTailKeywords: [
+      'cidr summarization calculator',
+      'route summarization calculator',
+      'cidr aggregation calculator',
+      'ipv4 route summary calculator',
+      'supernetting calculator',
+      'merge cidr blocks'
+    ],
+    intro: [
+      'Aggregate multiple IPv4 CIDR networks into the smallest mathematically exact set of summarized routing prefixes.',
+      'Automatically eliminates duplicate subnets, strips redundant contained blocks, and performs deterministic sibling-pair merges without over-summarizing.',
+      local
+    ],
+    formula: [
+      { title: 'Network normalization', body: 'Each input CIDR is normalized to its network boundary: Network = IP & Mask.' },
+      { title: 'Contained subnet pruning', body: 'Subnets fully enveloped by a larger supplied parent network are eliminated as redundant.' },
+      { title: 'Exact sibling aggregation', body: 'Two adjacent equal-sized blocks of prefix P merge into prefix P-1 if and only if their union exactly equals the parent block without covering unsupplied addresses.' }
+    ],
+    steps: [
+      'Paste or enter one or more IPv4 CIDR blocks (one per line, comma, or space-separated).',
+      'The calculator normalizes all inputs to strict network boundaries.',
+      'Redundant subnets and duplicate entries are removed.',
+      'Adjacent sibling subnets are iteratively aggregated into parent prefixes.',
+      'Copy the concise summarized CIDR list for BGP, OSPF, or firewall configuration.'
+    ],
+    interpretation: [
+      'Two sibling /25 subnets (e.g. 192.168.0.0/25 and 192.168.0.128/25) combine into a single /24 supernet (192.168.0.0/24).',
+      'Non-adjacent or misaligned blocks cannot be merged because doing so would advertise address space not provided in the original input.',
+      'Route summarization reduces routing table size and memory overhead on core routers.'
+    ],
+    limitations: [
+      'IPv4 only. IPv6 route summarization follows different hierarchical delegation boundaries.',
+      'The calculator strictly forbids loose summarization that would encompass unsupplied address ranges.',
+      'Operational routing decisions must also take path metrics, AS boundaries, and policy filtering into account.'
+    ],
+    faqs: [
+      {
+        question: 'Why cannot 192.168.0.0/25 and 192.168.1.0/25 be summarized into /24?',
+        answer: '192.168.0.0/25 needs sibling 192.168.0.128/25 to complete the 192.168.0.0/24 block. Merging with 192.168.1.0/25 would leave holes and improperly claim unsupplied addresses.'
+      },
+      {
+        question: 'What is a sibling network in CIDR?',
+        answer: 'Two networks with identical prefix length P whose addresses differ only at the (32 - P)th bit. Together, their exact union constitutes the parent prefix P - 1.'
+      },
+      {
+        question: 'How does route summarization benefit networks?',
+        answer: 'Summarization shrinks router routing tables, conserves memory and CPU cycles during route recalculations, and confines routing instability (flapping) to local network segments.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'cidr-subnet-wildcard-calculator', name: 'CIDR, Subnet & Wildcard Mask Calculator' },
+      { slug: 'ip-range-calculator', name: 'IP Range to CIDR Calculator' },
+      { slug: 'vlsm-subnet-calculator', name: 'VLSM Subnet Calculator' }
+    ],
+    relatedGuides: []
+  },
+  'ip-address-classifier': {
+    slug: 'ip-address-classifier',
+    name: 'IP Address Classifier – IPv4 & IPv6 Scope & Type Checker',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Classify an IPv4 or IPv6 address as private, public/global, loopback, link-local, multicast, documentation or another recognized special-use category.',
+    longTailKeywords: [
+      'ip address classifier',
+      'private or public ip checker',
+      'ip address type checker',
+      'ip range classifier',
+      'ipv4 ipv6 special use address',
+      'is this ip private or public'
+    ],
+    intro: [
+      'Classify any IPv4 or IPv6 address against authoritative IANA Special-Purpose Address Registries locally in your browser.',
+      'Instantly determine whether an address belongs to private (RFC 1918 / RFC 4193), loopback, link-local, carrier-grade NAT, multicast, or documentation scopes.',
+      local
+    ],
+    formula: [
+      { title: 'Authoritative standards', body: 'Evaluates inputs against IANA Special-Purpose Address Registries and IETF RFC specifications (RFC 6890, RFC 1918, RFC 4291, RFC 3927, RFC 5737).' },
+      { title: 'Most-specific match', body: 'Subnets are matched using longest prefix match (e.g. 192.0.2.0/24 Documentation takes precedence over 192.0.0.0/24 IETF Protocol).' },
+      { title: 'Zero network telemetry', body: 'Evaluates address syntax entirely client-side without pinging, DNS queries, or outbound HTTP requests.' }
+    ],
+    steps: [
+      'Enter any IPv4 address (e.g. 192.168.1.1) or IPv6 address (e.g. 2001:db8::1).',
+      'The classifier automatically identifies the IP version (IPv4 or IPv6).',
+      'Inspect the classification (Private-Use, Loopback, Link-Local, Global Unicast, Documentation, etc.).',
+      'Review the governing RFC specification and matching CIDR prefix block.',
+      'Copy the classification summary for documentation or security audit reports.'
+    ],
+    interpretation: [
+      'Private addresses (such as 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, and fc00::/7) are non-routable on the public internet and intended for internal networks.',
+      'Link-local addresses (169.254.0.0/16 and fe80::/10) are used for auto-configuration and communicate only within the same physical or virtual link.',
+      'Global Unicast indicates an address from globally routable address space, but does not indicate whether a device is currently powered on or reachable.'
+    ],
+    limitations: [
+      'Classification is based on address allocation ranges, not real-time network reachability or routing tables.',
+      'A syntactically global address does not imply public reachability; firewall rules or NAT often restrict inbound traffic.',
+      'Address allocations follow IANA registry specifications and can be updated by future RFCs.'
+    ],
+    faqs: [
+      {
+        question: 'What is the difference between private and public IP addresses?',
+        answer: 'Private IP addresses (defined in RFC 1918 for IPv4 and RFC 4193 for IPv6) are reserved for internal local networks and cannot be routed across the public Internet without Network Address Translation (NAT).'
+      },
+      {
+        question: 'What is Carrier-Grade NAT (CGNAT)?',
+        answer: 'RFC 6598 allocates 100.64.0.0/10 for Shared Address Space, enabling Internet Service Providers to perform NAT at scale without colliding with subscriber RFC 1918 private subnets.'
+      },
+      {
+        question: 'Does this tool make any network requests?',
+        answer: 'No. All classification is performed locally in your browser using mathematical bitwise prefix checks without contacting external servers or performing DNS lookups.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'ipv6-subnet-calculator', name: 'IPv6 Subnet Calculator' },
+      { slug: 'cidr-subnet-wildcard-calculator', name: 'CIDR, Subnet & Wildcard Mask Calculator' },
+      { slug: 'ip-range-calculator', name: 'IP Range to CIDR Calculator' }
+    ],
+    relatedGuides: []
+  },
+  'common-port-service-lookup': {
+    slug: 'common-port-service-lookup',
+    name: 'Common Port Service Lookup – Standard TCP & UDP Ports',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Look up common TCP and UDP port numbers and their commonly associated services.',
+    longTailKeywords: [
+      'port service lookup',
+      'common port numbers',
+      'what service uses port 443',
+      'tcp udp service ports',
+      'standard network ports',
+      'common tcp ports list'
+    ],
+    intro: [
+      'Look up standard and widely observed service associations for TCP and UDP port numbers.',
+      'Quickly identify common services (such as SSH, HTTPS, DNS, MySQL, and Redis) along with protocol differences and standard IANA numeric ranges.',
+      local
+    ],
+    formula: [
+      { title: 'Curated local reference', body: 'Searches a vetted table of standardized network services and protocol designations.' },
+      { title: 'Protocol specificity', body: 'Distinguishes between connection-oriented TCP services and connectionless UDP services sharing the same numeric port.' },
+      { title: 'Numeric range classification', body: 'Categorizes ports into System/Well-Known (0–1023), User/Registered (1024–49151), and Dynamic/Private (49152–65535).' }
+    ],
+    steps: [
+      'Enter an integer port number from 0 through 65535.',
+      'Select the transport layer protocol (TCP, UDP, or Both).',
+      'Review the common service name, standard purpose, and protocol assignment.',
+      'Inspect the port range classification for firewall and network policy compliance.',
+      'Copy the lookup summary or export the result.'
+    ],
+    interpretation: [
+      'Port 22 is commonly used for SSH (Secure Shell) over TCP, but has no standard UDP assignment.',
+      'Port 53 serves DNS queries primarily over UDP for speed, but switches to TCP for large responses (>512 bytes) and zone transfers.',
+      'If a port has no common service listed, it indicates that no widely recognized service uses it by default in this reference table.'
+    ],
+    limitations: [
+      'A port number lookup does not verify whether an active service or daemon is currently running on any host.',
+      'Services can be configured to listen on arbitrary non-standard ports (e.g. running SSH on port 2222).',
+      'This reference focuses on common assignments and does not attempt to reproduce all 65,536 IANA registration entries.'
+    ],
+    faqs: [
+      {
+        question: 'Can two applications use the same port number at the same time?',
+        answer: 'Generally, only one application can bind to a given combination of IP address, port number, and transport protocol (TCP or UDP) simultaneously, though modern sockets support options like SO_REUSEPORT.'
+      },
+      {
+        question: 'Why do DNS and LDAP use both TCP and UDP?',
+        answer: 'They utilize UDP for lightweight, low-latency client queries and fall back to TCP when payloads exceed UDP packet limits, require fragmentation, or perform stateful replication.'
+      },
+      {
+        question: 'Does this tool scan my computer or network?',
+        answer: 'No. This is purely a reference search tool operating against a local database. No network packets or socket connection attempts are ever initiated.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'tcp-udp-port-range-calculator', name: 'TCP UDP Port Range Calculator' },
+      { slug: 'http-status-code-lookup', name: 'HTTP Status Code Lookup' },
+      { slug: 'cidr-subnet-wildcard-calculator', name: 'CIDR, Subnet & Wildcard Mask Calculator' }
+    ],
+    relatedGuides: []
+  },
+  'url-parser': {
+    slug: 'url-parser',
+    name: 'URL Parser – Break Down URLs, Query Parameters & Components',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Parse a URL locally into protocol, hostname, port, pathname, query parameters and fragment.',
+    longTailKeywords: [
+      'url parser',
+      'parse url online',
+      'url components parser',
+      'url query parser',
+      'breakdown url online',
+      'extract url parameters'
+    ],
+    intro: [
+      'Deconstruct web URLs into standardized RFC 3986 and WHATWG components locally in your browser.',
+      'Examine scheme, hostname, explicit or default port, path segments, fragment identifiers, and itemized query parameters with duplicate key preservation.',
+      local
+    ],
+    formula: [
+      { title: 'WHATWG URL compliance', body: 'Parsed using standard browser URL and URLSearchParams specifications without external regex pitfalls.' },
+      { title: 'Duplicate key preservation', body: 'Iterates multi-value parameters (such as ?tag=js&tag=react) without overwriting repeated keys.' },
+      { title: 'Credential protection', body: 'Reports username and detects password presence without displaying plaintext secret strings in output summaries.' }
+    ],
+    steps: [
+      'Enter or paste a fully qualified absolute URL into the input field.',
+      'Review the decomposed protocol, hostname, port, and pathname components.',
+      'Inspect the query string and individual key-value query parameters.',
+      'Check hash fragment anchors and authentication presence.',
+      'Copy the parsed component breakdown or export to CSV.'
+    ],
+    interpretation: [
+      'The protocol defines the application transport (e.g. https:, http:, ftp:).',
+      'Default ports (such as 443 for HTTPS and 80 for HTTP) are identified even when omitted from the URL string.',
+      'Query parameters are separated from path and fragment components, making it simple to inspect analytics and API parameters.'
+    ],
+    limitations: [
+      'Parsing a URL tests syntactic validity; it does not verify that the target domain exists or the endpoint returns 200 OK.',
+      'Relative URLs require an explicit base URL and cannot be parsed without one.',
+      'This tool does not execute HTTP requests or interact with destination web servers.'
+    ],
+    faqs: [
+      {
+        question: 'How does the parser handle repeated query keys?',
+        answer: 'Standard URLSearchParams handles multiple values for the same key. The parser iterates all entries to ensure parameters like ?filter=a&filter=b are fully preserved.'
+      },
+      {
+        question: 'Why does the tool reject relative paths?',
+        answer: 'According to RFC 3986, relative paths (e.g. /products/item) lack protocol and authority context and cannot be resolved into absolute endpoints without a known base URL.'
+      },
+      {
+        question: 'Is my URL sent to an external server?',
+        answer: 'No. All parsing runs client-side in your browser using the native Web API URL object. No URL data is transmitted over the network.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'url-encoder-decoder', name: 'URL Encoder & Decoder' },
+      { slug: 'utm-builder', name: 'UTM Builder' },
+      { slug: 'base64-encoder', name: 'Base64 Encoder & Decoder' }
+    ],
+    relatedGuides: ['seo-tools-guide']
+  },
 };

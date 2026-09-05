@@ -1,0 +1,29 @@
+{
+  "name": "IPv6 Subnet Calculator",
+  "slug": "ipv6-subnet-calculator",
+  "category": "Developer Tools",
+  "description": "Calculate IPv6 subnet capacity, prefix relationships and subnet counts from IPv6 prefix lengths.",
+  "search_intent": "Calculate IPv6 subnet sizes and determine how many smaller subnets fit inside a larger IPv6 prefix.",
+  "keywords": [
+    "ipv6 subnet calculator",
+    "ipv6 prefix calculator",
+    "ipv6 subnet size calculator",
+    "ipv6 subnetting calculator"
+  ],
+  "inputs": [
+    {"key":"parentPrefix","label":"Parent prefix length","default":48,"min":0,"max":128},
+    {"key":"subnetPrefix","label":"Subnet prefix length","default":64,"min":0,"max":128}
+  ],
+  "outputs": [
+    {"key":"subnetBits","label":"Subnet bits","format":"number"},
+    {"key":"subnetCount","label":"Number of subnets","format":"text"},
+    {"key":"hostBits","label":"Interface/host bits per subnet","format":"number"},
+    {"key":"addressesPerSubnet","label":"Addresses per subnet","format":"text"}
+  ],
+  "calculation": "Subnet bits = subnet prefix - parent prefix. Number of subnets = 2^subnetBits. Host/interface bits = 128 - subnet prefix. Addresses per subnet = 2^hostBits. Require integer prefixes from 0 through 128 and subnet prefix >= parent prefix. Use BigInt/string-safe output where ordinary JavaScript numbers cannot represent the exact integer.",
+  "limitations": [
+    "IPv6 does not use IPv4-style broadcast addresses.",
+    "The mathematical address count should not be interpreted as a recommendation to assign every address.",
+    "A /64 is conventional for many IPv6 LAN use cases, but network design depends on the deployment."
+  ]
+}

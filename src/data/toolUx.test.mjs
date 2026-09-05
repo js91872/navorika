@@ -13,7 +13,7 @@ test('offline is never claimed without explicit verification', () => {
 });
 
 test('Phase 2A capabilities and result actions remain a controlled opt-in set', () => {
-  assert.equal(Object.keys(toolUx).length, 59);
+  assert.equal(Object.keys(toolUx).length, 65);
   assert.deepEqual(toolUx['cap-rate-calculator'].resultActions, ['copy-summary']);
   assert.deepEqual(toolUx['rental-property-cash-flow-calculator'].resultActions, ['copy-summary', 'download-csv', 'print']);
   assert.ok(Object.values(toolUx).every((config) => config.offlineVerified !== true));
