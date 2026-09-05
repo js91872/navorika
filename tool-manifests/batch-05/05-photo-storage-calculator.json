@@ -1,0 +1,28 @@
+{
+  "name": "Photo Storage Calculator",
+  "slug": "photo-storage-calculator",
+  "category": "Image Tools",
+  "description": "Estimate how many photos fit in a storage capacity based on average image file size.",
+  "search_intent": "Calculate how many photos can fit on a memory card, phone, drive or cloud storage allowance.",
+  "keywords": [
+    "photo storage calculator",
+    "how many photos fit calculator",
+    "memory card photo calculator",
+    "photo capacity calculator"
+  ],
+  "inputs": [
+    {"key":"storageGb","label":"Storage capacity (GB)","default":64,"min":0},
+    {"key":"averagePhotoMb","label":"Average photo size (MB)","default":5,"min":0},
+    {"key":"reservedPercent","label":"Reserved space (%)","default":10,"min":0,"max":100}
+  ],
+  "outputs": [
+    {"key":"usableStorageGb","label":"Usable storage (GB)","format":"number"},
+    {"key":"usableStorageMb","label":"Usable storage (MB)","format":"number"},
+    {"key":"estimatedPhotos","label":"Estimated photos","format":"number"}
+  ],
+  "calculation": "Usable storage GB = storage GB × (1 - reservedPercent/100). Convert GB to MB using a clearly documented convention. Estimated photos = floor(usable storage MB / average photo MB). Return null when average photo size is zero or invalid.",
+  "limitations": [
+    "Actual image sizes vary by camera, resolution, format, compression and scene complexity.",
+    "Real device capacity may differ because of formatting, operating-system use and manufacturer storage conventions."
+  ]
+}

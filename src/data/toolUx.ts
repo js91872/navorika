@@ -225,6 +225,36 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'construction-cost-calculator': 'Estimate early project costs', 'drywall-calculator': 'Estimate drywall sheets and materials' },
   },
+  'image-megapixel-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'image-print-size-calculator': 'Calculate physical print dimensions', 'image-file-size-estimator': 'Estimate uncompressed memory size' },
+  },
+  'image-print-size-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'image-megapixel-calculator': 'Calculate megapixels and aspect ratio', 'change-image-resolution': 'Change image resolution presets' },
+  },
+  'image-file-size-estimator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'image-bandwidth-calculator': 'Estimate image transfer volume', 'photo-storage-calculator': 'Calculate photo storage capacity' },
+  },
+  'image-scaling-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'resize-image': 'Resize image dimensions', 'social-media-resizer': 'Resize for social media' },
+  },
+  'photo-storage-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'image-file-size-estimator': 'Estimate uncompressed memory size', 'image-bandwidth-calculator': 'Estimate image transfer volume' },
+  },
+  'image-bandwidth-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'image-file-size-estimator': 'Estimate uncompressed memory size', 'photo-storage-calculator': 'Calculate photo storage capacity' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

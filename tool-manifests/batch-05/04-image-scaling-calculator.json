@@ -1,0 +1,29 @@
+{
+  "name": "Image Scaling Calculator",
+  "slug": "image-scaling-calculator",
+  "category": "Image Tools",
+  "description": "Calculate proportional image dimensions when scaling by percentage or target width.",
+  "search_intent": "Scale image dimensions while preserving the original aspect ratio.",
+  "keywords": [
+    "image scaling calculator",
+    "image resize calculator",
+    "scale image dimensions",
+    "proportional resize calculator"
+  ],
+  "inputs": [
+    {"key":"originalWidth","label":"Original width (px)","default":1920,"min":0},
+    {"key":"originalHeight","label":"Original height (px)","default":1080,"min":0},
+    {"key":"scalePercent","label":"Scale (%)","default":50,"min":0}
+  ],
+  "outputs": [
+    {"key":"scaledWidth","label":"Scaled width (px)","format":"number"},
+    {"key":"scaledHeight","label":"Scaled height (px)","format":"number"},
+    {"key":"scaleFactor","label":"Scale factor","format":"number"},
+    {"key":"pixelAreaPercent","label":"Pixel area vs original","format":"percent"}
+  ],
+  "calculation": "Scale factor = scalePercent / 100. Scaled width = original width × scale factor. Scaled height = original height × scale factor. Pixel area percent = scale factor² × 100.",
+  "limitations": [
+    "This calculates dimensions only and does not resample an actual image.",
+    "Upscaling dimensions does not create additional source detail."
+  ]
+}

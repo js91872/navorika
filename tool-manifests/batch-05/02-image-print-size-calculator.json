@@ -1,0 +1,29 @@
+{
+  "name": "Image Print Size Calculator",
+  "slug": "image-print-size-calculator",
+  "category": "Image Tools",
+  "description": "Calculate physical print dimensions from pixel dimensions and print PPI.",
+  "search_intent": "Calculate how large an image can print at a selected pixels-per-inch value.",
+  "keywords": [
+    "image print size calculator",
+    "photo print size calculator",
+    "pixels to inches calculator",
+    "ppi print size calculator"
+  ],
+  "inputs": [
+    {"key":"widthPixels","label":"Image width (px)","default":3000,"min":0},
+    {"key":"heightPixels","label":"Image height (px)","default":2400,"min":0},
+    {"key":"ppi","label":"Print resolution (PPI)","default":300,"min":0}
+  ],
+  "outputs": [
+    {"key":"widthInches","label":"Print width (in)","format":"number"},
+    {"key":"heightInches","label":"Print height (in)","format":"number"},
+    {"key":"widthCm","label":"Print width (cm)","format":"number"},
+    {"key":"heightCm","label":"Print height (cm)","format":"number"}
+  ],
+  "calculation": "Print width inches = pixel width / PPI. Print height inches = pixel height / PPI. Centimeters = inches × 2.54. Return null when PPI is zero or invalid.",
+  "limitations": [
+    "PPI is pixels per printed inch; printer DPI is not the same measurement.",
+    "Perceived print quality depends on viewing distance, printer, paper and source quality."
+  ]
+}

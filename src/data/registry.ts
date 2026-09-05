@@ -499,6 +499,48 @@ export const tools: RegisteredTool[] = ([
     category: 'image-tools',
     keywords: ['webp-to-png', 'webp', 'to', 'png']
   },
+  {
+    slug: 'image-megapixel-calculator',
+    title: 'Image Megapixel Calculator',
+    description: 'Calculate megapixels, total pixels and aspect ratio from image dimensions.',
+    category: 'image-tools',
+    keywords: ['megapixel calculator', 'image megapixel calculator', 'pixels to megapixels', 'resolution megapixel calculator']
+  },
+  {
+    slug: 'image-print-size-calculator',
+    title: 'Image Print Size Calculator',
+    description: 'Calculate physical print dimensions from pixel dimensions and print PPI.',
+    category: 'image-tools',
+    keywords: ['image print size calculator', 'photo print size calculator', 'pixels to inches calculator', 'ppi print size calculator']
+  },
+  {
+    slug: 'image-file-size-estimator',
+    title: 'Image File Size Estimator',
+    description: 'Estimate uncompressed image memory size from dimensions, channels and bit depth.',
+    category: 'image-tools',
+    keywords: ['image file size calculator', 'image file size estimator', 'raw image size calculator', 'image memory calculator']
+  },
+  {
+    slug: 'image-scaling-calculator',
+    title: 'Image Scaling Calculator',
+    description: 'Calculate proportional image dimensions when scaling by percentage or target width.',
+    category: 'image-tools',
+    keywords: ['image scaling calculator', 'image resize calculator', 'scale image dimensions', 'proportional resize calculator']
+  },
+  {
+    slug: 'photo-storage-calculator',
+    title: 'Photo Storage Calculator',
+    description: 'Estimate how many photos fit in a storage capacity based on average image file size.',
+    category: 'image-tools',
+    keywords: ['photo storage calculator', 'how many photos fit calculator', 'memory card photo calculator', 'photo capacity calculator']
+  },
+  {
+    slug: 'image-bandwidth-calculator',
+    title: 'Image Bandwidth Calculator',
+    description: 'Estimate data transfer and bandwidth requirements for serving images.',
+    category: 'image-tools',
+    keywords: ['image bandwidth calculator', 'website image bandwidth calculator', 'image transfer calculator', 'image data usage calculator']
+  },
 
   // ====== FINANCE CALCULATORS ======
   {

@@ -1,0 +1,30 @@
+{
+  "name": "Image File Size Estimator",
+  "slug": "image-file-size-estimator",
+  "category": "Image Tools",
+  "description": "Estimate uncompressed image memory size from dimensions, channels and bit depth.",
+  "search_intent": "Estimate raw image size before compression.",
+  "keywords": [
+    "image file size calculator",
+    "image file size estimator",
+    "raw image size calculator",
+    "image memory calculator"
+  ],
+  "inputs": [
+    {"key":"widthPixels","label":"Image width (px)","default":1920,"min":0},
+    {"key":"heightPixels","label":"Image height (px)","default":1080,"min":0},
+    {"key":"channels","label":"Color channels","default":3,"min":1},
+    {"key":"bitsPerChannel","label":"Bits per channel","default":8,"min":1}
+  ],
+  "outputs": [
+    {"key":"totalBits","label":"Raw bits","format":"number"},
+    {"key":"totalBytes","label":"Raw bytes","format":"number"},
+    {"key":"kib","label":"Approximate KiB","format":"number"},
+    {"key":"mib","label":"Approximate MiB","format":"number"}
+  ],
+  "calculation": "Total bits = width × height × channels × bits per channel. Bytes = bits / 8. KiB = bytes / 1024. MiB = bytes / 1,048,576.",
+  "limitations": [
+    "This estimates uncompressed pixel data rather than JPEG, PNG, WebP or AVIF size.",
+    "Actual files also contain headers, metadata and compression overhead."
+  ]
+}

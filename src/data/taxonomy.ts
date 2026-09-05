@@ -34,7 +34,7 @@ export const clusters: ToolCluster[] = [
   { id: 'pdf-security', name: 'PDF Signing and Security', description: 'Sign documents and manage document access where browser support is validated.', category: 'pdf-tools', toolSlugs: ['sign-pdf', 'protect-pdf', 'unlock-pdf'] },
 
   { id: 'image-convert', name: 'Image Format Conversion', description: 'Convert individual images or batches between common web and document formats.', category: 'image-tools', toolSlugs: ['batch-image-converter', 'convert-jpg-to-png', 'convert-jpg-to-webp', 'convert-png-to-jpg', 'convert-png-to-webp', 'convert-webp-to-jpg', 'heic-to-jpg', 'heic-to-png', 'image-converter', 'image-to-pdf', 'png-to-svg', 'svg-to-png', 'webp-to-png'] },
-  { id: 'image-optimize', name: 'Image Size and Quality', description: 'Resize, compress, upscale, and inspect image output for web or print use.', category: 'image-tools', toolSlugs: ['change-image-resolution', 'resize-image-to-1000x1000', 'compress-image', 'compress-jpg', 'compress-png', 'compress-webp', 'image-dpi-converter', 'image-metadata-viewer', 'resize-image', 'upscale-image'] },
+  { id: 'image-optimize', name: 'Image Size and Quality', description: 'Resize, compress, upscale, and inspect image output for web or print use.', category: 'image-tools', toolSlugs: ['change-image-resolution', 'resize-image-to-1000x1000', 'compress-image', 'compress-jpg', 'compress-png', 'compress-webp', 'image-dpi-converter', 'image-metadata-viewer', 'resize-image', 'upscale-image', 'image-megapixel-calculator', 'image-print-size-calculator', 'image-file-size-estimator', 'image-scaling-calculator', 'photo-storage-calculator', 'image-bandwidth-calculator'] },
   { id: 'image-edit', name: 'Image Editing', description: 'Crop, rotate, retouch, watermark, and protect visual content.', category: 'image-tools', toolSlugs: ['blur-face', 'crop-image', 'photo-editor', 'rotate-image', 'watermark-image'] },
   { id: 'image-create', name: 'Image Creation and Publishing', description: 'Create visual assets, sample colors, and prepare images for identity, social, and web use.', category: 'image-tools', toolSlugs: ['image-color-picker', 'html-to-image', 'icon-sticker-maker', 'id-photo-maker', 'meme-generator', 'photo-collage-maker', 'social-media-resizer'] },
 
@@ -153,8 +153,8 @@ export const toolkits: Toolkit[] = [
     intro: 'Choose the right dimensions, format, and compression level for the destination. This collection connects the practical steps that usually happen together before an image is published.',
     categorySlugs: ['image-tools'],
     groups: [
-      { name: 'Size and quality', description: 'Control pixel dimensions and file size while reviewing output quality.', toolSlugs: ['resize-image', 'change-image-resolution', 'compress-image', 'compress-jpg', 'compress-webp', 'upscale-image'] },
-      { name: 'Prepare and publish', description: 'Sample colors, convert, crop, rotate, watermark, and resize images for common channels.', toolSlugs: ['image-color-picker', 'convert-png-to-webp', 'convert-webp-to-jpg', 'crop-image', 'rotate-image', 'watermark-image', 'social-media-resizer'] },
+      { name: 'Size and quality', description: 'Control pixel dimensions and file size while reviewing output quality.', toolSlugs: ['resize-image', 'change-image-resolution', 'compress-image', 'compress-jpg', 'compress-webp', 'upscale-image', 'image-megapixel-calculator', 'image-print-size-calculator', 'image-file-size-estimator', 'image-scaling-calculator'] },
+      { name: 'Prepare and publish', description: 'Sample colors, convert, crop, rotate, watermark, and resize images for common channels.', toolSlugs: ['image-color-picker', 'convert-png-to-webp', 'convert-webp-to-jpg', 'crop-image', 'rotate-image', 'watermark-image', 'social-media-resizer', 'photo-storage-calculator', 'image-bandwidth-calculator'] },
     ], guideSlugs: ['image-compression-guide', 'how-to-resize-images', 'image-formats-guide'],
   },
   {
@@ -214,6 +214,12 @@ export const complementaryTools: Record<string, string[]> = {
   'resize-image': ['compress-image', 'crop-image', 'social-media-resizer'],
   'compress-image': ['resize-image', 'image-metadata-viewer'],
   'image-color-picker': ['watermark-image', 'css-gradient-generator'],
+  'image-megapixel-calculator': ['image-print-size-calculator', 'image-file-size-estimator', 'image-metadata-viewer'],
+  'image-print-size-calculator': ['image-megapixel-calculator', 'change-image-resolution', 'resize-image'],
+  'image-file-size-estimator': ['image-bandwidth-calculator', 'photo-storage-calculator', 'compress-image'],
+  'image-scaling-calculator': ['resize-image', 'image-megapixel-calculator', 'social-media-resizer'],
+  'photo-storage-calculator': ['image-file-size-estimator', 'image-bandwidth-calculator', 'compress-jpg'],
+  'image-bandwidth-calculator': ['image-file-size-estimator', 'photo-storage-calculator', 'compress-webp'],
   'json-formatter': ['json-schema-validator', 'json-diff-compare', 'json-to-csv-flattener', 'csv-to-json-converter'],
   'json-schema-validator': ['json-formatter', 'json-diff-compare'],
   'csv-to-json-converter': ['json-formatter', 'json-to-csv-flattener'],

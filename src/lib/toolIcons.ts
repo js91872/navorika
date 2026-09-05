@@ -72,6 +72,12 @@ export const toolIcons: Record<string, string> = {
   'upscale-image': '🔍',
   'watermark-image': '💧',
   'webp-to-png': '🔄',
+  'image-megapixel-calculator': '📷',
+  'image-print-size-calculator': '🖨️',
+  'image-file-size-estimator': '💾',
+  'image-scaling-calculator': '🔍',
+  'photo-storage-calculator': '🗄️',
+  'image-bandwidth-calculator': '🌐',
 
   // ====== FINANCE TOOLS ======
   'sip-calculator': '📈',

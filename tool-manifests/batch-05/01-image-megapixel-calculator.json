@@ -1,0 +1,27 @@
+{
+  "name": "Image Megapixel Calculator",
+  "slug": "image-megapixel-calculator",
+  "category": "Image Tools",
+  "description": "Calculate megapixels, total pixels and aspect ratio from image dimensions.",
+  "search_intent": "Find how many megapixels an image resolution contains.",
+  "keywords": [
+    "megapixel calculator",
+    "image megapixel calculator",
+    "pixels to megapixels",
+    "resolution megapixel calculator"
+  ],
+  "inputs": [
+    {"key":"widthPixels","label":"Image width (px)","default":6000,"min":0},
+    {"key":"heightPixels","label":"Image height (px)","default":4000,"min":0}
+  ],
+  "outputs": [
+    {"key":"totalPixels","label":"Total pixels","format":"number"},
+    {"key":"megapixels","label":"Megapixels","format":"number"},
+    {"key":"aspectRatio","label":"Aspect ratio","format":"text"}
+  ],
+  "calculation": "Total pixels = width × height. Megapixels = total pixels / 1,000,000. Simplify the aspect ratio using the greatest common divisor when width and height are positive.",
+  "limitations": [
+    "Megapixel count measures pixel quantity, not overall image quality.",
+    "Lens, sensor, compression and processing also affect image quality."
+  ]
+}

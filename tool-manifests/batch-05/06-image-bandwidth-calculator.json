@@ -1,0 +1,29 @@
+{
+  "name": "Image Bandwidth Calculator",
+  "slug": "image-bandwidth-calculator",
+  "category": "Image Tools",
+  "description": "Estimate data transfer and bandwidth requirements for serving images.",
+  "search_intent": "Estimate image bandwidth usage from file size, page views and image count.",
+  "keywords": [
+    "image bandwidth calculator",
+    "website image bandwidth calculator",
+    "image transfer calculator",
+    "image data usage calculator"
+  ],
+  "inputs": [
+    {"key":"imageSizeKb","label":"Average image size (KB)","default":250,"min":0},
+    {"key":"imagesPerView","label":"Images per page view","default":5,"min":0},
+    {"key":"pageViews","label":"Page views","default":10000,"min":0}
+  ],
+  "outputs": [
+    {"key":"dataPerViewKb","label":"Image data per page view (KB)","format":"number"},
+    {"key":"totalTransferKb","label":"Total transfer (KB)","format":"number"},
+    {"key":"totalTransferMb","label":"Total transfer (MB)","format":"number"},
+    {"key":"totalTransferGb","label":"Total transfer (GB)","format":"number"}
+  ],
+  "calculation": "Data per view = average image size KB × images per view. Total transfer KB = data per view × page views. Convert to MB and GB using a clearly documented binary or decimal convention and use it consistently.",
+  "limitations": [
+    "This estimates image payload only and excludes HTML, CSS, JavaScript, video and API traffic.",
+    "Browser caching, CDN caching, compression and repeat visits can materially change actual bandwidth usage."
+  ]
+}

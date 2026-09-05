@@ -19,6 +19,12 @@ import { calculateJoistDeflection } from '@/lib/calculations/joistDeflection';
 import { calculateHvacDuctCfm } from '@/lib/calculations/hvacDuctCfm';
 import { calculateShedRamp } from '@/lib/calculations/shedRamp';
 import { calculateMaterialWaste } from '@/lib/calculations/materialWaste';
+import { calculateImageMegapixel } from '@/lib/calculations/imageMegapixel';
+import { calculateImagePrintSize } from '@/lib/calculations/imagePrintSize';
+import { calculateImageFileSize } from '@/lib/calculations/imageFileSize';
+import { calculateImageScaling } from '@/lib/calculations/imageScaling';
+import { calculatePhotoStorage } from '@/lib/calculations/photoStorage';
+import { calculateImageBandwidth } from '@/lib/calculations/imageBandwidth';
 import ResultActions, { type ResultAction } from '@/components/ui/ResultActions';
 import { toolUx } from '@/data/toolUx';
 import { rowsToCsv } from '@/lib/resultExport';
@@ -633,6 +639,124 @@ const configs: Record<string, Config> = {
         unitCost: v(x, 'unitCost'),
       }),
     note: 'General allowance calculation for material ordering. Material layout, cuts, pattern matching, and jobsite damage affect actual scrap. Final purchasing may require rounding to full bundles, cartons, sheets, or pallets.',
+  },
+  'image-megapixel-calculator': {
+    fields: [
+      { key: 'widthPixels', label: 'Image width (px)', defaultValue: 6000, min: 0, step: 1 },
+      { key: 'heightPixels', label: 'Image height (px)', defaultValue: 4000, min: 0, step: 1 },
+    ],
+    results: [
+      { key: 'totalPixels', label: 'Total pixels', format: 'number' },
+      { key: 'megapixels', label: 'Megapixels', format: 'number' },
+      { key: 'aspectRatio', label: 'Aspect ratio', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateImageMegapixel({
+        widthPixels: v(x, 'widthPixels'),
+        heightPixels: v(x, 'heightPixels'),
+      }),
+    note: 'Megapixel count measures pixel resolution and grid density, not overall optical sharpness or image quality. Sensor size, lens quality, compression, and lighting also determine final image fidelity.',
+  },
+  'image-print-size-calculator': {
+    fields: [
+      { key: 'widthPixels', label: 'Image width (px)', defaultValue: 3000, min: 0, step: 1 },
+      { key: 'heightPixels', label: 'Image height (px)', defaultValue: 2400, min: 0, step: 1 },
+      { key: 'ppi', label: 'Print resolution (PPI)', defaultValue: 300, min: 0, step: 1, help: 'Pixels per inch (standard photographic print is 300 PPI).' },
+    ],
+    results: [
+      { key: 'widthInches', label: 'Print width (in)', format: 'number' },
+      { key: 'heightInches', label: 'Print height (in)', format: 'number' },
+      { key: 'widthCm', label: 'Print width (cm)', format: 'number' },
+      { key: 'heightCm', label: 'Print height (cm)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateImagePrintSize({
+        widthPixels: v(x, 'widthPixels'),
+        heightPixels: v(x, 'heightPixels'),
+        ppi: v(x, 'ppi'),
+      }),
+    note: 'PPI (pixels per inch) describes pixel density for physical print output. It differs from printer hardware DPI (dots of ink per inch). Changing PPI values recalculates physical dimensions without altering source image pixel data.',
+  },
+  'image-file-size-estimator': {
+    fields: [
+      { key: 'widthPixels', label: 'Image width (px)', defaultValue: 1920, min: 0, step: 1 },
+      { key: 'heightPixels', label: 'Image height (px)', defaultValue: 1080, min: 0, step: 1 },
+      { key: 'channels', label: 'Color channels', defaultValue: 3, min: 1, max: 4, step: 1, help: '3 for RGB, 4 for RGBA with transparency.' },
+      { key: 'bitsPerChannel', label: 'Bits per channel', defaultValue: 8, min: 1, max: 32, step: 1, help: '8-bit standard, 10/12/16-bit HDR or wide-gamut.' },
+    ],
+    results: [
+      { key: 'totalBits', label: 'Raw bits', format: 'number' },
+      { key: 'totalBytes', label: 'Raw uncompressed bytes', format: 'number' },
+      { key: 'kib', label: 'Uncompressed memory (KiB)', format: 'number' },
+      { key: 'mib', label: 'Uncompressed memory (MiB)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateImageFileSize({
+        widthPixels: v(x, 'widthPixels'),
+        heightPixels: v(x, 'heightPixels'),
+        channels: v(x, 'channels'),
+        bitsPerChannel: v(x, 'bitsPerChannel'),
+      }),
+    note: 'Estimates uncompressed in-memory raster pixel data (width × height × channels × bit depth). This is not a predictor for compressed JPEG, PNG, WebP, or AVIF file sizes on disk, which vary dramatically with image complexity and entropy encoding.',
+  },
+  'image-scaling-calculator': {
+    fields: [
+      { key: 'originalWidth', label: 'Original width (px)', defaultValue: 1920, min: 0, step: 1 },
+      { key: 'originalHeight', label: 'Original height (px)', defaultValue: 1080, min: 0, step: 1 },
+      { key: 'scalePercent', label: 'Scale percentage (%)', defaultValue: 50, min: 0, step: 0.1 },
+    ],
+    results: [
+      { key: 'scaledWidth', label: 'Scaled width (px)', format: 'number' },
+      { key: 'scaledHeight', label: 'Scaled height (px)', format: 'number' },
+      { key: 'scaleFactor', label: 'Scale factor', format: 'number' },
+      { key: 'pixelAreaPercent', label: 'Pixel area vs original', format: 'percent' },
+    ],
+    calculate: (x) =>
+      calculateImageScaling({
+        originalWidth: v(x, 'originalWidth'),
+        originalHeight: v(x, 'originalHeight'),
+        scalePercent: v(x, 'scalePercent'),
+      }),
+    note: 'Calculates proportional target dimensions and pixel area. Scaling width and height to 50% yields 25% of the original pixel area (0.5 × 0.5 = 0.25). This tool calculates geometric dimensions only and does not resample or modify image files.',
+  },
+  'photo-storage-calculator': {
+    fields: [
+      { key: 'storageGb', label: 'Storage capacity (GB)', defaultValue: 64, min: 0, step: 1 },
+      { key: 'averagePhotoMb', label: 'Average photo size (MB)', defaultValue: 5, min: 0, step: 0.1 },
+      { key: 'reservedPercent', label: 'Reserved / OS space (%)', defaultValue: 10, min: 0, max: 100, step: 1, help: 'Space allocated for system files, formatting overhead, or apps.' },
+    ],
+    results: [
+      { key: 'usableStorageGb', label: 'Usable storage (GB)', format: 'number' },
+      { key: 'usableStorageMb', label: 'Usable storage (MB)', format: 'number' },
+      { key: 'estimatedPhotos', label: 'Estimated photo count', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculatePhotoStorage({
+        storageGb: v(x, 'storageGb'),
+        averagePhotoMb: v(x, 'averagePhotoMb'),
+        reservedPercent: v(x, 'reservedPercent'),
+      }),
+    note: 'Storage estimates use standard binary units (1 GB = 1,024 MB). Actual photo file sizes fluctuate widely depending on camera sensor, capture format (RAW vs JPEG), ISO noise, and scene detail. Formatting overhead and filesystem metadata also reduce available capacity.',
+  },
+  'image-bandwidth-calculator': {
+    fields: [
+      { key: 'imageSizeKb', label: 'Average image size (KB)', defaultValue: 250, min: 0, step: 1 },
+      { key: 'imagesPerView', label: 'Images per page view', defaultValue: 5, min: 0, step: 1 },
+      { key: 'pageViews', label: 'Monthly page views', defaultValue: 10000, min: 0, step: 100 },
+    ],
+    results: [
+      { key: 'dataPerViewKb', label: 'Image payload per page view (KB)', format: 'number' },
+      { key: 'totalTransferKb', label: 'Total image transfer (KB)', format: 'number' },
+      { key: 'totalTransferMb', label: 'Total image transfer (MB)', format: 'number' },
+      { key: 'totalTransferGb', label: 'Total image transfer (GB)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateImageBandwidth({
+        imageSizeKb: v(x, 'imageSizeKb'),
+        imagesPerView: v(x, 'imagesPerView'),
+        pageViews: v(x, 'pageViews'),
+      }),
+    note: 'Calculates raw image transfer volume using binary conversions (1 MB = 1,024 KB, 1 GB = 1,024 MB). Actual network egress will vary based on CDN edge caching, browser caching, responsive image srcsets, repeat visitor ratios, and lazy-loading.',
   },
 };
 
