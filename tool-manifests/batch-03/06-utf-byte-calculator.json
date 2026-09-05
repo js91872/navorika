@@ -1,0 +1,57 @@
+{
+  "name": "UTF-8 vs UTF-16 Byte Calculator",
+  "slug": "utf8-vs-utf16-byte-calculator",
+  "category": "Developer Tools",
+  "description": "Compare UTF-8 and UTF-16 encoded byte sizes for text, including Unicode characters and emoji.",
+  "search_intent": "Calculate how many bytes a string uses in UTF-8 versus UTF-16 encoding.",
+  "keywords": [
+    "utf 8 byte calculator",
+    "utf8 byte length calculator",
+    "utf16 byte calculator",
+    "utf8 vs utf16 size",
+    "unicode byte calculator"
+  ],
+  "inputs": [
+    {
+      "key": "text",
+      "label": "Text",
+      "default": "Hello 🌍"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "characters",
+      "label": "Unicode code points",
+      "format": "number"
+    },
+    {
+      "key": "utf8Bytes",
+      "label": "UTF-8 bytes",
+      "format": "number"
+    },
+    {
+      "key": "utf16Bytes",
+      "label": "UTF-16 code-unit bytes",
+      "format": "number"
+    },
+    {
+      "key": "difference",
+      "label": "Byte difference",
+      "format": "number"
+    },
+    {
+      "key": "smallerEncoding",
+      "label": "Smaller encoding",
+      "format": "text"
+    }
+  ],
+  "calculation": "Calculate UTF-8 encoded length using TextEncoder or an equivalent standards-correct implementation. Calculate UTF-16 storage as JavaScript UTF-16 code units × 2 bytes, excluding an optional byte-order mark unless explicitly stated. Separately count Unicode code points so surrogate-pair characters such as emoji are handled transparently. Difference = UTF-8 bytes - UTF-16 bytes. Report equal when sizes match.",
+  "related_tools": [
+    "base64-encoder"
+  ],
+  "limitations": [
+    "UTF-16 byte counts exclude a byte-order mark unless explicitly stated.",
+    "Unicode code points are not the same as user-perceived grapheme clusters.",
+    "File formats and protocols may add additional metadata beyond encoded text bytes."
+  ]
+}

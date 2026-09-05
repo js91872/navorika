@@ -1557,6 +1557,96 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'Contractor Estimate Generator',
     heroDescription: 'Generate a professional contractor estimate with customer details, line items, totals, terms, and downloadable output.'
+  },
+  {
+    slug: 'gitignore-generator',
+    title: '.gitignore Generator',
+    description: 'Generate a clean .gitignore file for common programming languages, frameworks, IDEs, and operating systems.',
+    category: 'developer-tools',
+    keywords: [
+      'gitignore generator',
+      '.gitignore generator',
+      'generate gitignore',
+      'git ignore file generator',
+      'gitignore creator'
+    ],
+    heroTitle: '.gitignore Generator',
+    heroDescription: 'Create custom .gitignore files by selecting languages, frameworks, editors, and operating systems.'
+  },
+  {
+    slug: 'css-flexbox-generator',
+    title: 'CSS Flexbox Generator',
+    description: 'Build and preview CSS Flexbox layouts with interactive controls and copy the resulting CSS.',
+    category: 'developer-tools',
+    keywords: [
+      'css flexbox generator',
+      'flexbox generator',
+      'css flex generator',
+      'flexbox playground',
+      'justify content generator'
+    ],
+    heroTitle: 'CSS Flexbox Generator',
+    heroDescription: 'Visually configure flex-direction, justify-content, align-items, flex-wrap, and gap with live preview.'
+  },
+  {
+    slug: 'docker-run-command-generator',
+    title: 'Docker Run Command Generator',
+    description: 'Build a Docker run command from image, container, port, volume, and environment-variable settings.',
+    category: 'developer-tools',
+    keywords: [
+      'docker run command generator',
+      'docker command generator',
+      'docker run generator',
+      'docker cli generator',
+      'generate docker run command'
+    ],
+    heroTitle: 'Docker Run Command Generator',
+    heroDescription: 'Generate clean, validated docker run commands with port forwarding, restart policies, and volume mounts.'
+  },
+  {
+    slug: 'typescript-to-zod-schema-converter',
+    title: 'TypeScript to Zod Schema Converter',
+    description: 'Convert common TypeScript interfaces and type definitions into starter Zod validation schemas.',
+    category: 'developer-tools',
+    keywords: [
+      'typescript to zod',
+      'typescript to zod converter',
+      'zod schema generator',
+      'interface to zod',
+      'typescript zod generator'
+    ],
+    heroTitle: 'TypeScript to Zod Schema Converter',
+    heroDescription: 'Transform TypeScript interfaces and types into runtime Zod validation schemas privately in your browser.'
+  },
+  {
+    slug: 'git-commit-message-formatter',
+    title: 'Git Commit Message Formatter',
+    description: 'Format a concise Git commit message using Conventional Commits style with type, scope, and breaking change flags.',
+    category: 'developer-tools',
+    keywords: [
+      'git commit message generator',
+      'commit message formatter',
+      'conventional commits generator',
+      'git commit formatter',
+      'commit message generator'
+    ],
+    heroTitle: 'Git Commit Message Formatter',
+    heroDescription: 'Format standardized Conventional Commit messages with type, scope, subject, and breaking change indicators.'
+  },
+  {
+    slug: 'utf8-vs-utf16-byte-calculator',
+    title: 'UTF-8 vs UTF-16 Byte Calculator',
+    description: 'Compare UTF-8 and UTF-16 encoded byte sizes for text, including Unicode characters and emoji.',
+    category: 'developer-tools',
+    keywords: [
+      'utf 8 byte calculator',
+      'utf8 byte length calculator',
+      'utf16 byte calculator',
+      'utf8 vs utf16 size',
+      'unicode byte calculator'
+    ],
+    heroTitle: 'UTF-8 vs UTF-16 Byte Calculator',
+    heroDescription: 'Compare encoded byte sizes, code points, and UTF-16 code units across UTF-8 and UTF-16 string storage.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,

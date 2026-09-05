@@ -169,6 +169,12 @@ export const toolIcons: Record<string, string> = {
   'aspect-ratio-padding-calculator': '📐',
   'cron-expression-humanizer': '⏰',
   'css-clamp-font-generator': '🔤',
+  'gitignore-generator': '🙈',
+  'css-flexbox-generator': '🍱',
+  'docker-run-command-generator': '🐳',
+  'typescript-to-zod-schema-converter': '🛡️',
+  'git-commit-message-formatter': '📝',
+  'utf8-vs-utf16-byte-calculator': '🔢',
 
   // ====== CONSTRUCTION TOOLS - ALL 20 ======
   'asphalt-calculator': '🛣️',

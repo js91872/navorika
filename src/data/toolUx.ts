@@ -165,6 +165,36 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'barbell-plate-calculator': 'Plan barbell plate loading', 'calories-burned-calculator': 'Calculate exercise calorie burn' },
   },
+  'gitignore-generator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-txt'],
+    workflowLabels: { 'git-commit-message-formatter': 'Format conventional commit', 'docker-run-command-generator': 'Generate Docker run command' },
+  },
+  'css-flexbox-generator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'aspect-ratio-padding-calculator': 'Calculate aspect ratio padding', 'css-clamp-font-generator': 'Generate fluid clamp typography' },
+  },
+  'docker-run-command-generator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'gitignore-generator': 'Generate .gitignore', 'cloud-hosting-cost-calculator': 'Estimate hosting costs' },
+  },
+  'typescript-to-zod-schema-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-txt'],
+    workflowLabels: { 'json-schema-validator': 'Validate JSON schema', 'json-to-csv-flattener': 'Flatten JSON to CSV' },
+  },
+  'git-commit-message-formatter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'gitignore-generator': 'Generate .gitignore', 'developer-utils': 'Developer utility hub' },
+  },
+  'utf8-vs-utf16-byte-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'base64-encoder': 'Encode text to Base64', 'url-encoder-decoder': 'URL encode and decode' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

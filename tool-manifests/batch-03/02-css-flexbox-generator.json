@@ -1,0 +1,58 @@
+{
+  "name": "CSS Flexbox Generator",
+  "slug": "css-flexbox-generator",
+  "category": "Developer Tools",
+  "description": "Build and preview CSS Flexbox layouts and copy the resulting CSS.",
+  "search_intent": "Visually configure flex-direction, justify-content, align-items, gap and wrapping and generate CSS Flexbox code.",
+  "keywords": [
+    "css flexbox generator",
+    "flexbox generator",
+    "css flex generator",
+    "flexbox playground",
+    "justify content generator"
+  ],
+  "inputs": [
+    {
+      "key": "flexDirection",
+      "label": "Flex direction",
+      "default": "row"
+    },
+    {
+      "key": "justifyContent",
+      "label": "Justify content",
+      "default": "flex-start"
+    },
+    {
+      "key": "alignItems",
+      "label": "Align items",
+      "default": "stretch"
+    },
+    {
+      "key": "flexWrap",
+      "label": "Flex wrap",
+      "default": "nowrap"
+    },
+    {
+      "key": "gap",
+      "label": "Gap (px)",
+      "default": 16,
+      "min": 0,
+      "max": 100,
+      "step": 1
+    }
+  ],
+  "outputs": [
+    {
+      "key": "css",
+      "label": "Generated CSS",
+      "format": "text"
+    }
+  ],
+  "calculation": "Create a live Flexbox preview and deterministic CSS output from the selected flex-direction, justify-content, align-items, flex-wrap and gap values. Generated code should include display: flex and only valid CSS values. Provide copy functionality.",
+  "related_tools": [],
+  "limitations": [
+    "The generator focuses on common Flexbox container properties.",
+    "Complex child-specific flex-grow, flex-shrink and flex-basis rules may require manual CSS.",
+    "Preview dimensions may differ from the user's production layout."
+  ]
+}

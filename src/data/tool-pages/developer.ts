@@ -796,5 +796,432 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: ['seo-tools-guide'],
   },
-
+  'gitignore-generator': {
+    slug: 'gitignore-generator',
+    name: '.gitignore Generator – Create Custom Git Ignore Files',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Generate a clean .gitignore file for common programming languages, frameworks, IDEs, and operating systems privately in your browser.',
+    longTailKeywords: [
+      'gitignore generator',
+      '.gitignore generator',
+      'generate gitignore',
+      'git ignore file generator',
+      'gitignore creator',
+      'custom gitignore file'
+    ],
+    intro: [
+      'Quickly assemble production-grade .gitignore configuration files without manually looking up rule patterns.',
+      'Select your languages, frameworks, editors, and operating systems to merge ignore rules deterministically with duplicate patterns removed.',
+      local
+    ],
+    formula: [
+      {
+        title: 'Deterministic template merge',
+        body: 'Patterns from selected languages, frameworks, OS, and editors are compiled in canonical order.'
+      },
+      {
+        title: 'Deduplication',
+        body: 'Duplicate ignore patterns across overlapping stacks (such as build/ or .tsbuildinfo) are removed while retaining clear section comments.'
+      },
+      {
+        title: 'Local browser generation',
+        body: 'All template processing occurs in memory in your browser with zero network requests.'
+      }
+    ],
+    steps: [
+      'Select the programming languages and frameworks used in your project (e.g., Node.js, Next.js, Python).',
+      'Select your host operating systems (macOS, Windows, Linux) and code editors (VS Code, JetBrains).',
+      'Add any repository-specific custom ignore paths or patterns.',
+      'Review the generated file preview, then copy or download as .gitignore.'
+    ],
+    interpretation: [
+      'Generated rules are standard community defaults designed to prevent accidental commits of dependencies, caches, and OS metadata.',
+      'Negation rules (such as !.vscode/settings.json) allow shareable team workspace configuration while ignoring local user caches.',
+      'Review rules before committing to verify that your repository does not accidentally exclude required assets.'
+    ],
+    limitations: [
+      'Generated rules provide common defaults and may need custom paths for non-standard build outputs.',
+      'Does not untrack files that have already been committed to git; use git rm --cached for existing tracked files.',
+      'All processing happens locally and does not inspect remote Git repositories.'
+    ],
+    faqs: [
+      {
+        question: 'How do I apply the downloaded .gitignore to my repository?',
+        answer: 'Save or move the downloaded .gitignore file into the root directory of your Git repository and commit it.'
+      },
+      {
+        question: 'Will this generator untrack files already in Git history?',
+        answer: 'No. Git only applies .gitignore to untracked files. To untrack files already committed, run git rm --cached <file>.'
+      },
+      {
+        question: 'Are custom files uploaded to any server?',
+        answer: 'No. Generation and deduplication run entirely locally in your browser.'
+      },
+      {
+        question: 'Does the generator remove duplicate rules between stacks?',
+        answer: 'Yes. Rules appearing across multiple selected stacks (like build or out directories) are kept only once.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'git-commit-message-formatter', name: 'Git Commit Message Formatter' },
+      { slug: 'docker-run-command-generator', name: 'Docker Run Command Generator' },
+      { slug: 'base64-encoder', name: 'Base64 Encoder' }
+    ],
+    relatedGuides: ['seo-tools-guide']
+  },
+  'css-flexbox-generator': {
+    slug: 'css-flexbox-generator',
+    name: 'CSS Flexbox Generator – Visual Flexbox Layout Builder',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Build and visually preview CSS Flexbox layouts with real-time controls for flex-direction, justify-content, align-items, flex-wrap, and gap.',
+    longTailKeywords: [
+      'css flexbox generator',
+      'flexbox generator',
+      'css flex generator',
+      'flexbox playground',
+      'justify content generator',
+      'css flexbox cheat sheet'
+    ],
+    intro: [
+      'Visually configure CSS Flexible Box layout properties with instant interactive feedback and copy-ready CSS output.',
+      'Experiment with main-axis distribution, cross-axis alignment, responsive multi-line wrapping, and modern gap spacing.',
+      local
+    ],
+    formula: [
+      {
+        title: 'Flex container setup',
+        body: 'Establishes a flex formatting context with display: flex and directional flow axes.'
+      },
+      {
+        title: 'Distribution and alignment',
+        body: 'Maps justify-content along the main axis and align-items along the perpendicular cross axis.'
+      },
+      {
+        title: 'Spacing and wrapping',
+        body: 'Controls row or column wrapping with flex-wrap and gutter spacing with modern CSS gap.'
+      }
+    ],
+    steps: [
+      'Choose the primary flex-direction (row, row-reverse, column, or column-reverse).',
+      'Configure justify-content to distribute child items along the main axis.',
+      'Adjust align-items to control cross-axis positioning and stretching.',
+      'Set flex-wrap behavior and specify gap distance in pixels.',
+      'Copy the generated CSS directly into your stylesheet.'
+    ],
+    interpretation: [
+      'display: flex turns direct children into flex items adhering to flex formatting rules.',
+      'gap replaces legacy negative margins, creating uniform spacing between adjacent flex items.',
+      'align-items: stretch causes items to fill the container height unless an explicit cross-axis size is set.'
+    ],
+    limitations: [
+      'Focuses on container-level Flexbox properties; individual child flex-grow, flex-shrink, and order rules require manual CSS.',
+      'Preview dimensions are illustrative and may differ from your final responsive component container.',
+      'Browser support for gap in Flexbox requires modern browsers (Chrome 84+, Safari 14.1+, Firefox 63+).'
+    ],
+    faqs: [
+      {
+        question: 'What is the difference between justify-content and align-items?',
+        answer: 'justify-content controls alignment along the main axis (horizontal in row mode), while align-items controls alignment along the cross axis (vertical in row mode).'
+      },
+      {
+        question: 'When should I use flex-wrap?',
+        answer: 'Use flex-wrap: wrap when child items should flow onto new lines rather than shrinking or overflowing when container space is constrained.'
+      },
+      {
+        question: 'Is modern CSS gap supported in Flexbox?',
+        answer: 'Yes. The gap property is supported in all modern browsers and replaces older negative-margin grid hacks.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'aspect-ratio-padding-calculator', name: 'Aspect Ratio Padding Calculator' },
+      { slug: 'css-clamp-font-generator', name: 'CSS clamp() Font Size Generator' },
+      { slug: 'css-gradient-generator', name: 'CSS Gradient Generator' }
+    ],
+    relatedGuides: []
+  },
+  'docker-run-command-generator': {
+    slug: 'docker-run-command-generator',
+    name: 'Docker Run Command Generator – CLI Flags Builder',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Construct safe, validated docker run commands with image, container name, port forwarding, restart policy, environment variables, and volume mounts.',
+    longTailKeywords: [
+      'docker run command generator',
+      'docker command generator',
+      'docker run generator',
+      'docker cli generator',
+      'generate docker run command',
+      'docker run builder'
+    ],
+    intro: [
+      'Build accurate and sanitized docker run commands without memorizing complex command-line syntax and flag combinations.',
+      'Configure ports, volume mounts, background daemon mode, restart policies, and environment variables safely.',
+      local
+    ],
+    formula: [
+      {
+        title: 'Container parameters',
+        body: 'Maps container name (--name), execution mode (-d), and restart behavior (--restart).'
+      },
+      {
+        title: 'Network and storage',
+        body: 'Constructs host-to-container port publishing (-p) and host-to-container volume bindings (-v).'
+      },
+      {
+        title: 'Security and escaping',
+        body: 'Validates input values against shell metacharacters and safely escapes strings containing whitespace.'
+      }
+    ],
+    steps: [
+      'Enter the container image name and tag (e.g., nginx:latest or postgres:15).',
+      'Provide a container name and toggle detached background execution.',
+      'Specify host and container port mappings.',
+      'Add required environment variables and persistent volume mounts.',
+      'Review the generated command in single-line or multi-line format, then copy to your terminal.'
+    ],
+    interpretation: [
+      'The -d flag runs the container in detached mode in the background, freeing your current terminal session.',
+      'Port mapping (-p host:container) forwards external traffic from your host machine into the listening container port.',
+      '--restart unless-stopped ensures automatic container recovery on system reboots while allowing manual stops.'
+    ],
+    limitations: [
+      'Navorika generates static command text and never executes Docker commands directly.',
+      'Always verify host paths and port numbers before running commands in your production environment.',
+      'Do not paste sensitive credentials or production database passwords into unencrypted terminals.'
+    ],
+    faqs: [
+      {
+        question: 'Does this tool run Docker commands on my computer?',
+        answer: 'No. Navorika runs entirely in your browser and only generates formatted text strings for you to inspect and copy.'
+      },
+      {
+        question: 'What is the difference between -d and running in foreground?',
+        answer: 'Detached mode (-d) starts the container in the background and prints the container ID, allowing your terminal to remain usable.'
+      },
+      {
+        question: 'Why should I use --restart unless-stopped?',
+        answer: 'unless-stopped restarts the container automatically if it crashes or the Docker daemon reboots, but honors manual docker stop commands.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'gitignore-generator', name: '.gitignore Generator' },
+      { slug: 'git-commit-message-formatter', name: 'Git Commit Message Formatter' },
+      { slug: 'cloud-hosting-cost-calculator', name: 'Cloud Hosting Cost Calculator' }
+    ],
+    relatedGuides: []
+  },
+  'typescript-to-zod-schema-converter': {
+    slug: 'typescript-to-zod-schema-converter',
+    name: 'TypeScript to Zod Schema Converter – Interface to Zod',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert TypeScript interfaces and type definitions into starter Zod validation schemas locally without code execution.',
+    longTailKeywords: [
+      'typescript to zod',
+      'typescript to zod converter',
+      'zod schema generator',
+      'interface to zod',
+      'typescript zod generator',
+      'ts to zod online'
+    ],
+    intro: [
+      'Generate runtime validation schemas from static TypeScript types to bridge compile-time type safety with runtime verification.',
+      'Converts interfaces, object type aliases, primitives, arrays, optional fields, literal unions, and nested objects.',
+      local
+    ],
+    formula: [
+      {
+        title: 'Deterministic parsing',
+        body: 'Analyzes TypeScript AST tokens and object shapes without using eval or dynamic code execution.'
+      },
+      {
+        title: 'Zod mapping',
+        body: 'Maps TypeScript primitive types to z.string(), z.number(), z.boolean(), z.array(), and literal unions to z.enum() or z.union().'
+      },
+      {
+        title: 'Modifier resolution',
+        body: 'Applies .optional() for question mark properties and .nullable() for null unions.'
+      }
+    ],
+    steps: [
+      'Paste your TypeScript interface or type definition into the editor, or choose a starter preset.',
+      'Check the conversion notes for any unsupported advanced language features.',
+      'Review the generated Zod schema code and inferred type exports.',
+      'Copy the schema into your TypeScript project and add custom domain validators.'
+    ],
+    interpretation: [
+      'Generated schemas provide a structural starter definition matching your TypeScript contracts.',
+      'z.infer<typeof Schema> automatically generates the matching static TypeScript type from the runtime validator.',
+      'Enums and unions ensure incoming runtime data strictly matches allowed values before downstream processing.'
+    ],
+    limitations: [
+      'Advanced TypeScript type-system features (generics, conditional types, mapped types) are unsupported and flagged with warnings.',
+      'Generated schemas are structural starters that should be reviewed and augmented with domain constraints (.min, .email).',
+      'Pasted code is parsed as text and is never executed.'
+    ],
+    faqs: [
+      {
+        question: 'Is my TypeScript code executed by the converter?',
+        answer: 'No. The parser strictly inspects text syntax using deterministic rules. eval(), Function(), and dynamic execution are never used.'
+      },
+      {
+        question: 'Can it convert optional and nullable properties?',
+        answer: 'Yes. Optional properties (foo?: string) become z.string().optional() and null unions (string | null) become z.string().nullable().'
+      },
+      {
+        question: 'Are generics supported?',
+        answer: 'Generics cannot be resolved into static runtime schemas automatically and are flagged for manual definition.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'json-schema-validator', name: 'JSON Schema Validator' },
+      { slug: 'json-to-csv-flattener', name: 'JSON to CSV Flattener' },
+      { slug: 'jwt-decoder', name: 'JWT Decoder' }
+    ],
+    relatedGuides: ['json-formatting-guide']
+  },
+  'git-commit-message-formatter': {
+    slug: 'git-commit-message-formatter',
+    name: 'Git Commit Message Formatter – Conventional Commits',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Format clean, standardized Git commit messages using Conventional Commits specifications with type, scope, and breaking change flags.',
+    longTailKeywords: [
+      'git commit message generator',
+      'commit message formatter',
+      'conventional commits generator',
+      'git commit formatter',
+      'commit message generator',
+      'conventional commit builder'
+    ],
+    intro: [
+      'Format standardized Conventional Commit messages to maintain a clean git history and enable automated changelog generation.',
+      'Select standard types such as feat, fix, refactor, and chore, specify optional component scopes, and mark breaking changes.',
+      local
+    ],
+    formula: [
+      {
+        title: 'Conventional format',
+        body: 'Generates type(scope): description or type: description following standard conventions.'
+      },
+      {
+        title: 'Breaking change indicators',
+        body: 'Inserts ! before the colon and optionally appends a BREAKING CHANGE footer.'
+      },
+      {
+        title: 'Whitespace normalization',
+        body: 'Normalizes irregular spaces, trims whitespace, and strips trailing periods from the subject line.'
+      }
+    ],
+    steps: [
+      'Select the commit type matching your code change (feat, fix, refactor, docs, chore, etc.).',
+      'Optionally specify the affected module or subsystem scope (e.g., auth, api, ui).',
+      'Enter a concise, imperative description of the change.',
+      'Toggle breaking change if the update alters public APIs or compatibility.',
+      'Copy the formatted message or terminal command.'
+    ],
+    interpretation: [
+      'Standardized commit formats allow automated tools like semantic-release to determine semantic version bumps automatically.',
+      'The subject line should be written in imperative mood (e.g., "add feature", not "added feature").',
+      'Keeping the header under 50 to 72 characters ensures clear rendering in git log and GitHub interfaces.'
+    ],
+    limitations: [
+      'The formatter does not inspect your local or remote Git repository.',
+      'Users remain responsible for accurately describing the purpose and scope of their changes.',
+      'Does not replace repository-specific contributing guidelines that diverge from Conventional Commits.'
+    ],
+    faqs: [
+      {
+        question: 'What is the Conventional Commits specification?',
+        answer: 'Conventional Commits is a lightweight convention on top of commit messages that provides an easy set of rules for creating an explicit commit history.'
+      },
+      {
+        question: 'When should I use a breaking change flag?',
+        answer: 'Use breaking change (!) whenever your commit introduces a change that breaks backwards compatibility or alters existing API contracts.'
+      },
+      {
+        question: 'Why shouldn’t the subject line end with a period?',
+        answer: 'Conventional Commits and standard Git conventions keep the subject line concise and punchy without a trailing period.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'gitignore-generator', name: '.gitignore Generator' },
+      { slug: 'docker-run-command-generator', name: 'Docker Run Command Generator' },
+      { slug: 'developer-utils', name: 'Developer Utils' }
+    ],
+    relatedGuides: []
+  },
+  'utf8-vs-utf16-byte-calculator': {
+    slug: 'utf8-vs-utf16-byte-calculator',
+    name: 'UTF-8 vs UTF-16 Byte Calculator – Unicode Size Comparison',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Compare UTF-8 and UTF-16 encoded byte sizes for text, Unicode characters, and emoji with code point and code unit analysis.',
+    longTailKeywords: [
+      'utf 8 byte calculator',
+      'utf8 byte length calculator',
+      'utf16 byte calculator',
+      'utf8 vs utf16 size',
+      'unicode byte calculator',
+      'string byte size calculator'
+    ],
+    intro: [
+      'Analyze how string data is encoded in memory and storage across UTF-8 and UTF-16 formats.',
+      'Compare byte counts, understand code points versus UTF-16 surrogate pairs, and evaluate encoding efficiency for Western, Asian, and emoji text.',
+      local
+    ],
+    formula: [
+      {
+        title: 'UTF-8 byte length',
+        body: 'Uses standards-compliant TextEncoder to compute the exact byte length across 1 to 4 byte variable sequences.'
+      },
+      {
+        title: 'UTF-16 byte length',
+        body: 'Computes JavaScript string length × 2 bytes, representing 16-bit code units excluding byte-order marks by default.'
+      },
+      {
+        title: 'Unicode code point analysis',
+        body: 'Iterates Unicode scalar values so surrogate pairs (like emoji) are counted as single characters.'
+      }
+    ],
+    steps: [
+      'Type or paste text into the editor, or choose a multilingual preset.',
+      'Toggle optional Byte Order Mark (BOM) inclusion if needed.',
+      'Inspect the storage verdict to see which encoding uses fewer bytes.',
+      'Review the code point spectrum breakdown across ASCII, BMP, and supplementary ranges.',
+      'Copy the summary or download the comparison as a CSV.'
+    ],
+    interpretation: [
+      'ASCII text (code points ≤ 127) requires 1 byte per character in UTF-8 versus 2 bytes in UTF-16, saving 50% storage.',
+      'Most Asian CJK characters require 3 bytes in UTF-8 versus 2 bytes in UTF-16, making UTF-16 more compact for East Asian text.',
+      'Emoji and astral characters (code points > 65535) require 4 bytes in both UTF-8 and UTF-16.'
+    ],
+    limitations: [
+      'UTF-16 calculations represent standard code units and exclude a byte-order mark unless explicitly toggled.',
+      'Unicode code points do not always equal user-perceived grapheme clusters (e.g., skin-tone emoji modifiers).',
+      'Database engines and serialization protocols may add additional header or framing overhead.'
+    ],
+    faqs: [
+      {
+        question: 'Why does ASCII text use less memory in UTF-8?',
+        answer: 'UTF-8 uses a backward-compatible variable-length encoding where standard ASCII characters (0-127) occupy only 1 byte each, while UTF-16 uses a minimum of 2 bytes.'
+      },
+      {
+        question: 'Why does Chinese or Japanese text use fewer bytes in UTF-16?',
+        answer: 'Most common CJK characters fall in the Basic Multilingual Plane (BMP). UTF-16 encodes them in one 16-bit unit (2 bytes), whereas UTF-8 requires 3 bytes per character.'
+      },
+      {
+        question: 'How are emoji handled in UTF-8 and UTF-16?',
+        answer: 'Emoji reside above code point U+FFFF. UTF-8 encodes them in 4 bytes, while UTF-16 encodes them using a surrogate pair of two 16-bit code units (4 bytes total).'
+      }
+    ],
+    relatedTools: [
+      { slug: 'base64-encoder', name: 'Base64 Encoder & Decoder' },
+      { slug: 'url-encoder-decoder', name: 'URL Encoder & Decoder' },
+      { slug: 'html-entity-encoder-decoder', name: 'HTML Entity Encoder & Decoder' }
+    ],
+    relatedGuides: ['base64-encoding-guide']
+  },
 };

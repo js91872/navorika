@@ -1,0 +1,39 @@
+{
+  "name": "TypeScript to Zod Schema Converter",
+  "slug": "typescript-to-zod-schema-converter",
+  "category": "Developer Tools",
+  "description": "Convert common TypeScript interfaces and type definitions into starter Zod validation schemas.",
+  "search_intent": "Paste a TypeScript interface or type and generate an equivalent Zod schema.",
+  "keywords": [
+    "typescript to zod",
+    "typescript to zod converter",
+    "zod schema generator",
+    "interface to zod",
+    "typescript zod generator"
+  ],
+  "inputs": [
+    {
+      "key": "typescript",
+      "label": "TypeScript definition",
+      "default": "interface User {\\n  name: string;\\n  age: number;\\n  active?: boolean;\\n}"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "zodSchema",
+      "label": "Generated Zod schema",
+      "format": "text"
+    }
+  ],
+  "calculation": "Parse a clearly documented subset of TypeScript type/interface syntax and transform supported primitives, arrays, optional properties, nullable unions, object properties, literal unions and nested structures into Zod schema expressions. Do not evaluate or execute pasted TypeScript. Unsupported constructs must produce an explicit warning rather than fabricated output.",
+  "related_tools": [
+    "json-to-csv-flattener",
+    "jwt-decoder"
+  ],
+  "limitations": [
+    "Not every TypeScript type-system feature maps directly to runtime validation.",
+    "Advanced generics, conditional types, mapped types and complex utility types may require manual editing.",
+    "Generated schemas should be reviewed before production use.",
+    "Pasted code must never be executed."
+  ]
+}

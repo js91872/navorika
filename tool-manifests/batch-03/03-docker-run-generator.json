@@ -1,0 +1,60 @@
+{
+  "name": "Docker Run Command Generator",
+  "slug": "docker-run-command-generator",
+  "category": "Developer Tools",
+  "description": "Build a Docker run command from image, container, port, volume and environment-variable settings.",
+  "search_intent": "Generate a docker run command without manually remembering command-line flags.",
+  "keywords": [
+    "docker run command generator",
+    "docker command generator",
+    "docker run generator",
+    "docker cli generator",
+    "generate docker run command"
+  ],
+  "inputs": [
+    {
+      "key": "image",
+      "label": "Docker image",
+      "default": "nginx:latest"
+    },
+    {
+      "key": "containerName",
+      "label": "Container name",
+      "default": "my-container"
+    },
+    {
+      "key": "detached",
+      "label": "Run detached",
+      "default": true
+    },
+    {
+      "key": "hostPort",
+      "label": "Host port",
+      "default": 8080
+    },
+    {
+      "key": "containerPort",
+      "label": "Container port",
+      "default": 80
+    },
+    {
+      "key": "restartPolicy",
+      "label": "Restart policy",
+      "default": "unless-stopped"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "command",
+      "label": "Docker run command",
+      "format": "text"
+    }
+  ],
+  "calculation": "Build a docker run command from structured user inputs. Support common flags such as --name, -d, -p, --restart and optional environment variables and volume mounts. Properly quote or reject unsafe malformed input rather than concatenating arbitrary shell syntax. The tool only generates text and never executes commands.",
+  "related_tools": [],
+  "limitations": [
+    "The generated command is not executed by Navorika.",
+    "Users should review volume paths, ports, environment variables and image names before running the command.",
+    "Do not include passwords or sensitive secrets in examples or persistent URLs."
+  ]
+}

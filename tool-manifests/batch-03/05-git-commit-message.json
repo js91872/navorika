@@ -1,0 +1,50 @@
+{
+  "name": "Git Commit Message Formatter",
+  "slug": "git-commit-message-formatter",
+  "category": "Developer Tools",
+  "description": "Format a concise Git commit message using Conventional Commits style.",
+  "search_intent": "Create or format a conventional Git commit message from a change type, scope and description.",
+  "keywords": [
+    "git commit message generator",
+    "commit message formatter",
+    "conventional commits generator",
+    "git commit formatter",
+    "commit message generator"
+  ],
+  "inputs": [
+    {
+      "key": "type",
+      "label": "Change type",
+      "default": "feat"
+    },
+    {
+      "key": "scope",
+      "label": "Scope",
+      "default": ""
+    },
+    {
+      "key": "description",
+      "label": "Short description",
+      "default": "add user profile page"
+    },
+    {
+      "key": "breaking",
+      "label": "Breaking change",
+      "default": false
+    }
+  ],
+  "outputs": [
+    {
+      "key": "commitMessage",
+      "label": "Formatted commit message",
+      "format": "text"
+    }
+  ],
+  "calculation": "Format deterministic Conventional Commit-style output as type(scope): description or type: description. Add ! before the colon for a breaking change. Normalize unnecessary whitespace while preserving meaningful text. Provide common types such as feat, fix, docs, style, refactor, perf, test, build, ci, chore and revert. No AI or external API is required.",
+  "related_tools": [],
+  "limitations": [
+    "The formatter does not inspect the user's Git repository.",
+    "Users remain responsible for ensuring the message accurately describes the change.",
+    "Repository-specific commit conventions may differ from Conventional Commits."
+  ]
+}

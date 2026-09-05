@@ -1,0 +1,38 @@
+{
+  "name": ".gitignore Generator",
+  "slug": "gitignore-generator",
+  "category": "Developer Tools",
+  "description": "Generate a clean .gitignore file for common programming languages, frameworks, IDEs and operating systems.",
+  "search_intent": "Create a .gitignore file by selecting development stacks, editors and operating systems.",
+  "keywords": [
+    "gitignore generator",
+    ".gitignore generator",
+    "generate gitignore",
+    "git ignore file generator",
+    "gitignore creator"
+  ],
+  "inputs": [
+    {
+      "key": "templates",
+      "label": "Technologies",
+      "default": ["node"],
+      "help": "Select one or more languages, frameworks, IDEs or operating systems."
+    }
+  ],
+  "outputs": [
+    {
+      "key": "gitignore",
+      "label": "Generated .gitignore",
+      "format": "text"
+    }
+  ],
+  "calculation": "Generate deterministic .gitignore content from locally maintained template groups. Merge selected groups, preserve useful comments, remove duplicate patterns and produce a clean newline-terminated file. Include common options such as Node.js, Next.js, Python, Java, Go, Rust, macOS, Windows, Linux, VS Code and JetBrains. Do not make network calls.",
+  "related_tools": [
+    "base64-encoder"
+  ],
+  "limitations": [
+    "Generated rules are general defaults and may need adjustment for a specific repository.",
+    "Do not automatically ignore project files that may be required in source control.",
+    "All generation should occur locally in the browser."
+  ]
+}
