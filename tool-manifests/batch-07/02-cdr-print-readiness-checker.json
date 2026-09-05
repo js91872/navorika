@@ -1,0 +1,29 @@
+{
+  "name": "CDR Print Readiness Checker",
+  "slug": "cdr-print-readiness-checker",
+  "category": "developer-tools",
+  "description": "Run a guided CorelDRAW print-preflight assessment covering bleed, color mode, fonts, image resolution, transparency, overprint and output preparation.",
+  "search_intent": "Check common CorelDRAW print-preparation requirements before sending artwork to a printer.",
+  "keywords": [
+    "coreldraw print readiness checker",
+    "cdr print preflight",
+    "coreldraw preflight checklist",
+    "cdr printing checklist",
+    "prepare coreldraw file for printing"
+  ],
+  "inputs": [
+    "document size confirmed",
+    "bleed confirmed",
+    "color mode reviewed",
+    "fonts reviewed",
+    "image resolution reviewed",
+    "transparency reviewed",
+    "overprint reviewed"
+  ],
+  "outputs": [
+    "readiness assessment",
+    "warnings",
+    "items requiring review"
+  ],
+  "calculation": "Deterministic checklist scoring and issue reporting from user-confirmed preflight conditions. Do not claim to inspect proprietary CDR document internals that the browser cannot reliably parse."
+}

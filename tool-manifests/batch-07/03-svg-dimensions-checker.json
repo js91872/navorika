@@ -1,0 +1,27 @@
+{
+  "name": "SVG Dimensions Checker",
+  "slug": "svg-dimensions-checker",
+  "category": "image-tools",
+  "description": "Inspect SVG intrinsic width, height, units, viewBox dimensions and aspect ratio locally without rasterizing the vector artwork.",
+  "search_intent": "Inspect an SVG file or SVG dimensions to understand its intrinsic dimensions, viewBox and coordinate aspect ratio.",
+  "keywords": [
+    "svg dimensions checker",
+    "svg size checker",
+    "svg width height checker",
+    "svg viewbox checker",
+    "check svg dimensions"
+  ],
+  "inputs": [
+    "SVG file or SVG markup"
+  ],
+  "outputs": [
+    "intrinsic width",
+    "intrinsic height",
+    "declared units",
+    "viewBox",
+    "viewBox width",
+    "viewBox height",
+    "aspect ratio"
+  ],
+  "calculation": "Parse SVG root width, height and viewBox attributes safely without executing SVG scripts. Report declared absolute or relative units honestly. Calculate viewBox dimensions and aspect ratio when available. Do not present vector artwork as having an intrinsic raster DPI and do not duplicate the generic Image Print Size Calculator."
+}

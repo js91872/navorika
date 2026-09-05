@@ -265,6 +265,12 @@ export const toolIcons: Record<string, string> = {
   'ip-address-classifier': '🏷️',
   'common-port-service-lookup': '🔌',
   'url-parser': '🔗',
+  'pdf-bleed-trim-checker': '✂️',
+  'cdr-print-readiness-checker': '📋',
+  'svg-dimensions-checker': '📐',
+  'pdf-page-size-checker': '📑',
+  'rgb-cmyk-image-checker': '🎨',
+  'print-bleed-calculator': '🖨️',
 };
 
 export const getToolIcon = (slug: string): string => {

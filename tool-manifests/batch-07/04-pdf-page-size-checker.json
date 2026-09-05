@@ -1,0 +1,26 @@
+{
+  "name": "PDF Page Size Checker",
+  "slug": "pdf-page-size-checker",
+  "category": "pdf-tools",
+  "description": "Inspect PDF page dimensions locally and identify common paper sizes such as A4, A3, Letter and Legal.",
+  "search_intent": "Find the page dimensions and likely standard paper size of a PDF.",
+  "keywords": [
+    "pdf page size checker",
+    "check pdf dimensions",
+    "pdf paper size checker",
+    "what size is my pdf",
+    "pdf dimensions online"
+  ],
+  "inputs": [
+    "PDF file"
+  ],
+  "outputs": [
+    "page width",
+    "page height",
+    "inches",
+    "millimeters",
+    "orientation",
+    "standard paper size"
+  ],
+  "calculation": "Read each PDF page MediaBox dimensions locally. Convert PDF points using 72 points per inch and 25.4 millimeters per inch. Match standard paper sizes using a small documented tolerance."
+}

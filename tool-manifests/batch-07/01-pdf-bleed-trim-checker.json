@@ -1,0 +1,26 @@
+{
+  "name": "PDF Bleed & Trim Checker",
+  "slug": "pdf-bleed-trim-checker",
+  "category": "pdf-tools",
+  "description": "Inspect PDF page boxes locally to understand MediaBox, CropBox, TrimBox and BleedBox configuration before print production.",
+  "search_intent": "Check whether a PDF contains useful trim and bleed box information for print preparation.",
+  "keywords": [
+    "pdf bleed checker",
+    "pdf trim box checker",
+    "pdf bleed box checker",
+    "pdf preflight bleed",
+    "check pdf trim size"
+  ],
+  "inputs": [
+    "PDF file"
+  ],
+  "outputs": [
+    "MediaBox",
+    "CropBox",
+    "TrimBox",
+    "BleedBox",
+    "page dimensions",
+    "bleed interpretation"
+  ],
+  "calculation": "Parse PDF page-box geometry locally. Report explicit and inherited/default page boxes honestly. Compare TrimBox and BleedBox only when available; never infer that missing PDF boxes prove or disprove visible artwork bleed."
+}

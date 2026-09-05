@@ -285,6 +285,36 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'url-encoder-decoder': 'Encode or decode URL strings', 'utm-builder': 'Build campaign UTM tracking links' },
   },
+  'pdf-bleed-trim-checker': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'pdf-page-size-checker': 'Check PDF page dimensions', 'crop-pdf': 'Crop PDF page margins' },
+  },
+  'cdr-print-readiness-checker': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'cdr-version-converter': 'Check CDR file version', 'print-bleed-calculator': 'Calculate print bleed margins' },
+  },
+  'svg-dimensions-checker': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'image-scaling-calculator': 'Calculate scaled dimensions', 'png-to-svg': 'Convert raster PNG to SVG' },
+  },
+  'pdf-page-size-checker': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'pdf-bleed-trim-checker': 'Inspect PDF trim and bleed boxes', 'crop-pdf': 'Crop PDF page margins' },
+  },
+  'rgb-cmyk-image-checker': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'image-metadata-viewer': 'Inspect image file metadata', 'image-print-size-calculator': 'Calculate physical print size' },
+  },
+  'print-bleed-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'image-print-size-calculator': 'Calculate physical print size', 'pdf-bleed-trim-checker': 'Inspect PDF bleed and trim boxes' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

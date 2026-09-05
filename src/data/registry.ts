@@ -1886,6 +1886,96 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'URL Parser',
     heroDescription: 'Parse a URL locally into protocol, hostname, port, pathname, query parameters, and fragment.'
+  },
+  {
+    slug: 'pdf-bleed-trim-checker',
+    title: 'PDF Bleed & Trim Checker',
+    description: 'Inspect PDF page boxes locally to understand MediaBox, CropBox, TrimBox and BleedBox configuration before print production.',
+    category: 'pdf-tools',
+    keywords: [
+      'pdf bleed checker',
+      'pdf trim box checker',
+      'pdf bleed box checker',
+      'pdf preflight bleed',
+      'check pdf trim size'
+    ],
+    heroTitle: 'PDF Bleed & Trim Checker',
+    heroDescription: 'Inspect PDF page boxes locally to understand MediaBox, CropBox, TrimBox, and BleedBox configuration before print production.'
+  },
+  {
+    slug: 'cdr-print-readiness-checker',
+    title: 'CDR Print Readiness Checker',
+    description: 'Run a guided CorelDRAW print-preflight assessment covering bleed, color mode, fonts, image resolution, transparency, overprint and output preparation.',
+    category: 'developer-tools',
+    keywords: [
+      'coreldraw print readiness checker',
+      'cdr print preflight',
+      'coreldraw preflight checklist',
+      'cdr printing checklist',
+      'prepare coreldraw file for printing'
+    ],
+    heroTitle: 'CDR Print Readiness Checker',
+    heroDescription: 'Run a guided CorelDRAW print-preflight assessment covering bleed, color mode, fonts, image resolution, transparency, overprint, and output preparation.'
+  },
+  {
+    slug: 'svg-dimensions-checker',
+    title: 'SVG Dimensions Checker',
+    description: 'Inspect SVG intrinsic width, height, units, viewBox dimensions and aspect ratio locally without rasterizing the vector artwork.',
+    category: 'image-tools',
+    keywords: [
+      'svg dimensions checker',
+      'svg size checker',
+      'svg width height checker',
+      'svg viewbox checker',
+      'check svg dimensions'
+    ],
+    heroTitle: 'SVG Dimensions Checker',
+    heroDescription: 'Inspect SVG intrinsic width, height, units, viewBox dimensions, and aspect ratio locally without rasterizing vector artwork.'
+  },
+  {
+    slug: 'pdf-page-size-checker',
+    title: 'PDF Page Size Checker',
+    description: 'Inspect PDF page dimensions locally and identify common paper sizes such as A4, A3, Letter and Legal.',
+    category: 'pdf-tools',
+    keywords: [
+      'pdf page size checker',
+      'check pdf dimensions',
+      'pdf paper size checker',
+      'what size is my pdf',
+      'pdf dimensions online'
+    ],
+    heroTitle: 'PDF Page Size Checker',
+    heroDescription: 'Inspect PDF page dimensions locally and identify common paper sizes such as A4, A3, Letter, and Legal.'
+  },
+  {
+    slug: 'rgb-cmyk-image-checker',
+    title: 'RGB CMYK Image Checker',
+    description: 'Inspect supported image files locally for detectable RGB, CMYK, grayscale, alpha and embedded color-profile characteristics.',
+    category: 'image-tools',
+    keywords: [
+      'rgb cmyk image checker',
+      'is my image rgb or cmyk',
+      'check image rgb or cmyk',
+      'cmyk image checker',
+      'image color space checker'
+    ],
+    heroTitle: 'RGB CMYK Image Checker',
+    heroDescription: 'Inspect supported image files locally for detectable RGB, CMYK, grayscale, alpha, and embedded color-profile characteristics.'
+  },
+  {
+    slug: 'print-bleed-calculator',
+    title: 'Print Bleed Calculator',
+    description: 'Calculate document dimensions after adding print bleed around a finished trim size.',
+    category: 'image-tools',
+    keywords: [
+      'print bleed calculator',
+      'bleed size calculator',
+      'printing bleed calculator',
+      'add bleed to dimensions',
+      'trim size bleed calculator'
+    ],
+    heroTitle: 'Print Bleed Calculator',
+    heroDescription: 'Calculate document dimensions after adding print bleed around a finished trim size.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,

@@ -31,6 +31,8 @@ import { calculateCidrSummarization } from '@/lib/calculations/cidrSummarization
 import { calculateIpClassifier } from '@/lib/calculations/ipClassifier';
 import { calculatePortServiceLookup } from '@/lib/calculations/portServiceLookup';
 import { calculateUrlParser } from '@/lib/calculations/urlParser';
+import { calculatePrintBleed } from '@/lib/calculations/printBleed';
+import { calculateCdrPrintReadiness } from '@/lib/calculations/cdrPrintReadiness';
 import ResultActions, { type ResultAction } from '@/components/ui/ResultActions';
 import { toolUx } from '@/data/toolUx';
 import { rowsToCsv } from '@/lib/resultExport';
@@ -869,6 +871,154 @@ const configs: Record<string, Config> = {
         url: s(x, 'url'),
       }),
     note: 'Standards-compliant WHATWG/RFC 3986 URL parsing executed entirely in your browser. Extracts protocol, host, explicit/default port, pathname, search parameters (preserving duplicate parameter keys), and fragment identifier. User credentials presence is detected without exposing passwords. No network requests are made.',
+  },
+  'print-bleed-calculator': {
+    fields: [
+      { key: 'finishedWidth', label: 'Finished trim width', defaultValue: 210, min: 0, step: 0.1, help: 'Width of final cut document' },
+      { key: 'finishedHeight', label: 'Finished trim height', defaultValue: 297, min: 0, step: 0.1, help: 'Height of final cut document' },
+      { key: 'bleedPerEdge', label: 'Bleed allowance per edge', defaultValue: 3, min: 0, step: 0.1, help: 'Standard commercial bleed (typically 3mm or 0.125 in)' },
+      {
+        key: 'unit',
+        label: 'Measurement unit',
+        defaultValue: 'mm',
+        type: 'select',
+        options: [
+          { value: 'mm', label: 'Millimeters (mm)' },
+          { value: 'cm', label: 'Centimeters (cm)' },
+          { value: 'in', label: 'Inches (in)' },
+        ],
+      },
+    ],
+    results: [
+      { key: 'documentWidth', label: 'Document width with bleed', format: 'number' },
+      { key: 'documentHeight', label: 'Document height with bleed', format: 'number' },
+      { key: 'totalAddedWidth', label: 'Total added width', format: 'number' },
+      { key: 'totalAddedHeight', label: 'Total added height', format: 'number' },
+      { key: 'finishedArea', label: 'Finished trimmed area', format: 'number' },
+      { key: 'bleedInclusiveArea', label: 'Bleed-inclusive total area', format: 'number' },
+      { key: 'addedBleedArea', label: 'Added bleed area', format: 'number' },
+      { key: 'dimensionsSummary', label: 'Dimensions summary', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculatePrintBleed({
+        finishedWidth: v(x, 'finishedWidth'),
+        finishedHeight: v(x, 'finishedHeight'),
+        bleedPerEdge: v(x, 'bleedPerEdge'),
+        unit: s(x, 'unit', 'mm'),
+      }),
+    note: 'Calculates total document dimensions after adding print bleed around finished trim: Document Width = Finished Width + 2 × Bleed, Document Height = Finished Height + 2 × Bleed. Bleed ensures borderless artwork avoids white margins when cut on mechanical guillotine shears.',
+  },
+  'cdr-print-readiness-checker': {
+    fields: [
+      {
+        key: 'documentSize',
+        label: 'Document dimensions',
+        defaultValue: 'confirmed',
+        type: 'select',
+        options: [
+          { value: 'confirmed', label: 'Confirmed (Trim size matches exact ordering specs)' },
+          { value: 'review', label: 'Requires Review (Dimensions unverified or variable)' },
+          { value: 'missing', label: 'Missing / Inconsistent with printer specification' },
+        ],
+      },
+      {
+        key: 'bleed',
+        label: 'Bleed allowance',
+        defaultValue: 'confirmed',
+        type: 'select',
+        options: [
+          { value: 'confirmed', label: 'Confirmed (3mm / 0.125 in bleed added to artwork)' },
+          { value: 'review', label: 'Requires Review (Bleed uncertain or partial)' },
+          { value: 'missing', label: 'Missing (Artwork ends strictly at trim line)' },
+        ],
+      },
+      {
+        key: 'colorMode',
+        label: 'Color palette & separations',
+        defaultValue: 'confirmed',
+        type: 'select',
+        options: [
+          { value: 'confirmed', label: 'Confirmed (Pure CMYK / verified spot inks)' },
+          { value: 'review', label: 'Requires Review (Contains unseparated RGB elements)' },
+          { value: 'missing', label: 'Missing (Document color palette is RGB)' },
+        ],
+      },
+      {
+        key: 'fonts',
+        label: 'Fonts & typography',
+        defaultValue: 'confirmed',
+        type: 'select',
+        options: [
+          { value: 'confirmed', label: 'Confirmed (All text converted to curves / Ctrl+Q)' },
+          { value: 'review', label: 'Requires Review (Live fonts present in artwork)' },
+          { value: 'missing', label: 'Missing (Unconverted live fonts; missing font risk)' },
+        ],
+      },
+      {
+        key: 'imageResolution',
+        label: 'Bitmap image resolution',
+        defaultValue: 'confirmed',
+        type: 'select',
+        options: [
+          { value: 'confirmed', label: 'Confirmed (All raster images ≥ 300 DPI at placement size)' },
+          { value: 'review', label: 'Requires Review (Some images 150–299 DPI)' },
+          { value: 'missing', label: 'Missing (Low-resolution web images < 150 DPI)' },
+        ],
+      },
+      {
+        key: 'transparency',
+        label: 'Transparency & drop shadows',
+        defaultValue: 'confirmed',
+        type: 'select',
+        options: [
+          { value: 'confirmed', label: 'Confirmed (Lens/shadow effects flattened or tested)' },
+          { value: 'review', label: 'Requires Review (Live complex transparency present)' },
+          { value: 'missing', label: 'Missing (Unflattened transparency causing RIP artifacts)' },
+        ],
+      },
+      {
+        key: 'overprint',
+        label: 'Black & white overprint',
+        defaultValue: 'confirmed',
+        type: 'select',
+        options: [
+          { value: 'confirmed', label: 'Confirmed (100% K black overprints; white does NOT)' },
+          { value: 'review', label: 'Requires Review (Overprint settings unverified)' },
+          { value: 'missing', label: 'Missing (Accidental white overprint detected)' },
+        ],
+      },
+      {
+        key: 'exportFormat',
+        label: 'Export / prepress preparation',
+        defaultValue: 'confirmed',
+        type: 'select',
+        options: [
+          { value: 'confirmed', label: 'Confirmed (Exported as PDF/X-1a or PDF/X-4)' },
+          { value: 'review', label: 'Requires Review (Exported as generic PDF or native CDR)' },
+          { value: 'missing', label: 'Missing (Output format unverified)' },
+        ],
+      },
+    ],
+    results: [
+      { key: 'readinessRating', label: 'Preflight readiness', format: 'text' },
+      { key: 'score', label: 'Readiness score', format: 'number' },
+      { key: 'passedCount', label: 'Passed criteria', format: 'number' },
+      { key: 'reviewCount', label: 'Items needing review', format: 'number' },
+      { key: 'failedCount', label: 'Critical / missing items', format: 'number' },
+      { key: 'summaryText', label: 'Assessment summary', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateCdrPrintReadiness({
+        documentSize: s(x, 'documentSize'),
+        bleed: s(x, 'bleed'),
+        colorMode: s(x, 'colorMode'),
+        fonts: s(x, 'fonts'),
+        imageResolution: s(x, 'imageResolution'),
+        transparency: s(x, 'transparency'),
+        overprint: s(x, 'overprint'),
+        exportFormat: s(x, 'exportFormat'),
+      }),
+    note: 'Guided preflight checklist for CorelDRAW files based on user-verified preparation conditions. Browser inspection cannot reliably decode proprietary CorelDRAW binary document trees; this tool ensures critical print requirements (bleed, CMYK, curves, DPI, overprint) are systematically reviewed before sending files to a commercial printer.',
   },
 };
 

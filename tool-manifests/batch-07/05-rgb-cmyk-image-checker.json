@@ -1,0 +1,26 @@
+{
+  "name": "RGB CMYK Image Checker",
+  "slug": "rgb-cmyk-image-checker",
+  "category": "image-tools",
+  "description": "Inspect supported image files locally for detectable RGB, CMYK, grayscale, alpha and embedded color-profile characteristics.",
+  "search_intent": "Determine whether an image file is encoded as RGB, CMYK, grayscale or another detectable color representation before print or design use.",
+  "keywords": [
+    "rgb cmyk image checker",
+    "is my image rgb or cmyk",
+    "check image rgb or cmyk",
+    "cmyk image checker",
+    "image color space checker"
+  ],
+  "inputs": [
+    "image file"
+  ],
+  "outputs": [
+    "detected image format",
+    "RGB CMYK or grayscale indication",
+    "channel information",
+    "alpha information",
+    "embedded profile information",
+    "detection limitations"
+  ],
+  "calculation": "Inspect supported image headers and metadata locally. Report RGB, CMYK, grayscale, alpha or profile information only when it can be established from the original file. Never determine source color space from browser-rendered canvas pixels because browser decoding can convert source data for display. This is not an image pixel color picker."
+}

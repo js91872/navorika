@@ -1,0 +1,28 @@
+{
+  "name": "Print Bleed Calculator",
+  "slug": "print-bleed-calculator",
+  "category": "image-tools",
+  "description": "Calculate document dimensions after adding print bleed around a finished trim size.",
+  "search_intent": "Calculate the artwork or document size needed after adding bleed to a finished print size.",
+  "keywords": [
+    "print bleed calculator",
+    "bleed size calculator",
+    "printing bleed calculator",
+    "add bleed to dimensions",
+    "trim size bleed calculator"
+  ],
+  "inputs": [
+    "finished width",
+    "finished height",
+    "bleed per edge",
+    "measurement unit"
+  ],
+  "outputs": [
+    "document width with bleed",
+    "document height with bleed",
+    "total added width",
+    "total added height",
+    "bleed area"
+  ],
+  "calculation": "Document width = finished width + 2 × bleed. Document height = finished height + 2 × bleed. Calculate finished area, bleed-inclusive area and additional bleed area using consistent units."
+}
