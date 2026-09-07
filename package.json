@@ -22,6 +22,9 @@
     "check": "npm run validate:architecture && npm run typecheck && npm run lint:baseline && npm run build"
   },
   "dependencies": {
+    "@ffmpeg/core": "^0.12.10",
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2",
     "clean-css": "^5.3.3",
     "clsx": "^2.1.1",
     "cron-parser": "^5.10.0",

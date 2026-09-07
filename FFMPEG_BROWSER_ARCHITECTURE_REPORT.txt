@@ -1,0 +1,281 @@
+================================================================================
+NAVORIKA AUDIO/VIDEO ARCHITECTURE: FFMPEG COMPATIBILITY & CLIENT AUDIT REPORT
+================================================================================
+Date: 2026-09-06
+Branch: feat/audio-video-tools
+Environment: Linux x86_64 | Node v22.23.2 (Engine: >=22.13.0) | Next.js 16.3.0 | React 19.2.4
+Status: PRE-IMPLEMENTATION ARCHITECTURAL AUDIT & VERIFICATION COMPLETE
+Author: Antigravity AI Engineering Assistant
+
+================================================================================
+1. EXECUTIVE SUMMARY
+================================================================================
+This report provides a formal, evidence-based architectural audit of the current
+Navorika repository and evaluates the compatibility, constraints, and integration
+strategy for introducing FFmpeg dependencies on the `feat/audio-video-tools` branch.
+
+All findings are based strictly on the CURRENT codebase state rather than
+assumptions from earlier Navorika iterations or generic Next.js templates.
+
+Key Conclusions:
+- The active repository requires Node >=22.13.0 and is actively running on
+  Node v22.23.2 with Next.js 16.3.0 and React 19.2.4.
+- Downgrading Node, Next.js, React, or existing dependencies is strictly prohibited
+  and unnecessary: @ffmpeg/ffmpeg (0.12.15) and @ffmpeg/util (0.12.2) resolve
+  cleanly with zero peer dependency conflicts under React 19.2 and Node 22.
+- However, client-side WebAssembly execution of FFmpeg imposes severe architectural
+  constraints in the browser:
+  1. Multi-threaded WASM (@ffmpeg/core-mt) requires SharedArrayBuffer, which demands
+     Cross-Origin Isolation headers (COOP: same-origin, COEP: require-corp). Setting
+     these globally would break external third-party assets and fonts across Navorika.
+  2. Single-threaded WASM (@ffmpeg/core) avoids COOP/COEP header requirements and
+     works universally, but is CPU-bound and subject to browser WASM memory limits.
+  3. The 30+ MB WASM payload must not be bundled directly into Next.js bundles; it
+     must be dynamically fetched and instantiated via Web Workers from /public or CDN.
+- Wherever practical, browser-native APIs (Web Audio API, Canvas 2D, HTML5 Video,
+  MediaRecorder, WebCodecs) should be leveraged before defaulting to heavy WASM binaries.
+
+================================================================================
+2. CURRENT REPOSITORY & RUNTIME AUDIT
+================================================================================
+The current repository was audited directly. The existing configuration:
+
+1. Runtime Engines:
+   - package.json engines: { "node": ">=22.13.0" }
+   - System runtime: Node v22.23.2, npm 10.9.8, x86_64 Linux.
+   - All code changes must respect Node >=22.13.0.
+
+2. Core Framework Stack:
+   - Next.js: 16.3.0 ("next": "^16.3.0") using App Router.
+     Per AGENTS.md, Next.js 16 introduces breaking changes: React Server Components,
+     asynchronous dynamic request APIs (cookies, headers, params), and Turbopack.
+   - React & React DOM: 19.2.4 ("react": "19.2.4", "react-dom": "19.2.4").
+   - Dev Dependencies: @types/react 19, @types/react-dom 19, @types/node 20,
+     eslint-config-next 16.2.12, typescript 5, tailwindcss 4.
+   - Tailwind CSS: v4 using modern @theme directive in src/app/globals.css.
+
+3. Automated Quality & Architecture Guardrails:
+   - Architecture Validation (scripts/validate-architecture.mjs):
+     Passed (248 registered tools, 248 routes, 49 clusters, 8 toolkits,
+     108 tool SEO records, 39 complete guides).
+   - TypeScript (tsc --noEmit):
+     Passed with 0 compilation errors across the entire project.
+   - Lint Baseline (scripts/validate-lint-baseline.mjs):
+     Passed (145 errors / 131 warnings against baseline ceiling 182 / 197).
+
+4. Dependency Downgrade Policy:
+   - STRICT POLICY: Node, Next.js, React, or existing package versions will NOT be
+     downgraded to satisfy older packages. Any audio/video library must integrate
+     cleanly within this modern stack.
+
+================================================================================
+3. CURRENT CLIENT-SIDE COMPUTING ARCHITECTURE
+================================================================================
+Navorika's primary value proposition is high-speed, privacy-first local computing
+executed directly inside the user's browser whenever technically feasible.
+
+1. Local-First Client Tools:
+   - Image conversion/resizing: Uses browser-native createImageBitmap, HTML5 Canvas 2D,
+     and toBlob/toDataURL.
+   - PDF manipulation: Uses pdf-lib and pdfjs-dist for client-side rendering and assembly.
+   - QR / Barcodes: Uses jsqr and qrcode client modules.
+   - Office documents: Uses docx and fast-xml-parser in-browser.
+   - Formats like HEIC: Uses heic2any for client-side decoding.
+   - Characteristics: Zero server payload, instant feedback, no backend operating costs,
+     total privacy for user files.
+
+2. Quarantined / Server-Side Architecture:
+   - For tools that cannot run in browser due to OS-level dependencies or heavy C/C++
+     binaries (e.g. CorelDRAW conversion with LibreOffice/Poppler, or STEP to 3D PDF
+     with Open CASCADE 7.6 / Asymptote 2.87):
+     * Executed via isolated Next.js API routes (/api/coreldraw/convert, /api/step-to-3d-pdf/convert).
+     * Hardened subprocess execution (shell: false, SIGKILL timeouts, random mkdtemp sandboxes).
+     * Quarantined from search indexation via src/lib/seo/toolReview.ts until vetted.
+
+3. Layout & Component Landmark Invariants:
+   - src/components/ClientLayout.tsx provides the sole primary <main> landmark.
+   - Shared server shells (src/app/page.tsx, src/app/tools/page.tsx) must remain static
+     server-rendered components and cannot be converted to 'use client' or import
+     Framer Motion directly.
+
+================================================================================
+4. FFMPEG COMPATIBILITY & TECHNICAL RISK ANALYSIS
+================================================================================
+When adding FFmpeg for client-side video and audio processing, the following
+browser and framework constraints must be managed:
+
+1. Package Matrix & Resolution Verification:
+   - Tested packages:
+     * @ffmpeg/ffmpeg (0.12.15)
+     * @ffmpeg/util (0.12.2)
+     * @ffmpeg/core (0.12.10)
+   - Resolution result: npm dry-run completed with 0 peer dependency conflicts.
+   - Node engines requirement: >=18.x (satisfied by Node 22.23.2).
+   - React 19 compatibility: @ffmpeg/ffmpeg is framework-agnostic vanilla TypeScript;
+     it has no React 18-specific hooks or legacy peer dependency blocks.
+
+2. Multi-Threaded WASM (@ffmpeg/core-mt) vs Cross-Origin Isolation:
+   - Architecture Requirement: Multi-threaded FFmpeg utilizes WebAssembly pthreads,
+     which rely on SharedArrayBuffer.
+   - Browser Security Policy: Modern browsers block SharedArrayBuffer unless the page
+     is Cross-Origin Isolated via HTTP headers:
+       Cross-Origin-Opener-Policy: same-origin
+       Cross-Origin-Embedder-Policy: require-corp (or credentialless)
+   - Risk to Navorika:
+     * Currently, next.config.ts has no COOP/COEP headers configured.
+     * Enabling COEP globally causes any external asset (Google Fonts, external preview
+       images, CDNs, third-party iframes) lacking Cross-Origin-Resource-Policy headers
+       to be blocked immediately by the browser.
+     * Furthermore, Cross-Origin-Opener-Policy: same-origin breaks OAuth popups and
+       external navigation window.opener references.
+   - Mitigation:
+     * Prefer single-threaded @ffmpeg/core where possible.
+     * If multi-threading is strictly required for encoding performance, COOP/COEP
+       must be scoped strictly to specific route paths in next.config.ts:
+       ```ts
+       async headers() {
+         return [
+           {
+             source: '/tools/video-:slug*',
+             headers: [
+               { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+               { key: 'Cross-Origin-Embedder-Policy', value: 'credentialless' },
+             ],
+           },
+         ];
+       }
+       ```
+
+3. Single-Threaded WASM (@ffmpeg/core):
+   - Advantages:
+     * Requires NO special HTTP headers.
+     * Compatible with all standard web hosting, CDNs, and Next.js static output.
+     * Operates safely alongside external assets and embeds.
+   - Constraints:
+     * Transcoding speed: Utilizes only 1 CPU core. Transcoding a 1080p 60fps video
+       can take 5-10x longer than real-time.
+     * WASM 2GB/4GB memory limit: High-resolution or long video files can cause
+       unrecoverable browser tab crashes due to out-of-memory (OOM) exceptions.
+     * Best suited for: Audio extraction, audio transcoding, video trimming without
+       re-encoding (stream copy `-c copy`), fast format remuxing, and GIF creation.
+
+4. Next.js 16 App Router & Client Bundling Rules:
+   - SSR Global Guard:
+     @ffmpeg/ffmpeg references browser-only globals (Worker, Blob, URL.createObjectURL).
+     Static top-level imports in Server Components will break the Next.js build.
+     * Implementation Rule: Must be wrapped in 'use client' components and dynamically
+       imported inside event handlers or useEffect:
+       `const { FFmpeg } = await import('@ffmpeg/ffmpeg');`
+   - Heavy WASM Asset Management:
+     The ffmpeg-core.wasm binary is ~31 MB. It MUST NOT be bundled into the JavaScript
+     chunks emitted by Next.js/Turbopack.
+     * Implementation Rule: Place ffmpeg-core.js and ffmpeg-core.wasm into public/ffmpeg/
+       or load from a verified CDN using @ffmpeg/util `toBlobURL`.
+   - React 19 StrictMode & Worker Leaks:
+     React 19 runs effect cleanup twice in dev mode. If FFmpeg is instantiated in
+     useEffect without proper ref guards or singleton management, multiple Web Workers
+     and multiple 30MB WASM heaps will be allocated concurrently, freezing the browser.
+     * Implementation Rule: Use a persistent singleton instance or ensure ffmpeg.terminate()
+       is called on unmount.
+
+================================================================================
+5. BROWSER-NATIVE APIS VS HEAVY WASM BINARIES
+================================================================================
+Before incurring a 31 MB WASM download for every media utility, Navorika should
+leverage high-performance native browser APIs where appropriate:
+
+1. Web Audio API (Zero Dependencies, ~0 KB network payload):
+   - Capabilities:
+     * Audio decoding: AudioContext.decodeAudioData() handles MP3, WAV, AAC, OGG, FLAC.
+     * Waveform visualization: AnalyserNode or OfflineAudioContext channel data.
+     * Audio trimming/slicing: Buffer slicing via Float32Array channel manipulation.
+     * Volume/Gain adjustment, equalization, stereo panning, channel mixing.
+     * Audio encoding to WAV: A clean 1 KB TypeScript PCM encoder produces 16-bit
+       or 24-bit uncompressed WAV files instantly in-memory.
+   - Use cases for Navorika: Audio Cutter/Trimmer, Audio Waveform Generator, Volume
+     Booster, Audio Reverser, MP3 to WAV Converter.
+
+2. HTML5 Video + 2D Canvas:
+   - Capabilities:
+     * Frame extraction and video thumbnail capture.
+     * Video dimension resizing, aspect ratio cropping, and rotation.
+     * Adding visual watermarks, text overlays, or color filters to video frames.
+   - Use cases for Navorika: Video Thumbnail Generator, Video to GIF (via canvas + gifenc),
+     Video Frame Extractor.
+
+3. MediaRecorder API & WebCodecs API:
+   - Capabilities:
+     * Native, hardware-accelerated video/audio encoding (VP8, VP9, H.264, Opus, AAC)
+       supported directly by the user's GPU and browser engine.
+   - Use cases for Navorika: Browser Screen/Mic Recorder, Canvas-to-Video exporter.
+
+4. When FFmpeg WASM is Truly Indispensable:
+   - Container remuxing: e.g. converting MKV/AVI/FLV/MOV to MP4.
+   - Codec transcoding when browser lacks native encoding support (e.g. encoding MP3
+     or AAC without native browser encoder APIs).
+   - Audio stream extraction: Stripping raw audio track from video files without re-encoding.
+   - Complex filter graphs: Loudnorm, audio pitch shifting with tempo preservation,
+     subtitles burning.
+
+================================================================================
+6. RECOMMENDED AUDIO/VIDEO IMPLEMENTATION STRATEGY
+================================================================================
+To maintain Navorika's strict quality, performance, and SEO standards:
+
+Tier 1: Native In-Browser Tools (No FFmpeg / No heavy WASM)
+- Fast, instant loading, 0 KB extra bundle weight, works on all devices.
+- Candidate tools:
+  * Audio Cutter & Trimmer (Web Audio API + AudioBuffer)
+  * Audio Waveform Visualizer & Inspector
+  * Audio Volume Booster & Normalizer
+  * WAV Converter / Generator (PCM TS encoder)
+  * Video Thumbnail & Frame Grabber (HTML5 Video + Canvas)
+  * Video Aspect Ratio & Dimension Cropper
+
+Tier 2: Single-Threaded FFmpeg WASM Tools (@ffmpeg/core)
+- No COOP/COEP headers required; safe for standard hosting and asset embedding.
+- Fast tasks with low memory overhead:
+  * Video to Audio Extractor (MP4/MKV -> MP3/WAV)
+  * Video to GIF Converter
+  * Audio Format Converter (WAV/OGG/AAC/MP3)
+  * Video Trimmer (using stream copy -c copy)
+
+Tier 3: Multi-Threaded FFmpeg WASM Tools (@ffmpeg/core-mt)
+- Requires route-scoped COOP/COEP headers in next.config.ts.
+- Compute-intensive video re-encoding (e.g. Video Compressor, Video Resolution Converter).
+- Must include clear UX warnings for low-end mobile devices and browser memory limits.
+
+Tier 4: Quarantined / Server-Side Execution (Native FFmpeg Host Binaries)
+- Reserved only if video transcoding requirements exceed browser memory/timeout limits
+  (similar to the LibreOffice CorelDRAW or Open CASCADE CAD pipelines).
+
+================================================================================
+7. CHECKLIST FOR INTRODUCING AUDIO/VIDEO TOOLS TO NAVORIKA
+================================================================================
+When implementing new audio/video tools on `feat/audio-video-tools`:
+
+[ ] Do NOT downgrade Node, Next.js, or React.
+[ ] Place pure calculation, audio math, or format logic in src/lib/calculations/.
+[ ] Ensure any FFmpeg instance is dynamically loaded only on the client inside
+    'use client' components with strict cleanup on unmount.
+[ ] Store core WASM assets in public/ffmpeg/ or load via toBlobURL from a CDN.
+[ ] If using multi-threading, configure COOP/COEP headers scoped strictly to the
+    tool's route in next.config.ts; do not apply COOP/COEP globally.
+[ ] Register tool entries across the canonical Navorika architecture:
+    - src/data/registry.ts (title, description, category, slug, badges)
+    - src/data/taxonomy.ts (cluster, toolkit, complementary workflows)
+    - src/data/toolUx.ts (processingMode: 'local', resultActions)
+    - src/data/tool-pages/ (rich SEO specifications)
+    - src/lib/toolIcons.ts (Lucide icon mapping)
+[ ] Ensure src/components/ClientLayout.tsx maintains the sole <main> landmark.
+[ ] Pass full verification pipeline:
+    - npm run validate:architecture
+    - npm run test:calculations
+    - npm run test:ux
+    - npm run typecheck
+    - npm run lint:baseline
+    - npm run build
+
+================================================================================
+END OF REPORT
+================================================================================

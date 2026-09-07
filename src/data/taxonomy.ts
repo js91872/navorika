@@ -66,6 +66,7 @@ export const clusters: ToolCluster[] = [
   { id: 'ai-cloud-costs', name: 'AI and Cloud Cost Planning', description: 'Estimate AI token demand, LLM API pricing, GPU compute, hosting, CDN, and archive-retrieval costs.', category: 'developer-tools', toolSlugs: ['ai-token-calculator', 'llm-api-cost-calculator', 'gpu-compute-cost-calculator', 'cloud-hosting-cost-calculator', 'cdn-cost-calculator', 'aws-glacier-retrieval-calculator'] },
   { id: 'developer-scientific-data', name: 'Scientific Data Utilities', description: 'Support defined scientific data schemas and validated browser-based analysis models.', category: 'developer-tools', toolSlugs: ['bioluminescent-reader'] },
   { id: 'cad-engineering-tools', name: 'CAD and 3D Engineering', description: 'Convert, inspect, and share 3D CAD models and engineering documentation.', category: 'developer-tools', toolSlugs: ['step-to-3d-pdf-converter'] },
+  { id: 'audio-video-tools', name: 'Audio and Video Tools', description: 'Extract audio from video files, convert audio formats, and calculate bitrates locally in the browser.', category: 'developer-tools', toolSlugs: ['audio-video-tools', 'video-to-mp3-converter', 'mp4-to-mp3-converter', 'webm-to-mp3-converter', 'mov-to-mp3-converter', 'video-to-audio-converter', 'extract-audio-from-video', 'm4a-to-mp3-converter', 'wav-to-mp3-converter', 'mp3-to-wav-converter', 'audio-bitrate-calculator'] },
 
   { id: 'construction-concrete', name: 'Concrete and Masonry', description: 'Estimate concrete, cement, brick, reinforcement, sand, and post-hole concrete needs.', category: 'construction-calculators', toolSlugs: ['brick-calculator', 'cement-calculator', 'concrete-calculator', 'post-hole-concrete-calculator', 'rebar-calculator', 'sand-calculator'] },
   { id: 'construction-finishes', name: 'Interior Surfaces and Finishes', description: 'Plan flooring, tile, paint, drywall, and wallpaper quantities for interior work.', category: 'construction-calculators', toolSlugs: ['drywall-calculator', 'flooring-calculator', 'paint-calculator', 'tile-calculator', 'wallpaper-calculator'] },
@@ -299,6 +300,17 @@ export const complementaryTools: Record<string, string[]> = {
   'pdf-page-size-checker': ['pdf-bleed-trim-checker', 'crop-pdf', 'image-print-size-calculator'],
   'rgb-cmyk-image-checker': ['image-metadata-viewer', 'image-print-size-calculator', 'image-color-picker'],
   'print-bleed-calculator': ['image-print-size-calculator', 'pdf-bleed-trim-checker', 'cdr-print-readiness-checker'],
+  'audio-video-tools': ['video-to-mp3-converter', 'mp3-to-wav-converter', 'audio-bitrate-calculator'],
+  'video-to-mp3-converter': ['extract-audio-from-video', 'mp4-to-mp3-converter', 'audio-bitrate-calculator'],
+  'mp4-to-mp3-converter': ['video-to-mp3-converter', 'mov-to-mp3-converter', 'audio-bitrate-calculator'],
+  'webm-to-mp3-converter': ['video-to-mp3-converter', 'mp4-to-mp3-converter', 'audio-bitrate-calculator'],
+  'mov-to-mp3-converter': ['video-to-mp3-converter', 'mp4-to-mp3-converter', 'extract-audio-from-video'],
+  'video-to-audio-converter': ['video-to-mp3-converter', 'extract-audio-from-video', 'mp3-to-wav-converter'],
+  'extract-audio-from-video': ['video-to-mp3-converter', 'video-to-audio-converter', 'audio-bitrate-calculator'],
+  'm4a-to-mp3-converter': ['wav-to-mp3-converter', 'mp3-to-wav-converter', 'audio-bitrate-calculator'],
+  'wav-to-mp3-converter': ['mp3-to-wav-converter', 'm4a-to-mp3-converter', 'audio-bitrate-calculator'],
+  'mp3-to-wav-converter': ['wav-to-mp3-converter', 'video-to-audio-converter', 'audio-bitrate-calculator'],
+  'audio-bitrate-calculator': ['video-to-mp3-converter', 'wav-to-mp3-converter', 'audio-video-tools'],
 };
 
 const clusterByTool = new Map(clusters.flatMap((cluster) => cluster.toolSlugs.map((slug) => [slug, cluster] as const)));

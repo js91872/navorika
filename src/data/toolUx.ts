@@ -315,6 +315,51 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'image-print-size-calculator': 'Calculate physical print size', 'pdf-bleed-trim-checker': 'Inspect PDF bleed and trim boxes' },
   },
+  'audio-video-tools': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'video-to-mp3-converter': 'Convert video to MP3', 'mp3-to-wav-converter': 'Convert MP3 to WAV', 'audio-bitrate-calculator': 'Calculate bitrates' },
+  },
+  'video-to-mp3-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'mp4-to-mp3-converter': 'Convert MP4 to MP3', 'extract-audio-from-video': 'Extract audio track', 'audio-bitrate-calculator': 'Estimate bitrate' },
+  },
+  'mp4-to-mp3-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'mov-to-mp3-converter': 'Convert QuickTime MOV', 'video-to-mp3-converter': 'Convert generic video', 'audio-bitrate-calculator': 'Check file size' },
+  },
+  'webm-to-mp3-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'video-to-mp3-converter': 'Convert other video formats', 'audio-bitrate-calculator': 'Calculate recording bitrate' },
+  },
+  'mov-to-mp3-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'mp4-to-mp3-converter': 'Convert MP4 video', 'extract-audio-from-video': 'Rip audio from video' },
+  },
+  'video-to-audio-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'video-to-mp3-converter': 'Fast MP3 conversion', 'mp3-to-wav-converter': 'Decode to WAV' },
+  },
+  'extract-audio-from-video': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'video-to-audio-converter': 'Multi-format audio extraction', 'audio-bitrate-calculator': 'Calculate stream bitrate' },
+  },
+  'm4a-to-mp3-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'wav-to-mp3-converter': 'Compress WAV to MP3', 'mp3-to-wav-converter': 'Decompress MP3 to WAV' },
+  },
+  'wav-to-mp3-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'mp3-to-wav-converter': 'Decompress to WAV', 'audio-bitrate-calculator': 'Estimate MP3 size reduction' },
+  },
+  'mp3-to-wav-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'wav-to-mp3-converter': 'Compress WAV back to MP3', 'video-to-audio-converter': 'Extract audio from video' },
+  },
+  'audio-bitrate-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary'],
+    workflowLabels: { 'video-to-mp3-converter': 'Convert video to MP3', 'wav-to-mp3-converter': 'Compress WAV audio' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {
