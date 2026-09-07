@@ -271,6 +271,17 @@ export const toolIcons: Record<string, string> = {
   'pdf-page-size-checker': '📑',
   'rgb-cmyk-image-checker': '🎨',
   'print-bleed-calculator': '🖨️',
+  'audio-video-tools': '🎬',
+  'video-to-mp3-converter': '🎵',
+  'mp4-to-mp3-converter': '🎵',
+  'webm-to-mp3-converter': '🎵',
+  'mov-to-mp3-converter': '🎵',
+  'video-to-audio-converter': '🎧',
+  'extract-audio-from-video': '🔊',
+  'm4a-to-mp3-converter': '🎙️',
+  'wav-to-mp3-converter': '🎼',
+  'mp3-to-wav-converter': '📻',
+  'audio-bitrate-calculator': '🎚️',
 };
 
 export const getToolIcon = (slug: string): string => {

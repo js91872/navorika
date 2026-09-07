@@ -1976,6 +1976,171 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'Print Bleed Calculator',
     heroDescription: 'Calculate document dimensions after adding print bleed around a finished trim size.'
+  },
+  {
+    slug: 'audio-video-tools',
+    title: 'Audio & Video Tools',
+    description: 'Private in-browser media suite to convert audio, extract soundtracks from video, and calculate audio bitrates.',
+    category: 'developer-tools',
+    keywords: [
+      'audio video tools',
+      'media conversion tools',
+      'video to mp3 tools',
+      'extract audio from video',
+      'audio tools online'
+    ],
+    heroTitle: 'Audio & Video Tools',
+    heroDescription: 'Private in-browser media suite to convert audio, extract soundtracks from video, and calculate audio bitrates.'
+  },
+  {
+    slug: 'video-to-mp3-converter',
+    title: 'Video to MP3 Converter',
+    description: 'Extract crystal-clear MP3 audio from any video container locally in your browser with selectable bitrates.',
+    category: 'developer-tools',
+    keywords: [
+      'video to mp3 converter',
+      'convert video to mp3',
+      'video mp3 extractor',
+      'video audio ripper',
+      'video to mp3 online'
+    ],
+    heroTitle: 'Video to MP3 Converter',
+    heroDescription: 'Extract crystal-clear MP3 audio from any video container locally in your browser with selectable bitrates.'
+  },
+  {
+    slug: 'mp4-to-mp3-converter',
+    title: 'MP4 to MP3 Converter',
+    description: 'Convert MP4 video clips, webinars, and screen recordings to MP3 audio files locally in your browser.',
+    category: 'developer-tools',
+    keywords: [
+      'mp4 to mp3 converter',
+      'convert mp4 to mp3',
+      'extract audio from mp4',
+      'mp4 to mp3 online',
+      'mp4 sound extractor'
+    ],
+    heroTitle: 'MP4 to MP3 Converter',
+    heroDescription: 'Convert MP4 video clips, webinars, and screen recordings to MP3 audio files locally in your browser.'
+  },
+  {
+    slug: 'webm-to-mp3-converter',
+    title: 'WEBM to MP3 Converter',
+    description: 'Convert WebM video and audio recordings to universal MP3 format locally in your browser.',
+    category: 'developer-tools',
+    keywords: [
+      'webm to mp3 converter',
+      'convert webm to mp3',
+      'webm audio converter',
+      'webm to mp3 online',
+      'browser recording to mp3'
+    ],
+    heroTitle: 'WEBM to MP3 Converter',
+    heroDescription: 'Convert WebM video and audio recordings to universal MP3 format locally in your browser.'
+  },
+  {
+    slug: 'mov-to-mp3-converter',
+    title: 'MOV to MP3 Converter',
+    description: 'Convert Apple QuickTime MOV videos and iPhone camera recordings to MP3 audio files locally in your browser.',
+    category: 'developer-tools',
+    keywords: [
+      'mov to mp3 converter',
+      'convert mov to mp3',
+      'quicktime to mp3',
+      'iphone video to mp3',
+      'mov audio extractor'
+    ],
+    heroTitle: 'MOV to MP3 Converter',
+    heroDescription: 'Convert Apple QuickTime MOV videos and iPhone camera recordings to MP3 audio files locally in your browser.'
+  },
+  {
+    slug: 'video-to-audio-converter',
+    title: 'Video to Audio Converter',
+    description: 'Universal in-browser video-to-audio converter. Extract and transcode video files into MP3, WAV, AAC, OGG, or FLAC.',
+    category: 'developer-tools',
+    keywords: [
+      'video to audio converter',
+      'convert video to audio',
+      'video to wav converter',
+      'video to aac converter',
+      'video soundtrack extractor'
+    ],
+    heroTitle: 'Video to Audio Converter',
+    heroDescription: 'Universal in-browser video-to-audio converter. Extract and transcode video files into MP3, WAV, AAC, OGG, or FLAC.'
+  },
+  {
+    slug: 'extract-audio-from-video',
+    title: 'Extract Audio from Video',
+    description: 'Separate and extract soundtrack audio from video clips directly in your browser as MP3 or WAV without uploading.',
+    category: 'developer-tools',
+    keywords: [
+      'extract audio from video',
+      'rip audio from video',
+      'separate audio from video',
+      'strip audio track',
+      'video audio separation'
+    ],
+    heroTitle: 'Extract Audio from Video',
+    heroDescription: 'Separate and extract soundtrack audio from video clips directly in your browser as MP3 or WAV without uploading.'
+  },
+  {
+    slug: 'm4a-to-mp3-converter',
+    title: 'M4A to MP3 Converter',
+    description: 'Convert Apple Voice Memos and M4A/AAC audio recordings to universal MP3 format in your browser.',
+    category: 'developer-tools',
+    keywords: [
+      'm4a to mp3 converter',
+      'convert m4a to mp3',
+      'voice memo to mp3',
+      'apple audio to mp3',
+      'm4a converter online'
+    ],
+    heroTitle: 'M4A to MP3 Converter',
+    heroDescription: 'Convert Apple Voice Memos and M4A/AAC audio recordings to universal MP3 format in your browser.'
+  },
+  {
+    slug: 'wav-to-mp3-converter',
+    title: 'WAV to MP3 Converter',
+    description: 'Compress large uncompressed WAV files to compact, universal MP3 audio directly in your browser.',
+    category: 'developer-tools',
+    keywords: [
+      'wav to mp3 converter',
+      'convert wav to mp3',
+      'compress wav to mp3',
+      'wav to mp3 online',
+      'shrink wav file'
+    ],
+    heroTitle: 'WAV to MP3 Converter',
+    heroDescription: 'Compress large uncompressed WAV files to compact, universal MP3 audio directly in your browser.'
+  },
+  {
+    slug: 'mp3-to-wav-converter',
+    title: 'MP3 to WAV Converter',
+    description: 'Decompress MP3 audio files to uncompressed 16-bit PCM WAV format instantly in your browser with zero server upload.',
+    category: 'developer-tools',
+    keywords: [
+      'mp3 to wav converter',
+      'convert mp3 to wav',
+      'decompress mp3 to wav',
+      'mp3 to wav online',
+      'decode mp3 to wav'
+    ],
+    heroTitle: 'MP3 to WAV Converter',
+    heroDescription: 'Decompress MP3 audio files to uncompressed 16-bit PCM WAV format instantly in your browser with zero server upload.'
+  },
+  {
+    slug: 'audio-bitrate-calculator',
+    title: 'Audio Bitrate Calculator',
+    description: 'Calculate audio bitrate from file size and duration, or estimate required storage from target bitrates.',
+    category: 'developer-tools',
+    keywords: [
+      'audio bitrate calculator',
+      'calculate audio bitrate',
+      'audio file size calculator',
+      'mp3 bitrate calculator',
+      'streaming audio bandwidth'
+    ],
+    heroTitle: 'Audio Bitrate Calculator',
+    heroDescription: 'Calculate audio bitrate from file size and duration, or estimate required storage from target bitrates.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,
