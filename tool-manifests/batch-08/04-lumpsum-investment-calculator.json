@@ -1,0 +1,88 @@
+{
+  "name": "Lumpsum Investment Calculator",
+  "slug": "lumpsum-investment-calculator",
+  "category": "Finance Calculators",
+  "description": "Calculate future maturity value, total compound wealth gained, real purchasing power, and wealth multiple for a one-time lump-sum investment.",
+  "search_intent": "Calculate future returns on a one-time lump sum mutual fund, index fund, or equity investment.",
+  "keywords": [
+    "lumpsum investment calculator",
+    "lump sum calculator",
+    "one time investment calculator",
+    "mutual fund lumpsum return calculator",
+    "lumpsum compounding calculator"
+  ],
+  "inputs": [
+    {
+      "key": "initialInvestment",
+      "label": "One-time investment amount",
+      "default": 100000,
+      "min": 100
+    },
+    {
+      "key": "expectedAnnualReturnPercent",
+      "label": "Expected annual rate of return (%)",
+      "default": 10,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "key": "timeHorizonYears",
+      "label": "Investment period (years)",
+      "default": 10,
+      "min": 1,
+      "max": 50,
+      "step": 1
+    },
+    {
+      "key": "compoundingFrequencyPerYear",
+      "label": "Compounding frequency per year",
+      "default": 1,
+      "help": "1 = Annually, 2 = Semi-annually, 4 = Quarterly, 12 = Monthly"
+    },
+    {
+      "key": "estimatedInflationRatePercent",
+      "label": "Estimated annual inflation rate (%)",
+      "default": 3,
+      "min": 0,
+      "max": 20
+    }
+  ],
+  "outputs": [
+    {
+      "key": "investedPrincipal",
+      "label": "Invested principal",
+      "format": "currency"
+    },
+    {
+      "key": "totalInterestEarned",
+      "label": "Total compound returns earned",
+      "format": "currency"
+    },
+    {
+      "key": "nominalMaturityValue",
+      "label": "Estimated nominal maturity value",
+      "format": "currency"
+    },
+    {
+      "key": "inflationAdjustedValue",
+      "label": "Real purchasing power (inflation-adjusted)",
+      "format": "currency"
+    },
+    {
+      "key": "wealthGainMultiple",
+      "label": "Wealth growth multiple",
+      "format": "number"
+    }
+  ],
+  "calculation": "Nominal maturity value: A = P × (1 + r / n)^(n × t), where P is initial investment, r is annual return rate as a decimal (return% / 100), n is compounding periods per year, and t is years. Total compound interest earned = A − P. Real inflation-adjusted value: A_real = A / (1 + inflation / 100)^t. Wealth growth multiple = A / P. Zero or negative returns are supported deterministically without dividing by zero.",
+  "related_tools": [
+    "sip-calculator",
+    "savings-goal-calculator",
+    "drawdown-recovery-calculator"
+  ],
+  "limitations": [
+    "Market returns fluctuate over time and past performance is not a guarantee of future returns.",
+    "Taxes (capital gains tax), expense ratios, and management fees are not automatically deducted.",
+    "Calculations represent constant-rate compounding projections."
+  ]
+}

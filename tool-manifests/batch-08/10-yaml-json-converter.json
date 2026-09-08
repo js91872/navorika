@@ -1,0 +1,72 @@
+{
+  "name": "YAML / JSON Converter",
+  "slug": "yaml-json-converter",
+  "category": "Developer Tools",
+  "description": "Convert YAML configuration files to JSON and JSON to clean YAML locally in your browser with syntax validation and indentation controls.",
+  "search_intent": "Convert YAML to JSON or JSON to YAML online with syntax validation.",
+  "keywords": [
+    "yaml to json converter",
+    "json to yaml converter",
+    "convert yaml to json",
+    "yaml json parser",
+    "yaml formatter online"
+  ],
+  "inputs": [
+    {
+      "key": "sourceContent",
+      "label": "Input YAML or JSON content",
+      "default": "name: Navorika\nversion: 1.0.0\nfeatures:\n  - client-side privacy\n  - deterministic math\nenabled: true\nport: 3000"
+    },
+    {
+      "key": "conversionMode",
+      "label": "Conversion mode",
+      "default": "yaml-to-json",
+      "help": "yaml-to-json, json-to-yaml, or auto-detect format"
+    },
+    {
+      "key": "indentSpaces",
+      "label": "Indentation spaces (2 or 4)",
+      "default": 2,
+      "min": 1,
+      "max": 8
+    },
+    {
+      "key": "sortKeys",
+      "label": "Sort object keys alphabetically",
+      "default": "false"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "convertedContent",
+      "label": "Converted output",
+      "format": "text"
+    },
+    {
+      "key": "detectedFormat",
+      "label": "Detected source format",
+      "format": "text"
+    },
+    {
+      "key": "byteSize",
+      "label": "Output size (bytes)",
+      "format": "number"
+    },
+    {
+      "key": "validationStatus",
+      "label": "Syntax validation status",
+      "format": "text"
+    }
+  ],
+  "calculation": "Client-side conversion using the robust YAML specification parser. In yaml-to-json mode, YAML.parse is executed inside a try/catch sandbox; line and column syntax errors are surfaced clearly. If valid, JSON.stringify emits formatted JSON with selected indentation. In json-to-yaml mode, JSON.parse parses the input structure and YAML.stringify emits standard YAML. Processing is entirely local in the browser; no data is sent over the network.",
+  "related_tools": [
+    "csv-to-json-converter",
+    "universal-json-studio",
+    "markup-formatter"
+  ],
+  "limitations": [
+    "YAML circular references and custom application tags (!include, !Ref) are not serialized into standard JSON.",
+    "Undefined values and BigInt representations require standard JSON-compatible types.",
+    "Very large configuration files (>10 MB) may cause browser tab lag during syntax tree parsing."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "name": "Concrete Block Calculator",
+  "slug": "concrete-block-calculator",
+  "category": "Construction Calculators",
+  "description": "Estimate CMU concrete blocks, mortar, core-fill grout, and waste allowance for block walls and foundations.",
+  "search_intent": "Calculate how many cinder blocks or CMU blocks are needed for a wall.",
+  "keywords": [
+    "concrete block calculator",
+    "cmu calculator",
+    "cinder block calculator",
+    "concrete masonry unit calculator",
+    "block wall estimator"
+  ],
+  "inputs": [
+    {
+      "key": "wallLengthFt",
+      "label": "Wall length (ft)",
+      "default": 30,
+      "min": 1
+    },
+    {
+      "key": "wallHeightFt",
+      "label": "Wall height (ft)",
+      "default": 8,
+      "min": 1
+    },
+    {
+      "key": "openingsAreaFt2",
+      "label": "Doors & windows opening area (ft²)",
+      "default": 20,
+      "min": 0
+    },
+    {
+      "key": "blockType",
+      "label": "Block width (nominal 16-inch length × 8-inch height)",
+      "default": "8x8x16",
+      "help": "Standard 8-in thick, 6-in thick, 4-in partition, or 12-in retaining wall CMU"
+    },
+    {
+      "key": "coreFillOption",
+      "label": "Core grouting schedule",
+      "default": "cores-32in",
+      "help": "None (hollow), cores at 32 inches, cores at 16 inches, or 100% solid filled"
+    },
+    {
+      "key": "wastePercent",
+      "label": "Waste allowance (%)",
+      "default": 10,
+      "min": 0,
+      "max": 50
+    }
+  ],
+  "outputs": [
+    {
+      "key": "netWallAreaFt2",
+      "label": "Net wall area (ft²)",
+      "format": "number"
+    },
+    {
+      "key": "exactBlocks",
+      "label": "Exact CMU blocks required",
+      "format": "number"
+    },
+    {
+      "key": "purchaseBlocks",
+      "label": "Whole CMU blocks to order (with waste)",
+      "format": "number"
+    },
+    {
+      "key": "mortarBags80lb",
+      "label": "Mortar bags (80-lb pre-mix)",
+      "format": "number"
+    },
+    {
+      "key": "coreFillGroutYards",
+      "label": "Core fill grout (cubic yards)",
+      "format": "number"
+    }
+  ],
+  "calculation": "Gross wall area = length × height. Net area = max(0, gross area − openings). Standard 8x8x16 block has a nominal face dimension of 16 in × 8 in = 128 in² (0.8889 ft²). Face area block factor = 1.125 blocks per square foot of wall face. Exact blocks = net area × 1.125. Purchase blocks = ceil(exact blocks × (1 + waste/100)). Mortar required = approx 13.5 ft³ per 100 blocks at 3/8-inch joint. Core fill grout volume depends on block core volume (approx 0.33 ft³ per 8-in core cell, 2 cores per block) multiplied by grout frequency (none: 0, 32-in: 1 core per 2 blocks, 16-in: 1 core per block, solid: 2 cores per block). Core fill volume is converted to cubic yards (ft³ / 27).",
+  "related_tools": [
+    "mortar-calculator",
+    "brick-calculator",
+    "concrete-calculator",
+    "rebar-calculator"
+  ],
+  "limitations": [
+    "Grouting requirements, rebar cell placement, and bond beams must be specified by a licensed structural engineer.",
+    "Corner blocks, jamb blocks, and lintel bond-beam blocks require separate takeoff for complex wall openings.",
+    "Mortar and grout yield vary by mix consistency, moisture absorption, and tooling loss."
+  ]
+}

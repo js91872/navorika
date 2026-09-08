@@ -1,0 +1,84 @@
+{
+  "name": "Responsive Srcset Generator",
+  "slug": "responsive-srcset-generator",
+  "category": "Image Tools",
+  "description": "Generate responsive HTML srcset attributes and modern picture tags with breakpoint widths, DPR multipliers, and WebP/AVIF fallbacks.",
+  "search_intent": "Generate responsive image srcset and picture HTML tags for web performance and SEO.",
+  "keywords": [
+    "responsive srcset generator",
+    "srcset generator",
+    "html picture tag generator",
+    "responsive image generator",
+    "image sizes attribute generator"
+  ],
+  "inputs": [
+    {
+      "key": "originalWidth",
+      "label": "Original image width (px)",
+      "default": 1920,
+      "min": 1,
+      "step": 1
+    },
+    {
+      "key": "originalHeight",
+      "label": "Original image height (px)",
+      "default": 1080,
+      "min": 1,
+      "step": 1
+    },
+    {
+      "key": "imagePath",
+      "label": "Base image path / filename",
+      "default": "/images/hero.jpg",
+      "help": "Relative or root-relative path to base image asset"
+    },
+    {
+      "key": "breakpointWidths",
+      "label": "Target breakpoint widths (px, comma-separated)",
+      "default": "480, 768, 1024, 1280, 1600, 1920"
+    },
+    {
+      "key": "containerSizesRule",
+      "label": "HTML sizes attribute value",
+      "default": "(max-width: 768px) 100vw, 1200px"
+    },
+    {
+      "key": "modernFormats",
+      "label": "Include WebP and AVIF modern picture sources",
+      "default": "true"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "imgHtmlTag",
+      "label": "Generated <img> HTML snippet with srcset & sizes",
+      "format": "text"
+    },
+    {
+      "key": "pictureHtmlTag",
+      "label": "Generated <picture> element with modern format fallbacks",
+      "format": "text"
+    },
+    {
+      "key": "aspectRatioCss",
+      "label": "Calculated CSS aspect-ratio property",
+      "format": "text"
+    },
+    {
+      "key": "variantCount",
+      "label": "Total image variants generated",
+      "format": "number"
+    }
+  ],
+  "calculation": "Parse comma-separated widths into a unique, sorted ascending array of positive integers, filtering out widths exceeding the original image width (unless explicitly specified). For each width w, compute proportional height h = round(w × originalHeight / originalWidth). Format srcset entries: '{name}-{w}w.{ext} {w}w'. Build HTML <img> tag with width, height, srcset, sizes, alt, loading='lazy', decoding='async'. If modern formats enabled, build <picture> wrapping <source type='image/avif'>, <source type='image/webp'>, and fallback <img>. CSS aspect ratio is simplified using greatest common divisor.",
+  "related_tools": [
+    "social-media-resizer",
+    "change-image-resolution",
+    "image-scaling-calculator"
+  ],
+  "limitations": [
+    "Generates HTML markup tags only; does not physically resize or export image files on disk.",
+    "Actual image asset resizing must be completed in your image optimization or CDN build pipeline (e.g. Sharp, Next.js Image, or Cloudinary).",
+    "Sizes rules should be verified against your CSS layout breakpoints."
+  ]
+}

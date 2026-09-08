@@ -1,0 +1,91 @@
+{
+  "name": "UUID Generator & Validator",
+  "slug": "uuid-generator-validator",
+  "category": "Developer Tools",
+  "description": "Generate bulk cryptographically secure UUID v4 and timestamp-ordered UUID v7 identifiers, validate syntax, and inspect version and variant metadata.",
+  "search_intent": "Generate UUID v4 / v7 online in bulk, or validate UUID strings and extract version metadata.",
+  "keywords": [
+    "uuid generator",
+    "uuid validator",
+    "uuid v4 generator",
+    "uuid v7 generator",
+    "guid generator online"
+  ],
+  "inputs": [
+    {
+      "key": "quantity",
+      "label": "Number of UUIDs to generate",
+      "default": 10,
+      "min": 1,
+      "max": 100,
+      "step": 1
+    },
+    {
+      "key": "uuidVersion",
+      "label": "UUID version standard",
+      "default": "v4",
+      "help": "v4 (random RFC 4122) or v7 (Unix millisecond timestamp-ordered RFC 9562)"
+    },
+    {
+      "key": "caseFormat",
+      "label": "Letter case",
+      "default": "lowercase",
+      "help": "lowercase or UPPERCASE"
+    },
+    {
+      "key": "includeHyphens",
+      "label": "Hyphen formatting",
+      "default": "true",
+      "help": "Standard hyphenated (8-4-4-4-12) or compact without hyphens"
+    },
+    {
+      "key": "outputStructure",
+      "label": "Output layout format",
+      "default": "plain-list",
+      "help": "plain-list, comma-separated, json-array, or sql-values"
+    },
+    {
+      "key": "validationCandidate",
+      "label": "Inspect / validate existing UUID",
+      "default": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "generatedList",
+      "label": "Generated UUID output",
+      "format": "text"
+    },
+    {
+      "key": "candidateIsValid",
+      "label": "Validation test result",
+      "format": "text"
+    },
+    {
+      "key": "candidateVersion",
+      "label": "Inspected version",
+      "format": "text"
+    },
+    {
+      "key": "candidateVariant",
+      "label": "Inspected variant",
+      "format": "text"
+    },
+    {
+      "key": "candidateTimestampIso",
+      "label": "Extracted timestamp (if v7)",
+      "format": "text"
+    }
+  ],
+  "calculation": "Generation: Uses Web Crypto API (crypto.getRandomValues and crypto.randomUUID). For v4: RFC 4122 bits set version=4 (0100) and variant=RFC 4122 (10xx). For v7: RFC 9562 packs 48-bit millisecond UNIX timestamp into high bits, followed by 12-bit counter/random and 62-bit cryptographic randomness. Validation: RFC compliant regex validates 36-character standard format or 32-character compact format, extracts 13th nibble for version (1 to 8), and 17th nibble for RFC variant (8, 9, a, b). Local browser generation only.",
+  "related_tools": [
+    "mac-address-generator",
+    "web-crypto-studio",
+    "jwt-base64-deck"
+  ],
+  "limitations": [
+    "UUID generation relies on the client system's Web Crypto entropy pool.",
+    "Timestamp extraction is applicable only to time-based UUID versions (v1, v6, v7).",
+    "Maximum client batch generation is bounded to 100 entries per click to preserve DOM responsiveness."
+  ]
+}

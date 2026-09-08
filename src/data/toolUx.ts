@@ -360,6 +360,81 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary'],
     workflowLabels: { 'video-to-mp3-converter': 'Convert video to MP3', 'wav-to-mp3-converter': 'Compress WAV audio' },
   },
+  'mortar-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'brick-calculator': 'Estimate bricks required', 'concrete-block-calculator': 'Estimate CMU blocks' },
+  },
+  'concrete-block-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'mortar-calculator': 'Calculate mortar volume', 'rebar-calculator': 'Calculate rebar reinforcement' },
+  },
+  'rainwater-harvesting-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'roof-area-calculator': 'Calculate roof catchment area', 'water-tank-calculator': 'Size cylindrical water tanks' },
+  },
+  'lumpsum-investment-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'sip-calculator': 'Compare systematic monthly SIP investments', 'savings-goal-calculator': 'Plan monthly milestone contributions' },
+  },
+  'savings-goal-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'lumpsum-investment-calculator': 'Calculate upfront lump-sum compounding', 'cashflow-budget-architect': 'Balance monthly household cash flow' },
+  },
+  'mortgage-affordability-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'loan-emi-calculator': 'Estimate detailed loan EMI payments', 'rental-property-cash-flow-calculator': 'Model investment rental income' },
+  },
+  'break-even-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'profit-margin-markup-calculator': 'Analyze margin and markup pricing', 'saas-burn-rate-calculator': 'Model recurring software burn rate' },
+  },
+  'profit-margin-markup-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'break-even-calculator': 'Calculate unit break-even point', 'contractor-estimate-generator': 'Generate contractor client quotes' },
+  },
+  'responsive-srcset-generator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'social-media-resizer': 'Resize assets for social networks', 'image-scaling-calculator': 'Calculate proportional image scaling' },
+  },
+  'yaml-json-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'csv-to-json-converter': 'Convert spreadsheet CSV to JSON', 'json-formatter': 'Beautify and format JSON documents' },
+  },
+  'uuid-generator-validator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'mac-address-generator': 'Generate random network MAC addresses', 'web-crypto-studio': 'Generate cryptographic hashes and keys' },
+  },
+  'macronutrient-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'calorie-calculator': 'Estimate baseline calorie requirements', 'tdee-calculator': 'Calculate daily maintenance energy' },
+  },
+  'running-pace-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'running-calories-calculator': 'Estimate running calorie expenditure', 'heart-rate-calculator': 'Calculate aerobic target heart zones' },
+  },
+  'one-rep-max-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'barbell-plate-calculator': 'Calculate barbell plate load configuration', 'wilks-dots-powerlifting-calculator': 'Calculate DOTS and Wilks strength coefficient' },
+  },
+  'hydration-calculator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'print'],
+    workflowLabels: { 'running-pace-calculator': 'Calculate race pace and splits', 'calorie-calculator': 'Calculate daily energy requirements' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

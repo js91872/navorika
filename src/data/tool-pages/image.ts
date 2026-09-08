@@ -702,4 +702,48 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: ['best-coreldraw-print-format', 'image-compression-guide'],
   },
+  'responsive-srcset-generator': {
+    slug: 'responsive-srcset-generator',
+    name: 'Responsive Srcset & Picture Tag Generator',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Generate responsive HTML srcset attributes and modern picture tags with breakpoint widths, DPR multipliers, and WebP/AVIF fallbacks.',
+    longTailKeywords: [
+      'responsive srcset generator',
+      'srcset generator',
+      'html picture tag generator',
+      'responsive image generator',
+      'image sizes attribute generator',
+    ],
+    intro: [
+      'Responsive Srcset Generator creates standards-compliant HTML <img> and <picture> snippets optimized for high-performance responsive web delivery.',
+      'Providing exact breakpoint widths and container sizes attributes reduces Largest Contentful Paint (LCP) and prevents unnecessary bandwidth consumption on mobile screens.',
+    ],
+    steps: [
+      'Enter native source image dimensions (original width and height).',
+      'Specify base image path, comma-separated breakpoint widths, and container layout sizes rule.',
+      'Choose whether to include modern next-gen format fallbacks (<picture> with AVIF and WebP).',
+      'Copy the generated HTML snippet and CSS aspect-ratio definition directly into your web codebase.',
+    ],
+    interpretation: [
+      'Modern web browsers select the smallest suitable image candidate matching device display density and viewport dimensions.',
+      'Explicit width, height, and CSS aspect-ratio attributes eliminate cumulative layout shifts (CLS) during page rendering.',
+    ],
+    limitations: [
+      'This tool generates HTML markup code; it does not physically resize or export graphic asset files on disk.',
+      'Actual image asset generation across the specified widths should be automated in your build pipeline or CDN (e.g. Sharp, Next.js Image, or Cloudinary).',
+    ],
+    faqs: [
+      { question: 'What is the difference between srcset and sizes?', answer: 'The srcset attribute provides a list of available image candidate files and their physical pixel widths. The sizes attribute informs the browser of the intended layout display width of the image before CSS stylesheets are parsed.' },
+      { question: 'Why use the <picture> element instead of <img> alone?', answer: 'The <picture> element enables format negotiation, allowing modern browsers to download AVIF or WebP files while falling back to JPEG or PNG on legacy clients.' },
+      { question: 'Are any images uploaded to a server?', answer: 'No. The snippet generation executes completely locally in your browser.' },
+    ],
+    relatedTools: [
+      { slug: 'social-media-resizer', name: 'Social Media Resizer' },
+      { slug: 'image-scaling-calculator', name: 'Image Scaling Calculator' },
+      { slug: 'change-image-resolution', name: 'Change Image Resolution' },
+      { slug: 'image-megapixel-calculator', name: 'Image Megapixel Calculator' },
+    ],
+    relatedGuides: ['image-compression-guide', 'image-formats-guide'],
+  },
 };

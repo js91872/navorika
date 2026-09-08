@@ -1,0 +1,85 @@
+{
+  "name": "Profit Margin & Markup Calculator",
+  "slug": "profit-margin-markup-calculator",
+  "category": "Finance Calculators",
+  "description": "Calculate gross profit, profit margin percentage, markup percentage, selling price, and cost multiplier across pricing scenarios.",
+  "search_intent": "Calculate profit margin vs markup percentage and determine retail selling price from cost.",
+  "keywords": [
+    "profit margin calculator",
+    "markup calculator",
+    "margin vs markup calculator",
+    "gross profit calculator",
+    "retail markup percentage calculator"
+  ],
+  "inputs": [
+    {
+      "key": "costAmount",
+      "label": "Cost of goods / wholesale cost",
+      "default": 60,
+      "min": 0
+    },
+    {
+      "key": "sellingPrice",
+      "label": "Selling price / retail revenue",
+      "default": 100,
+      "min": 0
+    },
+    {
+      "key": "targetMarkupPercent",
+      "label": "Alternative target markup (%)",
+      "default": 50,
+      "min": 0,
+      "max": 1000
+    },
+    {
+      "key": "targetMarginPercent",
+      "label": "Alternative target margin (%)",
+      "default": 40,
+      "min": 0,
+      "max": 99.9
+    }
+  ],
+  "outputs": [
+    {
+      "key": "grossProfitAmount",
+      "label": "Gross profit amount",
+      "format": "currency"
+    },
+    {
+      "key": "actualMarginPercent",
+      "label": "Gross profit margin (%)",
+      "format": "percent"
+    },
+    {
+      "key": "actualMarkupPercent",
+      "label": "Markup on cost (%)",
+      "format": "percent"
+    },
+    {
+      "key": "costMultiplier",
+      "label": "Cost multiplier",
+      "format": "number"
+    },
+    {
+      "key": "priceFromTargetMarkup",
+      "label": "Price required for target markup",
+      "format": "currency"
+    },
+    {
+      "key": "priceFromTargetMargin",
+      "label": "Price required for target margin",
+      "format": "currency"
+    }
+  ],
+  "calculation": "Gross profit = sellingPrice − costAmount. Actual margin % = sellingPrice > 0 ? (grossProfit / sellingPrice) × 100 : 0. Actual markup % = costAmount > 0 ? (grossProfit / costAmount) × 100 : 0. Cost multiplier = costAmount > 0 ? sellingPrice / costAmount : 0. Price for target markup = costAmount × (1 + targetMarkupPercent / 100). Price for target margin = targetMarginPercent < 100 ? costAmount / (1 − targetMarginPercent / 100) : null.",
+  "related_tools": [
+    "break-even-calculator",
+    "contractor-estimate-generator",
+    "construction-estimate-builder"
+  ],
+  "limitations": [
+    "Margin and markup model gross pricing; selling costs, merchant transaction fees, and indirect overhead are not subtracted from gross profit.",
+    "Margin cannot equal or exceed 100% unless cost is zero or negative.",
+    "Wholesale discounts and volume tiered pricing should be factored into the base cost."
+  ]
+}

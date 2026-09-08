@@ -2141,6 +2141,231 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'Audio Bitrate Calculator',
     heroDescription: 'Calculate audio bitrate from file size and duration, or estimate required storage from target bitrates.'
+  },
+  {
+    slug: 'mortar-calculator',
+    title: 'Mortar Calculator',
+    description: 'Calculate mortar volume, pre-mix bags, Portland cement, and masonry sand for brick and concrete block walls.',
+    category: 'construction-calculators',
+    keywords: [
+      'mortar calculator',
+      'mortar mix calculator',
+      'brick mortar calculator',
+      'how many bags of mortar do i need',
+      'masonry mortar calculator'
+    ],
+    heroTitle: 'Mortar Calculator',
+    heroDescription: 'Calculate mortar volume, pre-mix bags, cement, and sand needed for brick and block masonry walls.'
+  },
+  {
+    slug: 'concrete-block-calculator',
+    title: 'Concrete Block Calculator',
+    description: 'Estimate CMU concrete blocks, mortar, core-fill grout, and waste allowance for block walls and foundations.',
+    category: 'construction-calculators',
+    keywords: [
+      'concrete block calculator',
+      'cmu calculator',
+      'cinder block calculator',
+      'concrete masonry unit calculator',
+      'block wall estimator'
+    ],
+    heroTitle: 'Concrete Block Calculator',
+    heroDescription: 'Calculate CMU blocks, face-shell mortar bags, core grout volume, and waste for concrete masonry walls.'
+  },
+  {
+    slug: 'rainwater-harvesting-calculator',
+    title: 'Rainwater Harvesting Calculator',
+    description: 'Calculate harvestable rainwater volume from roof catchment area, annual rainfall, and roof material runoff coefficients, then size a storage tank.',
+    category: 'construction-calculators',
+    keywords: [
+      'rainwater harvesting calculator',
+      'rainwater collection calculator',
+      'roof runoff calculator',
+      'rain barrel sizing calculator',
+      'water catchment calculator'
+    ],
+    heroTitle: 'Rainwater Harvesting Calculator',
+    heroDescription: 'Estimate annual rainwater catchment volume and size storage cisterns from roof footprint and rainfall.'
+  },
+  {
+    slug: 'lumpsum-investment-calculator',
+    title: 'Lumpsum Investment Calculator',
+    description: 'Calculate future maturity value, total compound wealth gained, real purchasing power, and wealth multiple for a one-time lump-sum investment.',
+    category: 'finance-calculators',
+    keywords: [
+      'lumpsum investment calculator',
+      'lump sum calculator',
+      'one time investment calculator',
+      'mutual fund lumpsum return calculator',
+      'lumpsum compounding calculator'
+    ],
+    heroTitle: 'Lumpsum Investment Calculator',
+    heroDescription: 'Calculate compound returns, future nominal maturity value, real purchasing power, and wealth multiplier for a one-time investment.'
+  },
+  {
+    slug: 'savings-goal-calculator',
+    title: 'Savings Goal Calculator',
+    description: 'Calculate the exact monthly or annual savings required to reach a target financial goal by a target date, given starting savings and interest rate.',
+    category: 'finance-calculators',
+    keywords: [
+      'savings goal calculator',
+      'target savings calculator',
+      'how much to save calculator',
+      'monthly savings goal planner',
+      'financial goal calculator'
+    ],
+    heroTitle: 'Savings Goal Calculator',
+    heroDescription: 'Determine the exact monthly savings contributions needed to reach a target milestone across compound interest scenarios.'
+  },
+  {
+    slug: 'mortgage-affordability-calculator',
+    title: 'Mortgage Affordability Calculator',
+    description: 'Calculate maximum affordable home purchase price and loan amount based on income, monthly debts, down payment, and 28/36 DTI limits.',
+    category: 'finance-calculators',
+    keywords: [
+      'mortgage affordability calculator',
+      'home affordability calculator',
+      'how much house can i afford',
+      'maximum mortgage calculator',
+      'dti affordability calculator'
+    ],
+    heroTitle: 'Mortgage Affordability Calculator',
+    heroDescription: 'Estimate your maximum qualifying home purchase price and loan amount based on income, debts, and standard 28/36 DTI limits.'
+  },
+  {
+    slug: 'break-even-calculator',
+    title: 'Break-Even Calculator',
+    description: 'Calculate break-even sales volume in units and revenue, contribution margin per unit, margin ratio, and margin of safety.',
+    category: 'finance-calculators',
+    keywords: [
+      'break even calculator',
+      'break even point calculator',
+      'business break even analysis',
+      'contribution margin calculator',
+      'margin of safety calculator'
+    ],
+    heroTitle: 'Break-Even Calculator',
+    heroDescription: 'Calculate break-even volume, revenue, contribution margin, and margin of safety buffer for products or services.'
+  },
+  {
+    slug: 'profit-margin-markup-calculator',
+    title: 'Profit Margin & Markup Calculator',
+    description: 'Calculate gross profit, profit margin percentage, markup percentage, selling price, and cost multiplier across pricing scenarios.',
+    category: 'finance-calculators',
+    keywords: [
+      'profit margin calculator',
+      'markup calculator',
+      'margin vs markup calculator',
+      'gross profit calculator',
+      'retail markup percentage calculator'
+    ],
+    heroTitle: 'Profit Margin & Markup Calculator',
+    heroDescription: 'Compare margin vs markup, calculate retail pricing from cost, and analyze gross profit margins.'
+  },
+  {
+    slug: 'responsive-srcset-generator',
+    title: 'Responsive Srcset Generator',
+    description: 'Generate responsive HTML srcset attributes and modern picture tags with breakpoint widths, DPR multipliers, and WebP/AVIF fallbacks.',
+    category: 'image-tools',
+    keywords: [
+      'responsive srcset generator',
+      'srcset generator',
+      'html picture tag generator',
+      'responsive image generator',
+      'image sizes attribute generator'
+    ],
+    heroTitle: 'Responsive Srcset Generator',
+    heroDescription: 'Generate standards-compliant responsive image srcset attributes, modern picture tags, and CSS aspect ratios.'
+  },
+  {
+    slug: 'yaml-json-converter',
+    title: 'YAML / JSON Converter',
+    description: 'Convert YAML configuration files to JSON and JSON to clean YAML locally in your browser with syntax validation and indentation controls.',
+    category: 'developer-tools',
+    keywords: [
+      'yaml to json converter',
+      'json to yaml converter',
+      'convert yaml to json',
+      'yaml json parser',
+      'yaml formatter online'
+    ],
+    heroTitle: 'YAML / JSON Converter',
+    heroDescription: 'Convert YAML to JSON and JSON to YAML with syntax validation, custom indentation, and alphabetical key sorting.'
+  },
+  {
+    slug: 'uuid-generator-validator',
+    title: 'UUID Generator & Validator',
+    description: 'Generate bulk cryptographically secure UUID v4 and timestamp-ordered UUID v7 identifiers, validate syntax, and inspect version and variant metadata.',
+    category: 'developer-tools',
+    keywords: [
+      'uuid generator',
+      'uuid validator',
+      'uuid v4 generator',
+      'uuid v7 generator',
+      'guid generator online'
+    ],
+    heroTitle: 'UUID Generator & Validator',
+    heroDescription: 'Generate random UUID v4 and timestamp-ordered UUID v7 identifiers in bulk, and validate UUID format and version metadata.'
+  },
+  {
+    slug: 'macronutrient-calculator',
+    title: 'Macronutrient Calculator',
+    description: 'Calculate daily protein, carbohydrate, and fat targets in grams and calories based on your daily energy intake and fitness goals.',
+    category: 'health-calculators',
+    keywords: [
+      'macronutrient calculator',
+      'macro calculator',
+      'daily protein carb fat calculator',
+      'macro split calculator',
+      'grams of protein calculator'
+    ],
+    heroTitle: 'Macronutrient Calculator',
+    heroDescription: 'Calculate daily protein, carbohydrate, and fat targets in grams and calories tailored to your calorie and fitness goals.'
+  },
+  {
+    slug: 'running-pace-calculator',
+    title: 'Running Pace Calculator',
+    description: 'Calculate running pace per kilometer and mile, race finish time, splits, and running speed for any distance from 5K to marathon.',
+    category: 'health-calculators',
+    keywords: [
+      'running pace calculator',
+      'pace calculator',
+      'marathon pace calculator',
+      '5k pace calculator',
+      'min per km to min per mile'
+    ],
+    heroTitle: 'Running Pace Calculator',
+    heroDescription: 'Convert between distance, time, pace per km/mile, and speed, and predict race finish times with Pete Riegel’s formula.'
+  },
+  {
+    slug: 'one-rep-max-calculator',
+    title: 'One-Rep Max Calculator',
+    description: 'Calculate your one-rep max (1RM) for bench press, squat, or deadlift using Brzycki, Epley, and Lander formulas, with a complete percentage breakdown table.',
+    category: 'everyday-calculators',
+    keywords: [
+      'one rep max calculator',
+      '1rm calculator',
+      'bench press max calculator',
+      'squat 1rm calculator',
+      'epley formula calculator'
+    ],
+    heroTitle: 'One-Rep Max Calculator',
+    heroDescription: 'Estimate your 1RM lifting strength using Epley and Brzycki equations, and view full percentage load breakdowns for resistance training.'
+  },
+  {
+    slug: 'hydration-calculator',
+    title: 'Hydration Calculator',
+    description: 'Estimate daily recommended water intake in liters, fluid ounces, and standard cups based on body weight, daily exercise duration, and climate.',
+    category: 'health-calculators',
+    keywords: [
+      'hydration calculator',
+      'water intake calculator',
+      'daily water requirement calculator',
+      'how much water to drink a day',
+      'fluid intake estimator'
+    ],
+    heroTitle: 'Hydration Calculator',
+    heroDescription: 'Estimate daily recommended water intake based on body weight, daily exercise sweating, and environmental climate.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,

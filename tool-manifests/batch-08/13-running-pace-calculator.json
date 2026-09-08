@@ -1,0 +1,101 @@
+{
+  "name": "Running Pace Calculator",
+  "slug": "running-pace-calculator",
+  "category": "Health Calculators",
+  "description": "Calculate running pace per kilometer and mile, race finish time, splits, and running speed for any distance from 5K to marathon.",
+  "search_intent": "Calculate running pace per km or mile and predict race completion times.",
+  "keywords": [
+    "running pace calculator",
+    "pace calculator",
+    "marathon pace calculator",
+    "5k pace calculator",
+    "min per km to min per mile"
+  ],
+  "inputs": [
+    {
+      "key": "raceDistancePreset",
+      "label": "Distance preset or custom",
+      "default": "half-marathon",
+      "help": "5k, 10k, half-marathon (21.0975 km), marathon (42.195 km), or custom distance"
+    },
+    {
+      "key": "distanceKm",
+      "label": "Distance (kilometers)",
+      "default": 21.0975,
+      "min": 0.1,
+      "max": 500
+    },
+    {
+      "key": "timeHours",
+      "label": "Time (hours)",
+      "default": 1,
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    {
+      "key": "timeMinutes",
+      "label": "Time (minutes)",
+      "default": 45,
+      "min": 0,
+      "max": 59,
+      "step": 1
+    },
+    {
+      "key": "timeSeconds",
+      "label": "Time (seconds)",
+      "default": 0,
+      "min": 0,
+      "max": 59,
+      "step": 1
+    }
+  ],
+  "outputs": [
+    {
+      "key": "pacePerKm",
+      "label": "Pace per kilometer",
+      "format": "text"
+    },
+    {
+      "key": "pacePerMile",
+      "label": "Pace per mile",
+      "format": "text"
+    },
+    {
+      "key": "speedKmh",
+      "label": "Speed (km/h)",
+      "format": "number"
+    },
+    {
+      "key": "speedMph",
+      "label": "Speed (mph)",
+      "format": "number"
+    },
+    {
+      "key": "equivalent5kTime",
+      "label": "Projected 5K finish time",
+      "format": "text"
+    },
+    {
+      "key": "equivalent10kTime",
+      "label": "Projected 10K finish time",
+      "format": "text"
+    },
+    {
+      "key": "equivalentMarathonTime",
+      "label": "Projected Marathon finish time",
+      "format": "text"
+    }
+  ],
+  "calculation": "Total time in seconds = (hours × 3600) + (minutes × 60) + seconds. Distance in miles = distanceKm / 1.609344. Pace seconds per km = totalSeconds / distanceKm. Pace seconds per mile = totalSeconds / distanceMiles. Format pace as MM:SS. Speed in km/h = (distanceKm / totalSeconds) × 3600. Speed in mph = (distanceMiles / totalSeconds) × 3600. Equivalent race times use Pete Riegel's standard endurance formula: T2 = T1 × (D2 / D1)^1.06.",
+  "related_tools": [
+    "running-calories-calculator",
+    "walking-calories-calculator",
+    "heart-rate-calculator"
+  ],
+  "limitations": [
+    "Race projections using Riegel formula assume equivalent endurance training and course topography.",
+    "Elevation changes, temperature, humidity, and pacing strategy significantly affect actual race execution.",
+    "Does not replace individual cardiovascular training programming."
+  ]
+}

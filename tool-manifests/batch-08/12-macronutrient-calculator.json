@@ -1,0 +1,85 @@
+{
+  "name": "Macronutrient Calculator",
+  "slug": "macronutrient-calculator",
+  "category": "Health Calculators",
+  "description": "Calculate daily protein, carbohydrate, and fat targets in grams and calories based on your daily energy intake and fitness goals.",
+  "search_intent": "Calculate daily macronutrient intake (grams of protein, carbs, and fat) from calorie goals.",
+  "keywords": [
+    "macronutrient calculator",
+    "macro calculator",
+    "daily protein carb fat calculator",
+    "macro split calculator",
+    "grams of protein calculator"
+  ],
+  "inputs": [
+    {
+      "key": "dailyCalories",
+      "label": "Daily calorie target (kcal)",
+      "default": 2200,
+      "min": 800,
+      "max": 10000,
+      "step": 50
+    },
+    {
+      "key": "macroSplitGoal",
+      "label": "Nutritional goal distribution",
+      "default": "balanced",
+      "help": "balanced (30P/40C/30F), fat-loss (35P/35C/30F), muscle-gain (30P/50C/20F), keto (25P/5C/70F), endurance (20P/60C/20F)"
+    },
+    {
+      "key": "bodyWeightKg",
+      "label": "Body weight (kg, optional for protein check)",
+      "default": 75,
+      "min": 30,
+      "max": 300
+    }
+  ],
+  "outputs": [
+    {
+      "key": "proteinGrams",
+      "label": "Daily protein (grams)",
+      "format": "number"
+    },
+    {
+      "key": "proteinCalories",
+      "label": "Protein calories (kcal)",
+      "format": "number"
+    },
+    {
+      "key": "carbGrams",
+      "label": "Daily carbohydrates (grams)",
+      "format": "number"
+    },
+    {
+      "key": "carbCalories",
+      "label": "Carbohydrate calories (kcal)",
+      "format": "number"
+    },
+    {
+      "key": "fatGrams",
+      "label": "Daily fats (grams)",
+      "format": "number"
+    },
+    {
+      "key": "fatCalories",
+      "label": "Fat calories (kcal)",
+      "format": "number"
+    },
+    {
+      "key": "proteinPerKgBodyweight",
+      "label": "Protein intake per kg body weight (g/kg)",
+      "format": "number"
+    }
+  ],
+  "calculation": "Atwater standard energy factors: Protein = 4 kcal/gram, Carbohydrates = 4 kcal/gram, Dietary Fat = 9 kcal/gram. Split percentages: Balanced = 30% Protein, 40% Carbs, 30% Fat; Fat Loss = 35% Protein, 35% Carbs, 30% Fat; Muscle Gain = 30% Protein, 50% Carbs, 20% Fat; Low Carb / Keto = 25% Protein, 5% Carbs, 70% Fat; Endurance = 20% Protein, 60% Carbs, 20% Fat. Calories allocated = dailyCalories × (percentage / 100). Grams = round(calories / energyFactor). Protein per kg = round(proteinGrams / bodyWeightKg, 2).",
+  "related_tools": [
+    "calorie-calculator",
+    "tdee-calculator",
+    "bmr-calculator"
+  ],
+  "limitations": [
+    "Macro distributions represent general educational and sports nutrition guidelines, not medical diet prescriptions.",
+    "Individuals with metabolic conditions, diabetes, or renal disease should consult a registered dietitian or physician.",
+    "Actual food energy density can vary by dietary fiber content and food preparation."
+  ]
+}

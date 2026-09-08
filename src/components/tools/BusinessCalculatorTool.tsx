@@ -33,6 +33,12 @@ import { calculatePortServiceLookup } from '@/lib/calculations/portServiceLookup
 import { calculateUrlParser } from '@/lib/calculations/urlParser';
 import { calculatePrintBleed } from '@/lib/calculations/printBleed';
 import { calculateCdrPrintReadiness } from '@/lib/calculations/cdrPrintReadiness';
+import { calculateMortar, calculateConcreteBlock, calculateRainwaterHarvesting } from '@/lib/calculations/masonryTakeoffs';
+import { calculateLumpsumInvestment, calculateSavingsGoal, calculateMortgageAffordability, calculateBreakEven, calculateProfitMarginMarkup } from '@/lib/calculations/financePlanning';
+import { calculateResponsiveSrcset } from '@/lib/calculations/responsiveSrcset';
+import { calculateYamlJson } from '@/lib/calculations/yamlJson';
+import { calculateUuidTools } from '@/lib/calculations/uuidTools';
+import { calculateMacronutrients, calculateRunningPace, calculateOneRepMax, calculateHydration } from '@/lib/calculations/fitnessAthletics';
 import ResultActions, { type ResultAction } from '@/components/ui/ResultActions';
 import { toolUx } from '@/data/toolUx';
 import { rowsToCsv } from '@/lib/resultExport';
@@ -1019,6 +1025,546 @@ const configs: Record<string, Config> = {
         exportFormat: s(x, 'exportFormat'),
       }),
     note: 'Guided preflight checklist for CorelDRAW files based on user-verified preparation conditions. Browser inspection cannot reliably decode proprietary CorelDRAW binary document trees; this tool ensures critical print requirements (bleed, CMYK, curves, DPI, overprint) are systematically reviewed before sending files to a commercial printer.',
+  },
+  'mortar-calculator': {
+    fields: [
+      { key: 'unitCount', label: 'Number of masonry units (bricks or blocks)', defaultValue: 500, min: 1, step: 1 },
+      {
+        key: 'masonryType',
+        label: 'Masonry unit type',
+        defaultValue: 'brick',
+        type: 'select',
+        options: [
+          { value: 'brick', label: 'Standard Modular Clay Bricks' },
+          { value: 'block', label: '8x8x16 CMU Concrete Blocks' },
+        ],
+      },
+      { key: 'jointThicknessInches', label: 'Mortar joint thickness (inches)', defaultValue: 0.375, min: 0.125, max: 1.0, step: 0.0625, help: 'Standard building joint is 3/8" (0.375 in)' },
+      { key: 'wastePercent', label: 'Waste allowance (%)', defaultValue: 10, min: 0, max: 50, step: 1 },
+      { key: 'bagWeightLb', label: 'Pre-mix mortar bag size (lb)', defaultValue: 80, min: 40, max: 94, step: 10 },
+    ],
+    results: [
+      { key: 'baseVolumeFt3', label: 'Net mortar volume (ft³)', format: 'number' },
+      { key: 'adjustedVolumeFt3', label: 'Mortar volume with waste (ft³)', format: 'number' },
+      { key: 'cubicYards', label: 'Volume (cubic yards)', format: 'number' },
+      { key: 'cubicMeters', label: 'Volume (cubic meters)', format: 'number' },
+      { key: 'premixBags', label: 'Pre-mix mortar bags (whole bags)', format: 'number' },
+      { key: 'cementBags94lb', label: 'Portland cement bags (site-mix Type N)', format: 'number' },
+      { key: 'sandTons', label: 'Masonry sand required (tons)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateMortar({
+        unitCount: v(x, 'unitCount'),
+        masonryType: s(x, 'masonryType'),
+        jointThicknessInches: v(x, 'jointThicknessInches'),
+        wastePercent: v(x, 'wastePercent'),
+        bagWeightLb: v(x, 'bagWeightLb'),
+      }),
+    note: 'Estimates mortar volume based on standard unit bedding yields (5.0 ft³ per 1,000 modular bricks; 13.5 ft³ per 100 8x8x16 CMU blocks at 3/8" joints). Site-mix estimates assume standard Type N mortar (1 bag Portland cement to 3 ft³ masonry sand). Field waste and block coring variations can alter actual consumption.',
+  },
+  'concrete-block-calculator': {
+    fields: [
+      { key: 'wallLengthFt', label: 'Wall length (ft)', defaultValue: 30, min: 1, step: 0.5 },
+      { key: 'wallHeightFt', label: 'Wall height (ft)', defaultValue: 8, min: 1, step: 0.5 },
+      { key: 'openingsAreaFt2', label: 'Doors and window openings (ft²)', defaultValue: 20, min: 0, step: 1 },
+      {
+        key: 'coreFillOption',
+        label: 'Core grouting schedule',
+        defaultValue: 'cores-32in',
+        type: 'select',
+        options: [
+          { value: 'cores-32in', label: 'Every 32 inches o.c. (1 core / 2 blocks)' },
+          { value: 'cores-16in', label: 'Every 16 inches o.c. (1 core / block)' },
+          { value: 'solid', label: '100% Solid Grout (All cores filled)' },
+          { value: 'none', label: 'Hollow (No core grout)' },
+        ],
+      },
+      { key: 'wastePercent', label: 'Waste allowance (%)', defaultValue: 10, min: 0, max: 50, step: 1 },
+    ],
+    results: [
+      { key: 'netWallAreaFt2', label: 'Net wall face area (ft²)', format: 'number' },
+      { key: 'exactBlocks', label: 'Exact CMU blocks required', format: 'number' },
+      { key: 'purchaseBlocks', label: 'Whole CMU blocks to order', format: 'number' },
+      { key: 'mortarBags80lb', label: 'Estimated mortar bags (80 lb)', format: 'number' },
+      { key: 'coreFillGroutYards', label: 'Core-fill grout (cubic yards)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateConcreteBlock({
+        wallLengthFt: v(x, 'wallLengthFt'),
+        wallHeightFt: v(x, 'wallHeightFt'),
+        openingsAreaFt2: v(x, 'openingsAreaFt2'),
+        coreFillOption: s(x, 'coreFillOption'),
+        wastePercent: v(x, 'wastePercent'),
+      }),
+    note: 'Standard 8x8x16 nominal CMU blocks cover 0.8889 ft² each (1.125 blocks per sq ft of wall). Mortar and core fill grout are calculated for standard hollow 2-cell concrete masonry units. Structural reinforcement, bond beams, and engineered rebar schedules require project engineering review.',
+  },
+  'rainwater-harvesting-calculator': {
+    fields: [
+      { key: 'catchmentAreaFt2', label: 'Roof catchment footprint (ft²)', defaultValue: 2000, min: 50, step: 50 },
+      { key: 'annualRainfallInches', label: 'Annual rainfall (inches)', defaultValue: 35, min: 1, max: 250, step: 1 },
+      {
+        key: 'roofMaterial',
+        label: 'Roof catchment surface',
+        defaultValue: 'metal',
+        type: 'select',
+        options: [
+          { value: 'metal', label: 'Metal / Colorbond (0.95 efficiency)' },
+          { value: 'tile', label: 'Concrete or Clay Tile (0.85 efficiency)' },
+          { value: 'membrane', label: 'Flat Membrane / EPDM (0.85 efficiency)' },
+          { value: 'shingle', label: 'Asphalt Shingle (0.80 efficiency)' },
+        ],
+      },
+      { key: 'filtrationLossPercent', label: 'First-flush & filter loss (%)', defaultValue: 5, min: 0, max: 30, step: 1 },
+      { key: 'storageDays', label: 'Dry-spell storage target (days)', defaultValue: 21, min: 7, max: 90, step: 1 },
+    ],
+    results: [
+      { key: 'annualYieldGallons', label: 'Annual yield (US gallons)', format: 'number' },
+      { key: 'annualYieldLiters', label: 'Annual yield (liters)', format: 'number' },
+      { key: 'monthlyAverageGallons', label: 'Monthly average (gallons)', format: 'number' },
+      { key: 'recommendedTankGallons', label: 'Recommended tank capacity (gallons)', format: 'number' },
+      { key: 'recommendedTankLiters', label: 'Recommended tank capacity (liters)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateRainwaterHarvesting({
+        catchmentAreaFt2: v(x, 'catchmentAreaFt2'),
+        annualRainfallInches: v(x, 'annualRainfallInches'),
+        roofMaterial: s(x, 'roofMaterial'),
+        filtrationLossPercent: v(x, 'filtrationLossPercent'),
+        storageDays: v(x, 'storageDays'),
+      }),
+    note: 'Theoretical yield uses the standard hydrology constant (1 inch of rain on 1 sq ft = 0.6233 US gallons) multiplied by roof runoff efficiency and first-flush diversion. Tank sizing models buffer capacity for user-specified consecutive dry days. Local potable water regulations and filtration standards must be verified before drinking use.',
+  },
+  'lumpsum-investment-calculator': {
+    fields: [
+      { key: 'initialInvestment', label: 'One-time investment amount ($)', defaultValue: 100000, min: 100 },
+      { key: 'expectedAnnualReturnPercent', label: 'Expected annual return (%)', defaultValue: 10, min: -100, max: 100, step: 0.1 },
+      { key: 'timeHorizonYears', label: 'Investment period (years)', defaultValue: 10, min: 1, max: 50, step: 1 },
+      {
+        key: 'compoundingFrequencyPerYear',
+        label: 'Compounding frequency',
+        defaultValue: '1',
+        type: 'select',
+        options: [
+          { value: '1', label: 'Annually (1x/yr)' },
+          { value: '2', label: 'Semi-Annually (2x/yr)' },
+          { value: '4', label: 'Quarterly (4x/yr)' },
+          { value: '12', label: 'Monthly (12x/yr)' },
+        ],
+      },
+      { key: 'estimatedInflationRatePercent', label: 'Estimated annual inflation (%)', defaultValue: 3, min: 0, max: 25, step: 0.1 },
+    ],
+    results: [
+      { key: 'investedPrincipal', label: 'Invested principal', format: 'currency' },
+      { key: 'totalInterestEarned', label: 'Total compound growth earned', format: 'currency' },
+      { key: 'nominalMaturityValue', label: 'Estimated maturity value (nominal)', format: 'currency' },
+      { key: 'inflationAdjustedValue', label: 'Real purchasing power (inflation-adjusted)', format: 'currency' },
+      { key: 'wealthGainMultiple', label: 'Wealth multiplier (x initial)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateLumpsumInvestment({
+        initialInvestment: v(x, 'initialInvestment'),
+        expectedAnnualReturnPercent: v(x, 'expectedAnnualReturnPercent'),
+        timeHorizonYears: v(x, 'timeHorizonYears'),
+        compoundingFrequencyPerYear: v(x, 'compoundingFrequencyPerYear'),
+        estimatedInflationRatePercent: v(x, 'estimatedInflationRatePercent'),
+      }),
+    note: 'Compounding projections assume continuous reinvestment of all dividends and capital returns. Real purchasing power calculates future value discounted by constant inflation. Taxes and investment management expenses are excluded.',
+  },
+  'savings-goal-calculator': {
+    fields: [
+      { key: 'targetGoalAmount', label: 'Target savings goal amount ($)', defaultValue: 100000, min: 100 },
+      { key: 'currentSavings', label: 'Current initial savings already banked ($)', defaultValue: 10000, min: 0 },
+      { key: 'yearsToReachGoal', label: 'Target timeframe (years)', defaultValue: 5, min: 1, max: 50, step: 1 },
+      { key: 'expectedAnnualInterestRatePercent', label: 'Expected annual interest / yield (%)', defaultValue: 6, min: 0, max: 30, step: 0.1 },
+    ],
+    results: [
+      { key: 'requiredMonthlySavings', label: 'Required monthly savings', format: 'currency' },
+      { key: 'requiredAnnualSavings', label: 'Required annual savings equivalent', format: 'currency' },
+      { key: 'totalUserContributions', label: 'Total out-of-pocket contributions', format: 'currency' },
+      { key: 'totalInterestEarned', label: 'Total interest / growth earned', format: 'currency' },
+      { key: 'interestFundingSharePercent', label: 'Share funded by compound interest', format: 'percent' },
+    ],
+    calculate: (x) =>
+      calculateSavingsGoal({
+        targetGoalAmount: v(x, 'targetGoalAmount'),
+        currentSavings: v(x, 'currentSavings'),
+        yearsToReachGoal: v(x, 'yearsToReachGoal'),
+        expectedAnnualInterestRatePercent: v(x, 'expectedAnnualInterestRatePercent'),
+      }),
+    note: 'Calculation uses ordinary annuity compounding where monthly savings deposits earn interest at the end of each monthly period. Starting capital compounds across the full duration.',
+  },
+  'mortgage-affordability-calculator': {
+    fields: [
+      { key: 'annualGrossIncome', label: 'Gross household annual income ($)', defaultValue: 120000, min: 1000 },
+      { key: 'monthlyDebts', label: 'Monthly recurring debts ($)', defaultValue: 500, min: 0, help: 'Auto loans, student debt, credit card minimums' },
+      { key: 'downPaymentAmount', label: 'Available down payment ($)', defaultValue: 50000, min: 0 },
+      { key: 'mortgageInterestRatePercent', label: 'Mortgage interest rate (%)', defaultValue: 6.5, min: 0.1, max: 20, step: 0.125 },
+      { key: 'loanTermYears', label: 'Loan duration (years)', defaultValue: 30, min: 10, max: 40, step: 5 },
+      { key: 'annualPropertyTaxRatePercent', label: 'Annual property tax rate (%)', defaultValue: 1.2, min: 0, max: 5, step: 0.1 },
+      { key: 'annualHomeownersInsurance', label: 'Annual insurance cost ($)', defaultValue: 1400, min: 0 },
+      { key: 'targetFrontEndDtiPercent', label: 'Front-end DTI cap (%)', defaultValue: 28, min: 10, max: 50, step: 1, help: 'Housing payment as % of gross monthly income (standard: 28%)' },
+      { key: 'targetBackEndDtiPercent', label: 'Back-end DTI cap (%)', defaultValue: 36, min: 15, max: 60, step: 1, help: 'Total debt obligations as % of gross income (standard: 36%)' },
+    ],
+    results: [
+      { key: 'maxHomePurchasePrice', label: 'Maximum affordable home price', format: 'currency' },
+      { key: 'maxMortgageLoanAmount', label: 'Maximum qualifying mortgage loan', format: 'currency' },
+      { key: 'monthlyPaymentPiti', label: 'Estimated total monthly PITI', format: 'currency' },
+      { key: 'principalAndInterest', label: 'Monthly principal & interest (PI)', format: 'currency' },
+      { key: 'monthlyPropertyTax', label: 'Monthly property tax estimate', format: 'currency' },
+      { key: 'monthlyInsurance', label: 'Monthly hazard insurance estimate', format: 'currency' },
+      { key: 'effectiveFrontEndDti', label: 'Effective front-end DTI', format: 'percent' },
+      { key: 'effectiveBackEndDti', label: 'Effective back-end DTI', format: 'percent' },
+    ],
+    calculate: (x) =>
+      calculateMortgageAffordability({
+        annualGrossIncome: v(x, 'annualGrossIncome'),
+        monthlyDebts: v(x, 'monthlyDebts'),
+        downPaymentAmount: v(x, 'downPaymentAmount'),
+        mortgageInterestRatePercent: v(x, 'mortgageInterestRatePercent'),
+        loanTermYears: v(x, 'loanTermYears'),
+        annualPropertyTaxRatePercent: v(x, 'annualPropertyTaxRatePercent'),
+        annualHomeownersInsurance: v(x, 'annualHomeownersInsurance'),
+        targetFrontEndDtiPercent: v(x, 'targetFrontEndDtiPercent'),
+        targetBackEndDtiPercent: v(x, 'targetBackEndDtiPercent'),
+      }),
+    note: 'Affordability is constrained by the more restrictive of the front-end (housing ratio) or back-end (total debt ratio) standard underwriting limits. Private mortgage insurance (PMI) and HOA fees are not included.',
+  },
+  'break-even-calculator': {
+    fields: [
+      { key: 'fixedCosts', label: 'Total periodic fixed costs ($)', defaultValue: 30000, min: 0, help: 'Rent, base salaries, insurance, software leases' },
+      { key: 'variableCostPerUnit', label: 'Variable cost per unit ($)', defaultValue: 25, min: 0, step: 0.01, help: 'Materials, packaging, direct assembly labor' },
+      { key: 'salePricePerUnit', label: 'Selling price per unit ($)', defaultValue: 65, min: 0.01, step: 0.01 },
+      { key: 'plannedUnitSales', label: 'Target / planned sales volume (units)', defaultValue: 1000, min: 0, step: 1 },
+    ],
+    results: [
+      { key: 'contributionMarginPerUnit', label: 'Contribution margin per unit', format: 'currency' },
+      { key: 'contributionMarginRatioPercent', label: 'Contribution margin ratio', format: 'percent' },
+      { key: 'breakEvenUnits', label: 'Break-even sales volume (units)', format: 'number' },
+      { key: 'breakEvenRevenue', label: 'Break-even gross revenue', format: 'currency' },
+      { key: 'projectedNetProfit', label: 'Operating profit at planned sales', format: 'currency' },
+      { key: 'marginOfSafetyPercent', label: 'Margin of safety buffer', format: 'percent' },
+    ],
+    calculate: (x) =>
+      calculateBreakEven({
+        fixedCosts: v(x, 'fixedCosts'),
+        variableCostPerUnit: v(x, 'variableCostPerUnit'),
+        salePricePerUnit: v(x, 'salePricePerUnit'),
+        plannedUnitSales: v(x, 'plannedUnitSales'),
+      }),
+    note: 'Contribution margin represents revenue remaining after variable unit costs to cover fixed operational overhead. Margin of safety indicates the percentage sales can drop before the operation incurs a loss.',
+  },
+  'profit-margin-markup-calculator': {
+    fields: [
+      { key: 'costAmount', label: 'Wholesale / production cost ($)', defaultValue: 60, min: 0, step: 0.01 },
+      { key: 'sellingPrice', label: 'Current / target selling price ($)', defaultValue: 100, min: 0, step: 0.01 },
+      { key: 'targetMarkupPercent', label: 'Target markup rate (%)', defaultValue: 50, min: 0, max: 1000, step: 1 },
+      { key: 'targetMarginPercent', label: 'Target profit margin (%)', defaultValue: 40, min: 0, max: 99.9, step: 1 },
+    ],
+    results: [
+      { key: 'grossProfitAmount', label: 'Gross profit amount', format: 'currency' },
+      { key: 'actualMarginPercent', label: 'Gross profit margin', format: 'percent' },
+      { key: 'actualMarkupPercent', label: 'Markup percentage on cost', format: 'percent' },
+      { key: 'costMultiplier', label: 'Wholesale-to-retail multiplier (x)', format: 'number' },
+      { key: 'priceFromTargetMarkup', label: 'Price required for target markup', format: 'currency' },
+      { key: 'priceFromTargetMargin', label: 'Price required for target margin', format: 'currency' },
+    ],
+    calculate: (x) =>
+      calculateProfitMarginMarkup({
+        costAmount: v(x, 'costAmount'),
+        sellingPrice: v(x, 'sellingPrice'),
+        targetMarkupPercent: v(x, 'targetMarkupPercent'),
+        targetMarginPercent: v(x, 'targetMarginPercent'),
+      }),
+    note: 'Margin is gross profit divided by selling price, while markup is gross profit divided by cost. Margin can never reach or exceed 100% for positive cost goods.',
+  },
+  'responsive-srcset-generator': {
+    fields: [
+      { key: 'originalWidth', label: 'Original image width (px)', defaultValue: 1920, min: 1, step: 1 },
+      { key: 'originalHeight', label: 'Original image height (px)', defaultValue: 1080, min: 1, step: 1 },
+      { key: 'imagePath', label: 'Base image path / filename', defaultValue: '/images/hero.jpg', type: 'text' },
+      { key: 'breakpointWidths', label: 'Target breakpoint widths (px)', defaultValue: '480, 768, 1024, 1280, 1600, 1920', type: 'text' },
+      { key: 'containerSizesRule', label: 'HTML sizes attribute value', defaultValue: '(max-width: 768px) 100vw, 1200px', type: 'text' },
+      {
+        key: 'modernFormats',
+        label: 'Modern picture formats (AVIF & WebP)',
+        defaultValue: 'true',
+        type: 'select',
+        options: [
+          { value: 'true', label: 'Include <picture> with AVIF & WebP' },
+          { value: 'false', label: 'Standard <img> only' },
+        ],
+      },
+    ],
+    results: [
+      { key: 'aspectRatioCss', label: 'CSS Aspect Ratio', format: 'text' },
+      { key: 'variantCount', label: 'Image variants generated', format: 'number' },
+      { key: 'imgHtmlTag', label: 'Responsive <img> HTML snippet', format: 'text' },
+      { key: 'pictureHtmlTag', label: 'Modern <picture> element snippet', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateResponsiveSrcset({
+        originalWidth: v(x, 'originalWidth'),
+        originalHeight: v(x, 'originalHeight'),
+        imagePath: s(x, 'imagePath'),
+        breakpointWidths: s(x, 'breakpointWidths'),
+        containerSizesRule: s(x, 'containerSizesRule'),
+        modernFormats: s(x, 'modernFormats'),
+      }),
+    note: 'Generates standards-compliant HTML snippets for responsive web images. Responsive srcset variants improve Core Web Vitals and LCP scores. Image asset generation should be completed in your image pipeline or CDN.',
+  },
+  'yaml-json-converter': {
+    fields: [
+      {
+        key: 'sourceContent',
+        label: 'Input YAML or JSON content',
+        defaultValue: 'name: Navorika\nversion: 1.0.0\nfeatures:\n  - client-side privacy\n  - deterministic math\nenabled: true\nport: 3000',
+        type: 'textarea',
+        rows: 6,
+      },
+      {
+        key: 'conversionMode',
+        label: 'Conversion mode',
+        defaultValue: 'yaml-to-json',
+        type: 'select',
+        options: [
+          { value: 'yaml-to-json', label: 'YAML → JSON' },
+          { value: 'json-to-yaml', label: 'JSON → YAML' },
+          { value: 'auto', label: 'Auto-detect source format' },
+        ],
+      },
+      { key: 'indentSpaces', label: 'Indentation spacing (spaces)', defaultValue: 2, min: 1, max: 8, step: 1 },
+      {
+        key: 'sortKeys',
+        label: 'Sort object keys alphabetically',
+        defaultValue: 'false',
+        type: 'select',
+        options: [
+          { value: 'false', label: 'Preserve original key order' },
+          { value: 'true', label: 'Sort keys alphabetically (A-Z)' },
+        ],
+      },
+    ],
+    results: [
+      { key: 'validationStatus', label: 'Validation status', format: 'text' },
+      { key: 'detectedFormat', label: 'Detected format', format: 'text' },
+      { key: 'byteSize', label: 'Output size (bytes)', format: 'number' },
+      { key: 'convertedContent', label: 'Converted output', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateYamlJson({
+        sourceContent: s(x, 'sourceContent'),
+        conversionMode: s(x, 'conversionMode'),
+        indentSpaces: v(x, 'indentSpaces'),
+        sortKeys: s(x, 'sortKeys'),
+      }),
+    note: 'Bidirectional conversion is processed purely locally in the browser with no server roundtrips. Custom application tags and circular object references are not supported in standard JSON.',
+  },
+  'uuid-generator-validator': {
+    fields: [
+      { key: 'quantity', label: 'Number of UUIDs to generate (1–100)', defaultValue: 10, min: 1, max: 100, step: 1 },
+      {
+        key: 'uuidVersion',
+        label: 'UUID version standard',
+        defaultValue: 'v4',
+        type: 'select',
+        options: [
+          { value: 'v4', label: 'UUID v4 (Random cryptographic - RFC 4122)' },
+          { value: 'v7', label: 'UUID v7 (Unix Epoch timestamp-ordered - RFC 9562)' },
+        ],
+      },
+      {
+        key: 'caseFormat',
+        label: 'Letter case format',
+        defaultValue: 'lowercase',
+        type: 'select',
+        options: [
+          { value: 'lowercase', label: 'lowercase (standard)' },
+          { value: 'uppercase', label: 'UPPERCASE' },
+        ],
+      },
+      {
+        key: 'includeHyphens',
+        label: 'Hyphen formatting',
+        defaultValue: 'true',
+        type: 'select',
+        options: [
+          { value: 'true', label: 'Standard hyphenated (8-4-4-4-12)' },
+          { value: 'false', label: 'Compact (32 hex characters without hyphens)' },
+        ],
+      },
+      {
+        key: 'outputStructure',
+        label: 'Output layout',
+        defaultValue: 'plain-list',
+        type: 'select',
+        options: [
+          { value: 'plain-list', label: 'Plain list (newline-separated)' },
+          { value: 'comma-separated', label: 'Comma-separated values' },
+          { value: 'json-array', label: 'JSON Array' },
+          { value: 'sql-values', label: 'SQL INSERT VALUES tuples' },
+        ],
+      },
+      { key: 'validationCandidate', label: 'Inspect / validate existing UUID', defaultValue: 'f47ac10b-58cc-4372-a567-0e02b2c3d479', type: 'text' },
+    ],
+    results: [
+      { key: 'candidateIsValid', label: 'Inspection status', format: 'text' },
+      { key: 'candidateVersion', label: 'Inspected version', format: 'text' },
+      { key: 'candidateVariant', label: 'Inspected variant', format: 'text' },
+      { key: 'candidateTimestampIso', label: 'Extracted timestamp (if v7)', format: 'text' },
+      { key: 'generatedList', label: 'Generated UUID batch', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateUuidTools({
+        quantity: v(x, 'quantity'),
+        uuidVersion: s(x, 'uuidVersion'),
+        caseFormat: s(x, 'caseFormat'),
+        includeHyphens: s(x, 'includeHyphens'),
+        outputStructure: s(x, 'outputStructure'),
+        validationCandidate: s(x, 'validationCandidate'),
+      }),
+    note: 'UUID generation uses the Web Crypto API for cryptographically secure pseudorandomness. UUID v7 encodes millisecond Unix epoch timestamps in the high bits for sortable database primary keys.',
+  },
+  'macronutrient-calculator': {
+    fields: [
+      { key: 'dailyCalories', label: 'Daily calorie target (kcal)', defaultValue: 2200, min: 800, max: 10000, step: 50 },
+      {
+        key: 'macroSplitGoal',
+        label: 'Nutritional goal profile',
+        defaultValue: 'balanced',
+        type: 'select',
+        options: [
+          { value: 'balanced', label: 'Balanced (30% P / 40% C / 30% F)' },
+          { value: 'fat-loss', label: 'Fat Loss / Cutting (35% P / 35% C / 30% F)' },
+          { value: 'muscle-gain', label: 'Muscle Gain / Bulking (30% P / 50% C / 20% F)' },
+          { value: 'keto', label: 'Keto / Low-Carb (25% P / 5% C / 70% F)' },
+          { value: 'endurance', label: 'Endurance Athlete (20% P / 60% C / 20% F)' },
+        ],
+      },
+      { key: 'bodyWeightKg', label: 'Body weight (kg, for protein density check)', defaultValue: 75, min: 30, max: 250, step: 0.5 },
+    ],
+    results: [
+      { key: 'proteinGrams', label: 'Daily protein (g)', format: 'number' },
+      { key: 'proteinCalories', label: 'Protein energy (kcal)', format: 'number' },
+      { key: 'carbGrams', label: 'Daily carbohydrates (g)', format: 'number' },
+      { key: 'carbCalories', label: 'Carbohydrate energy (kcal)', format: 'number' },
+      { key: 'fatGrams', label: 'Daily dietary fat (g)', format: 'number' },
+      { key: 'fatCalories', label: 'Fat energy (kcal)', format: 'number' },
+      { key: 'proteinPerKgBodyweight', label: 'Protein density (g/kg body weight)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateMacronutrients({
+        dailyCalories: v(x, 'dailyCalories'),
+        macroSplitGoal: s(x, 'macroSplitGoal'),
+        bodyWeightKg: v(x, 'bodyWeightKg'),
+      }),
+    note: 'Calorie conversion uses standard Atwater factors (4 kcal/g protein & carbs, 9 kcal/g fat). Protein intake between 1.6 to 2.2 g/kg is widely recommended in sports science literature for muscle preservation and synthesis.',
+  },
+  'running-pace-calculator': {
+    fields: [
+      {
+        key: 'raceDistancePreset',
+        label: 'Race distance preset',
+        defaultValue: 'half-marathon',
+        type: 'select',
+        options: [
+          { value: '5k', label: '5 Kilometers (5K)' },
+          { value: '10k', label: '10 Kilometers (10K)' },
+          { value: 'half-marathon', label: 'Half Marathon (21.1 km / 13.1 mi)' },
+          { value: 'marathon', label: 'Full Marathon (42.2 km / 26.2 mi)' },
+          { value: 'custom', label: 'Custom distance (use field below)' },
+        ],
+      },
+      { key: 'distanceKm', label: 'Custom distance (km)', defaultValue: 21.0975, min: 0.1, max: 500, step: 0.1 },
+      { key: 'timeHours', label: 'Target / elapsed hours', defaultValue: 1, min: 0, max: 100, step: 1 },
+      { key: 'timeMinutes', label: 'Minutes', defaultValue: 45, min: 0, max: 59, step: 1 },
+      { key: 'timeSeconds', label: 'Seconds', defaultValue: 0, min: 0, max: 59, step: 1 },
+    ],
+    results: [
+      { key: 'pacePerKm', label: 'Pace per kilometer', format: 'text' },
+      { key: 'pacePerMile', label: 'Pace per mile', format: 'text' },
+      { key: 'speedKmh', label: 'Speed (km/h)', format: 'number' },
+      { key: 'speedMph', label: 'Speed (mph)', format: 'number' },
+      { key: 'equivalent5kTime', label: 'Equivalent 5K finish projection', format: 'text' },
+      { key: 'equivalent10kTime', label: 'Equivalent 10K finish projection', format: 'text' },
+      { key: 'equivalentMarathonTime', label: 'Equivalent Marathon finish projection', format: 'text' },
+    ],
+    calculate: (x) =>
+      calculateRunningPace({
+        raceDistancePreset: s(x, 'raceDistancePreset'),
+        distanceKm: v(x, 'distanceKm'),
+        timeHours: v(x, 'timeHours'),
+        timeMinutes: v(x, 'timeMinutes'),
+        timeSeconds: v(x, 'timeSeconds'),
+      }),
+    note: 'Pace splits and speeds are calculated from total elapsed time. Equivalent race times use Pete Riegel’s endurance scaling law (T2 = T1 × [D2 / D1]^1.06), which models aerobic fatigue across differing race distances.',
+  },
+  'one-rep-max-calculator': {
+    fields: [
+      { key: 'weightLifted', label: 'Weight lifted (kg or lbs)', defaultValue: 100, min: 1, max: 1000, step: 2.5 },
+      { key: 'repetitions', label: 'Completed repetitions (1–30)', defaultValue: 5, min: 1, max: 30, step: 1 },
+      {
+        key: 'formulaMethod',
+        label: 'Calculation formula',
+        defaultValue: 'average',
+        type: 'select',
+        options: [
+          { value: 'average', label: 'Consensus Average (Epley + Brzycki)' },
+          { value: 'epley', label: 'Epley Formula' },
+          { value: 'brzycki', label: 'Brzycki Formula' },
+          { value: 'lander', label: 'Lander Formula' },
+          { value: 'lombardi', label: 'Lombardi Formula' },
+        ],
+      },
+    ],
+    results: [
+      { key: 'estimated1rm', label: 'Estimated One-Rep Max (1RM)', format: 'number' },
+      { key: 'rep95Percent', label: '95% of 1RM (~2 reps)', format: 'number' },
+      { key: 'rep90Percent', label: '90% of 1RM (~4 reps)', format: 'number' },
+      { key: 'rep85Percent', label: '85% of 1RM (~6 reps)', format: 'number' },
+      { key: 'rep80Percent', label: '80% of 1RM (~8 reps)', format: 'number' },
+      { key: 'rep70Percent', label: '70% of 1RM (~12 reps)', format: 'number' },
+      { key: 'epleyEstimate', label: 'Epley formula result', format: 'number' },
+      { key: 'brzyckiEstimate', label: 'Brzycki formula result', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateOneRepMax({
+        weightLifted: v(x, 'weightLifted'),
+        repetitions: v(x, 'repetitions'),
+        formulaMethod: s(x, 'formulaMethod'),
+      }),
+    note: 'Submaximal rep-max formulas are most accurate when tested between 2 and 10 repetitions. As repetitions exceed 10, muscular endurance skews single-effort neuromuscular maximum estimates.',
+  },
+  'hydration-calculator': {
+    fields: [
+      { key: 'bodyWeightKg', label: 'Body weight (kg)', defaultValue: 70, min: 25, max: 250, step: 1 },
+      { key: 'exerciseDurationMinutes', label: 'Daily exercise duration (minutes)', defaultValue: 45, min: 0, max: 360, step: 5 },
+      {
+        key: 'climateEnvironment',
+        label: 'Climate & environment',
+        defaultValue: 'temperate',
+        type: 'select',
+        options: [
+          { value: 'temperate', label: 'Temperate / Climate-controlled' },
+          { value: 'hot-dry', label: 'Hot & Dry (+400 mL/day)' },
+          { value: 'hot-humid', label: 'Hot & Humid (+600 mL/day)' },
+          { value: 'cold-high-altitude', label: 'Cold / High Altitude (+300 mL/day)' },
+        ],
+      },
+    ],
+    results: [
+      { key: 'totalWaterLiters', label: 'Total recommended water (liters/day)', format: 'number' },
+      { key: 'totalFluidOunces', label: 'Total water (US fluid ounces)', format: 'number' },
+      { key: 'standardCups8oz', label: 'Standard 8-oz glasses/cups', format: 'number' },
+      { key: 'baselineLiters', label: 'Resting baseline hydration (L)', format: 'number' },
+      { key: 'exerciseAdditionLiters', label: 'Exercise sweat replenishment (L)', format: 'number' },
+    ],
+    calculate: (x) =>
+      calculateHydration({
+        bodyWeightKg: v(x, 'bodyWeightKg'),
+        exerciseDurationMinutes: v(x, 'exerciseDurationMinutes'),
+        climateEnvironment: s(x, 'climateEnvironment'),
+      }),
+    note: 'Guidelines reflect National Academy of Medicine fluid intake standards (35 mL/kg baseline plus exercise sweat replacement). Food intake typically provides an additional 20–30% of total daily fluid volume.',
   },
 };
 

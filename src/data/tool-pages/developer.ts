@@ -1598,4 +1598,92 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: ['seo-tools-guide']
   },
+  'yaml-json-converter': {
+    slug: 'yaml-json-converter',
+    name: 'YAML to JSON & JSON to YAML Converter',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert YAML configuration files to JSON and JSON to clean YAML locally in your browser with syntax validation and indentation controls.',
+    longTailKeywords: [
+      'yaml to json converter',
+      'json to yaml converter',
+      'convert yaml to json',
+      'yaml json parser',
+      'yaml formatter online',
+    ],
+    intro: [
+      'YAML to JSON Converter enables instant, private bidirectional transformation between YAML and JSON configuration formats.',
+      'All parsing and serialization runs locally in your browser using the standard YAML specification parser with zero external network requests.',
+    ],
+    steps: [
+      'Paste YAML or JSON data into the input editor.',
+      'Select conversion mode (YAML → JSON, JSON → YAML, or Auto-detect).',
+      'Adjust indentation spaces (2 or 4) and optionally enable alphabetical key sorting.',
+      'Inspect validation status, syntax errors, and copy the formatted converted output.',
+    ],
+    interpretation: [
+      'YAML is widely used for human-readable configuration (Kubernetes, GitHub Actions, Docker Compose, Ansible).',
+      'JSON is the standard format for web APIs, serialization, and database document storage.',
+    ],
+    limitations: [
+      'YAML circular references and custom application tags (!include, !Ref) are not serialized into standard JSON.',
+      'Undefined values and functions cannot be represented in standard JSON or YAML.',
+    ],
+    faqs: [
+      { question: 'Is my configuration data uploaded to any server?', answer: 'No. All conversion is executed purely client-side in your web browser.' },
+      { question: 'Does the converter validate syntax?', answer: 'Yes. Syntax errors are caught and surfaced with descriptive error messages.' },
+      { question: 'Can it sort object keys?', answer: 'Yes. Enabling alphabetical key sorting reorganizes object keys recursively.' },
+    ],
+    relatedTools: [
+      { slug: 'csv-to-json-converter', name: 'CSV to JSON Converter' },
+      { slug: 'json-to-csv-flattener', name: 'JSON to CSV Flattener' },
+      { slug: 'json-formatter', name: 'JSON Formatter' },
+      { slug: 'json-schema-validator', name: 'JSON Schema Validator' },
+    ],
+    relatedGuides: ['json-formatting-guide'],
+  },
+  'uuid-generator-validator': {
+    slug: 'uuid-generator-validator',
+    name: 'UUID Generator & Validator (v4 & v7)',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Generate bulk cryptographically secure UUID v4 and timestamp-ordered UUID v7 identifiers, validate syntax, and inspect version and variant metadata.',
+    longTailKeywords: [
+      'uuid generator',
+      'uuid validator',
+      'uuid v4 generator',
+      'uuid v7 generator',
+      'guid generator online',
+    ],
+    intro: [
+      'Generate bulk cryptographically secure UUID v4 identifiers or modern timestamp-ordered UUID v7 keys directly in your browser.',
+      'Validate existing UUID strings, detect hyphenation and compact formats, and extract embedded Unix epoch timestamps from v7 identifiers.',
+    ],
+    steps: [
+      'Choose the number of UUIDs to generate (1 to 100).',
+      'Select UUID version: v4 (random RFC 4122) or v7 (timestamp-ordered RFC 9562).',
+      'Select casing (lowercase or UPPERCASE), hyphenation, and layout structure (list, JSON array, SQL VALUES).',
+      'Paste an existing candidate UUID to inspect its version, variant, and creation timestamp.',
+    ],
+    interpretation: [
+      'UUID v4 provides 122 bits of cryptographic entropy, making collisions virtually impossible.',
+      'UUID v7 packs a 48-bit millisecond timestamp in the high bits, preventing index fragmentation in B-tree database indexes.',
+    ],
+    limitations: [
+      'UUID generation relies on the client system entropy pool via the Web Crypto API.',
+      'Timestamp extraction is applicable only to time-based UUID standards (v1, v6, v7).',
+    ],
+    faqs: [
+      { question: 'Why choose UUID v7 over UUID v4?', answer: 'UUID v7 identifiers are monotonically ordered by creation timestamp, which drastically improves database indexing performance and clustering compared to random UUID v4.' },
+      { question: 'Are generated UUIDs cryptographically secure?', answer: 'Yes. All random bits are produced by the browser Web Crypto API (crypto.getRandomValues).' },
+      { question: 'Can I generate UUIDs without hyphens?', answer: 'Yes. Select compact formatting to emit 32-character hexadecimal strings without dashes.' },
+    ],
+    relatedTools: [
+      { slug: 'mac-address-generator', name: 'MAC Address Generator' },
+      { slug: 'base64-encoder', name: 'Base64 Encoder & Decoder' },
+      { slug: 'url-encoder-decoder', name: 'URL Encoder & Decoder' },
+      { slug: 'unix-timestamp-converter', name: 'Unix Timestamp Converter' },
+    ],
+    relatedGuides: [],
+  },
 };

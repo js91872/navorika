@@ -1,0 +1,100 @@
+{
+  "name": "Mortar Calculator",
+  "slug": "mortar-calculator",
+  "category": "Construction Calculators",
+  "description": "Calculate mortar volume, pre-mix mortar bags, Portland cement, and masonry sand for brick and concrete block walls.",
+  "search_intent": "Calculate how much mortar is needed for laying bricks or concrete masonry blocks.",
+  "keywords": [
+    "mortar calculator",
+    "mortar mix calculator",
+    "brick mortar calculator",
+    "how many bags of mortar do i need",
+    "masonry mortar calculator"
+  ],
+  "inputs": [
+    {
+      "key": "unitCount",
+      "label": "Number of masonry units (bricks or blocks)",
+      "default": 500,
+      "min": 1,
+      "step": 1
+    },
+    {
+      "key": "masonryType",
+      "label": "Masonry unit type (standard brick vs 8-inch CMU block)",
+      "default": "brick",
+      "help": "standard brick (approx 4.5 to 5.5 ft³ mortar per 1000 bricks) vs 8x8x16 CMU block (approx 13 to 15 ft³ mortar per 100 blocks)"
+    },
+    {
+      "key": "jointThicknessInches",
+      "label": "Joint thickness (inches)",
+      "default": 0.375,
+      "min": 0.25,
+      "max": 0.75,
+      "step": 0.0625
+    },
+    {
+      "key": "wastePercent",
+      "label": "Waste allowance (%)",
+      "default": 10,
+      "min": 0,
+      "max": 50
+    },
+    {
+      "key": "bagWeightLb",
+      "label": "Pre-mix mortar bag size (lbs)",
+      "default": 80,
+      "min": 40,
+      "max": 94
+    }
+  ],
+  "outputs": [
+    {
+      "key": "baseVolumeFt3",
+      "label": "Net mortar volume (ft³)",
+      "format": "number"
+    },
+    {
+      "key": "adjustedVolumeFt3",
+      "label": "Mortar volume with waste (ft³)",
+      "format": "number"
+    },
+    {
+      "key": "cubicYards",
+      "label": "Mortar volume (cubic yards)",
+      "format": "number"
+    },
+    {
+      "key": "cubicMeters",
+      "label": "Mortar volume (m³)",
+      "format": "number"
+    },
+    {
+      "key": "premixBags",
+      "label": "Pre-mix mortar bags (whole bags)",
+      "format": "number"
+    },
+    {
+      "key": "cementBags94lb",
+      "label": "Portland cement bags (Type N site-mix)",
+      "format": "number"
+    },
+    {
+      "key": "sandTons",
+      "label": "Masonry sand (tons for site-mix)",
+      "format": "number"
+    }
+  ],
+  "calculation": "Base yield: Standard modular bricks use approximately 5.0 ft³ of mortar per 1,000 units at 3/8-inch joint. Standard 8x8x16 CMU blocks use approximately 13.5 ft³ of mortar per 100 blocks at 3/8-inch bed and head joints. Scale volume proportionally by joint thickness ratio (thickness / 0.375). Total adjusted volume = base volume × (1 + waste / 100). Pre-mix bags: 80-lb bag yields approximately 0.67 ft³; 60-lb bag yields 0.50 ft³. Site-mix Type N ratio (1 part cement to 3 parts damp loose sand): 1 bag (94 lb) cement + 3 ft³ sand yields approx 3.2 ft³ mixed mortar. Whole bags round upward with ceil.",
+  "related_tools": [
+    "brick-calculator",
+    "concrete-block-calculator",
+    "sand-calculator",
+    "cement-calculator"
+  ],
+  "limitations": [
+    "Mortar volume depends on brick coring, frog recesses, and CMU face-shell bedding vs full bedding.",
+    "Site-mixed mortar requires verified proportioning complying with ASTM C270 (Type N, S, or M).",
+    "Weather conditions and tooling loss can affect actual field yield."
+  ]
+}

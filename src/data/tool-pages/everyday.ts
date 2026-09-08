@@ -323,4 +323,52 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
     relatedTools: [],
     relatedGuides: [],
   },
+  'one-rep-max-calculator': {
+    slug: 'one-rep-max-calculator',
+    name: 'One-Rep Max Calculator: 1RM Strength Estimator',
+    category: 'Everyday Calculators',
+    applicationCategory: 'HealthApplication',
+    description: 'Calculate your one-rep max (1RM) for bench press, squat, or deadlift using Brzycki, Epley, and Lander formulas, with a complete percentage breakdown table.',
+    longTailKeywords: [
+      'one rep max calculator',
+      '1rm calculator',
+      'bench press max calculator',
+      'squat 1rm calculator',
+      'epley formula calculator',
+    ],
+    intro: [
+      'One-Rep Max Calculator estimates your maximum single-repetition lifting capacity from submaximal repetitions to fatigue.',
+      'It computes consensus strength benchmarks using validated exercise physiology equations including Epley, Brzycki, and Lander models.',
+    ],
+    formula: [
+      { title: 'Epley equation', body: '1RM = Weight × (1 + Reps / 30).' },
+      { title: 'Brzycki equation', body: '1RM = Weight × (36 / (37 − Reps)).' },
+      { title: 'Percentage training zones', body: 'Calculates 95%, 90%, 85%, 80%, and 70% submaximal working sets for periodized resistance training.' },
+    ],
+    steps: [
+      'Enter the weight lifted in kilograms or pounds.',
+      'Enter the completed repetitions performed to failure (ideal between 2 and 10 reps).',
+      'Select your preferred prediction equation (Consensus Average, Epley, or Brzycki).',
+      'Review your estimated 1RM and percentage load breakdown for programming training cycles.',
+    ],
+    interpretation: [
+      'Estimates are most accurate between 2 and 10 repetitions; as repetitions exceed 10, muscular endurance skews the neuromuscular maximum estimate.',
+      'Use 1RM percentages to program periodized training blocks (e.g. 70–80% for hypertrophy, 85–95% for maximal strength).',
+    ],
+    limitations: [
+      'Formulas assume full range of motion and standardized lifting technique.',
+      'Individual muscle fiber composition (slow-twitch vs fast-twitch dominance) can cause variation in rep-max performance.',
+    ],
+    faqs: [
+      { question: 'Why estimate 1RM instead of testing true 1RM?', answer: 'Testing true 1RM lifts poses significant joint strain and injury risk. Submaximal estimation offers a safer benchmark for tracking strength progression.' },
+      { question: 'Which formula is most accurate?', answer: 'The consensus average of Epley and Brzycki is widely recognized as the most balanced predictor across bench press, squat, and deadlift.' },
+      { question: 'Is my workout data uploaded?', answer: 'No. All calculations run strictly in your web browser.' },
+    ],
+    relatedTools: [
+      { slug: 'wilks-dots-powerlifting-calculator', name: 'Wilks & DOTS Calculator' },
+      { slug: 'lean-body-mass-calculator', name: 'Lean Body Mass Calculator' },
+      { slug: 'calories-burned-calculator', name: 'Calories Burned Calculator' },
+    ],
+    relatedGuides: [],
+  },
 };

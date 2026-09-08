@@ -1,0 +1,75 @@
+{
+  "name": "Hydration Calculator",
+  "slug": "hydration-calculator",
+  "category": "Health Calculators",
+  "description": "Estimate daily recommended water intake in liters, fluid ounces, and standard cups based on body weight, daily exercise duration, and climate.",
+  "search_intent": "Calculate daily water intake requirements based on weight and activity level.",
+  "keywords": [
+    "hydration calculator",
+    "water intake calculator",
+    "daily water requirement calculator",
+    "how much water to drink a day",
+    "fluid intake estimator"
+  ],
+  "inputs": [
+    {
+      "key": "bodyWeightKg",
+      "label": "Body weight (kg)",
+      "default": 70,
+      "min": 25,
+      "max": 250
+    },
+    {
+      "key": "exerciseDurationMinutes",
+      "label": "Daily moderate or vigorous exercise (minutes)",
+      "default": 45,
+      "min": 0,
+      "max": 360,
+      "step": 5
+    },
+    {
+      "key": "climateEnvironment",
+      "label": "Climate & temperature environment",
+      "default": "temperate",
+      "help": "temperate, hot-dry, hot-humid, or cold-high-altitude"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "totalWaterLiters",
+      "label": "Total daily recommended water (liters)",
+      "format": "number"
+    },
+    {
+      "key": "totalFluidOunces",
+      "label": "Total daily water (US fluid ounces)",
+      "format": "number"
+    },
+    {
+      "key": "standardCups8oz",
+      "label": "Standard 8-oz glasses / cups",
+      "format": "number"
+    },
+    {
+      "key": "baselineLiters",
+      "label": "Baseline resting hydration (liters)",
+      "format": "number"
+    },
+    {
+      "key": "exerciseAdditionLiters",
+      "label": "Exercise sweat replacement (liters)",
+      "format": "number"
+    }
+  ],
+  "calculation": "Baseline requirement: 35 mL per kg body weight (National Academy of Medicine fluid guidelines). Exercise sweat replacement: approximately 350 mL per 30 minutes of moderate activity (approx 11.67 mL per minute). Climate adjustment factor: temperate = 0 mL, hot-dry = +400 mL, hot-humid = +600 mL, cold-high-altitude = +300 mL. Total daily water (liters) = round(((bodyWeightKg × 0.035) + (exerciseDurationMinutes × 0.01167) + (climateFactor / 1000)), 2). Fluid ounces = round(totalLiters × 33.814, 1). Standard 8-oz glasses = round(fluidOunces / 8, 1).",
+  "related_tools": [
+    "calorie-calculator",
+    "tdee-calculator",
+    "running-pace-calculator"
+  ],
+  "limitations": [
+    "General wellness estimate only. Individuals with congestive heart failure, chronic kidney disease, or on diuretic medications require strict physician-prescribed fluid restrictions.",
+    "Dietary water from fresh fruits, vegetables, soups, and beverages typically contributes 20-30% of total daily fluid intake.",
+    "Extreme endurance athletics in hot environments requires monitored electrolyte and sodium replenishment to avoid hyponatremia."
+  ]
+}

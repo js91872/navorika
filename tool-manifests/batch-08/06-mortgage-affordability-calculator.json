@@ -1,0 +1,128 @@
+{
+  "name": "Mortgage Affordability Calculator",
+  "slug": "mortgage-affordability-calculator",
+  "category": "Finance Calculators",
+  "description": "Calculate maximum affordable home purchase price and loan amount based on income, monthly debts, down payment, and 28/36 DTI limits.",
+  "search_intent": "Calculate how much house I can afford based on salary, down payment, and debts.",
+  "keywords": [
+    "mortgage affordability calculator",
+    "home affordability calculator",
+    "how much house can i afford",
+    "maximum mortgage calculator",
+    "dti affordability calculator"
+  ],
+  "inputs": [
+    {
+      "key": "annualGrossIncome",
+      "label": "Annual gross household income",
+      "default": 120000,
+      "min": 1000
+    },
+    {
+      "key": "monthlyDebts",
+      "label": "Monthly recurring debts (auto, student, credit cards)",
+      "default": 500,
+      "min": 0
+    },
+    {
+      "key": "downPaymentAmount",
+      "label": "Cash available for down payment",
+      "default": 50000,
+      "min": 0
+    },
+    {
+      "key": "mortgageInterestRatePercent",
+      "label": "Mortgage interest rate (%)",
+      "default": 6.5,
+      "min": 0.1,
+      "max": 20
+    },
+    {
+      "key": "loanTermYears",
+      "label": "Loan term (years)",
+      "default": 30,
+      "min": 10,
+      "max": 40
+    },
+    {
+      "key": "annualPropertyTaxRatePercent",
+      "label": "Annual property tax rate (%)",
+      "default": 1.2,
+      "min": 0,
+      "max": 5
+    },
+    {
+      "key": "annualHomeownersInsurance",
+      "label": "Annual homeowners insurance",
+      "default": 1400,
+      "min": 0
+    },
+    {
+      "key": "targetFrontEndDtiPercent",
+      "label": "Front-end housing DTI limit (%)",
+      "default": 28,
+      "min": 10,
+      "max": 50
+    },
+    {
+      "key": "targetBackEndDtiPercent",
+      "label": "Back-end total debt DTI limit (%)",
+      "default": 36,
+      "min": 15,
+      "max": 60
+    }
+  ],
+  "outputs": [
+    {
+      "key": "maxHomePurchasePrice",
+      "label": "Maximum affordable home price",
+      "format": "currency"
+    },
+    {
+      "key": "maxMortgageLoanAmount",
+      "label": "Maximum qualifying mortgage loan",
+      "format": "currency"
+    },
+    {
+      "key": "monthlyPaymentPiti",
+      "label": "Estimated monthly total payment (PITI)",
+      "format": "currency"
+    },
+    {
+      "key": "principalAndInterest",
+      "label": "Monthly principal and interest (PI)",
+      "format": "currency"
+    },
+    {
+      "key": "monthlyPropertyTax",
+      "label": "Monthly property tax estimate",
+      "format": "currency"
+    },
+    {
+      "key": "monthlyInsurance",
+      "label": "Monthly insurance estimate",
+      "format": "currency"
+    },
+    {
+      "key": "effectiveFrontEndDti",
+      "label": "Effective front-end housing DTI (%)",
+      "format": "percent"
+    },
+    {
+      "key": "effectiveBackEndDti",
+      "label": "Effective back-end total DTI (%)",
+      "format": "percent"
+    }
+  ],
+  "calculation": "Monthly gross income = annualGrossIncome / 12. Maximum allowed housing payment under front-end rule = monthlyIncome × (frontEndDti / 100). Maximum allowed total obligations under back-end rule = monthlyIncome × (backEndDti / 100). Maximum housing payment under back-end rule = max(0, allowedTotalObligations − monthlyDebts). Allowable monthly PITI = min(allowedFront, allowedBack). Monthly mortgage payment factor: f = i × (1 + i)^n / ((1 + i)^n − 1), where i = rate / 100 / 12, n = years × 12. Monthly insurance = annualInsurance / 12. Monthly tax rate factor t = taxRate / 100 / 12. Solve PITI equation: Price × (f + t) = AllowablePITI − MonthlyInsurance + (f × DownPayment). Price = max(downPaymentAmount, (AllowablePITI − MonthlyInsurance + (f × DownPayment)) / (f + t)). Maximum mortgage = max(0, Price − DownPayment).",
+  "related_tools": [
+    "loan-emi-calculator",
+    "rental-property-cash-flow-calculator",
+    "house-hacking-effective-rent-calculator"
+  ],
+  "limitations": [
+    "Private mortgage insurance (PMI) is required by most conventional lenders when the down payment is under 20%.",
+    "HOA dues, closing costs, transfer taxes, and maintenance reserves are not included in the basic underwriting calculation.",
+    "Actual mortgage pre-approval requires verified credit scores, two years of tax returns, and debt underwriting."
+  ]
+}

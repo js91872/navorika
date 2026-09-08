@@ -1,0 +1,84 @@
+{
+  "name": "Break-Even Calculator",
+  "slug": "break-even-calculator",
+  "category": "Finance Calculators",
+  "description": "Calculate break-even sales volume in units and revenue, contribution margin per unit, margin ratio, and margin of safety.",
+  "search_intent": "Calculate break-even point in units and dollars for business, products, or services.",
+  "keywords": [
+    "break even calculator",
+    "break even point calculator",
+    "business break even analysis",
+    "contribution margin calculator",
+    "margin of safety calculator"
+  ],
+  "inputs": [
+    {
+      "key": "fixedCosts",
+      "label": "Total fixed costs (rent, salaries, software)",
+      "default": 30000,
+      "min": 0
+    },
+    {
+      "key": "variableCostPerUnit",
+      "label": "Variable cost per unit (materials, labor, shipping)",
+      "default": 25,
+      "min": 0
+    },
+    {
+      "key": "salePricePerUnit",
+      "label": "Selling price per unit",
+      "default": 65,
+      "min": 0.01
+    },
+    {
+      "key": "plannedUnitSales",
+      "label": "Estimated / target sales volume (units)",
+      "default": 1000,
+      "min": 0,
+      "step": 1
+    }
+  ],
+  "outputs": [
+    {
+      "key": "contributionMarginPerUnit",
+      "label": "Contribution margin per unit",
+      "format": "currency"
+    },
+    {
+      "key": "contributionMarginRatioPercent",
+      "label": "Contribution margin ratio (%)",
+      "format": "percent"
+    },
+    {
+      "key": "breakEvenUnits",
+      "label": "Break-even units required",
+      "format": "number"
+    },
+    {
+      "key": "breakEvenRevenue",
+      "label": "Break-even sales revenue",
+      "format": "currency"
+    },
+    {
+      "key": "projectedNetProfit",
+      "label": "Projected net operating profit",
+      "format": "currency"
+    },
+    {
+      "key": "marginOfSafetyPercent",
+      "label": "Margin of safety (%)",
+      "format": "percent"
+    }
+  ],
+  "calculation": "Contribution margin per unit = salePricePerUnit − variableCostPerUnit. Contribution margin ratio = (contributionMargin / salePricePerUnit) × 100. If contribution margin <= 0, break-even is unattainable and returned as null. Break-even units = ceil(fixedCosts / contributionMargin). Break-even revenue = breakEvenUnits × salePricePerUnit. Projected revenue = plannedUnitSales × salePricePerUnit. Total costs at target = fixedCosts + (plannedUnitSales × variableCostPerUnit). Projected net profit = projectedRevenue − totalCosts. Margin of safety percentage = plannedUnitSales > 0 ? ((plannedUnitSales − breakEvenUnits) / plannedUnitSales) × 100 : 0.",
+  "related_tools": [
+    "profit-margin-markup-calculator",
+    "saas-burn-rate-calculator",
+    "short-term-rental-break-even-calculator"
+  ],
+  "limitations": [
+    "Assumes constant unit selling prices and constant variable unit costs across all production volumes.",
+    "Semivariable step costs (e.g. hiring an additional supervisor once volume exceeds a threshold) are not modeled.",
+    "Does not factor corporate taxes, interest expense, or inventory carrying depreciation."
+  ]
+}

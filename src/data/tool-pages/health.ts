@@ -406,4 +406,145 @@ export const healthToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: [],
   },
+  'macronutrient-calculator': {
+    slug: 'macronutrient-calculator',
+    name: 'Macronutrient Calculator: Daily Protein, Carbs & Fat Planner',
+    category: 'Health Calculators',
+    applicationCategory: 'HealthApplication',
+    description: 'Calculate daily protein, carbohydrate, and fat targets in grams and calories based on your daily energy intake and fitness goals.',
+    longTailKeywords: [
+      'macronutrient calculator',
+      'macro calculator',
+      'daily protein carb fat calculator',
+      'macro split calculator',
+      'grams of protein calculator',
+    ],
+    intro: [
+      'A macronutrient calculator converts your daily caloric target into precise gram requirements for protein, carbohydrates, and dietary fats.',
+      'Balancing macronutrients ensures sufficient amino acids for muscle preservation, carbohydrates for glycolytic energy, and healthy fats for hormone production.',
+    ],
+    formula: [
+      { title: 'Atwater standard energy factors', body: 'Protein = 4 kcal/gram, Carbohydrates = 4 kcal/gram, Dietary Fat = 9 kcal/gram.' },
+      { title: 'Goal allocations', body: 'Grams = (Total Daily Calories × Macro Target %) ÷ Energy Factor.' },
+    ],
+    steps: [
+      'Enter your daily target caloric intake (from your TDEE or nutrition plan).',
+      'Select your fitness and body composition goal (Balanced, Fat Loss, Muscle Gain, Keto, or Endurance).',
+      'Optionally enter body weight to evaluate protein density per kilogram.',
+      'Review recommended daily grams and calories for protein, carbs, and fats.',
+    ],
+    interpretation: [
+      'Fat-loss phases typically benefit from higher protein (e.g. 35%) to preserve lean body mass while in a deficit.',
+      'Endurance sports require higher carbohydrate ratios (e.g. 60%) to maintain glycogen stores during sustained training.',
+    ],
+    limitations: [
+      'Nutritional distributions represent general sports science guidelines, not clinical medical nutrition therapy.',
+      'Individuals with kidney conditions, diabetes, or metabolic disorders should seek personalized medical guidance.',
+    ],
+    faqs: [
+      { question: 'How much protein do I need per kilogram of body weight?', answer: 'For active individuals and strength athletes, sports nutrition consensus generally recommends 1.6 to 2.2 grams of protein per kilogram of body weight.' },
+      { question: 'Can I customize my macro percentages?', answer: 'The calculator provides presets calibrated for balanced health, fat loss cutting, muscle gain bulking, ketogenic diets, and endurance athletics.' },
+      { question: 'Is my nutrition information saved?', answer: 'No. All calculations run strictly in your web browser.' },
+    ],
+    relatedTools: [
+      { slug: 'calorie-calculator', name: 'Calorie Calculator' },
+      { slug: 'tdee-calculator', name: 'TDEE Calculator' },
+      { slug: 'bmr-calculator', name: 'BMR Calculator' },
+    ],
+    relatedGuides: ['macronutrients-guide', 'calorie-deficit-guide', 'bmr-tdee-guide'],
+  },
+  'running-pace-calculator': {
+    slug: 'running-pace-calculator',
+    name: 'Running Pace Calculator: Min/Km, Min/Mile & Race Splits',
+    category: 'Health Calculators',
+    applicationCategory: 'HealthApplication',
+    description: 'Calculate running pace per kilometer and mile, race finish time, splits, and running speed for any distance from 5K to marathon.',
+    longTailKeywords: [
+      'running pace calculator',
+      'pace calculator',
+      'marathon pace calculator',
+      '5k pace calculator',
+      'min per km to min per mile',
+    ],
+    intro: [
+      'Running Pace Calculator converts between race distance, finish time, running pace per kilometer or mile, and speeds in km/h and mph.',
+      'It uses Pete Riegel’s endurance scaling formula to predict equivalent finish times across standard race distances from 5K up to a full marathon.',
+    ],
+    formula: [
+      { title: 'Pace conversion', body: 'Pace (seconds/distance) = Total elapsed seconds ÷ Distance in km or miles.' },
+      { title: 'Riegel race prediction equation', body: 'T2 = T1 × (D2 / D1)^1.06, modeling fatigue accumulation over longer distances.' },
+    ],
+    steps: [
+      'Choose a standard distance preset (5K, 10K, Half Marathon, Marathon) or enter a custom distance.',
+      'Enter your goal or actual race finish time (hours, minutes, seconds).',
+      'Review pace per kilometer and mile, alongside running speed.',
+      'Examine Pete Riegel equivalent race predictions for other distances.',
+    ],
+    interpretation: [
+      'Even small 5-second per kilometer pace improvements compound into substantial finish-time gains across long distances like half or full marathons.',
+      'Riegel predictions assume equivalent aerobic conditioning for the longer distance.',
+    ],
+    limitations: [
+      'Weather conditions, course hills, humidity, and race-day nutrition can significantly impact actual pace compared to flat-course projections.',
+      'Does not substitute for personalized cardiovascular endurance training.',
+    ],
+    faqs: [
+      { question: 'What is a 5-minute per kilometer pace in miles?', answer: 'A 5:00 /km pace equals approximately an 8:03 /mile pace.' },
+      { question: 'What is the Riegel formula?', answer: 'The Pete Riegel formula (T2 = T1 × [D2/D1]^1.06) is a widely validated athletic model that predicts race times across distances by accounting for aerobic fatigue.' },
+      { question: 'Is my running data uploaded?', answer: 'No. All calculations run strictly in your web browser.' },
+    ],
+    relatedTools: [
+      { slug: 'running-calories-calculator', name: 'Running Calories Calculator' },
+      { slug: 'walking-calories-calculator', name: 'Walking Calories Calculator' },
+      { slug: 'heart-rate-calculator', name: 'Heart Rate Calculator' },
+    ],
+    relatedGuides: [],
+  },
+  'hydration-calculator': {
+    slug: 'hydration-calculator',
+    name: 'Hydration Calculator: Daily Water Intake by Weight & Exercise',
+    category: 'Health Calculators',
+    applicationCategory: 'HealthApplication',
+    description: 'Estimate daily recommended water intake in liters, fluid ounces, and standard cups based on body weight, daily exercise duration, and climate.',
+    longTailKeywords: [
+      'hydration calculator',
+      'water intake calculator',
+      'daily water requirement calculator',
+      'how much water to drink a day',
+      'fluid intake estimator',
+    ],
+    intro: [
+      'Calculate your individualized daily fluid intake requirements based on body mass, physical training duration, and environmental climate.',
+      'Maintaining optimal hydration supports cognitive function, joint lubrication, metabolic waste clearance, and physical performance.',
+    ],
+    formula: [
+      { title: 'Resting baseline hydration', body: 'Baseline = 35 mL of water per kilogram of body weight.' },
+      { title: 'Activity & climate adjustments', body: 'Adds approximately 350 mL per 30 minutes of moderate exercise, plus climate adjustments for dry, humid, or high-altitude environments.' },
+    ],
+    steps: [
+      'Enter your body weight in kilograms.',
+      'Enter your average daily moderate or vigorous exercise duration in minutes.',
+      'Select your ambient climate (temperate, hot & dry, hot & humid, or cold & high altitude).',
+      'Review total recommended daily water in liters, fluid ounces, and 8-oz cup equivalents.',
+    ],
+    interpretation: [
+      'Dark yellow urine typically indicates mild dehydration; pale straw or clear indicates adequate hydration.',
+      'Higher ambient temperatures and high humidity accelerate sweat rates and increase fluid needs.',
+    ],
+    limitations: [
+      'Educational estimate for healthy adults; patients with congestive heart failure, renal insufficiency, or on diuretic medications must adhere to strict physician-directed fluid protocols.',
+      'Dietary foods (fruits, vegetables, soups) contribute 20–30% of total daily water intake.',
+    ],
+    faqs: [
+      { question: 'How much water should I drink per day?', answer: 'A typical 70 kg sedentary adult in a temperate climate needs about 2.45 liters (~83 fl oz or 10 cups) daily. Exercise and heat increase this demand.' },
+      { question: 'Does coffee or tea count toward hydration?', answer: 'Yes. Recent medical studies confirm that moderate consumption of caffeinated beverages contributes to daily fluid intake without causing net dehydration.' },
+      { question: 'Is my information stored?', answer: 'No. The calculator processes everything locally in your browser.' },
+    ],
+    relatedTools: [
+      { slug: 'calorie-calculator', name: 'Calorie Calculator' },
+      { slug: 'tdee-calculator', name: 'TDEE Calculator' },
+      { slug: 'running-pace-calculator', name: 'Running Pace Calculator' },
+    ],
+    relatedGuides: [],
+  },
 };

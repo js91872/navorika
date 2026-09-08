@@ -1,0 +1,95 @@
+{
+  "name": "One-Rep Max Calculator",
+  "slug": "one-rep-max-calculator",
+  "category": "Everyday Calculators",
+  "description": "Calculate your one-rep max (1RM) for bench press, squat, or deadlift using Brzycki, Epley, and Lander formulas, with a complete percentage breakdown table.",
+  "search_intent": "Calculate one rep max (1RM) strength from weight lifted and reps.",
+  "keywords": [
+    "one rep max calculator",
+    "1rm calculator",
+    "bench press max calculator",
+    "squat 1rm calculator",
+    "epley formula calculator"
+  ],
+  "inputs": [
+    {
+      "key": "weightLifted",
+      "label": "Weight lifted (kg or lbs)",
+      "default": 100,
+      "min": 1,
+      "max": 1000
+    },
+    {
+      "key": "repetitions",
+      "label": "Repetitions performed",
+      "default": 5,
+      "min": 1,
+      "max": 30,
+      "step": 1
+    },
+    {
+      "key": "formulaMethod",
+      "label": "Calculation formula",
+      "default": "average",
+      "help": "average, epley, brzycki, lander, or lombardi"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "estimated1rm",
+      "label": "Estimated one-rep max (1RM)",
+      "format": "number"
+    },
+    {
+      "key": "epleyEstimate",
+      "label": "Epley formula 1RM",
+      "format": "number"
+    },
+    {
+      "key": "brzyckiEstimate",
+      "label": "Brzycki formula 1RM",
+      "format": "number"
+    },
+    {
+      "key": "landerEstimate",
+      "label": "Lander formula 1RM",
+      "format": "number"
+    },
+    {
+      "key": "rep95Percent",
+      "label": "95% 1RM (approx 2 reps)",
+      "format": "number"
+    },
+    {
+      "key": "rep90Percent",
+      "label": "90% 1RM (approx 4 reps)",
+      "format": "number"
+    },
+    {
+      "key": "rep85Percent",
+      "label": "85% 1RM (approx 6 reps)",
+      "format": "number"
+    },
+    {
+      "key": "rep80Percent",
+      "label": "80% 1RM (approx 8 reps)",
+      "format": "number"
+    },
+    {
+      "key": "rep70Percent",
+      "label": "70% 1RM (approx 12 reps)",
+      "format": "number"
+    }
+  ],
+  "calculation": "If reps == 1, 1RM = weightLifted. Epley formula: w × (1 + r / 30). Brzycki formula: w × (36 / (37 − min(r, 36))). Lander formula: (100 × w) / (101.3 − (2.67123 × r)). Lombardi formula: w × r^0.10. Average 1RM combines Epley and Brzycki. Percentage training table calculates 95%, 90%, 85%, 80%, 75%, 70%, 65%, 60%, and 50% of the calculated 1RM. Input validation bounds reps to 1-30.",
+  "related_tools": [
+    "wilks-dots-powerlifting-calculator",
+    "lean-body-mass-calculator",
+    "calories-burned-calculator"
+  ],
+  "limitations": [
+    "Formulas are most reliable between 1 and 10 repetitions; accuracy diminishes as reps exceed 10 due to muscular endurance factors.",
+    "Formulas assume full range of motion and standard technique.",
+    "Attempting true 1RM maximum lifts carries inherent musculoskeletal risk; always lift with trained spotters or safety pins."
+  ]
+}

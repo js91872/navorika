@@ -282,6 +282,21 @@ export const toolIcons: Record<string, string> = {
   'wav-to-mp3-converter': '🎼',
   'mp3-to-wav-converter': '📻',
   'audio-bitrate-calculator': '🎚️',
+  'mortar-calculator': '🧱',
+  'concrete-block-calculator': '🏗️',
+  'rainwater-harvesting-calculator': '🌧️',
+  'lumpsum-investment-calculator': '💰',
+  'savings-goal-calculator': '🎯',
+  'mortgage-affordability-calculator': '🏠',
+  'break-even-calculator': '⚖️',
+  'profit-margin-markup-calculator': '🏷️',
+  'responsive-srcset-generator': '🖼️',
+  'yaml-json-converter': '🔄',
+  'uuid-generator-validator': '🔑',
+  'macronutrient-calculator': '🥗',
+  'running-pace-calculator': '⏱️',
+  'one-rep-max-calculator': '🏋️',
+  'hydration-calculator': '💧',
 };
 
 export const getToolIcon = (slug: string): string => {

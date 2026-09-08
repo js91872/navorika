@@ -1,0 +1,87 @@
+{
+  "name": "Rainwater Harvesting Calculator",
+  "slug": "rainwater-harvesting-calculator",
+  "category": "Construction Calculators",
+  "description": "Calculate harvestable rainwater volume from roof catchment area, annual rainfall, and roof material runoff coefficients, then size a storage tank.",
+  "search_intent": "Calculate rainwater collection capacity and storage tank size from roof area and rainfall.",
+  "keywords": [
+    "rainwater harvesting calculator",
+    "rainwater collection calculator",
+    "roof runoff calculator",
+    "rain barrel sizing calculator",
+    "water catchment calculator"
+  ],
+  "inputs": [
+    {
+      "key": "catchmentAreaFt2",
+      "label": "Roof catchment footprint (ft²)",
+      "default": 2000,
+      "min": 100
+    },
+    {
+      "key": "annualRainfallInches",
+      "label": "Annual rainfall (inches)",
+      "default": 35,
+      "min": 1,
+      "max": 200
+    },
+    {
+      "key": "roofMaterial",
+      "label": "Roof surface material",
+      "default": "metal",
+      "help": "Metal/Colorbond (0.95 efficiency), Concrete/Clay Tile (0.85), Asphalt Shingle (0.80), Flat Membrane (0.85)"
+    },
+    {
+      "key": "filtrationLossPercent",
+      "label": "First-flush & gutter filter loss (%)",
+      "default": 5,
+      "min": 0,
+      "max": 25
+    },
+    {
+      "key": "storageDays",
+      "label": "Dry-period storage target (days)",
+      "default": 21,
+      "min": 7,
+      "max": 90
+    }
+  ],
+  "outputs": [
+    {
+      "key": "annualYieldGallons",
+      "label": "Annual harvestable water (US gallons)",
+      "format": "number"
+    },
+    {
+      "key": "annualYieldLiters",
+      "label": "Annual harvestable water (liters)",
+      "format": "number"
+    },
+    {
+      "key": "monthlyAverageGallons",
+      "label": "Monthly average yield (US gallons)",
+      "format": "number"
+    },
+    {
+      "key": "recommendedTankGallons",
+      "label": "Recommended cistern / tank capacity (US gallons)",
+      "format": "number"
+    },
+    {
+      "key": "recommendedTankLiters",
+      "label": "Recommended cistern / tank capacity (liters)",
+      "format": "number"
+    }
+  ],
+  "calculation": "Theoretical yield: 1 inch of rain on 1 ft² of roof equals 0.6233 US gallons (or 1 mm on 1 m² equals 1 liter). Material runoff coefficients: Metal = 0.95, Tile = 0.85, Shingle = 0.80, Membrane = 0.85. Net annual yield (gallons) = catchmentAreaFt2 × annualRainfallInches × 0.6233 × runoffCoefficient × (1 − filtrationLossPercent / 100). Liters = gallons × 3.78541. Monthly average = annual yield / 12. Recommended dry-period buffer tank capacity = (annual yield / 365) × storageDays.",
+  "related_tools": [
+    "roof-area-calculator",
+    "water-tank-calculator",
+    "mulch-calculator"
+  ],
+  "limitations": [
+    "Calculations use annual precipitation averages; seasonal rainfall clustering and dry seasons can require larger cisterns.",
+    "Potable water use requires certified multi-stage sediment filtration, UV disinfection, and municipal testing.",
+    "Local health departments and water districts may regulate rainwater catchment rights and overflow drainage."
+  ]
+}

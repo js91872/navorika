@@ -1048,4 +1048,84 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
       ],
     }),
   },
+  'mortar-calculator': {
+    slug: 'mortar-calculator',
+    ...expansionPage({
+      name: 'Mortar Calculator',
+      description: 'Calculate mortar volume, pre-mix bags, Portland cement, and masonry sand for brick and concrete block walls.',
+      keywords: ['mortar calculator', 'mortar mix calculator', 'brick mortar calculator', 'how many bags of mortar do i need', 'masonry mortar calculator'],
+      intro: 'Estimate required masonry mortar volume, commercial pre-mixed bags, or site-mix cement and sand quantities based on masonry unit count, joint thickness, and waste factor.',
+      formula: 'Mortar volume = unit count × base yield per unit × (joint thickness / 0.375) × (1 + waste / 100). Pre-mix bags = ceil(adjusted volume / bag yield). Type N site mix: 1 bag Portland cement (94 lb) + 3 ft³ sand yields ~3.2 ft³ mortar.',
+      interpretation: 'Standard modular clay bricks require approx 5.0 ft³ of mortar per 1,000 bricks at 3/8-inch joints. Standard 8x8x16 CMU concrete blocks require approx 13.5 ft³ of mortar per 100 blocks. 80-lb pre-mix bags yield approx 0.67 ft³.',
+      limitations: [
+        'Mortar yield varies by brick coring depth, frog impressions, and CMU face-shell bedding vs full bedding.',
+        'Site-mixed mortar must adhere to standard ASTM C270 proportioning (Type N, S, or M) for required compressive strength.',
+        'Weather conditions, evaporation, and joint tooling loss will alter field material consumption.',
+      ],
+      relatedTools: [
+        { slug: 'brick-calculator', name: 'Brick Calculator' },
+        { slug: 'concrete-block-calculator', name: 'Concrete Block Calculator' },
+        { slug: 'cement-calculator', name: 'Cement Calculator' },
+        { slug: 'sand-calculator', name: 'Sand Calculator' },
+      ],
+      faq: [
+        { question: 'How many bags of mortar do I need for 1000 bricks?', answer: 'For 1,000 standard modular bricks with 3/8-inch joints and 10% waste, you will need approximately 8 to 9 bags of 80-lb pre-mixed mortar mix.' },
+        { question: 'How much mortar is needed for 100 cinder blocks?', answer: 'For 100 standard 8x8x16 CMU concrete blocks with face-shell bedding, you need approximately 13.5 ft³ of mortar, which corresponds to roughly 22 to 24 bags of 80-lb pre-mix mortar.' },
+        { question: 'What is the difference between Type N and Type S mortar?', answer: 'Type N is a medium-strength mortar (approx 750 psi) used for general exterior above-grade walls and brick veneer. Type S is higher strength (approx 1,800 psi) used for below-grade foundations, retaining walls, and load-bearing CMU blocks.' },
+      ],
+    }),
+  },
+  'concrete-block-calculator': {
+    slug: 'concrete-block-calculator',
+    ...expansionPage({
+      name: 'Concrete Block Calculator',
+      description: 'Estimate CMU concrete blocks, mortar, core-fill grout, and waste allowance for block walls and foundations.',
+      keywords: ['concrete block calculator', 'cmu calculator', 'cinder block calculator', 'concrete masonry unit calculator', 'block wall estimator'],
+      intro: 'Calculate total CMU blocks, face-shell mortar bags, and core-fill grout volume needed for concrete masonry unit walls, retaining walls, and foundation stems.',
+      formula: 'Net wall area = (length × height) − openings area; Exact CMU blocks = net area × 1.125 blocks/ft²; Purchase blocks = ceil(exact blocks × (1 + waste/100)); Mortar = purchase blocks × 0.135 ft³; Core grout = purchase blocks × cores/block × 0.33 ft³ / 27.',
+      interpretation: 'Nominal 8x8x16 CMU blocks cover 1.125 blocks per square foot of wall face (0.8889 ft² each). Grouting schedules can be hollow (0 cores), 32" on-center (0.5 cores/block), 16" on-center (1 core/block), or solid grouted (2 cores/block).',
+      limitations: [
+        'Structural reinforcement spacing, bond beams, and vertical rebar cores must be designed by a licensed structural engineer.',
+        'Opening takeoffs should account for lintel blocks, bond beams, and half-blocks at jamb corners.',
+        'Core fill grout volume assumes standard 2-core hollow CMU units without excessive blow-outs.',
+      ],
+      relatedTools: [
+        { slug: 'mortar-calculator', name: 'Mortar Calculator' },
+        { slug: 'brick-calculator', name: 'Brick Calculator' },
+        { slug: 'concrete-calculator', name: 'Concrete Calculator' },
+        { slug: 'rebar-calculator', name: 'Rebar Calculator' },
+      ],
+      faq: [
+        { question: 'How many concrete blocks are in a square foot of wall?', answer: 'One standard 8x8x16 CMU block measures 15-5/8" × 7-5/8" plus a 3/8" mortar joint (16" × 8" nominal). This equals 128 square inches or 0.8889 sq ft, meaning you need exactly 1.125 blocks per square foot of wall surface.' },
+        { question: 'How much grout does an 8-inch CMU block hold?', answer: 'Each core cell in a standard 8x8x16 hollow CMU block holds approximately 0.33 cubic feet of grout. Filling both cores completely requires about 0.66 cubic feet per block.' },
+        { question: 'What waste percentage should I order for concrete blocks?', answer: 'A 5% to 10% waste allowance is standard for straight walls to account for cuts at corners, half-blocks, and transit breakage. Order 10% to 15% for complex walls with numerous window and door openings.' },
+      ],
+    }),
+  },
+  'rainwater-harvesting-calculator': {
+    slug: 'rainwater-harvesting-calculator',
+    ...expansionPage({
+      name: 'Rainwater Harvesting Calculator',
+      description: 'Calculate harvestable rainwater volume from roof catchment area, annual rainfall, and roof material runoff coefficients, then size a storage tank.',
+      keywords: ['rainwater harvesting calculator', 'rainwater collection calculator', 'roof runoff calculator', 'rain barrel sizing calculator', 'water catchment calculator'],
+      intro: 'Estimate annual and monthly rainwater collection potential from roof catchment areas, applying material-specific runoff efficiency and first-flush diversion to size storage cisterns.',
+      formula: 'Annual yield (gallons) = catchment area (ft²) × annual rainfall (in) × 0.6233 gal/ft²-in × runoff coefficient × (1 − filter loss / 100); Recommended tank capacity = (annual yield / 365) × dry-period storage days.',
+      interpretation: '1 inch of rainfall over 1,000 square feet of roof yields approximately 623 gallons of water before efficiency deductions. Metal roofs provide the highest catchment efficiency (0.95), followed by glazed tile (0.85), flat membrane (0.85), and asphalt shingles (0.80).',
+      limitations: [
+        'Rainfall distribution is seasonal; monthly rainfall totals vary significantly from uniform annual averages.',
+        'Potable drinking use requires certified sediment filtration, sub-micron carbon block filters, and UV disinfection.',
+        'Verify local municipal codes and water rights regarding residential rainwater harvesting cisterns.',
+      ],
+      relatedTools: [
+        { slug: 'roof-area-calculator', name: 'Roof Area Calculator' },
+        { slug: 'water-tank-calculator', name: 'Water Tank Calculator' },
+        { slug: 'mulch-calculator', name: 'Mulch Calculator' },
+      ],
+      faq: [
+        { question: 'How much rainwater can I collect from a 2,000 sq ft roof?', answer: 'In an area with 35 inches of annual rainfall, a 2,000 sq ft metal roof yields approximately 39,000 to 41,000 gallons (approx 150,000 liters) of clean harvestable water per year.' },
+        { question: 'Why does roof material affect rainwater catchment yield?', answer: 'Different materials have different absorption and friction factors. Smooth metal roofs lose only ~5% of water to evaporation/texture, while porous asphalt shingles absorb water and release loose granules, losing ~20%.' },
+        { question: 'How large should my rainwater collection tank be?', answer: 'For landscape irrigation, size your cistern to store 2 to 4 weeks of dry-spell demand. For whole-home non-potable toilet and laundry use, standard cisterns typically range between 1,500 and 5,000 gallons.' },
+      ],
+    }),
+  },
 };

@@ -1,0 +1,81 @@
+{
+  "name": "Savings Goal Calculator",
+  "slug": "savings-goal-calculator",
+  "category": "Finance Calculators",
+  "description": "Calculate the exact monthly or annual savings required to reach a target financial goal by a target date, given starting savings and interest rate.",
+  "search_intent": "Calculate how much to save every month to reach a savings target or financial milestone.",
+  "keywords": [
+    "savings goal calculator",
+    "target savings calculator",
+    "how much to save calculator",
+    "monthly savings goal planner",
+    "financial goal calculator"
+  ],
+  "inputs": [
+    {
+      "key": "targetGoalAmount",
+      "label": "Target savings goal amount",
+      "default": 100000,
+      "min": 100
+    },
+    {
+      "key": "currentSavings",
+      "label": "Current initial savings already banked",
+      "default": 10000,
+      "min": 0
+    },
+    {
+      "key": "yearsToReachGoal",
+      "label": "Time horizon to reach goal (years)",
+      "default": 5,
+      "min": 1,
+      "max": 50,
+      "step": 1
+    },
+    {
+      "key": "expectedAnnualInterestRatePercent",
+      "label": "Expected annual interest / return rate (%)",
+      "default": 6,
+      "min": 0,
+      "max": 30
+    }
+  ],
+  "outputs": [
+    {
+      "key": "requiredMonthlySavings",
+      "label": "Required monthly savings contribution",
+      "format": "currency"
+    },
+    {
+      "key": "requiredAnnualSavings",
+      "label": "Required annual savings equivalent",
+      "format": "currency"
+    },
+    {
+      "key": "totalUserContributions",
+      "label": "Total out-of-pocket contributions",
+      "format": "currency"
+    },
+    {
+      "key": "totalInterestEarned",
+      "label": "Total interest / growth earned",
+      "format": "currency"
+    },
+    {
+      "key": "interestFundingSharePercent",
+      "label": "Share of goal funded by compound interest (%)",
+      "format": "percent"
+    }
+  ],
+  "calculation": "Monthly rate i = annualRate / 100 / 12. Total months n = years × 12. Future value of current savings: FV_initial = currentSavings × (1 + i)^n. Net goal deficit = max(0, targetGoalAmount − FV_initial). If deficit is 0, required monthly payment PMT = 0. If i = 0, PMT = deficit / n. Otherwise, PMT = deficit × i / ((1 + i)^n − 1). Required annual savings = PMT × 12. Total user contributions = currentSavings + (PMT × n). Total interest earned = targetGoalAmount − totalUserContributions. Share funded by interest = (totalInterestEarned / targetGoalAmount) × 100.",
+  "related_tools": [
+    "lumpsum-investment-calculator",
+    "sip-calculator",
+    "cashflow-budget-architect"
+  ],
+  "limitations": [
+    "Model assumes constant monthly contributions made at the end of each period.",
+    "Interest rates and investment yields are variable over time.",
+    "Inflation, tax on interest income, and capital gains deductions are not included in baseline projection."
+  ]
+}
