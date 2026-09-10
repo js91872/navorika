@@ -1686,4 +1686,588 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: [],
   },
+  'json-to-yaml-converter': {
+    slug: 'json-to-yaml-converter',
+    name: 'JSON to YAML Converter – Convert JSON to YAML Online',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert JSON data to clean, formatted YAML with customizable 2-space or 4-space indentation, syntax validation, and instant browser-local processing.',
+    longTailKeywords: [
+      'json to yaml converter',
+      'convert json to yaml',
+      'json2yaml',
+      'json to yaml online',
+      'json to yml',
+      'convert json to yaml with indentation',
+    ],
+    intro: [
+      'Convert JSON payloads and configuration structures into clean, standards-compliant YAML documents.',
+      'Configure 2-space or 4-space indentation, sort object keys alphabetically, and inspect syntax validation messages in real time.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'JSON AST Parsing',
+        body: 'The source JSON text is parsed into typed native memory structures, strictly validating syntax and capturing line and column numbers on syntax errors.',
+      },
+      {
+        title: 'YAML Serialization',
+        body: 'Structured data is serialized into standard YAML 1.2 syntax, preserving scalar types, multi-line strings, boolean flags, null values, and nested hierarchies.',
+      },
+    ],
+    steps: [
+      'Paste or upload your .json source payload into the left input editor.',
+      'Choose between 2-space and 4-space indentation, and optionally enable key sorting.',
+      'Inspect real-time syntax validation and error locations if syntax issues arise.',
+      'Copy the converted YAML result to clipboard or download the validated .yaml file.',
+    ],
+    interpretation: [
+      'JSON primitive types (booleans, numbers, nulls, strings, arrays, objects) map directly to YAML equivalents.',
+      'Array items are represented with hyphen-bulleted lists; objects are formatted as nested key-value maps.',
+    ],
+    limitations: [
+      'Cyclic object graphs cannot be represented in standard JSON and cannot be converted.',
+      'Extreme document sizes exceeding browser memory limits should be split into smaller files.',
+    ],
+    faqs: [
+      {
+        question: 'Is my JSON uploaded to an external server?',
+        answer: 'No. All parsing, validation, and YAML formatting runs 100% locally inside your browser using client-side JavaScript.',
+      },
+      {
+        question: 'Can I choose between 2-space and 4-space indentation?',
+        answer: 'Yes. You can switch between 2-space and 4-space indentation rules with one click.',
+      },
+      {
+        question: 'Does this converter preserve Unicode and international characters?',
+        answer: 'Yes. All UTF-8 strings, international characters, and emojis are preserved intact.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'yaml-to-json-converter', name: 'YAML to JSON Converter' },
+      { slug: 'json-to-toml-converter', name: 'JSON to TOML Converter' },
+      { slug: 'yaml-validator', name: 'YAML Validator' },
+      { slug: 'json-formatter', name: 'JSON Formatter' },
+    ],
+    relatedGuides: ['json-formatting-guide'],
+  },
+  'yaml-to-json-converter': {
+    slug: 'yaml-to-json-converter',
+    name: 'YAML to JSON Converter – Convert YAML to JSON Online',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert YAML configuration files to formatted, valid JSON with pretty-print spacing options, schema safety, and browser-local processing.',
+    longTailKeywords: [
+      'yaml to json converter',
+      'convert yaml to json',
+      'yaml2json',
+      'yaml to json online',
+      'yml to json',
+      'convert yml to json',
+    ],
+    intro: [
+      'Convert YAML files, Kubernetes manifests, and CI/CD configurations into formatted, valid JSON.',
+      'Inspect syntax errors with exact line and column locations, and format output with 2-space or 4-space indentation.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'YAML Document Parsing',
+        body: 'The YAML parser scans tokens, validates indentation levels, resolves aliases and anchors, and builds an abstract syntax tree.',
+      },
+      {
+        title: 'JSON Normalization',
+        body: 'The parsed object graph is formatted into standard JSON with deterministic string escaping and customizable indentation.',
+      },
+    ],
+    steps: [
+      'Paste or upload your .yaml or .yml configuration file.',
+      'Select your preferred indentation format (2 spaces or 4 spaces).',
+      'Review syntax warnings or error lines highlighted in the editor.',
+      'Copy the converted JSON result or download the formatted .json file.',
+    ],
+    interpretation: [
+      'YAML key-value mappings become JSON objects; YAML sequence lists become JSON arrays.',
+      'YAML aliases and anchors (*anchor) are resolved to their referenced values in JSON.',
+    ],
+    limitations: [
+      'YAML custom type tags (!custom) and binary blobs must be represented as standard JSON primitives or objects.',
+      'Multi-document YAML streams (separated by ---) convert the primary or first document.',
+    ],
+    faqs: [
+      {
+        question: 'Are .yml files supported?',
+        answer: 'Yes. Both .yaml and .yml extensions are supported for file upload and local parsing.',
+      },
+      {
+        question: 'Does this handle Kubernetes YAML manifests?',
+        answer: 'Yes. Standard Kubernetes manifests and Docker Compose configurations can be parsed and converted into JSON.',
+      },
+      {
+        question: 'Does any data leave my device?',
+        answer: 'No. The entire conversion happens locally in your web browser.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'json-to-yaml-converter', name: 'JSON to YAML Converter' },
+      { slug: 'toml-to-json-converter', name: 'TOML to JSON Converter' },
+      { slug: 'yaml-validator', name: 'YAML Validator' },
+      { slug: 'json-formatter', name: 'JSON Formatter' },
+    ],
+    relatedGuides: ['json-formatting-guide'],
+  },
+  'json-to-toml-converter': {
+    slug: 'json-to-toml-converter',
+    name: 'JSON to TOML Converter – Convert JSON to TOML Online',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert JSON objects into valid TOML 1.0 configuration files with safe handling of tables, arrays, strings, and types directly in your browser.',
+    longTailKeywords: [
+      'json to toml converter',
+      'convert json to toml',
+      'json2toml',
+      'json to toml online',
+      'toml converter',
+      'json to toml format',
+    ],
+    intro: [
+      'Convert JSON datasets and configuration files into valid, human-readable TOML 1.0 documents.',
+      'Ensure strict adherence to the TOML specification with safe validation of tables, key-value pairs, and scalar values.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'Root Table Enforcement',
+        body: 'The TOML specification requires a top-level table. The parser verifies that the JSON root is an object rather than an array or primitive.',
+      },
+      {
+        title: 'Type Semantics & Null Handling',
+        body: 'Because TOML 1.0 does not define a native null type, unsupported structures are flagged clearly rather than silently corrupting data.',
+      },
+    ],
+    steps: [
+      'Enter or upload a JSON file containing a root-level object.',
+      'Click Convert or rely on live conversion to generate formatted TOML.',
+      'Review any structural validation notices regarding null values or table layout.',
+      'Copy the generated TOML code or download the .toml configuration file.',
+    ],
+    interpretation: [
+      'Nested objects become TOML tables ([table_name]); arrays of objects become arrays of tables ([[table_name]]).',
+      'Strings, numbers, booleans, and dates map directly to TOML 1.0 primitive types.',
+    ],
+    limitations: [
+      'Top-level JSON arrays cannot be converted directly to TOML because the TOML specification requires a root table.',
+      'JSON null values are not supported in standard TOML 1.0 and must be omitted or given fallback values.',
+    ],
+    faqs: [
+      {
+        question: 'Why does TOML not allow null values?',
+        answer: 'The official TOML 1.0 specification deliberately omits a null or nil value. Absent keys are used instead to represent missing or optional data.',
+      },
+      {
+        question: 'Can I convert Cargo.toml or pyproject.toml schemas?',
+        answer: 'Yes. Any valid JSON structure conforming to a root table can be converted into TOML.',
+      },
+      {
+        question: 'Is my data processed privately?',
+        answer: 'Yes. All parsing and TOML generation executes locally in client-side JavaScript.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'toml-to-json-converter', name: 'TOML to JSON Converter' },
+      { slug: 'json-to-yaml-converter', name: 'JSON to YAML Converter' },
+      { slug: 'yaml-to-json-converter', name: 'YAML to JSON Converter' },
+      { slug: 'json-formatter', name: 'JSON Formatter' },
+    ],
+    relatedGuides: [],
+  },
+  'toml-to-json-converter': {
+    slug: 'toml-to-json-converter',
+    name: 'TOML to JSON Converter – Convert TOML to JSON Online',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert TOML configuration tables and arrays to formatted JSON with customizable indentation, syntax error detection, and local processing.',
+    longTailKeywords: [
+      'toml to json converter',
+      'convert toml to json',
+      'toml2json',
+      'toml to json online',
+      'toml parser',
+      'toml to json format',
+    ],
+    intro: [
+      'Parse TOML configuration files from Rust, Python, Go, and Hugo projects and transform them into formatted JSON.',
+      'Identify syntax errors with line-and-column reporting and export pretty-printed JSON.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'TOML 1.0 Grammar Parsing',
+        body: 'The engine parses TOML tables, inline tables, multiline strings, arrays, integers, floats, booleans, and datetime stamps.',
+      },
+      {
+        title: 'JSON Serialization',
+        body: 'The parsed dictionary is converted into RFC 8259 JSON with 2-space or 4-space indentation.',
+      },
+    ],
+    steps: [
+      'Paste your TOML document or upload a .toml file.',
+      'Review the live converted JSON output in the right-hand panel.',
+      'Adjust indentation settings (2 or 4 spaces) or sort keys if desired.',
+      'Copy the JSON output or download the resulting .json file.',
+    ],
+    interpretation: [
+      'Standard TOML tables ([table]) map to nested JSON objects.',
+      'TOML table arrays ([[array_table]]) map to JSON arrays of objects.',
+    ],
+    limitations: [
+      'Comments in the original TOML file are stripped because standard JSON does not support comments.',
+      'Native TOML offset datetime values are serialized as ISO 8601 strings in JSON.',
+    ],
+    faqs: [
+      {
+        question: 'Does this support Cargo.toml and pyproject.toml files?',
+        answer: 'Yes. Any standards-compliant TOML 1.0 document can be parsed.',
+      },
+      {
+        question: 'Why are comments missing from the JSON output?',
+        answer: 'Standard JSON does not support comments. Comments are discarded during the parsing phase.',
+      },
+      {
+        question: 'Is the conversion performed on a server?',
+        answer: 'No. All processing happens locally in your browser memory.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'json-to-toml-converter', name: 'JSON to TOML Converter' },
+      { slug: 'yaml-to-json-converter', name: 'YAML to JSON Converter' },
+      { slug: 'json-to-yaml-converter', name: 'JSON to YAML Converter' },
+      { slug: 'json-formatter', name: 'JSON Formatter' },
+    ],
+    relatedGuides: [],
+  },
+  'yaml-validator': {
+    slug: 'yaml-validator',
+    name: 'YAML Validator – Check & Validate YAML Syntax Online',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Validate YAML syntax, detect indentation errors, inspect document structure, and resolve parsing issues locally in your browser.',
+    longTailKeywords: [
+      'yaml validator',
+      'yaml syntax checker',
+      'validate yaml online',
+      'yaml checker',
+      'yaml linter online',
+      'check yaml indentation',
+    ],
+    intro: [
+      'Validate YAML configuration files, Kubernetes manifests, and GitHub Actions workflows with precision.',
+      'Detect syntax errors, tab violations, and inconsistent indentation without altering your source code.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'CST / AST Verification',
+        body: 'A concrete syntax tree parser evaluates indentation blocks, key-value mappings, multiline literals, and scalar tokens.',
+      },
+      {
+        title: 'Structural Diagnostics',
+        body: 'When an error is detected, the validator calculates the exact line number, column offset, and context snippet.',
+      },
+    ],
+    steps: [
+      'Paste or upload your YAML content in the editor.',
+      'Click Validate YAML or use live validation to view real-time diagnostics.',
+      'If an error occurs, inspect the highlighted line, column, and snippet pointer.',
+      'Copy or download your validated YAML once all syntax errors are resolved.',
+    ],
+    interpretation: [
+      'A green status banner indicates valid YAML syntax according to the specification.',
+      'A red alert banner indicates syntax violations such as bad indentation, tab characters, or unquoted reserved characters.',
+    ],
+    limitations: [
+      'The validator verifies syntax and structural well-formedness, not custom domain schemas (such as specific Kubernetes CRDs).',
+      'Custom application-specific tags (!tag) must follow standard YAML tagging syntax.',
+    ],
+    faqs: [
+      {
+        question: 'Why does YAML reject tab characters?',
+        answer: 'The YAML specification strictly forbids literal tab characters for indentation because different editors display tabs with varying column widths.',
+      },
+      {
+        question: 'Does this tool change my YAML formatting?',
+        answer: 'No. The validator only parses and checks your input; it never rewrites, reformats, or alters your text.',
+      },
+      {
+        question: 'Can I test broken YAML to see error reporting?',
+        answer: 'Yes. Click the Sample Broken button to observe how line and column diagnostics are reported.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'yaml-to-json-converter', name: 'YAML to JSON Converter' },
+      { slug: 'json-to-yaml-converter', name: 'JSON to YAML Converter' },
+      { slug: 'markup-formatter', name: 'Markup Formatter' },
+      { slug: 'json-schema-validator', name: 'JSON Schema Validator' },
+    ],
+    relatedGuides: [],
+  },
+  'epoch-time-converter': {
+    slug: 'epoch-time-converter',
+    name: 'Epoch Time Converter – Unix Timestamp to Human Date',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert Unix timestamps to human-readable dates and dates to epoch seconds or milliseconds with timezone awareness and live clock display.',
+    longTailKeywords: [
+      'epoch time converter',
+      'unix timestamp converter',
+      'timestamp to date',
+      'date to unix timestamp',
+      'epoch milliseconds converter',
+      'convert epoch to utc',
+    ],
+    intro: [
+      'Perform bidirectional conversions between Unix epoch timestamps and human-readable calendar dates.',
+      'Support seconds, milliseconds, automatic unit detection, UTC ISO 8601 formatting, and local browser time with a live ticker.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'Unix Epoch Baseline',
+        body: 'The Unix epoch is defined as 00:00:00 UTC on 1 January 1970. Epoch seconds count the elapsed SI seconds since that instant.',
+      },
+      {
+        title: 'Unit Auto-Detection',
+        body: 'Values with 10 digits (~1.7e9) are detected as seconds, while 13-digit values (~1.7e12) are interpreted as milliseconds.',
+      },
+    ],
+    steps: [
+      'Select Epoch → Human Date to convert a numeric timestamp, or Date/Time → Epoch to convert a calendar date.',
+      'Enter the timestamp or pick a calendar date, time, and timezone assumption.',
+      'Review formatted UTC, ISO 8601, RFC 2822, and local time representations.',
+      'Copy individual timestamp formats or date strings with one click.',
+    ],
+    interpretation: [
+      'ISO 8601 strings ending in Z represent universal coordinated time (UTC).',
+      'Local time includes your system timezone offset and daylight saving time adjustments.',
+    ],
+    limitations: [
+      'Unix time does not account for leap seconds; every day is treated as having exactly 86,400 seconds.',
+      'JavaScript Date objects support dates from roughly -100,000,000 days to +100,000,000 days relative to the epoch.',
+    ],
+    faqs: [
+      {
+        question: 'What is the Year 2038 problem?',
+        answer: 'Legacy 32-bit signed integers overflow at 2,147,483,647 seconds (03:14:07 UTC on 19 January 2038). Modern 64-bit systems handle timestamps billions of years into the future.',
+      },
+      {
+        question: 'How does auto-detection distinguish seconds and milliseconds?',
+        answer: 'Timestamps with 12 or more digits are recognized as milliseconds, while 10-digit timestamps represent seconds for modern dates.',
+      },
+      {
+        question: 'Can I convert dates before 1970?',
+        answer: 'Yes. Negative epoch timestamps represent dates prior to 1 January 1970.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'unix-timestamp-converter', name: 'Unix Timestamp Converter' },
+      { slug: 'cron-next-run-calculator', name: 'Cron Next Run Calculator' },
+      { slug: 'cron-expression-generator', name: 'Cron Expression Generator & Explainer' },
+      { slug: 'cron-expression-humanizer', name: 'Cron Expression Humanizer' },
+    ],
+    relatedGuides: [],
+  },
+  'binary-to-decimal-with-steps': {
+    slug: 'binary-to-decimal-with-steps',
+    name: 'Binary to Decimal Converter with Steps – Step-by-Step Calculator',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Convert binary numbers to decimal with step-by-step mathematical explanations, powers of 2 breakdown, positional bit tables, and BigInt precision.',
+    longTailKeywords: [
+      'binary to decimal with steps',
+      'binary to decimal converter',
+      'convert binary to decimal',
+      'binary conversion calculator',
+      'binary to decimal step by step',
+      'base 2 to base 10',
+    ],
+    intro: [
+      'Convert binary numbers (base-2) into decimal values (base-10) with an educational step-by-step breakdown.',
+      'Inspect positional powers of 2, polynomial expansion formulas, bit contribution tables, and hexadecimal representations.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'Positional Notation',
+        body: 'Each binary digit d at position n (from right, 0-indexed) represents d × 2^n in base 10.',
+      },
+      {
+        title: 'Polynomial Summation',
+        body: 'The total decimal value equals the sum of all active bit weights: Value = ∑ (b_i × 2^i) for i from 0 to N-1.',
+      },
+    ],
+    steps: [
+      'Enter a binary number (e.g. 101101) or choose a sample value.',
+      'Review the evaluated decimal result computed using BigInt arbitrary-precision arithmetic.',
+      'Examine the step-by-step polynomial expansion formula and evaluated powers of 2.',
+      'Inspect the positional bit breakdown table showing the weight and contribution of each bit.',
+    ],
+    interpretation: [
+      'Bits set to 1 add their positional power of 2 (1, 2, 4, 8, 16, 32...) to the decimal total.',
+      'Bits set to 0 contribute zero to the final summation.',
+    ],
+    limitations: [
+      'Fractional binary values (e.g. 101.101) are not covered; this tool focuses on integer representations.',
+      'Inputs with thousands of bits are calculated accurately via BigInt but formulas are abbreviated for display.',
+    ],
+    faqs: [
+      {
+        question: 'How is 101101 converted to decimal?',
+        answer: '101101₂ = 1×2⁵ + 0×2⁴ + 1×2³ + 1×2² + 0×2¹ + 1×2⁰ = 32 + 0 + 8 + 4 + 0 + 1 = 45.',
+      },
+      {
+        question: 'Does this calculator handle large binary numbers?',
+        answer: 'Yes. The calculation engine uses JavaScript BigInt to prevent 53-bit floating-point precision loss.',
+      },
+      {
+        question: 'Can I include spaces or the 0b prefix in my input?',
+        answer: 'Yes. Visual separators like spaces, underscores, and standard 0b prefixes are automatically stripped.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'utf8-vs-utf16-byte-calculator', name: 'UTF-8 vs UTF-16 Byte Calculator' },
+      { slug: 'developer-utils', name: 'Developer Utilities Hub' },
+      { slug: 'web-crypto-studio', name: 'Web Crypto Studio' },
+      { slug: 'base64-encoder', name: 'Base64 Encoder & Decoder' },
+    ],
+    relatedGuides: [],
+  },
+  'ulid-generator': {
+    slug: 'ulid-generator',
+    name: 'ULID Generator & Inspector – Standards-Compliant 128-Bit IDs',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Generate standards-compliant 128-bit ULIDs, bulk generate up to 100 sortable IDs, inspect embedded millisecond timestamps, and decode Crockford Base32.',
+    longTailKeywords: [
+      'ulid generator',
+      'ulid generator online',
+      'generate ulid',
+      'ulid vs uuid',
+      'ulid decoder',
+      'bulk ulid generator',
+    ],
+    intro: [
+      'Generate Universally Unique Lexicographically Sortable Identifiers (ULID) with cryptographic randomness.',
+      'Bulk generate up to 100 sortable keys, export plain text files, and decode embedded millisecond timestamps.',
+      local,
+    ],
+    formula: [
+      {
+        title: '128-Bit Crockford Base32 Structure',
+        body: 'A ULID consists of a 48-bit UNIX timestamp (10 characters) followed by 80 bits of cryptographic randomness (16 characters).',
+      },
+      {
+        title: 'Monotonic Sequencing',
+        body: 'Multiple ULIDs created within the same millisecond increment the random payload to maintain strict lexicographical ordering.',
+      },
+    ],
+    steps: [
+      'Select the desired count (1, 5, 10, 25, 50, or 100) and click Generate New.',
+      'Copy individual ULIDs, copy all generated keys, or download a .txt file.',
+      'Switch to the Inspector tab to paste an existing ULID and extract its embedded UTC timestamp and randomness payload.',
+    ],
+    interpretation: [
+      'ULIDs sort alphabetically in chronological order of creation, preventing database index fragmentation.',
+      'The 10-character timestamp component can be converted into an exact calendar date and millisecond time.',
+    ],
+    limitations: [
+      'ULIDs are 128-bit identifiers and require 26 characters in Crockford Base32; they do not use standard UUID hyphens.',
+      'Randomness depends on client Web Crypto API availability.',
+    ],
+    faqs: [
+      {
+        question: 'How is ULID different from UUID v4?',
+        answer: 'UUID v4 is entirely random and creates index fragmentation in B-trees. ULID begins with a 48-bit timestamp, ensuring natural chronological sorting.',
+      },
+      {
+        question: 'Why does ULID use Crockford Base32?',
+        answer: 'Crockford Base32 excludes characters I, L, O, and U to prevent human transcription errors with 1 and 0, and avoids hyphenation.',
+      },
+      {
+        question: 'Can I extract the creation timestamp from a ULID?',
+        answer: 'Yes. The first 10 characters encode the millisecond Unix timestamp, which can be extracted at any time without database lookups.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'uuid-generator', name: 'UUID Generator' },
+      { slug: 'uuid-generator-validator', name: 'UUID Generator & Validator' },
+      { slug: 'jwt-decoder', name: 'JWT Decoder' },
+      { slug: 'mac-address-generator', name: 'MAC Address Generator' },
+    ],
+    relatedGuides: [],
+  },
+  'cron-expression-generator': {
+    slug: 'cron-expression-generator',
+    name: 'Cron Expression Generator & Explainer – Visual Cron Builder',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Generate, edit, and explain standard 5-field Linux cron expressions with visual builders, common presets, next 5 scheduled runs, and dialect guides.',
+    longTailKeywords: [
+      'cron generator',
+      'cron expression generator',
+      'cron expression explainer',
+      'cron schedule generator',
+      'cron expression checker',
+      'crontab generator',
+    ],
+    intro: [
+      'Build and interpret standard 5-field Unix/Linux cron schedules with a visual interface and plain-English translations.',
+      'Test schedule expressions against upcoming calendar dates, resolve syntax errors, and compare cron dialects.',
+      local,
+    ],
+    formula: [
+      {
+        title: 'Standard 5-Field Syntax',
+        body: 'Crontab schedules evaluate five positional fields: minute (0–59), hour (0–23), day of month (1–31), month (1–12), and day of week (0–7).',
+      },
+      {
+        title: 'Schedule Evaluation',
+        body: 'The parser computes the next 5 concrete execution timestamps in your browser local time zone using cron interval evaluation.',
+      },
+    ],
+    steps: [
+      'Use the visual dropdowns and presets to build a schedule, or type an expression directly into the input box.',
+      'Read the plain-English explanation generated by the engine.',
+      'Check the Next 5 Runs table to confirm upcoming execution dates in your local time zone.',
+      'Copy the normalized cron expression for your crontab, Kubernetes CronJob, or server configuration.',
+    ],
+    interpretation: [
+      'Asterisks (*) match every value in the field; step values (*/n) match every nth interval.',
+      'Comma-separated values define lists (e.g. 1,15); hyphens define inclusive ranges (e.g. 1-5).',
+    ],
+    limitations: [
+      'Standard Linux cron uses 5 fields. Six-field (Quartz/AWS) and seven-field (Quartz with year) expressions belong to separate dialects.',
+      'Local time execution respects system daylight saving transitions, which can skip or duplicate hours.',
+    ],
+    faqs: [
+      {
+        question: 'Does this generator support Quartz or AWS EventBridge cron?',
+        answer: 'This tool is focused on standard 5-field Linux/Unix crontab syntax. Six-field and seven-field expressions used in Quartz and AWS are highlighted with a dialect notice.',
+      },
+      {
+        question: 'What does 0 9 * * 1-5 mean?',
+        answer: 'At 09:00 AM, Monday through Friday.',
+      },
+      {
+        question: 'Are next run times shown in UTC or local time?',
+        answer: 'The next 5 scheduled runs are formatted using your browser local time zone.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'cron-next-run-calculator', name: 'Cron Next Run Calculator' },
+      { slug: 'cron-expression-humanizer', name: 'Cron Expression Humanizer' },
+      { slug: 'epoch-time-converter', name: 'Epoch Time Converter' },
+      { slug: 'unix-timestamp-converter', name: 'Unix Timestamp Converter' },
+    ],
+    relatedGuides: [],
+  },
 };

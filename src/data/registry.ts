@@ -2366,9 +2366,147 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'Hydration Calculator',
     heroDescription: 'Estimate daily recommended water intake based on body weight, daily exercise sweating, and environmental climate.'
+  },
+
+  // ====== NEXT DEVELOPER / CONFIG / IDENTIFIERS / CRON BATCH ======
+  {
+    slug: 'json-to-yaml-converter',
+    title: 'JSON to YAML Converter',
+    description: 'Convert JSON data to clean, formatted YAML with customizable 2-space or 4-space indentation, syntax validation, and instant browser-local processing.',
+    category: 'developer-tools',
+    keywords: [
+      'json to yaml converter',
+      'convert json to yaml',
+      'json2yaml',
+      'json to yaml online',
+      'json to yml'
+    ],
+    heroTitle: 'JSON to YAML Converter – Convert JSON to YAML Online',
+    heroDescription: 'Convert JSON to valid YAML documents with customizable indentation, real-time syntax checking, and instant download or copy without uploading your data.'
+  },
+  {
+    slug: 'yaml-to-json-converter',
+    title: 'YAML to JSON Converter',
+    description: 'Convert YAML configuration files to formatted, valid JSON with pretty-print spacing options, schema safety, and browser-local processing.',
+    category: 'developer-tools',
+    keywords: [
+      'yaml to json converter',
+      'convert yaml to json',
+      'yaml2json',
+      'yaml to json online',
+      'yml to json'
+    ],
+    heroTitle: 'YAML to JSON Converter – Convert YAML to JSON Online',
+    heroDescription: 'Parse YAML documents and generate clean, indented JSON with error detection and download options privately in your web browser.'
+  },
+  {
+    slug: 'json-to-toml-converter',
+    title: 'JSON to TOML Converter',
+    description: 'Convert JSON objects into valid TOML 1.0 configuration files with safe handling of tables, arrays, strings, and types directly in your browser.',
+    category: 'developer-tools',
+    keywords: [
+      'json to toml converter',
+      'convert json to toml',
+      'json2toml',
+      'json to toml online',
+      'toml converter'
+    ],
+    heroTitle: 'JSON to TOML Converter – Convert JSON to TOML Online',
+    heroDescription: 'Generate clean TOML configuration tables from JSON data with syntax validation and file download while preserving data types.'
+  },
+  {
+    slug: 'toml-to-json-converter',
+    title: 'TOML to JSON Converter',
+    description: 'Convert TOML configuration tables and arrays to formatted JSON with customizable indentation, syntax error detection, and local processing.',
+    category: 'developer-tools',
+    keywords: [
+      'toml to json converter',
+      'convert toml to json',
+      'toml2json',
+      'toml to json online',
+      'toml parser'
+    ],
+    heroTitle: 'TOML to JSON Converter – Convert TOML to JSON Online',
+    heroDescription: 'Parse TOML files and convert them into pretty-printed JSON documents with error checking and instant download without server uploads.'
+  },
+  {
+    slug: 'yaml-validator',
+    title: 'YAML Validator',
+    description: 'Validate YAML syntax, detect indentation errors, inspect document structure, and resolve parsing issues locally in your browser.',
+    category: 'developer-tools',
+    keywords: [
+      'yaml validator',
+      'yaml syntax checker',
+      'validate yaml online',
+      'yaml checker',
+      'yaml linter online'
+    ],
+    heroTitle: 'YAML Validator – Check & Validate YAML Syntax Online',
+    heroDescription: 'Validate YAML files with exact line-and-column error highlighting, structure statistics, and sample templates without sending data to a server.'
+  },
+  {
+    slug: 'epoch-time-converter',
+    title: 'Unix / Epoch Timestamp Converter',
+    description: 'Convert Unix timestamps to human-readable dates and dates to epoch seconds or milliseconds with timezone awareness and live clock display.',
+    category: 'developer-tools',
+    keywords: [
+      'epoch time converter',
+      'unix timestamp converter',
+      'timestamp to date',
+      'date to unix timestamp',
+      'epoch milliseconds converter'
+    ],
+    heroTitle: 'Epoch Time Converter – Unix Timestamp to Human Date',
+    heroDescription: 'Bidirectional epoch converter supporting seconds, milliseconds, automatic unit detection, UTC, and local time with a live Unix timestamp tracker.'
+  },
+  {
+    slug: 'binary-to-decimal-with-steps',
+    title: 'Binary to Decimal Converter with Steps',
+    description: 'Convert binary numbers to decimal with step-by-step mathematical explanations, powers of 2 breakdown, positional bit tables, and BigInt precision.',
+    category: 'developer-tools',
+    keywords: [
+      'binary to decimal with steps',
+      'binary to decimal converter',
+      'convert binary to decimal',
+      'binary conversion calculator',
+      'binary to decimal step by step'
+    ],
+    heroTitle: 'Binary to Decimal Converter with Steps – Step-by-Step Calculator',
+    heroDescription: 'Educational binary-to-decimal calculator showing the full positional power summation formula, evaluated powers of 2, and bit contribution table.'
+  },
+  {
+    slug: 'ulid-generator',
+    title: 'ULID Generator',
+    description: 'Generate standards-compliant 128-bit ULIDs, bulk generate up to 100 sortable IDs, inspect embedded millisecond timestamps, and decode Crockford Base32.',
+    category: 'developer-tools',
+    keywords: [
+      'ulid generator',
+      'ulid generator online',
+      'generate ulid',
+      'ulid vs uuid',
+      'ulid decoder'
+    ],
+    heroTitle: 'ULID Generator & Inspector – Standards-Compliant 128-Bit IDs',
+    heroDescription: 'Create lexicographically sortable, URL-friendly ULIDs with Web Crypto randomness, bulk export, and millisecond timestamp inspection.'
+  },
+  {
+    slug: 'cron-expression-generator',
+    title: 'Cron Expression Generator & Explainer',
+    description: 'Generate, edit, and explain standard 5-field Linux cron expressions with visual builders, common presets, next 5 scheduled runs, and dialect guides.',
+    category: 'developer-tools',
+    keywords: [
+      'cron generator',
+      'cron expression generator',
+      'cron expression explainer',
+      'cron schedule generator',
+      'cron expression checker'
+    ],
+    heroTitle: 'Cron Expression Generator & Explainer – Visual Cron Builder',
+    heroDescription: 'Build standard 5-field cron schedules visually, preview plain-English descriptions, inspect upcoming run dates, and validate syntax safely.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,
   heroTitle: tool.heroTitle?.trim() || tool.title,
   heroDescription: tool.heroDescription?.trim() || tool.description,
 }));
+

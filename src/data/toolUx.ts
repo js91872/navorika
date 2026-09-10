@@ -435,6 +435,51 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'running-pace-calculator': 'Calculate race pace and splits', 'calorie-calculator': 'Calculate daily energy requirements' },
   },
+  'json-to-yaml-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-txt'],
+    workflowLabels: { 'yaml-to-json-converter': 'Convert YAML back to JSON', 'json-to-toml-converter': 'Convert JSON to TOML', 'yaml-validator': 'Validate YAML syntax' },
+  },
+  'yaml-to-json-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-json'],
+    workflowLabels: { 'json-to-yaml-converter': 'Convert JSON to YAML', 'toml-to-json-converter': 'Convert TOML to JSON', 'yaml-validator': 'Validate YAML syntax' },
+  },
+  'json-to-toml-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-txt'],
+    workflowLabels: { 'toml-to-json-converter': 'Convert TOML to JSON', 'json-to-yaml-converter': 'Convert JSON to YAML', 'json-formatter': 'Format JSON data' },
+  },
+  'toml-to-json-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-json'],
+    workflowLabels: { 'json-to-toml-converter': 'Convert JSON to TOML', 'yaml-to-json-converter': 'Convert YAML to JSON', 'json-formatter': 'Format JSON data' },
+  },
+  'yaml-validator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-txt'],
+    workflowLabels: { 'yaml-to-json-converter': 'Convert YAML to JSON', 'json-to-yaml-converter': 'Convert JSON to YAML', 'markup-formatter': 'Format markup code' },
+  },
+  'epoch-time-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'unix-timestamp-converter': 'Quick timestamp viewer', 'cron-next-run-calculator': 'Check upcoming cron execution times', 'cron-expression-generator': 'Generate cron schedule expressions' },
+  },
+  'binary-to-decimal-with-steps': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'copy-summary'],
+    workflowLabels: { 'utf8-vs-utf16-byte-calculator': 'Compare character encodings', 'developer-utils': 'Developer utilities suite', 'web-crypto-studio': 'Crypto studio & hashing' },
+  },
+  'ulid-generator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-txt'],
+    workflowLabels: { 'uuid-generator': 'Generate standard UUIDs', 'uuid-generator-validator': 'Validate and inspect UUID versions', 'jwt-decoder': 'Decode JSON Web Tokens' },
+  },
+  'cron-expression-generator': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'cron-expression-humanizer': 'Translate cron to plain English', 'cron-next-run-calculator': 'Calculate cron time zones and run dates', 'epoch-time-converter': 'Convert Unix timestamps' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {
