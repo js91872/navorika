@@ -14,4 +14,13 @@ export const guideRelations: Record<string, string[]> = {
   'json-formatting-guide': ['jwt-decoding-guide', 'base64-encoding-guide'],
   'heart-rate-zones-guide': ['calorie-deficit-guide', 'bmr-tdee-guide'],
   'how-to-calculate-emi': ['how-to-calculate-sip-returns', 'ppf-vs-fd-comparison'],
+  'word-to-cdr-formatting-guide': ['pdf-to-cdr-editing-guide', 'preserve-fonts-coreldraw-conversion', 'best-coreldraw-print-format'],
+  'pdf-to-cdr-editing-guide': ['word-to-cdr-formatting-guide', 'svg-vs-cdr-guide', 'open-cdr-without-coreldraw'],
+  'raster-image-to-cdr-guide': ['svg-vs-cdr-guide', 'open-cdr-without-coreldraw', 'best-coreldraw-print-format'],
+  'svg-vs-cdr-guide': ['pdf-to-cdr-editing-guide', 'raster-image-to-cdr-guide', 'best-coreldraw-print-format'],
+  'open-cdr-without-coreldraw': ['newer-cdr-older-coreldraw', 'pdf-to-cdr-editing-guide', 'svg-vs-cdr-guide'],
+  'newer-cdr-older-coreldraw': ['open-cdr-without-coreldraw', 'best-coreldraw-print-format', 'preserve-fonts-coreldraw-conversion'],
+  'best-coreldraw-print-format': ['preserve-fonts-coreldraw-conversion', 'svg-vs-cdr-guide', 'newer-cdr-older-coreldraw'],
+  'preserve-fonts-coreldraw-conversion': ['word-to-cdr-formatting-guide', 'pdf-to-cdr-editing-guide', 'best-coreldraw-print-format'],
 };
+
