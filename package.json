@@ -16,9 +16,10 @@
     "test:coreldraw": "tsx --test src/lib/converters/coreldraw/coreldraw.test.ts",
     "test:step-3dpdf": "tsx --test src/lib/converters/step-3dpdf/step-3dpdf.test.ts",
     "test:shared-tools": "tsx --test src/lib/converters/config-data/config-data.test.ts src/lib/time/epoch.test.ts src/lib/number-systems/binary-decimal.test.ts src/lib/identifiers/ulid.test.ts src/lib/cron/cron-explainer.test.ts",
+    "test:image-tools": "tsx --test src/lib/image/base64/base64.test.ts src/lib/image/compression/compression.test.ts",
     "build:step-to-obj": "./scripts/build-step-to-obj.sh",
     "test:ux": "node --experimental-strip-types scripts/run-ux-tests.mjs",
-    "test": "npm run validate:architecture && npm run typecheck && npm run test:ux && npm run test:calculations && npm run test:shared-tools",
+    "test": "npm run validate:architecture && npm run typecheck && npm run test:ux && npm run test:calculations && npm run test:shared-tools && npm run test:image-tools",
     "typecheck": "tsc --noEmit",
     "validate:architecture": "node scripts/validate-architecture.mjs",
     "check": "npm run validate:architecture && npm run typecheck && npm run lint:baseline && npm run build"

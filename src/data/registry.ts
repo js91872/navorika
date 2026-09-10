@@ -2503,6 +2503,130 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'Cron Expression Generator & Explainer – Visual Cron Builder',
     heroDescription: 'Build standard 5-field cron schedules visually, preview plain-English descriptions, inspect upcoming run dates, and validate syntax safely.'
+  },
+  {
+    slug: 'image-to-base64-converter',
+    title: 'Image to Base64 Converter',
+    description: 'Convert JPG, PNG, WebP, GIF, and SVG images to plain Base64 strings or HTML/CSS Data URLs locally in your browser with zero server uploads.',
+    category: 'image-tools',
+    keywords: [
+      'image to base64 converter',
+      'image to base64',
+      'convert image to base64',
+      'jpg to base64',
+      'png to base64',
+      'image base64 encoder',
+      'image data url generator'
+    ],
+    heroTitle: 'Image to Base64 Converter – Convert Images to Data URLs Online',
+    heroDescription: 'Encode JPG, PNG, WebP, GIF, and SVG images to Base64 and Data URLs entirely in your browser with instant clipboard copy and .txt download.'
+  },
+  {
+    slug: 'base64-to-image-converter',
+    title: 'Base64 to Image Converter',
+    description: 'Decode Base64 strings and Data URLs into downloadable PNG, JPG, WebP, GIF, or SVG images with live preview and format auto-detection.',
+    category: 'image-tools',
+    keywords: [
+      'base64 to image',
+      'base64 to image converter',
+      'decode base64 image',
+      'base64 to jpg',
+      'base64 to png',
+      'data url to image',
+      'base64 image decoder'
+    ],
+    heroTitle: 'Base64 to Image Converter – Decode Data URLs to Images',
+    heroDescription: 'Transform raw Base64 strings and Data URLs back into visual image files with magic-byte format detection, dimension checks, and safe SVG handling.'
+  },
+  {
+    slug: 'compress-image-to-20kb',
+    title: 'Compress Image to 20KB',
+    description: 'Compress JPG, PNG, and WebP images to 20KB or less locally for government forms, digital signatures, and strict portal file limits.',
+    category: 'image-tools',
+    keywords: [
+      'compress image to 20kb',
+      'reduce image size to 20kb',
+      'compress photo to 20kb online',
+      'image compressor 20kb',
+      'resize image to 20kb'
+    ],
+    heroTitle: 'Compress Image to 20KB – Reduce Image File Size to 20KB or Less',
+    heroDescription: 'Deterministic browser-local compression targeting 20 KB or less for official portals, signature boxes, and application forms with zero upload.'
+  },
+  {
+    slug: 'compress-image-to-50kb',
+    title: 'Compress Image to 50KB',
+    description: 'Compress passport photos, ID scans, and resume portraits to 50KB or less directly in your browser with binary quality optimization.',
+    category: 'image-tools',
+    keywords: [
+      'compress image to 50kb',
+      'reduce image size to 50kb',
+      'compress photo to 50kb online',
+      'image compressor 50kb',
+      'passport photo 50kb'
+    ],
+    heroTitle: 'Compress Image to 50KB – Reduce Image File Size to 50KB or Less',
+    heroDescription: 'Target 50 KB or less for passport applications, visa uploads, and exam registration forms with automatic quality search and aspect ratio preservation.'
+  },
+  {
+    slug: 'compress-image-to-100kb',
+    title: 'Compress Image to 100KB',
+    description: 'Compress images to 100KB or less for online forms, document uploads, and fast mobile web publishing with binary quality search.',
+    category: 'image-tools',
+    keywords: [
+      'compress image to 100kb',
+      'reduce image to 100kb',
+      'image compressor 100kb',
+      'compress photo to 100kb online',
+      'resize image to 100kb'
+    ],
+    heroTitle: 'Compress Image to 100KB – Reduce Image File Size to 100KB or Less',
+    heroDescription: 'Universal 100 KB target compressor optimizing JPEG, WebP, and PNG images for web publishing, email attachments, and government portals.'
+  },
+  {
+    slug: 'compress-image-to-200kb',
+    title: 'Compress Image to 200KB',
+    description: 'Compress high-resolution photos and banners to 200KB or less while preserving clarity, color balance, and aspect ratio.',
+    category: 'image-tools',
+    keywords: [
+      'compress image to 200kb',
+      'reduce image to 200kb',
+      'image compressor 200kb',
+      'compress photo to 200kb online',
+      'compress photo 200kb'
+    ],
+    heroTitle: 'Compress Image to 200KB – Reduce Image File Size to 200KB or Less',
+    heroDescription: 'High-clarity 200 KB compression for hero images, product showcases, and desktop banners with iterative quality convergence.'
+  },
+  {
+    slug: 'compress-jpg-to-100kb',
+    title: 'Compress JPG to 100KB',
+    description: 'Compress JPEG photos to 100KB or less with optimal visual quality, custom dimensional scaling, and browser-local processing.',
+    category: 'image-tools',
+    keywords: [
+      'compress jpg to 100kb',
+      'reduce jpg to 100kb',
+      'jpg compressor 100kb',
+      'compress jpeg to 100kb',
+      'reduce jpeg size to 100kb'
+    ],
+    heroTitle: 'Compress JPG to 100KB – Reduce JPEG File Size to 100KB or Less',
+    heroDescription: 'Dedicated JPEG optimizer targeting 100 KB with binary quality search, EXIF orientation handling, and side-by-side dimension comparison.'
+  },
+  {
+    slug: 'compress-png-to-100kb',
+    title: 'Compress PNG to 100KB',
+    description: 'Compress PNG files to 100KB or less through lossless re-encoding, dimensional downscaling, or optional WebP format conversion.',
+    category: 'image-tools',
+    keywords: [
+      'compress png to 100kb',
+      'reduce png to 100kb',
+      'png compressor 100kb',
+      'png size reducer 100kb',
+      'compress png online'
+    ],
+    heroTitle: 'Compress PNG to 100KB – Reduce PNG File Size to 100KB or Less',
+    heroDescription: 'Truthful PNG compressor offering lossless dimension scaling or transparent WebP conversion to meet strict 100 KB file limits.'
   }
 ] satisfies Tool[]).map((tool) => ({
   ...tool,

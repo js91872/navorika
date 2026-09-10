@@ -746,4 +746,360 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: ['image-compression-guide', 'image-formats-guide'],
   },
+  'image-to-base64-converter': {
+    slug: 'image-to-base64-converter',
+    name: 'Image to Base64 Converter – Data URL Generator',
+    category: 'Image Tools',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Convert JPG, PNG, WebP, GIF, and SVG images to plain Base64 strings or HTML/CSS Data URLs locally in your browser with zero server uploads.',
+    longTailKeywords: [
+      'image to base64 converter',
+      'image to base64 online',
+      'convert image to data url',
+      'jpg to base64',
+      'png to base64',
+      'image base64 encoder',
+      'image data url generator'
+    ],
+    intro: [
+      'Convert raster and vector images into RFC 2397 Data URLs or raw Base64 character strings directly inside your browser.',
+      privacy,
+    ],
+    steps: [
+      'Select or drag and drop a JPG, PNG, WebP, GIF, or SVG image file.',
+      'Choose between full Data URL format or raw Base64 string output.',
+      'Optionally toggle RFC 2045 76-character line wrapping for email or documentation embedding.',
+      'Copy the generated Base64 payload or download it as a .txt file.',
+    ],
+    interpretation: [
+      'Base64 encoding expands raw binary data by approximately 33% due to 6-bit chunk mapping.',
+      'Data URLs can be embedded directly into HTML <img> tags or CSS background-image rules without additional HTTP requests.',
+    ],
+    limitations: [
+      'Base64 strings for large photos can reach several megabytes, which may bloat HTML or CSS payloads.',
+      'Browser memory limits input file uploads to 25 MB.',
+    ],
+    faqs: [
+      { question: 'What is the difference between Base64 and Data URL?', answer: 'A raw Base64 string contains only the encoded binary characters. A Data URL includes the MIME prefix (e.g. data:image/png;base64,) allowing browsers to render it directly as an image source.' },
+      { question: 'Are my images uploaded to any server?', answer: 'No. All encoding runs 100% locally in your web browser memory. Your files never leave your computer.' },
+      { question: 'Can I use the Base64 output in HTML and CSS?', answer: 'Yes. You can paste Data URLs into <img src="data:image/..."> or in CSS as background-image: url("data:image/...").' },
+    ],
+    relatedTools: [
+      { slug: 'base64-to-image-converter', name: 'Base64 to Image Converter' },
+      { slug: 'image-converter', name: 'Image Converter' },
+      { slug: 'svg-to-png', name: 'SVG to PNG' },
+      { slug: 'resize-image', name: 'Resize Image' },
+    ],
+    relatedGuides: ['base64-encoding-guide', 'image-formats-guide'],
+  },
+  'base64-to-image-converter': {
+    slug: 'base64-to-image-converter',
+    name: 'Base64 to Image Converter – Decode Data URL to File',
+    category: 'Image Tools',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Decode Base64 strings and Data URLs into downloadable PNG, JPG, WebP, GIF, or SVG images with live preview and format auto-detection.',
+    longTailKeywords: [
+      'base64 to image',
+      'base64 to image converter',
+      'decode base64 image',
+      'base64 to jpg',
+      'base64 to png',
+      'data url to image',
+      'base64 image decoder'
+    ],
+    intro: [
+      'Decode Base64 character strings and RFC 2397 Data URLs back into viewable and downloadable image files entirely in your browser.',
+      privacy,
+    ],
+    steps: [
+      'Paste a raw Base64 string or full Data URL into the input area.',
+      'The converter automatically strips formatting whitespace and detects the underlying image MIME format.',
+      'Preview the decoded image and review pixel dimensions and byte size.',
+      'Download the image file with the correct extension (.png, .jpg, .webp, .gif, or .svg).',
+    ],
+    interpretation: [
+      'Magic byte sniffing inspects the first few bytes to determine whether the payload is PNG, JPEG, GIF, WebP, or SVG.',
+      'Active scripts in decoded SVG vectors are detected and sandboxed to prevent script execution.',
+    ],
+    limitations: [
+      'Corrupted or truncated Base64 strings missing essential byte segments cannot be rendered.',
+      'Decoded file size will be roughly 25-33% smaller than the Base64 character string length.',
+    ],
+    faqs: [
+      { question: 'Do I need to include the data:image prefix?', answer: 'No. You can paste either a full Data URL or a raw Base64 string. The tool will automatically inspect the magic bytes to determine the format.' },
+      { question: 'Can I decode SVG images safely?', answer: 'Yes. SVG content is scanned for dangerous scripts and entity expansions. If active code is detected, interactive DOM rendering is disabled for security while safe download remains available.' },
+      { question: 'Is processing performed on a server?', answer: 'No. Decoding happens entirely within your web browser using client-side JavaScript.' },
+    ],
+    relatedTools: [
+      { slug: 'image-to-base64-converter', name: 'Image to Base64 Converter' },
+      { slug: 'image-metadata-viewer', name: 'Image Metadata Viewer' },
+      { slug: 'compress-image', name: 'Compress Image' },
+      { slug: 'image-converter', name: 'Image Converter' },
+    ],
+    relatedGuides: ['base64-encoding-guide', 'image-formats-guide'],
+  },
+  'compress-image-to-20kb': {
+    slug: 'compress-image-to-20kb',
+    name: 'Compress Image to 20KB – Target Size Image Reducer',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Compress JPG, PNG, and WebP images to 20KB or less locally for government forms, digital signatures, and strict portal file limits.',
+    longTailKeywords: [
+      'compress image to 20kb',
+      'reduce image size to 20kb',
+      'compress photo to 20kb online',
+      'image compressor 20kb',
+      'resize image to 20kb'
+    ],
+    intro: [
+      'Target strict 20 KB file size limits for online job applications, digital signature boxes, and government service portals.',
+      privacy,
+    ],
+    steps: [
+      'Upload your JPG, PNG, or WebP photo or signature image.',
+      'The tool optimizes encoding quality and proportionally scales dimensions to stay under 20 KB.',
+      'Compare the before and after file size, dimensions, and visual clarity.',
+      'Download your optimized 20 KB image immediately.',
+    ],
+    interpretation: [
+      '20 KB is an ultra-compact file budget typically required for passport portals, civil service exams, and biometric signatures.',
+      'When an image is multiple megabytes, reaching 20 KB requires both lossy encoding and proportional dimensional scaling.',
+    ],
+    limitations: [
+      'Photos compressed to 20 KB exhibit visible compression artifacts if displayed at high resolutions.',
+      'Original camera EXIF metadata is removed during canvas re-encoding.',
+    ],
+    faqs: [
+      { question: 'Will my image be exactly 20 KB?', answer: 'The compressor targets 20 KB or less. It finds the highest visual quality that stays strictly within the 20,480-byte ceiling.' },
+      { question: 'Can large photos be reduced to 20 KB?', answer: 'Yes. The engine uses binary quality search and proportional downscaling to safely reach 20 KB without distorting aspect ratios.' },
+      { question: 'Is my photo uploaded to your servers?', answer: 'No. All compression is executed entirely inside your browser canvas.' },
+    ],
+    relatedTools: [
+      { slug: 'compress-image-to-50kb', name: 'Compress Image to 50KB' },
+      { slug: 'compress-image-to-100kb', name: 'Compress Image to 100KB' },
+      { slug: 'id-photo-maker', name: 'ID Photo Maker' },
+      { slug: 'resize-image', name: 'Resize Image' },
+    ],
+    relatedGuides: ['image-compression-guide', 'how-to-resize-images'],
+  },
+  'compress-image-to-50kb': {
+    slug: 'compress-image-to-50kb',
+    name: 'Compress Image to 50KB – Passport & ID Photo Reducer',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Compress passport photos, ID scans, and resume portraits to 50KB or less directly in your browser without uploading.',
+    longTailKeywords: [
+      'compress image to 50kb',
+      'reduce image size to 50kb',
+      'compress photo to 50kb online',
+      'image compressor 50kb',
+      'passport photo 50kb'
+    ],
+    intro: [
+      'Reduce photos and scanned identification documents to 50 KB or less for visa portals, university applications, and government forms.',
+      privacy,
+    ],
+    steps: [
+      'Choose a JPG, PNG, or WebP portrait or ID scan.',
+      'Review the 50 KB target preset and click Compress.',
+      'Our binary search engine determines the optimal compression quality under 50 KB.',
+      'Download your compliant image.',
+    ],
+    interpretation: [
+      '50 KB is the standard upper threshold for passport photos, academic entrance exams, and consular portals worldwide.',
+      'Preserves essential facial features and color tones while eliminating unnecessary image weight.',
+    ],
+    limitations: [
+      'High-resolution images above 4000 pixels wide are proportionally scaled down to prevent browser memory spikes.',
+      'Original camera EXIF tags are stripped during canvas re-encoding.',
+    ],
+    faqs: [
+      { question: 'Is 50 KB suitable for passport photos?', answer: 'Yes. Most government and visa application systems mandate photos between 20 KB and 50 KB.' },
+      { question: 'Does it change photo proportions?', answer: 'No. The compression algorithm strictly preserves the original aspect ratio.' },
+      { question: 'Can I preserve original dimensions?', answer: 'Yes. You can toggle the preserve dimensions option if the portal requires specific pixel dimensions.' },
+    ],
+    relatedTools: [
+      { slug: 'compress-image-to-20kb', name: 'Compress Image to 20KB' },
+      { slug: 'compress-image-to-100kb', name: 'Compress Image to 100KB' },
+      { slug: 'id-photo-maker', name: 'ID Photo Maker' },
+      { slug: 'change-image-resolution', name: 'Change Image Resolution' },
+    ],
+    relatedGuides: ['image-compression-guide', 'how-to-resize-images'],
+  },
+  'compress-image-to-100kb': {
+    slug: 'compress-image-to-100kb',
+    name: 'Compress Image to 100KB – Universal Image Optimizer',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Compress images to 100KB or less for online forms, document uploads, and fast mobile web publishing with binary quality search.',
+    longTailKeywords: [
+      'compress image to 100kb',
+      'reduce image to 100kb',
+      'image compressor 100kb',
+      'compress photo to 100kb online',
+      'resize image to 100kb'
+    ],
+    intro: [
+      'Meet the 100 KB ceiling commonly enforced by web content management systems, email attachment filters, and online form portals.',
+      privacy,
+    ],
+    steps: [
+      'Select an image (JPG, PNG, or WebP).',
+      'The engine runs a multi-pass binary search to maximize quality right up to 100 KB.',
+      'Inspect the preview and check the achieved byte count.',
+      'Download the optimized image file.',
+    ],
+    interpretation: [
+      '100 KB provides an ideal balance of visual fidelity and bandwidth efficiency for web publishing.',
+      'Images compressed to 100 KB load nearly instantaneously across mobile 4G/5G connections.',
+    ],
+    limitations: [
+      'PNG images with high color variance may require dimensional downscaling or WebP conversion to reach 100 KB.',
+      'Animations are not supported.',
+    ],
+    faqs: [
+      { question: 'Why is 100 KB a popular limit?', answer: 'Many portals, blogs, and email clients use 100 KB as a threshold to ensure fast loading and avoid attachment limits.' },
+      { question: 'Will quality degrade noticeably?', answer: 'At 100 KB, standard web images retain excellent visual clarity with minimal perceptible compression.' },
+      { question: 'Is processing private?', answer: 'Yes. Processing runs entirely in your local browser without external network requests.' },
+    ],
+    relatedTools: [
+      { slug: 'compress-image-to-50kb', name: 'Compress Image to 50KB' },
+      { slug: 'compress-image-to-200kb', name: 'Compress Image to 200KB' },
+      { slug: 'compress-jpg-to-100kb', name: 'Compress JPG to 100KB' },
+      { slug: 'compress-png-to-100kb', name: 'Compress PNG to 100KB' },
+    ],
+    relatedGuides: ['image-compression-guide', 'image-formats-guide'],
+  },
+  'compress-image-to-200kb': {
+    slug: 'compress-image-to-200kb',
+    name: 'Compress Image to 200KB – High Quality Image Reducer',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Compress high-resolution photos and banners to 200KB or less while preserving clarity, color balance, and aspect ratio.',
+    longTailKeywords: [
+      'compress image to 200kb',
+      'reduce image to 200kb',
+      'image compressor 200kb',
+      'compress photo to 200kb online',
+      'compress photo 200kb'
+    ],
+    intro: [
+      'Optimize rich hero images, portfolio photography, and e-commerce banners to under 200 KB without perceptible visual degradation.',
+      privacy,
+    ],
+    steps: [
+      'Upload your high-resolution image.',
+      'The 200 KB target preset allows higher encoding quality (up to 94%) and minimal dimension downscaling.',
+      'Review the resulting image preview and size reduction percentage.',
+      'Download the ready-to-publish image.',
+    ],
+    interpretation: [
+      '200 KB is the sweet spot for desktop hero images and e-commerce product zooms requiring crisp textures.',
+      'Allows preserving 1080p or 1440p dimensions while cutting 70-90% of unoptimized camera file weight.',
+    ],
+    limitations: [
+      'Does not generate responsive srcset variants; creates a single optimized file.',
+      'Color profiles (ICC) are normalized to standard sRGB.',
+    ],
+    faqs: [
+      { question: 'When should I use 200 KB instead of 100 KB?', answer: 'Use 200 KB for large desktop hero banners, portfolio photography, and product catalogs where fine textures matter.' },
+      { question: 'Can 4K camera photos reach 200 KB?', answer: 'Yes. The optimizer applies lossy compression and gentle scaling if needed to fit under 200 KB.' },
+      { question: 'Are files sent to any cloud server?', answer: 'No. All operations run directly in your browser.' },
+    ],
+    relatedTools: [
+      { slug: 'compress-image-to-100kb', name: 'Compress Image to 100KB' },
+      { slug: 'resize-image', name: 'Resize Image' },
+      { slug: 'compress-image', name: 'Compress Image' },
+      { slug: 'image-converter', name: 'Image Converter' },
+    ],
+    relatedGuides: ['image-compression-guide', 'how-to-resize-images'],
+  },
+  'compress-jpg-to-100kb': {
+    slug: 'compress-jpg-to-100kb',
+    name: 'Compress JPG to 100KB – JPEG Size Optimizer',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Compress JPEG photos to 100KB or less with optimal visual quality, custom dimensional scaling, and browser-local processing.',
+    longTailKeywords: [
+      'compress jpg to 100kb',
+      'reduce jpg to 100kb',
+      'jpg compressor 100kb',
+      'compress jpeg to 100kb',
+      'reduce jpeg size to 100kb'
+    ],
+    intro: [
+      'Dedicated JPEG optimizer engineered specifically to compress JPG and JPEG photos down to 100 KB or less.',
+      privacy,
+    ],
+    steps: [
+      'Upload a JPG or JPEG photo.',
+      'Our engine computes the highest JPEG quality level that fits strictly within 100 KB.',
+      'Review the selected JPEG quality rating, pixel dimensions, and byte size.',
+      'Download your optimized JPEG.',
+    ],
+    interpretation: [
+      'JPEG uses discrete cosine transform (DCT) lossy compression, which is highly responsive to quality fine-tuning.',
+      'The algorithm binary-searches between 12% and 94% quality to find the exact threshold under 100 KB.',
+    ],
+    limitations: [
+      'JPEG does not support alpha transparency; transparent areas in converted images are filled white.',
+      'Progressive JPEG encoding depends on browser canvas implementation.',
+    ],
+    faqs: [
+      { question: 'What happens if a photo cannot reach 100 KB at minimum quality?', answer: 'If quality reduction alone cannot achieve 100 KB, the optimizer proportionally scales dimensions down until the file fits.' },
+      { question: 'Is EXIF metadata preserved?', answer: 'Canvas re-encoding strips EXIF tags, which also helps reduce unnecessary file size.' },
+      { question: 'Is there an upload limit?', answer: 'The browser safety ceiling is 25 MB per image.' },
+    ],
+    relatedTools: [
+      { slug: 'compress-image-to-100kb', name: 'Compress Image to 100KB' },
+      { slug: 'compress-png-to-100kb', name: 'Compress PNG to 100KB' },
+      { slug: 'compress-jpg', name: 'Compress JPG' },
+      { slug: 'convert-jpg-to-webp', name: 'Convert JPG to WebP' },
+    ],
+    relatedGuides: ['image-compression-guide', 'image-formats-guide'],
+  },
+  'compress-png-to-100kb': {
+    slug: 'compress-png-to-100kb',
+    name: 'Compress PNG to 100KB – Transparent & Lossless Reducer',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Compress PNG files to 100KB or less through lossless re-encoding, dimensional downscaling, or optional WebP format conversion.',
+    longTailKeywords: [
+      'compress png to 100kb',
+      'reduce png to 100kb',
+      'png compressor 100kb',
+      'png size reducer 100kb',
+      'compress png online'
+    ],
+    intro: [
+      'Compress PNG graphics to 100 KB or less with transparent choices: preserve lossless PNG format or convert to modern WebP.',
+      privacy,
+    ],
+    steps: [
+      'Select a PNG image with or without transparency.',
+      'Choose Mode A (Preserve PNG) or Mode B (Smaller File via WebP).',
+      'The engine re-encodes the image and downscales dimensions only if necessary to stay under 100 KB.',
+      'Download your 100 KB image.',
+    ],
+    interpretation: [
+      'Canvas PNG encoding is lossless, meaning quality sliders have no effect on raw PNG byte size.',
+      'Mode A adjusts pixel dimensions to hit 100 KB losslessly, while Mode B uses lossy WebP to preserve transparency at full dimensions.',
+    ],
+    limitations: [
+      'Complex PNG screenshots with text may lose sharpness if dimensional downscaling is required in Mode A.',
+      'Color quantization (8-bit indexed PNG) is not executed in browser canvas.',
+    ],
+    faqs: [
+      { question: 'Why cannot PNG be compressed with a quality slider?', answer: 'PNG is a strictly lossless compression format. HTML5 Canvas ignores quality arguments for image/png. File size can only be reduced by downsizing dimensions or converting to WebP.' },
+      { question: 'Does Mode B keep transparency?', answer: 'Yes. When converting to WebP in Mode B, full alpha transparency is preserved.' },
+      { question: 'Are files processed locally?', answer: 'Yes. Processing runs entirely on your device with no server upload.' },
+    ],
+    relatedTools: [
+      { slug: 'compress-image-to-100kb', name: 'Compress Image to 100KB' },
+      { slug: 'compress-jpg-to-100kb', name: 'Compress JPG to 100KB' },
+      { slug: 'convert-png-to-webp', name: 'Convert PNG to WebP' },
+      { slug: 'compress-png', name: 'Compress PNG' },
+    ],
+    relatedGuides: ['image-compression-guide', 'image-formats-guide'],
+  },
 };

@@ -480,6 +480,46 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-result'],
     workflowLabels: { 'cron-expression-humanizer': 'Translate cron to plain English', 'cron-next-run-calculator': 'Calculate cron time zones and run dates', 'epoch-time-converter': 'Convert Unix timestamps' },
   },
+  'image-to-base64-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-txt'],
+    workflowLabels: { 'base64-to-image-converter': 'Decode Base64 back to image', 'image-converter': 'Convert image formats', 'resize-image': 'Resize image dimensions' },
+  },
+  'base64-to-image-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'image-to-base64-converter': 'Encode image to Base64', 'image-metadata-viewer': 'Inspect image dimensions & properties', 'compress-image': 'Compress decoded image' },
+  },
+  'compress-image-to-20kb': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'compress-image-to-50kb': 'Compress image to 50KB', 'compress-image-to-100kb': 'Compress image to 100KB', 'id-photo-maker': 'Prepare passport and ID photos' },
+  },
+  'compress-image-to-50kb': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'compress-image-to-20kb': 'Compress image to 20KB', 'compress-image-to-100kb': 'Compress image to 100KB', 'id-photo-maker': 'Prepare passport and ID photos' },
+  },
+  'compress-image-to-100kb': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'compress-image-to-50kb': 'Compress image to 50KB', 'compress-image-to-200kb': 'Compress image to 200KB', 'compress-jpg-to-100kb': 'Compress JPG to 100KB' },
+  },
+  'compress-image-to-200kb': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'compress-image-to-100kb': 'Compress image to 100KB', 'resize-image': 'Resize image dimensions', 'compress-image': 'Adjust compression quality' },
+  },
+  'compress-jpg-to-100kb': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'compress-image-to-100kb': 'Compress any image to 100KB', 'compress-png-to-100kb': 'Compress PNG to 100KB', 'compress-jpg': 'Manual JPEG quality slider' },
+  },
+  'compress-png-to-100kb': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result'],
+    workflowLabels: { 'compress-image-to-100kb': 'Compress any image to 100KB', 'compress-jpg-to-100kb': 'Compress JPG to 100KB', 'convert-png-to-webp': 'Convert PNG to WebP' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

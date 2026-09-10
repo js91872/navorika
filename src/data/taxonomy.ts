@@ -37,6 +37,8 @@ export const clusters: ToolCluster[] = [
   { id: 'image-optimize', name: 'Image Size and Quality', description: 'Resize, compress, upscale, and inspect image output for web or print use.', category: 'image-tools', toolSlugs: ['change-image-resolution', 'resize-image-to-1000x1000', 'compress-image', 'compress-jpg', 'compress-png', 'compress-webp', 'image-dpi-converter', 'image-metadata-viewer', 'resize-image', 'upscale-image', 'image-megapixel-calculator', 'image-print-size-calculator', 'image-file-size-estimator', 'image-scaling-calculator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'svg-dimensions-checker', 'rgb-cmyk-image-checker', 'print-bleed-calculator'] },
   { id: 'image-edit', name: 'Image Editing', description: 'Crop, rotate, retouch, watermark, and protect visual content.', category: 'image-tools', toolSlugs: ['blur-face', 'crop-image', 'photo-editor', 'rotate-image', 'watermark-image'] },
   { id: 'image-create', name: 'Image Creation and Publishing', description: 'Create visual assets, sample colors, and prepare images for identity, social, and web use.', category: 'image-tools', toolSlugs: ['image-color-picker', 'html-to-image', 'icon-sticker-maker', 'id-photo-maker', 'meme-generator', 'photo-collage-maker', 'social-media-resizer', 'responsive-srcset-generator'] },
+  { id: 'image-compression', name: 'Target Size Image Compression', description: 'Compress JPEG, PNG, and WebP images down to exact kilobyte targets for forms, portals, and uploads.', category: 'image-tools', toolSlugs: ['compress-image-to-20kb', 'compress-image-to-50kb', 'compress-image-to-100kb', 'compress-image-to-200kb', 'compress-jpg-to-100kb', 'compress-png-to-100kb'] },
+  { id: 'image-encoding', name: 'Image Base64 and Data URL Encoding', description: 'Convert images to Base64 data URLs or decode Base64 strings to images directly in your browser.', category: 'image-tools', toolSlugs: ['image-to-base64-converter', 'base64-to-image-converter'] },
 
   { id: 'finance-budget', name: 'Budgeting and Cash Flow', description: 'Model spending, purchasing power, currency, and household cash flow.', category: 'finance-calculators', toolSlugs: ['cashflow-budget-architect', 'currency-converter', 'wealth-inflation-matrix', 'ev-vs-gas-break-even-calculator', 'job-offer-total-comp-calculator'] },
   { id: 'finance-invest', name: 'Investing and Returns', description: 'Project recurring investments, fixed returns, and comparable investment outcomes.', category: 'finance-calculators', toolSlugs: ['sip-calculator', 'fd-calculator', 'ppf-calculator', 'investment-return-profiler', 'lumpsum-investment-calculator'] },
@@ -337,6 +339,14 @@ export const complementaryTools: Record<string, string[]> = {
   'binary-to-decimal-with-steps': ['utf8-vs-utf16-byte-calculator', 'developer-utils', 'web-crypto-studio'],
   'ulid-generator': ['uuid-generator', 'uuid-generator-validator', 'jwt-decoder'],
   'cron-expression-generator': ['cron-expression-humanizer', 'cron-next-run-calculator', 'epoch-time-converter'],
+  'image-to-base64-converter': ['base64-to-image-converter', 'image-converter', 'resize-image'],
+  'base64-to-image-converter': ['image-to-base64-converter', 'image-metadata-viewer', 'compress-image'],
+  'compress-image-to-20kb': ['compress-image-to-50kb', 'compress-image-to-100kb', 'id-photo-maker'],
+  'compress-image-to-50kb': ['compress-image-to-20kb', 'compress-image-to-100kb', 'id-photo-maker'],
+  'compress-image-to-100kb': ['compress-image-to-50kb', 'compress-image-to-200kb', 'compress-jpg-to-100kb', 'compress-png-to-100kb'],
+  'compress-image-to-200kb': ['compress-image-to-100kb', 'resize-image', 'compress-image'],
+  'compress-jpg-to-100kb': ['compress-image-to-100kb', 'compress-png-to-100kb', 'compress-jpg'],
+  'compress-png-to-100kb': ['compress-image-to-100kb', 'compress-jpg-to-100kb', 'convert-png-to-webp'],
 };
 
 const clusterByTool = new Map(clusters.flatMap((cluster) => cluster.toolSlugs.map((slug) => [slug, cluster] as const)));
