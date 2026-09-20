@@ -855,7 +855,18 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'pdf-to-cdr-converter', title: 'PDF to CDR Converter',
     description: 'Prepare a PDF for CorelDRAW as the original multipage PDF or a genuine first-page SVG or EPS without creating a fake CDR.',
-    category: 'developer-tools', keywords: ['pdf to cdr', 'pdf to coreldraw', 'convert pdf to cdr', 'pdf to cdr converter']
+    category: 'developer-tools',
+    keywords: [
+      'pdf to cdr',
+      'pdf to cdr converter',
+      'pdf to cdr converter online',
+      'convert pdf to cdr',
+      'convert pdf to cdr file',
+      'pdf to coreldraw',
+      'import pdf into coreldraw',
+      'pdf to editable coreldraw',
+      'save pdf as cdr'
+    ]
   },
   {
     slug: 'word-to-cdr-converter', title: 'Word to CDR Converter',
