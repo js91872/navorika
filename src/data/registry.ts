@@ -864,8 +864,8 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'png-to-cdr-converter', title: 'PNG to CDR Converter',
-    description: 'Embed a PNG in CorelDRAW-ready SVG or PDF, or trace simplified color regions into genuine SVG paths locally.',
-    category: 'developer-tools', keywords: ['png to cdr', 'png to coreldraw', 'convert png to cdr', 'image to coreldraw']
+    description: 'Convert PNG for CorelDRAW by preserving transparent raster art or vectorizing logos into editable SVG paths.',
+    category: 'developer-tools', keywords: ['png to cdr', 'convert png to cdr', 'png to coreldraw', 'convert png to cdr file', 'png to cdr converter']
   },
   {
     slug: 'jpg-to-cdr-converter', title: 'JPG to CDR Converter',
