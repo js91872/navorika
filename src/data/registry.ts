@@ -132,6 +132,15 @@ export const tools: RegisteredTool[] = ([
     keywords: ['extract-pdf-text', 'extract', 'pdf', 'text']
   },
   {
+    slug: 'pdf-word-counter',
+    title: 'PDF Word Counter',
+    description: 'Count words, characters, pages and repeated words in a PDF online. Analyze your document privately in your browser with page-by-page statistics.',
+    category: 'pdf-tools',
+    keywords: ['pdf-word-counter', 'pdf word count', 'count words in pdf', 'pdf word count online', 'check word count of pdf', 'how many words are in my pdf', 'pdf character counter', 'word frequency counter pdf', 'repeated words in pdf', 'pdf text analyzer', 'scanned pdf word count'],
+    heroTitle: 'PDF Word Counter',
+    heroDescription: 'Count words, characters, sentences, paragraphs, and reading time in any text-based PDF 100% locally in your browser with page-by-page analysis.',
+  },
+  {
     slug: 'flatten-pdf',
     title: 'Flatten PDF',
     description: 'Flatten supported interactive PDF form fields into static page content.',

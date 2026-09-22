@@ -747,6 +747,33 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
+  'pdf-word-counter': {
+    metaTitle: 'PDF Word Counter – Count Words in a PDF Online | Navorika',
+    metaDescription: 'Count words, characters, pages and repeated words in a PDF online. Analyze your document privately in your browser with page-by-page statistics.',
+    intro: 'PDF Word Counter is a free, privacy-first online tool that analyzes text-based PDF documents locally in your browser. Get exact word counts, character lengths, sentence numbers, reading pace, and repeated-word frequencies without uploading your files.',
+    howItWorks: 'The tool uses client-side JavaScript to extract and parse the digital text layer of your PDF page-by-page directly in your browser memory. No data is stored, transmitted, or logged on any external server.',
+    benefits: ['100% free with no account or signup required', 'Private by design - all processing stays on your device', 'Page-by-page statistics and custom page range filtering', 'Word and phrase frequency analysis with compact page citations', 'Rule-based basic writing quality and readability checks', 'Instant export of statistics to CSV and plain text'],
+    useCases: ['Checking academic essays and thesis documents against word limits', 'Translators and proofreaders estimating workload and quotes', 'Writers and editors identifying repeated words and readability scores', 'Legal, business, and publishing professionals auditing document length'],
+    stepByStep: ['Step 1: Drag and drop or browse to select your PDF file', 'Step 2: Optionally configure counting options (numbers, URLs, hyphenation, page ranges)', 'Step 3: Review summary metrics, page breakdowns, repeated words, and writing checks', 'Step 4: Download page statistics and word frequency as CSV or TXT'],
+    tips: ['Ensure your PDF contains selectable digital text (scanned photo PDFs require OCR)', 'Use custom page ranges to exclude title pages or references from word totals', 'Export CSV tables to analyze term frequencies in spreadsheet applications'],
+    relatedTools: ['extract-pdf-text', 'pdf-page-size-checker', 'split-pdf', 'compress-pdf'],
+    faq: [
+      {'question': 'How do I count words in a PDF?', 'answer': 'Drag and drop your PDF into the upload area above. The tool reads the digital text layer of your PDF directly in your browser and instantly displays total words, characters, sentences, pages, reading time, and page-by-page statistics.'},
+      {'question': 'Can Adobe Acrobat show a PDF word count?', 'answer': 'Adobe Acrobat Reader does not include a native word counting tool. This web utility gives you an immediate word, character, and page count without purchasing paid software or installing plugins.'},
+      {'question': 'Does this work with scanned PDFs?', 'answer': 'This tool inspects embedded digital text streams. Scanned image-only PDFs do not have selectable text and will trigger an honest scanned-PDF warning explaining that optical character recognition (OCR) is required.'},
+      {'question': 'Are numbers included in the word count?', 'answer': 'Yes, numeric tokens (such as "2026", "15.5%", "$1,000") are included by default. You can exclude numbers at any time via the Counting Options panel without re-uploading.'},
+      {'question': 'Are headers and footers counted?', 'answer': 'All extracted text is counted by default. Enabling the "Exclude repeated headers & footers" setting will detect and exclude recurring running headers or page numbers across pages.'},
+      {'question': 'Why is the PDF word count different from Microsoft Word?', 'answer': 'PDFs store coordinate-positioned glyphs rather than linear sentences. Variations in hyphenation, footnote placement, and number filtering can cause slight differences. Navorika offers adjustable rules so you can match your desired counting criteria.'},
+      {'question': 'Can I count words on selected PDF pages?', 'answer': 'Yes. Enter your desired start and end pages in the Counting Options panel to restrict word counting and frequency analysis to that specific page range.'},
+      {'question': 'Can I find repeated words in a PDF?', 'answer': 'Yes. The Repeated Words tab lists single words, two-word bigrams, and three-word trigrams with frequency counts, percentage of text, and specific page locations.'},
+      {'question': 'Is my PDF uploaded or stored?', 'answer': 'No. File processing and text analysis take place 100% locally in your browser memory. Your document is never uploaded to any server or saved in permanent browser storage.'},
+      {'question': 'Can I download the word-frequency results?', 'answer': 'Yes. You can export word frequencies and page statistics as CSV spreadsheets or download the extracted document text as a TXT file.'}
+    ],
+    schemaType: 'WebApplication',
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'All',
+    browserRequirements: 'Modern browser with JavaScript enabled'
+  },
   'fd-calculator': {
     metaTitle: 'Fd Calculator - Free Online Fd Calculator | Navorika',
     metaDescription: 'Use our free Fd Calculator to get accurate results instantly. Fast, private, and no signup required.',

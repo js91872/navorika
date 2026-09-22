@@ -28,6 +28,7 @@ export const toolIcons: Record<string, string> = {
   'pdf-to-image': '🖼️',
   'pdf-to-jpg': '🖼️',
   'pdf-tools': '📄',
+  'pdf-word-counter': '📊',
   'protect-pdf': '🔒',
   'reorder-pdf': '🔀',
   'rotate-pdf': '🔄',

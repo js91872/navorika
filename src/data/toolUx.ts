@@ -305,6 +305,11 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-summary', 'download-csv', 'print'],
     workflowLabels: { 'pdf-bleed-trim-checker': 'Inspect PDF trim and bleed boxes', 'crop-pdf': 'Crop PDF page margins' },
   },
+  'pdf-word-counter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-csv', 'download-txt'],
+    workflowLabels: { 'extract-pdf-text': 'Extract full PDF text', 'pdf-page-size-checker': 'Check PDF page dimensions' },
+  },
   'rgb-cmyk-image-checker': {
     processingMode: 'local', noUpload: true, noAccount: true,
     resultActions: ['copy-summary', 'download-csv', 'print'],
