@@ -134,11 +134,11 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'pdf-word-counter',
     title: 'PDF Word Counter',
-    description: 'Count words, characters, pages and repeated words in a PDF online. Analyze your document privately in your browser with page-by-page statistics.',
+    description: 'Use this free PDF word counter to count words in a PDF file online, check words in PDF pages and find repeated terms privately in your browser.',
     category: 'pdf-tools',
-    keywords: ['pdf-word-counter', 'pdf word count', 'count words in pdf', 'pdf word count online', 'check word count of pdf', 'how many words are in my pdf', 'pdf character counter', 'word frequency counter pdf', 'repeated words in pdf', 'pdf text analyzer', 'scanned pdf word count'],
+    keywords: ['pdf-word-counter', 'pdf word count', 'pdf word counter', 'count words in a pdf file', 'count words in pdf', 'words in pdf', 'word count pdf file', 'pdf word count online', 'count words in pdf online', 'check word count of pdf', 'check words in pdf', 'number of words in pdf', 'how many words are in my pdf', 'pdf character counter', 'word frequency counter pdf', 'repeated words in pdf', 'pdf text analyzer', 'scanned pdf word count'],
     heroTitle: 'PDF Word Counter',
-    heroDescription: 'Count words, characters, sentences, paragraphs, and reading time in any text-based PDF 100% locally in your browser with page-by-page analysis.',
+    heroDescription: 'Count words in a PDF file online and check characters, sentences, paragraphs, pages, reading time and repeated words locally in your browser.',
   },
   {
     slug: 'flatten-pdf',
