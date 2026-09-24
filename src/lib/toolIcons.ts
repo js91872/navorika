@@ -178,6 +178,7 @@ export const toolIcons: Record<string, string> = {
   'css-clamp-font-generator': '🔤',
   'gitignore-generator': '🙈',
   'css-flexbox-generator': '🍱',
+  'psd-to-html': '💻',
   'docker-run-command-generator': '🐳',
   'typescript-to-zod-schema-converter': '🛡️',
   'git-commit-message-formatter': '📝',

@@ -173,7 +173,12 @@ export const toolUx: Record<string, ToolUxConfig> = {
   'css-flexbox-generator': {
     processingMode: 'local', noUpload: true, noAccount: true,
     resultActions: ['copy-result'],
-    workflowLabels: { 'aspect-ratio-padding-calculator': 'Calculate aspect ratio padding', 'css-clamp-font-generator': 'Generate fluid clamp typography' },
+    workflowLabels: { 'aspect-ratio-padding-calculator': 'Calculate aspect ratio padding', 'css-clamp-font-generator': 'Generate fluid clamp typography', 'psd-to-html': 'PSD to HTML conversion workspace' },
+  },
+  'psd-to-html': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-result', 'download-txt'],
+    workflowLabels: { 'css-flexbox-generator': 'Build visual flexbox layout', 'rgb-cmyk-image-checker': 'Check image color space', 'svg-dimensions-checker': 'Inspect SVG icon dimensions' },
   },
   'docker-run-command-generator': {
     processingMode: 'local', noUpload: true, noAccount: true,

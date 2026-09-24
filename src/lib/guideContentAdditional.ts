@@ -113,22 +113,135 @@ export const additionalGuideContent: Record<string, GuideContent> = {
 
   'open-cdr-without-coreldraw': corelArticle(
     'How to Open a CDR File Without CorelDRAW',
-    'Preview and export supported CDR files with open-source readers while understanding version and rendering limitations.',
-    'CDR is proprietary and has changed across CorelDRAW generations. Open-source readers such as the libcdr filter used by LibreOffice can interpret many files, but they cannot promise complete support for every effect, font, color setting, or new version.',
+    'Learn how to open and view CDR files without CorelDRAW using an online CDR viewer, LibreOffice, compatible vector tools, or PDF/SVG conversion.',
+    'If you have received a CorelDRAW (.cdr) file and do not have CorelDRAW installed, you can still view, inspect, or convert its contents. Because CDR is a proprietary format that has evolved across three decades of CorelDRAW generations, no single third-party tool opens every file with 100% fidelity. However, depending on the file version and internal design features, you can quickly preview the drawing online with Navorika CDR Viewer, open and edit the vector artwork locally in free software like LibreOffice Draw or Inkscape, or convert the document to a universal PDF, SVG, or PNG. For contractual print jobs or complex layouts with proprietary Corel effects, requesting a high-resolution PDF export directly from the original file creator remains the most dependable option.',
     [
-      { title: 'Start with the file header and version clue', content: 'Older CDR files often use a RIFF container with codes such as CDR6 through CDRF. Newer files may be ZIP-based. A header check helps explain compatibility, but it does not validate every internal object or identify all newer versions exactly.' },
-      { title: 'Use a capability-detected viewer', content: 'A responsible online viewer should enable CDR processing only when a real reader is installed. It should validate the signature, isolate temporary files, limit runtime and size, and remove uploads after conversion. A failed preview is better than a fabricated image.' },
-      { title: 'Choose PDF, SVG, PNG, or JPG', content: 'PDF is useful for multipage viewing and print review. SVG can expose editable shapes from the first page, though conversions may differ. PNG preserves crisp previews and possible transparency; JPG creates smaller opaque previews. None of these outputs is a native editable CDR project.' },
-      { title: 'Check the preview critically', content: 'Compare page count, dimensions, font appearance, gradients, clipping, transparency, and images. Missing fonts can alter line breaks and glyphs. Proprietary effects may flatten, simplify, or disappear. Obtain a PDF exported by the original author when fidelity matters.' },
+      {
+        title: 'Quick decision guide: How to view your CDR file',
+        content: `Choose the best method for your immediate task:
+
+• Need to quickly view or verify a CDR file online?
+→ Try Navorika's CDR Viewer in your web browser for an instant multi-page PDF or image preview without installing software.
+
+• Need a universal, shareable copy for clients or mobile devices?
+→ Convert the CDR to PDF using Navorika's CDR to PDF Converter to preserve all pages in a standard format.
+
+• Need editable vector paths for another design tool or cutting plotter?
+→ Export the CDR to SVG to extract first-page vector outlines and shapes for tools like Illustrator, Inkscape, or LightBurn.
+
+• Does the file fail to open or report an error?
+→ Diagnose the file container using Navorika's CDR Version Converter to check whether it uses an older RIFF container or an unsupported modern release.
+
+• Need guaranteed typographic, color, and commercial print fidelity?
+→ Native CorelDRAW is required, or ask the original author to export an official print-ready PDF with fonts converted to curves.`,
+      },
+      {
+        title: 'Method 1: Use an online CDR viewer in your browser',
+        content: `If you only need to inspect the artwork, check page contents, or verify that a file was sent correctly, try Navorika's online CDR Viewer (featured in Related Tools below).
+
+How it works:
+1. Upload your .cdr file (up to 15 MB) directly in your browser.
+2. The server processes the file in an isolated temporary workspace using an automated open-source CDR import backend.
+3. The viewer renders a multi-page PDF preview or first-page SVG/PNG preview directly on your screen.
+4. You can download the rendered preview or reset the tool. Input and output files are deleted automatically once processing concludes.
+
+Realistic capabilities and limits:
+Navorika's viewer handles many common CDR drawings from legacy releases through newer versions. However, files that are password-protected, damaged, or rely on exclusive features from the latest CorelDRAW release cannot be processed. A capability notice will alert you rather than producing a simulated or fake file.`,
+      },
+      {
+        title: 'Method 2: Open CDR files locally with LibreOffice Draw',
+        content: `LibreOffice is a free, open-source office suite available for Windows, macOS, and Linux. Its drawing application, LibreOffice Draw, includes a native CDR import filter powered by the open-source libcdr library.
+
+How to open a CDR file in LibreOffice:
+1. Download and install LibreOffice from the official Document Foundation website (free of charge).
+2. Launch LibreOffice Draw.
+3. Click File → Open, navigate to your CDR file, and ensure the file type dropdown is set to "All Files" or "CorelDRAW Drawing (*.cdr)".
+4. Select the file and click Open.
+
+What to expect:
+LibreOffice parses vector shapes, polygons, straight lines, bezier paths, fills, and text objects. Many technical drawings and logos open cleanly. However, complex transparency blend modes, artistic media brush strokes, and contour effects may flatten or render differently. Additionally, if the document uses fonts that are not installed on your operating system, LibreOffice will substitute them with available local system fonts, which may shift text wrapping.`,
+      },
+      {
+        title: 'Method 3: Import CDR into Inkscape vector editor',
+        content: `Inkscape is a professional, open-source vector graphics editor available on Windows, macOS, and Linux. For users who need to edit vector paths, adjust nodes, or export to SVG, Inkscape is a powerful alternative.
+
+How Inkscape handles CDR files:
+Modern Inkscape builds include support for reading CDR files when compiled with the libcdr library (or through helper utilities on older installations). You can attempt to open the file directly via File → Open or place it into an existing document using File → Import.
+
+Important compatibility notes:
+While basic geometric shapes, paths, solid fills, and text often import successfully, Inkscape may struggle with multi-page CDR documents (often displaying only the first page), complex gradient meshes, interactive drop shadows, and proprietary Corel color palettes. If Inkscape fails with an import error or displays a blank canvas, the file likely contains newer features that libcdr cannot yet parse.`,
+      },
+      {
+        title: 'Method 4: Convert CDR to PDF, SVG, or PNG for universal viewing',
+        content: `If you do not have CorelDRAW and third-party vector editors fail to render the file accurately, converting the CDR into an open document or image format is the most practical solution.
+
+Format comparison:
+• PDF (Recommended for viewing): Selecting a CDR-to-PDF conversion preserves all document pages, maintains vector scalability, and allows anyone on Windows, Mac, iOS, or Android to review the file in any standard PDF reader.
+• SVG (Best for vector editing): Selecting a CDR-to-SVG conversion exports page-one vector curves into clean XML code suitable for web use, CAD software, and cutting plotters.
+• PNG or JPG (Visual preview only): A raster export generates an instant pixel snapshot of the first page. It is ideal for quick email previews, but cannot be edited as vector paths.
+
+None of these converted outputs are native CDR files, but they give you access to the visual information trapped inside the proprietary container.`,
+      },
+      {
+        title: 'Understanding CDR version compatibility and container formats',
+        content: `Why do some CDR files open smoothly in free tools while others fail completely? The answer lies in the evolution of CorelDRAW's file architecture.
+
+Older RIFF containers (CorelDRAW 3 through X3):
+Early CDR versions use a Resource Interchange File Format (RIFF) container with header signatures like CDR6, CDR7, CDR8, or CDRB. These older files are often well-supported by open-source reverse-engineered parsers like libcdr.
+
+Modern ZIP containers (CorelDRAW X4 through 2024):
+Starting with CorelDRAW X4, CDR files transitioned to a compressed ZIP archive containing an XML document tree, embedded color profiles, thumbnail previews, and proprietary binary graphics streams. Recent releases frequently introduce new container structures and drawing primitives that open-source filters have not yet mapped.
+
+Font and effect limitations:
+CDR files reference fonts installed on the creator's machine. When opened without those fonts, third-party viewers must substitute fonts, altering typography. Proprietary CorelDRAW features—such as live transparency lenses, bevels, artistic media, and custom spot-color libraries—frequently fail to translate into open standards.
+
+When exact fidelity is mandatory:
+For legal, technical, or commercial print applications where a single shifted line or substituted font could ruin a production run, do not rely on third-party approximations. Ask the file sender to open the drawing in CorelDRAW and export a standardized PDF/X document with all fonts converted to curves.`,
+      },
     ],
     [
-      { question: 'Can LibreOffice open every CDR?', answer: 'No. Its libcdr import filter supports many files but coverage varies by version and features.' },
-      { question: 'Is an online CDR viewer safe for confidential work?', answer: 'Use only a service with clear limits and deletion behavior; highly confidential artwork may require an offline controlled environment.' },
-      { question: 'Can I edit the preview?', answer: 'SVG/PDF may expose editable content, but they do not reconstruct every original CorelDRAW object.' },
-      { question: 'Can Inkscape open CDR files on Windows, macOS, and Linux?', answer: 'Yes, if Inkscape is configured with the UniConvertor or libcdr extension. However, complex blends, interactive fills, and proprietary Corel fonts may not render identically compared to native CorelDRAW.' },
-      { question: 'Can I view CDR files on an iPhone, iPad, or Android phone?', answer: 'Mobile operating systems have no built-in CDR support. Upload your file to Navorika CDR Viewer or CDR to PDF Converter in your mobile browser to generate an instant, high-fidelity PDF preview.' },
+      {
+        question: 'How can I open a CDR file without CorelDRAW?',
+        answer:
+          "You have several practical options depending on your goal. To quickly view or verify the drawing online, use Navorika's CDR Viewer in your web browser. For free local desktop viewing and editing on Windows, macOS, or Linux, open the file in LibreOffice Draw or a compatible build of Inkscape. Alternatively, convert the CDR to a standard PDF document to inspect all pages in any PDF reader.",
+      },
+      {
+        question: 'Can I open and view a CDR file online for free?',
+        answer:
+          "Yes. An online tool like Navorika CDR Viewer allows you to upload a CDR file (up to 15 MB) and generate an instant multi-page PDF or image preview. The file is processed in an isolated temporary server workspace using open-source CDR filters and deleted automatically when rendering finishes.",
+      },
+      {
+        question: 'Can LibreOffice open all CorelDRAW CDR files?',
+        answer:
+          'No. LibreOffice Draw uses the open-source libcdr import filter, which supports many standard CDR drawings from legacy versions (CorelDRAW 3 through X4) up to modern releases. However, coverage is not universal: password-protected files, highly complex gradient meshes, non-standard transparency blend modes, and features exclusive to recent versions may fail to render or open.',
+      },
+      {
+        question: 'Can Inkscape open CDR files on Windows, Mac, and Linux?',
+        answer:
+          'Yes, if your Inkscape installation includes libcdr import filter support. Inkscape can parse basic vector shapes, paths, outlines, and standard text from supported CDR versions. However, complex CorelDRAW features like interactive lens effects, envelope distortions, and proprietary fonts often require manual adjustment after import.',
+      },
+      {
+        question: 'How can I open a CDR file on Mac or Linux?',
+        answer:
+          'Because native CorelDRAW is primarily a Windows application (with limited Mac support and no native Linux version), Mac and Linux users can open CDR files for free using LibreOffice Draw or Inkscape. For quick inspection without installing software, upload the file to Navorika CDR Viewer to view or download a rendered PDF.',
+      },
+      {
+        question: 'Can I view a CDR file on an iPhone, iPad, or Android phone?',
+        answer:
+          'Mobile operating systems have no native application support for CorelDRAW files. To view a CDR on mobile, open your mobile web browser, upload the file to Navorika CDR Viewer or CDR to PDF Converter, and view the resulting PDF directly in your mobile browser or Apple Books / Google Drive.',
+      },
+      {
+        question: "Why won't my CDR file open or render properly?",
+        answer:
+          'A CDR file may fail to open if it was created in a very recent CorelDRAW release containing unsupported container features, if it is password-protected or corrupted, or if it relies heavily on proprietary dynamic effects. If open-source filters fail, request that the original creator export the design as a high-resolution PDF or SVG.',
+      },
+      {
+        question: 'Can I convert a CDR file to PDF without CorelDRAW?',
+        answer:
+          "Yes. You can use Navorika's CDR to PDF Converter online to transform supported CDR files into standard PDF documents. This allows recipients on any operating system to view all document pages, zoom in on vector artwork, and print the design without needing CorelDRAW.",
+      },
     ],
-    'Use a real capability-gated reader, export an open preview format, inspect fidelity, and request an author-exported PDF when accuracy is critical.',
+    'Use a real capability-gated reader or online viewer for quick inspection, export an open preview format like PDF or SVG, check rendering fidelity, and request an author-exported PDF when contractual accuracy is required.',
   ),
   'newer-cdr-older-coreldraw': corelArticle(
     'How to Open a Newer CDR File in an Older CorelDRAW Version',
@@ -369,5 +482,135 @@ export const additionalGuideContent: Record<string, GuideContent> = {
       { question: 'Which SEO checks should be automated?', answer: 'Coverage checks such as status codes, canonicals, sitemap membership, title presence, structured-data syntax, and internal-link integrity are strong candidates.' },
     ],
     'Use SEO tools to discover, diagnose, and verify; prioritize helpful content, crawlable architecture, truthful schema, and fast accessible experiences.',
+  ),
+  'psd-to-html-guide': article(
+    'PSD to HTML Conversion Guide: Modern Workflow, Slicing & Best Practices',
+    'Learn modern PSD to HTML conversion from artboard preflight and SVG/WebP asset slicing to semantic HTML5, CSS Flexbox, and responsive breakpoints.',
+    'Converting a Photoshop (PSD) design into production-ready HTML and CSS is one of the classic foundations of front-end web development. While modern tooling has evolved from legacy table-slicing and float layouts to semantic HTML5, CSS Flexbox, and container queries, the core objective remains the same: translating visual design intent into clean, fast, accessible, and responsive code.',
+    [
+      {
+        title: 'Preflighting your PSD artboard before writing code',
+        content: `Before slicing a single graphic or writing HTML, audit the Photoshop file:
+• Color space verification: Web browsers render exclusively in sRGB. If the designer created the PSD in CMYK (standard for commercial print), colors will appear muted or muddy when exported to the web. Always convert the color mode in Photoshop via Image → Mode → RGB Color and assign the sRGB IEC61966-2.1 profile.
+• Artboard and grid dimensions: Identify the primary container width (commonly 1200px, 1320px, or 1440px on desktop) and the column grid system (such as 12 columns with 24px or 32px gutters).
+• Typography and font licensing: Inspect text layers for proprietary desktop fonts. Verify whether matching web fonts are available via Google Fonts, Adobe Fonts, or self-hosted WOFF2 web font files with proper licensing.`,
+      },
+      {
+        title: 'Slicing assets: SVG vectors vs WebP/PNG raster graphics',
+        content: `Efficient asset export dramatically impacts page load speed and rendering quality:
+• Icons, logos, and badges: Slicing logos or UI icons as PNG images creates fuzzy rendering on high-DPI Retina screens and wastes bandwidth. Always export vector shape layers and smart objects as clean SVG files. Inspect root viewBox and declared dimensions with an SVG dimension checker to ensure fluid scaling.
+• Photographs and complex illustrations: Export photographic layers as modern WebP or AVIF formats at 1x and 2x resolutions. Implement the HTML5 <picture> element with responsive srcset attributes to serve optimal file sizes across mobile phones and desktop displays.
+• UI containers and buttons: Avoid slicing solid background panels, rounded corners, or drop shadows as raster images. Modern CSS handles borders, shadows (box-shadow), and gradients natively with zero HTTP overhead.`,
+      },
+      {
+        title: 'Constructing the semantic HTML5 DOM skeleton',
+        content: `Photoshop artboards consist of arbitrary flat visual layers, but production web pages require an accessible, hierarchical document object model (DOM):
+• Landmark elements: Structure the page using <header>, <nav>, <main>, <section>, <article>, <aside>, and <footer> rather than generic nested <div> tags.
+• Heading hierarchy: Establish a strict heading tree (one logical <h1> followed by nested <h2> and <h3> subheadings) that matches content importance, not just font size in the PSD.
+• Interactive elements: Code buttons that trigger actions as <button type="button"> and links that navigate as <a href="...">. Ensure all interactive controls have visible keyboard focus indicators (:focus-visible).`,
+      },
+      {
+        title: 'Layout architecture: Replacing legacy floats with CSS Flexbox & Grid',
+        content: `Historical PSD to HTML slicing relied on CSS floats (float: left) and negative margin clearing hacks (clearfix). Modern front-end development replaces these fragile patterns with native CSS Flexbox and CSS Grid:
+• CSS Flexbox for one-dimensional flows: Use display: flex for navigation bars, card rows, button clusters, and form controls. The modern gap property provides clean, uniform gutter spacing without negative margins.
+• CSS Grid for two-dimensional page structure: Use display: grid with repeat(auto-fit, minmax(...)) to build responsive multi-column card grids that naturally reflow without complex media queries.
+• Dynamic typography with clamp(): Replace fixed pixel font sizes with CSS clamp() (e.g. font-size: clamp(1.75rem, 3vw + 1rem, 3rem)) to allow headlines to scale smoothly between mobile and desktop viewports.`,
+      },
+      {
+        title: 'Automated converters vs professional PSD to HTML services',
+        content: `Understanding what can and cannot be automated helps developers choose the right approach:
+• Why 1-click automated tools produce fragile code: Software cannot deduce user intent, accessible landmarks, or responsive fluidity from flat graphic layers. Black-box converters typically emit bloated inline CSS, absolute positioning (top/left in pixels) that breaks on different screens, and unmaintainable markup.
+• Component scaffolding tools: Workflow helpers (like Navorika PSD to HTML) inspect binary headers, preflight colors and dimensions, and scaffold clean semantic starter templates while leaving component architecture to the developer.
+• Professional handoff briefs: When contracting a front-end developer or agency service, provide an itemized developer conversion brief detailing font stacks, interactive states (hover/focus), 2x assets, and supported mobile breakpoints.`,
+      },
+    ],
+    [
+      {
+        question: 'Can a PSD file be converted to HTML automatically?',
+        answer: 'While basic component scaffolding and header analysis can be automated, 100% automated conversion of arbitrary artwork into production-ready, accessible HTML/CSS is a marketing myth. Photoshop layers lack semantic DOM tags, accessibility attributes, and fluid responsive rules, requiring front-end developer oversight.',
+      },
+      {
+        question: 'Why do exported images look desaturated when converting PSD to HTML?',
+        answer: 'This occurs when the source PSD was created in CMYK print mode rather than sRGB. Web browsers do not support CMYK color management reliably. Convert the PSD to RGB Color in Photoshop before exporting web assets.',
+      },
+      {
+        question: 'How should icons and logos be sliced from a Photoshop file?',
+        answer: 'Export all shape layers, icons, and logos as SVG vector files. SVGs scale infinitely on Retina and 4K displays without pixelation and have significantly smaller file sizes than raster PNGs.',
+      },
+      {
+        question: 'What responsive breakpoints should I use when coding from a desktop PSD?',
+        answer: 'Common modern responsive breakpoints include 375px–480px (mobile), 768px (tablet portrait), 1024px (tablet landscape / laptop), and 1200px–1440px (desktop container max-width).',
+      },
+      {
+        question: 'How does modern CSS Flexbox simplify PSD layout conversion compared to older techniques?',
+        answer: 'CSS Flexbox eliminates the need for floats, table layouts, and negative margin clearing hacks. Properties like justify-content, align-items, flex-wrap, and gap make multi-column distribution clean and robust across viewport sizes.',
+      },
+    ],
+    'Preflight color space and dimensions, slice vectors to SVG and photos to WebP, build semantic HTML5 with CSS Flexbox and Grid, and test responsiveness across real devices.',
+  ),
+  'psd-to-html-email-guide': article(
+    'PSD to HTML Email Conversion: Responsive Tables, Inline CSS & Client Compatibility',
+    'Master PSD to HTML email conversion using nested table architectures, inline CSS, 600px container standards, and Outlook conditional tags.',
+    'Coding an HTML email from a Photoshop mockup is fundamentally different from building a modern website. Web developers accustomed to CSS Grid, flexbox, external stylesheets, and CSS variables must adapt to the strict, legacy constraints of email clients. Over 50 major email rendering engines—including Microsoft Outlook on desktop Windows (which renders HTML using the Microsoft Word engine)—strip external stylesheets, ignore modern layout tags, and require specialized HTML architectures.',
+    [
+      {
+        title: 'The 600px email layout standard and artboard preparation',
+        content: `Email clients enforce tight viewport constraints that dictate how Photoshop artboards must be prepared:
+• Fixed 600px container width: Desktop email reading panes (such as Outlook, Apple Mail, and Gmail on desktop) typically render message content inside a 600px to 640px window. Artboards designed wider than 640px must be scaled or re-architected into a centered 600px master table container.
+• Slicing image assets with explicit dimensions: Email clients require all <img> tags to include explicit HTML width and height attributes in addition to CSS styles. Omitting physical image dimensions causes Outlook to display images at their native pixel resolution, breaking entire email layouts.
+• Background colors vs background images: Outlook desktop does not support CSS background-image without complex Microsoft Vector Markup Language (VML) workarounds. Keep email backgrounds solid or use VML containers for layered graphics.`,
+      },
+      {
+        title: 'Nested table architecture: The foundation of cross-client email',
+        content: `While tables are obsolete for website layout, they remain the only universally supported structure for email:
+• Presentation role: Every table must include role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" to prevent assistive screen readers from announcing data grid cells.
+• Cell-level styling: Apply padding, background colors, and typography directly to table data cells (<td>) rather than parent rows or div containers.
+• Fluid column stacks on mobile: In two-column or three-column sections, wrap each column in a table or <td> with a mobile-responsive class (e.g. class="fluid-column") and apply display: block !important; width: 100% !important; in a mobile media query.`,
+      },
+      {
+        title: 'Inlining CSS styles to survive webmail header stripping',
+        content: `Why cannot email rely on standard <link rel="stylesheet"> or <style> blocks?
+• Webmail stripping: Popular webmail services (such as Gmail, Yahoo, and Outlook Web) frequently strip <head> tags and embedded <style> elements from incoming emails to prevent third-party styles from breaking their web application UI.
+• Mandatory inline styles: Every element—paragraphs, headings, links, and table cells—must carry its typography, font-size, line-height, and color directly in an inline style="..." attribute.
+• Web fonts with system fallbacks: You can declare Google Fonts in the header for Apple Mail and iOS, but always provide universal system fallbacks (Arial, Helvetica, sans-serif or Georgia, serif) in inline styles for Outlook.`,
+      },
+      {
+        title: 'Outlook conditional comments and desktop DPI scaling fixes',
+        content: `Desktop Outlook on Windows uses the Microsoft Office Word rendering engine (MSO), introducing specific layout quirks:
+• Conditional MSO tables: Use conditional comments <!--[if mso]><table width="600"><tr><td><![endif]--> to wrap the master layout in fixed tables that only Outlook executes, allowing mobile webmail clients to see fluid 100% widths.
+• High-DPI Windows display scaling: When users set Windows display scaling to 125% or 150%, Outlook can scale images and borders unevenly. Include the standard MSO OfficeDocumentSettings XML block in the HTML <head> to lock Outlook rendering to 96 DPI.
+• Line-height collapsing: Outlook collapses empty table cells and ignores min-height. Use &nbsp; and explicit line-height and font-size on spacer cells to maintain vertical rhythm.`,
+      },
+      {
+        title: 'Bulletproof CTA buttons and retina image handling in email',
+        content: `Conversion-focused email designs rely heavily on prominent call-to-action buttons:
+• Avoid image-based buttons: Slicing buttons as raster PNGs causes them to disappear when recipients have image loading disabled by default.
+• Bulletproof HTML/CSS buttons: Construct buttons using padded <a> tags with background-color, border-radius, and display: inline-block. For pixel-perfect Outlook support, wrap buttons with VML <v:roundrect> markup.
+• High-resolution Retina graphics: Export images at 2x resolution (e.g. 1200px wide for a 600px hero) to ensure sharpness on modern smartphone screens, but declare width="600" in the HTML attribute to keep desktop scaling correct.`,
+      },
+    ],
+    [
+      {
+        question: 'Why can’t I use CSS Flexbox or CSS Grid in HTML email?',
+        answer: 'Major email clients—most notably desktop Microsoft Outlook (which uses Word to render HTML)—do not support modern CSS layout properties like Flexbox, Grid, or float. Nested tables remain the only universally reliable layout mechanism.',
+      },
+      {
+        question: 'What is the standard container width for a PSD email mockup?',
+        answer: 'The universal standard width for marketing and transactional HTML email mockups is 600px. This fits comfortably inside desktop email preview panes without horizontal scrolling while remaining easily adaptable to mobile screens.',
+      },
+      {
+        question: 'Why do desktop Outlook versions break modern email layouts?',
+        answer: 'Desktop Outlook on Windows uses the Microsoft Word rendering engine rather than a modern web browser engine. Word ignores CSS flexbox, grid, margin: auto, background-image, and many CSS pseudo-classes.',
+      },
+      {
+        question: 'How do I make CTA buttons clickable and styled in all email clients without images?',
+        answer: 'Use bulletproof buttons built with padded anchor tags and inline background styling, supplemented with Microsoft VML (Vector Markup Language) conditional code for Outlook compatibility.',
+      },
+      {
+        question: 'How do dark mode email clients affect PSD slice colors?',
+        answer: 'Dark mode clients (Apple Mail, Outlook, Gmail) automatically invert background and text colors. To prevent logos with dark text from disappearing on inverted black backgrounds, export logos with a subtle light outline or transparent padding.',
+      },
+    ],
+    'Build PSD email templates with 600px nested tables, inline all CSS styles, wrap Outlook conditionals, and test across Gmail, Apple Mail, and Outlook.',
   ),
 };

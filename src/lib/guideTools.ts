@@ -1,6 +1,8 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
   'word-to-cdr-formatting-guide': ['word-to-cdr-converter', 'pdf-to-cdr-converter', 'coreldraw-tools'],
+  'psd-to-html-guide': ['psd-to-html', 'css-flexbox-generator', 'svg-dimensions-checker', 'rgb-cmyk-image-checker'],
+  'psd-to-html-email-guide': ['psd-to-html', 'css-flexbox-generator', 'rgb-cmyk-image-checker'],
   'pdf-to-cdr-editing-guide': ['pdf-to-cdr-converter', 'svg-to-cdr-converter', 'cdr-to-pdf-converter'],
   'raster-image-to-cdr-guide': ['png-to-cdr-converter', 'jpg-to-cdr-converter', 'svg-to-cdr-converter'],
   'svg-vs-cdr-guide': ['svg-to-cdr-converter', 'cdr-to-svg-converter', 'coreldraw-tools'],

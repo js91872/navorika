@@ -305,7 +305,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'open-cdr-without-coreldraw', title: 'How to Open a CDR File Without CorelDRAW',
-    description: 'Use capability-aware open-source viewing and export workflows while understanding which CDR features may not render exactly.',
+    description: 'Learn how to open and view CDR files without CorelDRAW using an online CDR viewer, LibreOffice, compatible vector tools, or PDF/SVG conversion.',
     category: 'Developer', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
   },
   {
@@ -322,6 +322,16 @@ const guideDefinitions: GuideDefinition[] = [
     slug: 'preserve-fonts-coreldraw-conversion', title: 'How to Preserve Fonts When Converting Word or PDF to CorelDRAW',
     description: 'Manage embedded, missing, custom, Punjabi, Hindi, Arabic, and other Unicode fonts and understand when converting text to curves is appropriate.',
     category: 'Developer', publishedDate: 'August 2026', readTime: '12 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'psd-to-html-guide', title: 'PSD to HTML Conversion Guide: Modern Workflow, Slicing & Best Practices',
+    description: 'Learn modern PSD to HTML conversion from artboard preflight and SVG/WebP asset slicing to semantic HTML5, CSS Flexbox, and responsive breakpoints.',
+    category: 'Developer', publishedDate: 'September 2026', readTime: '12 min read', author: 'Navorika Team'
+  },
+  {
+    slug: 'psd-to-html-email-guide', title: 'PSD to HTML Email Conversion: Responsive Tables, Inline CSS & Client Compatibility',
+    description: 'Master PSD to HTML email conversion using nested table architectures, inline CSS, 600px container standards, and Outlook conditional tags.',
+    category: 'Developer', publishedDate: 'September 2026', readTime: '11 min read', author: 'Navorika Team'
   }
 ];
 

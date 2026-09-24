@@ -872,21 +872,24 @@ export const developerToolPages: Record<string, ToolPageContent> = {
   },
   'css-flexbox-generator': {
     slug: 'css-flexbox-generator',
-    name: 'CSS Flexbox Generator – Visual Flexbox Layout Builder',
+    name: 'CSS Flexbox Generator – Visual Layout & Code Builder',
     category: 'Developer Tools',
     applicationCategory: 'DeveloperApplication',
-    description: 'Build and visually preview CSS Flexbox layouts with real-time controls for flex-direction, justify-content, align-items, flex-wrap, and gap.',
+    description: 'Build, preview, and test CSS Flexbox layouts with live interactive controls. Adjust flex-direction, justify-content, align-items, flex-wrap, and gap with instant copy-ready CSS.',
     longTailKeywords: [
       'css flexbox generator',
       'flexbox generator',
       'css flex generator',
       'flexbox playground',
       'justify content generator',
-      'css flexbox cheat sheet'
+      'flexbox layout builder',
+      'css flexbox cheat sheet',
+      'align items flexbox generator'
     ],
     intro: [
-      'Visually configure CSS Flexible Box layout properties with instant interactive feedback and copy-ready CSS output.',
-      'Experiment with main-axis distribution, cross-axis alignment, responsive multi-line wrapping, and modern gap spacing.',
+      'Visually configure CSS Flexible Box layout properties with instant interactive feedback and production-ready CSS output.',
+      'Test main-axis item distribution, cross-axis alignment, responsive multi-line wrapping, and modern gap spacing in real time.',
+      'Stop guessing alignment syntax or calculating negative margins: test your layout visually and copy clean CSS directly into your stylesheet or frontend framework.',
       local
     ],
     formula: [
@@ -937,9 +940,108 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     relatedTools: [
       { slug: 'aspect-ratio-padding-calculator', name: 'Aspect Ratio Padding Calculator' },
       { slug: 'css-clamp-font-generator', name: 'CSS clamp() Font Size Generator' },
-      { slug: 'css-gradient-generator', name: 'CSS Gradient Generator' }
+      { slug: 'css-gradient-generator', name: 'CSS Gradient Generator' },
+      { slug: 'psd-to-html', name: 'PSD to HTML Converter' }
     ],
-    relatedGuides: []
+    relatedGuides: ['psd-to-html-guide']
+  },
+  'psd-to-html': {
+    slug: 'psd-to-html',
+    name: 'PSD to HTML Converter – Clean Semantic Code & Email Scaffolding',
+    category: 'Developer Tools',
+    applicationCategory: 'DeveloperApplication',
+    description: 'Free browser-local PSD to HTML converter & workflow tool. Inspect PSD headers, generate semantic HTML5/Flexbox templates or responsive email code, and export developer handoff briefs.',
+    longTailKeywords: [
+      'psd to html',
+      'psd to html converter',
+      'psd to html conversion',
+      'psd to html service',
+      'psd to html email',
+      'convert psd to html',
+      'photoshop to html',
+      'psd to responsive html',
+      'psd to html5 template',
+      'psd to html developer checklist',
+      'convert psd mockup to code',
+      'psd to css flexbox'
+    ],
+    intro: [
+      'Inspect Adobe Photoshop (.psd) files and scaffold production-ready front-end code directly in your web browser with zero server uploads.',
+      'Analyze binary canvas headers, preflight sRGB vs CMYK color spaces, and generate clean semantic HTML5 with responsive CSS Flexbox or strict table-based responsive HTML email markup.',
+      'Includes an interactive developer handoff brief generator to itemize SVG vector assets, Retina 2x image slices, web font declarations, and responsive breakpoint rules.',
+      local
+    ],
+    formula: [
+      {
+        title: 'Binary PSD Preflight Analysis',
+        body: 'Parses the 8BPS file header in memory via DataView to inspect canvas dimensions, color channel depth, and color mode (RGB vs CMYK).'
+      },
+      {
+        title: 'Semantic HTML5 & Flexbox Mapping',
+        body: 'Translates visual design layers into accessible landmark containers (<header>, <nav>, <main>, <section>, <footer>) styled with modern CSS Flexbox and CSS Grid.'
+      },
+      {
+        title: 'Responsive Email Table Architecture',
+        body: 'Constructs 600px max-width nested presentation tables with inline CSS styles and Outlook MSO conditional tags for client compatibility.'
+      },
+      {
+        title: 'Asset Slicing Matrix & Handoff Brief',
+        body: 'Generates a standardized developer handoff checklist mapping icons to SVG code, photos to responsive WebP/PNG, and typography to CSS clamp() rules.'
+      }
+    ],
+    steps: [
+      'Upload a Photoshop (.psd) file to inspect binary header metrics or load an interactive preset mockup.',
+      'Review canvas dimensions, color mode warnings, and recommended container widths.',
+      'Select your output architecture: Semantic HTML5 + Flexbox/Grid, Tailwind CSS, or Responsive HTML Email.',
+      'Toggle desired layout sections (Header, Hero, Features Grid, Callout CTA, Footer) and customize brand styling.',
+      'Preview the responsive layout across desktop, tablet, and mobile device viewports.',
+      'Copy clean HTML and CSS code, or download the shareable Markdown Developer Handoff Brief.'
+    ],
+    interpretation: [
+      'Photoshop artboard vs DOM structure: PSD files store visual 2D raster and vector layers, while web pages require semantic, accessible document trees. Clean conversion translates visual hierarchy into accessible DOM nodes rather than absolute-positioned pixel coordinates.',
+      'Color space significance: Slicing assets from a CMYK Photoshop file causes muted, muddy colors on web displays. The preflight check confirms whether the PSD requires conversion to sRGB before exporting graphics.',
+      'Email vs web HTML: HTML email requires 600px centered tables and inlined CSS styles to render properly in Microsoft Outlook and webmail clients, whereas web pages utilize responsive CSS Flexbox and modern CSS Grid.',
+      'Retina high-DPI scaling: Modern displays require 2x pixel density for photographic assets. Slicing logos as SVG vectors eliminates pixelation completely.'
+    ],
+    limitations: [
+      'Automated black-box conversion cannot replace front-end engineering: arbitrary Photoshop artboards lack semantic intent, accessibility roles, and fluid reflow rules.',
+      'This browser-local workspace parses container headers and scaffolds clean starter templates; it does not decode proprietary Adobe smart filters, layer blend modes, or complex text kerning into native code.',
+      'HTML email outputs intentionally exclude modern CSS Grid, external stylesheets, and JavaScript to maintain compatibility with legacy email engines like desktop Microsoft Outlook.'
+    ],
+    faqs: [
+      {
+        question: 'Can a PSD file be automatically converted to 100% production-ready HTML?',
+        answer: 'While layout scaffolding, preflight inspection, and component generation can be automated, 100% automated conversion of arbitrary designs into accessible, scalable HTML/CSS is not feasible. Clean front-end development requires developer judgment for semantic HTML5 landmarks, accessibility attributes, and responsive fluid layout.'
+      },
+      {
+        question: 'What is the difference between an automated tool and a professional PSD to HTML service?',
+        answer: 'Automated converters typically generate rigid, absolute-positioned markup with poor mobile responsiveness and flattened text. A professional PSD to HTML workflow or service produces clean, hand-coded semantic HTML5, accessible ARIA roles, modern CSS Flexbox/Grid, and responsive assets optimized for speed and SEO.'
+      },
+      {
+        question: 'How do I convert a PSD design into a responsive HTML email?',
+        answer: 'Select the Responsive HTML Email target mode in our tool. It generates nested table markup (<table role="presentation">) with a 600px max-width container, fully inlined CSS styles, Outlook conditional tags (<!--[if mso]>), and bulletproof CTA buttons compatible with Gmail, Apple Mail, and Outlook.'
+      },
+      {
+        question: 'Why should I check if my PSD is in RGB or CMYK mode before coding?',
+        answer: 'Web browsers and mobile devices render exclusively in the sRGB color space. If your PSD was created in CMYK (print mode), exporting assets will cause muted or inaccurate colors. Convert the PSD to RGB Color in Photoshop before slicing web assets.'
+      },
+      {
+        question: 'How does modern CSS Flexbox replace old float-based and table-based PSD to HTML slicing?',
+        answer: 'Older conversion methods used floats, clearfix hacks, or HTML tables to align columns. CSS Flexbox provides native alignment along the main and cross axes with modern gap spacing, allowing multi-column components to reflow cleanly without hacky CSS.'
+      },
+      {
+        question: 'Does this tool upload my proprietary Photoshop files to an external server?',
+        answer: 'No. The preflight inspector and code generator run 100% locally in your browser memory using the HTML5 FileReader and DataView APIs. Your PSD files, design assets, and generated code never leave your device.'
+      }
+    ],
+    relatedTools: [
+      { slug: 'css-flexbox-generator', name: 'CSS Flexbox Generator' },
+      { slug: 'rgb-cmyk-image-checker', name: 'RGB CMYK Image Checker' },
+      { slug: 'svg-dimensions-checker', name: 'SVG Dimensions Checker' },
+      { slug: 'css-clamp-font-generator', name: 'CSS clamp() Font Size Generator' },
+      { slug: 'aspect-ratio-padding-calculator', name: 'Aspect Ratio Padding Calculator' }
+    ],
+    relatedGuides: ['psd-to-html-guide', 'psd-to-html-email-guide', 'image-formats-guide']
   },
   'docker-run-command-generator': {
     slug: 'docker-run-command-generator',

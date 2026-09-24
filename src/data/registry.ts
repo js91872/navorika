@@ -884,8 +884,8 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'png-to-cdr-converter', title: 'PNG to CDR Converter',
-    description: 'Convert PNG for CorelDRAW by preserving transparent raster art or vectorizing logos into editable SVG paths.',
-    category: 'developer-tools', keywords: ['png to cdr', 'convert png to cdr', 'png to coreldraw', 'convert png to cdr file', 'png to cdr converter']
+    description: 'Convert PNG images for CorelDRAW online: vectorize logos into editable paths or preserve transparent raster art for layout placement.',
+    category: 'developer-tools', keywords: ['png to cdr', 'convert png to cdr', 'png to coreldraw', 'convert png to cdr file', 'png to cdr converter', 'png logo to coreldraw', 'vectorize png for coreldraw']
   },
   {
     slug: 'jpg-to-cdr-converter', title: 'JPG to CDR Converter',
@@ -1638,17 +1638,39 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'css-flexbox-generator',
     title: 'CSS Flexbox Generator',
-    description: 'Build and preview CSS Flexbox layouts with interactive controls and copy the resulting CSS.',
+    description: 'Visually build, preview, and test responsive CSS Flexbox layouts with live alignment, direction, wrapping, and gap controls with copy-ready CSS.',
     category: 'developer-tools',
     keywords: [
       'css flexbox generator',
       'flexbox generator',
       'css flex generator',
       'flexbox playground',
-      'justify content generator'
+      'justify content generator',
+      'flexbox layout builder',
+      'css flexbox cheat sheet'
     ],
     heroTitle: 'CSS Flexbox Generator',
-    heroDescription: 'Visually configure flex-direction, justify-content, align-items, flex-wrap, and gap with live preview.'
+    heroDescription: 'Visually configure flex-direction, justify-content, align-items, flex-wrap, and gap spacing with real-time CSS output.'
+  },
+  {
+    slug: 'psd-to-html',
+    title: 'PSD to HTML Converter',
+    description: 'Inspect PSD mockups, verify canvas dimensions and color space, generate semantic HTML5/Flexbox or responsive email templates, and download developer handoff briefs.',
+    category: 'developer-tools',
+    keywords: [
+      'psd to html',
+      'psd to html converter',
+      'psd to html conversion',
+      'psd to html service',
+      'psd to html email',
+      'convert psd to html',
+      'photoshop to html',
+      'psd to responsive html',
+      'psd to html5 template',
+      'psd to html developer checklist'
+    ],
+    heroTitle: 'PSD to HTML Converter & Code Generator',
+    heroDescription: 'Preflight binary PSD headers, scaffold accessible semantic HTML5/Flexbox layouts or responsive email templates, and export developer handoff briefs.'
   },
   {
     slug: 'docker-run-command-generator',
