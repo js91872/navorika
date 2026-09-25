@@ -8,6 +8,7 @@ interface GuideDefinition {
   publishedDate: string;
   readTime: string;
   author: string;
+  keywords?: string[];
 }
 
 export interface GuideMetadata extends GuideDefinition {
@@ -324,15 +325,59 @@ const guideDefinitions: GuideDefinition[] = [
     category: 'Developer', publishedDate: 'August 2026', readTime: '12 min read', author: 'Navorika Team'
   },
   {
-    slug: 'psd-to-html-guide', title: 'PSD to HTML Conversion Guide: Modern Workflow, Slicing & Best Practices',
-    description: 'Learn modern PSD to HTML conversion from artboard preflight and SVG/WebP asset slicing to semantic HTML5, CSS Flexbox, and responsive breakpoints.',
-    category: 'Developer', publishedDate: 'September 2026', readTime: '12 min read', author: 'Navorika Team'
+    slug: 'psd-to-html-conversion-guide',
+    title: 'PSD to HTML Conversion Guide: Modern Workflow, Slicing & Service Comparison',
+    description: 'Learn modern PSD to HTML conversion: artboard preflight, SVG and WebP slicing, semantic HTML5, CSS Flexbox, and evaluating automated tools vs conversion services.',
+    category: 'Developer',
+    publishedDate: 'September 2026',
+    readTime: '12 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'psd to html conversion',
+      'psd to html conversion services',
+      'psd to html service',
+      'psd to html',
+      'psd to html converter',
+      'convert psd to html',
+      'developer guide',
+    ],
   },
   {
-    slug: 'psd-to-html-email-guide', title: 'PSD to HTML Email Conversion: Responsive Tables, Inline CSS & Client Compatibility',
+    slug: 'psd-to-html-email',
+    title: 'PSD to HTML Email Conversion: Responsive Tables, Inline CSS & Client Compatibility',
     description: 'Master PSD to HTML email conversion using nested table architectures, inline CSS, 600px container standards, and Outlook conditional tags.',
-    category: 'Developer', publishedDate: 'September 2026', readTime: '11 min read', author: 'Navorika Team'
-  }
+    category: 'Developer',
+    publishedDate: 'September 2026',
+    readTime: '11 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'psd to html email',
+      'psd to email template',
+      'responsive html email',
+      'convert psd to email html',
+      'psd to html',
+      'html email coding',
+      'developer guide',
+    ],
+  },
+  {
+    slug: 'psd-to-responsive-html',
+    title: 'PSD to Responsive HTML: Translating Desktop Artboards into Mobile-Friendly CSS',
+    description: 'Convert desktop Photoshop mockups into fluid, responsive HTML5 and CSS with modern breakpoints, Flexbox, Grid, clamp typography, and asset optimization.',
+    category: 'Developer',
+    publishedDate: 'September 2026',
+    readTime: '11 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'psd to responsive html',
+      'responsive html',
+      'psd to html',
+      'convert psd to responsive css',
+      'photoshop to responsive html',
+      'responsive web design from psd',
+      'developer guide',
+    ],
+  },
 ];
 
 export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
@@ -342,7 +387,7 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
     ...guide,
     datePublished: guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
     dateModified: new Set(['how-to-calculate-emi', 'heart-rate-zones-guide', 'base64-encoding-guide', 'jwt-decoding-guide', 'json-formatting-guide']).has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
-    keywords: [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
+    keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: image.src,
       width: 1200,

@@ -943,7 +943,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
       { slug: 'css-gradient-generator', name: 'CSS Gradient Generator' },
       { slug: 'psd-to-html', name: 'PSD to HTML Converter' }
     ],
-    relatedGuides: ['psd-to-html-guide']
+    relatedGuides: ['psd-to-html-conversion-guide', 'psd-to-responsive-html']
   },
   'psd-to-html': {
     slug: 'psd-to-html',
@@ -955,11 +955,13 @@ export const developerToolPages: Record<string, ToolPageContent> = {
       'psd to html',
       'psd to html converter',
       'psd to html conversion',
+      'psd to html conversion services',
       'psd to html service',
       'psd to html email',
       'convert psd to html',
       'photoshop to html',
       'psd to responsive html',
+      'responsive html',
       'psd to html5 template',
       'psd to html developer checklist',
       'convert psd mockup to code',
@@ -1041,7 +1043,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
       { slug: 'css-clamp-font-generator', name: 'CSS clamp() Font Size Generator' },
       { slug: 'aspect-ratio-padding-calculator', name: 'Aspect Ratio Padding Calculator' }
     ],
-    relatedGuides: ['psd-to-html-guide', 'psd-to-html-email-guide', 'image-formats-guide']
+    relatedGuides: ['psd-to-html-conversion-guide', 'psd-to-html-email', 'psd-to-responsive-html', 'image-formats-guide']
   },
   'docker-run-command-generator': {
     slug: 'docker-run-command-generator',

@@ -54,6 +54,16 @@ const nextConfig: NextConfig = {
         destination: '/tools/heart-rate-calculator',
         permanent: true,
       },
+      {
+        source: '/guides/psd-to-html-guide',
+        destination: '/guides/psd-to-html-conversion-guide',
+        permanent: true,
+      },
+      {
+        source: '/guides/psd-to-html-email-guide',
+        destination: '/guides/psd-to-html-email',
+        permanent: true,
+      },
     ];
   },
 };

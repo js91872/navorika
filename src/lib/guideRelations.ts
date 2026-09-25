@@ -22,5 +22,8 @@ export const guideRelations: Record<string, string[]> = {
   'newer-cdr-older-coreldraw': ['open-cdr-without-coreldraw', 'best-coreldraw-print-format', 'preserve-fonts-coreldraw-conversion'],
   'best-coreldraw-print-format': ['preserve-fonts-coreldraw-conversion', 'svg-vs-cdr-guide', 'newer-cdr-older-coreldraw'],
   'preserve-fonts-coreldraw-conversion': ['word-to-cdr-formatting-guide', 'pdf-to-cdr-editing-guide', 'best-coreldraw-print-format'],
+  'psd-to-html-conversion-guide': ['psd-to-responsive-html', 'psd-to-html-email'],
+  'psd-to-html-email': ['psd-to-html-conversion-guide', 'psd-to-responsive-html'],
+  'psd-to-responsive-html': ['psd-to-html-conversion-guide', 'psd-to-html-email'],
 };
 

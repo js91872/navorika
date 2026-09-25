@@ -4,14 +4,21 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
-  'psd-to-html-guide': [
-    { name: 'W3C — HTML living standard', url: 'https://html.spec.whatwg.org/' },
+  'psd-to-html-conversion-guide': [
+    { name: 'W3C — HTML Living Standard', url: 'https://html.spec.whatwg.org/' },
     { name: 'W3C — CSS Flexible Box Layout Module Level 1', url: 'https://www.w3.org/TR/css-flexbox-1/' },
-    { name: 'MDN Web Docs — Responsive design basics', url: 'https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design' }
+    { name: 'MDN Web Docs — Responsive design basics', url: 'https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design' },
+    webImageFormats,
   ],
-  'psd-to-html-email-guide': [
+  'psd-to-html-email': [
     { name: 'Can I Email — Support tables for HTML and CSS in email', url: 'https://www.caniemail.com/' },
-    { name: 'Microsoft Learn — Word HTML and CSS Rendering Capabilities in Outlook', url: 'https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/aa338201(v=office.12)' }
+    { name: 'Microsoft Learn — Word HTML and CSS Rendering Capabilities in Outlook', url: 'https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/aa338201(v=office.12)' },
+  ],
+  'psd-to-responsive-html': [
+    { name: 'W3C — CSS Flexible Box Layout Module Level 1', url: 'https://www.w3.org/TR/css-flexbox-1/' },
+    { name: 'W3C — CSS Grid Layout Module Level 2', url: 'https://www.w3.org/TR/css-grid-2/' },
+    { name: 'MDN Web Docs — Responsive design basics', url: 'https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design' },
+    webImageFormats,
   ],
   'word-to-cdr-formatting-guide': [{ name: 'LibreOffice Help — PDF export', url: 'https://help.libreoffice.org/latest/en-US/text/shared/01/ref_pdf_export.html' }, { name: 'Unicode Consortium — Unicode Standard', url: 'https://www.unicode.org/standard/standard.html' }],
   'pdf-to-cdr-editing-guide': [pdfSpecification, { name: 'CorelDRAW Help', url: 'https://product.corel.com/help/CorelDRAW/' }],

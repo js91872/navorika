@@ -1503,7 +1503,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   <div className="py-2.5 flex items-start gap-3">
                     <span className="font-bold text-indigo-600 shrink-0">Retina Images:</span>
                     <span className="text-[var(--muted-foreground)]">
-                      For hero photographs and raster art, export 1x (standard) and 2x (Retina) WebP files with JPG fallbacks using the HTML5 &lt;picture&gt; element.
+                      For hero photographs and raster art, export 1x (standard) and 2x (Retina) WebP files with JPG fallbacks using the HTML5 &lt;picture&gt; element. See our <Link href="/guides/psd-to-responsive-html" className="text-indigo-600 underline">PSD to Responsive HTML Guide</Link>.
                     </span>
                   </div>
                   <div className="py-2.5 flex items-start gap-3">
@@ -1515,7 +1515,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   <div className="py-2.5 flex items-start gap-3">
                     <span className="font-bold text-indigo-600 shrink-0">Layout Math:</span>
                     <span className="text-[var(--muted-foreground)]">
-                      Map multi-column containers to CSS Flexbox with gap spacing. Test parent and child alignment with our <Link href="/tools/css-flexbox-generator" className="text-indigo-600 underline">CSS Flexbox Generator</Link>.
+                      Map multi-column containers to CSS Flexbox with gap spacing. Test parent and child alignment with our <Link href="/tools/css-flexbox-generator" className="text-indigo-600 underline">CSS Flexbox Generator</Link> or follow our <Link href="/guides/psd-to-html-conversion-guide" className="text-indigo-600 underline">PSD to HTML Conversion Guide</Link>.
                     </span>
                   </div>
                 </div>
@@ -1566,7 +1566,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
               Photoshop is a 2D raster and vector canvas composed of graphical layers; it contains no concept of semantic DOM structure, accessibility landmarks (&lt;nav&gt;, &lt;main&gt;, &lt;button&gt;), or responsive fluid wrapping. Any automated tool that claims to instantly transform an arbitrary PSD into production code produces bloated, absolute-positioned markup with broken mobile responsiveness and inaccessible flattened text.
             </p>
             <p className="leading-relaxed">
-              Navorika provides a genuine developer-assisted workflow: we inspect your binary PSD headers locally, verify color space and grid math, scaffold clean semantic HTML5 and Flexbox CSS, and generate an actionable handoff brief for your front-end team.
+              Navorika provides a genuine developer-assisted workflow: we inspect your binary PSD headers locally, verify color space and grid math, scaffold clean semantic HTML5 and Flexbox CSS, and generate an actionable handoff brief for your front-end team. Learn more in our <Link href="/guides/psd-to-html-conversion-guide" className="text-indigo-600 underline font-semibold">PSD to HTML Conversion Guide</Link> or our <Link href="/guides/psd-to-html-email" className="text-indigo-600 underline font-semibold">PSD to HTML Email Guide</Link>.
             </p>
           </div>
         </div>
