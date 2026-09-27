@@ -1,2 +1,11 @@
-import ToolUnavailable from '@/components/tools/ToolUnavailable';
-export default function Page() { return <ToolUnavailable title="HTML to Image" backHref="/categories/image-tools" backLabel="Back to Image Tools" unavailableReason="The previous route did not render HTML and only exposed a generic image converter." requirement="A sandboxed renderer with explicit CSS, font, asset, script, cross-origin, viewport, and output-format behavior is required." />; }
+import HtmlToImageConverterTool from '@/components/tools/HtmlToImageConverterTool';
+
+export default function Page() {
+  return (
+    <HtmlToImageConverterTool
+      title="HTML to Image Converter"
+      description="Convert HTML code or uploaded HTML files into clean PNG or JPG images with an isolated rendering sandbox, custom width, and scale controls."
+      currentSlug="html-to-image"
+    />
+  );
+}

@@ -385,9 +385,23 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'html-to-image',
     title: 'HTML to Image',
-    description: 'Temporarily unavailable pending a safe, deterministic HTML rendering engine.',
+    description: 'Convert HTML code or uploaded HTML files to JPG or PNG images locally in your browser with sandboxed rendering.',
     category: 'image-tools',
-    keywords: ['html-to-image', 'html', 'to', 'image']
+    keywords: ['html-to-image', 'html', 'to', 'image', 'html to image converter', 'render html to image']
+  },
+  {
+    slug: 'html-to-jpg-converter',
+    title: 'HTML to JPG Converter',
+    description: 'Convert HTML code or uploaded HTML files to high-quality JPG images locally in your browser with adjustable quality and dimensions.',
+    category: 'image-tools',
+    keywords: ['html-to-jpg-converter', 'html to jpg', 'convert html to jpg', 'html file to jpg', 'html code to jpg', 'html to jpeg']
+  },
+  {
+    slug: 'html-to-png-converter',
+    title: 'HTML to PNG Converter',
+    description: 'Convert HTML markup or HTML files to crisp, lossless PNG images with transparency support locally in your browser.',
+    category: 'image-tools',
+    keywords: ['html-to-png-converter', 'html to png', 'convert html to png', 'html file to png', 'html code to png']
   },
   {
     slug: 'icon-sticker-maker',

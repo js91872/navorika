@@ -36,7 +36,7 @@ export const clusters: ToolCluster[] = [
   { id: 'image-convert', name: 'Image Format Conversion', description: 'Convert individual images or batches between common web and document formats.', category: 'image-tools', toolSlugs: ['batch-image-converter', 'convert-jpg-to-png', 'convert-jpg-to-webp', 'convert-png-to-jpg', 'convert-png-to-webp', 'convert-webp-to-jpg', 'heic-to-jpg', 'heic-to-png', 'image-converter', 'image-to-pdf', 'png-to-svg', 'svg-to-png', 'webp-to-png'] },
   { id: 'image-optimize', name: 'Image Size and Quality', description: 'Resize, compress, upscale, and inspect image output for web or print use.', category: 'image-tools', toolSlugs: ['change-image-resolution', 'resize-image-to-1000x1000', 'compress-image', 'compress-jpg', 'compress-png', 'compress-webp', 'image-dpi-converter', 'image-metadata-viewer', 'resize-image', 'upscale-image', 'image-megapixel-calculator', 'image-print-size-calculator', 'image-file-size-estimator', 'image-scaling-calculator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'svg-dimensions-checker', 'rgb-cmyk-image-checker', 'print-bleed-calculator'] },
   { id: 'image-edit', name: 'Image Editing', description: 'Crop, rotate, retouch, watermark, and protect visual content.', category: 'image-tools', toolSlugs: ['blur-face', 'crop-image', 'photo-editor', 'rotate-image', 'watermark-image'] },
-  { id: 'image-create', name: 'Image Creation and Publishing', description: 'Create visual assets, sample colors, and prepare images for identity, social, and web use.', category: 'image-tools', toolSlugs: ['image-color-picker', 'html-to-image', 'icon-sticker-maker', 'id-photo-maker', 'meme-generator', 'photo-collage-maker', 'social-media-resizer', 'responsive-srcset-generator'] },
+  { id: 'image-create', name: 'Image Creation and Publishing', description: 'Create visual assets, sample colors, and prepare images for identity, social, and web use.', category: 'image-tools', toolSlugs: ['image-color-picker', 'html-to-image', 'html-to-jpg-converter', 'html-to-png-converter', 'icon-sticker-maker', 'id-photo-maker', 'meme-generator', 'photo-collage-maker', 'social-media-resizer', 'responsive-srcset-generator'] },
   { id: 'image-compression', name: 'Target Size Image Compression', description: 'Compress JPEG, PNG, and WebP images down to exact kilobyte targets for forms, portals, and uploads.', category: 'image-tools', toolSlugs: ['compress-image-to-20kb', 'compress-image-to-50kb', 'compress-image-to-100kb', 'compress-image-to-200kb', 'compress-jpg-to-100kb', 'compress-png-to-100kb'] },
   { id: 'image-encoding', name: 'Image Base64 and Data URL Encoding', description: 'Convert images to Base64 data URLs or decode Base64 strings to images directly in your browser.', category: 'image-tools', toolSlugs: ['image-to-base64-converter', 'base64-to-image-converter'] },
 
@@ -160,7 +160,7 @@ export const toolkits: Toolkit[] = [
     categorySlugs: ['image-tools'],
     groups: [
       { name: 'Size and quality', description: 'Control pixel dimensions and file size while reviewing output quality.', toolSlugs: ['resize-image', 'change-image-resolution', 'compress-image', 'compress-jpg', 'compress-webp', 'upscale-image', 'image-megapixel-calculator', 'image-print-size-calculator', 'image-file-size-estimator', 'image-scaling-calculator'] },
-      { name: 'Prepare and publish', description: 'Sample colors, convert, crop, rotate, watermark, and resize images for common channels.', toolSlugs: ['image-color-picker', 'convert-png-to-webp', 'convert-webp-to-jpg', 'crop-image', 'rotate-image', 'watermark-image', 'social-media-resizer', 'photo-storage-calculator', 'image-bandwidth-calculator'] },
+      { name: 'Prepare and publish', description: 'Sample colors, convert, crop, rotate, watermark, and resize images for common channels.', toolSlugs: ['image-color-picker', 'convert-png-to-webp', 'convert-webp-to-jpg', 'crop-image', 'rotate-image', 'watermark-image', 'social-media-resizer', 'photo-storage-calculator', 'image-bandwidth-calculator', 'html-to-image', 'html-to-jpg-converter', 'html-to-png-converter'] },
     ], guideSlugs: ['image-compression-guide', 'how-to-resize-images', 'image-formats-guide'],
   },
   {
@@ -282,7 +282,10 @@ export const complementaryTools: Record<string, string[]> = {
   'wilks-dots-powerlifting-calculator': ['barbell-plate-calculator', 'calories-burned-calculator'],
   'gitignore-generator': ['git-commit-message-formatter', 'docker-run-command-generator'],
   'css-flexbox-generator': ['aspect-ratio-padding-calculator', 'css-clamp-font-generator', 'psd-to-html'],
-  'psd-to-html': ['css-flexbox-generator', 'rgb-cmyk-image-checker', 'svg-dimensions-checker'],
+  'psd-to-html': ['css-flexbox-generator', 'html-to-image', 'rgb-cmyk-image-checker', 'svg-dimensions-checker'],
+  'html-to-image': ['html-to-jpg-converter', 'html-to-png-converter', 'image-converter', 'svg-to-png'],
+  'html-to-jpg-converter': ['html-to-image', 'html-to-png-converter', 'convert-png-to-jpg', 'image-converter'],
+  'html-to-png-converter': ['html-to-image', 'html-to-jpg-converter', 'convert-jpg-to-png', 'svg-to-png'],
   'docker-run-command-generator': ['gitignore-generator', 'cloud-hosting-cost-calculator'],
   'typescript-to-zod-schema-converter': ['json-schema-validator', 'json-to-csv-flattener'],
   'git-commit-message-formatter': ['gitignore-generator', 'developer-utils'],

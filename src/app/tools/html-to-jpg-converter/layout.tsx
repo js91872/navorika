@@ -2,7 +2,7 @@ import { createToolMetadata } from '@/lib/seo/toolPage';
 import ToolPageContent from '@/components/seo/ToolPageContent';
 import { imageToolPages } from '@/data/tool-pages/image';
 
-const tool = imageToolPages['html-to-image'];
+const tool = imageToolPages['html-to-jpg-converter'];
 export const metadata = createToolMetadata(tool);
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {

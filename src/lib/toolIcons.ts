@@ -55,6 +55,8 @@ export const toolIcons: Record<string, string> = {
   'heic-to-jpg': '🔄',
   'heic-to-png': '🔄',
   'html-to-image': '🌐',
+  'html-to-jpg-converter': '🖼️',
+  'html-to-png-converter': '🎨',
   'icon-sticker-maker': '🎯',
   'id-photo-maker': '🪪',
   'image-converter': '🔄',

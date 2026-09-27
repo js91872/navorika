@@ -1108,4 +1108,201 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: ['image-compression-guide', 'image-formats-guide'],
   },
+  'html-to-image': {
+    slug: 'html-to-image',
+    name: 'HTML to Image Converter',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Convert HTML code or uploaded HTML files to JPG or PNG images locally in your browser with sandboxed rendering and custom dimensions.',
+    longTailKeywords: [
+      'html to image converter online',
+      'convert html to image without upload',
+      'render html to png jpg browser',
+      'safe html to image sandbox',
+      'html code to image generator',
+    ],
+    intro: [
+      'HTML to Image transforms raw HTML markup or uploaded .html files into downloadable JPG or PNG images directly in your web browser.',
+      'The conversion runs completely client-side in an isolated sandbox, utilizing browser-native SVG ForeignObject and HTML5 Canvas rasterization without uploading your markup or assets to any server.',
+    ],
+    steps: [
+      'Paste your HTML markup into the editor or upload an .html or .htm file.',
+      'Select your desired output format (PNG for transparency and crisp text, or JPG for compressed graphics).',
+      'Configure viewport width (800px, 1200px, or custom), scale factor (1× standard or 2× HiDPI), and JPG quality if applicable.',
+      'Inspect the sandboxed live preview to confirm formatting, typography, and element placement.',
+      'Click Convert and download your rendered image.',
+    ],
+    interpretation: [
+      'Rendered output dimensions reflect the content height at your chosen viewport width multiplied by the selected scale factor.',
+      'PNG exports preserve alpha channel transparency for transparent container elements, while JPG exports composite the rendering onto an opaque white background.',
+    ],
+    limitations: [
+      'JavaScript execution is disabled in the rendering sandbox for security; dynamic DOM mutations and client scripts will not run.',
+      'External cross-origin images or webfonts without permissive CORS headers may be blocked by browser canvas security policies.',
+      'Complex browser-specific rendering engines or animated CSS transitions are rasterized at their initial static state.',
+    ],
+    faqs: [
+      {
+        question: 'Are my HTML files or code uploaded to a server?',
+        answer: 'No. All parsing, sandboxing, and canvas rasterization take place locally in your web browser. Your HTML never leaves your device.',
+      },
+      {
+        question: 'Does this tool execute JavaScript inside the HTML?',
+        answer: 'No. For security and determinism, script tags and inline event handlers are sanitized and blocked. Only static HTML and CSS are rendered.',
+      },
+      {
+        question: 'Should I choose PNG or JPG for HTML conversion?',
+        answer: 'Choose PNG if your design requires transparent backgrounds or crisp vector-like text. Choose JPG if you need smaller file sizes for photos or documents and do not require transparency.',
+      },
+      {
+        question: 'Can I render custom widths and high-resolution images?',
+        answer: 'Yes. You can select standard 800px or 1200px presets or enter any custom width between 200px and 3840px, and enable 2× HiDPI scaling for retina displays.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'html-to-jpg-converter', name: 'HTML to JPG Converter' },
+      { slug: 'html-to-png-converter', name: 'HTML to PNG Converter' },
+      { slug: 'image-converter', name: 'Image Converter' },
+      { slug: 'svg-to-png', name: 'SVG to PNG' },
+    ],
+    relatedGuides: ['image-formats-guide', 'image-compression-guide'],
+  },
+  'html-to-jpg-converter': {
+    slug: 'html-to-jpg-converter',
+    name: 'HTML to JPG Converter',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Convert HTML code or uploaded HTML files to high-quality JPG images online in your browser with adjustable compression and custom viewport width.',
+    longTailKeywords: [
+      'html to jpg converter online',
+      'convert html to jpg free',
+      'html file to jpg',
+      'convert html file to jpg',
+      'html code to jpg',
+      'html to jpeg converter',
+      'convert html to jpeg online',
+    ],
+    intro: [
+      'HTML to JPG Converter renders HTML code or uploaded HTML files directly into JPG/JPEG format right inside your browser.',
+      'Because JPEG does not support transparency, transparent areas are automatically composited onto a clean white background, producing lightweight, shareable image files ideal for email previews, reports, and documentation.',
+    ],
+    steps: [
+      'Paste your HTML code into the editor or upload a .html / .htm document.',
+      'Choose your preferred viewport width (800px, 1200px, or custom) and resolution scale.',
+      'Adjust the JPG compression slider to balance visual clarity against output file size.',
+      'Review the sandboxed preview to ensure layouts, fonts, and borders render cleanly.',
+      'Click Convert to JPG and download your image instantly.',
+    ],
+    interpretation: [
+      'The generated JPG file is flattened onto a solid white background with 24-bit RGB color depth.',
+      'Higher quality percentages (e.g. 92%–100%) preserve fine text edges and high-contrast lines, while lower percentages reduce file footprint.',
+    ],
+    limitations: [
+      'JPG does not support alpha transparency; any transparent body or container will render with a solid white background.',
+      'Dynamic JavaScript execution and script tags are disabled for safety.',
+      'Remote images hosted on third-party servers must support cross-origin resource sharing (CORS) or be embedded as data URLs.',
+    ],
+    faqs: [
+      {
+        question: 'How to convert HTML to JPG?',
+        answer: 'Paste your HTML code or upload an HTML file, set your target width and JPG quality percentage, review the live preview, and click Convert to JPG to download the image.',
+      },
+      {
+        question: 'Can HTML files be converted to JPG?',
+        answer: 'Yes. You can upload any standard .html or .htm file up to 2 MB. The file is read and rendered locally in your browser.',
+      },
+      {
+        question: 'What is the difference between HTML and JPG?',
+        answer: 'HTML is a text-based markup language that describes document structure and styling, requiring a web browser to render. JPG is a compressed raster image format containing fixed pixels that can be opened in any image viewer.',
+      },
+      {
+        question: 'Does JavaScript render during HTML to JPG conversion?',
+        answer: 'No. Client-side JavaScript execution is blocked in the rendering sandbox to ensure deterministic output and prevent security risks.',
+      },
+      {
+        question: 'Are uploaded HTML files sent to a server?',
+        answer: 'No. All processing occurs locally in your browser memory via SVG and canvas technology. No files or code are uploaded to Navorika servers.',
+      },
+      {
+        question: 'How are external images and fonts handled?',
+        answer: 'System font stacks and local CSS render reliably. For images, embedded Data URLs (base64) are recommended because browser canvas security may block cross-origin remote images lacking CORS headers.',
+      },
+      {
+        question: 'JPG vs PNG for HTML screenshots?',
+        answer: 'JPG is best when you want smaller file sizes and do not require transparency. PNG is preferred when your HTML contains crisp typography, sharp line graphics, or transparent backgrounds.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'html-to-image', name: 'HTML to Image' },
+      { slug: 'html-to-png-converter', name: 'HTML to PNG Converter' },
+      { slug: 'convert-png-to-jpg', name: 'Convert PNG to JPG' },
+      { slug: 'image-converter', name: 'Image Converter' },
+    ],
+    relatedGuides: ['image-formats-guide', 'image-compression-guide'],
+  },
+  'html-to-png-converter': {
+    slug: 'html-to-png-converter',
+    name: 'HTML to PNG Converter',
+    category: 'Image Tools',
+    applicationCategory: 'DesignApplication',
+    description: 'Convert HTML code or HTML files to crisp, lossless PNG images with alpha transparency support locally in your browser.',
+    longTailKeywords: [
+      'html to png converter online',
+      'convert html to png free',
+      'html file to png',
+      'html code to png',
+      'convert html file to png',
+      'html to png transparent background',
+      'html to lossless png',
+    ],
+    intro: [
+      'HTML to PNG Converter transforms HTML markup and documents into lossless PNG images with full support for alpha channel transparency.',
+      'PNG delivers pixel-perfect text clarity, sharp vector edges, and transparent backgrounds, making it the ideal choice for UI mockups, email signatures, badges, and marketing graphics.',
+    ],
+    steps: [
+      'Paste your HTML markup into the editor or upload an .html or .htm file.',
+      'Configure viewport dimensions and choose between 1× standard or 2× HiDPI resolution.',
+      'Verify the rendered layout in the sandboxed preview frame.',
+      'Click Convert to PNG to generate a lossless raster image.',
+      'Download your PNG image immediately with preserved transparency.',
+    ],
+    interpretation: [
+      'PNG encoding is lossless, ensuring that high-contrast typography, icons, and UI borders retain maximum sharpness without compression artifacts.',
+      'If your HTML does not declare an opaque background color, the output image preserves transparent pixels.',
+    ],
+    limitations: [
+      'Lossless PNG files can be larger than equivalent lossy JPG files, especially for photo-heavy HTML layouts.',
+      'Dynamic scripts and active animations are not executed; rendering captures the static initial layout.',
+      'Cross-origin remote assets must comply with browser canvas security restrictions.',
+    ],
+    faqs: [
+      {
+        question: 'How do I convert HTML to a transparent PNG?',
+        answer: 'Ensure your HTML container or body has no solid background color (or uses background: transparent). The tool will automatically preserve the alpha channel during PNG export.',
+      },
+      {
+        question: 'Is PNG conversion lossless?',
+        answer: 'Yes. PNG uses lossless compression, meaning text, borders, and solid color blocks remain crisp without compression blur or artifacts.',
+      },
+      {
+        question: 'Can I upload an .html file directly?',
+        answer: 'Yes. Drag and drop or browse for any .html or .htm file. It is parsed and rendered entirely on your device.',
+      },
+      {
+        question: 'Is my HTML data secure and private?',
+        answer: 'Yes. All parsing and rasterization take place locally in your browser. No HTML code, files, or images are uploaded to any server.',
+      },
+      {
+        question: 'Can I generate high-resolution retina PNG images?',
+        answer: 'Yes. Select the 2× Retina scale option to export double-density images suitable for high-resolution displays and print previews.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'html-to-image', name: 'HTML to Image' },
+      { slug: 'html-to-jpg-converter', name: 'HTML to JPG Converter' },
+      { slug: 'convert-jpg-to-png', name: 'Convert JPG to PNG' },
+      { slug: 'svg-to-png', name: 'SVG to PNG' },
+    ],
+    relatedGuides: ['image-formats-guide', 'image-compression-guide'],
+  },
 };

@@ -530,6 +530,18 @@ export const toolUx: Record<string, ToolUxConfig> = {
     resultActions: ['copy-result'],
     workflowLabels: { 'compress-image-to-100kb': 'Compress any image to 100KB', 'compress-jpg-to-100kb': 'Compress JPG to 100KB', 'convert-png-to-webp': 'Convert PNG to WebP' },
   },
+  'html-to-image': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'html-to-jpg-converter': 'Convert HTML to JPG', 'html-to-png-converter': 'Convert HTML to PNG', 'image-converter': 'Convert between image formats' },
+  },
+  'html-to-jpg-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'html-to-image': 'HTML to Image studio', 'html-to-png-converter': 'Convert HTML to PNG', 'convert-png-to-jpg': 'Convert PNG to JPG' },
+  },
+  'html-to-png-converter': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    workflowLabels: { 'html-to-image': 'HTML to Image studio', 'html-to-jpg-converter': 'Convert HTML to JPG', 'convert-jpg-to-png': 'Convert JPG to PNG' },
+  },
 };
 
 export function getToolCapabilities(slug: string): ToolCapabilitySnapshot {

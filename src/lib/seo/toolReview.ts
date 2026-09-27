@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 export const toolsUnderReview = new Set([
   'blur-face',
   'bioluminescent-reader',
-  'html-to-image',
   'image-dpi-converter',
   'png-to-svg',
   'protect-pdf',
