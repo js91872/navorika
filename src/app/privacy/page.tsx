@@ -5,54 +5,57 @@ import { motion } from 'framer-motion';
 import { Shield, CheckCircle, ArrowLeft, Lock, Eye, Database, Cookie } from 'lucide-react';
 
 export default function PrivacyPage() {
-  const lastUpdated = 'August 24, 2026';
+  const lastUpdated = 'September 27, 2026';
 
   const sections = [
     {
       icon: <Shield className="h-6 w-6 text-indigo-500" />,
       title: 'Privacy First by Design',
-      content: 'Most Navorika tools process files and inputs locally in your browser. Tools that require live external data identify their source. Information you deliberately submit through the contact form is sent to Navorika.',
+      content: 'Navorika prioritizes client-side computing. Most tools process files and calculation inputs locally in your browser without transmitting them to our servers. Features requiring live external data identify their source, and server-assisted conversion workflows operate with ephemeral storage.',
     },
     {
       icon: <Lock className="h-6 w-6 text-indigo-500" />,
       title: 'Tool Inputs and Files',
-      content: 'Local-processing tools do not send the selected file or entered calculation values to Navorika. Exceptions are stated by the relevant feature, including:',
+      content: 'For tools designated as browser-local processing, your files and inputs are never uploaded to Navorika servers. Where server processing or external data is required, it is explicitly disclosed:',
       list: [
-        'The currency converter requests the selected currency pair from its named rate provider',
-        'The contact form sends the email address and message you choose to submit',
-        'Site analytics may receive standard page and device information',
+        'Local processing tools execute entirely within your browser environment',
+        'Server-assisted converters (such as CAD STEP to 3D PDF or Corel interchange) process files in isolated temporary directories and automatically delete input and output files immediately upon request completion',
+        'The currency converter requests exchange rates from external reference providers (such as the European Central Bank)',
+        'Direct correspondence sent via email is processed solely to respond to your inquiry',
       ],
     },
     {
       icon: <Eye className="h-6 w-6 text-indigo-500" />,
       title: 'What Happens to Your Data',
-      content: 'For tools labeled as local processing, the primary operation happens in your browser:',
+      content: 'For client-side tools, processing occurs directly in your local environment:',
       list: [
-        'Files are processed locally in your browser using WebAssembly and JavaScript',
-        'Selected files are handled by browser APIs and tool libraries',
-        'Generated downloads are created on your device',
-        'Live-data and contact features are separate and clearly described',
+        'Files are read and transformed locally using WebAssembly, HTML5 Canvas, and modern JavaScript engines',
+        'Data remains stored in volatile browser memory and is discarded when the tab is closed or reset',
+        'Generated download files are compiled and saved directly on your local device',
+        'We do not maintain account databases, user tracking profiles, or persistent server logs of your file contents',
       ],
     },
     {
       icon: <Database className="h-6 w-6 text-indigo-500" />,
-      title: 'Local Processing Explained',
-      content: 'Navorika uses browser technologies for most tool operations:',
+      title: 'Local Processing Technologies',
+      content: 'Navorika leverages standard, secure web platform capabilities:',
       list: [
-        'PDF processing: Uses pdf-lib and pdf.js running entirely in your browser',
-        'Image processing: Uses Canvas API and WebAssembly',
-        'Calculations: Most formulas execute in JavaScript on your device',
-        'External data: Live-rate tools contact the source identified in the tool',
+        'PDF utilities: Execute locally using pdf-lib and pdf.js compiled for browser runtimes',
+        'Image utilities: Execute locally via Canvas API, ImageData manipulation, and WebAssembly',
+        'Calculators: Execute standard mathematical and engineering formulas locally on your device',
+        'Cryptographic utilities: Utilize the native browser Web Crypto API (SubtleCrypto)',
       ],
     },
     {
       icon: <Cookie className="h-6 w-6 text-indigo-500" />,
-      title: 'Analytics and Local Storage',
-      content: 'The site uses analytics to understand site usage and local storage for preferences:',
+      title: 'Advertising and Cookies',
+      content: 'Navorika partners with third-party advertising networks to support our free tools:',
       list: [
-        'No third-party advertising',
-        'Google Analytics is loaded on site pages',
-        'Theme preference may be stored locally in your browser',
+        'Google AdSense: Third-party vendors, including Google, use cookies to serve ads based on a user’s prior visits to this website or other websites on the Internet',
+        'Personalized Advertising: Google’s use of advertising cookies enables it and its partners to serve ads to users based on their visits to our site and/or other sites across the web',
+        'Opt-Out Choices: You may opt out of personalized advertising by visiting Google Ads Settings (https://www.google.com/settings/ads) or through third-party opt-out services such as www.aboutads.info/choices/',
+        'Analytics: Aggregated, anonymized traffic analytics help us understand site usage and improve tool performance without identifying individual users',
+        'Local Storage: Browser localStorage is used strictly to remember your preferences (such as light or dark display mode) and does not contain personal identifying information',
       ],
     },
   ];

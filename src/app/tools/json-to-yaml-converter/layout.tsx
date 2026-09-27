@@ -3,7 +3,7 @@ import { developerToolPages } from '@/data/tool-pages/developer';
 import { createToolMetadata } from '@/lib/seo/toolPage';
 
 const tool = developerToolPages['json-to-yaml-converter'];
-export const metadata = createToolMetadata(tool);
+export const metadata = createToolMetadata(tool, 'https://navorika.com/tools/yaml-json-converter');
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

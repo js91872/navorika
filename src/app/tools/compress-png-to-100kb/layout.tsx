@@ -3,7 +3,7 @@ import { imageToolPages } from '@/data/tool-pages/image';
 import { createToolMetadata } from '@/lib/seo/toolPage';
 
 const tool = imageToolPages['compress-png-to-100kb'];
-export const metadata = createToolMetadata(tool);
+export const metadata = createToolMetadata(tool, 'https://navorika.com/tools/compress-png');
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

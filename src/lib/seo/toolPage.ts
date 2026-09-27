@@ -24,15 +24,16 @@ export interface ToolPageContent {
 
 const baseUrl = 'https://navorika.com';
 
-export function createToolMetadata(tool: ToolPageContent): Metadata {
+export function createToolMetadata(tool: ToolPageContent, canonicalOverride?: string): Metadata {
   const url = `${baseUrl}/tools/${tool.slug}`;
+  const canonicalUrl = canonicalOverride || url;
 
   return {
     title: tool.name,
     description: tool.description,
     keywords: tool.longTailKeywords,
     alternates: {
-      canonical: url,
+      canonical: canonicalOverride ?? url, // canonical: url
     },
     openGraph: {
       type: 'website',

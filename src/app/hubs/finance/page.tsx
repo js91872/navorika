@@ -3,15 +3,27 @@
 import Link from 'next/link';
 import { ArrowRight, Calculator, BookOpen, Sparkles } from 'lucide-react';
 import { tools } from '@/data/registry';
+import { toolsUnderReview } from '@/lib/seo/toolReview';
+
+const financeSuiteRoots = new Set([
+  'cashflow-budget-architect',
+  'investment-return-profiler',
+  'loan-amortization-suite',
+  'savings-retirement-hub',
+  'taxation-compliance-deck',
+  'wealth-inflation-matrix',
+]);
 
 export default function FinanceHub() {
-  const financeTools = tools.filter(t => t.category === 'finance-calculators');
+  const financeTools = tools.filter(
+    (t) => t.category === 'finance-calculators' && !toolsUnderReview.has(t.slug) && !financeSuiteRoots.has(t.slug)
+  );
   const financeArticles = [
     { title: 'How to Calculate SIP Returns', slug: 'how-to-calculate-sip-returns' },
-    { title: 'Understanding EMI Calculations', slug: 'understanding-emi-calculations' },
-    { title: 'GST Compliance Guide', slug: 'gst-compliance-guide' },
-    { title: 'PPF vs FD: Where to Invest', slug: 'ppf-vs-fd-where-to-invest' },
-    { title: 'Income Tax Planning Tips', slug: 'income-tax-planning-tips' },
+    { title: 'EMI Calculation Guide: Formula & Examples', slug: 'how-to-calculate-emi' },
+    { title: 'GST Calculation Guide: How to Calculate GST', slug: 'gst-calculation-guide' },
+    { title: 'PPF vs FD Comparison Guide', slug: 'ppf-vs-fd-comparison' },
+    { title: 'India Tax Planning Guide 2026', slug: 'tax-planning-guide-2026' },
   ];
 
   return (

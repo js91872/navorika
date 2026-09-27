@@ -109,11 +109,11 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'gst-calculation-guide',
-    title: 'GST Calculation Guide: How to Calculate GST in India',
-    description: 'Learn how to calculate GST for your business. Understand GST rates, types, and how to compute tax on goods and services.',
+    title: 'GST Calculation Guide: Formulas, RCM, and Invoicing Compliance',
+    description: 'Learn how to calculate GST for your business. Understand CGST, SGST, IGST, reverse charge, inclusive pricing, and Rule 46 invoicing standards.',
     category: 'Finance',
     publishedDate: 'August 2026',
-    readTime: '9 min read',
+    readTime: '10 min read',
     author: 'Navorika Team'
   },
   {
@@ -136,11 +136,11 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'ppf-vs-fd-comparison',
-    title: 'PPF vs FD: Which Investment is Right for You?',
-    description: 'Compare Public Provident Fund and Fixed Deposit investments. Understand returns, tax benefits, and which is better for your goals.',
+    title: 'PPF vs FD Comparison: Compounding, Taxes, and Wealth Tables',
+    description: 'Compare Public Provident Fund and Fixed Deposit investments. Understand EEE vs TTT tax treatment, compounding, and 15-year wealth accumulation.',
     category: 'Finance',
     publishedDate: 'August 2026',
-    readTime: '7 min read',
+    readTime: '11 min read',
     author: 'Navorika Team'
   },
   {
@@ -163,11 +163,11 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'calorie-deficit-guide',
-    title: 'Calorie Deficit Guide: How to Lose Weight Safely',
-    description: 'Learn how to create a calorie deficit for weight loss. Understand your calorie needs and how to achieve sustainable results.',
+    title: 'Calorie Deficit Guide: Safe Rates, Metabolism, and Lean Mass',
+    description: 'Learn how to create a sustainable calorie deficit for fat loss. Understand adaptive thermogenesis, lean tissue preservation, and tracking caveats.',
     category: 'Health',
     publishedDate: 'August 2026',
-    readTime: '8 min read',
+    readTime: '10 min read',
     author: 'Navorika Team'
   },
   {
@@ -181,20 +181,20 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'tax-planning-guide-2026',
-    title: 'Tax Planning Guide 2026: Tips for Maximizing Savings',
-    description: 'Learn how to plan your taxes effectively in 2026. Understand deductions, exemptions, and strategies to minimize tax liability.',
+    title: 'India Tax Planning Guide 2026: Slabs, Regimes, and Rebates',
+    description: 'Learn how to plan your taxes effectively for FY 2026–27. Compare New vs Old Regimes, standard deduction, Section 87A rebate, and advance tax schedules.',
     category: 'Finance',
     publishedDate: 'August 2026',
-    readTime: '10 min read',
+    readTime: '12 min read',
     author: 'Navorika Team'
   },
   {
     slug: 'macronutrients-guide',
-    title: 'Macronutrients Guide: Understand Protein, Carbs & Fats',
-    description: 'Learn about macronutrients and how to balance them for optimal health and fitness. Understand protein, carbohydrate, and fat requirements.',
+    title: 'Macronutrients Guide: 4:4:9 Density, Protein per kg, and Planning',
+    description: 'Learn about macronutrients and how to balance them for health and performance. Understand 4:4:9 density, protein per kg, dietary fats, and carbs.',
     category: 'Health',
     publishedDate: 'August 2026',
-    readTime: '7 min read',
+    readTime: '10 min read',
     author: 'Navorika Team'
   },
   {

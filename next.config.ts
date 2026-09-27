@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/tools/developer-utils',
+        destination: '/categories/developer-tools',
+        permanent: true,
+      },
+      {
+        source: '/tools/webmaster-seo-builder',
+        destination: '/categories/developer-tools',
+        permanent: true,
+      },
+      {
         source: '/tools/qr-code-studio',
         destination: '/tools/qr-code-generator',
         permanent: true,

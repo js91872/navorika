@@ -10,11 +10,15 @@ import { guidesMetadata } from '@/lib/guidesMetadata';
 export default function SitemapPage() {
   const pages = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
+    { href: '/about', label: 'About Us' },
     { href: '/categories', label: 'All Categories' },
     { href: '/tools', label: 'All Tools' },
     { href: '/guides', label: 'Guides' },
     { href: '/privacy', label: 'Privacy Policy' },
+    { href: '/terms', label: 'Terms of Service' },
+    { href: '/disclaimer', label: 'Disclaimer' },
+    { href: '/methodology', label: 'Methodology' },
+    { href: '/contact', label: 'Contact Us' },
     { href: '/sitemap', label: 'Sitemap' },
   ];
 

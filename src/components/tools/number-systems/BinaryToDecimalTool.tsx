@@ -275,10 +275,10 @@ export default function BinaryToDecimalTool() {
             UTF-8 vs UTF-16 Byte Calculator
           </Link>
           <Link
-            href="/tools/developer-utils"
+            href="/categories/developer-tools"
             className="rounded-lg border border-[var(--border)] bg-[var(--card)] px-3 py-1.5 font-bold hover:border-indigo-500"
           >
-            Developer Utils Hub
+            Developer Tools
           </Link>
           <Link
             href="/tools/web-crypto-studio"

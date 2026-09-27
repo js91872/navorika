@@ -15,11 +15,14 @@ export function createFinanceSuiteMetadata(suite: string, suboption: string, noI
   const tool = financeSuites[suite]?.[suboption];
   if (!tool) return { title: 'Finance Tool Not Found', robots: { index: false, follow: false } };
   const url = `https://navorika.com/tools/${suite}/${suboption}`;
+  const canonical = (suite === 'loan-amortization-suite' && suboption === 'emi-calculator')
+    ? 'https://navorika.com/tools/loan-emi-calculator'
+    : url;
   return {
     title: tool.title,
     description: tool.description,
     keywords: tool.keywords,
-    alternates: { canonical: url },
+    alternates: { canonical },
     openGraph: { type: 'website', url, title: tool.title, description: tool.description, siteName: 'Navorika' },
     robots: noIndex ? { index: false, follow: true } : undefined,
   };

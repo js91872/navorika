@@ -67,15 +67,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Legal & Trust */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)] mb-4">
-              Legal
+              Legal & Trust
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/privacy" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
                   Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/disclaimer" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Disclaimer
+                </Link>
+              </li>
+              <li>
+                <Link href="/methodology" className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+                  Methodology
                 </Link>
               </li>
               <li>
@@ -96,10 +111,10 @@ export default function Footer() {
         <div className="mt-12 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[var(--muted-foreground)]">
           <span>© {currentYear} Navorika. All rights reserved.</span>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:justify-end">
-            <Link href="/" className="hover:text-[var(--foreground)] transition-colors">Home</Link>
-            <Link href="/categories" className="hover:text-[var(--foreground)] transition-colors">Categories</Link>
-            <Link href="/tools" className="hover:text-[var(--foreground)] transition-colors">Tools</Link>
-            <Link href="/guides" className="hover:text-[var(--foreground)] transition-colors">Guides</Link>
+            <Link href="/privacy" className="hover:text-[var(--foreground)] transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-[var(--foreground)] transition-colors">Terms</Link>
+            <Link href="/disclaimer" className="hover:text-[var(--foreground)] transition-colors">Disclaimer</Link>
+            <Link href="/methodology" className="hover:text-[var(--foreground)] transition-colors">Methodology</Link>
             <Link href="/about" className="hover:text-[var(--foreground)] transition-colors">About</Link>
             <Link href="/contact" className="hover:text-[var(--foreground)] transition-colors">Contact</Link>
           </div>

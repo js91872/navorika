@@ -303,7 +303,7 @@ export const toolUx: Record<string, ToolUxConfig> = {
   'svg-dimensions-checker': {
     processingMode: 'local', noUpload: true, noAccount: true,
     resultActions: ['copy-summary', 'download-csv', 'print'],
-    workflowLabels: { 'image-scaling-calculator': 'Calculate scaled dimensions', 'png-to-svg': 'Convert raster PNG to SVG' },
+    workflowLabels: { 'image-scaling-calculator': 'Calculate scaled dimensions', 'svg-to-png': 'Rasterize SVG to PNG' },
   },
   'pdf-page-size-checker': {
     processingMode: 'local', noUpload: true, noAccount: true,

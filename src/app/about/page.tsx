@@ -3,256 +3,214 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  Shield, Zap, Globe, Lock, Rocket, Sparkles,
-  CheckCircle, ArrowRight, Heart, Cpu, Target, Eye
+  Shield,
+  Zap,
+  Lock,
+  CheckCircle,
+  ArrowRight,
+  Cpu,
+  Layers,
+  Calculator,
+  FileText,
+  ImageIcon,
+  Code2,
+  AlertCircle,
+  ExternalLink,
 } from 'lucide-react';
 import { tools } from '@/data/registry';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 export default function AboutPage() {
-  const toolCount = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length;
-  const displayCount = `${toolCount}`;
+  const activeToolCount = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length;
 
-  const stats = [
-    { icon: <Cpu className="h-6 w-6" />, value: toolCount, label: 'Tools' },
-    { icon: <Shield className="h-6 w-6" />, value: 'Most', label: 'Process Locally' },
-    { icon: <Zap className="h-6 w-6" />, value: 'Instant', label: 'Processing' },
-    { icon: <Lock className="h-6 w-6" />, value: 'Clear', label: 'Data Sources' },
-  ];
-
-  const values = [
+  const toolCategories = [
     {
-      icon: <Lock className="h-8 w-8" />,
-      title: 'Privacy First',
-      description: 'Most tools process files and inputs locally in your browser. Tools that require live external data identify their source and what they request.',
+      icon: <Calculator className="h-6 w-6 text-emerald-500" />,
+      title: 'Financial & Planning Calculators',
+      description: 'Scenario planning tools for loan amortization, SIP returns, income tax estimates, mortgage affordability, and commercial SaaS/real-estate performance metrics.',
     },
     {
-      icon: <Zap className="h-8 w-8" />,
-      title: 'Instant Execution',
-      description: 'Browser-based tools respond quickly, while utilities that require current data make focused external requests.',
+      icon: <Layers className="h-6 w-6 text-amber-500" />,
+      title: 'Construction & Material Takeoffs',
+      description: 'Field estimation utilities for concrete volume, roof pitch, stair stringers, joist deflection, and building material waste based on published standards.',
     },
     {
-      icon: <Rocket className="h-8 w-8" />,
-      title: 'Built for the Future',
-      description: 'Designed for 2030 and beyond. Fast, responsive, and works on every device. No downloads, no plugins, no signup required.',
+      icon: <FileText className="h-6 w-6 text-blue-500" />,
+      title: 'Document & PDF Utilities',
+      description: 'Browser-local document management including PDF merging, splitting, reordering, compression, visual signature stamping, and text extraction.',
     },
     {
-      icon: <Heart className="h-8 w-8" />,
-      title: 'Free Forever',
-      description: 'No hidden costs, no premium plans. All tools are completely free to use.',
+      icon: <ImageIcon className="h-6 w-6 text-purple-500" />,
+      title: 'Image & Media Tools',
+      description: 'Sandboxed HTML-to-image conversion, client-side format re-encoding (JPG, PNG, WebP, SVG), dimension scaling, cropping, and pixel metadata inspection.',
+    },
+    {
+      icon: <Code2 className="h-6 w-6 text-indigo-500" />,
+      title: 'Developer & Network Aids',
+      description: 'Data format converters (JSON, YAML, TOML), W3C WebCrypto hashing, Cron schedule generators, JWT inspection, and IPv4/IPv6 subnet calculators.',
     },
   ];
 
-  const reasons = [
+  const corePrinciples = [
     {
-      icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
-      title: 'Local Where Practical',
-      description: 'File tools are designed to process locally. Live-data tools clearly identify the external source they contact.',
+      icon: <Lock className="h-7 w-7 text-indigo-500" />,
+      title: 'Browser-Local by Design',
+      description: 'The vast majority of our tools process files and calculation parameters entirely within your local web browser. Your sensitive documents, images, and calculation inputs are not uploaded to or stored on Navorika servers.',
     },
     {
-      icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
-      title: 'No Signup Required',
-      description: 'Start using any tool instantly. No accounts, no emails, no passwords to remember.',
+      icon: <Shield className="h-7 w-7 text-emerald-500" />,
+      title: 'Transparent Execution',
+      description: 'We explicitly identify how each tool operates. Tools that require external data (such as live currency exchange rates) or ephemeral server-assisted binaries (such as 3D CAD tessellation) clearly disclose their operating boundaries.',
     },
     {
-      icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
-      title: `${displayCount} Tools Across Categories`,
-      description: 'Calculators, PDF editors, image converters, developer utilities, health tools, and more.',
+      icon: <Zap className="h-7 w-7 text-amber-500" />,
+      title: 'Zero Barrier to Utility',
+      description: 'No accounts, no email capture, and no subscriptions. Tools are accessible immediately on desktop and mobile devices without software installation.',
     },
     {
-      icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
-      title: 'Clear Data Boundaries',
-      description: 'Navorika distinguishes local processing from features such as live exchange rates that require an external data source.',
+      icon: <Cpu className="h-7 w-7 text-blue-500" />,
+      title: 'Empirical Verification',
+      description: 'Calculation logic is implemented using established mathematical formulas and building codes, backed by automated unit tests covering standard values, bounds, and precision edge cases.',
     },
   ];
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
-      {/* HERO */}
-      <section className="relative overflow-hidden px-4 py-16 md:py-24">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6"
-          >
-            <Eye className="h-4 w-4" />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <section className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6">
             About Navorika
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-6"
-          >
-            Navorika – {displayCount} Free Online Tools
-            <br />
-            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Built for Privacy &amp; Speed
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed"
-          >
-            Navorika is a privacy-first platform with {displayCount} active online tools,
-            calculators, PDF editors, image converters, and developer utilities.
-            Most tools process locally, and live-data sources are identified. No signup is required.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-4"
-          >
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight mb-6">
+            Privacy-First Online Calculators &amp; Digital Utilities
+          </h1>
+          <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
+            Navorika is an independent platform providing over {activeToolCount} focused online tools designed to run directly in your browser. We combine client-side performance, data privacy, and mathematical transparency.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/tools"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold hover:shadow-xl transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors"
             >
               Explore Tools <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/guides"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:border-indigo-500/40 transition-all"
+              href="/methodology"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--border)] text-[var(--foreground)] hover:border-indigo-500/40 transition-colors"
             >
-              Read Guides
+              Calculation Methodology
             </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center"
-            >
-              <div className="text-3xl mb-2 text-indigo-600 dark:text-indigo-400">{stat.icon}</div>
-              <div className="text-3xl font-black">{stat.value}</div>
-              <div className="text-sm text-[var(--muted-foreground)]">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* VALUES */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold">Our Values</h2>
-          <p className="text-[var(--muted-foreground)] mt-2">The principles that guide everything we build</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((value, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-indigo-500/40 transition-all text-center group"
-            >
-              <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                {value.icon}
-              </div>
-              <h3 className="font-bold mb-2">{value.title}</h3>
-              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{value.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
-      <section className="bg-[var(--muted)]/30 border-y border-[var(--border)] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">Why Choose Navorika?</h2>
-            <p className="text-[var(--muted-foreground)] mt-2">Built differently. Built better.</p>
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {reasons.map((reason, index) => (
+        {/* Philosophy */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">Our Operating Philosophy</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {corePrinciples.map((principle, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-start gap-4 p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
+                key={principle.title}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
               >
-                <div className="mt-1">{reason.icon}</div>
-                <div>
-                  <h3 className="font-bold">{reason.title}</h3>
-                  <p className="text-sm text-[var(--muted-foreground)]">{reason.description}</p>
-                </div>
+                <div className="mb-3">{principle.icon}</div>
+                <h3 className="text-lg font-bold mb-2">{principle.title}</h3>
+                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  {principle.description}
+                </p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* MISSION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-8 sm:p-12 text-center">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-10" />
-
-          <div className="relative z-10">
-            <Target className="h-12 w-12 text-white/80 mx-auto mb-4" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Our Mission</h2>
-            <p className="text-white/80 max-w-2xl mx-auto text-lg leading-relaxed">
-              To build the world's most advanced client-side computing platform —
-              where privacy is absolute, performance is instant, and tools are always within reach.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="/tools"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold hover:shadow-xl transition-all hover:scale-105"
+        {/* Tool Categories */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">What Kinds of Tools We Provide</h2>
+          <div className="space-y-4">
+            {toolCategories.map((cat) => (
+              <div
+                key={cat.title}
+                className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] flex items-start gap-4"
               >
-                Explore Tools <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/guides"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/20 text-white font-semibold hover:bg-white/30 transition-all"
-              >
-                Read Guides <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+                <div className="p-2.5 rounded-xl bg-[var(--muted)]/50 shrink-0 mt-0.5">
+                  {cat.icon}
+                </div>
+                <div>
+                  <h3 className="font-bold text-base">{cat.title}</h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mt-1 leading-relaxed">
+                    {cat.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="p-8 sm:p-12 rounded-3xl bg-[var(--card)] border border-[var(--border)] text-center">
-          <Sparkles className="h-12 w-12 text-amber-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-3">Ready to experience the future?</h2>
-          <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto mb-6">
-            Join thousands of users who trust Navorika for their daily productivity.
-          </p>
-          <Link
-            href="/tools"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold hover:shadow-xl transition-all hover:scale-105"
-          >
-            Get Started <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
+        {/* How Tools are Developed and Tested */}
+        <section className="mb-16 p-6 sm:p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)]">
+          <h2 className="text-2xl font-bold mb-4">How Tools Are Developed &amp; Verified</h2>
+          <div className="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
+            <p>
+              Calculators and converters on Navorika are constructed using documented mathematical equations, statutory standards, and industry conventions. For example, our loan calculators utilize the universal amortization annuity formula, tax tools reflect published statutory tax slabs, and structural takeoffs apply standard empirical material densities and building code span criteria.
+            </p>
+            <p>
+              Every tool engine is subject to automated unit test suites running in our continuous integration environment. These tests verify mathematical outputs across typical scenarios, boundary limits, zero-values, and unexpected user inputs.
+            </p>
+            <p>
+              For a detailed breakdown of mathematical formulas, source citations, and testing protocols, please read our dedicated{' '}
+              <Link href="/methodology" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+                Calculation Methodology &amp; Standards
+              </Link>{' '}
+              document.
+            </p>
+          </div>
+        </section>
+
+        {/* Technical Limitations */}
+        <section className="mb-16 p-6 sm:p-8 rounded-3xl border border-amber-500/20 bg-amber-500/5">
+          <div className="flex items-center gap-3 mb-3">
+            <AlertCircle className="h-6 w-6 text-amber-600 dark:text-amber-400 shrink-0" />
+            <h2 className="text-xl font-bold">Important Technical Limitations</h2>
+          </div>
+          <div className="space-y-3 text-sm text-[var(--muted-foreground)] leading-relaxed">
+            <p>
+              While client-side execution provides superior privacy, it is constrained by the capabilities of your local web browser and hardware. Very large files may encounter browser memory ceilings, and mobile devices may experience slower execution times during CPU-intensive tasks.
+            </p>
+            <p>
+              Calculations are planning aids and rule-of-thumb estimations. They do not substitute for professional legal, tax, medical, or certified engineering counsel. Please review our{' '}
+              <Link href="/disclaimer" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+                Legal &amp; Calculation Disclaimer
+              </Link>{' '}
+              for category-specific caveats.
+            </p>
+          </div>
+        </section>
+
+        {/* Quick Links */}
+        <section className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center text-sm text-[var(--muted-foreground)] space-y-3">
+          <p className="font-semibold text-[var(--foreground)]">Governance and Legal Documents</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs">
+            <Link href="/methodology" className="text-indigo-600 dark:text-indigo-400 hover:underline">
+              Methodology &amp; Standards
+            </Link>
+            <Link href="/disclaimer" className="text-indigo-600 dark:text-indigo-400 hover:underline">
+              Legal Disclaimer
+            </Link>
+            <Link href="/privacy" className="text-indigo-600 dark:text-indigo-400 hover:underline">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-indigo-600 dark:text-indigo-400 hover:underline">
+              Terms of Service
+            </Link>
+            <Link href="/contact" className="text-indigo-600 dark:text-indigo-400 hover:underline">
+              Contact Us
+            </Link>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

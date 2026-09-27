@@ -1,72 +1,113 @@
 'use client';
 
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import Link from 'next/link';
+import { Mail, Shield, MessageSquare, ArrowLeft, Bug, HelpCircle } from 'lucide-react';
 
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-        <p className="text-[var(--muted-foreground)] mb-8">
-          Have questions or feedback? We'd love to hear from you.
-        </p>
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8"
+        >
+          <ArrowLeft className="h-4 w-4" /> Back to Home
+        </Link>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <div className="flex items-start gap-3">
-              <Mail className="h-5 w-5 text-indigo-500 mt-1" />
-              <div>
-                <h3 className="font-semibold">Email</h3>
-                <a href="mailto:admin@navorika.com" className="text-[var(--muted-foreground)] hover:text-indigo-500">
-                  admin@navorika.com
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <MapPin className="h-5 w-5 text-indigo-500 mt-1" />
-              <div>
-                <h3 className="font-semibold">Location</h3>
-                <p className="text-[var(--muted-foreground)]">Navorika<br />Digital Products</p>
-              </div>
-            </div>
+        <div className="mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-4">
+            Get in Touch
           </div>
+          <h1 className="text-4xl font-black tracking-tight mb-4">Contact Navorika</h1>
+          <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
+            Have questions about a calculator, technical feedback on a conversion tool, or a suggestion for a new utility? We welcome direct correspondence via email.
+          </p>
+        </div>
 
-          <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6">
-            <h3 className="text-lg font-bold mb-4">Send a Message</h3>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">Name</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 rounded-xl bg-[var(--background)] border border-[var(--border)] focus:border-indigo-500 outline-none"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-2 rounded-xl bg-[var(--background)] border border-[var(--border)] focus:border-indigo-500 outline-none"
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Message</label>
-                <textarea
-                  rows={4}
-                  className="w-full px-4 py-2 rounded-xl bg-[var(--background)] border border-[var(--border)] focus:border-indigo-500 outline-none"
-                  placeholder="Your message..."
-                />
-              </div>
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold hover:shadow-xl transition-all"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {/* General & Support Email */}
+          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">
+            <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 w-fit">
+              <Mail className="h-6 w-6" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold">General Inquiries &amp; Feedback</h2>
+              <p className="text-sm text-[var(--muted-foreground)] mt-1">
+                For general support, tool feedback, calculation checks, or partnership inquiries.
+              </p>
+            </div>
+            <div>
+              <a
+                href="mailto:admin@navorika.com?subject=Navorika%20Inquiry"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors text-sm"
               >
-                Send Message <Send className="h-4 w-4" />
-              </button>
-            </form>
+                <Mail className="h-4 w-4" /> Email admin@navorika.com
+              </a>
+            </div>
           </div>
+
+          {/* Privacy Email */}
+          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">
+            <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 w-fit">
+              <Shield className="h-6 w-6" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold">Privacy &amp; Data Inquiries</h2>
+              <p className="text-sm text-[var(--muted-foreground)] mt-1">
+                For questions regarding data processing, advertising disclosures, or our privacy policy.
+              </p>
+            </div>
+            <div>
+              <a
+                href="mailto:privacy@navorika.com?subject=Privacy%20Inquiry"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[var(--border)] text-[var(--foreground)] font-medium hover:bg-[var(--muted)]/50 transition-colors text-sm"
+              >
+                <Shield className="h-4 w-4" /> Email privacy@navorika.com
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bug reporting guide */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] space-y-4 mb-8">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+              <Bug className="h-5 w-5" />
+            </div>
+            <h2 className="text-xl font-bold">Reporting a Calculation or Tool Issue</h2>
+          </div>
+          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+            When reporting an issue with a specific calculation formula, conversion error, or browser layout bug, providing the following details helps us reproduce and resolve the problem rapidly:
+          </p>
+          <ul className="space-y-2 text-sm text-[var(--muted-foreground)]">
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">•</span>
+              <span><strong>Tool URL:</strong> The exact page where the issue occurred (e.g., /tools/roof-pitch-calculator).</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">•</span>
+              <span><strong>Inputs &amp; Values:</strong> The specific numerical values, file types, or options selected.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">•</span>
+              <span><strong>Expected vs. Actual Result:</strong> What result you expected based on reference standards vs. what was displayed.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">•</span>
+              <span><strong>Environment:</strong> Your web browser (Chrome, Firefox, Safari, Edge) and device type (Desktop, Mobile).</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Operational Note */}
+        <div className="p-6 rounded-2xl bg-[var(--muted)]/30 border border-[var(--border)] text-center text-xs text-[var(--muted-foreground)]">
+          <p>
+            Navorika is an independent web utility platform. Electronic mail is our primary contact channel. Inquiries are typically reviewed within 2 business days. For information on calculation standards, visit our{' '}
+            <Link href="/methodology" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
+              Calculation Methodology
+            </Link>
+            .
+          </p>
         </div>
       </div>
     </main>

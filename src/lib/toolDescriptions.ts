@@ -96,8 +96,8 @@ export const toolDescriptions: Record<string, string> = {
   'jwt-decoder': 'Decode JWT header and payload JSON locally without verifying the token signature.',
   'json-formatter': 'View, edit, and format JSON data online free. Parse and validate JSON.',
   'base64-encoder': 'Encode UTF-8 text to Base64 or decode Base64 back to UTF-8 text locally.',
-  'code-minifier-beautifier': 'Temporarily unavailable pending parser-backed code processing.',
-  'markup-formatter': 'Temporarily unavailable pending grammar-aware formatters.',
+  'code-minifier-beautifier': 'Format and minify JavaScript, CSS, and HTML locally with parser-backed processing engines.',
+  'markup-formatter': 'Format and validate SQL, XML, and YAML locally with grammar-aware processing engines.',
   'web-crypto-studio': 'Generate SHA-256 hashes, random passwords, and UUID v4 identifiers locally.',
   'webmaster-seo-builder': 'Generate UTM URLs, basic social meta tags, and a simple robots.txt block locally.',
   
