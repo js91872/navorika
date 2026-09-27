@@ -171,11 +171,13 @@ test('16. attempted unsafe event handlers: strips onclick, onerror, onload, etc.
 
 test('17. external images and dangerous URIs: warns on remote URLs and blocks javascript: URIs', () => {
   const input = '<a href="javascript:alert(1)">Dangerous Link</a><img src="https://example.com/photo.jpg"/>';
-  const { cleanHtml, hasExternalImages, warnings } = sanitizeHtml(input);
-  assert.equal(hasExternalImages, true);
+  const { cleanHtml, hasExternalResources, hasDangerousProtocols, warnings } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, true);
+  assert.equal(hasDangerousProtocols, true);
   assert.ok(!cleanHtml.includes('href="javascript:'));
-  assert.ok(cleanHtml.includes('data-blocked-uri="true"'));
-  assert.ok(warnings.some((w) => w.includes('External cross-origin images')));
+  assert.ok(cleanHtml.includes('data-blocked-protocol="true"'));
+  assert.ok(!cleanHtml.includes('https://example.com/photo.jpg'));
+  assert.ok(warnings.some((w) => w.includes('External network resources')));
 });
 
 test('18. empty input: rejects empty or whitespace-only markup', () => {
@@ -206,4 +208,182 @@ test('20. prebuilt samples: all sample templates pass sanitization cleanly', () 
     assert.equal(hasDangerousTags, false, `Sample ${sample.id} must not have dangerous tags`);
     assert.equal(hasEventHandlers, false, `Sample ${sample.id} must not have event handlers`);
   }
+});
+
+/* =========================================================================
+   HARDENED SECURITY REGRESSION TEST SUITE (15 Explicit Tests)
+   ========================================================================= */
+
+test('SEC-1. external HTTP image: neutralized and flagged', () => {
+  const input = '<img src="http://example.com/tracker.gif" alt="tracking pixel"/>';
+  const { cleanHtml, hasExternalResources, warnings } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, true);
+  assert.ok(!cleanHtml.includes('http://example.com/tracker.gif'));
+  assert.ok(!cleanHtml.includes('src="http:'));
+  assert.ok(cleanHtml.includes('data-blocked-external-src="true"'));
+  assert.ok(warnings.some((w) => w.includes('External network resources')));
+});
+
+test('SEC-2. external HTTPS image: neutralized and flagged', () => {
+  const input = '<img src="https://cdn.example.org/photo.png" alt="photo" width="400"/>';
+  const { cleanHtml, hasExternalResources, warnings } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, true);
+  assert.ok(!cleanHtml.includes('https://cdn.example.org/photo.png'));
+  assert.ok(!cleanHtml.includes('src="https:'));
+  assert.ok(cleanHtml.includes('data-blocked-external-src="true"'));
+  assert.ok(cleanHtml.includes('width="400"'));
+  assert.ok(warnings.some((w) => w.includes('External network resources')));
+});
+
+test('SEC-3. CSS background url(https://...): stripped and neutralized', () => {
+  const input = '<div style="background-image: url(\'https://example.com/bg.png\'); color: blue;">Styled Box</div>';
+  const { cleanHtml, hasExternalResources } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, true);
+  assert.ok(!cleanHtml.includes('https://example.com/bg.png'));
+  assert.ok(cleanHtml.includes('external url blocked'));
+  assert.ok(cleanHtml.includes('color: blue'));
+});
+
+test('SEC-4. CSS @import: stripped from style block', () => {
+  const input = '<style>@import url("https://fonts.googleapis.com/css2?family=Roboto"); body { color: red; }</style>';
+  const { cleanHtml, hasExternalResources } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, true);
+  assert.ok(!cleanHtml.includes('@import'));
+  assert.ok(!cleanHtml.includes('fonts.googleapis.com'));
+  assert.ok(cleanHtml.includes('body { color: red; }'));
+});
+
+test('SEC-5. remote webfont: remote @font-face block is neutralized', () => {
+  const input = `<style>
+    @font-face {
+      font-family: 'CustomWebFont';
+      src: url('https://example.com/fonts/custom.woff2') format('woff2');
+    }
+    h1 { font-family: 'CustomWebFont', sans-serif; }
+  </style>`;
+  const { cleanHtml, hasExternalResources } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, true);
+  assert.ok(!cleanHtml.includes('https://example.com/fonts/custom.woff2'));
+  assert.ok(cleanHtml.includes("h1 { font-family: 'CustomWebFont', sans-serif; }"));
+});
+
+test('SEC-6. javascript: href: blocked as dangerous protocol', () => {
+  const input = '<a href="javascript:alert(document.cookie)">Click to Win</a>';
+  const { cleanHtml, hasDangerousProtocols, warnings } = sanitizeHtml(input);
+  assert.equal(hasDangerousProtocols, true);
+  assert.ok(!cleanHtml.includes('href="javascript:'));
+  assert.ok(!cleanHtml.includes('document.cookie'));
+  assert.ok(cleanHtml.includes('data-blocked-protocol="true"'));
+  assert.ok(warnings.some((w) => w.includes('Dangerous URI protocols')));
+});
+
+test('SEC-7. entity-encoded javascript URI: decoded and blocked', () => {
+  const input = '<a href="&#106;avascript:alert(1)">Decimal Link</a><a href="jav&#x09;ascript:alert(2)">Tab Link</a>';
+  const { cleanHtml, hasDangerousProtocols } = sanitizeHtml(input);
+  assert.equal(hasDangerousProtocols, true);
+  assert.ok(!cleanHtml.includes('&#106;avascript:'));
+  assert.ok(!cleanHtml.includes('jav&#x09;ascript:'));
+  assert.ok(!cleanHtml.includes('alert('));
+  assert.ok(cleanHtml.includes('data-blocked-protocol="true"'));
+});
+
+test('SEC-8. mixed-case dangerous protocol: case-insensitively blocked', () => {
+  const input = '<a href="JaVaScRiPt:alert(1)">Upper JS</a><a href="vBsCrIpT:msgbox(1)">VBS</a>';
+  const { cleanHtml, hasDangerousProtocols } = sanitizeHtml(input);
+  assert.equal(hasDangerousProtocols, true);
+  assert.ok(!cleanHtml.includes('JaVaScRiPt:'));
+  assert.ok(!cleanHtml.includes('vBsCrIpT:'));
+  assert.ok(cleanHtml.includes('data-blocked-protocol="true"'));
+});
+
+test('SEC-9. xlink:href: remote URLs stripped, internal local fragment preserved', () => {
+  const input = '<svg><use xlink:href="https://evil.com/sprites.svg#hack"></use><use xlink:href="#local-sym"></use></svg>';
+  const { cleanHtml, hasExternalResources } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, true);
+  assert.ok(!cleanHtml.includes('https://evil.com/sprites.svg#hack'));
+  assert.ok(cleanHtml.includes('data-blocked-external-ref="true"'));
+  assert.ok(cleanHtml.includes('xlink:href="#local-sym"'));
+});
+
+test('SEC-10. SVG event handler: onload, onbegin, and onend stripped', () => {
+  const input = '<svg onload="alert(\'svg\')"><circle r="10" onbegin="fetch(\'/steal\')"/><animate onend="eval(\'x\')"/></svg>';
+  const { cleanHtml, hasEventHandlers } = sanitizeHtml(input);
+  assert.equal(hasEventHandlers, true);
+  assert.ok(!cleanHtml.includes('onload'));
+  assert.ok(!cleanHtml.includes('onbegin'));
+  assert.ok(!cleanHtml.includes('onend'));
+  assert.ok(!cleanHtml.includes('fetch('));
+  assert.ok(!cleanHtml.includes('eval('));
+});
+
+test('SEC-11. SVG external resource: <image href="https://..."> is blocked', () => {
+  const input = '<svg><image href="https://example.com/vector-asset.svg" width="100" height="100"/></svg>';
+  const { cleanHtml, hasExternalResources } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, true);
+  assert.ok(!cleanHtml.includes('https://example.com/vector-asset.svg'));
+  assert.ok(cleanHtml.includes('data-blocked-external-src="true"'));
+});
+
+test('SEC-12. data:text/html: blocked as dangerous active protocol', () => {
+  const input = '<a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">Malicious Link</a>';
+  const { cleanHtml, hasDangerousProtocols } = sanitizeHtml(input);
+  assert.equal(hasDangerousProtocols, true);
+  assert.ok(!cleanHtml.includes('data:text/html'));
+  assert.ok(cleanHtml.includes('data-blocked-protocol="true"'));
+});
+
+test('SEC-13. safe data:image URL: preserved without false-positive blocks', () => {
+  const safeDataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+  const input = `<img src="${safeDataUrl}" alt="1x1 Red Dot" width="10" height="10"/>`;
+  const { cleanHtml, hasExternalResources, hasDangerousProtocols, warnings } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, false);
+  assert.equal(hasDangerousProtocols, false);
+  assert.equal(warnings.length, 0);
+  assert.ok(cleanHtml.includes(safeDataUrl));
+});
+
+test('SEC-14. normal inline styles: preserved intact', () => {
+  const input = '<div style="color: #2563eb; background-color: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">Card</div>';
+  const { cleanHtml, hasExternalResources } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, false);
+  assert.ok(cleanHtml.includes('color: #2563eb'));
+  assert.ok(cleanHtml.includes('background-color: #f8fafc'));
+  assert.ok(cleanHtml.includes('border: 2px solid #e2e8f0'));
+  assert.ok(cleanHtml.includes('border-radius: 12px'));
+  assert.ok(cleanHtml.includes('padding: 16px'));
+  assert.ok(cleanHtml.includes('box-shadow: 0 4px 6px rgba(0,0,0,0.05)'));
+});
+
+test('SEC-15. Flexbox and Grid layouts: completely functioning and preserved', () => {
+  const input = '<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;"><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;"><div>Col 1</div><div>Col 2</div><div>Col 3</div></div></div>';
+  const { cleanHtml, hasExternalResources } = sanitizeHtml(input);
+  assert.equal(hasExternalResources, false);
+  assert.ok(cleanHtml.includes('display: flex'));
+  assert.ok(cleanHtml.includes('justify-content: space-between'));
+  assert.ok(cleanHtml.includes('align-items: center'));
+  assert.ok(cleanHtml.includes('grid-template-columns: repeat(3, 1fr)'));
+});
+
+test('SEC-16. zero-leak audit: comprehensive snippet contains no remote HTTP/HTTPS resource references', () => {
+  const payload = `
+    <div style="background-image: url('https://leak.com/bg.jpg');">
+      <img src="http://leak.com/img1.jpg" srcset="https://leak.com/img1@2x.jpg 2x"/>
+      <video poster="https://leak.com/poster.jpg"><source src="https://leak.com/vid.mp4"/></video>
+      <svg><image href="https://leak.com/svg.png"/></svg>
+      <style>@import url('https://leak.com/font.css');</style>
+      <p style="color: black;">Normal text</p>
+    </div>
+  `;
+  const { cleanHtml } = sanitizeHtml(payload);
+  assert.ok(!/(?:src|href|poster|srcset|url)\s*=\s*['"]?(?:https?:|\/\/)/i.test(cleanHtml));
+  assert.ok(!cleanHtml.includes('leak.com'));
+  assert.ok(cleanHtml.includes('Normal text'));
+});
+
+test('SEC-17. SANDBOX_CSP: guarantees default-src none, script-src none, connect-src none', async () => {
+  const { SANDBOX_CSP } = await import('./sanitizer');
+  assert.ok(SANDBOX_CSP.includes("default-src 'none'"));
+  assert.ok(SANDBOX_CSP.includes("script-src 'none'"));
+  assert.ok(SANDBOX_CSP.includes("connect-src 'none'"));
+  assert.ok(SANDBOX_CSP.includes("img-src data: blob:"));
 });

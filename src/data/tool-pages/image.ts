@@ -1138,7 +1138,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     ],
     limitations: [
       'JavaScript execution is disabled in the rendering sandbox for security; dynamic DOM mutations and client scripts will not run.',
-      'External cross-origin images or webfonts without permissive CORS headers may be blocked by browser canvas security policies.',
+      'External network resources (remote HTTP/HTTPS images, CSS @import, and web fonts) are blocked by default to preserve privacy and prevent third-party tracking. Use embedded base64 Data URLs and system font stacks.',
       'Complex browser-specific rendering engines or animated CSS transitions are rasterized at their initial static state.',
     ],
     faqs: [
@@ -1200,7 +1200,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     limitations: [
       'JPG does not support alpha transparency; any transparent body or container will render with a solid white background.',
       'Dynamic JavaScript execution and script tags are disabled for safety.',
-      'Remote images hosted on third-party servers must support cross-origin resource sharing (CORS) or be embedded as data URLs.',
+      'External network resources (remote HTTP/HTTPS images, CSS @import, and web fonts) are blocked by default to preserve privacy. Use embedded base64 Data URLs and local styling.',
     ],
     faqs: [
       {
@@ -1225,7 +1225,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       },
       {
         question: 'How are external images and fonts handled?',
-        answer: 'System font stacks and local CSS render reliably. For images, embedded Data URLs (base64) are recommended because browser canvas security may block cross-origin remote images lacking CORS headers.',
+        answer: 'System font stacks and local CSS render reliably. For images, embedded Data URLs (base64) are supported because external HTTP/HTTPS assets are blocked by default to enforce 100% browser-local privacy.',
       },
       {
         question: 'JPG vs PNG for HTML screenshots?',
@@ -1273,7 +1273,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     limitations: [
       'Lossless PNG files can be larger than equivalent lossy JPG files, especially for photo-heavy HTML layouts.',
       'Dynamic scripts and active animations are not executed; rendering captures the static initial layout.',
-      'Cross-origin remote assets must comply with browser canvas security restrictions.',
+      'External network resources are blocked by default to enforce privacy; embedded Data URLs and system fonts render cleanly.',
     ],
     faqs: [
       {

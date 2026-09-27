@@ -22,9 +22,11 @@ export interface SanitizeResult {
   sanitizedForForeignObject: string;
   warnings: string[];
   hasScripts: boolean;
-  hasExternalImages: boolean;
+  hasExternalImages: boolean; // alias for hasExternalResources
+  hasExternalResources: boolean;
   hasEventHandlers: boolean;
   hasDangerousTags: boolean;
+  hasDangerousProtocols: boolean;
   strippedCount: number;
 }
 

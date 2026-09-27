@@ -27,6 +27,7 @@ import {
   HTML_SAMPLES,
   type HtmlImageFormat,
   type HtmlSample,
+  SANDBOX_CSP,
   sanitizeHtml,
   validateHtmlInput,
 } from '@/lib/image/html-to-image';
@@ -87,9 +88,16 @@ export default function HtmlToImageConverterTool({
   }, [widthPreset, customWidth]);
 
   // Clean and sanitize input
-  const { cleanHtml, warnings, hasScripts, hasEventHandlers, hasExternalImages } = useMemo(() => {
+  const { cleanHtml, warnings, hasScripts, hasEventHandlers, hasExternalResources, hasDangerousProtocols } = useMemo(() => {
     if (!htmlInput.trim()) {
-      return { cleanHtml: '', warnings: [], hasScripts: false, hasEventHandlers: false, hasExternalImages: false };
+      return {
+        cleanHtml: '',
+        warnings: [],
+        hasScripts: false,
+        hasEventHandlers: false,
+        hasExternalResources: false,
+        hasDangerousProtocols: false,
+      };
     }
     return sanitizeHtml(htmlInput);
   }, [htmlInput]);
@@ -109,7 +117,7 @@ export default function HtmlToImageConverterTool({
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=${renderWidth}"/>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'none'; style-src 'unsafe-inline' 'self';">
+  <meta http-equiv="Content-Security-Policy" content="${SANDBOX_CSP}">
   <style>
     html, body {
       margin: 0;
@@ -473,11 +481,11 @@ export default function HtmlToImageConverterTool({
           )}
 
           {/* Sanitization / Security Warnings */}
-          {(hasScripts || hasEventHandlers || hasExternalImages) && (
+          {(hasScripts || hasEventHandlers || hasExternalResources || hasDangerousProtocols) && (
             <div className="mt-4 p-4 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-amber-800 dark:text-amber-300 text-xs space-y-1.5">
               <div className="flex items-center gap-2 font-bold">
                 <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                <span>Security Notice: Dynamic features sanitized</span>
+                <span>Security & Privacy Notice: Dynamic & external features neutralized</span>
               </div>
               <ul className="list-disc pl-5 space-y-1">
                 {warnings.map((w, idx) => (
@@ -783,15 +791,15 @@ export default function HtmlToImageConverterTool({
         <div className="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
           <div className="space-y-2">
             <p>
-              <strong className="text-slate-900 dark:text-slate-200">100% Browser-Local:</strong> Your HTML markup, text, and uploaded documents are parsed and rasterized exclusively in your browser’s local memory using SVG ForeignObject and HTML5 Canvas. No content is uploaded to Navorika servers.
+              <strong className="text-slate-900 dark:text-slate-200">100% Browser-Local Processing:</strong> Your HTML markup, text, and uploaded documents are parsed and rasterized exclusively in your browser’s local memory using SVG ForeignObject and HTML5 Canvas. Your HTML is processed locally in your browser and is not uploaded to Navorika servers.
             </p>
             <p>
-              <strong className="text-slate-900 dark:text-slate-200">JavaScript Execution Disabled:</strong> For safety and determinism, &lt;script&gt; tags and inline event handlers (such as onclick, onerror) are stripped and blocked. Client-side frameworks requiring runtime hydration (e.g. React/Vue apps) will only render their initial static HTML state.
+              <strong className="text-slate-900 dark:text-slate-200">JavaScript Execution Disabled:</strong> For safety and determinism, &lt;script&gt; tags and inline event handlers (such as onclick, onerror, onload) are stripped and blocked. Client-side frameworks requiring runtime hydration (e.g. React/Vue apps) will only render their initial static HTML state.
             </p>
           </div>
           <div className="space-y-2">
             <p>
-              <strong className="text-slate-900 dark:text-slate-200">Cross-Origin & Webfont Restrictions:</strong> Canvas security policies block cross-origin subresources unless permissive CORS headers are served. For best results, use embedded Base64 data URLs (&lt;img src="data:image/..."&gt;) and system font stacks.
+              <strong className="text-slate-900 dark:text-slate-200">External Network Requests Blocked:</strong> To protect your privacy and ensure deterministic offline rendering, third-party network requests (remote HTTP/HTTPS images, CSS @import, and remote web fonts) are blocked by default. Use embedded Base64 data URLs (&lt;img src="data:image/..."&gt;) and local system fonts.
             </p>
             <p>
               <strong className="text-slate-900 dark:text-slate-200">Format Selection:</strong> PNG preserves alpha channel transparency and offers pixel-crisp vector typography; JPG flattens transparent areas onto a clean white background with adjustable lossy compression.

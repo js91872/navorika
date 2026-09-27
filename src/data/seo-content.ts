@@ -965,7 +965,7 @@ export const seoContent: Record<string, SEOContent> = {
       {'question': 'Difference between HTML and JPG?', 'answer': 'HTML is a text-based markup language that requires a web browser to display, while JPG is a flattened raster image format viewable anywhere.'},
       {'question': 'Does JavaScript render?', 'answer': 'No. JavaScript is disabled in the rendering sandbox for security and deterministic output.'},
       {'question': 'Are uploaded HTML files sent to a server?', 'answer': 'No. Your HTML is processed locally in your browser and is not uploaded to Navorika servers.'},
-      {'question': 'How are external images/fonts handled?', 'answer': 'Local CSS and system fonts render reliably. External images must support CORS or be embedded as Data URLs.'},
+      {'question': 'How are external images/fonts handled?', 'answer': 'Local CSS and system fonts render reliably. External network images, CSS @import, and remote fonts are blocked by default to ensure privacy; embedded Data URLs can be used instead.'},
       {'question': 'JPG vs PNG for HTML screenshots?', 'answer': 'JPG produces smaller files suitable for sharing documents and photos; PNG preserves alpha transparency and crisp text.'}
     ],
     schemaType: 'WebApplication',

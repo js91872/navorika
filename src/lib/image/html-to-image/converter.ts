@@ -1,4 +1,4 @@
-import { prepareXhtmlForForeignObject, sanitizeHtml } from './sanitizer';
+import { prepareXhtmlForForeignObject, sanitizeHtml, SANDBOX_CSP } from './sanitizer';
 import type { ConversionOptions, ConversionResult } from './types';
 
 /**
@@ -63,7 +63,7 @@ export function measureRenderedDimensions(
       }
 
       doc.open();
-      doc.write(`<!DOCTYPE html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=${width}"/><style>html,body{margin:0;padding:0;width:${width}px;box-sizing:border-box;}</style></head><body>${html}</body></html>`);
+      doc.write(`<!DOCTYPE html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=${width}"/><meta http-equiv="Content-Security-Policy" content="${SANDBOX_CSP}"><style>html,body{margin:0;padding:0;width:${width}px;box-sizing:border-box;background:transparent;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;}</style></head><body>${html}</body></html>`);
       doc.close();
 
       // Allow a brief tick for layout calculation
