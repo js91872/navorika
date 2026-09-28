@@ -378,15 +378,111 @@ const guideDefinitions: GuideDefinition[] = [
       'developer guide',
     ],
   },
+  {
+    slug: 'step-to-3d-pdf-conversion-guide',
+    title: 'STEP to 3D PDF Conversion Guide: CAD Sharing, PRC Geometry & Viewer Setup',
+    description: 'Learn how to convert STEP/STP CAD models into interactive 3D PDFs. Understand ISO 10303, PRC geometry, what survives conversion, and Acrobat viewer settings.',
+    category: 'Developer',
+    publishedDate: 'September 2026',
+    readTime: '11 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'step to 3d pdf',
+      'convert step to 3d pdf',
+      'step to 3d pdf converter',
+      'stp to 3d pdf',
+      'convert stp to 3d pdf',
+      '3d pdf cad sharing',
+      'prc 3d pdf',
+      'open cascade brep tessellation',
+      'developer guide',
+    ],
+  },
+  {
+    slug: 'rgb-vs-cmyk-for-printing',
+    title: 'RGB vs CMYK for Printing: Color Modes, Gamuts & Preflight Guide',
+    description: 'Learn why RGB and CMYK behave differently, how out-of-gamut shifts happen, how to check image color modes, and how to prepare print-ready artwork.',
+    category: 'Image',
+    publishedDate: 'September 2026',
+    readTime: '10 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'rgb vs cmyk for printing',
+      'check if image is rgb or cmyk',
+      'check cmyk image',
+      'image color mode for printing',
+      'rgb or cmyk for print',
+      'print color preflight',
+      'icc color profiles',
+      'image guide',
+    ],
+  },
+  {
+    slug: 'print-bleed-trim-safe-area-guide',
+    title: 'Print Bleed, Trim & Safe Area Guide: Dimensions, Margins & Setup',
+    description: 'Master print layout geometry: bleed, trim line, safe area, and total document size. Includes worked examples for business cards, flyers, and posters.',
+    category: 'Image',
+    publishedDate: 'September 2026',
+    readTime: '11 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'print bleed',
+      'bleed size',
+      'print bleed size',
+      'trim size',
+      'safe area printing',
+      'bleed trim safe area',
+      'how much bleed do I need',
+      'print document setup',
+      'pdf geometry boxes',
+      'image guide',
+    ],
+  },
+  {
+    slug: 'eps-vs-cdr-guide',
+    title: 'EPS vs CDR: Vector Formats, Print Workflows & Software Compatibility',
+    description: 'Compare EPS and CDR vector formats: PostScript language, CorelDRAW native features, transparency limitations, fonts, and print prepress workflows.',
+    category: 'Developer',
+    publishedDate: 'September 2026',
+    readTime: '10 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'eps vs cdr',
+      'cdr vs eps',
+      'eps or cdr',
+      'eps to coreldraw',
+      'coreldraw eps format',
+      'vector format comparison',
+      'print prepress interchange',
+      'developer guide',
+    ],
+  },
 ];
+
+const newBatchSlugs = new Set([
+  'step-to-3d-pdf-conversion-guide',
+  'rgb-vs-cmyk-for-printing',
+  'print-bleed-trim-safe-area-guide',
+  'eps-vs-cdr-guide',
+]);
+
+const recentUpdateSlugs = new Set([
+  'how-to-calculate-emi',
+  'heart-rate-zones-guide',
+  'base64-encoding-guide',
+  'jwt-decoding-guide',
+  'json-formatting-guide',
+  'pdf-to-cdr-editing-guide',
+]);
 
 export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const image = categoryImages[guide.category];
   const subject = guide.title.split(':')[0].replace(/[?]/g, '').trim();
+  const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: new Set(['how-to-calculate-emi', 'heart-rate-zones-guide', 'base64-encoding-guide', 'jwt-decoding-guide', 'json-formatting-guide']).has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    datePublished: isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    dateModified: isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: image.src,

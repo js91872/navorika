@@ -654,7 +654,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       { slug: 'image-color-picker', name: 'Image Color Picker' },
       { slug: 'print-bleed-calculator', name: 'Print Bleed Calculator' },
     ],
-    relatedGuides: ['psd-to-html-conversion-guide', 'best-coreldraw-print-format', 'image-formats-guide'],
+    relatedGuides: ['rgb-vs-cmyk-for-printing', 'psd-to-html-conversion-guide', 'image-formats-guide'],
   },
   'print-bleed-calculator': {
     slug: 'print-bleed-calculator',
@@ -706,7 +706,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       { slug: 'cdr-print-readiness-checker', name: 'CDR Print Readiness Checker' },
       { slug: 'svg-dimensions-checker', name: 'SVG Dimensions Checker' },
     ],
-    relatedGuides: ['best-coreldraw-print-format', 'image-compression-guide'],
+    relatedGuides: ['print-bleed-trim-safe-area-guide', 'best-coreldraw-print-format', 'image-compression-guide'],
   },
   'responsive-srcset-generator': {
     slug: 'responsive-srcset-generator',

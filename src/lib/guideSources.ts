@@ -21,7 +21,11 @@ export const guideSources: Record<string, GuideSource[]> = {
     webImageFormats,
   ],
   'word-to-cdr-formatting-guide': [{ name: 'LibreOffice Help — PDF export', url: 'https://help.libreoffice.org/latest/en-US/text/shared/01/ref_pdf_export.html' }, { name: 'Unicode Consortium — Unicode Standard', url: 'https://www.unicode.org/standard/standard.html' }],
-  'pdf-to-cdr-editing-guide': [pdfSpecification, { name: 'CorelDRAW Help', url: 'https://product.corel.com/help/CorelDRAW/' }],
+  'pdf-to-cdr-editing-guide': [
+    pdfSpecification,
+    { name: 'CorelDRAW Help — Importing PDF and EPS files', url: 'https://product.corel.com/help/CorelDRAW/' },
+    { name: 'Adobe Acrobat — Prepress and PDF/X export standards', url: 'https://helpx.adobe.com/acrobat/using/pdf-x-pdf-a-pdf.html' },
+  ],
   'raster-image-to-cdr-guide': [webImageFormats, { name: 'W3C — SVG 2 specification', url: 'https://www.w3.org/TR/SVG2/' }],
   'svg-vs-cdr-guide': [{ name: 'W3C — SVG 2 specification', url: 'https://www.w3.org/TR/SVG2/' }, { name: 'CorelDRAW Help', url: 'https://product.corel.com/help/CorelDRAW/' }],
   'open-cdr-without-coreldraw': [{ name: 'The Document Foundation — LibreOffice CorelDRAW import release notes', url: 'https://wiki.documentfoundation.org/ReleaseNotes/3.6#CorelDRAW_Import' }, { name: 'libcdr project', url: 'https://wiki.documentfoundation.org/DLP/Libraries/libcdr' }],
@@ -59,6 +63,30 @@ export const guideSources: Record<string, GuideSource[]> = {
   'brick-calculation-guide': [{ name: 'The Brick Industry Association — Technical Notes', url: 'https://www.gobrick.com/resources/technical-notes' }],
   'dimensional-weight-guide': [{ name: 'UPS — Package dimensions, size limits and weight guide', url: 'https://www.ups.com/us/en/support/shipping-support/shipping-dimensions-weight' }],
   'construction-estimate-quote-guide': [{ name: 'RICS — New Rules of Measurement', url: 'https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/construction-standards/nrm' }],
+  'step-to-3d-pdf-conversion-guide': [
+    { name: 'ISO 10303-21 — STEP clear text encoding of the exchange structure', url: 'https://www.iso.org/standard/63141.html' },
+    { name: 'ISO 14739-1 — Product representation compact (PRC) format', url: 'https://www.iso.org/standard/54948.html' },
+    pdfSpecification,
+    { name: 'Open CASCADE Technology — 3D data exchange documentation', url: 'https://dev.opencascade.org/doc/overview/html/index.html' },
+    { name: 'Adobe Acrobat — Displaying 3D models in PDFs', url: 'https://helpx.adobe.com/acrobat/using/displaying-3d-models-pdfs.html' },
+  ],
+  'rgb-vs-cmyk-for-printing': [
+    { name: 'International Color Consortium — Specification ICC.1:2010', url: 'https://www.color.org/specification/ICC1v43_2010-12.pdf' },
+    { name: 'ISO 12647-2 — Process control for offset lithographic processes', url: 'https://www.iso.org/standard/63254.html' },
+    { name: 'Adobe Systems — TIFF Revision 6.0 Specification', url: 'https://www.adobe.io/open/standards/TIFF.html' },
+    { name: 'W3C — Portable Network Graphics (PNG) Specification', url: 'https://www.w3.org/TR/png/' },
+    { name: 'Adobe Help — Color management and rendering intents', url: 'https://helpx.adobe.com/photoshop/using/color-settings.html' },
+  ],
+  'print-bleed-trim-safe-area-guide': [
+    { name: 'ISO 32000-1 — PDF Page Boundaries (Section 14.11.2)', url: 'https://pdfa.org/resource/iso-32000-pdf/' },
+    { name: 'Ghent Workgroup — Prepress specifications and PDF/X guidelines', url: 'https://gwg.org/' },
+    { name: 'ISO 12647-2 — Process control for graphic technology', url: 'https://www.iso.org/standard/63254.html' },
+  ],
+  'eps-vs-cdr-guide': [
+    { name: 'Adobe Systems — Encapsulated PostScript File Format Specification (Tech Note #5002)', url: 'https://www.adobe.com/content/dam/acom/en/devnet/actionscript/articles/5002.EPSF_Spec.pdf' },
+    { name: 'CorelDRAW Help — File format import and export reference', url: 'https://product.corel.com/help/CorelDRAW/' },
+    { name: 'Ghent Workgroup — Prepress workflow recommendations', url: 'https://gwg.org/' },
+  ],
 };
 
 export function getGuideSources(slug: string) {

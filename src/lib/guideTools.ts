@@ -41,7 +41,11 @@ export const guideTools: Record<string, string[]> = {
   'electricity-cost-calculation-guide': ['electricity-cost-calculator', 'solar-panel-calculator'],
   'brick-calculation-guide': ['brick-calculator', 'cement-calculator', 'sand-calculator', 'house-construction-cost-calculator'],
   'dimensional-weight-guide': ['dimensional-weight-calculator', 'unit-price-calculator'],
-  'construction-estimate-quote-guide': ['construction-estimate-builder', 'contractor-estimate-generator', 'construction-cost-calculator', 'house-construction-cost-calculator']
+  'construction-estimate-quote-guide': ['construction-estimate-builder', 'contractor-estimate-generator', 'construction-cost-calculator', 'house-construction-cost-calculator'],
+  'step-to-3d-pdf-conversion-guide': ['step-to-3d-pdf-converter'],
+  'rgb-vs-cmyk-for-printing': ['rgb-cmyk-image-checker', 'image-print-size-calculator', 'image-converter'],
+  'print-bleed-trim-safe-area-guide': ['print-bleed-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator'],
+  'eps-vs-cdr-guide': ['eps-to-cdr-converter', 'cdr-to-eps-converter', 'coreldraw-tools', 'cdr-to-pdf-converter'],
 };
 
 export function getGuideTools(slug: string): string[] {

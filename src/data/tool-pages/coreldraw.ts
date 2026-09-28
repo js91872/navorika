@@ -644,7 +644,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       { slug: 'pdf-to-cdr-converter', name: 'PDF to CDR Converter' },
       { slug: 'cdr-to-eps-converter', name: 'CDR to EPS Converter' },
     ],
-    relatedGuides: ['best-coreldraw-print-format'],
+    relatedGuides: ['eps-vs-cdr-guide', 'best-coreldraw-print-format'],
   },
   'cdr-viewer': {
     slug: 'cdr-viewer',
@@ -1141,7 +1141,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       { slug: 'eps-to-cdr-converter', name: 'EPS to CDR Converter' },
       { slug: 'cdr-print-readiness-checker', name: 'CDR Print Readiness Checker' },
     ],
-    relatedGuides: ['best-coreldraw-print-format', 'svg-vs-cdr-guide'],
+    relatedGuides: ['eps-vs-cdr-guide', 'best-coreldraw-print-format', 'svg-vs-cdr-guide'],
   },
   'cdr-print-readiness-checker': {
     slug: 'cdr-print-readiness-checker',

@@ -116,6 +116,6 @@ export const cadToolPages: Record<string, ToolPageContent> = {
       { slug: 'compress-pdf', name: 'Compress PDF' },
       { slug: 'merge-pdf', name: 'Merge PDF' },
     ],
-    relatedGuides: [],
+    relatedGuides: ['step-to-3d-pdf-conversion-guide'],
   },
 };

@@ -25,9 +25,9 @@ function article(
   };
 }
 
-function corelArticle(headline: string, description: string, intro: string, sections: GuideSection[], faqs: GuideFAQ[], summary: string): GuideContent {
+function corelArticle(headline: string, description: string, intro: string, sections: GuideSection[], faqs: GuideFAQ[], summary: string, dateModified = '2026-08-29'): GuideContent {
   const content = article(headline, description, intro, sections, faqs, summary);
-  return { ...content, schema: { ...content.schema, datePublished: '2026-08-29', dateModified: '2026-08-29' } };
+  return { ...content, schema: { ...content.schema, datePublished: '2026-08-29', dateModified } };
 }
 
 export const additionalGuideContent: Record<string, GuideContent> = {
@@ -54,22 +54,156 @@ export const additionalGuideContent: Record<string, GuideContent> = {
   'pdf-to-cdr-editing-guide': corelArticle(
     'How to Convert PDF to CDR for Editing in CorelDRAW',
     'Import native or scanned PDF content into CorelDRAW while understanding vectors, text, images, clipping, fonts, and multipage files.',
-    'PDF can contain editable vectors, text, raster scans, or all three. Converting PDF to CDR is therefore not one universal operation: CorelDRAW imports what the PDF actually contains, then you decide how much cleanup and editing is needed.',
+    'PDF files can contain mathematically defined vector geometry, live typographic text, high-resolution raster images, or flat scanned bitmaps. Converting a PDF to CorelDRAW (.cdr) is therefore not a single magic operation: CorelDRAW imports whatever internal objects the PDF actually contains, and you must then decide how to organize, edit, and preflight the artwork for production.',
     [
-      { title: 'Determine whether the PDF is vector or scanned', content: 'Zoom in and try selecting text in a trusted PDF viewer. Crisp paths and selectable text suggest native page content. A scanned PDF usually contains one large image per page; importing it does not automatically recreate editable letters or shapes.' },
-      { title: 'Choose PDF, SVG, or EPS interchange', content: 'Direct PDF import keeps multiple pages and is normally the first choice. SVG is useful for a focused vector page and web-style artwork. EPS can serve older print workflows but has weaker support for modern transparency and usually represents one page.' },
-      { title: 'Handle fonts and text decisions', content: 'Embedded PDF fonts may be subsetted, which can limit editing. If the font is unavailable, CorelDRAW may substitute it or offer curves. Keep text editable for revisions only when the correct font and shaping behavior are available; otherwise curves can preserve appearance at the cost of editability.' },
-      { title: 'Inspect clipping, images, and effects', content: 'PDFs frequently use clipping masks, transparency groups, gradients, and embedded raster images. Ungroup carefully and avoid assuming every object is an independent original design element. Compare the imported result with the PDF at high zoom.' },
-      { title: 'Manage multipage documents and save', content: 'Import all required pages, confirm page order and size, and check crop/bleed boxes. Scanned pages may need separate tracing or recreation. Save a new CDR rather than overwriting the source, and retain the original PDF as a visual reference.' },
+      {
+        title: 'Determine whether the PDF is vector, raster, or scanned',
+        content: `Before attempting to edit a PDF in CorelDRAW, verify whether the file contains native vector artwork or flattened raster pixels:
+
+1. Open the PDF in a standalone viewer (such as Adobe Acrobat Reader or your web browser) and zoom in to 800% or higher.
+2. Observe the edges of shapes and letters. If lines, curves, and text remain razor-sharp with zero pixelation, the artwork contains native vector paths.
+3. Attempt to highlight words with your text cursor. If you can select individual characters, the document includes typographic text streams.
+4. If zooming in reveals blurry pixel grids or JPEG compression artifacts, or if clicking selects a single giant rectangle across the entire page, the PDF is a scanned or flattened raster document.
+
+Why this distinction matters:
+A PDF that contains only a scanned photograph or flattened bitmap cannot be magically converted into editable vector curves simply by opening it in CorelDRAW. When imported, it will arrive as a static bitmap object. To obtain editable vector nodes from a raster scan, you must trace the image using Corel PowerTRACE (Bitmaps → Outline Trace) or manually redraw paths over the bitmap template.`,
+      },
+      {
+        title: 'The PDF to CorelDRAW conversion and import workflow',
+        content: `There are two primary methods for bringing PDF artwork into CorelDRAW:
+
+Method 1: Direct CorelDRAW Import (Recommended for local workflows)
+1. Open CorelDRAW and create a new document or open an existing project.
+2. Navigate to File → Import (or press Ctrl+I), select your PDF file, and click Import.
+3. The "Import PDF" configuration dialog will appear. Here, you must make two critical decisions:
+   • Import text as Text vs Curves: Choose "Text" if you need to correct typos or edit wording, provided you have the exact fonts installed on your operating system. Choose "Curves" if your priority is 100% typographic fidelity, as this converts every letterform into closed vector shapes that cannot be corrupted by missing font substitutions.
+   • Import layers: Select "Maintain layers and pages" to preserve the PDF document structure, or choose to flatten objects to a single layer for simple graphics.
+4. Position the cursor on your artboard and click to place the artwork at its original dimensions, or drag to define a placement bounding box.
+
+Method 2: Using Navorika's PDF to CDR Converter Bridge
+If you need to extract vector elements on a machine without a local PDF interpreter, or need clean SVG/EPS vector bridges, use Navorika's PDF to CDR Converter (/tools/pdf-to-cdr-converter). The tool validates the PDF structure, extracts high-fidelity multi-page PDF, single-page SVG paths, or PostScript EPS files that import cleanly into CorelDRAW via drag-and-drop.`,
+      },
+      {
+        title: 'Handling fonts, subsetting, and PANOSE font matching',
+        content: `Font discrepancies represent the single most common stumbling block when converting PDF to CDR. Understanding how PDFs store fonts is essential for maintaining typographic precision:
+
+Embedded Font Subsets:
+When a PDF is exported from Adobe Illustrator, InDesign, or Microsoft Word, the application typically embeds only a "subset" of each font—meaning only the specific characters used in that document are included in the file. While CorelDRAW can display these subsetted characters visually, editing the text frame later may cause missing character errors if you type a letter that was not part of the original subset.
+
+The PANOSE Font Matching Dialog:
+If a font used in the PDF is not installed in your Windows font directory, CorelDRAW will open the PANOSE Font Matching warning window. You can choose to:
+• Temporarily substitute the missing font with an installed typeface (e.g., substituting Helvetica with Arial). Be warned: even subtle metric differences between fonts will alter character kerning, word spacing, and line wraps, often causing text frames to overflow.
+• Permanently substitute the font across the entire document.
+• Cancel the import, close CorelDRAW, install the required TrueType or OpenType font files, and re-import the PDF.
+
+Best Practice Recommendation:
+If you are preparing artwork for commercial printing, laser cutting, or vinyl signage and do not need to revise the copy, ALWAYS import text as "Curves". Converting text to curves permanently eliminates font dependencies and guarantees that the artwork will render identically on any workstation.`,
+      },
+      {
+        title: 'Managing transparency, clipping paths, and nested PowerClips',
+        content: `PDF artwork exported from modern vector design software frequently relies on complex clipping paths, opacity masks, and blend groups. When CorelDRAW parses these structures, it organizes them into containers:
+
+PowerClip Containers:
+In CorelDRAW, PDF clipping masks are automatically converted into PowerClip objects. When you select an imported shape and find that you cannot edit individual curves, the geometry is almost certainly enclosed inside a PowerClip frame.
+To release the vector paths:
+1. Right-click the object and select "Extract Contents" from the context menu, or navigate to Object → PowerClip → Extract Contents in modern releases (or Effects → PowerClip → Extract Contents in legacy CorelDRAW versions).
+2. Alternatively, hold down the Alt key and click directly on elements inside the PowerClip frame to select and modify them without extracting the entire container.
+3. If objects remain bound together as a group or compound path, use Ctrl+U to ungroup independent shapes, or press Ctrl+K (Break Curve Apart / Break Apart) to separate combined paths or sub-paths.
+
+Transparency Flattening Artifacts:
+If the source PDF was saved in legacy PDF 1.3 or PDF/X-1a formats, transparent drop shadows, glows, and feathering will have been flattened into sliced raster strips abutting vector shapes. In CorelDRAW, these may display faint white lines (stitching artifacts) on screen. Modern CorelDRAW versions (2019 and newer) handle live PDF 1.4+ transparency smoothly. When exporting the final CDR back to print, ensure your output uses a modern PDF/X-4 standard to keep transparency live.`,
+      },
+      {
+        title: 'Inspecting embedded images, color spaces, and resolution',
+        content: `Many vector PDFs contain placed photographic elements, background textures, or company logos alongside mathematical curves:
+
+Resolution Preflight:
+Select each bitmap element inside CorelDRAW and inspect the status bar at the bottom of the workspace. Verify the bitmap dimensions and effective resolution:
+• Resolution Considerations: While 300 ppi is a common target for many high-quality commercial sheet-fed print workflows at final output size, required resolution depends on printing process, viewing distance, artwork type, and provider specifications. For example, large-format graphics or billboards often function well at 100–150 ppi due to extended viewing distances, whereas high-screen commercial printing or fine line art may require higher resolutions.
+• Low-Resolution Warning: If an imported image shows 72 ppi at intended reproduction dimensions, it may have originated from web graphics and can appear soft or pixelated in close-up print applications.
+
+Color Space Uniformity:
+PDFs created in office applications or web utilities frequently use RGB or sRGB color spaces. If you import an RGB PDF into a CorelDRAW document configured for CMYK commercial printing:
+• Vibrant RGB blues, greens, and oranges will shift to duller CMYK equivalents.
+• Text that appears black may import as a 4-color rich black mixture (e.g., C:65 M:50 Y:45 K:80) rather than pure 100% K black (C:0 M:0 Y:0 K:100), leading to registration misalignments on press.
+• Preflight raw image channels using Navorika's RGB or CMYK Image Checker (/tools/rgb-cmyk-image-checker) before finalizing your CorelDRAW document layout.`,
+      },
+      {
+        title: 'Multipage management, page sizes, and PDF geometry boxes',
+        content: `PDF documents can contain hundreds of pages, each with distinct dimensions and prepress geometry boundaries:
+
+Page Range Selection:
+When importing a multi-page PDF, CorelDRAW allows you to select a specific page range (e.g., "1, 3, 5-8") rather than loading the entire publication into memory at once. You can instruct CorelDRAW to append new pages automatically to match the PDF page count.
+
+PDF Page Boxes (MediaBox vs TrimBox):
+An ISO 32000 PDF file defines up to five distinct bounding boxes:
+• MediaBox: The outer physical boundary of the PDF sheet, including crop marks, color bars, and slug information.
+• BleedBox: The boundary encompassing artwork plus bleed margins.
+• TrimBox: The finished cut size of the printed page.
+• CropBox: The default viewport displayed on screen.
+
+When importing into CorelDRAW, inspect the Property Bar to confirm whether the page dimension matches the intended TrimBox or if it inadvertently expanded to include the MediaBox margins. Use Navorika's PDF Bleed & Trim Checker (/tools/pdf-bleed-trim-checker) to verify whether the source PDF contains proper prepress geometry boxes before importing.`,
+      },
+      {
+        title: 'Realistic conversion limitations and complex vectors',
+        content: `While CorelDRAW possesses one of the most robust PDF interpreters in the graphic design industry, certain complex objects encounter mathematical limitations:
+
+Mesh Gradients & Adobe Freeform Gradients:
+Adobe Illustrator freeform gradients and complex smooth mesh fills do not share a 1:1 mathematical definition with CorelDRAW mesh fills. Depending on the CorelDRAW version and PDF specification, CorelDRAW may approximate these areas by rasterizing them to bitmap objects or decomposing them into stepped gradient paths.
+
+CAD Hatching and Architectural Blueprints:
+Vector PDFs exported from AutoCAD, Revit, or SolidWorks often contain crosshatch patterns comprised of thousands of individual line segments. When imported into CorelDRAW, this large node count can cause viewport redraw lag. If you need to edit these lines as vectors, use CorelDRAW's Weld tool or Object → Shaping → Simplify to consolidate adjoining paths, or consider leaving hatching as a placed raster layer if individual path manipulation is not required.
+
+Encrypted and Form-Based PDFs:
+PDFs protected with user passwords, permission restrictions (printing/copying disabled), or dynamic Adobe LiveCycle XFA forms cannot be imported into CorelDRAW directly. The document must first be decrypted using authorized credentials.`,
+      },
+      {
+        title: 'Step-by-step post-conversion verification checklist',
+        content: `Follow this 5-point verification checklist before saving your final native CorelDRAW file:
+
+1. Visual Side-by-Side Comparison: Place the original PDF and the imported CorelDRAW document side-by-side at 400% zoom. Check for dropped drop shadows, missing line strokes, or altered opacity.
+2. Typography Inspection: Select text frames to confirm that words did not reflow, lines did not wrap awkwardly, and ligatures (such as "fi" and "fl") did not disappear.
+3. Path Integrity: Switch to Wireframe View (View → Wireframe) in CorelDRAW to inspect underlying vector outlines. Check for unclosed loops or invisible duplicate lines underneath solid fills.
+4. Color Separation Preflight: Open the Color Palette and Object Properties docker. Ensure small body copy and barcodes are strictly 100% K black (C:0 M:0 Y:0 K:100).
+5. Native File Save: Go to File → Save As, select "CorelDRAW (*.cdr)" in the format dropdown, select your target version compatibility, and save your new master file. Always keep the original PDF intact as an archival backup.`,
+      },
     ],
     [
-      { question: 'Will a scanned PDF become editable vector artwork?', answer: 'No. It remains raster unless you trace or manually recreate it.' },
-      { question: 'Why does SVG export only one page?', answer: 'SVG is a single-canvas format in this bounded workflow; use PDF for multipage documents.' },
-      { question: 'Can font embedding guarantee editing?', answer: 'No. A subset may contain only used glyphs and licensing or application support can still limit editing.' },
-      { question: 'How should I handle PDF layers when importing into CorelDRAW?', answer: 'In the CorelDRAW PDF Import dialog, you can choose whether to import layers as distinct CorelDRAW layers or flatten them to a single layer. Retaining layers helps keep backgrounds, text, and illustration assets organized.' },
-      { question: 'Why does imported PDF vector artwork have hundreds of clipping masks?', answer: 'PDF generators frequently wrap gradients, patterns, and compound paths inside nested clip paths. In CorelDRAW, select the object, navigate to Object → PowerClip → Extract Contents or Break Apart (Ctrl+K) to release the vector geometry for direct editing.' },
+      {
+        question: 'Will a scanned PDF become editable vector artwork in CorelDRAW?',
+        answer: 'No. A scanned PDF is merely a raster photograph of a physical page wrapped in a PDF shell. When imported into CorelDRAW, it remains a single bitmap image. To convert it into editable vector curves, you must trace the image using Corel PowerTRACE (Bitmaps → Outline Trace) or manually redraw paths with the Pen or Bézier tool.',
+      },
+      {
+        question: 'Why does CorelDRAW ask whether to import text as Text or Curves?',
+        answer: 'Importing as "Text" keeps typography live and editable for rewriting or font changes, but requires that the exact fonts used in the PDF are installed on your computer. Importing as "Curves" turns every letter into permanent vector shapes, ensuring 100% exact visual fidelity even if you do not own the fonts, but text can no longer be edited as text.',
+      },
+      {
+        question: 'Why are all the imported objects grouped or locked in a container?',
+        answer: 'PDF generators frequently enclose artwork in clipping masks to constrain gradients or shapes within page boundaries. CorelDRAW converts these clipping masks into PowerClip frames. To access the underlying geometry, right-click the object and choose "Extract Contents" (or use Object → PowerClip → Extract Contents / Effects → PowerClip in older versions), or hold the Alt key while clicking individual elements inside the frame.',
+      },
+      {
+        question: 'Can I convert a multi-page PDF to a multi-page CDR file?',
+        answer: 'Yes. In the CorelDRAW PDF Import dialog, specify the full page range (e.g., 1-16). CorelDRAW will automatically generate matching document pages and place the corresponding PDF content on each page in sequence.',
+      },
+      {
+        question: 'Why did my imported colors change or look dull?',
+        answer: 'This happens when a PDF created in an RGB color space (such as an office document or web design) is imported into a CorelDRAW document set to CMYK. Out-of-gamut RGB colors are compressed into printable CMYK values. Check your document color management settings under Tools → Color Management.',
+      },
+      {
+        question: 'What is PANOSE font matching and what should I do when it appears?',
+        answer: 'PANOSE is CorelDRAW’s font substitution engine that detects when an imported PDF requires a font missing from your computer. If typographic accuracy is critical, cancel the import, install the matching font, and try again. Alternatively, re-import the PDF and choose "Import text as Curves" to bypass font matching completely.',
+      },
+      {
+        question: 'Why does my imported PDF have thousands of tiny separate line fragments?',
+        answer: 'CAD software and desktop publishing applications often export complex gradients, curves, or hatching patterns as thousands of micro-lines rather than continuous Bézier paths. In CorelDRAW, you can combine these fragments by selecting them and pressing Ctrl+L (Combine) or using the Weld tool on the Property Bar.',
+      },
+      {
+        question: 'Can CorelDRAW open password-protected PDFs?',
+        answer: 'If a PDF has an open password, CorelDRAW will prompt you to enter the password during import. However, if the PDF uses security permissions that restrict document content extraction, CorelDRAW may fail to import the vector content until the permissions are lifted.',
+      },
     ],
-    'Identify the actual PDF content, choose the right interchange format, preflight fonts and effects, and create the native CDR only after CorelDRAW import is verified.',
+    'Inspect your source PDF at high zoom to confirm vector paths, resolve font requirements before choosing text or curves, extract nested PowerClip containers, and preflight colors before saving your final native CDR file.',
+    '2026-09-27'
   ),
   'raster-image-to-cdr-guide': corelArticle(
     'How to Convert PNG or JPG to CDR',

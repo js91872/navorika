@@ -151,7 +151,7 @@ export const toolkits: Toolkit[] = [
       { name: 'Publishing and SEO', description: 'Prepare responsive CSS, metadata, campaign links, crawler rules, and reusable web assets.', toolSlugs: ['aspect-ratio-padding-calculator', 'css-clamp-font-generator', 'css-flexbox-generator', 'meta-tag-generator', 'robots-txt-generator', 'utm-builder', 'css-gradient-generator', 'psd-to-html'] },
       { name: 'Repository and container workflows', description: 'Configure project ignore rules, format conventional commits, and generate safe Docker execution commands.', toolSlugs: ['gitignore-generator', 'git-commit-message-formatter', 'docker-run-command-generator'] },
       { name: 'AI and cloud costs', description: 'Estimate token volume, model API rates, GPU workloads, hosting, delivery, and archive retrieval.', toolSlugs: ['ai-token-calculator', 'llm-api-cost-calculator', 'gpu-compute-cost-calculator', 'cloud-hosting-cost-calculator', 'cdn-cost-calculator', 'aws-glacier-retrieval-calculator'] },
-    ], guideSlugs: ['json-formatting-guide', 'base64-encoding-guide', 'jwt-decoding-guide', 'seo-tools-guide', 'word-to-cdr-formatting-guide', 'pdf-to-cdr-editing-guide', 'raster-image-to-cdr-guide', 'svg-vs-cdr-guide', 'open-cdr-without-coreldraw', 'newer-cdr-older-coreldraw', 'best-coreldraw-print-format', 'preserve-fonts-coreldraw-conversion', 'psd-to-html-conversion-guide', 'psd-to-html-email', 'psd-to-responsive-html'],
+    ], guideSlugs: ['json-formatting-guide', 'base64-encoding-guide', 'jwt-decoding-guide', 'seo-tools-guide', 'word-to-cdr-formatting-guide', 'pdf-to-cdr-editing-guide', 'raster-image-to-cdr-guide', 'svg-vs-cdr-guide', 'open-cdr-without-coreldraw', 'newer-cdr-older-coreldraw', 'best-coreldraw-print-format', 'preserve-fonts-coreldraw-conversion', 'psd-to-html-conversion-guide', 'psd-to-html-email', 'psd-to-responsive-html', 'step-to-3d-pdf-conversion-guide', 'eps-vs-cdr-guide'],
   },
   {
     slug: 'image-optimization-tools', name: 'Image Optimization Tools', seoTitle: 'Free Image Optimization Tools',
@@ -161,7 +161,7 @@ export const toolkits: Toolkit[] = [
     groups: [
       { name: 'Size and quality', description: 'Control pixel dimensions and file size while reviewing output quality.', toolSlugs: ['resize-image', 'change-image-resolution', 'compress-image', 'compress-jpg', 'compress-webp', 'upscale-image', 'image-megapixel-calculator', 'image-print-size-calculator', 'image-file-size-estimator', 'image-scaling-calculator'] },
       { name: 'Prepare and publish', description: 'Sample colors, convert, crop, rotate, watermark, and resize images for common channels.', toolSlugs: ['image-color-picker', 'convert-png-to-webp', 'convert-webp-to-jpg', 'crop-image', 'rotate-image', 'watermark-image', 'social-media-resizer', 'photo-storage-calculator', 'image-bandwidth-calculator', 'html-to-image', 'html-to-jpg-converter', 'html-to-png-converter'] },
-    ], guideSlugs: ['image-compression-guide', 'how-to-resize-images', 'image-formats-guide'],
+    ], guideSlugs: ['image-compression-guide', 'how-to-resize-images', 'image-formats-guide', 'rgb-vs-cmyk-for-printing', 'print-bleed-trim-safe-area-guide'],
   },
   {
     slug: 'pdf-document-workflows', name: 'PDF Document Workflows', seoTitle: 'Free PDF Document Workflow Tools',

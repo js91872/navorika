@@ -27,6 +27,14 @@ export default function Page() {
         <p className="mt-2 text-[var(--muted-foreground)]">
           Generates a genuine 3D PDF with embedded interactive PRC geometry rather than a static 2D snapshot. Open in Adobe Acrobat Reader desktop or another compatible viewer to orbit, pan, and zoom.
         </p>
+        <div className="mt-3 border-t border-[var(--border)] pt-2.5">
+          <a
+            href="/guides/step-to-3d-pdf-conversion-guide"
+            className="inline-flex items-center gap-1.5 font-semibold text-indigo-600 hover:underline dark:text-indigo-400"
+          >
+            <span>Read our in-depth STEP to 3D PDF conversion & troubleshooting guide →</span>
+          </a>
+        </div>
       </div>
     </ExpansionToolPage>
   );
