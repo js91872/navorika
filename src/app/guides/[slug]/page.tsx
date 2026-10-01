@@ -39,6 +39,29 @@ function dateLabel(value: string) {
   return new Intl.DateTimeFormat('en', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${value}T00:00:00Z`));
 }
 
+const printBleedGuideImages: Record<string, {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+}> = {
+  'The hierarchy of print geometry: Bleed, Trim, and Safe Area': {
+    src: '/images/guides/navorika-print-bleed-trim-safe-area.png',
+    alt: 'Diagram showing the bleed area outside the trim line and the safe area inside a printed page.',
+    caption: 'Bleed extends artwork beyond the final trim line, while important text and logos stay inside the safe area.',
+    width: 1536,
+    height: 512,
+  },
+  'The document sizing formula: Moving from trim to total canvas': {
+    src: '/images/guides/navorika-a5-3mm-bleed-size.png',
+    alt: 'A5 print document diagram showing 3 mm bleed on each edge and a total document size of 154 by 216 mm.',
+    caption: 'A5 example: adding 3 mm bleed to every edge increases the 148 × 210 mm trim size to a 154 × 216 mm document.',
+    width: 738,
+    height: 523,
+  },
+};
+
 export default async function GuidePage({ params }: Props) {
   const slug = (await params).slug;
   const guide = getGuideMetadata(slug);
@@ -88,7 +111,58 @@ export default async function GuidePage({ params }: Props) {
 
         <div className="prose prose-slate dark:prose-invert mt-10 max-w-none break-words prose-headings:scroll-mt-24 prose-p:leading-8">
           <p className="lead text-xl leading-8 text-[var(--muted-foreground)]">{content.intro}</p>
-          {content.sections.map((section) => <section key={section.title}><h2>{section.title}</h2><div className="whitespace-pre-line leading-8 text-[var(--muted-foreground)]">{section.content}</div></section>)}
+          {content.sections.map((section) => {
+            const sectionImage =
+              slug === 'print-bleed-trim-safe-area-guide'
+                ? printBleedGuideImages[section.title]
+                : undefined;
+
+            const showCuttingToleranceDiagram =
+              slug === 'print-bleed-trim-safe-area-guide' &&
+              section.title === 'The hierarchy of print geometry: Bleed, Trim, and Safe Area';
+
+            return (
+              <section key={section.title}>
+                <h2>{section.title}</h2>
+
+                <div className="whitespace-pre-line leading-8 text-[var(--muted-foreground)]">
+                  {section.content}
+                </div>
+
+                {sectionImage && (
+                  <figure className="not-prose my-8 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
+                    <Image
+                      src={sectionImage.src}
+                      width={sectionImage.width}
+                      height={sectionImage.height}
+                      alt={sectionImage.alt}
+                      className="h-auto w-full"
+                      sizes="(max-width: 896px) 100vw, 896px"
+                    />
+                    <figcaption className="border-t border-[var(--border)] px-4 py-3 text-sm leading-6 text-[var(--muted-foreground)]">
+                      {sectionImage.caption}
+                    </figcaption>
+                  </figure>
+                )}
+
+                {showCuttingToleranceDiagram && (
+                  <figure className="not-prose my-8 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
+                    <Image
+                      src="/images/guides/navorika-why-print-bleed-is-necessary.png"
+                      width={814}
+                      height={523}
+                      alt="Comparison showing how trimming artwork without bleed can leave a white edge while full bleed preserves edge-to-edge printing."
+                      className="h-auto w-full"
+                      sizes="(max-width: 896px) 100vw, 896px"
+                    />
+                    <figcaption className="border-t border-[var(--border)] px-4 py-3 text-sm leading-6 text-[var(--muted-foreground)]">
+                      Why bleed matters: normal cutting variation can expose a white edge when artwork stops at the trim line.
+                    </figcaption>
+                  </figure>
+                )}
+              </section>
+            );
+          })}
           <div className="not-prose mt-10 rounded-2xl border border-indigo-500/20 bg-indigo-500/10 p-6"><h2 className="text-xl font-bold text-indigo-700 dark:text-indigo-300">Key takeaway</h2><p className="mt-2 leading-7 text-[var(--muted-foreground)]">{content.summary}</p></div>
         </div>
 
