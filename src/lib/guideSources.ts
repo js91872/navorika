@@ -53,16 +53,146 @@ export const guideSources: Record<string, GuideSource[]> = {
   'json-formatting-guide': [{ name: 'IETF RFC 8259 — The JSON Data Interchange Format', url: 'https://www.rfc-editor.org/rfc/rfc8259' }],
   'image-formats-guide': [webImageFormats],
   'seo-tools-guide': [{ name: 'Google Search Central — SEO Starter Guide', url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide' }, { name: 'Google Search Central — Structured data guidelines', url: 'https://developers.google.com/search/docs/appearance/structured-data/sd-policies' }],
-  'house-construction-cost-guide': [{ name: 'RICS — New Rules of Measurement', url: 'https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/construction-standards/nrm' }],
-  'water-tank-size-capacity-guide': [{ name: 'NIST — Guide for the Use of the International System of Units', url: 'https://www.nist.gov/pml/special-publication-811' }],
-  'how-to-calculate-roof-area': [{ name: 'OSHA — Fall protection in residential construction', url: 'https://www.osha.gov/residential-fall-protection/guidance' }],
-  'flooring-calculation-guide': [{ name: 'NIST — SI units for area', url: 'https://www.nist.gov/pml/owm/metric-si/si-units-area' }],
-  'asphalt-calculation-guide': [{ name: 'Federal Highway Administration — Asphalt pavement resources', url: 'https://www.fhwa.dot.gov/pavement/asphalt/' }],
-  'gravel-calculation-guide': [{ name: 'Federal Highway Administration — Aggregate resources', url: 'https://www.fhwa.dot.gov/pavement/' }],
-  'electricity-cost-calculation-guide': [{ name: 'U.S. Energy Information Administration — Measuring electricity', url: 'https://www.eia.gov/energyexplained/electricity/measuring-electricity.php' }],
-  'brick-calculation-guide': [{ name: 'The Brick Industry Association — Technical Notes', url: 'https://www.gobrick.com/resources/technical-notes' }],
-  'dimensional-weight-guide': [{ name: 'UPS — Package dimensions, size limits and weight guide', url: 'https://www.ups.com/us/en/support/shipping-support/shipping-dimensions-weight' }],
-  'construction-estimate-quote-guide': [{ name: 'RICS — New Rules of Measurement', url: 'https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/construction-standards/nrm' }],
+  'house-construction-cost-guide': [
+        {
+            "name": "RICS \u2014 New Rules of Measurement",
+            "url": "https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/construction-standards/nrm"
+        },
+        {
+            "name": "ASPE \u2014 Standard Estimating Practice & Cost Models",
+            "url": "https://www.aspenational.org/"
+        },
+        {
+            "name": "RSMeans by Gordian \u2014 Building Construction Cost Data",
+            "url": "https://www.rsmeans.com/"
+        }
+    ],
+  'water-tank-size-capacity-guide': [
+        {
+            "name": "NIST \u2014 Guide for the Use of the International System of Units",
+            "url": "https://www.nist.gov/pml/special-publication-811"
+        },
+        {
+            "name": "AWWA \u2014 D100 Standard for Welded Carbon Steel Tanks for Water Storage",
+            "url": "https://www.awwa.org/Publications/Standards"
+        },
+        {
+            "name": "Bureau of Indian Standards \u2014 IS 1172 Code of Basic Requirements for Water Supply",
+            "url": "https://standardsbis.bsbedge.com/"
+        }
+    ],
+  'how-to-calculate-roof-area': [
+        {
+            "name": "OSHA \u2014 Fall Protection in Residential Construction (29 CFR 1926.501)",
+            "url": "https://www.osha.gov/residential-fall-protection/guidance"
+        },
+        {
+            "name": "NRCA \u2014 National Roofing Contractors Association Roofing Manual",
+            "url": "https://www.nrca.net/technical"
+        },
+        {
+            "name": "ICC \u2014 International Residential Code (IRC Section R905)",
+            "url": "https://codes.iccsafe.org/"
+        }
+    ],
+  'flooring-calculation-guide': [
+        {
+            "name": "NIST \u2014 SI Units for Area & Measurement Standards",
+            "url": "https://www.nist.gov/pml/owm/metric-si/si-units-area"
+        },
+        {
+            "name": "NWFA \u2014 Technical Guidelines for Wood Flooring Installation",
+            "url": "https://www.nwfa.org/technical-guidelines/"
+        },
+        {
+            "name": "TCNA \u2014 Handbook for Ceramic, Glass, and Stone Tile Installation",
+            "url": "https://www.tcnatile.com/products-and-services/publications.html"
+        }
+    ],
+  'asphalt-calculation-guide': [
+        {
+            "name": "Federal Highway Administration \u2014 Asphalt Pavement Technology Resources",
+            "url": "https://www.fhwa.dot.gov/pavement/asphalt/"
+        },
+        {
+            "name": "NAPA \u2014 National Asphalt Pavement Association Quality Guidelines",
+            "url": "https://www.asphaltpavement.org/"
+        },
+        {
+            "name": "Asphalt Institute \u2014 MS-4 The Asphalt Handbook",
+            "url": "https://www.asphaltinstitute.org/"
+        }
+    ],
+  'gravel-calculation-guide': [
+        {
+            "name": "Federal Highway Administration \u2014 Pavement & Aggregate Resources",
+            "url": "https://www.fhwa.dot.gov/pavement/"
+        },
+        {
+            "name": "ASTM International \u2014 ASTM C33 Standard Specification for Concrete Aggregates",
+            "url": "https://www.astm.org/c0033_c0033m-18.html"
+        },
+        {
+            "name": "AASHTO \u2014 Standard Specifications for Transportation Materials",
+            "url": "https://www.transportation.org/"
+        }
+    ],
+  'electricity-cost-calculation-guide': [
+        {
+            "name": "U.S. Energy Information Administration \u2014 Measuring & Understanding Electricity",
+            "url": "https://www.eia.gov/energyexplained/electricity/measuring-electricity.php"
+        },
+        {
+            "name": "U.S. Department of Energy \u2014 Estimating Appliance and Home Electronic Energy Use",
+            "url": "https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use"
+        },
+        {
+            "name": "AHRI \u2014 Standard 210/240 for Performance Rating of Unitary Air-Conditioning & Heat Pumps",
+            "url": "https://www.ahrinet.org/"
+        }
+    ],
+  'brick-calculation-guide': [
+        {
+            "name": "The Brick Industry Association \u2014 Technical Notes on Brick Construction",
+            "url": "https://www.gobrick.com/resources/technical-notes"
+        },
+        {
+            "name": "ASTM International \u2014 ASTM C216 Standard Specification for Facing Brick",
+            "url": "https://www.astm.org/c0216-22.html"
+        },
+        {
+            "name": "The Masonry Society \u2014 TMS 402/602 Building Code Requirements and Specification for Masonry Structures",
+            "url": "https://masonrysociety.org/"
+        }
+    ],
+  'dimensional-weight-guide': [
+        {
+            "name": "UPS \u2014 Package Dimensions, Size Limits and Weight Guide",
+            "url": "https://www.ups.com/us/en/support/shipping-support/shipping-dimensions-weight"
+        },
+        {
+            "name": "FedEx \u2014 Service Guide: How to Calculate Dimensional Weight",
+            "url": "https://www.fedex.com/en-us/shipping/packaging/size-and-weight.html"
+        },
+        {
+            "name": "IATA \u2014 Air Cargo Tariff and Rules (TACT) Volumetric Standards",
+            "url": "https://www.iata.org/en/publications/tact/"
+        }
+    ],
+  'construction-estimate-quote-guide': [
+        {
+            "name": "RICS \u2014 New Rules of Measurement (NRM)",
+            "url": "https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/construction-standards/nrm"
+        },
+        {
+            "name": "AACE International \u2014 Recommended Practice 17R-97 Cost Estimate Classification System",
+            "url": "https://web.aacei.org/"
+        },
+        {
+            "name": "American Institute of Architects \u2014 AIA Contract Documents Primer",
+            "url": "https://www.aiacontracts.org/"
+        }
+    ],
   'step-to-3d-pdf-conversion-guide': [
     { name: 'ISO 10303-21 — STEP clear text encoding of the exchange structure', url: 'https://www.iso.org/standard/63141.html' },
     { name: 'ISO 14739-1 — Product representation compact (PRC) format', url: 'https://www.iso.org/standard/54948.html' },
