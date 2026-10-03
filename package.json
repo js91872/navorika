@@ -22,6 +22,7 @@
     "test": "npm run validate:architecture && npm run typecheck && npm run test:ux && npm run test:calculations && npm run test:shared-tools && npm run test:image-tools",
     "typecheck": "tsc --noEmit",
     "validate:architecture": "node scripts/validate-architecture.mjs",
+    "validate:guides": "tsx scripts/validate-guide-enrichment.mjs",
     "check": "npm run validate:architecture && npm run typecheck && npm run lint:baseline && npm run build"
   },
   "dependencies": {

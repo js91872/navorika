@@ -3,28 +3,6 @@ import type { GuideFAQ, GuideSection } from './guideContent';
 type Enhancement = { sections: GuideSection[]; faqs: GuideFAQ[] };
 
 export const guideContentEnhancements: Record<string, Enhancement> = {
-  'how-to-calculate-sip-returns': {
-    sections: [
-      { title: 'Worked SIP example and assumption check', content: 'Suppose ₹5,000 is invested at the beginning of every month for 10 years with an assumed 12% annual return compounded monthly. The total contribution is ₹6,00,000; the future-value formula produces an illustrative maturity value, not a promised outcome.\n\nA useful calculator should show contributions separately from estimated gains and let you vary return and tenure. Test conservative, middle, and optimistic rates instead of planning from one precise-looking projection.' },
-      { title: 'CAGR, XIRR, and absolute return', content: 'Absolute return compares total gain with total contribution but ignores timing. CAGR is designed for a single beginning and ending value. SIPs contain many dated cash flows, so XIRR is generally the more appropriate annualized performance measure.\n\nFund statements may calculate XIRR from actual transaction dates, including skipped installments, redemptions, or dividends. That real cash-flow return will differ from a simple projection calculator.' },
-      { title: 'Risk, costs, and inflation', content: 'Mutual-fund returns fluctuate and can be negative over some periods. Expense ratios, taxes, exit loads, and investor behaviour affect realized outcomes. Inflation also reduces future purchasing power.\n\nUse SIP projections for goal scenarios, review asset allocation and fund suitability, and never describe an assumed rate as guaranteed.' },
-    ],
-    faqs: [
-      { question: 'Does a SIP guarantee positive returns?', answer: 'No. A SIP is an investing method, not a guarantee. Returns depend on the underlying investment and market conditions.' },
-      { question: 'Should I use CAGR or XIRR for an existing SIP?', answer: 'XIRR is usually more appropriate because it accounts for the date and amount of every cash flow.' },
-    ],
-  },
-  'how-to-calculate-emi': {
-    sections: [
-      { title: 'How principal and interest change over time', content: 'A standard reducing-balance loan can keep the EMI constant while its composition changes. Early installments contain more interest because the outstanding principal is larger. Later installments contain more principal. An amortization schedule reveals this progression and prevents the common mistake of multiplying one month’s interest by the full tenure.' },
-      { title: 'Compare tenure using total borrowing cost', content: 'A longer tenure lowers the monthly payment but usually increases total interest. Compare EMI, total interest, fees, insurance, prepayment terms, and the effective annual cost together. A lower advertised rate can still be more expensive after charges or a longer term.' },
-      { title: 'Prepayment and floating-rate scenarios', content: 'When permitted, an early principal prepayment can reduce later interest. Ask whether the lender lowers EMI, shortens tenure, or applies charges. For floating-rate loans, test higher-rate scenarios so the plan remains affordable if the payment or tenure changes.' },
-    ],
-    faqs: [
-      { question: 'Why is the first month mostly interest?', answer: 'Interest is calculated on the larger opening balance. As principal falls, the interest component generally falls too.' },
-      { question: 'Does an EMI calculator include fees?', answer: 'Usually not unless explicitly stated. Processing fees, insurance, taxes, and other charges should be compared separately.' },
-    ],
-  },
   'bmi-calculator-guide': {
     sections: [
       { title: 'How to calculate BMI correctly', content: 'Metric BMI equals weight in kilograms divided by height in metres squared. For imperial inputs, divide pounds by inches squared and multiply by 703. Measure height without shoes and use a consistent, calibrated scale when monitoring change. Rounding inputs too early can shift a result near a category boundary.' },
@@ -78,17 +56,6 @@ export const guideContentEnhancements: Record<string, Enhancement> = {
     faqs: [
       { question: 'Does changing DPI resize an image?', answer: 'Not necessarily. Metadata-only DPI changes can alter intended print size while leaving pixel dimensions unchanged.' },
       { question: 'How do I avoid stretching?', answer: 'Lock the original aspect ratio or crop to the target ratio before resizing.' },
-    ],
-  },
-  'gst-calculation-guide': {
-    sections: [
-      { title: 'Composition Scheme vs Regular Scheme Taxation', content: 'Small businesses with aggregate annual turnover up to ₹1.5 crore (₹75 lakh for special category States) or service providers up to ₹50 lakh may opt for the Composition Scheme under Section 10. Composition dealers pay a low flat turnover tax (1% for manufacturers/traders, 5% for restaurants, 6% for service providers) and file quarterly statement CMP-08. However, they cannot issue tax invoices, cannot collect GST from customers, and cannot claim any Input Tax Credit.' },
-      { title: 'Credit Notes, Debit Notes, and Post-Supply Adjustments (Section 34)', content: 'When taxable value or tax charged on an invoice exceeds the actual value (due to sales returns, quantity deficiencies, or post-sale discounts), the supplier must issue a Credit Note under Section 34(1). Credit notes adjust output tax liability provided they are declared in the return on or before 30th November following the end of the financial year or the date of furnishing the annual return, whichever is earlier. Correspondingly, the recipient must reverse the proportionate ITC claimed.' },
-      { title: 'E-Way Bill Compliance and Statutory Record Retention', content: 'Movement of goods worth more than ₹50,000 (inter-state or intra-state, subject to state-specific thresholds) requires generating an electronic E-Way Bill on the portal (ewaybillgst.gov.in) before dispatch. Under Section 36 of the CGST Act, every registered taxable person must maintain accounts, tax invoices, credit notes, and delivery challans for a minimum of 72 months (6 years) from the due date of furnishing the annual return for the relevant financial year.' },
-    ],
-    faqs: [
-      { question: 'Can a composition dealer collect GST from customers?', answer: 'No. Under Section 10(4), a composition taxable person is statutorily prohibited from collecting tax from recipients and must issue a "Bill of Supply" rather than a "Tax Invoice".' },
-      { question: 'What is the statutory deadline for declaring a GST credit note?', answer: 'Under Section 34(2), credit notes must be reported in the return for the month in which they are issued, but no later than 30th November following the end of the financial year to which the supply pertains, or the date of filing the annual return (GSTR-9), whichever is earlier.' },
     ],
   },
   'base64-encoding-guide': {
