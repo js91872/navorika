@@ -3,17 +3,6 @@ import type { GuideFAQ, GuideSection } from './guideContent';
 type Enhancement = { sections: GuideSection[]; faqs: GuideFAQ[] };
 
 export const guideContentEnhancements: Record<string, Enhancement> = {
-  'bmi-calculator-guide': {
-    sections: [
-      { title: 'How to calculate BMI correctly', content: 'Metric BMI equals weight in kilograms divided by height in metres squared. For imperial inputs, divide pounds by inches squared and multiply by 703. Measure height without shoes and use a consistent, calibrated scale when monitoring change. Rounding inputs too early can shift a result near a category boundary.' },
-      { title: 'Use BMI alongside other information', content: 'BMI does not measure body fat directly or describe where fat is stored. Waist circumference, waist-to-height ratio, blood pressure, laboratory results, fitness, sleep, and medical history may add context. A clinician can interpret these together instead of treating one threshold as a diagnosis.' },
-      { title: 'Age, pregnancy, ethnicity, and muscularity', content: 'Adult BMI categories are not designed for children, whose results use age- and sex-specific growth references. Pregnancy changes weight for reasons BMI cannot interpret. Older adults and muscular athletes may also be misclassified. Some populations experience metabolic risk at different BMI levels, reinforcing the need for context.' },
-    ],
-    faqs: [
-      { question: 'Is BMI a diagnosis?', answer: 'No. It is a population screening measure that may prompt a broader health assessment.' },
-      { question: 'Can two people with the same BMI have different health risk?', answer: 'Yes. Body composition, fat distribution, fitness, medical history, and other measurements can differ substantially.' },
-    ],
-  },
   'pdf-compression-guide': {
     sections: [
       { title: 'Choose compression by document type', content: 'Scanned pages are usually dominated by images and may shrink substantially through downsampling or JPEG re-encoding. Born-digital text PDFs may already be efficient; rasterizing them can make text less sharp, remove searchability, and harm accessibility. Inspect the source before choosing a method.' },
