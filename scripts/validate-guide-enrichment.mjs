@@ -5,8 +5,16 @@ import { guideTools } from '../src/lib/guideTools.ts';
 
 function countWords(str) {
   if (!str) return 0;
-  // Clean markdown syntax markers if any, count substantive words
-  return str.trim().split(/\s+/).filter(Boolean).length;
+  // Clean markdown syntax markers (pipes, tables, link syntax, markdown tokens), count substantive words
+  const clean = str
+    .replace(/\|/g, ' ')
+    .replace(/^[\s:-|-]+$/gm, ' ')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[#*`_~]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!clean) return 0;
+  return clean.split(/\s+/).filter((w) => /[a-zA-Z0-9]/.test(w)).length;
 }
 
 export function auditAllGuides() {
@@ -38,7 +46,7 @@ export function auditAllGuides() {
     const sources = guideSources[slug] || [];
     const tools = guideTools[slug] || [];
 
-    const meetsMin = totalVisibleWords >= 2500;
+    const meetsMin = mainBodyWords >= 2500;
     if (!meetsMin) underCount++;
 
     results.push({
@@ -69,7 +77,7 @@ if (process.argv[1]?.endsWith('validate-guide-enrichment.mjs')) {
     results.map((r) => ({
       slug: r.slug,
       category: r.category,
-      'Body Words': r.mainBodyWords,
+      'Main Words': r.mainBodyWords,
       'FAQ Words': r.faqWords,
       'Total Words': r.totalVisibleWords,
       Sections: r.sectionsCount,
@@ -78,10 +86,11 @@ if (process.argv[1]?.endsWith('validate-guide-enrichment.mjs')) {
     }))
   );
 
-  console.log(`\nResult: ${total - underCount}/${total} guides meet the 2,500 word minimum.`);
+  console.log(`\nResult: ${total - underCount}/${total} guides meet the 2,500 rendered main word minimum.`);
   if (underCount > 0) {
-    console.log(`Still incomplete: ${underCount} guides remain under 2,500 words.\n`);
+    console.log(`Still incomplete: ${underCount} guides remain under 2,500 main words.\n`);
+    process.exit(1);
   } else {
-    console.log(`ALL ${total} GUIDES EXCEED 2,500 WORDS!\n`);
+    console.log(`ALL ${total} GUIDES INDEPENDENTLY EXCEED 2,500 RENDERED MAIN WORDS!\n`);
   }
 }
