@@ -3,28 +3,6 @@ import type { GuideFAQ, GuideSection } from './guideContent';
 type Enhancement = { sections: GuideSection[]; faqs: GuideFAQ[] };
 
 export const guideContentEnhancements: Record<string, Enhancement> = {
-  'pdf-compression-guide': {
-    sections: [
-      { title: 'Choose compression by document type', content: 'Scanned pages are usually dominated by images and may shrink substantially through downsampling or JPEG re-encoding. Born-digital text PDFs may already be efficient; rasterizing them can make text less sharp, remove searchability, and harm accessibility. Inspect the source before choosing a method.' },
-      { title: 'Quality, accessibility, and archival trade-offs', content: 'Check small text, diagrams, colour gradients, transparency, links, bookmarks, form fields, searchable text, and screen-reader output after compression. Keep an original master. For records that must remain archival or legally reliable, use an appropriate document-management workflow rather than optimizing only for size.' },
-      { title: 'A repeatable verification workflow', content: 'Work on a copy, note the original size, choose a conservative preset, compare representative pages at normal zoom and 200%, search for known text, and open the result in more than one reader. Only keep the compressed version when the actual size reduction justifies the changes.' },
-    ],
-    faqs: [
-      { question: 'Why did my PDF become larger after compression?', answer: 'The source may already be optimized, or the new encoding settings and embedded resources may add overhead.' },
-      { question: 'Does rasterizing a PDF preserve searchable text?', answer: 'Not by itself. Rasterization turns pages into images unless OCR or another text layer is added separately.' },
-    ],
-  },
-  'how-to-merge-pdf-files': {
-    sections: [
-      { title: 'Prepare files before merging', content: 'Rename files clearly, confirm page orientation, remove unwanted pages, and decide the final sequence before combining. Check page sizes because mixing A4, Letter, portrait, and landscape pages can create an uneven viewing or printing experience.' },
-      { title: 'What merging can preserve or disrupt', content: 'A careful merge can preserve page appearance, but bookmarks, internal links, form-field names, tags, signatures, attachments, and document metadata may require special handling. Combining signed PDFs generally changes the document and can invalidate existing digital signatures.' },
-      { title: 'Verify privacy and output integrity', content: 'For confidential documents, prefer local processing or a service with a reviewed retention policy. Open the final file, count pages, test searchable text and links, inspect metadata, and keep source documents until the merged output has been accepted.' },
-    ],
-    faqs: [
-      { question: 'Will merging invalidate digital signatures?', answer: 'It commonly does because the signed byte sequence changes. Preserve signed originals and use a suitable document-signing workflow.' },
-      { question: 'Can different page sizes be merged?', answer: 'Yes, but they usually retain their own dimensions. Review the result for viewing and printing consistency.' },
-    ],
-  },
   'image-compression-guide': {
     sections: [
       { title: 'Dimensions often matter more than the quality slider', content: 'A 4000-pixel photo displayed at 800 pixels wastes transfer and decoding work. Resize to the largest needed display size before tuning quality. Then compare encoders at the same dimensions and visual target.' },
