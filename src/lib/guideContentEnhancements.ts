@@ -3,28 +3,6 @@ import type { GuideFAQ, GuideSection } from './guideContent';
 type Enhancement = { sections: GuideSection[]; faqs: GuideFAQ[] };
 
 export const guideContentEnhancements: Record<string, Enhancement> = {
-  'image-compression-guide': {
-    sections: [
-      { title: 'Dimensions often matter more than the quality slider', content: 'A 4000-pixel photo displayed at 800 pixels wastes transfer and decoding work. Resize to the largest needed display size before tuning quality. Then compare encoders at the same dimensions and visual target.' },
-      { title: 'Measure quality at realistic size', content: 'Inspect faces, text, gradients, foliage, and sharp edges at the actual display size and at higher zoom for artifacts. File size alone is not success. Track the output format, pixel dimensions, colour profile, transparency, and whether metadata was intentionally retained.' },
-      { title: 'Responsive delivery for the web', content: 'Provide multiple source widths with responsive image markup so small screens do not download desktop assets. Reserve layout space to prevent shifts, lazy-load below-the-fold images, and prioritize only genuinely critical hero imagery.' },
-    ],
-    faqs: [
-      { question: 'Should I remove image metadata?', answer: 'Remove unnecessary private metadata for delivery copies, but preserve an archival master when provenance, copyright, colour management, or camera information matters.' },
-      { question: 'Is lossless compression visually better?', answer: 'It preserves decoded pixels, but a carefully chosen lossy export can look equivalent at normal size while being much smaller.' },
-    ],
-  },
-  'how-to-resize-images': {
-    sections: [
-      { title: 'Resize, crop, and resample mean different things', content: 'Resizing changes pixel dimensions. Cropping removes part of the frame. Resampling calculates new pixels when dimensions change. Preserve aspect ratio unless intentional distortion is required, and crop deliberately when the destination ratio differs.' },
-      { title: 'Web pixels versus print density', content: 'Web layout is driven mainly by pixel dimensions and CSS display size. A DPI label alone does not create detail. For print, divide pixel dimensions by the intended print size to estimate pixels per inch, then confirm the printer’s requirements.' },
-      { title: 'Upscaling cannot recreate missing detail', content: 'Interpolation can make an image larger and smoother, but it does not recover original texture or focus. AI upscaling may synthesize plausible detail and should be reviewed carefully for faces, products, documents, and evidence-sensitive material.' },
-    ],
-    faqs: [
-      { question: 'Does changing DPI resize an image?', answer: 'Not necessarily. Metadata-only DPI changes can alter intended print size while leaving pixel dimensions unchanged.' },
-      { question: 'How do I avoid stretching?', answer: 'Lock the original aspect ratio or crop to the target ratio before resizing.' },
-    ],
-  },
   'base64-encoding-guide': {
     sections: [
       { title: 'Text encoding comes before Base64', content: 'To encode text, software first converts characters into bytes—commonly UTF-8—then converts those bytes to Base64 symbols. Different character encodings can produce different byte sequences, so Unicode handling matters when decoded text looks corrupted.' },
