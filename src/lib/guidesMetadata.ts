@@ -306,19 +306,25 @@ const guideDefinitions: GuideDefinition[] = [
     category: 'Developer', publishedDate: 'August 2026', readTime: '9 min read', author: 'Navorika Team'
   },
   {
-    slug: 'open-cdr-without-coreldraw', title: 'How to Open a CDR File Without CorelDRAW',
-    description: 'Learn how to open and view CDR files without CorelDRAW using an online CDR viewer, LibreOffice, compatible vector tools, or PDF/SVG conversion.',
-    category: 'Developer', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
+    slug: 'open-cdr-without-coreldraw',
+    title: 'How to Open a CDR File Without CorelDRAW: Free Online & Desktop Options',
+    description: 'Need to open a CDR file without CorelDRAW? Compare an online CDR viewer, LibreOffice, Inkscape and PDF/SVG conversion options for Windows, Mac and Linux.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team',
+    keywords: ['open cdr file without coreldraw', 'open cdr file', 'cdr viewer', 'cdr viewer online', 'cdr opener', 'open coreldraw file online', 'view cdr file online', 'coreldraw viewer']
   },
   {
-    slug: 'newer-cdr-older-coreldraw', title: 'How to Open a Newer CDR File in an Older CorelDRAW Version',
-    description: 'Check CDR container/version clues and use safe resaving or PDF/SVG interchange when an older CorelDRAW release cannot open the file.',
-    category: 'Developer', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team'
+    slug: 'newer-cdr-older-coreldraw',
+    title: 'How to Open a Newer CDR File in an Older CorelDRAW Version',
+    description: 'Cannot open a newer CDR file in an older CorelDRAW version? Learn how to check the CDR version, ask for a lower-version save, or use PDF/SVG as a safe workaround.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team',
+    keywords: ['open newer cdr in older coreldraw', 'cdr version', 'cdr version converter', 'coreldraw older version', 'convert cdr to lower version', 'cdr file version']
   },
   {
-    slug: 'best-coreldraw-print-format', title: 'Best File Format for CorelDRAW Printing: CDR vs PDF vs EPS vs SVG',
-    description: 'Choose a production format for commercial printing, signage, cutting, proofs, and handoff based on fonts, color, transparency, and editability.',
-    category: 'Developer', publishedDate: 'August 2026', readTime: '11 min read', author: 'Navorika Team'
+    slug: 'best-coreldraw-print-format',
+    title: 'Best File Format for CorelDRAW Printing: CDR vs PDF vs EPS vs SVG',
+    description: 'Which file format should you send for printing from CorelDRAW? Compare CDR, PDF, EPS and SVG for print shops, signage, cut files, fonts, color and editability.',
+    category: 'Developer', publishedDate: 'August 2026', readTime: '11 min read', author: 'Navorika Team',
+    keywords: ['best file format for coreldraw printing', 'coreldraw print file format', 'cdr file for printing', 'cdr vs pdf for printing', 'pdf vs eps for printing', 'svg vs cdr', 'what is cdr file for printing']
   },
   {
     slug: 'preserve-fonts-coreldraw-conversion', title: 'How to Preserve Fonts When Converting Word or PDF to CorelDRAW',
