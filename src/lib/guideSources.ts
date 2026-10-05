@@ -4,6 +4,28 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'video-editing-software-for-mac': [
+    { name: 'Apple — iMovie for Mac', url: 'https://www.apple.com/imovie/' },
+    { name: 'Apple — Final Cut Pro', url: 'https://www.apple.com/final-cut-pro/' },
+    { name: 'Blackmagic Design — DaVinci Resolve', url: 'https://www.blackmagicdesign.com/products/davinciresolve' },
+    { name: 'Adobe — Premiere Pro', url: 'https://www.adobe.com/products/premiere.html' },
+  ],
+  'free-video-editing-software-for-mac': [
+    { name: 'Apple — iMovie for Mac', url: 'https://www.apple.com/imovie/' },
+    { name: 'Blackmagic Design — DaVinci Resolve', url: 'https://www.blackmagicdesign.com/products/davinciresolve' },
+    { name: 'Shotcut — Official site', url: 'https://shotcut.org/' },
+    { name: 'Kdenlive — Official site', url: 'https://kdenlive.org/' },
+  ],
+  'professional-video-editing-software-for-mac': [
+    { name: 'Apple — Final Cut Pro', url: 'https://www.apple.com/final-cut-pro/' },
+    { name: 'Blackmagic Design — DaVinci Resolve', url: 'https://www.blackmagicdesign.com/products/davinciresolve' },
+    { name: 'Adobe — Premiere Pro', url: 'https://www.adobe.com/products/premiere.html' },
+  ],
+  'easy-video-editing-software-for-mac': [
+    { name: 'Apple — iMovie for Mac', url: 'https://www.apple.com/imovie/' },
+    { name: 'Blackmagic Design — DaVinci Resolve', url: 'https://www.blackmagicdesign.com/products/davinciresolve' },
+    { name: 'Apple Support — iMovie User Guide for Mac', url: 'https://support.apple.com/guide/imovie/welcome/mac' },
+  ],
   'psd-to-html-conversion-guide': [
     { name: 'W3C — HTML Living Standard', url: 'https://html.spec.whatwg.org/' },
     { name: 'W3C — CSS Flexible Box Layout Module Level 1', url: 'https://www.w3.org/TR/css-flexbox-1/' },
