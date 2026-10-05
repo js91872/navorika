@@ -108,7 +108,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'pdf file to cdr',
     ],
     intro: [
-      'Convert and prepare PDF artwork for CorelDRAW projects. Because Adobe PDF is an open ISO standard that CorelDRAW imports natively, preparing a clean PDF or open vector file is the most reliable cross-platform bridge for turning PDF documents into editable CorelDRAW designs.',
+      'Convert PDF to CDR by preparing the PDF for CorelDRAW import. Upload a PDF, choose a CorelDRAW-ready PDF, SVG or EPS output, import the result into CorelDRAW, check the artwork, and use Save As to create the native CDR file.',
       'Editability in CorelDRAW depends directly on whether your source PDF contains native vector paths or scanned bitmap images. Vector PDFs retain scalable curves, fills, and selectable text objects that CorelDRAW can edit directly. In contrast, scanned or raster-based PDFs contain photographic pixels that import as flat bitmap images, which do not automatically become editable vector curves without manual or automated tracing.',
       'Navorika produces genuine, verified CorelDRAW-ready interchange files: a preserved multipage PDF document, a clean first-page SVG vector file, or an encapsulated PostScript (EPS) file. Navorika does not generate a native CDR file. It creates CorelDRAW-ready PDF, SVG, or EPS output that you can import into CorelDRAW and save as CDR.',
       'Uploaded files are processed in an isolated temporary workspace on our server and deleted automatically after the conversion job completes. No files are permanently stored or shared.',
@@ -189,7 +189,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     name: 'Word to CDR Converter – DOC/DOCX to CorelDRAW',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert DOC or DOCX through LibreOffice to CorelDRAW-ready PDF, first-page SVG, or first-page EPS.',
+    description: 'Convert Word DOC or DOCX files for CorelDRAW online. Preserve page layout in PDF or prepare first-page SVG/EPS output, then import the file into CorelDRAW and save as CDR.' ,
     longTailKeywords: [
       'word to cdr converter',
       'docx to cdr',
@@ -201,7 +201,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'word to coreldraw without losing formatting',
     ],
     intro: [
-      'Bridge Microsoft Word documents (DOC and DOCX) into CorelDRAW for graphic layout, signage, certificates, and commercial publishing without losing margins, page geometry, or tables.',
+      'Convert a Word document to CDR through a CorelDRAW-ready PDF, SVG or EPS. This workflow is useful when you need to bring DOC or DOCX text, tables, certificates, forms or page layouts into CorelDRAW and then save the imported design as CDR.',
       'Our conversion pipeline uses headless LibreOffice in an isolated sandbox to render your Word document into an exact, vector-preserved PDF. You can also export the first page as editable SVG curves or PostScript EPS.',
       serverPrivacy,
     ],
@@ -258,10 +258,10 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'png-to-cdr-converter': {
     slug: 'png-to-cdr-converter',
-    name: 'PNG to CDR Converter – Vectorize & Convert PNG for CorelDRAW',
+    name: 'PNG to CDR Converter – Convert PNG for CorelDRAW Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert PNG to CorelDRAW free and online. Choose Vectorize Mode to trace logos into editable vector curves or Preserve Mode for transparent raster placement. 100% private, CorelDRAW-ready.',
+    description: 'Convert PNG to CDR for CorelDRAW online. Prepare a PNG as editable vector paths for logos or preserve the original image and transparency, then import it into CorelDRAW and save as CDR.' ,
     longTailKeywords: [
       'png to cdr',
       'convert png to cdr',
@@ -277,7 +277,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'raster to vector coreldraw',
     ],
     intro: [
-      'Convert and prepare PNG images for CorelDRAW directly in your browser with zero server uploads. Whether you need to preserve transparent graphics for layout placement or convert a PNG logo to vector for CorelDRAW into editable curves, our free tool prepares honest, CorelDRAW-ready interchange files.',
+      'Convert PNG to CDR for CorelDRAW online. Upload a PNG, choose whether to keep it as an image or trace a logo into editable vector paths, then download a CorelDRAW-ready SVG or PDF to import and save as CDR.',
       'Navorika does not generate a native CDR file. It creates genuine CorelDRAW-ready SVG or PDF files that CorelDRAW imports natively via File → Import (Ctrl+I). Once placed, you can edit your artwork and use File → Save As to save your authentic .cdr master file.',
       'Processed locally in your browser; your PNG is not uploaded for this conversion. This makes the tool suitable for proprietary graphics and confidential branding assets.',
     ],
@@ -360,10 +360,10 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'jpg-to-cdr-converter': {
     slug: 'jpg-to-cdr-converter',
-    name: 'JPG to CDR Converter – Convert JPEG for CorelDRAW Free',
+    name: 'JPG to CDR Converter – Convert JPG/JPEG for CorelDRAW Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert JPG images for CorelDRAW free online. Choose Preserve Mode for photos or Vectorize Mode to trace logos into editable vector paths. 100% private, CorelDRAW-ready.',
+    description: 'Convert JPG or JPEG for CorelDRAW online. Keep a photo as an image or trace a simple logo into editable vector paths, then import the result into CorelDRAW and save as CDR.' ,
     longTailKeywords: [
       'jpg to cdr converter',
       'jpeg to cdr',
@@ -375,7 +375,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'convert jpg logo to vector',
     ],
     intro: [
-      'Prepare JPG and JPEG photographs or illustrations for CorelDRAW directly in your browser. JPG is an opaque, lossy raster format universally used for digital photos, brochures, and web scans.',
+      'Convert JPG to CDR for CorelDRAW by preparing the image in a format CorelDRAW can import cleanly. Keep photos as raster images, or trace simple logos and line art into editable vector paths before saving the project as CDR in CorelDRAW.',
       'Convert your JPEG locally without server transmission. Choose Raster Preservation (embeds original JPEG bytes into PDF or SVG for layout placement) or Color Tracing (converts solid-color logos or line art into editable SVG paths).',
     ],
     formula: [
@@ -578,12 +578,14 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'eps-to-cdr-converter': {
     slug: 'eps-to-cdr-converter',
-    name: 'EPS to CDR Converter – EPS to CorelDRAW',
+    name: 'EPS to CDR Converter – Convert EPS for CorelDRAW Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Validate PostScript EPS and prepare genuine PDF, SVG, or EPS interchange output for CorelDRAW.',
+    description: 'Convert EPS for CorelDRAW online. Prepare an EPS file as CorelDRAW-ready PDF, SVG or cleaned EPS output, then import it into CorelDRAW and save as CDR.' ,
     longTailKeywords: [
       'eps to cdr converter',
+      'eps to cdr',
+      'coreldraw to eps converter',
       'eps to coreldraw',
       'convert eps to cdr',
       'open eps in coreldraw',
@@ -592,7 +594,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'vector file to cdr',
     ],
     intro: [
-      'Convert Encapsulated PostScript (EPS) artwork for predictable import into CorelDRAW. While many CorelDRAW releases have legacy EPS import filters, converting EPS to a standardized vector PDF or SVG frequently resolves PostScript font errors and bounding box clipping.',
+      'Convert EPS to CDR through a CorelDRAW-ready format. Upload an EPS file and prepare PDF, SVG or cleaned EPS output that you can import into CorelDRAW, check for font or clipping issues, and save as a native CDR file.',
       'Our server executes Ghostscript in SAFER mode with strict memory and time boundaries, ensuring secure conversion into CorelDRAW-ready PDF, first-page SVG, or sanitized EPS.',
       serverPrivacy,
     ],
@@ -648,12 +650,17 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'cdr-viewer': {
     slug: 'cdr-viewer',
-    name: 'CDR Viewer – View CorelDRAW Files Online for Free',
+    name: 'CDR Viewer Online – Open CorelDRAW Files Without CorelDRAW',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Open and preview CorelDRAW (.cdr) files online for free without installing software. View multi-page drawings and export temporary PDF, SVG, or PNG files.',
+    description: 'Open and view CDR files online without CorelDRAW. Preview supported CorelDRAW files as PDF, SVG or PNG, including multi-page PDF previews, with no account required.' ,
     longTailKeywords: [
       'cdr viewer online',
+      'cdr viewer',
+      'online cdr viewer',
+      'cdr opener',
+      'cdr file opener',
+      'open coreldraw file online',
       'open cdr online',
       'coreldraw file viewer',
       'view cdr without coreldraw',
@@ -663,8 +670,8 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'how to open cdr file without coreldraw',
     ],
     intro: [
-      'Open, view, and inspect CorelDRAW (.cdr) files directly in your web browser without purchasing or installing CorelDRAW software. Perfect for clients, printers, and developers who receive CDR drawings but work on macOS, Linux, or non-CorelDRAW workstations.',
-      'Our capability-verified viewer uses sandboxed LibreOffice Draw and libcdr to parse supported CDR container structures, generating multi-page PDF previews or high-resolution first-page SVG and PNG previews.',
+      'Open a CDR file online without CorelDRAW. Use the CDR viewer to preview supported CorelDRAW files in your browser as PDF, SVG or PNG when you only need to check the artwork, share a preview or confirm what is inside the file.',
+      'For supported files, the viewer can create a multi-page PDF preview or a first-page SVG or PNG preview. Technical format checks and rendering details are handled behind the scenes so you can focus on opening and viewing the CDR file.',
       serverPrivacy,
     ],
     formula: [
@@ -864,21 +871,23 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'cdr-to-svg-converter': {
     slug: 'cdr-to-svg-converter',
-    name: 'CDR to SVG Converter – CorelDRAW to SVG',
+    name: 'CDR to SVG Converter – Convert CorelDRAW to SVG Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert proprietary CorelDRAW (.cdr) graphics to clean, scalable SVG vector markup for web development, UI design, and modern vector editors.',
+    description: 'Convert a supported CDR file to SVG online. Export the first CorelDRAW page as scalable SVG for Illustrator, Inkscape, Figma, Cricut, LightBurn or web use.' ,
     longTailKeywords: [
       'cdr to svg converter online',
       'convert cdr to svg',
+      'cdr to svg',
+      'cdr to svg converter',
       'coreldraw to svg',
       'export cdr to svg vector',
       'cdr to scalable vector graphics',
       'cdr vector to web svg',
     ],
     intro: [
-      'Scalable Vector Graphics (SVG) is the open W3C standard for vector imagery across the modern web, CSS styling, responsive interfaces, and cutting plotter workflows. CorelDRAW (.cdr) files, while rich in desktop publishing features, cannot be displayed in browsers or imported into web frontends.',
-      'Navorika converts your CDR file to genuine SVG by rendering the document through our headless libcdr/LibreOffice pipeline and serializing the vector scene graph into clean, standards-compliant XML SVG code.',
+      'Convert CorelDRAW CDR to SVG online when you need an open vector file for another design app, cutting software or the web. The exported SVG can be opened in common vector editors and scaled without the pixelation of a JPG or PNG image.',
+      'For supported CDR files, Navorika exports the first page as genuine SVG vector content. The technical conversion pipeline runs behind the scenes; the result is a standard SVG file you can inspect and continue editing in compatible software.',
       serverPrivacy,
     ],
     steps: [
