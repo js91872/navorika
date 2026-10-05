@@ -371,4 +371,63 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: [],
   },
+  'website-worth-calculator': {
+    slug: 'website-worth-calculator',
+    name: 'Website Worth Calculator: Check Website Value',
+    category: 'Everyday Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Check how much a website may be worth with a transparent website value calculator using URL quality signals, traffic, revenue, profit, and valuation multiples.',
+    longTailKeywords: [
+      'how much is this website worth',
+      'website worth calculator',
+      'calculate website value',
+      'check website value',
+      'website price calculator',
+      'website value calculator',
+      'how much is my website worth',
+      'website value checker',
+      'website worth checker free',
+      'website value tool'
+    ],
+    intro: [
+      'Website Worth Calculator reviews observable signals from a public URL and combines them with traffic, revenue, or profit information you provide to estimate an indicative market-value range.',
+      'A public webpage cannot reveal verified private analytics or financial statements. For that reason, Navorika separates the technical website review from the financial assumptions instead of presenting a precise-looking value with no explanation.'
+    ],
+    formula: [
+      { title: 'Profit-based valuation', body: 'When monthly profit is supplied, the calculator applies a broad 24–40× monthly-profit range, with only a modest adjustment for the technical website score.' },
+      { title: 'Revenue-based valuation', body: 'When revenue is supplied without profit, the model uses a transparent 65% normalized margin assumption before applying the valuation multiple.' },
+      { title: 'Traffic-based estimate', body: 'When only monthly visits are supplied, the model assumes $12 revenue per 1,000 visits (RPM) and a 65% normalized margin. This is a scenario assumption, not measured revenue.' }
+    ],
+    steps: [
+      'Enter the website URL and select Analyze Website.',
+      'Review HTTPS, response time, page content, canonical, mobile viewport, structured data, robots.txt, sitemap, and internal-link signals.',
+      'Enter monthly visits, monthly revenue, or preferably monthly profit when known.',
+      'Review the estimated low-to-high website value range and the assumptions shown beneath it.',
+      'For a sale or acquisition decision, replace estimates with verified analytics and financial records.'
+    ],
+    interpretation: [
+      'The technical score describes observable website implementation signals; it is not a traffic, authority, or business-quality score.',
+      'Profit-based estimates are generally more meaningful than traffic-only estimates because monetization varies greatly by niche, geography, traffic source, and business model.',
+      'The displayed range is deliberately broad because real website transactions depend on growth, concentration risk, owner workload, revenue durability, assets, and buyer demand.'
+    ],
+    limitations: [
+      'The tool does not have access to private Google Analytics, Search Console, ad-network, affiliate, ecommerce, subscription, or accounting data.',
+      'Traffic-only valuation uses explicit RPM and margin assumptions and can differ substantially from actual revenue.',
+      'The URL scan analyzes public HTML and common technical files; blocked crawlers, JavaScript-only content, authentication, rate limits, or unusual hosting can reduce what is detected.',
+      'This tool is an indicative calculator, not a certified business appraisal, investment recommendation, or offer to purchase a website.'
+    ],
+    faqs: [
+      { question: 'How much is this website worth?', answer: 'A website is normally valued from verified profit or revenue, traffic quality, growth, risk, workload, and transferable assets. This calculator provides a transparent range rather than claiming a public URL alone reveals the true sale price.' },
+      { question: 'Can you calculate website value from only a URL?', answer: 'A URL can reveal technical and content signals, but not verified private revenue or analytics. The tool therefore asks for optional traffic, revenue, or profit data before producing a dollar valuation.' },
+      { question: 'What multiple is used to value a website?', answer: 'The current model uses an indicative range of roughly 24–40 times normalized monthly profit, then makes only a modest adjustment for the technical score.' },
+      { question: 'Is the website value estimate accurate?', answer: 'It is a scenario estimate. Accuracy improves when you enter verified monthly profit. A real transaction requires due diligence on analytics, financial records, traffic sources, growth, risks, and transferable assets.' },
+      { question: 'Does Navorika store the website revenue I enter?', answer: 'The valuation arithmetic runs in your browser. The URL itself is sent to the Navorika server only when you request the public website scan.' }
+    ],
+    relatedTools: [
+      { slug: 'website-carbon-footprint-estimator', name: 'Website Carbon Footprint Estimator' },
+      { slug: 'ai-token-calculator', name: 'AI Token Calculator' }
+    ],
+    relatedGuides: []
+  },
+
 };
