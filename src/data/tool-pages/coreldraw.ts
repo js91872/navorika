@@ -10,7 +10,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     name: 'Free CorelDRAW Tools & CDR Converters',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert files to CorelDRAW-ready formats, export open formats from CDR, view CDR files online, and check CorelDRAW version compatibility without fake .cdr files.',
+    description: 'Free CorelDRAW tools and CDR converters for opening CDR files, converting PDF, PNG, JPG, SVG, AI or EPS for CorelDRAW, exporting CDR to PDF/SVG/PNG/JPG/EPS, and checking CDR versions.' ,
     longTailKeywords: [
       'free coreldraw tools',
       'cdr converter online',
@@ -22,7 +22,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'coreldraw interchange',
     ],
     intro: [
-      'Welcome to Navorika’s central CorelDRAW and CDR workflow hub. We provide a suite of technically honest, capability-gated utilities designed to bridge proprietary CorelDRAW projects with open vector, document, and image formats.',
+      'Use free CorelDRAW tools for the jobs people most often need: open a CDR file online, convert PDF or images for CorelDRAW, export a supported CDR to PDF, SVG, PNG, JPG or EPS, check the CDR version, and prepare artwork for printing.' ,
       'Unlike generic file converters that merely rename foreign file extensions to .cdr, our service strictly respects file architecture. When preparing artwork for CorelDRAW, we create validated, standards-compliant PDF, SVG, or EPS interchange files ready for direct import. When extracting artwork from CDR files, we utilize sandboxed open-source rendering filters to produce high-fidelity PDF, SVG, PNG, JPG, or EPS outputs.',
       'All browser-local tools run 100% on your device, and all server-assisted conversion pipelines execute in private temporary sandboxes with automated deletion immediately upon request completion.',
     ],
@@ -436,10 +436,10 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'svg-to-cdr-converter': {
     slug: 'svg-to-cdr-converter',
-    name: 'SVG to CDR Converter – CorelDRAW-Ready Vector',
+    name: 'SVG to CDR Converter – Convert SVG for CorelDRAW Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Validate SVG and prepare genuine SVG, PDF, or EPS vector interchange output for CorelDRAW.',
+    description: 'Convert SVG for CorelDRAW online. Clean and prepare SVG, PDF or EPS output for CorelDRAW import, then edit the vector artwork and save it as a CDR file.' ,
     longTailKeywords: [
       'svg to cdr converter',
       'svg to coreldraw',
@@ -451,7 +451,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'editable svg coreldraw',
     ],
     intro: [
-      'Prepare W3C Scalable Vector Graphics (SVG) for flawless import into CorelDRAW. Because SVG is already an open vector standard containing bezier paths, fills, strokes, and gradients, it is the premier cross-platform vector interchange format.',
+      'Convert SVG to CDR through a CorelDRAW-ready vector file. SVG already contains editable vector paths, so it is one of the easiest formats to import into CorelDRAW, edit, and save as a native CDR project.' ,
       'Our tool validates SVG markup, sanitizes unsafe active elements or external entity references, and prepares clean SVG, PDF, or EPS files optimized specifically for CorelDRAW’s vector import engine.',
       serverPrivacy,
     ],
@@ -508,10 +508,10 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'ai-to-cdr-converter': {
     slug: 'ai-to-cdr-converter',
-    name: 'AI to CDR Converter – Illustrator to CorelDRAW',
+    name: 'AI to CDR Converter – Convert Illustrator Files for CorelDRAW',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Prepare supported PDF-compatible or PostScript Illustrator artwork as genuine CorelDRAW-ready PDF, SVG, or EPS.',
+    description: 'Convert supported Adobe Illustrator AI files for CorelDRAW. Prepare PDF, SVG or EPS output that CorelDRAW can import, then save the project as a native CDR file.' ,
     longTailKeywords: [
       'ai to cdr converter',
       'illustrator to coreldraw',
@@ -522,7 +522,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'adobe illustrator to coreldraw',
     ],
     intro: [
-      'Bridge Adobe Illustrator (.ai) files into CorelDRAW smoothly. Modern Illustrator documents saved with the default "Create PDF Compatible File" option contain an internal ISO 32000 PDF stream that can be extracted cleanly for CorelDRAW import.',
+      'Convert an Adobe Illustrator AI file for CorelDRAW when you need to move artwork between Illustrator and CorelDRAW. Supported AI files can be prepared as PDF, SVG or EPS for import into CorelDRAW and then saved as CDR.' ,
       'Our capability-gated server pipeline identifies PDF-compatible streams and legacy PostScript AI formats, producing verified CorelDRAW-ready PDF, first-page SVG, or EPS files.',
       serverPrivacy,
     ],
@@ -728,13 +728,15 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'cdr-version-converter': {
     slug: 'cdr-version-converter',
-    name: 'CDR Version Checker & Compatibility Guide',
+    name: 'CDR Version Checker – Check CorelDRAW File Version Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Inspect a CDR header locally to identify RIFF/ZIP containers and estimate its CorelDRAW generation without fake version conversion.',
+    description: 'Check a CDR file version online to see whether it is from an older RIFF-based or newer ZIP-based CorelDRAW generation, and get compatibility guidance for opening it.' ,
     longTailKeywords: [
       'cdr version converter',
       'cdr version checker',
+      'cdr file version checker',
+      'check coreldraw version',
       'coreldraw compatibility checker',
       'open newer cdr in older coreldraw',
       'cdr file version',
@@ -746,7 +748,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'cdr 2024',
     ],
     intro: [
-      'Inspect your CorelDRAW (.cdr) file header 100% locally in your web browser to identify its container architecture and estimate which CorelDRAW generation created it.',
+      'Check which CorelDRAW version or generation a CDR file belongs to. The checker reads the file header locally in your browser and identifies older RIFF-based files or newer ZIP-based CDR containers without uploading the file.' ,
       'Unlike misleading services that claim to "convert" or "downgrade" CDR versions by renaming bytes, Navorika provides strict technical honesty: we are an authentic version checker and compatibility guide. True version down-saving requires native CorelDRAW.',
     ],
     formula: [
@@ -800,12 +802,17 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'cdr-to-pdf-converter': {
     slug: 'cdr-to-pdf-converter',
-    name: 'CDR to PDF Converter – CorelDRAW to PDF',
+    name: 'CDR to PDF Converter – Convert CorelDRAW Files to PDF Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert proprietary CorelDRAW (.cdr) files to standard vector PDF documents using verified server-side libcdr rendering without requiring CorelDRAW.',
+    description: 'Convert a supported CDR file to PDF online without CorelDRAW. Create a shareable PDF from CorelDRAW artwork, including multipage documents where supported.' ,
     longTailKeywords: [
       'cdr to pdf converter online',
+      'cdr to pdf',
+      'cdr to pdf converter',
+      'convert cdr to pdf',
+      'convert cdr file to pdf',
+      'coreldraw to pdf',
       'convert cdr to pdf free',
       'coreldraw to pdf online',
       'export cdr to pdf',
@@ -814,7 +821,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'coreldraw file to pdf converter high resolution',
     ],
     intro: [
-      'CorelDRAW (.cdr) is a proprietary vector format developed by Alludo (formerly Corel Corporation). Because CDR files cannot be natively rendered by web browsers, mobile operating systems, or prepress RIPs without CorelDRAW, converting to Portable Document Format (PDF) is the universal standard for sharing, soft-proofing, and print review.',
+      'Convert CDR to PDF online when you need to open, share, print or send a CorelDRAW file to someone who does not use CorelDRAW. PDF is widely supported on phones, computers, browsers and print workflows, making it a practical format for proofs and document sharing.' ,
       'Navorika converts your CDR file using an isolated server-side pipeline powered by LibreOffice and the open-source libcdr vector import library. Rather than flattening vector artwork into a blurry raster image, libcdr parses CorelDRAW geometry, bezier nodes, strokes, fills, and text objects directly into vector PDF streams.',
       serverPrivacy,
     ],
@@ -946,9 +953,13 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     name: 'CDR to PNG Converter – CorelDRAW to PNG',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert CorelDRAW (.cdr) files to high-resolution PNG images with transparent background support and customizable resolution from 72 to 600 DPI.',
+    description: 'Convert a supported CDR file to PNG online. Export the first CorelDRAW page as a PNG image with adjustable 72–600 DPI for previews, presentations, web graphics or high-resolution output.' ,
     longTailKeywords: [
       'cdr to png converter online',
+      'cdr to png',
+      'cdr to png converter',
+      'convert cdr to png',
+      'coreldraw to png',
       'convert cdr to png high resolution',
       'coreldraw to png transparent',
       'export cdr to png 300 dpi',
@@ -956,7 +967,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'coreldraw cdr to png',
     ],
     intro: [
-      'Portable Network Graphics (PNG) is the premier raster image format for lossless digital graphics, logos, icons, and transparent overlays. When you need to share CorelDRAW artwork on messaging apps, presentation slides, or web mockups, exporting to PNG provides immediate visual fidelity without vector complexity.',
+      'Convert CDR to PNG online when you need a standard image from a CorelDRAW file. PNG is useful for logos, previews, presentations and web graphics, and it can preserve transparency when the original artwork has no solid background.' ,
       'Navorika renders your CDR file through our server-side libcdr rendering stack, rasterizing page one at your chosen output resolution from standard 72 DPI screen previews up to ultra-sharp 300 or 600 DPI print-quality rasters.',
       serverPrivacy,
     ],
@@ -1017,9 +1028,14 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     name: 'CDR to JPG Converter – CorelDRAW to JPEG',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert CorelDRAW (.cdr) files to compressed, web-friendly JPEG images with adjustable quality and resolution settings.',
+    description: 'Convert a supported CDR file to JPG online. Export the first CorelDRAW page as a JPEG image with adjustable resolution and quality for easy sharing, websites and previews.' ,
     longTailKeywords: [
       'cdr to jpg converter online',
+      'cdr to jpg',
+      'cdr to jpg converter',
+      'convert cdr to jpg',
+      'convert cdr file to jpg',
+      'coreldraw to jpg',
       'convert cdr to jpg free',
       'coreldraw to jpeg',
       'cdr file to jpg image',
@@ -1027,7 +1043,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'coreldraw to jpg 300 dpi',
     ],
     intro: [
-      'JPEG (Joint Photographic Experts Group) is the most universally compatible raster format in the world, supported by every operating system, mobile device, web browser, and photo gallery. When transparent backgrounds are not required and compact file transfer is paramount, converting CDR to JPG is the ideal choice.',
+      'Convert CDR to JPG when you need a simple image that opens almost anywhere. JPG is useful for sharing CorelDRAW artwork by email or messaging, adding it to websites and documents, or creating a compact preview when transparency is not required.' ,
       'Navorika renders your CorelDRAW document through libcdr, compositing the layout over a clean opaque white canvas and encoding it into high-efficiency JPEG with selectable resolution and quality compression levels.',
       serverPrivacy,
     ],
@@ -1087,9 +1103,11 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     name: 'CDR to EPS Converter – Print Interchange',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert proprietary CorelDRAW (.cdr) graphics to Encapsulated PostScript (EPS) Level 3 vector format for legacy print RIP workflows and PostScript interchange.',
+    description: 'Convert a supported CDR file to EPS online for print, sign-making and older vector workflows. Export the first CorelDRAW page as EPS for compatible design and production software.' ,
     longTailKeywords: [
       'cdr to eps converter online',
+      'cdr to eps',
+      'cdr to eps converter',
       'convert cdr to eps',
       'coreldraw to eps vector',
       'export cdr to eps',
@@ -1097,7 +1115,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'coreldraw prepress eps export',
     ],
     intro: [
-      'Encapsulated PostScript (EPS) has been the cornerstone of publishing, vector illustration, and commercial screen printing for decades. Many legacy prepress raster image processors (RIPs), digital vinyl cutters, and screen-printing separation programs require EPS files rather than proprietary CorelDRAW (.cdr) files.',
+      'Convert CDR to EPS when a print shop, sign-making program, cutter or older design workflow specifically asks for an EPS file. EPS remains useful for vector interchange with legacy production software even though PDF is usually preferred for modern printing.' ,
       'Navorika converts your CDR file by parsing vector primitives through libcdr and generating a genuine DSC-compliant (Document Structuring Conventions) PostScript Level 3 EPS file with bounding box metadata.',
       serverPrivacy,
     ],
@@ -1157,7 +1175,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     name: 'CDR Print Readiness Checker',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Run a comprehensive preflight checklist for CorelDRAW files to verify bleed, curves, color mode, resolution, and export readiness before sending to print.',
+    description: 'Check whether your CorelDRAW artwork is ready for printing. Review bleed, CMYK color, fonts to curves, image resolution, transparency, overprint and export format before sending the job to a print shop.' ,
     longTailKeywords: [
       'coreldraw print readiness checklist',
       'cdr preflight check',
@@ -1167,7 +1185,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'coreldraw prepress checklist',
     ],
     intro: [
-      'Sending a design file to a commercial press with incorrect bleed, uncurved fonts, or RGB color models leads to expensive reprinting, delayed delivery, and muddy colors. In CorelDRAW workflows, preflight verification is an essential quality assurance step before handing off artwork to print shops.',
+      'Before sending a CorelDRAW file to a print shop, check the items most likely to cause printing problems: bleed, page size, CMYK or spot colors, missing fonts, image resolution, transparency, overprint and final export format.' ,
       'Navorika’s CDR Print Readiness Checker guides prepress operators, graphic designers, and sign-makers through an 8-point preflight audit tailored specifically to CorelDRAW layout conventions and export settings.',
       'This diagnostic tool evaluates your document parameters locally in your browser, generating an instant readiness score and providing precise step-by-step instructions to fix common CorelDRAW prepress issues.',
     ],
