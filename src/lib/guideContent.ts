@@ -1,6 +1,7 @@
 import { additionalGuideContent } from './guideContentAdditional';
 import { guideContentEnhancements } from './guideContentEnhancements';
 import { gscGuideContent } from './guideContentGsc';
+import { macVideoGuideContent } from './guideContentMacVideo';
 
 export interface GuideSection {
   title: string;
@@ -810,7 +811,7 @@ export const guideContent: Record<string, GuideContent> = {
 };
 
 export function getGuideContent(slug: string): GuideContent | null {
-  const content = gscGuideContent[slug] || guideContent[slug] || additionalGuideContent[slug];
+  const content = macVideoGuideContent[slug] || gscGuideContent[slug] || guideContent[slug] || additionalGuideContent[slug];
   if (!content) return null;
   const enhancement = guideContentEnhancements[slug];
   return enhancement ? {
