@@ -8,16 +8,16 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="developer-tools"
-      eyebrow="CorelDRAW Document Bridge"
+      eyebrow="Convert PDF for CorelDRAW Online"
       title="PDF to CDR Converter"
-      description="Convert and prepare PDF artwork for CorelDRAW. Generate verified multipage PDF, clean first-page SVG vector paths, or EPS interchange files ready to import and save as CDR."
+      description="Convert PDF to CDR by preparing a CorelDRAW-ready PDF, SVG or EPS file. Import the result into CorelDRAW, check text and vector artwork, then use Save As to create a native CDR file."
     >
       {/* Above-the-fold workflow helper bar */}
       <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 text-xs text-[var(--muted-foreground)] shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 font-medium text-[var(--foreground)]">
             <span className="inline-flex size-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Multi-Page Vector Bridge: Retains vector hierarchy and fonts for native CorelDRAW import</span>
+            <span>Prepare PDF artwork for CorelDRAW while preserving usable text and vector content where possible</span>
           </div>
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
             <span className="text-[var(--muted-foreground)]">Related tools:</span>
@@ -47,7 +47,7 @@ export default function Page() {
               className="inline-flex items-center gap-1 rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-2.5 py-1 text-indigo-700 transition-colors hover:border-indigo-500 hover:bg-indigo-500/20 dark:text-indigo-300"
             >
               <BookOpen className="size-3" />
-              <span>PDF to CDR Guide</span>
+              <span>How to Convert PDF for CorelDRAW</span>
               <ArrowRight className="size-3" />
             </Link>
           </div>
