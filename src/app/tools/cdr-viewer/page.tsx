@@ -8,16 +8,16 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="developer-tools"
-      eyebrow="Online CorelDRAW Document Inspector"
+      eyebrow="Open CDR Files Online"
       title="CDR Viewer"
-      description="Open and preview supported CorelDRAW (.cdr) files online without installing software. Inspect drawings across multi-page PDF previews or export high-resolution SVG and PNG previews instantly."
+      description="Open and view supported CDR files online without CorelDRAW. Preview a CorelDRAW file as PDF, SVG or PNG to check the artwork before converting, sharing or sending it to print."
     >
       {/* Above-the-fold workflow helper bar */}
       <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 text-xs text-[var(--muted-foreground)] shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 font-medium text-[var(--foreground)]">
             <span className="inline-flex size-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Capability-Verified Reader: Inspect RIFF &amp; ZIP CorelDRAW drawings with zero software install</span>
+            <span>Open a supported CorelDRAW file without installing CorelDRAW</span>
           </div>
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
             <span className="text-[var(--muted-foreground)]">Related tools:</span>
