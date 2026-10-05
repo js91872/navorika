@@ -1,4 +1,4 @@
-type GuideCategory = 'Finance' | 'Health' | 'PDF' | 'Image' | 'Developer' | 'Construction' | 'Everyday';
+type GuideCategory = 'Finance' | 'Health' | 'PDF' | 'Image' | 'Developer' | 'Construction' | 'Everyday' | 'Video';
 
 interface GuideDefinition {
   slug: string;
@@ -32,6 +32,7 @@ const categoryImages: Record<GuideCategory, { src: string; caption: string }> = 
   Developer: { src: '/images/guides/developer-guides.webp', caption: 'Understand web data and technical workflows before applying automation.' },
   Construction: { src: '/images/guides/developer-guides.webp', caption: 'Measure carefully, state assumptions, and verify planning quantities against site conditions and supplier specifications.' },
   Everyday: { src: '/images/guides/finance-guides.webp', caption: 'Make everyday cost and shipping estimates from transparent inputs and unit conversions.' },
+  Video: { src: '/images/guides/image-guides.webp', caption: 'Choose practical video tools, formats and workflows for everyday Mac editing and sharing.' },
 };
 
 const guideDefinitions: GuideDefinition[] = [
@@ -457,6 +458,86 @@ const guideDefinitions: GuideDefinition[] = [
       'developer guide',
     ],
   },
+
+  {
+    slug: 'video-editing-software-for-mac',
+    title: 'Best Video Editing Software for Mac in 2026: Free, Easy & Everyday Options',
+    description: 'Compare video editing software for Mac, MacBook Air and MacBook Pro for everyday editing, YouTube, social clips, family videos and simple work projects.',
+    category: 'Video',
+    publishedDate: 'October 2026',
+    readTime: '16 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'video editing software for mac',
+      'video editing tools for mac',
+      'video editor for mac',
+      'mac video editor',
+      'mac editing software',
+      'video editing software for macbook air',
+      'video editing software for macbook pro',
+      'best video editing software for mac',
+      'good video editing software for mac',
+      'video editing program on mac',
+      'macos video editor',
+      'video editing software mac',
+    ],
+  },
+  {
+    slug: 'free-video-editing-software-for-mac',
+    title: 'Best Free Video Editing Software for Mac in 2026: No-Nonsense Guide',
+    description: 'Find genuinely useful free video editing software for Mac, including beginner-friendly options, no-watermark choices and free editors for MacBook Air and Pro.',
+    category: 'Video',
+    publishedDate: 'October 2026',
+    readTime: '14 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'free video editor mac',
+      'video editing software for mac free',
+      'best free video editor mac',
+      'good free video editing software for mac',
+      'free video editing tools for mac',
+      'free video editing software for mac',
+      'free video editor for macbook',
+      'free video editor mac no watermark',
+      'free video editing software for mac no watermark',
+    ],
+  },
+  {
+    slug: 'professional-video-editing-software-for-mac',
+    title: 'Best Video Editing Software for Mac for Serious Everyday Creators',
+    description: 'Compare higher-end Mac video editors for people who edit often, run a YouTube channel or need more control without assuming a film-studio workflow.',
+    category: 'Video',
+    publishedDate: 'October 2026',
+    readTime: '13 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'professional video editing software for mac',
+      'professional video editing software mac',
+      'best video editing software for mac',
+      'final cut pro vs davinci resolve',
+      'final cut pro vs premiere pro',
+      'video editor for youtube mac',
+      'mac video editing software for creators',
+    ],
+  },
+  {
+    slug: 'easy-video-editing-software-for-mac',
+    title: 'Easy Video Editing Software for Mac: Best Beginner Options in 2026',
+    description: 'Find easy video editing software for Mac for beginners who want to trim clips, add music, make YouTube videos and export without a steep learning curve.',
+    category: 'Video',
+    publishedDate: 'October 2026',
+    readTime: '12 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'easy video editing software for mac',
+      'easiest video editing software for mac',
+      'best video editing software for mac beginners',
+      'user friendly video editing software for mac',
+      'simple video editor mac',
+      'easy video editor mac',
+      'video editing for beginners mac',
+    ],
+  },
 ];
 
 const newBatchSlugs = new Set([
@@ -464,6 +545,13 @@ const newBatchSlugs = new Set([
   'rgb-vs-cmyk-for-printing',
   'print-bleed-trim-safe-area-guide',
   'eps-vs-cdr-guide',
+]);
+
+const octoberMacVideoSlugs = new Set([
+  'video-editing-software-for-mac',
+  'free-video-editing-software-for-mac',
+  'professional-video-editing-software-for-mac',
+  'easy-video-editing-software-for-mac',
 ]);
 
 const recentUpdateSlugs = new Set([
@@ -481,8 +569,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    datePublished: octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    dateModified: octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: image.src,
