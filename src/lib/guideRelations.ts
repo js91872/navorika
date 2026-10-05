@@ -1,4 +1,8 @@
 export const guideRelations: Record<string, string[]> = {
+  'video-editing-software-for-mac': ['free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
+  'free-video-editing-software-for-mac': ['video-editing-software-for-mac', 'easy-video-editing-software-for-mac', 'professional-video-editing-software-for-mac'],
+  'professional-video-editing-software-for-mac': ['video-editing-software-for-mac', 'free-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
+  'easy-video-editing-software-for-mac': ['video-editing-software-for-mac', 'free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac'],
   'house-construction-cost-guide': ['construction-estimate-quote-guide', 'brick-calculation-guide', 'flooring-calculation-guide'],
   'water-tank-size-capacity-guide': ['house-construction-cost-guide', 'gravel-calculation-guide'],
   'how-to-calculate-roof-area': ['house-construction-cost-guide', 'construction-estimate-quote-guide'],
