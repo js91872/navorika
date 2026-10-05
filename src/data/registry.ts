@@ -76,6 +76,17 @@ export const categories: Category[] = [
 export const tools: RegisteredTool[] = ([
   // ====== PDF TOOLS ======
   {
+    slug: 'website-worth-calculator',
+    title: 'Website Worth Calculator',
+    description: 'Analyze a website URL and estimate its value with transparent traffic, revenue, profit, and technical-quality assumptions.',
+    category: 'everyday-calculators',
+    keywords: ['website worth calculator', 'how much is this website worth', 'calculate website value', 'check website value', 'website price calculator', 'website value calculator', 'website worth', 'website value checker'],
+    aliases: ['website value calculator', 'website worth checker', 'website price checker'],
+    heroTitle: 'Website Worth Calculator',
+    heroDescription: 'Review a URL and estimate a transparent website value range using observable technical signals plus traffic, revenue, or profit inputs.'
+  },
+
+  {
     slug: 'add-image-to-pdf',
     title: 'Add Image to PDF',
     description: 'Place one JPG, PNG, or WebP image on a selected page of a readable, unencrypted PDF locally.',
