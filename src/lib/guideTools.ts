@@ -1,5 +1,9 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'video-editing-software-for-mac': ['video-to-audio-converter', 'extract-audio-from-video', 'video-to-mp3-converter', 'mp4-to-mp3-converter', 'mov-to-mp3-converter'],
+  'free-video-editing-software-for-mac': ['extract-audio-from-video', 'video-to-audio-converter', 'video-to-mp3-converter', 'mp4-to-mp3-converter'],
+  'professional-video-editing-software-for-mac': ['extract-audio-from-video', 'video-to-audio-converter', 'audio-bitrate-calculator'],
+  'easy-video-editing-software-for-mac': ['video-to-mp3-converter', 'mp4-to-mp3-converter', 'mov-to-mp3-converter', 'extract-audio-from-video'],
   'word-to-cdr-formatting-guide': ['word-to-cdr-converter', 'pdf-to-cdr-converter', 'coreldraw-tools'],
   'psd-to-html-conversion-guide': ['psd-to-html', 'css-flexbox-generator', 'svg-dimensions-checker', 'rgb-cmyk-image-checker'],
   'psd-to-html-email': ['psd-to-html', 'css-flexbox-generator', 'rgb-cmyk-image-checker'],
