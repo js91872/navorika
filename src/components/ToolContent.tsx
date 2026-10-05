@@ -46,7 +46,7 @@ export default function ToolContent({
       {/* Introduction */}
       {intro && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">About {displayName}</h2>
+          <h2 className="text-2xl font-bold mb-4">What is {displayName}?</h2>
           <div className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
             <p className="text-[var(--muted-foreground)] leading-relaxed">{intro}</p>
           </div>
@@ -56,7 +56,7 @@ export default function ToolContent({
       {/* How it Works */}
       {howItWorks && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">How It Works</h2>
+          <h2 className="text-2xl font-bold mb-4">How {displayName} works</h2>
           <div className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
             <p className="text-[var(--muted-foreground)] leading-relaxed">{howItWorks}</p>
           </div>
@@ -66,7 +66,7 @@ export default function ToolContent({
       {/* Step by Step Guide */}
       {stepByStep.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">Step-by-Step Guide</h2>
+          <h2 className="text-2xl font-bold mb-4">How to use {displayName}</h2>
           <div className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
             <div className="space-y-3">
               {stepByStep.map((step, index) => (
@@ -85,7 +85,7 @@ export default function ToolContent({
       {/* Benefits */}
       {benefits.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">Key Benefits</h2>
+          <h2 className="text-2xl font-bold mb-4">Why use {displayName}?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-start gap-3 p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]">
@@ -100,7 +100,7 @@ export default function ToolContent({
       {/* Use Cases */}
       {useCases.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">Common Use Cases</h2>
+          <h2 className="text-2xl font-bold mb-4">When to use {displayName}</h2>
           <div className="bg-[var(--card)] rounded-2xl border border-[var(--border)] p-6">
             <ul className="space-y-3">
               {useCases.map((useCase, index) => (
@@ -117,7 +117,7 @@ export default function ToolContent({
       {/* Tips */}
       {tips.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">Tips for Best Results</h2>
+          <h2 className="text-2xl font-bold mb-4">How to get the best results</h2>
           <div className="bg-amber-50 dark:bg-amber-950/20 rounded-2xl border border-amber-200 dark:border-amber-800 p-6">
             <ul className="space-y-2">
               {tips.map((tip, index) => (
