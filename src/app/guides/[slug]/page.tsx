@@ -11,6 +11,7 @@ import { getGuideSources } from '@/lib/guideSources';
 import { guideRelations } from '@/lib/guideRelations';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 import { getToolIcon } from '@/lib/toolIcons';
+import katex from 'katex';
 
 const baseUrl = 'https://navorika.com';
 type Props = { params: Promise<{ slug: string }> };
@@ -46,17 +47,121 @@ function slugifyHeading(title: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-function renderInlineText(text: string) {
-  const parts = text.split(/(\*\*[^*]+\*\*|\`[^\`]+\`)/g);
-  return parts.map((part, index) => {
-    if (part.startsWith('**') && part.endsWith('**')) {
-      return <strong key={index} className="font-semibold text-[var(--foreground)]">{part.slice(2, -2)}</strong>;
-    }
-    if (part.startsWith('`') && part.endsWith('`')) {
-      return <code key={index} className="rounded bg-[var(--muted)] px-1.5 py-0.5 text-[0.9em] text-[var(--foreground)]">{part.slice(1, -1)}</code>;
-    }
-    return part;
+function renderMathToHtml(tex: string, displayMode: boolean): string {
+  try {
+    const normalized = tex.replace(/(?<!\\)%/g, '\\%');
+    return katex.renderToString(normalized, {
+      displayMode,
+      throwOnError: false,
+      strict: false,
+    });
+  } catch {
+    return tex;
+  }
+}
+
+function renderInlineText(text: string): React.ReactNode {
+  if (!text) return null;
+
+  // Protect display and inline math expressions before parsing Markdown emphasis
+  const mathTokens = new Map<string, { tex: string; display: boolean }>();
+  let tokenCounter = 0;
+
+  // Protect display math $$...$$
+  let protectedText = text.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => {
+    const id = `__MATH_DISP_${tokenCounter++}__`;
+    mathTokens.set(id, { tex: tex.trim(), display: true });
+    return id;
   });
+
+  // Protect inline math $...$
+  protectedText = protectedText.replace(/\$((?:[^\s$\\]|\\.)(?:[^\$\n]*?[^\s$\\])?)\$/g, (_, tex) => {
+    const id = `__MATH_INL_${tokenCounter++}__`;
+    mathTokens.set(id, { tex, display: false });
+    return id;
+  });
+
+  function parseProtectedString(str: string, keyPrefix: string): React.ReactNode[] {
+    const tokenRegex = /(__MATH_(?:DISP|INL)_\d+__|\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|(?<!\*)\*[^*\n]+\*(?!\*))/g;
+    const parts = str.split(tokenRegex);
+
+    return parts.map((part, index) => {
+      const key = `${keyPrefix}-${index}`;
+      if (!part) return null;
+
+      if (part.startsWith('__MATH_') && part.endsWith('__')) {
+        const math = mathTokens.get(part);
+        if (math) {
+          const html = renderMathToHtml(math.tex, math.display);
+          return (
+            <span
+              key={key}
+              className={math.display ? 'my-4 block overflow-x-auto text-center' : 'inline-block align-baseline'}
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
+          );
+        }
+      }
+
+      if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+        const inner = part.slice(2, -2);
+        return (
+          <strong key={key} className="font-semibold text-[var(--foreground)]">
+            {parseProtectedString(inner, `${key}-b`)}
+          </strong>
+        );
+      }
+
+      if (part.startsWith('`') && part.endsWith('`') && part.length >= 2) {
+        return (
+          <code key={key} className="rounded bg-[var(--muted)] px-1.5 py-0.5 text-[0.9em] text-[var(--foreground)]">
+            {part.slice(1, -1)}
+          </code>
+        );
+      }
+
+      if (part.startsWith('[') && part.includes('](') && part.endsWith(')')) {
+        const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (match) {
+          const [, label, href] = match;
+          const isExternal = /^https?:\/\//i.test(href);
+          return isExternal ? (
+            <a
+              key={key}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-indigo-600 hover:underline dark:text-indigo-400"
+            >
+              {parseProtectedString(label, `${key}-l`)}
+            </a>
+          ) : (
+            <Link
+              key={key}
+              href={href}
+              className="font-semibold text-indigo-600 hover:underline dark:text-indigo-400"
+            >
+              {parseProtectedString(label, `${key}-l`)}
+            </Link>
+          );
+        }
+      }
+
+      if (part.startsWith('*') && part.endsWith('*') && part.length >= 2) {
+        const inner = part.slice(1, -1);
+        return (
+          <em key={key} className="italic text-[var(--foreground)]">
+            {parseProtectedString(inner, `${key}-i`)}
+          </em>
+        );
+      }
+
+      return part;
+    }).filter(Boolean);
+  }
+
+  const nodes = parseProtectedString(protectedText, 'root');
+  return <>{nodes}</>;
 }
 
 function renderContentBlock(text: string) {
@@ -65,7 +170,8 @@ function renderContentBlock(text: string) {
     | { type: 'heading'; level: 3 | 4; content: string }
     | { type: 'ul'; items: string[] }
     | { type: 'ol'; items: string[] }
-    | { type: 'table'; headers: string[]; rows: string[][] };
+    | { type: 'table'; headers: string[]; rows: string[][] }
+    | { type: 'math'; content: string };
 
   const lines = text.split('\n');
   const blocks: Block[] = [];
@@ -73,10 +179,39 @@ function renderContentBlock(text: string) {
   let listItems: string[] = [];
   let listType: 'ul' | 'ol' | null = null;
   let tableLines: string[] = [];
+  let inMathBlock = false;
+  let mathLines: string[] = [];
 
   const flushParagraph = () => {
     const content = paragraph.join(' ').trim();
-    if (content) blocks.push({ type: 'paragraph', content });
+    if (content) {
+      const words = content.split(/\s+/);
+      if (words.length > 140) {
+        const sentences = content.match(/[^.!?]+[.!?]+(\s+|$)|[^.!?]+$/g);
+        if (sentences && sentences.length >= 2) {
+          let current: string[] = [];
+          let currentWords = 0;
+          let splitDone = false;
+          for (const s of sentences) {
+            const sWords = s.trim().split(/\s+/).length;
+            current.push(s);
+            currentWords += sWords;
+            if (currentWords >= 70 && !splitDone) {
+              blocks.push({ type: 'paragraph', content: current.join('').trim() });
+              current = [];
+              currentWords = 0;
+              splitDone = true;
+            }
+          }
+          if (current.length) {
+            blocks.push({ type: 'paragraph', content: current.join('').trim() });
+          }
+          paragraph = [];
+          return;
+        }
+      }
+      blocks.push({ type: 'paragraph', content });
+    }
     paragraph = [];
   };
 
@@ -112,8 +247,31 @@ function renderContentBlock(text: string) {
   for (const rawLine of lines) {
     const line = rawLine.trim();
 
+    if (inMathBlock) {
+      if (line.endsWith('$$')) {
+        mathLines.push(line.slice(0, -2));
+        blocks.push({ type: 'math', content: mathLines.join('\n').trim() });
+        inMathBlock = false;
+        mathLines = [];
+      } else {
+        mathLines.push(line);
+      }
+      continue;
+    }
+
     if (!line) {
       flushAll();
+      continue;
+    }
+
+    if (line.startsWith('$$')) {
+      flushAll();
+      if (line.length > 2 && line.endsWith('$$')) {
+        blocks.push({ type: 'math', content: line.slice(2, -2).trim() });
+      } else {
+        inMathBlock = true;
+        mathLines = [line.slice(2)];
+      }
       continue;
     }
 
@@ -155,6 +313,9 @@ function renderContentBlock(text: string) {
     paragraph.push(line);
   }
   flushAll();
+  if (inMathBlock && mathLines.length) {
+    blocks.push({ type: 'math', content: mathLines.join('\n').trim() });
+  }
 
   return (
     <div className="space-y-5 text-[var(--muted-foreground)]">
@@ -163,9 +324,19 @@ function renderContentBlock(text: string) {
           return <p key={idx} className="text-[1.035rem] leading-[1.85]">{renderInlineText(block.content)}</p>;
         }
         if (block.type === 'heading') {
+          const hId = slugifyHeading(block.content);
           return block.level === 3
-            ? <h3 key={idx} className="mt-9 text-[1.18rem] font-extrabold leading-7 tracking-tight text-[var(--foreground)] sm:text-[1.28rem]">{renderInlineText(block.content)}</h3>
-            : <h4 key={idx} className="mt-7 text-[1.05rem] font-bold leading-7 text-[var(--foreground)]">{renderInlineText(block.content)}</h4>;
+            ? <h3 key={idx} id={hId} className="mt-9 scroll-mt-24 text-[1.18rem] font-extrabold leading-7 tracking-tight text-[var(--foreground)] sm:text-[1.28rem]">{renderInlineText(block.content)}</h3>
+            : <h4 key={idx} id={hId} className="mt-7 scroll-mt-24 text-[1.05rem] font-bold leading-7 text-[var(--foreground)]">{renderInlineText(block.content)}</h4>;
+        }
+        if (block.type === 'math') {
+          return (
+            <div
+              key={idx}
+              className="my-6 overflow-x-auto py-2 text-center"
+              dangerouslySetInnerHTML={{ __html: renderMathToHtml(block.content, true) }}
+            />
+          );
         }
         if (block.type === 'ul') {
           return (
@@ -376,7 +547,7 @@ export default async function GuidePage({ params }: Props) {
 
           <div className="min-w-0">
             <div className="prose prose-slate dark:prose-invert max-w-none break-words prose-headings:scroll-mt-24">
-              <p className="lead mb-12 border-b border-[var(--border)] pb-10 text-[1.12rem] leading-9 text-[var(--muted-foreground)]">{content.intro}</p>
+              <p className="lead mb-12 border-b border-[var(--border)] pb-10 text-[1.12rem] leading-9 text-[var(--muted-foreground)]">{renderInlineText(content.intro)}</p>
               {content.sections.map((section, sIdx) => {
                 const sectionImage =
                   slug === 'print-bleed-trim-safe-area-guide'
@@ -434,12 +605,12 @@ export default async function GuidePage({ params }: Props) {
               })}
               <div id="key-takeaway" className="not-prose mt-14 scroll-mt-24 border-y border-indigo-500/20 bg-indigo-500/[0.06] px-1 py-7 sm:px-6">
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-indigo-600 dark:text-indigo-400">Key takeaway</div>
-                <p className="mt-3 text-[1.08rem] font-medium leading-8 text-[var(--foreground)]">{content.summary}</p>
+                <p className="mt-3 text-[1.08rem] font-medium leading-8 text-[var(--foreground)]">{renderInlineText(content.summary)}</p>
               </div>
             </div>
           </div>
         </div>
-        <section className="mx-auto mt-14 max-w-4xl border-t border-[var(--border)] pt-12 scroll-mt-24" id="guide-faqs" aria-labelledby="guide-faqs-heading"><h2 id="guide-faqs-heading" className="text-3xl font-black">Frequently asked questions</h2><div className="mt-6 space-y-3">{content.faqs.map(({ question, answer }) => <details key={question} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 open:shadow-md"><summary className="cursor-pointer list-none pr-8 font-bold marker:content-none">{question}</summary><p className="mt-3 leading-7 text-[var(--muted-foreground)]">{answer}</p></details>)}</div></section>
+        <section className="mx-auto mt-14 max-w-4xl border-t border-[var(--border)] pt-12 scroll-mt-24" id="guide-faqs" aria-labelledby="guide-faqs-heading"><h2 id="guide-faqs-heading" className="text-3xl font-black">Frequently asked questions</h2><div className="mt-6 space-y-3">{content.faqs.map(({ question, answer }) => <details key={question} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 open:shadow-md"><summary className="cursor-pointer list-none pr-8 font-bold marker:content-none">{renderInlineText(question)}</summary><p className="mt-3 leading-7 text-[var(--muted-foreground)]">{renderInlineText(answer)}</p></details>)}</div></section>
 
         <section className="mx-auto mt-14 max-w-4xl border-t border-[var(--border)] pt-12 scroll-mt-24" id="guide-sources" aria-labelledby="guide-sources-heading"><h2 id="guide-sources-heading" className="text-2xl font-black">Sources and further reading</h2><ul className="mt-4 space-y-2 text-sm">{sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer" className="font-semibold text-indigo-600 hover:underline">{source.name}</a></li>)}</ul><p className="mt-4 text-sm leading-6 text-[var(--muted-foreground)]">Sources support the general explanations above. Rules, rates, standards, and professional guidance may change; verify the current source before acting.</p></section>
 

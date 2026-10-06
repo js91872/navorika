@@ -1,4 +1,5 @@
 import './globals.css';
+import 'katex/dist/katex.min.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import ClientLayout from '@/components/ClientLayout';
 import Breadcrumb from '@/components/ui/Breadcrumb';
