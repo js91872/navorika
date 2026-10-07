@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Calculation Methodology & Testing Standards',
-  description: 'How Navorika builds, mathematically tests, verifies, and maintains its browser-local and server-assisted calculation tools.',
+  title: 'How Navorika Calculators Work – Formulas, Sources & Testing',
+  description: 'Learn how Navorika chooses calculator formulas, uses data sources, handles files, tests results, and explains important tool limitations.',
   alternates: { canonical: 'https://navorika.com/methodology' },
 };
 
