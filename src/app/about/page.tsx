@@ -26,51 +26,51 @@ export default function AboutPage() {
   const toolCategories = [
     {
       icon: <Calculator className="h-6 w-6 text-emerald-500" />,
-      title: 'Financial & Planning Calculators',
-      description: 'Scenario planning tools for loan amortization, SIP returns, income tax estimates, mortgage affordability, and commercial SaaS/real-estate performance metrics.',
+      title: 'Money & Planning Calculators',
+      description: 'Calculators for loans, savings, investing, taxes, mortgages, budgets, business numbers, and property planning.',
     },
     {
       icon: <Layers className="h-6 w-6 text-amber-500" />,
-      title: 'Construction & Material Takeoffs',
-      description: 'Field estimation utilities for concrete volume, roof pitch, stair stringers, joist deflection, and building material waste based on published standards.',
+      title: 'Construction & Home Project Calculators',
+      description: 'Estimate concrete, bricks, flooring, roofing, stairs, materials, project costs, and other common construction quantities.',
     },
     {
       icon: <FileText className="h-6 w-6 text-blue-500" />,
       title: 'Document & PDF Utilities',
-      description: 'Browser-local document management including PDF merging, splitting, reordering, compression, visual signature stamping, and text extraction.',
+      description: 'Merge, split, reorder, compress, sign, convert, and extract text from PDF files using simple online tools.',
     },
     {
       icon: <ImageIcon className="h-6 w-6 text-purple-500" />,
       title: 'Image & Media Tools',
-      description: 'Sandboxed HTML-to-image conversion, client-side format re-encoding (JPG, PNG, WebP, SVG), dimension scaling, cropping, and pixel metadata inspection.',
+      description: 'Convert, resize, compress, crop, inspect, and prepare common image formats such as JPG, PNG, WebP, HEIC, and SVG.',
     },
     {
       icon: <Code2 className="h-6 w-6 text-indigo-500" />,
-      title: 'Developer & Network Aids',
-      description: 'Data format converters (JSON, YAML, TOML), W3C WebCrypto hashing, Cron schedule generators, JWT inspection, and IPv4/IPv6 subnet calculators.',
+      title: 'Developer & Web Tools',
+      description: 'Tools for JSON, YAML, Base64, JWT, cron schedules, code formatting, networking, timestamps, and common web-development tasks.',
     },
   ];
 
   const corePrinciples = [
     {
       icon: <Lock className="h-7 w-7 text-indigo-500" />,
-      title: 'Browser-Local by Design',
-      description: 'The vast majority of our tools process files and calculation parameters entirely within your local web browser. Your sensitive documents, images, and calculation inputs are not uploaded to or stored on Navorika servers.',
+      title: 'Your Files Usually Stay on Your Device',
+      description: 'Most Navorika tools run directly in your browser, so the files and values you enter usually stay on your device instead of being uploaded to Navorika.',
     },
     {
       icon: <Shield className="h-7 w-7 text-emerald-500" />,
-      title: 'Transparent Execution',
-      description: 'We explicitly identify how each tool operates. Tools that require external data (such as live currency exchange rates) or ephemeral server-assisted binaries (such as 3D CAD tessellation) clearly disclose their operating boundaries.',
+      title: 'Clear About How Each Tool Works',
+      description: 'If a tool needs live data or server processing, the page explains that. We do not want a browser-based tool to look private when it actually needs a server.',
     },
     {
       icon: <Zap className="h-7 w-7 text-amber-500" />,
-      title: 'Zero Barrier to Utility',
-      description: 'No accounts, no email capture, and no subscriptions. Tools are accessible immediately on desktop and mobile devices without software installation.',
+      title: 'No Account Required',
+      description: 'Open a tool and use it. Navorika does not require an account, email address, subscription, or software installation.',
     },
     {
       icon: <Cpu className="h-7 w-7 text-blue-500" />,
-      title: 'Empirical Verification',
-      description: 'Calculation logic is implemented using established mathematical formulas and building codes, backed by automated unit tests covering standard values, bounds, and precision edge cases.',
+      title: 'Calculations Are Checked',
+      description: 'Calculator formulas are based on documented methods and are checked with automated tests using normal values, limits, and unusual inputs.',
     },
   ];
 
@@ -83,30 +83,30 @@ export default function AboutPage() {
             About Navorika
           </div>
           <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight mb-6">
-            Privacy-First Online Calculators &amp; Digital Utilities
+            Free Online Calculators &amp; Tools
           </h1>
           <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed">
-            Navorika is an independent platform providing over {activeToolCount} focused online tools designed to run directly in your browser. We combine client-side performance, data privacy, and mathematical transparency.
+            Navorika is an independent website with over {activeToolCount} free calculators and online tools for files, images, money, health, construction, everyday tasks, and web development. Most tools run directly in your browser.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/tools"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors"
             >
-              Explore Tools <ArrowRight className="h-4 w-4" />
+              Browse Free Tools <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/methodology"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--border)] text-[var(--foreground)] hover:border-indigo-500/40 transition-colors"
             >
-              Calculation Methodology
+              How Our Calculators Work
             </Link>
           </div>
         </section>
 
         {/* Philosophy */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Our Operating Philosophy</h2>
+          <h2 className="text-2xl font-bold mb-6">What You Can Expect</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {corePrinciples.map((principle, index) => (
               <motion.div
@@ -128,7 +128,7 @@ export default function AboutPage() {
 
         {/* Tool Categories */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">What Kinds of Tools We Provide</h2>
+          <h2 className="text-2xl font-bold mb-6">What You Can Do on Navorika</h2>
           <div className="space-y-4">
             {toolCategories.map((cat) => (
               <div
@@ -151,18 +151,18 @@ export default function AboutPage() {
 
         {/* How Tools are Developed and Tested */}
         <section className="mb-16 p-6 sm:p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)]">
-          <h2 className="text-2xl font-bold mb-4">How Tools Are Developed &amp; Verified</h2>
+          <h2 className="text-2xl font-bold mb-4">How We Build and Check Our Tools</h2>
           <div className="space-y-4 text-sm text-[var(--muted-foreground)] leading-relaxed">
             <p>
-              Calculators and converters on Navorika are constructed using documented mathematical equations, statutory standards, and industry conventions. For example, our loan calculators utilize the universal amortization annuity formula, tax tools reflect published statutory tax slabs, and structural takeoffs apply standard empirical material densities and building code span criteria.
+              We build calculators from documented formulas, official rules where relevant, and established industry methods. For example, loan tools use standard payment formulas, tax tools use published tax rules, and construction tools use common measurement and material calculations.
             </p>
             <p>
-              Every tool engine is subject to automated unit test suites running in our continuous integration environment. These tests verify mathematical outputs across typical scenarios, boundary limits, zero-values, and unexpected user inputs.
+              We use automated tests to check calculator results for normal examples, zero values, limits, and unexpected inputs. We also review tools when formulas, rules, or software dependencies change.
             </p>
             <p>
-              For a detailed breakdown of mathematical formulas, source citations, and testing protocols, please read our dedicated{' '}
+              For more detail on formulas, sources, and testing, read{' '}
               <Link href="/methodology" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
-                Calculation Methodology &amp; Standards
+                How Our Calculators Work &amp; Standards
               </Link>{' '}
               document.
             </p>
@@ -173,14 +173,14 @@ export default function AboutPage() {
         <section className="mb-16 p-6 sm:p-8 rounded-3xl border border-amber-500/20 bg-amber-500/5">
           <div className="flex items-center gap-3 mb-3">
             <AlertCircle className="h-6 w-6 text-amber-600 dark:text-amber-400 shrink-0" />
-            <h2 className="text-xl font-bold">Important Technical Limitations</h2>
+            <h2 className="text-xl font-bold">What to Know Before You Use a Result</h2>
           </div>
           <div className="space-y-3 text-sm text-[var(--muted-foreground)] leading-relaxed">
             <p>
-              While client-side execution provides superior privacy, it is constrained by the capabilities of your local web browser and hardware. Very large files may encounter browser memory ceilings, and mobile devices may experience slower execution times during CPU-intensive tasks.
+              Browser-based tools still have limits. Very large PDFs, images, or other files can use a lot of memory, and some jobs may run more slowly on phones or older computers.
             </p>
             <p>
-              Calculations are planning aids and rule-of-thumb estimations. They do not substitute for professional legal, tax, medical, or certified engineering counsel. Please review our{' '}
+              Calculators are useful for estimates and planning, but important legal, tax, medical, safety, or structural decisions may need advice from a qualified professional. Please review our{' '}
               <Link href="/disclaimer" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
                 Legal &amp; Calculation Disclaimer
               </Link>{' '}
@@ -191,10 +191,10 @@ export default function AboutPage() {
 
         {/* Quick Links */}
         <section className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center text-sm text-[var(--muted-foreground)] space-y-3">
-          <p className="font-semibold text-[var(--foreground)]">Governance and Legal Documents</p>
+          <p className="font-semibold text-[var(--foreground)]">Policies and Helpful Information</p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs">
             <Link href="/methodology" className="text-indigo-600 dark:text-indigo-400 hover:underline">
-              Methodology &amp; Standards
+              How Calculators Work
             </Link>
             <Link href="/disclaimer" className="text-indigo-600 dark:text-indigo-400 hover:underline">
               Legal Disclaimer
