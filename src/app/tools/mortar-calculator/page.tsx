@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="construction-calculators"
-      eyebrow="Masonry Takeoffs & Mix Sizing"
+      eyebrow="Mortar for Brick & Block Walls"
       title="Mortar Calculator"
-      description="Estimate mortar volume, pre-mix bags, Portland cement, and masonry sand for brick and concrete block walls."
+      description="Calculate how much mortar you need for brick or concrete block walls, including estimated bags, cement, sand, and waste."
       slug="mortar-calculator"
     >
       <BusinessCalculatorTool slug="mortar-calculator" />
