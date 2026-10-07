@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight, BookOpen, Layers3 } from 'lucide-react';
@@ -15,8 +16,55 @@ const categoryIntros: Record<string, string> = {
   'finance-calculators': 'Explore borrowing, investing, tax, budgeting, and retirement scenarios. Results are planning estimates and not individualized financial advice.',
   'health-calculators': 'Use body, energy, activity, and heart-rate estimates as educational screening and planning aids—not as medical diagnoses.',
   'developer-tools': 'Format data, inspect encoded values, test patterns, and prepare web publishing assets with focused developer utilities.',
-  'construction-calculators': 'Move from measurements to material, coverage, utility, and early cost estimates for construction and home-improvement planning.',
+  'construction-calculators': 'Estimate materials, quantities, measurements, and project costs for construction, repairs, and home improvement.',
+  'everyday-calculators': 'Use practical calculators for shipping, travel, shopping, household planning, time, and everyday decisions.',
 };
+
+const categorySeo: Record<string, { title: string; description: string }> = {
+  'pdf-tools': {
+    title: 'Free PDF Tools – Merge, Split, Compress & Convert PDFs',
+    description: 'Free online PDF tools to merge, split, compress, rotate, edit, convert, and organize PDF files. Many tools run privately in your browser.',
+  },
+  'image-tools': {
+    title: 'Free Image Tools – Resize, Convert, Compress & Edit Images',
+    description: 'Free online image tools to resize, convert, compress, crop, edit, and prepare JPG, PNG, WebP, HEIC, and SVG files.',
+  },
+  'finance-calculators': {
+    title: 'Free Finance Calculators – Loans, Savings, Tax & Investing',
+    description: 'Free finance calculators for loans, savings, investing, budgeting, retirement, tax, and everyday money planning.',
+  },
+  'health-calculators': {
+    title: 'Free Health Calculators – Calories, BMI, Fitness & Heart Rate',
+    description: 'Free health and fitness calculators for calories, BMI, BMR, TDEE, body fat, heart rate, hydration, and activity estimates.',
+  },
+  'developer-tools': {
+    title: 'Free Developer Tools – JSON, Code, Network & Web Utilities',
+    description: 'Free developer tools for JSON, YAML, Base64, JWT, regex, networking, timestamps, code formatting, and web development tasks.',
+  },
+  'construction-calculators': {
+    title: 'Free Construction Calculators – Materials, Cost & Measurements',
+    description: 'Free construction and home improvement calculators for concrete, bricks, flooring, roofing, paint, materials, measurements, and project costs.',
+  },
+  'everyday-calculators': {
+    title: 'Free Everyday Calculators – Shipping, Travel, Shopping & Planning',
+    description: 'Free everyday calculators for shipping, travel, shopping, household planning, time, and practical day-to-day decisions.',
+  },
+};
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const category = categories.find((item) => item.slug === slug);
+  if (!category) return { title: 'Category Not Found', robots: { index: false, follow: false } };
+  const seo = categorySeo[slug] ?? { title: category.name, description: category.description };
+  const url = `${baseUrl}/categories/${slug}`;
+  return {
+    title: seo.title,
+    description: seo.description,
+    alternates: { canonical: url },
+    openGraph: { type: 'website', url, title: seo.title, description: seo.description, siteName: 'Navorika' },
+    twitter: { card: 'summary_large_image', title: seo.title, description: seo.description },
+  };
+}
 
 const guideCategory: Record<string, string> = {
   'pdf-tools': 'PDF', 'image-tools': 'Image', 'finance-calculators': 'Finance',
@@ -56,15 +104,15 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     <main className="min-h-screen pb-20 pt-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replaceAll('<', '\\u003c') }} />
       <header className="mx-auto max-w-5xl">
-        <p className="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Tool category</p>
+        <p className="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Free online tools</p>
         <h1 className="mt-3 text-balance text-4xl font-black tracking-tight sm:text-5xl">{category.name}</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--muted-foreground)]">{categoryIntros[slug] ?? category.description}</p>
-        <p className="mt-3 text-sm font-semibold text-[var(--muted-foreground)]">{categoryTools.length} available tools across {categoryClusters.length} focused subtopics</p>
+        <p className="mt-3 text-sm font-semibold text-[var(--muted-foreground)]">{categoryTools.length} free tools in {categoryClusters.length} groups</p>
       </header>
 
       {categoryToolkits.length > 0 && <section className="mx-auto mt-12 max-w-5xl" aria-labelledby="category-toolkits">
-        <div className="flex items-center gap-3"><Layers3 className="size-6 text-indigo-600" /><h2 id="category-toolkits" className="text-2xl font-black">Start with a workflow</h2></div>
-        <p className="mt-2 text-[var(--muted-foreground)]">Toolkits connect tools that are commonly useful for the same goal.</p>
+        <div className="flex items-center gap-3"><Layers3 className="size-6 text-indigo-600" /><h2 id="category-toolkits" className="text-2xl font-black">Start with a common task</h2></div>
+        <p className="mt-2 text-[var(--muted-foreground)]">These collections group tools that are useful for the same job.</p>
         <div className="mt-5 grid gap-4 md:grid-cols-2">
           {categoryToolkits.map((toolkit) => <Link key={toolkit.slug} href={`/toolkits/${toolkit.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg">
             <h3 className="text-lg font-bold group-hover:text-indigo-600">{toolkit.name}</h3>
@@ -75,7 +123,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       </section>}
 
       <section className="mx-auto mt-14 max-w-5xl" aria-labelledby="category-clusters">
-        <h2 id="category-clusters" className="text-3xl font-black">Browse by subtopic</h2>
+        <h2 id="category-clusters" className="text-3xl font-black">Browse tools</h2>
         <div className="mt-7 space-y-10">
           {categoryClusters.map((cluster) => <section key={cluster.id} id={cluster.id} className="scroll-mt-24">
             <div className="max-w-3xl"><h3 className="text-2xl font-bold">{cluster.name}</h3><p className="mt-2 leading-7 text-[var(--muted-foreground)]">{cluster.description}</p></div>
