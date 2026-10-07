@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Calculator, BookOpen, Sparkles } from 'lucide-react';
+import { ArrowRight, Calculator, Sparkles } from 'lucide-react';
 import { tools } from '@/data/registry';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 
