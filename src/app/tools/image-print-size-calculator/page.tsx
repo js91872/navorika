@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="image-tools"
-      eyebrow="Print resolution & density"
+      eyebrow="Pixels to Print Size"
       title="Image Print Size Calculator"
-      description="Calculate physical print dimensions in inches and centimeters from pixel dimensions and PPI."
+      description="Enter image dimensions in pixels to calculate the print size in inches or centimeters at your chosen PPI."
       slug="image-print-size-calculator"
     >
       <BusinessCalculatorTool slug="image-print-size-calculator" />
