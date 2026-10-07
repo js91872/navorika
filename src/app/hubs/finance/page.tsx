@@ -18,13 +18,6 @@ export default function FinanceHub() {
   const financeTools = tools.filter(
     (t) => t.category === 'finance-calculators' && !toolsUnderReview.has(t.slug) && !financeSuiteRoots.has(t.slug)
   );
-  const financeArticles = [
-    { title: 'How to Calculate SIP Returns', slug: 'how-to-calculate-sip-returns' },
-    { title: 'EMI Calculation Guide: Formula & Examples', slug: 'how-to-calculate-emi' },
-    { title: 'GST Calculation Guide: How to Calculate GST', slug: 'gst-calculation-guide' },
-    { title: 'PPF vs FD Comparison Guide', slug: 'ppf-vs-fd-comparison' },
-    { title: 'India Tax Planning Guide 2026', slug: 'tax-planning-guide-2026' },
-  ];
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
@@ -32,14 +25,15 @@ export default function FinanceHub() {
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-black tracking-tight mb-4">
-            Finance Hub
+            Free Finance Calculators
             <span className="text-[var(--muted-foreground)] text-2xl font-normal ml-3">
-              — Calculators, Guides & Resources
+              — Money, Loans, Savings & Investing
             </span>
           </h1>
           <p className="text-[var(--muted-foreground)] text-lg max-w-2xl">
-            Everything you need for financial planning: calculators, guides, and expert insights.
-            All tools are 100% free and client-side.
+            Use free calculators for loans, savings, investing, budgeting, property,
+            business metrics, and everyday money decisions. Check each tool for its
+            assumptions, currency, and data source.
           </p>
         </div>
 
@@ -65,25 +59,16 @@ export default function FinanceHub() {
           </div>
         </section>
 
-        {/* Finance Guides */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <BookOpen className="h-6 w-6 text-indigo-500" />
-            Finance Guides
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {financeArticles.map((article) => (
-              <Link
-                key={article.slug}
-                href={`/guides/${article.slug}`}
-                className="p-4 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-indigo-500/40 transition-all group"
-              >
-                <h3 className="font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                  {article.title}
-                </h3>
-              </Link>
-            ))}
+        <section className="mb-12 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+          <h2 className="text-2xl font-bold">How to Use These Finance Calculators</h2>
+          <div className="mt-4 space-y-3 text-sm leading-7 text-[var(--muted-foreground)]">
+            <p>Start with the calculator that matches your decision: a loan payment, savings goal, investment return, budget, property estimate, or business metric.</p>
+            <p>Use current US-dollar rates and fees when a tool asks for them. Calculator examples are not live market quotes unless the page clearly says it uses current external data.</p>
+            <p>Results are planning estimates. Interest rates, taxes, fees, insurance, investment returns, and local rules can change the real outcome.</p>
           </div>
+          <Link href="/categories/finance-calculators" className="mt-5 inline-flex items-center gap-2 font-semibold text-indigo-600">
+            Browse all finance calculators <ArrowRight className="h-4 w-4" />
+          </Link>
         </section>
 
         {/* Finance FAQ */}
@@ -94,11 +79,11 @@ export default function FinanceHub() {
           </h2>
           <div className="space-y-3">
             {[
-              { q: 'What is the best way to save for retirement?', a: 'The best way is to start early, invest regularly, and diversify across PPF, NPS, and mutual funds.' },
-              { q: 'How much should I invest in PPF?', a: 'The maximum is ₹1.5 lakh per year, which is tax-deductible under Section 80C.' },
-              { q: 'What is the difference between FD and RD?', a: 'FD is a lump sum deposit, while RD is a recurring monthly deposit.' },
-              { q: 'How is income tax calculated in India?', a: 'Income tax is calculated based on income slabs, with deductions available under Section 80C, 80D, etc.' },
-              { q: 'What is GST and how does it work?', a: 'GST is a comprehensive indirect tax on goods and services, divided into CGST, SGST, and IGST.' },
+              { q: 'Are Navorika finance calculators free?', a: 'Yes. The active calculators are free to use and do not require an account.' },
+              { q: 'Do the calculators use current interest rates?', a: 'Most finance calculators use the rate you enter. If a tool uses live external data, the page identifies the source.' },
+              { q: 'Can I use these calculators for US dollars?', a: 'Many general finance calculators support or display US dollars. Check the individual tool because some country-specific calculators use their own currency and rules.' },
+              { q: 'Are investment returns guaranteed?', a: 'No. Investment calculators show scenarios based on the assumptions you enter. Actual returns, fees, taxes, and inflation can differ.' },
+              { q: 'Can a calculator replace financial or tax advice?', a: 'No. Use the results for planning and comparison, and verify important decisions with current rules and a qualified professional when needed.' },
             ].map((item, i) => (
               <div key={i} className="p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]">
                 <h4 className="font-semibold text-sm">{item.q}</h4>
