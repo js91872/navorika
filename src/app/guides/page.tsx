@@ -5,10 +5,10 @@ import { guidesMetadata } from '@/lib/guidesMetadata';
 import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Practical Guides for Calculators, Construction & Developer Tools',
-  description: 'In-depth guides for construction and everyday calculations, finance and health planning, documents, images, and developer workflows.',
+  title: 'How-To Guides for Calculators, Files, Images & Home Projects',
+  description: 'Step-by-step guides for calculators, PDF files, images, construction and home projects, money, health, and common digital tasks.',
   alternates: { canonical: 'https://navorika.com/guides' },
-  openGraph: { type: 'website', url: 'https://navorika.com/guides', title: 'Navorika Guides & Articles', description: 'Detailed explanations, examples, FAQs, and related tools for everyday calculations and digital workflows.', siteName: 'Navorika' },
+  openGraph: { type: 'website', url: 'https://navorika.com/guides', title: 'Navorika How-To Guides', description: 'Step-by-step guides, examples, FAQs, and related tools for everyday calculations and digital tasks.', siteName: 'Navorika' },
 };
 
 export default function GuidesPage() {
@@ -25,7 +25,7 @@ export default function GuidesPage() {
         <div className="mb-10">
           <h1 className="text-4xl font-black tracking-tight">Guides & Articles</h1>
           <p className="text-[var(--muted-foreground)] mt-1">
-            Practical explanations, formulas, examples, and limitations for using Navorika tools well
+            Step-by-step help, examples, answers, and practical tips for common calculations and digital tasks
           </p>
         </div>
 
