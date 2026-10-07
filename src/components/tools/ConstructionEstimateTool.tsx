@@ -395,11 +395,11 @@ export default function ConstructionEstimateTool({ mode }: Props) {
     <div className="max-w-6xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-5 md:p-8">
         <div className="mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold">
+          <h1 className="text-2xl md:text-3xl font-bold">
             {contractorMode
               ? 'Contractor Estimate Generator'
               : 'Construction Estimate Builder'}
-          </h2>
+          </h1>
 
           <p className="mt-2 text-slate-600 dark:text-slate-400">
             {contractorMode
