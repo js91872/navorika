@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="construction-calculators"
-      eyebrow="Roof eave & trim estimating"
+      eyebrow="Soffit & Fascia Materials"
       title="Soffit & Fascia Calculator"
-      description="Estimate soffit area, fascia length, material pieces, and waste allowance for roof eaves."
+      description="Calculate how much soffit and fascia material you need from your eave measurements, panel or board size, and waste allowance."
       slug="soffit-fascia-calculator"
     >
       <BusinessCalculatorTool slug="soffit-fascia-calculator" />
