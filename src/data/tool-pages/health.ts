@@ -2,8 +2,8 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 
 export const healthToolPages: Record<string, ToolPageContent> = {
   'heart-rate-calculator': {
-    slug: 'heart-rate-calculator', name: 'Heart Rate Calculator: BPM, Maximum & Exercise Zones', category: 'Health Calculators', applicationCategory: 'HealthApplication', description: 'Convert a manual pulse count to BPM and estimate resting context, maximum heart rate, heart-rate reserve, and exercise zones by age.',
-    longTailKeywords: ['heart rate calculator', 'pulse to bpm calculator', 'beats per minute calculator', 'maximum heart rate calculator by age', 'target heart rate zones'],
+    slug: 'heart-rate-calculator', name: 'Heart Rate Calculator – BPM, Heartbeat & Target Zones', category: 'Health Calculators', applicationCategory: 'HealthApplication', description: 'Convert a pulse count to beats per minute (BPM) and estimate maximum heart rate and target exercise zones from age.',
+    longTailKeywords: ['heart rate calculator', 'heart beat calculator', 'heartbeat calculator', 'pulse calculator', 'pulse to bpm calculator', 'beats per minute calculator', 'maximum heart rate calculator by age', 'target heart rate calculator', 'target heart rate zones'],
     intro: ['Convert a manually counted pulse to beats per minute, or use age and resting heart rate for broad exercise estimates.', 'The tool does not measure your pulse and its age-based outputs are educational estimates, not medical limits.'],
     formula: [{ title: 'Manual pulse conversion', body: 'BPM = beats counted × (60 ÷ counting interval in seconds).' }, { title: 'Age-based estimate', body: 'Estimated maximum = 220 − age. Moderate and vigorous ranges are percentages of that estimate.' }],
     steps: ['Count your pulse for 15, 30, or 60 seconds and enter the manual count.', 'Optionally enter adult age and resting heart rate for exercise estimates.', 'Interpret all outputs alongside symptoms, perceived effort, medication, health history, and professional advice.'],
