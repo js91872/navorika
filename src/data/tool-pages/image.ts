@@ -289,11 +289,13 @@ export const imageToolPages: Record<string, ToolPageContent> = {
   },
   'image-print-size-calculator': {
     slug: 'image-print-size-calculator',
-    name: 'Image Print Size Calculator – Pixels & PPI to Inches / CM',
+    name: 'Print Size Calculator – Pixels to Inches & Photo Size',
     category: 'Image Tools',
     applicationCategory: 'UtilitiesApplication',
-    description: 'Calculate maximum physical print dimensions in inches and centimeters from pixel dimensions and PPI print density.',
+    description: 'Calculate how large an image can print from its pixel dimensions. Convert pixels to print size in inches or centimeters using your chosen PPI.' ,
     longTailKeywords: [
+      'print size calculator',
+      'pixels to print size calculator',
       'image print size calculator',
       'photo print size calculator',
       'pixels to inches calculator',
@@ -302,8 +304,8 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'maximum photo print size from pixels',
     ],
     intro: [
-      'The Image Print Size Calculator translates digital pixel resolutions into physical printed dimensions in inches and centimeters based on chosen print density (pixels per inch).',
-      'Easily determine how large a photo can be printed cleanly at standard photographic quality (300 PPI), magazine quality, or large-format viewing densities.',
+      'Enter an image width and height in pixels to see the physical print size in inches and centimeters at your chosen pixels-per-inch (PPI) setting.' ,
+      'Use the result to compare common photo-print settings such as 300 PPI for close viewing or lower PPI values for larger prints viewed from farther away.' ,
     ],
     formula: [
       { title: 'Print Width (Inches)', body: 'Width (in) = Width (px) / PPI' },
@@ -444,11 +446,13 @@ export const imageToolPages: Record<string, ToolPageContent> = {
   },
   'photo-storage-calculator': {
     slug: 'photo-storage-calculator',
-    name: 'Photo Storage Calculator – Memory Card & Cloud Capacity',
+    name: 'Memory Card Photo Calculator – How Many Photos Fit?',
     category: 'Image Tools',
     applicationCategory: 'UtilitiesApplication',
-    description: 'Estimate how many photos fit on a memory card, smartphone, hard drive, or cloud storage plan based on average file size.',
+    description: 'Estimate how many photos fit on an SD card, memory card, phone, hard drive, or cloud plan from storage capacity and average photo size.' ,
     longTailKeywords: [
+      'memory card calculator',
+      'how many photos fit on sd card',
       'photo storage calculator',
       'how many photos fit calculator',
       'memory card photo calculator',
