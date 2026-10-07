@@ -11,8 +11,8 @@ export default function InvestmentProfilerTool() {
   const suboption = (params?.suboption as string) || 'cagr-calculator';
   const seo = investmentSubTools[suboption] || investmentSubTools['cagr-calculator'];
 
-  const [valA, setValA] = useState<number | ''>(100000);
-  const [valB, setValB] = useState<number | ''>(500);
+  const [valA, setValA] = useState<number | ''>(10000);
+  const [valB, setValB] = useState<number | ''>(15000);
   const [valC, setValC] = useState<number | ''>(8);
   const [valD, setValD] = useState<number | ''>(10);
   const [result, setResult] = useState<any>(null);
@@ -20,23 +20,23 @@ export default function InvestmentProfilerTool() {
   const configs: Record<string, any> = {
     'cagr-calculator': { 
       labelA: 'Initial Investment', labelB: 'Final Value', labelC: 'Duration (Years)', showD: false,
-      calc: (a: number, b: number, c: number) => ({ value: a > 0 ? ((Math.pow(b / a, 1 / (c || 1)) - 1) * 100).toFixed(2) : '0.00', unit: '% Annual Growth', subtitle: 'Compound Annual Growth Rate' }) 
+      calc: (a: number, b: number, c: number) => ({ value: a > 0 ? ((Math.pow(b / a, 1 / (c || 1)) - 1) * 100).toFixed(2) : '0.00', unit: '% annual growth', subtitle: 'Compound annual growth rate' }) 
     },
     'roi-calculator': { 
       labelA: 'Total Invested', labelB: 'Total Returned', showC: false, showD: false,
-      calc: (a: number, b: number) => ({ value: a > 0 ? (((b - a) / a) * 100).toFixed(2) : '0.00', unit: '% Total ROI', subtitle: 'Absolute Return on Investment' }) 
+      calc: (a: number, b: number) => ({ value: a > 0 ? (((b - a) / a) * 100).toFixed(2) : '0.00', unit: '% total ROI', subtitle: 'Return on investment' }) 
     },
     'swp-calculator': { 
-      labelA: 'Starting Corpus', labelB: 'Monthly Withdrawal', labelC: 'Expected Return (% p.a.)', labelD: 'Tenure (Years)', showD: true,
+      labelA: 'Starting Account Balance ($)', labelB: 'Monthly Withdrawal ($)', labelC: 'Expected Annual Return (%)', labelD: 'Years', showD: true,
       calc: (a: number, b: number, c: number, d: number) => {
         let balance = a; const r = (c / 100) / 12;
         for(let i=0; i<d*12; i++) { balance = (balance * (1 + r)) - b; if(balance < 0) { balance = 0; break; } }
-        return { value: balance.toLocaleString('en-US', {maximumFractionDigits:0}), unit: 'Final Corpus Balance', subtitle: 'Remaining Wealth After Withdrawals' };
+        return { value: balance.toLocaleString('en-US', {maximumFractionDigits:0}), unit: 'Ending account balance', subtitle: 'Balance after monthly withdrawals' };
       }
     },
     'stock-average-calculator': { 
       labelA: 'First Buy Price', labelB: 'Quantity Bought', labelC: 'Second Buy Price', labelD: 'Quantity Bought', showD: true,
-      calc: (a: number, b: number, c: number, d: number) => ({ value: (b + d) > 0 ? (((a * b) + (c * d)) / (b + d)).toLocaleString('en-US', {maximumFractionDigits:2}) : '0.00', unit: 'New Average Price', subtitle: 'Blended Acquisition Cost' }) 
+      calc: (a: number, b: number, c: number, d: number) => ({ value: (b + d) > 0 ? (((a * b) + (c * d)) / (b + d)).toLocaleString('en-US', {maximumFractionDigits:2}) : '0.00', unit: 'New average share price', subtitle: 'Average cost after both purchases' }) 
     }
   };
 
@@ -71,7 +71,7 @@ export default function InvestmentProfilerTool() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shrink-0">
           <div>
             <a href="/categories/finance-calculators" className="inline-flex items-center gap-2 text-[10px] font-black text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors mb-2 uppercase tracking-widest">
-              <ArrowLeft className="h-3 w-3" /> Finance Portal
+              <ArrowLeft className="h-3 w-3" /> Finance Calculators
             </a>
             <h1 className="text-2xl lg:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 tracking-tight">
               {seo.heading}
@@ -102,7 +102,7 @@ export default function InvestmentProfilerTool() {
           <div className="lg:col-span-4 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] p-6 shadow-xl flex flex-col gap-5 overflow-y-auto no-scrollbar transition-colors">
             <div className="flex items-center gap-2 mb-2 shrink-0">
               <Calculator className="h-4 w-4 text-indigo-500 dark:text-indigo-400" />
-              <h3 className="text-xs font-black text-slate-800 dark:text-white uppercase tracking-widest">Parameters</h3>
+              <h3 className="text-xs font-black text-slate-800 dark:text-white uppercase tracking-widest">Enter Your Numbers</h3>
             </div>
 
             {[
@@ -140,7 +140,7 @@ export default function InvestmentProfilerTool() {
               <div className="relative z-10">
                 <p className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-indigo-500 dark:bg-indigo-400 animate-pulse"></span>
-                  Computed Projection
+                  Your Result
                 </p>
                 {/* Result output respects negative space formatting */}
                 <h2 className="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tighter mb-2 tabular-nums">
@@ -159,15 +159,15 @@ export default function InvestmentProfilerTool() {
                   <Zap className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 <div className="overflow-hidden">
-                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-0.5 truncate">Metric Focus</p>
+                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-0.5 truncate">What This Shows</p>
                   <p className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">{result?.subtitle}</p>
                 </div>
               </div>
               
               <button onClick={() => window.print()} className="bg-white dark:bg-white/[0.02] hover:bg-slate-50 dark:hover:bg-white/[0.05] backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-4 lg:px-6 flex items-center justify-between shadow-sm transition-all group">
                 <div className="text-left overflow-hidden">
-                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-0.5 truncate">Take Action</p>
-                  <p className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Export / Print Report</p>
+                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-0.5 truncate">Print or Save</p>
+                  <p className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">Print This Result</p>
                 </div>
                 <div className="h-8 w-8 rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center group-hover:bg-indigo-100 dark:group-hover:bg-white/10 transition-colors shrink-0">
                   <ChevronRight className="h-4 w-4 text-slate-500 group-hover:text-indigo-600 dark:text-slate-400 dark:group-hover:text-white" />
