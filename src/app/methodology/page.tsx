@@ -21,72 +21,72 @@ export default function MethodologyPage() {
   const sections = [
     {
       icon: <Cpu className="h-6 w-6 text-indigo-500" />,
-      title: '1. Browser-Local Processing Architecture',
-      description: 'Prioritizing on-device execution to ensure user privacy and instant performance.',
+      title: '1. How Browser-Based Tools Handle Your Data',
+      description: 'Most tools run in your browser so your files and inputs can stay on your device.',
       details: [
-        'Client-Side Execution: The overwhelming majority of Navorika utilities (including PDF manipulators, image resizers/converters, developer encoders, cryptographic studios, and calculators) run directly in your web browser using modern JavaScript, WebAssembly, and native browser APIs.',
-        'Zero Server Transmission: Selected files (such as images, PDFs, JSON, or text files) and entered input values are parsed and transformed in volatile browser memory. They are not uploaded to, logged by, or retained on Navorika servers.',
-        'Core Technologies: We utilize validated open-source web platform runtimes, including pdf-lib and pdf.js for document operations, native HTML5 Canvas for raster manipulation, and the W3C Web Cryptography API (window.crypto.subtle) for hardware-accelerated cryptographic operations.',
+        'Most tools run in your browser: PDF tools, image converters, calculators, and many developer utilities use browser technology such as JavaScript, WebAssembly, and built-in browser APIs.',
+        'Files usually stay on your device: when a tool is marked as browser-local, files and entered values are processed in your browser memory and are not uploaded to or stored on Navorika servers.',
+        'Technical details: document tools may use libraries such as pdf-lib and pdf.js, image tools may use HTML Canvas, and security-related tools may use the browser’s Web Cryptography API.',
       ],
     },
     {
       icon: <Server className="h-6 w-6 text-indigo-500" />,
-      title: '2. Ephemeral Server-Assisted Pipelines',
-      description: 'Transparent disclosure for specialized file formats requiring server binaries.',
+      title: '2. When a Tool Needs Our Server',
+      description: 'A small number of specialized conversions need temporary server processing.',
       details: [
-        'Specialized Requirements: Specific complex conversions—such as STEP CAD to 3D PDF (requiring Open Cascade geometric tessellation) and CorelDRAW format bridge conversions—cannot yet be executed safely inside standard browser sandbox engines.',
-        'Isolated Temporary Sandboxes: Server conversions execute inside temporary, sandboxed processing directories created uniquely per request.',
-        'Immediate Deletion: Input and output files are deleted immediately from the host filesystem upon completion or failure of the request. Navorika does not maintain persistent file storage, user document caches, or secondary archives.',
+        'Some formats need server software: specialized conversions such as STEP CAD to 3D PDF and some CorelDRAW-related conversions cannot be completed entirely inside a normal web browser.',
+        'Temporary processing: server-assisted conversions run in a temporary isolated workspace created for the request.',
+        'Files are not kept as a library: input and output files are removed after the conversion finishes or fails. Navorika does not offer permanent document storage for these conversions.',
       ],
     },
     {
       icon: <Calculator className="h-6 w-6 text-indigo-500" />,
-      title: '3. Mathematical & Algorithmic Standards',
-      description: 'Formulas derived from established statutory, academic, and engineering sources.',
+      title: '3. How Calculator Formulas Are Chosen',
+      description: 'We use documented formulas, official rules, and recognized reference methods where they apply.',
       details: [
-        'Financial Mathematics: Loan EMI calculations implement the standard universal amortization equation [P × r × (1 + r)^n] / [(1 + r)^n - 1]. Compound growth and SIP projections use standard continuous and monthly compounding annuities. Income tax estimations model official Central Board of Direct Taxes (CBDT) statutory tax slabs, Section 87A rebate ceilings, standard deductions, and applicable health/education cess.',
-        'Health & Biometrics: Basal Metabolic Rate (BMR) calculations implement the validated Mifflin-St Jeor equation and the revised Harris-Benedict formula. Target exercise heart rates utilize the Karvonen formula factoring resting heart rate reserve. Energy expenditure estimates apply published Compendium of Physical Activities MET coefficients.',
-        'Construction & Takeoffs: Volume and takeoff tools use standard geometric equations (length × width × depth) combined with empirical material densities (e.g. standard Portland concrete mix density of ~145–150 lbs/cu ft; sand/gravel bulk densities of ~1.4–1.6 tons/cu yd). Structural checks (such as joist deflection and roof pitch) reference standard International Building Code (IBC) and International Residential Code (IRC) L/360 load span criteria.',
+        'Money calculators: loan-payment tools use standard amortization formulas. Savings and investment tools use standard growth formulas. Tax calculators use the published rules and thresholds described on the relevant tool pages.',
+        'Health and fitness calculators: tools use published equations such as Mifflin-St Jeor for BMR and established activity or heart-rate methods where appropriate. These are estimates, not medical diagnoses.',
+        'Construction calculators: quantity tools use measurements such as length × width × depth, along with stated material assumptions. Where a tool refers to a building-code rule or structural limit, the relevant source or limitation should be shown on the page.',
       ],
     },
     {
       icon: <Globe className="h-6 w-6 text-indigo-500" />,
-      title: '4. Live External Data Sources',
-      description: 'Clear identification of tools that communicate with external APIs.',
+      title: '4. When a Tool Uses Live Data',
+      description: 'Tools that need current information clearly identify the outside data source they use.',
       details: [
-        'Currency Converter: The Navorika currency conversion utility queries published reference exchange rates sourced from the European Central Bank (ECB) via dated public reference feeds. The date and timestamp of the applied rate are displayed directly within the tool interface.',
-        'No Tracking Data Sent: When external rate data is retrieved, the request contains only the requested currency pair and amount, with zero user-identifying telemetry or calculation history transmitted.',
+        'Currency converter: the tool uses published reference exchange-rate data and shows the date or time of the rate used when that information is available.',
+        'Only the information needed for the request is sent to the data source; the calculation history is not intentionally included as part of the rate lookup.',
       ],
     },
     {
       icon: <CheckCircle2 className="h-6 w-6 text-indigo-500" />,
-      title: '5. Automated Testing & Verification Protocols',
-      description: 'Rigorous test suites ensuring mathematical correctness and edge-case handling.',
+      title: '5. How We Test Calculators and Converters',
+      description: 'Automated tests help catch wrong results, broken conversions, and unusual input problems.',
       details: [
-        'Unit Test Coverage: Every calculation engine in Navorika is tested via an automated Node.js test suite with hundreds of assertion checks across standard inputs, zero values, extreme bounds, and non-numeric entries.',
-        'Precision Clamping: Floating-point arithmetic calculations are sanitized to prevent IEEE-754 binary floating-point rounding artifacts (e.g. 0.1 + 0.2 = 0.30000000000000004) through bounded decimal rounding functions.',
-        'Security Auditing: Input sanitizers (such as in the HTML-to-image converter) undergo explicit security test suites to verify that scripts, event handlers, external network URIs, and dangerous active protocols are neutralized prior to rendering.',
+        'Calculation tests: automated tests check common examples, zero values, limits, and invalid inputs so mistakes can be found before deployment.',
+        'Rounding checks: calculator outputs are rounded in controlled ways so normal computer math does not show distracting values such as 0.30000000000000004.',
+        'Security checks: tools that handle HTML or other active content are tested to reduce unsafe scripts, links, or other active behavior before rendering.',
       ],
     },
     {
       icon: <AlertCircle className="h-6 w-6 text-indigo-500" />,
-      title: '6. Technical Limitations & Boundary Disclosures',
-      description: 'Honest documentation of browser and platform constraints.',
+      title: '6. Limits You Should Know About',
+      description: 'Browser tools and automated estimates have practical limits that can affect results.',
       details: [
-        'Client Memory Ceilings: Very large files (such as massive multi-hundred-megabyte PDFs or gigapixel images) can exceed browser tab memory allocations (typically 1.5–2 GB on desktop, less on mobile devices).',
-        'Canvas Maximum Dimensions: Web browser canvas implementations impose maximum pixel dimension limits (e.g., 4096×4096 on some mobile browsers; 16384×16384 on modern desktop browsers). Images exceeding these limits are scaled safely.',
-        'Metadata Stripping: Re-encoding images or rendering via canvas natively strips camera EXIF, GPS coordinates, and color profiles, unless explicitly parsed by dedicated metadata viewers.',
-        'Interchange Vector Formats: CorelDRAW tools generate industry-standard open interchange files (PDF, SVG, EPS) rather than native proprietary CDR files, as documented on every tool layout.',
+        'Very large files: huge PDFs or images can use more memory than a browser tab or mobile device can handle, which may cause a tool to slow down or fail.',
+        'Very large images: browsers place limits on the image sizes they can process in memory. A tool may need to reduce or reject an image that exceeds those browser limits.',
+        'Image metadata: converting or re-encoding an image can remove camera EXIF data, GPS information, or color profiles unless a tool specifically preserves them.',
+        'CorelDRAW conversions: some tools prepare PDF, SVG, or EPS files that CorelDRAW can import rather than creating a native CDR file. Each affected tool explains the actual output.',
       ],
     },
     {
       icon: <RefreshCw className="h-6 w-6 text-indigo-500" />,
-      title: '7. Review & Maintenance Cadence',
-      description: 'Continuous oversight to keep formulas and standards up to date.',
+      title: '7. How We Review and Update Tools',
+      description: 'We review formulas, rules, dependencies, and reported problems as tools are maintained.',
       details: [
-        'Statutory Fiscal Updates: Tax and retirement calculators are scheduled for annual review in accordance with published legislative amendments and budget announcements.',
-        'Library Maintenance: Browser dependencies and parsing libraries (such as pdf-lib and pdf.js) are continuously updated to address upstream security fixes and browser platform compatibility changes.',
-        'User Discrepancy Reporting: We welcome technical feedback from engineers, accountants, and practitioners. Bug reports and formula verification inquiries can be directed to our technical review inbox.',
+        'Rules that change: tax and retirement tools are reviewed when relevant published rules or annual thresholds change.',
+        'Software maintenance: third-party libraries and browser dependencies are updated as needed for security fixes and compatibility.',
+        'Report a problem: users can contact us when a result, formula, or tool behavior looks wrong so it can be reviewed.',
       ],
     },
   ];
@@ -107,7 +107,7 @@ export default function MethodologyPage() {
               <Layers className="h-8 w-8" />
             </div>
             <div>
-              <h1 className="text-3xl sm:text-4xl font-black tracking-tight">Calculation Methodology &amp; Standards</h1>
+              <h1 className="text-3xl sm:text-4xl font-black tracking-tight">How Navorika Calculators &amp; Tools Work</h1>
               <p className="text-[var(--muted-foreground)] mt-1">
                 Last updated: {lastUpdated}
               </p>
@@ -116,7 +116,7 @@ export default function MethodologyPage() {
           <div className="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-sm leading-relaxed">
             <Binary className="h-5 w-5 inline mr-2 align-text-bottom" />
             <span>
-              Transparency in calculation logic, browser security, automated testing, and technical limitations.
+              How we choose formulas, handle files and data, test results, and explain the limits of our tools.
             </span>
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function MethodologyPage() {
             <Link href="/disclaimer" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
               Legal Disclaimer
             </Link>{' '}
-            for category-specific caveats. To submit technical feedback or report calculation discrepancies, reach us at{' '}
+            for important limitations. To report a wrong result or tool problem, contact us at{' '}
             <a href="mailto:admin@navorika.com" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
               admin@navorika.com
             </a>
