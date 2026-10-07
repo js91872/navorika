@@ -11,6 +11,7 @@ const guidesPath = join(root, 'src/lib/guidesMetadata.ts');
 const guideContentPath = join(root, 'src/lib/guideContent.ts');
 const additionalGuideContentPath = join(root, 'src/lib/guideContentAdditional.ts');
 const gscGuideContentPath = join(root, 'src/lib/guideContentGsc.ts');
+const macVideoGuideContentPath = join(root, 'src/lib/guideContentMacVideo.ts');
 const guideEnhancementsPath = join(root, 'src/lib/guideContentEnhancements.ts');
 const guideToolsPath = join(root, 'src/lib/guideTools.ts');
 const guideSourcesPath = join(root, 'src/lib/guideSources.ts');
@@ -77,7 +78,7 @@ if (read(join(root, 'src/app/tools/page.tsx')).includes("'use client'") || read(
 
 for (const slug of duplicates(guideSlugs)) failures.push(`Duplicate guide metadata slug: ${slug}`);
 
-const guideContentSources = [read(guideContentPath), read(additionalGuideContentPath), read(gscGuideContentPath)];
+const guideContentSources = [read(guideContentPath), read(additionalGuideContentPath), read(gscGuideContentPath), read(macVideoGuideContentPath)];
 const guideContentSlugs = guideContentSources.flatMap((source) => [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|(?:corelArticle|article)\()/gm)].map((match) => match[1]));
 const enhancedGuideSlugs = [...read(guideEnhancementsPath).matchAll(/^\s{2}'([^']+)':\s*\{/gm)].map((match) => match[1]);
 const sourcedGuideSlugs = [...read(guideSourcesPath).matchAll(/^\s{2}'([^']+)':\s*\[/gm)].map((match) => match[1]);
