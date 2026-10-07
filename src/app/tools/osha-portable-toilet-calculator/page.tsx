@@ -44,16 +44,16 @@ export default function OshaPortableToiletPage() {
 
         <header className="mb-10 max-w-4xl">
           <p className="text-sm font-bold uppercase tracking-wider text-indigo-600">
-            Construction sanitation calculator
+            Portable toilets for construction sites
           </p>
 
           <h1 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">
-            OSHA Portable Toilet Calculator
+            Portable Toilet Calculator – OSHA Jobsite Requirements
           </h1>
 
           <p className="mt-4 text-lg leading-8 text-[var(--muted-foreground)]">
-            Calculate the construction-jobsite toilet fixture minimum based on
-            workforce size using OSHA 29 CFR 1926.51(c)(1), Table D-1.
+            Enter the number of workers to estimate the minimum toilet-facility
+            requirement for a construction site under OSHA rules.
           </p>
         </header>
 
@@ -74,14 +74,13 @@ export default function OshaPortableToiletPage() {
 
           <section>
             <h2 className="text-2xl font-bold text-[var(--foreground)]">
-              Portable Units vs Required Fixtures
+              How Many Portable Toilets Do You Need?
             </h2>
 
             <p className="mt-4 leading-7">
-              A portable toilet rental unit does not necessarily correspond
-              one-to-one with every fixture combination described in the OSHA
-              table. Check whether each rented unit contains a toilet seat,
-              urinal or both.
+              The OSHA table describes required toilet seats and urinals, while rental
+              units may contain a seat, a urinal, or both. Use the result as a
+              starting point and confirm the actual unit configuration with the rental company.
             </p>
           </section>
 
