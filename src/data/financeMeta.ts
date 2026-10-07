@@ -6,18 +6,18 @@ export type SubToolSEO = {
 };
 
 export const loanSubTools: Record<string, SubToolSEO> = {
-  "emi-calculator": { title: "Universal EMI Calculator", heading: "High-Precision EMI Calculator", description: "Calculate accurate Equated Monthly Installments (EMI).", keywords: ["emi calculator"] },
-  "home-loan-emi": { title: "Home Loan EMI Calculator", heading: "Home Loan EMI Calculator", description: "Plan long-term housing mortgage outlays.", keywords: ["home loan emi calculator"] },
-  "car-loan-emi": { title: "Car Loan EMI Calculator", heading: "Car Loan EMI Calculator", description: "Determine exact monthly finance metrics for vehicles.", keywords: ["car loan emi"] },
-  "personal-loan-emi": { title: "Personal Loan EMI Calculator", heading: "Personal Loan EMI Calculator", description: "Assess high-interest unsecured lending schedules.", keywords: ["personal loan emi"] },
-  "prepayment-calculator": { title: "Loan Prepayment Optimization", heading: "Loan Prepayment Calculator", description: "Simulate advanced manual prepayment injections.", keywords: ["loan prepayment calculator"] }
+  "emi-calculator": { title: "Loan EMI Calculator", heading: "Loan EMI Calculator", description: "Calculate an equated monthly installment (EMI) from loan amount, interest rate, and loan term.", keywords: ["emi calculator", "loan emi calculator"] },
+  "home-loan-emi": { title: "Mortgage Payment Calculator", heading: "Mortgage Payment Calculator", description: "Estimate a monthly mortgage payment, total interest, and payoff schedule from your loan amount, rate, and term.", keywords: ["mortgage payment calculator", "home loan calculator", "monthly mortgage payment"] },
+  "car-loan-emi": { title: "Car Loan Payment Calculator", heading: "Car Loan Payment Calculator", description: "Estimate a monthly car payment, total interest, and payoff schedule from the vehicle loan amount, rate, and term.", keywords: ["car loan calculator", "car payment calculator", "auto loan calculator"] },
+  "personal-loan-emi": { title: "Personal Loan Payment Calculator", heading: "Personal Loan Payment Calculator", description: "Estimate monthly payments and total interest for a personal loan.", keywords: ["personal loan calculator", "personal loan payment calculator"] },
+  "prepayment-calculator": { title: "Extra Payment Loan Calculator", heading: "Extra Payment Loan Calculator", description: "See how an extra monthly payment can shorten a loan and reduce total interest.", keywords: ["extra payment loan calculator", "loan prepayment calculator", "loan payoff calculator"] }
 };
 
 export const investmentSubTools: Record<string, SubToolSEO> = {
-  "cagr-calculator": { title: "CAGR Calculator - Annualized Growth", heading: "CAGR Calculator", description: "Determine the Compound Annual Growth Rate of your investments.", keywords: ["cagr calculator", "annualized return"] },
-  "roi-calculator": { title: "ROI Calculator - Return on Investment", heading: "ROI Calculator", description: "Evaluate the absolute return on investment percentages.", keywords: ["roi calculator", "return on investment"] },
-  "swp-calculator": { title: "SWP Calculator - Systematic Withdrawal", heading: "SWP Calculator", description: "Plan monthly withdrawal cash flows from your mutual fund corpus.", keywords: ["swp calculator", "mutual fund withdrawal"] },
-  "stock-average-calculator": { title: "Stock Average Calculator", heading: "Stock Average Calculator", description: "Calculate your new average holding price when buying dips.", keywords: ["stock average calculator", "average down stock"] }
+  "cagr-calculator": { title: "CAGR Calculator – Annual Growth Rate", heading: "CAGR Calculator", description: "Calculate compound annual growth rate (CAGR) from a starting value, ending value, and number of years.", keywords: ["cagr calculator", "compound annual growth rate calculator", "annualized return calculator"] },
+  "roi-calculator": { title: "ROI Calculator – Return on Investment", heading: "ROI Calculator", description: "Calculate return on investment (ROI) as a percentage from the amount invested and the final value.", keywords: ["roi calculator", "return on investment calculator"] },
+  "swp-calculator": { title: "Investment Withdrawal Calculator (SWP)", heading: "Investment Withdrawal Calculator", description: "Estimate how monthly withdrawals and an assumed return may change an investment account balance over time.", keywords: ["investment withdrawal calculator", "swp calculator", "systematic withdrawal calculator"] },
+  "stock-average-calculator": { title: "Stock Average Price Calculator", heading: "Stock Average Price Calculator", description: "Calculate your new average share price after buying additional shares at a different price.", keywords: ["stock average calculator", "average stock price calculator", "average down calculator"] }
 };
 
 export const savingsSubTools: Record<string, SubToolSEO> = {
@@ -35,14 +35,14 @@ export const taxSubTools: Record<string, SubToolSEO> = {
 };
 
 export const wealthSubTools: Record<string, SubToolSEO> = {
-  "compound-interest-calculator": { title: "Compound Interest Calculator", heading: "Compound Interest Calculator", description: "Model the exponential growth of capital over time.", keywords: ["compound interest calculator"] },
-  "inflation-calculator": { title: "Inflation Calculator - Purchasing Power", heading: "Inflation Calculator", description: "Assess how inflation degrades future purchasing power.", keywords: ["inflation calculator"] },
-  "net-worth-calculator": { title: "Net Worth Calculator", heading: "Net Worth Calculator", description: "Evaluate total assets versus liabilities.", keywords: ["net worth calculator"] },
-  "salary-calculator": { title: "Salary Calculator - Gross to Net", heading: "Salary Calculator", description: "Convert CTC packages into actual in-hand monthly salaries.", keywords: ["salary calculator", "ctc to in hand"] }
+  "compound-interest-calculator": { title: "Compound Interest Calculator", heading: "Compound Interest Calculator", description: "Estimate how money can grow over time from a starting amount, annual rate, and number of years.", keywords: ["compound interest calculator", "interest growth calculator"] },
+  "inflation-calculator": { title: "Inflation Calculator – Future Cost", heading: "Inflation Calculator", description: "Estimate what today’s cost may become in the future at an assumed annual inflation rate.", keywords: ["inflation calculator", "future cost calculator", "purchasing power calculator"] },
+  "net-worth-calculator": { title: "Net Worth Calculator", heading: "Net Worth Calculator", description: "Calculate net worth by subtracting total debts and liabilities from total assets.", keywords: ["net worth calculator", "calculate net worth"] },
+  "salary-calculator": { title: "Take-Home Pay Calculator – Salary After Deductions", heading: "Take-Home Pay Calculator", description: "Estimate monthly take-home pay from annual salary, bonus, and the monthly deductions you enter.", keywords: ["take home pay calculator", "salary calculator", "salary after deductions calculator"] }
 };
 
 export const budgetSubTools: Record<string, SubToolSEO> = {
-  "budget-planner": { title: "50/30/20 Budget Planner", heading: "Budget Planner", description: "Distribute your income automatically into needs, wants, and savings.", keywords: ["budget planner", "50 30 20 rule"] },
-  "emergency-fund-calculator": { title: "Emergency Fund Calculator", heading: "Emergency Fund Calculator", description: "Determine how much liquidity you need for 6-12 months of runway.", keywords: ["emergency fund calculator"] },
-  "credit-card-payoff": { title: "Credit Card Payoff Calculator", heading: "Credit Card Payoff Tool", description: "Map the fastest route to zero out high-interest credit debt.", keywords: ["credit card payoff", "debt avalanche"] }
+  "budget-planner": { title: "50/30/20 Budget Calculator", heading: "50/30/20 Budget Calculator", description: "Split monthly after-tax income into suggested amounts for needs, wants, and savings using the 50/30/20 rule.", keywords: ["50 30 20 calculator", "budget calculator", "50 30 20 budget rule"] },
+  "emergency-fund-calculator": { title: "Emergency Fund Calculator", heading: "Emergency Fund Calculator", description: "Estimate how much emergency savings you may want based on monthly essential expenses and the number of months you want covered.", keywords: ["emergency fund calculator", "emergency savings calculator"] },
+  "credit-card-payoff": { title: "Credit Card Payoff Calculator", heading: "Credit Card Payoff Calculator", description: "Estimate how many months it may take to pay off a credit-card balance from the APR and monthly payment you enter.", keywords: ["credit card payoff calculator", "credit card payment calculator", "how long to pay off credit card"] }
 };
