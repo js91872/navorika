@@ -1,10 +1,16 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Online Tools Directory',
-  description: 'Browse Navorika calculators, PDF tools, image utilities, developer tools, and construction tools.',
+  title: 'Free Online Tools & Calculators – PDF, Images, Money & More',
+  description: 'Browse free online calculators and tools for PDF files, images, construction, money, health, everyday tasks, and web development. No signup required.',
   alternates: { canonical: 'https://navorika.com/tools' },
-  openGraph: { type: 'website', url: 'https://navorika.com/tools', title: 'Navorika Online Tools Directory', description: 'Browse active calculators and browser-based utilities.', siteName: 'Navorika' },
+  openGraph: {
+    type: 'website',
+    url: 'https://navorika.com/tools',
+    title: 'Free Online Tools & Calculators',
+    description: 'Browse free calculators and tools for PDF files, images, construction, money, health, everyday tasks, and web development.',
+    siteName: 'Navorika',
+  },
 };
 
 export default function ToolsLayout({ children }: Readonly<{ children: React.ReactNode }>) {
