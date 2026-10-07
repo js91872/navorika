@@ -25,7 +25,7 @@ export const categories: Category[] = [
   {
     slug: 'pdf-tools',
     name: 'PDF Tools',
-    description: 'Merge, split, compress, and convert documents locally.',
+    description: 'Merge, split, compress, edit, and convert PDF files online.',
     icon: 'FileText',
     color: 'from-blue-500 to-indigo-600'
   },
@@ -39,14 +39,14 @@ export const categories: Category[] = [
   {
     slug: 'finance-calculators',
     name: 'Finance Calculators',
-    description: 'Calculate SIP, EMI, loans, GST, tax, PPF, FD, and more.',
+    description: 'Calculate loans, savings, investments, taxes, budgets, and retirement plans.',
     icon: 'Calculator',
     color: 'from-emerald-500 to-teal-600'
   },
   {
     slug: 'health-calculators',
     name: 'Health Calculators',
-    description: 'BMI, BMR, TDEE, body fat, fitness, and nutrition metrics.',
+    description: 'Calculate calories, BMI, body fat, heart rate, fitness, and nutrition estimates.',
     icon: 'HeartPulse',
     color: 'from-rose-500 to-pink-600'
   },
@@ -110,7 +110,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'compress-pdf',
     title: 'Compress PDF',
-    description: 'Rasterize PDF pages as compressed JPEG images locally and compare the actual output size.',
+    description: 'Reduce PDF file size in your browser and compare the original and compressed file sizes before downloading.',
     category: 'pdf-tools',
     keywords: ['compress-pdf', 'compress', 'pdf']
   },
@@ -445,7 +445,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'image-metadata-viewer',
     title: 'Image Metadata Viewer',
-    description: 'View file properties and decoded pixel dimensions locally; EXIF is not parsed.',
+    description: 'Check an image file’s size, format, width, height, and basic file information directly in your browser.',
     category: 'image-tools',
     keywords: ['image-metadata-viewer', 'image', 'metadata', 'viewer']
   },
@@ -508,7 +508,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'svg-to-png',
     title: 'SVG to PNG',
-    description: 'Rasterize a browser-compatible SVG at its intrinsic dimensions and export PNG.',
+    description: 'Convert an SVG vector image to a PNG image in your browser using the SVG’s original size.',
     category: 'image-tools',
     keywords: ['svg-to-png', 'svg', 'to', 'png']
   },
@@ -579,8 +579,8 @@ export const tools: RegisteredTool[] = ([
   // ====== FINANCE CALCULATORS ======
   {
     slug: 'cashflow-budget-architect',
-    title: 'Cashflow Budget Architect',
-    description: 'Plan and manage your cash flow with comprehensive budgeting tools. Track income and expenses.',
+    title: 'Budget Planner & Cash Flow Calculator',
+    description: 'Plan a monthly budget, track income and expenses, and see how much money is left.',
     category: 'finance-calculators',
     keywords: ['cashflow-budget-architect', 'cashflow', 'budget', 'architect']
   },
@@ -607,15 +607,15 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'investment-return-profiler',
-    title: 'Investment Return Profiler',
-    description: 'Calculate investment returns and analyze portfolio performance. Track ROI and CAGR.',
+    title: 'Investment Return Calculator',
+    description: 'Calculate investment growth, return on investment (ROI), and annual growth rate (CAGR).',
     category: 'finance-calculators',
     keywords: ['investment-return-profiler', 'investment', 'return', 'profiler']
   },
   {
     slug: 'loan-amortization-suite',
-    title: 'Loan Amortization Suite',
-    description: 'Calculate loan amortization schedules and payments. Plan EMI and repayment.',
+    title: 'Loan Payment & Amortization Calculator',
+    description: 'Calculate loan payments, interest, payoff schedules, and how much you will repay over time.',
     category: 'finance-calculators',
     keywords: ['loan-amortization-suite', 'loan', 'amortization', 'suite']
   },
@@ -664,15 +664,15 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'taxation-compliance-deck',
-    title: 'Taxation Compliance Deck',
-    description: 'Calculate tax liability and compliance requirements online free. Plan your tax strategy.',
+    title: 'Tax Calculators & Planning Tools',
+    description: 'Use free tax calculators to estimate taxes, deductions, and common tax-planning scenarios.',
     category: 'finance-calculators',
     keywords: ['taxation-compliance-deck', 'taxation', 'compliance', 'deck']
   },
   {
     slug: 'wealth-inflation-matrix',
-    title: 'Wealth Inflation Matrix',
-    description: 'Calculate how inflation erodes your money\'s value over time online free. Understand the impact of inflation on your savings.',
+    title: 'Inflation & Future Value Calculator',
+    description: 'See how inflation changes the future buying power of your money and savings over time.',
     category: 'finance-calculators',
     keywords: ['wealth-inflation-matrix', 'wealth', 'inflation', 'matrix']
   },
@@ -687,7 +687,7 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'bmr-calculator',
-    title: 'BMR Calculator',
+    title: 'BMR Calculator – Calories Burned at Rest',
     description: 'Calculate your Basal Metabolic Rate (BMR) online free. Understand your daily calorie needs at rest.',
     category: 'health-calculators',
     keywords: ['bmr-calculator', 'bmr', 'calculator']
@@ -750,7 +750,7 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'tdee-calculator',
-    title: 'TDEE Calculator',
+    title: 'TDEE Calculator – Daily Calorie Needs',
     description: 'Calculate your Total Daily Energy Expenditure (TDEE) online free. Understand your daily calorie needs.',
     category: 'health-calculators',
     keywords: ['tdee-calculator', 'tdee', 'calculator']
@@ -814,8 +814,8 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'hrv-baseline-deviation-calculator',
-    title: 'HRV Baseline Deviation Calculator',
-    description: 'Compare today’s heart rate variability (rMSSD) against your 7-day to 60-day rolling baseline and standard deviation to calculate Z-score and percentage deviation.',
+    title: 'HRV Calculator – Compare Today\'s HRV to Your Baseline',
+    description: 'Compare today’s heart rate variability (HRV) with your usual range and see the percentage change from your recent baseline.',
     category: 'health-calculators',
     keywords: ['hrv baseline deviation calculator', 'heart rate variability baseline', 'rmssd z score calculator', 'hrv normal range', 'hrv percentage deviation'],
     heroTitle: 'HRV Baseline Deviation Calculator',
@@ -1183,13 +1183,13 @@ export const tools: RegisteredTool[] = ([
   { slug: 'cdn-cost-calculator', title: 'CDN Cost Calculator', description: 'Estimate CDN bandwidth, request, cache-miss origin traffic, monthly, and annual delivery costs.', category: 'developer-tools', keywords: ['CDN cost calculator', 'bandwidth pricing estimator', 'cache hit ratio cost'], heroTitle: 'CDN Cost Calculator', heroDescription: 'Estimate CDN and origin costs from traffic, requests, rates, and cache-hit ratio.' },
 
   // ====== SAAS, REAL ESTATE & FINANCIAL DECISIONS ======
-  { slug: 'startup-runway-calculator', title: 'Startup Runway Calculator', description: 'Estimate net monthly burn and simple or growth-adjusted startup cash runway without displaying meaningless infinity values.', category: 'finance-calculators', keywords: ['startup runway calculator', 'cash runway calculator', 'monthly burn runway'], heroTitle: 'Startup Runway Calculator', heroDescription: 'Estimate how long current cash may last under revenue, expense, and growth assumptions.' },
-  { slug: 'saas-burn-rate-calculator', title: 'SaaS Burn Rate Calculator', description: 'Compare gross burn, operating net burn, observed cash burn, and estimated runway over a selected period.', category: 'finance-calculators', keywords: ['SaaS burn rate calculator', 'gross burn calculator', 'net burn runway'], heroTitle: 'SaaS Burn Rate Calculator', heroDescription: 'Distinguish expense burn, operating net burn, and cash burn.' },
-  { slug: 'ltv-cac-ratio-calculator', title: 'LTV CAC Ratio Calculator', description: 'Estimate customer lifetime value, LTV:CAC ratio, and gross-profit payback from ARPU, margin, churn, and CAC.', category: 'finance-calculators', keywords: ['LTV CAC ratio calculator', 'customer lifetime value calculator', 'SaaS unit economics'], heroTitle: 'LTV CAC Ratio Calculator', heroDescription: 'Estimate LTV:CAC using a clearly stated gross-margin and churn formula.' },
-  { slug: 'cac-payback-calculator', title: 'CAC Payback Calculator', description: 'Estimate customer acquisition cost payback from CAC, monthly recurring revenue per customer, and gross margin.', category: 'finance-calculators', keywords: ['CAC payback calculator', 'customer acquisition payback', 'SaaS payback period'], heroTitle: 'CAC Payback Calculator', heroDescription: 'Convert customer gross profit into an estimated CAC payback period.' },
-  { slug: 'churn-impact-calculator', title: 'Churn Impact Calculator', description: 'Project gross customer churn, revenue loss, ending customers, MRR, and net change with optional new customers.', category: 'finance-calculators', keywords: ['churn impact calculator', 'customer churn projection', 'MRR churn calculator'], heroTitle: 'Churn Impact Calculator', heroDescription: 'Project customer and recurring-revenue effects of monthly churn.' },
+  { slug: 'startup-runway-calculator', title: 'Startup Runway Calculator', description: 'Estimate how many months your startup cash will last based on money in the bank, monthly spending, and revenue.', category: 'finance-calculators', keywords: ['startup runway calculator', 'cash runway calculator', 'monthly burn runway'], heroTitle: 'Startup Runway Calculator', heroDescription: 'Estimate how long current cash may last under revenue, expense, and growth assumptions.' },
+  { slug: 'saas-burn-rate-calculator', title: 'SaaS Burn Rate Calculator', description: 'Calculate how quickly a business is spending cash and estimate how long the remaining cash may last.', category: 'finance-calculators', keywords: ['SaaS burn rate calculator', 'gross burn calculator', 'net burn runway'], heroTitle: 'SaaS Burn Rate Calculator', heroDescription: 'Distinguish expense burn, operating net burn, and cash burn.' },
+  { slug: 'ltv-cac-ratio-calculator', title: 'LTV CAC Ratio Calculator', description: 'Compare customer lifetime value with customer acquisition cost and estimate whether acquisition spending is sustainable.', category: 'finance-calculators', keywords: ['LTV CAC ratio calculator', 'customer lifetime value calculator', 'SaaS unit economics'], heroTitle: 'LTV CAC Ratio Calculator', heroDescription: 'Estimate LTV:CAC using a clearly stated gross-margin and churn formula.' },
+  { slug: 'cac-payback-calculator', title: 'CAC Payback Calculator', description: 'Estimate how many months it may take to earn back the cost of acquiring a customer.', category: 'finance-calculators', keywords: ['CAC payback calculator', 'customer acquisition payback', 'SaaS payback period'], heroTitle: 'CAC Payback Calculator', heroDescription: 'Convert customer gross profit into an estimated CAC payback period.' },
+  { slug: 'churn-impact-calculator', title: 'Churn Impact Calculator', description: 'Estimate how customer churn may affect customer count and monthly recurring revenue over time.', category: 'finance-calculators', keywords: ['churn impact calculator', 'customer churn projection', 'MRR churn calculator'], heroTitle: 'Churn Impact Calculator', heroDescription: 'Project customer and recurring-revenue effects of monthly churn.' },
   { slug: 'rule-of-40-calculator', title: 'Rule of 40 Calculator', description: 'Add annual revenue growth and a selected profitability margin to calculate and interpret a Rule of 40 score.', category: 'finance-calculators', keywords: ['Rule of 40 calculator', 'SaaS growth profit score', 'EBITDA margin rule 40'], heroTitle: 'Rule of 40 Calculator', heroDescription: 'Calculate growth plus profitability and compare the result with 40.' },
-  { slug: 'net-revenue-retention-calculator', title: 'Net Revenue Retention Calculator', description: 'Calculate NRR from starting recurring revenue, expansion, contraction, and churn with a transparent breakdown.', category: 'finance-calculators', keywords: ['net revenue retention calculator', 'NRR calculator', 'SaaS retention metric'], heroTitle: 'Net Revenue Retention Calculator', heroDescription: 'Calculate recurring-revenue retention after expansion, contraction, and churn.' },
+  { slug: 'net-revenue-retention-calculator', title: 'Net Revenue Retention Calculator', description: 'Calculate net revenue retention (NRR) from starting revenue, upgrades, downgrades, and customer churn.', category: 'finance-calculators', keywords: ['net revenue retention calculator', 'NRR calculator', 'SaaS retention metric'], heroTitle: 'Net Revenue Retention Calculator', heroDescription: 'Calculate recurring-revenue retention after expansion, contraction, and churn.' },
   { slug: 'rental-property-cash-flow-calculator', title: 'Rental Property Cash Flow Calculator', description: 'Estimate effective rental income, operating expenses, NOI, debt service, and monthly or annual property cash flow.', category: 'finance-calculators', keywords: ['rental property cash flow calculator', 'rental NOI calculator', 'investment property cash flow'], heroTitle: 'Rental Property Cash Flow Calculator', heroDescription: 'Separate property NOI from debt service and estimate cash flow.' },
   { slug: 'rental-yield-calculator', title: 'Rental Yield Calculator', description: 'Calculate annual rental income plus gross and expense-adjusted net rental yield from property value.', category: 'finance-calculators', keywords: ['rental yield calculator', 'gross rental yield', 'net rental yield'], heroTitle: 'Rental Yield Calculator', heroDescription: 'Compare gross and net rental yield using explicit definitions.' },
   { slug: 'cap-rate-calculator', title: 'Cap Rate Calculator', description: 'Calculate effective rental income, net operating income, and capitalization rate without including mortgage debt service in NOI.', category: 'finance-calculators', keywords: ['cap rate calculator', 'capitalization rate calculator', 'NOI property value'], heroTitle: 'Cap Rate Calculator', heroDescription: 'Calculate property NOI and capitalization rate with debt excluded from NOI.' },
@@ -1219,7 +1219,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'air-compressor-cfm-calculator',
     title: 'Air Compressor CFM & Tank Runtime Calculator',
-    description: 'Compare compressor SCFM with air tool demand, duty cycle and tank capacity to estimate whether your compressor can keep up.',
+    description: 'Check whether an air compressor can keep up with your air tools using airflow, duty cycle, and tank size.',
     category: 'construction-calculators',
     keywords: [
       'air compressor cfm calculator',
@@ -1589,7 +1589,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'dimensional-weight-calculator',
     title: 'Dimensional Weight Calculator',
-    description: 'Calculate dimensional or volumetric shipping weight and compare it with actual package weight.',
+    description: 'Calculate shipping dimensional weight from package size and compare it with the actual scale weight.',
     category: 'everyday-calculators',
     keywords: ['dimensional weight calculator', 'dim weight calculator', 'volumetric weight calculator', 'shipping weight calculator', 'package dimensional weight'],
     heroTitle: 'Dimensional Weight Calculator',
@@ -1811,7 +1811,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'joist-deflection-calculator',
     title: 'Joist Deflection Calculator',
-    description: 'Estimate simple beam or joist deflection under uniformly distributed load.',
+    description: 'Estimate how much a floor joist or simple beam may bend under an evenly distributed load.',
     category: 'construction-calculators',
     keywords: [
       'joist deflection calculator',
