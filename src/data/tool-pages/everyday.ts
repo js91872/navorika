@@ -424,7 +424,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { question: 'Does Navorika store the website revenue I enter?', answer: 'The valuation arithmetic runs in your browser. The URL itself is sent to the Navorika server only when you request the public website scan.' }
     ],
     relatedTools: [
-      { slug: 'website-carbon-footprint-estimator', name: 'Website Carbon Footprint Estimator' },
+      { slug: 'meta-tag-generator', name: 'Meta Tag Generator' },
       { slug: 'ai-token-calculator', name: 'AI Token Calculator' }
     ],
     relatedGuides: []
