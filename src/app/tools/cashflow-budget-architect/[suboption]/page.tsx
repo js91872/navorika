@@ -11,22 +11,22 @@ export default function CashflowArchitectTool() {
   const suboption = (params?.suboption as string) || 'budget-planner';
   const seo = budgetSubTools[suboption] || budgetSubTools['budget-planner'];
 
-  const [valA, setValA] = useState<number | ''>(100000);
+  const [valA, setValA] = useState<number | ''>(6000);
   const [valB, setValB] = useState<number | ''>(6);
-  const [valC, setValC] = useState<number | ''>(10000);
+  const [valC, setValC] = useState<number | ''>(500);
   const [result, setResult] = useState<any>(null);
 
   const configs: Record<string, any> = {
-    'budget-planner': { labelA: 'Monthly After-Tax Income (₹)', showB: false, showC: false,
-      calc: (a: number) => ({ value: (a * 0.5).toLocaleString('en-IN'), unit: `Needs (50%), ₹${(a*0.3).toLocaleString('en-IN')} Wants, ₹${(a*0.2).toLocaleString('en-IN')} Savings` }) },
-    'emergency-fund-calculator': { labelA: 'Monthly Living Expenses (₹)', labelB: 'Target Safety Runway (Months)', showC: false,
-      calc: (a: number, b: number) => ({ value: (a * b).toLocaleString('en-IN'), unit: `₹ Total Emergency Corpus Needed` }) },
-    'credit-card-payoff': { labelA: 'Total Credit Card Debt (₹)', labelB: 'Annual Interest Rate (%)', labelC: 'Monthly Payment (₹)',
+    'budget-planner': { labelA: 'Monthly After-Tax Income ($)', showB: false, showC: false,
+      calc: (a: number) => ({ value: `${(a * 0.5).toLocaleString('en-US', { maximumFractionDigits: 0 })}`, unit: `Needs (50%), ${(a*0.3).toLocaleString('en-US', { maximumFractionDigits: 0 })} wants, ${(a*0.2).toLocaleString('en-US', { maximumFractionDigits: 0 })} savings` }) },
+    'emergency-fund-calculator': { labelA: 'Monthly Essential Expenses ($)', labelB: 'Months of Expenses to Cover', showC: false,
+      calc: (a: number, b: number) => ({ value: `${(a * b).toLocaleString('en-US', { maximumFractionDigits: 0 })}`, unit: `Suggested emergency savings` }) },
+    'credit-card-payoff': { labelA: 'Credit Card Balance ($)', labelB: 'APR (%)', labelC: 'Monthly Payment ($)',
       calc: (a: number, b: number, c: number) => {
         let balance = a; const r = (b / 100) / 12; let months = 0;
-        if (c <= balance * r) return { value: 'Never', unit: 'Payment too low to cover interest!' };
+        if (c <= balance * r) return { value: 'Never', unit: 'Monthly payment is too low to cover the interest.' };
         while (balance > 0 && months < 600) { balance = (balance * (1 + r)) - c; months++; }
-        return { value: months, unit: `Months to become Debt-Free` };
+        return { value: months, unit: `Months to pay off the balance` };
       }}
   };
 
@@ -42,7 +42,7 @@ export default function CashflowArchitectTool() {
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
-      <a href="/categories/finance-calculators" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back</a>
+      <a href="/categories/finance-calculators" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Finance Calculators</a>
       <div className="text-center mb-10"><h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{seo.heading}</h1><p className="text-lg text-slate-600 dark:text-slate-400">{seo.description}</p></div>
 
       <div className="flex flex-wrap gap-2 mb-8 bg-slate-100 dark:bg-slate-950 p-1.5 rounded-2xl w-fit border">
@@ -58,7 +58,7 @@ export default function CashflowArchitectTool() {
           {config.showC !== false && <div><label className="block text-xs font-bold text-slate-500 uppercase mb-2">{config.labelC}</label><input type="number" value={valC} onChange={e=>setValC(e.target.value === '' ? '' : Number(e.target.value))} className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border font-bold outline-none" /></div>}
         </div>
         <div className="lg:col-span-2 bg-slate-950 text-white rounded-3xl p-8 flex flex-col justify-center border min-h-[300px]">
-           <span className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Calculated Result</span>
+           <span className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Your Estimate</span>
            <h2 className="text-5xl font-black text-rose-400 break-all">{result?.value}</h2>
            <p className="text-lg font-bold text-slate-500 mt-2">{result?.unit}</p>
         </div>
