@@ -62,7 +62,7 @@ export default function ConstructionCostCalculator() {
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
         <h1 className="text-2xl font-bold mb-2">Construction Cost Calculator</h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate total construction costs including materials, labor, overhead, and contingency.</p>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">Estimate a rough building cost from project size and your local cost per square foot, with optional overhead and extra budget for surprises.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -88,7 +88,7 @@ export default function ConstructionCostCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Direct Construction Rate (USD/sq ft)</label>
+            <label className="block text-sm font-medium mb-2">Construction Cost per sq ft (USD)</label>
             <Input
               type="number"
               value={costPerUnit}
@@ -98,7 +98,7 @@ export default function ConstructionCostCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Labor Allocation Weight</label>
+            <label className="block text-sm font-medium mb-2">Labor Share</label>
             <Input
               type="number"
               value={laborPercent}
@@ -109,7 +109,7 @@ export default function ConstructionCostCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Material Allocation Weight</label>
+            <label className="block text-sm font-medium mb-2">Material Share</label>
             <Input
               type="number"
               value={materialPercent}
@@ -131,7 +131,7 @@ export default function ConstructionCostCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Contingency (% of base cost)</label>
+            <label className="block text-sm font-medium mb-2">Extra Budget for Unexpected Costs (%)</label>
             <Input
               type="number"
               value={contingencyPercent}
@@ -189,7 +189,7 @@ export default function ConstructionCostCalculator() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800">
-              <p className="text-sm text-emerald-600 dark:text-emerald-400">Labor and material values allocate the direct cost; they are not added again. Enter a current project-specific USD rate and confirm scope, taxes, escalation, exclusions, and contingency professionally.</p>
+              <p className="text-sm text-emerald-600 dark:text-emerald-400">Labor and material shares only divide the base cost for the breakdown; they are not added again. Use a current local cost per square foot and compare the result with contractor quotes for a real project.</p>
             </div>
           </div>
         )}
