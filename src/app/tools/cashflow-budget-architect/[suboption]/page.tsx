@@ -18,9 +18,9 @@ export default function CashflowArchitectTool() {
 
   const configs: Record<string, any> = {
     'budget-planner': { labelA: 'Monthly After-Tax Income ($)', showB: false, showC: false,
-      calc: (a: number) => ({ value: `${(a * 0.5).toLocaleString('en-US', { maximumFractionDigits: 0 })}`, unit: `Needs (50%), ${(a*0.3).toLocaleString('en-US', { maximumFractionDigits: 0 })} wants, ${(a*0.2).toLocaleString('en-US', { maximumFractionDigits: 0 })} savings` }) },
+      calc: (a: number) => ({ value: '$' + (a * 0.5).toLocaleString('en-US', { maximumFractionDigits: 0 }), unit: `Needs (50%), $${(a*0.3).toLocaleString('en-US', { maximumFractionDigits: 0 })} wants, $${(a*0.2).toLocaleString('en-US', { maximumFractionDigits: 0 })} savings` }) },
     'emergency-fund-calculator': { labelA: 'Monthly Essential Expenses ($)', labelB: 'Months of Expenses to Cover', showC: false,
-      calc: (a: number, b: number) => ({ value: `${(a * b).toLocaleString('en-US', { maximumFractionDigits: 0 })}`, unit: `Suggested emergency savings` }) },
+      calc: (a: number, b: number) => ({ value: '$' + (a * b).toLocaleString('en-US', { maximumFractionDigits: 0 }), unit: `Suggested emergency savings` }) },
     'credit-card-payoff': { labelA: 'Credit Card Balance ($)', labelB: 'APR (%)', labelC: 'Monthly Payment ($)',
       calc: (a: number, b: number, c: number) => {
         let balance = a; const r = (b / 100) / 12; let months = 0;

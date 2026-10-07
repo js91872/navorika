@@ -18,15 +18,15 @@ export default function WealthMatrixTool() {
 
   const configs: Record<string, any> = {
     'compound-interest-calculator': { labelA: 'Starting Amount ($)', labelB: 'Annual Interest Rate (%)', labelC: 'Years',
-      calc: () => ({ value: `${(valA * Math.pow(1 + (valB/100), valC)).toLocaleString('en-US', {maximumFractionDigits:0})}`, unit: 'Estimated future value' }) },
+      calc: () => ({ value: '$' + (valA * Math.pow(1 + (valB/100), valC)).toLocaleString('en-US', {maximumFractionDigits:0}), unit: 'Estimated future value' }) },
     'inflation-calculator': { labelA: 'Current Cost ($)', labelB: 'Expected Inflation Rate (%)', labelC: 'Years in Future',
-      calc: () => ({ value: `${(valA * Math.pow(1 + (valB/100), valC)).toLocaleString('en-US', {maximumFractionDigits:0})}`, unit: 'Estimated future cost' }) },
+      calc: () => ({ value: '$' + (valA * Math.pow(1 + (valB/100), valC)).toLocaleString('en-US', {maximumFractionDigits:0}), unit: 'Estimated future cost' }) },
     'net-worth-calculator': { labelA: 'Total Assets ($)', labelB: 'Total Debts & Liabilities ($)', showC: false,
-      calc: () => ({ value: `${(valA - valB).toLocaleString('en-US', {maximumFractionDigits:0})}`, unit: 'Estimated net worth' }) },
+      calc: () => ({ value: '$' + (valA - valB).toLocaleString('en-US', {maximumFractionDigits:0}), unit: 'Estimated net worth' }) },
     'salary-calculator': { labelA: 'Annual Gross Salary ($)', labelB: 'Annual Bonus ($)', labelC: 'Monthly Taxes & Other Deductions ($)',
       calc: () => {
         const takeHome = ((valA + valB) / 12) - valC;
-        return { value: `${Math.max(0, takeHome).toLocaleString('en-US', {maximumFractionDigits:0})}`, unit: 'Estimated monthly take-home pay' };
+        return { value: '$' + Math.max(0, takeHome).toLocaleString('en-US', {maximumFractionDigits:0}), unit: 'Estimated monthly take-home pay' };
       }}
   };
 
