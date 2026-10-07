@@ -69,7 +69,7 @@ export default function HomePage() {
   const faqs = [
     {
       q: 'Is Navorika really free?',
-      a: `Yes! All ${displayCount} tools are completely free with no hidden costs, premium plans, or credit card required. Forever free.`
+      a: `Yes. All ${displayCount} active tools are free to use with no signup or credit card required.`
     },
     {
       q: 'How is my data protected?',
@@ -85,7 +85,7 @@ export default function HomePage() {
     },
     {
       q: 'Does it work on mobile?',
-      a: 'Yes! All tools are fully responsive and work perfectly on mobile phones, tablets, and desktop computers. Any device, anywhere.'
+      a: 'Yes. Navorika is designed to work on current mobile phones, tablets, and desktop browsers.'
     },
   ];
 
@@ -184,7 +184,7 @@ export default function HomePage() {
       <section className="max-w-6xl mx-auto px-4 py-16 border-t border-[var(--border)]">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold">Why Choose Navorika?</h2>
-          <p className="text-[var(--muted-foreground)] mt-2">Built differently. Built better.</p>
+          <p className="text-[var(--muted-foreground)] mt-2">Free tools for common jobs—without unnecessary steps.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -306,16 +306,16 @@ export default function HomePage() {
           <div className="relative z-10">
             <Rocket className="h-12 w-12 text-white/80 mx-auto mb-4" />
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-              Ready to experience the best free tools?
+              Need a calculator or file tool?
             </h2>
             <p className="text-white/80 max-w-2xl mx-auto mb-6">
-              Join thousands of users who trust Navorika for their daily productivity needs.
+              Browse free calculators, PDF tools, image tools, construction tools, and everyday utilities.
             </p>
             <Link
               href="/tools"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold hover:shadow-xl transition-all hover:scale-105"
             >
-              Start Using Tools <ArrowRight className="h-4 w-4" />
+              Browse Free Tools <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
