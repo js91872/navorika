@@ -13,10 +13,10 @@ export default function DynamicLoanSubOptionTool() {
   const suboption = (params?.suboption as string) || 'emi-calculator';
   const seo = loanSubTools[suboption] || loanSubTools['emi-calculator'];
 
-  const [loanAmount, setLoanAmount] = useState<number | ''>(2500000);
-  const [interestRate, setInterestRate] = useState<number | ''>(8.5);
+  const [loanAmount, setLoanAmount] = useState<number | ''>(250000);
+  const [interestRate, setInterestRate] = useState<number | ''>(7);
   const [tenureYears, setTenureYears] = useState<number | ''>(20);
-  const [prepayment, setPrepayment] = useState<number | ''>(suboption === 'prepayment-calculator' ? 10000 : 0);
+  const [prepayment, setPrepayment] = useState<number | ''>(suboption === 'prepayment-calculator' ? 100 : 0);
 
   const [monthlyEmi, setMonthlyEmi] = useState<number | null>(null);
   const [totalInterest, setTotalInterest] = useState<number | null>(null);
@@ -84,7 +84,7 @@ export default function DynamicLoanSubOptionTool() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shrink-0">
           <div>
             <a href="/categories/finance-calculators" className="inline-flex items-center gap-2 text-[10px] font-black text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors mb-2 uppercase tracking-widest">
-              <ArrowLeft className="h-3 w-3" /> Finance Portal
+              <ArrowLeft className="h-3 w-3" /> Finance Calculators
             </a>
             <h1 className="text-2xl lg:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 tracking-tight">
               {seo.heading}
@@ -115,32 +115,32 @@ export default function DynamicLoanSubOptionTool() {
           <div className="lg:col-span-4 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] p-6 shadow-xl flex flex-col gap-5 transition-colors h-fit sticky top-[100px]">
             <div className="flex items-center gap-2 mb-2 shrink-0">
               <Landmark className="h-4 w-4 text-indigo-500 dark:text-indigo-400" />
-              <h3 className="text-xs font-black text-slate-800 dark:text-white uppercase tracking-widest">Borrowing Profile</h3>
+              <h3 className="text-xs font-black text-slate-800 dark:text-white uppercase tracking-widest">Loan Details</h3>
             </div>
 
             <div className="relative group shrink-0">
-              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 group-focus-within:text-indigo-600 dark:group-focus-within:text-indigo-400 transition-colors">Principal Loan Amount</label>
+              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 group-focus-within:text-indigo-600 dark:group-focus-within:text-indigo-400 transition-colors">Loan Amount ($)</label>
               <div className="relative flex items-center bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
                 <input type="number" value={loanAmount} onChange={e => setLoanAmount(e.target.value === '' ? '' : Number(e.target.value))} className="w-full px-4 py-3.5 bg-transparent outline-none font-bold text-base text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-700" placeholder="0" />
               </div>
             </div>
 
             <div className="relative group shrink-0">
-              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 group-focus-within:text-indigo-600 dark:group-focus-within:text-indigo-400 transition-colors">Interest Rate (% p.a.)</label>
+              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 group-focus-within:text-indigo-600 dark:group-focus-within:text-indigo-400 transition-colors">Annual Interest Rate (%)</label>
               <div className="relative flex items-center bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
                 <input type="number" step="0.1" value={interestRate} onChange={e => setInterestRate(e.target.value === '' ? '' : Number(e.target.value))} className="w-full px-4 py-3.5 bg-transparent outline-none font-bold text-base text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-700" placeholder="0" />
               </div>
             </div>
 
             <div className="relative group shrink-0">
-              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 group-focus-within:text-indigo-600 dark:group-focus-within:text-indigo-400 transition-colors">Tenure Duration (Years)</label>
+              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 group-focus-within:text-indigo-600 dark:group-focus-within:text-indigo-400 transition-colors">Loan Term (Years)</label>
               <div className="relative flex items-center bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
                 <input type="number" value={tenureYears} onChange={e => setTenureYears(e.target.value === '' ? '' : Number(e.target.value))} className="w-full px-4 py-3.5 bg-transparent outline-none font-bold text-base text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-700" placeholder="0" />
               </div>
             </div>
 
             <div className="relative group shrink-0">
-              <label className="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-1.5 transition-colors">Optional Prepayment</label>
+              <label className="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-1.5 transition-colors">Extra Monthly Payment ($)</label>
               <div className="relative flex items-center bg-slate-50 dark:bg-black/40 border border-emerald-200 dark:border-emerald-500/30 rounded-2xl overflow-hidden focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 transition-all">
                 <input type="number" value={prepayment} onChange={e => setPrepayment(e.target.value === '' ? '' : Number(e.target.value))} className="w-full px-4 py-3.5 bg-transparent outline-none font-bold text-base text-emerald-600 dark:text-emerald-400 placeholder:text-emerald-400/50" placeholder="0" />
               </div>
@@ -153,7 +153,7 @@ export default function DynamicLoanSubOptionTool() {
             {/* Top 3 Summary Mini-Bentos */}
             <div className="grid sm:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Monthly Installment</span>
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Monthly Payment</span>
                 <p className="text-3xl font-black text-indigo-600 dark:text-indigo-400 tabular-nums">{monthlyEmi ? monthlyEmi.toLocaleString('en-US') : '0'}</p>
               </div>
               <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
@@ -161,7 +161,7 @@ export default function DynamicLoanSubOptionTool() {
                 <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
               </div>
               <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Gross Outlay</span>
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
                 <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function DynamicLoanSubOptionTool() {
               <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
                 <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
                   <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
-                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Amortization Matrix</h3>
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
                 </div>
                 
                 <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
