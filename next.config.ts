@@ -9,6 +9,56 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/categories/retirement-calculators',
+        destination: '/categories/finance-calculators',
+        permanent: true,
+      },
+      {
+        source: '/hubs',
+        destination: '/toolkits',
+        permanent: true,
+      },
+      {
+        source: '/tools/base64-encode',
+        destination: '/tools/base64-encoder',
+        permanent: true,
+      },
+      {
+        source: '/tools/base64-decode',
+        destination: '/tools/base64-encoder',
+        permanent: true,
+      },
+      {
+        source: '/tools/concrete-slab-calculator',
+        destination: '/tools/concrete-calculator',
+        permanent: true,
+      },
+      {
+        source: '/tools/image-resizer',
+        destination: '/tools/resize-image',
+        permanent: true,
+      },
+      {
+        source: '/tools/meta-tag-analyzer',
+        destination: '/categories/developer-tools#developer-web',
+        permanent: true,
+      },
+      {
+        source: '/tools/png-to-pdf-converter',
+        destination: '/tools/image-to-pdf',
+        permanent: true,
+      },
+      {
+        source: '/tools/png-to-webp-converter',
+        destination: '/tools/convert-png-to-webp',
+        permanent: true,
+      },
+      {
+        source: '/tools/robots-txt-validator',
+        destination: '/tools/robots-txt-generator',
+        permanent: true,
+      },
+      {
         source: '/tools/developer-utilities',
         destination: '/categories/developer-tools',
         permanent: true,
