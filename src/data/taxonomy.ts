@@ -87,6 +87,7 @@ export const clusters: ToolCluster[] = [
   { id: 'everyday-travel-automotive', name: 'Travel and Automotive', description: 'Estimate trip fuel sharing and compare tire dimensions, clearance, and speedometer effects.', category: 'everyday-calculators', toolSlugs: ['fuel-cost-split-calculator', 'tire-size-calculator', 'schengen-90-180-day-calculator'] },
   { id: 'everyday-home-utilities', name: 'Home and Utility Planning', description: 'Estimate aquarium capacity and appliance electricity consumption and cost.', category: 'everyday-calculators', toolSlugs: ['aquarium-volume-calculator', 'electricity-cost-calculator', 'heat-pump-vs-furnace-cost-calculator'] },
   { id: 'everyday-shopping-shipping', name: 'Shopping and Shipping', description: 'Compare package value and calculate dimensional shipping weight.', category: 'everyday-calculators', toolSlugs: ['unit-price-calculator', 'dimensional-weight-calculator'] },
+  { id: 'everyday-website-value', name: 'Website Value', description: 'Estimate what a website may be worth from traffic, revenue, profit, and public website signals.', category: 'everyday-calculators', toolSlugs: ['website-worth-calculator'] },
   { id: 'everyday-strength-training', name: 'Strength Training', description: 'Plan balanced barbell plate loading and estimate one-rep max lifting benchmarks.', category: 'everyday-calculators', toolSlugs: ['barbell-plate-calculator', 'one-rep-max-calculator'] },
 ];
 
