@@ -9,7 +9,7 @@ import { calculateFlooring as calculateFlooringEstimate } from '@/lib/calculatio
 export default function FlooringCalculator() {
   const [length, setLength] = useState<number>(10);
   const [width, setWidth] = useState<number>(10);
-  const [unit, setUnit] = useState<'m' | 'ft'>('m');
+  const [unit, setUnit] = useState<'m' | 'ft'>('ft');
   const [flooringType, setFlooringType] = useState<'hardwood' | 'laminate' | 'vinyl' | 'carpet' | 'tile'>('hardwood');
   const [costPerSqft, setCostPerSqft] = useState<number>(8);
   const [laborCost, setLaborCost] = useState<number>(3);
@@ -56,7 +56,7 @@ export default function FlooringCalculator() {
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
         <h1 className="text-2xl font-bold mb-2">Flooring Calculator</h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">Estimate flooring materials including hardwood, laminate, and vinyl.</p>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate room square footage, how much flooring to buy, and an estimated material and labor cost.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -135,7 +135,7 @@ export default function FlooringCalculator() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Wastage (%)</label>
+            <label className="block text-sm font-medium mb-2">Extra for Cuts & Waste (%)</label>
             <Input
               type="number"
               value={wastage}
@@ -166,7 +166,7 @@ export default function FlooringCalculator() {
                 <span className="font-medium">{result.flooringType}</span>
               </div>
               <div className="flex justify-between py-2 border-b border-slate-200 dark:border-slate-700">
-                <span className="text-slate-600 dark:text-slate-400">Area (with wastage)</span>
+                <span className="text-slate-600 dark:text-slate-400">Flooring to Buy (with waste)</span>
                 <span className="font-medium">{result.areaSqftWithWastage.toFixed(0)} sq ft</span>
               </div>
               <div className="flex justify-between py-2 border-b border-slate-200 dark:border-slate-700">
@@ -183,7 +183,7 @@ export default function FlooringCalculator() {
               </div>
             </div>
             <div className="mt-4 p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-800">
-              <p className="text-sm text-emerald-600 dark:text-emerald-400">Material pricing applies to the order area with waste; labor pricing applies to the measured floor area. Confirm both rates and taxable extras locally.</p>
+              <p className="text-sm text-emerald-600 dark:text-emerald-400">The material estimate includes your waste allowance. Labor is calculated from the measured floor area. Replace the example prices with current local rates before planning a purchase.</p>
             </div>
           </div>
         )}
