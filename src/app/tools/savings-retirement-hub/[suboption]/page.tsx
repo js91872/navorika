@@ -8,6 +8,34 @@ import { calculateEpfProjection, calculateNpsProjection } from '@/lib/calculatio
 
 type NumericValue = number | '';
 
+const savingsExplanations: Record<string, { how: string; means: string; note: string }> = {
+  'epf-calculator': {
+    how: 'Enter the monthly EPF contribution wage, employee contribution rate, assumed annual EPF interest rate, opening balance, wage growth, and projection period. The calculator separately estimates employee EPF, employer EPF, EPS allocation, and interest.',
+    means: 'The projected balance is a planning estimate of the EPF amount under the assumptions you enter. Actual EPFO balances depend on contribution history, declared annual rates, wage rules, and the amounts posted to your account.',
+    note: 'This is an India-specific calculator. Verify current EPFO contribution rules, wage ceilings, interest rates, and your actual passbook before making a retirement or withdrawal decision.',
+  },
+  'nps-calculator': {
+    how: 'Enter your existing Tier I balance, monthly contribution, expected contribution growth, assumed investment return, years to exit, annuity allocation, and an illustrative annuity payout rate.',
+    means: 'The result shows one possible NPS corpus and pension scenario. NPS is market-linked, so the final corpus and the annuity income available at exit can differ materially from this estimate.',
+    note: 'This is an India-specific calculator. Exit rules, minimum annuity requirements, taxes, fees, and annuity prices can change. Check current PFRDA and provider rules before acting.',
+  },
+  'gratuity-calculator': {
+    how: 'Enter your last drawn basic salary plus DA and completed years of service. The calculator applies its stated gratuity formula to estimate a possible payout.',
+    means: 'The result is a simplified estimate, not an employer settlement statement. Eligibility, service rounding, coverage under the Payment of Gratuity Act, salary definition, and company policy can affect the final amount.',
+    note: 'This calculator is for Indian gratuity planning. Confirm eligibility and the applicable formula with current law, your employer, or a qualified professional.',
+  },
+  'ppf-calculator': {
+    how: 'Enter the planned yearly PPF contribution, assumed interest rate, and investment period to estimate a future maturity value.',
+    means: 'The result is a scenario based on a constant entered rate. Actual PPF interest rates are notified by the Government of India and may change during the investment period.',
+    note: 'This is an India-specific savings calculator. Check current PPF contribution limits, lock-in, withdrawal, extension, and tax rules before making a decision.',
+  },
+  'fd-calculator': {
+    how: 'Enter the deposit amount, annual interest rate, and term to estimate a fixed-deposit maturity value using the calculator’s compounding assumption.',
+    means: 'The result is an estimate. Banks may use different compounding frequencies, rates, penalties, and premature-withdrawal rules.',
+    note: 'This page uses Indian-rupee inputs. Compare the result with the bank’s current product terms and post-tax return before choosing a deposit.',
+  },
+};
+
 const currency = (value: number) => value.toLocaleString('en-IN', { maximumFractionDigits: 0 });
 
 function NumberField({ id, label, value, onChange, min = 0, max, step = 1, help }: {
@@ -210,6 +238,23 @@ export default function SavingsHubTool() {
         {Object.keys(savingsSubTools).map((key) => <button key={key} onClick={() => router.push(key === 'ppf-calculator' || key === 'fd-calculator' ? `/tools/${key}` : `/tools/savings-retirement-hub/${key}`)} className={`shrink-0 px-4 py-2 rounded-xl text-xs font-bold capitalize transition-all ${suboption === key ? 'bg-white text-blue-600 shadow' : 'text-slate-500'}`}>{key.replace(/-/g, ' ')}</button>)}
       </div>
       {suboption === 'epf-calculator' ? <EpfCalculator /> : suboption === 'nps-calculator' ? <NpsCalculator /> : <LegacySavingsCalculator suboption={suboption} />}
+
+      {savingsExplanations[suboption] && (
+        <section className="mt-10 grid gap-6 rounded-2xl border border-slate-200 bg-white p-6 text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 md:grid-cols-3">
+          <div>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">How this India-specific calculator works</h2>
+            <p className="mt-2 text-sm leading-7">{savingsExplanations[suboption].how}</p>
+          </div>
+          <div>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">What the result means</h2>
+            <p className="mt-2 text-sm leading-7">{savingsExplanations[suboption].means}</p>
+          </div>
+          <div>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Before you rely on it</h2>
+            <p className="mt-2 text-sm leading-7">{savingsExplanations[suboption].note}</p>
+          </div>
+        </section>
+      )}
     </main>
   );
 }
