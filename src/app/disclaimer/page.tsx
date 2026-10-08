@@ -131,10 +131,10 @@ export default function DisclaimerPage() {
             <Link href="/methodology" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
               Calculation Methodology
             </Link>
-            . If you notice any calculation discrepancy, please contact{' '}
-            <a href="mailto:admin@navorika.com" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
-              admin@navorika.com
-            </a>
+            . If you notice any calculation discrepancy, please use our{' '}
+            <Link href="/contact" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
+              contact page
+            </Link>
             .
           </p>
         </div>
