@@ -115,13 +115,10 @@ export default function TermsPage() {
 
         <div className="mt-12 p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center">
           <p className="text-sm text-[var(--muted-foreground)]">
-            Questions regarding our Terms of Service? Contact us at{' '}
-            <a
-              href="mailto:admin@navorika.com"
-              className="text-indigo-600 dark:text-indigo-400 hover:underline"
-            >
-              admin@navorika.com
-            </a>
+            Questions regarding our Terms of Service? Use the{' '}
+            <Link href="/contact" className="text-indigo-600 dark:text-indigo-400 hover:underline">
+              contact page
+            </Link>
           </p>
         </div>
       </div>
