@@ -726,7 +726,7 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     relatedTools: [{ slug: 'wire-size-calculator', name: 'Wire Size Calculator' }, { slug: 'solar-panel-calculator', name: 'Solar Panel Calculator' }, { slug: 'steel-weight-calculator', name: 'Steel Weight Calculator' }], relatedGuides: [],
   },
   'wire-size-calculator': {
-    slug: 'wire-size-calculator', name: 'Preliminary AWG Wire Size Reference Calculator', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Find the first AWG reference size meeting user-entered design-current and voltage-drop criteria using simplified copper or aluminum ampacity and resistance tables.',
+    slug: 'wire-size-calculator', name: 'Wire Size Calculator – AWG & Voltage Drop', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Estimate a starting AWG wire size for copper or aluminum using current, voltage, wire length, and a voltage-drop limit.' ,
     longTailKeywords: ['AWG wire size calculator voltage drop ampacity', 'copper aluminum wire gauge calculator', 'wire size calculator one way length', 'single phase three phase cable size reference', 'electrical conductor load factor calculator'],
     intro: ['The calculator increases operating current by the entered design-load factor, then checks AWG sizes in order against simplified reference ampacity and voltage drop.', 'It uses one-way route length, approximate 20°C resistance, and separate copper/aluminum reference values.'],
     formula: [{ title: 'Design current', body: 'Operating current × entered load factor percentage ÷ 100.' }, { title: 'Qualification', body: 'Reference ampacity ≥ design current and estimated voltage drop ≤ entered limit.' }],
@@ -736,7 +736,7 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     relatedTools: [{ slug: 'voltage-drop-calculator', name: 'Voltage Drop Calculator' }, { slug: 'solar-panel-calculator', name: 'Solar Panel Calculator' }, { slug: 'construction-cost-calculator', name: 'Construction Cost Calculator' }], relatedGuides: [],
   },
   'rebar-calculator': {
-    slug: 'rebar-calculator', name: 'Slab Rebar Grid Quantity and Weight Calculator', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Estimate straight rebar counts, total length, and theoretical mass for a rectangular slab grid using clear cover, maximum spacing, bar diameter, and reinforcement direction.',
+    slug: 'rebar-calculator', name: 'Rebar Calculator – Quantity, Length & Weight', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Estimate rebar count, total length, and weight for a rectangular slab using slab size, spacing, cover, and bar diameter.' ,
     longTailKeywords: ['slab rebar grid calculator', 'rebar spacing quantity calculator', 'reinforcing bar weight calculator slab', 'rebar length both directions calculator', 'metric rebar quantity estimator'],
     intro: ['The tool reduces slab dimensions by twice the entered edge cover, then rounds interval counts upward so calculated spacing does not exceed the entered maximum.', 'Straight bar length is multiplied by standard theoretical mass per metre for the selected nominal diameter.'],
     formula: [{ title: 'Bars across a dimension', body: 'Ceiling(effective dimension ÷ maximum spacing) + 1.' }, { title: 'Total mass', body: 'Total straight-bar length × theoretical kg/m for the selected diameter.' }],
@@ -816,7 +816,7 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     relatedTools: [{ slug: 'steel-weight-calculator', name: 'Steel Weight Calculator' }, { slug: 'land-area-converter', name: 'Land Area Converter' }, { slug: 'water-tank-calculator', name: 'Water Tank Calculator' }], relatedGuides: [],
   },
   'steel-weight-calculator': {
-    slug: 'steel-weight-calculator', name: 'Steel Bar and Ideal Section Weight Calculator', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Estimate theoretical mass for solid round, square, and rectangular steel bars or a simplified sharp-edged I-section using dimensions, length, quantity, and editable density.',
+    slug: 'steel-weight-calculator', name: 'Steel Weight Calculator – Bars & Simple Sections', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Estimate steel weight for round, square, rectangular bars, or a simple I-shaped section from dimensions, length, quantity, and density.' ,
     longTailKeywords: ['steel bar weight calculator kg per meter', 'round steel rod weight calculator', 'rectangular steel bar mass calculator', 'square steel bar weight calculator', 'simplified I beam weight calculator'],
     intro: ['This calculator multiplies an ideal cross-sectional area by the entered steel density, total length, and quantity; 7,850 kg/m³ is the default.', 'Round, square, and rectangular options model solid bars. The I-section option uses one thickness for both flanges and the web and treats the entered web height as the clear web height.'],
     formula: [{ title: 'Linear mass', body: 'Cross-sectional area in m² × entered density in kg/m³.' }, { title: 'Total mass', body: 'Linear mass × length per piece × quantity.' }],
@@ -856,7 +856,7 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     relatedTools: [{ slug: 'sand-calculator', name: 'Sand Calculator' }, { slug: 'gravel-calculator', name: 'Gravel Calculator' }, { slug: 'asphalt-calculator', name: 'Asphalt Calculator' }], relatedGuides: [],
   },
   'water-tank-calculator': {
-    slug: 'water-tank-calculator', name: 'Water Tank Capacity Calculator by Shape', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Calculate theoretical rectangular, cylindrical, or spherical tank capacity in cubic metres, litres, and US gallons from metric or imperial dimensions.',
+    slug: 'water-tank-calculator', name: 'Water Tank Capacity Calculator – Gallons & Liters', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Calculate rectangular, cylindrical, or spherical tank capacity in liters, US gallons, and cubic meters from metric or imperial dimensions.' ,
     longTailKeywords: ['water tank capacity calculator liters', 'rectangular tank volume calculator', 'cylindrical water tank capacity calculator', 'spherical tank volume calculator', 'tank cubic meters to US gallons'],
     intro: ['This calculator applies standard geometric volume formulas after converting feet to metres when needed.', 'It reports theoretical internal volume in cubic metres, litres, and US liquid gallons.'],
     formula: [{ title: 'Rectangular tank', body: 'Length × width × height.' }, { title: 'Cylinder', body: 'π × (diameter ÷ 2)² × height.' }, { title: 'Sphere', body: '4 ÷ 3 × π × radius³.' }],
