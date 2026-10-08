@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free Finance Calculators – Loans, Savings, Investing & Budgets',
+  title: 'Free Finance Calculators & Money Tools',
   description: 'Browse free finance calculators for loans, savings, investing, budgets, property, business metrics, and everyday money planning.',
   alternates: { canonical: 'https://navorika.com/hubs/finance' },
   openGraph: {
