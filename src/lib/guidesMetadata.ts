@@ -86,7 +86,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'pdf-compression-guide',
-    title: 'PDF Compression Guide: Reduce File Size Without Losing Quality',
+    title: 'How to Compress PDF Files Without Losing Quality',
     description: 'Learn how to compress PDF files effectively. Understand compression methods, quality trade-offs, and best practices.',
     category: 'PDF',
     publishedDate: 'August 2026',
@@ -203,7 +203,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'macronutrients-guide',
-    title: 'Macronutrients Guide: 4:4:9 Density, Protein per kg, and Planning',
+    title: 'Macronutrients Guide: Protein, Carbs, Fat & Calories',
     description: 'Learn about macronutrients and how to balance them for health and performance. Understand 4:4:9 density, protein per kg, dietary fats, and carbs.',
     category: 'Health',
     publishedDate: 'August 2026',
@@ -319,7 +319,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'open-cdr-without-coreldraw',
-    title: 'How to Open a CDR File Without CorelDRAW: Free Online & Desktop Options',
+    title: 'How to Open CDR Files Without CorelDRAW',
     description: 'Need to open a CDR file without CorelDRAW? Compare an online CDR viewer, LibreOffice, Inkscape and PDF/SVG conversion options for Windows, Mac and Linux.',
     category: 'Developer', publishedDate: 'August 2026', readTime: '10 min read', author: 'Navorika Team',
     keywords: ['open cdr file without coreldraw', 'open cdr file', 'cdr viewer', 'cdr viewer online', 'cdr opener', 'open coreldraw file online', 'view cdr file online', 'coreldraw viewer']
@@ -333,7 +333,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'best-coreldraw-print-format',
-    title: 'Best File Format for CorelDRAW Printing: CDR vs PDF vs EPS vs SVG',
+    title: 'Best CorelDRAW Print Format: CDR vs PDF vs EPS vs SVG',
     description: 'Which file format should you send for printing from CorelDRAW? Compare CDR, PDF, EPS and SVG for print shops, signage, cut files, fonts, color and editability.',
     category: 'Developer', publishedDate: 'August 2026', readTime: '11 min read', author: 'Navorika Team',
     keywords: ['best file format for coreldraw printing', 'coreldraw print file format', 'cdr file for printing', 'cdr vs pdf for printing', 'pdf vs eps for printing', 'svg vs cdr', 'what is cdr file for printing']
@@ -345,7 +345,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'psd-to-html-conversion-guide',
-    title: 'PSD to HTML Conversion Guide: Modern Workflow, Slicing & Service Comparison',
+    title: 'PSD to HTML Conversion Guide: Step-by-Step Workflow',
     description: 'Learn modern PSD to HTML conversion: artboard preflight, SVG and WebP slicing, semantic HTML5, CSS Flexbox, and evaluating automated tools vs conversion services.',
     category: 'Developer',
     publishedDate: 'September 2026',
@@ -363,7 +363,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'psd-to-html-email',
-    title: 'PSD to HTML Email Conversion: Responsive Tables, Inline CSS & Client Compatibility',
+    title: 'PSD to HTML Email: Responsive Email Conversion Guide',
     description: 'Master PSD to HTML email conversion using nested table architectures, inline CSS, 600px container standards, and Outlook conditional tags.',
     category: 'Developer',
     publishedDate: 'September 2026',
@@ -381,7 +381,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'psd-to-responsive-html',
-    title: 'PSD to Responsive HTML: Translating Desktop Artboards into Mobile-Friendly CSS',
+    title: 'PSD to Responsive HTML: Mobile-Friendly Conversion Guide',
     description: 'Convert desktop Photoshop mockups into fluid, responsive HTML5 and CSS with modern breakpoints, Flexbox, Grid, clamp typography, and asset optimization.',
     category: 'Developer',
     publishedDate: 'September 2026',
@@ -399,7 +399,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'step-to-3d-pdf-conversion-guide',
-    title: 'STEP to 3D PDF Conversion Guide: CAD Sharing, PRC Geometry & Viewer Setup',
+    title: 'STEP to 3D PDF: Conversion Guide for Sharing CAD Models',
     description: 'Learn how to convert STEP/STP CAD models into interactive 3D PDFs. Understand ISO 10303, PRC geometry, what survives conversion, and Acrobat viewer settings.',
     category: 'Developer',
     publishedDate: 'September 2026',
@@ -419,7 +419,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'rgb-vs-cmyk-for-printing',
-    title: 'RGB vs CMYK for Printing: Color Modes, Gamuts & Preflight Guide',
+    title: 'RGB vs CMYK for Printing: Which Color Mode to Use?',
     description: 'Learn why RGB and CMYK behave differently, how out-of-gamut shifts happen, how to check image color modes, and how to prepare print-ready artwork.',
     category: 'Image',
     publishedDate: 'September 2026',
@@ -438,7 +438,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'print-bleed-trim-safe-area-guide',
-    title: 'Print Bleed, Trim & Safe Area Guide: Dimensions, Margins & Setup',
+    title: 'Print Bleed, Trim & Safe Area: Setup Guide',
     description: 'Master print layout geometry: bleed, trim line, safe area, and total document size. Includes worked examples for business cards, flyers, and posters.',
     category: 'Image',
     publishedDate: 'September 2026',
@@ -459,7 +459,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'eps-vs-cdr-guide',
-    title: 'EPS vs CDR: Vector Formats, Print Workflows & Software Compatibility',
+    title: 'EPS vs CDR: Which Format Should You Use?',
     description: 'Compare EPS and CDR vector formats: PostScript language, CorelDRAW native features, transparency limitations, fonts, and print prepress workflows.',
     category: 'Developer',
     publishedDate: 'September 2026',
@@ -479,7 +479,7 @@ const guideDefinitions: GuideDefinition[] = [
 
   {
     slug: 'video-editing-software-for-mac',
-    title: 'Best Video Editing Software for Mac in 2026: Free, Easy & Everyday Options',
+    title: 'Best Video Editing Software for Mac in 2026',
     description: 'Compare video editing software for Mac, MacBook Air and MacBook Pro for everyday editing, YouTube, social clips, family videos and simple work projects.',
     category: 'Video',
     publishedDate: 'October 2026',
@@ -502,7 +502,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'free-video-editing-software-for-mac',
-    title: 'Best Free Video Editing Software for Mac in 2026: No-Nonsense Guide',
+    title: 'Best Free Video Editing Software for Mac in 2026',
     description: 'Find genuinely useful free video editing software for Mac, including beginner-friendly options, no-watermark choices and free editors for MacBook Air and Pro.',
     category: 'Video',
     publishedDate: 'October 2026',
@@ -522,7 +522,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'professional-video-editing-software-for-mac',
-    title: 'Best Video Editing Software for Mac for Serious Everyday Creators',
+    title: 'Video Editing Software for Mac: Best Pro Options',
     description: 'Compare higher-end Mac video editors for people who edit often, run a YouTube channel or need more control without assuming a film-studio workflow.',
     category: 'Video',
     publishedDate: 'October 2026',
@@ -540,7 +540,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'easy-video-editing-software-for-mac',
-    title: 'Easy Video Editing Software for Mac: Best Beginner Options in 2026',
+    title: 'Easy Video Editing Software for Mac: Beginner Picks',
     description: 'Find easy video editing software for Mac for beginners who want to trim clips, add music, make YouTube videos and export without a steep learning curve.',
     category: 'Video',
     publishedDate: 'October 2026',
