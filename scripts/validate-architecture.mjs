@@ -80,11 +80,11 @@ if (read(join(root, 'src/app/tools/page.tsx')).includes("'use client'") || read(
 for (const slug of duplicates(guideSlugs)) failures.push(`Duplicate guide metadata slug: ${slug}`);
 
 const guideContentSources = [read(guideContentPath), read(additionalGuideContentPath), read(gscGuideContentPath), read(macVideoGuideContentPath), read(macBatteryGuideContentPath), read(join(root, 'src/lib/guideContentScreenshotPdf.ts')), read(join(root, 'src/lib/guideContentMacRam.ts'))];
-const guideContentSlugs = guideContentSources.flatMap((source) => [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|(?:corelArticle|article|macGuide)\()/gm)].map((match) => match[1]));
+const guideContentSlugs = guideContentSources.flatMap((source) => [...source.matchAll(/^\s{2}['\"]([^'\"]+)['\"]:\s*(?:\{|(?:corelArticle|article|macGuide)\()/gm)].map((match) => match[1]));
 const enhancedGuideSlugs = [...read(guideEnhancementsPath).matchAll(/^\s{2}'([^']+)':\s*\{/gm)].map((match) => match[1]);
 const sourcedGuideSlugs = [...read(guideSourcesPath).matchAll(/^\s{2}'([^']+)':\s*\[/gm)].map((match) => match[1]);
 for (const source of guideContentSources) {
-  const sourceSlugs = [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|(?:corelArticle|article|macGuide)\()/gm)].map((match) => match[1]);
+  const sourceSlugs = [...source.matchAll(/^\s{2}['\"]([^'\"]+)['\"]:\s*(?:\{|(?:corelArticle|article|macGuide)\()/gm)].map((match) => match[1]);
   for (const slug of duplicates(sourceSlugs)) failures.push(`Duplicate guide content slug in one registry: ${slug}`);
 }
 for (const slug of guideSlugs.filter((slug) => !guideContentSlugs.includes(slug))) failures.push(`Published guide has no article content: ${slug}`);
