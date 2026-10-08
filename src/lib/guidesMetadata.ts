@@ -38,6 +38,17 @@ const categoryImages: Record<GuideCategory, { src: string; caption: string }> = 
 
 const guideDefinitions: GuideDefinition[] = [
   {
+    slug: 'how-to-show-battery-percentage-on-mac',
+    title: 'How to Show Battery Percentage on MacBook Air & Pro (2026)',
+    description: 'Learn how to show battery percentage on MacBook Air or Pro in macOS Tahoe, Sequoia, Sonoma, and older versions. Easy steps and fixes if it is missing.',
+    category: 'Everyday',
+    publishedDate: 'October 2026',
+    readTime: '10 min read',
+    author: 'Navorika Team',
+    keywords: ['how to show battery percentage on mac', 'how to show battery percentage on mac air', 'how do i show battery percentage on macbook', 'show battery percentage macbook pro', 'macos tahoe battery percentage', 'macos sequoia show battery percentage', 'macos sonoma battery percentage', 'macbook air battery percentage not showing'],
+  },
+
+  {
     slug: 'how-to-calculate-sip-returns',
     title: 'How to Calculate SIP Returns: A Complete Guide',
     description: 'Learn how to calculate SIP returns with step-by-step examples. Understand CAGR, XIRR, and future value of your mutual fund investments.',
@@ -583,7 +594,7 @@ const octoberMacVideoSlugs = new Set([
   'easy-video-editing-software-for-mac',
 ]);
 
-const newOctoberGuideDates = new Set(['how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac']);
+const newOctoberGuideDates = new Set(['how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac']);
 
 const recentUpdateSlugs = new Set([
   'how-to-calculate-emi',
