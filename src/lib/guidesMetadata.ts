@@ -122,7 +122,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'gst-calculation-guide',
-    title: 'GST Calculation Guide: Formulas, RCM, and Invoicing Compliance',
+    title: 'India GST Calculation Guide: Rates, RCM & Invoices',
     description: 'Learn how to calculate GST for your business. Understand CGST, SGST, IGST, reverse charge, inclusive pricing, and Rule 46 invoicing standards.',
     category: 'Finance',
     publishedDate: 'August 2026',
@@ -149,7 +149,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'ppf-vs-fd-comparison',
-    title: 'PPF vs FD Comparison: Compounding, Taxes, and Wealth Tables',
+    title: 'PPF vs FD: Returns, Tax & Which Is Better?',
     description: 'Compare Public Provident Fund and Fixed Deposit investments. Understand EEE vs TTT tax treatment, compounding, and 15-year wealth accumulation.',
     category: 'Finance',
     publishedDate: 'August 2026',
@@ -176,7 +176,7 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'calorie-deficit-guide',
-    title: 'Calorie Deficit Guide: Safe Rates, Metabolism, and Lean Mass',
+    title: 'Calorie Deficit Guide: Safe Weight-Loss Planning',
     description: 'Learn how to create a sustainable calorie deficit for fat loss. Understand adaptive thermogenesis, lean tissue preservation, and tracking caveats.',
     category: 'Health',
     publishedDate: 'August 2026',
@@ -339,7 +339,7 @@ const guideDefinitions: GuideDefinition[] = [
     keywords: ['best file format for coreldraw printing', 'coreldraw print file format', 'cdr file for printing', 'cdr vs pdf for printing', 'pdf vs eps for printing', 'svg vs cdr', 'what is cdr file for printing']
   },
   {
-    slug: 'preserve-fonts-coreldraw-conversion', title: 'How to Preserve Fonts When Converting Word or PDF to CorelDRAW',
+    slug: 'preserve-fonts-coreldraw-conversion', title: 'Preserve Fonts When Converting to CorelDRAW',
     description: 'Manage embedded, missing, custom, Punjabi, Hindi, Arabic, and other Unicode fonts and understand when converting text to curves is appropriate.',
     category: 'Developer', publishedDate: 'August 2026', readTime: '12 min read', author: 'Navorika Team'
   },
