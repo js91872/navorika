@@ -551,10 +551,10 @@ export const imageToolPages: Record<string, ToolPageContent> = {
   },
   'svg-dimensions-checker': {
     slug: 'svg-dimensions-checker',
-    name: 'SVG Dimensions Checker – Inspect SVG Width, Height & ViewBox Online',
+    name: 'SVG Dimensions Checker – Width, Height & ViewBox',
     category: 'Image Tools',
     applicationCategory: 'UtilitiesApplication',
-    description: 'Inspect SVG width, height, viewBox coordinates, aspect ratio, and declared CSS units online for free. 100% browser-local and secure—no uploads or script execution.',
+    description: 'Check SVG width, height, viewBox, aspect ratio, and declared units directly in your browser.',
     longTailKeywords: [
       'svg dimensions checker',
       'check svg width height viewbox',
@@ -564,8 +564,8 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'safe svg dimension inspector',
     ],
     intro: [
-      'Inspect the geometric layout, root dimensions, and viewBox coordinate system of any SVG vector graphic without executing scripts or rendering untrusted elements.',
-      'Detect declared CSS physical units (px, in, cm, mm, pt, pc), compute effective pixel bounding boxes, verify aspect ratio preservation, and evaluate responsive readiness entirely in your browser.',
+      'Open an SVG file or paste SVG markup to check its width, height, viewBox, units, and aspect ratio.',
+      'The tool also converts common physical units to CSS pixels and helps spot SVG files that rely on viewBox sizing instead of fixed width and height.',
     ],
     formula: [
       { title: 'CSS Unit to Pixel Conversion', body: '1 in = 96 px; 1 pt = 96/72 px = 1.333 px; 1 pc = 16 px; 1 mm = 96/25.4 px = 3.7795 px; 1 cm = 96/2.54 px = 37.795 px' },
