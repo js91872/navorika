@@ -11,11 +11,11 @@ import { getToolIcon } from '@/lib/toolIcons';
 const baseUrl = 'https://navorika.com';
 
 const categoryIntros: Record<string, string> = {
-  'pdf-tools': 'Organize, prepare, convert, and sign documents through focused browser workflows. Tools temporarily under review are excluded until their behavior is validated.',
-  'image-tools': 'Prepare images for web, print, identity, and social use by choosing the right format, dimensions, quality, and editing workflow.',
+  'pdf-tools': 'Merge, split, compress, convert, sign, and organize PDF files with free online tools. Tools under review stay hidden until they are ready.',
+  'image-tools': 'Resize, convert, compress, crop, inspect, and prepare images for websites, printing, social media, documents, and everyday use.',
   'finance-calculators': 'Explore borrowing, investing, tax, budgeting, and retirement scenarios. Results are planning estimates and not individualized financial advice.',
   'health-calculators': 'Use body, energy, activity, and heart-rate estimates as educational screening and planning aids—not as medical diagnoses.',
-  'developer-tools': 'Format data, inspect encoded values, test patterns, and prepare web publishing assets with focused developer utilities.',
+  'developer-tools': 'Work with JSON, YAML, Base64, JWT, regular expressions, network values, timestamps, code formatting, and common web-development tasks.',
   'construction-calculators': 'Estimate materials, quantities, measurements, and project costs for construction, repairs, and home improvement.',
   'everyday-calculators': 'Use practical calculators for shipping, travel, shopping, household planning, time, and everyday decisions.',
 };
@@ -117,7 +117,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           {categoryToolkits.map((toolkit) => <Link key={toolkit.slug} href={`/toolkits/${toolkit.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg">
             <h3 className="text-lg font-bold group-hover:text-indigo-600">{toolkit.name}</h3>
             <p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">{toolkit.description}</p>
-            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600">Explore toolkit <ArrowRight className="size-4" /></span>
+            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600">Browse {toolkit.name} <ArrowRight className="size-4" /></span>
           </Link>)}
         </div>
       </section>}
