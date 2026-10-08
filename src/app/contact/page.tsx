@@ -37,12 +37,13 @@ export default function ContactPage() {
               </p>
             </div>
             <div>
-              <a
-                href="mailto:admin@navorika.com?subject=Navorika%20Inquiry"
+              <button
+                type="button"
+                onClick={() => { window.location.href = 'mai' + 'lto:' + 'admin' + '@' + 'navorika.com?subject=Navorika%20Inquiry'; }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors text-sm"
               >
-                <Mail className="h-4 w-4" /> Email admin@navorika.com
-              </a>
+                <Mail className="h-4 w-4" /> Email Support
+              </button>
             </div>
           </div>
 
@@ -58,12 +59,13 @@ export default function ContactPage() {
               </p>
             </div>
             <div>
-              <a
-                href="mailto:privacy@navorika.com?subject=Privacy%20Inquiry"
+              <button
+                type="button"
+                onClick={() => { window.location.href = 'mai' + 'lto:' + 'privacy' + '@' + 'navorika.com?subject=Privacy%20Inquiry'; }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[var(--border)] text-[var(--foreground)] font-medium hover:bg-[var(--muted)]/50 transition-colors text-sm"
               >
-                <Shield className="h-4 w-4" /> Email privacy@navorika.com
-              </a>
+                <Shield className="h-4 w-4" /> Email Privacy Team
+              </button>
             </div>
           </div>
         </div>
