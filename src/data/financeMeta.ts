@@ -29,9 +29,9 @@ export const savingsSubTools: Record<string, SubToolSEO> = {
 };
 
 export const taxSubTools: Record<string, SubToolSEO> = {
-  "income-tax-calculator": { title: "Income Tax Calculator", heading: "Income Tax Calculator", description: "Calculate your net tax liabilities under new and old regimes.", keywords: ["income tax calculator", "tax slabs"] },
-  "gst-calculator": { title: "GST Calculator - Goods & Services Tax", heading: "GST Calculator", description: "Add or extract exact GST components from price tags.", keywords: ["gst calculator"] },
-  "hra-calculator": { title: "HRA Exemption Calculator", heading: "HRA Calculator", description: "Optimize House Rent Allowance exemptions.", keywords: ["hra calculator", "rent receipt tax"] }
+  "income-tax-calculator": { title: "India Income Tax Calculator", heading: "India Income Tax Calculator", description: "Estimate Indian income tax from annual income and deductions using the calculator’s stated assumptions. This page is kept out of search indexing until its rules are fully refreshed.", keywords: ["india income tax calculator", "income tax calculator india", "tax slabs india"] },
+  "gst-calculator": { title: "India GST Calculator – Goods & Services Tax", heading: "India GST Calculator", description: "Add or extract Indian GST from a price using the rate you enter.", keywords: ["gst calculator india", "india gst calculator"] },
+  "hra-calculator": { title: "India HRA Exemption Calculator", heading: "India HRA Calculator", description: "Estimate an Indian House Rent Allowance exemption from salary, HRA received, and rent paid using the calculator’s stated assumptions.", keywords: ["hra calculator india", "hra exemption calculator", "house rent allowance calculator"] }
 };
 
 export const wealthSubTools: Record<string, SubToolSEO> = {
