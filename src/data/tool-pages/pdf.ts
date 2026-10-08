@@ -5,7 +5,7 @@ const limits = ['Password-protected, damaged, or unusually complex PDFs may not 
 
 export const pdfToolPages: Record<string, ToolPageContent> = {
   'compress-pdf': {
-    slug: 'compress-pdf', name: 'Compress Image-Heavy PDF Files Online', category: 'PDF Tools', applicationCategory: 'UtilitiesApplication', description: 'Rasterize PDF pages as compressed JPEG images, rebuild the document locally, and compare the actual input and output sizes.',
+    slug: 'compress-pdf', name: 'Compress PDF Online – Reduce PDF File Size', category: 'PDF Tools', applicationCategory: 'UtilitiesApplication', description: 'Reduce the file size of image-heavy PDFs in your browser and compare the original and compressed sizes before downloading.',
     longTailKeywords: ['compress scanned PDF without upload', 'reduce image heavy PDF file size', 'rasterize PDF pages for smaller file', 'lossy PDF compression in browser', 'compress PDF and compare output size'],
     intro: ['Compress PDF renders every page to a JPEG image and rebuilds a new PDF from those images. It is designed for scanned or image-heavy documents.', privacy],
     steps: ['Choose a readable PDF and keep an untouched backup.', 'Select higher quality, balanced, or smaller file based on the intended use.', 'Compress, compare the reported sizes, download only if beneficial, and inspect every output page.'],
