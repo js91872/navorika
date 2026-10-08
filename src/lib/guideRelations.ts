@@ -1,6 +1,6 @@
 export const guideRelations: Record<string, string[]> = {
   'video-editing-software-for-mac': ['free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
-  'free-video-editing-software-for-mac': ['video-editing-software-for-mac', 'easy-video-editing-software-for-mac', 'professional-video-editing-software-for-mac'],
+  'free-video-editing-software-for-mac': ['video-editing-software-for-mac', 'easy-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', '${slug}'],
   'professional-video-editing-software-for-mac': ['video-editing-software-for-mac', 'free-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
   'easy-video-editing-software-for-mac': ['video-editing-software-for-mac', 'free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac'],
   'house-construction-cost-guide': ['construction-estimate-quote-guide', 'brick-calculation-guide', 'flooring-calculation-guide'],
@@ -34,5 +34,6 @@ export const guideRelations: Record<string, string[]> = {
   'print-bleed-trim-safe-area-guide': ['rgb-vs-cmyk-for-printing', 'best-coreldraw-print-format', 'pdf-security-guide'],
   'eps-vs-cdr-guide': ['pdf-to-cdr-editing-guide', 'svg-vs-cdr-guide', 'best-coreldraw-print-format'],
   'how-to-save-a-screenshot-as-a-pdf': ['how-to-merge-pdf-files', 'pdf-security-guide', 'image-formats-guide'],
+  'how-to-clear-ram-on-mac': ['free-video-editing-software-for-mac'],
 };
 

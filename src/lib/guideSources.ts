@@ -249,6 +249,13 @@ export const guideSources: Record<string, GuideSource[]> = {
     { name: 'Google Chromebook Help — Open, save, or delete files on your Chromebook', url: 'https://support.google.com/chromebook/answer/1700055?hl=en' },
     { name: 'Microsoft Support — Use Snipping Tool to capture screenshots', url: 'https://support.microsoft.com/en-us/windows/apps/use-snipping-tool-to-capture-screenshots' },
   ],
+  'how-to-clear-ram-on-mac': [
+    { name: 'Apple Support — View memory usage in Activity Monitor on Mac', url: 'https://support.apple.com/en-us/guide/activity-monitor/actmntr1004/mac' },
+    { name: 'Apple Support — Check if your Mac needs more RAM in Activity Monitor', url: 'https://support.apple.com/en-us/guide/activity-monitor/actmntr34865/mac' },
+    { name: 'Apple Support — Quit an app or process in Activity Monitor on Mac', url: 'https://support.apple.com/en-us/guide/activity-monitor/actmntr1002/mac' },
+    { name: 'Apple Support — If your Mac runs slowly', url: 'https://support.apple.com/en-us/guide/mac-help/mchlp1731/mac' },
+    { name: 'Apple Support — Change Login Items & Extensions settings on Mac', url: 'https://support.apple.com/en-us/guide/mac-help/mtusr003/mac' },
+  ],
 };
 
 export function getGuideSources(slug: string) {

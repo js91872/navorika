@@ -556,6 +556,17 @@ const guideDefinitions: GuideDefinition[] = [
     keywords: ['how to save a screenshot as a pdf', 'save a screenshot as a PDF', 'how to save a screenshot as a PDF on iPhone', 'how to save a screenshot as a PDF on Mac', 'how to save a screenshot as a PDF on Chromebook', 'convert screenshot to PDF', 'save screenshots as PDF'],
     featuredImage: { src: '/images/guides/screenshot-to-pdf-feature.webp', alt: 'A phone and laptop screenshot being turned into a PDF document', caption: 'Save or combine screenshots as a PDF on your phone or computer.' },
   },
+  {
+    slug: 'how-to-clear-ram-on-mac',
+    title: "How to Clear RAM on a Mac: Safe Ways to Free Up Memory",
+    description: "Learn how to check RAM usage on a Mac, reduce memory pressure, quit high-usage apps, manage login items, and know when a restart can help.",
+    category: 'Everyday',
+    publishedDate: 'October 2026',
+    readTime: '14 min read',
+    author: 'Navorika Team',
+    keywords: ['how to clear ram on mac', 'how to clear ram memory on mac', 'how to clear the ram on a mac', 'how to clear ram on a mac', 'how to clean up ram on mac', 'how to free up ram on mac', 'check ram usage on mac', 'reduce memory usage on mac', 'mac memory pressure', 'activity monitor memory usage'],
+    featuredImage: { src: '/images/guides/how-to-clear-ram-on-mac.webp', alt: 'A Mac laptop with a memory-pressure graph and a RAM chip illustration', caption: 'Use Activity Monitor to understand memory pressure and find apps using RAM.' },
+  },
 ];
 
 const newBatchSlugs = new Set([
@@ -572,6 +583,8 @@ const octoberMacVideoSlugs = new Set([
   'easy-video-editing-software-for-mac',
 ]);
 
+const newOctoberGuideDates = new Set(['how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac']);
+
 const recentUpdateSlugs = new Set([
   'how-to-calculate-emi',
   'heart-rate-zones-guide',
@@ -587,8 +600,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    datePublished: newOctoberGuideDates.has(guide.slug) ? '2026-10-08' : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    dateModified: newOctoberGuideDates.has(guide.slug) ? '2026-10-08' : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,
