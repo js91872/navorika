@@ -29,6 +29,14 @@ export default function GuidesPage() {
           </p>
         </div>
 
+        <section className="mb-10 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+          <h2 className="text-2xl font-black">What these guides are for</h2>
+          <div className="mt-3 grid gap-4 text-sm leading-7 text-[var(--muted-foreground)] md:grid-cols-2">
+            <p>These articles explain common tasks in plain language: how to use calculators, work with PDF and image files, estimate construction quantities, understand money or health results, and solve everyday computer problems.</p>
+            <p>Most guides include examples, practical steps, limitations, and links to related Navorika tools. Technical detail is included when it helps explain the result, but the first goal is to answer the question a normal user came to solve.</p>
+          </div>
+        </section>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {guidesMetadata.map((guide) => (
             <Link
