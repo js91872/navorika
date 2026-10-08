@@ -5,7 +5,7 @@ import { guidesMetadata } from '@/lib/guidesMetadata';
 import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'How-To Guides for Calculators, Files, Images & Home Projects',
+  title: 'How-To Guides for Calculators & Online Tools',
   description: 'Step-by-step guides for calculators, PDF files, images, construction and home projects, money, health, and common digital tasks.',
   alternates: { canonical: 'https://navorika.com/guides' },
   openGraph: { type: 'website', url: 'https://navorika.com/guides', title: 'Navorika How-To Guides', description: 'Step-by-step guides, examples, FAQs, and related tools for everyday calculations and digital tasks.', siteName: 'Navorika' },
