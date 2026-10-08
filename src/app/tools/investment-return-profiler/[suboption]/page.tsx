@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Activity, Target, Zap, ChevronRight, Calculator } from 'lucide-react';
 import { investmentSubTools } from '@/data/financeMeta';
+import FinanceSubtoolInfo from '@/components/finance/FinanceSubtoolInfo';
 
 export default function InvestmentProfilerTool() {
   const params = useParams();
@@ -58,14 +59,14 @@ export default function InvestmentProfilerTool() {
   }, [suboption, valA, valB, valC, valD]);
 
   return (
-    <main className="h-[calc(100dvh-80px)] w-full relative overflow-hidden font-sans flex flex-col p-4 lg:p-8">
+    <main className="min-h-[calc(100dvh-80px)] w-full relative overflow-visible font-sans flex flex-col p-4 lg:p-8">
       
       {/* Ambient Background Glows */}
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-screen"></div>
       <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-violet-500/20 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-screen"></div>
       
       {/* Main Application Window */}
-      <div className="flex-1 w-full max-w-7xl mx-auto flex flex-col min-h-0 relative z-10 gap-6">
+      <div className="w-full max-w-7xl mx-auto flex flex-col relative z-10 gap-6">
         
         {/* Header Row */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shrink-0">
@@ -177,6 +178,8 @@ export default function InvestmentProfilerTool() {
           </div>
         </div>
       </div>
+
+        <FinanceSubtoolInfo suite="investment" suboption={suboption} />
     </main>
   );
 }
