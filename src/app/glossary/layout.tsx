@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Calculator & Online Tool Glossary – Common Terms Explained',
+  title: 'Online Tool & Calculator Glossary',
   description: 'Plain-English definitions of common calculator, finance, health, PDF, web, and technology terms used across Navorika tools and guides.',
   alternates: { canonical: 'https://navorika.com/glossary' },
   openGraph: {
