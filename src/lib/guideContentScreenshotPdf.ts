@@ -1,7 +1,7 @@
 import type { GuideContent } from './guideContent';
 
 export const screenshotPdfGuideContent: Record<string, GuideContent> = {
-  "how-to-save-a-screenshot-as-a-pdf": {
+  'how-to-save-a-screenshot-as-a-pdf': {
     "intro": "Need to send a screenshot as a document, keep a receipt, or combine several screen captures into one file? You can save a screenshot as a PDF without buying software. Most phones and computers already include a way to do it.\n\n**The quickest method:** open the screenshot, choose **Print** or **Share**, and select **Save as PDF**. On a Mac, you can also open the image in Preview and export it as a PDF. The exact buttons vary by device, so use the steps below for your phone or computer.\n\nIf you want to turn several screenshot images into one document, [Navorika’s Image to PDF tool](https://navorika.com/tools/image-to-pdf) can combine JPG, PNG, and WebP files in your chosen order. It processes the images in your browser.",
     "sections": [
       {
