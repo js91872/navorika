@@ -158,10 +158,10 @@ export default function MethodologyPage() {
             <Link href="/disclaimer" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
               Legal Disclaimer
             </Link>{' '}
-            for important limitations. To report a wrong result or tool problem, contact us at{' '}
-            <a href="mailto:admin@navorika.com" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
-              admin@navorika.com
-            </a>
+            for important limitations. To report a wrong result or tool problem, use the{' '}
+            <Link href="/contact" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
+              contact page
+            </Link>
             .
           </p>
         </div>
