@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free Online Tools & Calculators – PDF, Images, Money & More',
+  title: 'Free Online Tools & Calculators',
   description: 'Browse free online calculators and tools for PDF files, images, construction, money, health, everyday tasks, and web development. No signup required.',
   alternates: { canonical: 'https://navorika.com/tools' },
   openGraph: {
