@@ -10,40 +10,40 @@ export default function PrivacyPage() {
   const sections = [
     {
       icon: <Shield className="h-6 w-6 text-indigo-500" />,
-      title: 'Privacy First by Design',
-      content: 'Navorika prioritizes client-side computing. Most tools process files and calculation inputs locally in your browser without transmitting them to our servers. Features requiring live external data identify their source, and server-assisted conversion workflows operate with ephemeral storage.',
+      title: 'How Navorika Handles Your Data',
+      content: 'Most Navorika tools process files and calculator inputs directly in your browser. When a tool needs live external data or temporary server processing, the page explains that.',
     },
     {
       icon: <Lock className="h-6 w-6 text-indigo-500" />,
       title: 'Tool Inputs and Files',
       content: 'For tools designated as browser-local processing, your files and inputs are never uploaded to Navorika servers. Where server processing or external data is required, it is explicitly disclosed:',
       list: [
-        'Local processing tools execute entirely within your browser environment',
-        'Server-assisted converters (such as CAD STEP to 3D PDF or Corel interchange) process files in isolated temporary directories and automatically delete input and output files immediately upon request completion',
-        'The currency converter requests exchange rates from external reference providers (such as the European Central Bank)',
+        'Browser-local tools process the file or values on your device',
+        'Some specialized converters, such as STEP to 3D PDF or certain CorelDRAW-related tools, use temporary server processing. Files are handled in isolated temporary folders and removed after the request finishes',
+        'Tools that need current information, such as currency rates, may request data from an external provider identified on the page',
         'Direct correspondence sent via email is processed solely to respond to your inquiry',
       ],
     },
     {
       icon: <Eye className="h-6 w-6 text-indigo-500" />,
-      title: 'What Happens to Your Data',
-      content: 'For client-side tools, processing occurs directly in your local environment:',
+      title: 'What Happens When You Use a Tool',
+      content: 'For tools marked as browser-local:',
       list: [
-        'Files are read and transformed locally using WebAssembly, HTML5 Canvas, and modern JavaScript engines',
-        'Data remains stored in volatile browser memory and is discarded when the tab is closed or reset',
-        'Generated download files are compiled and saved directly on your local device',
+        'Files are processed in your browser using normal web technologies',
+        'Temporary data stays in browser memory and is cleared when the page or tab is closed or reset',
+        'Downloaded results are saved to your device',
         'We do not maintain account databases, user tracking profiles, or persistent server logs of your file contents',
       ],
     },
     {
       icon: <Database className="h-6 w-6 text-indigo-500" />,
-      title: 'Local Processing Technologies',
-      content: 'Navorika leverages standard, secure web platform capabilities:',
+      title: 'How Browser-Based Processing Works',
+      content: 'Different tools use different browser technologies depending on the job:',
       list: [
-        'PDF utilities: Execute locally using pdf-lib and pdf.js compiled for browser runtimes',
-        'Image utilities: Execute locally via Canvas API, ImageData manipulation, and WebAssembly',
-        'Calculators: Execute standard mathematical and engineering formulas locally on your device',
-        'Cryptographic utilities: Utilize the native browser Web Crypto API (SubtleCrypto)',
+        'PDF tools may use browser-based PDF libraries such as pdf-lib and pdf.js',
+        'Image tools may use Canvas, ImageData, or WebAssembly in your browser',
+        'Calculators run their formulas directly in your browser',
+        'Security-related tools may use the browser’s built-in Web Crypto API',
       ],
     },
     {
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
           </div>
           <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm">
             <CheckCircle className="h-5 w-5 inline mr-2" />
-            <span className="font-medium">Most tools process data locally. Live-data tools identify their external source.</span>
+            <span className="font-medium">Most tools run in your browser. Tools that need a server or outside data say so on the page.</span>
           </div>
         </div>
 
