@@ -271,7 +271,7 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
 
   'mov-to-mp3-converter': {
     slug: 'mov-to-mp3-converter',
-    name: 'MOV to MP3 Converter – Convert QuickTime MOV Videos to MP3 Locally',
+    name: 'MOV to MP3 Converter – Convert MOV Video to MP3',
     category: 'Developer Tools',
     applicationCategory: 'UtilitiesApplication',
     description:
@@ -333,11 +333,11 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
 
   'video-to-audio-converter': {
     slug: 'video-to-audio-converter',
-    name: 'Video to Audio Converter – Convert Video to MP3, WAV, AAC, and OGG',
+    name: 'Video to Audio Converter – MP3, WAV, AAC & OGG',
     category: 'Developer Tools',
     applicationCategory: 'UtilitiesApplication',
     description:
-      'Universal in-browser video-to-audio converter. Extract and transcode video files into MP3, WAV, AAC, OGG, or FLAC audio formats with full privacy.',
+      'Convert video files to MP3, WAV, AAC, OGG, or FLAC audio in your browser without uploading the source file to Navorika.',
     longTailKeywords: [
       'video to audio converter',
       'convert video to audio online',
@@ -347,8 +347,8 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
       'browser video audio transcode',
     ],
     intro: [
-      'Convert any standard video file into your choice of audio format—including MP3, uncompressed WAV, AAC, and OGG Vorbis.',
-      'Whether you need uncompressed audio for professional editing in a DAW or a lightweight compressed MP3 for mobile listening, this universal tool handles the conversion locally.',
+      'Choose a video file and convert its audio track to MP3, WAV, AAC, OGG, or FLAC.',
+      'Use WAV when you want an uncompressed editing format or MP3/AAC/OGG when you want a smaller file for everyday listening or sharing.',
       'Works with MP4, WebM, MOV, MKV, AVI, and FLV containers with zero cloud uploads.',
     ],
     steps: [
@@ -581,7 +581,7 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
 
   'mp3-to-wav-converter': {
     slug: 'mp3-to-wav-converter',
-    name: 'MP3 to WAV Converter – Convert MP3 Audio to Uncompressed WAV Online',
+    name: 'MP3 to WAV Converter – Convert MP3 Audio to WAV',
     category: 'Developer Tools',
     applicationCategory: 'UtilitiesApplication',
     description:
