@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Landmark, Calendar, Target, Activity } from 'lucide-react';
 import { loanSubTools } from '@/data/financeMeta';
+import FinanceSubtoolInfo from '@/components/finance/FinanceSubtoolInfo';
 
 type ScheduleItem = { month: number; emi: number; principal: number; interest: number; balance: number };
 
@@ -203,6 +204,8 @@ export default function DynamicLoanSubOptionTool() {
           </div>
         </div>
       </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
     </main>
   );
 }
