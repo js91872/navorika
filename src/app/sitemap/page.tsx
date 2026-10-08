@@ -56,14 +56,11 @@ export default function SitemapPage() {
             <div>
               <h1 className="text-3xl sm:text-4xl font-black tracking-tight">Sitemap</h1>
               <p className="text-[var(--muted-foreground)] mt-1">
-                Complete site structure with {pages.length + allCategories.length + totalTools + allGuides.length} pages
+                Browse Navorika tools, calculators, categories, guides, and main pages
               </p>
             </div>
           </div>
-          <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm">
-            <CheckCircle className="h-5 w-5 inline mr-2" />
-            <span className="font-medium">All pages are statically generated for maximum SEO performance.</span>
-          </div>
+
         </div>
 
         {/* Main Pages */}
@@ -110,7 +107,7 @@ export default function SitemapPage() {
         <section className="mb-12">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
             <FileText className="h-5 w-5 text-amber-500" />
-            Popular Tools ({totalTools} total, showing first 20)
+            Popular Tools (showing 20 of {totalTools})
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {allTools.map((tool) => (
