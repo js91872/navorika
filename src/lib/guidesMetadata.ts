@@ -556,7 +556,9 @@ const guideDefinitions: GuideDefinition[] = [
     keywords: ['how to save a screenshot as a pdf', 'save a screenshot as a PDF', 'how to save a screenshot as a PDF on iPhone', 'how to save a screenshot as a PDF on Mac', 'how to save a screenshot as a PDF on Chromebook', 'convert screenshot to PDF', 'save screenshots as PDF'],
     featuredImage: { src: '/images/guides/screenshot-to-pdf-feature.webp', alt: 'A phone and laptop screenshot being turned into a PDF document', caption: 'Save or combine screenshots as a PDF on your phone or computer.' },
   },
-];\n\nconst newBatchSlugs = new Set([
+];
+
+const newBatchSlugs = new Set([
   'step-to-3d-pdf-conversion-guide',
   'rgb-vs-cmyk-for-printing',
   'print-bleed-trim-safe-area-guide',
