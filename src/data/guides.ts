@@ -2258,6 +2258,8 @@ SEO is essential for online visibility. Use our tools to optimize your website a
     seoTitle: 'How to Save a Screenshot as a PDF (iPhone, Mac, Windows)',
     seoDescription: 'Learn how to save a screenshot as a PDF on iPhone, Android, Mac, Windows, and Chromebook. Follow simple steps to convert one or several screenshots.',
   },
-];\n\nexport const getGuideBySlug = (slug: string) => guides.find(g => g.slug === slug);
+];
+
+export const getGuideBySlug = (slug: string) => guides.find(g => g.slug === slug);
 export const getGuidesByCategory = (category: Guide['category']) => guides.filter(g => g.category === category);
 export const getRecentGuides = (limit = 6) => guides.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, limit);
