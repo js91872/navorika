@@ -20,7 +20,7 @@ export default function ContactPage() {
           </div>
           <h1 className="text-4xl font-black tracking-tight mb-4">Contact Navorika</h1>
           <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Have questions about a calculator, technical feedback on a conversion tool, or a suggestion for a new utility? We welcome direct correspondence via email.
+            Need help with a calculator or file tool, found a wrong result, or have an idea for a new tool? Send us an email.
           </p>
         </div>
 
@@ -31,9 +31,9 @@ export default function ContactPage() {
               <Mail className="h-6 w-6" />
             </div>
             <div>
-              <h2 className="text-xl font-bold">General Inquiries &amp; Feedback</h2>
+              <h2 className="text-xl font-bold">General Help &amp; Feedback</h2>
               <p className="text-sm text-[var(--muted-foreground)] mt-1">
-                For general support, tool feedback, calculation checks, or partnership inquiries.
+                For tool help, feedback, calculation questions, bug reports, or general inquiries.
               </p>
             </div>
             <div>
@@ -74,10 +74,10 @@ export default function ContactPage() {
             <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
               <Bug className="h-5 w-5" />
             </div>
-            <h2 className="text-xl font-bold">Reporting a Calculation or Tool Issue</h2>
+            <h2 className="text-xl font-bold">Report a Wrong Result or Tool Problem</h2>
           </div>
           <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-            When reporting an issue with a specific calculation formula, conversion error, or browser layout bug, providing the following details helps us reproduce and resolve the problem rapidly:
+            If a calculator result, file conversion, or page is not working as expected, these details help us check the problem:
           </p>
           <ul className="space-y-2 text-sm text-[var(--muted-foreground)]">
             <li className="flex items-start gap-2">
@@ -86,15 +86,15 @@ export default function ContactPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-indigo-500 font-bold">•</span>
-              <span><strong>Inputs &amp; Values:</strong> The specific numerical values, file types, or options selected.</span>
+              <span><strong>What You Entered:</strong> The specific numerical values, file types, or options selected.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-indigo-500 font-bold">•</span>
-              <span><strong>Expected vs. Actual Result:</strong> What result you expected based on reference standards vs. what was displayed.</span>
+              <span><strong>What You Expected:</strong> What result you expected based on reference standards vs. what was displayed.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-indigo-500 font-bold">•</span>
-              <span><strong>Environment:</strong> Your web browser (Chrome, Firefox, Safari, Edge) and device type (Desktop, Mobile).</span>
+              <span><strong>Browser & Device:</strong> Your web browser (Chrome, Firefox, Safari, Edge) and device type (Desktop, Mobile).</span>
             </li>
           </ul>
         </div>
@@ -102,9 +102,9 @@ export default function ContactPage() {
         {/* Operational Note */}
         <div className="p-6 rounded-2xl bg-[var(--muted)]/30 border border-[var(--border)] text-center text-xs text-[var(--muted-foreground)]">
           <p>
-            Navorika is an independent web utility platform. Electronic mail is our primary contact channel. Inquiries are typically reviewed within 2 business days. For information on calculation standards, visit our{' '}
+            Navorika is an independent online tool website. Email is our main support channel. To learn how calculator formulas and testing are handled, see{' '}
             <Link href="/methodology" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
-              Calculation Methodology
+              How Our Calculators Work
             </Link>
             .
           </p>
