@@ -156,6 +156,14 @@ export default function CategoriesPage() {
             );
           })}
         </div>
+
+        <section className="mt-14 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 sm:p-8">
+          <h2 className="text-2xl font-black">What you can find on Navorika</h2>
+          <div className="mt-4 grid gap-5 text-sm leading-7 text-[var(--muted-foreground)] md:grid-cols-2">
+            <p>Use PDF and image tools for common file jobs such as compression, conversion, resizing, merging, and page organization. Construction and everyday calculators help with materials, measurements, shipping, household planning, travel, and practical day-to-day estimates.</p>
+            <p>Finance and health calculators are designed for comparison and planning rather than professional advice. Developer tools cover common web and data tasks such as JSON, Base64, networking, timestamps, and code formatting. Choose a category above to see the tools and guides that match the job you are trying to do.</p>
+          </div>
+        </section>
       </div>
     </main>
   );
