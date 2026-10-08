@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { budgetSubTools } from '@/data/financeMeta';
+import FinanceSubtoolInfo from '@/components/finance/FinanceSubtoolInfo';
 
 export default function CashflowArchitectTool() {
   const params = useParams();
@@ -63,6 +64,8 @@ export default function CashflowArchitectTool() {
            <p className="text-lg font-bold text-slate-500 mt-2">{result?.unit}</p>
         </div>
       </div>
+
+      <FinanceSubtoolInfo suite="budget" suboption={suboption} />
     </main>
   );
 }
