@@ -155,7 +155,6073 @@ export default function DynamicLoanSubOptionTool() {
             <div className="grid sm:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Monthly Payment</span>
-                <p className="text-3xl font-black text-indigo-600 dark:text-indigo-400 tabular-nums">{monthlyEmi ? monthlyEmi.toLocaleString('en-US') : '0'}</p>
+                <p className="text-3xl font-black text-indigo-600 dark:text-indigo-400 tabular-nums">{monthlyEmi ? '</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? '</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? '</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{'</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{'</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{'</td>
+                          <td className="p-4">{'</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalPayment.toLocaleString('en-US') : '$0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
+                <p className="text-3xl font-black text-rose-500 dark:text-rose-400 tabular-nums">{totalInterest ? totalInterest.toLocaleString('en-US') : '0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + totalInterest.toLocaleString('en-US') : '$0'}</p>
+              </div>
+              <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Paid</span>
+                <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{totalPayment ? totalPayment.toLocaleString('en-US') : '0'}</p>
+              </div>
+            </div>
+
+            {/* Amortization Schedule Data Table */}
+            {schedule.length > 0 && (
+              <div className="flex-1 bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[2rem] shadow-xl overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-indigo-500 dark:text-indigo-400" />
+                  <h3 className="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest">Payment Schedule</h3>
+                </div>
+                
+                <div className="overflow-x-auto max-h-[500px] overflow-y-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 bg-slate-50/90 dark:bg-[#0A0A0B]/90 backdrop-blur-md z-10 border-b border-slate-200 dark:border-white/10">
+                      <tr className="text-[10px] font-black uppercase text-slate-500 tracking-widest">
+                        <th className="p-4 whitespace-nowrap">Month</th>
+                        <th className="p-4 whitespace-nowrap">Payment</th>
+                        <th className="p-4 whitespace-nowrap">Principal</th>
+                        <th className="p-4 whitespace-nowrap">Interest</th>
+                        <th className="p-4 whitespace-nowrap">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-xs font-bold font-mono text-slate-700 dark:text-slate-300">
+                      {schedule.map((row) => (
+                        <tr key={row.month} className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                          <td className="p-4 font-sans text-slate-500">{row.month}</td>
+                          <td className="p-4">{Math.round(row.emi).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-emerald-600 dark:text-emerald-400">{Math.round(row.principal).toLocaleString('en-US')}</td>
+                          <td className="p-4 text-rose-500 dark:text-rose-400">{Math.round(row.interest).toLocaleString('en-US')}</td>
+                          <td className="p-4">{Math.round(row.balance).toLocaleString('en-US')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <FinanceSubtoolInfo suite="loan" suboption={suboption} />
+    </main>
+  );
+}
+ + monthlyEmi.toLocaleString('en-US') : '$0'}</p>
               </div>
               <div className="bg-white dark:bg-white/[0.02] backdrop-blur-3xl border border-slate-200 dark:border-white/10 rounded-[1.5rem] p-6 shadow-sm flex flex-col justify-center">
                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Interest</span>
