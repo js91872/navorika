@@ -87,14 +87,14 @@ export const financeToolPages: Record<string, ToolPageContent> = {
   },
   'lumpsum-investment-calculator': {
     slug: 'lumpsum-investment-calculator',
-    name: 'Lumpsum Investment Calculator: Mutual Fund & Equity Growth Planner',
+    name: 'Lump Sum Investment Calculator – Future Value & Growth',
     category: 'Finance Calculators',
     applicationCategory: 'FinanceApplication',
-    description: 'Calculate future maturity value, total compound wealth gained, real purchasing power, and wealth multiple for a one-time lump-sum investment.',
+    description: 'Estimate how a one-time investment may grow over time and compare future value, total gain, inflation-adjusted value, and growth multiple.',
     longTailKeywords: ['lumpsum investment calculator', 'lump sum calculator', 'one time investment calculator', 'mutual fund lumpsum return calculator', 'lumpsum compounding calculator'],
     intro: [
-      'A lump-sum investment projection calculates how a single upfront capital allocation grows over time under compound interest or equity returns.',
-      'The model computes future nominal maturity value, real inflation-adjusted purchasing power, and total capital appreciation across variable compounding intervals.',
+      'Enter a one-time investment amount, expected annual return, time period, and compounding frequency to estimate future value.',
+      'You can also compare the projected value with an inflation-adjusted estimate to understand future buying power.',
     ],
     formula: [
       { title: 'Nominal maturity value', body: 'A = P × (1 + r / n)^(n × t), where P is initial principal, r is annual return, n is compounding frequency per year, and t is years.' },
@@ -162,14 +162,14 @@ export const financeToolPages: Record<string, ToolPageContent> = {
   },
   'mortgage-affordability-calculator': {
     slug: 'mortgage-affordability-calculator',
-    name: 'Mortgage Affordability Calculator: Maximum Home Price & Loan Estimator',
+    name: 'Mortgage Affordability Calculator – How Much House Can I Afford?',
     category: 'Finance Calculators',
     applicationCategory: 'FinanceApplication',
-    description: 'Calculate maximum affordable home purchase price and loan amount based on income, monthly debts, down payment, and 28/36 DTI limits.',
+    description: 'Estimate how much house you may be able to afford from income, monthly debts, down payment, interest rate, taxes, insurance, and debt-to-income limits.',
     longTailKeywords: ['mortgage affordability calculator', 'home affordability calculator', 'how much house can i afford', 'maximum mortgage calculator', 'dti affordability calculator'],
     intro: [
-      'Determine how much house you can afford based on standard mortgage underwriting guidelines, household income, recurring obligations, and available down payment.',
-      'Underwriters standardly benchmark affordability against front-end (housing ratio) and back-end (total debt ratio) debt-to-income (DTI) ceilings.',
+      'Enter household income, monthly debts, down payment, interest rate, property taxes, and insurance to estimate a possible home-price range.',
+      'The calculator compares housing costs and total monthly debt with the debt-to-income limits you enter. Real lender qualification can use different rules.',
     ],
     formula: [
       { title: 'Front-end DTI cap', body: 'Maximum allowable PITI = Gross monthly income × front-end ratio limit (standard 28%).' },
