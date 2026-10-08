@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   verification: {
   other: {
     'msvalidate.01': '6D321C11DD86042A7ABBC4EA63387AC3',
+    'yandex-verification': '62409264dc52db0c',
   },
 },
   metadataBase: new URL('https://navorika.com'),
