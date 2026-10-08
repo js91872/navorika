@@ -1100,7 +1100,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'cdr-to-eps-converter': {
     slug: 'cdr-to-eps-converter',
-    name: 'CDR to EPS Converter – Print Interchange',
+    name: 'CDR to EPS Converter – Convert CorelDRAW to EPS Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
     description: 'Convert a supported CDR file to EPS online for print, sign-making and older vector workflows. Export the first CorelDRAW page as EPS for compatible design and production software.' ,
