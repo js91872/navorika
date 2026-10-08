@@ -21,11 +21,11 @@ export const investmentSubTools: Record<string, SubToolSEO> = {
 };
 
 export const savingsSubTools: Record<string, SubToolSEO> = {
-  "ppf-calculator": { title: "PPF Calculator - Provident Fund", heading: "PPF Calculator", description: "Calculate tax-free maturity amounts for Public Provident Funds.", keywords: ["ppf calculator", "provident fund"] },
-  "epf-calculator": { title: "EPF Calculator - Employee Provident Fund", heading: "EPF Calculator", description: "Estimate employee EPF, employer EPF, EPS allocation, and interest from transparent assumptions.", keywords: ["epf calculator"] },
-  "nps-calculator": { title: "NPS Calculator - National Pension System", heading: "NPS Calculator", description: "Project an NPS corpus, configurable annuity allocation, and estimated pension from separate return assumptions.", keywords: ["nps calculator"] },
-  "fd-calculator": { title: "FD Calculator - Fixed Deposit Returns", heading: "FD Calculator", description: "Determine accurate bank fixed deposit maturity values.", keywords: ["fd calculator", "fixed deposit"] },
-  "gratuity-calculator": { title: "Gratuity Calculator", heading: "Gratuity Calculator", description: "Compute your statutory end-of-service gratuity payout.", keywords: ["gratuity calculator"] }
+  "ppf-calculator": { title: "India PPF Calculator – Public Provident Fund", heading: "India PPF Calculator", description: "Estimate Public Provident Fund maturity in Indian rupees from yearly contributions, interest rate, and investment period.", keywords: ["ppf calculator india", "public provident fund calculator", "ppf maturity calculator"] },
+  "epf-calculator": { title: "India EPF Calculator – Employee Provident Fund", heading: "India EPF Calculator", description: "Estimate employee EPF, employer EPF, EPS allocation, and interest in Indian rupees from the assumptions you enter.", keywords: ["epf calculator india", "employee provident fund calculator"] },
+  "nps-calculator": { title: "India NPS Calculator – National Pension System", heading: "India NPS Calculator", description: "Project an NPS retirement corpus, annuity allocation, and estimated pension in Indian rupees from your contribution and return assumptions.", keywords: ["nps calculator india", "national pension system calculator"] },
+  "fd-calculator": { title: "India FD Calculator – Fixed Deposit Maturity", heading: "India FD Calculator", description: "Estimate fixed-deposit maturity in Indian rupees from deposit amount, interest rate, and term.", keywords: ["fd calculator india", "fixed deposit calculator", "fd maturity calculator"] },
+  "gratuity-calculator": { title: "India Gratuity Calculator – Salary & Years of Service", heading: "India Gratuity Calculator", description: "Estimate gratuity in Indian rupees from basic salary plus DA and years of service using the calculator’s stated formula.", keywords: ["gratuity calculator india", "gratuity calculator salary", "gratuity calculation"] }
 };
 
 export const taxSubTools: Record<string, SubToolSEO> = {
