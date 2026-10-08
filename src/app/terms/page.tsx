@@ -16,28 +16,28 @@ export default function TermsPage() {
     {
       icon: <FileText className="h-6 w-6 text-indigo-500" />,
       title: '2. Description of Service',
-      content: 'Navorika provides free web-based utilities, calculators, document conversion tools, and developer aids. Most tools operate client-side directly within your browser, while specific specialized utilities (such as CAD and vector format converters) operate via ephemeral server-assisted processing. All services are provided free of charge for personal and commercial productivity.',
+      content: 'Navorika provides free online calculators, file tools, converters, and developer utilities. Most tools run directly in your browser. A small number of specialized conversions use temporary server processing.',
     },
     {
       icon: <Shield className="h-6 w-6 text-indigo-500" />,
       title: '3. Intellectual Property and User Files',
-      content: 'You retain full ownership, copyright, and intellectual property rights to all files, text, images, and data that you process through Navorika tools. Navorika does not claim ownership or license rights over your processed files. For client-side tools, your files are never transmitted to our servers. For server-assisted tools, uploaded files are processed temporarily in isolated execution environments and deleted automatically upon completion.',
+      content: 'You keep ownership of the files, text, images, and data you process with Navorika. We do not claim ownership of your files. Browser-local tools keep processing on your device. Server-assisted tools use temporary processing and remove files after the request finishes.',
     },
     {
       icon: <CheckCircle className="h-6 w-6 text-indigo-500" />,
       title: '4. Acceptable Use',
       content: 'You agree to use Navorika only for lawful purposes. You agree not to:',
       list: [
-        'Attempt to reverse engineer, decompile, or bypass security sandboxes implemented on the platform',
-        'Use automated bots, scrapers, or excessive programmatic queries that degrade site performance for other users',
+        'Attempt to bypass security controls or interfere with protected parts of the service',
+        'Use bots, scrapers, or automated requests in a way that disrupts the site for other users',
         'Upload or process files containing malicious software, viruses, or harmful computer code',
-        'Misrepresent calculation outputs as certified engineering, medical, or tax documents without independent professional verification',
+        'Present calculator results as certified engineering, medical, legal, or tax documents when they are not',
       ],
     },
     {
       icon: <AlertTriangle className="h-6 w-6 text-amber-500" />,
       title: '5. Disclaimer of Warranties',
-      content: 'Navorika and all tools, calculations, guides, and services are provided on an "as is" and "as available" basis without warranties of any kind, either express or implied. While we strive for mathematical and technical precision, we do not guarantee that the service will be uninterrupted, error-free, or that calculation results will meet specific statutory or engineering requirements. Users are advised to review our dedicated Disclaimer and Methodology pages.',
+      content: 'Navorika, its tools, calculators, guides, and services are provided on an "as is" and "as available" basis. We work to make results useful and accurate, but we do not guarantee uninterrupted service, error-free results, or compliance with every law, code, standard, or professional requirement. Review the Disclaimer and Methodology pages for more detail.',
     },
     {
       icon: <Scale className="h-6 w-6 text-indigo-500" />,
@@ -75,7 +75,7 @@ export default function TermsPage() {
           </div>
           <div className="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-sm">
             <CheckCircle className="h-5 w-5 inline mr-2" />
-            <span>Navorika tools are free to use. Review these terms regarding intellectual property, acceptable use, and limitations.</span>
+            <span>Navorika tools are free to use. These terms explain ownership, acceptable use, and important limitations.</span>
           </div>
         </div>
 
