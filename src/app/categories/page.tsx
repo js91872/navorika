@@ -85,15 +85,15 @@ export default function CategoriesPage() {
               <Grid3x3 className="h-8 w-8" />
             </div>
             <div>
-              <h1 className="text-4xl font-black tracking-tight">Categories</h1>
+              <h1 className="text-4xl font-black tracking-tight">Free Online Tools by Category</h1>
               <p className="text-[var(--muted-foreground)] mt-1">
-                {categories.length} workspaces · {tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length} tools
+                {categories.length} categories · {tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length} free tools
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)] mt-2 ml-14">
             <Sparkles className="h-4 w-4 text-amber-500" />
-            <span>Organized collections of tools for your workflow</span>
+            <span>Choose what you want to do, then browse the matching tools</span>
           </div>
         </div>
 
