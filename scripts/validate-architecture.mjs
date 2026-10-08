@@ -78,7 +78,7 @@ if (read(join(root, 'src/app/tools/page.tsx')).includes("'use client'") || read(
 
 for (const slug of duplicates(guideSlugs)) failures.push(`Duplicate guide metadata slug: ${slug}`);
 
-const guideContentSources = [read(guideContentPath), read(additionalGuideContentPath), read(gscGuideContentPath), read(macVideoGuideContentPath)];
+const guideContentSources = [read(guideContentPath), read(additionalGuideContentPath), read(gscGuideContentPath), read(macVideoGuidePath), read(join(root, 'src/lib/guideContentScreenshotPdf.ts'))];
 const guideContentSlugs = guideContentSources.flatMap((source) => [...source.matchAll(/^\s{2}'([^']+)':\s*(?:\{|(?:corelArticle|article|macGuide)\()/gm)].map((match) => match[1]));
 const enhancedGuideSlugs = [...read(guideEnhancementsPath).matchAll(/^\s{2}'([^']+)':\s*\{/gm)].map((match) => match[1]);
 const sourcedGuideSlugs = [...read(guideSourcesPath).matchAll(/^\s{2}'([^']+)':\s*\[/gm)].map((match) => match[1]);
