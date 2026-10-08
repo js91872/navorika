@@ -239,6 +239,16 @@ export const guideSources: Record<string, GuideSource[]> = {
     { name: 'CorelDRAW Help — File format import and export reference', url: 'https://product.corel.com/help/CorelDRAW/' },
     { name: 'Ghent Workgroup — Prepress workflow recommendations', url: 'https://gwg.org/' },
   ],
+  'how-to-save-a-screenshot-as-a-pdf': [
+    { name: 'Apple Support — Take a screenshot on iPhone', url: 'https://support.apple.com/en-in/102616' },
+    { name: 'Apple Support — Export PDFs and images in Preview on iPhone', url: 'https://support.apple.com/en-by/guide/iphone/iph61c20afe1/ios' },
+    { name: 'Apple Support — Take a screenshot on Mac', url: 'https://support.apple.com/en-in/102646' },
+    { name: 'Apple Support — Save a document as a PDF on Mac', url: 'https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac' },
+    { name: 'Google Chrome Help — Print from Chrome on Android', url: 'https://support.google.com/chrome/answer/1069693?co=GENIE.Platform%3DAndroid&hl=en' },
+    { name: 'Google Android Help — Take a screenshot on Android', url: 'https://support.google.com/android/answer/9075928?hl=en' },
+    { name: 'Google Chromebook Help — Open, save, or delete files on your Chromebook', url: 'https://support.google.com/chromebook/answer/1700055?hl=en' },
+    { name: 'Microsoft Support — Use Snipping Tool to capture screenshots', url: 'https://support.microsoft.com/en-us/windows/apps/use-snipping-tool-to-capture-screenshots' },
+  ],
 };
 
 export function getGuideSources(slug: string) {

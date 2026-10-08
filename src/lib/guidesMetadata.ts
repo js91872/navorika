@@ -9,6 +9,7 @@ interface GuideDefinition {
   readTime: string;
   author: string;
   keywords?: string[];
+  featuredImage?: { src: string; alt: string; caption: string };
 }
 
 export interface GuideMetadata extends GuideDefinition {
@@ -544,9 +545,18 @@ const guideDefinitions: GuideDefinition[] = [
       'video editing for beginners mac',
     ],
   },
-];
-
-const newBatchSlugs = new Set([
+  {
+    slug: 'how-to-save-a-screenshot-as-a-pdf',
+    title: 'How to Save a Screenshot as a PDF on Any Device',
+    description: 'Learn how to save a screenshot as a PDF on iPhone, Android, Mac, Windows, and Chromebook, including steps for combining multiple screenshots.',
+    category: 'PDF',
+    publishedDate: 'October 2026',
+    readTime: '14 min read',
+    author: 'Navorika Team',
+    keywords: ['how to save a screenshot as a pdf', 'save a screenshot as a PDF', 'how to save a screenshot as a PDF on iPhone', 'how to save a screenshot as a PDF on Mac', 'how to save a screenshot as a PDF on Chromebook', 'convert screenshot to PDF', 'save screenshots as PDF'],
+    featuredImage: { src: '/images/guides/screenshot-to-pdf-feature.webp', alt: 'A phone and laptop screenshot being turned into a PDF document', caption: 'Save or combine screenshots as a PDF on your phone or computer.' },
+  },
+];\n\nconst newBatchSlugs = new Set([
   'step-to-3d-pdf-conversion-guide',
   'rgb-vs-cmyk-for-printing',
   'print-bleed-trim-safe-area-guide',
@@ -579,11 +589,11 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
     dateModified: octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
-      src: image.src,
+      src: guide.featuredImage?.src ?? image.src,
       width: 1200,
       height: 630,
-      alt: `Editorial illustration for ${guide.title}`,
-      caption: image.caption,
+      alt: guide.featuredImage?.alt ?? `Editorial illustration for ${guide.title}`,
+      caption: guide.featuredImage?.caption ?? image.caption,
     },
   };
 });
