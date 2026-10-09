@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="construction-calculators"
-      eyebrow="Ramp slope & length geometry"
+      eyebrow="Find Ramp Angle from Rise & Run"
       title="Shed Ramp Angle Calculator"
-      description="Calculate shed ramp slope angle, grade percentage, rise-to-run ratio, and ramp surface length."
+      description="Calculate a shed or equipment ramp angle from rise and run, including slope percentage, ratio and ramp surface length."
       slug="shed-ramp-angle-calculator"
     >
       <BusinessCalculatorTool slug="shed-ramp-angle-calculator" />
