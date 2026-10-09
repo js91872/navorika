@@ -91,6 +91,8 @@ export const tools: RegisteredTool[] = ([
     title: 'Add Image to PDF Online',
     description: 'Insert a JPG, PNG or WebP image into a selected PDF page and choose its size and position.' ,
     category: 'pdf-tools',
+    heroTitle: 'Add Image to PDF Online',
+    heroDescription: 'Insert a JPG, PNG or WebP image, photo or logo into a selected PDF page and choose its size and position.',
     keywords: ['add image to pdf', 'insert image into pdf', 'add photo to pdf', 'add jpg to pdf', 'add png to pdf']
   },
   {
@@ -112,6 +114,8 @@ export const tools: RegisteredTool[] = ([
     title: 'Compress PDF Online',
     description: 'Reduce PDF file size online and compare the original and compressed sizes before downloading.' ,
     category: 'pdf-tools',
+    heroTitle: 'Compress PDF Online – Reduce PDF File Size',
+    heroDescription: 'Compress scanned or image-heavy PDFs in your browser and compare the original and compressed file sizes before downloading.',
     keywords: ['compress pdf', 'compress pdf online', 'reduce pdf file size', 'pdf compressor', 'make pdf smaller']
   },
   {
@@ -119,6 +123,8 @@ export const tools: RegisteredTool[] = ([
     title: 'Crop PDF Online',
     description: 'Crop PDF margins online by setting top, bottom, left and right crop values for every page.' ,
     category: 'pdf-tools',
+    heroTitle: 'Crop PDF Online',
+    heroDescription: 'Trim PDF margins by setting top, bottom, left and right crop values for every page.',
     keywords: ['crop pdf', 'crop pdf online', 'trim pdf margins', 'remove white margins from pdf', 'crop pdf pages']
   },
   {
@@ -177,6 +183,8 @@ export const tools: RegisteredTool[] = ([
     title: 'Merge PDF Online',
     description: 'Merge multiple PDF files into one document online in the order you choose.' ,
     category: 'pdf-tools',
+    heroTitle: 'Merge PDF Online – Combine PDF Files',
+    heroDescription: 'Combine two or more PDF files into one document in the order you choose, directly in your browser.',
     keywords: ['merge pdf', 'merge pdf online', 'combine pdf files', 'combine pdfs', 'pdf merger']
   },
   {
@@ -191,6 +199,8 @@ export const tools: RegisteredTool[] = ([
     title: 'PDF to Image Converter',
     description: 'Convert one selected PDF page to PNG or JPG online with preview and adjustable resolution.' ,
     category: 'pdf-tools',
+    heroTitle: 'PDF to Image Converter',
+    heroDescription: 'Convert a selected PDF page to PNG or JPG, choose the resolution, preview the result and download the image.',
     keywords: ['pdf to image', 'pdf to image converter', 'pdf to png', 'pdf to jpg', 'convert pdf to image']
   },
   {
@@ -233,6 +243,8 @@ export const tools: RegisteredTool[] = ([
     title: 'Split PDF Online',
     description: 'Split PDF pages online, extract selected pages, or separate them into individual PDF files.' ,
     category: 'pdf-tools',
+    heroTitle: 'Split PDF Online – Extract or Separate Pages',
+    heroDescription: 'Select PDF pages to extract into one file or split into individual PDFs, directly in your browser.',
     keywords: ['split pdf', 'split pdf online', 'extract pdf pages', 'separate pdf pages', 'pdf page splitter']
   },
   {
@@ -462,6 +474,8 @@ export const tools: RegisteredTool[] = ([
     title: 'Image to PDF Converter',
     description: 'Convert JPG, PNG and WebP images to one PDF online, with one image per page in your chosen order.' ,
     category: 'image-tools',
+    heroTitle: 'Image to PDF Converter',
+    heroDescription: 'Convert one or more JPG, PNG or WebP images into a single PDF in the order you choose.',
     keywords: ['image to pdf', 'image to pdf converter', 'jpg to pdf', 'png to pdf', 'multiple images to one pdf']
   },
   {
