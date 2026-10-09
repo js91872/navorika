@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="image-tools"
-      eyebrow="Image resolution & sensor specs"
-      title="Image Megapixel Calculator"
-      description="Calculate megapixels, total pixel count, and simplified aspect ratio from image dimensions."
+      eyebrow="Pixels to Megapixels Calculator"
+      title="Megapixel Calculator"
+      description="Calculate megapixels from image width and height in pixels, plus total pixel count and simplified aspect ratio."
       slug="image-megapixel-calculator"
     >
       <BusinessCalculatorTool slug="image-megapixel-calculator" />
