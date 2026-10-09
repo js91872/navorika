@@ -4,10 +4,10 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import ResizeImage1000x1000Tool from "@/components/tools/ResizeImage1000x1000Tool";
 
 const title =
-  "Resize Image to 1000×1000 Pixels Online – Free Image Converter";
+  "1000x1000 Image Converter – Resize Image to 1000×1000 Online";
 
 const description =
-  "Resize an image to exactly 1000×1000 pixels online for free. Crop, fit, or stretch your photo and download it as JPG, PNG, or WebP. Images are processed locally in your browser.";
+  "Use this 1000x1000 image converter to resize any compatible photo to exactly 1000×1000 pixels. Crop, fit, or stretch it and download as JPG, PNG, or WebP.";
 
 export const metadata: Metadata = {
   title,
@@ -150,7 +150,7 @@ export default function ResizeImage1000x1000Page() {
 
         <header className="mx-auto mb-10 max-w-3xl text-center">
           <p className="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-blue-600">
-            Free Image Resizer
+            1000×1000 Image Resizer
           </p>
 
           <h1 className="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
@@ -158,7 +158,7 @@ export default function ResizeImage1000x1000Page() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-            Resize any compatible image to exactly 1000 × 1000 pixels.
+            Convert or resize any compatible image to exactly 1000 × 1000 pixels.
             Crop to fill, fit the entire photo with padding, or stretch it
             to a square, then download as JPG, PNG, or WebP.
           </p>
