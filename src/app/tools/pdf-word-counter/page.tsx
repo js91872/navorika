@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="pdf-tools"
-      eyebrow="Browser-Local PDF Text & Document Analysis"
+      eyebrow="Count Words in a PDF Online"
       title="PDF Word Counter"
-      description="Count words, characters, sentences, paragraphs, and reading time in any text-based PDF 100% locally in your browser. Get page-by-page breakdowns, repeated-word frequency, and basic writing quality checks without uploading your file."
+      description="Count words in a PDF online, including characters, sentences, paragraphs, pages, reading time and repeated-word frequency, without uploading the file."
       slug="pdf-word-counter"
     >
       <PdfWordCounterTool />
