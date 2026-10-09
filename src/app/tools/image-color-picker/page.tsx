@@ -83,7 +83,10 @@ export default function ColorExtractionTool() {
   return (
     <main className="max-w-6xl mx-auto px-6 py-12 lg:px-8">
       <a href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-purple-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Image Tools</a>
-      <div className="text-center mb-10"><h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1></div>
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="mx-auto max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">{toolMeta.heroDescription}</p>
+      </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden p-8 grid md:grid-cols-2 gap-8">
         
@@ -92,7 +95,7 @@ export default function ColorExtractionTool() {
           {!file ? (
              <div onClick={() => fileInputRef.current?.click()} className="text-center cursor-pointer hover:opacity-75 transition-opacity">
                 <Upload className="h-10 w-10 text-purple-500 mx-auto mb-2" />
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white">Upload Asset to Analyze</h4>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white">Upload Image to Pick a Color</h4>
                 <input type="file" accept="image/*" className="hidden" ref={fileInputRef} onChange={(e) => {
                   if (e.target.files?.[0]) {
                     setFile(e.target.files[0]);
