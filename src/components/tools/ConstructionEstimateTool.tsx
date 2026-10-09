@@ -403,8 +403,8 @@ export default function ConstructionEstimateTool({ mode }: Props) {
 
           <p className="mt-2 text-slate-600 dark:text-slate-400">
             {contractorMode
-              ? 'Create a detailed customer-facing contractor estimate with line items, overhead, contingency, markup, tax and downloadable output.'
-              : 'Build a detailed construction estimate from materials, labor, equipment, subcontractors and other project costs.'}
+              ? 'Create a contractor estimate or construction quote with customer details, line-item costs, markup, tax, terms and downloadable PDF or JPG output.'
+              : 'Build an itemized construction estimate or preliminary bid from materials, labor, equipment, subcontractors and other project costs.'}
           </p>
         </div>
 
