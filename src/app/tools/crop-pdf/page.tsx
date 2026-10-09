@@ -82,7 +82,7 @@ export default function CropPDFTool() {
       </a>
       <div className="text-center mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
-          <ShieldCheck className="h-4 w-4" /> MediaBox Matrix Editor
+          <ShieldCheck className="h-4 w-4" /> Crop PDF Margins
         </div>
         <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
         <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
