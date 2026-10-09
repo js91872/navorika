@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="pdf-tools"
-      eyebrow="PDF Prepress & Geometry"
+      eyebrow="Check PDF Bleed & Trim for Printing"
       title="PDF Bleed & Trim Checker"
-      description="Inspect PDF page geometry boxes including MediaBox, CropBox, BleedBox, and TrimBox locally to verify commercial print preparation."
+      description="Check PDF bleed and trim settings by inspecting MediaBox, CropBox, BleedBox and TrimBox before sending a file to print."
       slug="pdf-bleed-trim-checker"
     >
       <PdfBleedTrimTool />
