@@ -241,13 +241,13 @@ export const healthToolPages: Record<string, ToolPageContent> = {
   },
   'cat-calorie-calculator': {
     slug: 'cat-calorie-calculator',
-    name: 'Cat Calorie Calculator: Daily Feline Energy Needs',
+    name: 'Cat Calorie Calculator – Daily Calories for Cats & Kittens',
     category: 'Health Calculators',
     applicationCategory: 'HealthApplication',
-    description: 'Estimate a cat\'s daily calorie requirement from body weight and general life-stage or activity factor.',
-    longTailKeywords: ['cat calorie calculator', 'cat calories per day calculator', 'how many calories should my cat eat', 'cat food calorie calculator', 'cat feeding calculator'],
+    description: 'Estimate daily calories for an adult cat or kitten from body weight and life-stage or activity factor.',
+    longTailKeywords: ['cat calorie calculator', 'kitten calorie calculator', 'cat calories per day calculator', 'how many calories should my cat eat', 'how many calories should a kitten eat', 'cat food calorie calculator', 'cat feeding calculator', 'kitten calories per day'],
     intro: [
-      'Estimate daily maintenance energy requirements for cats based on body weight and life stage or activity level.',
+      'Estimate daily calorie needs for cats and kittens based on body weight and life stage or activity level.',
       'Uses the standard WSAVA/NRC feline metabolic equation: Resting Energy Requirement (RER) multiplied by life-stage energy multipliers.',
     ],
     formula: [
@@ -282,13 +282,13 @@ export const healthToolPages: Record<string, ToolPageContent> = {
   },
   'caffeine-half-life-calculator': {
     slug: 'caffeine-half-life-calculator',
-    name: 'Caffeine Half-Life Calculator: Remaining Levels Over Time',
+    name: 'Caffeine Half-Life Calculator – How Much Caffeine Is Left?',
     category: 'Health Calculators',
     applicationCategory: 'HealthApplication',
-    description: 'Estimate how much caffeine may remain in the body over time using an adjustable caffeine half-life.',
-    longTailKeywords: ['caffeine half life calculator', 'caffeine remaining calculator', 'how much caffeine is left in my system', 'caffeine sleep calculator', 'caffeine clearance time'],
+    description: 'Estimate how much caffeine may still be in your system after a number of hours using an adjustable caffeine half-life.',
+    longTailKeywords: ['caffeine half life calculator', 'caffeine metabolism calculator', 'how long does caffeine stay in your system', 'how much caffeine is left in my system', 'caffeine remaining calculator', 'coffee half life calculator', 'caffeine sleep calculator', 'caffeine clearance time'],
     intro: [
-      'Estimate the amount and percentage of caffeine remaining in your bloodstream hours after consumption.',
+      'Enter how much caffeine you consumed and how many hours have passed to estimate the amount and percentage that may still remain in your system.',
       'Caffeine elimination follows first-order exponential decay with an average adult half-life of approximately 5 hours (typically ranging between 3 and 7 hours in healthy adults).',
     ],
     formula: [
