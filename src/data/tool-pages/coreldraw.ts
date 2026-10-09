@@ -585,7 +585,6 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     longTailKeywords: [
       'eps to cdr converter',
       'eps to cdr',
-      'coreldraw to eps converter',
       'eps to coreldraw',
       'convert eps to cdr',
       'open eps in coreldraw',
@@ -731,7 +730,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     name: 'CDR Version Checker – Check CorelDRAW File Version Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Check a CDR file version online to see whether it is from an older RIFF-based or newer ZIP-based CorelDRAW generation, and get compatibility guidance for opening it.' ,
+    description: 'Check a CDR file version online to identify its CorelDRAW generation and see whether an older or newer CorelDRAW release is likely to open it. The file stays in your browser.' ,
     longTailKeywords: [
       'cdr version converter',
       'cdr version checker',
@@ -746,6 +745,8 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'cdr x8',
       'cdr 2019',
       'cdr 2024',
+      'convert cdr to lower version',
+      'cdr lower version converter',
     ],
     intro: [
       'Check which CorelDRAW version or generation a CDR file belongs to. The checker reads the file header locally in your browser and identifies older RIFF-based files or newer ZIP-based CDR containers without uploading the file.' ,
@@ -802,10 +803,10 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'cdr-to-pdf-converter': {
     slug: 'cdr-to-pdf-converter',
-    name: 'CDR to PDF Converter – Convert CorelDRAW Files to PDF Online',
+    name: 'CDR to PDF Converter – Convert CorelDRAW to PDF Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert a supported CDR file to PDF online without CorelDRAW. Create a shareable PDF from CorelDRAW artwork, including multipage documents where supported.' ,
+    description: 'Convert CDR to PDF online without CorelDRAW. Turn a supported CorelDRAW file into a shareable PDF for opening, printing or sending, including multiple pages where supported.' ,
     longTailKeywords: [
       'cdr to pdf converter online',
       'cdr to pdf',
@@ -819,6 +820,8 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'open cdr file and save as pdf',
       'libcdr cdr to pdf',
       'coreldraw file to pdf converter high resolution',
+      'convert coreldraw file to pdf without coreldraw',
+      'open cdr as pdf',
     ],
     intro: [
       'Convert CDR to PDF online when you need to open, share, print or send a CorelDRAW file to someone who does not use CorelDRAW. PDF is widely supported on phones, computers, browsers and print workflows, making it a practical format for proofs and document sharing.' ,
@@ -950,10 +953,10 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'cdr-to-png-converter': {
     slug: 'cdr-to-png-converter',
-    name: 'CDR to PNG Converter – CorelDRAW to PNG',
+    name: 'CDR to PNG Converter – Convert CorelDRAW to PNG Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert a supported CDR file to PNG online. Export the first CorelDRAW page as a PNG image with adjustable 72–600 DPI for previews, presentations, web graphics or high-resolution output.' ,
+    description: 'Convert CDR to PNG online. Turn the first page of a supported CorelDRAW file into a PNG image with adjustable 72–600 DPI for transparent graphics, previews and high-resolution output.' ,
     longTailKeywords: [
       'cdr to png converter online',
       'cdr to png',
@@ -965,6 +968,8 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'export cdr to png 300 dpi',
       'cdr file to png image converter',
       'coreldraw cdr to png',
+      'convert coreldraw file to png without coreldraw',
+      'cdr to transparent png',
     ],
     intro: [
       'Convert CDR to PNG online when you need a standard image from a CorelDRAW file. PNG is useful for logos, previews, presentations and web graphics, and it can preserve transparency when the original artwork has no solid background.' ,
@@ -1025,10 +1030,10 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'cdr-to-jpg-converter': {
     slug: 'cdr-to-jpg-converter',
-    name: 'CDR to JPG Converter – CorelDRAW to JPEG',
+    name: 'CDR to JPG Converter – Convert CorelDRAW to JPG Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert a supported CDR file to JPG online. Export the first CorelDRAW page as a JPEG image with adjustable resolution and quality for easy sharing, websites and previews.' ,
+    description: 'Convert CDR to JPG online. Turn the first page of a supported CorelDRAW file into a JPEG image with adjustable resolution and quality for sharing, websites and previews.' ,
     longTailKeywords: [
       'cdr to jpg converter online',
       'cdr to jpg',
@@ -1041,6 +1046,8 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'cdr file to jpg image',
       'export cdr to jpg online',
       'coreldraw to jpg 300 dpi',
+      'convert coreldraw file to jpg without coreldraw',
+      'cdr to jpeg converter online',
     ],
     intro: [
       'Convert CDR to JPG when you need a simple image that opens almost anywhere. JPG is useful for sharing CorelDRAW artwork by email or messaging, adding it to websites and documents, or creating a compact preview when transparency is not required.' ,
@@ -1103,7 +1110,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     name: 'CDR to EPS Converter – Convert CorelDRAW to EPS Online',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Convert a supported CDR file to EPS online for print, sign-making and older vector workflows. Export the first CorelDRAW page as EPS for compatible design and production software.' ,
+    description: 'Convert CDR to EPS online. Export the first page of a supported CorelDRAW file as an EPS vector for print shops, sign-making, cutters and older production software.' ,
     longTailKeywords: [
       'cdr to eps converter online',
       'cdr to eps',
@@ -1113,6 +1120,8 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'export cdr to eps',
       'cdr to encapsulated postscript',
       'coreldraw prepress eps export',
+      'coreldraw to eps converter',
+      'convert coreldraw file to eps',
     ],
     intro: [
       'Convert CDR to EPS when a print shop, sign-making program, cutter or older design workflow specifically asks for an EPS file. EPS remains useful for vector interchange with legacy production software even though PDF is usually preferred for modern printing.' ,
