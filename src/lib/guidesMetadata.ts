@@ -38,6 +38,16 @@ const categoryImages: Record<GuideCategory, { src: string; caption: string }> = 
 
 const guideDefinitions: GuideDefinition[] = [
   {
+    slug: 'how-to-convert-image-to-pdf-on-iphone',
+    title: 'How to Convert Image to PDF on iPhone (4 Free Ways)',
+    description: 'Convert photos, screenshots, JPG and HEIC images to PDF on iPhone for free. Save one or multiple pictures as a PDF without an app.',
+    category: 'PDF',
+    publishedDate: 'October 2026',
+    readTime: '8 min read',
+    author: 'Navorika Team',
+    keywords: ['how to convert image to pdf on iphone', 'how to convert an image to pdf on iphone', 'how to convert images to pdf on iphone', 'iphone photo to pdf', 'convert multiple photos to pdf iphone'],
+  },
+  {
     slug: 'how-to-show-battery-percentage-on-mac',
     title: 'How to Show Battery Percentage on MacBook Air & Pro (2026)',
     description: 'Learn how to show battery percentage on MacBook Air or Pro in macOS Tahoe, Sequoia, Sonoma, and older versions. Easy steps and fixes if it is missing.',
