@@ -88,10 +88,10 @@ export const tools: RegisteredTool[] = ([
 
   {
     slug: 'add-image-to-pdf',
-    title: 'Add Image to PDF',
-    description: 'Place one JPG, PNG, or WebP image on a selected page of a readable, unencrypted PDF locally.',
+    title: 'Add Image to PDF Online',
+    description: 'Insert a JPG, PNG or WebP image into a selected PDF page and choose its size and position.' ,
     category: 'pdf-tools',
-    keywords: ['add-image-to-pdf', 'add', 'image', 'to', 'pdf']
+    keywords: ['add image to pdf', 'insert image into pdf', 'add photo to pdf', 'add jpg to pdf', 'add png to pdf']
   },
   {
     slug: 'add-page-numbers',
@@ -109,17 +109,17 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'compress-pdf',
-    title: 'Compress PDF',
-    description: 'Reduce PDF file size in your browser and compare the original and compressed file sizes before downloading.',
+    title: 'Compress PDF Online',
+    description: 'Reduce PDF file size online and compare the original and compressed sizes before downloading.' ,
     category: 'pdf-tools',
-    keywords: ['compress-pdf', 'compress', 'pdf']
+    keywords: ['compress pdf', 'compress pdf online', 'reduce pdf file size', 'pdf compressor', 'make pdf smaller']
   },
   {
     slug: 'crop-pdf',
-    title: 'Crop PDF',
-    description: 'Set custom crop-box margins on every PDF page locally in your browser.',
+    title: 'Crop PDF Online',
+    description: 'Crop PDF margins online by setting top, bottom, left and right crop values for every page.' ,
     category: 'pdf-tools',
-    keywords: ['crop-pdf', 'crop', 'pdf']
+    keywords: ['crop pdf', 'crop pdf online', 'trim pdf margins', 'remove white margins from pdf', 'crop pdf pages']
   },
   {
     slug: 'delete-pdf-pages',
@@ -174,10 +174,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'merge-pdf',
-    title: 'Merge PDF',
-    description: 'Merge PDF files online for free. Combine multiple PDF documents into one.',
+    title: 'Merge PDF Online',
+    description: 'Merge multiple PDF files into one document online in the order you choose.' ,
     category: 'pdf-tools',
-    keywords: ['merge-pdf', 'merge', 'pdf']
+    keywords: ['merge pdf', 'merge pdf online', 'combine pdf files', 'combine pdfs', 'pdf merger']
   },
   {
     slug: 'pdf-metadata-editor',
@@ -188,10 +188,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'pdf-to-image',
-    title: 'PDF to Image',
-    description: 'Render one selected page from a readable PDF as a previewed PNG or JPG image locally.',
+    title: 'PDF to Image Converter',
+    description: 'Convert one selected PDF page to PNG or JPG online with preview and adjustable resolution.' ,
     category: 'pdf-tools',
-    keywords: ['pdf-to-image', 'pdf', 'to', 'image']
+    keywords: ['pdf to image', 'pdf to image converter', 'pdf to png', 'pdf to jpg', 'convert pdf to image']
   },
   {
     slug: 'pdf-to-jpg',
@@ -230,10 +230,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'split-pdf',
-    title: 'Split PDF',
-    description: 'Split PDF files online for free. Extract specific pages or split PDF into multiple documents.',
+    title: 'Split PDF Online',
+    description: 'Split PDF pages online, extract selected pages, or separate them into individual PDF files.' ,
     category: 'pdf-tools',
-    keywords: ['split-pdf', 'split', 'pdf']
+    keywords: ['split pdf', 'split pdf online', 'extract pdf pages', 'separate pdf pages', 'pdf page splitter']
   },
   {
     slug: 'unlock-pdf',
@@ -459,10 +459,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'image-to-pdf',
-    title: 'Image to PDF',
-    description: 'Combine JPG, PNG, and WebP images into one ordered PDF locally, with one image per page.',
+    title: 'Image to PDF Converter',
+    description: 'Convert JPG, PNG and WebP images to one PDF online, with one image per page in your chosen order.' ,
     category: 'image-tools',
-    keywords: ['image-to-pdf', 'image', 'to', 'pdf']
+    keywords: ['image to pdf', 'image to pdf converter', 'jpg to pdf', 'png to pdf', 'multiple images to one pdf']
   },
   {
     slug: 'meme-generator',
@@ -1980,17 +1980,19 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'pdf-bleed-trim-checker',
     title: 'PDF Bleed & Trim Checker',
-    description: 'Inspect PDF page boxes locally to understand MediaBox, CropBox, TrimBox and BleedBox configuration before print production.',
+    description: 'Check PDF bleed and trim settings online by inspecting MediaBox, CropBox, TrimBox and BleedBox before print production.' ,
     category: 'pdf-tools',
     keywords: [
       'pdf bleed checker',
       'pdf trim box checker',
       'pdf bleed box checker',
       'pdf preflight bleed',
-      'check pdf trim size'
+      'check pdf trim size',
+      'check pdf bleed',
+      'pdf bleed box checker'
     ],
     heroTitle: 'PDF Bleed & Trim Checker',
-    heroDescription: 'Inspect PDF page boxes locally to understand MediaBox, CropBox, TrimBox, and BleedBox configuration before print production.'
+    heroDescription: 'Check PDF trim and bleed-box settings before print production, including MediaBox, CropBox, TrimBox and BleedBox.'
   },
   {
     slug: 'cdr-print-readiness-checker',
@@ -2025,17 +2027,19 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'pdf-page-size-checker',
     title: 'PDF Page Size Checker',
-    description: 'Inspect PDF page dimensions locally and identify common paper sizes such as A4, A3, Letter and Legal.',
+    description: 'Check PDF page size and dimensions online, including A4, A3, Letter, Legal and mixed-page documents.' ,
     category: 'pdf-tools',
     keywords: [
       'pdf page size checker',
       'check pdf dimensions',
       'pdf paper size checker',
       'what size is my pdf',
-      'pdf dimensions online'
+      'pdf dimensions online',
+      'is my pdf a4',
+      'check pdf page size in mm inches'
     ],
     heroTitle: 'PDF Page Size Checker',
-    heroDescription: 'Inspect PDF page dimensions locally and identify common paper sizes such as A4, A3, Letter, and Legal.'
+    heroDescription: 'Check PDF page dimensions, orientation and common paper sizes such as A4, A3, Letter and Legal.'
   },
   {
     slug: 'rgb-cmyk-image-checker',
