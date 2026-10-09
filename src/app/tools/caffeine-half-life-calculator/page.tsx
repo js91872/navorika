@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="health-calculators"
-      eyebrow="Pharmacokinetics & wind-down"
+      eyebrow="How Much Caffeine Is Left in Your System?"
       title="Caffeine Half-Life Calculator"
-      description="Model caffeine metabolism over time, estimate remaining blood caffeine levels, and plan wind-down timing using standard pharmacokinetic elimination."
+      description="Estimate how much caffeine may still be in your system after a number of hours using an adjustable caffeine half-life."
       slug="caffeine-half-life-calculator"
     >
       <BusinessCalculatorTool slug="caffeine-half-life-calculator" />
