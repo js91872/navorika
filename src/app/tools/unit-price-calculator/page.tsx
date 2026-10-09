@@ -61,7 +61,7 @@ export default function UnitPriceCalculator() {
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-10">
         <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
-          Shopping & Everyday Calculator
+          Price Per Unit Comparison
         </div>
 
         <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">
@@ -69,8 +69,7 @@ export default function UnitPriceCalculator() {
         </h1>
 
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-          Compare two package sizes or quantities and find which option costs
-          less per unit.
+          Compare two package sizes or quantities by price per unit and instantly see which option costs less per unit.
         </p>
       </div>
 
