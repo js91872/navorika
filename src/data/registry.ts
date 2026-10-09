@@ -1215,7 +1215,7 @@ export const tools: RegisteredTool[] = ([
   // ====== CONSTRUCTION CALCULATORS ======
   {slug:'12-foot-gambrel-roof-truss-calculator',title:'12 Foot Gambrel Roof Truss Calculator',description:'Calculate gambrel rafter lengths, roof height, break point, truss quantity and roofing area with a responsive live diagram.',category:'construction-calculators',keywords:['12 foot gambrel roof truss calculator','12 ft gambrel roof calculator','gambrel roof','roof truss','barn roof','gambrel rafter calculator','gambrel roof angle calculator'],heroTitle:'12 Foot Gambrel Roof Truss Calculator',heroDescription:'Calculate gambrel rafter lengths, roof height, knee position, roof area and truss quantity.'},
   {slug:'roof-pitch-calculator',title:'Roof Pitch Calculator',description:'Convert rise and run into X:12 pitch, angle, slope percentage, rafter multiplier and optional rafter length.',category:'construction-calculators',keywords:['roof pitch calculator','roof angle calculator','rafter multiplier'],heroTitle:'Roof Pitch Calculator',heroDescription:'Convert roof rise and run into useful slope and rafter geometry.'},
-  {slug:'stair-stringer-calculator',title:'Stair & Stringer Calculator',description:'Calculate risers, actual riser height, treads, total run, stringer length and stair angle.',category:'construction-calculators',keywords:['stair calculator','stringer length calculator','riser tread calculator'],heroTitle:'Stair & Stringer Calculator',heroDescription:'Plan consistent stair risers, treads, run and stringer geometry.'},
+  {slug:'stair-stringer-calculator',title:'Stair Stringer Calculator',description:'Calculate stair risers, treads, total run, stringer length and stair angle from the measured rise.',category:'construction-calculators',keywords:['stair stringer calculator','stringer length calculator','riser tread calculator','what size stringer do i need','calculate stair stringer length'],heroTitle:'Stair Stringer Calculator',heroDescription:'Calculate risers, treads, total run, stair angle and stringer length from your measured rise.'},
   {slug:'deck-board-calculator',title:'Deck Board Calculator',description:'Estimate deck board rows, pieces, linear feet and waste using actual width, gap, length and orientation.',category:'construction-calculators',keywords:['deck board calculator','decking quantity calculator','deck board spacing'],heroTitle:'Deck Board Calculator',heroDescription:'Estimate deck boards with actual width, gaps, stock length and waste.'},
   {slug:'fence-calculator',title:'Fence Calculator',description:'Estimate fence panels, sections, line posts, corner and gate posts, rails and waste.',category:'construction-calculators',keywords:['fence calculator','fence panel calculator','fence post spacing calculator'],heroTitle:'Fence Calculator',heroDescription:'Plan fence sections, panels, posts, gates and rails.'},
   {slug:'post-hole-concrete-calculator',title:'Post Hole Concrete Calculator',description:'Calculate concrete volume after round or rectangular post displacement and estimate bags from entered yield.',category:'construction-calculators',keywords:['post hole concrete calculator','fence post concrete bags','concrete displacement'],heroTitle:'Post Hole Concrete Calculator',heroDescription:'Estimate net post-hole concrete volume and bag quantity.'},
@@ -1235,7 +1235,9 @@ export const tools: RegisteredTool[] = ([
       'air tool cfm calculator',
       'compressor tank runtime calculator',
       'compressor duty cycle calculator',
-      'what size air compressor do i need'
+      'what size air compressor do i need',
+      'how many cfm to run air tools',
+      'air compressor scfm calculator'
     ],
     heroTitle: 'Air Compressor CFM & Tank Runtime Calculator',
     heroDescription: 'Compare compressor output with air tool demand and estimate whether your compressor can keep up.'
@@ -1324,11 +1326,11 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'brick-calculator',
     title: 'Brick Calculator',
-    description: 'Calculate number of bricks required for your construction project.',
+    description: 'Calculate how many bricks you need for a wall from wall dimensions, brick size, mortar joint thickness and waste.',
     category: 'construction-calculators',
-    keywords: ['brick', 'construction', 'wall', 'building', 'mortar'],
+    keywords: ['brick calculator', 'bricks needed calculator', 'how many bricks do i need', 'brick wall calculator', 'calculate bricks for wall', 'brick quantity calculator'], 
     heroTitle: 'Brick Calculator',
-    heroDescription: 'Calculate how many bricks you need for your wall or building project.'
+    heroDescription: 'Enter wall dimensions, brick size, mortar joint thickness and waste to calculate how many bricks you need.'
   },
   {
     slug: 'cement-calculator',
@@ -1351,11 +1353,11 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'construction-cost-calculator',
     title: 'Construction Cost Calculator',
-    description: 'Calculate building costs per square foot for residential construction.',
+    description: 'Estimate building cost from project size and your own cost per square foot, with overhead and contingency options.',
     category: 'construction-calculators',
-    keywords: ['construction', 'cost', 'building', 'house', 'per square foot'],
+    keywords: ['construction cost calculator', 'construction cost estimator', 'building cost calculator', 'calculate building costs', 'calculator for construction', 'construction cost per square foot'],
     heroTitle: 'Construction Cost Calculator',
-    heroDescription: 'Plan your building budget with accurate cost estimation.'
+    heroDescription: 'Estimate building cost from area and your own cost-per-square-foot rate, with optional overhead and contingency.'
   },
   {
     slug: 'excavation-calculator',
@@ -1387,12 +1389,12 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'house-construction-cost-calculator',
     title: 'House Construction Cost Calculator',
-    description: 'Calculate building costs per square foot for residential construction.',
+    description: 'Estimate house construction cost from floor area, number of floors, your own rate, site costs, contingency and optional land cost.',
     category: 'construction-calculators',
-    keywords: ['house cost', 'home building', 'residential construction', 'cost per sqft'],
+    keywords: ['house construction cost calculator', 'home building cost calculator', 'new house cost calculator', 'house construction estimate', 'house construction cost per square foot'], 
     aliases: ['home building cost', 'building cost calculator'],
     heroTitle: 'House Construction Cost Calculator',
-    heroDescription: 'Plan your home building budget with accurate per-square-foot cost estimation.'
+    heroDescription: 'Estimate a house-building budget from area, floors, your own rate, allowances, contingency and optional land cost.'
   },
   {
     slug: 'land-area-converter',
@@ -1632,10 +1634,13 @@ export const tools: RegisteredTool[] = ([
       'construction estimator',
       'construction cost estimate',
       'free construction estimate template',
-      'construction estimate generator'
+      'construction estimate generator',
+      'construction bid calculator',
+      'bid calculator construction',
+      'construction estimate calculator'
     ],
     heroTitle: 'Construction Estimate Builder',
-    heroDescription: 'Create a detailed construction estimate with line items, overhead, contingency, markup, tax, and downloadable output.'
+    heroDescription: 'Create an itemized construction estimate or preliminary bid with line items, overhead, contingency, markup, tax and downloadable output.'
   },
   {
     slug: 'contractor-estimate-generator',
@@ -1648,7 +1653,9 @@ export const tools: RegisteredTool[] = ([
       'contractor estimate generator',
       'free contractor estimate',
       'construction quote template',
-      'contractor quote generator'
+      'contractor quote generator',
+      'contractor bid calculator',
+      'construction bid template'
     ],
     heroTitle: 'Contractor Estimate Generator',
     heroDescription: 'Generate a professional contractor estimate with customer details, line items, totals, terms, and downloadable output.'
@@ -1789,14 +1796,16 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'soffit-fascia-calculator',
     title: 'Soffit & Fascia Calculator',
-    description: 'Estimate soffit area, fascia length, material quantity and waste allowance for roof eaves.',
+    description: 'Calculate soffit area, fascia board length, panel count, board quantity and waste allowance for roof eaves.' ,
     category: 'construction-calculators',
     keywords: [
       'soffit calculator',
       'fascia calculator',
       'soffit and fascia calculator',
       'soffit material calculator',
-      'fascia board calculator'
+      'fascia board calculator',
+      'fascia board quantity calculator',
+      'how much soffit do i need'
     ],
     heroTitle: 'Soffit & Fascia Calculator',
     heroDescription: 'Calculate soffit surface area, fascia linear footage, panel counts, and board quantities with custom waste allowances.'
@@ -1849,14 +1858,16 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'shed-ramp-angle-calculator',
     title: 'Shed Ramp Angle Calculator',
-    description: 'Calculate shed ramp angle, slope, rise-to-run ratio and ramp length.',
+    description: 'Calculate a shed or equipment ramp angle from rise and run, including slope percentage, ratio and ramp length.' ,
     category: 'construction-calculators',
     keywords: [
       'shed ramp angle calculator',
       'shed ramp calculator',
       'ramp slope calculator',
       'mower shed ramp calculator',
-      'ramp length calculator'
+      'ramp length calculator',
+      'how to find the angle of a ramp',
+      'calculate ramp angle'
     ],
     heroTitle: 'Shed Ramp Angle Calculator',
     heroDescription: 'Find ramp slope angle in degrees, slope percentage, slope ratio, and surface length for equipment sheds.'
@@ -2223,7 +2234,7 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'mortar-calculator',
-    title: 'Mortar Calculator',
+    title: 'Mortar Calculator – Brick & Block Walls',
     description: 'Calculate mortar volume, pre-mix bags, Portland cement, and masonry sand for brick and concrete block walls.',
     category: 'construction-calculators',
     keywords: [
@@ -2231,7 +2242,9 @@ export const tools: RegisteredTool[] = ([
       'mortar mix calculator',
       'brick mortar calculator',
       'how many bags of mortar do i need',
-      'masonry mortar calculator'
+      'masonry mortar calculator',
+      'calculating mortar for brickwork',
+      'mortar quantity calculator'
     ],
     heroTitle: 'Mortar Calculator',
     heroDescription: 'Calculate mortar volume, pre-mix bags, cement, and sand needed for brick and block masonry walls.'
