@@ -617,6 +617,103 @@ const configs: Record<string, Config> = {
       }),
     note: 'Calculates theoretical airflow from cross-sectional area and air velocity (Q = A × V). Does not size ducts from static pressure, friction loss, equivalent length, fittings, or fan curves. Use ACCA Manual D for complete HVAC design.',
   },
+  'roof-ridge-height-calculator': {
+    fields: [
+      { key: 'span', label: 'Building span / roof width (ft)', defaultValue: 24, min: 0.1, step: 0.1, help: 'Horizontal outside-to-outside roof span for a symmetrical gable roof.' },
+      { key: 'pitchRise', label: 'Roof pitch rise per 12', defaultValue: 6, min: 0, step: 0.25, help: 'Example: enter 6 for a 6:12 roof pitch.' },
+      { key: 'wallHeight', label: 'Wall / plate height (ft)', defaultValue: 8, min: 0, step: 0.1, help: 'Optional reference height for total ridge height above floor or ground datum.' },
+    ],
+    results: [
+      { key: 'halfSpan', label: 'Half span (ft)', format: 'number' },
+      { key: 'ridgeRise', label: 'Ridge rise above wall plates (ft)', format: 'number' },
+      { key: 'totalRidgeHeight', label: 'Total ridge height (ft)', format: 'number' },
+      { key: 'rafterLength', label: 'Geometric rafter length, no overhang (ft)', format: 'number' },
+      { key: 'roofAngle', label: 'Roof angle (degrees)', format: 'number' },
+    ],
+    calculate: (x) => {
+      const span = v(x, 'span');
+      const pitchRise = v(x, 'pitchRise');
+      const wallHeight = v(x, 'wallHeight');
+      if (span <= 0 || pitchRise < 0 || wallHeight < 0) throw new RangeError('Enter a positive span and non-negative pitch and wall height.');
+      const halfSpan = span / 2;
+      const slope = pitchRise / 12;
+      const ridgeRise = halfSpan * slope;
+      return {
+        halfSpan,
+        ridgeRise,
+        totalRidgeHeight: wallHeight + ridgeRise,
+        rafterLength: Math.sqrt(halfSpan ** 2 + ridgeRise ** 2),
+        roofAngle: Math.atan(slope) * 180 / Math.PI,
+      };
+    },
+    note: 'Geometry only for a symmetrical gable roof. This does not size rafters, include ridge-board thickness, overhangs, birdsmouth cuts, ceiling build-up, structural loads, or local code requirements.',
+  },
+  'fascia-replacement-cost-calculator': {
+    fields: [
+      { key: 'length', label: 'Fascia length to replace (linear ft)', defaultValue: 120, min: 0, step: 1 },
+      { key: 'materialRate', label: 'Material cost per linear ft ($)', defaultValue: 4.5, min: 0, step: 0.1 },
+      { key: 'laborRate', label: 'Labor cost per linear ft ($)', defaultValue: 8, min: 0, step: 0.1 },
+      { key: 'wastePercent', label: 'Material waste allowance (%)', defaultValue: 10, min: 0, max: 100, step: 1 },
+      { key: 'removalDisposal', label: 'Removal / disposal allowance ($)', defaultValue: 150, min: 0, step: 5 },
+    ],
+    results: [
+      { key: 'orderLength', label: 'Material length with waste (ft)', format: 'number' },
+      { key: 'materialCost', label: 'Estimated material cost', format: 'currency' },
+      { key: 'laborCost', label: 'Estimated labor cost', format: 'currency' },
+      { key: 'removalDisposal', label: 'Removal / disposal allowance', format: 'currency' },
+      { key: 'totalCost', label: 'Estimated fascia replacement total', format: 'currency' },
+      { key: 'costPerFoot', label: 'Estimated total cost per ft', format: 'currency' },
+    ],
+    calculate: (x) => {
+      const length = v(x, 'length');
+      const materialRate = v(x, 'materialRate');
+      const laborRate = v(x, 'laborRate');
+      const wastePercent = v(x, 'wastePercent');
+      const removalDisposal = v(x, 'removalDisposal');
+      if (length <= 0 || [materialRate, laborRate, wastePercent, removalDisposal].some(n => n < 0)) throw new RangeError('Enter a positive fascia length and non-negative cost assumptions.');
+      const orderLength = length * (1 + wastePercent / 100);
+      const materialCost = orderLength * materialRate;
+      const laborCost = length * laborRate;
+      const totalCost = materialCost + laborCost + removalDisposal;
+      return { orderLength, materialCost, laborCost, removalDisposal, totalCost, costPerFoot: totalCost / length };
+    },
+    note: 'Planning estimate using the rates you enter. It does not supply local market prices or include hidden rot, soffit repair, gutters, scaffolding, painting, permits, taxes, height/access premiums, or structural repairs unless you include them in your rates or allowance.',
+  },
+  'ppi-calculator': {
+    fields: [
+      { key: 'widthPixels', label: 'Image width (px)', defaultValue: 3000, min: 1, step: 1 },
+      { key: 'heightPixels', label: 'Image height (px)', defaultValue: 2400, min: 1, step: 1 },
+      { key: 'printWidth', label: 'Print width (inches)', defaultValue: 10, min: 0.01, step: 0.1 },
+      { key: 'printHeight', label: 'Print height (inches)', defaultValue: 8, min: 0.01, step: 0.1 },
+    ],
+    results: [
+      { key: 'horizontalPpi', label: 'Horizontal PPI', format: 'number' },
+      { key: 'verticalPpi', label: 'Vertical PPI', format: 'number' },
+      { key: 'effectivePpi', label: 'Effective PPI (limiting axis)', format: 'number' },
+      { key: 'megapixels', label: 'Image megapixels', format: 'number' },
+      { key: 'aspectMatch', label: 'Aspect ratio match', format: 'text' },
+    ],
+    calculate: (x) => {
+      const widthPixels = v(x, 'widthPixels');
+      const heightPixels = v(x, 'heightPixels');
+      const printWidth = v(x, 'printWidth');
+      const printHeight = v(x, 'printHeight');
+      if ([widthPixels, heightPixels, printWidth, printHeight].some(n => n <= 0)) throw new RangeError('Pixel and print dimensions must be greater than zero.');
+      const horizontalPpi = widthPixels / printWidth;
+      const verticalPpi = heightPixels / printHeight;
+      const imageRatio = widthPixels / heightPixels;
+      const printRatio = printWidth / printHeight;
+      const mismatchPercent = Math.abs(imageRatio / printRatio - 1) * 100;
+      return {
+        horizontalPpi,
+        verticalPpi,
+        effectivePpi: Math.min(horizontalPpi, verticalPpi),
+        megapixels: widthPixels * heightPixels / 1_000_000,
+        aspectMatch: mismatchPercent < 0.5 ? 'Matched' : `Mismatch (~${mismatchPercent.toFixed(1)}%)`,
+      };
+    },
+    note: 'PPI means pixels per inch of the digital image at a chosen print size. Printer DPI means physical ink/toner dots per inch and is not the same measurement. This tool calculates image PPI, not printer hardware DPI.',
+  },
   'shed-ramp-angle-calculator': {
     fields: [
       { key: 'rise', label: 'Vertical rise (inches)', defaultValue: 12, min: 0, step: 0.5 },
