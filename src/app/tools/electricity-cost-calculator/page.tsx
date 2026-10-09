@@ -39,7 +39,7 @@ export default function ElectricityCostCalculator() {
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-10">
         <div className="inline-flex items-center px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider mb-4">
-          Energy & Everyday Calculator
+          kWh & Appliance Cost Calculator
         </div>
 
         <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">
@@ -47,8 +47,7 @@ export default function ElectricityCostCalculator() {
         </h1>
 
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-          Estimate appliance electricity consumption and running cost from
-          wattage, daily usage, billing period, and electricity rate.
+          Calculate appliance electricity use in kWh and estimate running cost from wattage, daily usage time, billing period and your electricity rate.
         </p>
       </div>
 
