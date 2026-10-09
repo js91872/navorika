@@ -1008,6 +1008,114 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
       ],
     }),
   },
+  'square-footage-calculator': {
+    slug: 'square-footage-calculator',
+    ...expansionPage({
+      name: 'Square Footage Calculator – Calculate Area in Square Feet',
+      description: 'Calculate square footage from length and width, then convert the total area to square yards and square meters.',
+      keywords: ['square footage calculator', 'square feet calculator', 'calculate square footage', 'room square footage calculator', 'area calculator square feet', 'how many square feet is my room'],
+      intro: 'Enter length and width in feet to calculate square footage for a room, floor, wall, patio or other rectangular area.',
+      formula: 'Square feet = length in feet × width in feet. Multiply by quantity for repeated equal areas.',
+      interpretation: 'The calculator also converts total area to square yards and square meters for estimating flooring, paint, landscaping or construction quantities.',
+      limitations: ['Assumes rectangular areas.', 'For irregular shapes, divide the project into simpler rectangles and add their areas.', 'Measurements should use the same physical reference points.'],
+      relatedTools: [{slug:'flooring-calculator',name:'Flooring Calculator'},{slug:'paint-calculator',name:'Paint Calculator'},{slug:'tile-calculator',name:'Tile Calculator'}],
+      faq: [
+        {question:'How do I calculate square footage?',answer:'Multiply length in feet by width in feet. A 12 ft by 10 ft room is 120 square feet.'},
+        {question:'How do I calculate an L-shaped room?',answer:'Split it into two or more rectangles, calculate each square footage separately, then add the results.'},
+        {question:'How many square feet are in a square yard?',answer:'One square yard equals 9 square feet.'}
+      ],
+    }),
+  },
+  'cubic-yard-calculator': {
+    slug: 'cubic-yard-calculator',
+    ...expansionPage({
+      name: 'Cubic Yard Calculator – Calculate Material Volume',
+      description: 'Calculate cubic yards from length, width and depth for concrete, gravel, soil, mulch and other bulk materials.',
+      keywords: ['cubic yard calculator', 'cubic yards calculator', 'calculate cubic yards', 'cubic yard volume calculator', 'how many cubic yards do i need', 'cubic feet to cubic yards project calculator'],
+      intro: 'Enter project length and width in feet plus material depth in inches to calculate cubic feet, cubic yards and cubic meters.',
+      formula: 'Cubic feet = length × width × depth in feet; cubic yards = cubic feet ÷ 27; optional order quantity adds the entered allowance.',
+      interpretation: 'Use the extra allowance for waste, settlement or field variation when appropriate for the material.',
+      limitations: ['Assumes a rectangular volume with uniform depth.', 'Compaction, excavation swell and material density are not included.', 'Supplier delivery minimums and rounding rules vary.'],
+      relatedTools: [{slug:'concrete-calculator',name:'Concrete Calculator'},{slug:'gravel-calculator',name:'Gravel Calculator'},{slug:'mulch-calculator',name:'Mulch Calculator'}],
+      faq: [
+        {question:'How many cubic feet are in a cubic yard?',answer:'There are 27 cubic feet in one cubic yard.'},
+        {question:'How do I calculate cubic yards from inches of depth?',answer:'Convert depth from inches to feet by dividing by 12, multiply by length and width in feet, then divide cubic feet by 27.'},
+        {question:'Should I add extra material?',answer:'Often yes. Waste, settlement, compaction and uneven grades can increase the amount needed.'}
+      ],
+    }),
+  },
+  'roofing-shingle-calculator': {
+    slug: 'roofing-shingle-calculator',
+    ...expansionPage({
+      name: 'Roofing Shingle Calculator – Squares & Bundles Needed',
+      description: 'Estimate roofing squares and shingle bundles from roof surface area, waste allowance and bundles per square.',
+      keywords: ['roofing shingle calculator', 'shingle calculator', 'roof shingles calculator', 'how many bundles of shingles do i need', 'roofing squares calculator', 'shingle bundles calculator'],
+      intro: 'Enter measured roof surface area, waste percentage and the number of bundles your shingle product uses per roofing square.',
+      formula: 'Order area = roof area × (1 + waste%); roofing squares = order area ÷ 100; bundles = roofing squares × bundles per square, rounded up.',
+      interpretation: 'One roofing square covers 100 square feet. Many asphalt shingles use about three bundles per square, but product coverage varies.',
+      limitations: ['Requires roof surface area, not just building floor area.', 'Bundle coverage varies by manufacturer and product.', 'Starter shingles, ridge caps, underlayment, flashing and accessories are separate.'],
+      relatedTools: [{slug:'roof-area-calculator',name:'Roof Area Calculator'},{slug:'roof-pitch-calculator',name:'Roof Pitch Calculator'},{slug:'roof-ridge-height-calculator',name:'Roof Ridge Height Calculator'}],
+      faq: [
+        {question:'How many square feet are in a roofing square?',answer:'One roofing square equals 100 square feet of roof surface.'},
+        {question:'How many bundles are in a square of shingles?',answer:'Three bundles is common for many asphalt shingles, but always verify the product label because coverage varies.'},
+        {question:'How much waste should I add?',answer:'Simple roofs may need around 5–10%, while complex roofs with valleys, hips and many cuts can require more.'}
+      ],
+    }),
+  },
+  'rafter-length-calculator': {
+    slug: 'rafter-length-calculator',
+    ...expansionPage({
+      name: 'Rafter Length Calculator – Roof Pitch, Run & Overhang',
+      description: 'Calculate common rafter length from horizontal run and roof pitch, with optional overhang and roof-angle output.',
+      keywords: ['rafter length calculator', 'roof rafter calculator', 'calculate rafter length', 'rafter calculator pitch and run', 'common rafter length calculator', 'roof pitch rafter calculator'],
+      intro: 'Enter the horizontal run and roof pitch to calculate geometric common-rafter length, rise and roof angle, with an optional horizontal overhang.',
+      formula: 'Rise = run × pitch rise ÷ 12; rafter length = √(run² + rise²). The same slope is extended across the optional overhang.',
+      interpretation: 'The result is geometric slope length before framing deductions and cuts.',
+      limitations: ['Does not include ridge-board deduction, birdsmouth, plumb-cut allowance or material defects.', 'Does not size rafters or verify structural loads.', 'Use framing plans and local code requirements for construction.'],
+      relatedTools: [{slug:'roof-pitch-calculator',name:'Roof Pitch Calculator'},{slug:'roof-ridge-height-calculator',name:'Roof Ridge Height Calculator'},{slug:'roof-area-calculator',name:'Roof Area Calculator'}],
+      faq: [
+        {question:'How do I calculate rafter length?',answer:'Calculate roof rise from run and pitch, then use the Pythagorean theorem: rafter length = square root of run squared plus rise squared.'},
+        {question:'Does the calculator include roof overhang?',answer:'Yes, if you enter a horizontal overhang. The slope is extended over that extra run.'},
+        {question:'Does this tell me what size lumber to use?',answer:'No. It calculates geometry only, not structural member size.'}
+      ],
+    }),
+  },
+  'stud-calculator': {
+    slug: 'stud-calculator',
+    ...expansionPage({
+      name: 'Stud Calculator – How Many Wall Studs Do I Need?',
+      description: 'Estimate wall studs from wall length and on-center spacing, with extra studs for corners or openings and a waste allowance.',
+      keywords: ['stud calculator', 'wall stud calculator', 'how many studs do i need', '16 inch on center stud calculator', '24 inch on center stud calculator', 'framing stud calculator'],
+      intro: 'Enter wall length and stud spacing to estimate the basic number of studs, then add extras for corners, openings or other framing details.',
+      formula: 'Base studs = ceiling(wall length in inches ÷ on-center spacing) + 1. Extra studs and waste are then added.',
+      interpretation: 'The base count represents a simple straight wall with a stud at each end.',
+      limitations: ['Doors, windows, corners, intersections, backing, headers, cripples and blocking can require more lumber.', 'Framing details vary by design and code.', 'This is a material-planning estimate, not a framing plan.'],
+      relatedTools: [{slug:'board-foot-calculator',name:'Board Foot Calculator'},{slug:'drywall-calculator',name:'Drywall Calculator'},{slug:'construction-material-waste-calculator',name:'Construction Material Waste Calculator'}],
+      faq: [
+        {question:'How many studs do I need for a wall?',answer:'Divide wall length in inches by stud spacing, round up and add one end stud, then add studs required for corners and openings.'},
+        {question:'What does 16 inches on center mean?',answer:'It means stud centerlines are spaced 16 inches apart along the wall.'},
+        {question:'Should I add extra studs?',answer:'Yes. Corners, doors, windows, wall intersections and backing often require additional studs.'}
+      ],
+    }),
+  },
+  'drywall-mud-calculator': {
+    slug: 'drywall-mud-calculator',
+    ...expansionPage({
+      name: 'Drywall Mud Calculator – Joint Compound Quantity',
+      description: 'Estimate drywall joint compound containers from drywall area, product coverage and an extra allowance.',
+      keywords: ['drywall mud calculator', 'joint compound calculator', 'how much drywall mud do i need', 'drywall compound calculator', 'sheetrock mud calculator', 'drywall joint compound coverage calculator'],
+      intro: 'Enter total drywall area and the manufacturer coverage for your joint-compound bucket or box to estimate how many containers to buy.',
+      formula: 'Adjusted area = drywall area × (1 + allowance%); containers = adjusted area ÷ product coverage, rounded up.',
+      interpretation: 'Use the coverage printed by the compound manufacturer because premixed and setting-type products can have different practical coverage.',
+      limitations: ['Coverage varies with number of coats, tape, bead, texture, workmanship and product.', 'This calculator does not estimate tape, corner bead or drywall sheets.', 'Use product-specific coverage whenever available.'],
+      relatedTools: [{slug:'drywall-calculator',name:'Drywall Calculator'},{slug:'construction-material-waste-calculator',name:'Construction Material Waste Calculator'},{slug:'paint-calculator',name:'Paint Calculator'}],
+      faq: [
+        {question:'How much drywall mud do I need?',answer:'Divide your adjusted drywall area by the coverage stated for the compound container, then round up to a whole container.'},
+        {question:'Why does drywall mud coverage vary?',answer:'Joint count, number of coats, bead, texture, product consistency and installer technique all affect usage.'},
+        {question:'Does this calculate drywall sheets too?',answer:'No. Use the separate Drywall Calculator for sheet quantity.'}
+      ],
+    }),
+  },
   'roof-ridge-height-calculator': {
     slug: 'roof-ridge-height-calculator',
     ...expansionPage({
