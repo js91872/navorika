@@ -238,20 +238,22 @@ export const imageToolPages: Record<string, ToolPageContent> = {
   },
   'image-megapixel-calculator': {
     slug: 'image-megapixel-calculator',
-    name: 'Image Megapixel Calculator – Resolution & Aspect Ratio',
+    name: 'Megapixel Calculator – Pixels to MP & Aspect Ratio',
     category: 'Image Tools',
     applicationCategory: 'UtilitiesApplication',
-    description: 'Calculate megapixels, total pixel count, and simplified aspect ratio from digital image dimensions.',
+    description: 'Calculate image megapixels from width and height in pixels, plus total pixels and simplified aspect ratio.',
     longTailKeywords: [
       'megapixel calculator',
       'image megapixel calculator',
       'pixels to megapixels',
       'resolution megapixel calculator',
       'calculate megapixels from width and height',
+      'pixels to mp calculator',
+      'how many megapixels is my image',
       'camera resolution mp calculator',
     ],
     intro: [
-      'The Image Megapixel Calculator determines the total pixel count, megapixel rating, and simplified geometric aspect ratio for any digital image or camera sensor resolution.',
+      'Enter image width and height in pixels to calculate total pixels, megapixels and the simplified aspect ratio.',
       'All calculations run locally in your browser with zero data transmission or image uploads.',
     ],
     formula: [
