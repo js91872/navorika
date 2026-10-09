@@ -93,7 +93,7 @@ export default function AddImageToPdfPage() {
     <Link href="/categories/pdf-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to PDF Tools</Link>
     <div className="text-center mb-10">
       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20"><ShieldCheck className="h-4 w-4" /> Local Processing Only</div>
-      <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">Add Image to PDF</h1>
+      <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">Add Image to PDF Online</h1>
       <p className="text-lg text-slate-600 dark:text-slate-400">Place a JPG, PNG, or WebP image on one selected PDF page.</p>
     </div>
 
