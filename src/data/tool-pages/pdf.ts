@@ -25,8 +25,8 @@ export const pdfToolPages: Record<string, ToolPageContent> = {
     relatedTools: [{ slug: 'extract-pdf-pages', name: 'Extract PDF Pages' }, { slug: 'crop-image', name: 'Crop Image' }, { slug: 'resize-image', name: 'Resize Image' }, { slug: 'compress-image', name: 'Compress Image' }], relatedGuides: ['pdf-security-guide'],
   },
   'pdf-to-jpg': {
-    slug: 'pdf-to-jpg', name: 'Convert a PDF Page to JPG Online Privately', category: 'PDF Tools', applicationCategory: 'DesignApplication', description: 'Render one selected PDF page as a JPG with adjustable resolution and JPEG quality, entirely in your browser.',
-    longTailKeywords: ['convert PDF page to JPG online', 'PDF to JPEG without upload', 'save selected PDF page as high quality JPG', 'private browser PDF JPG converter', 'render PDF page to photo'],
+    slug: 'pdf-to-jpg', name: 'PDF to JPG Converter – Convert PDF Page to JPEG Online', category: 'PDF Tools', applicationCategory: 'DesignApplication', description: 'Convert a selected PDF page to JPG or JPEG online with adjustable resolution and image quality, directly in your browser.',
+    longTailKeywords: ['pdf to jpg', 'pdf to jpg converter', 'pdf to jpeg', 'convert pdf to jpg', 'convert pdf page to jpg', 'pdf page to jpeg', 'pdf to jpg online', 'pdf to jpeg without upload'],
     intro: ['PDF to JPG rasterizes one selected page against a white background and encodes it as a JPEG image at the chosen quality.', privacy],
     steps: ['Select a valid PDF and target page.', 'Choose the rendering resolution and JPG quality.', 'Render, inspect the preview, and download the JPG.'],
     interpretation: ['Rendering scale controls pixel dimensions, while JPG quality controls lossy image encoding; they affect different aspects of output.', 'The white background ensures transparent PDF regions do not become black when encoded to JPG.'],
@@ -55,8 +55,8 @@ export const pdfToolPages: Record<string, ToolPageContent> = {
     relatedTools: [{ slug: 'merge-pdf', name: 'Merge PDF' }, { slug: 'split-pdf', name: 'Split PDF' }, { slug: 'convert-png-to-webp', name: 'PNG to WebP' }, { slug: 'convert-webp-to-jpg', name: 'WebP to JPG' }], relatedGuides: ['pdf-security-guide'],
   },
   'jpg-to-pdf': {
-    slug: 'jpg-to-pdf', name: 'Convert JPG Images to PDF Online', category: 'PDF Tools', applicationCategory: 'DesignApplication', description: 'Turn one or more JPG or JPEG images into an ordered PDF locally in your browser without uploading photos.',
-    longTailKeywords: ['convert multiple JPG to one PDF', 'JPG to PDF without upload', 'JPEG photos to PDF online privately', 'combine JPG files into PDF in order', 'browser JPG PDF creator'],
+    slug: 'jpg-to-pdf', name: 'JPG to PDF Converter – Combine JPEG Images into PDF', category: 'PDF Tools', applicationCategory: 'DesignApplication', description: 'Convert one or more JPG or JPEG images to a single PDF online, with one image per page in the order you choose.',
+    longTailKeywords: ['jpg to pdf', 'jpg to pdf converter', 'jpeg to pdf', 'convert jpg to pdf', 'combine jpg to pdf', 'multiple jpg to one pdf', 'jpeg photos to pdf', 'jpg to pdf without upload'],
     intro: ['JPG to PDF embeds each selected JPEG as its own PDF page and combines all pages in the sequence you choose.', privacy],
     steps: ['Choose one or more JPG or JPEG files.', 'Arrange the files in the required page order.', 'Create and download the PDF, then inspect every page.'],
     interpretation: ['JPEG data is embedded directly rather than being deliberately recompressed.', 'The PDF page matches the source image dimensions and orientation.'],
