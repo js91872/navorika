@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="health-calculators"
-      eyebrow="Feline nutrition & energy"
-      title="Cat Calorie Calculator"
-      description="Calculate resting energy requirements (RER) and maintenance energy requirements (MER) in kcal/day for cats based on body weight, life stage, and neuter status."
+      eyebrow="Daily Calories for Cats & Kittens"
+      title="Cat & Kitten Calorie Calculator"
+      description="Estimate daily calories for adult cats and kittens from body weight, life stage and activity level using RER and MER energy calculations."
       slug="cat-calorie-calculator"
     >
       <BusinessCalculatorTool slug="cat-calorie-calculator" />
