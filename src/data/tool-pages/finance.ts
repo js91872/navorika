@@ -238,13 +238,13 @@ export const financeToolPages: Record<string, ToolPageContent> = {
   },
   'profit-margin-markup-calculator': {
     slug: 'profit-margin-markup-calculator',
-    name: 'Profit Margin & Markup Calculator: Margin vs Markup Pricing Tool',
+    name: 'Profit Margin & Markup Calculator – Margin vs Markup',
     category: 'Finance Calculators',
     applicationCategory: 'FinanceApplication',
-    description: 'Calculate gross profit, profit margin percentage, markup percentage, selling price, and cost multiplier across pricing scenarios.',
-    longTailKeywords: ['profit margin calculator', 'markup calculator', 'margin vs markup calculator', 'gross profit calculator', 'retail markup percentage calculator'],
+    description: 'Calculate profit margin, markup, gross profit and selling price from cost and price, or work backward from a target margin or markup.',
+    longTailKeywords: ['profit margin calculator', 'markup calculator', 'margin calculator', 'margin vs markup calculator', 'gross profit calculator', 'selling price calculator', 'retail markup percentage calculator', 'markup to margin calculator'],
     intro: [
-      'Profit margin and markup are two essential perspectives on pricing and profitability that are frequently confused.',
+      'Use this calculator to compare profit margin and markup, calculate gross profit, and find a selling price from your cost or target percentage.',
       'Margin measures profit as a percentage of selling price, while markup measures profit as a percentage of production or wholesale cost.',
     ],
     formula: [
