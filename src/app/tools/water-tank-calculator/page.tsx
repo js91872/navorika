@@ -36,8 +36,8 @@ export default function WaterTankCalculator() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
-        <h1 className="text-2xl font-bold mb-2">Water Tank Calculator</h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate water tank capacity and dimensions for storage.</p>
+        <h1 className="text-2xl font-bold mb-2">Water Tank Capacity Calculator</h1>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate rectangular, cylindrical or spherical water tank capacity in liters, US gallons and cubic meters from your tank dimensions.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
