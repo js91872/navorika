@@ -1008,6 +1008,42 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
       ],
     }),
   },
+  'roof-ridge-height-calculator': {
+    slug: 'roof-ridge-height-calculator',
+    ...expansionPage({
+      name: 'Roof Ridge Height Calculator – Calculate Ridge Rise from Roof Pitch',
+      description: 'Calculate roof ridge height for a symmetrical gable roof from building span, roof pitch and wall height. See ridge rise, total ridge height, roof angle and geometric rafter length.',
+      keywords: ['roof ridge height calculator', 'ridge height calculator', 'roof height calculator', 'calculate roof ridge height', 'roof pitch height calculator', 'gable roof ridge height', '6 12 roof ridge height calculator'],
+      intro: 'Enter the building span, roof pitch and wall height to calculate how high the ridge rises above the wall plates and the total ridge height.',
+      formula: 'Half-span = span ÷ 2; ridge rise = half-span × (pitch rise ÷ 12); total ridge height = wall height + ridge rise.',
+      interpretation: 'For a symmetrical gable roof, a steeper pitch or wider span increases ridge rise. The rafter result is geometric length from wall plate to ridge before overhangs and cuts.',
+      limitations: ['Assumes a symmetrical gable roof with equal slopes on both sides.', 'Does not include ridge-board thickness, truss heel height, birdsmouth cuts, overhang, ceiling build-up or structural member sizing.', 'Verify actual framing plans and code requirements before construction.'],
+      relatedTools: [{slug:'roof-pitch-calculator',name:'Roof Pitch Calculator'},{slug:'roof-area-calculator',name:'Roof Area Calculator'},{slug:'12-foot-gambrel-roof-truss-calculator',name:'Gambrel Roof Truss Calculator'}],
+      faq: [
+        {question:'How do you calculate roof ridge height?',answer:'For a symmetrical gable roof, divide the span by two and multiply that half-span by the roof rise-per-12 divided by 12. Add the result to wall or plate height if you need total ridge height.'},
+        {question:'What is the ridge rise for a 24 ft span with a 6:12 pitch?',answer:'Half the span is 12 ft. At 6:12 pitch, ridge rise is 12 × 6 ÷ 12 = 6 ft above the wall plates.'},
+        {question:'Does this calculate structural rafter size?',answer:'No. It calculates geometry only, not structural capacity.'}
+      ],
+    }),
+  },
+  'fascia-replacement-cost-calculator': {
+    slug: 'fascia-replacement-cost-calculator',
+    ...expansionPage({
+      name: 'Fascia Replacement Cost Calculator – Estimate Cost per Linear Foot',
+      description: 'Estimate fascia board replacement cost from linear feet, material price, labor rate, waste and removal or disposal allowance.',
+      keywords: ['fascia replacement cost calculator', 'fascia board replacement cost calculator', 'fascia repair cost calculator', 'fascia cost per linear foot', 'replace fascia board cost', 'how much does fascia replacement cost'],
+      intro: 'Enter the fascia length and your local material and labor rates to estimate replacement cost per linear foot and total project cost.',
+      formula: 'Order length = measured fascia length × (1 + waste%); material cost = order length × material rate; labor cost = measured length × labor rate; total = material + labor + removal/disposal.',
+      interpretation: 'The result separates material, labor and removal allowances so you can replace the default planning inputs with local contractor or supplier rates.',
+      limitations: ['Does not provide live local prices or contractor quotes.', 'Hidden rot, soffit damage, gutters, access height, scaffolding, painting, permits, taxes and structural repair can materially change actual cost.', 'Use measured linear feet and project-specific rates.'],
+      relatedTools: [{slug:'soffit-fascia-calculator',name:'Soffit & Fascia Calculator'},{slug:'construction-cost-calculator',name:'Construction Cost Calculator'},{slug:'contractor-estimate-generator',name:'Contractor Estimate Generator'}],
+      faq: [
+        {question:'How is fascia replacement cost calculated?',answer:'Multiply measured fascia length by labor rate, add material cost including waste, then add removal or disposal and other project allowances.'},
+        {question:'Should I add waste to fascia boards?',answer:'Yes. A waste allowance helps cover end cuts, damaged sections and board-length optimization.'},
+        {question:'Does this include soffit or gutter replacement?',answer:'No, unless you include those costs in your entered rates or allowance.'}
+      ],
+    }),
+  },
   'shed-ramp-angle-calculator': {
     slug: 'shed-ramp-angle-calculator',
     ...expansionPage({
