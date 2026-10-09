@@ -173,10 +173,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'jpg-to-pdf',
-    title: 'JPG to PDF',
-    description: 'Combine one or more JPG images into an ordered PDF locally, with one image per page.',
+    title: 'JPG to PDF Converter',
+    description: 'Convert one or more JPG or JPEG images into a single PDF online, with one image per page.',
     category: 'pdf-tools',
-    keywords: ['jpg-to-pdf', 'jpg', 'to', 'pdf']
+    keywords: ['jpg to pdf', 'jpg to pdf converter', 'jpeg to pdf', 'convert jpg to pdf', 'multiple jpg to one pdf']
   },
   {
     slug: 'merge-pdf',
@@ -205,10 +205,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'pdf-to-jpg',
-    title: 'PDF to JPG',
-    description: 'Render one selected page from a readable PDF as a JPG with adjustable resolution and quality.',
+    title: 'PDF to JPG Converter',
+    description: 'Convert one selected PDF page to JPG or JPEG online with adjustable resolution and quality.',
     category: 'pdf-tools',
-    keywords: ['pdf-to-jpg', 'pdf', 'to', 'jpg']
+    keywords: ['pdf to jpg', 'pdf to jpg converter', 'pdf to jpeg', 'convert pdf to jpg', 'pdf page to jpg']
   },
   {
     slug: 'protect-pdf',
