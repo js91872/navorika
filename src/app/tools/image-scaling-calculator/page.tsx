@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="image-tools"
-      eyebrow="Proportional scaling & layout"
+      eyebrow="Resize Image Dimensions by Percentage"
       title="Image Scaling Calculator"
-      description="Calculate proportional dimensions, scale factor, and pixel area percentage when scaling images."
+      description="Calculate new proportional image width and height when scaling by percentage, plus the scale factor and pixel-area change."
       slug="image-scaling-calculator"
     >
       <BusinessCalculatorTool slug="image-scaling-calculator" />
