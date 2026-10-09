@@ -1879,6 +1879,60 @@ export const tools: RegisteredTool[] = ([
     heroDescription: 'Calculate volumetric airflow in CFM from round or rectangular duct cross-sectional area and air velocity.'
   },
   {
+    slug: 'square-footage-calculator',
+    title: 'Square Footage Calculator',
+    description: 'Calculate square footage from length and width, with square yards and square meters.',
+    category: 'construction-calculators',
+    keywords: ['square footage calculator', 'square feet calculator', 'calculate square footage', 'room square footage calculator', 'area calculator square feet'],
+    heroTitle: 'Square Footage Calculator',
+    heroDescription: 'Calculate square feet from length and width for rooms, floors, walls, patios and other rectangular areas.'
+  },
+  {
+    slug: 'cubic-yard-calculator',
+    title: 'Cubic Yard Calculator',
+    description: 'Calculate cubic yards from length, width and depth for concrete, gravel, soil, mulch and bulk materials.',
+    category: 'construction-calculators',
+    keywords: ['cubic yard calculator', 'cubic yards calculator', 'calculate cubic yards', 'how many cubic yards do i need', 'cubic yard volume calculator'],
+    heroTitle: 'Cubic Yard Calculator',
+    heroDescription: 'Calculate cubic feet, cubic yards and cubic meters from project dimensions and depth.'
+  },
+  {
+    slug: 'roofing-shingle-calculator',
+    title: 'Roofing Shingle Calculator',
+    description: 'Estimate roofing squares and shingle bundles from roof surface area, waste and bundles per square.',
+    category: 'construction-calculators',
+    keywords: ['roofing shingle calculator', 'shingle calculator', 'roof shingles calculator', 'roofing squares calculator', 'shingle bundles calculator'],
+    heroTitle: 'Roofing Shingle Calculator',
+    heroDescription: 'Estimate roofing squares and shingle bundles from roof area and waste allowance.'
+  },
+  {
+    slug: 'rafter-length-calculator',
+    title: 'Rafter Length Calculator',
+    description: 'Calculate common rafter length from horizontal run, roof pitch and optional overhang.',
+    category: 'construction-calculators',
+    keywords: ['rafter length calculator', 'roof rafter calculator', 'calculate rafter length', 'common rafter length calculator', 'roof pitch rafter calculator'],
+    heroTitle: 'Rafter Length Calculator',
+    heroDescription: 'Calculate common rafter length, rise and roof angle from horizontal run and roof pitch.'
+  },
+  {
+    slug: 'stud-calculator',
+    title: 'Stud Calculator',
+    description: 'Estimate how many wall studs you need from wall length, on-center spacing, extras and waste.',
+    category: 'construction-calculators',
+    keywords: ['stud calculator', 'wall stud calculator', 'how many studs do i need', '16 inch on center stud calculator', 'framing stud calculator'],
+    heroTitle: 'Stud Calculator – How Many Studs Do I Need?',
+    heroDescription: 'Estimate wall studs from wall length and on-center spacing, with extras for openings, corners and waste.'
+  },
+  {
+    slug: 'drywall-mud-calculator',
+    title: 'Drywall Mud Calculator',
+    description: 'Estimate joint compound containers from drywall area, product coverage and extra allowance.',
+    category: 'construction-calculators',
+    keywords: ['drywall mud calculator', 'joint compound calculator', 'how much drywall mud do i need', 'drywall compound calculator', 'sheetrock mud calculator'],
+    heroTitle: 'Drywall Mud Calculator',
+    heroDescription: 'Estimate drywall joint-compound quantity from area, container coverage and extra allowance.'
+  },
+  {
     slug: 'roof-ridge-height-calculator',
     title: 'Roof Ridge Height Calculator',
     description: 'Calculate ridge rise and total roof ridge height from building span, roof pitch and wall height.',
