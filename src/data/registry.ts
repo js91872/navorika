@@ -267,8 +267,8 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'resize-image-to-1000x1000',
-    title: '1000 x 1000 Image Converter',
-    description: 'Resize an image to exactly 1000 × 1000 pixels with crop, fit, or stretch controls and export as JPG, PNG, or WebP.',
+    title: '1000x1000 Image Converter & Resizer',
+    description: 'Resize or convert an image to exactly 1000 × 1000 pixels online. Crop, fit, or stretch the photo and export it as JPG, PNG, or WebP.',
     category: 'image-tools',
     keywords: [
       '1000 x 1000 image converter',
@@ -280,7 +280,9 @@ export const tools: RegisteredTool[] = ([
       'convert image to 1000 x 1000 pixels',
       'make image 1000x1000',
       '1000x1000 photo resizer',
-      '1000x1000 image resizer'
+      '1000x1000 image resizer',
+      '1000x1000 image converter online',
+      'resize photo to 1000x1000 pixels'
     ],
     aliases: [
       '1000x1000 image converter',
@@ -290,15 +292,19 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'change-image-resolution',
-    title: 'Change Image Resolution',
-    description: 'Resize an image to a standard HD, FHD, QHD, UHD, or square pixel preset.',
+    title: 'Change Image Resolution Online',
+    description: 'Resize an image to common HD, 1920×1080, QHD, 4K or square pixel resolutions and export as PNG.',
+    heroTitle: 'Change Image Resolution Online',
+    heroDescription: 'Resize an image to HD, 1080p, QHD, 4K or 1080×1080 pixel dimensions and download the result as PNG.' ,
     category: 'image-tools',
-    keywords: ['change-image-resolution', 'change', 'image', 'resolution']
+    keywords: ['change image resolution', 'image resolution converter', 'resize image to 1920x1080', 'resize image to 1080p', 'resize photo to 1080x1080', 'change image to 4k resolution']
   },
   {
     slug: 'image-color-picker',
-    title: 'Image Color Picker',
-    description: 'Pick a pixel from an image and copy its exact hexadecimal RGB color locally.',
+    title: 'Color Picker from Image',
+    description: 'Pick a color from an image and copy its HEX or RGB value directly in your browser.',
+    heroTitle: 'Color Picker from Image – Get HEX & RGB Color',
+    heroDescription: 'Upload an image, click any pixel, and instantly copy its HEX color code and RGB value.' ,
     category: 'image-tools',
     keywords: [
       'image color picker',
@@ -306,7 +312,9 @@ export const tools: RegisteredTool[] = ([
       'image color extractor',
       'hex color picker',
       'pick color from image',
-      'image hex color picker'
+      'image hex color picker',
+      'hex color picker from image',
+      'get hex code from image'
     ]
   },
   {
@@ -339,10 +347,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'convert-jpg-to-png',
-    title: 'Convert JPG to PNG',
-    description: 'Decode a JPG and export the same pixels as a lossless PNG locally in your browser.',
+    title: 'JPG to PNG Converter',
+    description: 'Convert JPG or JPEG to PNG online and download a lossless PNG with the same decoded pixel dimensions.' ,
     category: 'image-tools',
-    keywords: ['convert-jpg-to-png', 'jpg', 'to', 'png']
+    keywords: ['jpg to png', 'jpg to png converter', 'convert jpg to png', 'jpeg to png', 'jpeg to png converter']
   },
   {
     slug: 'convert-jpg-to-webp',
@@ -430,10 +438,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'image-converter',
-    title: 'Image Converter',
-    description: 'Convert JPG, PNG, and WebP images locally with previews and format-aware quality controls.',
+    title: 'Image Converter – JPG, PNG & WebP',
+    description: 'Convert images between JPG, PNG and WebP online with preview and format-aware quality controls.' ,
     category: 'image-tools',
-    keywords: ['image-converter', 'image', 'converter']
+    keywords: ['image converter', 'image converter online', 'convert image format', 'change image file type', 'jpg png webp converter']
   },
   {
     slug: 'image-dpi-converter',
@@ -528,10 +536,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'webp-to-png',
-    title: 'WebP to PNG',
-    description: 'Decode a still WebP image and export its pixels as a lossless PNG locally.',
+    title: 'WebP to PNG Converter',
+    description: 'Convert a still WebP image to PNG online and preserve decoded transparency where supported.' ,
     category: 'image-tools',
-    keywords: ['webp-to-png', 'webp', 'to', 'png']
+    keywords: ['webp to png', 'webp to png converter', 'convert webp to png', 'webp to png online', 'transparent webp to png']
   },
   {
     slug: 'image-megapixel-calculator',
@@ -543,23 +551,23 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'image-print-size-calculator',
     title: 'Image Print Size Calculator',
-    description: 'Calculate physical print dimensions from pixel dimensions and print PPI.',
+    description: 'Convert image pixels to print size in inches or centimeters using your chosen PPI.' ,
     category: 'image-tools',
-    keywords: ['image print size calculator', 'photo print size calculator', 'pixels to inches calculator', 'ppi print size calculator']
+    keywords: ['image print size calculator', 'photo print size calculator', 'pixels to inches calculator', 'ppi print size calculator', 'pixels to print size calculator', '300 ppi print size calculator']
   },
   {
     slug: 'image-file-size-estimator',
-    title: 'Image File Size Estimator',
-    description: 'Estimate uncompressed image memory size from dimensions, channels and bit depth.',
+    title: 'Image File Size Calculator',
+    description: 'Calculate uncompressed image size from pixel dimensions, color channels and bit depth.',
     category: 'image-tools',
-    keywords: ['image file size calculator', 'image file size estimator', 'raw image size calculator', 'image memory calculator']
+    keywords: ['image file size calculator', 'image file size estimator', 'raw image size calculator', 'image memory calculator', 'uncompressed image size calculator', 'calculate image size from pixels']
   },
   {
     slug: 'image-scaling-calculator',
     title: 'Image Scaling Calculator',
-    description: 'Calculate proportional image dimensions when scaling by percentage or target width.',
+    description: 'Calculate new proportional image width and height when scaling by percentage or target size.',
     category: 'image-tools',
-    keywords: ['image scaling calculator', 'image resize calculator', 'scale image dimensions', 'proportional resize calculator']
+    keywords: ['image scaling calculator', 'image resize calculator', 'scale image dimensions', 'proportional resize calculator', 'resize image by percentage calculator', 'calculate new image dimensions']
   },
   {
     slug: 'photo-storage-calculator',
@@ -2020,7 +2028,7 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'rgb-cmyk-image-checker',
-    title: 'RGB CMYK Image Checker',
+    title: 'RGB or CMYK Image Checker',
     description: 'Inspect supported image files locally for detectable RGB, CMYK, grayscale, alpha and embedded color-profile characteristics.',
     category: 'image-tools',
     keywords: [
@@ -2030,8 +2038,8 @@ export const tools: RegisteredTool[] = ([
       'cmyk image checker',
       'image color space checker'
     ],
-    heroTitle: 'RGB CMYK Image Checker',
-    heroDescription: 'Inspect supported image files locally for detectable RGB, CMYK, grayscale, alpha, and embedded color-profile characteristics.'
+    heroTitle: 'RGB or CMYK Image Checker',
+    heroDescription: 'Check whether a supported image is RGB, CMYK, grayscale or indexed, and inspect color-profile details directly in your browser.'
   },
   {
     slug: 'print-bleed-calculator',
