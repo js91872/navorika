@@ -563,6 +563,15 @@ export const tools: RegisteredTool[] = ([
     keywords: ['megapixel calculator', 'image megapixel calculator', 'pixels to megapixels', 'pixels to mp calculator', 'resolution megapixel calculator', 'how many megapixels is my image']
   },
   {
+    slug: 'ppi-calculator',
+    title: 'PPI Calculator – Pixels Per Inch',
+    description: 'Calculate image PPI from pixel dimensions and print size, including effective PPI and aspect-ratio matching.',
+    category: 'image-tools',
+    keywords: ['ppi calculator', 'pixels per inch calculator', 'image ppi calculator', 'print ppi calculator', 'dpi ppi calculator', 'pixel density calculator'],
+    heroTitle: 'PPI Calculator – Pixels Per Inch for Printing',
+    heroDescription: 'Calculate image PPI from pixel dimensions and intended print size, and check whether the aspect ratios match.'
+  },
+  {
     slug: 'image-print-size-calculator',
     title: 'Image Print Size Calculator',
     description: 'Convert image pixels to print size in inches or centimeters using your chosen PPI.' ,
@@ -1868,6 +1877,24 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'HVAC Duct CFM Calculator',
     heroDescription: 'Calculate volumetric airflow in CFM from round or rectangular duct cross-sectional area and air velocity.'
+  },
+  {
+    slug: 'roof-ridge-height-calculator',
+    title: 'Roof Ridge Height Calculator',
+    description: 'Calculate ridge rise and total roof ridge height from building span, roof pitch and wall height.',
+    category: 'construction-calculators',
+    keywords: ['roof ridge height calculator', 'ridge height calculator', 'roof height calculator', 'calculate roof ridge height', 'gable roof ridge height'],
+    heroTitle: 'Roof Ridge Height Calculator',
+    heroDescription: 'Calculate how high a symmetrical gable roof ridge rises from building span and roof pitch.'
+  },
+  {
+    slug: 'fascia-replacement-cost-calculator',
+    title: 'Fascia Replacement Cost Calculator',
+    description: 'Estimate fascia board replacement cost from linear feet, material price, labor rate, waste and removal allowance.',
+    category: 'construction-calculators',
+    keywords: ['fascia replacement cost calculator', 'fascia board replacement cost calculator', 'fascia repair cost calculator', 'fascia cost per linear foot', 'replace fascia board cost'],
+    heroTitle: 'Fascia Replacement Cost Calculator',
+    heroDescription: 'Estimate fascia replacement material, labor, removal and total cost from your own project rates.'
   },
   {
     slug: 'shed-ramp-angle-calculator',
