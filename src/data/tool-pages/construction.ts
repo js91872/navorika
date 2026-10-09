@@ -52,7 +52,7 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     relatedGuides: [],
   },
   'roof-pitch-calculator': {slug:'roof-pitch-calculator',...expansionPage({name:'Roof Pitch Calculator',description:'Convert rise and run into X:12 pitch, angle, percentage, rafter multiplier and optional geometric rafter length.',keywords:['roof pitch calculator rise run','6 12 roof angle calculator','rafter multiplier calculator'],intro:'Translate roof rise and horizontal run into several common slope formats.',formula:'Slope = rise ÷ run; angle = arctangent of slope; multiplier = √(1 + slope²).',interpretation:'A 6:12 roof rises 6 units per 12 horizontal units, which is a 50% slope and about 26.565°.',limitations:['Geometry does not establish rafter size, load capacity, connections or code compliance.','Use actual horizontal run for rafter length and separately account for overhangs and cuts.'],relatedTools:[{slug:'roof-area-calculator',name:'Roof Area Calculator'},{slug:'ladder-safe-reach-calculator',name:'Ladder Safe Reach Calculator'}],faq:[{question:'What angle is a 6:12 pitch?',answer:'Approximately 26.565 degrees.'},{question:'Is pitch the same as percent slope?',answer:'They describe the same slope differently; 6:12 equals 50%.'},{question:'Does this size rafters?',answer:'No. It calculates geometry only.'}]})},
-  'stair-stringer-calculator': {slug:'stair-stringer-calculator',...expansionPage({name:'Stair & Stringer Calculator',description:'Calculate stair riser count, actual height, tread count, total run, stringer length and angle for planning.',keywords:['stair stringer calculator','riser tread calculator','stair total run calculator'],intro:'Balance a measured total rise across equal risers and derive the matching stair run.',formula:'Risers round up from total rise ÷ maximum riser; treads are one fewer; the stringer is the right-triangle hypotenuse.',interpretation:'Actual riser height is recalculated so every riser is equal after choosing a whole riser count.',limitations:['Planning only; no universal code-compliance claim is made.','Verify local limits, headroom, landings, nosing, guards, handrails and stringer strength.'],relatedTools:[{slug:'ladder-safe-reach-calculator',name:'Ladder Safe Reach Calculator'},{slug:'saw-kerf-calculator',name:'Saw Kerf Calculator'}],faq:[{question:'Why are there fewer treads than risers?',answer:'A typical stair flight ends at the upper floor, leaving one fewer horizontal tread.'},{question:'Are all risers equal?',answer:'The tool divides total rise evenly across the calculated whole number of risers.'},{question:'Does it guarantee code compliance?',answer:'No. Requirements vary by jurisdiction and configuration.'}]})},
+  'stair-stringer-calculator': {slug:'stair-stringer-calculator',...expansionPage({name:'Stair Stringer Calculator – Riser, Tread & Stringer Length',description:'Calculate stair risers, treads, total run, stringer length and stair angle from the measured rise.',keywords:['stair stringer calculator','stringer length calculator','riser tread calculator','stair total run calculator','what size stringer do i need','stair riser calculator','calculate stair stringer length'],intro:'Enter the total rise and tread settings to calculate equal risers, total run, stair angle and the geometric stringer length.',formula:'Risers round up from total rise ÷ maximum riser; treads are one fewer; the stringer is the right-triangle hypotenuse.',interpretation:'Actual riser height is recalculated so every riser is equal after choosing a whole riser count.',limitations:['Planning only; no universal code-compliance claim is made.','Verify local limits, headroom, landings, nosing, guards, handrails and stringer strength.'],relatedTools:[{slug:'ladder-safe-reach-calculator',name:'Ladder Safe Reach Calculator'},{slug:'saw-kerf-calculator',name:'Saw Kerf Calculator'}],faq:[{question:'Why are there fewer treads than risers?',answer:'A typical stair flight ends at the upper floor, leaving one fewer horizontal tread.'},{question:'Are all risers equal?',answer:'The tool divides total rise evenly across the calculated whole number of risers.'},{question:'Does it guarantee code compliance?',answer:'No. Requirements vary by jurisdiction and configuration.'}]})},
   'deck-board-calculator': {slug:'deck-board-calculator',...expansionPage({name:'Deck Board Calculator',description:'Estimate deck board rows, stock boards, linear footage, face coverage and waste with correct gap spacing.',keywords:['deck board calculator with spacing','decking linear feet calculator','actual deck board width'],intro:'Plan decking from deck dimensions, actual board width, gap, orientation and available stock length.',formula:'Rows satisfy rows × board width + (rows − 1) × gap across the deck; each row is divided by stock length.',interpretation:'The result distinguishes board-face coverage from the deck footprint and counts stock boards after waste.',limitations:['Enter actual rather than nominal lumber width.','Layouts with picture frames, diagonal boards, complex joints or mixed stock lengths need additional allowance.'],relatedTools:[{slug:'board-foot-calculator',name:'Board Foot Calculator'},{slug:'saw-kerf-calculator',name:'Saw Kerf Calculator'}],faq:[{question:'Are gaps included?',answer:'Yes. The row calculation explicitly includes spacing between boards.'},{question:'What does orientation change?',answer:'It swaps which deck dimension defines row length and which defines the number of rows.'},{question:'Should I enter nominal width?',answer:'No. Use the board’s actual face width.'}]})},
   'fence-calculator': {slug:'fence-calculator',...expansionPage({name:'Fence Calculator',description:'Estimate straight-run fence sections, panels, a minimum post count and optional rails.',keywords:['fence panel and post calculator','fence post spacing calculator','fence gate material estimate'],intro:'Turn a fence run into a preliminary material count while keeping gate openings and panel allowance explicit.',formula:'Gate widths are removed from fenced length; remaining length is divided into sections, and each gate creates another fence run for the minimum post count.',interpretation:'The post result is a straight-run planning lower bound because corner-leg lengths and gate positions are not entered.',limitations:['Exact multi-leg layouts require each leg and gate position to be taken off separately.','Irregular terrain, bracing assemblies, double gates and shared corner conditions may change counts.','Confirm property lines, utilities, frost depth, wind design and local requirements.'],relatedTools:[{slug:'post-hole-concrete-calculator',name:'Post Hole Concrete Calculator'},{slug:'construction-estimate-builder',name:'Construction Estimate Builder'}],faq:[{question:'Are gate widths subtracted?',answer:'Yes. Entered gate openings reduce the fenced length.'},{question:'What does panel mode do?',answer:'It applies the entered allowance to base sections and rounds only whole purchased panels.'},{question:'Is the post count an exact layout?',answer:'No. It is a straight-run lower bound; segment each real fence leg and locate gates for an exact takeoff.'}]})},
   'post-hole-concrete-calculator': {slug:'post-hole-concrete-calculator',...expansionPage({name:'Post Hole Concrete Calculator',description:'Calculate how much concrete you need for post holes after subtracting the space taken by round or rectangular posts, with cubic yards and bag estimates.',keywords:['post hole concrete bag calculator','fence post concrete volume','post displacement concrete calculator'],intro:'Estimate the concrete that fills the space between each post hole and the post placed inside it.',formula:'Net concrete = cylindrical hole volume − post volume, multiplied by the whole hole count.',interpretation:'Post displacement is reported separately and always reduces net concrete relative to an empty hole.',limitations:['Actual holes are rarely perfect cylinders and may widen or collapse.','Use manufacturer bag yield and local footing or frost-depth requirements.'],relatedTools:[{slug:'fence-calculator',name:'Fence Calculator'},{slug:'concrete-calculator',name:'Concrete Calculator'}],faq:[{question:'Does the post reduce concrete quantity?',answer:'Yes. Round and rectangular post displacement is subtracted.'},{question:'Can I enter bag yield?',answer:'Yes. Use the cured-volume yield printed by the concrete manufacturer.'},{question:'Are hole dimensions in inches?',answer:'Yes, while results convert to cubic feet and yards.'}]})},
@@ -219,6 +219,9 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
       'what size compressor for spray gun',
       'what size compressor for nail gun',
       'how much cfm do i need',
+      'how many cfm to run air tools',
+      'air compressor scfm calculator',
+      'what cfm compressor do i need',
     ],
     intro: [
       'Compare the airflow produced by an air compressor with the average air demand of a pneumatic tool.',
@@ -476,17 +479,20 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     name: 'Construction Estimate Builder',
     category: 'Construction Calculators',
     applicationCategory: 'UtilitiesApplication',
-    description: 'Create an itemized construction estimate from materials, labor, equipment, subcontractors, overhead, contingency, markup, tax, and discount, with downloadable PDF and JPG output.',
+    description: 'Build an itemized construction cost estimate from materials, labor, equipment, subcontractors, overhead, contingency, markup and tax, then download it as PDF or JPG.',
     longTailKeywords: [
       'construction estimate template',
       'construction estimate builder',
       'construction estimate generator',
       'free construction estimate template',
       'construction cost estimate template',
-      'itemized construction estimate'
+      'itemized construction estimate',
+      'construction bid calculator',
+      'bid calculator construction',
+      'construction estimate calculator'
     ],
     intro: [
-      'Construction Estimate Builder lets you create a detailed project estimate from user-entered line items instead of relying on generic cost-per-square-foot assumptions.',
+      'Create a construction estimate or preliminary bid by entering project-specific material, labor, equipment and subcontractor line items instead of relying on generic cost-per-square-foot assumptions.',
       'All project details, customer information, quantities, rates, and estimate data are processed locally in the browser.'
     ],
     formula: [
@@ -558,14 +564,17 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     name: 'Contractor Estimate Generator',
     category: 'Construction Calculators',
     applicationCategory: 'UtilitiesApplication',
-    description: 'Generate an itemized contractor estimate with business and customer details, line-item pricing, overhead, contingency, markup, tax, discount, terms, and downloadable PDF/JPG output.',
+    description: 'Create a contractor estimate or construction quote with customer details, line-item pricing, markup, tax, terms and downloadable PDF/JPG output.',
     longTailKeywords: [
       'contractor estimate template',
       'general contractor estimate template',
       'free contractor estimate template',
       'contractor estimate generator',
       'construction quote template',
-      'contractor quote generator'
+      'contractor quote generator',
+      'construction bid template',
+      'contractor bid calculator',
+      'construction quote generator'
     ],
     intro: [
       'Contractor Estimate Generator turns project quantities and rates into a customer-facing estimate that can be saved, printed, or shared without requiring a spreadsheet or document template.',
@@ -696,9 +705,9 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     relatedGuides: [],
   },
   'construction-cost-calculator': {
-    slug: 'construction-cost-calculator', name: 'Construction Cost Calculator – Estimate Cost per Square Foot', category: 'Construction Calculators', applicationCategory: 'FinanceApplication', description: 'Estimate building or construction cost from project size and your cost per square foot, with optional overhead and contingency.',
-    longTailKeywords: ['construction cost calculator', 'construction cost estimator', 'free construction cost estimator', 'building cost calculator', 'calculate building costs', 'cost per square foot calculator', 'construction cost per square foot', 'rough construction cost estimate', 'construction cost calculator custom rate'],
-    intro: ['Enter the project size and your local construction cost per square foot to get a rough building-cost estimate.', 'You can also add overhead and contingency. The labor and material fields only split the base cost for the breakdown; they are not added a second time.'],
+    slug: 'construction-cost-calculator', name: 'Construction Cost Calculator – Estimate Building Cost per Square Foot', category: 'Construction Calculators', applicationCategory: 'FinanceApplication', description: 'Calculate building costs from project size and your own cost per square foot. Add overhead and contingency to create a quick construction cost estimate.',
+    longTailKeywords: ['construction cost calculator', 'construction cost estimator', 'free construction cost estimator', 'building cost calculator', 'calculate building costs', 'cost per square foot calculator', 'construction cost per square foot', 'rough construction cost estimate', 'construction cost calculator custom rate', 'calculator for construction', 'construction measurement calculator', 'calculate construction cost'],
+    intro: ['Use this construction cost calculator to estimate building cost from floor area and your local cost per square foot.', 'You can also add overhead and contingency. The labor and material fields only split the base cost for the breakdown; they are not added a second time.'],
     formula: [{ title: 'Direct cost', body: 'Area in ft² × entered USD direct rate per ft².' }, { title: 'Total', body: '(Direct cost + overhead) × (1 + contingency percentage ÷ 100).' }],
     steps: ['Enter the project area and a current local cost per square foot for the work you are estimating.', 'Use the labor and material fields to divide the base cost into a simple breakdown.', 'Add overhead and a contingency allowance if needed, then compare the result with contractor quotes or a detailed estimate.'],
     interpretation: ['The labor and material breakdown always sums to direct cost when their combined weight is positive.', 'All displayed money is USD and no market pricing is supplied by Navorika.'], limitations: ['Arithmetic planning tool only; accuracy depends entirely on entered scope and rates.', 'Excludes any item not included by the user in direct rate or overhead, including taxes, escalation, design, financing, land, abnormal site conditions, and change orders.', 'Not a bid, valuation, budget approval, or cost-professional estimate.'],
@@ -706,9 +715,9 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     relatedTools: [{ slug: 'house-construction-cost-calculator', name: 'House Construction Cost Calculator' }, { slug: 'flooring-calculator', name: 'Flooring Calculator' }, { slug: 'paint-calculator', name: 'Paint Calculator' }], relatedGuides: ['construction-estimate-quote-guide', 'house-construction-cost-guide'],
   },
   'house-construction-cost-calculator': {
-    slug: 'house-construction-cost-calculator', name: 'House Construction Cost Calculator with Custom Rates', category: 'Construction Calculators', applicationCategory: 'FinanceApplication', description: 'Estimate house project cost from floor area, floor count, a custom USD construction rate, site and soft costs, contingency, and optional land cost.',
-    longTailKeywords: ['house construction cost calculator custom rate', 'home building cost per square foot calculator', 'multi floor house cost estimator', 'construction contingency and land cost calculator', 'house project cost excluding land'],
-    intro: ['This transparent estimator multiplies area per floor by floor count and a user-entered construction rate.', 'It separately adds contingency, site and soft costs, and optional land cost instead of inventing location-independent quality prices.'],
+    slug: 'house-construction-cost-calculator', name: 'House Construction Cost Calculator – Estimate Home Building Cost', category: 'Construction Calculators', applicationCategory: 'FinanceApplication', description: 'Estimate house construction cost from floor area, number of floors, your own cost-per-square-foot rate, site costs, contingency and optional land cost.',
+    longTailKeywords: ['house construction cost calculator', 'house construction estimate', 'home building cost calculator', 'home building cost per square foot calculator', 'new house cost calculator', 'house construction cost per square foot', 'multi floor house cost estimator', 'house project cost excluding land'],
+    intro: ['Estimate how much it may cost to build a house using your floor area, number of floors and a construction rate you enter.', 'It separately adds contingency, site and soft costs, and optional land cost instead of inventing location-independent quality prices.'],
     formula: [{ title: 'Direct construction', body: 'Area per floor in ft² × number of floors × entered USD rate per ft².' }, { title: 'Total project', body: 'Direct construction + contingency + site/soft allowance + land cost.' }],
     steps: ['Enter gross area per floor and the number of similar floors.', 'Enter a current USD rate whose inclusions are clearly defined.', 'Add project-specific site/soft costs, contingency, and land cost, then validate against detailed estimates.'],
     interpretation: ['Cost per square foot excluding land includes direct work, contingency, and site/soft allowance.', 'Land remains a separate fixed input because it is not proportional to constructed floor area.'], limitations: ['Does not supply market rates or infer quality, location, specification, procurement route, or schedule.', 'Does not itemize design, permits, utilities, financing, taxes, escalation, demolition, abnormal ground, landscaping, interiors, or owner costs unless entered in allowances.', 'Not a quotation, valuation, or lending decision tool.'],
@@ -776,8 +785,8 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
     relatedTools: [{ slug: 'flooring-calculator', name: 'Flooring Calculator' }, { slug: 'paint-calculator', name: 'Paint Calculator' }, { slug: 'land-area-converter', name: 'Land Area Converter' }], relatedGuides: [],
   },
   'brick-calculator': {
-    slug: 'brick-calculator', name: 'Brick Calculator – How Many Bricks Do I Need?', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Calculate how many bricks you need for a wall using wall size, brick size, mortar joint thickness, and a waste allowance.',
-    longTailKeywords: ['brick calculator', 'how many bricks do i need', 'bricks needed calculator', 'brick wall calculator', 'brick calculator with wall thickness', 'brick calculator with mortar', 'brick quantity calculator', 'brick calculator with waste percentage'],
+    slug: 'brick-calculator', name: 'Brick Calculator – How Many Bricks Do I Need for a Wall?', category: 'Construction Calculators', applicationCategory: 'UtilitiesApplication', description: 'Calculate how many bricks you need for a wall from wall dimensions, brick size, mortar joint thickness and waste allowance.',
+    longTailKeywords: ['brick calculator', 'how many bricks do i need', 'bricks needed calculator', 'brick wall calculator', 'brick calculator with wall thickness', 'brick calculator with mortar', 'brick quantity calculator', 'brick calculator with waste percentage', 'bricks needed calculator', 'calculate bricks for wall', 'how many bricks for a wall'],
     intro: ['Enter the wall size, brick size, mortar joint thickness, and waste percentage to estimate how many bricks you need.', 'The calculator works from the wall volume and the space taken by each brick plus its mortar joints, then rounds the final result up to a whole brick.'],
     formula: [{ title: 'Wall volume', body: 'Wall length × wall height × wall thickness.' }, { title: 'Brick count', body: 'Wall volume ÷ nominal brick-and-joint volume × (1 + waste percentage ÷ 100), rounded upward.' }],
     steps: ['Measure net wall length, height, and constructed thickness in the selected unit.', 'Choose the available brick size and enter the planned mortar-joint thickness.', 'Subtract openings from the project separately and confirm bond and wall build-up with drawings.'],
@@ -898,9 +907,9 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
   'soffit-fascia-calculator': {
     slug: 'soffit-fascia-calculator',
     ...expansionPage({
-      name: 'Soffit & Fascia Calculator',
-      description: 'Estimate soffit area, fascia length, material pieces, and waste allowance for roof eaves.',
-      keywords: ['soffit calculator', 'fascia calculator', 'soffit and fascia calculator', 'soffit material calculator', 'fascia board calculator'],
+      name: 'Soffit & Fascia Calculator – Material & Board Quantity',
+      description: 'Calculate soffit area, fascia board length, panel count, board quantity and waste allowance for roof eaves.' ,
+      keywords: ['soffit calculator', 'fascia calculator', 'soffit and fascia calculator', 'soffit material calculator', 'fascia board calculator', 'fascia board quantity calculator', 'how much soffit do i need'],
       intro: 'Calculate total soffit surface area, fascia linear footage, panel counts, and board quantities with custom waste allowances for roof eaves.',
       formula: 'Soffit area = eave length × soffit depth; Soffit area with waste = soffit area × (1 + waste% / 100); Soffit pieces = ceil(area with waste ÷ panel coverage); Fascia length with waste = eave length × (1 + waste% / 100); Fascia boards = ceil(length with waste ÷ board length).',
       interpretation: 'Soffit pieces and fascia boards round up to the next whole piece to account for standard supplier units and end-cuts.',
@@ -1002,10 +1011,10 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
   'shed-ramp-angle-calculator': {
     slug: 'shed-ramp-angle-calculator',
     ...expansionPage({
-      name: 'Shed Ramp Angle Calculator',
-      description: 'Calculate shed ramp slope angle, grade percentage, rise-to-run ratio, and ramp surface length.',
-      keywords: ['shed ramp angle calculator', 'shed ramp calculator', 'ramp slope calculator', 'mower shed ramp calculator', 'ramp length calculator'],
-      intro: 'Determine slope angle in degrees, percentage grade, slope ratio, and overall surface length for storage sheds, lawn mowers, ATV, and equipment ramps.',
+      name: 'Shed Ramp Angle Calculator – Find Ramp Angle & Length',
+      description: 'Calculate a shed or equipment ramp angle from rise and run. See slope percentage, rise-to-run ratio and ramp surface length.' ,
+      keywords: ['shed ramp angle calculator', 'shed ramp calculator', 'ramp slope calculator', 'mower shed ramp calculator', 'ramp length calculator', 'how to find the angle of a ramp', 'calculate ramp angle', 'ramp angle calculator rise run'],
+      intro: 'Enter ramp rise and horizontal run to find the ramp angle in degrees, slope percentage, rise-to-run ratio and surface length.',
       formula: 'Slope angle = arctan(rise ÷ run) in degrees; Slope percentage = (rise ÷ run) × 100; Ramp surface length = √(rise² + run²); Slope ratio = 1 : (run ÷ rise).',
       interpretation: 'A lower slope angle (under 12° to 15°) prevents lawn mower deck bottoming, equipment rollover, and slipping during wet conditions.',
       limitations: [
@@ -1054,10 +1063,10 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
   'mortar-calculator': {
     slug: 'mortar-calculator',
     ...expansionPage({
-      name: 'Mortar Calculator',
-      description: 'Calculate mortar volume, pre-mix bags, Portland cement, and masonry sand for brick and concrete block walls.',
-      keywords: ['mortar calculator', 'mortar mix calculator', 'brick mortar calculator', 'how many bags of mortar do i need', 'masonry mortar calculator'],
-      intro: 'Estimate required masonry mortar volume, commercial pre-mixed bags, or site-mix cement and sand quantities based on masonry unit count, joint thickness, and waste factor.',
+      name: 'Mortar Calculator – Brick & Block Mortar Quantity',
+      description: 'Calculate how much mortar you need for brickwork or concrete block walls, including premix bags, cement, sand and waste.' ,
+      keywords: ['mortar calculator', 'mortar mix calculator', 'brick mortar calculator', 'how many bags of mortar do i need', 'masonry mortar calculator', 'calculating mortar for brickwork', 'mortar quantity calculator', 'mortar calculator for bricks'],
+      intro: 'Enter the number of bricks or blocks, joint thickness and waste allowance to estimate mortar quantity, premix bags, cement and sand.',
       formula: 'Mortar volume = unit count × base yield per unit × (joint thickness / 0.375) × (1 + waste / 100). Pre-mix bags = ceil(adjusted volume / bag yield). Type N site mix: 1 bag Portland cement (94 lb) + 3 ft³ sand yields ~3.2 ft³ mortar.',
       interpretation: 'Standard modular clay bricks require approx 5.0 ft³ of mortar per 1,000 bricks at 3/8-inch joints. Standard 8x8x16 CMU concrete blocks require approx 13.5 ft³ of mortar per 100 blocks. 80-lb pre-mix bags yield approx 0.67 ft³.',
       limitations: [
