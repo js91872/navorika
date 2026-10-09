@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="image-tools"
-      eyebrow="Uncompressed memory footprint"
-      title="Image File Size Estimator"
-      description="Estimate raw uncompressed image memory size from dimensions, channels, and bit depth."
+      eyebrow="Calculate Raw Image Size"
+      title="Image File Size Calculator"
+      description="Calculate the uncompressed size of an image from pixel width, height, color channels and bit depth."
       slug="image-file-size-estimator"
     >
       <BusinessCalculatorTool slug="image-file-size-estimator" />
