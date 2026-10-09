@@ -814,7 +814,7 @@ export const guideContent: Record<string, GuideContent> = {
 };
 
 export function getGuideContent(slug: string): GuideContent | null {
-  const content = macBatteryGuideContent[slug] || macVideoGuideContent[slug] || macRamGuideContent[slug] || screenshotPdfGuideContent[slug] || gscGuideContent[slug] || guideContent[slug] || additionalGuideContent[slug];
+  const content = iphoneImagePdfGuideContent[slug] || macBatteryGuideContent[slug] || macVideoGuideContent[slug] || macRamGuideContent[slug] || screenshotPdfGuideContent[slug] || gscGuideContent[slug] || guideContent[slug] || additionalGuideContent[slug];
   if (!content) return null;
   const enhancement = guideContentEnhancements[slug];
   return enhancement ? {
