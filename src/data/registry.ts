@@ -557,10 +557,10 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'image-megapixel-calculator',
-    title: 'Image Megapixel Calculator',
-    description: 'Calculate megapixels, total pixels and aspect ratio from image dimensions.',
+    title: 'Megapixel Calculator',
+    description: 'Calculate megapixels from image width and height in pixels, plus total pixels and aspect ratio.' ,
     category: 'image-tools',
-    keywords: ['megapixel calculator', 'image megapixel calculator', 'pixels to megapixels', 'resolution megapixel calculator']
+    keywords: ['megapixel calculator', 'image megapixel calculator', 'pixels to megapixels', 'pixels to mp calculator', 'resolution megapixel calculator', 'how many megapixels is my image']
   },
   {
     slug: 'image-print-size-calculator',
@@ -818,21 +818,21 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'cat-calorie-calculator',
-    title: 'Cat Calorie Calculator',
+    title: 'Cat & Kitten Calorie Calculator',
     description: 'Calculate resting energy requirements (RER) and maintenance energy requirements (MER) in kcal/day for cats based on body weight, life stage, and neuter status.',
     category: 'health-calculators',
-    keywords: ['cat calorie calculator', 'feline calorie requirements', 'how many calories should my cat eat', 'cat RER calculator', 'cat MER calculator'],
-    heroTitle: 'Cat Calorie Calculator',
-    heroDescription: 'Calculate daily RER and MER calorie targets for cats based on weight, life stage, and activity level.'
+    keywords: ['cat calorie calculator', 'kitten calorie calculator', 'feline calorie requirements', 'how many calories should my cat eat', 'how many calories should a kitten eat', 'cat RER calculator', 'cat MER calculator'],
+    heroTitle: 'Cat & Kitten Calorie Calculator',
+    heroDescription: 'Estimate daily calories for adult cats and kittens from body weight, life stage and activity level.'
   },
   {
     slug: 'caffeine-half-life-calculator',
     title: 'Caffeine Half-Life Calculator',
-    description: 'Model caffeine metabolism over time, estimate remaining blood caffeine levels, and plan wind-down timing using standard pharmacokinetic elimination.',
+    description: 'Estimate how much caffeine may still be in your system after a number of hours using an adjustable half-life.',
     category: 'health-calculators',
-    keywords: ['caffeine half life calculator', 'caffeine metabolism calculator', 'how long does caffeine stay in your system', 'coffee half life', 'caffeine wind down time'],
+    keywords: ['caffeine half life calculator', 'caffeine metabolism calculator', 'how long does caffeine stay in your system', 'how much caffeine is left in my system', 'coffee half life calculator', 'caffeine remaining calculator'],
     heroTitle: 'Caffeine Half-Life Calculator',
-    heroDescription: 'Track caffeine decay over time and estimate remaining caffeine at bedtime using pharmacokinetic modeling.'
+    heroDescription: 'Estimate how much caffeine may remain in your system over time and how much could still be present near bedtime.'
   },
   {
     slug: 'hrv-baseline-deviation-calculator',
@@ -1494,12 +1494,12 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'water-tank-calculator',
-    title: 'Water Tank Calculator',
-    description: 'Calculate water tank capacity and dimensions for storage.',
+    title: 'Water Tank Capacity Calculator',
+    description: 'Calculate water tank volume and capacity in liters, US gallons and cubic meters from tank dimensions.' ,
     category: 'construction-calculators',
-    keywords: ['water tank', 'storage', 'capacity', 'liters', 'gallons', 'dimensions'],
-    heroTitle: 'Water Tank Calculator',
-    heroDescription: 'Calculate water tank capacity and dimensions for your storage needs.'
+    keywords: ['water tank calculator', 'water tank capacity calculator', 'tank volume calculator', 'water storage tank calculator', 'tank gallons calculator', 'tank liters calculator'],
+    heroTitle: 'Water Tank Capacity Calculator',
+    heroDescription: 'Calculate rectangular, cylindrical or spherical water tank capacity in liters, gallons and cubic meters.'
   },
   {
     slug: 'wire-size-calculator',
@@ -1576,21 +1576,21 @@ export const tools: RegisteredTool[] = ([
   },
   {
     slug: 'electricity-cost-calculator',
-    title: 'Electricity Cost Calculator',
-    description: 'Estimate appliance energy consumption and electricity running cost from watts, usage time, and tariff.',
+    title: 'Electricity Cost Calculator – kWh & Appliance Cost',
+    description: 'Calculate appliance electricity use in kWh and estimate running cost from watts, usage time and your electricity rate.',
     category: 'everyday-calculators',
-    keywords: ['electricity cost calculator', 'appliance electricity cost', 'kwh calculator', 'energy cost calculator'],
+    keywords: ['electricity cost calculator', 'kwh calculator', 'kwh cost calculator', 'appliance electricity cost calculator', 'energy cost calculator', 'electricity usage calculator'],
     heroTitle: 'Electricity Cost Calculator',
-    heroDescription: 'Calculate appliance electricity consumption and estimated running cost.'
+    heroDescription: 'Calculate appliance kWh consumption and estimated electricity running cost from watts, usage time and tariff.'
   },
   {
     slug: 'unit-price-calculator',
     title: 'Unit Price Calculator',
-    description: 'Compare products by unit price and find which package offers better value.',
+    description: 'Compare products by price per unit and see which package or quantity offers better value.' ,
     category: 'everyday-calculators',
     keywords: ['unit price calculator', 'price per unit calculator', 'compare package prices', 'best value calculator'],
     heroTitle: 'Unit Price Calculator',
-    heroDescription: 'Compare two products by price per unit and instantly identify the better value.'
+    heroDescription: 'Compare two package sizes by price per unit and instantly see which option costs less per unit.'
   },
   {
     slug: 'board-foot-calculator',
@@ -1613,11 +1613,11 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'dimensional-weight-calculator',
     title: 'Dimensional Weight Calculator',
-    description: 'Calculate shipping dimensional weight from package size and compare it with the actual scale weight.',
+    description: 'Calculate dimensional or volumetric shipping weight from package dimensions and compare it with actual scale weight.' ,
     category: 'everyday-calculators',
     keywords: ['dimensional weight calculator', 'dim weight calculator', 'volumetric weight calculator', 'shipping weight calculator', 'package dimensional weight'],
     heroTitle: 'Dimensional Weight Calculator',
-    heroDescription: 'Calculate dimensional shipping weight and identify the estimated billable package weight.'
+    heroDescription: 'Calculate DIM or volumetric shipping weight and compare it with actual weight to estimate billable weight.'
   },
   {
     slug: 'heat-pump-vs-furnace-cost-calculator',
@@ -2360,14 +2360,17 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'profit-margin-markup-calculator',
     title: 'Profit Margin & Markup Calculator',
-    description: 'Calculate gross profit, profit margin percentage, markup percentage, selling price, and cost multiplier across pricing scenarios.',
+    description: 'Calculate profit margin, markup, gross profit and selling price from cost and price, or from a target margin or markup.' ,
     category: 'finance-calculators',
     keywords: [
       'profit margin calculator',
       'markup calculator',
       'margin vs markup calculator',
       'gross profit calculator',
-      'retail markup percentage calculator'
+      'retail markup percentage calculator',
+      'margin calculator',
+      'selling price calculator',
+      'markup to margin calculator'
     ],
     heroTitle: 'Profit Margin & Markup Calculator',
     heroDescription: 'Compare margin vs markup, calculate retail pricing from cost, and analyze gross profit margins.'
