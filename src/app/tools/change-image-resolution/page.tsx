@@ -54,12 +54,15 @@ export default function ChangeResolutionTool() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
       <a href="/categories/image-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-purple-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to Image Tools</a>
-      <div className="text-center mb-10"><h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1></div>
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
+        <p className="mx-auto max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">{toolMeta.heroDescription}</p>
+      </div>
       <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8 space-y-6">
         {!file ? (
           <div onClick={() => fileInputRef.current?.click()} className="border-2 border-dashed border-purple-300 rounded-2xl p-12 text-center cursor-pointer">
             <Upload className="h-10 w-10 text-purple-500 mx-auto mb-4" />
-            <h3 className="text-lg font-bold">Upload Image to Lock Resolution</h3>
+            <h3 className="text-lg font-bold">Upload Image to Change Resolution</h3>
             <input type="file" className="hidden" ref={fileInputRef} onChange={(e) => setFile(e.target.files?.[0] || null)} />
           </div>
         ) : (
