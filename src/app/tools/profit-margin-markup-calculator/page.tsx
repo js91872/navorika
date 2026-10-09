@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="finance-calculators"
-      eyebrow="Commercial Pricing & Margin Analysis"
+      eyebrow="Margin vs Markup Pricing Calculator"
       title="Profit Margin & Markup Calculator"
-      description="Calculate gross profit, profit margin percentage, markup percentage, selling price, and cost multiplier across pricing scenarios."
+      description="Calculate profit margin, markup, gross profit and selling price from cost and price, or work backward from a target margin or markup."
       slug="profit-margin-markup-calculator"
     >
       <BusinessCalculatorTool slug="profit-margin-markup-calculator" />
