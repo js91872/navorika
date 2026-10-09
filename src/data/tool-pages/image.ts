@@ -289,6 +289,33 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     ],
     relatedGuides: ['image-formats-guide', 'how-to-resize-images'],
   },
+  'ppi-calculator': {
+    slug: 'ppi-calculator',
+    name: 'PPI Calculator – Pixels Per Inch for Printing',
+    category: 'Image Tools',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Calculate image PPI from pixel dimensions and print size. Check horizontal, vertical and effective pixels per inch and see whether image and print aspect ratios match.',
+    longTailKeywords: ['ppi calculator', 'pixels per inch calculator', 'print ppi calculator', 'image ppi calculator', 'pixel density calculator', 'dpi ppi calculator', 'calculate ppi from pixels and inches', 'photo print resolution calculator'],
+    intro: [
+      'Enter image pixel dimensions and intended print size to calculate horizontal, vertical and effective PPI.',
+      'PPI describes digital image pixels per inch at a chosen print size. Printer DPI describes physical ink or toner dots and is a different measurement.',
+    ],
+    formula: [
+      { title: 'Horizontal PPI', body: 'Horizontal PPI = image width in pixels ÷ print width in inches.' },
+      { title: 'Vertical PPI', body: 'Vertical PPI = image height in pixels ÷ print height in inches.' },
+      { title: 'Effective PPI', body: 'Effective PPI uses the lower of horizontal and vertical PPI when the entered image and print aspect ratios differ.' },
+    ],
+    steps: ['Enter image width and height in pixels.', 'Enter intended print width and height in inches.', 'Review horizontal, vertical and effective PPI.', 'Check the aspect-ratio result before cropping or stretching the image.'],
+    interpretation: ['If horizontal and vertical PPI match closely, the image and print dimensions use the same aspect ratio.', 'A lower effective PPI generally means fewer source pixels are available per printed inch.'],
+    limitations: ['This tool does not change image metadata, resize the file or add pixels.', 'It calculates PPI, not printer hardware DPI.', 'Sharpness also depends on source quality, viewing distance, printer, paper and resampling method.'],
+    faqs: [
+      { question: 'How do I calculate PPI?', answer: 'Divide image pixels by physical print inches. For example, 3000 pixels printed 10 inches wide equals 300 PPI.' },
+      { question: 'Is PPI the same as DPI?', answer: 'No. PPI measures digital image pixels per inch at a print size, while DPI normally refers to physical printer dots per inch.' },
+      { question: 'What PPI is good for photo printing?', answer: '300 PPI is a common high-quality target for close-viewed photo prints, while lower values can be acceptable for larger prints viewed from farther away.' },
+    ],
+    relatedTools: [{ slug: 'image-print-size-calculator', name: 'Image Print Size Calculator' }, { slug: 'image-megapixel-calculator', name: 'Megapixel Calculator' }, { slug: 'image-scaling-calculator', name: 'Image Scaling Calculator' }, { slug: 'change-image-resolution', name: 'Change Image Resolution' }],
+    relatedGuides: ['how-to-resize-images', 'image-formats-guide'],
+  },
   'image-print-size-calculator': {
     slug: 'image-print-size-calculator',
     name: 'Image Print Size Calculator – Pixels to Inches & Centimeters',
