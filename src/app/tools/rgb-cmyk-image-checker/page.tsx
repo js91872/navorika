@@ -7,9 +7,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="image-tools"
-      eyebrow="Image Color Space Preflight"
+      eyebrow="Check Image Color Mode Online"
       title="RGB or CMYK Image Checker"
-      description="Check if an image is in RGB or CMYK color space online for free. Inspect binary headers for JPEG, TIFF, PNG, PSD, and WebP files to verify channels, bit depth, and embedded ICC profiles without browser color distortion."
+      description="Check whether an image is RGB or CMYK online. Inspect supported JPEG, TIFF, PNG, PSD and WebP files for color space, channels, bit depth and embedded profiles directly in your browser."
       slug="rgb-cmyk-image-checker"
     >
       {/* Above-the-fold workflow helper bar */}
@@ -17,7 +17,7 @@ export default function Page() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 font-medium text-[var(--foreground)]">
             <span className="inline-flex size-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>100% Client-Side Preflight: Audits raw file headers without browser canvas conversion</span>
+            <span>Runs in Your Browser: Checks the original file headers instead of relying on browser-rendered color</span>
           </div>
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
             <span className="text-[var(--muted-foreground)]">Workflow tools:</span>
