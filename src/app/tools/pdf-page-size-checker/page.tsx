@@ -5,9 +5,9 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="pdf-tools"
-      eyebrow="PDF Page Dimensions & Standards"
+      eyebrow="Check PDF Page Size & Dimensions"
       title="PDF Page Size Checker"
-      description="Inspect page dimensions, orientation, and standard paper size matches across all pages of your PDF document 100% locally."
+      description="Check PDF page size, dimensions and orientation online, and identify A4, A3, Letter, Legal or mixed page sizes."
       slug="pdf-page-size-checker"
     >
       <PdfPageSizeTool />
