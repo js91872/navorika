@@ -617,6 +617,133 @@ const configs: Record<string, Config> = {
       }),
     note: 'Calculates theoretical airflow from cross-sectional area and air velocity (Q = A × V). Does not size ducts from static pressure, friction loss, equivalent length, fittings, or fan curves. Use ACCA Manual D for complete HVAC design.',
   },
+  'square-footage-calculator': {
+    fields: [
+      { key: 'length', label: 'Length (ft)', defaultValue: 20, min: 0.01, step: 0.1 },
+      { key: 'width', label: 'Width (ft)', defaultValue: 15, min: 0.01, step: 0.1 },
+      { key: 'quantity', label: 'Number of equal areas', defaultValue: 1, min: 1, step: 1 },
+    ],
+    results: [
+      { key: 'squareFeetEach', label: 'Square feet per area', format: 'number' },
+      { key: 'totalSquareFeet', label: 'Total square feet', format: 'number' },
+      { key: 'squareYards', label: 'Total square yards', format: 'number' },
+      { key: 'squareMeters', label: 'Total square meters', format: 'number' },
+    ],
+    calculate: (x) => {
+      const length = v(x, 'length'), width = v(x, 'width'), quantity = v(x, 'quantity');
+      if (length <= 0 || width <= 0 || quantity <= 0) throw new RangeError('Enter positive dimensions and quantity.');
+      const squareFeetEach = length * width;
+      const totalSquareFeet = squareFeetEach * quantity;
+      return { squareFeetEach, totalSquareFeet, squareYards: totalSquareFeet / 9, squareMeters: totalSquareFeet * 0.09290304 };
+    },
+    note: 'Rectangular-area calculator. For L-shapes or irregular rooms, split the space into rectangles, calculate each section, and add the results.',
+  },
+  'cubic-yard-calculator': {
+    fields: [
+      { key: 'length', label: 'Length (ft)', defaultValue: 12, min: 0.01, step: 0.1 },
+      { key: 'width', label: 'Width (ft)', defaultValue: 10, min: 0.01, step: 0.1 },
+      { key: 'depth', label: 'Depth (inches)', defaultValue: 4, min: 0.01, step: 0.1 },
+      { key: 'wastePercent', label: 'Extra allowance (%)', defaultValue: 10, min: 0, max: 100, step: 1 },
+    ],
+    results: [
+      { key: 'cubicFeet', label: 'Volume (cubic feet)', format: 'number' },
+      { key: 'cubicYards', label: 'Net cubic yards', format: 'number' },
+      { key: 'orderCubicYards', label: 'Cubic yards with allowance', format: 'number' },
+      { key: 'cubicMeters', label: 'Net cubic meters', format: 'number' },
+    ],
+    calculate: (x) => {
+      const length = v(x, 'length'), width = v(x, 'width'), depth = v(x, 'depth'), waste = v(x, 'wastePercent');
+      if (length <= 0 || width <= 0 || depth <= 0 || waste < 0) throw new RangeError('Enter positive dimensions and a non-negative allowance.');
+      const cubicFeet = length * width * (depth / 12);
+      const cubicYards = cubicFeet / 27;
+      return { cubicFeet, cubicYards, orderCubicYards: cubicYards * (1 + waste / 100), cubicMeters: cubicFeet * 0.028316846592 };
+    },
+    note: 'General volume calculator for rectangular fills. Compaction, settlement, excavation swell and supplier minimum quantities are not automatically included.',
+  },
+  'roofing-shingle-calculator': {
+    fields: [
+      { key: 'roofArea', label: 'Roof surface area (sq ft)', defaultValue: 2000, min: 0.01, step: 10 },
+      { key: 'wastePercent', label: 'Waste allowance (%)', defaultValue: 10, min: 0, max: 100, step: 1 },
+      { key: 'bundlesPerSquare', label: 'Bundles per roofing square', defaultValue: 3, min: 0.1, step: 0.1 },
+    ],
+    results: [
+      { key: 'orderArea', label: 'Area with waste (sq ft)', format: 'number' },
+      { key: 'roofingSquares', label: 'Roofing squares', format: 'number' },
+      { key: 'bundles', label: 'Estimated shingle bundles', format: 'number' },
+    ],
+    calculate: (x) => {
+      const area = v(x, 'roofArea'), waste = v(x, 'wastePercent'), bundlesPerSquare = v(x, 'bundlesPerSquare');
+      if (area <= 0 || waste < 0 || bundlesPerSquare <= 0) throw new RangeError('Enter a positive roof area and bundle coverage.');
+      const orderArea = area * (1 + waste / 100);
+      const roofingSquares = orderArea / 100;
+      return { orderArea, roofingSquares, bundles: Math.ceil(roofingSquares * bundlesPerSquare) };
+    },
+    note: 'One roofing square equals 100 sq ft. Actual bundles per square vary by shingle product. Ridge cap, starter shingles, flashing, underlayment and accessories are separate.',
+  },
+  'rafter-length-calculator': {
+    fields: [
+      { key: 'run', label: 'Horizontal run (ft)', defaultValue: 12, min: 0.01, step: 0.1 },
+      { key: 'pitchRise', label: 'Roof pitch rise per 12', defaultValue: 6, min: 0, step: 0.25 },
+      { key: 'overhang', label: 'Horizontal overhang (ft)', defaultValue: 1, min: 0, step: 0.1 },
+    ],
+    results: [
+      { key: 'rise', label: 'Rise over entered run (ft)', format: 'number' },
+      { key: 'rafterLengthNoOverhang', label: 'Rafter length without overhang (ft)', format: 'number' },
+      { key: 'rafterLengthWithOverhang', label: 'Rafter length with overhang (ft)', format: 'number' },
+      { key: 'roofAngle', label: 'Roof angle (degrees)', format: 'number' },
+    ],
+    calculate: (x) => {
+      const run = v(x, 'run'), pitch = v(x, 'pitchRise'), overhang = v(x, 'overhang');
+      if (run <= 0 || pitch < 0 || overhang < 0) throw new RangeError('Enter a positive run and non-negative pitch and overhang.');
+      const slope = pitch / 12;
+      const rise = run * slope;
+      const rafterLengthNoOverhang = Math.sqrt(run ** 2 + rise ** 2);
+      const totalRun = run + overhang;
+      const totalRise = totalRun * slope;
+      return { rise, rafterLengthNoOverhang, rafterLengthWithOverhang: Math.sqrt(totalRun ** 2 + totalRise ** 2), roofAngle: Math.atan(slope) * 180 / Math.PI };
+    },
+    note: 'Geometric common-rafter length only. Does not include ridge-board deduction, birdsmouth, plumb cuts, structural sizing, truss design or code requirements.',
+  },
+  'stud-calculator': {
+    fields: [
+      { key: 'wallLength', label: 'Wall length (ft)', defaultValue: 20, min: 0.01, step: 0.1 },
+      { key: 'spacing', label: 'Stud spacing on center (inches)', defaultValue: 16, min: 1, step: 1 },
+      { key: 'extraStuds', label: 'Extra studs for corners/openings', defaultValue: 4, min: 0, step: 1 },
+      { key: 'wastePercent', label: 'Waste allowance (%)', defaultValue: 5, min: 0, max: 100, step: 1 },
+    ],
+    results: [
+      { key: 'baseStuds', label: 'Base studs', format: 'number' },
+      { key: 'studsBeforeWaste', label: 'Studs before waste', format: 'number' },
+      { key: 'totalStuds', label: 'Estimated studs to buy', format: 'number' },
+    ],
+    calculate: (x) => {
+      const wallLength = v(x, 'wallLength'), spacing = v(x, 'spacing'), extra = v(x, 'extraStuds'), waste = v(x, 'wastePercent');
+      if (wallLength <= 0 || spacing <= 0 || extra < 0 || waste < 0) throw new RangeError('Enter valid wall length, spacing and allowances.');
+      const inches = wallLength * 12;
+      const baseStuds = Math.ceil(inches / spacing) + 1;
+      const studsBeforeWaste = baseStuds + Math.ceil(extra);
+      return { baseStuds, studsBeforeWaste, totalStuds: Math.ceil(studsBeforeWaste * (1 + waste / 100)) };
+    },
+    note: 'Simple straight-wall planning count. Doors, windows, corners, intersections, backing, fire blocking, headers, cripples and local framing details can require additional lumber.',
+  },
+  'drywall-mud-calculator': {
+    fields: [
+      { key: 'drywallArea', label: 'Drywall area (sq ft)', defaultValue: 1000, min: 0.01, step: 10 },
+      { key: 'coveragePerBucket', label: 'Coverage per bucket/box (sq ft)', defaultValue: 450, min: 0.01, step: 10 },
+      { key: 'wastePercent', label: 'Extra allowance (%)', defaultValue: 10, min: 0, max: 100, step: 1 },
+    ],
+    results: [
+      { key: 'adjustedArea', label: 'Area with allowance (sq ft)', format: 'number' },
+      { key: 'containers', label: 'Estimated compound containers', format: 'number' },
+    ],
+    calculate: (x) => {
+      const area = v(x, 'drywallArea'), coverage = v(x, 'coveragePerBucket'), waste = v(x, 'wastePercent');
+      if (area <= 0 || coverage <= 0 || waste < 0) throw new RangeError('Enter positive area and coverage values.');
+      const adjustedArea = area * (1 + waste / 100);
+      return { adjustedArea, containers: Math.ceil(adjustedArea / coverage) };
+    },
+    note: 'Joint-compound coverage varies with board layout, number of coats, bead, texture, taping method and product. Use the manufacturer coverage figure for the compound you plan to buy.',
+  },
   'roof-ridge-height-calculator': {
     fields: [
       { key: 'span', label: 'Building span / roof width (ft)', defaultValue: 24, min: 0.1, step: 0.1, help: 'Horizontal outside-to-outside roof span for a symmetrical gable roof.' },
