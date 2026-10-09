@@ -60,7 +60,7 @@ export default function DimensionalWeightCalculator() {
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-10">
         <div className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 text-xs font-bold uppercase tracking-wider mb-4">
-          Shipping & Ecommerce Utility
+          DIM & Volumetric Shipping Weight
         </div>
 
         <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">
@@ -68,8 +68,7 @@ export default function DimensionalWeightCalculator() {
         </h1>
 
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-          Calculate volumetric or dimensional shipping weight and compare it
-          with actual package weight to estimate billable weight.
+          Calculate dimensional or volumetric shipping weight from package dimensions and compare it with actual package weight to estimate billable weight.
         </p>
       </div>
 
