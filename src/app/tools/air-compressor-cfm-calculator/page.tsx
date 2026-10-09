@@ -44,15 +44,13 @@ export default function AirCompressorPage() {
 
         <header className="mb-10 max-w-4xl">
           <p className="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-            Workshop air tool calculator
+            What Size Air Compressor Do I Need?
           </p>
           <h1 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">
             Air Compressor CFM &amp; Tank Runtime Calculator
           </h1>
           <p className="mt-4 text-lg leading-8 text-[var(--muted-foreground)]">
-            Compare compressor SCFM with an air tool&apos;s demand, account for
-            intermittent usage, and estimate whether the compressor can keep
-            up before stored tank air becomes the limiting factor.
+            Compare compressor SCFM with your air tool demand, estimate how many CFM you need, and see whether the compressor can keep up during real-world use.
           </p>
         </header>
 
