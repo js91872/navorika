@@ -62,7 +62,7 @@ export default function ConstructionCostCalculator() {
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
         <h1 className="text-2xl font-bold mb-2">Construction Cost Calculator</h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">Estimate a rough building cost from project size and your local cost per square foot, with optional overhead and extra budget for surprises.</p>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">Calculate a rough building cost from project area and your own local cost per square foot, then add overhead and contingency to build a simple construction estimate.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
