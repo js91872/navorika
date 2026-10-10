@@ -52,13 +52,17 @@ export default function ImageFormatPilot({ mode }: { mode: Mode }) {
     finally { if (url) URL.revokeObjectURL(url); setBusy(false); }
   };
   return <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-8 space-y-5">
-    <label className="block font-semibold" htmlFor="image-file">Choose a {isIcon ? 'WebP' : 'JFIF'} file</label>
-    <input id="image-file" className="block w-full" type="file" accept={isIcon ? '.webp,image/webp' : '.jfif,.jpeg,.jpg,image/jpeg'} onChange={e => {
+    <p className="font-semibold">Choose a {isIcon ? 'WebP' : 'JFIF'} file</p>
+    <label htmlFor="image-file" className="inline-flex cursor-pointer items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2">
+      <input id="image-file" className="sr-only" type="file" accept={isIcon ? '.webp,image/webp' : '.jfif,.jpeg,.jpg,image/jpeg'} onChange={e => {
       const selected = e.target.files?.[0] || null;
       if (preview) URL.revokeObjectURL(preview);
       if (selected && selected.size > 25 * 1024 * 1024) { setError('File must be under 25 MB.'); setFile(null); setPreview(''); return; }
       setFile(selected); setPreview(selected ? URL.createObjectURL(selected) : ''); setError('');
     }}/>
+      Upload {isIcon ? 'WebP' : 'JFIF'} File
+    </label>
+    <p className="break-all text-sm text-[var(--muted-foreground)]" aria-live="polite">{file ? `Selected: ${file.name}` : 'No file selected · Maximum 25 MB'}</p>
     {preview && <img alt="Selected file preview" src={preview} className="max-h-60 max-w-full rounded-lg object-contain"/>}
     {error && <p role="alert" className="text-red-600">{error}</p>}
     <button type="button" disabled={!file || busy} onClick={convert} className="rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white disabled:opacity-50">{busy ? 'Converting…' : isIcon ? 'Download ICO favicon' : 'Download PNG image'}</button>
