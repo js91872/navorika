@@ -76,6 +76,16 @@ export const categories: Category[] = [
 export const tools: RegisteredTool[] = ([
   // ====== PDF TOOLS ======
   {
+    slug: 'csv-to-vcard',
+    title: 'CSV to vCard Converter',
+    description: 'Convert a CSV contact list to a downloadable VCF file online, with contact preview and browser-local processing.',
+    category: 'developer-tools',
+    keywords: ['csv to vcard conversion', 'csv to vcard converter', 'convert csv to vcf', 'change csv to vcard', 'csv contacts to vcf'],
+    heroTitle: 'CSV to vCard Converter',
+    heroDescription: 'Upload or paste a contacts CSV, check the preview, and download a VCF file without uploading personal contact data.'
+  },
+
+  {
     slug: 'website-worth-calculator',
     title: 'Website Worth Calculator',
     description: 'Analyze a website URL and estimate its value with transparent traffic, revenue, profit, and technical-quality assumptions.',
