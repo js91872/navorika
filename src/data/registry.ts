@@ -75,6 +75,19 @@ export const categories: Category[] = [
 
 export const tools: RegisteredTool[] = ([
   // ====== PDF TOOLS ======
+  { slug: 'jfif-to-png', title: 'JFIF to PNG Converter', description: 'Convert JFIF images into PNG files free, directly in your browser.', category: 'image-tools', keywords: ["jfif to png","convert jfif to png","jfif to png converter"], heroTitle: 'JFIF to PNG Converter', heroDescription: 'Convert JFIF images into PNG files free, directly in your browser.' },
+  { slug: 'webp-to-ico', title: 'WebP to ICO Converter', description: 'Convert a WebP image to a 64 by 64 pixel ICO favicon online.', category: 'image-tools', keywords: ["webp to ico","convert webp to ico","webp favicon converter"], heroTitle: 'WebP to ICO Converter', heroDescription: 'Convert a WebP image to a 64 by 64 pixel ICO favicon online.' },
+  { slug: 'txt-to-image', title: 'Text to Image Converter', description: 'Turn text into a downloadable PNG image with font size and light or dark backgrounds.', category: 'image-tools', keywords: ["txt to image","text to image","convert text into image"], heroTitle: 'Text to Image Converter', heroDescription: 'Turn text into a downloadable PNG image with font size and light or dark backgrounds.' },
+  {
+    slug: 'csv-to-vcard',
+    title: 'CSV to vCard Converter',
+    description: 'Convert a CSV contact list to a downloadable VCF file online, with contact preview and browser-local processing.',
+    category: 'developer-tools',
+    keywords: ['csv to vcard conversion', 'csv to vcard converter', 'convert csv to vcf', 'change csv to vcard', 'csv contacts to vcf'],
+    heroTitle: 'CSV to vCard Converter',
+    heroDescription: 'Upload or paste a contacts CSV, check the preview, and download a VCF file without uploading personal contact data.'
+  },
+
   {
     slug: 'website-worth-calculator',
     title: 'Website Worth Calculator',

@@ -4,6 +4,7 @@ import { gscGuideContent } from './guideContentGsc';
 import { macVideoGuideContent } from './guideContentMacVideo';
 import { screenshotPdfGuideContent } from './guideContentScreenshotPdf';
 import { macRamGuideContent } from './guideContentMacRam';
+import { iphoneImagePdfGuideContent } from './guideContentIphoneImagePdf';
 import { macBatteryGuideContent } from './guideContentMacBattery';
 
 export interface GuideSection {

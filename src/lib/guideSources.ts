@@ -4,6 +4,10 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-convert-image-to-pdf-on-iphone': [
+    { name: 'Apple Support — Save files and images on iPhone', url: 'https://support.apple.com/guide/iphone/save-and-edit-files-iphc61044c11/ios' },
+    { name: 'Apple Support — Scan text and documents with Notes on iPhone', url: 'https://support.apple.com/guide/iphone/scan-text-and-documents-iph653f28965/ios' },
+  ],
   'how-to-show-battery-percentage-on-mac': [
     { name: 'Apple Support — Monitor your Mac laptop’s battery', url: 'https://support.apple.com/guide/mac-help/monitor-your-macs-battery-mchlp1115/mac' },
     { name: 'Apple Support — Change Battery settings on a Mac laptop', url: 'https://support.apple.com/guide/mac-help/change-battery-settings-mchlfc3b7879/mac' },

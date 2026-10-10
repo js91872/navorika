@@ -1,0 +1,22 @@
+name: CSV vCard independent build
+on:
+  pull_request:
+    paths:
+      - 'src/components/tools/CsvToVcard.tsx'
+      - 'src/app/tools/csv-to-vcard/**'
+      - 'src/data/registry.ts'
+      - 'src/data/taxonomy.ts'
+      - '.github/workflows/csv-vcard-build.yml'
+  workflow_dispatch:
+jobs:
+  standalone-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run build
