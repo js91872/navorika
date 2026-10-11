@@ -75,6 +75,7 @@ export const categories: Category[] = [
 
 export const tools: RegisteredTool[] = ([
   // ====== PDF TOOLS ======
+  { slug: 'vcf-to-csv', title: 'VCF to CSV Converter', description: 'Convert vCard contact files to Excel-ready CSV locally in your browser with a contact preview.', category: 'developer-tools', keywords: ['vcf to csv converter', 'vcf to csv conversion', 'change vcf to csv', 'convert vcard to csv', 'vcf contacts to excel'], heroTitle: 'VCF to CSV Converter', heroDescription: 'Upload or paste a VCF contact file, preview contacts and download a CSV for Excel or Google Sheets.' },
   { slug: 'avif-to-png', title: 'AVIF to PNG Converter', description: 'Convert AVIF images to downloadable PNG files in your browser.', category: 'image-tools', keywords: ["avif to png","convert avif to png"], heroTitle: 'AVIF to PNG Converter', heroDescription: 'Convert AVIF images to downloadable PNG files in your browser.' },
   { slug: 'webp-to-gif', title: 'WebP to GIF Converter', description: 'Convert WebP images and animations to GIF files locally in your browser.', category: 'image-tools', keywords: ["webp to gif","convert webp to gif"], heroTitle: 'WebP to GIF Converter', heroDescription: 'Convert WebP images and animations to GIF files locally in your browser.' },
   { slug: 'svg-to-ico', title: 'SVG to ICO Converter', description: 'Convert SVG logos into 64 pixel ICO favicons.', category: 'image-tools', keywords: ["svg to ico","convert svg to ico"], heroTitle: 'SVG to ICO Converter', heroDescription: 'Convert SVG logos into 64 pixel ICO favicons.' },
