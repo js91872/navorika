@@ -74,15 +74,15 @@ export default function VcfToCsv() {
   return <section className="space-y-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-7">
     <div>
       <label htmlFor="vcf-upload" className="block font-semibold">Upload your VCF contacts file</label>
-      <div className="mt-3 flex flex-wrap items-center gap-3">
-        <label htmlFor="vcf-upload" className="inline-flex cursor-pointer items-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2">Choose VCF File</label>
-        <span className="text-sm text-[var(--muted-foreground)]">VCF or vCard, up to 5 MB</span>
-      </div>
-      <input id="vcf-upload" type="file" accept=".vcf,.vcard,text/vcard,text/x-vcard" className="sr-only" onChange={async event => {
+      <input id="vcf-upload" type="file" accept=".vcf,.vcard,text/vcard,text/x-vcard" className="peer sr-only" onChange={async event => {
         const file = event.target.files?.[0]; if (!file) return;
         if (file.size > 5 * 1024 * 1024) { setFileError('Choose a VCF file smaller than 5 MB.'); return; }
         setSource(await file.text()); setFileError('');
       }}/>
+      <div className="mt-3 flex flex-wrap items-center gap-3">
+        <label htmlFor="vcf-upload" className="inline-flex cursor-pointer items-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500 peer-focus-visible:ring-offset-2">Choose VCF File</label>
+        <span className="text-sm text-[var(--muted-foreground)]">VCF or vCard, up to 5 MB</span>
+      </div>
     </div>
     <div><label htmlFor="vcf-text" className="block font-semibold">Or paste vCard text</label>
       <textarea id="vcf-text" rows={9} value={source} onChange={e => {setSource(e.target.value);setFileError('');}} placeholder={'BEGIN:VCARD\nVERSION:3.0\nFN:Alex Taylor\nTEL:+1 415 555 0123\nEMAIL:alex@example.com\nEND:VCARD'} spellCheck={false} className="mt-3 w-full rounded-xl border border-[var(--border)] bg-[var(--background)] p-3 font-mono text-sm"/>
