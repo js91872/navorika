@@ -20,6 +20,7 @@ import { toolkits } from '@/data/taxonomy';
 import SearchBar from '@/components/SearchBar';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 import RecentTools from '@/components/home/RecentTools';
+import NewsletterSignup from '@/components/newsletter/NewsletterSignup';
 
 export default function HomePage() {
   const totalTools = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length;
@@ -296,6 +297,10 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="border-y border-[var(--border)] bg-[var(--muted)]/20 px-4 py-14">
+        <NewsletterSignup id="home-newsletter" />
       </section>
 
       {/* ===== CTA ===== */}
