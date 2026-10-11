@@ -74,7 +74,11 @@ export default function VcfToCsv() {
   return <section className="space-y-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-7">
     <div>
       <label htmlFor="vcf-upload" className="block font-semibold">Upload your VCF contacts file</label>
-      <input id="vcf-upload" type="file" accept=".vcf,.vcard,text/vcard,text/x-vcard" className="mt-3 block w-full text-sm" onChange={async event => {
+      <div className="mt-3 flex flex-wrap items-center gap-3">
+        <label htmlFor="vcf-upload" className="inline-flex cursor-pointer items-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2">Choose VCF File</label>
+        <span className="text-sm text-[var(--muted-foreground)]">VCF or vCard, up to 5 MB</span>
+      </div>
+      <input id="vcf-upload" type="file" accept=".vcf,.vcard,text/vcard,text/x-vcard" className="sr-only" onChange={async event => {
         const file = event.target.files?.[0]; if (!file) return;
         if (file.size > 5 * 1024 * 1024) { setFileError('Choose a VCF file smaller than 5 MB.'); return; }
         setSource(await file.text()); setFileError('');
