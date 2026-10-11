@@ -38,6 +38,16 @@ const categoryImages: Record<GuideCategory, { src: string; caption: string }> = 
 
 const guideDefinitions: GuideDefinition[] = [
   {
+    slug: 'free-website-audit-checklist',
+    title: 'Free Website Audit Checklist: UX, Design & Conversion Guide',
+    description: 'Learn how to audit your website for free: check mobile usability, page design, speed, accessibility, calls to action and conversions with practical examples.',
+    category: 'Developer',
+    publishedDate: 'October 2026',
+    readTime: '22 min read',
+    author: 'Navorika Team',
+    keywords: ['free website audit', 'website audit checklist', 'website ux audit', 'website design audit', 'website conversion audit', 'website usability audit', 'landing page audit', 'why is my website not converting', 'free website audit report', 'website audit tool', 'how to audit a website'],
+  },
+  {
     slug: 'how-to-convert-image-to-pdf-on-iphone',
     title: 'How to Convert Image to PDF on iPhone (4 Free Ways)',
     description: 'Convert photos, screenshots, JPG and HEIC images to PDF on iPhone for free. Save one or multiple pictures as a PDF without an app.',
@@ -604,7 +614,7 @@ const octoberMacVideoSlugs = new Set([
   'easy-video-editing-software-for-mac',
 ]);
 
-const newOctoberGuideDates = new Set(['how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac']);
+const newOctoberGuideDates = new Set(['free-website-audit-checklist', 'how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac']);
 
 const recentUpdateSlugs = new Set([
   'how-to-calculate-emi',
@@ -621,7 +631,7 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: newOctoberGuideDates.has(guide.slug) ? '2026-10-08' : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    datePublished: newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
     dateModified: newOctoberGuideDates.has(guide.slug) ? '2026-10-08' : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
