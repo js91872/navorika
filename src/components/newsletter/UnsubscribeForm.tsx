@@ -32,7 +32,7 @@ export default function UnsubscribeForm({ token }: { token: string }) {
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 text-center">
       {isDone ? <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-500" aria-hidden="true" /> : <MailX className="mx-auto h-10 w-10 text-indigo-500" aria-hidden="true" />}
       <h2 className="mt-4 text-xl font-bold">{isDone ? 'You’re unsubscribed' : 'Stop Navorika email updates?'}</h2>
-      <p className="mt-2 text-sm text-[var(--muted-foreground)]" role={status ? 'status' : undefined} aria-live="polite">
+      <p className="mt-2 text-sm text-[var(--muted-foreground)]" role={status ? (isDone ? 'status' : 'alert') : undefined} aria-live="polite">
         {status || 'Confirm below to stop receiving occasional Navorika product and tool updates.'}
       </p>
       {!isDone && token && (
@@ -46,7 +46,6 @@ export default function UnsubscribeForm({ token }: { token: string }) {
         </button>
       )}
       {!token && <p className="mt-4 text-sm text-rose-600 dark:text-rose-400">This unsubscribe link is incomplete. Please use the link from your email.</p>}
-      {status && !isDone && <p className="mt-3 text-sm text-rose-600 dark:text-rose-400">{status}</p>}
     </div>
   );
 }

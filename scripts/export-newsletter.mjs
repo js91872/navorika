@@ -5,7 +5,11 @@ const directory = process.env.NAVORIKA_NEWSLETTER_DATA_DIR || '/var/lib/navorika
 const file = join(directory, 'newsletter.jsonl');
 const baseUrl = (process.env.NAVORIKA_SITE_URL || 'https://navorika.com').replace(/\/$/, '');
 
-const csv = (value) => `"${String(value).replaceAll('"', '""')}"`;
+const csv = (value) => {
+  const text = String(value);
+  const safe = /^[\u0000-\u0020]*[=+\-@]/.test(text) ? `'${text}` : text;
+  return `"${safe.replaceAll('"', '""')}"`;
+};
 
 let source;
 try {
