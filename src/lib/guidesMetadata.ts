@@ -46,6 +46,7 @@ const guideDefinitions: GuideDefinition[] = [
     readTime: '22 min read',
     author: 'Navorika Team',
     keywords: ['free website audit', 'website audit checklist', 'website ux audit', 'website design audit', 'website conversion audit', 'website usability audit', 'landing page audit', 'why is my website not converting', 'free website audit report', 'website audit tool', 'how to audit a website'],
+    featuredImage: { src: '/images/guides/free-website-audit-checklist-feature.svg', alt: 'Free website audit checklist illustration with UX, design, conversion, mobile and accessibility checks', caption: 'Check website usability, mobile design, conversion elements, speed and accessibility.' },
   },
   {
     slug: 'how-to-convert-image-to-pdf-on-iphone',
