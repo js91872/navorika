@@ -1,297 +1,158 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import {
-  Check,
-  Copy,
-  RotateCcw,
-  Layout,
-  Plus,
-  Minus,
-  Sliders,
-} from 'lucide-react';
-import {
-  generateFlexboxCss,
-  type FlexDirection,
-  type JustifyContent,
-  type AlignItems,
-  type FlexWrap,
-} from '@/lib/calculations/flexbox';
+import { Check, Copy, RotateCcw, Plus, Minus, Layout, Sliders } from 'lucide-react';
+import { generateFlexboxCss, type FlexDirection, type JustifyContent, type AlignItems, type FlexWrap } from '@/lib/calculations/flexbox';
+
+type Item = { id: number; grow: number; shrink: number; basis: string; order: number; self: string };
+type Output = 'css' | 'html' | 'tailwind' | 'scss';
+type Preset = 'default' | 'center' | 'nav' | 'cards' | 'stack';
+const makeItem = (id: number): Item => ({ id, grow: 0, shrink: 1, basis: 'auto', order: 0, self: 'auto' });
+const opts = {
+  direction: ['row', 'row-reverse', 'column', 'column-reverse'],
+  justify: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'],
+  align: ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
+  wrap: ['nowrap', 'wrap', 'wrap-reverse'],
+  content: ['normal', 'stretch', 'flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'],
+  self: ['auto', 'stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
+};
+const field = 'mt-1 w-full min-w-0 rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)]';
+const button = 'rounded-lg border border-[var(--border)] px-3 py-2 text-sm font-medium hover:bg-[var(--muted)] disabled:opacity-40';
+const safeBasis = (value: string) => /^(auto|content|0|[0-9]{1,4}(?:\.[0-9]{1,2})?(px|%|rem|em|vw))$/.test(value.trim()) ? value.trim() : 'auto';
+const tailwindJustify: Record<string,string> = { 'flex-start':'justify-start','flex-end':'justify-end',center:'justify-center','space-between':'justify-between','space-around':'justify-around','space-evenly':'justify-evenly' };
+const tailwindAlign: Record<string,string> = {stretch:'items-stretch','flex-start':'items-start','flex-end':'items-end',center:'items-center',baseline:'items-baseline'};
+const tailwindContent: Record<string,string> = {normal:'content-normal',stretch:'content-stretch','flex-start':'content-start','flex-end':'content-end',center:'content-center','space-between':'content-between','space-around':'content-around','space-evenly':'content-evenly'};
+const tailwindSelf: Record<string,string> = {auto:'self-auto',stretch:'self-stretch','flex-start':'self-start','flex-end':'self-end',center:'self-center',baseline:'self-baseline'};
 
 export default function CssFlexboxGenerator() {
-  const [flexDirection, setFlexDirection] = useState<FlexDirection>('row');
-  const [justifyContent, setJustifyContent] = useState<JustifyContent>('flex-start');
-  const [alignItems, setAlignItems] = useState<AlignItems>('stretch');
-  const [flexWrap, setFlexWrap] = useState<FlexWrap>('nowrap');
-  const [gap, setGap] = useState(16);
-  const [itemCount, setItemCount] = useState(5);
+  const [direction, setDirection] = useState<FlexDirection>('row');
+  const [justify, setJustify] = useState<JustifyContent>('flex-start');
+  const [align, setAlign] = useState<AlignItems>('stretch');
+  const [wrap, setWrap] = useState<FlexWrap>('nowrap');
+  const [alignContent, setAlignContent] = useState('normal');
+  const [rowGap, setRowGap] = useState(16);
+  const [columnGap, setColumnGap] = useState(16);
+  const [padding, setPadding] = useState(16);
+  const [items, setItems] = useState<Item[]>(Array.from({ length: 5 }, (_, i) => makeItem(i + 1)));
+  const [selected, setSelected] = useState(1);
+  const [device, setDevice] = useState<'desktop'|'tablet'|'mobile'>('desktop');
+  const [output, setOutput] = useState<Output>('css');
   const [copied, setCopied] = useState(false);
-
-  const { css, cssDeclarations } = useMemo(() => {
-    return generateFlexboxCss({
-      flexDirection,
-      justifyContent,
-      alignItems,
-      flexWrap,
-      gap,
-    });
-  }, [flexDirection, justifyContent, alignItems, flexWrap, gap]);
-
-  const copyCss = async () => {
-    await navigator.clipboard.writeText(css);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const [copyError, setCopyError] = useState(false);
+  const [preset, setPreset] = useState<Preset>('default');
+  const base = useMemo(() => generateFlexboxCss({ flexDirection: direction, justifyContent: justify, alignItems: align, flexWrap: wrap, gap: 0 }), [direction, justify, align, wrap]);
+  const active = items.find(i => i.id === selected) ?? items[0];
+  const updateItem = (patch: Partial<Item>) => setItems(previous => previous.map(item => item.id === selected ? { ...item, ...patch } : item));
+  const addItem = () => {
+    if (items.length >= 12) return;
+    const id = Math.max(0, ...items.map(item => item.id)) + 1;
+    setItems(previous => [...previous, makeItem(id)]); setSelected(id);
   };
-
-  const reset = () => {
-    setFlexDirection('row');
-    setJustifyContent('flex-start');
-    setAlignItems('stretch');
-    setFlexWrap('nowrap');
-    setGap(16);
-    setItemCount(5);
+  const removeItem = () => {
+    if (items.length <= 1) return;
+    const next = items.filter(item => item.id !== selected);
+    setItems(next); setSelected(next[0].id);
   };
-
-  const selectClass =
-    'mt-1.5 w-full rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm font-medium outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20';
-
-  const previewItems = useMemo(() => {
-    const items = [];
-    const heights = ['h-16', 'h-24', 'h-20', 'h-28', 'h-16', 'h-22', 'h-18', 'h-26'];
-    for (let i = 1; i <= itemCount; i++) {
-      items.push({
-        id: i,
-        heightClass: heights[(i - 1) % heights.length],
-      });
-    }
-    return items;
-  }, [itemCount]);
-
+  const applyPreset = (value: Preset) => {
+    setPreset(value);
+    setAlignContent('normal'); setRowGap(16); setColumnGap(16); setPadding(16);
+    const count = value === 'center' ? 1 : value === 'nav' ? 3 : value === 'cards' ? 6 : value === 'stack' ? 4 : 5;
+    setItems(Array.from({ length: count }, (_, i) => makeItem(i + 1))); setSelected(1);
+    setDirection(value === 'stack' ? 'column' : 'row');
+    setJustify(value === 'center' ? 'center' : value === 'nav' ? 'space-between' : 'flex-start');
+    setAlign(value === 'center' || value === 'nav' ? 'center' : 'stretch');
+    setWrap(value === 'cards' ? 'wrap' : 'nowrap');
+    if (value === 'cards') setItems(Array.from({ length: 6 }, (_, i) => ({ ...makeItem(i + 1), basis: '120px', grow: 1 })));
+  };
+  const rules = [
+    '  display: flex;',
+    '  flex-direction: ' + direction + ';',
+    '  justify-content: ' + justify + ';',
+    '  align-items: ' + align + ';',
+    '  flex-wrap: ' + wrap + ';',
+    '  align-content: ' + alignContent + ';',
+    '  row-gap: ' + rowGap + 'px;',
+    '  column-gap: ' + columnGap + 'px;',
+    '  padding: ' + padding + 'px;',
+  ];
+  const childRules = items.map(item => '.flex-item-' + item.id + ' {\n  flex-grow: ' + item.grow + ';\n  flex-shrink: ' + item.shrink + ';\n  flex-basis: ' + safeBasis(item.basis) + ';\n  order: ' + item.order + ';\n  align-self: ' + item.self + ';\n}');
+  const css = '.flex-container {\n' + rules.join('\n') + '\n}\n\n' + childRules.join('\n\n');
+  const html = '<div class="flex-container">\n' + items.map(i => '  <div class="flex-item-' + i.id + '">Item ' + i.id + '</div>').join('\n') + '\n</div>';
+  const tailwindClasses = ['flex', ({row:'flex-row','row-reverse':'flex-row-reverse',column:'flex-col','column-reverse':'flex-col-reverse'} as Record<string,string>)[direction], tailwindJustify[justify], tailwindAlign[align], ({nowrap:'flex-nowrap',wrap:'flex-wrap','wrap-reverse':'flex-wrap-reverse'} as Record<string,string>)[wrap], tailwindContent[alignContent], 'gap-x-[' + columnGap + 'px]', 'gap-y-[' + rowGap + 'px]', 'p-[' + padding + 'px]'].join(' ');
+  const tailwind = '<div class="' + tailwindClasses + '">\n' + items.map(i => '  <div class="grow-[' + i.grow + '] shrink-[' + i.shrink + '] basis-[' + safeBasis(i.basis) + '] order-[' + i.order + '] ' + tailwindSelf[i.self] + '">Item ' + i.id + '</div>').join('\n') + '\n</div>';
+  const scss = '.flex-container {\n' + rules.join('\n') + '\n' + items.map(i => '  .flex-item-' + i.id + ' { flex-grow: ' + i.grow + '; flex-shrink: ' + i.shrink + '; flex-basis: ' + safeBasis(i.basis) + '; order: ' + i.order + '; align-self: ' + i.self + '; }').join('\n') + '\n}';
+  const code = output === 'html' ? html : output === 'tailwind' ? tailwind : output === 'scss' ? scss : css;
+  async function copyCode() {
+    try { await navigator.clipboard.writeText(code); setCopied(true); setCopyError(false); window.setTimeout(() => setCopied(false), 1600); }
+    catch { setCopyError(true); }
+  }
+  const selection = (title: string, value: string, update: (s:string)=>void, values: string[]) => (
+    <label className="block min-w-0 text-sm font-medium">{title}
+      <select aria-label={title} className={field} value={value} onChange={e => { update(e.target.value); setPreset('default'); }}>
+        {values.map(v => <option key={v} value={v}>{v}</option>)}
+      </select>
+    </label>
+  );
+  const numeric = (title: string, value: number, update: (n:number)=>void, max=80) => (
+    <label className="block text-sm font-medium">{title} <span className="text-[var(--muted-foreground)]">{value}px</span>
+      <input className="mt-2 w-full accent-indigo-600" aria-label={title} type="range" min="0" max={max} value={value} onChange={e => update(Number(e.target.value))}/>
+    </label>
+  );
   return (
-    <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.2fr)]">
-      {/* Controls Section */}
-      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
-        <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
-          <div className="flex items-center gap-3">
-            <Sliders className="size-6 text-indigo-600 dark:text-indigo-400" />
-            <h2 className="text-xl font-bold">Flex Container Controls</h2>
-          </div>
-          <button
-            type="button"
-            onClick={reset}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--muted-foreground)] hover:text-indigo-600"
-          >
-            <RotateCcw className="size-3.5" /> Reset
-          </button>
-        </div>
-
-        <div className="mt-6 space-y-5">
-          {/* flex-direction */}
-          <div>
-            <label className="text-sm font-semibold">
-              flex-direction
-              <span className="ml-2 text-xs font-normal text-[var(--muted-foreground)]">
-                Defines main axis direction
-              </span>
-            </label>
-            <select
-              value={flexDirection}
-              onChange={(e) => setFlexDirection(e.target.value as FlexDirection)}
-              className={selectClass}
-            >
-              <option value="row">row (default horizontal)</option>
-              <option value="row-reverse">row-reverse</option>
-              <option value="column">column (vertical stack)</option>
-              <option value="column-reverse">column-reverse</option>
-            </select>
-          </div>
-
-          {/* justify-content */}
-          <div>
-            <label className="text-sm font-semibold">
-              justify-content
-              <span className="ml-2 text-xs font-normal text-[var(--muted-foreground)]">
-                Alignment along main axis
-              </span>
-            </label>
-            <select
-              value={justifyContent}
-              onChange={(e) => setJustifyContent(e.target.value as JustifyContent)}
-              className={selectClass}
-            >
-              <option value="flex-start">flex-start (items packed at start)</option>
-              <option value="flex-end">flex-end (items packed at end)</option>
-              <option value="center">center (centered along axis)</option>
-              <option value="space-between">space-between (equal gap, edges flush)</option>
-              <option value="space-around">space-around (equal space around items)</option>
-              <option value="space-evenly">space-evenly (equal space between & edges)</option>
-            </select>
-          </div>
-
-          {/* align-items */}
-          <div>
-            <label className="text-sm font-semibold">
-              align-items
-              <span className="ml-2 text-xs font-normal text-[var(--muted-foreground)]">
-                Alignment along cross axis
-              </span>
-            </label>
-            <select
-              value={alignItems}
-              onChange={(e) => setAlignItems(e.target.value as AlignItems)}
-              className={selectClass}
-            >
-              <option value="stretch">stretch (fill container cross-size)</option>
-              <option value="flex-start">flex-start (pack at cross-start)</option>
-              <option value="flex-end">flex-end (pack at cross-end)</option>
-              <option value="center">center (centered on cross-axis)</option>
-              <option value="baseline">baseline (aligned by text baseline)</option>
-            </select>
-          </div>
-
-          {/* flex-wrap */}
-          <div>
-            <label className="text-sm font-semibold">
-              flex-wrap
-              <span className="ml-2 text-xs font-normal text-[var(--muted-foreground)]">
-                Allow items to wrap onto lines
-              </span>
-            </label>
-            <select
-              value={flexWrap}
-              onChange={(e) => setFlexWrap(e.target.value as FlexWrap)}
-              className={selectClass}
-            >
-              <option value="nowrap">nowrap (single line)</option>
-              <option value="wrap">wrap (multiple lines as needed)</option>
-              <option value="wrap-reverse">wrap-reverse (multi-line reverse)</option>
-            </select>
-          </div>
-
-          {/* gap slider */}
-          <div>
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-semibold">gap: {gap}px</label>
-              <span className="text-xs text-[var(--muted-foreground)]">0px - 64px</span>
-            </div>
-            <input
-              type="range"
-              min="0"
-              max="64"
-              step="1"
-              value={gap}
-              onChange={(e) => setGap(Number(e.target.value))}
-              className="mt-2 w-full accent-indigo-600"
-            />
-          </div>
-
-          {/* Item count in preview */}
-          <div className="border-t border-[var(--border)] pt-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
-                Preview Items: {itemCount}
-              </span>
-              <div className="flex items-center gap-1">
-                <button
-                  type="button"
-                  onClick={() => setItemCount((c) => Math.max(1, c - 1))}
-                  disabled={itemCount <= 1}
-                  className="rounded-lg border border-[var(--border)] p-1.5 text-xs hover:bg-[var(--muted)] disabled:opacity-40"
-                  aria-label="Remove item"
-                >
-                  <Minus className="size-3.5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setItemCount((c) => Math.min(10, c + 1))}
-                  disabled={itemCount >= 10}
-                  className="rounded-lg border border-[var(--border)] p-1.5 text-xs hover:bg-[var(--muted)] disabled:opacity-40"
-                  aria-label="Add item"
-                >
-                  <Plus className="size-3.5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="space-y-6">
+      <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2"><h2 className="text-xl font-bold">Start with a Flexbox layout</h2><button className={button} onClick={() => applyPreset('default')}><RotateCcw className="mr-1 inline size-4"/> Reset</button></div>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">{([['default','Blank layout'],['center','Center a div'],['nav','Navigation bar'],['cards','Responsive cards'],['stack','Vertical stack']] as [Preset,string][]).map(([key,label]) => <button key={key} type="button" onClick={() => applyPreset(key)} aria-pressed={preset===key} className={button + (preset===key ? ' border-indigo-500 bg-indigo-500/10 text-indigo-600' : '')}>{label}</button>)}</div>
       </section>
-
-      {/* Live Preview & CSS Output */}
-      <div className="space-y-6">
-        {/* Live Visual Playground */}
-        <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
-          <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
-            <div className="flex items-center gap-2">
-              <Layout className="size-5 text-indigo-600 dark:text-indigo-400" />
-              <h2 className="text-lg font-bold">Interactive Preview</h2>
-            </div>
-            <span className="text-xs text-[var(--muted-foreground)]">
-              Container min-height: 280px
-            </span>
+      <div className="grid min-w-0 gap-6 xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <section className="min-w-0 space-y-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6">
+          <h2 className="flex items-center gap-2 text-xl font-bold"><Sliders className="size-5 text-indigo-600"/> Flex container controls</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {selection('Flex direction', direction, s=>setDirection(s as FlexDirection), opts.direction)}
+            {selection('Justify content', justify, s=>setJustify(s as JustifyContent), opts.justify)}
+            {selection('Align items', align, s=>setAlign(s as AlignItems), opts.align)}
+            {selection('Flex wrap', wrap, s=>setWrap(s as FlexWrap), opts.wrap)}
+            {selection('Align content', alignContent, setAlignContent, opts.content)}
           </div>
-
-          {/* Actual Flexbox container rendering inline styles */}
-          <div
-            className="mt-5 min-h-[280px] overflow-hidden rounded-2xl border-2 border-dashed border-indigo-400/40 bg-slate-50/60 p-4 transition-all dark:bg-slate-900/40"
-            style={{
-              display: 'flex',
-              flexDirection: cssDeclarations.flexDirection,
-              justifyContent: cssDeclarations.justifyContent,
-              alignItems: cssDeclarations.alignItems,
-              flexWrap: cssDeclarations.flexWrap,
-              gap: cssDeclarations.gap,
-            }}
-          >
-            {previewItems.map((item) => (
-              <div
-                key={item.id}
-                className={`min-w-[64px] rounded-xl border border-indigo-500/30 bg-gradient-to-br from-indigo-500 to-indigo-700 p-3 text-white shadow-md transition-all flex flex-col justify-between ${
-                  alignItems === 'stretch' ? 'min-h-[64px]' : item.heightClass
-                }`}
-              >
-                <span className="font-mono text-xs font-bold opacity-80">#{item.id}</span>
-                <span className="text-center text-xs font-semibold">Item {item.id}</span>
+          {wrap === 'nowrap' && <p role="status" className="rounded-lg bg-amber-500/10 p-3 text-sm text-amber-700 dark:text-amber-300">Tip: align-content only affects layouts with multiple flex lines. Choose flex-wrap: wrap and allow items to form multiple lines to see its effect.</p>}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {numeric('Row gap',rowGap,setRowGap)}
+            {numeric('Column gap',columnGap,setColumnGap)}
+            {numeric('Container padding',padding,setPadding)}
+          </div>
+          <div className="border-t border-[var(--border)] pt-4">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2"><h3 className="font-semibold">Individual flex item controls</h3><div className="flex gap-2"><button className={button} onClick={removeItem} disabled={items.length<=1} aria-label="Remove selected item"><Minus className="size-4"/></button><button className={button} onClick={addItem} disabled={items.length>=12} aria-label="Add flex item"><Plus className="size-4"/></button></div></div>
+            <div className="mb-4 flex flex-wrap gap-2">{items.map(i => <button key={i.id} type="button" onClick={()=>setSelected(i.id)} aria-pressed={selected===i.id} className={button + (selected===i.id ? ' border-indigo-500 bg-indigo-500/10 text-indigo-600' : '')}>Item {i.id}</button>)}</div>
+            {active && <div className="grid gap-3 sm:grid-cols-2">
+              <label className="text-sm font-medium">Flex grow<input className={field} type="number" min="0" max="12" value={active.grow} onChange={e=>updateItem({grow:Math.max(0,Math.min(12,Number(e.target.value)||0))})}/></label>
+              <label className="text-sm font-medium">Flex shrink<input className={field} type="number" min="0" max="12" value={active.shrink} onChange={e=>updateItem({shrink:Math.max(0,Math.min(12,Number(e.target.value)||0))})}/></label>
+              <label className="text-sm font-medium">Flex basis <span className="text-xs text-[var(--muted-foreground)]">(auto, px, %, rem)</span><input className={field} value={active.basis} onChange={e=>updateItem({basis:e.target.value})} onBlur={()=>updateItem({basis:safeBasis(active.basis)})}/></label>
+              <label className="text-sm font-medium">Order<input className={field} type="number" min="-12" max="12" value={active.order} onChange={e=>updateItem({order:Math.max(-12,Math.min(12,Number(e.target.value)||0))})}/></label>
+              {selection('Align self',active.self,s=>updateItem({self:s}),opts.self)}
+            </div>}
+          </div>
+        </section>
+        <div className="min-w-0 space-y-6">
+          <section className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-3"><h2 className="flex items-center gap-2 text-xl font-bold"><Layout className="size-5 text-indigo-600"/> Live Flexbox preview</h2><div className="flex flex-wrap gap-1">{(['desktop','tablet','mobile'] as const).map(v=><button key={v} type="button" onClick={()=>setDevice(v)} aria-pressed={device===v} className={button + (device===v?' border-indigo-500 bg-indigo-500/10':'')}>{v}</button>)}</div></div>
+            <p className="mb-3 text-xs text-[var(--muted-foreground)]">Preview width changes to simulate available space; settings remain the same. Click any item to edit its properties.</p>
+            <div className="overflow-x-auto rounded-xl bg-slate-100 p-3 dark:bg-slate-900">
+              <div className="mx-auto transition-[width] duration-200" style={{width:device==='desktop'?'100%':device==='tablet'?'75%':'min(100%, 320px)'}}>
+                <div className="min-h-[300px] rounded-lg border-2 border-dashed border-indigo-400/40 bg-white dark:bg-slate-950" style={{...base.cssDeclarations, display:'flex', flexDirection:direction, justifyContent:justify, alignItems:align, flexWrap:wrap, alignContent:alignContent as React.CSSProperties['alignContent'], rowGap:rowGap+'px', columnGap:columnGap+'px', padding:padding+'px'}}>
+                  {items.map(item=><button key={item.id} type="button" onClick={()=>setSelected(item.id)} aria-label={'Edit item '+item.id} className={'min-w-0 rounded-lg border p-2 text-xs font-semibold text-white shadow-sm ' + (item.id===selected?'border-yellow-300 ring-2 ring-yellow-300':'border-indigo-300')} style={{flexGrow:item.grow,flexShrink:item.shrink,flexBasis:safeBasis(item.basis),order:item.order,alignSelf:item.self as React.CSSProperties['alignSelf'],backgroundColor:item.id===selected?'#4338ca':'#6366f1',minHeight:'48px'}}>Item {item.id}</button>)}
+                </div>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Generated CSS Box */}
-        <section className="rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-5 sm:p-7">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-lg font-bold">Generated CSS</h3>
-              <p className="text-xs text-[var(--muted-foreground)]">
-                Copy-ready CSS rules for your stylesheet
-              </p>
             </div>
-            <button
-              type="button"
-              onClick={copyCss}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:bg-indigo-700"
-            >
-              {copied ? (
-                <>
-                  <Check className="size-3.5" /> Copied CSS
-                </>
-              ) : (
-                <>
-                  <Copy className="size-3.5" /> Copy CSS
-                </>
-              )}
-            </button>
-          </div>
-
-          <div className="mt-4 overflow-hidden rounded-2xl border border-[var(--border)] bg-slate-950 shadow-inner">
-            <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900 px-4 py-2 text-xs font-mono text-slate-400">
-              <span>styles.css</span>
-              <span>flexbox</span>
-            </div>
-            <pre className="overflow-x-auto p-4 font-mono text-xs text-indigo-300">
-              <code>{css}</code>
-            </pre>
-          </div>
-        </section>
+          </section>
+          <section className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2"><h2 className="text-xl font-bold">Copy your layout code</h2><button type="button" onClick={copyCode} className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">{copied?<Check className="size-4"/>:<Copy className="size-4"/>}{copied?'Copied':'Copy code'}</button></div>
+            <div className="mb-3 flex flex-wrap gap-2">{(['css','html','tailwind','scss'] as Output[]).map(v=><button type="button" key={v} onClick={()=>setOutput(v)} aria-pressed={output===v} className={button+(output===v?' border-indigo-500 bg-indigo-500/10':'')}>{v==='tailwind'?'Tailwind':v.toUpperCase()}</button>)}</div>
+            {copyError && <p role="alert" className="mb-2 text-sm text-red-600">Copy was blocked by your browser. Select and copy the text below manually.</p>}
+            {output==='tailwind' && <p className="mb-2 text-xs text-[var(--muted-foreground)]">Uses Tailwind arbitrary-value utilities. Ensure these classes are included in files scanned by Tailwind at build time.</p>}
+            <pre className="max-h-[430px] overflow-auto rounded-xl bg-slate-950 p-4 text-xs leading-relaxed text-indigo-200"><code>{code}</code></pre>
+            <p className="mt-3 text-xs text-[var(--muted-foreground)]">For a working CSS example, copy both the HTML tab and CSS tab. The responsive preview changes viewport width only and does not automatically add media queries.</p>
+          </section>
+        </div>
       </div>
     </div>
   );
