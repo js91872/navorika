@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Shield } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
 import SocialLinks from './SocialLinks';
+import NewsletterSignup from '@/components/newsletter/NewsletterSignup';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -105,6 +106,10 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        <div className="mt-10">
+          <NewsletterSignup compact id="footer-newsletter" />
         </div>
 
         {/* Bottom bar */}

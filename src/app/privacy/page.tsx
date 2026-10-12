@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Shield, CheckCircle, ArrowLeft, Lock, Eye, Database, Cookie } from 'lucide-react';
 
 export default function PrivacyPage() {
-  const lastUpdated = 'September 27, 2026';
+  const lastUpdated = 'October 11, 2026';
 
   const sections = [
     {
@@ -56,6 +56,16 @@ export default function PrivacyPage() {
         'Opt-Out Choices: You may opt out of personalized advertising by visiting Google Ads Settings (https://www.google.com/settings/ads) or through third-party opt-out services such as www.aboutads.info/choices/',
         'Analytics: Aggregated, anonymized traffic analytics help us understand site usage and improve tool performance without identifying individual users',
         'Local Storage: Browser localStorage is used strictly to remember your preferences (such as light or dark display mode) and does not contain personal identifying information',
+      ],
+    },
+    {
+      icon: <Database className="h-6 w-6 text-indigo-500" />,
+      title: 'Optional Email Updates',
+      content: 'If you choose to subscribe to Navorika email updates, we store your email address, the date you subscribed, and your consent record on our server. We use this information only to send occasional updates about Navorika tools and products. Signing up is optional and is not required to use any tool. You can unsubscribe at any time using the link provided with an email update. Unsubscribed addresses are retained in our private server record so we can honor your request.',
+      list: [
+        'We do not sell or share newsletter addresses for another company’s marketing',
+        'Newsletter data is stored outside the public website files and is not included in server logs',
+        'You can ask us to correct or delete your newsletter information through the contact page',
       ],
     },
   ];
