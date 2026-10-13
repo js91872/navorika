@@ -1,4 +1,6 @@
 export const guideRelations: Record<string, string[]> = {
+  'how-to-copy-and-paste-on-macbook': ['how-to-speed-up-macbook', 'how-to-show-battery-percentage-on-mac', 'how-to-clear-ram-on-mac'],
+  'how-to-speed-up-macbook': ['how-to-copy-and-paste-on-macbook', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac'],
   'video-editing-software-for-mac': ['free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
   'free-video-editing-software-for-mac': ['video-editing-software-for-mac', 'easy-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'how-to-clear-ram-on-mac'],
   'professional-video-editing-software-for-mac': ['video-editing-software-for-mac', 'free-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
