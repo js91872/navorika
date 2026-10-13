@@ -37,6 +37,9 @@ const categoryImages: Record<GuideCategory, { src: string; caption: string }> = 
 };
 
 const guideDefinitions: GuideDefinition[] = [
+  { slug: 'how-to-copy-and-paste-on-macbook', title: 'How to Copy and Paste on a MacBook: Keyboard, Trackpad, Files and Photos', description: 'Learn how to copy and paste on MacBook Air and Pro with keyboard shortcuts, move files in Finder, paste without formatting and fix clipboard problems.', category: 'Everyday', publishedDate: 'October 2026', readTime: '12 min read', author: 'Navorika Team', keywords: ['how to copy and paste on macbook','how to cut and paste on a mac computer','how to copy and paste on apple computer','macbook copy paste shortcut','paste without formatting mac','copy and paste with mac trackpad'] },
+  { slug: 'how-to-speed-up-macbook', title: 'How to Speed Up a MacBook: 15 Safe Fixes for a Slow Mac', description: 'MacBook running slow? Try 15 safe ways to speed up MacBook Air or Pro, check Activity Monitor, free storage and troubleshoot slow Safari.', category: 'Everyday', publishedDate: 'October 2026', readTime: '15 min read', author: 'Navorika Team', keywords: ['how to speed up macbook','how to speed up mac','how to speed up macbook pro','how to speed up old macbook','how to speed up my macbook air','how to speed up safari on macbook'] },
+
   {
     slug: 'free-website-audit-checklist',
     title: 'Free Website Audit Checklist: UX, Design & Conversion Guide',
@@ -615,7 +618,7 @@ const octoberMacVideoSlugs = new Set([
   'easy-video-editing-software-for-mac',
 ]);
 
-const newOctoberGuideDates = new Set(['free-website-audit-checklist', 'how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac']);
+const newOctoberGuideDates = new Set(['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook','free-website-audit-checklist', 'how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac']);
 
 const recentUpdateSlugs = new Set([
   'how-to-calculate-emi',
@@ -632,8 +635,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: newOctoberGuideDates.has(guide.slug) ? '2026-10-08' : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    datePublished: newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    dateModified: newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,
