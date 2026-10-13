@@ -1,3 +1,4 @@
+import { macEverydayGuideContent } from './guideContentMacEveryday';
 import { additionalGuideContent } from './guideContentAdditional';
 import { guideContentEnhancements } from './guideContentEnhancements';
 import { gscGuideContent } from './guideContentGsc';
@@ -816,7 +817,7 @@ export const guideContent: Record<string, GuideContent> = {
 };
 
 export function getGuideContent(slug: string): GuideContent | null {
-  const content = websiteAuditGuideContent[slug] || iphoneImagePdfGuideContent[slug] || macBatteryGuideContent[slug] || macVideoGuideContent[slug] || macRamGuideContent[slug] || screenshotPdfGuideContent[slug] || gscGuideContent[slug] || guideContent[slug] || additionalGuideContent[slug];
+  const content = macEverydayGuideContent[slug] || websiteAuditGuideContent[slug] || iphoneImagePdfGuideContent[slug] || macBatteryGuideContent[slug] || macVideoGuideContent[slug] || macRamGuideContent[slug] || screenshotPdfGuideContent[slug] || gscGuideContent[slug] || guideContent[slug] || additionalGuideContent[slug];
   if (!content) return null;
   const enhancement = guideContentEnhancements[slug];
   return enhancement ? {
