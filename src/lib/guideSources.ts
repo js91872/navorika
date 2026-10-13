@@ -4,6 +4,14 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-copy-and-paste-on-macbook': [
+    { name: 'Apple Support — Copy and paste on Mac', url: 'https://support.apple.com/guide/mac-help/copy-and-paste-between-devices-mchl70368996/mac' },
+    { name: 'Apple Support — Mac keyboard shortcuts', url: 'https://support.apple.com/en-us/102650' },
+  ],
+  'how-to-speed-up-macbook': [
+    { name: 'Apple Support — If your Mac runs slowly', url: 'https://support.apple.com/guide/mac-help/if-your-mac-runs-slowly-mchlp1731/mac' },
+    { name: 'Apple Support — Activity Monitor', url: 'https://support.apple.com/guide/activity-monitor/welcome/mac' },
+  ],
   'how-to-convert-image-to-pdf-on-iphone': [
     { name: 'Apple Support — Save files and images on iPhone', url: 'https://support.apple.com/guide/iphone/save-and-edit-files-iphc61044c11/ios' },
     { name: 'Apple Support — Scan text and documents with Notes on iPhone', url: 'https://support.apple.com/guide/iphone/scan-text-and-documents-iph653f28965/ios' },
