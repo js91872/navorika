@@ -1,15 +1,22 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Code2, FileImage, Layers, Printer } from 'lucide-react';
 import ExpansionToolPage from '@/components/tools/ExpansionToolPage';
 import RgbCmykImageTool from '@/components/tools/RgbCmykImageTool';
+
+export const metadata: Metadata = {
+  title: 'RGB or CMYK Image Checker – Check Image Color Mode Online',
+  description: 'Is your image RGB or CMYK? Check JPG, PNG, TIFF, WebP or GIF color mode online for free. See detected color space instantly. No upload needed.',
+  alternates: { canonical: 'https://navorika.com/tools/rgb-cmyk-image-checker' },
+};
 
 export default function Page() {
   return (
     <ExpansionToolPage
       category="image-tools"
       eyebrow="Check Image Color Mode Online"
-      title="RGB or CMYK Image Checker"
-      description="Check whether an image is RGB or CMYK online. Inspect supported JPEG, TIFF, PNG, PSD and WebP files for color space, channels, bit depth and embedded profiles directly in your browser."
+      title="RGB or CMYK Image Checker – Check Image Color Mode Online"
+      description="Is your image RGB or CMYK? Check its color mode online for free before printing or editing. Choose a JPG, PNG, TIFF, WebP or GIF to see the detected color space in seconds. Your file stays in your browser."
       slug="rgb-cmyk-image-checker"
     >
       {/* Above-the-fold workflow helper bar */}
