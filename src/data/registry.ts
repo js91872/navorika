@@ -2157,6 +2157,33 @@ export const tools: RegisteredTool[] = ([
     heroDescription: 'Check PDF page dimensions, orientation and common paper sizes such as A4, A3, Letter and Legal.'
   },
   {
+    slug: 'battery-charge-time-calculator',
+    title: 'Battery Charge Time Calculator',
+    description: 'Calculate how long it takes to charge a battery from its capacity, charger current and charging efficiency.',
+    category: 'everyday-calculators',
+    keywords: ['battery charge time calculator', 'how long to charge a battery', 'battery charging time calculator'],
+    heroTitle: 'Battery Charge Time Calculator – How Long to Charge a Battery?',
+    heroDescription: 'Estimate battery charging hours using battery capacity, charger current, starting charge and efficiency.'
+  },
+  {
+    slug: 'black-and-white-image-converter',
+    title: 'Black and White Image Converter',
+    description: 'Convert JPG, PNG and WebP photos to black and white or grayscale online for free.',
+    category: 'image-tools',
+    keywords: ['black and white image converter', 'convert photo to grayscale', 'image to black and white online'],
+    heroTitle: 'Black and White Image Converter – Turn Photos Grayscale',
+    heroDescription: 'Turn a color photo into black and white online. Preview and download the result without uploading your image.'
+  },
+  {
+    slug: 'uk-vat-calculator',
+    title: 'UK VAT Calculator',
+    description: 'Add or remove UK VAT from a price and calculate the VAT amount, price before VAT and total.',
+    category: 'finance-calculators',
+    keywords: ['uk vat calculator', 'remove vat from price', 'add vat calculator', 'price before vat calculator'],
+    heroTitle: 'UK VAT Calculator – Add or Remove VAT From a Price',
+    heroDescription: 'Calculate UK VAT online. Add or remove 20% or 5% VAT and see the price before VAT, VAT amount and total.'
+  },
+  {
     slug: 'rgb-cmyk-image-checker',
     title: 'RGB or CMYK Image Checker',
     description: 'Check if your image is RGB or CMYK online for free. Choose a JPG, PNG, TIFF, WebP or GIF to detect its color mode instantly, without uploading it.',
