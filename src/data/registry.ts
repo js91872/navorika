@@ -2159,7 +2159,7 @@ export const tools: RegisteredTool[] = ([
   {
     slug: 'rgb-cmyk-image-checker',
     title: 'RGB or CMYK Image Checker',
-    description: 'Inspect supported image files locally for detectable RGB, CMYK, grayscale, alpha and embedded color-profile characteristics.',
+    description: 'Check if your image is RGB or CMYK online for free. Choose a JPG, PNG, TIFF, WebP or GIF to detect its color mode instantly, without uploading it.',
     category: 'image-tools',
     keywords: [
       'rgb cmyk image checker',
@@ -2168,8 +2168,8 @@ export const tools: RegisteredTool[] = ([
       'cmyk image checker',
       'image color space checker'
     ],
-    heroTitle: 'RGB or CMYK Image Checker',
-    heroDescription: 'Check whether a supported image is RGB, CMYK, grayscale or indexed, and inspect color-profile details directly in your browser.'
+    heroTitle: 'RGB or CMYK Image Checker – Check Image Color Mode Online',
+    heroDescription: 'Is your image RGB or CMYK? Check its color mode online for free before printing or editing. Choose a JPG, PNG, TIFF, WebP or GIF to see its detected color space in seconds. Files stay in your browser.'
   },
   {
     slug: 'print-bleed-calculator',
