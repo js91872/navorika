@@ -4,6 +4,11 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'free-website-audit-checklist': [
+    { name: 'Google Search Central — SEO Starter Guide', url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide' },
+    { name: 'Google PageSpeed Insights', url: 'https://pagespeed.web.dev/' },
+    { name: 'W3C Web Accessibility Initiative — WCAG Overview', url: 'https://www.w3.org/WAI/standards-guidelines/wcag/' },
+  ],
   'how-to-copy-and-paste-on-macbook': [
     { name: 'Apple Support — Copy and paste on Mac', url: 'https://support.apple.com/guide/mac-help/copy-and-paste-between-devices-mchl70368996/mac' },
     { name: 'Apple Support — Mac keyboard shortcuts', url: 'https://support.apple.com/en-us/102650' },
