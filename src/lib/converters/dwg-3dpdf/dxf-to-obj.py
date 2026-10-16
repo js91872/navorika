@@ -3,6 +3,7 @@
 This intentionally rejects ACIS solids and 2D drawings rather than faking 3D."""
 import sys
 import math
+import json
 import ezdxf
 
 def main(source, destination):
@@ -50,7 +51,12 @@ def main(source, destination):
             out.write(f"v {x:.8g} {y:.8g} {z:.8g}\n")
         for a, b, c in faces:
             out.write(f"f {a} {b} {c}\n")
-    print(f"OK {len(vertices)} vertices, {len(faces)} triangles")
+    xs = [v[0] for v in vertices]
+    ys = [v[1] for v in vertices]
+    zs = [v[2] for v in vertices]
+    center = [(min(v) + max(v)) / 2 for v in (xs, ys, zs)]
+    diagonal = math.sqrt(sum((max(v) - min(v)) ** 2 for v in (xs, ys, zs)))
+    print(json.dumps({"center": center, "diagonal": diagonal, "triangles": len(faces)}))
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
