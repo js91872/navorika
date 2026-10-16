@@ -63,7 +63,7 @@ settings.render=0;
 import three;
 import obj;
 size(500);
-currentprojection=perspective(camera=(\${x+1.25*d},\${y+1.25*d},\${z+0.95*d}),up=Z,target=(\${x},\${y},\${z}));
+currentprojection=perspective(camera=(${x+1.25*d},${y+1.25*d},${z+0.95*d}),up=Z,target=(${x},${y},${z}));
 obj model=obj("model.obj",true,lightgray);
 draw(model);
 `;
