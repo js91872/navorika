@@ -49,6 +49,7 @@ def main(source, destination):
         out.write("# Navorika 3D CAD mesh\n")
         for x, y, z in vertices:
             out.write(f"v {x:.8g} {y:.8g} {z:.8g}\n")
+        out.write("g navorika_model\n")
         for a, b, c in faces:
             out.write(f"f {a} {b} {c}\n")
     xs = [v[0] for v in vertices]
