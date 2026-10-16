@@ -14,7 +14,8 @@ const LIMIT = 20 * 1024 * 1024;
 
 export async function GET() {
   return NextResponse.json({
-    available: Boolean(process.env.ODA_FILE_CONVERTER_PATH && await getAsymptoteBinaryPath()),
+    available: Boolean(await getAsymptoteBinaryPath()),
+    dwgAvailable: Boolean(process.env.ODA_FILE_CONVERTER_PATH && await getAsymptoteBinaryPath()),
     formats: ['DWG', 'DXF'],
     maxBytes: LIMIT,
     note: 'Supports true 3D mesh entities (3DFACE, MESH and polyface). Native ACIS solids are not supported.',
@@ -50,14 +51,19 @@ export async function POST(request: NextRequest) {
       dxf = join(output, name);
     }
     const script = join(process.cwd(), 'src/lib/converters/dwg-3dpdf/dxf-to-obj.py');
-    await run(process.env.DWG_PYTHON_PATH ?? 'python3', [script, dxf, join(dir, 'model.obj')], { timeout: 45000, maxBuffer: 1024 * 1024 });
+    const { stdout: meshOutput } = await run(process.env.DWG_PYTHON_PATH ?? 'python3', [script, dxf, join(dir, 'model.obj')], { timeout: 45000, maxBuffer: 1024 * 1024 });
+    const geometry = JSON.parse(meshOutput) as { center: number[]; diagonal: number };
+    if (!Array.isArray(geometry.center) || geometry.center.length !== 3 || !Number.isFinite(geometry.diagonal)) throw new Error('Invalid 3D model bounds.');
+    const [x,y,z] = geometry.center;
+    const d = Math.max(geometry.diagonal,1);
+    if (![x,y,z].every(Number.isFinite)) throw new Error('Invalid model coordinates.');
     const scene = `settings.outformat="pdf";
 settings.prc=true;
 settings.render=0;
 import three;
 import obj;
 size(500);
-currentprojection=perspective(camera=(8,8,6),up=Z,target=(0,0,0));
+currentprojection=perspective(camera=(\${x+1.25*d},\${y+1.25*d},\${z+0.95*d}),up=Z,target=(\${x},\${y},\${z}));
 obj model=obj("model.obj",true,lightgray);
 draw(model);
 `;
