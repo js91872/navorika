@@ -1,0 +1,35 @@
+name: DWG 3D PDF converter acceptance
+on:
+  pull_request:
+    paths:
+      - 'src/lib/converters/dwg-3dpdf/**'
+      - 'src/app/api/dwg-to-3d-pdf/**'
+      - 'src/app/tools/dwg-to-3d-pdf-converter/**'
+      - 'src/components/tools/cad/DwgTo3dPdfTool.tsx'
+      - 'scripts/test-dwg-3dpdf.py'
+      - '.github/workflows/dwg-3dpdf.yml'
+  workflow_dispatch:
+jobs:
+  converter-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y asymptote python3-venv
+          python3 -m venv /tmp/navorika-cad-test-venv
+          /tmp/navorika-cad-test-venv/bin/pip install 'ezdxf>=1.3,<2' 'pypdf>=5,<7'
+          npm ci
+      - name: TypeScript and architecture
+        run: |
+          npm run typecheck
+          npm run validate:architecture
+      - name: PDF geometry acceptance
+        run: |
+          PATH="/tmp/navorika-cad-test-venv/bin:$PATH" python3 scripts/test-dwg-3dpdf.py
