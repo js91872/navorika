@@ -47,6 +47,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/disclaimer',
     '/methodology',
     '/hubs/finance',
+    '/paper-sizes',
+    '/paper-size-converter',
+    '/paper-sizes/a4',
+    '/paper-sizes/a3',
+    '/paper-sizes/us-letter-vs-a4',
   ];
   const staticPages = staticPaths.map((path) => ({ url: `${baseUrl}${path}` }));
   const toolPages = tools
