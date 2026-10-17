@@ -40,9 +40,10 @@ def main():
     tetra = [(0,0,0),(10,0,0),(0,10,0),(0,0,10)]
     for indices in ((0,1,2),(0,1,3),(0,2,3),(1,2,3)):
         msp.add_3dface([tetra[i] for i in indices])
-    stream = BytesIO()
+    from io import StringIO
+    stream = StringIO()
     doc.write(stream)
-    status, pdf, hdr = upload("sample-3d.dxf", stream.getvalue())
+    status, pdf, hdr = upload("sample-3d.dxf", stream.getvalue().encode("utf-8"))
     assert status == 200, (status, pdf[:1000].decode(errors="replace"))
     assert pdf.startswith(b"%PDF"), "Expected PDF document"
     assert hdr.get("Content-Type", "").startswith("application/pdf"), hdr
