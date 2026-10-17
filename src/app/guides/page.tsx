@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import Link from 'next/link';
 import { guidesMetadata } from '@/lib/guidesMetadata';
 import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
 
@@ -37,6 +38,7 @@ export default function GuidesPage() {
           </div>
         </section>
 
+        <section className="mb-10 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"><h2 className="text-2xl font-bold">Paper size and printing guides</h2><p className="mt-2">Quick explanations of A4, A3 and US Letter sizes, with charts, pixels and useful print comparisons.</p><div className="mt-4 flex flex-wrap gap-4"><Link href="/paper-sizes/a4" className="text-blue-600 underline">A4 dimensions</Link><Link href="/paper-sizes/a3" className="text-blue-600 underline">A3 dimensions</Link><Link href="/paper-sizes/us-letter-vs-a4" className="text-blue-600 underline">US Letter vs A4</Link></div></section>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {guidesMetadata.map((guide) => (
             <Link
