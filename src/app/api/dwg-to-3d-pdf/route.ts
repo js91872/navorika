@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { mkdtemp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { access, mkdtemp, mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
@@ -11,11 +11,16 @@ export const runtime = 'nodejs';
 export const maxDuration = 120;
 const run = promisify(execFile);
 const LIMIT = 20 * 1024 * 1024;
+const importer = () => process.env.ODA_FILE_CONVERTER_PATH || process.env.LIBREDWG_READ_PATH || null;
+async function isExecutable(path: string | null): Promise<boolean> {
+  if (!path || !path.startsWith('/')) return false;
+  return access(path).then(() => true).catch(() => false);
+}
 
 export async function GET() {
   return NextResponse.json({
     available: Boolean(await getAsymptoteBinaryPath()),
-    dwgAvailable: Boolean(process.env.ODA_FILE_CONVERTER_PATH && await getAsymptoteBinaryPath()),
+    dwgAvailable: Boolean(await isExecutable(importer()) && await getAsymptoteBinaryPath()),
     formats: ['DWG', 'DXF'],
     maxBytes: LIMIT,
     note: 'Supports true 3D mesh entities (3DFACE, MESH and polyface). Native ACIS solids are not supported.',
@@ -33,7 +38,7 @@ export async function POST(request: NextRequest) {
     if (!/^[a-zA-Z0-9 _().-]{1,160}$/.test(file.name)) return NextResponse.json({ error: 'Use a simple filename without special characters.' }, { status: 400 });
     const asy = await getAsymptoteBinaryPath();
     if (!asy) return NextResponse.json({ error: '3D PDF compiler is unavailable on this server.' }, { status: 503 });
-    if (ext === 'dwg' && !process.env.ODA_FILE_CONVERTER_PATH) return NextResponse.json({ error: 'DWG importer is not configured. The server administrator must install and configure ODA File Converter.' }, { status: 503 });
+    if (ext === 'dwg' && !await isExecutable(importer())) return NextResponse.json({ error: 'DWG importer is not configured. The administrator must configure an authorized DWG importer.', }, { status: 503 });
     dir = await mkdtemp(join(tmpdir(), 'navorika-dwg-'));
     const input = join(dir, 'source');
     const output = join(dir, 'converted');
@@ -43,12 +48,18 @@ export async function POST(request: NextRequest) {
     await writeFile(inputFile, Buffer.from(await file.arrayBuffer()));
     let dxf = inputFile;
     if (ext === 'dwg') {
-      const oda = process.env.ODA_FILE_CONVERTER_PATH!;
-      await run(oda, [input, output, 'ACAD2018', 'DXF', '0', '1', '*.dwg'], { timeout: 60000, maxBuffer: 1024 * 1024 });
-      const results = await readdir(output);
-      const name = results.find((n) => n.toLowerCase().endsWith('.dxf'));
-      if (!name) throw new Error('DWG importer did not produce a DXF model.');
-      dxf = join(output, name);
+      if (process.env.ODA_FILE_CONVERTER_PATH) {
+        await run(process.env.ODA_FILE_CONVERTER_PATH, [input, output, 'ACAD2018', 'DXF', '0', '1', '*.dwg'], { timeout: 60000, maxBuffer: 1024 * 1024 });
+        const results = await readdir(output);
+        const name = results.find((n) => n.toLowerCase().endsWith('.dxf'));
+        if (!name) throw new Error('DWG importer did not produce a DXF model.');
+        dxf = join(output, name);
+      } else if (process.env.LIBREDWG_READ_PATH) {
+        // External LibreDWG converter; operators must review redistribution and service licensing.
+        dxf = join(output, 'model.dxf');
+        await run(process.env.LIBREDWG_READ_PATH, ['-O', 'DXF', '-o', dxf, inputFile], { timeout: 60000, maxBuffer: 1024 * 1024 });
+      }
+      if (!(await stat(dxf).catch(() => null))?.size) throw new Error('DWG conversion produced an empty DXF file.');
     }
     const script = join(process.cwd(), 'src/lib/converters/dwg-3dpdf/dxf-to-obj.py');
     const { stdout: meshOutput } = await run(process.env.DWG_PYTHON_PATH ?? 'python3', [script, dxf, join(dir, 'model.obj')], { timeout: 45000, maxBuffer: 1024 * 1024 });
