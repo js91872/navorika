@@ -65,7 +65,9 @@ currentprojection=perspective(camera=({x+1.25*d},{y+1.25*d},{z+0.95*d}),up=Z,tar
 obj model=obj("{obj_file.name}",true,lightgray);
 draw(model);
 ''')
-    completed = subprocess.run(["asy", "-f", "pdf", "-render=0", scene.name], cwd=directory, capture_output=True, text=True, check=True)
+    completed = subprocess.run(["asy", "-f", "pdf", "-render=0", scene.name], cwd=directory, capture_output=True, text=True)
+    if completed.returncode:
+        raise RuntimeError(f"Asymptote failed ({completed.returncode}):\\nSTDOUT:\\n{completed.stdout}\\nSTDERR:\\n{completed.stderr}")
     assert "Number of groups: 1" in (completed.stdout + completed.stderr), completed.stdout + completed.stderr
     return directory / (basename + ".pdf")
 
