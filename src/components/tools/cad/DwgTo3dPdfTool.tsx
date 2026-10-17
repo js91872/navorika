@@ -6,9 +6,10 @@ export default function DwgTo3dPdfTool() {
   const [busy,setBusy] = useState(false);
   const [error,setError] = useState('');
   const [available,setAvailable] = useState<boolean|null>(null);
-  useEffect(() => { fetch('/api/dwg-to-3d-pdf', {cache:'no-store'}).then(r=>r.json()).then(d=>setAvailable(Boolean(d.available))).catch(()=>setAvailable(false)); }, []);
+  const [dwgAvailable,setDwgAvailable] = useState(false);
+  useEffect(() => { fetch('/api/dwg-to-3d-pdf', {cache:'no-store'}).then(r=>r.json()).then(d=>{setAvailable(Boolean(d.available));setDwgAvailable(Boolean(d.dwgAvailable));}).catch(()=>setAvailable(false)); }, []);
   async function convert() {
-    if (!file || busy) return;
+    if (!file || busy || (file.name.toLowerCase().endsWith('.dwg') && !dwgAvailable)) return;
     setBusy(true);setError('');
     try {
       const body=new FormData();body.set('file',file);
@@ -24,7 +25,8 @@ export default function DwgTo3dPdfTool() {
     <p className="my-3 text-sm text-slate-600 dark:text-slate-300">Choose a file up to 20 MB. Works with triangulated 3D faces and mesh geometry. Does not convert a 2D plan into a 3D model or support native ACIS solids.</p>
     <input id="dwg-file" type="file" accept=".dwg,.dxf" className="block w-full rounded-lg border p-3" onChange={e=>{setError('');setFile(e.target.files?.[0]??null);}} />
     {available===false && <p role="status" className="mt-3 text-amber-700">Server conversion components are not fully configured yet. Conversions may be unavailable.</p>}
-    <button type="button" onClick={convert} disabled={!file||busy||available===false} className="mt-4 rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">{busy?'Converting 3D model…':'Convert to 3D PDF'}</button>
+    {file?.name.toLowerCase().endsWith('.dwg') && !dwgAvailable && <p role="status" className="mt-3 text-amber-700">Direct DWG conversion is unavailable on this server. Export the drawing to DXF mesh format and upload that instead.</p>}
+    <button type="button" onClick={convert} disabled={!file||busy||available===false||(file.name.toLowerCase().endsWith('.dwg')&&!dwgAvailable)} className="mt-4 rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">{busy?'Converting 3D model…':'Convert to 3D PDF'}</button>
     {error && <p role="alert" className="mt-3 text-red-600">{error}</p>}
     <p className="mt-4 text-xs text-slate-500">Uploaded files are processed in temporary server storage and removed after conversion. For interactive 3D viewing, use a PDF reader with PRC/U3D support; browser PDF previews may not display 3D content.</p>
   </section>;
