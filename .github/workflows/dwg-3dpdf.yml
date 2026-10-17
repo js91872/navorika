@@ -32,4 +32,12 @@ jobs:
           npm run validate:architecture
       - name: PDF geometry acceptance
         run: |
-          PATH="/tmp/navorika-cad-test-venv/bin:$PATH" python3 scripts/test-dwg-3dpdf.py
+          CAD_PDF_ARTIFACT_DIR="$RUNNER_TEMP/cad-pdf-examples" PATH="/tmp/navorika-cad-test-venv/bin:$PATH" python3 scripts/test-dwg-3dpdf.py
+      - name: Upload CAD PDF samples for interactive viewer review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dwg-3dpdf-sample-pdfs
+          path: ${{ runner.temp }}/cad-pdf-examples/*.pdf
+          if-no-files-found: warn
+          retention-days: 14
