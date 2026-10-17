@@ -7,6 +7,7 @@ on:
       - 'src/app/tools/dwg-to-3d-pdf-converter/**'
       - 'src/components/tools/cad/DwgTo3dPdfTool.tsx'
       - 'scripts/test-dwg-3dpdf.py'
+      - 'scripts/test-dwg-3dpdf-http.py'
       - '.github/workflows/dwg-3dpdf.yml'
   workflow_dispatch:
 jobs:
@@ -33,6 +34,24 @@ jobs:
       - name: PDF geometry acceptance
         run: |
           CAD_PDF_ARTIFACT_DIR="$RUNNER_TEMP/cad-pdf-examples" PATH="/tmp/navorika-cad-test-venv/bin:$PATH" python3 scripts/test-dwg-3dpdf.py
+      - name: End-to-end HTTP DXF conversion acceptance
+        env:
+          DWG_PYTHON_PATH: /tmp/navorika-cad-test-venv/bin/python
+          ASY_PATH: /usr/bin/asy
+          PORT: '3117'
+        run: |
+          npm run build
+          npm run start -- -p 3117 > /tmp/navorika-dwg-next.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 60); do
+            if curl --max-time 2 -sf http://127.0.0.1:3117/api/dwg-to-3d-pdf > /dev/null; then break; fi
+            sleep 2
+          done
+          PATH="/tmp/navorika-cad-test-venv/bin:$PATH" python3 scripts/test-dwg-3dpdf-http.py || {
+            cat /tmp/navorika-dwg-next.log
+            exit 1
+          }
       - name: Upload CAD PDF samples for interactive viewer review
         if: always()
         uses: actions/upload-artifact@v4
