@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import Link from 'next/link';
 import { guidesMetadata } from '@/lib/guidesMetadata';
 import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
 
