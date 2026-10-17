@@ -46,7 +46,7 @@ def main():
     status, pdf, hdr = upload("sample-3d.dxf", stream.getvalue().encode("utf-8"))
     assert status == 200, (status, pdf[:1000].decode(errors="replace"))
     assert pdf.startswith(b"%PDF"), "Expected PDF document"
-    assert hdr.get("Content-Type", "").startswith("application/pdf"), hdr
+    assert hdr.get("Content-Type", hdr.get("content-type", "")).startswith("application/pdf"), hdr
     reader = PdfReader(BytesIO(pdf))
     found = []
     for page in reader.pages:
