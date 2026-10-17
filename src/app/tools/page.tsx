@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ToolDirectory, { type ToolDirectoryItem } from '@/components/tools/ToolDirectory';
 import { categories, tools } from '@/data/registry';
 import { toolSearchIndex } from '@/data/toolSearchIndex';
@@ -22,6 +23,7 @@ export default function AllToolsPage() {
   return (
     <>
       <ToolDirectory tools={directoryTools} categories={categories.map(({ slug, name }) => ({ slug, name }))} />
+      <section className="mx-auto max-w-6xl px-4 pb-8 sm:px-6 lg:px-8"><div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"><h2 className="text-2xl font-bold">Paper sizes and printing</h2><p className="mt-2 leading-7">Find A4, A3, A5, US Letter, Legal and Tabloid dimensions, or convert paper sizes into inches, centimetres and pixels.</p><div className="mt-4 flex flex-wrap gap-4"><Link className="font-semibold text-blue-600 underline" href="/paper-sizes">Paper size chart</Link><Link className="font-semibold text-blue-600 underline" href="/paper-size-converter">Paper size converter</Link></div></div></section>
       <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8" aria-labelledby="tools-help">
         <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 sm:p-8">
           <h2 id="tools-help" className="text-2xl font-black">How to choose the right Navorika tool</h2>
