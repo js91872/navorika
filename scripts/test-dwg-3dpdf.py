@@ -3,6 +3,7 @@
 import hashlib
 import json
 import os
+import shutil
 from pathlib import Path
 import subprocess
 import tempfile
@@ -79,6 +80,10 @@ def main():
             name = f"tetra-{scale}"
             obj_file, metadata = build_obj(directory, scale, name)
             pdf = render(directory, obj_file, name, metadata)
+            if os.environ.get("CAD_PDF_ARTIFACT_DIR"):
+                target = Path(os.environ["CAD_PDF_ARTIFACT_DIR"])
+                target.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(pdf, target / pdf.name)
             assets = embedded_prc(pdf)
             assert assets, f"No PRC attachment in {pdf}"
             assert all(a["signature"] == b"PRC" for a in assets), "Invalid PRC signature"
