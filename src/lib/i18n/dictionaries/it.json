@@ -1,15 +1,15 @@
 {
   "ui": {
-    "home": "Home",
+    "home": "Pagina iniziale",
     "tools": "Strumenti",
     "language": "Lingua",
     "title": "Strumenti gratuiti per le attività quotidiane",
-    "intro": "Calcola le dimensioni delle immagini, crea layout CSS e verifica il metodo colore delle immagini. Scegli uno strumento qui sotto.",
+    "intro": "Calcola le dimensioni delle immagini, crea disposizioni CSS e verifica il metodo colore delle immagini. Scegli uno strumento qui sotto.",
     "local": "Funziona nel browser. File e dati inseriti non vengono caricati su un server.",
     "search": "Cerca uno strumento",
     "noResults": "Nessuno strumento trovato.",
     "allEnglish": "Tutti gli strumenti in inglese",
-    "englishNotice": "Questa pagina è disponibile in inglese.",
+    "englishNotice": "I seguenti collegamenti aprono pagine in inglese.",
     "privacy": "Informativa sulla privacy",
     "terms": "Condizioni d’uso",
     "contact": "Contatti",
@@ -47,7 +47,7 @@
     "unknown": "Sconosciuto",
     "colorNote": "L’analisi delle intestazioni non certifica l’idoneità alla stampa, la fedeltà dei colori o la validità di ogni profilo ICC incorporato. RGB è comune per gli schermi; chiedi alla tipografia quale profilo usare per la stampa.",
     "ratio": "Rapporto d’aspetto",
-    "padding": "Percentuale di padding",
+    "padding": "Spaziatura interna in percentuale",
     "pixels": "Pixel",
     "megapixels": "Megapixel",
     "documentSize": "Dimensioni del documento con abbondanza",
@@ -55,30 +55,34 @@
     "mm": "Millimetri",
     "inch": "Pollici",
     "css": "CSS generato",
-    "aspectTitle": "Calcolatore di padding dal rapporto d’aspetto",
+    "aspectTitle": "Calcolatore di spaziatura CSS e proporzioni",
     "flexTitle": "Generatore CSS Flexbox",
     "rgbTitle": "Verifica immagini RGB o CMYK",
     "megaTitle": "Calcolatore di megapixel",
     "bleedTitle": "Calcolatore di abbondanza per la stampa",
     "grayscale": "Scala di grigi",
-    "palette": "Tavolozza indicizzata"
+    "palette": "Tavolozza indicizzata",
+    "englishName": "inglese",
+    "mpUnit": "MP",
+    "rgbLabel": "RGB",
+    "cmykLabel": "CMYK"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
-      "title": "Calcolatore di padding dal rapporto d’aspetto",
-      "description": "Calcola la percentuale di padding CSS per un’immagine, un video o un contenitore responsive a partire da larghezza e altezza. Copia la proprietà aspect-ratio o la soluzione con padding.",
+      "title": "Calcolatore di spaziatura CSS e proporzioni",
+      "description": "Calcola la percentuale di spaziatura interna CSS per un’immagine, un video o un contenitore adattabile a partire da larghezza e altezza. Copia il codice moderno o la soluzione alternativa.",
       "how": "Inserisci larghezza e altezza originali nella stessa unità. Per 1920 × 1080, altezza divisa per larghezza e moltiplicata per 100 dà 56,25%. Lo stesso rapporto vale per 16 × 9.",
-      "limits": "Il padding percentuale dipende dalla larghezza del blocco contenitore. La proprietà aspect-ratio è in genere più semplice. Questo strumento non ridimensiona immagini e non aggiunge pixel.",
+      "limits": "La spaziatura interna percentuale dipende dalla larghezza del blocco contenitore. La proprietà CSS moderna dedicata alle proporzioni è in genere più semplice. Questo strumento non ridimensiona immagini e non aggiunge pixel.",
       "question": "Questo strumento modifica le dimensioni dell’immagine?",
       "answer": "No. Calcola solo valori CSS; l’immagine originale rimane invariata."
     },
     "css-flexbox-generator": {
       "title": "Generatore CSS Flexbox",
-      "description": "Crea un layout CSS Flexbox con anteprima in tempo reale. Modifica direzione, allineamento, ritorno a capo e spaziatura, poi copia il CSS del contenitore.",
-      "how": "Scegli la direzione dell’asse principale, imposta justify-content e align-items e regola la spaziatura. Aumenta il numero di elementi per osservare il ritorno a capo. Applica la classe container nella pagina.",
-      "limits": "L’anteprima usa coordinate CSS da sinistra a destra, anche nell’interfaccia araba. Contenuti reali, larghezza degli elementi e stili del genitore influiscono sul risultato. Lo strumento genera solo le regole del contenitore.",
-      "question": "Perché i valori delle opzioni restano in inglese?",
-      "answer": "Valori come row e space-between sono parole chiave CSS. Mantienili invariati quando incolli il foglio di stile generato."
+      "description": "Crea una disposizione CSS Flexbox con anteprima in tempo reale. Modifica direzione, allineamento, ritorno a capo e spaziatura, poi copia il CSS del contenitore.",
+      "how": "Scegli la direzione principale, regola l’allineamento sui due assi e imposta la spaziatura. Aumenta il numero di elementi per osservare il ritorno a capo. Copia il codice nel foglio di stile e applicalo al contenitore.",
+      "limits": "L’anteprima usa coordinate da sinistra a destra. Contenuti, larghezza degli elementi e stili del genitore influiscono sul risultato. Si generano solo le regole del contenitore. Verifica il risultato nella tua pagina.",
+      "question": "Che cosa cambia l’allineamento sull’asse principale?",
+      "answer": "Determina la distribuzione degli elementi lungo la direzione scelta. In una riga agisce orizzontalmente; in una colonna agisce verticalmente."
     },
     "rgb-cmyk-image-checker": {
       "title": "Verifica immagini RGB o CMYK",
@@ -104,5 +108,22 @@
       "question": "L’abbondanza coincide con l’area di sicurezza?",
       "answer": "No. L’abbondanza si estende oltre il bordo di taglio. L’area di sicurezza mantiene testo e grafica importante all’interno del bordo."
     }
+  },
+  "flexOptions": {
+    "row": "Riga",
+    "column": "Colonna",
+    "row-reverse": "Riga invertita",
+    "column-reverse": "Colonna invertita",
+    "flex-start": "All’inizio",
+    "center": "Al centro",
+    "flex-end": "Alla fine",
+    "space-between": "Spazio tra gli elementi",
+    "space-around": "Spazio attorno agli elementi",
+    "space-evenly": "Spaziatura uniforme",
+    "stretch": "Estendi",
+    "baseline": "Linea di base del testo",
+    "nowrap": "Senza ritorno a capo",
+    "wrap": "Ritorno a capo",
+    "wrap-reverse": "Ritorno a capo invertito"
   }
 }

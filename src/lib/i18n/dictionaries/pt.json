@@ -4,12 +4,12 @@
     "tools": "Ferramentas",
     "language": "Idioma",
     "title": "Ferramentas gratuitas para tarefas do dia a dia",
-    "intro": "Calcule dimensões de imagens, crie layouts CSS e verifique o modo de cor das imagens. Escolha uma ferramenta abaixo.",
+    "intro": "Calcule dimensões de imagens, crie disposições CSS e verifique o modo de cor das imagens. Escolha uma ferramenta abaixo.",
     "local": "Funciona no navegador. Os arquivos e os dados inseridos não são enviados.",
     "search": "Buscar ferramenta",
     "noResults": "Nenhuma ferramenta encontrada.",
     "allEnglish": "Todas as ferramentas em inglês",
-    "englishNotice": "Esta página está disponível em inglês.",
+    "englishNotice": "Os links a seguir abrem páginas em inglês.",
     "privacy": "Política de privacidade",
     "terms": "Termos de uso",
     "contact": "Contato",
@@ -47,7 +47,7 @@
     "unknown": "Desconhecido",
     "colorNote": "A análise dos cabeçalhos não valida a qualidade de impressão, a precisão das cores nem todos os perfis ICC incorporados. RGB é comum para telas; consulte a gráfica sobre o perfil adequado para impressão.",
     "ratio": "Proporção",
-    "padding": "Porcentagem de padding",
+    "padding": "Espaçamento interno em porcentagem",
     "pixels": "Pixels",
     "megapixels": "Megapixels",
     "documentSize": "Tamanho do documento com sangria",
@@ -55,30 +55,34 @@
     "mm": "Milímetros",
     "inch": "Polegadas",
     "css": "CSS gerado",
-    "aspectTitle": "Calculadora de padding pela proporção da imagem",
+    "aspectTitle": "Calculadora de espaçamento CSS e proporções",
     "flexTitle": "Gerador CSS Flexbox",
     "rgbTitle": "Verificador de imagens RGB ou CMYK",
     "megaTitle": "Calculadora de megapixels",
     "bleedTitle": "Calculadora de sangria para impressão",
     "grayscale": "Escala de cinza",
-    "palette": "Paleta indexada"
+    "palette": "Paleta indexada",
+    "englishName": "inglês",
+    "mpUnit": "MP",
+    "rgbLabel": "RGB",
+    "cmykLabel": "CMYK"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
-      "title": "Calculadora de padding pela proporção da imagem",
-      "description": "Calcule a porcentagem de padding CSS de uma imagem, vídeo ou contêiner responsivo a partir da largura e da altura. Copie a propriedade aspect-ratio ou a alternativa com padding.",
+      "title": "Calculadora de espaçamento CSS e proporções",
+      "description": "Calcule a porcentagem de espaçamento interno CSS de uma imagem, vídeo ou contêiner adaptável a partir da largura e da altura. Copie o código moderno ou a solução alternativa.",
       "how": "Insira a largura e a altura originais na mesma unidade. Para 1920 × 1080, altura dividida pela largura e multiplicada por 100 resulta em 56,25%. A mesma proporção vale para 16 × 9.",
-      "limits": "O padding percentual depende da largura do bloco que contém o elemento. A propriedade aspect-ratio costuma ser mais simples. Esta ferramenta não redimensiona imagens nem adiciona pixels.",
+      "limits": "O espaçamento interno percentual depende da largura do bloco que contém o elemento. A propriedade CSS moderna dedicada às proporções costuma ser mais simples. Esta ferramenta não redimensiona imagens nem adiciona pixels.",
       "question": "Esta ferramenta altera as dimensões da imagem?",
       "answer": "Não. Ela calcula apenas valores CSS; a imagem original permanece inalterada."
     },
     "css-flexbox-generator": {
       "title": "Gerador CSS Flexbox",
-      "description": "Crie um layout CSS Flexbox com prévia em tempo real. Altere direção, alinhamento, quebra de linha e espaçamento e copie o CSS do contêiner.",
-      "how": "Escolha a direção do eixo principal, ajuste justify-content e align-items e defina o espaçamento. Aumente a quantidade de elementos para ver a quebra de linha. Aplique a classe container na página.",
-      "limits": "A prévia usa coordenadas CSS da esquerda para a direita, mesmo na interface árabe. O conteúdo, a largura dos elementos e os estilos do elemento pai afetam o resultado. A ferramenta gera apenas as regras do contêiner.",
-      "question": "Por que os valores das opções continuam em inglês?",
-      "answer": "Valores como row e space-between são palavras-chave CSS. Não os traduza ao colar a folha de estilos gerada."
+      "description": "Crie uma disposição CSS Flexbox com prévia em tempo real. Altere direção, alinhamento, quebra de linha e espaçamento e copie o CSS do contêiner.",
+      "how": "Escolha a direção principal, ajuste o alinhamento nos dois eixos e defina o espaçamento. Aumente a quantidade de elementos para ver a quebra de linha. Copie o código para a folha de estilos e aplique-o ao contêiner.",
+      "limits": "A prévia usa coordenadas da esquerda para a direita. O conteúdo, a largura dos elementos e os estilos do elemento pai afetam o resultado. A ferramenta gera apenas as regras do contêiner. Confira o resultado na sua página.",
+      "question": "O que muda com o alinhamento no eixo principal?",
+      "answer": "Ele define como os elementos se distribuem na direção escolhida. Em uma linha, atua horizontalmente; em uma coluna, atua verticalmente."
     },
     "rgb-cmyk-image-checker": {
       "title": "Verificador de imagens RGB ou CMYK",
@@ -104,5 +108,22 @@
       "question": "Sangria é o mesmo que área de segurança?",
       "answer": "Não. A sangria se estende além da borda de corte. A área de segurança mantém textos e elementos importantes dentro dessa borda."
     }
+  },
+  "flexOptions": {
+    "row": "Linha",
+    "column": "Coluna",
+    "row-reverse": "Linha invertida",
+    "column-reverse": "Coluna invertida",
+    "flex-start": "No início",
+    "center": "No centro",
+    "flex-end": "No fim",
+    "space-between": "Espaço entre os elementos",
+    "space-around": "Espaço ao redor dos elementos",
+    "space-evenly": "Espaçamento uniforme",
+    "stretch": "Esticar",
+    "baseline": "Linha de base do texto",
+    "nowrap": "Sem quebra de linha",
+    "wrap": "Quebrar linha",
+    "wrap-reverse": "Quebrar linha na ordem inversa"
   }
 }

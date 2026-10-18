@@ -59,6 +59,14 @@ try {
         assert.equal(await page.locator(`link[hreflang="${alternate}"]`).getAttribute('href'), `https://navorika.com/${alternate}${slug ? `/tools/${slug}` : ''}`);
       }
       assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'), 'index, follow');
+      const pageCopy = await page.locator('body').evaluate((body) => {
+        const copy = body.cloneNode(true);
+        // Generated code and the multilingual language picker intentionally contain other languages.
+        copy.querySelectorAll('pre, code, script, style, details').forEach((element) => element.remove());
+        return copy.textContent;
+      });
+      assert.doesNotMatch(pageCopy, /\b(?:row-reverse|column-reverse|flex-start|flex-end|space-between|space-around|space-evenly|nowrap|wrap-reverse|English|inch|padding|layout|justify-content|align-items)\b/i, `Untranslated interface text: ${path}`);
+      assert.ok((await page.locator('footer a[href="/privacy"]').textContent()).includes(d.ui.englishName));
       if (slug) {
         const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
         assert.equal(schema.inLanguage, locale);
@@ -100,7 +108,7 @@ try {
     workflowsChecked++;
 
     await visit(`/${locale}/tools/image-megapixel-calculator`);
-    assert.ok((await page.locator('[aria-live="polite"]').textContent()).includes('24 MP'));
+    assert.ok((await page.locator('[aria-live="polite"]').textContent()).includes(`24 ${d.ui.mpUnit}`));
     await page.locator('input[type="number"]').nth(0).fill('1.5');
     assert.equal(await page.locator('main').getByRole('alert').textContent(), d.ui.invalid);
     workflowsChecked++;
@@ -110,6 +118,7 @@ try {
     assert.ok((await page.locator('[aria-live="polite"]').textContent()).includes(new Intl.NumberFormat(locale).format(216)));
     await page.locator('select').selectOption('inch');
     assert.ok(Math.abs(Number(await numbers.nth(0).inputValue()) - 210 / 25.4) < 1e-7);
+    assert.ok((await page.locator('[aria-live="polite"]').textContent()).includes(d.ui.inch));
     await page.locator('select').selectOption('mm');
     assert.ok(Math.abs(Number(await numbers.nth(0).inputValue()) - 210) < 1e-6);
     await numbers.nth(2).fill('-1');
@@ -119,15 +128,19 @@ try {
     await visit(`/${locale}/tools/css-flexbox-generator`);
     await page.locator('select').nth(0).selectOption('column-reverse');
     await page.locator('select').nth(1).selectOption('space-between');
+    assert.equal(await page.locator('select').nth(0).locator('option:checked').textContent(), d.flexOptions['column-reverse']);
+    assert.equal(await page.locator('select').nth(1).locator('option:checked').textContent(), d.flexOptions['space-between']);
     assert.match(await page.locator('pre').textContent(), /flex-direction: column-reverse/);
     assert.match(await page.locator('pre').textContent(), /justify-content: space-between/);
     workflowsChecked++;
 
     await visit(`/${locale}/tools/rgb-cmyk-image-checker`);
+    assert.match(await page.locator('input[type="file"]').getAttribute('class'), /sr-only/);
     const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLbtAAAAABJRU5ErkJggg==', 'base64');
     await page.locator('input[type="file"]').setInputFiles({ name: 'test.png', mimeType: 'image/png', buffer: png });
     await page.locator('dl').waitFor();
-    assert.match(await page.locator('dl').textContent(), /RGB/);
+    assert.ok((await page.locator('dl').textContent()).includes(d.ui.rgbLabel));
+    await page.getByText('test.png', { exact: true }).waitFor();
     const gif = Buffer.from('R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==', 'base64');
     await page.locator('input[type="file"]').setInputFiles({ name: 'test.gif', mimeType: 'image/gif', buffer: gif });
     await page.getByText(d.ui.palette, { exact: true }).waitFor();

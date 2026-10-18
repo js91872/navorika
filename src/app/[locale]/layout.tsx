@@ -43,9 +43,9 @@ export default async function LocalizedLayout({ children, params }: {
             <p className="mt-4">{d.ui.englishNotice}</p>
             <nav className="mt-3 flex flex-wrap gap-5" aria-label={d.ui.englishNotice}>
               <Link href="/tools" hrefLang="en">{d.ui.allEnglish}</Link>
-              <Link href="/privacy" hrefLang="en">{d.ui.privacy} (English)</Link>
-              <Link href="/terms" hrefLang="en">{d.ui.terms} (English)</Link>
-              <Link href="/contact" hrefLang="en">{d.ui.contact} (English)</Link>
+              <Link href="/privacy" hrefLang="en">{d.ui.privacy} ({d.ui.englishName})</Link>
+              <Link href="/terms" hrefLang="en">{d.ui.terms} ({d.ui.englishName})</Link>
+              <Link href="/contact" hrefLang="en">{d.ui.contact} ({d.ui.englishName})</Link>
             </nav>
           </div>
         </footer>

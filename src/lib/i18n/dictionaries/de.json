@@ -4,12 +4,12 @@
     "tools": "Werkzeuge",
     "language": "Sprache",
     "title": "Kostenlose Werkzeuge für alltägliche Aufgaben",
-    "intro": "Berechnen Sie Bildabmessungen, erstellen Sie CSS-Layouts und prüfen Sie den Farbmodus von Bildern. Wählen Sie unten ein Werkzeug.",
+    "intro": "Berechnen Sie Bildabmessungen, erstellen Sie CSS-Anordnungen und prüfen Sie den Farbmodus von Bildern. Wählen Sie unten ein Werkzeug.",
     "local": "Läuft im Browser. Dateien und Eingaben werden nicht hochgeladen.",
     "search": "Werkzeug suchen",
     "noResults": "Keine passenden Werkzeuge gefunden.",
     "allEnglish": "Alle Werkzeuge auf Englisch",
-    "englishNotice": "Diese Seite ist auf Englisch verfügbar.",
+    "englishNotice": "Die folgenden Links öffnen Seiten auf Englisch.",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
     "contact": "Kontakt",
@@ -27,7 +27,7 @@
     "copy": "Ergebnis kopieren",
     "copied": "Kopiert",
     "copyError": "Kopieren fehlgeschlagen. Markieren und kopieren Sie das Ergebnis manuell.",
-    "preview": "Live-Vorschau",
+    "preview": "Echtzeitvorschau",
     "direction": "Richtung",
     "justify": "Ausrichtung auf der Hauptachse",
     "align": "Ausrichtung auf der Querachse",
@@ -47,7 +47,7 @@
     "unknown": "Unbekannt",
     "colorNote": "Die Prüfung des Dateikopfs bestätigt weder Druckfertigkeit noch Farbtreue oder die Gültigkeit jedes eingebetteten ICC-Profils. RGB ist für Bildschirme üblich; fragen Sie Ihre Druckerei nach dem passenden Druckprofil.",
     "ratio": "Seitenverhältnis",
-    "padding": "Padding in Prozent",
+    "padding": "Innenabstand in Prozent",
     "pixels": "Pixel",
     "megapixels": "Megapixel",
     "documentSize": "Dokumentgröße einschließlich Beschnitt",
@@ -55,30 +55,34 @@
     "mm": "Millimeter",
     "inch": "Zoll",
     "css": "Erzeugtes CSS",
-    "aspectTitle": "Padding-Rechner für Seitenverhältnisse",
+    "aspectTitle": "CSS-Rechner für Innenabstände und Seitenverhältnisse",
     "flexTitle": "CSS-Flexbox-Generator",
     "rgbTitle": "RGB- oder CMYK-Bild prüfen",
     "megaTitle": "Megapixel-Rechner",
     "bleedTitle": "Beschnitt-Rechner für den Druck",
     "grayscale": "Graustufen",
-    "palette": "Indizierte Palette"
+    "palette": "Indizierte Palette",
+    "englishName": "Englisch",
+    "mpUnit": "MP",
+    "rgbLabel": "RGB",
+    "cmykLabel": "CMYK"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
-      "title": "Padding-Rechner für Seitenverhältnisse",
-      "description": "Berechnen Sie das CSS-Padding in Prozent für ein responsives Bild, Video oder einen Container aus Breite und Höhe. Kopieren Sie die Eigenschaft aspect-ratio oder die Padding-Alternative.",
+      "title": "CSS-Rechner für Innenabstände und Seitenverhältnisse",
+      "description": "Berechnen Sie den inneren CSS-Abstand in Prozent für ein anpassbares Bild, Video oder einen Container aus Breite und Höhe. Kopieren Sie den modernen Code oder die Ausweichlösung.",
       "how": "Geben Sie die ursprüngliche Breite und Höhe in derselben Einheit ein. Bei 1920 × 1080 ergibt Höhe geteilt durch Breite mal 100 den Wert 56,25 %. Dasselbe Verhältnis gilt für 16 × 9.",
-      "limits": "Prozentuales Padding bezieht sich auf die Breite des umschließenden Blocks. Die Eigenschaft aspect-ratio ist meist einfacher. Dieser Rechner ändert keine Bildgrößen und fügt keine Pixel hinzu.",
+      "limits": "Prozentuale Innenabstände beziehen sich auf die Breite des umschließenden Blocks. Die moderne CSS-Eigenschaft für Seitenverhältnisse ist meist einfacher. Dieser Rechner ändert keine Bildgrößen und fügt keine Pixel hinzu.",
       "question": "Ändert dieses Werkzeug die Bildabmessungen?",
       "answer": "Nein. Es berechnet nur CSS-Werte; das Originalbild bleibt unverändert."
     },
     "css-flexbox-generator": {
       "title": "CSS-Flexbox-Generator",
-      "description": "Erstellen Sie ein CSS-Flexbox-Layout mit Live-Vorschau. Ändern Sie Richtung, Ausrichtung, Zeilenumbruch und Abstand und kopieren Sie anschließend das CSS des Containers.",
-      "how": "Wählen Sie die Richtung der Hauptachse, stellen Sie justify-content und align-items ein und passen Sie den Abstand an. Erhöhen Sie die Zahl der Elemente, um den Umbruch zu prüfen. Verwenden Sie die Klasse container auf Ihrer Seite.",
-      "limits": "Die Vorschau nutzt CSS-Koordinaten von links nach rechts, auch in der arabischen Oberfläche. Inhalt, Elementbreite und übergeordnete Stile beeinflussen den Umbruch. Das Werkzeug erzeugt nur Container-Regeln, keine vollständige Website.",
-      "question": "Warum bleiben die Optionswerte auf Englisch?",
-      "answer": "Werte wie row und space-between sind CSS-Schlüsselwörter. Lassen Sie diese beim Einfügen des erzeugten Stylesheets unverändert."
+      "description": "Erstellen Sie eine CSS-Flexbox-Anordnung mit Echtzeitvorschau. Ändern Sie Richtung, Ausrichtung, Zeilenumbruch und Abstand und kopieren Sie anschließend das CSS des Containers.",
+      "how": "Wählen Sie die Hauptrichtung, stellen Sie die Ausrichtung auf beiden Achsen ein und passen Sie den Abstand an. Erhöhen Sie die Zahl der Elemente, um den Umbruch zu prüfen. Kopieren Sie den Code in Ihre Formatvorlage und wenden Sie ihn auf den Container an.",
+      "limits": "Die Vorschau nutzt Koordinaten von links nach rechts. Inhalt, Elementbreite und übergeordnete Stile beeinflussen den Umbruch. Das Werkzeug erzeugt nur Container-Regeln. Prüfen Sie das Ergebnis auf Ihrer eigenen Seite.",
+      "question": "Was verändert die Ausrichtung auf der Hauptachse?",
+      "answer": "Sie bestimmt die Verteilung der Elemente entlang der gewählten Richtung. In einer Zeile wirkt sie waagerecht, in einer Spalte senkrecht."
     },
     "rgb-cmyk-image-checker": {
       "title": "RGB- oder CMYK-Bild prüfen",
@@ -104,5 +108,22 @@
       "question": "Ist Beschnitt dasselbe wie ein Sicherheitsabstand?",
       "answer": "Nein. Beschnitt liegt außerhalb der Schnittkante. Ein Sicherheitsabstand hält Text und wichtige Motive innerhalb der Schnittkante."
     }
+  },
+  "flexOptions": {
+    "row": "Zeile",
+    "column": "Spalte",
+    "row-reverse": "Umgekehrte Zeile",
+    "column-reverse": "Umgekehrte Spalte",
+    "flex-start": "Am Anfang",
+    "center": "In der Mitte",
+    "flex-end": "Am Ende",
+    "space-between": "Abstand zwischen den Elementen",
+    "space-around": "Abstand um die Elemente",
+    "space-evenly": "Gleichmäßige Abstände",
+    "stretch": "Strecken",
+    "baseline": "Grundlinie des Textes",
+    "nowrap": "Kein Zeilenumbruch",
+    "wrap": "Mit Zeilenumbruch",
+    "wrap-reverse": "Umgekehrter Zeilenumbruch"
   }
 }
