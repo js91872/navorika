@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TOOLS_DIR = ROOT / "src/app/tools"
+TOOLS_DIR = ROOT / "src/app/(english)/tools"
 REGISTRY = ROOT / "src/data/registry.ts"
 OUTPUT_DIR = ROOT / ".tool-factory"
 
@@ -381,8 +381,8 @@ INTEGRATION CHECKLIST
 
 Inspect architecture first, then integrate where appropriate:
 
-- src/app/tools/{slug}/page.tsx
-- src/app/tools/{slug}/layout.tsx
+- src/app/(english)/tools/{slug}/page.tsx
+- src/app/(english)/tools/{slug}/layout.tsx
 - suitable src/lib/calculations/* module
 - calculation tests
 - src/components/tools/shared tool configuration

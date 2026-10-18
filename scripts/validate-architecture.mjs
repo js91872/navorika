@@ -2,7 +2,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = process.cwd();
-const toolsRoot = join(root, 'src/app/tools');
+const toolsRoot = join(root, 'src/app/(english)/tools');
 const registryPath = join(root, 'src/data/registry.ts');
 const seoPath = join(root, 'src/data/seo-content.ts');
 const reviewPath = join(root, 'src/lib/seo/toolReview.ts');
@@ -16,12 +16,12 @@ const macBatteryGuideContentPath = join(root, 'src/lib/guideContentMacBattery.ts
 const guideEnhancementsPath = join(root, 'src/lib/guideContentEnhancements.ts');
 const guideToolsPath = join(root, 'src/lib/guideTools.ts');
 const guideSourcesPath = join(root, 'src/lib/guideSources.ts');
-const guidePagePath = join(root, 'src/app/guides/[slug]/page.tsx');
+const guidePagePath = join(root, 'src/app/(english)/guides/[slug]/page.tsx');
 const sitemapPath = join(root, 'src/app/sitemap.ts');
 const llmsPath = join(root, 'src/app/llms.txt/route.ts');
 const toolPageLibraryPath = join(root, 'src/lib/seo/toolPage.ts');
 const taxonomyPath = join(root, 'src/data/taxonomy.ts');
-const toolkitPagePath = join(root, 'src/app/toolkits/[slug]/page.tsx');
+const toolkitPagePath = join(root, 'src/app/(english)/toolkits/[slug]/page.tsx');
 const toolCatalogPath = join(root, 'src/app/tools.json/route.ts');
 const generatedLlmsPath = join(root, 'src/app/llms.txt/route.ts');
 const packagePath = join(root, 'package.json');
@@ -64,18 +64,18 @@ for (const action of [...toolUxSource.matchAll(/'(copy-result|copy-summary|downl
 if (!existsSync(uxTestRunnerPath)) failures.push('Missing scripts/run-ux-tests.mjs');
 
 for (const path of [
-  join(root, 'src/app/page.tsx'),
-  join(root, 'src/app/tools/page.tsx'),
-  join(root, 'src/app/search/page.tsx'),
-  join(root, 'src/app/tools/json-formatter/page.tsx'),
+  join(root, 'src/app/(english)/page.tsx'),
+  join(root, 'src/app/(english)/tools/page.tsx'),
+  join(root, 'src/app/(english)/search/page.tsx'),
+  join(root, 'src/app/(english)/tools/json-formatter/page.tsx'),
   join(root, 'src/components/tools/ExpansionToolPage.tsx'),
 ]) {
   if (read(path).includes('<main')) failures.push(`Shared page shell must rely on the single ClientLayout main landmark: ${path.replace(`${root}/`, '')}`);
 }
 if (!read(clientLayoutPath).includes('<main')) failures.push('ClientLayout must provide the primary main landmark');
 if (/if\s*\(\s*!mounted\s*\)\s*return null/.test(read(navbarPath))) failures.push('Navbar must render stable structural HTML before hydration');
-if (read(join(root, 'src/app/page.tsx')).includes("'use client'") || read(join(root, 'src/app/page.tsx')).includes('framer-motion')) failures.push('Homepage static content must remain server-rendered without Framer Motion');
-if (read(join(root, 'src/app/tools/page.tsx')).includes("'use client'") || read(join(root, 'src/app/tools/page.tsx')).includes('framer-motion')) failures.push('/tools server shell must not become a client or Framer Motion component');
+if (read(join(root, 'src/app/(english)/page.tsx')).includes("'use client'") || read(join(root, 'src/app/(english)/page.tsx')).includes('framer-motion')) failures.push('Homepage static content must remain server-rendered without Framer Motion');
+if (read(join(root, 'src/app/(english)/tools/page.tsx')).includes("'use client'") || read(join(root, 'src/app/(english)/tools/page.tsx')).includes('framer-motion')) failures.push('/tools server shell must not become a client or Framer Motion component');
 
 for (const slug of duplicates(guideSlugs)) failures.push(`Duplicate guide metadata slug: ${slug}`);
 
@@ -160,13 +160,13 @@ for (const slug of pageSlugs) {
     const body = source.slice(declarationEnd);
     const selfRender = new RegExp(`<${componentName}(?:\\s|/|>)`);
     if (selfRender.test(body)) {
-      failures.push(`Recursive default component in src/app/tools/${slug}/page.tsx: ${componentName}`);
+      failures.push(`Recursive default component in src/app/(english)/tools/${slug}/page.tsx: ${componentName}`);
     }
   }
 
   const defaultExports = source.match(/export\s+default\b/g) ?? [];
   if (defaultExports.length > 1) {
-    failures.push(`Multiple default exports in src/app/tools/${slug}/page.tsx`);
+    failures.push(`Multiple default exports in src/app/(english)/tools/${slug}/page.tsx`);
   }
 
   const knownPlaceholder = source.includes('ImageConverterEngine')
