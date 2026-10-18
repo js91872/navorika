@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TOOLS_DIR = ROOT / "src/app/tools"
+TOOLS_DIR = ROOT / "src/app/(english)/tools"
 REGISTRY = ROOT / "src/data/registry.ts"
 OUTPUT_DIR = ROOT / ".tool-factory"
 
@@ -270,7 +270,7 @@ Use existing architecture wherever possible.
 AUTHORITATIVE AREAS TO INSPECT
 ==============================
 
-- src/app/tools/
+- src/app/(english)/tools/
 - src/components/tools/BusinessCalculatorTool.tsx
 - src/components/tools/ExpansionToolPage.tsx
 - src/data/registry.ts

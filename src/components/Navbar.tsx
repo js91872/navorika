@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, Sun, Moon, Home, Layers, Wrench, BookOpen, Info, Mail, Search } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import Logo from '@/components/ui/Logo';
+import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 
 interface NavbarProps {
   onSearchClick?: () => void;
@@ -46,7 +47,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
           <Logo size="md" />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -67,6 +68,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
 
           {/* Right side */}
           <div className="flex items-center gap-2">
+            <div className="hidden sm:block"><LanguageSwitcher locale="en" /></div>
             <button
               onClick={onSearchClick}
               className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-3 hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
@@ -88,7 +90,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="grid min-h-11 min-w-11 place-items-center rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] md:hidden"
+              className="grid min-h-11 min-w-11 place-items-center rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] xl:hidden"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -99,7 +101,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-[var(--background)] border-b border-[var(--border)] shadow-lg">
+        <div className="xl:hidden bg-[var(--background)] border-b border-[var(--border)] shadow-lg">
           <div className="px-4 py-4 space-y-2">
             {navLinks.map((link) => (
               <Link
@@ -116,6 +118,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
                 <span className="font-medium">{link.label}</span>
               </Link>
             ))}
+            <div className="px-4 py-3 sm:hidden"><LanguageSwitcher locale="en" /></div>
           </div>
         </div>
       )}

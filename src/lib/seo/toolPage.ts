@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { isTranslatedTool, languageAlternates } from '@/lib/i18n/config';
 
 export interface ToolPageContent {
   slug: string;
@@ -34,6 +35,7 @@ export function createToolMetadata(tool: ToolPageContent, canonicalOverride?: st
     keywords: tool.longTailKeywords,
     alternates: {
       canonical: canonicalOverride ?? url, // canonical: url
+      ...(isTranslatedTool(tool.slug) && !canonicalOverride ? { languages: languageAlternates(tool.slug) } : {}),
     },
     openGraph: {
       type: 'website',

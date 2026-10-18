@@ -1,3 +1,4 @@
+import { locales, localizedPath, translatedTools, languageAlternates, isTranslatedTool } from '@/lib/i18n/config';
 import type { MetadataRoute } from 'next';
 import { categories, tools } from '@/data/registry';
 import { getFinanceSuiteUrls } from '@/lib/seo/financeSuite';
@@ -70,5 +71,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const guidePages = guidesMetadata.map(({ slug, dateModified }) => ({ url: `${baseUrl}/guides/${slug}`, lastModified: new Date(dateModified) }));
   const toolkitPages = toolkits.map(({ slug }) => ({ url: `${baseUrl}/toolkits/${slug}` }));
 
-  return [...staticPages, ...toolPages, ...financeSuitePages, ...categoryPages, ...toolkitPages, ...guidePages];
+  const englishPages = [...staticPages, ...toolPages, ...financeSuitePages, ...categoryPages, ...toolkitPages, ...guidePages]
+    .map((page) => {
+      const slug = page.url.startsWith(`${baseUrl}/tools/`) ? page.url.slice(`${baseUrl}/tools/`.length) : '';
+      if (page.url === baseUrl || isTranslatedTool(slug)) {
+        return { ...page, alternates: { languages: languageAlternates(isTranslatedTool(slug) ? slug : undefined) } };
+      }
+      return page;
+    });
+  const localizedPages = locales.flatMap((locale) => [
+    { url: `${baseUrl}${localizedPath(locale)}`, alternates: { languages: languageAlternates() } },
+    ...translatedTools.map((slug) => ({ url: `${baseUrl}${localizedPath(locale, slug)}`, alternates: { languages: languageAlternates(slug) } })),
+  ]);
+  return [...englishPages, ...localizedPages];
 }
