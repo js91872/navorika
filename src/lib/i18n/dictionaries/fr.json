@@ -9,7 +9,7 @@
     "search": "Rechercher un outil",
     "noResults": "Aucun outil trouvé.",
     "allEnglish": "Tous les outils en anglais",
-    "englishNotice": "Cette page est disponible en anglais.",
+    "englishNotice": "Les liens suivants ouvrent des pages en anglais.",
     "privacy": "Confidentialité",
     "terms": "Conditions d’utilisation",
     "contact": "Contact",
@@ -47,7 +47,7 @@
     "unknown": "Inconnu",
     "colorNote": "L’analyse des en-têtes ne garantit ni la qualité d’impression, ni la fidélité des couleurs, ni la validité de chaque profil ICC intégré. Le RVB est courant pour les écrans ; demandez à votre imprimeur quel profil utiliser.",
     "ratio": "Rapport largeur/hauteur",
-    "padding": "Pourcentage de remplissage",
+    "padding": "Marge intérieure en pourcentage",
     "pixels": "Pixels",
     "megapixels": "Mégapixels",
     "documentSize": "Dimensions du document avec fond perdu",
@@ -55,30 +55,34 @@
     "mm": "Millimètres",
     "inch": "Pouces",
     "css": "Code CSS généré",
-    "aspectTitle": "Calculateur de padding selon le ratio d’image",
+    "aspectTitle": "Calculateur de marges CSS et de proportions",
     "flexTitle": "Générateur CSS Flexbox",
     "rgbTitle": "Vérifier si une image est en RVB ou CMJN",
     "megaTitle": "Calculateur de mégapixels",
     "bleedTitle": "Calculateur de fond perdu",
     "grayscale": "Niveaux de gris",
-    "palette": "Palette indexée"
+    "palette": "Palette indexée",
+    "englishName": "anglais",
+    "mpUnit": "MP",
+    "rgbLabel": "RVB",
+    "cmykLabel": "CMJN"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
-      "title": "Calculateur de padding selon le ratio d’image",
-      "description": "Calculez le pourcentage de padding CSS d’une image, d’une vidéo ou d’un conteneur adaptatif à partir de sa largeur et de sa hauteur. Copiez la propriété aspect-ratio ou la solution avec padding.",
+      "title": "Calculateur de marges CSS et de proportions",
+      "description": "Calculez le pourcentage de marge intérieure CSS d’une image, d’une vidéo ou d’un conteneur adaptatif à partir de sa largeur et de sa hauteur. Copiez le code moderne ou la solution de repli.",
       "how": "Saisissez la largeur et la hauteur d’origine dans la même unité. Pour 1920 × 1080, le calcul hauteur ÷ largeur × 100 donne 56,25 %. Le rapport est identique pour 16 × 9.",
-      "limits": "Le padding en pourcentage dépend de la largeur du bloc parent. La propriété aspect-ratio est généralement plus simple. Cet outil ne redimensionne pas les images et n’ajoute aucun pixel.",
+      "limits": "Les marges intérieures en pourcentage dépendent de la largeur du bloc parent. La propriété CSS moderne dédiée aux proportions est généralement plus simple. Cet outil ne redimensionne pas les images et n’ajoute aucun pixel.",
       "question": "Cet outil modifie-t-il les dimensions de l’image ?",
       "answer": "Non. Il calcule uniquement des valeurs CSS ; l’image d’origine reste inchangée."
     },
     "css-flexbox-generator": {
       "title": "Générateur CSS Flexbox",
       "description": "Créez une mise en page CSS Flexbox avec aperçu en direct. Modifiez la direction, l’alignement, le retour à la ligne et l’espacement, puis copiez le CSS du conteneur.",
-      "how": "Choisissez la direction de l’axe principal, réglez justify-content et align-items, puis ajustez l’espacement. Ajoutez des éléments pour observer le retour à la ligne. Appliquez la classe container dans votre page.",
-      "limits": "L’aperçu utilise un repère CSS de gauche à droite, même dans l’interface arabe. Le contenu, la largeur des éléments et les styles du parent influencent le résultat. Seules les règles du conteneur sont générées.",
-      "question": "Pourquoi les valeurs des options restent-elles en anglais ?",
-      "answer": "Les valeurs comme row et space-between sont des mots-clés CSS. Conservez-les telles quelles dans votre feuille de style."
+      "how": "Choisissez la direction principale, puis réglez l’alignement sur les deux axes et l’espacement. Ajoutez des éléments pour observer le retour à la ligne. Copiez ensuite le code dans votre feuille de style et appliquez-le au conteneur.",
+      "limits": "L’aperçu utilise des coordonnées de gauche à droite. Le contenu, la largeur des éléments et les styles du parent influencent le résultat. Seules les règles du conteneur sont générées. Vérifiez le rendu dans votre propre page.",
+      "question": "Que change l’alignement sur l’axe principal ?",
+      "answer": "Il détermine la répartition des éléments le long de la direction choisie. Dans une ligne, il agit horizontalement ; dans une colonne, il agit verticalement."
     },
     "rgb-cmyk-image-checker": {
       "title": "Vérifier si une image est en RVB ou CMJN",
@@ -104,5 +108,22 @@
       "question": "Le fond perdu est-il une zone de sécurité ?",
       "answer": "Non. Le fond perdu dépasse le bord de coupe. La zone de sécurité maintient les textes et les éléments importants à l’intérieur de ce bord."
     }
+  },
+  "flexOptions": {
+    "row": "Ligne",
+    "column": "Colonne",
+    "row-reverse": "Ligne inversée",
+    "column-reverse": "Colonne inversée",
+    "flex-start": "Au début",
+    "center": "Au centre",
+    "flex-end": "À la fin",
+    "space-between": "Espaces entre les éléments",
+    "space-around": "Espaces autour des éléments",
+    "space-evenly": "Espacement uniforme",
+    "stretch": "Étirer",
+    "baseline": "Ligne de base du texte",
+    "nowrap": "Sans retour à la ligne",
+    "wrap": "Retour à la ligne",
+    "wrap-reverse": "Retour à la ligne inversé"
   }
 }

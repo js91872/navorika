@@ -42,6 +42,9 @@ jobs:
       - name: Verify multilingual routing, dictionaries and calculations
         run: npm run test:i18n
 
+      - name: Check deployment safety and rollback
+        run: npm run test:deploy
+
       - name: Build production application
         run: npm run build
 

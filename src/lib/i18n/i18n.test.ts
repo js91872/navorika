@@ -43,6 +43,21 @@ test('language alternatives are reciprocal, self-referencing and preserve Englis
   }
 });
 
+test('localized controls do not expose CSS keywords or previously untranslated English fragments', async () => {
+  const fragments = /\b(?:row-reverse|column-reverse|flex-start|flex-end|space-between|space-around|space-evenly|nowrap|wrap-reverse|English|inch|padding|layout|justify-content|align-items)\b/i;
+  for (const locale of locales) {
+    const d = await getDictionary(locale);
+    assert.deepEqual(Object.keys(d.flexOptions).sort(), Object.keys(english.flexOptions).sort(), locale);
+    for (const [keyword, label] of Object.entries(d.flexOptions)) {
+      assert.ok(label.trim(), `${locale}/${keyword}`);
+      assert.notEqual(label, keyword, `${locale} exposes raw ${keyword}`);
+      assert.notEqual(label, english.flexOptions[keyword as keyof typeof english.flexOptions], `${locale}/${keyword} uses English label`);
+    }
+    const text = [...Object.values(d.ui), ...Object.values(d.tools).flatMap((tool) => Object.values(tool)), ...Object.values(d.flexOptions)];
+    for (const value of text) assert.equal(fragments.test(value), false, `${locale}: ${value}`);
+  }
+});
+
 test('aspect ratios, megapixels and print dimensions match independent known examples', () => {
   assert.equal(aspectRatio(1920, 1080)?.padding, 56.25);
   assert.equal(aspectRatio(6000, 4000)?.megapixels, 24);

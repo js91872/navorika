@@ -9,7 +9,7 @@
     "search": "Buscar herramienta",
     "noResults": "No se encontraron herramientas.",
     "allEnglish": "Todas las herramientas en inglés",
-    "englishNotice": "Esta página está disponible en inglés.",
+    "englishNotice": "Los siguientes enlaces abren páginas en inglés.",
     "privacy": "Política de privacidad",
     "terms": "Condiciones de uso",
     "contact": "Contacto",
@@ -47,7 +47,7 @@
     "unknown": "Desconocido",
     "colorNote": "El análisis de cabeceras no valida la calidad de impresión, la precisión del color ni todos los perfiles ICC incrustados. RGB es habitual en pantallas; consulta a tu imprenta qué perfil debes usar.",
     "ratio": "Relación de aspecto",
-    "padding": "Porcentaje de padding",
+    "padding": "Espacio interior en porcentaje",
     "pixels": "Píxeles",
     "megapixels": "Megapíxeles",
     "documentSize": "Tamaño del documento con sangrado",
@@ -55,30 +55,34 @@
     "mm": "Milímetros",
     "inch": "Pulgadas",
     "css": "CSS generado",
-    "aspectTitle": "Calculadora de padding según la relación de aspecto",
+    "aspectTitle": "Calculadora de espacio interior CSS y proporciones",
     "flexTitle": "Generador CSS Flexbox",
     "rgbTitle": "Comprobar si una imagen es RGB o CMYK",
     "megaTitle": "Calculadora de megapíxeles",
     "bleedTitle": "Calculadora de sangrado para impresión",
     "grayscale": "Escala de grises",
-    "palette": "Paleta indexada"
+    "palette": "Paleta indexada",
+    "englishName": "inglés",
+    "mpUnit": "MP",
+    "rgbLabel": "RGB",
+    "cmykLabel": "CMYK"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
-      "title": "Calculadora de padding según la relación de aspecto",
-      "description": "Calcula el porcentaje de padding CSS de una imagen, vídeo o contenedor adaptable a partir de su anchura y altura. Copia la propiedad aspect-ratio o la alternativa con padding.",
+      "title": "Calculadora de espacio interior CSS y proporciones",
+      "description": "Calcula el porcentaje de espacio interior CSS de una imagen, vídeo o contenedor adaptable a partir de su anchura y altura. Copia el código moderno o la solución alternativa.",
       "how": "Introduce la anchura y la altura originales en la misma unidad. Para 1920 × 1080, altura dividida entre anchura y multiplicada por 100 da 56,25 %. La proporción es la misma para 16 × 9.",
-      "limits": "El padding porcentual depende de la anchura del bloque contenedor. La propiedad aspect-ratio suele ser más sencilla. Esta herramienta no cambia el tamaño de las imágenes ni añade píxeles.",
+      "limits": "El espacio interior porcentual depende de la anchura del bloque contenedor. La propiedad CSS moderna dedicada a las proporciones suele ser más sencilla. Esta herramienta no cambia el tamaño de las imágenes ni añade píxeles.",
       "question": "¿Esta herramienta cambia las dimensiones de la imagen?",
       "answer": "No. Solo calcula valores CSS; la imagen original no cambia."
     },
     "css-flexbox-generator": {
       "title": "Generador CSS Flexbox",
       "description": "Crea un diseño CSS Flexbox con vista previa en directo. Cambia la dirección, la alineación, el salto de línea y la separación y copia el CSS del contenedor.",
-      "how": "Elige la dirección del eje principal, ajusta justify-content y align-items y define la separación. Añade elementos para observar los saltos de línea. Aplica la clase container a tu página.",
-      "limits": "La vista previa usa coordenadas CSS de izquierda a derecha, incluso en la interfaz árabe. El contenido real, la anchura de los elementos y los estilos del padre afectan al resultado. Solo se generan reglas del contenedor.",
-      "question": "¿Por qué los valores de las opciones siguen en inglés?",
-      "answer": "Valores como row y space-between son palabras clave de CSS. Consérvalos sin traducir al pegar la hoja de estilos generada."
+      "how": "Elige la dirección principal, ajusta la alineación en los dos ejes y define la separación. Añade elementos para observar los saltos de línea. Copia el código en la hoja de estilos y aplícalo al contenedor.",
+      "limits": "La vista previa usa coordenadas de izquierda a derecha. El contenido, la anchura de los elementos y los estilos del padre afectan al resultado. Solo se generan reglas del contenedor. Comprueba el resultado en tu página.",
+      "question": "¿Qué cambia la alineación en el eje principal?",
+      "answer": "Determina cómo se distribuyen los elementos en la dirección elegida. En una fila actúa horizontalmente; en una columna actúa verticalmente."
     },
     "rgb-cmyk-image-checker": {
       "title": "Comprobar si una imagen es RGB o CMYK",
@@ -104,5 +108,22 @@
       "question": "¿El sangrado es lo mismo que el área de seguridad?",
       "answer": "No. El sangrado se extiende más allá del borde de corte. El área de seguridad mantiene los textos y los elementos importantes dentro de ese borde."
     }
+  },
+  "flexOptions": {
+    "row": "Fila",
+    "column": "Columna",
+    "row-reverse": "Fila invertida",
+    "column-reverse": "Columna invertida",
+    "flex-start": "Al principio",
+    "center": "En el centro",
+    "flex-end": "Al final",
+    "space-between": "Espacio entre los elementos",
+    "space-around": "Espacio alrededor de los elementos",
+    "space-evenly": "Espaciado uniforme",
+    "stretch": "Estirar",
+    "baseline": "Línea de base del texto",
+    "nowrap": "Sin salto de línea",
+    "wrap": "Con salto de línea",
+    "wrap-reverse": "Salto de línea en orden inverso"
   }
 }

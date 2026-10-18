@@ -26,14 +26,15 @@ function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary
   const defaults = isMega ? [6000, 4000, 3] : isBleed ? [210, 297, 3] : [16, 9, 3];
   const [values, setValues] = useState(defaults.map(String));
   const [unit, setUnit] = useState('mm');
+  const unitLabel = unit === 'inch' ? d.ui.inch : d.ui.mm;
   const [width, height, bleed] = values.map((value) => value.trim() === '' ? NaN : Number(value));
   const ratio = aspectRatio(width, height);
   const dimensions = printDimensions(width, height, bleed);
   const valid = !!ratio && (!isMega || (Number.isInteger(width) && Number.isInteger(height))) && (!isBleed || !!dimensions);
   const format = (value: number) => new Intl.NumberFormat(locale, { maximumFractionDigits: 4 }).format(value);
   const result = !valid ? '' : isMega
-    ? `${d.ui.megapixels}: ${format(ratio!.megapixels)} MP\n${d.ui.pixels}: ${format(ratio!.pixels)}`
-    : isBleed ? `${d.ui.documentSize}: ${format(dimensions!.width)} × ${format(dimensions!.height)} ${unit}`
+    ? `${d.ui.megapixels}: ${format(ratio!.megapixels)} ${d.ui.mpUnit}\n${d.ui.pixels}: ${format(ratio!.pixels)}`
+    : isBleed ? `${d.ui.documentSize}: ${format(dimensions!.width)} × ${format(dimensions!.height)} ${unitLabel}`
     : `${d.ui.padding}: ${format(ratio!.padding)}%\n${d.ui.ratio}: ${format(ratio!.ratio)}`;
   const css = valid && !isMega && !isBleed
     ? `aspect-ratio: ${width} / ${height};\npadding-top: ${Number(ratio!.padding.toFixed(6))}%;` : '';
@@ -51,7 +52,7 @@ function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary
     </label>}
     <div className="grid gap-5 sm:grid-cols-2">
       {[d.ui.width, d.ui.height, ...(isBleed ? [d.ui.bleed] : [])].map((label, index) =>
-        <label key={label}>{label}{isMega ? ' (px)' : isBleed ? ` (${unit})` : ''}
+        <label key={label}>{label}{isMega ? ` (${d.ui.pixels})` : isBleed ? ` (${unitLabel})` : ''}
           <input type="number" dir="ltr" min={index === 2 ? 0 : isMega ? 1 : 0.000001}
             max={index === 2 ? 1e6 : 1e9} step={isMega ? 1 : 'any'} value={values[index]}
             className={fieldClass} aria-invalid={!valid} onChange={(event) => setValues(values.map((value, i) => i === index ? event.target.value : value))} />
@@ -86,8 +87,8 @@ function FlexTool({ d }: { d: Dictionary }) {
         { label: d.ui.align, value: align, set: setAlign, options: ['stretch', 'flex-start', 'center', 'flex-end', 'baseline'] },
         { label: d.ui.wrap, value: wrap, set: setWrap, options: ['nowrap', 'wrap', 'wrap-reverse'] },
       ].map((field) => <label key={field.label} className="mb-5 block">{field.label}
-        <select dir="ltr" className={fieldClass} value={field.value} onChange={(event) => field.set(event.target.value)}>
-          {field.options.map((option) => <option key={option}>{option}</option>)}
+        <select className={fieldClass} value={field.value} onChange={(event) => field.set(event.target.value)}>
+          {field.options.map((option) => <option key={option} value={option}>{d.flexOptions[option as keyof Dictionary['flexOptions']]}</option>)}
         </select>
       </label>)}
       <label className="mb-5 block">{d.ui.gap}: {gap}
@@ -115,17 +116,20 @@ function ColorTool({ d, locale }: { d: Dictionary; locale: Locale }) {
   const [result, setResult] = useState<RgbCmykImageResult | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
+  const [filename, setFilename] = useState('');
   const generation = useRef(0);
   const summary = result ? [
-    [d.ui.format, result.detectedFormat], [d.ui.mode, result.colorMode === 'Grayscale' ? d.ui.grayscale : result.colorMode === 'Indexed (Palette)' ? d.ui.palette : result.colorMode === 'Not determinable from header' ? d.ui.unknown : result.colorMode],
+    [d.ui.format, result.detectedFormat], [d.ui.mode, result.colorMode === 'RGB' ? d.ui.rgbLabel : result.colorMode === 'CMYK' ? d.ui.cmykLabel : result.colorMode === 'Grayscale' ? d.ui.grayscale : result.colorMode === 'Indexed (Palette)' ? d.ui.palette : d.ui.unknown],
     [d.ui.channels, result.channels === null ? d.ui.unknown : new Intl.NumberFormat(locale).format(result.channels)],
     [d.ui.alpha, result.hasAlpha ? d.ui.yes : d.ui.no], [d.ui.icc, result.hasEmbeddedIcc ? d.ui.yes : d.ui.no],
   ] : [];
   return <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-8">
-    <label className="block text-lg font-bold">{d.ui.selectFile}
-      <input type="file" accept=".jpg,.jpeg,.png,.tif,.tiff,.webp,.gif" className={`${fieldClass} font-normal`} onChange={async (event) => {
+    <label className="block cursor-pointer rounded-xl border border-dashed border-indigo-400 bg-[var(--background)] p-6 text-lg font-bold focus-within:ring-2 focus-within:ring-indigo-500">{d.ui.selectFile}
+      <span className="mt-3 block break-all text-sm font-normal text-[var(--muted-foreground)]"><bdi>{filename}</bdi></span>
+      <input type="file" aria-label={d.ui.selectFile} accept=".jpg,.jpeg,.png,.tif,.tiff,.webp,.gif" className="sr-only" onChange={async (event) => {
         const id = ++generation.current;
         const file = event.target.files?.[0];
+        setFilename(file?.name ?? '');
         setResult(null); setError(false);
         if (!file) { setBusy(false); return; }
         setBusy(true);

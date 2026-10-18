@@ -9,7 +9,7 @@
     "search": "Find a tool",
     "noResults": "No matching tools.",
     "allEnglish": "All tools in English",
-    "englishNotice": "This page is available in English.",
+    "englishNotice": "The following links open pages in English.",
     "privacy": "Privacy policy",
     "terms": "Terms",
     "contact": "Contact",
@@ -61,7 +61,11 @@
     "megaTitle": "Megapixel Calculator",
     "bleedTitle": "Print Bleed Calculator",
     "grayscale": "Grayscale",
-    "palette": "Indexed palette"
+    "palette": "Indexed palette",
+    "englishName": "English",
+    "mpUnit": "MP",
+    "rgbLabel": "RGB",
+    "cmykLabel": "CMYK"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
@@ -104,5 +108,22 @@
       "question": "Is bleed the same as a safe area?",
       "answer": "No. Bleed extends beyond the trim edge. A safe area keeps text and important artwork inside the trim edge."
     }
+  },
+  "flexOptions": {
+    "row": "Row",
+    "column": "Column",
+    "row-reverse": "Reversed row",
+    "column-reverse": "Reversed column",
+    "flex-start": "Start",
+    "center": "Center",
+    "flex-end": "End",
+    "space-between": "Space between items",
+    "space-around": "Space around items",
+    "space-evenly": "Even spacing",
+    "stretch": "Stretch",
+    "baseline": "Text baseline",
+    "nowrap": "Do not wrap",
+    "wrap": "Wrap items",
+    "wrap-reverse": "Wrap in reverse order"
   }
 }

@@ -12,7 +12,7 @@ Each language has a tool directory at `/{locale}` and these five working tools a
 - `image-megapixel-calculator`
 - `print-bleed-calculator`
 
-This is **42 new pages: seven directories and 35 tool pages**, not a claim that the entire English inventory has been translated. Navigation, search, tool controls, validation, results, clipboard feedback, instructions, limitations and FAQs are localized. CSS keywords, file-format names and standard technical abbreviations stay unchanged. The color checker reuses the existing original-file-header inspector and translates its displayed color-mode labels.
+This is **42 new pages: seven directories and 35 tool pages**, not a claim that the entire English inventory has been translated. Navigation, search, tool controls, validation, results, clipboard feedback, instructions, limitations and FAQs are localized. Control labels use native descriptions. Generated CSS, file-format names and standard technical abbreviations retain their required syntax. The color checker reuses the existing original-file-header inspector and translates its displayed color-mode labels.
 
 ## URLs, rendering and search
 
@@ -94,3 +94,21 @@ All original English page paths remain covered by the route contract. Changes to
 Extend coverage using the latest Search Console query/page data. Candidates include the PDF Bleed & Trim Checker and suitable image/PDF utilities. Keep STEP and CorelDRAW server-conversion paths in English until their interface, server error responses and documentation can be localized together. Expand substantive guides and legal pages alongside tool batches. Only publish an additional translated route when its controls, results, validation and explanatory content are complete.
 
 No paid translation service, subscription or runtime translation API is required by this implementation.
+
+
+## Translation correction after the first deployment
+
+The first pass missed visible English in CSS option labels, the literal footer suffix, inch-unit labels and native browser file-input chrome. Several explanatory paragraphs also used English technical terms in the surrounding prose. These are corrected across the seven translated languages:
+
+- Native Flexbox option labels map to unchanged CSS values; generated CSS is still valid.
+- Footer language notices and destination-language labels are translated.
+- Unit labels and results use localized unit names; French color results use RVB/CMJN.
+- A styled, keyboard-accessible file selector replaces the visible native browser control, and displays the selected filename.
+- French, Italian, Portuguese, Spanish, Russian and German descriptions use natural-language spacing and layout terminology. Arabic controls use the same complete label mapping.
+- Regression checks audit dictionaries and rendered page copy for the previously missed English fragments. Generated code and language-picker names are handled separately.
+
+Validation of this correction: 547 Node tests passed, plus three deployment-safety fixture tests; production build passed; all 42 translated pages and 35 tool workflows passed production-browser checks at desktop and mobile sizes. Scoped multilingual lint passed with no findings. Public live-page requests returned HTTP 403 from this environment, so these results describe the checked source and local production build, rather than a claim of live-site verification.
+
+A reusable `scripts/deploy-vps.sh` accepts a full reviewed commit SHA. It builds in a separate worktree, copies local environment files with restricted permissions, preserves the previous build and dependencies, swaps the release, and attempts rollback on startup/health failure. Three offline tests use temporary Git repositories and mocked npm/PM2/HTTP commands to verify successful deployment, an untouched live release after build failure, and restoration of source/build/dependencies after a failed health check. They do not claim to test the user's actual VPS or PM2 service.
+
+Run the helper only for the reviewed release commit. The deployment instructions accompanying this fix load that script from the exact Git commit before running it, so production source is not pulled forward before the separate build succeeds. A failed health-check rollback leaves Git detached at the previous commit for inspection. Untranslated tools and legal-page destinations remain English and are clearly labelled.
