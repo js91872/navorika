@@ -259,6 +259,62 @@
       "limits": "Schnitte, Muster, Anordnung und Schäden verändern den Verschnitt. Ganze Pakete, Platten oder Paletten können Aufrundung erfordern. Behalten Sie dieselbe Mengeneinheit bei.",
       "question": "Werden Kosten in örtliche Währung umgerechnet?",
       "answer": "Nein. Preise und Ergebnisse bleiben in USD."
+    },
+    "soffit-fascia-calculator": {
+      "title": "Rechner für Dachüberstand und Stirnbretter",
+      "description": "Berechnen Sie Dachkastenfläche, Stirnbrettlänge, Paneelanzahl, Brettbedarf und Verschnittzugabe für Dachüberstände.",
+      "how": "Geben Sie die Gesamtlänge der Traufe, Dachkastenbreite, Stirnbrettlänge, Paneeldecke und Verschnittprozentsatz ein.",
+      "limits": "Geometrische Näherung für rechteckige Traufen. Giebelkanten, Walmecken und Ortgänge erfordern gesonderte Aufmaße.",
+      "question": "Sind Überlappungen der Paneele berücksichtigt?",
+      "answer": "Verwenden Sie die Netto-Deckfläche je Paneel und schlagen Sie Verschnitt für Passschnitte auf."
+    },
+    "attic-insulation-payback-calculator": {
+      "title": "Amortisationsrechner für Dachbodendämmung",
+      "description": "Ermitteln Sie die Kosten für die Dämmung der obersten Geschossdecke, jährliche Energieeinsparungen und die Amortisationszeit.",
+      "how": "Geben Sie Dachbodenfläche, Einbaukosten je Quadratfuß, jährliche Heiz-/Kühlkosten, Einsparpotenzial und Förderungen ein.",
+      "limits": "Einfache statische Amortisationsrechnung. Die tatsächliche Einsparung hängt von Klimazone, Dichtheit und Heizsystem ab.",
+      "question": "Werden Fördergelder und Zuschüsse berücksichtigt?",
+      "answer": "Tragen Sie Förderungen oder Steuervorteile in das entsprechende Feld ein, um die Netto-Investition zu berechnen."
+    },
+    "joist-deflection-calculator": {
+      "title": "Durchbiegungsrechner für Deckenbalken",
+      "description": "Berechnen Sie die Durchbiegung von Holzbalken unter gleichmäßig verteilter Flächenlast.",
+      "how": "Tragen Sie lichte Spannweite, Flächenlast, Balkenabstand, Elastizitätsmodul, Balkenbreite und Balkenhöhe ein.",
+      "limits": "Berechnung als Einfeldträger. Schubverformungen, Deckenschwingungen und Einzellasten sind nicht berücksichtigt.",
+      "question": "Was besagt der Grenzwert L/360?",
+      "answer": "L/360 ist der gängige Richtwert für die zulässige Durchbiegung im Wohnbau, um Putzrisse und spürbares Schwingen zu vermeiden."
+    },
+    "hvac-duct-cfm-calculator": {
+      "title": "Luftvolumenstrom-Rechner für Lüftungskanäle (CFM)",
+      "description": "Ermitteln Sie den Luftvolumenstrom durch runde oder rechteckige Kanäle anhand von Querschnittsfläche und Strömungsgeschwindigkeit.",
+      "how": "Wählen Sie die Kanalform, geben Sie die Abmessungen in Zoll ein und bestimmen Sie die Strömungsgeschwindigkeit (FPM).",
+      "limits": "Theoretische Strömungsberechnung (Q = A × V). Druckverluste durch Reibung, Umlenkungen und Einbauten sind separat zu berechnen.",
+      "question": "Welche Luftgeschwindigkeiten sind im Wohnungsbau üblich?",
+      "answer": "In Abzweigleitungen liegen übliche Geschwindigkeiten bei 600–800 FPM, in Hauptkanälen bei 800–1.000 FPM."
+    },
+    "mortar-calculator": {
+      "title": "Mörtelrechner für Ziegel- und Blockmauerwerk",
+      "description": "Berechnen Sie Mörtelvolumen, Fertigmörtelsäcke, Zement und Mauersand für Ziegel- und Betonblockwände.",
+      "how": "Geben Sie die Steinanzahl ein, wählen Sie Ziegel oder Betonblock, Fugenstärke in Zoll, Verschnitt und Sackgröße.",
+      "limits": "Berechnung für standardmäßige Lager- und Stoßfugen. Verfüllung von Hohlblockkammern ist gesondert zu erfassen.",
+      "question": "Welche Fugenbreite ist im Mauerwerk üblich?",
+      "answer": "Das übliche Standardfugenmaß beträgt 3/8 Zoll (0,375 Zoll bzw. ca. 10 mm)."
+    },
+    "concrete-block-calculator": {
+      "title": "Betonblock-Rechner für Mauerwerk",
+      "description": "Ermitteln Sie CMU-Betonblöcke, Mauermörtel, Vergussbeton für Hohlkammern und Verschnitt für Wände und Fundamente.",
+      "how": "Geben Sie Wandlänge, Wandhöhe, Öffnungsflächen in Quadratfuß, Vergussraster und Verschnittzuschlag ein.",
+      "limits": "Standard-CMU-Blöcke 8x8x16 (0,8889 Quadratfuß Ansichtsfläche). Bewehrungspläne und Ringanker sind gesondert zu dimensionieren.",
+      "question": "Welche Kammerverguss-Optionen stehen zur Verfügung?",
+      "answer": "Sie können den Vergussbedarf für Kammern alle 32 Zoll, alle 16 Zoll, vollverfülltes Mauerwerk oder unverfüllte Hohlblöcke berechnen."
+    },
+    "rainwater-harvesting-calculator": {
+      "title": "Regenwasser-Ertragsrechner und Zisternengröße",
+      "description": "Berechnen Sie den jährlichen Regenwasserertrag aus Dachfläche, Niederschlag und Deckmaterial und dimensionieren Sie den Speicher.",
+      "how": "Geben Sie Dachgrundfläche, Jahresniederschlag in Zoll, Dacheindeckung, Vorfilterverlust und Speichertage für Trockenphasen ein.",
+      "limits": "Hydrologische Näherung. Überläufe bei Starkregenereignissen, Frost sowie Trinkwasservorschriften sind gesondert zu beachten.",
+      "question": "Was bedeutet der Vorfilter- und Vorlaufverlust?",
+      "answer": "Der Erstablaufabscheider leitet den ersten Schmutzwasserschwall mit Staub und Ablagerungen ab, was typischerweise etwa 5 % entspricht."
     }
   },
   "flexOptions": {
@@ -666,6 +722,232 @@
         "totalMaterialCost": "Gesamte Materialkosten"
       },
       "note": "Schnitte, Muster, Anordnung und Schäden verändern den Verschnitt. Ganze Pakete, Platten oder Paletten können Aufrundung erfordern. Behalten Sie dieselbe Mengeneinheit bei.",
+      "textResults": {}
+    },
+    "soffit-fascia-calculator": {
+      "fields": {
+        "eaveLength": {
+          "label": "Gesamtlänge der Traufe (Fuß)"
+        },
+        "soffitDepth": {
+          "label": "Tiefe des Dachkastens (Fuß)"
+        },
+        "fasciaBoardLength": {
+          "label": "Länge der Stirnbretter (Fuß)"
+        },
+        "soffitPanelCoverage": {
+          "label": "Deckfläche je Dachkastenpaneel (Quadratfuß/Stück)"
+        },
+        "wastePercent": {
+          "label": "Verschnittzugabe (%)"
+        }
+      },
+      "results": {
+        "soffitArea": "Nettofläche Dachkasten (Quadratfuß)",
+        "soffitAreaWithWaste": "Dachkastenfläche mit Verschnitt (Quadratfuß)",
+        "soffitPieces": "Geschätzte Dachkastenpaneele",
+        "fasciaLengthWithWaste": "Stirnbrettlänge mit Verschnitt (Fuß)",
+        "fasciaBoards": "Geschätzte Stirnbretter"
+      },
+      "note": "Dachgeometrie, Giebelüberstände und Gratanschlüsse erfordern gesonderte Messungen. Herstellermaße vor Bestellung abgleichen.",
+      "textResults": {}
+    },
+    "attic-insulation-payback-calculator": {
+      "fields": {
+        "atticArea": {
+          "label": "Dachbodenfläche (Quadratfuß)"
+        },
+        "installedCostPerArea": {
+          "label": "Einbaukosten je Quadratfuß ($)"
+        },
+        "annualHeatingCoolingCost": {
+          "label": "Jährliche Heiz- und Kühlkosten ($)"
+        },
+        "estimatedSavingsPercent": {
+          "label": "Geschätzte Energieeinsparung (%)"
+        },
+        "rebates": {
+          "label": "Zuschüsse oder Fördermittel ($)"
+        }
+      },
+      "results": {
+        "grossProjectCost": "Gesamtinvestition brutto",
+        "netProjectCost": "Netto-Projektkosten",
+        "annualSavings": "Geschätzte jährliche Ersparnis",
+        "monthlySavings": "Geschätzte monatliche Ersparnis",
+        "paybackYears": "Einfache Amortisationszeit (Jahre)"
+      },
+      "note": "Einfache Näherungsrechnung ohne dynamische Gebäudesimulation. Reale Einsparungen hängen von Klimaregion, Bestandsdämmung und Nutzerverhalten ab.",
+      "textResults": {}
+    },
+    "joist-deflection-calculator": {
+      "fields": {
+        "span": {
+          "label": "Lichte Spannweite (Fuß)"
+        },
+        "uniformLoad": {
+          "label": "Gleichlast (psf)",
+          "help": "Gesamte Eigen- und Verkehrslast (z. B. 10 psf Eigenlast + 30 psf Nutzlast = 40 psf)."
+        },
+        "spacing": {
+          "label": "Balkenabstand (Zoll Mitte-Mitte)"
+        },
+        "elasticModulus": {
+          "label": "Elastizitätsmodul E (psi)",
+          "help": "Typisches Bauholz: 1.300.000 bis 1.800.000 psi."
+        },
+        "width": {
+          "label": "Balkenbreite b (Zoll)",
+          "help": "Tatsächliches Maß (z. B. 1,5 Zoll bei Nennmaß 2x)."
+        },
+        "depth": {
+          "label": "Balkenhöhe d (Zoll)",
+          "help": "Tatsächliches Maß (z. B. 7,25 bei 2x8, 9,25 bei 2x10, 11,25 bei 2x12)."
+        }
+      },
+      "results": {
+        "lineLoad": "Linieneinzugslast (lb/Fuß)",
+        "momentOfInertia": "Flächenträgheitsmoment I (Zoll⁴)",
+        "deflection": "Geschätzte Durchbiegung Feldmitte (Zoll)",
+        "l360Limit": "Grenzwert L/360 (Zoll)",
+        "ratio": "Verhältnis Spannweite zu Durchbiegung"
+      },
+      "note": "Vereinfachte statische Näherung für gleichmäßig belastete Einfeldträger. Schwingungsnachweis und bauaufsichtliche Prüfungen sind gesondert zu führen.",
+      "textResults": {
+        "ratio": "localized"
+      }
+    },
+    "hvac-duct-cfm-calculator": {
+      "fields": {
+        "ductShape": {
+          "label": "Kanalform",
+          "options": {
+            "round": "Rundkanal",
+            "rectangular": "Rechteckkanal"
+          }
+        },
+        "diameter": {
+          "label": "Durchmesser Rundkanal (Zoll)"
+        },
+        "width": {
+          "label": "Breite Rechteckkanal (Zoll)"
+        },
+        "height": {
+          "label": "Höhe Rechteckkanal (Zoll)"
+        },
+        "velocity": {
+          "label": "Strömungsgeschwindigkeit (FPM)",
+          "help": "Abzweigkanäle: 600–800 FPM; Hauptverteiler: 800–1.000 FPM."
+        }
+      },
+      "results": {
+        "ductArea": "Kanalquerschnittsfläche (Quadratfuß)",
+        "cfm": "Geschätzter Luftvolumenstrom (CFM)"
+      },
+      "note": "Berechnet den theoretischen Luftstrom aus Querschnitt und Geschwindigkeit (Q = A × V). Statischer Druckverlust und Formstücke sind gesondert zu bemessen.",
+      "textResults": {}
+    },
+    "mortar-calculator": {
+      "fields": {
+        "unitCount": {
+          "label": "Anzahl der Steine (Ziegel oder Blöcke)"
+        },
+        "masonryType": {
+          "label": "Mauerwerksart",
+          "options": {
+            "brick": "Modulare Tonziegel",
+            "block": "Betonhohlblöcke 8x8x16 (CMU)"
+          }
+        },
+        "jointThicknessInches": {
+          "label": "Mörtelfugendicke (Zoll)",
+          "help": "Standard-Baufuge: 3/8 Zoll (0,375 Zoll)"
+        },
+        "wastePercent": {
+          "label": "Verschnittzugabe (%)"
+        },
+        "bagWeightLb": {
+          "label": "Sackgewicht Fertigmörtel (lb)"
+        }
+      },
+      "results": {
+        "baseVolumeFt3": "Nettovolumen Mörtel (Kubikfuß)",
+        "adjustedVolumeFt3": "Mörtelvolumen mit Verschnitt (Kubikfuß)",
+        "cubicYards": "Volumen (Kubikyards)",
+        "cubicMeters": "Volumen (Kubikmeter)",
+        "premixBags": "Säcke Werktrockenmörtel (ganze Säcke)",
+        "cementBags94lb": "Portlandzementsäcke (Baustellenmischung Typ N)",
+        "sandTons": "Erforderlicher Mauersand (Tonnen)"
+      },
+      "note": "Schätzung basiert auf Standard-Ergiebigkeiten (5,0 Kubikfuß je 1.000 Ziegel; 13,5 Kubikfuß je 100 Blöcke bei 3/8\"-Fugen). Baustellenmischung Typ N basiert auf 1 Sack Zement zu 3 Kubikfuß Sand.",
+      "textResults": {}
+    },
+    "concrete-block-calculator": {
+      "fields": {
+        "wallLengthFt": {
+          "label": "Wandlänge (Fuß)"
+        },
+        "wallHeightFt": {
+          "label": "Wandhöhe (Fuß)"
+        },
+        "openingsAreaFt2": {
+          "label": "Tür- und Fensteröffnungen (Quadratfuß)"
+        },
+        "coreFillOption": {
+          "label": "Kammerverguss-Schema",
+          "options": {
+            "cores-32in": "Alle 32 Zoll Mitte-Mitte (1 Kammer je 2 Blöcke)",
+            "cores-16in": "Alle 16 Zoll Mitte-Mitte (1 Kammer je Block)",
+            "solid": "100 % Vollverguss (alle Kammern gefüllt)",
+            "none": "Hohl (kein Kammerverguss)"
+          }
+        },
+        "wastePercent": {
+          "label": "Verschnittzugabe (%)"
+        }
+      },
+      "results": {
+        "netWallAreaFt2": "Netto-Wandfläche (Quadratfuß)",
+        "exactBlocks": "Exakter Blockbedarf",
+        "purchaseBlocks": "Zu bestellende Blöcke (ganze Einheiten)",
+        "mortarBags80lb": "Geschätzte Mörtelsäcke (80 lb)",
+        "coreFillGroutYards": "Vergussmörtel (Kubikyards)"
+      },
+      "note": "Standardblöcke 8x8x16 decken je 0,8889 Quadratfuß ab (1,125 Blöcke je Quadratfuß Wand). Berechnung basiert auf genormten Zweikammer-Hohlblöcken.",
+      "textResults": {}
+    },
+    "rainwater-harvesting-calculator": {
+      "fields": {
+        "catchmentAreaFt2": {
+          "label": "Auffanggrundfläche des Daches (Quadratfuß)"
+        },
+        "annualRainfallInches": {
+          "label": "Jährlicher Niederschlag (Zoll)"
+        },
+        "roofMaterial": {
+          "label": "Dacheindeckungsmaterial",
+          "options": {
+            "metal": "Metalldach / Stehfalz (Wirkungsgrad 0,95)",
+            "tile": "Betondachsteine oder Tonziegel (Wirkungsgrad 0,85)",
+            "membrane": "Flachdachmembran / EPDM (Wirkungsgrad 0,85)",
+            "shingle": "Bitumenschindeln (Wirkungsgrad 0,80)"
+          }
+        },
+        "filtrationLossPercent": {
+          "label": "Verluste durch Vorfilter & Spülung (%)"
+        },
+        "storageDays": {
+          "label": "Vorratstage für Trockenperioden (Tage)"
+        }
+      },
+      "results": {
+        "annualYieldGallons": "Jährlicher Ertrag (US-Gallonen)",
+        "annualYieldLiters": "Jährlicher Ertrag (Liter)",
+        "monthlyAverageGallons": "Monatlicher Durchschnitt (Gallonen)",
+        "recommendedTankGallons": "Empfohlene Tankgröße (Gallonen)",
+        "recommendedTankLiters": "Empfohlene Tankgröße (Liter)"
+      },
+      "note": "Theoretischer Ertrag basiert auf der hydrologischen Konstante (1 Zoll Regen auf 1 Quadratfuß = 0,6233 US-Gallonen) multipliziert mit dem Abflussbeiwert.",
       "textResults": {}
     }
   },

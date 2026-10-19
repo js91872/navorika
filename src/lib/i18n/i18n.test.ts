@@ -170,6 +170,13 @@ test('shared calculators have native controls, exact copy coverage and unchanged
     { horizontalPpi: 300, verticalPpi: 300, effectivePpi: 300, megapixels: 7.2, aspectMatch: 'Matched' },
     { angleDegrees: 14.04, slopePercent: 25, rampLength: 49.48, riseRunRatio: '1 : 4.0' },
     { wasteQuantity: 100, orderQuantity: 1100, netMaterialCost: 2500, wasteCost: 250, totalMaterialCost: 2750 },
+    { soffitArea: 240, soffitAreaWithWaste: 264, soffitPieces: 22, fasciaLengthWithWaste: 132, fasciaBoards: 11 },
+    { grossProjectCost: 2700, netProjectCost: 2700, annualSavings: 216, monthlySavings: 18, paybackYears: 12.5 },
+    { lineLoad: 53.3333, momentOfInertia: 98.9316, deflection: 0.1572, l360Limit: 0.4, ratio: 'L / 916' },
+    { ductArea: 0.3491, cfm: 244.35 },
+    { baseVolumeFt3: 2.5, adjustedVolumeFt3: 2.75, cubicYards: 0.102, cubicMeters: 0.078, premixBags: 5, cementBags94lb: 1, sandTons: 0.12 },
+    { netWallAreaFt2: 220, exactBlocks: 247.5, purchaseBlocks: 273, mortarBags80lb: 56, coreFillGroutYards: 1.67 },
+    { annualYieldGallons: 39377, annualYieldLiters: 149058, monthlyAverageGallons: 3281, recommendedTankGallons: 2266, recommendedTankLiters: 8578 },
   ];
   for (const locale of locales) {
     const d = await getDictionary(locale);
@@ -212,5 +219,9 @@ test('native PPI and ramp status adapters cover mismatch, flat, vertical and nul
     assert.equal(formatCalculatorNumber(1704, 'currency', locale, ''), new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', currencyDisplay: 'code', maximumFractionDigits: 2 }).format(1704));
     assert.ok(calculateLocalizedValues('construction-material-waste-calculator', { netQuantity: 2.5, wastePercent: 12.5, unitCost: 4 }));
     assert.equal(calculateLocalizedValues('roofing-shingle-calculator', { roofArea: 20, wastePercent: 101, bundlesPerSquare: 3 }), null);
+    const joistRatio = (span: number, uniformLoad: number, width: number, depth: number) =>
+      calculatorTextFormatters('joist-deflection-calculator', { span, uniformLoad, spacing: 16, elasticModulus: 1600000, width, depth }, d, locale).ratio('IGNORED');
+    assert.equal(joistRatio(12, 40, 1.5, 9.25), 'L / 916');
+    assert.equal(joistRatio(12, 0, 1.5, 9.25), d.calculatorUi.notApplicable);
   }
 });

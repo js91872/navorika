@@ -7,7 +7,7 @@ import { PDFDocument } from 'pdf-lib';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
 const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
-const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator', 'image-file-size-estimator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'square-footage-calculator', 'cubic-yard-calculator', 'roofing-shingle-calculator', 'rafter-length-calculator', 'stud-calculator', 'drywall-mud-calculator', 'roof-ridge-height-calculator', 'fascia-replacement-cost-calculator', 'ppi-calculator', 'shed-ramp-angle-calculator', 'construction-material-waste-calculator', 'print-bleed-calculator'];
+const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator', 'image-file-size-estimator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'square-footage-calculator', 'cubic-yard-calculator', 'roofing-shingle-calculator', 'rafter-length-calculator', 'stud-calculator', 'drywall-mud-calculator', 'roof-ridge-height-calculator', 'fascia-replacement-cost-calculator', 'ppi-calculator', 'shed-ramp-angle-calculator', 'construction-material-waste-calculator', 'print-bleed-calculator', 'soffit-fascia-calculator', 'attic-insulation-payback-calculator', 'joist-deflection-calculator', 'hvac-duct-cfm-calculator', 'mortar-calculator', 'concrete-block-calculator', 'rainwater-harvesting-calculator'];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
 let serverOutput = '';
@@ -34,7 +34,10 @@ try {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   await context.route('**/*', (route) => route.request().url().startsWith(base) ? route.continue() : route.abort());
   const page = await context.newPage();
-  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('pageerror', (error) => {
+    console.error(`PAGE ERROR at ${page.url()}:`, error.message);
+    errors.push(error.message);
+  });
   const visit = async (path) => {
     const response = await page.goto(`${base}${path}`, { waitUntil: 'networkidle' });
     assert.equal(response.status(), 200, path);
@@ -106,10 +109,20 @@ try {
       ['ppi-calculator', 3000, 300],
       ['shed-ramp-angle-calculator', 12, 14.04, 26.57],
       ['construction-material-waste-calculator', 1000, 100],
+      ['soffit-fascia-calculator', 120, 240, 480],
+      ['attic-insulation-payback-calculator', 1500, 2700, 5400],
+      ['joist-deflection-calculator', 12, 53.333, 53.333],
+      ['hvac-duct-cfm-calculator', 8, 0.349, 1.396],
+      ['mortar-calculator', 500, 2.5, 5],
+      ['concrete-block-calculator', 30, 220, 460],
+      ['rainwater-harvesting-calculator', 2000, 39377, 78754],
     ]) {
       await visit(`/${locale}/tools/${slug}`);
       const ui = d.calculatorUi;
-      const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
+      const isCurrency = slug === 'attic-insulation-payback-calculator';
+      const number = isCurrency
+        ? new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', currencyDisplay: 'code', maximumFractionDigits: 2 })
+        : new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
       assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
       await page.locator('main input[type="number"]').first().fill(String(initial * 2));
       assert.equal(await page.locator('main dd').first().textContent(), number.format(changed ?? expected * 2));
@@ -128,13 +141,17 @@ try {
       assert.ok(csv.startsWith('\uFEFF'));
       assert.ok(csv.includes(ui.result) && csv.includes(ui.value));
       for (const label of Object.values(d.calculators[slug].results)) assert.ok(csv.includes(label));
-      if (slug === 'fascia-replacement-cost-calculator' || slug === 'construction-material-waste-calculator') {
+      if (slug === 'fascia-replacement-cost-calculator' || slug === 'construction-material-waste-calculator' || slug === 'attic-insulation-payback-calculator') {
         assert.ok(csv.includes('USD'));
         assert.ok(copied.includes('USD'));
       }
       if (slug === 'ppi-calculator') {
         assert.ok(csv.includes(d.calculatorStates.mismatch));
         assert.ok(copied.includes(d.calculatorStates.mismatch));
+      }
+      if (slug === 'joist-deflection-calculator') {
+        assert.ok(csv.includes('L / 115'));
+        assert.ok(copied.includes('L / 115'));
       }
       await page.evaluate(() => { window.print = () => { window.__printOpened = true; }; });
       await page.locator('main button').last().click();
@@ -422,6 +439,7 @@ try {
     await page.getByRole('button', { name: 'Toggle menu' }).click();
     await noOverflow(`Mobile navigation at ${width}`);
   }
+  await visit('/tools/print-bleed-calculator');
   await page.locator('details').first().click();
   await page.locator('details a[hreflang="ar"]').click();
   await page.waitForURL(`${base}/ar/tools/print-bleed-calculator`);

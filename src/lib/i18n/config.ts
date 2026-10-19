@@ -20,6 +20,13 @@ export const translatedTools = [
   'ppi-calculator',
   'shed-ramp-angle-calculator',
   'construction-material-waste-calculator',
+  'soffit-fascia-calculator',
+  'attic-insulation-payback-calculator',
+  'joist-deflection-calculator',
+  'hvac-duct-cfm-calculator',
+  'mortar-calculator',
+  'concrete-block-calculator',
+  'rainwater-harvesting-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

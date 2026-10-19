@@ -26,8 +26,22 @@ export default function LocalizedBusinessTools({ slug, d, locale }: { slug: Loca
       <div className="flex items-center gap-3"><Calculator aria-hidden="true" className="size-6 text-indigo-600" /><h2 className="text-xl font-bold">{ui.inputs}</h2></div>
       <div className="mt-6 grid min-w-0 gap-4 sm:grid-cols-2">
         {config.fields.map((field) => <label key={field.key} className="min-w-0 text-sm font-semibold">{field.label}
-          <input type="number" dir="ltr" inputMode="decimal" className={fieldClass} min={field.min} max={field.max} step={isIntegerCalculatorField(field.key) ? 1 : 'any'} value={values[field.key] ?? ''}
-            onChange={(event) => setValues((current) => ({ ...current, [field.key]: event.target.value === '' ? '' : Number(event.target.value) }))} />
+          {field.options ? (
+            <select
+              className={fieldClass}
+              value={String(values[field.key] ?? field.defaultValue ?? '')}
+              onChange={(event) => setValues((current) => ({ ...current, [field.key]: event.target.value }))}
+            >
+              {field.options.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input type="number" dir="ltr" inputMode="decimal" className={fieldClass} min={field.min} max={field.max} step={isIntegerCalculatorField(field.key) ? 1 : 'any'} value={values[field.key] ?? ''}
+              onChange={(event) => setValues((current) => ({ ...current, [field.key]: event.target.value === '' ? '' : Number(event.target.value) }))} />
+          )}
           {field.help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted-foreground)]">{field.help}</span>}
         </label>)}
       </div>

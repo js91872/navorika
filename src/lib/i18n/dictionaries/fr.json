@@ -259,6 +259,62 @@
       "limits": "Coupes, motifs, disposition et dégâts modifient les pertes. Arrondissez si nécessaire aux paquets, plaques ou palettes. Gardez la même unité de quantité.",
       "question": "Les coûts sont-ils convertis en monnaie locale ?",
       "answer": "Non. Les prix et les résultats restent en USD."
+    },
+    "soffit-fascia-calculator": {
+      "title": "Calculateur de sous-face et planche de rive",
+      "description": "Calculez la surface de sous-face, la longueur de rive, le nombre de panneaux et la marge de découpe pour avant-toits.",
+      "how": "Indiquez la longueur totale de l’avant-toit, la profondeur de sous-face, la longueur des planches, le rendement par panneau et la marge de perte.",
+      "limits": "Estimation géométrique pour avant-toits rectangulaires. Les noues, pignons et retours d’arêtier nécessitent des mesures spécifiques.",
+      "question": "Le recouvrement des panneaux est-il inclus ?",
+      "answer": "Renseignez la surface couverte nette par panneau et ajoutez une marge de perte pour les découpes d’ajustement."
+    },
+    "attic-insulation-payback-calculator": {
+      "title": "Calculateur d’amortissement d’isolation des combles",
+      "description": "Estimez le coût des travaux d’isolation des combles, les économies d’énergie annuelles et le délai de retour sur investissement.",
+      "how": "Saisissez la surface des combles, le coût posé au pi², la facture énergétique annuelle, le pourcentage d’économie et les aides.",
+      "limits": "Calcul d’amortissement simple. Les économies réelles dépendent du climat, de l’étanchéité à l’air et du rendement du chauffage.",
+      "question": "Les subventions et crédits d’impôt sont-ils pris en compte ?",
+      "answer": "Indiquez les primes et aides financières dans le champ prévu afin d’obtenir le coût net réel du projet."
+    },
+    "joist-deflection-calculator": {
+      "title": "Calculateur de flèche de solive",
+      "description": "Estimez la flexion d’une solive ou poutre simple sous une charge uniformément répartie.",
+      "how": "Saisissez la portée libre, la charge uniforme, l’entraxe, le module d’élasticité du bois, la largeur et la hauteur.",
+      "limits": "Modèle de poutre sur appuis simples. Ne prend pas en compte le cisaillement, les vibrations ni les charges ponctuelles.",
+      "question": "À quoi correspond la limite de flèche L/360 ?",
+      "answer": "L/360 est la limite de flèche courante sous charge d’exploitation pour éviter la fissuration des plafonds et la sensation d’élasticité."
+    },
+    "hvac-duct-cfm-calculator": {
+      "title": "Calculateur de débit de conduit CVC (CFM)",
+      "description": "Estimez le débit d’air des conduits aérauliques circulaires ou rectangulaires à partir de leur section et de la vitesse d’air.",
+      "how": "Sélectionnez la forme du conduit, renseignez les dimensions en pouces et indiquez la vitesse en pieds par minute (FPM).",
+      "limits": "Calcul aéraulique théorique (Q = A × V). Ne remplace pas le calcul des pertes de charge ni le dimensionnement selon l’ACCA.",
+      "question": "Quelle vitesse d’air est recommandée en résidentiel ?",
+      "answer": "Les gaines secondaires circulent généralement entre 600 et 800 FPM, et les troncs principaux entre 800 et 1 000 FPM."
+    },
+    "mortar-calculator": {
+      "title": "Calculateur de mortier pour briques et parpaings",
+      "description": "Calculez le volume de mortier, les sacs de prêt-à-l’emploi, le ciment et le sable pour murs en maçonnerie.",
+      "how": "Indiquez le nombre d’éléments, choisissez brique ou bloc béton, l’épaisseur de joint, la marge de perte et la taille des sacs.",
+      "limits": "Estimation pour joints de pose standards. N’inclut pas le remplissage complet des alvéoles de blocs ni les joints tirés profonds.",
+      "question": "Quelle est l’épaisseur de joint habituelle ?",
+      "answer": "L’épaisseur standard de joint de maçonnerie est de 3/8 po (0,375 pouce, soit environ 10 mm)."
+    },
+    "concrete-block-calculator": {
+      "title": "Calculateur de blocs de béton (parpaings)",
+      "description": "Estimez le nombre de blocs béton CMU, le mortier, le coulis de remplissage et la marge pour murs et fondations.",
+      "how": "Indiquez la longueur, la hauteur, la surface des ouvertures en pi², l’intervalle de ferraillage/coulis et la marge de perte.",
+      "limits": "Blocs CMU standards 8x8x16 (0,8889 pi² de face). Ne dimensionne pas les aciers d’armature, les chaînages ni les calculs de portance.",
+      "question": "Quelles options de remplissage des alvéoles sont disponibles ?",
+      "answer": "Le calcul couvre les alvéoles coulées tous les 32 pouces, tous les 16 pouces, le remplissage intégral ou les blocs creux non coulés."
+    },
+    "rainwater-harvesting-calculator": {
+      "title": "Calculateur de récupération d’eau de pluie",
+      "description": "Calculez le volume d’eau de pluie récupérable selon la surface de toiture, la pluviométrie et le matériau, puis dimensionnez la cuve.",
+      "how": "Indiquez l’emprise au sol du toit, la pluviométrie annuelle en pouces, le type de couverture, la perte de premier rinçage et la réserve en jours.",
+      "limits": "Modèle hydrologique théorique. Ne tient pas compte des débordements d’orages violents, du gel ni du traitement pour eau potable.",
+      "question": "À quoi correspond la perte de premier lavage ?",
+      "answer": "Le déviateur de premier jus élimine les premières eaux chargées de poussières et débris, soit environ 5 % des précipitations."
     }
   },
   "flexOptions": {
@@ -666,6 +722,232 @@
         "totalMaterialCost": "Coût total du matériau"
       },
       "note": "Coupes, motifs, disposition et dégâts modifient les pertes. Arrondissez si nécessaire aux paquets, plaques ou palettes. Gardez la même unité de quantité.",
+      "textResults": {}
+    },
+    "soffit-fascia-calculator": {
+      "fields": {
+        "eaveLength": {
+          "label": "Longueur totale de l’avant-toit (pieds)"
+        },
+        "soffitDepth": {
+          "label": "Profondeur de la sous-face (pieds)"
+        },
+        "fasciaBoardLength": {
+          "label": "Longueur des planches de rive (pieds)"
+        },
+        "soffitPanelCoverage": {
+          "label": "Couverture par panneau de sous-face (pi²/panneau)"
+        },
+        "wastePercent": {
+          "label": "Marge de perte (%)"
+        }
+      },
+      "results": {
+        "soffitArea": "Surface nette de sous-face (pi²)",
+        "soffitAreaWithWaste": "Surface de sous-face avec perte (pi²)",
+        "soffitPieces": "Panneaux de sous-face estimés",
+        "fasciaLengthWithWaste": "Longueur de rive avec marge (pieds)",
+        "fasciaBoards": "Planches de rive estimées"
+      },
+      "note": "La géométrie de toiture, les pignons et les retours d’arêtier peuvent nécessiter des mesures indépendantes. Vérifiez les cotes fabricant avant commande.",
+      "textResults": {}
+    },
+    "attic-insulation-payback-calculator": {
+      "fields": {
+        "atticArea": {
+          "label": "Surface des combles (pi²)"
+        },
+        "installedCostPerArea": {
+          "label": "Coût posé par pi² ($)"
+        },
+        "annualHeatingCoolingCost": {
+          "label": "Facture annuelle de chauffage/climatisation ($)"
+        },
+        "estimatedSavingsPercent": {
+          "label": "Économie d’énergie estimée (%)"
+        },
+        "rebates": {
+          "label": "Aides ou subventions ($)"
+        }
+      },
+      "results": {
+        "grossProjectCost": "Coût brut des travaux",
+        "netProjectCost": "Coût net des travaux",
+        "annualSavings": "Économie annuelle estimée",
+        "monthlySavings": "Économie mensuelle estimée",
+        "paybackYears": "Délai de retour sur investissement (années)"
+      },
+      "note": "Estimation d’amortissement simple sans simulation thermique complète. Les gains réels dépendent du climat, de l’isolation existante et des habitudes d’usage.",
+      "textResults": {}
+    },
+    "joist-deflection-calculator": {
+      "fields": {
+        "span": {
+          "label": "Portée libre (pieds)"
+        },
+        "uniformLoad": {
+          "label": "Charge uniforme (psf)",
+          "help": "Charge totale permanente + d’exploitation (ex. 10 psf morte + 30 psf vive = 40 psf)."
+        },
+        "spacing": {
+          "label": "Entraxe des solives (pouces d’axe en axe)"
+        },
+        "elasticModulus": {
+          "label": "Module d’élasticité E (psi)",
+          "help": "Bois de charpente standard : 1 300 000 à 1 800 000 psi."
+        },
+        "width": {
+          "label": "Largeur réelle b (pouces)",
+          "help": "Cote réelle (ex. 1,5 po pour du bois nominal 2x)."
+        },
+        "depth": {
+          "label": "Hauteur réelle d (pouces)",
+          "help": "Cote réelle (ex. 7,25 po pour 2x8, 9,25 po pour 2x10, 11,25 po pour 2x12)."
+        }
+      },
+      "results": {
+        "lineLoad": "Charge linéaire affluente (lb/pi)",
+        "momentOfInertia": "Moment d’inertie I (po⁴)",
+        "deflection": "Flèche estimée à mi-portée (pouces)",
+        "l360Limit": "Limite admissible L/360 (pouces)",
+        "ratio": "Rapport portée / flèche"
+      },
+      "note": "Calcul d’ingénierie simplifié pour pièces rectangulaires sur appuis simples. Ne vérifie pas le cisaillement, les vibrations, les perçages ni les exigences normatives locales.",
+      "textResults": {
+        "ratio": "localized"
+      }
+    },
+    "hvac-duct-cfm-calculator": {
+      "fields": {
+        "ductShape": {
+          "label": "Forme du conduit",
+          "options": {
+            "round": "Conduit circulaire",
+            "rectangular": "Conduit rectangulaire"
+          }
+        },
+        "diameter": {
+          "label": "Diamètre du conduit circulaire (pouces)"
+        },
+        "width": {
+          "label": "Largeur du conduit rectangulaire (pouces)"
+        },
+        "height": {
+          "label": "Hauteur du conduit rectangulaire (pouces)"
+        },
+        "velocity": {
+          "label": "Vitesse de l’air (FPM)",
+          "help": "Gaines secondaires : 600 à 800 FPM ; troncs principaux : 800 à 1 000 FPM."
+        }
+      },
+      "results": {
+        "ductArea": "Section du conduit (pi²)",
+        "cfm": "Débit d’air estimé (CFM)"
+      },
+      "note": "Calcul de débit théorique à partir de la section et de la vitesse (Q = A × V). Ne dimensionne pas la pression statique ni les pertes de charge des raccords.",
+      "textResults": {}
+    },
+    "mortar-calculator": {
+      "fields": {
+        "unitCount": {
+          "label": "Nombre d’éléments de maçonnerie (briques ou blocs)"
+        },
+        "masonryType": {
+          "label": "Type d’élément de maçonnerie",
+          "options": {
+            "brick": "Briques d’argile modulaires standard",
+            "block": "Blocs béton CMU 8x8x16 nominaux"
+          }
+        },
+        "jointThicknessInches": {
+          "label": "Épaisseur du joint de mortier (pouces)",
+          "help": "Joint standard de construction : 3/8 po (0,375 po)"
+        },
+        "wastePercent": {
+          "label": "Marge de perte (%)"
+        },
+        "bagWeightLb": {
+          "label": "Taille du sac de mortier préparé (lb)"
+        }
+      },
+      "results": {
+        "baseVolumeFt3": "Volume net de mortier (pi³)",
+        "adjustedVolumeFt3": "Volume de mortier avec marge (pi³)",
+        "cubicYards": "Volume (verges cubes)",
+        "cubicMeters": "Volume (mètres cubes)",
+        "premixBags": "Sacs de mortier prêt à l’emploi (sacs entiers)",
+        "cementBags94lb": "Sacs de ciment Portland (mélange type N sur site)",
+        "sandTons": "Sable de maçonnerie requis (tonnes)"
+      },
+      "note": "Rendements de mortier basés sur les standards (5,0 pi³ pour 1 000 briques ; 13,5 pi³ pour 100 blocs 8x8x16 à 3/8 po de joint). Le mélange sur chantier type N s’appuie sur 1 sac de ciment pour 3 pi³ de sable.",
+      "textResults": {}
+    },
+    "concrete-block-calculator": {
+      "fields": {
+        "wallLengthFt": {
+          "label": "Longueur du mur (pieds)"
+        },
+        "wallHeightFt": {
+          "label": "Hauteur du mur (pieds)"
+        },
+        "openingsAreaFt2": {
+          "label": "Ouvertures portes et fenêtres (pi²)"
+        },
+        "coreFillOption": {
+          "label": "Schéma de coulis des alvéoles",
+          "options": {
+            "cores-32in": "Tous les 32 pouces d’axe en axe (1 alvéole sur 2 blocs)",
+            "cores-16in": "Tous les 16 pouces d’axe en axe (1 alvéole par bloc)",
+            "solid": "Coulis plein à 100 % (toutes les alvéoles remplies)",
+            "none": "Creux (aucun coulis d’alvéole)"
+          }
+        },
+        "wastePercent": {
+          "label": "Marge de perte (%)"
+        }
+      },
+      "results": {
+        "netWallAreaFt2": "Surface nette de mur (pi²)",
+        "exactBlocks": "Blocs CMU exacts requis",
+        "purchaseBlocks": "Blocs CMU entiers à commander",
+        "mortarBags80lb": "Sacs de mortier estimés (80 lb)",
+        "coreFillGroutYards": "Coulis de remplissage (verges cubes)"
+      },
+      "note": "Les blocs CMU nominaux 8x8x16 couvrent 0,8889 pi² chacun (1,125 bloc/pi²). Mortier et coulis sont calculés pour blocs creux standards à 2 alvéoles.",
+      "textResults": {}
+    },
+    "rainwater-harvesting-calculator": {
+      "fields": {
+        "catchmentAreaFt2": {
+          "label": "Emprise au sol de toiture (pi²)"
+        },
+        "annualRainfallInches": {
+          "label": "Pluviométrie annuelle (pouces)"
+        },
+        "roofMaterial": {
+          "label": "Revêtement de toiture",
+          "options": {
+            "metal": "Métal / bac acier (rendement 0,95)",
+            "tile": "Tuiles béton ou terre cuite (rendement 0,85)",
+            "membrane": "Membrane plate / EPDM (rendement 0,85)",
+            "shingle": "Bardeaux d’asphalte (rendement 0,80)"
+          }
+        },
+        "filtrationLossPercent": {
+          "label": "Pertes de filtration et premier lavage (%)"
+        },
+        "storageDays": {
+          "label": "Réserve en période de sécheresse (jours)"
+        }
+      },
+      "results": {
+        "annualYieldGallons": "Volume annuel récupérable (gallons US)",
+        "annualYieldLiters": "Volume annuel récupérable (litres)",
+        "monthlyAverageGallons": "Moyenne mensuelle (gallons)",
+        "recommendedTankGallons": "Capacité de cuve recommandée (gallons)",
+        "recommendedTankLiters": "Capacité de cuve recommandée (litres)"
+      },
+      "note": "Calcul basé sur la constante hydrologique standard (1 po de pluie sur 1 pi² = 0,6233 gallon US) affectée du coefficient de ruissellement et du déviateur.",
       "textResults": {}
     }
   },

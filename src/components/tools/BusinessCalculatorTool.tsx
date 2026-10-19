@@ -15,9 +15,9 @@ function display(value: unknown, format: Format) {
   if (format === 'text') return String(value);
   if (typeof value !== 'number' || !Number.isFinite(value)) return 'Not applicable';
   if (format === 'currency') return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(value);
-  if (format === 'percent') return `${value.toLocaleString(undefined, { maximumFractionDigits: 3 })}%`;
-  if (format === 'months') return `${value.toLocaleString(undefined, { maximumFractionDigits: 2 })} months`;
-  return value.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  if (format === 'percent') return `${value.toLocaleString('en-US', { maximumFractionDigits: 3 })}%`;
+  if (format === 'months') return `${value.toLocaleString('en-US', { maximumFractionDigits: 2 })} months`;
+  return value.toLocaleString('en-US', { maximumFractionDigits: 2 });
 }
 
 export default function BusinessCalculatorTool({ slug }: { slug: string }) {

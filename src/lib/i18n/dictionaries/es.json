@@ -259,6 +259,62 @@
       "limits": "Cortes, patrones, distribución y daños cambian el desperdicio. Puede hacer falta redondear a paquetes, placas o palés enteros. Mantén la misma unidad.",
       "question": "¿Los costos se convierten a moneda local?",
       "answer": "No. Precios y resultados permanecen en USD."
+    },
+    "soffit-fascia-calculator": {
+      "title": "Calculadora de sofito y fascia de alero",
+      "description": "Calcula el área de sofito, longitud de fascia, número de paneles, tablas y margen de merma para aleros de tejados.",
+      "how": "Introduce la longitud total del alero, fondo del sofito, longitud de tablas, cobertura del panel y porcentaje de merma.",
+      "limits": "Estimación geométrica para aleros lineales. Esquinas a cuatro aguas, hastiales y encuentros requieren mediciones directas.",
+      "question": "¿Se incluyen los solapes de los paneles?",
+      "answer": "Introduce la cobertura neta por panel indicada por el fabricante y suma el porcentaje de merma para los cortes."
+    },
+    "attic-insulation-payback-calculator": {
+      "title": "Calculadora de amortización de aislamiento de ático",
+      "description": "Estima el coste del aislamiento del ático o bajo cubierta, el ahorro energético anual y el plazo de recuperación de la inversión.",
+      "how": "Introduce el área del ático, coste por pie cuadrado instalado, gasto anual de climatización, ahorro estimado y subvenciones.",
+      "limits": "Estimación de amortización lineal. El ahorro real depende del clima, estanqueidad de la vivienda y rendimiento de la calefacción.",
+      "question": "¿Se incluyen las ayudas y deducciones fiscales?",
+      "answer": "Añade las subvenciones y deducciones en el campo de incentivos para calcular la inversión neta del proyecto."
+    },
+    "joist-deflection-calculator": {
+      "title": "Calculadora de flexión de viguetas",
+      "description": "Estima la flecha y deformación de una vigueta de forjado bajo una carga uniformemente repartida.",
+      "how": "Introduce la luz libre, carga uniforme, intereje o separación, módulo de elasticidad de la madera, anchura y canto.",
+      "limits": "Viga biapoyada ideal. No contempla deformación por cortante, vibraciones ni cargas puntuales concentradas.",
+      "question": "¿Qué significa el límite de flecha L/360?",
+      "answer": "L/360 es el límite normativo estándar para evitar fisuras en techos de yeso y una excesiva elasticidad al caminar sobre el suelo."
+    },
+    "hvac-duct-cfm-calculator": {
+      "title": "Calculadora de caudal de conductos HVAC (CFM)",
+      "description": "Estima el caudal de aire en conductos circulares o rectangulares a partir de la sección y la velocidad del aire.",
+      "how": "Elige la forma del conducto, introduce las medidas en pulgadas y la velocidad del aire en pies por minuto (FPM).",
+      "limits": "Estimación teórica de caudal (Q = A × V). No evalúa pérdidas de carga por fricción, accesorios ni presión estática.",
+      "question": "¿Qué velocidad de aire es habitual en climatización residencial?",
+      "answer": "Los ramales secundarios suelen proyectarse a 600–800 FPM y los conductos principales a 800–1.000 FPM."
+    },
+    "mortar-calculator": {
+      "title": "Calculadora de mortero para ladrillo y bloque",
+      "description": "Calcula el volumen de mortero, sacos preparados, cemento Portland y arena para muros de fábrica.",
+      "how": "Indica el número de piezas, elige ladrillo o bloque de hormigón, el grosor de junta, la merma y el peso del saco comercial.",
+      "limits": "Rendimiento estándar de tendeles y llagas. No contempla el relleno estructural de huecos ni juntas enrase profundo.",
+      "question": "¿Cuál es el grosor estándar de las juntas de mortero?",
+      "answer": "En construcción tradicional se adopta una junta estándar de 3/8 de pulgada (unos 10 mm)."
+    },
+    "concrete-block-calculator": {
+      "title": "Calculadora de bloques de hormigón",
+      "description": "Estima bloques de hormigón CMU, mortero, lechada de relleno estructural y margen de merma para muros.",
+      "how": "Introduce longitud y altura del muro, superficie de huecos en pies², pauta de relleno de celdas y porcentaje de merma.",
+      "limits": "Bloques nominales 8x8x16 (0,8889 pies² de cara). Excluye armaduras de acero, zunchos y cálculo estructural.",
+      "question": "¿Qué opciones de relleno de celdas se contemplan?",
+      "answer": "Permite calcular el hormigón de relleno para celdas cada 32 pulgadas, cada 16 pulgadas, macizado total o bloques huecos."
+    },
+    "rainwater-harvesting-calculator": {
+      "title": "Calculadora de recogida de agua de lluvia",
+      "description": "Calcula el volumen de agua de lluvia recolectable según superficie de tejado, pluviometría y material, y dimensiona el depósito.",
+      "how": "Introduce la proyección del tejado, la precipitación anual en pulgadas, el material de cubierta, el desvío de lavado y los días de reserva.",
+      "limits": "Cálculo hidrológico teórico. No modela desbordamientos por tormentas torrenciales ni exigencias de potabilización.",
+      "question": "¿Qué es la pérdida por desvío de primeras aguas?",
+      "answer": "El separador de primeras lluvias desvía el arrastre inicial de polvo y sedimentos, equivalente normalmente a un 5% del volumen recogido."
     }
   },
   "flexOptions": {
@@ -666,6 +722,232 @@
         "totalMaterialCost": "Costo total de material"
       },
       "note": "Cortes, patrones, distribución y daños cambian el desperdicio. Puede hacer falta redondear a paquetes, placas o palés enteros. Mantén la misma unidad.",
+      "textResults": {}
+    },
+    "soffit-fascia-calculator": {
+      "fields": {
+        "eaveLength": {
+          "label": "Longitud total del alero (pies)"
+        },
+        "soffitDepth": {
+          "label": "Fondo del sofito (pies)"
+        },
+        "fasciaBoardLength": {
+          "label": "Longitud de tabla de fascia (pies)"
+        },
+        "soffitPanelCoverage": {
+          "label": "Cobertura por panel de sofito (pies²/pieza)"
+        },
+        "wastePercent": {
+          "label": "Margen de merma (%)"
+        }
+      },
+      "results": {
+        "soffitArea": "Área neta de sofito (pies²)",
+        "soffitAreaWithWaste": "Área de sofito con merma (pies²)",
+        "soffitPieces": "Paneles de sofito estimados",
+        "fasciaLengthWithWaste": "Longitud de fascia con merma (pies)",
+        "fasciaBoards": "Tablas de fascia estimadas"
+      },
+      "note": "La geometría del tejado, frontones y retornos de cumbrera pueden requerir mediciones complementarias. Verifica las especificaciones antes de comprar.",
+      "textResults": {}
+    },
+    "attic-insulation-payback-calculator": {
+      "fields": {
+        "atticArea": {
+          "label": "Área del ático (pies²)"
+        },
+        "installedCostPerArea": {
+          "label": "Coste instalado por pie² ($)"
+        },
+        "annualHeatingCoolingCost": {
+          "label": "Gasto anual en calefacción y refrigeración ($)"
+        },
+        "estimatedSavingsPercent": {
+          "label": "Ahorro energético estimado (%)"
+        },
+        "rebates": {
+          "label": "Subvenciones o incentivos ($)"
+        }
+      },
+      "results": {
+        "grossProjectCost": "Coste bruto del proyecto",
+        "netProjectCost": "Coste neto del proyecto",
+        "annualSavings": "Ahorro anual estimado",
+        "monthlySavings": "Ahorro mensual estimado",
+        "paybackYears": "Plazo de amortización simple (años)"
+      },
+      "note": "Estimación de amortización lineal y no una auditoría energética completa. El ahorro real depende del clima, aislamiento previo y hábitos de climatización.",
+      "textResults": {}
+    },
+    "joist-deflection-calculator": {
+      "fields": {
+        "span": {
+          "label": "Luz libre (pies)"
+        },
+        "uniformLoad": {
+          "label": "Carga uniforme (psf)",
+          "help": "Carga total muerta + viva (ej. 10 psf muerta + 30 psf viva = 40 psf)."
+        },
+        "spacing": {
+          "label": "Separación entre viguetas (pulgadas entre ejes)"
+        },
+        "elasticModulus": {
+          "label": "Módulo de elasticidad E (psi)",
+          "help": "Madera estructural típica: de 1.300.000 a 1.800.000 psi."
+        },
+        "width": {
+          "label": "Anchura real b (pulgadas)",
+          "help": "Medida real (ej. 1,5 pulg. para madera nominal 2x)."
+        },
+        "depth": {
+          "label": "Canto real d (pulgadas)",
+          "help": "Medida real (ej. 7,25 pulg. para 2x8, 9,25 pulg. para 2x10, 11,25 pulg. para 2x12)."
+        }
+      },
+      "results": {
+        "lineLoad": "Carga lineal tributaria (lb/pie)",
+        "momentOfInertia": "Momento de inercia I (pulg.⁴)",
+        "deflection": "Flecha estimada en el centro (pulgadas)",
+        "l360Limit": "Límite de flecha admisible L/360 (pulgadas)",
+        "ratio": "Relación luz / flecha"
+      },
+      "note": "Estimación técnica simplificada para vigas rectangulares biapoyadas. No analiza cortante, vibraciones ni sustituye el proyecto de un técnico competente.",
+      "textResults": {
+        "ratio": "localized"
+      }
+    },
+    "hvac-duct-cfm-calculator": {
+      "fields": {
+        "ductShape": {
+          "label": "Forma del conducto",
+          "options": {
+            "round": "Conducto circular",
+            "rectangular": "Conducto rectangular"
+          }
+        },
+        "diameter": {
+          "label": "Diámetro del conducto circular (pulgadas)"
+        },
+        "width": {
+          "label": "Anchura del conducto rectangular (pulgadas)"
+        },
+        "height": {
+          "label": "Altura del conducto rectangular (pulgadas)"
+        },
+        "velocity": {
+          "label": "Velocidad del aire (FPM)",
+          "help": "Ramales secundarios: 600–800 FPM; conductos principales: 800–1.000 FPM."
+        }
+      },
+      "results": {
+        "ductArea": "Área de sección del conducto (pies²)",
+        "cfm": "Caudal de aire estimado (CFM)"
+      },
+      "note": "Cálculo de caudal teórico a partir de sección y velocidad (Q = A × V). No dimensiona según pérdida de presión estática, rozamiento o accesorios.",
+      "textResults": {}
+    },
+    "mortar-calculator": {
+      "fields": {
+        "unitCount": {
+          "label": "Número de piezas (ladrillos o bloques)"
+        },
+        "masonryType": {
+          "label": "Tipo de pieza de albañilería",
+          "options": {
+            "brick": "Ladrillos cerámicos modulares estándar",
+            "block": "Bloques de hormigón CMU 8x8x16 nominales"
+          }
+        },
+        "jointThicknessInches": {
+          "label": "Grosor de junta de mortero (pulgadas)",
+          "help": "Junta de construcción habitual: 3/8 pulg. (0,375 pulg.)"
+        },
+        "wastePercent": {
+          "label": "Margen de merma (%)"
+        },
+        "bagWeightLb": {
+          "label": "Peso del saco de mortero preparado (lb)"
+        }
+      },
+      "results": {
+        "baseVolumeFt3": "Volumen neto de mortero (pies³)",
+        "adjustedVolumeFt3": "Volumen de mortero con merma (pies³)",
+        "cubicYards": "Volumen (yardas cúbicas)",
+        "cubicMeters": "Volumen (metros cúbicos)",
+        "premixBags": "Sacos de mortero seco preparado (sacos enteros)",
+        "cementBags94lb": "Sacos de cemento Portland (mezcla in situ Tipo N)",
+        "sandTons": "Arena de albañilería necesaria (toneladas)"
+      },
+      "note": "Consumos medios estándar (5,0 pies³ cada 1.000 ladrillos; 13,5 pies³ cada 100 bloques 8x8x16 con junta de 3/8\"). La mezcla tipo N en obra asume 1 saco de cemento por cada 3 pies³ de arena.",
+      "textResults": {}
+    },
+    "concrete-block-calculator": {
+      "fields": {
+        "wallLengthFt": {
+          "label": "Longitud del muro (pies)"
+        },
+        "wallHeightFt": {
+          "label": "Altura del muro (pies)"
+        },
+        "openingsAreaFt2": {
+          "label": "Huecos de puertas y ventanas (pies²)"
+        },
+        "coreFillOption": {
+          "label": "Pauta de relleno de celdas",
+          "options": {
+            "cores-32in": "Cada 32 pulgadas entre ejes (1 celda / 2 bloques)",
+            "cores-16in": "Cada 16 pulgadas entre ejes (1 celda / bloque)",
+            "solid": "Relleno 100% macizo (todas las celdas llenas)",
+            "none": "Hueco (sin lechada en celdas)"
+          }
+        },
+        "wastePercent": {
+          "label": "Margen de merma (%)"
+        }
+      },
+      "results": {
+        "netWallAreaFt2": "Superficie neta de muro (pies²)",
+        "exactBlocks": "Bloques de hormigón exactos necesarios",
+        "purchaseBlocks": "Bloques de hormigón enteros a pedir",
+        "mortarBags80lb": "Sacos de mortero estimados (80 lb)",
+        "coreFillGroutYards": "Masa de relleno de celdas (yardas cúbicas)"
+      },
+      "note": "Los bloques nominales 8x8x16 cubren 0,8889 pies² cada uno (1,125 bloques por pie²). El cálculo asume bloques huecos bicelulares estándar.",
+      "textResults": {}
+    },
+    "rainwater-harvesting-calculator": {
+      "fields": {
+        "catchmentAreaFt2": {
+          "label": "Huella de captación de cubierta (pies²)"
+        },
+        "annualRainfallInches": {
+          "label": "Precipitación media anual (pulgadas)"
+        },
+        "roofMaterial": {
+          "label": "Material del faldón de cubierta",
+          "options": {
+            "metal": "Chapa metálica / panel sándwich (rendimiento 0,95)",
+            "tile": "Teja de hormigón o cerámica (rendimiento 0,85)",
+            "membrane": "Membrana impermeable plana / EPDM (rendimiento 0,85)",
+            "shingle": "Tégola asfáltica / shingle (rendimiento 0,80)"
+          }
+        },
+        "filtrationLossPercent": {
+          "label": "Pérdidas de filtrado y lavado (%)"
+        },
+        "storageDays": {
+          "label": "Días de reserva para estiaje (días)"
+        }
+      },
+      "results": {
+        "annualYieldGallons": "Captación anual (galones EE. UU.)",
+        "annualYieldLiters": "Captación anual (litros)",
+        "monthlyAverageGallons": "Promedio mensual (galones)",
+        "recommendedTankGallons": "Capacidad recomendada del depósito (galones)",
+        "recommendedTankLiters": "Capacidad recomendada del depósito (litros)"
+      },
+      "note": "La producción teórica usa la constante hidrológica estándar (1 pulgada sobre 1 pie² = 0,6233 galones EE. UU.) multiplicada por la escorrentía.",
       "textResults": {}
     }
   },

@@ -259,6 +259,62 @@
       "limits": "Tagli, motivi, disposizione e danni modificano lo sfrido. Potrebbe servire arrotondare a pacchi, lastre o bancali interi. Mantieni la stessa unità.",
       "question": "I costi vengono convertiti in valuta locale?",
       "answer": "No. Prezzi e risultati restano in USD."
+    },
+    "soffit-fascia-calculator": {
+      "title": "Calcolatore per sottotetto e fasce di gronda",
+      "description": "Calcola la superficie del sottogronda, la lunghezza delle fasce, il numero di pannelli e lo sfrido per i cornicioni.",
+      "how": "Inserisci la lunghezza totale del cornicione, la profondità del sottogronda, la misura delle tavole, la resa dei pannelli e la percentuale di sfrido.",
+      "limits": "Stima geometrica per cornicioni lineari. Timpani, ritorni d’anca e gronde complesse richiedono rilievi separati sul posto.",
+      "question": "Le sovrapposizioni dei pannelli sono incluse?",
+      "answer": "Inserisci la copertura netta per singolo pannello e aggiungi la percentuale di sfrido per tagli e rifilature."
+    },
+    "attic-insulation-payback-calculator": {
+      "title": "Calcolatore ammortamento isolamento sottotetto",
+      "description": "Stima il costo dell’isolamento del sottotetto, il risparmio energetico annuale e il periodo di rientro dell’investimento.",
+      "how": "Inserisci la superficie del sottotetto, il costo posato al piede quadro, la spesa energetica annua, il risparmio stimato e le detrazioni.",
+      "limits": "Stima di ammortamento semplice. Il risparmio effettivo dipende dalla zona climatica, dall’efficienza degli impianti e dalla tenuta all’aria.",
+      "question": "Gli incentivi fiscali sono conteggiati?",
+      "answer": "Inserisci eventuali bonus ed ecobonus nel campo incentivi per calcolare il costo netto effettivo dell’intervento."
+    },
+    "joist-deflection-calculator": {
+      "title": "Calcolatore freccia di flessione travetto",
+      "description": "Stima la deformazione e la freccia di un travetto in legno sotto un carico uniformemente distribuito.",
+      "how": "Inserisci la luce netta, il carico superficiale, l’interasse, il modulo elastico del legname, larghezza e altezza del travetto.",
+      "limits": "Modello su appoggi semplici. Esclude deformazione da taglio, vibrazioni del solaio e carichi concentrati.",
+      "question": "Cosa rappresenta il limite di flessione L/360?",
+      "answer": "L/360 è il limite normativo consueto per la flessione dei solai residenziali per prevenire crepe nell’intonaco ed eccessivo molleggio."
+    },
+    "hvac-duct-cfm-calculator": {
+      "title": "Calcolatore portata canali aria HVAC (CFM)",
+      "description": "Stima la portata volumetrica dell’aria in condotti circolari o rettangolari in base alla sezione e alla velocità dell’aria.",
+      "how": "Scegli la forma del canale, inserisci le dimensioni in pollici e specifica la velocità dell’aria in piedi al minuto (FPM).",
+      "limits": "Calcolo teorico della portata (Q = A × V). Non calcola perdite di carico, attriti nei raccordi o curve dei ventilatori.",
+      "question": "Qual è la velocità dell’aria tipica negli impianti residenziali?",
+      "answer": "I rami secondari operano solitamente a 600–800 FPM, mentre i canali principali di mandata lavorano tra 800 e 1.000 FPM."
+    },
+    "mortar-calculator": {
+      "title": "Calcolatore malta per mattoni e blocchi",
+      "description": "Calcola il volume di malta, i sacchi premiscelati, il cemento Portland e la sabbia per murature in mattoni e blocchi.",
+      "how": "Inserisci il numero di elementi, seleziona mattoni o blocchi, lo spessore del giunto, lo sfrido e il formato dei sacchi.",
+      "limits": "Stima sui letti di posa standard. Non comprende il riempimento dei fori dei blocchi o giunti stilati molto profondi.",
+      "question": "Qual è lo spessore consueto dei giunti di malta?",
+      "answer": "Nella muratura standard si utilizza un giunto di posa di 3/8 di pollice (circa 10 mm)."
+    },
+    "concrete-block-calculator": {
+      "title": "Calcolatore blocchi di calcestruzzo (CMU)",
+      "description": "Stima blocchi in calcestruzzo, malta, boiacca di riempimento e sfrido per muri di sostegno e fondazioni.",
+      "how": "Inserisci lunghezza e altezza della parete, superficie delle aperture in piedi², schema di riempimento e sfrido.",
+      "limits": "Blocchi nominali 8x8x16 (0,8889 piedi² a vista). Esclude armature in acciaio, cordoli e verifiche strutturali.",
+      "question": "Quali modalità di riempimento dei fori sono previste?",
+      "answer": "Puoi calcolare la boiacca per fori riempiti ogni 32 pollici, ogni 16 pollici, pareti a riempimento totale o blocchi cavi."
+    },
+    "rainwater-harvesting-calculator": {
+      "title": "Calcolatore recupero acqua piovana",
+      "description": "Calcola il volume di acqua piovana recuperabile da tetto, precipitazioni annue e materiale di copertura, dimensionando il serbatoio.",
+      "how": "Inserisci la proiezione del tetto, la piovosità annua in pollici, il materiale del manto, la perdita del filtro iniziale e i giorni di riserva.",
+      "limits": "Stima idrologica standard. Esclude sovraccarichi da nubifragio, gelate e normative igienico-sanitarie per uso potabile.",
+      "question": "Cosa si intende per perdita di primo lavaggio?",
+      "answer": "Il deviatore di prime piogge scarta l’acqua iniziale contenente polvere e residui, mediamente stimata al 5% del totale captato."
     }
   },
   "flexOptions": {
@@ -666,6 +722,232 @@
         "totalMaterialCost": "Costo totale materiale"
       },
       "note": "Tagli, motivi, disposizione e danni modificano lo sfrido. Potrebbe servire arrotondare a pacchi, lastre o bancali interi. Mantieni la stessa unità.",
+      "textResults": {}
+    },
+    "soffit-fascia-calculator": {
+      "fields": {
+        "eaveLength": {
+          "label": "Lunghezza totale del cornicione (piedi)"
+        },
+        "soffitDepth": {
+          "label": "Profondità del sottogronda (piedi)"
+        },
+        "fasciaBoardLength": {
+          "label": "Lunghezza tavola della fascia (piedi)"
+        },
+        "soffitPanelCoverage": {
+          "label": "Copertura pannello sottogronda (piedi²/pezzo)"
+        },
+        "wastePercent": {
+          "label": "Percentuale di sfrido (%)"
+        }
+      },
+      "results": {
+        "soffitArea": "Area netta sottogronda (piedi²)",
+        "soffitAreaWithWaste": "Area sottogronda con sfrido (piedi²)",
+        "soffitPieces": "Pannelli sottogronda stimati",
+        "fasciaLengthWithWaste": "Lunghezza fascia con sfrido (piedi)",
+        "fasciaBoards": "Tavole di fascia stimate"
+      },
+      "note": "Geometria del tetto, timpani e angoli di gronda possono richiedere rilievi dedicati. Verifica le schede del produttore prima dell’ordine.",
+      "textResults": {}
+    },
+    "attic-insulation-payback-calculator": {
+      "fields": {
+        "atticArea": {
+          "label": "Superficie sottotetto (piedi²)"
+        },
+        "installedCostPerArea": {
+          "label": "Costo installato al piede² ($)"
+        },
+        "annualHeatingCoolingCost": {
+          "label": "Spesa annua riscaldamento e raffrescamento ($)"
+        },
+        "estimatedSavingsPercent": {
+          "label": "Risparmio energetico stimato (%)"
+        },
+        "rebates": {
+          "label": "Incentivi o detrazioni ($)"
+        }
+      },
+      "results": {
+        "grossProjectCost": "Costo lordo dell’intervento",
+        "netProjectCost": "Costo netto dell’intervento",
+        "annualSavings": "Risparmio annuo stimato",
+        "monthlySavings": "Risparmio mensile stimato",
+        "paybackYears": "Periodo di rientro semplice (anni)"
+      },
+      "note": "Stima di ammortamento semplice, non una simulazione energetica dell’edificio. I risparmi effettivi variano con la zona climatica e le abitudini d’uso.",
+      "textResults": {}
+    },
+    "joist-deflection-calculator": {
+      "fields": {
+        "span": {
+          "label": "Luce netta (piedi)"
+        },
+        "uniformLoad": {
+          "label": "Carico uniforme (psf)",
+          "help": "Carico totale permanente + accidentale (es. 10 psf fisso + 30 psf utile = 40 psf)."
+        },
+        "spacing": {
+          "label": "Interasse travetti (pollici)"
+        },
+        "elasticModulus": {
+          "label": "Modulo elastico E (psi)",
+          "help": "Legname strutturale tipico: da 1.300.000 a 1.800.000 psi."
+        },
+        "width": {
+          "label": "Larghezza reale b (pollici)",
+          "help": "Dimensione effettiva (es. 1,5 pollici per listello 2x nominale)."
+        },
+        "depth": {
+          "label": "Altezza reale d (pollici)",
+          "help": "Dimensione effettiva (es. 7,25 per 2x8, 9,25 per 2x10, 11,25 per 2x12)."
+        }
+      },
+      "results": {
+        "lineLoad": "Carico lineare tributario (lb/piede)",
+        "momentOfInertia": "Momento d’inerzia I (pollici⁴)",
+        "deflection": "Freccia stimata a mezzeria (pollici)",
+        "l360Limit": "Limite di freccia L/360 (pollici)",
+        "ratio": "Rapporto luce / freccia"
+      },
+      "note": "Stima ingegneristica semplificata per elementi rettangolari in semplice appoggio. Non sostituisce il calcolo esecutivo a carico di un professionista abilitato.",
+      "textResults": {
+        "ratio": "localized"
+      }
+    },
+    "hvac-duct-cfm-calculator": {
+      "fields": {
+        "ductShape": {
+          "label": "Forma del canale",
+          "options": {
+            "round": "Canale circolare",
+            "rectangular": "Canale rettangolare"
+          }
+        },
+        "diameter": {
+          "label": "Diametro canale circolare (pollici)"
+        },
+        "width": {
+          "label": "Larghezza canale rettangolare (pollici)"
+        },
+        "height": {
+          "label": "Altezza canale rettangolare (pollici)"
+        },
+        "velocity": {
+          "label": "Velocità dell’aria (FPM)",
+          "help": "Canali secondari: 600–800 FPM; rami principali: 800–1.000 FPM."
+        }
+      },
+      "results": {
+        "ductArea": "Area della sezione del canale (piedi²)",
+        "cfm": "Portata d’aria stimata (CFM)"
+      },
+      "note": "Calcola la portata teorica dal prodotto di sezione e velocità (Q = A × V). Non dimensiona i canali in base a caduta di pressione o perdite nei raccordi.",
+      "textResults": {}
+    },
+    "mortar-calculator": {
+      "fields": {
+        "unitCount": {
+          "label": "Numero di elementi (mattoni o blocchi)"
+        },
+        "masonryType": {
+          "label": "Tipologia elemento murario",
+          "options": {
+            "brick": "Mattoni pieni modulari standard",
+            "block": "Blocchi in calcestruzzo 8x8x16 nominali"
+          }
+        },
+        "jointThicknessInches": {
+          "label": "Spessore del giunto di malta (pollici)",
+          "help": "Giunto edilizio standard: 3/8 di pollice (0,375 pollici)"
+        },
+        "wastePercent": {
+          "label": "Percentuale di sfrido (%)"
+        },
+        "bagWeightLb": {
+          "label": "Peso del sacco di malta premiscelata (lb)"
+        }
+      },
+      "results": {
+        "baseVolumeFt3": "Volume netto di malta (piedi³)",
+        "adjustedVolumeFt3": "Volume di malta con sfrido (piedi³)",
+        "cubicYards": "Volume (iarde cube)",
+        "cubicMeters": "Volume (metri cubi)",
+        "premixBags": "Sacchi di malta premiscelata (sacchi interi)",
+        "cementBags94lb": "Sacchi cemento Portland (miscela tipo N)",
+        "sandTons": "Sabbia per muratura necessaria (tonnellate)"
+      },
+      "note": "Stima del volume di malta secondo i consumi standard (5,0 piedi³ per 1.000 mattoni; 13,5 piedi³ per 100 blocchi 8x8x16 con giunti da 3/8\"). La miscela in cantiere Tipo N assume 1 sacco di cemento per 3 piedi³ di sabbia.",
+      "textResults": {}
+    },
+    "concrete-block-calculator": {
+      "fields": {
+        "wallLengthFt": {
+          "label": "Lunghezza parete (piedi)"
+        },
+        "wallHeightFt": {
+          "label": "Altezza parete (piedi)"
+        },
+        "openingsAreaFt2": {
+          "label": "Aperture porte e finestre (piedi²)"
+        },
+        "coreFillOption": {
+          "label": "Programma di riempimento fori",
+          "options": {
+            "cores-32in": "Ogni 32 pollici di interasse (1 foro ogni 2 blocchi)",
+            "cores-16in": "Ogni 16 pollici di interasse (1 foro per blocco)",
+            "solid": "Riempimento pieno 100% (tutti i fori riempiti)",
+            "none": "Cavo (nessun riempimento dei fori)"
+          }
+        },
+        "wastePercent": {
+          "label": "Percentuale di sfrido (%)"
+        }
+      },
+      "results": {
+        "netWallAreaFt2": "Superficie netta parete (piedi²)",
+        "exactBlocks": "Blocchi CMU esatti necessari",
+        "purchaseBlocks": "Blocchi CMU interi da ordinare",
+        "mortarBags80lb": "Sacchi di malta stimati (80 lb)",
+        "coreFillGroutYards": "Boiacca di riempimento (iarde cube)"
+      },
+      "note": "I blocchi nominali 8x8x16 coprono 0,8889 piedi² ciascuno (1,125 blocchi per piede²). Malta e boiacca sono dimensionate per blocchi cavi standard a due celle.",
+      "textResults": {}
+    },
+    "rainwater-harvesting-calculator": {
+      "fields": {
+        "catchmentAreaFt2": {
+          "label": "Impronta tetto di captazione (piedi²)"
+        },
+        "annualRainfallInches": {
+          "label": "Precipitazioni annue (pollici)"
+        },
+        "roofMaterial": {
+          "label": "Superficie di raccolta del tetto",
+          "options": {
+            "metal": "Metallo / lamiera grecata (resa 0,95)",
+            "tile": "Tegole in cemento o laterizio (resa 0,85)",
+            "membrane": "Membrana piana / EPDM (resa 0,85)",
+            "shingle": "Tegole canadesi / bituminose (resa 0,80)"
+          }
+        },
+        "filtrationLossPercent": {
+          "label": "Perdita primo lavaggio e filtro (%)"
+        },
+        "storageDays": {
+          "label": "Giorni di riserva per siccità (giorni)"
+        }
+      },
+      "results": {
+        "annualYieldGallons": "Resa annua (galloni USA)",
+        "annualYieldLiters": "Resa annua (litri)",
+        "monthlyAverageGallons": "Media mensile (galloni)",
+        "recommendedTankGallons": "Capacità serbatoio consigliata (galloni)",
+        "recommendedTankLiters": "Capacità serbatoio consigliata (litri)"
+      },
+      "note": "La resa teorica applica la costante idrologica standard (1 pollice su 1 piede² = 0,6233 galloni USA) per il coefficiente di deflusso e deviazione iniziale.",
       "textResults": {}
     }
   },

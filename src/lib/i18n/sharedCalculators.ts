@@ -4,19 +4,33 @@ import type { LocalizedCalculatorSlug } from './calculatorRegistry';
 import type { Dictionary } from './dictionaries';
 import type { Locale } from './config';
 
-export const isIntegerCalculatorField = (key: string) => ['widthPixels', 'heightPixels', 'channels', 'bitsPerChannel', 'imagesPerView', 'pageViews', 'quantity', 'extraStuds'].includes(key);
+export const isIntegerCalculatorField = (key: string) => ['widthPixels', 'heightPixels', 'channels', 'bitsPerChannel', 'imagesPerView', 'pageViews', 'quantity', 'extraStuds', 'unitCount', 'storageDays'].includes(key);
 
 /** Reject missing, fractional count and out-of-range inputs before permissive engines can clamp them. */
 export function calculateLocalizedValues(slug: LocalizedCalculatorSlug, values: ValueMap) {
   const config = businessCalculatorConfigs[slug];
   for (const field of config.fields) {
     const value = values[field.key];
+    if (field.options) {
+      if (typeof value !== 'string' || !field.options.some((opt) => opt.value === value)) return null;
+      continue;
+    }
     if (typeof value !== 'number' || !Number.isFinite(value) || Math.abs(value) > 1e12 ||
       (field.min !== undefined && value < field.min) || (field.max !== undefined && value > field.max) ||
       (isIntegerCalculatorField(field.key) && !Number.isInteger(value))) return null;
   }
   if (slug === 'image-file-size-estimator' && (Number(values.widthPixels) <= 0 || Number(values.heightPixels) <= 0)) return null;
   if (slug === 'photo-storage-calculator' && Number(values.averagePhotoMb) <= 0) return null;
+  if (slug === 'joist-deflection-calculator' && (Number(values.span) <= 0 || Number(values.width) <= 0 || Number(values.depth) <= 0 || Number(values.elasticModulus) <= 0)) return null;
+  if (slug === 'hvac-duct-cfm-calculator') {
+    if (values.ductShape === 'round' && Number(values.diameter) <= 0) return null;
+    if (values.ductShape === 'rectangular' && (Number(values.width) <= 0 || Number(values.height) <= 0)) return null;
+    if (Number(values.velocity) < 0) return null;
+  }
+  if (slug === 'mortar-calculator' && (Number(values.unitCount) <= 0 || Number(values.jointThicknessInches) <= 0 || Number(values.bagWeightLb) <= 0)) return null;
+  if (slug === 'concrete-block-calculator' && (Number(values.wallLengthFt) <= 0 || Number(values.wallHeightFt) <= 0)) return null;
+  if (slug === 'rainwater-harvesting-calculator' && (Number(values.catchmentAreaFt2) <= 0 || Number(values.annualRainfallInches) <= 0 || Number(values.storageDays) <= 0)) return null;
+  if (slug === 'attic-insulation-payback-calculator' && Number(values.atticArea) <= 0) return null;
   try {
     const result = config.calculate(values);
     return config.results.every(({ key, format }) => {
@@ -42,6 +56,18 @@ export function calculatorTextFormatters(slug: LocalizedCalculatorSlug, values: 
     if (run === 0 && rise > 0) return `${d.calculatorStates.vertical} (1 : 0)`;
     if (rise === 0) return `${d.calculatorStates.flat} (0 : 1)`;
     return `1 : ${number.format(run / rise)}`;
+  } };
+  if (slug === 'joist-deflection-calculator') return { ratio: () => {
+    const spanIn = Number(values.span) * 12;
+    const spacingIn = Number(values.spacing);
+    const lineLoadPli = (Number(values.uniformLoad) * (spacingIn / 12)) / 12;
+    const momentOfInertia = (Number(values.width) * Math.pow(Number(values.depth), 3)) / 12;
+    const e = Number(values.elasticModulus);
+    if (spanIn > 0 && lineLoadPli > 0 && e > 0 && momentOfInertia > 0) {
+      const delta = (5 * lineLoadPli * Math.pow(spanIn, 4)) / (384 * e * momentOfInertia);
+      if (Number.isFinite(delta) && delta > 0) return `L / ${Math.round(spanIn / delta)}`;
+    }
+    return d.calculatorUi.notApplicable;
   } };
   return {};
 }

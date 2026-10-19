@@ -259,6 +259,62 @@
       "limits": "Cuts, patterns, layout and site damage change waste. Purchases may need rounding to full packs, sheets or pallets. Keep the same quantity unit throughout.",
       "question": "Are costs converted to local currency?",
       "answer": "No. Prices and cost results stay in USD."
+    },
+    "soffit-fascia-calculator": {
+      "title": "Soffit & Fascia Calculator",
+      "description": "Calculate soffit area, fascia board length, panel count, board quantity and waste allowance for roof eaves.",
+      "how": "Enter total eave length, soffit depth, fascia board length, panel coverage and waste allowance percentage.",
+      "limits": "Estimates simple rectangular eave geometries. Hip returns, gables and complex rake boards require separate field measurement.",
+      "question": "Does this include panel overlaps?",
+      "answer": "Use the net coverage rating of your soffit panel (sq ft per piece) and add waste allowance for cuts."
+    },
+    "attic-insulation-payback-calculator": {
+      "title": "Attic Insulation Payback Calculator",
+      "description": "Estimate attic insulation project cost, annual energy savings and simple payback period.",
+      "how": "Enter attic area, installed cost per sq ft, annual heating/cooling expenses, expected energy savings and rebates.",
+      "limits": "Simple-payback estimate. Actual energy savings depend on climate zone, HVAC efficiency, air leakage and utility rates.",
+      "question": "Are tax credits and incentives included?",
+      "answer": "Enter any local utility rebates or federal/state tax incentives in the rebates field to compute net project investment."
+    },
+    "joist-deflection-calculator": {
+      "title": "Joist Deflection Calculator",
+      "description": "Estimate how much a floor joist or simple beam may bend under an evenly distributed load.",
+      "how": "Enter clear span, uniform area load, joist spacing, lumber elastic modulus, width and depth.",
+      "limits": "Simple beam model. Excludes shear deflection, vibration, composite subfloor action, notches and point loads.",
+      "question": "What is the L/360 deflection limit?",
+      "answer": "L/360 is the standard residential code limit for live load floor deflection to avoid plaster cracking and noticeable floor bounce."
+    },
+    "hvac-duct-cfm-calculator": {
+      "title": "HVAC Duct CFM Calculator",
+      "description": "Estimate airflow through round or rectangular HVAC ducts from duct area and air velocity.",
+      "how": "Choose duct shape, enter dimensions in inches and specify air velocity in feet per minute (FPM).",
+      "limits": "Theoretical airflow estimate (Q = A × V). Does not size ducts based on static pressure drop, friction or duct fittings.",
+      "question": "What air velocity is typical for residential ducts?",
+      "answer": "Branch runouts typically operate around 600–800 FPM, while main distribution trunks operate around 800–1,000 FPM."
+    },
+    "mortar-calculator": {
+      "title": "Mortar Calculator – Brick & Block Walls",
+      "description": "Calculate mortar volume, pre-mix bags, Portland cement, and masonry sand for brick and concrete block walls.",
+      "how": "Enter masonry unit count, select brick or block, joint thickness in inches, waste allowance and pre-mix bag size.",
+      "limits": "Estimates standard joint bedding yields. Does not account for hollow block core grouting, deep raking or severe structural washouts.",
+      "question": "What is the standard joint thickness?",
+      "answer": "Standard masonry construction uses 3/8 inch (0.375 in) mortar joints between bricks and CMU blocks."
+    },
+    "concrete-block-calculator": {
+      "title": "Concrete Block Calculator",
+      "description": "Estimate CMU concrete blocks, mortar, core-fill grout, and waste allowance for block walls and foundations.",
+      "how": "Enter wall length, wall height, openings area in sq ft, core grouting schedule and waste allowance.",
+      "limits": "Standard 8x8x16 nominal CMU blocks (0.8889 sq ft face area). Excludes rebar schedules, bond beams and structural engineering design.",
+      "question": "What core grouting options are supported?",
+      "answer": "You can calculate grout requirements for cores filled every 32 inches, every 16 inches, solid-filled walls or hollow un-grouted blocks."
+    },
+    "rainwater-harvesting-calculator": {
+      "title": "Rainwater Harvesting Calculator",
+      "description": "Calculate harvestable rainwater volume from roof catchment area, annual rainfall, and roof material runoff coefficients, then size a storage tank.",
+      "how": "Enter roof footprint, annual rainfall in inches, roofing surface material, first-flush filter loss and dry-spell storage days.",
+      "limits": "Hydrology estimate. Excludes roof gutter overflow during extreme storms, freezing conditions and local drinking water treatment rules.",
+      "question": "What is the first-flush filter loss?",
+      "answer": "The first-flush diverter rejects the initial dirty roof runoff containing dust and debris, typically amounting to 5% of captured precipitation."
     }
   },
   "flexOptions": {
@@ -666,6 +722,232 @@
         "totalMaterialCost": "Total material cost"
       },
       "note": "Cuts, patterns, layout and site damage change waste. Purchases may need rounding to full packs, sheets or pallets. Keep the same quantity unit throughout.",
+      "textResults": {}
+    },
+    "soffit-fascia-calculator": {
+      "fields": {
+        "eaveLength": {
+          "label": "Total eave length (feet)"
+        },
+        "soffitDepth": {
+          "label": "Soffit depth (feet)"
+        },
+        "fasciaBoardLength": {
+          "label": "Fascia board length (feet)"
+        },
+        "soffitPanelCoverage": {
+          "label": "Soffit panel coverage (sq ft/piece)"
+        },
+        "wastePercent": {
+          "label": "Waste allowance (%)"
+        }
+      },
+      "results": {
+        "soffitArea": "Net soffit area (sq ft)",
+        "soffitAreaWithWaste": "Soffit area with waste (sq ft)",
+        "soffitPieces": "Estimated soffit panels",
+        "fasciaLengthWithWaste": "Fascia length with waste (feet)",
+        "fasciaBoards": "Estimated fascia boards"
+      },
+      "note": "Roof geometry, gables, hip returns, and rake boards may require separate measurement. Verify manufacturer panel dimensions and field measurements before ordering.",
+      "textResults": {}
+    },
+    "attic-insulation-payback-calculator": {
+      "fields": {
+        "atticArea": {
+          "label": "Attic area (sq ft)"
+        },
+        "installedCostPerArea": {
+          "label": "Installed cost per sq ft ($)"
+        },
+        "annualHeatingCoolingCost": {
+          "label": "Annual heating & cooling cost ($)"
+        },
+        "estimatedSavingsPercent": {
+          "label": "Estimated energy savings (%)"
+        },
+        "rebates": {
+          "label": "Rebates or incentives ($)"
+        }
+      },
+      "results": {
+        "grossProjectCost": "Gross project cost",
+        "netProjectCost": "Net project cost",
+        "annualSavings": "Estimated annual savings",
+        "monthlySavings": "Estimated monthly savings",
+        "paybackYears": "Simple payback period (years)"
+      },
+      "note": "This is a simple-payback estimator and not a building energy simulation. Actual savings depend on climate zone, current insulation level, air sealing, HVAC efficiency, and occupant habits.",
+      "textResults": {}
+    },
+    "joist-deflection-calculator": {
+      "fields": {
+        "span": {
+          "label": "Clear span (feet)"
+        },
+        "uniformLoad": {
+          "label": "Uniform load (psf)",
+          "help": "Total dead + live area load (e.g. 10 psf dead + 30 psf live = 40 psf)."
+        },
+        "spacing": {
+          "label": "Joist spacing (inches on-center)"
+        },
+        "elasticModulus": {
+          "label": "Modulus of elasticity E (psi)",
+          "help": "Typical framing lumber: 1,300,000 to 1,800,000 psi."
+        },
+        "width": {
+          "label": "Joist width b (inches)",
+          "help": "Actual dimension (e.g. 1.5\" for nominal 2x lumber)."
+        },
+        "depth": {
+          "label": "Joist depth d (inches)",
+          "help": "Actual dimension (e.g. 7.25\" for 2x8, 9.25\" for 2x10, 11.25\" for 2x12)."
+        }
+      },
+      "results": {
+        "lineLoad": "Tributary line load (lb/ft)",
+        "momentOfInertia": "Moment of inertia I (in⁴)",
+        "deflection": "Estimated midspan deflection (inches)",
+        "l360Limit": "L/360 deflection limit (inches)",
+        "ratio": "Span / deflection ratio"
+      },
+      "note": "Simplified engineering estimate for simply supported, uniformly loaded rectangular members. Does not evaluate shear deflection, vibration, composite action, load duration, notches, holes, or building code compliance. Consult a licensed structural engineer for safety-critical framing.",
+      "textResults": {
+        "ratio": "localized"
+      }
+    },
+    "hvac-duct-cfm-calculator": {
+      "fields": {
+        "ductShape": {
+          "label": "Duct shape",
+          "options": {
+            "round": "Round duct",
+            "rectangular": "Rectangular duct"
+          }
+        },
+        "diameter": {
+          "label": "Round duct diameter (inches)"
+        },
+        "width": {
+          "label": "Rectangular duct width (inches)"
+        },
+        "height": {
+          "label": "Rectangular duct height (inches)"
+        },
+        "velocity": {
+          "label": "Air velocity (FPM)",
+          "help": "Typical branch ducts run 600–800 FPM; main trunks run 800–1,000 FPM."
+        }
+      },
+      "results": {
+        "ductArea": "Duct cross-sectional area (sq ft)",
+        "cfm": "Estimated airflow (CFM)"
+      },
+      "note": "Calculates theoretical airflow from cross-sectional area and air velocity (Q = A × V). Does not size ducts from static pressure, friction loss, equivalent length, fittings, or fan curves. Use ACCA Manual D for complete HVAC design.",
+      "textResults": {}
+    },
+    "mortar-calculator": {
+      "fields": {
+        "unitCount": {
+          "label": "Number of masonry units (bricks or blocks)"
+        },
+        "masonryType": {
+          "label": "Masonry unit type",
+          "options": {
+            "brick": "Standard Modular Clay Bricks",
+            "block": "8x8x16 CMU Concrete Blocks"
+          }
+        },
+        "jointThicknessInches": {
+          "label": "Mortar joint thickness (inches)",
+          "help": "Standard building joint is 3/8\" (0.375 in)"
+        },
+        "wastePercent": {
+          "label": "Waste allowance (%)"
+        },
+        "bagWeightLb": {
+          "label": "Pre-mix mortar bag size (lb)"
+        }
+      },
+      "results": {
+        "baseVolumeFt3": "Net mortar volume (ft³)",
+        "adjustedVolumeFt3": "Mortar volume with waste (ft³)",
+        "cubicYards": "Volume (cubic yards)",
+        "cubicMeters": "Volume (cubic meters)",
+        "premixBags": "Pre-mix mortar bags (whole bags)",
+        "cementBags94lb": "Portland cement bags (site-mix Type N)",
+        "sandTons": "Masonry sand required (tons)"
+      },
+      "note": "Estimates mortar volume based on standard unit bedding yields (5.0 ft³ per 1,000 modular bricks; 13.5 ft³ per 100 8x8x16 CMU blocks at 3/8\" joints). Site-mix estimates assume standard Type N mortar (1 bag Portland cement to 3 ft³ masonry sand). Field waste and block coring variations can alter actual consumption.",
+      "textResults": {}
+    },
+    "concrete-block-calculator": {
+      "fields": {
+        "wallLengthFt": {
+          "label": "Wall length (feet)"
+        },
+        "wallHeightFt": {
+          "label": "Wall height (feet)"
+        },
+        "openingsAreaFt2": {
+          "label": "Doors and window openings (sq ft)"
+        },
+        "coreFillOption": {
+          "label": "Core grouting schedule",
+          "options": {
+            "cores-32in": "Every 32 inches o.c. (1 core / 2 blocks)",
+            "cores-16in": "Every 16 inches o.c. (1 core / block)",
+            "solid": "100% Solid Grout (All cores filled)",
+            "none": "Hollow (No core grout)"
+          }
+        },
+        "wastePercent": {
+          "label": "Waste allowance (%)"
+        }
+      },
+      "results": {
+        "netWallAreaFt2": "Net wall face area (sq ft)",
+        "exactBlocks": "Exact CMU blocks required",
+        "purchaseBlocks": "Whole CMU blocks to order",
+        "mortarBags80lb": "Estimated mortar bags (80 lb)",
+        "coreFillGroutYards": "Core-fill grout (cubic yards)"
+      },
+      "note": "Standard 8x8x16 nominal CMU blocks cover 0.8889 ft² each (1.125 blocks per sq ft of wall). Mortar and core fill grout are calculated for standard hollow 2-cell concrete masonry units. Structural reinforcement, bond beams, and engineered rebar schedules require project engineering review.",
+      "textResults": {}
+    },
+    "rainwater-harvesting-calculator": {
+      "fields": {
+        "catchmentAreaFt2": {
+          "label": "Roof catchment footprint (sq ft)"
+        },
+        "annualRainfallInches": {
+          "label": "Annual rainfall (inches)"
+        },
+        "roofMaterial": {
+          "label": "Roof catchment surface",
+          "options": {
+            "metal": "Metal / Colorbond (0.95 efficiency)",
+            "tile": "Concrete or Clay Tile (0.85 efficiency)",
+            "membrane": "Flat Membrane / EPDM (0.85 efficiency)",
+            "shingle": "Asphalt Shingle (0.80 efficiency)"
+          }
+        },
+        "filtrationLossPercent": {
+          "label": "First-flush & filter loss (%)"
+        },
+        "storageDays": {
+          "label": "Dry-spell storage target (days)"
+        }
+      },
+      "results": {
+        "annualYieldGallons": "Annual yield (US gallons)",
+        "annualYieldLiters": "Annual yield (liters)",
+        "monthlyAverageGallons": "Monthly average (gallons)",
+        "recommendedTankGallons": "Recommended tank capacity (gallons)",
+        "recommendedTankLiters": "Recommended tank capacity (liters)"
+      },
+      "note": "Theoretical yield uses the standard hydrology constant (1 inch of rain on 1 sq ft = 0.6233 US gallons) multiplied by roof runoff efficiency and first-flush diversion. Tank sizing models buffer capacity for user-specified consecutive dry days. Local potable water regulations and filtration standards must be verified before drinking use.",
       "textResults": {}
     }
   },
