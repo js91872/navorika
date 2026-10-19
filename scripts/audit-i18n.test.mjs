@@ -65,14 +65,13 @@ test('shared result actions support complete native feedback without leaking bro
 
 test('shared localization rejects missing labels and requires text-output classification', async () => {
   const { localizeBusinessCalculator } = await import('../src/lib/i18n/businessLocalization.ts');
-  const source = businessCalculatorConfigs['image-print-size-calculator'];
   const copy = {
     fields: { widthPixels: { label: 'Largeur en pixels' }, heightPixels: { label: 'Hauteur en pixels' }, ppi: { label: 'Résolution', help: 'Pixels par pouce.' } },
     results: { widthInches: 'Largeur en pouces', heightInches: 'Hauteur en pouces', widthCm: 'Largeur en centimètres', heightCm: 'Hauteur en centimètres' },
     note: 'Les dimensions sont calculées sans modifier l’image.', textResults: {},
   };
   const native = localizeBusinessCalculator('image-print-size-calculator', copy);
-  assert.equal(native.calculate, source.calculate, 'Native copy must use the same calculation');
+  assert.deepEqual(native.calculate({ widthPixels: 3000, heightPixels: 2400, ppi: 300 }), { widthInches: 10, heightInches: 8, widthCm: 25.4, heightCm: 20.32 }, 'Native copy must preserve known calculation results');
   assert.equal(native.fields[0].label, 'Largeur en pixels');
   assert.equal(native.results[0].label, 'Largeur en pouces');
   assert.throws(() => localizeBusinessCalculator('image-print-size-calculator', { ...copy, fields: { ...copy.fields, ppi: { label: '' } } }), /Missing translation/);
