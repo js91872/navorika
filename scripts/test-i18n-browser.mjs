@@ -175,7 +175,7 @@ try {
     await language.click();
     await page.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
     await noOverflow(`Open language menu at ${width}`);
-    await page.locator('main h1').click();
+    await page.mouse.click(8, 400);
     assert.equal(await page.locator('details').first().getAttribute('open'), null, 'Outside tap dismisses language menu');
     await language.click();
     await page.keyboard.press('Escape');
