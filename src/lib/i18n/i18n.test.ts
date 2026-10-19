@@ -149,3 +149,34 @@ test('image scaling preserves the existing engine and rejects misleading zero-pi
   assert.deepEqual(scaledImage(1000000, 1000000, 0.01), { scaledWidth: 100, scaledHeight: 100, scaleFactor: 0.0001, pixelAreaPercent: 0.000001 });
   for (const inputs of [[1, 1, 0.01], [1920, 1080, 0], [1920, 1080, 0.001], [1920, 1080, 10001], [1.5, 1080, 50], [1000001, 1080, 50], [NaN, 1080, 50]]) assert.equal(scaledImage(...inputs as [number, number, number]), null);
 });
+
+test('shared calculators have native controls, exact copy coverage and unchanged known results', async () => {
+  const { localizedCalculatorSlugs } = await import('./calculatorRegistry');
+  const { localizeBusinessCalculator } = await import('./businessLocalization');
+  const { calculateLocalizedValues } = await import('./sharedCalculators');
+  const { businessCalculatorConfigs } = await import('../calculations/businessConfigs');
+  const expected = [
+    { totalBits: 49766400, totalBytes: 6220800, kib: 6075, mib: 5.933 },
+    { usableStorageGb: 57.6, usableStorageMb: 58982.4, estimatedPhotos: 11796 },
+    { dataPerViewKb: 1250, totalTransferKb: 12500000, totalTransferMb: 12207.03, totalTransferGb: 11.921 },
+    { squareFeetEach: 300, totalSquareFeet: 300, squareYards: 300 / 9, squareMeters: 300 * 0.09290304 },
+    { cubicFeet: 40, cubicYards: 40 / 27, orderCubicYards: (40 / 27) * 1.1, cubicMeters: 40 * 0.028316846592 },
+  ];
+  for (const locale of locales) {
+    const d = await getDictionary(locale);
+    assert.deepEqual(Object.keys(d.calculatorUi).sort(), Object.keys(english.calculatorUi).sort());
+    assert.deepEqual(Object.keys(d.calculators).sort(), [...localizedCalculatorSlugs].sort());
+    for (const [key, value] of Object.entries(d.calculatorUi)) assert.notEqual(value, english.calculatorUi[key as keyof typeof english.calculatorUi]);
+    for (const [index, slug] of localizedCalculatorSlugs.entries()) {
+      const native = localizeBusinessCalculator(slug, d.calculators[slug]);
+      const source = businessCalculatorConfigs[slug];
+      for (const field of native.fields) assert.notEqual(field.label, source.fields.find((item) => item.key === field.key)!.label);
+      for (const row of native.results) assert.notEqual(row.label, source.results.find((item) => item.key === row.key)!.label);
+      const defaults = Object.fromEntries(native.fields.map((field) => [field.key, field.defaultValue]));
+      assert.deepEqual(calculateLocalizedValues(slug, defaults), expected[index], `${locale}/${slug}`);
+      for (const invalid of ['', NaN, Infinity, -1, 1e20]) assert.equal(calculateLocalizedValues(slug, { ...defaults, [native.fields[0].key]: invalid }), null);
+      const count = native.fields.find((field) => field.step === 1);
+      if (count) assert.equal(calculateLocalizedValues(slug, { ...defaults, [count.key]: 1.5 }), null);
+    }
+  }
+});

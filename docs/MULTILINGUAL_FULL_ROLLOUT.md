@@ -44,7 +44,7 @@ The source scan finds hundreds of thousands of candidate words across JSX, copy 
 - `src/lib/i18n/contentCoverage.ts` records guide/public-page coverage and full-inventory surface verification. Empty or pending entries are intentional and must not be marked ready merely because scaffolding exists.
 - `scripts/audit-i18n.mjs` generates the inventory, reproducible copy candidates with stable source/text IDs, and an explicit full-completion check.
 
-These are foundations for the full project. They do not publish any additional localized routes or claim that the remaining tools are translated.
+These foundations do not by themselves certify any tool as translated. The first implementation cohort below enables additional native routes only within the draft branch.
 
 ## Commands and completion gates
 
@@ -79,4 +79,16 @@ Before release, also require:
 
 ## Current session checkpoint
 
-The full inventory, completion gate, calculator separation, strict localization helper and native action-feedback infrastructure are prepared. Remaining content translations are not complete. Test and CI results are recorded with the draft PR. The next working session should continue within this same branch, beginning with native copy and result adapters for the shared calculator family, rather than returning to separate three-tool production deployments.
+The draft branch now includes complete native controls, metadata, explanatory copy, result labels, validation messages, clipboard summaries and UTF-8 CSV reports for five additional calculators in all seven languages:
+
+- Image File Size Estimator
+- Photo Storage Calculator
+- Image Bandwidth Calculator
+- Square Footage Calculator
+- Cubic Yard Calculator
+
+This brings branch coverage to 15 tools per language (105 tool variants plus seven directories). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 298 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+
+The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
+
+The next family can reuse strict native configuration validation and the calculator renderer. Text-result calculators still require explicit native adapters; they must not be enabled by copying raw English engine output. Continue in this branch until the full-completion gate and runtime/editorial review pass.

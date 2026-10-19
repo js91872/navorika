@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 10,
-    "pendingTools": 303,
+    "publishedTools": 15,
+    "pendingTools": 298,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 70,
+    "publishedToolTranslations": 105,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -1678,8 +1678,16 @@
       "source": "src/app/(english)/tools/cubic-yard-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2647,8 +2655,16 @@
       "source": "src/app/(english)/tools/image-bandwidth-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -2715,8 +2731,16 @@
       "source": "src/app/(english)/tools/image-file-size-estimator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -3876,8 +3900,16 @@
       "source": "src/app/(english)/tools/photo-storage-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -4794,8 +4826,16 @@
       "source": "src/app/(english)/tools/square-footage-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -7183,7 +7223,7 @@
     {
       "source": "src/app/(english)/tools/cubic-yard-calculator/page.tsx",
       "routeTemplate": "/tools/cubic-yard-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7501,7 +7541,7 @@
     {
       "source": "src/app/(english)/tools/image-bandwidth-calculator/page.tsx",
       "routeTemplate": "/tools/image-bandwidth-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7525,7 +7565,7 @@
     {
       "source": "src/app/(english)/tools/image-file-size-estimator/page.tsx",
       "routeTemplate": "/tools/image-file-size-estimator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7915,7 +7955,7 @@
     {
       "source": "src/app/(english)/tools/photo-storage-calculator/page.tsx",
       "routeTemplate": "/tools/photo-storage-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8215,7 +8255,7 @@
     {
       "source": "src/app/(english)/tools/square-footage-calculator/page.tsx",
       "routeTemplate": "/tools/square-footage-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

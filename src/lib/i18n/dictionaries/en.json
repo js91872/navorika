@@ -147,6 +147,46 @@
       "limits": "Dimensions are limited to 1,000,000 pixels per side and scaling to 0.01–10,000%. Rounded output must be at least one pixel per side. Area percentage is calculated before pixel rounding. No image is resized.",
       "question": "Does scaling to 50% halve the pixel area?",
       "answer": "No. Halving both dimensions gives one quarter of the theoretical area, or 25%. Actual whole-pixel dimensions can differ slightly because of rounding."
+    },
+    "image-file-size-estimator": {
+      "title": "Image File Size Estimator",
+      "description": "Estimate the uncompressed memory required by image pixels.",
+      "how": "Enter pixel width, height, color channels and bits per channel.",
+      "limits": "Pixel memory is width × height × channels × bit depth. This does not predict compressed JPEG, PNG, WebP or AVIF sizes.",
+      "question": "Does this estimate the saved file size?",
+      "answer": "No. Compression, metadata and image detail change the saved size."
+    },
+    "photo-storage-calculator": {
+      "title": "Photo Storage Calculator",
+      "description": "Estimate how many photos fit in the available storage.",
+      "how": "Enter capacity, average photo size and the percentage reserved for system files or applications.",
+      "limits": "This calculator uses 1 GB = 1,024 MB, following the existing binary convention. Actual sizes and filesystem overhead vary.",
+      "question": "Is the photo count exact?",
+      "answer": "No. It is an estimate based on the average file size you enter."
+    },
+    "image-bandwidth-calculator": {
+      "title": "Image Bandwidth Calculator",
+      "description": "Estimate monthly image data transfer from page views.",
+      "how": "Enter average image size, images per view and monthly page views.",
+      "limits": "Uses 1 MB = 1,024 KB and 1 GB = 1,024 MB. Caching, responsive images and deferred loading change actual transfer.",
+      "question": "Does this include cache savings?",
+      "answer": "No. It multiplies the entered image payload by page views without subtracting cached requests."
+    },
+    "square-footage-calculator": {
+      "title": "Square Footage Calculator",
+      "description": "Calculate rectangular areas in square feet, square yards and square meters.",
+      "how": "Enter length and width in feet and the number of equal areas.",
+      "limits": "For irregular rooms, divide the space into rectangles and add the separate areas.",
+      "question": "Can I enter dimensions in meters?",
+      "answer": "No. Inputs are in feet; the result includes a conversion to square meters."
+    },
+    "cubic-yard-calculator": {
+      "title": "Cubic Yard Calculator",
+      "description": "Calculate rectangular fill volume and an extra ordering allowance.",
+      "how": "Enter length and width in feet, depth in inches and the extra allowance percentage.",
+      "limits": "Compaction, settlement, excavation swell and supplier minimum quantities are not automatically included.",
+      "question": "Does the allowance change the net volume?",
+      "answer": "No. Net volume remains unchanged; the ordering volume includes the allowance."
     }
   },
   "flexOptions": {
@@ -223,5 +263,131 @@
     "scaleFactor": "Scale factor",
     "areaPercent": "Theoretical area (%)",
     "scaleInvalid": "Enter whole dimensions from 1 to 1,000,000 pixels and a scale from 0.01 to 10,000%. Each rounded result must be at least one pixel."
+  },
+  "calculatorUi": {
+    "inputs": "Planning inputs",
+    "results": "Estimated results",
+    "reset": "Reset example",
+    "copy": "Copy summary",
+    "csv": "Download CSV",
+    "result": "Result",
+    "value": "Value",
+    "notApplicable": "Not applicable",
+    "invalid": "Enter valid values within the indicated limits."
+  },
+  "calculators": {
+    "image-file-size-estimator": {
+      "fields": {
+        "widthPixels": {
+          "label": "Image width (px)"
+        },
+        "heightPixels": {
+          "label": "Image height (px)"
+        },
+        "channels": {
+          "label": "Color channels",
+          "help": "3 for RGB; 4 for RGBA with transparency."
+        },
+        "bitsPerChannel": {
+          "label": "Bits per channel",
+          "help": "8 for standard images; 10, 12 or 16 for greater color depth."
+        }
+      },
+      "results": {
+        "totalBits": "Raw bits",
+        "totalBytes": "Uncompressed bytes",
+        "kib": "Memory (KiB)",
+        "mib": "Memory (MiB)"
+      },
+      "note": "Pixel memory is width × height × channels × bit depth. This does not predict compressed JPEG, PNG, WebP or AVIF sizes.",
+      "textResults": {}
+    },
+    "photo-storage-calculator": {
+      "fields": {
+        "storageGb": {
+          "label": "Storage capacity (GB)"
+        },
+        "averagePhotoMb": {
+          "label": "Average photo size (MB)"
+        },
+        "reservedPercent": {
+          "label": "Reserved space (%)",
+          "help": "Space reserved for system files, formatting or applications."
+        }
+      },
+      "results": {
+        "usableStorageGb": "Usable storage (GB)",
+        "usableStorageMb": "Usable storage (MB)",
+        "estimatedPhotos": "Estimated photo count"
+      },
+      "note": "This calculator uses 1 GB = 1,024 MB, following the existing binary convention. Actual sizes and filesystem overhead vary.",
+      "textResults": {}
+    },
+    "image-bandwidth-calculator": {
+      "fields": {
+        "imageSizeKb": {
+          "label": "Average image size (KB)"
+        },
+        "imagesPerView": {
+          "label": "Images per page view"
+        },
+        "pageViews": {
+          "label": "Monthly page views"
+        }
+      },
+      "results": {
+        "dataPerViewKb": "Data per page view (KB)",
+        "totalTransferKb": "Total transfer (KB)",
+        "totalTransferMb": "Total transfer (MB)",
+        "totalTransferGb": "Total transfer (GB)"
+      },
+      "note": "Uses 1 MB = 1,024 KB and 1 GB = 1,024 MB. Caching, responsive images and deferred loading change actual transfer.",
+      "textResults": {}
+    },
+    "square-footage-calculator": {
+      "fields": {
+        "length": {
+          "label": "Length (feet)"
+        },
+        "width": {
+          "label": "Width (feet)"
+        },
+        "quantity": {
+          "label": "Number of equal areas"
+        }
+      },
+      "results": {
+        "squareFeetEach": "Square feet per area",
+        "totalSquareFeet": "Total square feet",
+        "squareYards": "Total square yards",
+        "squareMeters": "Total square meters"
+      },
+      "note": "For irregular rooms, divide the space into rectangles and add the separate areas.",
+      "textResults": {}
+    },
+    "cubic-yard-calculator": {
+      "fields": {
+        "length": {
+          "label": "Length (feet)"
+        },
+        "width": {
+          "label": "Width (feet)"
+        },
+        "depth": {
+          "label": "Depth (inches)"
+        },
+        "wastePercent": {
+          "label": "Extra allowance (%)"
+        }
+      },
+      "results": {
+        "cubicFeet": "Volume (cubic feet)",
+        "cubicYards": "Net cubic yards",
+        "orderCubicYards": "Cubic yards with allowance",
+        "cubicMeters": "Net cubic meters"
+      },
+      "note": "Compaction, settlement, excavation swell and supplier minimum quantities are not automatically included.",
+      "textResults": {}
+    }
   }
 }

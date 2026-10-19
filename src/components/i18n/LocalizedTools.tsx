@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { isLocalizedCalculator } from '@/lib/i18n/calculatorRegistry';
 import { CopyResult, fieldClass, buttonClass } from './ToolControls';
 import { useRef, useState, type CSSProperties } from 'react';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
@@ -9,6 +10,7 @@ import { aspectRatio, flexCss, printDimensions } from '@/lib/i18n/calculations';
 import { inspectImageColorMode, type RgbCmykImageResult } from '@/lib/calculations/rgbCmykImage';
 
 
+const LocalizedBusinessTools = dynamic(() => import('./LocalizedBusinessTools'));
 const LocalizedDesignTools = dynamic(() => import('./LocalizedDesignTools'));
 const LocalizedPrintTools = dynamic(() => import('./LocalizedPrintTools'));
 
@@ -149,6 +151,7 @@ function ColorTool({ d, locale }: { d: Dictionary; locale: Locale }) {
 }
 
 export default function LocalizedTools({ slug, dictionary, locale }: { slug: TranslatedTool; dictionary: Dictionary; locale: Locale }) {
+  if (isLocalizedCalculator(slug)) return <LocalizedBusinessTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'css-flexbox-generator') return <FlexTool d={dictionary} />;

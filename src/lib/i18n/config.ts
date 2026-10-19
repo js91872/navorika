@@ -9,6 +9,8 @@ export const translatedTools = [
   'aspect-ratio-padding-calculator', 'css-flexbox-generator',
   'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'print-bleed-calculator',
   'pdf-bleed-trim-checker', 'image-print-size-calculator',
+  'image-file-size-estimator', 'photo-storage-calculator', 'image-bandwidth-calculator',
+  'square-footage-calculator', 'cubic-yard-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

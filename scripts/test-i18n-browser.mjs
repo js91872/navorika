@@ -7,7 +7,7 @@ import { PDFDocument } from 'pdf-lib';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
 const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
-const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator', 'print-bleed-calculator'];
+const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator', 'image-file-size-estimator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'square-footage-calculator', 'cubic-yard-calculator', 'print-bleed-calculator'];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
 let serverOutput = '';
@@ -88,6 +88,51 @@ try {
     assert.equal(await page.locator('main h2').count(), 1);
     await page.locator('input[type="search"]').fill('zzzz-not-a-tool');
     assert.equal(await page.getByRole('status').textContent(), d.ui.noResults);
+
+    for (const [slug, initial, expected] of [
+      ['image-file-size-estimator', 1920, 49766400],
+      ['photo-storage-calculator', 64, 57.6],
+      ['image-bandwidth-calculator', 250, 1250],
+      ['square-footage-calculator', 20, 300],
+      ['cubic-yard-calculator', 12, 40],
+    ]) {
+      await visit(`/${locale}/tools/${slug}`);
+      const ui = d.calculatorUi;
+      const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
+      assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+      await page.locator('main input[type="number"]').first().fill(String(initial * 2));
+      assert.equal(await page.locator('main dd').first().textContent(), number.format(expected * 2));
+      await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copiedResult = text; } } }));
+      await page.getByRole('button', { name: ui.copy, exact: true }).click();
+      const copied = await page.evaluate(() => window.__copiedResult);
+      assert.ok(copied.includes(d.tools[slug].title));
+      for (const label of Object.values(d.calculators[slug].results)) assert.ok(copied.includes(label));
+      assert.ok(copied.includes(number.format(expected * 2)));
+      const downloadEvent = page.waitForEvent('download');
+      await page.getByRole('button', { name: ui.csv, exact: true }).click();
+      const download = await downloadEvent;
+      assert.equal(download.suggestedFilename(), `${slug}-${locale}.csv`);
+      const csv = readFileSync(await download.path(), 'utf8');
+      assert.ok(csv.startsWith('\uFEFF'));
+      assert.ok(csv.includes(ui.result) && csv.includes(ui.value));
+      for (const label of Object.values(d.calculators[slug].results)) assert.ok(csv.includes(label));
+      await page.evaluate(() => { window.print = () => { window.__printOpened = true; }; });
+      await page.locator('main button').last().click();
+      assert.equal(await page.evaluate(() => window.__printOpened), true);
+      await page.locator('main input[type="number"]').first().fill('');
+      assert.equal(await page.locator('main').getByRole('alert').textContent(), ui.invalid);
+      assert.equal(await page.getByRole('button', { name: ui.copy, exact: true }).count(), 0);
+      await page.getByRole('button', { name: ui.reset, exact: true }).click();
+      assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+      await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async () => { throw new Error('RAW_BROWSER_ERROR'); } } }));
+      await page.getByRole('button', { name: ui.copy, exact: true }).click();
+      assert.doesNotMatch(await page.locator('main').innerText(), /RAW_BROWSER_ERROR/);
+      assert.ok((await page.locator('main [role="status"]').textContent()).trim());
+      await page.setViewportSize({ width: 320, height: 844 });
+      await noOverflow(`${locale}/${slug} at 320px`);
+      await page.setViewportSize({ width: 1440, height: 1000 });
+      workflowsChecked++;
+    }
 
     await visit(`/${locale}/tools/aspect-ratio-padding-calculator`);
     assert.match(await page.locator('pre').textContent(), /padding-top: 56.25%/);
@@ -293,7 +338,7 @@ try {
     await noOverflow(`${locale} scaling results`);
     await page.setViewportSize({ width: 1440, height: 1000 });
     workflowsChecked++;
-    console.log(`Verified ${locale}: eleven translated pages and ten working tools.`);
+    console.log(`Verified ${locale}: ${slugs.length + 1} translated pages and ${slugs.length} working tools.`);
   }
   for (const slug of [null, ...slugs]) {
     await visit(slug ? `/tools/${slug}` : '/');
@@ -359,7 +404,7 @@ try {
     }
   }
   assert.deepEqual(errors, [], 'Uncaught browser errors');
-  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, englishAlternates: 11, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
+  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, englishAlternates: slugs.length + 1, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
 } finally {
   await browser?.close();
   server?.kill('SIGTERM');

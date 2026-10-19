@@ -147,6 +147,46 @@
       "limits": "Jede Seite ist auf 1.000.000 Pixel begrenzt, die Skalierung auf 0,01–10.000%. Nach der Rundung muss jede Seite mindestens einen Pixel haben. Die Fläche wird vor der Rundung berechnet. Kein Bild wird verändert.",
       "question": "Halbiert eine Skalierung auf 50% die Fläche?",
       "answer": "Nein. Die Halbierung beider Seiten ergibt ein Viertel der theoretischen Fläche, also 25%. Ganze Pixelmaße können wegen der Rundung leicht abweichen."
+    },
+    "image-file-size-estimator": {
+      "title": "Speicherbedarf von Bildern schätzen",
+      "description": "Schätzen Sie den unkomprimierten Speicherbedarf der Bildpixel.",
+      "how": "Geben Sie Breite, Höhe, Farbkanäle und Bits je Kanal ein.",
+      "limits": "Der Speicherbedarf ist Breite × Höhe × Kanäle × Bittiefe. Die Größe komprimierter JPEG-, PNG-, WebP- oder AVIF-Dateien wird nicht vorhergesagt.",
+      "question": "Ist dies die Größe der gespeicherten Datei?",
+      "answer": "Nein. Komprimierung, Metadaten und Bilddetails verändern die Dateigröße."
+    },
+    "photo-storage-calculator": {
+      "title": "Fotospeicher berechnen",
+      "description": "Schätzen Sie, wie viele Fotos in den verfügbaren Speicher passen.",
+      "how": "Geben Sie Kapazität, mittlere Fotogröße und den für System oder Anwendungen reservierten Anteil ein.",
+      "limits": "Es gilt 1 GB = 1.024 MB nach der bestehenden binären Konvention. Tatsächliche Größen und Dateisystembedarf variieren.",
+      "question": "Ist die Fotoanzahl genau?",
+      "answer": "Nein. Sie ist eine Schätzung auf Grundlage der eingegebenen mittleren Dateigröße."
+    },
+    "image-bandwidth-calculator": {
+      "title": "Bilddatenverkehr berechnen",
+      "description": "Schätzen Sie die monatliche Bildübertragung anhand der Seitenaufrufe.",
+      "how": "Geben Sie mittlere Bildgröße, Bilder je Aufruf und monatliche Seitenaufrufe ein.",
+      "limits": "Es gilt 1 MB = 1.024 KB und 1 GB = 1.024 MB. Zwischenspeicher, angepasste Bildgrößen und verzögertes Laden verändern die tatsächliche Übertragung.",
+      "question": "Wird die Einsparung durch Zwischenspeicher berücksichtigt?",
+      "answer": "Nein. Die Bilddaten werden mit den Aufrufen multipliziert, ohne zwischengespeicherte Anfragen abzuziehen."
+    },
+    "square-footage-calculator": {
+      "title": "Fläche in Quadratfuß berechnen",
+      "description": "Berechnen Sie rechteckige Flächen in Quadratfuß, Quadratyard und Quadratmetern.",
+      "how": "Geben Sie Länge und Breite in Fuß sowie die Anzahl gleich großer Flächen ein.",
+      "limits": "Teilen Sie unregelmäßige Räume in Rechtecke auf und addieren Sie die Flächen.",
+      "question": "Kann ich Meter eingeben?",
+      "answer": "Nein. Die Eingaben erfolgen in Fuß; das Ergebnis enthält die Umrechnung in Quadratmeter."
+    },
+    "cubic-yard-calculator": {
+      "title": "Volumen in Kubikyard berechnen",
+      "description": "Berechnen Sie rechteckige Füllvolumen mit einem Bestellzuschlag.",
+      "how": "Geben Sie Länge und Breite in Fuß, Tiefe in Zoll und den zusätzlichen Prozentsatz ein.",
+      "limits": "Verdichtung, Setzung, Auflockerung nach Aushub und Mindestbestellmengen werden nicht automatisch berücksichtigt.",
+      "question": "Verändert der Zuschlag das Nettovolumen?",
+      "answer": "Nein. Das Nettovolumen bleibt gleich; das Bestellvolumen enthält den Zuschlag."
     }
   },
   "flexOptions": {
@@ -223,5 +263,131 @@
     "scaleFactor": "Skalierungsfaktor",
     "areaPercent": "Theoretische Fläche (%)",
     "scaleInvalid": "Geben Sie ganze Maße von 1 bis 1.000.000 Pixel und eine Skalierung von 0,01 bis 10.000% ein. Jedes gerundete Maß muss mindestens einen Pixel betragen."
+  },
+  "calculatorUi": {
+    "inputs": "Berechnungsdaten",
+    "results": "Geschätzte Ergebnisse",
+    "reset": "Beispiel zurücksetzen",
+    "copy": "Zusammenfassung kopieren",
+    "csv": "CSV herunterladen",
+    "result": "Ergebnis",
+    "value": "Wert",
+    "notApplicable": "Nicht anwendbar",
+    "invalid": "Geben Sie gültige Werte innerhalb der angegebenen Grenzen ein."
+  },
+  "calculators": {
+    "image-file-size-estimator": {
+      "fields": {
+        "widthPixels": {
+          "label": "Bildbreite (px)"
+        },
+        "heightPixels": {
+          "label": "Bildhöhe (px)"
+        },
+        "channels": {
+          "label": "Farbkanäle",
+          "help": "3 für RGB; 4 für RGBA mit Transparenz."
+        },
+        "bitsPerChannel": {
+          "label": "Bits je Kanal",
+          "help": "8 für übliche Bilder; 10, 12 oder 16 für höhere Farbtiefe."
+        }
+      },
+      "results": {
+        "totalBits": "Rohdaten in Bits",
+        "totalBytes": "Unkomprimierte Bytes",
+        "kib": "Speicher (KiB)",
+        "mib": "Speicher (MiB)"
+      },
+      "note": "Der Speicherbedarf ist Breite × Höhe × Kanäle × Bittiefe. Die Größe komprimierter JPEG-, PNG-, WebP- oder AVIF-Dateien wird nicht vorhergesagt.",
+      "textResults": {}
+    },
+    "photo-storage-calculator": {
+      "fields": {
+        "storageGb": {
+          "label": "Speicherkapazität (GB)"
+        },
+        "averagePhotoMb": {
+          "label": "Mittlere Fotogröße (MB)"
+        },
+        "reservedPercent": {
+          "label": "Reservierter Speicher (%)",
+          "help": "Für System, Formatierung oder Anwendungen reservierter Speicher."
+        }
+      },
+      "results": {
+        "usableStorageGb": "Nutzbarer Speicher (GB)",
+        "usableStorageMb": "Nutzbarer Speicher (MB)",
+        "estimatedPhotos": "Geschätzte Fotoanzahl"
+      },
+      "note": "Es gilt 1 GB = 1.024 MB nach der bestehenden binären Konvention. Tatsächliche Größen und Dateisystembedarf variieren.",
+      "textResults": {}
+    },
+    "image-bandwidth-calculator": {
+      "fields": {
+        "imageSizeKb": {
+          "label": "Mittlere Bildgröße (KB)"
+        },
+        "imagesPerView": {
+          "label": "Bilder je Seitenaufruf"
+        },
+        "pageViews": {
+          "label": "Monatliche Seitenaufrufe"
+        }
+      },
+      "results": {
+        "dataPerViewKb": "Daten je Aufruf (KB)",
+        "totalTransferKb": "Gesamtübertragung (KB)",
+        "totalTransferMb": "Gesamtübertragung (MB)",
+        "totalTransferGb": "Gesamtübertragung (GB)"
+      },
+      "note": "Es gilt 1 MB = 1.024 KB und 1 GB = 1.024 MB. Zwischenspeicher, angepasste Bildgrößen und verzögertes Laden verändern die tatsächliche Übertragung.",
+      "textResults": {}
+    },
+    "square-footage-calculator": {
+      "fields": {
+        "length": {
+          "label": "Länge (Fuß)"
+        },
+        "width": {
+          "label": "Breite (Fuß)"
+        },
+        "quantity": {
+          "label": "Anzahl gleicher Flächen"
+        }
+      },
+      "results": {
+        "squareFeetEach": "Quadratfuß je Fläche",
+        "totalSquareFeet": "Quadratfuß insgesamt",
+        "squareYards": "Quadratyard insgesamt",
+        "squareMeters": "Quadratmeter insgesamt"
+      },
+      "note": "Teilen Sie unregelmäßige Räume in Rechtecke auf und addieren Sie die Flächen.",
+      "textResults": {}
+    },
+    "cubic-yard-calculator": {
+      "fields": {
+        "length": {
+          "label": "Länge (Fuß)"
+        },
+        "width": {
+          "label": "Breite (Fuß)"
+        },
+        "depth": {
+          "label": "Tiefe (Zoll)"
+        },
+        "wastePercent": {
+          "label": "Zusätzlicher Zuschlag (%)"
+        }
+      },
+      "results": {
+        "cubicFeet": "Volumen (Kubikfuß)",
+        "cubicYards": "Nettovolumen (Kubikyard)",
+        "orderCubicYards": "Volumen mit Zuschlag (Kubikyard)",
+        "cubicMeters": "Nettovolumen (Kubikmeter)"
+      },
+      "note": "Verdichtung, Setzung, Auflockerung nach Aushub und Mindestbestellmengen werden nicht automatisch berücksichtigt.",
+      "textResults": {}
+    }
   }
 }
