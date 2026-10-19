@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Fertilizer calculator guide</title>
+  <desc id="desc">A fertilizer bag with N-P-K label beside a measured green lawn and a calculator.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#effcf4"/><stop offset="1" stop-color="#e7f1ff"/></linearGradient>
+    <linearGradient id="bag" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#e8f3ec"/></linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#65c47b"/><stop offset="1" stop-color="#21864c"/></linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#16462b" flood-opacity=".14"/></filter>
+  </defs>
+  <rect width="1200" height="630" rx="38" fill="url(#bg)"/>
+  <circle cx="1075" cy="95" r="130" fill="#c8f0d3" opacity=".6"/>
+  <circle cx="135" cy="510" r="175" fill="#d4e9ff" opacity=".7"/>
+  <g filter="url(#shadow)">
+    <rect x="97" y="92" width="475" height="446" rx="30" fill="#fff"/>
+    <text x="142" y="169" fill="#1d3550" font-family="Arial,sans-serif" font-size="32" font-weight="700">Fertilizer amount</text>
+    <text x="142" y="211" fill="#60738a" font-family="Arial,sans-serif" font-size="20">Area × your supplied nutrient rate</text>
+    <rect x="142" y="250" width="385" height="103" rx="18" fill="#eef8f0"/>
+    <text x="168" y="291" fill="#456656" font-family="Arial,sans-serif" font-size="18">Product needed</text>
+    <text x="168" y="332" fill="#14783d" font-family="Arial,sans-serif" font-size="34" font-weight="700">19.23 lb</text>
+    <rect x="142" y="382" width="112" height="68" rx="14" fill="#f4f7fa"/>
+    <rect x="269" y="382" width="112" height="68" rx="14" fill="#f4f7fa"/>
+    <rect x="396" y="382" width="131" height="68" rx="14" fill="#f4f7fa"/>
+    <text x="177" y="424" fill="#20384e" font-family="Arial,sans-serif" font-size="24" font-weight="700">N</text>
+    <text x="206" y="424" fill="#60738a" font-family="Arial,sans-serif" font-size="20">26%</text>
+    <text x="301" y="424" fill="#20384e" font-family="Arial,sans-serif" font-size="24" font-weight="700">P</text>
+    <text x="329" y="424" fill="#60738a" font-family="Arial,sans-serif" font-size="20">5%</text>
+    <text x="425" y="424" fill="#20384e" font-family="Arial,sans-serif" font-size="24" font-weight="700">K</text>
+    <text x="452" y="424" fill="#60738a" font-family="Arial,sans-serif" font-size="20">10%</text>
+    <text x="142" y="492" fill="#667b8e" font-family="Arial,sans-serif" font-size="17">Example values for calculation practice</text>
+  </g>
+  <g filter="url(#shadow)" transform="translate(668 111)">
+    <path d="M104 27h228l30 49-24 295q-2 23-27 23H96q-25 0-27-23L45 76l31-49z" fill="url(#bag)" stroke="#92b6a0" stroke-width="5"/>
+    <path d="M77 79h282" stroke="#92b6a0" stroke-width="5"/>
+    <rect x="99" y="110" width="207" height="128" rx="20" fill="#256b45"/>
+    <text x="134" y="157" fill="#fff" font-family="Arial,sans-serif" font-size="37" font-weight="700">N - P - K</text>
+    <text x="148" y="207" fill="#d6f4de" font-family="Arial,sans-serif" font-size="31">26 - 5 - 10</text>
+    <path d="M128 286c32-36 61 18 94-11s48-12 72 9" fill="none" stroke="#52ad68" stroke-width="12" stroke-linecap="round"/>
+    <text x="117" y="346" fill="#527064" font-family="Arial,sans-serif" font-size="21" font-weight="700">READ THE LABEL</text>
+  </g>
+  <g transform="translate(750 452)">
+    <path d="M0 58h330" stroke="#4eac64" stroke-width="12" stroke-linecap="round"/>
+    <path d="M15 51v23m34-23v14m34-14v23m34-23v14m34-14v23m34-23v14m34-14v23m34-23v14m34-14v23m34-23v14" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+    <text x="8" y="113" fill="#547468" font-family="Arial,sans-serif" font-size="19">Measure area • enter your rate • check result</text>
+  </g>
+</svg>

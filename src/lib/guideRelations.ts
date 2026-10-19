@@ -1,4 +1,7 @@
 export const guideRelations: Record<string, string[]> = {
+  'how-to-calculate-fertilizer-for-a-lawn': ['fertilizer-npk-numbers-explained', 'how-to-calculate-fertilizer-from-a-soil-test'],
+  'fertilizer-npk-numbers-explained': ['how-to-calculate-fertilizer-for-a-lawn', 'how-to-calculate-fertilizer-from-a-soil-test'],
+  'how-to-calculate-fertilizer-from-a-soil-test': ['how-to-calculate-fertilizer-for-a-lawn', 'fertilizer-npk-numbers-explained'],
   'how-to-copy-and-paste-on-macbook': ['how-to-speed-up-macbook', 'how-to-show-battery-percentage-on-mac', 'how-to-clear-ram-on-mac'],
   'how-to-speed-up-macbook': ['how-to-copy-and-paste-on-macbook', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac'],
   'video-editing-software-for-mac': ['free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
