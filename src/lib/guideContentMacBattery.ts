@@ -2,7 +2,7 @@ import type { GuideContent } from './guideContent';
 
 export const macBatteryGuideContent: Record<string, GuideContent> = {
   "how-to-show-battery-percentage-on-mac": {
-    "intro": "To show battery percentage on Mac in 2026, open **Apple menu > System Settings > Menu Bar > Battery > Battery Options**, then turn on **Show Percentage**. This is the current path in macOS 27 Golden Gate and macOS Tahoe 26. Older versions use a different settings menu, so use the steps for your macOS version below.",
+    "intro": "To show battery percentage on a Mac in 2026, including a MacBook Air or Pro, open **Apple menu > System Settings > Menu Bar > Battery > Battery Options**, then turn on **Show Percentage**. This is the current path in macOS 27 Golden Gate and macOS Tahoe 26. Older versions use a different settings menu, so use the steps for your macOS version below.",
     "sections": [
       {
         "title": "Show battery percentage on macOS 27 and macOS Tahoe 26",
@@ -43,7 +43,7 @@ export const macBatteryGuideContent: Record<string, GuideContent> = {
         "answer": "On macOS 27 and Tahoe 26, open Apple menu > System Settings > Menu Bar > Battery > Battery Options, then turn on Show Percentage. Older versions use Control Center or Dock & Menu Bar."
       },
       {
-        "question": "How do I show battery percentage on a MacBook Air?",
+        "question": "How do I show battery percentage on a MacBook Air in 2026?",
         "answer": "Open the battery settings for your macOS version and turn on Show Percentage. The steps are the same on MacBook Air and MacBook Pro."
       },
       {
@@ -69,14 +69,18 @@ export const macBatteryGuideContent: Record<string, GuideContent> = {
       {
         "question": "Can an iMac show its battery percentage?",
         "answer": "An iMac has no built-in battery. A connected wireless accessory may show its own battery level."
+      },
+      {
+        "question": "Where is the battery icon on a MacBook Pro?",
+        "answer": "The battery icon appears in the menu bar at the top of the screen. If it is missing, open System Settings > Menu Bar > Battery and show Battery in the menu bar. Turn on Show Percentage under Battery Options."
       }
     ],
-    "summary": "To show battery percentage on Mac in 2026, open System Settings > Menu Bar > Battery > Battery Options and turn on Show Percentage. This is the current path for macOS 27 and Tahoe 26. On Sequoia, Sonoma, or Ventura, look under Control Center. On Monterey or Big Sur, use System Preferences > Dock & Menu Bar.",
+    "summary": "To show battery percentage on MacBook Air, MacBook Pro, or another Mac laptop in 2026, open System Settings > Menu Bar > Battery > Battery Options and turn on Show Percentage. This is the current path for macOS 27 and Tahoe 26. On Sequoia, Sonoma, or Ventura, look under Control Center. On Monterey or Big Sur, use System Preferences > Dock & Menu Bar.",
     "schema": {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "How to Show Battery Percentage on Mac (2026 Guide)",
-      "description": "Turn on battery percentage on your MacBook in macOS 27, Tahoe 26, Sequoia, Sonoma, Ventura, or an older version. Follow the right steps and fix a missing icon.",
+      "headline": "How to Show Battery Percentage on Mac (2026): MacBook Air & Pro",
+      "description": "Show battery percentage on MacBook Air or Pro in macOS 27, Tahoe 26, and older versions. Follow the steps and fix a missing battery icon.",
       "author": {
         "@type": "Organization",
         "name": "Navorika Team"
