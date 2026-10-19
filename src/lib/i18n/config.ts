@@ -9,6 +9,7 @@ export const translatedTools = [
   'aspect-ratio-padding-calculator', 'css-flexbox-generator',
   'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'print-bleed-calculator',
   'pdf-bleed-trim-checker', 'image-print-size-calculator',
+  'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
 export const isLocale = (value: string): value is Locale =>

@@ -123,6 +123,30 @@
       "limits": "PPI describes image pixels per printed inch; printer DPI describes ink dots. Results are rounded to three decimal places. Changing the resolution here does not resize a photo or improve its detail.",
       "question": "What happens if I lower the PPI?",
       "answer": "The same pixel dimensions produce a larger physical print, but the image may look less detailed at a close viewing distance. Ask your print provider which resolution to use."
+    },
+    "css-gradient-generator": {
+      "title": "CSS Gradient Generator",
+      "description": "Create a two-color background gradient, preview its direction and copy the CSS for your website.",
+      "how": "Choose two colors and an angle from 0 to 360 degrees. At 0 degrees the gradient points upward; at 90 degrees it points right. Copy the declaration into your stylesheet.",
+      "limits": "This generates a linear gradient with two opaque colors. It does not export an image or check text contrast. Direction follows CSS coordinates, including in Arabic.",
+      "question": "Does the gradient direction change in Arabic?",
+      "answer": "No. The interface follows the selected language, but CSS angles keep their standard meaning."
+    },
+    "css-clamp-font-generator": {
+      "title": "CSS Font Size Generator",
+      "description": "Generate responsive text sizes with CSS clamp(). Set minimum and maximum font sizes and browser widths, then copy the CSS.",
+      "how": "Enter increasing font sizes and increasing browser widths. The tool interpolates between the two limits. Resize the browser to see the sample text grow, then copy the generated declaration.",
+      "limits": "Font sizes range from 1 to 512 pixels; browser widths must be whole values from 1 to 10,000 pixels. Each maximum must exceed its minimum. Calculations assume a 16-pixel root font. The preview uses the actual browser width.",
+      "question": "Does changing the root font size affect this CSS?",
+      "answer": "Yes. The generated rem values assume 16 pixels at the root. Changing that value changes the resulting sizes and transition points."
+    },
+    "image-scaling-calculator": {
+      "title": "Image Scaling Calculator",
+      "description": "Calculate new image dimensions from a scale percentage. See the rounded pixel dimensions, scale factor and theoretical area percentage.",
+      "how": "Enter original dimensions in whole pixels and a scale percentage. Scaling 1920 × 1080 to 50% gives 960 × 540. Both dimensions use the same factor to preserve the proportions before rounding.",
+      "limits": "Dimensions are limited to 1,000,000 pixels per side and scaling to 0.01–10,000%. Rounded output must be at least one pixel per side. Area percentage is calculated before pixel rounding. No image is resized.",
+      "question": "Does scaling to 50% halve the pixel area?",
+      "answer": "No. Halving both dimensions gives one quarter of the theoretical area, or 25%. Actual whole-pixel dimensions can differ slightly because of rounding."
     }
   },
   "flexOptions": {
@@ -179,5 +203,25 @@
     "widthCm": "Print width in centimeters",
     "heightCm": "Print height in centimeters",
     "invalid": "Enter positive whole-pixel dimensions up to 1,000,000,000 and a resolution from 0.000001 to 1,000,000 PPI."
+  },
+  "design": {
+    "settings": "Settings",
+    "firstColor": "First color",
+    "secondColor": "Second color",
+    "angle": "Angle (degrees)",
+    "minFont": "Minimum font size (px)",
+    "maxFont": "Maximum font size (px)",
+    "minViewport": "Minimum browser width (px)",
+    "maxViewport": "Maximum browser width (px)",
+    "sampleText": "Sample text",
+    "sample": "Text grows smoothly with the browser width.",
+    "gradientInvalid": "Choose valid colors and an angle from 0 to 360 degrees.",
+    "clampInvalid": "Enter increasing font sizes from 1 to 512 pixels and increasing whole browser widths from 1 to 10,000 pixels.",
+    "scalePercent": "Scale (%)",
+    "scaledWidth": "Scaled width (pixels)",
+    "scaledHeight": "Scaled height (pixels)",
+    "scaleFactor": "Scale factor",
+    "areaPercent": "Theoretical area (%)",
+    "scaleInvalid": "Enter whole dimensions from 1 to 1,000,000 pixels and a scale from 0.01 to 10,000%. Each rounded result must be at least one pixel."
   }
 }

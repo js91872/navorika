@@ -7,7 +7,7 @@ import { PDFDocument } from 'pdf-lib';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
 const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
-const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'print-bleed-calculator'];
+const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator', 'print-bleed-calculator'];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
 let serverOutput = '';
@@ -217,14 +217,90 @@ try {
       assert.equal(await page.locator('main').getByRole('alert').textContent(), d.pdf.tooLarge);
     }
     workflowsChecked++;
-    console.log(`Verified ${locale}: eight translated pages and seven working tools.`);
+    await visit(`/${locale}/tools/css-gradient-generator`);
+    const chooseColor = async (index, value) => page.locator('input[type="color"]').nth(index).evaluate((element, next) => {
+      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(element, next);
+      element.dispatchEvent(new Event('input', { bubbles: true }));
+      element.dispatchEvent(new Event('change', { bubbles: true }));
+    }, value);
+    await chooseColor(0, '#000000');
+    await chooseColor(1, '#ffffff');
+    await page.locator('input[type="number"]').fill('0');
+    assert.equal(await page.locator('pre').textContent(), 'background: linear-gradient(0deg, #000000, #ffffff);');
+    const background = await page.locator('[data-gradient-preview]').evaluate((element) => getComputedStyle(element).backgroundImage);
+    assert.ok(background.includes('0deg') && background.includes('rgb(0, 0, 0)') && background.includes('rgb(255, 255, 255)'));
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.equal(await page.evaluate(() => window.__copied), 'background: linear-gradient(0deg, #000000, #ffffff);');
+    for (const angle of ['', '-1', '361']) {
+      await page.locator('input[type="number"]').fill(angle);
+      assert.equal(await page.locator('main').getByRole('alert').textContent(), d.design.gradientInvalid);
+      assert.equal(await page.locator('pre').count(), 0);
+    }
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/css-clamp-font-generator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.equal(await page.locator('[data-font-preview]').textContent(), d.design.sample);
+    const fontFields = page.locator('input[type="number"]');
+    for (const [width, expected] of [[320, 16], [760, 32], [1200, 48]]) {
+      await page.setViewportSize({ width, height: 900 });
+      const fontSize = await page.locator('[data-font-preview]').evaluate((element) => parseFloat(getComputedStyle(element).fontSize));
+      assert.ok(Math.abs(fontSize - expected) < 0.02, `Font preview ${locale}/${width}: ${fontSize}`);
+      await noOverflow(`${locale} font preview at ${width}`);
+    }
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await fontFields.nth(1).fill('64');
+    assert.match(await page.locator('pre').textContent(), /-0\.090909rem \+/);
+    await page.locator('main input[type="text"]').fill('Aa مرحبا');
+    assert.equal(await page.locator('[data-font-preview]').textContent(), 'Aa مرحبا');
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.equal(await page.evaluate(() => window.__copied), await page.locator('pre').textContent());
+    for (const [index, value] of [[1, '16'], [1, '513'], [3, '320'], [2, '320.5'], [0, '']]) {
+      await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+      await fontFields.nth(index).fill(value);
+      assert.equal(await page.locator('main').getByRole('alert').textContent(), d.design.clampInvalid);
+      assert.equal(await page.locator('pre').count(), 0);
+    }
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/image-scaling-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    const scaleFields = page.locator('input[type="number"]');
+    const formatScale = (value) => new Intl.NumberFormat(locale, { maximumFractionDigits: 6 }).format(value);
+    assert.deepEqual(await page.locator('dl dd').allTextContents(), [960, 540, 0.5, 25].map(formatScale));
+    await scaleFields.nth(2).fill('200');
+    assert.deepEqual(await page.locator('dl dd').allTextContents(), [3840, 2160, 2, 400].map(formatScale));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.design.scaledWidth));
+    for (const value of ['0', '0.001', '10001', '']) {
+      await scaleFields.nth(2).fill(value);
+      assert.equal(await page.locator('main').getByRole('alert').textContent(), d.design.scaleInvalid);
+      assert.equal(await page.locator('dl').count(), 0);
+      assert.equal(await page.getByRole('button', { name: d.ui.copy, exact: true }).isDisabled(), true);
+    }
+    await scaleFields.nth(0).fill('1');
+    await scaleFields.nth(1).fill('1');
+    await scaleFields.nth(2).fill('0.01');
+    assert.equal(await page.locator('dl').count(), 0, 'Zero-pixel output is not shown');
+    await scaleFields.nth(0).fill('1000000');
+    await scaleFields.nth(1).fill('1000000');
+    assert.deepEqual(await page.locator('dl dd').allTextContents(), [100, 100, 0.0001, 0.000001].map(formatScale));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.setViewportSize({ width: 390, height: 844 });
+    await noOverflow(`${locale} scaling results`);
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    workflowsChecked++;
+    console.log(`Verified ${locale}: eleven translated pages and ten working tools.`);
   }
   for (const slug of [null, ...slugs]) {
     await visit(slug ? `/tools/${slug}` : '/');
     assert.equal(await page.locator('html').getAttribute('lang'), 'en');
-    await noOverflow('English desktop');
+    await noOverflow(`English ${slug || 'home'} desktop`);
     await page.setViewportSize({ width: 390, height: 844 });
-    await noOverflow('English mobile');
+    await noOverflow(`English ${slug || 'home'} mobile`);
     await page.setViewportSize({ width: 1440, height: 1000 });
     assert.equal(await page.locator('link[hreflang="fr"]').getAttribute('href'), `https://navorika.com/fr${slug ? `/tools/${slug}` : ''}`);
   }
@@ -283,7 +359,7 @@ try {
     }
   }
   assert.deepEqual(errors, [], 'Uncaught browser errors');
-  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, englishAlternates: 8, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
+  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, englishAlternates: 11, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
 } finally {
   await browser?.close();
   server?.kill('SIGTERM');
