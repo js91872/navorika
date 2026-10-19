@@ -123,6 +123,30 @@
       "limits": "PPI bezeichnet Bildpixel pro gedrucktem Zoll; die DPI des Druckers bezeichnen Tintenpunkte. Ergebnisse werden auf drei Nachkommastellen gerundet. Die Berechnung verändert das Originalbild nicht und ergänzt keine Details.",
       "question": "Was passiert bei einem niedrigeren PPI-Wert?",
       "answer": "Dieselben Pixel ergeben einen größeren Druck, können aus der Nähe jedoch weniger scharf wirken. Fragen Sie Ihre Druckerei nach der passenden Auflösung."
+    },
+    "css-gradient-generator": {
+      "title": "CSS-Farbverlauf-Generator",
+      "description": "Erstellen Sie einen Hintergrund mit zwei Farben, prüfen Sie die Richtung und kopieren Sie das CSS für Ihre Website.",
+      "how": "Wählen Sie zwei Farben und einen Winkel von 0 bis 360 Grad. Bei 0 Grad zeigt der Verlauf nach oben, bei 90 Grad nach rechts. Kopieren Sie die Deklaration in Ihr Stylesheet.",
+      "limits": "Erzeugt wird ein linearer Verlauf mit zwei deckenden Farben. Das Werkzeug exportiert keine Bilder und prüft keinen Textkontrast. Die Richtung folgt den CSS-Koordinaten, auch im arabischen Umfeld.",
+      "question": "Ändert sich die Richtung in der arabischen Oberfläche?",
+      "answer": "Nein. Die Oberfläche folgt der gewählten Sprache, die CSS-Winkel behalten jedoch ihre Standardbedeutung."
+    },
+    "css-clamp-font-generator": {
+      "title": "CSS-Schriftgrößen-Generator",
+      "description": "Erzeugen Sie anpassbare Schriftgrößen mit CSS clamp(). Legen Sie minimale und maximale Schriftgrößen und Browserbreiten fest und kopieren Sie das CSS.",
+      "how": "Geben Sie ansteigende Schriftgrößen und Browserbreiten ein. Das Werkzeug berechnet einen fließenden Übergang zwischen den Grenzen. Ändern Sie die Browserbreite für die Vorschau und kopieren Sie die Deklaration.",
+      "limits": "Schriftgrößen reichen von 1 bis 512 Pixel; Browserbreiten müssen ganze Werte von 1 bis 10.000 Pixel sein. Jedes Maximum muss größer als sein Minimum sein. Berechnet wird mit 16 Pixeln Wurzelschriftgröße. Die Vorschau nutzt die tatsächliche Browserbreite.",
+      "question": "Beeinflusst die Wurzelschriftgröße dieses CSS?",
+      "answer": "Ja. Die erzeugten rem-Werte gehen von 16 Pixeln an der Wurzel aus. Eine Änderung verändert die resultierenden Größen und Übergangspunkte."
+    },
+    "image-scaling-calculator": {
+      "title": "Rechner zur Bildskalierung",
+      "description": "Berechnen Sie neue Bildmaße aus einem Skalierungsprozentsatz. Sehen Sie gerundete Pixelmaße, Skalierungsfaktor und theoretischen Flächenanteil.",
+      "how": "Geben Sie die ursprünglichen Maße in ganzen Pixeln und den Prozentsatz ein. Ein Bild mit 1920 × 1080 ergibt bei 50% neue Maße von 960 × 540. Vor der Rundung wird derselbe Faktor auf beide Seiten angewendet.",
+      "limits": "Jede Seite ist auf 1.000.000 Pixel begrenzt, die Skalierung auf 0,01–10.000%. Nach der Rundung muss jede Seite mindestens einen Pixel haben. Die Fläche wird vor der Rundung berechnet. Kein Bild wird verändert.",
+      "question": "Halbiert eine Skalierung auf 50% die Fläche?",
+      "answer": "Nein. Die Halbierung beider Seiten ergibt ein Viertel der theoretischen Fläche, also 25%. Ganze Pixelmaße können wegen der Rundung leicht abweichen."
     }
   },
   "flexOptions": {
@@ -179,5 +203,25 @@
     "widthCm": "Druckbreite in Zentimetern",
     "heightCm": "Druckhöhe in Zentimetern",
     "invalid": "Geben Sie positive ganze Pixelmaße bis 1.000.000.000 und eine Auflösung von 0,000001 bis 1.000.000 PPI ein."
+  },
+  "design": {
+    "settings": "Einstellungen",
+    "firstColor": "Erste Farbe",
+    "secondColor": "Zweite Farbe",
+    "angle": "Winkel (Grad)",
+    "minFont": "Kleinste Schriftgröße (px)",
+    "maxFont": "Größte Schriftgröße (px)",
+    "minViewport": "Kleinste Browserbreite (px)",
+    "maxViewport": "Größte Browserbreite (px)",
+    "sampleText": "Beispieltext",
+    "sample": "Der Text wächst fließend mit der Browserbreite.",
+    "gradientInvalid": "Wählen Sie gültige Farben und einen Winkel von 0 bis 360 Grad.",
+    "clampInvalid": "Geben Sie ansteigende Schriftgrößen von 1 bis 512 Pixel und ansteigende ganze Browserbreiten von 1 bis 10.000 Pixel ein.",
+    "scalePercent": "Skalierung (%)",
+    "scaledWidth": "Neue Breite (Pixel)",
+    "scaledHeight": "Neue Höhe (Pixel)",
+    "scaleFactor": "Skalierungsfaktor",
+    "areaPercent": "Theoretische Fläche (%)",
+    "scaleInvalid": "Geben Sie ganze Maße von 1 bis 1.000.000 Pixel und eine Skalierung von 0,01 bis 10.000% ein. Jedes gerundete Maß muss mindestens einen Pixel betragen."
   }
 }

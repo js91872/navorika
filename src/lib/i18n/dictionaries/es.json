@@ -123,6 +123,30 @@
       "limits": "PPI mide los píxeles por pulgada impresa; el DPI de la impresora mide los puntos de tinta. Los resultados se redondean a tres decimales. El cálculo no cambia el tamaño de la foto ni añade detalle.",
       "question": "¿Qué ocurre si reduzco el PPI?",
       "answer": "Los mismos píxeles producen una impresión mayor, pero los detalles pueden verse menos nítidos de cerca. Consulta a la imprenta qué resolución debes usar."
+    },
+    "css-gradient-generator": {
+      "title": "Generador de degradados CSS",
+      "description": "Crea un fondo degradado de dos colores, comprueba su dirección y copia el CSS para tu sitio.",
+      "how": "Elige dos colores y un ángulo de 0 a 360 grados. A 0 grados el degradado apunta hacia arriba; a 90 grados, hacia la derecha. Copia la declaración en tu hoja de estilos.",
+      "limits": "Genera un degradado lineal con dos colores opacos. No exporta imágenes ni comprueba el contraste del texto. La dirección sigue las coordenadas CSS, también en árabe.",
+      "question": "¿Cambia la dirección en la interfaz en árabe?",
+      "answer": "No. La interfaz sigue el idioma elegido, pero los ángulos CSS mantienen su significado habitual."
+    },
+    "css-clamp-font-generator": {
+      "title": "Generador de tamaño de letra CSS",
+      "description": "Genera texto adaptable con CSS clamp(). Define tamaños de letra y anchuras de navegador mínimas y máximas y copia el CSS.",
+      "how": "Introduce tamaños de letra crecientes y anchuras de navegador crecientes. La herramienta calcula una progresión entre los límites. Cambia el tamaño del navegador para ver el texto y copia la declaración.",
+      "limits": "Los tamaños de letra van de 1 a 512 píxeles; las anchuras del navegador deben ser enteras, de 1 a 10.000 píxeles. Cada máximo debe superar su mínimo. El cálculo supone una fuente raíz de 16 píxeles. La vista previa usa la anchura real del navegador.",
+      "question": "¿La fuente raíz afecta a este CSS?",
+      "answer": "Sí. Los valores rem generados suponen una raíz de 16 píxeles. Cambiarla modifica los tamaños obtenidos y los puntos de transición."
+    },
+    "image-scaling-calculator": {
+      "title": "Calculadora de escala de imágenes",
+      "description": "Calcula las nuevas dimensiones de una imagen a partir de un porcentaje. Consulta los píxeles redondeados, el factor de escala y el porcentaje teórico de superficie.",
+      "how": "Introduce las dimensiones originales en píxeles enteros y un porcentaje. Una imagen de 1920 × 1080 al 50% pasa a 960 × 540. El mismo factor se aplica a ambas dimensiones antes del redondeo.",
+      "limits": "Las dimensiones se limitan a 1.000.000 de píxeles por lado y la escala a 0,01–10.000%. El resultado redondeado debe tener al menos un píxel por lado. La superficie se calcula antes del redondeo. No se modifica ninguna imagen.",
+      "question": "¿Una escala del 50% reduce la superficie a la mitad?",
+      "answer": "No. Reducir ambas dimensiones a la mitad produce un cuarto de la superficie teórica, es decir, el 25%. Las dimensiones en píxeles enteros pueden variar ligeramente por el redondeo."
     }
   },
   "flexOptions": {
@@ -179,5 +203,25 @@
     "widthCm": "Anchura impresa en centímetros",
     "heightCm": "Altura impresa en centímetros",
     "invalid": "Introduce dimensiones en píxeles enteros positivos de hasta 1.000.000.000 y una resolución de 0,000001 a 1.000.000 PPI."
+  },
+  "design": {
+    "settings": "Ajustes",
+    "firstColor": "Primer color",
+    "secondColor": "Segundo color",
+    "angle": "Ángulo (grados)",
+    "minFont": "Tamaño mínimo de letra (px)",
+    "maxFont": "Tamaño máximo de letra (px)",
+    "minViewport": "Anchura mínima del navegador (px)",
+    "maxViewport": "Anchura máxima del navegador (px)",
+    "sampleText": "Texto de ejemplo",
+    "sample": "El texto crece suavemente con la anchura del navegador.",
+    "gradientInvalid": "Elige colores válidos y un ángulo de 0 a 360 grados.",
+    "clampInvalid": "Introduce tamaños de letra crecientes de 1 a 512 píxeles y anchuras enteras de navegador crecientes de 1 a 10.000 píxeles.",
+    "scalePercent": "Escala (%)",
+    "scaledWidth": "Anchura resultante (píxeles)",
+    "scaledHeight": "Altura resultante (píxeles)",
+    "scaleFactor": "Factor de escala",
+    "areaPercent": "Superficie teórica (%)",
+    "scaleInvalid": "Introduce dimensiones enteras de 1 a 1.000.000 de píxeles y una escala de 0,01 a 10.000%. Cada resultado redondeado debe tener al menos un píxel."
   }
 }

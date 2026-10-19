@@ -19,7 +19,7 @@ test('every dictionary is complete, nonempty and contains translated tool conten
   for (const locale of locales) {
     const d = await getDictionary(locale);
     assert.deepEqual(Object.keys(d).sort(), Object.keys(english).sort(), locale);
-    for (const section of ['ui', 'pdf', 'printSize'] as const) assert.deepEqual(Object.keys(d[section]).sort(), Object.keys(english[section]).sort(), `${locale}/${section}`);
+    for (const section of ['ui', 'pdf', 'printSize', 'design'] as const) assert.deepEqual(Object.keys(d[section]).sort(), Object.keys(english[section]).sort(), `${locale}/${section}`);
     assert.deepEqual(Object.keys(d.tools).sort(), [...translatedTools].sort(), locale);
     for (const value of Object.values(d.ui)) assert.ok(value.trim().length > 0, locale);
     for (const slug of translatedTools) {
@@ -54,7 +54,7 @@ test('localized controls do not expose CSS keywords or previously untranslated E
       assert.notEqual(label, keyword, `${locale} exposes raw ${keyword}`);
       assert.notEqual(label, english.flexOptions[keyword as keyof typeof english.flexOptions], `${locale}/${keyword} uses English label`);
     }
-    const text = [...Object.values(d.ui), ...Object.values(d.tools).flatMap((tool) => Object.values(tool)), ...Object.values(d.flexOptions), ...Object.values(d.pdf), ...Object.values(d.printSize)];
+    const text = [...Object.values(d.ui), ...Object.values(d.tools).flatMap((tool) => Object.values(tool)), ...Object.values(d.flexOptions), ...Object.values(d.pdf), ...Object.values(d.printSize), ...Object.values(d.design)];
     for (const value of text) assert.equal(fragments.test(value), false, `${locale}: ${value}`);
   }
 });
@@ -119,4 +119,33 @@ test('PDF reports translate every geometry interpretation and all report columns
     assert.equal(rows[4][5], new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(3.17));
     assert.doesNotMatch(JSON.stringify(rows), /Default configuration|Explicit bleed boxes|Invalid input/);
   }
+});
+
+test('CSS gradients validate code values and preserve standard coordinates', async () => {
+  const { gradientCss } = await import('./designCalculations');
+  assert.equal(gradientCss('#000000', '#ffffff', 90)?.css, 'background: linear-gradient(90deg, #000000, #ffffff);');
+  assert.equal(gradientCss('#000000', '#ffffff', 0)?.background, 'linear-gradient(0deg, #000000, #ffffff)');
+  for (const color of ['red', '#fff', '#000000;display:none', 'url(example)']) assert.equal(gradientCss(color, '#ffffff', 90), null);
+  for (const angle of [NaN, Infinity, -1, 361]) assert.equal(gradientCss('#000000', '#ffffff', angle), null);
+});
+
+test('fluid font CSS reaches independent endpoints and interpolates between them', async () => {
+  const { clampFontCss } = await import('./designCalculations');
+  const result = clampFontCss(16, 48, 320, 1200)!;
+  const values = result.clamp.match(/-?\d+(?:\.\d+)?/g)!.map(Number);
+  const [minRem, interceptRem, vw, maxRem] = values;
+  const atWidth = (width: number) => Math.min(maxRem * 16, Math.max(minRem * 16, interceptRem * 16 + vw * width / 100));
+  for (const [width, expected] of [[200, 16], [320, 16], [760, 32], [1200, 48], [1600, 48]]) assert.ok(Math.abs(atWidth(width) - expected) < 0.001);
+  assert.match(clampFontCss(16, 64, 320, 1200)!.clamp, /, -0\.090909rem \+/);
+  for (const inputs of [[0, 48, 320, 1200], [16, 16, 320, 1200], [16, 48, 320, 320], [16, 513, 320, 1200], [16, 48, 1.5, 1200], [16, 48, 320, Infinity]]) {
+    assert.equal(clampFontCss(...inputs as [number, number, number, number]), null);
+  }
+});
+
+test('image scaling preserves the existing engine and rejects misleading zero-pixel output', async () => {
+  const { scaledImage } = await import('./designCalculations');
+  assert.deepEqual(scaledImage(1920, 1080, 50), { scaledWidth: 960, scaledHeight: 540, scaleFactor: 0.5, pixelAreaPercent: 25 });
+  assert.deepEqual(scaledImage(1000, 500, 200), { scaledWidth: 2000, scaledHeight: 1000, scaleFactor: 2, pixelAreaPercent: 400 });
+  assert.deepEqual(scaledImage(1000000, 1000000, 0.01), { scaledWidth: 100, scaledHeight: 100, scaleFactor: 0.0001, pixelAreaPercent: 0.000001 });
+  for (const inputs of [[1, 1, 0.01], [1920, 1080, 0], [1920, 1080, 0.001], [1920, 1080, 10001], [1.5, 1080, 50], [1000001, 1080, 50], [NaN, 1080, 50]]) assert.equal(scaledImage(...inputs as [number, number, number]), null);
 });

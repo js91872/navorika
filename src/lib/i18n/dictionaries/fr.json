@@ -123,6 +123,30 @@
       "limits": "Le PPI mesure les pixels par pouce imprimé ; le DPI de l’imprimante mesure les points d’encre. Les résultats sont arrondis à trois décimales. Cette opération ne redimensionne pas la photo et ne crée aucun détail supplémentaire.",
       "question": "Que se passe-t-il si je réduis le PPI ?",
       "answer": "Le même nombre de pixels produit une impression plus grande, mais les détails peuvent sembler moins nets de près. Demandez la résolution conseillée à votre imprimeur."
+    },
+    "css-gradient-generator": {
+      "title": "Générateur de dégradés CSS",
+      "description": "Créez un fond dégradé entre deux couleurs, vérifiez sa direction et copiez le CSS pour votre site.",
+      "how": "Choisissez deux couleurs et un angle entre 0 et 360 degrés. À 0 degré, le dégradé pointe vers le haut ; à 90 degrés, vers la droite. Copiez la déclaration dans votre feuille de style.",
+      "limits": "Cet outil génère un dégradé linéaire avec deux couleurs opaques. Il ne crée pas d’image et ne vérifie pas le contraste du texte. La direction suit les coordonnées CSS, y compris en arabe.",
+      "question": "La direction du dégradé change-t-elle en arabe ?",
+      "answer": "Non. L’interface suit la langue choisie, mais les angles CSS conservent leur sens habituel."
+    },
+    "css-clamp-font-generator": {
+      "title": "Générateur de taille de police CSS",
+      "description": "Générez une taille de texte adaptative avec CSS clamp(). Définissez les tailles de police et les largeurs de navigateur minimales et maximales, puis copiez le CSS.",
+      "how": "Saisissez des tailles de police croissantes et des largeurs de navigateur croissantes. L’outil calcule une progression entre les limites. Redimensionnez le navigateur pour observer le texte, puis copiez la déclaration.",
+      "limits": "Les tailles de police vont de 1 à 512 pixels ; les largeurs de navigateur doivent être entières, de 1 à 10 000 pixels. Chaque maximum doit dépasser son minimum. Le calcul suppose une taille racine de 16 pixels. L’aperçu utilise la largeur réelle du navigateur.",
+      "question": "La taille de police racine influence-t-elle ce CSS ?",
+      "answer": "Oui. Les valeurs rem générées supposent une racine de 16 pixels. Modifier cette valeur change les tailles obtenues et les points de transition."
+    },
+    "image-scaling-calculator": {
+      "title": "Calculateur de mise à l’échelle d’image",
+      "description": "Calculez les nouvelles dimensions d’une image à partir d’un pourcentage. Obtenez les dimensions arrondies en pixels, le facteur et le pourcentage de surface théorique.",
+      "how": "Saisissez les dimensions d’origine en pixels entiers et le pourcentage souhaité. Une image de 1920 × 1080 à 50% devient 960 × 540. Le même facteur est appliqué aux deux dimensions avant arrondi.",
+      "limits": "Les dimensions sont limitées à 1 000 000 pixels par côté et l’échelle à 0,01–10 000%. Le résultat arrondi doit mesurer au moins un pixel par côté. La surface est calculée avant arrondi. Aucune image n’est modifiée.",
+      "question": "Une échelle de 50% divise-t-elle la surface par deux ?",
+      "answer": "Non. Diviser chaque dimension par deux donne un quart de la surface théorique, soit 25%. Les dimensions en pixels entiers peuvent légèrement varier après arrondi."
     }
   },
   "flexOptions": {
@@ -179,5 +203,25 @@
     "widthCm": "Largeur imprimée en centimètres",
     "heightCm": "Hauteur imprimée en centimètres",
     "invalid": "Saisissez des dimensions en pixels entiers positifs jusqu’à 1 000 000 000 et une résolution de 0,000001 à 1 000 000 PPI."
+  },
+  "design": {
+    "settings": "Réglages",
+    "firstColor": "Première couleur",
+    "secondColor": "Deuxième couleur",
+    "angle": "Angle (degrés)",
+    "minFont": "Taille de police minimale (px)",
+    "maxFont": "Taille de police maximale (px)",
+    "minViewport": "Largeur de navigateur minimale (px)",
+    "maxViewport": "Largeur de navigateur maximale (px)",
+    "sampleText": "Texte d’exemple",
+    "sample": "Le texte grandit progressivement avec la largeur du navigateur.",
+    "gradientInvalid": "Choisissez des couleurs valides et un angle de 0 à 360 degrés.",
+    "clampInvalid": "Saisissez des tailles de police croissantes de 1 à 512 pixels et des largeurs de navigateur entières croissantes de 1 à 10 000 pixels.",
+    "scalePercent": "Échelle (%)",
+    "scaledWidth": "Largeur obtenue (pixels)",
+    "scaledHeight": "Hauteur obtenue (pixels)",
+    "scaleFactor": "Facteur d’échelle",
+    "areaPercent": "Surface théorique (%)",
+    "scaleInvalid": "Saisissez des dimensions entières de 1 à 1 000 000 pixels et une échelle de 0,01 à 10 000%. Chaque résultat arrondi doit mesurer au moins un pixel."
   }
 }

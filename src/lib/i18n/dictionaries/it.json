@@ -123,6 +123,30 @@
       "limits": "Il PPI indica i pixel per pollice stampato; il DPI della stampante indica i punti di inchiostro. I risultati sono arrotondati a tre decimali. Il calcolo non ridimensiona la foto e non aggiunge dettagli.",
       "question": "Cosa succede riducendo il PPI?",
       "answer": "Gli stessi pixel producono una stampa più grande, ma da vicino i dettagli possono apparire meno nitidi. Chiedi alla tipografia quale risoluzione usare."
+    },
+    "css-gradient-generator": {
+      "title": "Generatore di sfumature CSS",
+      "description": "Crea uno sfondo sfumato a due colori, controlla la direzione e copia il CSS per il tuo sito.",
+      "how": "Scegli due colori e un angolo da 0 a 360 gradi. A 0 gradi la sfumatura punta verso l’alto; a 90 gradi verso destra. Copia la dichiarazione nel foglio di stile.",
+      "limits": "Lo strumento genera una sfumatura lineare con due colori opachi. Non esporta immagini e non verifica il contrasto del testo. La direzione segue le coordinate CSS anche in arabo.",
+      "question": "La direzione cambia nell’interfaccia araba?",
+      "answer": "No. L’interfaccia segue la lingua scelta, ma gli angoli CSS mantengono il loro significato standard."
+    },
+    "css-clamp-font-generator": {
+      "title": "Generatore di dimensioni del testo CSS",
+      "description": "Genera testo adattabile con CSS clamp(). Imposta dimensioni del carattere e larghezze del browser minime e massime, quindi copia il CSS.",
+      "how": "Inserisci dimensioni del carattere crescenti e larghezze del browser crescenti. Lo strumento calcola una progressione tra i limiti. Ridimensiona il browser per osservare il testo, poi copia la dichiarazione.",
+      "limits": "I caratteri possono misurare da 1 a 512 pixel; le larghezze del browser devono essere intere, da 1 a 10.000 pixel. Ogni massimo deve superare il minimo. Il calcolo assume una dimensione radice di 16 pixel. L’anteprima usa la larghezza reale del browser.",
+      "question": "La dimensione del carattere radice influisce sul CSS?",
+      "answer": "Sì. I valori rem generati assumono una radice di 16 pixel. Modificarla cambia le dimensioni risultanti e i punti di transizione."
+    },
+    "image-scaling-calculator": {
+      "title": "Calcolatore di ridimensionamento immagini",
+      "description": "Calcola le nuove dimensioni di un’immagine da una percentuale. Ottieni pixel arrotondati, fattore di scala e percentuale teorica dell’area.",
+      "how": "Inserisci le dimensioni originali in pixel interi e una percentuale. Un’immagine di 1920 × 1080 al 50% diventa 960 × 540. Lo stesso fattore è applicato a entrambe le dimensioni prima dell’arrotondamento.",
+      "limits": "Le dimensioni sono limitate a 1.000.000 pixel per lato e la scala a 0,01–10.000%. Il risultato arrotondato deve avere almeno un pixel per lato. L’area è calcolata prima dell’arrotondamento. Nessuna immagine viene modificata.",
+      "question": "Una scala del 50% dimezza l’area?",
+      "answer": "No. Dimezzare entrambe le dimensioni produce un quarto dell’area teorica, cioè il 25%. Le dimensioni in pixel interi possono variare leggermente per l’arrotondamento."
     }
   },
   "flexOptions": {
@@ -179,5 +203,25 @@
     "widthCm": "Larghezza di stampa in centimetri",
     "heightCm": "Altezza di stampa in centimetri",
     "invalid": "Inserisci dimensioni in pixel interi positivi fino a 1.000.000.000 e una risoluzione da 0,000001 a 1.000.000 PPI."
+  },
+  "design": {
+    "settings": "Impostazioni",
+    "firstColor": "Primo colore",
+    "secondColor": "Secondo colore",
+    "angle": "Angolo (gradi)",
+    "minFont": "Dimensione minima del carattere (px)",
+    "maxFont": "Dimensione massima del carattere (px)",
+    "minViewport": "Larghezza minima del browser (px)",
+    "maxViewport": "Larghezza massima del browser (px)",
+    "sampleText": "Testo di esempio",
+    "sample": "Il testo cresce gradualmente con la larghezza del browser.",
+    "gradientInvalid": "Scegli colori validi e un angolo da 0 a 360 gradi.",
+    "clampInvalid": "Inserisci dimensioni del carattere crescenti da 1 a 512 pixel e larghezze intere del browser crescenti da 1 a 10.000 pixel.",
+    "scalePercent": "Scala (%)",
+    "scaledWidth": "Larghezza risultante (pixel)",
+    "scaledHeight": "Altezza risultante (pixel)",
+    "scaleFactor": "Fattore di scala",
+    "areaPercent": "Area teorica (%)",
+    "scaleInvalid": "Inserisci dimensioni intere da 1 a 1.000.000 pixel e una scala da 0,01 a 10.000%. Ogni risultato arrotondato deve avere almeno un pixel."
   }
 }

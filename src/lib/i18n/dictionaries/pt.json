@@ -123,6 +123,30 @@
       "limits": "PPI mede os pixels por polegada impressa; o DPI da impressora mede pontos de tinta. Os resultados são arredondados para três casas decimais. O cálculo não redimensiona a foto nem cria detalhes.",
       "question": "O que acontece se eu reduzir o PPI?",
       "answer": "A mesma quantidade de pixels gera uma impressão maior, mas os detalhes podem parecer menos nítidos de perto. Consulte a gráfica sobre a resolução recomendada."
+    },
+    "css-gradient-generator": {
+      "title": "Gerador de degradês CSS",
+      "description": "Crie um fundo em degradê com duas cores, confira a direção e copie o CSS para seu site.",
+      "how": "Escolha duas cores e um ângulo de 0 a 360 graus. A 0 grau o degradê aponta para cima; a 90 graus, para a direita. Copie a declaração para sua folha de estilos.",
+      "limits": "A ferramenta gera um degradê linear com duas cores opacas. Não exporta imagens nem verifica o contraste do texto. A direção segue as coordenadas CSS, inclusive em árabe.",
+      "question": "A direção muda na interface em árabe?",
+      "answer": "Não. A interface acompanha o idioma escolhido, mas os ângulos CSS mantêm seu significado padrão."
+    },
+    "css-clamp-font-generator": {
+      "title": "Gerador de tamanho de fonte CSS",
+      "description": "Gere texto adaptável com CSS clamp(). Defina os tamanhos de fonte e as larguras mínimas e máximas do navegador, depois copie o CSS.",
+      "how": "Informe tamanhos de fonte crescentes e larguras de navegador crescentes. A ferramenta calcula uma progressão entre os limites. Redimensione o navegador para observar o texto e copie a declaração.",
+      "limits": "Os tamanhos de fonte vão de 1 a 512 pixels; as larguras do navegador devem ser inteiras, de 1 a 10.000 pixels. Cada máximo deve superar seu mínimo. O cálculo considera uma fonte raiz de 16 pixels. A prévia usa a largura real do navegador.",
+      "question": "O tamanho da fonte raiz afeta esse CSS?",
+      "answer": "Sim. Os valores rem gerados consideram uma raiz de 16 pixels. Alterar esse valor muda os tamanhos resultantes e os pontos de transição."
+    },
+    "image-scaling-calculator": {
+      "title": "Calculadora de escala de imagens",
+      "description": "Calcule novas dimensões de imagem a partir de uma porcentagem. Veja os pixels arredondados, o fator de escala e a porcentagem teórica da área.",
+      "how": "Informe as dimensões originais em pixels inteiros e uma porcentagem. Uma imagem de 1920 × 1080 a 50% fica com 960 × 540. O mesmo fator é aplicado às duas dimensões antes do arredondamento.",
+      "limits": "As dimensões são limitadas a 1.000.000 de pixels por lado e a escala a 0,01–10.000%. O resultado arredondado deve ter pelo menos um pixel por lado. A área é calculada antes do arredondamento. Nenhuma imagem é alterada.",
+      "question": "Uma escala de 50% reduz a área pela metade?",
+      "answer": "Não. Reduzir as duas dimensões pela metade gera um quarto da área teórica, ou 25%. As dimensões em pixels inteiros podem variar um pouco com o arredondamento."
     }
   },
   "flexOptions": {
@@ -179,5 +203,25 @@
     "widthCm": "Largura impressa em centímetros",
     "heightCm": "Altura impressa em centímetros",
     "invalid": "Informe dimensões em pixels inteiros positivos até 1.000.000.000 e uma resolução de 0,000001 a 1.000.000 PPI."
+  },
+  "design": {
+    "settings": "Configurações",
+    "firstColor": "Primeira cor",
+    "secondColor": "Segunda cor",
+    "angle": "Ângulo (graus)",
+    "minFont": "Tamanho mínimo da fonte (px)",
+    "maxFont": "Tamanho máximo da fonte (px)",
+    "minViewport": "Largura mínima do navegador (px)",
+    "maxViewport": "Largura máxima do navegador (px)",
+    "sampleText": "Texto de exemplo",
+    "sample": "O texto cresce suavemente com a largura do navegador.",
+    "gradientInvalid": "Escolha cores válidas e um ângulo de 0 a 360 graus.",
+    "clampInvalid": "Informe tamanhos de fonte crescentes de 1 a 512 pixels e larguras inteiras de navegador crescentes de 1 a 10.000 pixels.",
+    "scalePercent": "Escala (%)",
+    "scaledWidth": "Largura resultante (pixels)",
+    "scaledHeight": "Altura resultante (pixels)",
+    "scaleFactor": "Fator de escala",
+    "areaPercent": "Área teórica (%)",
+    "scaleInvalid": "Informe dimensões inteiras de 1 a 1.000.000 de pixels e uma escala de 0,01 a 10.000%. Cada resultado arredondado deve ter pelo menos um pixel."
   }
 }

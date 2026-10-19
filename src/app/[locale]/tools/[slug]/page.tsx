@@ -33,7 +33,7 @@ export default async function LocalizedToolPage({ params }: Props) {
   const schema = {
     '@context': 'https://schema.org', '@type': 'WebApplication',
     name: tool.title, description: tool.description, url, inLanguage: locale,
-    applicationCategory: slug === 'css-flexbox-generator' ? 'DeveloperApplication' : 'UtilitiesApplication',
+    applicationCategory: slug.startsWith('css-') ? 'DeveloperApplication' : 'UtilitiesApplication',
     operatingSystem: 'Any', isAccessibleForFree: true,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };

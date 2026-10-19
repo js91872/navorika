@@ -9,6 +9,7 @@ import { aspectRatio, flexCss, printDimensions } from '@/lib/i18n/calculations';
 import { inspectImageColorMode, type RgbCmykImageResult } from '@/lib/calculations/rgbCmykImage';
 
 
+const LocalizedDesignTools = dynamic(() => import('./LocalizedDesignTools'));
 const LocalizedPrintTools = dynamic(() => import('./LocalizedPrintTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
@@ -148,6 +149,7 @@ function ColorTool({ d, locale }: { d: Dictionary; locale: Locale }) {
 }
 
 export default function LocalizedTools({ slug, dictionary, locale }: { slug: TranslatedTool; dictionary: Dictionary; locale: Locale }) {
+  if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'css-flexbox-generator') return <FlexTool d={dictionary} />;
   if (slug === 'rgb-cmyk-image-checker') return <ColorTool d={dictionary} locale={locale} />;
