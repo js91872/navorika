@@ -7,6 +7,7 @@ import { Menu, X, Sun, Moon, Home, Layers, Wrench, BookOpen, Info, Mail, Search 
 import { useTheme } from 'next-themes';
 import Logo from '@/components/ui/Logo';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
+import styles from './Navbar.module.css';
 
 interface NavbarProps {
   onSearchClick?: () => void;
@@ -41,10 +42,10 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled ? 'bg-[var(--background)]/95 backdrop-blur-sm border-b border-[var(--border)]' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 min-[360px]:px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Keep room for all four mobile controls. */}
-          <div className="shrink-0 max-sm:[&_svg]:hidden max-sm:[&_span]:text-xl"><Logo size="md" /></div>
+          {/* Preserve the full brand alongside the four mobile controls. */}
+          <div className={`shrink-0 ${styles.brand}`}><Logo size="md" /></div>
 
           {/* Desktop Navigation */}
           <div className="hidden xl:flex items-center gap-1">
