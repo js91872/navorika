@@ -79,6 +79,8 @@ try {
       await noOverflow(path);
       await page.setViewportSize({ width: 390, height: 844 });
       await noOverflow(`${path} (mobile)`);
+      await page.setViewportSize({ width: 320, height: 844 });
+      await noOverflow(`${path} (320px)`);
       await page.setViewportSize({ width: 1440, height: 1000 });
       pagesChecked++;
     }
