@@ -178,6 +178,6 @@
     "heightInches": "Print height in inches",
     "widthCm": "Print width in centimeters",
     "heightCm": "Print height in centimeters",
-    "invalid": "Enter positive whole-pixel dimensions up to 1,000,000,000 and a resolution greater than zero, up to 1,000,000 PPI."
+    "invalid": "Enter positive whole-pixel dimensions up to 1,000,000,000 and a resolution from 0.000001 to 1,000,000 PPI."
   }
 }

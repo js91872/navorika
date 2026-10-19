@@ -132,7 +132,7 @@ Both tools include native titles, descriptions, instructions, limitations, FAQ a
 ### Photo print behavior
 
 - Reuses the English print-size calculation for inches and centimeters, including its three-decimal rounding behavior.
-- Accepts positive whole-pixel dimensions up to one billion and positive PPI up to one million. Empty, fractional-pixel, non-finite or out-of-range inputs clear results.
+- Accepts positive whole-pixel dimensions up to one billion and PPI from 0.000001 to one million. Empty, fractional-pixel, non-finite or out-of-range inputs clear results.
 - Explains image PPI versus printer DPI; changing the entered resolution does not alter an actual image.
 - Formats displayed and copied numbers for the selected language, with numeric isolation in Arabic.
 

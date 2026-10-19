@@ -178,6 +178,6 @@
     "heightInches": "Altura impressa em polegadas",
     "widthCm": "Largura impressa em centímetros",
     "heightCm": "Altura impressa em centímetros",
-    "invalid": "Informe dimensões em pixels inteiros positivos até 1.000.000.000 e uma resolução maior que zero, até 1.000.000 PPI."
+    "invalid": "Informe dimensões em pixels inteiros positivos até 1.000.000.000 e uma resolução de 0,000001 a 1.000.000 PPI."
   }
 }

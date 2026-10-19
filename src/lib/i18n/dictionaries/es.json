@@ -178,6 +178,6 @@
     "heightInches": "Altura impresa en pulgadas",
     "widthCm": "Anchura impresa en centímetros",
     "heightCm": "Altura impresa en centímetros",
-    "invalid": "Introduce dimensiones en píxeles enteros positivos de hasta 1.000.000.000 y una resolución mayor que cero, de hasta 1.000.000 PPI."
+    "invalid": "Introduce dimensiones en píxeles enteros positivos de hasta 1.000.000.000 y una resolución de 0,000001 a 1.000.000 PPI."
   }
 }

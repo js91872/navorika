@@ -178,6 +178,6 @@
     "heightInches": "Hauteur imprimée en pouces",
     "widthCm": "Largeur imprimée en centimètres",
     "heightCm": "Hauteur imprimée en centimètres",
-    "invalid": "Saisissez des dimensions en pixels entiers positifs jusqu’à 1 000 000 000 et une résolution supérieure à zéro, jusqu’à 1 000 000 PPI."
+    "invalid": "Saisissez des dimensions en pixels entiers positifs jusqu’à 1 000 000 000 et une résolution de 0,000001 à 1 000 000 PPI."
   }
 }

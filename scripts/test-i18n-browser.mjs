@@ -162,8 +162,11 @@ try {
       assert.equal(await page.locator('main').getByRole('alert').textContent(), d.printSize.invalid);
     }
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
-    await printFields.nth(2).fill('0');
-    await page.locator('main').getByRole('alert').waitFor();
+    for (const value of ['0', '0.0000001', '1000001']) {
+      await printFields.nth(2).fill(value);
+      await page.locator('main').getByRole('alert').waitFor();
+      assert.equal(await page.locator('dl').count(), 0);
+    }
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();

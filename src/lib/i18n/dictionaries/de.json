@@ -178,6 +178,6 @@
     "heightInches": "Druckhöhe in Zoll",
     "widthCm": "Druckbreite in Zentimetern",
     "heightCm": "Druckhöhe in Zentimetern",
-    "invalid": "Geben Sie positive ganze Pixelmaße bis 1.000.000.000 und eine Auflösung größer als null bis 1.000.000 PPI ein."
+    "invalid": "Geben Sie positive ganze Pixelmaße bis 1.000.000.000 und eine Auflösung von 0,000001 bis 1.000.000 PPI ein."
   }
 }

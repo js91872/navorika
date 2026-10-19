@@ -14,7 +14,7 @@ function PrintSize({ d, locale }: Props) {
   const [values, setValues] = useState(defaults);
   const [widthPixels, heightPixels, ppi] = values.map((value) => value.trim() ? Number(value) : NaN);
   const valid = [widthPixels, heightPixels].every((value) => Number.isInteger(value) && value > 0 && value <= 1e9)
-    && Number.isFinite(ppi) && ppi > 0 && ppi <= 1e6;
+    && Number.isFinite(ppi) && ppi >= 0.000001 && ppi <= 1e6;
   const result = valid ? calculateImagePrintSize({ widthPixels, heightPixels, ppi }) : null;
   const format = new Intl.NumberFormat(locale, { maximumFractionDigits: 3 }).format;
   const rows = result ? [
@@ -34,7 +34,7 @@ function PrintSize({ d, locale }: Props) {
     <div aria-live="polite" aria-atomic="true" className="mt-6">
       <h3 className="mb-3 font-bold">{d.ui.result}</h3>
       {result ? <dl className="grid gap-4 sm:grid-cols-2">{rows.map(([label, value]) => <div key={label} className="rounded-xl bg-[var(--muted)] p-4">
-        <dt>{label}</dt><dd className="mt-2 text-xl font-bold"><bdi dir="ltr">{value}</bdi></dd>
+        <dt>{label}</dt><dd className="mt-2 break-all text-xl font-bold"><bdi dir="ltr">{value}</bdi></dd>
       </div>)}</dl> : <p role="alert">{d.printSize.invalid}</p>}
     </div>
     <CopyResult key={text} text={text} d={d} />
