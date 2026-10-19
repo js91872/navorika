@@ -43,8 +43,8 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo - Larger with XL size */}
-          <Logo size="md" />
+          {/* Keep room for all four mobile controls. */}
+          <div className="shrink-0 max-sm:[&_svg]:hidden max-sm:[&_span]:text-xl"><Logo size="md" /></div>
 
           {/* Desktop Navigation */}
           <div className="hidden xl:flex items-center gap-1">
@@ -67,8 +67,8 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
           </div>
 
           {/* Right side */}
-          <div className="flex items-center gap-2">
-            <div className="hidden sm:block"><LanguageSwitcher locale="en" /></div>
+          <div className="flex shrink-0 items-center gap-0 sm:gap-2">
+            <LanguageSwitcher locale="en" />
             <button
               onClick={onSearchClick}
               className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-3 hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
@@ -118,7 +118,6 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
                 <span className="font-medium">{link.label}</span>
               </Link>
             ))}
-            <div className="px-4 py-3 sm:hidden"><LanguageSwitcher locale="en" /></div>
           </div>
         </div>
       )}

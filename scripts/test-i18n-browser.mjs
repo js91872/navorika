@@ -160,6 +160,27 @@ try {
     await page.setViewportSize({ width: 1440, height: 1000 });
     assert.equal(await page.locator('link[hreflang="fr"]').getAttribute('href'), `https://navorika.com/fr${slug ? `/tools/${slug}` : ''}`);
   }
+  // Language selection stays available without opening the mobile menu.
+  for (const width of [320, 360, 390, 640]) {
+    await page.setViewportSize({ width, height: 844 });
+    const language = page.locator('summary[aria-label="Language: English"]');
+    await language.waitFor({ state: 'visible' });
+    const controls = [language, page.getByRole('button', { name: 'Search tools' }), page.getByRole('button', { name: 'Toggle theme' }), page.getByRole('button', { name: 'Toggle menu' })];
+    const boxes = await Promise.all(controls.map((control) => control.boundingBox()));
+    for (let i = 0; i < boxes.length; i++) {
+      const box = boxes[i];
+      assert.ok(box && box.width >= 44 && box.height >= 44 && box.x >= 0 && box.x + box.width <= width, `Mobile control outside viewport at ${width}`);
+      if (i) assert.ok(box.x >= boxes[i - 1].x + boxes[i - 1].width - 1, `Overlapping controls at ${width}`);
+    }
+    await language.click();
+    await page.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
+    await noOverflow(`Open language menu at ${width}`);
+    await language.click();
+    await page.getByRole('button', { name: 'Toggle menu' }).click();
+    assert.equal(await page.locator('summary[aria-label="Language: English"]').count(), 1);
+    await page.getByRole('button', { name: 'Toggle menu' }).click();
+    await noOverflow(`Mobile navigation at ${width}`);
+  }
   await page.locator('details').first().click();
   await page.locator('details a[hreflang="ar"]').click();
   await page.waitForURL(`${base}/ar/tools/print-bleed-calculator`);
