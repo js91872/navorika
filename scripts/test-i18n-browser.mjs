@@ -175,7 +175,16 @@ try {
     await language.click();
     await page.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
     await noOverflow(`Open language menu at ${width}`);
+    await page.locator('main h1').click();
+    assert.equal(await page.locator('details').first().getAttribute('open'), null, 'Outside tap dismisses language menu');
     await language.click();
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('details').first().getAttribute('open'), null, 'Escape dismisses language menu');
+    await language.focus();
+    await page.keyboard.press('Enter');
+    await page.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
+    await page.keyboard.press('Escape');
+    assert.equal(await language.evaluate((element) => element === document.activeElement), true, 'Escape restores trigger focus');
     await page.getByRole('button', { name: 'Toggle menu' }).click();
     assert.equal(await page.locator('summary[aria-label="Language: English"]').count(), 1);
     await page.getByRole('button', { name: 'Toggle menu' }).click();
