@@ -298,9 +298,9 @@ try {
   for (const slug of [null, ...slugs]) {
     await visit(slug ? `/tools/${slug}` : '/');
     assert.equal(await page.locator('html').getAttribute('lang'), 'en');
-    await noOverflow('English desktop');
+    await noOverflow(`English ${slug || 'home'} desktop`);
     await page.setViewportSize({ width: 390, height: 844 });
-    await noOverflow('English mobile');
+    await noOverflow(`English ${slug || 'home'} mobile`);
     await page.setViewportSize({ width: 1440, height: 1000 });
     assert.equal(await page.locator('link[hreflang="fr"]').getAttribute('href'), `https://navorika.com/fr${slug ? `/tools/${slug}` : ''}`);
   }

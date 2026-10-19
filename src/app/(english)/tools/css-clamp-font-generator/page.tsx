@@ -138,7 +138,7 @@ export default function CssClampFontGenerator() {
       </div>
 
       <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-6">
-        <section className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
+        <section className="min-w-0 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
           <h2 className="text-xl font-bold mb-6">Typography settings</h2>
 
           <div className="grid sm:grid-cols-2 gap-4">
@@ -225,7 +225,7 @@ export default function CssClampFontGenerator() {
           </div>
         </section>
 
-        <section className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
+        <section className="min-w-0 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
           <div className="flex items-center gap-2 mb-6">
             <Type className="h-5 w-5 text-indigo-500" />
             <h2 className="text-xl font-bold">Generated fluid typography</h2>
