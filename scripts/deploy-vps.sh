@@ -72,7 +72,7 @@ mv "$STAGE/.next" "$APP/.next"
 mv "$STAGE/node_modules" "$APP/node_modules"
 pm2 restart navorika --update-env
 
-for PAGE in / /tools/rgb-cmyk-image-checker /fr /it /pt /es /ar /ru /de; do
+for PAGE in / /tools/rgb-cmyk-image-checker /fr /it /pt /es /ar /ru /de /fr/tools/pdf-bleed-trim-checker /ar/tools/image-print-size-calculator; do
   curl --fail --silent --show-error --retry 5 --retry-connrefused --retry-delay 2 --max-time 20 \
     -o /dev/null -w "$PAGE: HTTP %{http_code}\n" "http://127.0.0.1:3000$PAGE"
 done
@@ -80,7 +80,7 @@ trap - ERR
 pm2 save
 echo "DEPLOYED. Previous release backup: $BACKUP"
 echo "Public checks:"
-for PAGE in /fr /ar/tools/rgb-cmyk-image-checker /sitemap.xml; do
+for PAGE in /fr /ar/tools/rgb-cmyk-image-checker /fr/tools/pdf-bleed-trim-checker /ar/tools/image-print-size-calculator /sitemap.xml; do
   curl --silent --show-error --max-time 20 -o /dev/null \
     -w "$PAGE: HTTP %{http_code}\n" "https://navorika.com$PAGE"
 done

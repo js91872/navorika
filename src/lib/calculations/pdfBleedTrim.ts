@@ -132,7 +132,7 @@ export function analyzePageBoxes(input: PageBoxInput, pageNumber = 1): PageBoxIn
   };
 }
 
-export async function parsePdfBleedTrim(pdfBytes: Uint8Array | ArrayBuffer): Promise<PdfBleedTrimResult> {
+export async function parsePdfBleedTrim(pdfBytes: Uint8Array | ArrayBuffer, options: { rejectEncrypted?: boolean } = {}): Promise<PdfBleedTrimResult> {
   try {
     const bytes = pdfBytes instanceof Uint8Array ? pdfBytes : new Uint8Array(pdfBytes);
     if (!bytes.length) {
@@ -145,7 +145,7 @@ export async function parsePdfBleedTrim(pdfBytes: Uint8Array | ArrayBuffer): Pro
       };
     }
 
-    const pdfDoc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+    const pdfDoc = await PDFDocument.load(bytes, { ignoreEncryption: !options.rejectEncrypted });
     const pages = pdfDoc.getPages();
     if (!pages.length) {
       return {

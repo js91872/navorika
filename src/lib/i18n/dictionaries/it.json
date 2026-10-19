@@ -107,6 +107,22 @@
       "limits": "Conferma l’abbondanza con la tipografia. Il calcolo presuppone un margine identico sui quattro lati. Non aggiunge crocini di taglio, non imposta i riquadri PDF e non verifica che la grafica raggiunga l’abbondanza.",
       "question": "L’abbondanza coincide con l’area di sicurezza?",
       "answer": "No. L’abbondanza si estende oltre il bordo di taglio. L’area di sicurezza mantiene testo e grafica importante all’interno del bordo."
+    },
+    "pdf-bleed-trim-checker": {
+      "title": "Controllo abbondanza e rifilo PDF",
+      "description": "Controlla dimensioni, bordi di rifilo e margini di abbondanza di ogni pagina PDF nel browser. Copia o scarica il rapporto senza caricare il file su un server.",
+      "how": "Scegli un PDF fino a 20 MiB, quindi una pagina. Confronta il foglio, l’area visibile, il formato finito e l’area di abbondanza. I quattro margini misurano l’estensione oltre il taglio.",
+      "limits": "Il controllo riguarda la geometria, non la grafica. Le aree non dichiarate usano i valori PDF predefiniti. Un’area di abbondanza dichiarata non garantisce che le immagini arrivino al bordo. Verifica le richieste della tipografia; non è una certificazione PDF/X.",
+      "question": "Lo strumento aggiunge l’abbondanza mancante?",
+      "answer": "No. Legge le aree esistenti senza modificare il PDF, aggiungere crocini o estendere la grafica."
+    },
+    "image-print-size-calculator": {
+      "title": "Calcolatore dimensioni di stampa foto",
+      "description": "Calcola quanto sarà grande una foto stampata usando le dimensioni in pixel e la risoluzione. Visualizza pollici e centimetri senza caricare immagini.",
+      "how": "Inserisci larghezza e altezza in pixel interi e la risoluzione in pixel per pollice (PPI). Un’immagine di 3000 × 2400 a 300 PPI misura 10 × 8 pollici, cioè 25,4 × 20,32 centimetri.",
+      "limits": "Il PPI indica i pixel per pollice stampato; il DPI della stampante indica i punti di inchiostro. I risultati sono arrotondati a tre decimali. Il calcolo non ridimensiona la foto e non aggiunge dettagli.",
+      "question": "Cosa succede riducendo il PPI?",
+      "answer": "Gli stessi pixel producono una stampa più grande, ma da vicino i dettagli possono apparire meno nitidi. Chiedi alla tipografia quale risoluzione usare."
     }
   },
   "flexOptions": {
@@ -125,5 +141,43 @@
     "nowrap": "Senza ritorno a capo",
     "wrap": "Ritorno a capo",
     "wrap-reverse": "Ritorno a capo invertito"
+  },
+  "pdf": {
+    "choose": "Scegli un PDF",
+    "processing": "Lettura delle pagine PDF…",
+    "error": "Impossibile leggere il PDF. Scegli un PDF valido e non cifrato.",
+    "tooLarge": "Il PDF non deve superare 20 MiB.",
+    "pages": "Pagine",
+    "page": "Pagina",
+    "media": "Foglio fisico",
+    "crop": "Area visibile",
+    "trim": "Formato finito",
+    "bleed": "Area di abbondanza",
+    "explicitTrim": "Rifilo dichiarato",
+    "explicitBleed": "Abbondanza dichiarata",
+    "explicitCrop": "Area visibile dichiarata",
+    "top": "Alto",
+    "bottom": "Basso",
+    "left": "Sinistra",
+    "right": "Destra",
+    "declared": "Dichiarata",
+    "inherited": "Ereditata",
+    "download": "Scarica CSV",
+    "print": "Stampa rapporto",
+    "note": "La sola geometria non conferma che la grafica raggiunga il bordo dell’abbondanza.",
+    "none": "Né il rifilo né l’abbondanza sono dichiarati; valgono le impostazioni PDF predefinite. Questo non dimostra che alla grafica manchi l’abbondanza.",
+    "trimOnly": "Il rifilo è dichiarato. L’abbondanza usa l’area visibile predefinita; verifica se la tipografia lo accetta.",
+    "bleedOnly": "L’abbondanza è dichiarata, ma il rifilo è ereditato. Conferma i bordi di taglio previsti.",
+    "extended": "L’abbondanza dichiarata supera il taglio su almeno un bordo. Controlla ogni margine e verifica separatamente la grafica.",
+    "zero": "Entrambe le aree sono dichiarate, senza margine positivo oltre il taglio. Confronta il file con le specifiche della tipografia."
+  },
+  "printSize": {
+    "ppi": "Risoluzione di stampa (PPI)",
+    "centimeters": "Centimetri",
+    "widthInches": "Larghezza di stampa in pollici",
+    "heightInches": "Altezza di stampa in pollici",
+    "widthCm": "Larghezza di stampa in centimetri",
+    "heightCm": "Altezza di stampa in centimetri",
+    "invalid": "Inserisci dimensioni in pixel interi positivi fino a 1.000.000.000 e una risoluzione maggiore di zero, fino a 1.000.000 PPI."
   }
 }

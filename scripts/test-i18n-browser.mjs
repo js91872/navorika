@@ -3,10 +3,11 @@ import { spawn } from 'node:child_process';
 import { readFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { chromium } from 'playwright';
+import { PDFDocument } from 'pdf-lib';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
 const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
-const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'print-bleed-calculator'];
+const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'print-bleed-calculator'];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
 let serverOutput = '';
@@ -149,7 +150,71 @@ try {
     assert.equal(await page.locator('main').getByRole('alert').textContent(), d.ui.fileError);
     assert.equal(await page.locator('dl').count(), 0, 'Previous image result must be cleared');
     workflowsChecked++;
-    console.log(`Verified ${locale}: six translated pages and five working tools.`);
+    await visit(`/${locale}/tools/image-print-size-calculator`);
+    const printFields = page.locator('input[type="number"]');
+    const formatPrint = (value) => new Intl.NumberFormat(locale, { maximumFractionDigits: 3 }).format(value);
+    assert.deepEqual(await page.locator('dl dd').allTextContents(), [10, 8, 25.4, 20.32].map(formatPrint));
+    await printFields.nth(2).fill('150');
+    assert.deepEqual(await page.locator('dl dd').allTextContents(), [20, 16, 50.8, 40.64].map(formatPrint));
+    for (const value of ['', '0', '-1', '1.5', '1000000001']) {
+      await printFields.first().fill(value);
+      assert.equal(await page.locator('dl').count(), 0);
+      assert.equal(await page.locator('main').getByRole('alert').textContent(), d.printSize.invalid);
+    }
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await printFields.nth(2).fill('0');
+    await page.locator('main').getByRole('alert').waitFor();
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.printSize.widthCm));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/pdf-bleed-trim-checker`);
+    const pdf = await PDFDocument.create();
+    const pt = (mm) => mm / 25.4 * 72;
+    for (let i = 0; i < 5; i++) {
+      const fixture = pdf.addPage([pt(216), pt(303)]);
+      if ([1, 3, 4].includes(i)) fixture.setTrimBox(pt(3), pt(3), pt(210), pt(297));
+      if ([2, 3].includes(i)) fixture.setBleedBox(0, 0, pt(216), pt(303));
+      if (i === 4) fixture.setBleedBox(pt(3), pt(3), pt(210), pt(297));
+    }
+    const pdfInput = page.locator('input[type="file"]');
+    const pdfBuffer = Buffer.from(await pdf.save());
+    await pdfInput.setInputFiles({ name: 'fixture.pdf', mimeType: 'application/pdf', buffer: pdfBuffer });
+    await page.locator('[data-pdf-interpretation]').waitFor();
+    const interpretations = ['none', 'trimOnly', 'bleedOnly', 'extended', 'zero'];
+    for (let index = 0; index < 5; index++) {
+      await page.locator('main select').selectOption(String(index));
+      assert.equal(await page.locator('[data-pdf-interpretation]').textContent(), d.pdf[interpretations[index]]);
+    }
+    await page.locator('main select').selectOption('3');
+    const pdfNumbers = await page.locator('dl').first().locator('dd').allTextContents();
+    assert.ok(pdfNumbers.includes(`${formatPrint(210)} × ${formatPrint(297)}`));
+    assert.deepEqual(await page.locator('dl').nth(1).locator('dd').allTextContents(), Array(4).fill(formatPrint(3)));
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    const copiedPdf = await page.evaluate(() => window.__copied);
+    for (const key of interpretations) assert.ok(copiedPdf.includes(d.pdf[key]));
+    assert.ok(copiedPdf.includes(d.pdf.pages));
+    assert.doesNotMatch(copiedPdf, /Explicit|Default configuration|Invalid input|Top Bleed/);
+    const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: d.pdf.download, exact: true }).click()]);
+    const csv = readFileSync(await download.path(), 'utf8');
+    assert.ok(csv.includes(d.pdf.media));
+    for (const key of interpretations) assert.ok(csv.includes(d.pdf[key]));
+    await page.setViewportSize({ width: 390, height: 844 });
+    await noOverflow(`${locale} PDF results`);
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await pdfInput.setInputFiles({ name: 'broken.pdf', mimeType: 'application/pdf', buffer: Buffer.from('not a pdf') });
+    await page.locator('main').getByRole('alert').waitFor();
+    assert.equal(await page.locator('main').getByRole('alert').textContent(), d.pdf.error);
+    assert.equal(await page.locator('dl').count(), 0, 'Old PDF results must clear after invalid upload');
+    if (locale === 'fr') {
+      await pdfInput.setInputFiles({ name: 'large.pdf', mimeType: 'application/pdf', buffer: Buffer.alloc(20 * 1024 * 1024 + 1) });
+      assert.equal(await page.locator('main').getByRole('alert').textContent(), d.pdf.tooLarge);
+    }
+    workflowsChecked++;
+    console.log(`Verified ${locale}: eight translated pages and seven working tools.`);
   }
   for (const slug of [null, ...slugs]) {
     await visit(slug ? `/tools/${slug}` : '/');
@@ -199,7 +264,7 @@ try {
   await page.waitForURL(`${base}/tools/print-bleed-calculator`);
   assert.equal(await page.locator('html').getAttribute('lang'), 'en');
   assert.notEqual(await page.locator('html').getAttribute('dir'), 'rtl');
-  for (const path of ['/xx', '/fr/tools/not-a-tool', '/fr/privacy', '/ar/tools/pdf-bleed-trim-checker', '/en']) {
+  for (const path of ['/xx', '/fr/tools/not-a-tool', '/fr/privacy', '/ar/tools/image-dpi-converter', '/en']) {
     assert.equal((await context.request.get(`${base}${path}`)).status(), 404, path);
   }
   const sitemap = await (await context.request.get(`${base}/sitemap.xml`)).text();
@@ -215,7 +280,7 @@ try {
     }
   }
   assert.deepEqual(errors, [], 'Uncaught browser errors');
-  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, englishAlternates: 6, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
+  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, englishAlternates: 8, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
 } finally {
   await browser?.close();
   server?.kill('SIGTERM');

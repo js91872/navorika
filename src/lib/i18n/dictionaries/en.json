@@ -107,6 +107,22 @@
       "limits": "Confirm the required bleed with your printer. The calculator assumes equal bleed on all four sides. It does not add crop marks, set PDF page boxes or check that artwork extends into the bleed.",
       "question": "Is bleed the same as a safe area?",
       "answer": "No. Bleed extends beyond the trim edge. A safe area keeps text and important artwork inside the trim edge."
+    },
+    "pdf-bleed-trim-checker": {
+      "title": "PDF Bleed & Trim Checker",
+      "description": "Check PDF page sizes, trim boundaries and bleed margins locally. Inspect every page and copy or download a report without uploading the file.",
+      "how": "Choose a PDF up to 20 MiB, then select a page. Compare its physical sheet, visible area, finished cut and bleed area. The four margins show how far the bleed area extends beyond the cut.",
+      "limits": "This checks page geometry, not the artwork. Missing explicit boxes use PDF defaults. A declared bleed area does not prove that images reach the edge. Confirm the printer’s requirements; this is not PDF/X certification.",
+      "question": "Does this add missing bleed?",
+      "answer": "No. The checker reads existing page boxes. It does not edit the PDF, add crop marks or extend artwork."
+    },
+    "image-print-size-calculator": {
+      "title": "Image Print Size Calculator",
+      "description": "Find how large a photo will print from its pixel dimensions and print resolution. See the result in inches and centimeters without uploading an image.",
+      "how": "Enter whole-pixel width and height and the intended pixels per inch (PPI). A 3000 × 2400 image at 300 PPI prints at 10 × 8 inches, or 25.4 × 20.32 centimeters.",
+      "limits": "PPI describes image pixels per printed inch; printer DPI describes ink dots. Results are rounded to three decimal places. Changing the resolution here does not resize a photo or improve its detail.",
+      "question": "What happens if I lower the PPI?",
+      "answer": "The same pixel dimensions produce a larger physical print, but the image may look less detailed at a close viewing distance. Ask your print provider which resolution to use."
     }
   },
   "flexOptions": {
@@ -125,5 +141,43 @@
     "nowrap": "Do not wrap",
     "wrap": "Wrap items",
     "wrap-reverse": "Wrap in reverse order"
+  },
+  "pdf": {
+    "choose": "Choose a PDF",
+    "processing": "Reading PDF pages…",
+    "error": "Unable to read this PDF. Choose an unencrypted, valid PDF.",
+    "tooLarge": "The PDF must be no larger than 20 MiB.",
+    "pages": "Pages",
+    "page": "Page",
+    "media": "Physical sheet",
+    "crop": "Visible area",
+    "trim": "Finished cut",
+    "bleed": "Bleed area",
+    "explicitTrim": "Declared trim area",
+    "explicitBleed": "Declared bleed area",
+    "explicitCrop": "Declared visible area",
+    "top": "Top",
+    "bottom": "Bottom",
+    "left": "Left",
+    "right": "Right",
+    "declared": "Declared",
+    "inherited": "Inherited",
+    "download": "Download CSV",
+    "print": "Print report",
+    "note": "Page geometry alone cannot confirm that artwork reaches the bleed edge.",
+    "none": "Neither trim nor bleed area is explicitly declared; PDF defaults apply. This does not prove that artwork bleed is missing.",
+    "trimOnly": "The trim area is declared. The bleed area uses the visible-area default; confirm whether this is acceptable to your printer.",
+    "bleedOnly": "The bleed area is declared but the trim area is inherited. Confirm the intended cut boundaries.",
+    "extended": "The declared bleed area extends beyond the cut on at least one edge. Check each margin and inspect the artwork separately.",
+    "zero": "Both areas are declared, with no positive bleed margin beyond the cut. Check the file against your printer’s specifications."
+  },
+  "printSize": {
+    "ppi": "Print resolution (PPI)",
+    "centimeters": "Centimeters",
+    "widthInches": "Print width in inches",
+    "heightInches": "Print height in inches",
+    "widthCm": "Print width in centimeters",
+    "heightCm": "Print height in centimeters",
+    "invalid": "Enter positive whole-pixel dimensions up to 1,000,000,000 and a resolution greater than zero, up to 1,000,000 PPI."
   }
 }
