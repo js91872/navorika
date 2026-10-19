@@ -22,8 +22,9 @@ export const guideSources: Record<string, GuideSource[]> = {
     { name: 'Apple Support — Scan text and documents with Notes on iPhone', url: 'https://support.apple.com/guide/iphone/scan-text-and-documents-iph653f28965/ios' },
   ],
   'how-to-show-battery-percentage-on-mac': [
-    { name: 'Apple Support — Monitor your Mac laptop’s battery', url: 'https://support.apple.com/guide/mac-help/monitor-your-macs-battery-mchlp1115/mac' },
-    { name: 'Apple Support — Change Battery settings on a Mac laptop', url: 'https://support.apple.com/guide/mac-help/change-battery-settings-mchlfc3b7879/mac' },
+    { name: 'Apple Support — Monitor your Mac laptop’s battery (macOS 27)', url: 'https://support.apple.com/en-in/guide/mac-help/mchlp1115/27/mac/27' },
+    { name: 'Apple Support — Find out which macOS your Mac is using', url: 'https://support.apple.com/en-in/109033' },
+    { name: 'Apple — macOS 27 is available', url: 'https://www.apple.com/newsroom/2026/09/major-updates-for-apples-software-platforms-are-now-available/' },
   ],
   'video-editing-software-for-mac': [
     { name: 'Apple — iMovie for Mac', url: 'https://www.apple.com/imovie/' },
