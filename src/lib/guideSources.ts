@@ -4,6 +4,20 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-calculate-fertilizer-for-a-lawn': [
+    { name: 'Penn State Extension — Calculations Used to Determine the Amount of Fertilizer Needed to Treat Turf', url: 'https://extension.psu.edu/calculations-used-to-determine-the-amount-of-fertilizer-needed-to-treat-turf' },
+    { name: 'University of Maryland Extension — Maintaining an Established Lawn', url: 'https://extension.umd.edu/resource/maintaining-established-lawn' },
+    { name: 'Utah State University Extension — Selecting and Using Inorganic Fertilizers', url: 'https://extension.usu.edu/yardandgarden/research/selecting-and-using-inorganic-fertilizers' },
+  ],
+  'fertilizer-npk-numbers-explained': [
+    { name: 'Utah State University Extension — Selecting and Using Inorganic Fertilizers', url: 'https://extension.usu.edu/yardandgarden/research/selecting-and-using-inorganic-fertilizers' },
+    { name: 'Penn State Extension — How to Calculate a Fertilizer Ratio', url: 'https://extension.psu.edu/how-to-calculate-a-fertilizer-ratio' },
+  ],
+  'how-to-calculate-fertilizer-from-a-soil-test': [
+    { name: 'Utah State University Extension — Tips for Growing Garden Vegetables in Utah: Soil Fertilization', url: 'https://extension.usu.edu/yardandgarden/research/tips-for-growing-vegetables-in-utah-soil-fertilization' },
+    { name: 'Penn State Extension — Calculations Used to Determine the Amount of Fertilizer Needed to Treat Turf', url: 'https://extension.psu.edu/calculations-used-to-determine-the-amount-of-fertilizer-needed-to-treat-turf' },
+    { name: 'University of Maryland Extension — Maintaining an Established Lawn', url: 'https://extension.umd.edu/resource/maintaining-established-lawn' },
+  ],
   'free-website-audit-checklist': [
     { name: 'Google Search Central — SEO Starter Guide', url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide' },
     { name: 'Google PageSpeed Insights', url: 'https://pagespeed.web.dev/' },

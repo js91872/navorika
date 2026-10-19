@@ -52,6 +52,30 @@ const guideDefinitions: GuideDefinition[] = [
     featuredImage: { src: '/images/guides/free-website-audit-checklist-feature.svg', alt: 'Free website audit checklist illustration with UX, design, conversion, mobile and accessibility checks', caption: 'Check website usability, mobile design, conversion elements, speed and accessibility.' },
   },
   {
+    slug: 'how-to-calculate-fertilizer-for-a-lawn',
+    title: 'How to Calculate Fertilizer for a Lawn: Area, Rate & N-P-K',
+    description: 'Find the amount of lawn fertilizer from your measured area, a rate from your soil test or product directions, and the N-P-K label numbers.',
+    category: 'Construction', publishedDate: 'October 2026', readTime: '12 min read', author: 'Navorika Team',
+    keywords: ['lawn fertilizer calculator', 'how much fertilizer for lawn', 'how to calculate lawn fertilizer', 'fertilizer calculator formula', 'fertilizer per 1000 square feet', 'fertilizer calculator per acre'],
+    featuredImage: { src: '/images/guides/fertilizer-calculator-guide.svg', alt: 'Fertilizer calculator showing lawn area, product weight, and an N-P-K label', caption: 'Calculate product weight from the lawn area, supplied nutrient rate, and fertilizer label.' },
+  },
+  {
+    slug: 'fertilizer-npk-numbers-explained',
+    title: 'Fertilizer N-P-K Numbers Explained: What the Label Means',
+    description: 'Learn what the three numbers on a fertilizer bag mean, how N-P-K percentages are used, and how they change the amount of product needed.',
+    category: 'Construction', publishedDate: 'October 2026', readTime: '11 min read', author: 'Navorika Team',
+    keywords: ['fertilizer numbers explained', 'what do fertilizer numbers mean', 'N-P-K fertilizer numbers', 'what does 10-10-10 fertilizer mean', 'fertilizer calculator npk', 'fertilizer label numbers'],
+    featuredImage: { src: '/images/guides/fertilizer-calculator-guide.svg', alt: 'A fertilizer label with N-P-K percentages beside a calculator result', caption: 'The three label numbers list nitrogen, phosphate, and potash percentages in order.' },
+  },
+  {
+    slug: 'how-to-calculate-fertilizer-from-a-soil-test',
+    title: 'How to Calculate Fertilizer from a Soil Test',
+    description: 'Use a soil-test nutrient rate and fertilizer label to calculate product weight per 1,000 square feet or acre without guessing an application rate.',
+    category: 'Construction', publishedDate: 'October 2026', readTime: '12 min read', author: 'Navorika Team',
+    keywords: ['fertilizer calculator based on soil test', 'how to calculate fertilizer from soil test', 'soil test fertilizer rate calculator', 'fertilizer application rate formula', 'fertilizer calculator per acre'],
+    featuredImage: { src: '/images/guides/fertilizer-calculator-guide.svg', alt: 'A fertilizer calculator and bag label used with a soil-test nutrient rate', caption: 'Start with the nutrient rate from the soil-test report, then calculate product weight.' },
+  },
+  {
     slug: 'how-to-convert-image-to-pdf-on-iphone',
     title: 'How to Convert Image to PDF on iPhone (4 Free Ways)',
     description: 'Convert photos, screenshots, JPG and HEIC images to PDF on iPhone for free. Save one or multiple pictures as a PDF without an app.',
@@ -619,7 +643,8 @@ const octoberMacVideoSlugs = new Set([
   'easy-video-editing-software-for-mac',
 ]);
 
-const newOctoberGuideDates = new Set(['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook','free-website-audit-checklist', 'how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac']);
+const fertilizerGuideSlugs = new Set(['how-to-calculate-fertilizer-for-a-lawn', 'fertilizer-npk-numbers-explained', 'how-to-calculate-fertilizer-from-a-soil-test']);
+const newOctoberGuideDates = new Set(['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook','free-website-audit-checklist', 'how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac', ...fertilizerGuideSlugs]);
 
 const recentUpdateSlugs = new Set([
   'how-to-calculate-emi',
@@ -636,8 +661,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    datePublished: fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    dateModified: fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,
