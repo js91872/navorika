@@ -19,14 +19,18 @@
     "test:image-tools": "node --import tsx --test src/lib/image/base64/base64.test.ts src/lib/image/compression/compression.test.ts src/lib/image/html-to-image/html-to-image.test.ts",
     "build:step-to-obj": "./scripts/build-step-to-obj.sh",
     "test:ux": "node --experimental-strip-types scripts/run-ux-tests.mjs",
-    "test": "npm run validate:architecture && npm run typecheck && npm run test:ux && npm run test:calculations && npm run test:shared-tools && npm run test:image-tools && npm run test:i18n && npm run test:deploy",
+    "test": "npm run validate:architecture && npm run typecheck && npm run test:ux && npm run test:calculations && npm run test:shared-tools && npm run test:image-tools && npm run test:i18n && npm run test:i18n:audit && npm run test:deploy",
     "typecheck": "tsc --noEmit",
     "validate:architecture": "node scripts/validate-architecture.mjs",
     "validate:guides": "tsx scripts/validate-guide-enrichment.mjs",
     "check": "npm run validate:architecture && npm run typecheck && npm run lint:baseline && npm run build",
     "test:i18n": "node --import tsx --test src/lib/i18n/i18n.test.ts",
     "test:i18n:browser": "node scripts/test-i18n-browser.mjs",
-    "test:deploy": "bash -n scripts/deploy-vps.sh && python3 scripts/test-deploy-vps.py"
+    "test:deploy": "bash -n scripts/deploy-vps.sh && python3 scripts/test-deploy-vps.py",
+    "i18n:audit": "node --import tsx scripts/audit-i18n.mjs --check",
+    "i18n:audit:write": "node --import tsx scripts/audit-i18n.mjs --write",
+    "i18n:complete": "node --import tsx scripts/audit-i18n.mjs --check --require-complete",
+    "test:i18n:audit": "node --import tsx --test scripts/audit-i18n.test.mjs"
   },
   "dependencies": {
     "@ffmpeg/core": "^0.12.10",

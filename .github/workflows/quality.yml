@@ -39,6 +39,9 @@ jobs:
       - name: Prevent new lint debt
         run: npm run lint:baseline
 
+      - name: Audit full multilingual coverage and shared localization support
+        run: npm run test:i18n:audit
+
       - name: Verify multilingual routing, dictionaries and calculations
         run: npm run test:i18n
 
