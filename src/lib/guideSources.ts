@@ -23,6 +23,7 @@ export const guideSources: Record<string, GuideSource[]> = {
   ],
   'how-to-show-battery-percentage-on-mac': [
     { name: 'Apple Support — Monitor your Mac laptop’s battery (macOS 27)', url: 'https://support.apple.com/en-in/guide/mac-help/mchlp1115/27/mac/27' },
+    { name: 'Apple Support — Monitor your Mac laptop’s battery (macOS Tahoe 26)', url: 'https://support.apple.com/guide/mac-help/mchlp1115/26/mac/26' },
     { name: 'Apple Support — Find out which macOS your Mac is using', url: 'https://support.apple.com/en-in/109033' },
     { name: 'Apple — macOS 27 is available', url: 'https://www.apple.com/newsroom/2026/09/major-updates-for-apples-software-platforms-are-now-available/' },
   ],
