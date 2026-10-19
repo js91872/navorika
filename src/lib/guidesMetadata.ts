@@ -63,13 +63,14 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'how-to-show-battery-percentage-on-mac',
-    title: 'How to Show Battery Percentage on MacBook Air & Pro (2026)',
-    description: 'Learn how to show battery percentage on MacBook Air or Pro in macOS Tahoe, Sequoia, Sonoma, and older versions. Easy steps and fixes if it is missing.',
+    title: 'How to Show Battery Percentage on Mac (2026 Guide)',
+    description: 'Turn on battery percentage on your MacBook in macOS 27, Tahoe 26, Sequoia, Sonoma, Ventura, or an older version. Follow the right steps and fix a missing icon.',
     category: 'Everyday',
     publishedDate: 'October 2026',
-    readTime: '10 min read',
+    readTime: '5 min read',
     author: 'Navorika Team',
-    keywords: ['how to show battery percentage on mac', 'how to show battery percentage on mac air', 'how do i show battery percentage on macbook', 'show battery percentage macbook pro', 'macos tahoe battery percentage', 'macos sequoia show battery percentage', 'macos sonoma battery percentage', 'macbook air battery percentage not showing'],
+    keywords: ['how to show battery percentage on mac', 'how to show battery percentage on macbook', 'how to show battery percentage on macbook air', 'how to show battery percentage on macbook pro', 'macos 27 battery percentage', 'macos tahoe 26 battery percentage', 'macbook battery percentage not showing'],
+    featuredImage: { src: '/images/guides/mac-battery-percentage-settings.svg', alt: 'Illustration of the Mac battery percentage option in System Settings, with 82% visible in the menu bar.', caption: 'On macOS 27 and Tahoe 26, turn on Show Percentage in System Settings > Menu Bar > Battery > Battery Options.' },
   },
 
   {
@@ -636,7 +637,7 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   return {
     ...guide,
     datePublished: newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    dateModified: newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,
