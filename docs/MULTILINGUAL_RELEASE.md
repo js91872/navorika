@@ -112,3 +112,32 @@ Validation of this correction: 547 Node tests passed, plus three deployment-safe
 A reusable `scripts/deploy-vps.sh` accepts a full reviewed commit SHA. It builds in a separate worktree, copies local environment files with restricted permissions, preserves the previous build and dependencies, swaps the release, and attempts rollback on startup/health failure. Three offline tests use temporary Git repositories and mocked npm/PM2/HTTP commands to verify successful deployment, an untouched live release after build failure, and restoration of source/build/dependencies after a failed health check. They do not claim to test the user's actual VPS or PM2 service.
 
 Run the helper only for the reviewed release commit. The deployment instructions accompanying this fix load that script from the exact Git commit before running it, so production source is not pulled forward before the separate build succeeds. A failed health-check rollback leaves Git detached at the previous commit for inspection. Untranslated tools and legal-page destinations remain English and are clearly labelled.
+
+## Phase 2 — PDF inspection and photo print dimensions (19 October 2026)
+
+This batch adds `pdf-bleed-trim-checker` and `image-print-size-calculator` in all seven existing translated languages. Coverage is now **seven tools per language: 49 translated tool pages plus seven directories (56 translated pages)**. These are 14 additional tool pages; other English tools, long guides and legal destinations remain outside this batch. No new languages are added.
+
+Both tools include native titles, descriptions, instructions, limitations, FAQ answers, controls, validation, results and clipboard feedback. The existing directory, search, related links, language preservation, static routes, reciprocal hreflang, self canonicals, schema and sitemap derive their coverage from the explicit tool allowlist. Existing English URLs and the Phase 1 mobile navigation are preserved, including the subsequent logo restoration.
+
+### PDF behavior
+
+- Reads a selected PDF locally, up to 20 MiB. The PDF parsing library loads on demand, rather than on unrelated tool pages.
+- Shows the physical sheet, visible area, finished cut and bleed area in millimeters, the three explicit-declaration flags, and **all four** margins for the selected page. It does not present the top margin as though it applied to every edge.
+- Explains five distinct states in each language: neither area declared, trim only, bleed only, declared positive bleed, and both declared without positive bleed.
+- Missing page boxes follow the existing parser's PDF defaults; no visual print-readiness guarantee is inferred from geometry. Unusual or malformed page dictionaries still require specialist review.
+- Copies a native report for every inspected page. CSV exports have native headers, native values and interpretations, escaped cells, and a UTF-8 BOM. The standard CSV extension is unchanged. Print opens the browser print dialog for the current view.
+- Rejects encrypted documents through an opt-in parser option. The existing English parser behavior is preserved by default. Raw parser error strings are never rendered by the translated interface.
+- Clears previous results before a new file and ignores stale asynchronous reads. Invalid and oversized files receive native errors.
+
+### Photo print behavior
+
+- Reuses the English print-size calculation for inches and centimeters, including its three-decimal rounding behavior.
+- Accepts positive whole-pixel dimensions up to one billion and PPI from 0.000001 to one million. Empty, fractional-pixel, non-finite or out-of-range inputs clear results.
+- Explains image PPI versus printer DPI; changing the entered resolution does not alter an actual image.
+- Formats displayed and copied numbers for the selected language, with numeric isolation in Arabic.
+
+### Validation and release notes
+
+The browser suite now covers 56 translated pages, 49 tool workflows, eight English counterparts, five unsupported routes, and the sitemap. Added workflows use a genuine five-page PDF with different box configurations, verify each interpretation and the four margins, inspect clipboard text and downloaded CSV content, reject invalid/oversized files, exercise print-resolution changes and invalid inputs, and check results on mobile. Unit coverage includes localized report columns and parser encryption rejection while preserving the original default behavior. The deployment helper's post-swap health checks include both new tools.
+
+Local release validation and GitHub CI results are reported separately with the release. Native-speaker editorial review remains outstanding. STEP/CorelDRAW server conversions, other tools and translated long-form/legal pages still require later batches; this release does not claim site-wide translation completion.

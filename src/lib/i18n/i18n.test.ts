@@ -12,13 +12,14 @@ test('languages are explicitly allowed; prototype keys and unsupported locales a
   for (const locale of ['en', 'en-US', 'zh', '../fr', 'constructor', 'toString']) assert.equal(isLocale(locale), false);
   assert.equal(languageDirection('ar'), 'rtl');
   assert.equal(languageDirection('fr'), 'ltr');
-  assert.equal(isTranslatedTool('pdf-bleed-trim-checker'), false);
+  assert.equal(isTranslatedTool('pdf-bleed-trim-checker'), true);
 });
 
 test('every dictionary is complete, nonempty and contains translated tool content', async () => {
   for (const locale of locales) {
     const d = await getDictionary(locale);
-    assert.deepEqual(Object.keys(d.ui).sort(), Object.keys(english.ui).sort(), locale);
+    assert.deepEqual(Object.keys(d).sort(), Object.keys(english).sort(), locale);
+    for (const section of ['ui', 'pdf', 'printSize'] as const) assert.deepEqual(Object.keys(d[section]).sort(), Object.keys(english[section]).sort(), `${locale}/${section}`);
     assert.deepEqual(Object.keys(d.tools).sort(), [...translatedTools].sort(), locale);
     for (const value of Object.values(d.ui)) assert.ok(value.trim().length > 0, locale);
     for (const slug of translatedTools) {
@@ -53,7 +54,7 @@ test('localized controls do not expose CSS keywords or previously untranslated E
       assert.notEqual(label, keyword, `${locale} exposes raw ${keyword}`);
       assert.notEqual(label, english.flexOptions[keyword as keyof typeof english.flexOptions], `${locale}/${keyword} uses English label`);
     }
-    const text = [...Object.values(d.ui), ...Object.values(d.tools).flatMap((tool) => Object.values(tool)), ...Object.values(d.flexOptions)];
+    const text = [...Object.values(d.ui), ...Object.values(d.tools).flatMap((tool) => Object.values(tool)), ...Object.values(d.flexOptions), ...Object.values(d.pdf), ...Object.values(d.printSize)];
     for (const value of text) assert.equal(fragments.test(value), false, `${locale}: ${value}`);
   }
 });
@@ -91,4 +92,31 @@ test('moving English routes into a route group preserves every existing public p
   const walk = (dir: string): string[] => readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
     entry.isDirectory() ? walk(join(dir, entry.name)) : entry.name === 'page.tsx' ? [join(dir, entry.name)] : []);
   assert.equal(walk(join(process.cwd(), 'src/app/(english)')).length, paths.length);
+});
+
+test('PDF reports translate every geometry interpretation and all report columns', async () => {
+  const { analyzePageBoxes } = await import('../calculations/pdfBleedTrim');
+  const { pdfReportRows, pdfInterpretation } = await import('./printReports');
+  const mediaBox = { x: 0, y: 0, width: 612, height: 792 };
+  const trimBox = { x: 9, y: 9, width: 594, height: 774 };
+  const fixtures = [
+    analyzePageBoxes({ mediaBox }, 1),
+    analyzePageBoxes({ mediaBox, trimBox, isTrimBoxExplicit: true }, 2),
+    analyzePageBoxes({ mediaBox, bleedBox: mediaBox, isBleedBoxExplicit: true }, 3),
+    analyzePageBoxes({ mediaBox, trimBox, bleedBox: mediaBox, isTrimBoxExplicit: true, isBleedBoxExplicit: true }, 4),
+    analyzePageBoxes({ mediaBox, trimBox, bleedBox: trimBox, isTrimBoxExplicit: true, isBleedBoxExplicit: true }, 5),
+  ];
+  for (const locale of locales) {
+    const d = await getDictionary(locale);
+    assert.deepEqual(fixtures.map((page) => pdfInterpretation(page, d)), [d.pdf.none, d.pdf.trimOnly, d.pdf.bleedOnly, d.pdf.extended, d.pdf.zero]);
+    const rows = pdfReportRows(fixtures, d, locale);
+    assert.equal(rows.length, 6);
+    for (const row of rows) assert.equal(row.length, 13);
+    assert.equal(rows[0][0], d.pdf.page);
+    assert.equal(rows[1][9], d.ui.no);
+    assert.equal(rows[4][9], d.ui.yes);
+    assert.equal(rows[4][10], d.ui.yes);
+    assert.equal(rows[4][5], new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(3.17));
+    assert.doesNotMatch(JSON.stringify(rows), /Default configuration|Explicit bleed boxes|Invalid input/);
+  }
 });

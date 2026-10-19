@@ -107,6 +107,22 @@
       "limits": "Confirma el sangrado con tu imprenta. El cálculo supone el mismo margen en los cuatro lados. No añade marcas de corte, no configura las cajas de página del PDF ni comprueba que el diseño llegue al sangrado.",
       "question": "¿El sangrado es lo mismo que el área de seguridad?",
       "answer": "No. El sangrado se extiende más allá del borde de corte. El área de seguridad mantiene los textos y los elementos importantes dentro de ese borde."
+    },
+    "pdf-bleed-trim-checker": {
+      "title": "Comprobador de sangrado y corte de PDF",
+      "description": "Comprueba las dimensiones, los límites de corte y los márgenes de sangrado de cada página PDF en el navegador. Copia o descarga el informe sin subir el archivo.",
+      "how": "Elige un PDF de hasta 20 MiB y selecciona una página. Compara la hoja, el área visible, el tamaño final y el área de sangrado. Los cuatro márgenes indican cuánto se extiende el sangrado más allá del corte.",
+      "limits": "Se analiza la geometría, no el contenido gráfico. Las áreas no declaradas usan los valores PDF predeterminados. Un área de sangrado declarada no garantiza que las imágenes lleguen al borde. Confirma los requisitos de la imprenta; no es una certificación PDF/X.",
+      "question": "¿Añade el sangrado que falta?",
+      "answer": "No. Lee las áreas existentes sin modificar el PDF, añadir marcas de corte ni extender las ilustraciones."
+    },
+    "image-print-size-calculator": {
+      "title": "Calculadora de tamaño de impresión de fotos",
+      "description": "Calcula cuánto medirá una foto impresa a partir de sus dimensiones en píxeles y su resolución. Consulta pulgadas y centímetros sin subir una imagen.",
+      "how": "Introduce la anchura y la altura en píxeles enteros y la resolución en píxeles por pulgada (PPI). Una imagen de 3000 × 2400 a 300 PPI mide 10 × 8 pulgadas, es decir, 25,4 × 20,32 centímetros.",
+      "limits": "PPI mide los píxeles por pulgada impresa; el DPI de la impresora mide los puntos de tinta. Los resultados se redondean a tres decimales. El cálculo no cambia el tamaño de la foto ni añade detalle.",
+      "question": "¿Qué ocurre si reduzco el PPI?",
+      "answer": "Los mismos píxeles producen una impresión mayor, pero los detalles pueden verse menos nítidos de cerca. Consulta a la imprenta qué resolución debes usar."
     }
   },
   "flexOptions": {
@@ -125,5 +141,43 @@
     "nowrap": "Sin salto de línea",
     "wrap": "Con salto de línea",
     "wrap-reverse": "Salto de línea en orden inverso"
+  },
+  "pdf": {
+    "choose": "Elegir un PDF",
+    "processing": "Leyendo páginas del PDF…",
+    "error": "No se puede leer el PDF. Elige un PDF válido y sin cifrar.",
+    "tooLarge": "El PDF no debe superar los 20 MiB.",
+    "pages": "Páginas",
+    "page": "Página",
+    "media": "Hoja física",
+    "crop": "Área visible",
+    "trim": "Tamaño final",
+    "bleed": "Área de sangrado",
+    "explicitTrim": "Corte declarado",
+    "explicitBleed": "Sangrado declarado",
+    "explicitCrop": "Área visible declarada",
+    "top": "Superior",
+    "bottom": "Inferior",
+    "left": "Izquierda",
+    "right": "Derecha",
+    "declared": "Declarada",
+    "inherited": "Heredada",
+    "download": "Descargar CSV",
+    "print": "Imprimir informe",
+    "note": "La geometría por sí sola no confirma que el diseño llegue al borde del sangrado.",
+    "none": "No se han declarado el corte ni el sangrado; se aplican los valores PDF predeterminados. Esto no demuestra que falte sangrado en el diseño.",
+    "trimOnly": "El corte está declarado. El sangrado usa el área visible predeterminada; confirma si la imprenta lo acepta.",
+    "bleedOnly": "El sangrado está declarado, pero el corte se hereda. Confirma los límites de corte previstos.",
+    "extended": "El sangrado declarado supera el corte en al menos un borde. Revisa cada margen y el contenido gráfico por separado.",
+    "zero": "Ambas áreas están declaradas, sin margen positivo más allá del corte. Compara el archivo con los requisitos de la imprenta."
+  },
+  "printSize": {
+    "ppi": "Resolución de impresión (PPI)",
+    "centimeters": "Centímetros",
+    "widthInches": "Anchura impresa en pulgadas",
+    "heightInches": "Altura impresa en pulgadas",
+    "widthCm": "Anchura impresa en centímetros",
+    "heightCm": "Altura impresa en centímetros",
+    "invalid": "Introduce dimensiones en píxeles enteros positivos de hasta 1.000.000.000 y una resolución de 0,000001 a 1.000.000 PPI."
   }
 }

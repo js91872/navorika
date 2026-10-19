@@ -107,6 +107,22 @@
       "limits": "Confirme a sangria com a gráfica. O cálculo considera a mesma margem nos quatro lados. Não adiciona marcas de corte, não define as caixas de página do PDF nem verifica se a arte se estende até a sangria.",
       "question": "Sangria é o mesmo que área de segurança?",
       "answer": "Não. A sangria se estende além da borda de corte. A área de segurança mantém textos e elementos importantes dentro dessa borda."
+    },
+    "pdf-bleed-trim-checker": {
+      "title": "Verificador de sangria e corte de PDF",
+      "description": "Confira o tamanho, os limites de corte e as margens de sangria de cada página PDF no navegador. Copie ou baixe o relatório sem enviar o arquivo.",
+      "how": "Escolha um PDF de até 20 MiB e selecione uma página. Compare a folha, a área visível, o formato final e a área de sangria. As quatro margens mostram a extensão além do corte.",
+      "limits": "A análise verifica a geometria, não a arte. Áreas não declaradas usam os padrões do PDF. Uma área de sangria declarada não garante que as imagens cheguem até a borda. Confirme as exigências da gráfica; isto não certifica conformidade PDF/X.",
+      "question": "A ferramenta adiciona a sangria que falta?",
+      "answer": "Não. Ela lê as áreas existentes sem alterar o PDF, adicionar marcas de corte ou estender a arte."
+    },
+    "image-print-size-calculator": {
+      "title": "Calculadora de tamanho de impressão de fotos",
+      "description": "Descubra o tamanho impresso de uma foto a partir das dimensões em pixels e da resolução. Veja o resultado em polegadas e centímetros sem enviar uma imagem.",
+      "how": "Informe largura e altura em pixels inteiros e a resolução em pixels por polegada (PPI). Uma imagem de 3000 × 2400 a 300 PPI mede 10 × 8 polegadas, ou 25,4 × 20,32 centímetros.",
+      "limits": "PPI mede os pixels por polegada impressa; o DPI da impressora mede pontos de tinta. Os resultados são arredondados para três casas decimais. O cálculo não redimensiona a foto nem cria detalhes.",
+      "question": "O que acontece se eu reduzir o PPI?",
+      "answer": "A mesma quantidade de pixels gera uma impressão maior, mas os detalhes podem parecer menos nítidos de perto. Consulte a gráfica sobre a resolução recomendada."
     }
   },
   "flexOptions": {
@@ -125,5 +141,43 @@
     "nowrap": "Sem quebra de linha",
     "wrap": "Quebrar linha",
     "wrap-reverse": "Quebrar linha na ordem inversa"
+  },
+  "pdf": {
+    "choose": "Escolher um PDF",
+    "processing": "Lendo páginas do PDF…",
+    "error": "Não foi possível ler o PDF. Escolha um PDF válido e sem criptografia.",
+    "tooLarge": "O PDF deve ter no máximo 20 MiB.",
+    "pages": "Páginas",
+    "page": "Página",
+    "media": "Folha física",
+    "crop": "Área visível",
+    "trim": "Formato final",
+    "bleed": "Área de sangria",
+    "explicitTrim": "Corte declarado",
+    "explicitBleed": "Sangria declarada",
+    "explicitCrop": "Área visível declarada",
+    "top": "Superior",
+    "bottom": "Inferior",
+    "left": "Esquerda",
+    "right": "Direita",
+    "declared": "Declarada",
+    "inherited": "Herdada",
+    "download": "Baixar CSV",
+    "print": "Imprimir relatório",
+    "note": "A geometria por si só não confirma que a arte alcance a borda da sangria.",
+    "none": "Nem o corte nem a sangria estão declarados; aplicam-se os padrões do PDF. Isso não prova a ausência de sangria na arte.",
+    "trimOnly": "O corte está declarado. A sangria usa a área visível padrão; confirme se a gráfica aceita isso.",
+    "bleedOnly": "A sangria está declarada, mas o corte é herdado. Confirme os limites de corte desejados.",
+    "extended": "A sangria declarada ultrapassa o corte em pelo menos uma borda. Confira cada margem e inspecione a arte separadamente.",
+    "zero": "As duas áreas estão declaradas, sem margem positiva além do corte. Compare o arquivo com as especificações da gráfica."
+  },
+  "printSize": {
+    "ppi": "Resolução de impressão (PPI)",
+    "centimeters": "Centímetros",
+    "widthInches": "Largura impressa em polegadas",
+    "heightInches": "Altura impressa em polegadas",
+    "widthCm": "Largura impressa em centímetros",
+    "heightCm": "Altura impressa em centímetros",
+    "invalid": "Informe dimensões em pixels inteiros positivos até 1.000.000.000 e uma resolução de 0,000001 a 1.000.000 PPI."
   }
 }

@@ -123,3 +123,16 @@ test('pdfBleedTrim: rejects empty and invalid PDF buffers safely', async () => {
   assert.equal(corruptedRes.valid, false);
   assert.ok(corruptedRes.error);
 });
+
+test('pdfBleedTrim: opt-in encryption rejection does not change existing default behavior', async () => {
+  const doc = await PDFDocument.create();
+  doc.addPage([600, 800]);
+  // A trailer encryption marker is sufficient for pdf-lib's encryption guard.
+  doc.context.trailerInfo.Encrypt = doc.context.register(doc.context.obj({}));
+  const bytes = await doc.save();
+  const strict = await parsePdfBleedTrim(bytes, { rejectEncrypted: true });
+  assert.equal(strict.valid, false);
+  const legacy = await parsePdfBleedTrim(bytes);
+  assert.equal(legacy.valid, true);
+  assert.equal(legacy.pageCount, 1);
+});

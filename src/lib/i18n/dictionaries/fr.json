@@ -107,6 +107,22 @@
       "limits": "Confirmez le fond perdu avec votre imprimeur. Le calcul suppose une marge identique sur les quatre côtés. Il n’ajoute pas de traits de coupe, ne définit pas les zones PDF et ne vérifie pas le prolongement du visuel.",
       "question": "Le fond perdu est-il une zone de sécurité ?",
       "answer": "Non. Le fond perdu dépasse le bord de coupe. La zone de sécurité maintient les textes et les éléments importants à l’intérieur de ce bord."
+    },
+    "pdf-bleed-trim-checker": {
+      "title": "Vérificateur de fond perdu et de coupe PDF",
+      "description": "Vérifiez les dimensions, les limites de coupe et les fonds perdus de chaque page PDF dans votre navigateur. Copiez ou téléchargez le rapport sans envoyer le fichier.",
+      "how": "Choisissez un PDF de 20 Mio maximum, puis une page. Comparez la feuille, la zone visible, le format fini et la zone de fond perdu. Les quatre marges indiquent le dépassement au-delà de la coupe.",
+      "limits": "Seule la géométrie des pages est contrôlée, pas le contenu graphique. Les zones non déclarées suivent les valeurs PDF par défaut. Une zone de fond perdu déclarée ne prouve pas que les images atteignent le bord. Vérifiez les exigences de votre imprimeur ; ce contrôle ne certifie pas la conformité PDF/X.",
+      "question": "Cet outil ajoute-t-il le fond perdu manquant ?",
+      "answer": "Non. Il lit les zones existantes sans modifier le PDF, ajouter de repères de coupe ni prolonger les illustrations."
+    },
+    "image-print-size-calculator": {
+      "title": "Calculateur de taille d’impression photo",
+      "description": "Calculez le format d’impression d’une photo à partir de ses dimensions en pixels et de sa résolution. Obtenez les dimensions en pouces et en centimètres sans envoyer d’image.",
+      "how": "Saisissez la largeur et la hauteur en pixels entiers, puis la résolution en pixels par pouce (PPI). Une image de 3000 × 2400 à 300 PPI donne 10 × 8 pouces, soit 25,4 × 20,32 centimètres.",
+      "limits": "Le PPI mesure les pixels par pouce imprimé ; le DPI de l’imprimante mesure les points d’encre. Les résultats sont arrondis à trois décimales. Cette opération ne redimensionne pas la photo et ne crée aucun détail supplémentaire.",
+      "question": "Que se passe-t-il si je réduis le PPI ?",
+      "answer": "Le même nombre de pixels produit une impression plus grande, mais les détails peuvent sembler moins nets de près. Demandez la résolution conseillée à votre imprimeur."
     }
   },
   "flexOptions": {
@@ -125,5 +141,43 @@
     "nowrap": "Sans retour à la ligne",
     "wrap": "Retour à la ligne",
     "wrap-reverse": "Retour à la ligne inversé"
+  },
+  "pdf": {
+    "choose": "Choisir un PDF",
+    "processing": "Lecture des pages PDF…",
+    "error": "Impossible de lire ce PDF. Choisissez un PDF valide et non chiffré.",
+    "tooLarge": "Le PDF ne doit pas dépasser 20 Mio.",
+    "pages": "Pages",
+    "page": "Page",
+    "media": "Feuille physique",
+    "crop": "Zone visible",
+    "trim": "Format fini",
+    "bleed": "Zone de fond perdu",
+    "explicitTrim": "Zone de coupe déclarée",
+    "explicitBleed": "Fond perdu déclaré",
+    "explicitCrop": "Zone visible déclarée",
+    "top": "Haut",
+    "bottom": "Bas",
+    "left": "Gauche",
+    "right": "Droite",
+    "declared": "Déclarée",
+    "inherited": "Héritée",
+    "download": "Télécharger le CSV",
+    "print": "Imprimer le rapport",
+    "note": "La géométrie seule ne confirme pas que les illustrations atteignent le bord du fond perdu.",
+    "none": "Ni la coupe ni le fond perdu ne sont déclarés ; les valeurs PDF par défaut s’appliquent. Cela ne prouve pas l’absence de fond perdu dans les illustrations.",
+    "trimOnly": "La coupe est déclarée. Le fond perdu reprend la zone visible par défaut ; vérifiez si votre imprimeur l’accepte.",
+    "bleedOnly": "Le fond perdu est déclaré, mais la coupe est héritée. Confirmez les limites de coupe prévues.",
+    "extended": "Le fond perdu déclaré dépasse la coupe sur au moins un bord. Contrôlez chaque marge et examinez les illustrations séparément.",
+    "zero": "Les deux zones sont déclarées, sans marge positive au-delà de la coupe. Comparez le fichier aux exigences de l’imprimeur."
+  },
+  "printSize": {
+    "ppi": "Résolution d’impression (PPI)",
+    "centimeters": "Centimètres",
+    "widthInches": "Largeur imprimée en pouces",
+    "heightInches": "Hauteur imprimée en pouces",
+    "widthCm": "Largeur imprimée en centimètres",
+    "heightCm": "Hauteur imprimée en centimètres",
+    "invalid": "Saisissez des dimensions en pixels entiers positifs jusqu’à 1 000 000 000 et une résolution de 0,000001 à 1 000 000 PPI."
   }
 }

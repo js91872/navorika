@@ -107,6 +107,22 @@
       "limits": "Klären Sie die Beschnittzugabe mit Ihrer Druckerei. Der Rechner setzt gleiche Zugaben an allen vier Seiten voraus. Er ergänzt keine Schnittmarken, legt keine PDF-Seitenrahmen fest und prüft nicht, ob das Motiv bis in den Beschnitt reicht.",
       "question": "Ist Beschnitt dasselbe wie ein Sicherheitsabstand?",
       "answer": "Nein. Beschnitt liegt außerhalb der Schnittkante. Ein Sicherheitsabstand hält Text und wichtige Motive innerhalb der Schnittkante."
+    },
+    "pdf-bleed-trim-checker": {
+      "title": "PDF-Beschnitt- und Endformatprüfung",
+      "description": "Prüfen Sie Seitengrößen, Schnittgrenzen und Beschnittzugaben jeder PDF-Seite im Browser. Kopieren oder laden Sie den Bericht herunter, ohne die Datei hochzuladen.",
+      "how": "Wählen Sie eine PDF-Datei bis 20 MiB und dann eine Seite. Vergleichen Sie den Bogen, den sichtbaren Bereich, das Endformat und den Beschnittbereich. Die vier Ränder zeigen die Zugabe außerhalb der Schnittkante.",
+      "limits": "Geprüft wird die Seitengeometrie, nicht der Bildinhalt. Für nicht ausdrücklich angegebene Bereiche gelten PDF-Standardwerte. Ein festgelegter Beschnittbereich beweist nicht, dass Bilder bis zum Rand reichen. Klären Sie die Druckvorgaben; dies ist keine PDF/X-Zertifizierung.",
+      "question": "Ergänzt die Prüfung fehlenden Beschnitt?",
+      "answer": "Nein. Sie liest vorhandene Seitenbereiche, ohne die PDF-Datei zu ändern, Schnittmarken hinzuzufügen oder Bilder zu erweitern."
+    },
+    "image-print-size-calculator": {
+      "title": "Rechner für die Druckgröße von Fotos",
+      "description": "Berechnen Sie die Druckgröße eines Fotos aus seinen Pixelmaßen und der Auflösung. Sehen Sie das Ergebnis in Zoll und Zentimetern, ohne ein Bild hochzuladen.",
+      "how": "Geben Sie Breite und Höhe in ganzen Pixeln und die Auflösung in Pixeln pro Zoll (PPI) ein. Ein Bild mit 3000 × 2400 Pixeln ergibt bei 300 PPI einen Druck von 10 × 8 Zoll, also 25,4 × 20,32 Zentimetern.",
+      "limits": "PPI bezeichnet Bildpixel pro gedrucktem Zoll; die DPI des Druckers bezeichnen Tintenpunkte. Ergebnisse werden auf drei Nachkommastellen gerundet. Die Berechnung verändert das Originalbild nicht und ergänzt keine Details.",
+      "question": "Was passiert bei einem niedrigeren PPI-Wert?",
+      "answer": "Dieselben Pixel ergeben einen größeren Druck, können aus der Nähe jedoch weniger scharf wirken. Fragen Sie Ihre Druckerei nach der passenden Auflösung."
     }
   },
   "flexOptions": {
@@ -125,5 +141,43 @@
     "nowrap": "Kein Zeilenumbruch",
     "wrap": "Mit Zeilenumbruch",
     "wrap-reverse": "Umgekehrter Zeilenumbruch"
+  },
+  "pdf": {
+    "choose": "PDF auswählen",
+    "processing": "PDF-Seiten werden gelesen…",
+    "error": "PDF konnte nicht gelesen werden. Wählen Sie eine gültige, unverschlüsselte PDF-Datei.",
+    "tooLarge": "Die PDF-Datei darf höchstens 20 MiB groß sein.",
+    "pages": "Seiten",
+    "page": "Seite",
+    "media": "Physischer Bogen",
+    "crop": "Sichtbarer Bereich",
+    "trim": "Endformat",
+    "bleed": "Beschnittbereich",
+    "explicitTrim": "Endformat festgelegt",
+    "explicitBleed": "Beschnitt festgelegt",
+    "explicitCrop": "Sichtbarer Bereich festgelegt",
+    "top": "Oben",
+    "bottom": "Unten",
+    "left": "Links",
+    "right": "Rechts",
+    "declared": "Festgelegt",
+    "inherited": "Übernommen",
+    "download": "CSV herunterladen",
+    "print": "Bericht drucken",
+    "note": "Die Geometrie allein bestätigt nicht, dass die Gestaltung bis zum Beschnittrand reicht.",
+    "none": "Endformat und Beschnitt sind nicht ausdrücklich festgelegt; PDF-Standardwerte gelten. Das beweist nicht, dass der Gestaltung Beschnitt fehlt.",
+    "trimOnly": "Das Endformat ist festgelegt. Der Beschnitt übernimmt den sichtbaren Bereich; klären Sie, ob die Druckerei dies akzeptiert.",
+    "bleedOnly": "Der Beschnitt ist festgelegt, das Endformat jedoch übernommen. Bestätigen Sie die vorgesehenen Schnittgrenzen.",
+    "extended": "Der festgelegte Beschnitt geht an mindestens einer Kante über das Endformat hinaus. Prüfen Sie jeden Rand und die Gestaltung getrennt.",
+    "zero": "Beide Bereiche sind festgelegt, ohne positive Beschnittzugabe außerhalb des Endformats. Vergleichen Sie die Datei mit den Druckvorgaben."
+  },
+  "printSize": {
+    "ppi": "Druckauflösung (PPI)",
+    "centimeters": "Zentimeter",
+    "widthInches": "Druckbreite in Zoll",
+    "heightInches": "Druckhöhe in Zoll",
+    "widthCm": "Druckbreite in Zentimetern",
+    "heightCm": "Druckhöhe in Zentimetern",
+    "invalid": "Geben Sie positive ganze Pixelmaße bis 1.000.000.000 und eine Auflösung von 0,000001 bis 1.000.000 PPI ein."
   }
 }

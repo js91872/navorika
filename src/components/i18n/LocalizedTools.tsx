@@ -1,24 +1,15 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+import { CopyResult, fieldClass, buttonClass } from './ToolControls';
 import { useRef, useState, type CSSProperties } from 'react';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale, TranslatedTool } from '@/lib/i18n/config';
 import { aspectRatio, flexCss, printDimensions } from '@/lib/i18n/calculations';
 import { inspectImageColorMode, type RgbCmykImageResult } from '@/lib/calculations/rgbCmykImage';
 
-const fieldClass = 'mt-2 w-full rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-3 text-[var(--foreground)]';
-const buttonClass = 'rounded-xl border border-[var(--border)] px-4 py-3 font-semibold hover:bg-[var(--muted)] disabled:opacity-50';
 
-function CopyResult({ text, d }: { text: string; d: Dictionary }) {
-  const [status, setStatus] = useState('');
-  return <div className="mt-4 flex flex-wrap items-center gap-3">
-    <button type="button" className={buttonClass} disabled={!text} onClick={async () => {
-      try { await navigator.clipboard.writeText(text); setStatus(d.ui.copied); }
-      catch { setStatus(d.ui.copyError); }
-    }}>{d.ui.copy}</button>
-    <span role="status">{status}</span>
-  </div>;
-}
+const LocalizedPrintTools = dynamic(() => import('./LocalizedPrintTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -157,6 +148,7 @@ function ColorTool({ d, locale }: { d: Dictionary; locale: Locale }) {
 }
 
 export default function LocalizedTools({ slug, dictionary, locale }: { slug: TranslatedTool; dictionary: Dictionary; locale: Locale }) {
+  if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'css-flexbox-generator') return <FlexTool d={dictionary} />;
   if (slug === 'rgb-cmyk-image-checker') return <ColorTool d={dictionary} locale={locale} />;
   return <NumericTools slug={slug} d={dictionary} locale={locale} />;
