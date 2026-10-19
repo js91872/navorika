@@ -187,6 +187,78 @@
       "limits": "Verdichtung, Setzung, Auflockerung nach Aushub und Mindestbestellmengen werden nicht automatisch berücksichtigt.",
       "question": "Verändert der Zuschlag das Nettovolumen?",
       "answer": "Nein. Das Nettovolumen bleibt gleich; das Bestellvolumen enthält den Zuschlag."
+    },
+    "roofing-shingle-calculator": {
+      "title": "Rechner für Dachschindeln",
+      "description": "Schätzen Sie Dacheinheiten und benötigte Schindelpakete.",
+      "how": "Geben Sie die Dachfläche in Quadratfuß, den Verschnitt und die Pakete je Dacheinheit ein.",
+      "limits": "Eine Dacheinheit entspricht 100 Quadratfuß. Die Deckleistung hängt vom Produkt ab. Firstteile, Anfangsschindeln, Bleche, Unterlage und Zubehör sind separat.",
+      "question": "Ist eine Dacheinheit ein Quadratfuß?",
+      "answer": "Nein. Eine Dacheinheit entspricht 100 Quadratfuß."
+    },
+    "rafter-length-calculator": {
+      "title": "Rechner für Sparrenlängen",
+      "description": "Berechnen Sie geometrische Länge und Winkel eines einfachen Sparrens.",
+      "how": "Geben Sie waagerechte Strecke und Überstand in Fuß sowie die Steigung je 12 waagerechte Einheiten ein.",
+      "limits": "Nur Geometrie. Firstbrettabzug, Ausklinkungen, Schnitte, Bemessung, Dachbinder und Bauvorschriften sind ausgeschlossen.",
+      "question": "Ist dies eine Schnitt- oder Statikvorgabe?",
+      "answer": "Nein. Vor Zuschnitt und Bau sind projektspezifische Anpassungen erforderlich."
+    },
+    "stud-calculator": {
+      "title": "Rechner für Wandständer",
+      "description": "Schätzen Sie Ständer für eine gerade Wand mit Zusatzteilen und Verschnitt.",
+      "how": "Geben Sie Wandlänge in Fuß, Achsabstand in Zoll, zusätzliche Ständer und Verschnitt ein.",
+      "limits": "Öffnungen, Ecken, Anschlüsse, Verstärkungen, Brandsperren, Stürze und örtliche Details können mehr Holz erfordern.",
+      "question": "Wird die Wandstatik berechnet?",
+      "answer": "Nein. Dies ist eine einfache Zählung für die Planung einer geraden Wand."
+    },
+    "drywall-mud-calculator": {
+      "title": "Rechner für Fugenspachtel",
+      "description": "Schätzen Sie Gebinde mit Fugenspachtel für eine Plattenfläche.",
+      "how": "Geben Sie Fläche und Herstellerergiebigkeit je Gebinde in Quadratfuß sowie den Zuschlag ein.",
+      "limits": "Die Ergiebigkeit hängt von Plattenanordnung, Schichten, Eckprofilen, Struktur, Fugenband und Produkt ab. Nutzen Sie die Herstellerangabe.",
+      "question": "Gilt dieselbe Ergiebigkeit für alle Produkte?",
+      "answer": "Nein. Geben Sie den Wert für Ihren Spachtel und die Anwendung ein."
+    },
+    "roof-ridge-height-calculator": {
+      "title": "Rechner für Firsthöhe",
+      "description": "Berechnen Sie die Firsthöhe eines symmetrischen Satteldachs.",
+      "how": "Geben Sie volle Spannweite in Fuß, Anstieg je 12 waagerechte Einheiten und Wandhöhe in Fuß ein.",
+      "limits": "Nur Geometrie. Bemessung, Firstbrettdicke, Überstände, Schnitte, Deckenaufbau, Lasten und Bauvorschriften sind ausgeschlossen.",
+      "question": "Ist die Wandhöhe enthalten?",
+      "answer": "Ja. Die Gesamthöhe addiert die Wandhöhe und den Dachanstieg."
+    },
+    "fascia-replacement-cost-calculator": {
+      "title": "Kostenrechner für Stirnbretter",
+      "description": "Schätzen Sie den Austausch von Stirnbrettern mit eigenen Preisen in US-Dollar.",
+      "how": "Geben Sie Länge in Fuß, Material und Arbeit in USD je Fuß, Verschnitt und Abbau in USD ein.",
+      "limits": "Keine örtlichen Marktpreise. Fäulnis, Untersichten, Rinnen, Gerüst, Anstrich, Genehmigungen, Steuern, Zugang und Reparaturen sind nur bei Einrechnung in Ihre Preise enthalten.",
+      "question": "Ändert die Sprache die Währung?",
+      "answer": "Nein. Alle Kosten bleiben in US-Dollar (USD)."
+    },
+    "ppi-calculator": {
+      "title": "PPI-Rechner für Druckbilder",
+      "description": "Berechnen Sie Pixel je Zoll bei gewählter Druckgröße und prüfen Sie die Proportionen.",
+      "how": "Geben Sie Bildmaße in Pixeln und Druckmaße in Zoll ein.",
+      "limits": "Bild-PPI messen Pixel je gedrucktem Zoll. Drucker-DPI messen physische Tinten- oder Tonerpunkte und sind eine andere Größe.",
+      "question": "Was bedeutet eine Abweichung der Proportionen?",
+      "answer": "Bild und Druck unterscheiden sich um mindestens 0,5 %; Beschnitt oder Verzerrung können nötig sein."
+    },
+    "shed-ramp-angle-calculator": {
+      "title": "Rechner für Rampenwinkel",
+      "description": "Berechnen Sie Winkel, prozentuale Steigung und Oberflächenlänge einer Rampe.",
+      "how": "Geben Sie senkrechten Anstieg und waagerechte Strecke in Zoll ein.",
+      "limits": "Nur Geometrie. Prüft weder Barrierefreiheit noch Bauvorschriften. Bodenfreiheit der Geräte, Haftung und Wetter beeinflussen die sichere Nutzung.",
+      "question": "Ist eine waagerechte Strecke von null gültig?",
+      "answer": "Ja. Bei positivem Anstieg ist die Fläche senkrecht; die prozentuale Steigung ist nicht anwendbar."
+    },
+    "construction-material-waste-calculator": {
+      "title": "Rechner für Materialverschnitt",
+      "description": "Addieren Sie einen Verschnittzuschlag und schätzen Sie Kosten in US-Dollar.",
+      "how": "Geben Sie Nettomenge, zusätzlichen Prozentsatz und USD-Preis je passender Einheit ein.",
+      "limits": "Schnitte, Muster, Anordnung und Schäden verändern den Verschnitt. Ganze Pakete, Platten oder Paletten können Aufrundung erfordern. Behalten Sie dieselbe Mengeneinheit bei.",
+      "question": "Werden Kosten in örtliche Währung umgerechnet?",
+      "answer": "Nein. Preise und Ergebnisse bleiben in USD."
     }
   },
   "flexOptions": {
@@ -388,6 +460,219 @@
       },
       "note": "Verdichtung, Setzung, Auflockerung nach Aushub und Mindestbestellmengen werden nicht automatisch berücksichtigt.",
       "textResults": {}
+    },
+    "roofing-shingle-calculator": {
+      "fields": {
+        "roofArea": {
+          "label": "Dachfläche (Quadratfuß)"
+        },
+        "wastePercent": {
+          "label": "Verschnitt (%)"
+        },
+        "bundlesPerSquare": {
+          "label": "Pakete je Dacheinheit"
+        }
+      },
+      "results": {
+        "orderArea": "Fläche mit Verschnitt (Quadratfuß)",
+        "roofingSquares": "Dacheinheiten",
+        "bundles": "Zu kaufende Pakete"
+      },
+      "note": "Eine Dacheinheit entspricht 100 Quadratfuß. Die Deckleistung hängt vom Produkt ab. Firstteile, Anfangsschindeln, Bleche, Unterlage und Zubehör sind separat.",
+      "textResults": {}
+    },
+    "rafter-length-calculator": {
+      "fields": {
+        "run": {
+          "label": "Waagerechte Strecke (Fuß)"
+        },
+        "pitchRise": {
+          "label": "Anstieg je 12 waagerechte Einheiten"
+        },
+        "overhang": {
+          "label": "Waagerechter Überstand (Fuß)"
+        }
+      },
+      "results": {
+        "rise": "Anstieg über der Strecke (Fuß)",
+        "rafterLengthNoOverhang": "Sparren ohne Überstand (Fuß)",
+        "rafterLengthWithOverhang": "Sparren mit Überstand (Fuß)",
+        "roofAngle": "Dachwinkel (Grad)"
+      },
+      "note": "Nur Geometrie. Firstbrettabzug, Ausklinkungen, Schnitte, Bemessung, Dachbinder und Bauvorschriften sind ausgeschlossen.",
+      "textResults": {}
+    },
+    "stud-calculator": {
+      "fields": {
+        "wallLength": {
+          "label": "Wandlänge (Fuß)"
+        },
+        "spacing": {
+          "label": "Achsabstand (Zoll)"
+        },
+        "extraStuds": {
+          "label": "Zusätzliche Ständer"
+        },
+        "wastePercent": {
+          "label": "Verschnitt (%)"
+        }
+      },
+      "results": {
+        "baseStuds": "Grundanzahl der Ständer",
+        "studsBeforeWaste": "Ständer ohne Verschnitt",
+        "totalStuds": "Zu kaufende Ständer"
+      },
+      "note": "Öffnungen, Ecken, Anschlüsse, Verstärkungen, Brandsperren, Stürze und örtliche Details können mehr Holz erfordern.",
+      "textResults": {}
+    },
+    "drywall-mud-calculator": {
+      "fields": {
+        "drywallArea": {
+          "label": "Plattenfläche (Quadratfuß)"
+        },
+        "coveragePerBucket": {
+          "label": "Ergiebigkeit je Gebinde (Quadratfuß)"
+        },
+        "wastePercent": {
+          "label": "Zusätzlicher Zuschlag (%)"
+        }
+      },
+      "results": {
+        "adjustedArea": "Fläche mit Zuschlag (Quadratfuß)",
+        "containers": "Zu kaufende Gebinde"
+      },
+      "note": "Die Ergiebigkeit hängt von Plattenanordnung, Schichten, Eckprofilen, Struktur, Fugenband und Produkt ab. Nutzen Sie die Herstellerangabe.",
+      "textResults": {}
+    },
+    "roof-ridge-height-calculator": {
+      "fields": {
+        "span": {
+          "label": "Volle Dachspannweite (Fuß)",
+          "help": "Waagerechte Außenbreite eines symmetrischen Satteldachs."
+        },
+        "pitchRise": {
+          "label": "Anstieg je 12 waagerechte Einheiten",
+          "help": "Geben Sie 6 für eine Neigung von 6:12 ein."
+        },
+        "wallHeight": {
+          "label": "Wandhöhe (Fuß)",
+          "help": "Bezugshöhe über Fußboden oder Gelände."
+        }
+      },
+      "results": {
+        "halfSpan": "Halbe Spannweite (Fuß)",
+        "ridgeRise": "Anstieg über den Auflagern (Fuß)",
+        "totalRidgeHeight": "Gesamte Firsthöhe (Fuß)",
+        "rafterLength": "Sparren ohne Überstand (Fuß)",
+        "roofAngle": "Dachwinkel (Grad)"
+      },
+      "note": "Nur Geometrie. Bemessung, Firstbrettdicke, Überstände, Schnitte, Deckenaufbau, Lasten und Bauvorschriften sind ausgeschlossen.",
+      "textResults": {}
+    },
+    "fascia-replacement-cost-calculator": {
+      "fields": {
+        "length": {
+          "label": "Stirnbrettlänge (Fuß)"
+        },
+        "materialRate": {
+          "label": "Material (USD/Fuß)"
+        },
+        "laborRate": {
+          "label": "Arbeit (USD/Fuß)"
+        },
+        "wastePercent": {
+          "label": "Materialverschnitt (%)"
+        },
+        "removalDisposal": {
+          "label": "Abbau und Entsorgung (USD)"
+        }
+      },
+      "results": {
+        "orderLength": "Länge mit Verschnitt (Fuß)",
+        "materialCost": "Materialkosten",
+        "laborCost": "Arbeitskosten",
+        "removalDisposal": "Abbau und Entsorgung",
+        "totalCost": "Gesamte Austauschkosten",
+        "costPerFoot": "Gesamtkosten je Fuß"
+      },
+      "note": "Keine örtlichen Marktpreise. Fäulnis, Untersichten, Rinnen, Gerüst, Anstrich, Genehmigungen, Steuern, Zugang und Reparaturen sind nur bei Einrechnung in Ihre Preise enthalten.",
+      "textResults": {}
+    },
+    "ppi-calculator": {
+      "fields": {
+        "widthPixels": {
+          "label": "Bildbreite (px)"
+        },
+        "heightPixels": {
+          "label": "Bildhöhe (px)"
+        },
+        "printWidth": {
+          "label": "Druckbreite (Zoll)"
+        },
+        "printHeight": {
+          "label": "Druckhöhe (Zoll)"
+        }
+      },
+      "results": {
+        "horizontalPpi": "Waagerechte PPI",
+        "verticalPpi": "Senkrechte PPI",
+        "effectivePpi": "Wirksame PPI",
+        "megapixels": "Megapixel",
+        "aspectMatch": "Übereinstimmung der Proportionen"
+      },
+      "note": "Bild-PPI messen Pixel je gedrucktem Zoll. Drucker-DPI messen physische Tinten- oder Tonerpunkte und sind eine andere Größe.",
+      "textResults": {
+        "aspectMatch": "localized"
+      }
+    },
+    "shed-ramp-angle-calculator": {
+      "fields": {
+        "rise": {
+          "label": "Senkrechter Anstieg (Zoll)"
+        },
+        "run": {
+          "label": "Waagerechte Strecke (Zoll)"
+        }
+      },
+      "results": {
+        "angleDegrees": "Winkel (Grad)",
+        "slopePercent": "Steigung",
+        "rampLength": "Oberflächenlänge (Zoll)",
+        "riseRunRatio": "Verhältnis Anstieg zu Strecke"
+      },
+      "note": "Nur Geometrie. Prüft weder Barrierefreiheit noch Bauvorschriften. Bodenfreiheit der Geräte, Haftung und Wetter beeinflussen die sichere Nutzung.",
+      "textResults": {
+        "riseRunRatio": "localized"
+      }
+    },
+    "construction-material-waste-calculator": {
+      "fields": {
+        "netQuantity": {
+          "label": "Nettomaterialmenge",
+          "help": "Nutzen Sie eine einheitliche Größe: Fläche, Länge, Stückzahl oder andere Materialeinheit."
+        },
+        "wastePercent": {
+          "label": "Verschnitt (%)"
+        },
+        "unitCost": {
+          "label": "Stück- oder Einheitspreis (USD)"
+        }
+      },
+      "results": {
+        "wasteQuantity": "Zusatzmenge",
+        "orderQuantity": "Bestellmenge",
+        "netMaterialCost": "Nettomaterialkosten",
+        "wasteCost": "Verschnittkosten",
+        "totalMaterialCost": "Gesamte Materialkosten"
+      },
+      "note": "Schnitte, Muster, Anordnung und Schäden verändern den Verschnitt. Ganze Pakete, Platten oder Paletten können Aufrundung erfordern. Behalten Sie dieselbe Mengeneinheit bei.",
+      "textResults": {}
     }
+  },
+  "calculatorStates": {
+    "matched": "Passend",
+    "mismatch": "Abweichung",
+    "flat": "Waagerecht",
+    "vertical": "Senkrecht"
   }
 }

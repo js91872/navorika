@@ -187,6 +187,78 @@
       "limits": "Compaction, settlement, excavation swell and supplier minimum quantities are not automatically included.",
       "question": "Does the allowance change the net volume?",
       "answer": "No. Net volume remains unchanged; the ordering volume includes the allowance."
+    },
+    "roofing-shingle-calculator": {
+      "title": "Roofing Shingle Calculator",
+      "description": "Estimate roofing squares and shingle bundles from roof area.",
+      "how": "Enter the roof surface area in square feet, waste percentage and bundles per roofing square.",
+      "limits": "One roofing square is 100 square feet. Product coverage varies. Ridge caps, starter shingles, flashing, underlayment and accessories are separate.",
+      "question": "Is a roofing square one square foot?",
+      "answer": "No. One roofing square covers 100 square feet."
+    },
+    "rafter-length-calculator": {
+      "title": "Rafter Length Calculator",
+      "description": "Calculate the geometric length and angle of a common roof rafter.",
+      "how": "Enter horizontal run and overhang in feet, then rise per 12 units of run.",
+      "limits": "Geometry only. Ridge-board deductions, birdsmouth and plumb cuts, structural sizing, trusses and code requirements are excluded.",
+      "question": "Is this a cutting or structural specification?",
+      "answer": "No. The geometric length needs project-specific adjustments before cutting or construction."
+    },
+    "stud-calculator": {
+      "title": "Wall Stud Calculator",
+      "description": "Estimate studs for a straight wall with extra pieces and waste.",
+      "how": "Enter wall length in feet, center-to-center spacing in inches, extra studs and waste percentage.",
+      "limits": "Openings, corners, intersections, backing, fire blocking, headers and local framing details can require additional lumber.",
+      "question": "Does it design the wall structure?",
+      "answer": "No. It provides a simple count for planning a straight wall."
+    },
+    "drywall-mud-calculator": {
+      "title": "Drywall Joint Compound Calculator",
+      "description": "Estimate containers of joint compound for a given board area.",
+      "how": "Enter area and manufacturer coverage per container in square feet, then the extra allowance.",
+      "limits": "Coverage depends on board arrangement, coats, corner beads, texture, taping method and product. Use your manufacturer’s coverage figure.",
+      "question": "Can I use one coverage rate for every product?",
+      "answer": "No. Enter the coverage specified for your chosen compound and application."
+    },
+    "roof-ridge-height-calculator": {
+      "title": "Roof Ridge Height Calculator",
+      "description": "Calculate the ridge height of a symmetrical gable roof.",
+      "how": "Enter the full span in feet, rise per 12 units of run and wall height in feet.",
+      "limits": "Geometry only. Excludes structural sizing, ridge-board thickness, overhangs, cuts, ceiling build-up, loads and local code requirements.",
+      "question": "Is wall height included?",
+      "answer": "Yes. Total ridge height adds the entered wall height to the roof rise."
+    },
+    "fascia-replacement-cost-calculator": {
+      "title": "Fascia Replacement Cost Calculator",
+      "description": "Estimate fascia replacement costs from the rates you enter, in US dollars.",
+      "how": "Enter length in feet, material and labor rates in USD per foot, waste and a removal allowance in USD.",
+      "limits": "No local prices are supplied. Rot, soffits, gutters, scaffolding, paint, permits, taxes, access and structural repairs are excluded unless included in your rates.",
+      "question": "Does choosing a language change the currency?",
+      "answer": "No. This calculator keeps all costs in US dollars (USD)."
+    },
+    "ppi-calculator": {
+      "title": "Print PPI Calculator",
+      "description": "Calculate image pixels per inch at a chosen print size and check the aspect ratio.",
+      "how": "Enter image dimensions in pixels and print dimensions in inches.",
+      "limits": "Image PPI measures pixels per printed inch. Printer DPI measures physical ink or toner dots and is a different measurement.",
+      "question": "What does a ratio mismatch mean?",
+      "answer": "The image and print proportions differ by at least 0.5%; fitting may require cropping or distortion."
+    },
+    "shed-ramp-angle-calculator": {
+      "title": "Shed Ramp Angle Calculator",
+      "description": "Calculate ramp angle, slope percentage and surface length.",
+      "how": "Enter vertical rise and horizontal run in inches.",
+      "limits": "Geometry only. This does not check accessibility rules or building codes. Equipment clearance, traction and weather affect safe use.",
+      "question": "Is a zero horizontal run valid?",
+      "answer": "Yes. With a positive rise it represents a vertical surface; percentage slope is not applicable."
+    },
+    "construction-material-waste-calculator": {
+      "title": "Construction Material Waste Calculator",
+      "description": "Add a waste allowance and estimate material costs in US dollars.",
+      "how": "Enter the net quantity, extra percentage and USD cost per matching unit.",
+      "limits": "Cuts, patterns, layout and site damage change waste. Purchases may need rounding to full packs, sheets or pallets. Keep the same quantity unit throughout.",
+      "question": "Are costs converted to local currency?",
+      "answer": "No. Prices and cost results stay in USD."
     }
   },
   "flexOptions": {
@@ -388,6 +460,219 @@
       },
       "note": "Compaction, settlement, excavation swell and supplier minimum quantities are not automatically included.",
       "textResults": {}
+    },
+    "roofing-shingle-calculator": {
+      "fields": {
+        "roofArea": {
+          "label": "Roof area (square feet)"
+        },
+        "wastePercent": {
+          "label": "Waste allowance (%)"
+        },
+        "bundlesPerSquare": {
+          "label": "Bundles per roofing square"
+        }
+      },
+      "results": {
+        "orderArea": "Area with waste (square feet)",
+        "roofingSquares": "Roofing squares",
+        "bundles": "Bundles to buy"
+      },
+      "note": "One roofing square is 100 square feet. Product coverage varies. Ridge caps, starter shingles, flashing, underlayment and accessories are separate.",
+      "textResults": {}
+    },
+    "rafter-length-calculator": {
+      "fields": {
+        "run": {
+          "label": "Horizontal run (feet)"
+        },
+        "pitchRise": {
+          "label": "Rise per 12 units of run"
+        },
+        "overhang": {
+          "label": "Horizontal overhang (feet)"
+        }
+      },
+      "results": {
+        "rise": "Rise over the run (feet)",
+        "rafterLengthNoOverhang": "Rafter without overhang (feet)",
+        "rafterLengthWithOverhang": "Rafter with overhang (feet)",
+        "roofAngle": "Roof angle (degrees)"
+      },
+      "note": "Geometry only. Ridge-board deductions, birdsmouth and plumb cuts, structural sizing, trusses and code requirements are excluded.",
+      "textResults": {}
+    },
+    "stud-calculator": {
+      "fields": {
+        "wallLength": {
+          "label": "Wall length (feet)"
+        },
+        "spacing": {
+          "label": "Center-to-center spacing (inches)"
+        },
+        "extraStuds": {
+          "label": "Extra studs"
+        },
+        "wastePercent": {
+          "label": "Waste allowance (%)"
+        }
+      },
+      "results": {
+        "baseStuds": "Base stud count",
+        "studsBeforeWaste": "Studs before waste",
+        "totalStuds": "Studs to buy"
+      },
+      "note": "Openings, corners, intersections, backing, fire blocking, headers and local framing details can require additional lumber.",
+      "textResults": {}
+    },
+    "drywall-mud-calculator": {
+      "fields": {
+        "drywallArea": {
+          "label": "Board area (square feet)"
+        },
+        "coveragePerBucket": {
+          "label": "Coverage per container (square feet)"
+        },
+        "wastePercent": {
+          "label": "Extra allowance (%)"
+        }
+      },
+      "results": {
+        "adjustedArea": "Area with allowance (square feet)",
+        "containers": "Containers to buy"
+      },
+      "note": "Coverage depends on board arrangement, coats, corner beads, texture, taping method and product. Use your manufacturer’s coverage figure.",
+      "textResults": {}
+    },
+    "roof-ridge-height-calculator": {
+      "fields": {
+        "span": {
+          "label": "Full roof span (feet)",
+          "help": "Outside-to-outside horizontal span of a symmetrical gable roof."
+        },
+        "pitchRise": {
+          "label": "Rise per 12 units of run",
+          "help": "Enter 6 for a pitch of 6:12."
+        },
+        "wallHeight": {
+          "label": "Wall height (feet)",
+          "help": "Reference height above the floor or ground datum."
+        }
+      },
+      "results": {
+        "halfSpan": "Half span (feet)",
+        "ridgeRise": "Rise above wall plates (feet)",
+        "totalRidgeHeight": "Total ridge height (feet)",
+        "rafterLength": "Rafter without overhang (feet)",
+        "roofAngle": "Roof angle (degrees)"
+      },
+      "note": "Geometry only. Excludes structural sizing, ridge-board thickness, overhangs, cuts, ceiling build-up, loads and local code requirements.",
+      "textResults": {}
+    },
+    "fascia-replacement-cost-calculator": {
+      "fields": {
+        "length": {
+          "label": "Fascia length (feet)"
+        },
+        "materialRate": {
+          "label": "Material rate (USD/foot)"
+        },
+        "laborRate": {
+          "label": "Labor rate (USD/foot)"
+        },
+        "wastePercent": {
+          "label": "Material waste (%)"
+        },
+        "removalDisposal": {
+          "label": "Removal allowance (USD)"
+        }
+      },
+      "results": {
+        "orderLength": "Material length with waste (feet)",
+        "materialCost": "Material cost",
+        "laborCost": "Labor cost",
+        "removalDisposal": "Removal allowance",
+        "totalCost": "Total replacement cost",
+        "costPerFoot": "Total cost per foot"
+      },
+      "note": "No local prices are supplied. Rot, soffits, gutters, scaffolding, paint, permits, taxes, access and structural repairs are excluded unless included in your rates.",
+      "textResults": {}
+    },
+    "ppi-calculator": {
+      "fields": {
+        "widthPixels": {
+          "label": "Image width (px)"
+        },
+        "heightPixels": {
+          "label": "Image height (px)"
+        },
+        "printWidth": {
+          "label": "Print width (inches)"
+        },
+        "printHeight": {
+          "label": "Print height (inches)"
+        }
+      },
+      "results": {
+        "horizontalPpi": "Horizontal PPI",
+        "verticalPpi": "Vertical PPI",
+        "effectivePpi": "Effective PPI",
+        "megapixels": "Megapixels",
+        "aspectMatch": "Aspect ratio match"
+      },
+      "note": "Image PPI measures pixels per printed inch. Printer DPI measures physical ink or toner dots and is a different measurement.",
+      "textResults": {
+        "aspectMatch": "localized"
+      }
+    },
+    "shed-ramp-angle-calculator": {
+      "fields": {
+        "rise": {
+          "label": "Vertical rise (inches)"
+        },
+        "run": {
+          "label": "Horizontal run (inches)"
+        }
+      },
+      "results": {
+        "angleDegrees": "Angle (degrees)",
+        "slopePercent": "Slope",
+        "rampLength": "Surface length (inches)",
+        "riseRunRatio": "Rise-to-run ratio"
+      },
+      "note": "Geometry only. This does not check accessibility rules or building codes. Equipment clearance, traction and weather affect safe use.",
+      "textResults": {
+        "riseRunRatio": "localized"
+      }
+    },
+    "construction-material-waste-calculator": {
+      "fields": {
+        "netQuantity": {
+          "label": "Net material quantity",
+          "help": "Use one consistent unit: area, length, pieces or other material units."
+        },
+        "wastePercent": {
+          "label": "Waste allowance (%)"
+        },
+        "unitCost": {
+          "label": "Unit cost (USD)"
+        }
+      },
+      "results": {
+        "wasteQuantity": "Extra quantity",
+        "orderQuantity": "Order quantity",
+        "netMaterialCost": "Net material cost",
+        "wasteCost": "Waste cost",
+        "totalMaterialCost": "Total material cost"
+      },
+      "note": "Cuts, patterns, layout and site damage change waste. Purchases may need rounding to full packs, sheets or pallets. Keep the same quantity unit throughout.",
+      "textResults": {}
     }
+  },
+  "calculatorStates": {
+    "matched": "Matched",
+    "mismatch": "Mismatch",
+    "flat": "Flat",
+    "vertical": "Vertical"
   }
 }

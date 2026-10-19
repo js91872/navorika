@@ -153,7 +153,7 @@ test('image scaling preserves the existing engine and rejects misleading zero-pi
 test('shared calculators have native controls, exact copy coverage and unchanged known results', async () => {
   const { localizedCalculatorSlugs } = await import('./calculatorRegistry');
   const { localizeBusinessCalculator } = await import('./businessLocalization');
-  const { calculateLocalizedValues } = await import('./sharedCalculators');
+  const { calculateLocalizedValues, calculatorTextFormatters, isIntegerCalculatorField } = await import('./sharedCalculators');
   const { businessCalculatorConfigs } = await import('../calculations/businessConfigs');
   const expected = [
     { totalBits: 49766400, totalBytes: 6220800, kib: 6075, mib: 5.933 },
@@ -161,6 +161,15 @@ test('shared calculators have native controls, exact copy coverage and unchanged
     { dataPerViewKb: 1250, totalTransferKb: 12500000, totalTransferMb: 12207.03, totalTransferGb: 11.921 },
     { squareFeetEach: 300, totalSquareFeet: 300, squareYards: 300 / 9, squareMeters: 300 * 0.09290304 },
     { cubicFeet: 40, cubicYards: 40 / 27, orderCubicYards: (40 / 27) * 1.1, cubicMeters: 40 * 0.028316846592 },
+    { orderArea: 2200, roofingSquares: 22, bundles: 66 },
+    { rise: 6, rafterLengthNoOverhang: Math.sqrt(180), rafterLengthWithOverhang: Math.sqrt(211.25), roofAngle: Math.atan(0.5) * 180 / Math.PI },
+    { baseStuds: 16, studsBeforeWaste: 20, totalStuds: 21 },
+    { adjustedArea: 1100, containers: 3 },
+    { halfSpan: 12, ridgeRise: 6, totalRidgeHeight: 14, rafterLength: Math.sqrt(180), roofAngle: Math.atan(0.5) * 180 / Math.PI },
+    { orderLength: 132, materialCost: 594, laborCost: 960, removalDisposal: 150, totalCost: 1704, costPerFoot: 14.2 },
+    { horizontalPpi: 300, verticalPpi: 300, effectivePpi: 300, megapixels: 7.2, aspectMatch: 'Matched' },
+    { angleDegrees: 14.04, slopePercent: 25, rampLength: 49.48, riseRunRatio: '1 : 4.0' },
+    { wasteQuantity: 100, orderQuantity: 1100, netMaterialCost: 2500, wasteCost: 250, totalMaterialCost: 2750 },
   ];
   for (const locale of locales) {
     const d = await getDictionary(locale);
@@ -168,15 +177,40 @@ test('shared calculators have native controls, exact copy coverage and unchanged
     assert.deepEqual(Object.keys(d.calculators).sort(), [...localizedCalculatorSlugs].sort());
     for (const [key, value] of Object.entries(d.calculatorUi)) assert.notEqual(value, english.calculatorUi[key as keyof typeof english.calculatorUi]);
     for (const [index, slug] of localizedCalculatorSlugs.entries()) {
-      const native = localizeBusinessCalculator(slug, d.calculators[slug]);
+      const native = localizeBusinessCalculator(slug, d.calculators[slug], calculatorTextFormatters(slug, {}, d, locale));
       const source = businessCalculatorConfigs[slug];
       for (const field of native.fields) assert.notEqual(field.label, source.fields.find((item) => item.key === field.key)!.label);
       for (const row of native.results) assert.notEqual(row.label, source.results.find((item) => item.key === row.key)!.label);
       const defaults = Object.fromEntries(native.fields.map((field) => [field.key, field.defaultValue]));
       assert.deepEqual(calculateLocalizedValues(slug, defaults), expected[index], `${locale}/${slug}`);
       for (const invalid of ['', NaN, Infinity, -1, 1e20]) assert.equal(calculateLocalizedValues(slug, { ...defaults, [native.fields[0].key]: invalid }), null);
-      const count = native.fields.find((field) => field.step === 1);
+      const count = native.fields.find((field) => isIntegerCalculatorField(field.key));
       if (count) assert.equal(calculateLocalizedValues(slug, { ...defaults, [count.key]: 1.5 }), null);
     }
+  }
+});
+
+
+test('native PPI and ramp status adapters cover mismatch, flat, vertical and null output', async () => {
+  const { calculatorTextFormatters, calculateLocalizedValues, formatCalculatorNumber } = await import('./sharedCalculators');
+  const { localizeBusinessCalculator } = await import('./businessLocalization');
+  assert.throws(() => localizeBusinessCalculator('ppi-calculator', { ...english.calculators['ppi-calculator'], textResults: { aspectMatch: 'fallback-to-English' } }, { aspectMatch: () => 'unused' }), /Classify text output/);
+  for (const locale of locales) {
+    const d = await getDictionary(locale);
+    assert.deepEqual(Object.keys(d.calculatorStates).sort(), Object.keys(english.calculatorStates).sort());
+    const ppi = (printWidth: number) => calculatorTextFormatters('ppi-calculator', { widthPixels: 3000, heightPixels: 2400, printWidth, printHeight: 8 }, d, locale).aspectMatch('IGNORED_ENGLISH_ENGINE_TEXT');
+    assert.equal(ppi(10), d.calculatorStates.matched);
+    assert.equal(ppi(20), `${d.calculatorStates.mismatch} (~${new Intl.NumberFormat(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(50)}%)`);
+    const ratio = (rise: number, run: number) => calculatorTextFormatters('shed-ramp-angle-calculator', { rise, run }, d, locale).riseRunRatio('IGNORED_ENGLISH_ENGINE_TEXT');
+    assert.equal(ratio(0, 48), `${d.calculatorStates.flat} (0 : 1)`);
+    assert.equal(ratio(0, 0), `${d.calculatorStates.flat} (0 : 1)`);
+    assert.equal(ratio(12, 0), `${d.calculatorStates.vertical} (1 : 0)`);
+    assert.equal(ratio(12, 48), `1 : ${new Intl.NumberFormat(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(4)}`);
+    assert.deepEqual(calculateLocalizedValues('shed-ramp-angle-calculator', { rise: 12, run: 0 }), { angleDegrees: 90, slopePercent: null, rampLength: 12, riseRunRatio: 'Vertical (1 : 0)' });
+    assert.equal(formatCalculatorNumber(null, 'percent', locale, d.calculatorUi.notApplicable), d.calculatorUi.notApplicable);
+    assert.equal(formatCalculatorNumber(25, 'percent', locale, ''), new Intl.NumberFormat(locale, { style: 'percent', maximumFractionDigits: 3 }).format(0.25));
+    assert.equal(formatCalculatorNumber(1704, 'currency', locale, ''), new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', currencyDisplay: 'code', maximumFractionDigits: 2 }).format(1704));
+    assert.ok(calculateLocalizedValues('construction-material-waste-calculator', { netQuantity: 2.5, wastePercent: 12.5, unitCost: 4 }));
+    assert.equal(calculateLocalizedValues('roofing-shingle-calculator', { roofArea: 20, wastePercent: 101, bundlesPerSquare: 3 }), null);
   }
 });

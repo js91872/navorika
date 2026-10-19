@@ -187,6 +187,78 @@
       "limits": "La compactación, el asentamiento, la expansión tras excavar y los mínimos del proveedor no se incluyen automáticamente.",
       "question": "¿El margen cambia el volumen neto?",
       "answer": "No. El volumen neto no cambia; el volumen a pedir incluye el margen."
+    },
+    "roofing-shingle-calculator": {
+      "title": "Calculadora de tejas asfálticas",
+      "description": "Estima unidades de cubierta y paquetes de tejas asfálticas.",
+      "how": "Introduce superficie del tejado en pies cuadrados, desperdicio y paquetes por unidad de cubierta.",
+      "limits": "Una unidad de cubierta equivale a 100 pies cuadrados. El rendimiento cambia según el producto. Cumbreras, piezas iniciales, tapajuntas, base y accesorios van aparte.",
+      "question": "¿Una unidad de cubierta equivale a un pie cuadrado?",
+      "answer": "No. Una unidad de cubierta corresponde a 100 pies cuadrados."
+    },
+    "rafter-length-calculator": {
+      "title": "Calculadora de longitud de cabios",
+      "description": "Calcula la longitud geométrica y el ángulo de un cabio común.",
+      "how": "Introduce proyección horizontal y alero en pies, después la subida por cada 12 unidades horizontales.",
+      "limits": "Solo geometría. Excluye descuentos por tabla de cumbrera, entalladuras, cortes, dimensionamiento, cerchas y requisitos normativos.",
+      "question": "¿Es una especificación de corte o de estructura?",
+      "answer": "No. La longitud geométrica necesita ajustes del proyecto antes de cortar o construir."
+    },
+    "stud-calculator": {
+      "title": "Calculadora de montantes de pared",
+      "description": "Estima montantes para una pared recta con piezas adicionales y desperdicio.",
+      "how": "Introduce longitud en pies, separación entre ejes en pulgadas, montantes extra y desperdicio.",
+      "limits": "Huecos, esquinas, uniones, refuerzos, bloqueos contra incendios, dinteles y detalles locales pueden requerir más madera.",
+      "question": "¿Dimensiona la estructura de la pared?",
+      "answer": "No. Ofrece un recuento sencillo para planificar una pared recta."
+    },
+    "drywall-mud-calculator": {
+      "title": "Calculadora de pasta para juntas",
+      "description": "Estima envases de pasta para juntas para una superficie de placas.",
+      "how": "Introduce superficie y rendimiento por envase en pies cuadrados, después el margen adicional.",
+      "limits": "El rendimiento depende de placas, capas, cantoneras, textura, colocación de cinta y producto. Usa el dato del fabricante.",
+      "question": "¿El rendimiento es igual para cada producto?",
+      "answer": "No. Introduce el rendimiento de la pasta y aplicación elegidas."
+    },
+    "roof-ridge-height-calculator": {
+      "title": "Calculadora de altura de cumbrera",
+      "description": "Calcula la altura de cumbrera de un tejado simétrico a dos aguas.",
+      "how": "Introduce luz total en pies, subida por 12 unidades horizontales y altura de pared en pies.",
+      "limits": "Solo geometría. Excluye dimensionamiento, grosor de cumbrera, aleros, cortes, techo, cargas y requisitos normativos.",
+      "question": "¿Incluye la altura de pared?",
+      "answer": "Sí. La altura total suma la pared y la subida del tejado."
+    },
+    "fascia-replacement-cost-calculator": {
+      "title": "Costo de sustitución de tablas de alero",
+      "description": "Estima la sustitución de tablas de alero con tus precios, en dólares estadounidenses.",
+      "how": "Introduce longitud en pies, material y mano de obra en USD por pie, desperdicio y retirada en USD.",
+      "limits": "No proporciona precios locales. Podredumbre, sofitos, canalones, andamios, pintura, permisos, impuestos, acceso y reparaciones quedan fuera salvo inclusión en tus tarifas.",
+      "question": "¿El idioma cambia la moneda?",
+      "answer": "No. Todos los costos permanecen en dólares estadounidenses (USD)."
+    },
+    "ppi-calculator": {
+      "title": "Calculadora de PPI de impresión",
+      "description": "Calcula píxeles por pulgada al tamaño de impresión elegido y comprueba las proporciones.",
+      "how": "Introduce las dimensiones de imagen en píxeles y las de impresión en pulgadas.",
+      "limits": "Los PPI miden píxeles por pulgada impresa. Los DPI de la impresora miden puntos físicos de tinta o tóner y son distintos.",
+      "question": "¿Qué significa una diferencia de proporciones?",
+      "answer": "Las proporciones difieren al menos un 0,5%; puede hacer falta recortar o deformar."
+    },
+    "shed-ramp-angle-calculator": {
+      "title": "Calculadora de inclinación de rampas",
+      "description": "Calcula ángulo, pendiente porcentual y longitud de una rampa.",
+      "how": "Introduce subida vertical y recorrido horizontal en pulgadas.",
+      "limits": "Solo geometría. No comprueba accesibilidad ni normas de construcción. La altura libre del equipo, el agarre y el clima afectan a la seguridad.",
+      "question": "¿Es válido un recorrido horizontal cero?",
+      "answer": "Sí. Con subida positiva representa una superficie vertical; la pendiente porcentual no es aplicable."
+    },
+    "construction-material-waste-calculator": {
+      "title": "Calculadora de desperdicio de materiales",
+      "description": "Añade un margen de desperdicio y estima costos en dólares estadounidenses.",
+      "how": "Introduce cantidad neta, porcentaje adicional y costo en USD por unidad correspondiente.",
+      "limits": "Cortes, patrones, distribución y daños cambian el desperdicio. Puede hacer falta redondear a paquetes, placas o palés enteros. Mantén la misma unidad.",
+      "question": "¿Los costos se convierten a moneda local?",
+      "answer": "No. Precios y resultados permanecen en USD."
     }
   },
   "flexOptions": {
@@ -388,6 +460,219 @@
       },
       "note": "La compactación, el asentamiento, la expansión tras excavar y los mínimos del proveedor no se incluyen automáticamente.",
       "textResults": {}
+    },
+    "roofing-shingle-calculator": {
+      "fields": {
+        "roofArea": {
+          "label": "Superficie del tejado (pies cuadrados)"
+        },
+        "wastePercent": {
+          "label": "Margen de desperdicio (%)"
+        },
+        "bundlesPerSquare": {
+          "label": "Paquetes por unidad de cubierta"
+        }
+      },
+      "results": {
+        "orderArea": "Superficie con desperdicio (pies cuadrados)",
+        "roofingSquares": "Unidades de cubierta",
+        "bundles": "Paquetes a comprar"
+      },
+      "note": "Una unidad de cubierta equivale a 100 pies cuadrados. El rendimiento cambia según el producto. Cumbreras, piezas iniciales, tapajuntas, base y accesorios van aparte.",
+      "textResults": {}
+    },
+    "rafter-length-calculator": {
+      "fields": {
+        "run": {
+          "label": "Proyección horizontal (pies)"
+        },
+        "pitchRise": {
+          "label": "Subida por 12 unidades horizontales"
+        },
+        "overhang": {
+          "label": "Alero horizontal (pies)"
+        }
+      },
+      "results": {
+        "rise": "Subida en la proyección (pies)",
+        "rafterLengthNoOverhang": "Cabio sin alero (pies)",
+        "rafterLengthWithOverhang": "Cabio con alero (pies)",
+        "roofAngle": "Ángulo del tejado (grados)"
+      },
+      "note": "Solo geometría. Excluye descuentos por tabla de cumbrera, entalladuras, cortes, dimensionamiento, cerchas y requisitos normativos.",
+      "textResults": {}
+    },
+    "stud-calculator": {
+      "fields": {
+        "wallLength": {
+          "label": "Longitud de pared (pies)"
+        },
+        "spacing": {
+          "label": "Separación entre ejes (pulgadas)"
+        },
+        "extraStuds": {
+          "label": "Montantes adicionales"
+        },
+        "wastePercent": {
+          "label": "Margen de desperdicio (%)"
+        }
+      },
+      "results": {
+        "baseStuds": "Montantes base",
+        "studsBeforeWaste": "Montantes antes del desperdicio",
+        "totalStuds": "Montantes a comprar"
+      },
+      "note": "Huecos, esquinas, uniones, refuerzos, bloqueos contra incendios, dinteles y detalles locales pueden requerir más madera.",
+      "textResults": {}
+    },
+    "drywall-mud-calculator": {
+      "fields": {
+        "drywallArea": {
+          "label": "Superficie de placas (pies cuadrados)"
+        },
+        "coveragePerBucket": {
+          "label": "Rendimiento por envase (pies cuadrados)"
+        },
+        "wastePercent": {
+          "label": "Margen adicional (%)"
+        }
+      },
+      "results": {
+        "adjustedArea": "Superficie con margen (pies cuadrados)",
+        "containers": "Envases a comprar"
+      },
+      "note": "El rendimiento depende de placas, capas, cantoneras, textura, colocación de cinta y producto. Usa el dato del fabricante.",
+      "textResults": {}
+    },
+    "roof-ridge-height-calculator": {
+      "fields": {
+        "span": {
+          "label": "Luz total del tejado (pies)",
+          "help": "Luz horizontal exterior de un tejado simétrico a dos aguas."
+        },
+        "pitchRise": {
+          "label": "Subida por 12 unidades horizontales",
+          "help": "Introduce 6 para una pendiente de 6:12."
+        },
+        "wallHeight": {
+          "label": "Altura de pared (pies)",
+          "help": "Altura de referencia sobre suelo o terreno."
+        }
+      },
+      "results": {
+        "halfSpan": "Media luz (pies)",
+        "ridgeRise": "Subida sobre los apoyos (pies)",
+        "totalRidgeHeight": "Altura total de cumbrera (pies)",
+        "rafterLength": "Cabio sin alero (pies)",
+        "roofAngle": "Ángulo del tejado (grados)"
+      },
+      "note": "Solo geometría. Excluye dimensionamiento, grosor de cumbrera, aleros, cortes, techo, cargas y requisitos normativos.",
+      "textResults": {}
+    },
+    "fascia-replacement-cost-calculator": {
+      "fields": {
+        "length": {
+          "label": "Longitud de tabla (pies)"
+        },
+        "materialRate": {
+          "label": "Material (USD/pie)"
+        },
+        "laborRate": {
+          "label": "Mano de obra (USD/pie)"
+        },
+        "wastePercent": {
+          "label": "Desperdicio de material (%)"
+        },
+        "removalDisposal": {
+          "label": "Retirada y eliminación (USD)"
+        }
+      },
+      "results": {
+        "orderLength": "Longitud con desperdicio (pies)",
+        "materialCost": "Costo de material",
+        "laborCost": "Costo de mano de obra",
+        "removalDisposal": "Retirada y eliminación",
+        "totalCost": "Costo total de sustitución",
+        "costPerFoot": "Costo total por pie"
+      },
+      "note": "No proporciona precios locales. Podredumbre, sofitos, canalones, andamios, pintura, permisos, impuestos, acceso y reparaciones quedan fuera salvo inclusión en tus tarifas.",
+      "textResults": {}
+    },
+    "ppi-calculator": {
+      "fields": {
+        "widthPixels": {
+          "label": "Anchura de imagen (px)"
+        },
+        "heightPixels": {
+          "label": "Altura de imagen (px)"
+        },
+        "printWidth": {
+          "label": "Anchura de impresión (pulgadas)"
+        },
+        "printHeight": {
+          "label": "Altura de impresión (pulgadas)"
+        }
+      },
+      "results": {
+        "horizontalPpi": "PPI horizontales",
+        "verticalPpi": "PPI verticales",
+        "effectivePpi": "PPI efectivos",
+        "megapixels": "Megapíxeles",
+        "aspectMatch": "Coincidencia de proporciones"
+      },
+      "note": "Los PPI miden píxeles por pulgada impresa. Los DPI de la impresora miden puntos físicos de tinta o tóner y son distintos.",
+      "textResults": {
+        "aspectMatch": "localized"
+      }
+    },
+    "shed-ramp-angle-calculator": {
+      "fields": {
+        "rise": {
+          "label": "Subida vertical (pulgadas)"
+        },
+        "run": {
+          "label": "Recorrido horizontal (pulgadas)"
+        }
+      },
+      "results": {
+        "angleDegrees": "Ángulo (grados)",
+        "slopePercent": "Pendiente",
+        "rampLength": "Longitud de superficie (pulgadas)",
+        "riseRunRatio": "Relación subida/recorrido"
+      },
+      "note": "Solo geometría. No comprueba accesibilidad ni normas de construcción. La altura libre del equipo, el agarre y el clima afectan a la seguridad.",
+      "textResults": {
+        "riseRunRatio": "localized"
+      }
+    },
+    "construction-material-waste-calculator": {
+      "fields": {
+        "netQuantity": {
+          "label": "Cantidad neta de material",
+          "help": "Usa una unidad constante: superficie, longitud, piezas u otra unidad de material."
+        },
+        "wastePercent": {
+          "label": "Margen de desperdicio (%)"
+        },
+        "unitCost": {
+          "label": "Costo unitario (USD)"
+        }
+      },
+      "results": {
+        "wasteQuantity": "Cantidad adicional",
+        "orderQuantity": "Cantidad a pedir",
+        "netMaterialCost": "Costo neto de material",
+        "wasteCost": "Costo del desperdicio",
+        "totalMaterialCost": "Costo total de material"
+      },
+      "note": "Cortes, patrones, distribución y daños cambian el desperdicio. Puede hacer falta redondear a paquetes, placas o palés enteros. Mantén la misma unidad.",
+      "textResults": {}
     }
+  },
+  "calculatorStates": {
+    "matched": "Coinciden",
+    "mismatch": "Diferencia",
+    "flat": "Horizontal",
+    "vertical": "Vertical"
   }
 }

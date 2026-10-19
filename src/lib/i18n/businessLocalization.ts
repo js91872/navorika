@@ -8,6 +8,8 @@ export interface BusinessCalculatorCopy {
   /** Every text result needs an explicit decision; protocol/code output stays unchanged. */
   textResults: Record<string, 'machine' | 'localized'>;
 }
+// JSON imports widen string literals; validate the serialized classification before use.
+type SerializedBusinessCalculatorCopy = Omit<BusinessCalculatorCopy, 'textResults'> & { textResults: Record<string, string> };
 const requiredText = (value: unknown, path: string) => {
   if (typeof value !== 'string' || !value.trim()) throw new Error(`Missing translation: ${path}`);
   return value;
@@ -18,7 +20,7 @@ const exactKeys = (actual: object, expected: string[], path: string) => {
 };
 
 /** Reject incomplete dictionaries instead of silently mixing English into a tool. */
-export function localizeBusinessCalculator(slug: string, copy: BusinessCalculatorCopy, formatText: Record<string, (value: unknown) => string> = {}) {
+export function localizeBusinessCalculator(slug: string, copy: SerializedBusinessCalculatorCopy, formatText: Record<string, (value: unknown) => string> = {}) {
   const source = businessCalculatorConfigs[slug];
   if (!source) throw new Error(`Unknown calculator: ${slug}`);
   exactKeys(copy.fields, source.fields.map((field) => field.key), `${slug}/fields`);

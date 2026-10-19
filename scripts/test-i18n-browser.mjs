@@ -7,7 +7,7 @@ import { PDFDocument } from 'pdf-lib';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
 const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
-const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator', 'image-file-size-estimator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'square-footage-calculator', 'cubic-yard-calculator', 'print-bleed-calculator'];
+const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator', 'image-file-size-estimator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'square-footage-calculator', 'cubic-yard-calculator', 'roofing-shingle-calculator', 'rafter-length-calculator', 'stud-calculator', 'drywall-mud-calculator', 'roof-ridge-height-calculator', 'fascia-replacement-cost-calculator', 'ppi-calculator', 'shed-ramp-angle-calculator', 'construction-material-waste-calculator', 'print-bleed-calculator'];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
 let serverOutput = '';
@@ -89,25 +89,35 @@ try {
     await page.locator('input[type="search"]').fill('zzzz-not-a-tool');
     assert.equal(await page.getByRole('status').textContent(), d.ui.noResults);
 
-    for (const [slug, initial, expected] of [
+    for (const [slug, initial, expected, changed] of [
       ['image-file-size-estimator', 1920, 49766400],
       ['photo-storage-calculator', 64, 57.6],
       ['image-bandwidth-calculator', 250, 1250],
       ['square-footage-calculator', 20, 300],
       ['cubic-yard-calculator', 12, 40],
+      ['roofing-shingle-calculator', 2000, 2200],
+      ['rafter-length-calculator', 12, 6],
+      ['stud-calculator', 20, 16, 31],
+      ['drywall-mud-calculator', 1000, 1100],
+      ['roof-ridge-height-calculator', 24, 12],
+      ['fascia-replacement-cost-calculator', 120, 132],
+      ['ppi-calculator', 3000, 300],
+      ['shed-ramp-angle-calculator', 12, 14.04, 26.57],
+      ['construction-material-waste-calculator', 1000, 100],
     ]) {
       await visit(`/${locale}/tools/${slug}`);
       const ui = d.calculatorUi;
       const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
       assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
       await page.locator('main input[type="number"]').first().fill(String(initial * 2));
-      assert.equal(await page.locator('main dd').first().textContent(), number.format(expected * 2));
+      assert.equal(await page.locator('main dd').first().textContent(), number.format(changed ?? expected * 2));
       await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copiedResult = text; } } }));
       await page.getByRole('button', { name: ui.copy, exact: true }).click();
       const copied = await page.evaluate(() => window.__copiedResult);
       assert.ok(copied.includes(d.tools[slug].title));
+      assert.doesNotMatch(copied, /Matched|Mismatch|Not applicable|Flat \(/);
       for (const label of Object.values(d.calculators[slug].results)) assert.ok(copied.includes(label));
-      assert.ok(copied.includes(number.format(expected * 2)));
+      assert.ok(copied.includes(number.format(changed ?? expected * 2)));
       const downloadEvent = page.waitForEvent('download');
       await page.getByRole('button', { name: ui.csv, exact: true }).click();
       const download = await downloadEvent;
@@ -116,6 +126,14 @@ try {
       assert.ok(csv.startsWith('\uFEFF'));
       assert.ok(csv.includes(ui.result) && csv.includes(ui.value));
       for (const label of Object.values(d.calculators[slug].results)) assert.ok(csv.includes(label));
+      if (slug === 'fascia-replacement-cost-calculator' || slug === 'construction-material-waste-calculator') {
+        assert.ok(csv.includes('USD'));
+        assert.ok(copied.includes('USD'));
+      }
+      if (slug === 'ppi-calculator') {
+        assert.ok(csv.includes(d.calculatorStates.mismatch));
+        assert.ok(copied.includes(d.calculatorStates.mismatch));
+      }
       await page.evaluate(() => { window.print = () => { window.__printOpened = true; }; });
       await page.locator('main button').last().click();
       assert.equal(await page.evaluate(() => window.__printOpened), true);
@@ -128,6 +146,29 @@ try {
       await page.getByRole('button', { name: ui.copy, exact: true }).click();
       assert.doesNotMatch(await page.locator('main').innerText(), /RAW_BROWSER_ERROR/);
       assert.ok((await page.locator('main [role="status"]').textContent()).trim());
+      if (slug === 'ppi-calculator') {
+        assert.equal(await page.locator('main dd').last().textContent(), d.calculatorStates.matched);
+        await page.locator('main input[type="number"]').nth(2).fill('20');
+        assert.equal(await page.locator('main dd').last().textContent(), `${d.calculatorStates.mismatch} (~${new Intl.NumberFormat(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(50)}%)`);
+      }
+      if (slug === 'shed-ramp-angle-calculator') {
+        await page.locator('main input[type="number"]').nth(0).fill('0');
+        assert.equal(await page.locator('main dd').last().textContent(), `${d.calculatorStates.flat} (0 : 1)`);
+        await page.locator('main input[type="number"]').nth(1).fill('0');
+        assert.equal(await page.locator('main dd').last().textContent(), `${d.calculatorStates.flat} (0 : 1)`);
+        await page.locator('main input[type="number"]').nth(0).fill('12');
+        assert.equal(await page.locator('main dd').last().textContent(), `${d.calculatorStates.vertical} (1 : 0)`);
+        assert.equal(await page.locator('main dd').nth(1).textContent(), ui.notApplicable);
+        // The vertical/null state must also survive copying and export without raw English.
+        await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copiedResult = text; } } }));
+        await page.getByRole('button', { name: ui.copy, exact: true }).click();
+        const verticalCopy = await page.evaluate(() => window.__copiedResult);
+        assert.ok(verticalCopy.includes(ui.notApplicable) && verticalCopy.includes(d.calculatorStates.vertical));
+        const verticalDownload = page.waitForEvent('download');
+        await page.getByRole('button', { name: ui.csv, exact: true }).click();
+        const verticalCsv = readFileSync(await (await verticalDownload).path(), 'utf8');
+        assert.ok(verticalCsv.includes(ui.notApplicable) && verticalCsv.includes(d.calculatorStates.vertical));
+      }
       await page.setViewportSize({ width: 320, height: 844 });
       await noOverflow(`${locale}/${slug} at 320px`);
       await page.setViewportSize({ width: 1440, height: 1000 });

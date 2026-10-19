@@ -79,16 +79,27 @@ Before release, also require:
 
 ## Current session checkpoint
 
-The draft branch now includes complete native controls, metadata, explanatory copy, result labels, validation messages, clipboard summaries and UTF-8 CSV reports for five additional calculators in all seven languages:
+The draft branch now includes native controls, metadata, explanatory copy, result labels, validation messages, clipboard summaries and UTF-8 CSV reports for fourteen additional calculators in all seven languages:
 
 - Image File Size Estimator
 - Photo Storage Calculator
 - Image Bandwidth Calculator
 - Square Footage Calculator
 - Cubic Yard Calculator
+- Roofing Shingle Calculator
+- Rafter Length Calculator
+- Wall Stud Calculator
+- Drywall Joint Compound Calculator
+- Roof Ridge Height Calculator
+- Fascia Replacement Cost Calculator
+- Print PPI Calculator
+- Shed Ramp Angle Calculator
+- Construction Material Waste Calculator
 
-This brings branch coverage to 15 tools per language (105 tool variants plus seven directories). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 298 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 24 tools per language (168 tool variants plus seven directories). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 289 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 
-The next family can reuse strict native configuration validation and the calculator renderer. Text-result calculators still require explicit native adapters; they must not be enabled by copying raw English engine output. Continue in this branch until the full-completion gate and runtime/editorial review pass.
+The renderer now supports native percentages and USD amounts without currency conversion. PPI match/mismatch and ramp flat/vertical/ratio states derive from numeric inputs rather than parsing English engine strings. A vertical ramp keeps its null percentage as native “not applicable” in the screen, clipboard and CSV. Count fields require whole values; measured dimensions, quantity areas and percentages accept decimals. Invalid serialized text-output classifications fail validation.
+
+The next family can reuse strict native configuration validation and the calculator renderer. Further text-result calculators still require explicit native adapters; they must not be enabled by copying raw English engine output. Continue in this branch until the full-completion gate and runtime/editorial review pass.

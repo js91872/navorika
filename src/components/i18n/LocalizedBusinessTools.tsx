@@ -4,30 +4,29 @@ import { useMemo, useState } from 'react';
 import { Calculator, Info } from 'lucide-react';
 import ResultActions from '@/components/ui/ResultActions';
 import { localizeBusinessCalculator } from '@/lib/i18n/businessLocalization';
-import { calculateLocalizedValues } from '@/lib/i18n/sharedCalculators';
+import { calculateLocalizedValues, calculatorTextFormatters, formatCalculatorNumber, isIntegerCalculatorField } from '@/lib/i18n/sharedCalculators';
 import type { LocalizedCalculatorSlug } from '@/lib/i18n/calculatorRegistry';
 import { resultActionMessages } from '@/lib/i18n/actionMessages';
 import { rowsToCsv } from '@/lib/resultExport';
-import type { ValueMap } from '@/lib/calculations/businessConfigs';
+import { businessCalculatorConfigs, type ValueMap } from '@/lib/calculations/businessConfigs';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
 import { fieldClass, buttonClass } from './ToolControls';
 
 export default function LocalizedBusinessTools({ slug, d, locale }: { slug: LocalizedCalculatorSlug; d: Dictionary; locale: Locale }) {
-  const config = useMemo(() => localizeBusinessCalculator(slug, d.calculators[slug]), [slug, d]);
-  const defaults = useMemo(() => Object.fromEntries(config.fields.map((field) => [field.key, field.defaultValue])) as ValueMap, [config]);
+  const defaults = useMemo(() => Object.fromEntries(businessCalculatorConfigs[slug].fields.map((field) => [field.key, field.defaultValue])) as ValueMap, [slug]);
   const [values, setValues] = useState<ValueMap>(defaults);
   const result = calculateLocalizedValues(slug, values);
   const ui = d.calculatorUi;
-  const format = new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
-  const rows = result ? config.results.map(({ label, key }) => [label, format.format(Reflect.get(result, key))]) : [];
+  const config = localizeBusinessCalculator(slug, d.calculators[slug], calculatorTextFormatters(slug, values, d, locale));
+  const rows = result ? config.results.map(({ label, key, format }) => [label, format === 'text' ? config.formatTextResult(key, Reflect.get(result, key)) : formatCalculatorNumber(Reflect.get(result, key), format, locale, ui.notApplicable)]) : [];
   const summary = [d.tools[slug].title, ...rows.map((row) => row.join(': '))].join('\n');
   return <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,.8fr)]">
     <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
       <div className="flex items-center gap-3"><Calculator aria-hidden="true" className="size-6 text-indigo-600" /><h2 className="text-xl font-bold">{ui.inputs}</h2></div>
       <div className="mt-6 grid min-w-0 gap-4 sm:grid-cols-2">
         {config.fields.map((field) => <label key={field.key} className="min-w-0 text-sm font-semibold">{field.label}
-          <input type="number" dir="ltr" inputMode="decimal" className={fieldClass} min={field.min} max={field.max} step={field.step ?? 'any'} value={values[field.key] ?? ''}
+          <input type="number" dir="ltr" inputMode="decimal" className={fieldClass} min={field.min} max={field.max} step={isIntegerCalculatorField(field.key) ? 1 : 'any'} value={values[field.key] ?? ''}
             onChange={(event) => setValues((current) => ({ ...current, [field.key]: event.target.value === '' ? '' : Number(event.target.value) }))} />
           {field.help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted-foreground)]">{field.help}</span>}
         </label>)}

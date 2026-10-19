@@ -187,6 +187,78 @@
       "limits": "Compattazione, assestamento, aumento di volume dopo lo scavo e minimi del fornitore non sono inclusi automaticamente.",
       "question": "Il margine cambia il volume netto?",
       "answer": "No. Il volume netto resta invariato; il volume da ordinare include il margine."
+    },
+    "roofing-shingle-calculator": {
+      "title": "Calcolo delle tegole bituminose",
+      "description": "Stima unità di copertura e pacchi di tegole bituminose.",
+      "how": "Inserisci superficie del tetto in piedi quadrati, sfrido e pacchi per unità di copertura.",
+      "limits": "Un’unità di copertura equivale a 100 piedi quadrati. La resa varia per prodotto. Colmi, elementi iniziali, scossaline, sottostrato e accessori sono separati.",
+      "question": "Un’unità di copertura è un piede quadrato?",
+      "answer": "No. Un’unità di copertura equivale a 100 piedi quadrati."
+    },
+    "rafter-length-calculator": {
+      "title": "Calcolo della lunghezza dei puntoni",
+      "description": "Calcola lunghezza geometrica e angolo di un puntone comune.",
+      "how": "Inserisci sviluppo orizzontale e sporgenza in piedi, poi il dislivello per 12 unità orizzontali.",
+      "limits": "Solo geometria. Esclude correzioni per tavola di colmo, intagli, tagli, dimensionamento, capriate e requisiti normativi.",
+      "question": "È una specifica di taglio o di struttura?",
+      "answer": "No. Prima del taglio o della costruzione servono correzioni specifiche del progetto."
+    },
+    "stud-calculator": {
+      "title": "Calcolo dei montanti di parete",
+      "description": "Stima i montanti di una parete diritta con elementi aggiuntivi e sfrido.",
+      "how": "Inserisci lunghezza in piedi, interasse in pollici, montanti aggiuntivi e sfrido.",
+      "limits": "Aperture, angoli, giunzioni, rinforzi, barriere al fuoco, architravi e dettagli locali possono richiedere altro legname.",
+      "question": "Dimensiona la struttura della parete?",
+      "answer": "No. Fornisce un conteggio semplice per pianificare una parete diritta."
+    },
+    "drywall-mud-calculator": {
+      "title": "Calcolo dello stucco per cartongesso",
+      "description": "Stima i contenitori di stucco per una superficie di cartongesso.",
+      "how": "Inserisci superficie e resa per contenitore in piedi quadrati, poi il margine aggiuntivo.",
+      "limits": "La resa dipende da disposizione delle lastre, mani, paraspigoli, finitura, nastratura e prodotto. Usa il valore del produttore.",
+      "question": "La resa è uguale per ogni prodotto?",
+      "answer": "No. Inserisci la resa dello stucco e dell’applicazione scelti."
+    },
+    "roof-ridge-height-calculator": {
+      "title": "Calcolo dell’altezza del colmo",
+      "description": "Calcola l’altezza del colmo di un tetto simmetrico a due falde.",
+      "how": "Inserisci luce totale in piedi, dislivello per 12 unità orizzontali e altezza della parete in piedi.",
+      "limits": "Solo geometria. Esclude dimensionamento, spessore del colmo, sporgenze, tagli, soffitto, carichi e requisiti normativi.",
+      "question": "Include l’altezza della parete?",
+      "answer": "Sì. L’altezza totale somma la parete e il dislivello del tetto."
+    },
+    "fascia-replacement-cost-calculator": {
+      "title": "Costo di sostituzione delle fasce di gronda",
+      "description": "Stima la sostituzione delle fasce di gronda con i tuoi prezzi, in dollari statunitensi.",
+      "how": "Inserisci lunghezza in piedi, tariffe di materiale e lavoro in USD per piede, sfrido e rimozione in USD.",
+      "limits": "Non fornisce prezzi locali. Marciume, sottogronda, grondaie, ponteggi, pittura, permessi, imposte, accesso e riparazioni sono esclusi se non aggiunti alle tariffe.",
+      "question": "La lingua cambia la valuta?",
+      "answer": "No. Tutti i costi restano in dollari statunitensi (USD)."
+    },
+    "ppi-calculator": {
+      "title": "Calcolo dei PPI di stampa",
+      "description": "Calcola i pixel per pollice alla dimensione di stampa scelta e verifica le proporzioni.",
+      "how": "Inserisci le dimensioni dell’immagine in pixel e della stampa in pollici.",
+      "limits": "I PPI misurano i pixel per pollice stampato. I DPI della stampante misurano i punti fisici di inchiostro o toner e sono diversi.",
+      "question": "Cosa indica una differenza di proporzioni?",
+      "answer": "Le proporzioni differiscono di almeno lo 0,5%; possono servire ritaglio o deformazione."
+    },
+    "shed-ramp-angle-calculator": {
+      "title": "Calcolo della pendenza della rampa",
+      "description": "Calcola angolo, pendenza percentuale e lunghezza della rampa.",
+      "how": "Inserisci dislivello verticale e sviluppo orizzontale in pollici.",
+      "limits": "Solo geometria. Non verifica accessibilità o norme edilizie. Luce libera dei mezzi, aderenza e meteo influenzano la sicurezza.",
+      "question": "Uno sviluppo orizzontale nullo è valido?",
+      "answer": "Sì. Con dislivello positivo rappresenta una superficie verticale; la pendenza percentuale non è applicabile."
+    },
+    "construction-material-waste-calculator": {
+      "title": "Calcolo dello sfrido dei materiali",
+      "description": "Aggiungi un margine di sfrido e stima i costi in dollari statunitensi.",
+      "how": "Inserisci quantità netta, percentuale aggiuntiva e costo in USD per la stessa unità.",
+      "limits": "Tagli, motivi, disposizione e danni modificano lo sfrido. Potrebbe servire arrotondare a pacchi, lastre o bancali interi. Mantieni la stessa unità.",
+      "question": "I costi vengono convertiti in valuta locale?",
+      "answer": "No. Prezzi e risultati restano in USD."
     }
   },
   "flexOptions": {
@@ -388,6 +460,219 @@
       },
       "note": "Compattazione, assestamento, aumento di volume dopo lo scavo e minimi del fornitore non sono inclusi automaticamente.",
       "textResults": {}
+    },
+    "roofing-shingle-calculator": {
+      "fields": {
+        "roofArea": {
+          "label": "Superficie del tetto (piedi quadrati)"
+        },
+        "wastePercent": {
+          "label": "Margine di sfrido (%)"
+        },
+        "bundlesPerSquare": {
+          "label": "Pacchi per unità di copertura"
+        }
+      },
+      "results": {
+        "orderArea": "Superficie con sfrido (piedi quadrati)",
+        "roofingSquares": "Unità di copertura",
+        "bundles": "Pacchi da acquistare"
+      },
+      "note": "Un’unità di copertura equivale a 100 piedi quadrati. La resa varia per prodotto. Colmi, elementi iniziali, scossaline, sottostrato e accessori sono separati.",
+      "textResults": {}
+    },
+    "rafter-length-calculator": {
+      "fields": {
+        "run": {
+          "label": "Sviluppo orizzontale (piedi)"
+        },
+        "pitchRise": {
+          "label": "Dislivello per 12 unità orizzontali"
+        },
+        "overhang": {
+          "label": "Sporgenza orizzontale (piedi)"
+        }
+      },
+      "results": {
+        "rise": "Dislivello sullo sviluppo (piedi)",
+        "rafterLengthNoOverhang": "Puntone senza sporgenza (piedi)",
+        "rafterLengthWithOverhang": "Puntone con sporgenza (piedi)",
+        "roofAngle": "Angolo del tetto (gradi)"
+      },
+      "note": "Solo geometria. Esclude correzioni per tavola di colmo, intagli, tagli, dimensionamento, capriate e requisiti normativi.",
+      "textResults": {}
+    },
+    "stud-calculator": {
+      "fields": {
+        "wallLength": {
+          "label": "Lunghezza parete (piedi)"
+        },
+        "spacing": {
+          "label": "Interasse (pollici)"
+        },
+        "extraStuds": {
+          "label": "Montanti aggiuntivi"
+        },
+        "wastePercent": {
+          "label": "Margine di sfrido (%)"
+        }
+      },
+      "results": {
+        "baseStuds": "Montanti di base",
+        "studsBeforeWaste": "Montanti prima dello sfrido",
+        "totalStuds": "Montanti da acquistare"
+      },
+      "note": "Aperture, angoli, giunzioni, rinforzi, barriere al fuoco, architravi e dettagli locali possono richiedere altro legname.",
+      "textResults": {}
+    },
+    "drywall-mud-calculator": {
+      "fields": {
+        "drywallArea": {
+          "label": "Superficie delle lastre (piedi quadrati)"
+        },
+        "coveragePerBucket": {
+          "label": "Resa per contenitore (piedi quadrati)"
+        },
+        "wastePercent": {
+          "label": "Margine aggiuntivo (%)"
+        }
+      },
+      "results": {
+        "adjustedArea": "Superficie con margine (piedi quadrati)",
+        "containers": "Contenitori da acquistare"
+      },
+      "note": "La resa dipende da disposizione delle lastre, mani, paraspigoli, finitura, nastratura e prodotto. Usa il valore del produttore.",
+      "textResults": {}
+    },
+    "roof-ridge-height-calculator": {
+      "fields": {
+        "span": {
+          "label": "Luce totale del tetto (piedi)",
+          "help": "Luce orizzontale esterna di un tetto simmetrico a due falde."
+        },
+        "pitchRise": {
+          "label": "Dislivello per 12 unità orizzontali",
+          "help": "Inserisci 6 per una pendenza di 6:12."
+        },
+        "wallHeight": {
+          "label": "Altezza parete (piedi)",
+          "help": "Altezza di riferimento sopra il pavimento o il terreno."
+        }
+      },
+      "results": {
+        "halfSpan": "Metà luce (piedi)",
+        "ridgeRise": "Dislivello sopra gli appoggi (piedi)",
+        "totalRidgeHeight": "Altezza totale del colmo (piedi)",
+        "rafterLength": "Puntone senza sporgenza (piedi)",
+        "roofAngle": "Angolo del tetto (gradi)"
+      },
+      "note": "Solo geometria. Esclude dimensionamento, spessore del colmo, sporgenze, tagli, soffitto, carichi e requisiti normativi.",
+      "textResults": {}
+    },
+    "fascia-replacement-cost-calculator": {
+      "fields": {
+        "length": {
+          "label": "Lunghezza fascia (piedi)"
+        },
+        "materialRate": {
+          "label": "Materiale (USD/piede)"
+        },
+        "laborRate": {
+          "label": "Manodopera (USD/piede)"
+        },
+        "wastePercent": {
+          "label": "Sfrido materiale (%)"
+        },
+        "removalDisposal": {
+          "label": "Rimozione e smaltimento (USD)"
+        }
+      },
+      "results": {
+        "orderLength": "Lunghezza con sfrido (piedi)",
+        "materialCost": "Costo materiale",
+        "laborCost": "Costo manodopera",
+        "removalDisposal": "Rimozione e smaltimento",
+        "totalCost": "Costo totale sostituzione",
+        "costPerFoot": "Costo totale per piede"
+      },
+      "note": "Non fornisce prezzi locali. Marciume, sottogronda, grondaie, ponteggi, pittura, permessi, imposte, accesso e riparazioni sono esclusi se non aggiunti alle tariffe.",
+      "textResults": {}
+    },
+    "ppi-calculator": {
+      "fields": {
+        "widthPixels": {
+          "label": "Larghezza immagine (px)"
+        },
+        "heightPixels": {
+          "label": "Altezza immagine (px)"
+        },
+        "printWidth": {
+          "label": "Larghezza stampa (pollici)"
+        },
+        "printHeight": {
+          "label": "Altezza stampa (pollici)"
+        }
+      },
+      "results": {
+        "horizontalPpi": "PPI orizzontali",
+        "verticalPpi": "PPI verticali",
+        "effectivePpi": "PPI effettivi",
+        "megapixels": "Megapixel",
+        "aspectMatch": "Corrispondenza proporzioni"
+      },
+      "note": "I PPI misurano i pixel per pollice stampato. I DPI della stampante misurano i punti fisici di inchiostro o toner e sono diversi.",
+      "textResults": {
+        "aspectMatch": "localized"
+      }
+    },
+    "shed-ramp-angle-calculator": {
+      "fields": {
+        "rise": {
+          "label": "Dislivello verticale (pollici)"
+        },
+        "run": {
+          "label": "Sviluppo orizzontale (pollici)"
+        }
+      },
+      "results": {
+        "angleDegrees": "Angolo (gradi)",
+        "slopePercent": "Pendenza",
+        "rampLength": "Lunghezza superficie (pollici)",
+        "riseRunRatio": "Rapporto dislivello/sviluppo"
+      },
+      "note": "Solo geometria. Non verifica accessibilità o norme edilizie. Luce libera dei mezzi, aderenza e meteo influenzano la sicurezza.",
+      "textResults": {
+        "riseRunRatio": "localized"
+      }
+    },
+    "construction-material-waste-calculator": {
+      "fields": {
+        "netQuantity": {
+          "label": "Quantità netta di materiale",
+          "help": "Usa un’unità coerente: superficie, lunghezza, pezzi o altre unità di materiale."
+        },
+        "wastePercent": {
+          "label": "Margine di sfrido (%)"
+        },
+        "unitCost": {
+          "label": "Costo unitario (USD)"
+        }
+      },
+      "results": {
+        "wasteQuantity": "Quantità aggiuntiva",
+        "orderQuantity": "Quantità da ordinare",
+        "netMaterialCost": "Costo netto materiale",
+        "wasteCost": "Costo sfrido",
+        "totalMaterialCost": "Costo totale materiale"
+      },
+      "note": "Tagli, motivi, disposizione e danni modificano lo sfrido. Potrebbe servire arrotondare a pacchi, lastre o bancali interi. Mantieni la stessa unità.",
+      "textResults": {}
     }
+  },
+  "calculatorStates": {
+    "matched": "Corrispondenti",
+    "mismatch": "Differenza",
+    "flat": "Orizzontale",
+    "vertical": "Verticale"
   }
 }
