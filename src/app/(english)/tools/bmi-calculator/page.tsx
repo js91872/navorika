@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { BookOpen, ArrowUpRight } from 'lucide-react';
 import { guidesMetadata } from '@/lib/guidesMetadata';
 import { getToolIcon } from '@/lib/toolIcons';
+import { languageAlternates } from '@/lib/i18n/config';
 import BMICalculatorClient from './BMICalculatorClient';
 
 const url = 'https://navorika.com/tools/bmi-calculator';
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   title: 'BMI Calculator: Body Mass Index & Healthy Weight Range',
   description: 'Calculate adult BMI in kg and cm or pounds and feet. See your BMI category and healthy-weight range with a clear, private calculator.',
   keywords: ['BMI calculator', 'body mass index calculator', 'adult BMI calculator', 'BMI calculator kg cm', 'BMI calculator pounds feet', 'healthy weight range calculator'],
-  alternates: { canonical: url },
+  alternates: { canonical: url, languages: languageAlternates('bmi-calculator') },
   openGraph: { type: 'website', url, title: 'Adult BMI Calculator and Healthy Weight Range', description: 'Calculate BMI privately and understand standard adult BMI categories.', siteName: 'Navorika' },
   twitter: { card: 'summary_large_image', title: 'Adult BMI Calculator and Healthy Weight Range', description: 'A clear, private BMI calculator for adults using metric or imperial units.' },
 };

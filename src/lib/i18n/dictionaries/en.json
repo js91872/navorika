@@ -875,6 +875,118 @@
       "limits": "Moisture content, screening and organic matter significantly impact bulk density and settled volume.",
       "question": "How does soil density affect tonnage?",
       "answer": "Dry loose topsoil averages 75 lb/ft³ (~1.0 ton/yd³), while wet or compacted soil can exceed 100 lb/ft³ (~1.35 ton/yd³)."
+    },
+    "bmi-calculator": {
+      "title": "BMI Calculator",
+      "description": "Calculate your Body Mass Index (BMI) and healthy weight range online.",
+      "how": "Enter your body weight and height in either metric or imperial units to evaluate your adult BMI classification.",
+      "limits": "BMI is a statistical screening measure and does not directly measure subcutaneous body fat or skeletal muscle mass.",
+      "question": "Does BMI account for muscular builds?",
+      "answer": "No. High muscle density can place athletic individuals in overweight categories despite low body fat percentage."
+    },
+    "bmr-calculator": {
+      "title": "BMR Calculator",
+      "description": "Calculate your Basal Metabolic Rate (BMR) and daily energy requirements at rest.",
+      "how": "Input age, gender, height, and weight to calculate basal caloric output via the Mifflin-St Jeor formula.",
+      "limits": "BMR assumes normal thyroid function and baseline resting environmental conditions.",
+      "question": "What is the difference between BMR and TDEE?",
+      "answer": "BMR is energy burned at complete rest, while TDEE incorporates active movement and physical exercise."
+    },
+    "body-fat-calculator": {
+      "title": "Body Fat Calculator",
+      "description": "Estimate your body fat percentage and body composition using the US Navy method.",
+      "how": "Measure neck, waist, and hip circumferences along with height to compute body fat and lean mass distribution.",
+      "limits": "Tape measurements estimate body density and can vary slightly from hydrostatic weighing or DEXA scans.",
+      "question": "How tight should the tape measure be?",
+      "answer": "Keep the tape snug against the skin without compressing soft subcutaneous tissue."
+    },
+    "calorie-calculator": {
+      "title": "Calorie Calculator",
+      "description": "Calculate your daily calorie needs for weight maintenance, fat loss, or muscle gain.",
+      "how": "Provide body stats and activity level to determine exact maintenance, deficit, and surplus energy targets.",
+      "limits": "Actual expenditure varies based on metabolic adaptation, thermal effect of food, and non-exercise activity.",
+      "question": "What is a sustainable deficit for fat loss?",
+      "answer": "A modest deficit of 300 to 500 calories per day supports steady fat loss while preserving lean muscle tissue."
+    },
+    "calories-burned-calculator": {
+      "title": "Calories Burned Calculator",
+      "description": "Calculate calories burned during exercise and physical activities based on MET values.",
+      "how": "Select your activity, enter duration in minutes, and your body weight to compute energetic expenditure.",
+      "limits": "Environmental factors such as ambient temperature, incline, and personal biomechanical efficiency affect caloric burn.",
+      "question": "What is a MET value?",
+      "answer": "MET (Metabolic Equivalent of Task) measures the ratio of working metabolic rate relative to resting energy expenditure."
+    },
+    "healthy-weight-calculator": {
+      "title": "Healthy Weight Calculator",
+      "description": "Find your healthy weight range and ideal target weight based on height and BMI standards.",
+      "how": "Enter current height and weight to compare against World Health Organization adult healthy boundaries.",
+      "limits": "Thresholds apply to adults aged 20 and older and do not substitute for comprehensive metabolic clinical exams.",
+      "question": "What BMI range is recognized as healthy weight?",
+      "answer": "A BMI between 18.5 and 24.9 is recognized globally as the standard healthy adult weight range."
+    },
+    "heart-rate-calculator": {
+      "title": "Heart Rate Calculator",
+      "description": "Convert manual pulse counts to BPM and calculate target training heart rate zones.",
+      "how": "Count your radial or carotid pulse over 15, 30, or 60 seconds to compute beats per minute and target aerobic zones.",
+      "limits": "Age-predicted maximal heart rate equations carry standard deviations of 10 to 12 beats per minute.",
+      "question": "How does resting heart rate relate to cardiovascular fitness?",
+      "answer": "Higher aerobic conditioning generally lowers resting heart rate by increasing cardiac stroke volume."
+    },
+    "ideal-weight-calculator": {
+      "title": "Ideal Weight Calculator",
+      "description": "Calculate your ideal body weight using Robinson, Miller, Devine, and Hamwi formulas.",
+      "how": "Select gender and enter height to compare benchmark calculations across four validated clinical equations.",
+      "limits": "Formulas produce population statistical approximations and do not consider individual frame breadth or athletic muscularity.",
+      "question": "Why do the four formulas yield slightly different results?",
+      "answer": "Each formula was derived from independent clinical research cohorts with varying historical base heights and baselines."
+    },
+    "lean-body-mass-calculator": {
+      "title": "Lean Body Mass Calculator",
+      "description": "Calculate your lean body mass and fat mass based on body weight and fat percentage.",
+      "how": "Enter total body weight and body fat percentage to separate total body weight into adipose tissue and metabolically active lean mass.",
+      "limits": "Body composition calculations are only as accurate as the underlying body fat percentage measurement.",
+      "question": "Why is tracking lean body mass important during weight loss?",
+      "answer": "Monitoring lean mass ensures that caloric deficits cause adipose reduction rather than muscular atrophy."
+    },
+    "running-calories-calculator": {
+      "title": "Running Calories Calculator",
+      "description": "Estimate calories burned while running based on speed, distance, and body weight.",
+      "how": "Select your pace bracket, enter distance in kilometers, and input your body weight to calculate net and gross calorie expenditure.",
+      "limits": "Wind resistance, running surface grade, footwear, and personal biomechanical efficiency alter real-world energy expenditure.",
+      "question": "Does running faster burn more calories per kilometer?",
+      "answer": "Energy expended per kilometer remains relatively constant across aerobic speeds, but running faster burns more calories per unit of time."
+    },
+    "tdee-calculator": {
+      "title": "TDEE Calculator",
+      "description": "Calculate your Total Daily Energy Expenditure (TDEE) based on activity level and basal metabolism.",
+      "how": "Input age, gender, height, weight, and weekly activity profile to compute your maintenance caloric expenditure.",
+      "limits": "Formulaic estimates provide an initial nutritional baseline that should be calibrated against body weight trends over weeks.",
+      "question": "How does NEAT affect TDEE?",
+      "answer": "Non-Exercise Activity Thermogenesis (walking, fidgeting, standing) can vary daily energy burn by hundreds of calories."
+    },
+    "waist-to-height-ratio-calculator": {
+      "title": "Waist-to-Height Ratio Calculator",
+      "description": "Assess cardiovascular and cardiometabolic health risks using the waist-to-height ratio.",
+      "how": "Measure waist circumference at the midpoint between the lower rib and iliac crest, then divide by total height.",
+      "limits": "WHtR is an anthropometric risk marker and does not evaluate lipid fractions or blood pressure directly.",
+      "question": "Why is waist-to-height ratio considered superior to BMI?",
+      "answer": "It directly reflects central visceral abdominal adiposity without confounding muscular mass with fat mass."
+    },
+    "waist-to-hip-ratio-calculator": {
+      "title": "Waist-to-Hip Ratio Calculator",
+      "description": "Assess body fat distribution and cardiovascular risk using the waist-to-hip ratio.",
+      "how": "Measure waist circumference at the narrowest point and hip circumference at the widest point of the buttocks.",
+      "limits": "Waist-to-hip ratio reflects anatomical distribution rather than absolute total adipose tissue mass.",
+      "question": "What health risks are linked to a high waist-to-hip ratio?",
+      "answer": "An android ratio exceeding 0.90 in men or 0.85 in women correlates with higher risk of hypertension and type 2 diabetes."
+    },
+    "walking-calories-calculator": {
+      "title": "Walking Calories Calculator",
+      "description": "Calculate calories burned while walking based on pace, distance, and body weight.",
+      "how": "Select your walking speed, provide distance in kilometers, and input your body weight to determine energetic burn.",
+      "limits": "Incline grade, pack weight, ambient temperature, and footwear mechanical cushioning alter final caloric cost.",
+      "question": "How does brisk walking compare to running for fat loss?",
+      "answer": "Walking burns fewer calories per minute than running, but places minimal stress on connective joint structures."
     }
   },
   "flexOptions": {
@@ -3453,6 +3565,193 @@
       "yd3": "Cubic yards",
       "m3": "Cubic meters",
       "tons": "Estimated US tons"
+    }
+  },
+  "health": {
+    "common": {
+      "results": "Results",
+      "errorCheck": "Enter valid positive numbers to compute.",
+      "age": "Age",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "weight": "Weight (kg)",
+      "height": "Height (cm)",
+      "activityLevel": "Activity level",
+      "sedentary": "Sedentary (little to no exercise)",
+      "light": "Light (exercise 1-3 days/week)",
+      "moderate": "Moderate (exercise 3-5 days/week)",
+      "active": "Active (exercise 6-7 days/week)",
+      "veryActive": "Very active (hard exercise & physical job)",
+      "goal": "Fitness goal",
+      "maintain": "Maintain weight",
+      "lose": "Weight loss (-500 kcal)",
+      "gain": "Weight gain (+300 kcal)",
+      "unit": "Unit system",
+      "metric": "Metric (kg, cm)",
+      "imperial": "Imperial (lb, ft, in)",
+      "feet": "Feet",
+      "inches": "Inches",
+      "pounds": "Weight (lb)",
+      "category": "Classification",
+      "status": "Status"
+    },
+    "bmi": {
+      "heading": "Calculate Body Mass Index",
+      "bmi": "Body Mass Index (BMI)",
+      "category": "Weight category",
+      "underweight": "Underweight (< 18.5)",
+      "healthyWeight": "Healthy Weight (18.5 - 24.9)",
+      "overweight": "Overweight (25.0 - 29.9)",
+      "obese": "Obesity (≥ 30.0)",
+      "healthyRange": "Healthy weight range",
+      "note": "Adult BMI serves as a population screening metric and does not differentiate lean muscle from adipose tissue."
+    },
+    "bmr": {
+      "heading": "Basal Metabolic Rate",
+      "bmr": "Basal Metabolic Rate (BMR)",
+      "tdee": "Daily Maintenance (TDEE)",
+      "maintain": "Maintain weight",
+      "lose": "Weight loss target",
+      "gain": "Weight gain target",
+      "protein": "Protein (30%)",
+      "carbs": "Carbohydrates (40%)",
+      "fat": "Dietary fat (30%)",
+      "note": "Mifflin-St Jeor equation estimates calories expended to sustain fundamental physiological homeostasis."
+    },
+    "bodyFat": {
+      "heading": "US Navy Body Fat Method",
+      "waist": "Waist circumference (cm)",
+      "hip": "Hip circumference (cm)",
+      "neck": "Neck circumference (cm)",
+      "bodyFat": "Estimated body fat",
+      "category": "Body fat category",
+      "essential": "Essential fat",
+      "athletes": "Athletes",
+      "fitness": "Fitness",
+      "acceptable": "Acceptable",
+      "obese": "Obese",
+      "note": "Circumference equations developed by the Naval Health Research Center provide standardized body composition estimates."
+    },
+    "calorie": {
+      "heading": "Daily Calorie Requirements",
+      "targetCalories": "Target daily intake",
+      "bmr": "Basal metabolic burn",
+      "tdee": "Maintenance expenditure",
+      "note": "Long-term body weight changes follow cumulative thermodynamic energy balance over weeks."
+    },
+    "caloriesBurned": {
+      "heading": "Activity Caloric Burn",
+      "activity": "Type of activity",
+      "duration": "Duration (minutes)",
+      "walking": "Walking (3.5 mph / 5.6 km/h)",
+      "running": "Running (6.0 mph / 9.7 km/h)",
+      "cycling": "Cycling (moderate 10-12 mph)",
+      "swimming": "Swimming (moderate laps)",
+      "yoga": "Yoga & stretching",
+      "weights": "Resistance training",
+      "jumpingJacks": "Jumping jacks",
+      "dancing": "Aerobic dancing",
+      "totalCalories": "Total calories burned",
+      "caloriesPerMinute": "Calories per minute",
+      "met": "Metabolic equivalent (MET)",
+      "note": "Calculations utilize standardized Compendium of Physical Activities metabolic equivalent values."
+    },
+    "healthyWeight": {
+      "heading": "Healthy Weight Range Calculator",
+      "bmi": "Current BMI",
+      "minWeight": "Minimum healthy weight (BMI 18.5)",
+      "maxWeight": "Maximum healthy weight (BMI 24.9)",
+      "idealWeight": "Midpoint target weight (BMI 22.0)",
+      "status": "Weight status",
+      "note": "Healthy weight thresholds correspond to standard World Health Organization adult BMI boundaries."
+    },
+    "heartRate": {
+      "heading": "Heart Rate & Aerobic Target Zones",
+      "beatsCounted": "Beats counted",
+      "interval": "Counting interval",
+      "restingHeartRate": "Resting heart rate",
+      "pulseBpm": "Pulse (BPM)",
+      "estimatedMax": "Estimated maximum HR",
+      "reserve": "Heart rate reserve (HRR)",
+      "moderateZone": "Moderate aerobic zone (50% - 70%)",
+      "vigorousZone": "Vigorous aerobic zone (70% - 85%)",
+      "seconds": "seconds",
+      "note": "Exercise training zones utilize the Karvonen formula and age-predicted maximal heart rate."
+    },
+    "idealWeight": {
+      "heading": "Comparative Ideal Body Weight Formulas",
+      "robinson": "Robinson formula (1983)",
+      "miller": "Miller formula (1983)",
+      "devine": "Devine formula (1974)",
+      "hamwi": "Hamwi formula (1964)",
+      "bmiMethod": "BMI 22.0 benchmark",
+      "note": "Classic clinical formulas offer standardized comparative targets derived from historical demographic literature."
+    },
+    "leanBodyMass": {
+      "heading": "Lean Body Mass & Composition",
+      "bodyFat": "Body fat percentage (%)",
+      "lbm": "Lean body mass",
+      "fatMass": "Adipose fat mass",
+      "leanPercentage": "Lean mass ratio",
+      "note": "Lean mass encompasses all non-adipose anatomical structures including skeleton, muscular tissue, and organs."
+    },
+    "runningCalories": {
+      "heading": "Running Energy Expenditure",
+      "pace": "Running pace",
+      "distance": "Distance (km)",
+      "slow": "Slow jog (5.0 mph / 8.0 km/h)",
+      "moderate": "Moderate run (6.0 mph / 9.7 km/h)",
+      "fast": "Fast run (7.0 mph / 11.3 km/h)",
+      "sprint": "Sprint pace (8.5 mph / 13.7 km/h)",
+      "totalCalories": "Total energy expended",
+      "caloriesPerHour": "Expenditure per hour",
+      "hours": "Estimated run duration",
+      "met": "MET intensity factor",
+      "note": "Mechanical work in running correlates with body mass displacement against ground reaction forces."
+    },
+    "tdee": {
+      "heading": "Total Daily Energy Expenditure",
+      "tdee": "Total Daily Energy Expenditure (TDEE)",
+      "bmr": "Basal Metabolic Rate (BMR)",
+      "multiplier": "Physical activity factor",
+      "note": "TDEE scales basal metabolism according to the PAL (Physical Activity Level) factorial method."
+    },
+    "waistToHeight": {
+      "heading": "Waist-to-Height Ratio (WHtR)",
+      "waist": "Waist circumference (cm)",
+      "height": "Body height (cm)",
+      "ratio": "WHtR ratio",
+      "risk": "Cardiometabolic risk profile",
+      "lowRisk": "Healthy profile (< 0.50)",
+      "moderateRisk": "Moderate risk (0.50 - 0.60)",
+      "highRisk": "Increased risk (> 0.60)",
+      "note": "Keeping waist circumference under half of stature correlates with favorable cardiometabolic biomarkers."
+    },
+    "waistToHip": {
+      "heading": "Waist-to-Hip Ratio (WHR)",
+      "waist": "Waist circumference (cm)",
+      "hip": "Hip circumference (cm)",
+      "ratio": "WHR ratio",
+      "risk": "Cardiovascular risk classification",
+      "lowRisk": "Low risk",
+      "moderateRisk": "Moderate risk",
+      "highRisk": "High risk",
+      "note": "WHO guidelines classify upper-body visceral android fat accumulation as an independent cardiovascular risk."
+    },
+    "walkingCalories": {
+      "heading": "Walking Energy Expenditure",
+      "pace": "Walking speed",
+      "distance": "Distance (km)",
+      "slow": "Slow walk (2.0 mph / 3.2 km/h)",
+      "moderate": "Moderate stroll (3.0 mph / 4.8 km/h)",
+      "brisk": "Brisk walk (3.5 mph / 5.6 km/h)",
+      "fast": "Fast fitness walk (4.0 mph / 6.4 km/h)",
+      "totalCalories": "Total energy expended",
+      "caloriesPerHour": "Expenditure per hour",
+      "hours": "Estimated walk duration",
+      "met": "MET intensity factor",
+      "note": "Walking delivers low-impact aerobic conditioning with energy cost scaling linearly by distance and mass."
     }
   }
 }

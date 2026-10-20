@@ -16,6 +16,7 @@ const LocalizedPrintTools = dynamic(() => import('./LocalizedPrintTools'));
 const LocalizedDeveloperTools = dynamic(() => import('./LocalizedDeveloperTools'));
 const LocalizedTakeoffTools = dynamic(() => import('./LocalizedTakeoffTools'));
 const LocalizedConstructionTools = dynamic(() => import('./LocalizedConstructionTools'));
+const LocalizedHealthTools = dynamic(() => import('./LocalizedHealthTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -174,6 +175,24 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
     slug === 'topsoil-calculator'
   ) {
     return <LocalizedConstructionTools slug={slug} d={dictionary} locale={locale} />;
+  }
+  if (
+    slug === 'bmi-calculator' ||
+    slug === 'bmr-calculator' ||
+    slug === 'body-fat-calculator' ||
+    slug === 'calorie-calculator' ||
+    slug === 'calories-burned-calculator' ||
+    slug === 'healthy-weight-calculator' ||
+    slug === 'heart-rate-calculator' ||
+    slug === 'ideal-weight-calculator' ||
+    slug === 'lean-body-mass-calculator' ||
+    slug === 'running-calories-calculator' ||
+    slug === 'tdee-calculator' ||
+    slug === 'waist-to-height-ratio-calculator' ||
+    slug === 'waist-to-hip-ratio-calculator' ||
+    slug === 'walking-calories-calculator'
+  ) {
+    return <LocalizedHealthTools slug={slug} d={dictionary} locale={locale} />;
   }
   if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

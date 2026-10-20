@@ -46,6 +46,20 @@ const slugs = [
   'fence-calculator', 'post-hole-concrete-calculator', 'drywall-calculator',
   'paver-calculator', 'polymeric-sand-calculator', 'mulch-calculator',
   'topsoil-calculator',
+  'bmi-calculator',
+  'bmr-calculator',
+  'body-fat-calculator',
+  'calorie-calculator',
+  'calories-burned-calculator',
+  'healthy-weight-calculator',
+  'heart-rate-calculator',
+  'ideal-weight-calculator',
+  'lean-body-mass-calculator',
+  'running-calories-calculator',
+  'tdee-calculator',
+  'waist-to-height-ratio-calculator',
+  'waist-to-hip-ratio-calculator',
+  'walking-calories-calculator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;

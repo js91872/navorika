@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 101,
-    "pendingTools": 212,
+    "publishedTools": 115,
+    "pendingTools": 198,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 707,
+    "publishedToolTranslations": 805,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -25,7 +25,7 @@
       "jsxText": 3645,
       "visibleAttribute": 337,
       "semanticCopy": 11154,
-      "reviewLiteral": 43629
+      "reviewLiteral": 43631
     },
     "candidateCopyWords": 291689
   },
@@ -484,8 +484,16 @@
       "source": "src/app/(english)/tools/bmi-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -502,8 +510,16 @@
       "source": "src/app/(english)/tools/bmr-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -538,8 +554,16 @@
       "source": "src/app/(english)/tools/body-fat-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -686,8 +710,16 @@
       "source": "src/app/(english)/tools/calorie-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -704,8 +736,16 @@
       "source": "src/app/(english)/tools/calories-burned-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2535,8 +2575,16 @@
       "source": "src/app/(english)/tools/healthy-weight-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2553,8 +2601,16 @@
       "source": "src/app/(english)/tools/heart-rate-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2901,8 +2957,16 @@
       "source": "src/app/(english)/tools/ideal-weight-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3523,8 +3587,16 @@
       "source": "src/app/(english)/tools/lean-body-mass-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5057,8 +5129,16 @@
       "source": "src/app/(english)/tools/running-calories-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5706,8 +5786,16 @@
       "source": "src/app/(english)/tools/tdee-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6183,8 +6271,16 @@
       "source": "src/app/(english)/tools/waist-to-height-ratio-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6201,8 +6297,16 @@
       "source": "src/app/(english)/tools/waist-to-hip-ratio-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6219,8 +6323,16 @@
       "source": "src/app/(english)/tools/walking-calories-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -7515,13 +7627,13 @@
     {
       "source": "src/app/(english)/tools/bmi-calculator/page.tsx",
       "routeTemplate": "/tools/bmi-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/bmr-calculator/page.tsx",
       "routeTemplate": "/tools/bmr-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7533,7 +7645,7 @@
     {
       "source": "src/app/(english)/tools/body-fat-calculator/page.tsx",
       "routeTemplate": "/tools/body-fat-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7569,13 +7681,13 @@
     {
       "source": "src/app/(english)/tools/calorie-calculator/page.tsx",
       "routeTemplate": "/tools/calorie-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/calories-burned-calculator/page.tsx",
       "routeTemplate": "/tools/calories-burned-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8115,13 +8227,13 @@
     {
       "source": "src/app/(english)/tools/healthy-weight-calculator/page.tsx",
       "routeTemplate": "/tools/healthy-weight-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/heart-rate-calculator/page.tsx",
       "routeTemplate": "/tools/heart-rate-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8223,7 +8335,7 @@
     {
       "source": "src/app/(english)/tools/ideal-weight-calculator/page.tsx",
       "routeTemplate": "/tools/ideal-weight-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8415,7 +8527,7 @@
     {
       "source": "src/app/(english)/tools/lean-body-mass-calculator/page.tsx",
       "routeTemplate": "/tools/lean-body-mass-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8841,7 +8953,7 @@
     {
       "source": "src/app/(english)/tools/running-calories-calculator/page.tsx",
       "routeTemplate": "/tools/running-calories-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9027,7 +9139,7 @@
     {
       "source": "src/app/(english)/tools/tdee-calculator/page.tsx",
       "routeTemplate": "/tools/tdee-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9171,19 +9283,19 @@
     {
       "source": "src/app/(english)/tools/waist-to-height-ratio-calculator/page.tsx",
       "routeTemplate": "/tools/waist-to-height-ratio-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/waist-to-hip-ratio-calculator/page.tsx",
       "routeTemplate": "/tools/waist-to-hip-ratio-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/walking-calories-calculator/page.tsx",
       "routeTemplate": "/tools/walking-calories-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

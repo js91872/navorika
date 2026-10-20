@@ -875,6 +875,118 @@
       "limits": "Umidità, vagliatura e contenuto organico modificano in modo significativo la densità e il volume reale a terra dopo la rullatura.",
       "question": "Come incide la densità sul tonnellaggio?",
       "answer": "La terra vegetale asciutta e sciolta pesa circa 1,2 t/m³, mentre la terra umida o compattata può superare 1,6 t/m³."
+    },
+    "bmi-calculator": {
+      "title": "Calcolatore IMC",
+      "description": "Calcola il tuo indice di massa corporea (IMC) e l'intervallo di peso sano.",
+      "how": "Inserisci peso e altezza in unità metriche o imperiali per ottenere la classificazione standard per adulti.",
+      "limits": "Il BMI è un parametro statistico e non misura direttamente la massa grassa o la densità ossea.",
+      "question": "L'IMC tiene conto della muscolatura?",
+      "answer": "No. Persone molto muscolose possono risultare in sovrappeso pur avendo una percentuale di grasso minima."
+    },
+    "bmr-calculator": {
+      "title": "Calcolatore BMR",
+      "description": "Calcola il tuo metabolismo basale (BMR) e il fabbisogno calorico a riposo.",
+      "how": "Inserisci età, genere, altezza e peso per calcolare il consumo energetico basale con l'equazione Mifflin-St Jeor.",
+      "limits": "Il BMR presuppone una tiroide sana e condizioni ambientali stabili a riposo.",
+      "question": "Che differenza c’è tra BMR e TDEE?",
+      "answer": "Il BMR misura le calorie consumate a riposo assoluto, mentre il TDEE include lavoro, sport e digestione."
+    },
+    "body-fat-calculator": {
+      "title": "Calcolatore percentuale di grasso corporeo",
+      "description": "Stima la percentuale di grasso corporeo e la composizione corporea con il metodo della marina USA.",
+      "how": "Misura collo, vita e fianchi oltre alla statura per calcolare la percentuale stimata di tessuto adiposo.",
+      "limits": "Il metodo a nastro stima la densità corporea con un piccolo margine rispetto alla densitometria DEXA.",
+      "question": "Quanto deve essere stretto il nastro?",
+      "answer": "Il nastro deve aderire alla pelle senza comprimere i tessuti molli superficiali."
+    },
+    "calorie-calculator": {
+      "title": "Calcolatore di calorie giornaliere",
+      "description": "Calcola il fabbisogno calorico giornaliero per mantenimento, dimagrimento o aumento di massa.",
+      "how": "Inserisci i tuoi dati fisici e il grado di attività per stabilire gli obiettivi energetici quotidiani.",
+      "limits": "Il consumo effettivo varia per termogenesi alimentare e adattamenti metabolici individuali.",
+      "question": "Quale deficit calorico è ideale?",
+      "answer": "Un deficit sostenibile compreso tra 300 e 500 kcal al giorno consente di dimagrire preservando i muscoli."
+    },
+    "calories-burned-calculator": {
+      "title": "Calcolatore calorie bruciate",
+      "description": "Calcola le calorie bruciate durante l'attività fisica e gli allenamenti in base ai valori MET.",
+      "how": "Seleziona l'attività, indica la durata in minuti e il peso corporeo per calcolare le calorie consumate.",
+      "limits": "Pendenza del terreno, clima e livello di efficienza atletica influenzano il dispendio energetico reale.",
+      "question": "Cos'è il valore MET?",
+      "answer": "Il MET (equivalente metabolico) indica il rapporto tra il consumo energetico in attività e quello a riposo."
+    },
+    "healthy-weight-calculator": {
+      "title": "Calcolatore del peso forma e salutare",
+      "description": "Scopri l'intervallo di peso sano e il peso ideale in base alla tua altezza e all'IMC.",
+      "how": "Inserisci altezza e peso attuale per verificare la collocazione rispetto ai parametri salutari ufficiali.",
+      "limits": "I valori valgono per individui maggiorenni e non sostituiscono indagini cliniche specialistiche.",
+      "question": "Quale intervallo IMC è considerato sano?",
+      "answer": "L'intervallo IMC compreso tra 18,5 e 24,9 è riconosciuto universalmente come peso forma salutare."
+    },
+    "heart-rate-calculator": {
+      "title": "Calcolatore frequenza cardiaca",
+      "description": "Converti i battiti manuali in BPM e calcola le zone di frequenza cardiaca per l'allenamento.",
+      "how": "Conta le pulsazioni radiali o carotidee per 15, 30 o 60 secondi per calcolare i battiti cardiaci al minuto.",
+      "limits": "La stima teorica della frequenza massima presenta una deviazione fisiologica tipica di 10-12 BPM.",
+      "question": "Perché il battito a riposo diminuisce con lo sport?",
+      "answer": "Un apparato cardiovascolare allenato aumenta la gittata sistolica riducendo la frequenza necessaria a riposo."
+    },
+    "ideal-weight-calculator": {
+      "title": "Calcolatore peso ideale",
+      "description": "Calcola il tuo peso ideale secondo le formule classiche di Robinson, Miller, Devine e Hamwi.",
+      "how": "Seleziona genere e altezza per confrontare le stime ponderali generate dalle quattro formule mediche validate.",
+      "limits": "I modelli stimano valori medi e non tengono conto della larghezza dell'ossatura o dello sviluppo muscolare.",
+      "question": "Perché le quattro formule danno valori leggermente diversi?",
+      "answer": "Ciascuna equazione deriva da coorti di studio indipendenti calibrate su standard clinici differenti."
+    },
+    "lean-body-mass-calculator": {
+      "title": "Calcolatore massa magra",
+      "description": "Calcola la massa magra e la massa grassa totale a partire da peso e percentuale di grasso.",
+      "how": "Inserisci il peso corporeo e la percentuale di grasso per suddividere il peso in massa adiposa e massa magra.",
+      "limits": "L'accuratezza del risultato dipende dalla precisione con cui è stata stimata la percentuale di grasso.",
+      "question": "Perché monitorare la massa magra durante la dieta?",
+      "answer": "Permette di accertare che il dimagrimento derivi dalla perdita di grasso e non dal catabolismo muscolare."
+    },
+    "running-calories-calculator": {
+      "title": "Calcolatore calorie corsa",
+      "description": "Stima le calorie bruciate durante la corsa in base all'andatura, alla distanza e al peso.",
+      "how": "Seleziona l'andatura, inserisci la distanza in chilometri e il tuo peso per calcolare il consumo energetico della sessione.",
+      "limits": "Pendenza del percorso, vento contrario e tipo di fondo stradale modificano il costo energetico effettivo.",
+      "question": "Correre più veloci consuma più calorie al chilometro?",
+      "answer": "Il consumo per chilometro resta pressoché costante a ritmi aerobici, ma aumenta notevolmente il consumo per unità di tempo."
+    },
+    "tdee-calculator": {
+      "title": "Calcolatore TDEE",
+      "description": "Calcola il tuo dispendio energetico totale giornaliero (TDEE) in base all'attività.",
+      "how": "Inserisci età, genere, statura, peso e frequenza d'allenamento settimanale per calcolare il fabbisogno calorico di mantenimento.",
+      "limits": "La stima teorica rappresenta un punto di partenza nutrizionale da affinare monitorando il peso reale.",
+      "question": "Come influisce il NEAT sul TDEE?",
+      "answer": "La termogenesi delle attività non sportive (movimento spontaneo, scale, camminate) varia il dispendio di centinaia di calorie al giorno."
+    },
+    "waist-to-height-ratio-calculator": {
+      "title": "Calcolatore rapporto vita-altezza",
+      "description": "Valuta i rischi cardiometabolici e la salute generale tramite il rapporto vita-altezza.",
+      "how": "Misura la circonferenza vita nel punto medio tra costole e cresta iliaca e dividila per la statura totale.",
+      "limits": "Il rapporto vita/altezza è un indicatore antropometrico e non misura profilo lipidico o pressione arteriosa.",
+      "question": "Perché il rapporto vita-altezza è più indicativo del BMI?",
+      "answer": "Riflette specificamente l'accumulo di grasso viscerale addominale senza farsi ingannare dalla massa muscolare."
+    },
+    "waist-to-hip-ratio-calculator": {
+      "title": "Calcolatore rapporto vita-fianchi",
+      "description": "Valuta la distribuzione del grasso e il rischio cardiovascolare con il rapporto vita-fianchi.",
+      "how": "Misura la vita nel punto più stretto e i fianchi nel punto di massima sporgenza dei glutei.",
+      "limits": "Il rapporto vita/fianchi descrive la distribuzione anatomica del grasso e non la quantità totale assoluta.",
+      "question": "Quali rischi sono legati a un rapporto vita-fianchi elevato?",
+      "answer": "Un valore superiore a 0,90 negli uomini o 0,85 nelle donne è associato a maggior rischio di diabete e ipertensione."
+    },
+    "walking-calories-calculator": {
+      "title": "Calcolatore calorie camminata",
+      "description": "Calcola le calorie bruciate camminando in base a velocità, distanza percorsa e peso.",
+      "how": "Seleziona il passo di camminata, inserisci i chilometri percorsi e il peso corporeo per calcolare il consumo energetico.",
+      "limits": "Pendenze in salita, zaini pesanti e fondo sconnesso aumentano significativamente il costo metabolico.",
+      "question": "Come si confronta la camminata veloce con la corsa per dimagrire?",
+      "answer": "La camminata consuma meno calorie al minuto ma preserva tendini e cartilagini articolari dai microtraumi."
     }
   },
   "flexOptions": {
@@ -3453,6 +3565,193 @@
       "yd3": "Iarde cube",
       "m3": "Metri cubi",
       "tons": "Tonnellate stimate"
+    }
+  },
+  "health": {
+    "common": {
+      "results": "Risultati",
+      "errorCheck": "Inserisci valori numerici positivi validi per calcolare.",
+      "age": "Età",
+      "gender": "Genere",
+      "male": "Uomo",
+      "female": "Donna",
+      "weight": "Peso (kg)",
+      "height": "Altezza (cm)",
+      "activityLevel": "Livello di attività",
+      "sedentary": "Sedentario (poco o nessun esercizio)",
+      "light": "Leggero (1-3 giorni alla settimana)",
+      "moderate": "Moderato (3-5 giorni alla settimana)",
+      "active": "Attivo (6-7 giorni alla settimana)",
+      "veryActive": "Molto attivo (allenamenti intensi e lavoro fisico)",
+      "goal": "Obiettivo",
+      "maintain": "Mantenere il peso",
+      "lose": "Perdita di peso (-500 kcal)",
+      "gain": "Aumento di peso (+300 kcal)",
+      "unit": "Unità di misura",
+      "metric": "Metrico (kg, cm)",
+      "imperial": "Imperiale (libbre, piedi, pollici)",
+      "feet": "Piedi",
+      "inches": "Pollici",
+      "pounds": "Peso (libbre)",
+      "category": "Classificazione",
+      "status": "Stato"
+    },
+    "bmi": {
+      "heading": "Calcola indice di massa corporea",
+      "bmi": "Indice di massa corporea (IMC)",
+      "category": "Categoria di peso",
+      "underweight": "Sottopeso (< 18,5)",
+      "healthyWeight": "Normopeso (18,5 - 24,9)",
+      "overweight": "Sovrappeso (25,0 - 29,9)",
+      "obese": "Obesità (≥ 30,0)",
+      "healthyRange": "Intervallo di peso sano",
+      "note": "L'IMC per adulti è un indice di screening e non distingue tra massa muscolare e tessuto adiposo."
+    },
+    "bmr": {
+      "heading": "Metabolismo basale (BMR)",
+      "bmr": "Metabolismo basale (BMR)",
+      "tdee": "Mantenimento giornaliero (TDEE)",
+      "maintain": "Mantenere il peso",
+      "lose": "Obiettivo dimagrimento",
+      "gain": "Obiettivo aumento peso",
+      "protein": "Proteine (30%)",
+      "carbs": "Carboidrati (40%)",
+      "fat": "Grassi (30%)",
+      "note": "La formula di Mifflin-St Jeor calcola il dispendio calorico necessario per le funzioni vitali a riposo."
+    },
+    "bodyFat": {
+      "heading": "Metodo massa grassa US Navy",
+      "waist": "Circonferenza vita (cm)",
+      "hip": "Circonferenza fianchi (cm)",
+      "neck": "Circonferenza collo (cm)",
+      "bodyFat": "Grasso corporeo stimato",
+      "category": "Categoria composizione corporea",
+      "essential": "Grasso essenziale",
+      "athletes": "Atleti",
+      "fitness": "Fitness",
+      "acceptable": "Accettabile",
+      "obese": "Obesità",
+      "note": "Le equazioni antropometriche della marina statunitense offrono una stima affidabile della massa adiposa."
+    },
+    "calorie": {
+      "heading": "Fabbisogno calorico giornaliero",
+      "targetCalories": "Apporto calorico consigliato",
+      "bmr": "Metabolismo basale",
+      "tdee": "Dispendio di mantenimento",
+      "note": "La variazione ponderale segue il bilancio termodinamico cumulato nel corso di settimane regolari."
+    },
+    "caloriesBurned": {
+      "heading": "Calorie bruciate per attività",
+      "activity": "Tipo di attività",
+      "duration": "Durata (minuti)",
+      "walking": "Camminata (5,6 km/h)",
+      "running": "Corsa (9,7 km/h)",
+      "cycling": "Ciclismo moderato (16-19 km/h)",
+      "swimming": "Nuoto a ritmo moderato",
+      "yoga": "Yoga e stretching",
+      "weights": "Allenamento con pesi",
+      "jumpingJacks": "Jumping jacks",
+      "dancing": "Ballo aerobico",
+      "totalCalories": "Calorie totali bruciate",
+      "caloriesPerMinute": "Calorie al minuto",
+      "met": "Equivalente metabolico (MET)",
+      "note": "I calcoli utilizzano i valori MET standardizzati dal Compendio delle attività fisiche."
+    },
+    "healthyWeight": {
+      "heading": "Calcolatore intervallo di peso sano",
+      "bmi": "IMC attuale",
+      "minWeight": "Peso minimo consigliato (IMC 18,5)",
+      "maxWeight": "Peso massimo consigliato (IMC 24,9)",
+      "idealWeight": "Peso target ottimale (IMC 22,0)",
+      "status": "Condizione corporea",
+      "note": "I limiti di peso forma riflettono i parametri standard dell'Organizzazione Mondiale della Sanità."
+    },
+    "heartRate": {
+      "heading": "Frequenza cardiaca e zone di allenamento",
+      "beatsCounted": "Battiti contati",
+      "interval": "Intervallo di misurazione",
+      "restingHeartRate": "Frequenza a riposo",
+      "pulseBpm": "Frequenza cardiaca (BPM)",
+      "estimatedMax": "FC massima stimata",
+      "reserve": "Riserva cardiaca (HRR)",
+      "moderateZone": "Zona aerobica moderata (50% - 70%)",
+      "vigorousZone": "Zona aerobica vigorosa (70% - 85%)",
+      "seconds": "secondi",
+      "note": "Le zone cardiovascolari applicano il metodo Karvonen e la frequenza cardiaca massima teorica per l'età."
+    },
+    "idealWeight": {
+      "heading": "Formule comparative del peso ideale",
+      "robinson": "Formula di Robinson (1983)",
+      "miller": "Formula di Miller (1983)",
+      "devine": "Formula di Devine (1974)",
+      "hamwi": "Formula di Hamwi (1964)",
+      "bmiMethod": "Riferimento IMC 22,0",
+      "note": "Le classiche equazioni cliniche forniscono parametri di riferimento basati su ampi studi demografici."
+    },
+    "leanBodyMass": {
+      "heading": "Massa corporea magra e composizione",
+      "bodyFat": "Percentuale di grasso corporeo (%)",
+      "lbm": "Massa corporea magra",
+      "fatMass": "Massa grassa adiposa",
+      "leanPercentage": "Percentuale di massa magra",
+      "note": "La massa magra comprende tutti i tessuti non adiposi, inclusi muscoli, apparato scheletrico e organi interni."
+    },
+    "runningCalories": {
+      "heading": "Dispendio energetico nella corsa",
+      "pace": "Andatura di corsa",
+      "distance": "Distanza (km)",
+      "slow": "Corsa lenta (8,0 km/h)",
+      "moderate": "Corsa moderata (9,7 km/h)",
+      "fast": "Corsa veloce (11,3 km/h)",
+      "sprint": "Ritmo sostenuto (13,7 km/h)",
+      "totalCalories": "Energia totale consumata",
+      "caloriesPerHour": "Dispendio orario",
+      "hours": "Tempo di percorrenza stimato",
+      "met": "Fattore di intensità MET",
+      "note": "Il costo energetico della corsa è proporzionale al peso corporeo e alla distanza percorsa."
+    },
+    "tdee": {
+      "heading": "Dispendio energetico totale giornaliero",
+      "tdee": "Dispendio energetico totale (TDEE)",
+      "bmr": "Metabolismo basale (BMR)",
+      "multiplier": "Fattore di attività fisica",
+      "note": "Il TDEE adatta il metabolismo basale applicando il livello standard di attività fisica (PAL)."
+    },
+    "waistToHeight": {
+      "heading": "Rapporto vita-altezza (WHtR)",
+      "waist": "Circonferenza vita (cm)",
+      "height": "Statura corporea (cm)",
+      "ratio": "Rapporto vita/altezza",
+      "risk": "Profilo di rischio cardiometabolico",
+      "lowRisk": "Profilo salutare (< 0,50)",
+      "moderateRisk": "Rischio moderato (0,50 - 0,60)",
+      "highRisk": "Rischio elevato (> 0,60)",
+      "note": "Mantenere la circonferenza della vita inferiore alla metà della statura favorisce la salute cardiovascolare."
+    },
+    "waistToHip": {
+      "heading": "Rapporto vita-fianchi (WHR)",
+      "waist": "Circonferenza vita (cm)",
+      "hip": "Circonferenza fianchi (cm)",
+      "ratio": "Rapporto vita/fianchi",
+      "risk": "Classificazione rischio cardiovascolare",
+      "lowRisk": "Rischio basso",
+      "moderateRisk": "Rischio moderato",
+      "highRisk": "Rischio elevato",
+      "note": "Le linee guida OMS identificano l'adiposità addominale androide come fattore di rischio cardiovascolare autonomo."
+    },
+    "walkingCalories": {
+      "heading": "Dispendio energetico nella camminata",
+      "pace": "Velocità di camminata",
+      "distance": "Distanza (km)",
+      "slow": "Camminata lenta (3,2 km/h)",
+      "moderate": "Camminata moderata (4,8 km/h)",
+      "brisk": "Camminata veloce (5,6 km/h)",
+      "fast": "Camminata sportiva (6,4 km/h)",
+      "totalCalories": "Energia totale consumata",
+      "caloriesPerHour": "Dispendio orario",
+      "hours": "Tempo di camminata stimato",
+      "met": "Fattore di intensità MET",
+      "note": "La camminata fornisce un esercizio aerobico a basso impatto articolare con dispendio lineare su distanza."
     }
   }
 }

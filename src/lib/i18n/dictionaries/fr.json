@@ -875,6 +875,118 @@
       "limits": "Le degré d’humidité, la compaction et la teneur en matière organique modifient substantiellement la densité réelle livrée.",
       "question": "Comment la masse volumique influe-t-elle sur le tonnage ?",
       "answer": "Une terre végétale meuble et sèche pèse environ 1,2 t/m³, tandis qu’une terre humide ou compactée peut dépasser 1,6 t/m³."
+    },
+    "bmi-calculator": {
+      "title": "Calculateur d'IMC",
+      "description": "Calculez votre indice de masse corporelle (IMC) et votre plage de poids santé.",
+      "how": "Saisissez votre poids et votre taille en unités métriques ou impériales pour déterminer votre catégorie de corpulence.",
+      "limits": "L'IMC est un indicateur statistique de santé publique qui ne mesure pas directement la répartition adipeuse.",
+      "question": "L'IMC fait-il la différence entre muscle et graisse ?",
+      "answer": "Non. Une masse musculaire importante peut classer une personne sportive en surpoids malgré un faible taux adipeux."
+    },
+    "bmr-calculator": {
+      "title": "Calculateur de métabolisme de base (BMR)",
+      "description": "Calculez votre taux métabolique de base (BMR) et vos besoins caloriques au repos.",
+      "how": "Renseignez votre âge, sexe, taille et poids pour évaluer vos dépenses de base selon Mifflin-St Jeor.",
+      "limits": "Le calcul suppose une fonction thyroïdienne normale et des conditions thermiques neutres au repos.",
+      "question": "Quelle est la différence entre BMR et TDEE ?",
+      "answer": "Le BMR représente la dépense vitale au repos, tandis que la TDEE inclut l'activité physique et la digestion."
+    },
+    "body-fat-calculator": {
+      "title": "Calculateur de masse grasse",
+      "description": "Estimez votre pourcentage de graisse corporelle à l'aide de la méthode de l'US Navy.",
+      "how": "Mesurez vos tours de cou, de taille et de hanches avec votre taille pour calculer votre composition corporelle.",
+      "limits": "Les mesures au ruban estiment la densité corporelle et présentent une légère marge par rapport au scan DEXA.",
+      "question": "Quelle tension appliquer au ruban ?",
+      "answer": "Le ruban doit être bien ajusté contre la peau sans comprimer les tissus sous-cutanés."
+    },
+    "calorie-calculator": {
+      "title": "Calculateur de calories quotidiennes",
+      "description": "Calculez vos besoins quotidiens en calories pour maintenir, perdre ou prendre du poids.",
+      "how": "Indiquez votre profil physique et votre niveau sportif pour obtenir vos cibles caloriques précises.",
+      "limits": "La dépense réelle s'ajuste selon l'adaptation métabolique et l'effet thermique des repas.",
+      "question": "Quel déficit calorique est recommandé ?",
+      "answer": "Un déficit modéré de 300 à 500 kcal par jour favorise la perte adipeuse tout en préservant le muscle."
+    },
+    "calories-burned-calculator": {
+      "title": "Calculateur de calories brûlées",
+      "description": "Calculez les calories dépensées durant vos activités physiques selon les valeurs MET.",
+      "how": "Choisissez votre discipline, saisissez la durée en minutes et votre poids pour calculer l'énergie consommée.",
+      "limits": "La chaleur, le relief et l'économie individuelle de mouvement modifient la dépense métabolique réelle.",
+      "question": "Qu'est-ce qu'une valeur MET ?",
+      "answer": "Le MET exprime le ratio entre la dépense énergétique active et le métabolisme de base au repos."
+    },
+    "healthy-weight-calculator": {
+      "title": "Calculateur de poids idéal et santé",
+      "description": "Déterminez votre plage de poids santé et votre poids cible selon les normes d'IMC.",
+      "how": "Saisissez votre taille et votre poids pour situer votre profil par rapport aux recommandations de santé.",
+      "limits": "Ces repères concernent les adultes et ne remplacent pas un examen médical de santé globale.",
+      "question": "Quel intervalle d'IMC définit le poids de forme ?",
+      "answer": "Un IMC compris entre 18,5 et 24,9 correspond à la zone de poids santé standard selon l'OMS."
+    },
+    "heart-rate-calculator": {
+      "title": "Calculateur de fréquence cardiaque",
+      "description": "Convertissez votre pouls manuel en BPM et calculez vos zones cibles d'entraînement.",
+      "how": "Comptez vos pulsations au poignet ou au cou sur 15, 30 ou 60 secondes pour calculer vos battements par minute.",
+      "limits": "L'estimation de fréquence maximale par l'âge présente un écart-type naturel de 10 à 12 BPM.",
+      "question": "Que révèle un pouls de repos bas ?",
+      "answer": "Un bon entraînement d'endurance abaisse généralement le pouls de repos en augmentant le volume d'éjection systolique."
+    },
+    "ideal-weight-calculator": {
+      "title": "Calculateur de poids idéal",
+      "description": "Calculez votre poids idéal selon les formules médicales de Robinson, Miller, Devine et Hamwi.",
+      "how": "Indiquez votre sexe et votre taille pour confronter les résultats des quatre grandes formules historiques.",
+      "limits": "Ces équations calculent des moyennes statistiques sans intégrer la corpulence osseuse ni l'épaisseur musculaire.",
+      "question": "Pourquoi les résultats diffèrent-ils selon les formules ?",
+      "answer": "Chaque équation a été calibrée sur des populations cliniques indépendantes avec des hypothèses différentes."
+    },
+    "lean-body-mass-calculator": {
+      "title": "Calculateur de masse maigre",
+      "description": "Calculez votre masse corporelle maigre et votre masse grasse selon votre poids.",
+      "how": "Indiquez votre poids et votre taux adipeux pour dissocier la masse grasse des tissus métaboliquement actifs.",
+      "limits": "La précision du calcul dépend entièrement de la fiabilité de votre mesure de pourcentage de graisse.",
+      "question": "Pourquoi surveiller la masse maigre en perte de poids ?",
+      "answer": "Cela garantit que le déficit calorique cible la masse grasse tout en épargnant le capital musculaire."
+    },
+    "running-calories-calculator": {
+      "title": "Calculateur de calories en course à pied",
+      "description": "Estimez les calories dépensées en course à pied selon votre allure, distance et poids.",
+      "how": "Choisissez votre rythme, indiquez la distance en kilomètres et votre poids pour calculer l'énergie totale dépensée.",
+      "limits": "Le vent, les dénivelés, la surface du sol et la foulée individuelle influent sur le coût métabolique réel.",
+      "question": "Courir plus vite brûle-t-il plus de calories au kilomètre ?",
+      "answer": "Le coût au kilomètre varie peu à allure aérobie, mais une vitesse plus élevée augmente la dépense par minute."
+    },
+    "tdee-calculator": {
+      "title": "Calculateur de TDEE (dépense énergétique journalière)",
+      "description": "Calculez votre dépense énergétique totale quotidienne (TDEE) selon votre activité.",
+      "how": "Renseignez vos caractéristiques et votre volume d'exercice hebdomadaire pour connaître vos calories de maintien.",
+      "limits": "Cette estimation sert de point de départ et doit être ajustée en observant les variations de poids réelles.",
+      "question": "Quel est le rôle du NEAT dans la TDEE ?",
+      "answer": "La thermogenèse liée aux activités non sportives (marche utilitaire, posture debout) peut faire varier la dépense de plusieurs centaines de kcal."
+    },
+    "waist-to-height-ratio-calculator": {
+      "title": "Calculateur du rapport taille/stature",
+      "description": "Évaluez vos risques cardiométaboliques à partir du ratio entre tour de taille et taille.",
+      "how": "Mesurez votre tour de taille au niveau du nombril et divisez-le par votre taille totale en centimètres.",
+      "limits": "Ce ratio est un biomarqueur morphologique et ne remplace pas un bilan lipidique ou tensionnel complet.",
+      "question": "Pourquoi ce rapport est-il souvent préféré à l'IMC ?",
+      "answer": "Il cible directement l'adiposité viscérale intra-abdominale sans confondre masse musculaire et tissu graisseux."
+    },
+    "waist-to-hip-ratio-calculator": {
+      "title": "Calculateur du rapport taille-hanche",
+      "description": "Évaluez la distribution des graisses et les risques de santé via le ratio tour de taille sur hanches.",
+      "how": "Mesurez le tour de taille au point le plus étroit et le tour de hanches au niveau le plus large du bassin.",
+      "limits": "Le ratio renseigne sur la répartition des tissus adipeux et non sur la masse grasse totale absolue.",
+      "question": "Quels sont les risques associés à un ratio élevé ?",
+      "answer": "Un ratio supérieur à 0,90 chez l'homme ou 0,85 chez la femme augmente le risque de diabète et d'hypertension."
+    },
+    "walking-calories-calculator": {
+      "title": "Calculateur de calories en marche",
+      "description": "Calculez les calories dépensées en marchant selon votre allure, distance et poids.",
+      "how": "Choisissez votre vitesse de marche, renseignez la distance en kilomètres et votre poids pour calculer l'énergie brûlée.",
+      "limits": "Le port de charges, les pentes montantes et la nature du terrain modifient la dépense énergétique réelle.",
+      "question": "Comment la marche rapide se compare-t-elle à la course ?",
+      "answer": "La marche consomme moins de calories par minute mais préserve les articulations des chocs répétitifs."
     }
   },
   "flexOptions": {
@@ -3453,6 +3565,193 @@
       "yd3": "Yards cubes",
       "m3": "Mètres cubes",
       "tons": "Tonnage estimé"
+    }
+  },
+  "health": {
+    "common": {
+      "results": "Résultats",
+      "errorCheck": "Veuillez saisir des nombres positifs valides pour calculer.",
+      "age": "Âge",
+      "gender": "Sexe",
+      "male": "Homme",
+      "female": "Femme",
+      "weight": "Poids (kg)",
+      "height": "Taille (cm)",
+      "activityLevel": "Niveau d'activité",
+      "sedentary": "Sédentaire (peu ou pas d'exercice)",
+      "light": "Activité légère (1 à 3 jours par semaine)",
+      "moderate": "Activité modérée (3 à 5 jours par semaine)",
+      "active": "Actif (6 à 7 jours par semaine)",
+      "veryActive": "Très actif (entraînement quotidien intense et métier physique)",
+      "goal": "Objectif de poids",
+      "maintain": "Maintenir le poids",
+      "lose": "Perte de poids (-500 kcal)",
+      "gain": "Prise de poids (+300 kcal)",
+      "unit": "Système métrique",
+      "metric": "Métrique (kg, cm)",
+      "imperial": "Impérial (livres, pieds, pouces)",
+      "feet": "Pieds",
+      "inches": "Pouces",
+      "pounds": "Poids (livres)",
+      "category": "Classification",
+      "status": "Statut"
+    },
+    "bmi": {
+      "heading": "Calculer votre indice de masse corporelle",
+      "bmi": "Indice de masse corporelle (IMC)",
+      "category": "Catégorie pondérale",
+      "underweight": "Insuffisance pondérale (< 18,5)",
+      "healthyWeight": "Poids normal (18,5 - 24,9)",
+      "overweight": "Surpoids (25,0 - 29,9)",
+      "obese": "Obésité (≥ 30,0)",
+      "healthyRange": "Plage de poids santé",
+      "note": "L'IMC adulte est un outil de dépistage général qui ne distingue pas la masse musculaire de la masse grasse."
+    },
+    "bmr": {
+      "heading": "Métabolisme de base (BMR)",
+      "bmr": "Métabolisme de base (BMR)",
+      "tdee": "Dépense quotidienne de maintien",
+      "maintain": "Maintien du poids",
+      "lose": "Objectif perte de poids",
+      "gain": "Objectif prise de masse",
+      "protein": "Protéines (30%)",
+      "carbs": "Glucides (40%)",
+      "fat": "Lipides (30%)",
+      "note": "La formule de Mifflin-St Jeor estime la dépense calorique incompressible au repos complet."
+    },
+    "bodyFat": {
+      "heading": "Méthode de graisse corporelle US Navy",
+      "waist": "Tour de taille (cm)",
+      "hip": "Tour de hanches (cm)",
+      "neck": "Tour de cou (cm)",
+      "bodyFat": "Graisse corporelle estimée",
+      "category": "Catégorie de composition",
+      "essential": "Graisse essentielle",
+      "athletes": "Athlètes",
+      "fitness": "Fitness",
+      "acceptable": "Acceptable",
+      "obese": "Obésité",
+      "note": "Les équations circonférentielles de la marine américaine fournissent une estimation standardisée de la composition corporelle."
+    },
+    "calorie": {
+      "heading": "Besoins caloriques quotidiens",
+      "targetCalories": "Apport journalier cible",
+      "bmr": "Dépense métabolique basale",
+      "tdee": "Dépense de maintien",
+      "note": "L'évolution corporelle dépend du bilan énergétique cumulé sur plusieurs semaines consécutives."
+    },
+    "caloriesBurned": {
+      "heading": "Dépense calorique d'activité",
+      "activity": "Type d'activité physique",
+      "duration": "Durée (minutes)",
+      "walking": "Marche (5,6 km/h)",
+      "running": "Course (9,7 km/h)",
+      "cycling": "Cyclisme modéré (16-19 km/h)",
+      "swimming": "Natation modérée",
+      "yoga": "Yoga et étirements",
+      "weights": "Musculation",
+      "jumpingJacks": "Sauts avec écart (jumping jacks)",
+      "dancing": "Danse aérobique",
+      "totalCalories": "Calories totales brûlées",
+      "caloriesPerMinute": "Calories par minute",
+      "met": "Équivalent métabolique (MET)",
+      "note": "Les calculs se basent sur les valeurs de référence du Compendium des activités physiques."
+    },
+    "healthyWeight": {
+      "heading": "Calculateur de plage de poids santé",
+      "bmi": "IMC actuel",
+      "minWeight": "Poids santé minimal (IMC 18,5)",
+      "maxWeight": "Poids santé maximal (IMC 24,9)",
+      "idealWeight": "Poids cible médian (IMC 22,0)",
+      "status": "Statut corporel",
+      "note": "Les seuils de poids santé correspondent aux intervalles officiels de l'Organisation mondiale de la santé."
+    },
+    "heartRate": {
+      "heading": "Fréquence cardiaque et zones d'entraînement",
+      "beatsCounted": "Battements comptés",
+      "interval": "Intervalle de comptage",
+      "restingHeartRate": "Pouls au repos",
+      "pulseBpm": "Pouls (BPM)",
+      "estimatedMax": "FC maximale estimée",
+      "reserve": "Réserve cardiaque (FCR)",
+      "moderateZone": "Zone aérobie modérée (50% - 70%)",
+      "vigorousZone": "Zone aérobie intense (70% - 85%)",
+      "seconds": "secondes",
+      "note": "Les zones d'entraînement se basent sur la formule de Karvonen et la fréquence maximale théorique par âge."
+    },
+    "idealWeight": {
+      "heading": "Formules comparatives de poids idéal",
+      "robinson": "Formule de Robinson (1983)",
+      "miller": "Formule de Miller (1983)",
+      "devine": "Formule de Devine (1974)",
+      "hamwi": "Formule de Hamwi (1964)",
+      "bmiMethod": "Référence IMC 22,0",
+      "note": "Les formules médicales classiques offrent des cibles comparatives standardisées issues de la littérature clinique."
+    },
+    "leanBodyMass": {
+      "heading": "Masse corporelle maigre et composition",
+      "bodyFat": "Pourcentage de graisse corporelle (%)",
+      "lbm": "Masse corporelle maigre",
+      "fatMass": "Masse grasse adipeuse",
+      "leanPercentage": "Proportion de masse maigre",
+      "note": "La masse maigre regroupe l'ensemble des tissus non adipeux : muscles, os, organes vitaux et eau corporelle."
+    },
+    "runningCalories": {
+      "heading": "Dépense énergétique en course à pied",
+      "pace": "Allure de course",
+      "distance": "Distance (km)",
+      "slow": "Footing lent (8,0 km/h)",
+      "moderate": "Course modérée (9,7 km/h)",
+      "fast": "Course rapide (11,3 km/h)",
+      "sprint": "Allure soutenue (13,7 km/h)",
+      "totalCalories": "Énergie totale dépensée",
+      "caloriesPerHour": "Dépense horaire",
+      "hours": "Durée estimée de course",
+      "met": "Facteur MET de travail",
+      "note": "La dépense mécanique en course dépend du déplacement du centre de gravité et de la masse corporelle."
+    },
+    "tdee": {
+      "heading": "Dépense énergétique totale quotidienne",
+      "tdee": "Dépense énergétique totale (TDEE)",
+      "bmr": "Métabolisme de base (BMR)",
+      "multiplier": "Coefficient d'activité physique",
+      "note": "La TDEE multiplie le métabolisme de base par le facteur d'activité physique standard (PAL)."
+    },
+    "waistToHeight": {
+      "heading": "Rapport taille-stature (WHtR)",
+      "waist": "Tour de taille (cm)",
+      "height": "Taille corporelle (cm)",
+      "ratio": "Ratio taille/stature",
+      "risk": "Profil de risque cardiométabolique",
+      "lowRisk": "Profil favorable (< 0,50)",
+      "moderateRisk": "Risque modéré (0,50 - 0,60)",
+      "highRisk": "Risque accru (> 0,60)",
+      "note": "Maintenir son tour de taille sous la moitié de sa stature est associé à une meilleure santé cardiovasculaire."
+    },
+    "waistToHip": {
+      "heading": "Rapport taille-hanches (WHR)",
+      "waist": "Tour de taille (cm)",
+      "hip": "Tour de hanches (cm)",
+      "ratio": "Ratio taille/hanches",
+      "risk": "Classification du risque cardiovasculaire",
+      "lowRisk": "Risque faible",
+      "moderateRisk": "Risque modéré",
+      "highRisk": "Risque élevé",
+      "note": "L'OMS identifie l'accumulation abdominale de graisse androïde comme un facteur de risque cardiovasculaire indépendant."
+    },
+    "walkingCalories": {
+      "heading": "Dépense énergétique en marche",
+      "pace": "Allure de marche",
+      "distance": "Distance (km)",
+      "slow": "Marche lente (3,2 km/h)",
+      "moderate": "Marche modérée (4,8 km/h)",
+      "brisk": "Marche rapide (5,6 km/h)",
+      "fast": "Marche sportive (6,4 km/h)",
+      "totalCalories": "Énergie totale dépensée",
+      "caloriesPerHour": "Dépense horaire",
+      "hours": "Durée estimée de marche",
+      "met": "Facteur MET de travail",
+      "note": "La marche offre un conditionnement aérobie à faible impact dont le coût énergétique varie selon la distance."
     }
   }
 }

@@ -875,6 +875,118 @@
       "limits": "Feuchtigkeitsgehalt, Siebung und Humusanteil verändern Schüttdichte und Verdichtungsvolumen auf der Baustelle erheblich.",
       "question": "Wie wirkt sich die Dichte auf das Tonnagegewicht aus?",
       "answer": "Trockener, lockerer Mutterboden wiegt etwa 1,2 t/m³, während feuchte oder stark verdichtete Erde 1,6 t/m³ und mehr erreicht."
+    },
+    "bmi-calculator": {
+      "title": "BMI-Rechner",
+      "description": "Berechnen Sie Ihren Body-Mass-Index (BMI) und Ihren gesunden Gewichtsbereich online.",
+      "how": "Geben Sie Körpergewicht und Größe metrisch oder imperial ein, um Ihre Gewichtseinstufung zu ermitteln.",
+      "limits": "Der BMI ist ein statistischer Schätzwert und differenziert nicht zwischen Muskelmasse und Körperfett.",
+      "question": "Berücksichtigt der BMI Muskelmasse?",
+      "answer": "Nein. Sehr muskulöse Sportler können trotz minimalen Fettanteils als übergewichtig eingestuft werden."
+    },
+    "bmr-calculator": {
+      "title": "Grundumsatz-Rechner (BMR)",
+      "description": "Berechnen Sie Ihren Grundumsatz (BMR) und Ihren täglichen Kalorienbedarf in Ruhe.",
+      "how": "Geben Sie Alter, Geschlecht, Größe und Gewicht ein, um den Grundumsatz nach Mifflin-St. Jeor zu berechnen.",
+      "limits": "Der Grundumsatz setzt normale Schilddrüsenfunktion und neutrale Umgebungstemperatur voraus.",
+      "question": "Was unterscheidet BMR von TDEE?",
+      "answer": "Der BMR beziffert den Energieaufwand in völliger Ruhe, während der TDEE Alltagsaktivität und Sport einbezieht."
+    },
+    "body-fat-calculator": {
+      "title": "Körperfettrechner",
+      "description": "Schätzen Sie Ihren Körperfettanteil und Ihre Körperzusammensetzung mit der US-Navy-Methode.",
+      "how": "Messen Sie Hals-, Taillen- und Hüftumfang sowie Körpergröße zur Ermittlung der Körperfettverteilung.",
+      "limits": "Die Maßbandmethode schätzt die Körperdichte mit einer geringen Abweichung gegenüber DEXA-Scans.",
+      "question": "Wie straff sollte das Maßband anliegen?",
+      "answer": "Das Maßband sollte eng am Körper anliegen, ohne das Unterhautgewebe einzuschnüren."
+    },
+    "calorie-calculator": {
+      "title": "Kalorienrechner",
+      "description": "Berechnen Sie Ihren täglichen Kalorienbedarf für Gewichtserhalt, Fettabbau oder Muskelaufbau.",
+      "how": "Geben Sie Ihre Körperdaten und sportliche Aktivität ein, um zielgerichtete Kalorienmengen zu berechnen.",
+      "limits": "Der tatsächliche Verbrauch schwankt durch nahrungsinduzierte Thermogenese und Alltagsbewegung.",
+      "question": "Welches Kaloriendefizit ist empfehlenswert?",
+      "answer": "Ein moderates Defizit von 300 bis 500 Kalorien pro Tag schützt Muskelmasse und baut gezielt Fett ab."
+    },
+    "calories-burned-calculator": {
+      "title": "Kalorienverbrauch-Rechner",
+      "description": "Berechnen Sie Ihren Kalorienverbrauch bei verschiedenen sportlichen Aktivitäten basierend auf MET-Werten.",
+      "how": "Wählen Sie Ihre Sportart, geben Sie die Trainingsdauer in Minuten und Ihr Körpergewicht ein.",
+      "limits": "Witterungseinflüsse, Steigungen und individuelle Bewegungseffizienz beeinflussen den tatsächlichen Energieumsatz.",
+      "question": "Was bedeutet ein MET-Wert?",
+      "answer": "Der MET-Wert beziffert den Energieverbrauch einer Aktivität im Verhältnis zum Ruheumsatz."
+    },
+    "healthy-weight-calculator": {
+      "title": "Gesundes-Gewicht-Rechner",
+      "description": "Ermitteln Sie Ihren gesunden Gewichtsbereich und Ihr Idealgewicht basierend auf Körpergröße und BMI-Richtwerten.",
+      "how": "Geben Sie Körpergröße und aktuelles Gewicht ein, um Ihren Status nach WHO-Vorgaben zu prüfen.",
+      "limits": "Die Grenzwerte gelten für Erwachsene und ersetzen keine ganzheitliche ärztliche Diagnostik.",
+      "question": "Welcher BMI-Bereich gilt als gesund?",
+      "answer": "Ein BMI zwischen 18,5 und 24,9 entspricht international dem gesunden Normalgewichtsbereich."
+    },
+    "heart-rate-calculator": {
+      "title": "Herzfrequenz-Rechner",
+      "description": "Rechnen Sie manuelle Pulsmessungen in BPM um und ermitteln Sie Ihre Trainings-Herzfrequenzzonen.",
+      "how": "Zählen Sie Ihren Puls am Handgelenk oder Hals für 15, 30 oder 60 Sekunden zur Berechnung der Herzschläge pro Minute.",
+      "limits": "Altersbasierte Schätzungen der maximalen Herzfrequenz weisen eine Streuung von etwa 10 bis 12 BPM auf.",
+      "question": "Warum sinkt der Ruhepuls durch Ausdauertraining?",
+      "answer": "Ausdauersport vergrößert das Schlagvolumen des Herzens, sodass im Ruhezustand weniger Schläge erforderlich sind."
+    },
+    "ideal-weight-calculator": {
+      "title": "Idealgewicht-Rechner",
+      "description": "Berechnen Sie Ihr Idealgewicht nach den Formeln von Robinson, Miller, Devine und Hamwi.",
+      "how": "Wählen Sie das Geschlecht und tragen Sie Ihre Größe ein, um vier anerkannte Formeln zu vergleichen.",
+      "limits": "Die Gleichungen stellen statistische Näherungswerte dar und berücksichtigen weder Knochenbau noch Muskelmasse.",
+      "question": "Warum weichen die vier Formeln voneinander ab?",
+      "answer": "Jede Formel stützt sich auf eigenständige historische Kohorten und leicht unterschiedliche Berechnungsansätze."
+    },
+    "lean-body-mass-calculator": {
+      "title": "Magermasse-Rechner",
+      "description": "Berechnen Sie Ihre fettfreie Magermasse und Fettmasse basierend auf Gewicht und Körperfettanteil.",
+      "how": "Geben Sie Gesamtgewicht und Körperfettanteil ein, um Fettgewebe von funktioneller stoffwechselaktiver Magermasse zu trennen.",
+      "limits": "Die Exaktheit des Ergebnisses steht in direkter Abhängigkeit zur Präzision der Körperfettmessung.",
+      "question": "Warum ist der Erhalt der Magermasse bei einer Diät wichtig?",
+      "answer": "Er stellt sicher, dass Gewichtsverlust primär Fettgewebe abbaut und wertvolle Muskulatur schützt."
+    },
+    "running-calories-calculator": {
+      "title": "Lauf-Kalorienrechner",
+      "description": "Schätzen Sie Ihren Kalorienverbrauch beim Laufen anhand von Tempo, Distanz und Körpergewicht.",
+      "how": "Wählen Sie Ihre Tempokategorie, geben Sie die Distanz in Kilometern und Ihr Gewicht ein, um den Gesamtkalorienverbrauch zu berechnen.",
+      "limits": "Steigungen, Gegenwind, Laufuntergrund und individueller Laufstil modulieren den tatsächlichen Energieaufwand.",
+      "question": "Verbrennt schnelleres Laufen mehr Kalorien pro Kilometer?",
+      "answer": "Der Energieaufwand pro Kilometer ist im aeroben Bereich weitgehend konstant, jedoch steigt der Verbrauch pro Zeiteinheit mit höherem Tempo."
+    },
+    "tdee-calculator": {
+      "title": "TDEE-Rechner (Gesamtenergiebedarf)",
+      "description": "Berechnen Sie Ihren gesamten täglichen Energieverbrauch (TDEE) basierend auf Ihrem Aktivitätsniveau.",
+      "how": "Geben Sie Alter, Geschlecht, Körpermaße und sportliche Betätigung ein, um Ihre Erhaltungskalorien zu ermitteln.",
+      "limits": "Der berechnete Wert dient als valider Richtwert, der anhand realer Gewichtsentwicklungen feinjustiert werden sollte.",
+      "question": "Welchen Einfluss hat NEAT auf den Gesamtumsatz?",
+      "answer": "Spontane Alltagsaktivität ohne Sport (Gehen, Stehen, Treppensteigen) kann den täglichen Kalorienverbrauch um Hunderte Kalorien verändern."
+    },
+    "waist-to-height-ratio-calculator": {
+      "title": "Taille-zu-Größe-Verhältnis Rechner",
+      "description": "Bewerten Sie kardiovaskuläre Gesundheitsrisiken anhand des Verhältnisses von Taillenumfang zu Körpergröße.",
+      "how": "Messen Sie den Taillenumfang mittig zwischen Rippenbogen und Beckenkamm und teilen Sie ihn durch die Körpergröße.",
+      "limits": "Das WHtR ist ein anthropometrischer Risikomarker und ersetzt kein klinisches Blutdruck- oder Lipidprofil.",
+      "question": "Warum gilt das Taille-Größe-Verhältnis als aussagekräftiger als der BMI?",
+      "answer": "Es erfasst gezielt das kardiometabolisch riskante viszerale Bauchfett, ohne muskulöse Staturen fälschlich als übergewichtig einzustufen."
+    },
+    "waist-to-hip-ratio-calculator": {
+      "title": "Taille-Hüft-Verhältnis Rechner",
+      "description": "Beurteilen Sie Ihre Fettverteilung und Gesundheitsrisiken mit dem Taille-Hüft-Verhältnis.",
+      "how": "Messen Sie die Taille an der schmalsten Stelle und die Hüfte an der breitesten Stelle des Gesäßes.",
+      "limits": "Das Taille-Hüft-Verhältnis beschreibt das Verteilungsmuster und nicht die absolute Gesamtmenge an Körperfett.",
+      "question": "Welche Risiken birgt ein erhöhtes Taille-Hüft-Verhältnis?",
+      "answer": "Ein Quotient über 0,90 bei Männern oder 0,85 bei Frauen geht mit einem erhöhten Risiko für Diabetes und Bluthochdruck einher."
+    },
+    "walking-calories-calculator": {
+      "title": "Geh-Kalorienrechner",
+      "description": "Berechnen Sie Ihren Kalorienverbrauch beim Spazierengehen oder Walken nach Tempo und Distanz.",
+      "how": "Wählen Sie Ihre Gehgeschwindigkeit, geben Sie die Strecke in Kilometern und Ihr Gewicht für die Berechnung ein.",
+      "limits": "Steigungen, Rucksackgewicht und unwegsames Gelände steigern den energetischen Aufwand spürbar.",
+      "question": "Welchen Vorzug hat zügiges Gehen gegenüber Joggen?",
+      "answer": "Gehen verbraucht pro Zeiteinheit weniger Kalorien, schont dafür Gelenkstrukturen und Bänder vor Stoßbelastungen."
     }
   },
   "flexOptions": {
@@ -3453,6 +3565,193 @@
       "yd3": "Kubikyards",
       "m3": "Kubikmeter",
       "tons": "Geschätzte Tonnen"
+    }
+  },
+  "health": {
+    "common": {
+      "results": "Ergebnisse",
+      "errorCheck": "Geben Sie gültige positive Zahlen für die Berechnung ein.",
+      "age": "Alter",
+      "gender": "Geschlecht",
+      "male": "Männlich",
+      "female": "Weiblich",
+      "weight": "Gewicht (kg)",
+      "height": "Körpergröße (cm)",
+      "activityLevel": "Aktivitätsniveau",
+      "sedentary": "Sitzend (wenig oder keine Bewegung)",
+      "light": "Leicht aktiv (Training 1-3 Tage pro Woche)",
+      "moderate": "Mäßig aktiv (Training 3-5 Tage pro Woche)",
+      "active": "Sehr aktiv (Training 6-7 Tage pro Woche)",
+      "veryActive": "Extrem aktiv (hartes Training & schwere körperliche Arbeit)",
+      "goal": "Gewichtsziel",
+      "maintain": "Gewicht halten",
+      "lose": "Gewichtsabnahme (-500 kcal)",
+      "gain": "Gewichtszunahme (+300 kcal)",
+      "unit": "Einheitensystem",
+      "metric": "Metrisch (kg, cm)",
+      "imperial": "Imperial (lb, ft, in)",
+      "feet": "Fuß",
+      "inches": "Zoll",
+      "pounds": "Gewicht (lb)",
+      "category": "Klassifizierung",
+      "status": "Status"
+    },
+    "bmi": {
+      "heading": "Body-Mass-Index berechnen",
+      "bmi": "Body-Mass-Index (BMI)",
+      "category": "Gewichtskategorie",
+      "underweight": "Untergewicht (< 18,5)",
+      "healthyWeight": "Normalgewicht (18,5 - 24,9)",
+      "overweight": "Übergewicht (25,0 - 29,9)",
+      "obese": "Adipositas (≥ 30,0)",
+      "healthyRange": "Gesunder Gewichtsbereich",
+      "note": "Der BMI für Erwachsene ist ein statistischer Orientierungswert und unterscheidet nicht zwischen Muskel- und Fettgewebe."
+    },
+    "bmr": {
+      "heading": "Grundumsatz berechnen (BMR)",
+      "bmr": "Grundumsatz (BMR)",
+      "tdee": "Erhaltungskalorien (TDEE)",
+      "maintain": "Gewicht halten",
+      "lose": "Ziel Gewichtsabnahme",
+      "gain": "Ziel Gewichtszunahme",
+      "protein": "Protein (30%)",
+      "carbs": "Kohlenhydrate (40%)",
+      "fat": "Fett (30%)",
+      "note": "Die Mifflin-St. Jeor-Formel schätzt den energetischen Grundbedarf des Organismus in völliger Ruhe."
+    },
+    "bodyFat": {
+      "heading": "US-Navy-Körperfettmethode",
+      "waist": "Taillenumfang (cm)",
+      "hip": "Hüftumfang (cm)",
+      "neck": "Halsumfang (cm)",
+      "bodyFat": "Geschätzter Körperfettanteil",
+      "category": "Körperfettkategorie",
+      "essential": "Essentielles Fett",
+      "athletes": "Athleten",
+      "fitness": "Fitness",
+      "acceptable": "Akzeptabel",
+      "obese": "Adipös",
+      "note": "Die Formeln der US Navy schätzen den Körperfettanteil präzise über Umfangsmessungen des Körpers."
+    },
+    "calorie": {
+      "heading": "Täglicher Kalorienbedarf",
+      "targetCalories": "Empfohlene Tageszufuhr",
+      "bmr": "Basaler Energiebedarf",
+      "tdee": "Erhaltungsenergieumsatz",
+      "note": "Gewichtsveränderungen folgen der kumulativen Energiebilanz über aufeinanderfolgende Wochen."
+    },
+    "caloriesBurned": {
+      "heading": "Kalorienverbrauch nach Aktivität",
+      "activity": "Sportart / Aktivität",
+      "duration": "Dauer (Minuten)",
+      "walking": "Gehen / Spazieren (5,6 km/h)",
+      "running": "Laufen / Joggen (9,7 km/h)",
+      "cycling": "Radfahren moderat (16-19 km/h)",
+      "swimming": "Schwimmen moderates Tempo",
+      "yoga": "Yoga & Dehnen",
+      "weights": "Krafttraining",
+      "jumpingJacks": "Hampelmänner (Jumping Jacks)",
+      "dancing": "Aerobic-Tanz",
+      "totalCalories": "Verbrannte Kalorien gesamt",
+      "caloriesPerMinute": "Kalorien pro Minute",
+      "met": "Metabolisches Äquivalent (MET)",
+      "note": "Berechnungen basieren auf validierten MET-Werten des internationalen Compendium of Physical Activities."
+    },
+    "healthyWeight": {
+      "heading": "Gesunder Gewichtsbereich Rechner",
+      "bmi": "Aktueller BMI",
+      "minWeight": "Minimales Normalgewicht (BMI 18,5)",
+      "maxWeight": "Maximales Normalgewicht (BMI 24,9)",
+      "idealWeight": "Optimales Richtgewicht (BMI 22,0)",
+      "status": "Einstufung",
+      "note": "Die Grenzwerte für gesundes Körpergewicht basieren auf den Standardkriterien der Weltgesundheitsorganisation."
+    },
+    "heartRate": {
+      "heading": "Herzfrequenz und Trainingsbereiche",
+      "beatsCounted": "Gezählte Schläge",
+      "interval": "Messintervall",
+      "restingHeartRate": "Ruhepuls",
+      "pulseBpm": "Puls (BPM)",
+      "estimatedMax": "Geschätzte maximale Herzfrequenz",
+      "reserve": "Herzfrequenzreserve (HFR)",
+      "moderateZone": "Moderater Ausdauerbereich (50% - 70%)",
+      "vigorousZone": "Intensiver Bereich (70% - 85%)",
+      "seconds": "Sekunden",
+      "note": "Trainingszonen basieren auf der Karvonen-Formel und der altersabhängigen maximalen Herzfrequenz."
+    },
+    "idealWeight": {
+      "heading": "Vergleichende Idealgewichtsformeln",
+      "robinson": "Robinson-Formel (1983)",
+      "miller": "Miller-Formel (1983)",
+      "devine": "Devine-Formel (1974)",
+      "hamwi": "Hamwi-Formel (1964)",
+      "bmiMethod": "BMI-22,0-Referenzwert",
+      "note": "Klassische medizinische Berechnungsformeln bieten fundierte Vergleichswerte aus der klinischen Literatur."
+    },
+    "leanBodyMass": {
+      "heading": "Magermasse und Körperbau",
+      "bodyFat": "Körperfettanteil (%)",
+      "lbm": "Fettfreie Magermasse",
+      "fatMass": "Fettgewebsmasse",
+      "leanPercentage": "Magermasseanteil",
+      "note": "Die fettfreie Magermasse umfasst sämtliches Nicht-Fettgewebe wie Skelett, Muskelmasse, Organe und Körperwasser."
+    },
+    "runningCalories": {
+      "heading": "Energieverbrauch beim Laufen",
+      "pace": "Lauftempo / Pace",
+      "distance": "Distanz (km)",
+      "slow": "Lockerer Dauerlauf (8,0 km/h)",
+      "moderate": "Moderater Lauf (9,7 km/h)",
+      "fast": "Zügiger Dauerlauf (11,3 km/h)",
+      "sprint": "Schnelles Tempotraining (13,7 km/h)",
+      "totalCalories": "Verbrauchte Gesamtenergie",
+      "caloriesPerHour": "Verbrauch pro Stunde",
+      "hours": "Geschätzte Laufdauer",
+      "met": "MET-Intensitätsfaktor",
+      "note": "Der energetische Aufwand beim Laufen korreliert direkt mit dem Körpergewicht und der horizontalen Distanz."
+    },
+    "tdee": {
+      "heading": "Gesamter täglicher Energiebedarf",
+      "tdee": "Gesamtenergieumsatz (TDEE)",
+      "bmr": "Grundumsatz (BMR)",
+      "multiplier": "Aktivitätskoeffizient",
+      "note": "Der TDEE skaliert den Grundumsatz entsprechend dem standardisierten PAL-Faktor für körperliche Aktivität."
+    },
+    "waistToHeight": {
+      "heading": "Taille-zu-Größe-Verhältnis (WHtR)",
+      "waist": "Taillenumfang (cm)",
+      "height": "Körpergröße (cm)",
+      "ratio": "Taille-Größe-Quotient",
+      "risk": "Kardiometabolisches Risikoprofil",
+      "lowRisk": "Gesundes Profil (< 0,50)",
+      "moderateRisk": "Moderates Risiko (0,50 - 0,60)",
+      "highRisk": "Erhöhtes Risiko (> 0,60)",
+      "note": "Ein Taillenumfang von weniger als der halben Körpergröße gilt als klinischer Schutzfaktor für das Herz-Kreislauf-System."
+    },
+    "waistToHip": {
+      "heading": "Taille-Hüft-Verhältnis (WHR)",
+      "waist": "Taillenumfang (cm)",
+      "hip": "Hüftumfang (cm)",
+      "ratio": "Taille-Hüft-Quotient",
+      "risk": "Kardiovaskuläre Risikostufe",
+      "lowRisk": "Geringes Risiko",
+      "moderateRisk": "Mäßiges Risiko",
+      "highRisk": "Erhöhtes Risiko",
+      "note": "WHO-Leitlinien stufen die abdominale Fettverteilung als eigenständiges kardiovaskuläres Gesundheitsrisiko ein."
+    },
+    "walkingCalories": {
+      "heading": "Energieverbrauch beim Gehen",
+      "pace": "Gehgeschwindigkeit",
+      "distance": "Distanz (km)",
+      "slow": "Gemächliches Gehen (3,2 km/h)",
+      "moderate": "Moderater Spaziergang (4,8 km/h)",
+      "brisk": "Zügiges Gehen (5,6 km/h)",
+      "fast": "Sportliches Walken (6,4 km/h)",
+      "totalCalories": "Verbrauchte Gesamtenergie",
+      "caloriesPerHour": "Verbrauch pro Stunde",
+      "hours": "Geschätzte Gehzeit",
+      "met": "MET-Intensitätsfaktor",
+      "note": "Gehen bietet gelenkschonendes Herz-Kreislauf-Training mit einem zur Distanz und Masse linearen Kalorienverbrauch."
     }
   }
 }

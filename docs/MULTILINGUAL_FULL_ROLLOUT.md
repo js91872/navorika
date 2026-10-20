@@ -172,8 +172,22 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - Polymeric Sand Calculator
 - Mulch Calculator
 - Topsoil Calculator
+- BMI Calculator
+- BMR Calculator
+- Body Fat Calculator
+- Calorie Calculator
+- Calories Burned Calculator
+- Healthy Weight Calculator
+- Heart Rate Calculator
+- Ideal Weight Calculator
+- Lean Body Mass Calculator
+- Running Calories Calculator
+- TDEE Calculator
+- Waist to Height Ratio Calculator
+- Waist to Hip Ratio Calculator
+- Walking Calories Calculator
 
-This brings branch coverage to 101 tools per language (707 tool variants plus seven directories, 714 localized pages total). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 212 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 115 tools per language (805 tool variants plus seven directories, 812 localized pages total). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 198 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 
