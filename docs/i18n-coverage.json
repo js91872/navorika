@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 86,
-    "pendingTools": 227,
+    "publishedTools": 91,
+    "pendingTools": 222,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 602,
+    "publishedToolTranslations": 637,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -1022,8 +1022,16 @@
       "source": "src/app/(english)/tools/cement-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4039,8 +4047,16 @@
       "source": "src/app/(english)/tools/paint-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5051,8 +5067,16 @@
       "source": "src/app/(english)/tools/sand-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5398,8 +5422,16 @@
       "source": "src/app/(english)/tools/steel-weight-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5620,8 +5652,16 @@
       "source": "src/app/(english)/tools/tile-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -7545,7 +7585,7 @@
     {
       "source": "src/app/(english)/tools/cement-calculator/page.tsx",
       "routeTemplate": "/tools/cement-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8457,7 +8497,7 @@
     {
       "source": "src/app/(english)/tools/paint-calculator/page.tsx",
       "routeTemplate": "/tools/paint-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8739,7 +8779,7 @@
     {
       "source": "src/app/(english)/tools/sand-calculator/page.tsx",
       "routeTemplate": "/tools/sand-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8841,7 +8881,7 @@
     {
       "source": "src/app/(english)/tools/steel-weight-calculator/page.tsx",
       "routeTemplate": "/tools/steel-weight-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8913,7 +8953,7 @@
     {
       "source": "src/app/(english)/tools/tile-calculator/page.tsx",
       "routeTemplate": "/tools/tile-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

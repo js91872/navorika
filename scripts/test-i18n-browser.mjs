@@ -40,6 +40,8 @@ const slugs = [
   'uuid-generator-validator',
   'regex-tester', 'unix-timestamp-converter', 'utm-builder', 'meta-tag-generator',
   'robots-txt-generator',
+  'cement-calculator', 'sand-calculator', 'paint-calculator', 'tile-calculator',
+  'steel-weight-calculator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -658,6 +660,61 @@ try {
     assert.ok((await page.locator('main pre').textContent()).includes('Disallow: /private/'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
     assert.ok((await page.evaluate(() => window.__copied)).includes('Disallow: /private/'));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/cement-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('1.54') || (await page.locator('main dl').textContent()).includes('1,54'));
+    await page.locator('main input[type="number"]').first().fill('2');
+    assert.ok((await page.locator('main dl').textContent()).includes('3.08') || (await page.locator('main dl').textContent()).includes('3,08'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('1.54') || (await page.locator('main dl').textContent()).includes('1,54'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['cement-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/sand-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('50'));
+    await page.locator('main input[type="number"]').first().fill('20');
+    assert.ok((await page.locator('main dl').textContent()).includes('100'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('50'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['sand-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/paint-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('120'));
+    await page.locator('main input[type="number"]').first().fill('5');
+    assert.ok((await page.locator('main dl').textContent()).includes('90'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('120'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['paint-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/tile-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('100'));
+    await page.locator('main input[type="number"]').first().fill('5');
+    assert.ok((await page.locator('main dl').textContent()).includes('50'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('100'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['tile-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/steel-weight-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('10.65') || (await page.locator('main dl').textContent()).includes('10,65'));
+    await page.locator('main input[type="number"]').first().fill('24');
+    assert.ok((await page.locator('main dl').textContent()).includes('42.62') || (await page.locator('main dl').textContent()).includes('42,62'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('10.65') || (await page.locator('main dl').textContent()).includes('10,65'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['steel-weight-calculator'].title));
     workflowsChecked++;
     console.log(`Verified ${locale}: ${slugs.length + 1} translated pages and ${slugs.length} working tools.`);
   }

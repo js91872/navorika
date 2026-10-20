@@ -82,6 +82,11 @@ export const translatedTools = [
   'utm-builder',
   'meta-tag-generator',
   'robots-txt-generator',
+  'cement-calculator',
+  'sand-calculator',
+  'paint-calculator',
+  'tile-calculator',
+  'steel-weight-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
