@@ -64,6 +64,29 @@ try {
   for (const type of ['WebApplication', 'Article', 'FAQPage', 'BreadcrumbList']) assert.ok(types.includes(type), type);
   assert.match(await (await context.request.get(`${base}/sitemap.xml`)).text(), /tools\/reverse-sales-tax-calculator/);
   assert.match(await (await context.request.get(`${base}/tools.json`)).text(), /reverse-sales-tax-calculator/);
+  const guidePath = '/guides/how-to-back-out-sales-tax-us';
+  for (const path of ['/', '/hubs/finance', '/tools/profit-margin-markup-calculator']) {
+    assert.equal((await page.goto(`${base}${path}`)).status(), 200);
+    assert.ok(await page.locator('a[href="/tools/reverse-sales-tax-calculator"]').count() > 0, `${path} links to calculator`);
+  }
+  assert.equal((await page.goto(`${base}${guidePath}`)).status(), 200);
+  await page.getByRole('heading', { level: 1, name: 'How to Back Out Sales Tax in the US: Receipts & Excel', exact: true }).waitFor();
+  assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://navorika.com${guidePath}`);
+  assert.ok(await page.locator('a[href="/tools/reverse-sales-tax-calculator"]').count() > 0);
+  assert.ok(await page.locator('a[href="/downloads/us-reverse-sales-tax-template.xlsx"]').count() > 0);
+  for (const width of [375, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `Guide overflow at ${width}`);
+  }
+  if (process.env.TAX_GUIDE_SCREENSHOT) await page.screenshot({ path: process.env.TAX_GUIDE_SCREENSHOT });
+  const template = await context.request.get(`${base}/downloads/us-reverse-sales-tax-template.xlsx`);
+  assert.equal(template.status(), 200);
+  const templateZip = await JSZip.loadAsync(await template.body());
+  const templateSheet = await templateZip.file('xl/worksheets/sheet1.xml').async('string');
+  assert.match(templateSheet, /<(?:\w+:)?f[^>]*>IF/);
+  assert.match(templateSheet, /ROUND/);
+  assert.match(await (await context.request.get(`${base}/sitemap.xml`)).text(), /guides\/how-to-back-out-sales-tax-us/);
+  assert.equal((await context.request.get(`${base}/guides/gst-calculation-guide`)).status(), 200);
   assert.deepEqual(errors, []);
-  console.log('PASS: receipt arithmetic, rate mode, validation, clear, currency, clipboard, PDF/XLSX downloads, 3 viewport widths, canonical, 4 schema types, sitemap/catalog, no browser errors.');
+  console.log('PASS: receipt arithmetic, rate mode, validation, clear, currency, clipboard, PDF/XLSX downloads, 3 viewport widths, canonical, 4 schema types, sitemap/catalog, US guide, incoming links, editable template, India guide preserved, no browser errors.');
 } finally { await browser.close(); }

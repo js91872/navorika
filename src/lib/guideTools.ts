@@ -1,5 +1,6 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'how-to-back-out-sales-tax-us': ['reverse-sales-tax-calculator', 'profit-margin-markup-calculator', 'break-even-calculator'],
   'how-to-calculate-fertilizer-for-a-lawn': ['fertilizer-calculator', 'land-area-converter', 'mulch-calculator', 'topsoil-calculator'],
   'fertilizer-npk-numbers-explained': ['fertilizer-calculator', 'land-area-converter', 'square-footage-calculator', 'topsoil-calculator'],
   'how-to-calculate-fertilizer-from-a-soil-test': ['fertilizer-calculator', 'land-area-converter', 'square-footage-calculator'],

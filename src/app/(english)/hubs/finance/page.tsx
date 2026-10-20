@@ -37,6 +37,12 @@ export default function FinanceHub() {
           </p>
         </div>
 
+        <section className="mb-12 rounded-2xl border border-indigo-500/25 bg-indigo-500/5 p-6">
+          <h2 className="text-2xl font-bold">Check the sales tax included in a US receipt</h2>
+          <p className="mt-3 max-w-3xl leading-7 text-[var(--muted-foreground)]">Know the total paid and tax rate? Find the price before tax, view the calculation steps, and download the breakdown as PDF or Excel.</p>
+          <div className="mt-5 flex flex-wrap gap-4"><Link href="/tools/reverse-sales-tax-calculator" className="rounded-xl bg-indigo-600 px-5 py-3 font-semibold text-white">Open Reverse Sales Tax Calculator</Link><Link href="/guides/how-to-back-out-sales-tax-us" className="rounded-xl border border-indigo-500/30 px-5 py-3 font-semibold">US receipt and Excel guide</Link></div>
+        </section>
+
         {/* Finance Calculators */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
