@@ -315,6 +315,86 @@
       "limits": "Modèle hydrologique théorique. Ne tient pas compte des débordements d’orages violents, du gel ni du traitement pour eau potable.",
       "question": "À quoi correspond la perte de premier lavage ?",
       "answer": "Le déviateur de premier jus élimine les premières eaux chargées de poussières et débris, soit environ 5 % des précipitations."
+    },
+    "dog-age-breed-specific-calculator": {
+      "title": "Calculateur d’âge canin — Par race et taille",
+      "description": "Calculez l’âge de votre chien en équivalent humain selon les courbes de développement par gabarit (chiot, jeune adulte, adulte et sénior).",
+      "how": "Indiquez l’âge de votre chien en années et sélectionnez la catégorie de taille adulte de sa race.",
+      "limits": "Estimations statistiques basées sur des cohortes vétérinaires. La génétique, l’alimentation et le suivi médical modifient le vieillissement biologique.",
+      "question": "Pourquoi les chiens de grande taille vieillissent-ils plus vite ?",
+      "answer": "Les grandes races connaissent une croissance cellulaire accélérée et une usure physiologique plus rapide, atteignant le stade sénior bien avant les petites races."
+    },
+    "puppy-growth-predictor": {
+      "title": "Prédicteur de croissance du chiot",
+      "description": "Estimez le poids adulte de votre chiot et suivez ses étapes de développement selon son âge actuel, son poids et son gabarit.",
+      "how": "Saisissez l’âge actuel en semaines, le poids relevé et la catégorie de race attendue à l’âge adulte.",
+      "limits": "Les courbes de croissance représentent des moyennes de population. Les croisements et l’alimentation créent des variations individuelles.",
+      "question": "À quel âge un chiot atteint-il sa taille adulte définitive ?",
+      "answer": "Les petites races achèvent leur croissance squelettique vers 9 à 12 mois, tandis que les races grandes et géantes grandissent jusqu’à 18 ou 24 mois."
+    },
+    "cat-calorie-calculator": {
+      "title": "Calculateur de calories pour chat et chaton",
+      "description": "Estimez les besoins énergétiques quotidiens des chats adultes et chatons selon leur poids, stade de vie et niveau d’activité.",
+      "how": "Indiquez le poids en kilogrammes et sélectionnez le statut physiologique, l’âge ou le niveau d’activité.",
+      "limits": "Estimations générales fondées sur les équations nutritionnelles félines. Ne remplace pas un régime médical ni une prescription vétérinaire.",
+      "question": "Qu’est-ce que le besoin énergétique au repos (BER) félin ?",
+      "answer": "Le BER représente l’énergie vitale minimale au repos, calculée selon la formule standard 70 × (poids en kg)^0,75."
+    },
+    "caffeine-half-life-calculator": {
+      "title": "Calculateur de demi-vie de la caféine",
+      "description": "Estimez la quantité de caféine encore présente dans votre organisme après plusieurs heures selon une demi-vie personnalisable.",
+      "how": "Indiquez la dose de caféine consommée en milligrammes, les heures écoulées et la demi-vie métabolique estimée.",
+      "limits": "Modélisation pharmacocinétique théorique. L’élimination varie selon les enzymes hépatiques (CYP1A2), la grossesse, le tabac et les médicaments.",
+      "question": "Quelle est la demi-vie moyenne de la caféine chez l’adulte ?",
+      "answer": "Chez un adulte en bonne santé, la demi-vie se situe en moyenne entre 4 et 6 heures, ce qui signifie que la moitié de la dose subsiste après cette durée."
+    },
+    "hrv-baseline-deviation-calculator": {
+      "title": "Calculateur d’écart de baseline VFC",
+      "description": "Comparez votre variabilité de la fréquence cardiaque (VFC) du jour à votre moyenne de référence pour évaluer votre niveau de récupération.",
+      "how": "Saisissez votre moyenne de base établie sur 7 à 30 jours (en ms) et votre mesure de VFC au repos ce matin.",
+      "limits": "Analyse comparative purement mathématique. Le sommeil, la respiration et la posture influencent les relevés ; aucun diagnostic médical n’est établi.",
+      "question": "Que traduit une baisse sensible de la VFC au repos ?",
+      "answer": "Une chute sous la moyenne de base signale généralement une prédominance du système sympathique liée à la fatigue, au stress ou à un début d’infection."
+    },
+    "wilks-dots-powerlifting-calculator": {
+      "title": "Calculateur de score force Wilks et DOTS",
+      "description": "Calculez et comparez vos indices de force athlétique Wilks et DOTS à partir du poids de corps, du total soulevé et du sexe biologique.",
+      "how": "Sélectionnez la catégorie de notation, renseignez votre poids de corps en kg et votre total cumulé en compétition (squat, développé couché, soulevé de terre).",
+      "limits": "Standardise les performances relatives entre catégories de poids sans prévaloir sur les règlements de fédérations spécifiques.",
+      "question": "Quelle est la différence entre les formules Wilks et DOTS ?",
+      "answer": "Wilks repose sur un polynôme de degré 5 établi en 1994, alors que DOTS utilise des coefficients récents réduisant le biais envers les catégories moyennes et lourdes."
+    },
+    "macronutrient-calculator": {
+      "title": "Calculateur de macronutriments",
+      "description": "Calculez vos objectifs journaliers en protéines, glucides et lipides en grammes et en calories selon votre dépense et vos objectifs sportifs.",
+      "how": "Indiquez votre objectif calorique quotidien, sélectionnez votre profil nutritionnel et renseignez votre poids de corps en kg.",
+      "limits": "Répartition énergétique théorique. Les dépenses réelles, la charge d’entraînement et les particularités métaboliques nécessitent un ajustement individuel.",
+      "question": "Quelle est la valeur calorique d’un gramme de chaque macronutriment ?",
+      "answer": "Selon les facteurs d’Atwater, 1 g de protéines apporte 4 kcal, 1 g de glucides apporte 4 kcal et 1 g de lipides apporte 9 kcal."
+    },
+    "running-pace-calculator": {
+      "title": "Calculateur d’allure de course à pied",
+      "description": "Calculez votre allure par kilomètre et par mile, votre temps de passage, vos prévisions de course et votre vitesse du 5 km au marathon.",
+      "how": "Choisissez une distance de course ou saisissez une distance personnalisée, puis indiquez votre temps chronométré en heures, minutes et secondes.",
+      "limits": "Les projections chronométriques appliquent la formule d’endurance de Pete Riegel, qui présuppose une préparation spécifique sur la distance cible.",
+      "question": "Comment la formule de Riegel prédit-elle les performances en course ?",
+      "answer": "La formule de Riegel utilise T2 = T1 × (D2 / D1)^1,06 pour modéliser la fatigue aérobie proportionnellement à l’augmentation de la distance."
+    },
+    "hydration-calculator": {
+      "title": "Calculateur d’hydratation quotidienne",
+      "description": "Estimez vos besoins journaliers recommandés en eau en litres, onces liquides et verres selon votre poids, votre activité et le climat.",
+      "how": "Indiquez votre poids en kg, la durée quotidienne d’exercice en minutes et votre environnement climatique habituel.",
+      "limits": "Guide d’apport hydrique général ; les sudations extrêmes, la fièvre ou certaines pathologies rénales requièrent un suivi médical adapté.",
+      "question": "L’eau contenue dans les aliments compte-t-elle dans l’apport hydrique ?",
+      "answer": "Oui, les aliments riches en eau (fruits, légumes, potages) fournissent habituellement 20 % à 30 % du volume hydrique journalier total."
+    },
+    "one-rep-max-calculator": {
+      "title": "Calculateur de 1RM (Charge maximale)",
+      "description": "Calculez votre répétition maximale (1RM) au développé couché, squat ou soulevé de terre grâce aux formules d’Epley, Brzycki et Lander.",
+      "how": "Indiquez la charge soulevée (kg ou lb), les répétitions réussies (de 1 à 30) et sélectionnez la formule mathématique souhaitée.",
+      "limits": "Les formules sous-maximales sont optimales entre 2 et 10 répétitions ; au-delà de 10, l’endurance musculaire fausse l’estimation de la force brute.",
+      "question": "Quelle formule offre la meilleure précision pour estimer le 1RM ?",
+      "answer": "Les formules d’Epley et de Brzycki constituent les références historiques ; faire la moyenne des deux assure une excellente fiabilité."
     }
   },
   "flexOptions": {
@@ -949,12 +1029,305 @@
       },
       "note": "Calcul basé sur la constante hydrologique standard (1 po de pluie sur 1 pi² = 0,6233 gallon US) affectée du coefficient de ruissellement et du déviateur.",
       "textResults": {}
+    },
+    "dog-age-breed-specific-calculator": {
+      "fields": {
+        "dogAge": {
+          "label": "Âge du chien (années)"
+        },
+        "breedSize": {
+          "label": "Catégorie de gabarit et taille",
+          "help": "Les petites races se développent plus vite la première année mais vieillissent plus lentement par la suite.",
+          "options": {
+            "small": "Petite taille (moins de 9 kg / 20 lb)",
+            "medium": "Taille moyenne (9,5 à 23 kg / 21–50 lb)",
+            "large": "Grande taille (23,5 à 41 kg / 51–90 lb)",
+            "giant": "Taille géante (plus de 41 kg / 90+ lb)"
+          }
+        }
+      },
+      "results": {
+        "humanEquivalent": "Équivalent humain estimé (années)",
+        "lifeStage": "Stade de développement biologique"
+      },
+      "note": "L’âge équivalent humain est une approximation informative. La génétique, le poids individuel, le mode de vie et les soins vétérinaires influencent fortement le vieillissement biologique.",
+      "textResults": {
+        "lifeStage": "localized"
+      }
+    },
+    "puppy-growth-predictor": {
+      "fields": {
+        "ageWeeks": {
+          "label": "Âge du chiot (en semaines)"
+        },
+        "currentWeight": {
+          "label": "Poids actuel du chiot (lb ou kg)",
+          "help": "Les résultats s'affichent dans la même unité de masse que celle saisie."
+        },
+        "breedSize": {
+          "label": "Gabarit adulte estimé de la race",
+          "help": "Les petites races atteignent leur taille adulte bien plus rapidement (9–10 mois) que les races géantes (18–24 mois).",
+          "options": {
+            "small": "Petite race (adulte sous 10 kg / 22 lb)",
+            "medium": "Race moyenne (adulte de 10 à 25 kg / 22–55 lb)",
+            "large": "Grande race (adulte de 25 à 45 kg / 55–100 lb)",
+            "giant": "Race géante (adulte de plus de 45 kg / 100+ lb)"
+          }
+        }
+      },
+      "results": {
+        "estimatedAdultWeight": "Poids adulte projeté",
+        "lowEstimate": "Estimation basse de la fourchette",
+        "highEstimate": "Estimation haute de la fourchette",
+        "growthProgress": "Progression pondérale réalisée"
+      },
+      "note": "Les courbes de croissance sont des approximations basées sur les moyennes par gabarit. La nutrition, la génétique et l’état de santé entraînent des écarts individuels.",
+      "textResults": {}
+    },
+    "cat-calorie-calculator": {
+      "fields": {
+        "weightKg": {
+          "label": "Poids corporel du chat (kg)"
+        },
+        "factor": {
+          "label": "Facteur physiologique et d'activité",
+          "help": "Multiplie le besoin énergétique au repos (70 × poids^0,75) par le facteur correspondant au stade de vie.",
+          "options": {
+            "neutered-adult": "Adulte stérilisé (1,2× BER)",
+            "intact-adult": "Adulte entier non stérilisé (1,4× BER)",
+            "inactive-prone": "Adulte sédentaire d'intérieur (1,0× BER)",
+            "active-adult": "Adulte très actif avec accès extérieur (1,6× BER)",
+            "kitten-young": "Chaton de moins de 4 mois (2,5× BER)",
+            "kitten-older": "Chaton de 4 à 12 mois (2,0× BER)",
+            "senior": "Chat sénior / âgé (1,1× BER)"
+          }
+        }
+      },
+      "results": {
+        "rer": "Besoin énergétique au repos (kcal/jour)",
+        "dailyCalories": "Apport calorique journalier estimé (kcal/jour)"
+      },
+      "note": "Estimations énergétiques informatives basées sur les formules félines usuelles. Ne constitue pas une prescription diététique ni un plan d’amaigrissement médical. Consultez un vétérinaire pour un suivi personnalisé.",
+      "textResults": {}
+    },
+    "caffeine-half-life-calculator": {
+      "fields": {
+        "doseMg": {
+          "label": "Dose de caféine ingérée (mg)",
+          "help": "Café filtre classique 240 ml ~95 mg ; expresso ~63 mg ; boisson énergisante ~160 mg."
+        },
+        "hoursElapsed": {
+          "label": "Temps écoulé depuis l'ingestion (heures)"
+        },
+        "halfLifeHours": {
+          "label": "Demi-vie plasmatique estimée (heures)",
+          "help": "Chez l’adulte sain, la demi-vie varie de 4 à 6 heures (médiane courante ~5 heures)."
+        }
+      },
+      "results": {
+        "remainingMg": "Caféine résiduelle estimée (mg)",
+        "remainingPercent": "Proportion de caféine résiduelle (%)",
+        "eliminatedMg": "Caféine éliminée estimée (mg)"
+      },
+      "note": "Estimation pharmacocinétique basée sur une décroissance exponentielle. Les taux d’élimination varient selon la génétique (CYP1A2), la grossesse, les contraceptifs oraux, le tabagisme, les traitements et l’âge.",
+      "textResults": {}
+    },
+    "hrv-baseline-deviation-calculator": {
+      "fields": {
+        "baselineHrv": {
+          "label": "VFC de référence personnelle (ms)",
+          "help": "Votre moyenne mobile établie sur 7 à 30 jours au repos (ex. rMSSD ou SDNN)."
+        },
+        "currentHrv": {
+          "label": "Mesure de VFC du jour (ms)",
+          "help": "Mesurée dans des conditions matinales de repos régulières."
+        }
+      },
+      "results": {
+        "absoluteDifference": "Différence absolue (ms)",
+        "percentDeviation": "Écart relatif à la référence",
+        "ratio": "Rapport mesure / référence",
+        "direction": "Tendance par rapport à la référence"
+      },
+      "note": "Comparaison mathématique uniquement. Les capteurs, le sommeil, les rythmes circadiens et la posture de mesure influencent les valeurs. Ne constitue pas un diagnostic médical ou de santé.",
+      "textResults": {
+        "direction": "localized"
+      }
+    },
+    "wilks-dots-powerlifting-calculator": {
+      "fields": {
+        "sex": {
+          "label": "Catégorie de classement",
+          "options": {
+            "male": "Masculin",
+            "female": "Féminin"
+          }
+        },
+        "bodyweightKg": {
+          "label": "Poids de corps de l'athlète (kg)"
+        },
+        "totalKg": {
+          "label": "Total en force athlétique (kg)",
+          "help": "Cumul des meilleures barres validées au squat, développé couché et soulevé de terre."
+        }
+      },
+      "results": {
+        "dotsScore": "Indice DOTS normalisé",
+        "wilksScore": "Score formule Wilks",
+        "totalBodyweightRatio": "Ratio total soulevé / poids corporel"
+      },
+      "note": "Utilise les coefficients officiels publiés pour le barème DOTS et la formule Wilks originale de 1994. Destiné à l’entraînement et à l’analyse comparative des performances.",
+      "textResults": {}
+    },
+    "macronutrient-calculator": {
+      "fields": {
+        "dailyCalories": {
+          "label": "Objectif calorique quotidien (kcal)"
+        },
+        "macroSplitGoal": {
+          "label": "Répartition selon objectif nutritionnel",
+          "options": {
+            "balanced": "Équilibré (30% P / 40% G / 30% L)",
+            "fat-loss": "Sèche / Perte de graisse (35% P / 35% G / 30% L)",
+            "muscle-gain": "Prise de muscle / Volume (30% P / 50% G / 20% L)",
+            "keto": "Cétogène / Low-Carb (25% P / 5% G / 70% L)",
+            "endurance": "Sports d'endurance (20% P / 60% G / 20% L)"
+          }
+        },
+        "bodyWeightKg": {
+          "label": "Poids corporel (kg, contrôle du ratio protéique)"
+        }
+      },
+      "results": {
+        "proteinGrams": "Protéines quotidiennes (g)",
+        "proteinCalories": "Énergie issue des protéines (kcal)",
+        "carbGrams": "Glucides quotidiens (g)",
+        "carbCalories": "Énergie issue des glucides (kcal)",
+        "fatGrams": "Lipides quotidiens (g)",
+        "fatCalories": "Énergie issue des lipides (kcal)",
+        "proteinPerKgBodyweight": "Ratio protéique (g/kg de poids corporel)"
+      },
+      "note": "La conversion calorique applique les facteurs standards d’Atwater (4 kcal/g pour protéines et glucides, 9 kcal/g pour les lipides). Un apport de 1,6 à 2,2 g/kg de protéines est couramment préconisé dans la littérature sportive.",
+      "textResults": {}
+    },
+    "running-pace-calculator": {
+      "fields": {
+        "raceDistancePreset": {
+          "label": "Distance prédéfinie de course",
+          "options": {
+            "5k": "5 kilomètres (5K)",
+            "10k": "10 kilomètres (10K)",
+            "half-marathon": "Semi-marathon (21,1 km / 13,1 mi)",
+            "marathon": "Marathon complet (42,2 km / 26,2 mi)",
+            "custom": "Distance personnalisée (champ ci-dessous)"
+          }
+        },
+        "distanceKm": {
+          "label": "Distance personnalisée (km)"
+        },
+        "timeHours": {
+          "label": "Heures cibles / écoulées"
+        },
+        "timeMinutes": {
+          "label": "Minutes écoulées"
+        },
+        "timeSeconds": {
+          "label": "Secondes"
+        }
+      },
+      "results": {
+        "pacePerKm": "Allure au kilomètre",
+        "pacePerMile": "Allure au mile",
+        "speedKmh": "Vitesse moyenne (km/h)",
+        "speedMph": "Vitesse moyenne (mph)",
+        "equivalent5kTime": "Projection estimée sur 5 km",
+        "equivalent10kTime": "Projection estimée sur 10 km",
+        "equivalentMarathonTime": "Projection estimée sur marathon"
+      },
+      "note": "Les allures intermédiaires et les vitesses découlent du temps chronométré total. Les équivalences utilisent la loi d’endurance de Pete Riegel (T2 = T1 × [D2 / D1]^1,06), qui modélise la fatigue aérobie.",
+      "textResults": {
+        "pacePerKm": "localized",
+        "pacePerMile": "localized",
+        "equivalent5kTime": "machine",
+        "equivalent10kTime": "machine",
+        "equivalentMarathonTime": "machine"
+      }
+    },
+    "hydration-calculator": {
+      "fields": {
+        "bodyWeightKg": {
+          "label": "Poids de corps (kg)"
+        },
+        "exerciseDurationMinutes": {
+          "label": "Durée quotidienne d'activité physique (minutes)"
+        },
+        "climateEnvironment": {
+          "label": "Climat et conditions environnementales",
+          "options": {
+            "temperate": "Tempéré / Température régulée",
+            "hot-dry": "Chaud et sec (+400 ml/jour)",
+            "hot-humid": "Chaud et humide (+600 ml/jour)",
+            "cold-high-altitude": "Froid / Haute altitude (+300 ml/jour)"
+          }
+        }
+      },
+      "results": {
+        "totalWaterLiters": "Apport total recommandé (litres/jour)",
+        "totalFluidOunces": "Volume total d'eau (onces liquides US)",
+        "standardCups8oz": "Verres standards de 240 ml (8 oz)",
+        "baselineLiters": "Hydratation basale de repos (L)",
+        "exerciseAdditionLiters": "Compensation de sudation sportive (L)"
+      },
+      "note": "Recommandations conformes aux repères de la National Academy of Medicine (base de 35 ml/kg plus compensation de la sueur). L’alimentation apporte généralement 20 à 30 % du volume hydrique total.",
+      "textResults": {}
+    },
+    "one-rep-max-calculator": {
+      "fields": {
+        "weightLifted": {
+          "label": "Charge soulevée (kg ou lb)"
+        },
+        "repetitions": {
+          "label": "Répétitions validées (1 à 30)"
+        },
+        "formulaMethod": {
+          "label": "Méthode de calcul du 1RM",
+          "options": {
+            "average": "Moyenne consensuelle (Epley + Brzycki)",
+            "epley": "Formule d'Epley",
+            "brzycki": "Formule de Brzycki",
+            "lander": "Formule de Lander",
+            "lombardi": "Formule de Lombardi"
+          }
+        }
+      },
+      "results": {
+        "estimated1rm": "Charge maximale estimée (1RM)",
+        "rep95Percent": "95% du 1RM (~2 reps)",
+        "rep90Percent": "90% du 1RM (~4 reps)",
+        "rep85Percent": "85% du 1RM (~6 reps)",
+        "rep80Percent": "80% du 1RM (~8 reps)",
+        "rep70Percent": "70% du 1RM (~12 reps)",
+        "epleyEstimate": "Résultat formule d'Epley",
+        "brzyckiEstimate": "Résultat formule de Brzycki"
+      },
+      "note": "Les formules d’estimation du 1RM sont les plus fiables entre 2 et 10 répétitions. Au-delà de 10, l’endurance musculaire tend à surestimer ou sous-estimer la force maximale neuromusculaire.",
+      "textResults": {}
     }
   },
   "calculatorStates": {
-    "matched": "Concordance",
-    "mismatch": "Écart",
-    "flat": "Horizontal",
-    "vertical": "Verticale"
+    "matched": "Conforme",
+    "mismatch": "Écart de cadrage",
+    "flat": "Plat",
+    "vertical": "Vertical",
+    "puppy": "Chiot",
+    "youngAdult": "Jeune adulte",
+    "matureAdult": "Adulte mature",
+    "senior": "Sénior",
+    "geriatric": "Gériatrique",
+    "aboveBaseline": "Supérieur à la valeur de base",
+    "belowBaseline": "Inférieur à la valeur de base",
+    "equalToBaseline": "Égal à la valeur de base",
+    "perKm": "/km",
+    "perMile": "/mi"
   }
 }

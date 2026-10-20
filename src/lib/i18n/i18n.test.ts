@@ -177,6 +177,16 @@ test('shared calculators have native controls, exact copy coverage and unchanged
     { baseVolumeFt3: 2.5, adjustedVolumeFt3: 2.75, cubicYards: 0.102, cubicMeters: 0.078, premixBags: 5, cementBags94lb: 1, sandTons: 0.12 },
     { netWallAreaFt2: 220, exactBlocks: 247.5, purchaseBlocks: 273, mortarBags80lb: 56, coreFillGroutYards: 1.67 },
     { annualYieldGallons: 39377, annualYieldLiters: 149058, monthlyAverageGallons: 3281, recommendedTankGallons: 2266, recommendedTankLiters: 8578 },
+    { humanEquivalent: 39, lifeStage: 'Mature Adult' },
+    { estimatedAdultWeight: 30, lowEstimate: 27, highEstimate: 33, growthProgress: 50 },
+    { rer: 216.3, dailyCalories: 260 },
+    { remainingMg: 87.1, remainingPercent: 43.5, eliminatedMg: 112.9 },
+    { absoluteDifference: -7, percentDeviation: -12.7, ratio: 0.87, direction: 'Below baseline' },
+    { dotsScore: 387.96, wilksScore: 383.04, totalBodyweightRatio: 6.67 },
+    { proteinGrams: 165, proteinCalories: 660, carbGrams: 220, carbCalories: 880, fatGrams: 73, fatCalories: 660, proteinPerKgBodyweight: 2.2 },
+    { pacePerKm: '4:59 /km', pacePerMile: '8:01 /mi', speedKmh: 12.06, speedMph: 7.49, equivalent5kTime: '22:50', equivalent10kTime: '47:35', equivalentMarathonTime: '3:38:55' },
+    { totalWaterLiters: 2.98, totalFluidOunces: 100.8, standardCups8oz: 12.6, baselineLiters: 2.45, exerciseAdditionLiters: 0.53 },
+    { estimated1rm: 115, epleyEstimate: 117, brzyckiEstimate: 113, landerEstimate: 114, rep95Percent: 109, rep90Percent: 104, rep85Percent: 98, rep80Percent: 92, rep70Percent: 81 },
   ];
   for (const locale of locales) {
     const d = await getDictionary(locale);
@@ -223,5 +233,23 @@ test('native PPI and ramp status adapters cover mismatch, flat, vertical and nul
       calculatorTextFormatters('joist-deflection-calculator', { span, uniformLoad, spacing: 16, elasticModulus: 1600000, width, depth }, d, locale).ratio('IGNORED');
     assert.equal(joistRatio(12, 40, 1.5, 9.25), 'L / 916');
     assert.equal(joistRatio(12, 0, 1.5, 9.25), d.calculatorUi.notApplicable);
+
+    const dogLifeStage = (dogAge: number, breedSize: string) =>
+      calculatorTextFormatters('dog-age-breed-specific-calculator', { dogAge, breedSize }, d, locale).lifeStage('IGNORED');
+    assert.equal(dogLifeStage(0.5, 'medium'), d.calculatorStates.puppy);
+    assert.equal(dogLifeStage(2, 'medium'), d.calculatorStates.youngAdult);
+    assert.equal(dogLifeStage(5, 'medium'), d.calculatorStates.matureAdult);
+    assert.equal(dogLifeStage(8, 'medium'), d.calculatorStates.senior);
+    assert.equal(dogLifeStage(11, 'medium'), d.calculatorStates.geriatric);
+    assert.equal(dogLifeStage(-1, 'medium'), d.calculatorUi.notApplicable);
+
+    const hrvDirection = (baselineHrv: number, currentHrv: number) =>
+      calculatorTextFormatters('hrv-baseline-deviation-calculator', { baselineHrv, currentHrv }, d, locale).direction('IGNORED');
+    assert.equal(hrvDirection(55, 60), d.calculatorStates.aboveBaseline);
+    assert.equal(hrvDirection(55, 50), d.calculatorStates.belowBaseline);
+    assert.equal(hrvDirection(55, 55), d.calculatorStates.equalToBaseline);
+
+    const paceKm = calculatorTextFormatters('running-pace-calculator', {}, d, locale).pacePerKm('4:59 /km');
+    assert.equal(paceKm, `4:59 ${d.calculatorStates.perKm}`);
   }
 });

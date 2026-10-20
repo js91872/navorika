@@ -79,7 +79,7 @@ Before release, also require:
 
 ## Current session checkpoint
 
-The draft branch now includes native controls, metadata, explanatory copy, result labels, validation messages, clipboard summaries and UTF-8 CSV reports for twenty-one additional calculators in all seven languages:
+The draft branch now includes native controls, metadata, explanatory copy, result labels, validation messages, clipboard summaries and UTF-8 CSV reports for thirty-one additional calculators in all seven languages (41 tools total per locale):
 
 - Image File Size Estimator
 - Photo Storage Calculator
@@ -102,8 +102,18 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - Mortar Calculator – Brick & Block Walls
 - Concrete Block Calculator
 - Rainwater Harvesting Calculator
+- Dog Age (Breed-Specific) Calculator
+- Puppy Growth Predictor
+- Cat Calorie Calculator
+- Caffeine Half-Life Calculator
+- HRV Baseline Deviation Calculator
+- Wilks & DOTS Powerlifting Calculator
+- Macronutrient Calculator
+- Running Pace Calculator
+- Daily Hydration Calculator
+- One Rep Max Calculator
 
-This brings branch coverage to 31 tools per language (217 tool variants plus seven directories). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 282 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 41 tools per language (287 tool variants plus seven directories). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 272 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

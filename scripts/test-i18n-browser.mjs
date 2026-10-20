@@ -7,7 +7,22 @@ import { PDFDocument } from 'pdf-lib';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
 const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
-const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator', 'image-file-size-estimator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'square-footage-calculator', 'cubic-yard-calculator', 'roofing-shingle-calculator', 'rafter-length-calculator', 'stud-calculator', 'drywall-mud-calculator', 'roof-ridge-height-calculator', 'fascia-replacement-cost-calculator', 'ppi-calculator', 'shed-ramp-angle-calculator', 'construction-material-waste-calculator', 'print-bleed-calculator', 'soffit-fascia-calculator', 'attic-insulation-payback-calculator', 'joist-deflection-calculator', 'hvac-duct-cfm-calculator', 'mortar-calculator', 'concrete-block-calculator', 'rainwater-harvesting-calculator'];
+const slugs = [
+  'aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker',
+  'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator',
+  'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
+  'image-file-size-estimator', 'photo-storage-calculator', 'image-bandwidth-calculator',
+  'square-footage-calculator', 'cubic-yard-calculator', 'roofing-shingle-calculator',
+  'rafter-length-calculator', 'stud-calculator', 'drywall-mud-calculator',
+  'roof-ridge-height-calculator', 'fascia-replacement-cost-calculator', 'ppi-calculator',
+  'shed-ramp-angle-calculator', 'construction-material-waste-calculator', 'print-bleed-calculator',
+  'soffit-fascia-calculator', 'attic-insulation-payback-calculator', 'joist-deflection-calculator',
+  'hvac-duct-cfm-calculator', 'mortar-calculator', 'concrete-block-calculator',
+  'rainwater-harvesting-calculator', 'dog-age-breed-specific-calculator', 'puppy-growth-predictor',
+  'cat-calorie-calculator', 'caffeine-half-life-calculator', 'hrv-baseline-deviation-calculator',
+  'wilks-dots-powerlifting-calculator', 'macronutrient-calculator', 'running-pace-calculator',
+  'hydration-calculator', 'one-rep-max-calculator',
+];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
 let serverOutput = '';
@@ -116,6 +131,16 @@ try {
       ['mortar-calculator', 500, 2.5, 5],
       ['concrete-block-calculator', 30, 220, 460],
       ['rainwater-harvesting-calculator', 2000, 39377, 78754],
+      ['dog-age-breed-specific-calculator', 5, 39, 64],
+      ['puppy-growth-predictor', 16, 30, 17.6],
+      ['cat-calorie-calculator', 4.5, 216.3, 363.7],
+      ['caffeine-half-life-calculator', 200, 87.1, 174.1],
+      ['hrv-baseline-deviation-calculator', 55, -7, -62],
+      ['wilks-dots-powerlifting-calculator', 90, 387.96, 307.72],
+      ['macronutrient-calculator', 2200, 165, 330],
+      ['running-pace-calculator', 1, 0, 0],
+      ['hydration-calculator', 70, 2.98, 5.43],
+      ['one-rep-max-calculator', 100, 115, 229],
     ]) {
       await visit(`/${locale}/tools/${slug}`);
       const ui = d.calculatorUi;
@@ -123,16 +148,22 @@ try {
       const number = isCurrency
         ? new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', currencyDisplay: 'code', maximumFractionDigits: 2 })
         : new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
-      assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
-      await page.locator('main input[type="number"]').first().fill(String(initial * 2));
-      assert.equal(await page.locator('main dd').first().textContent(), number.format(changed ?? expected * 2));
+      if (slug === 'running-pace-calculator') {
+        assert.ok((await page.locator('main dd').first().textContent()).includes('4:59'));
+        await page.locator('main input[type="number"]').nth(1).fill(String(initial * 2));
+        assert.ok((await page.locator('main dd').first().textContent()).includes('7:49'));
+      } else {
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+        await page.locator('main input[type="number"]').first().fill(String(initial * 2));
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(changed ?? expected * 2));
+      }
       await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copiedResult = text; } } }));
       await page.getByRole('button', { name: ui.copy, exact: true }).click();
       const copied = await page.evaluate(() => window.__copiedResult);
       assert.ok(copied.includes(d.tools[slug].title));
       assert.doesNotMatch(copied, /Matched|Mismatch|Not applicable|Flat \(/);
       for (const label of Object.values(d.calculators[slug].results)) assert.ok(copied.includes(label));
-      assert.ok(copied.includes(number.format(changed ?? expected * 2)));
+      assert.ok(copied.includes(slug === 'running-pace-calculator' ? '7:49' : number.format(changed ?? expected * 2)));
       const downloadEvent = page.waitForEvent('download');
       await page.getByRole('button', { name: ui.csv, exact: true }).click();
       const download = await downloadEvent;
@@ -153,6 +184,18 @@ try {
         assert.ok(csv.includes('L / 115'));
         assert.ok(copied.includes('L / 115'));
       }
+      if (slug === 'dog-age-breed-specific-calculator') {
+        assert.ok(copied.includes(d.calculatorStates.geriatric));
+        assert.ok(csv.includes(d.calculatorStates.geriatric));
+      }
+      if (slug === 'hrv-baseline-deviation-calculator') {
+        assert.ok(copied.includes(d.calculatorStates.belowBaseline));
+        assert.ok(csv.includes(d.calculatorStates.belowBaseline));
+      }
+      if (slug === 'running-pace-calculator') {
+        assert.ok(copied.includes(d.calculatorStates.perKm));
+        assert.ok(csv.includes(d.calculatorStates.perKm));
+      }
       await page.evaluate(() => { window.print = () => { window.__printOpened = true; }; });
       await page.locator('main button').last().click();
       assert.equal(await page.evaluate(() => window.__printOpened), true);
@@ -160,7 +203,11 @@ try {
       assert.equal(await page.locator('main').getByRole('alert').textContent(), ui.invalid);
       assert.equal(await page.getByRole('button', { name: ui.copy, exact: true }).count(), 0);
       await page.getByRole('button', { name: ui.reset, exact: true }).click();
-      assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+      if (slug === 'running-pace-calculator') {
+        assert.ok((await page.locator('main dd').first().textContent()).includes('4:59'));
+      } else {
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+      }
       await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async () => { throw new Error('RAW_BROWSER_ERROR'); } } }));
       await page.getByRole('button', { name: ui.copy, exact: true }).click();
       assert.doesNotMatch(await page.locator('main').innerText(), /RAW_BROWSER_ERROR/);

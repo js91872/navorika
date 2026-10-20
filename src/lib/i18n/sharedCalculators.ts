@@ -4,7 +4,11 @@ import type { LocalizedCalculatorSlug } from './calculatorRegistry';
 import type { Dictionary } from './dictionaries';
 import type { Locale } from './config';
 
-export const isIntegerCalculatorField = (key: string) => ['widthPixels', 'heightPixels', 'channels', 'bitsPerChannel', 'imagesPerView', 'pageViews', 'quantity', 'extraStuds', 'unitCount', 'storageDays'].includes(key);
+export const isIntegerCalculatorField = (key: string) => [
+  'widthPixels', 'heightPixels', 'channels', 'bitsPerChannel', 'imagesPerView',
+  'pageViews', 'quantity', 'extraStuds', 'unitCount', 'storageDays',
+  'ageWeeks', 'timeHours', 'timeMinutes', 'timeSeconds', 'repetitions',
+].includes(key);
 
 /** Reject missing, fractional count and out-of-range inputs before permissive engines can clamp them. */
 export function calculateLocalizedValues(slug: LocalizedCalculatorSlug, values: ValueMap) {
@@ -31,6 +35,17 @@ export function calculateLocalizedValues(slug: LocalizedCalculatorSlug, values: 
   if (slug === 'concrete-block-calculator' && (Number(values.wallLengthFt) <= 0 || Number(values.wallHeightFt) <= 0)) return null;
   if (slug === 'rainwater-harvesting-calculator' && (Number(values.catchmentAreaFt2) <= 0 || Number(values.annualRainfallInches) <= 0 || Number(values.storageDays) <= 0)) return null;
   if (slug === 'attic-insulation-payback-calculator' && Number(values.atticArea) <= 0) return null;
+  if (slug === 'running-pace-calculator') {
+    const totalSeconds = Number(values.timeHours) * 3600 + Number(values.timeMinutes) * 60 + Number(values.timeSeconds);
+    if (totalSeconds <= 0) return null;
+    if (values.raceDistancePreset === 'custom' && Number(values.distanceKm) <= 0) return null;
+  }
+  if (slug === 'caffeine-half-life-calculator' && Number(values.halfLifeHours) <= 0) return null;
+  if (slug === 'hrv-baseline-deviation-calculator' && Number(values.baselineHrv) <= 0) return null;
+  if (slug === 'wilks-dots-powerlifting-calculator' && (Number(values.bodyweightKg) <= 0 || Number(values.totalKg) < 0)) return null;
+  if (slug === 'macronutrient-calculator' && (Number(values.dailyCalories) <= 0 || Number(values.bodyWeightKg) <= 0)) return null;
+  if (slug === 'hydration-calculator' && Number(values.bodyWeightKg) <= 0) return null;
+  if (slug === 'one-rep-max-calculator' && (Number(values.weightLifted) <= 0 || Number(values.repetitions) <= 0)) return null;
   try {
     const result = config.calculate(values);
     return config.results.every(({ key, format }) => {
@@ -69,6 +84,31 @@ export function calculatorTextFormatters(slug: LocalizedCalculatorSlug, values: 
     }
     return d.calculatorUi.notApplicable;
   } };
+  if (slug === 'dog-age-breed-specific-calculator') return { lifeStage: () => {
+    const age = Number(values.dogAge);
+    const breedSize = String(values.breedSize || 'medium');
+    if (!Number.isFinite(age) || age < 0) return d.calculatorUi.notApplicable;
+    if (age < 1) return d.calculatorStates.puppy;
+    if (age < 3) return d.calculatorStates.youngAdult;
+    const seniorStart = breedSize === 'giant' ? 5 : breedSize === 'large' ? 6 : 7;
+    const geriatricStart = breedSize === 'giant' ? 8 : breedSize === 'large' ? 9 : breedSize === 'medium' ? 10 : 11;
+    if (age >= geriatricStart) return d.calculatorStates.geriatric;
+    if (age >= seniorStart) return d.calculatorStates.senior;
+    return d.calculatorStates.matureAdult;
+  } };
+  if (slug === 'hrv-baseline-deviation-calculator') return { direction: () => {
+    const baseline = Number(values.baselineHrv);
+    const current = Number(values.currentHrv);
+    if (!Number.isFinite(baseline) || !Number.isFinite(current) || baseline <= 0 || current < 0) return d.calculatorUi.notApplicable;
+    const diff = current - baseline;
+    if (diff > 0.05) return d.calculatorStates.aboveBaseline;
+    if (diff < -0.05) return d.calculatorStates.belowBaseline;
+    return d.calculatorStates.equalToBaseline;
+  } };
+  if (slug === 'running-pace-calculator') return {
+    pacePerKm: (val) => `${String(val).split(' ')[0]} ${d.calculatorStates.perKm}`,
+    pacePerMile: (val) => `${String(val).split(' ')[0]} ${d.calculatorStates.perMile}`,
+  };
   return {};
 }
 

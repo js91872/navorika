@@ -17,6 +17,16 @@ export const localizedCalculatorSlugs = [
   'mortar-calculator',
   'concrete-block-calculator',
   'rainwater-harvesting-calculator',
+  'dog-age-breed-specific-calculator',
+  'puppy-growth-predictor',
+  'cat-calorie-calculator',
+  'caffeine-half-life-calculator',
+  'hrv-baseline-deviation-calculator',
+  'wilks-dots-powerlifting-calculator',
+  'macronutrient-calculator',
+  'running-pace-calculator',
+  'hydration-calculator',
+  'one-rep-max-calculator',
 ] as const;
 export type LocalizedCalculatorSlug = (typeof localizedCalculatorSlugs)[number];
 export const isLocalizedCalculator = (slug: string): slug is LocalizedCalculatorSlug =>

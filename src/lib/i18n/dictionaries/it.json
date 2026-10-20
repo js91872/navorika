@@ -315,6 +315,86 @@
       "limits": "Stima idrologica standard. Esclude sovraccarichi da nubifragio, gelate e normative igienico-sanitarie per uso potabile.",
       "question": "Cosa si intende per perdita di primo lavaggio?",
       "answer": "Il deviatore di prime piogge scarta l’acqua iniziale contenente polvere e residui, mediamente stimata al 5% del totale captato."
+    },
+    "dog-age-breed-specific-calculator": {
+      "title": "Calcolatore età del cane — Per taglia e razza",
+      "description": "Calcola l'età equivalente umana del tuo cane in base alla taglia e alle fasi vitali (cucciolo, giovane, adulto e anziano).",
+      "how": "Inserisci l'età del cane in anni e seleziona la categoria di taglia adulta della razza.",
+      "limits": "Stime statistiche basate su coorti veterinarie. Genetica, nutrizione e cure mediche incidono sull'invecchiamento biologico.",
+      "question": "Perché i cani di taglia grande invecchiano più rapidamente?",
+      "answer": "Le razze giganti e grandi presentano una crescita cellulare più rapida e un logorio fisiologico anticipato rispetto ai cani piccoli."
+    },
+    "puppy-growth-predictor": {
+      "title": "Previsione di crescita del cucciolo",
+      "description": "Stima il peso adulto del tuo cucciolo e segui le tappe di sviluppo in base all'età, al peso attuale e alla categoria di taglia.",
+      "how": "Inserisci l'età attuale in settimane, il peso rilevato e la taglia stimata da adulto.",
+      "limits": "I modelli di accrescimento rappresentano medie statistiche. Incroci e dieta possono generare scostamenti individuali.",
+      "question": "A che età i cuccioli completano la crescita corporea?",
+      "answer": "I cani di piccola taglia completano lo scheletro tra 9 e 12 mesi; le taglie giganti continuano lo sviluppo muscolare fino a 24 mesi."
+    },
+    "cat-calorie-calculator": {
+      "title": "Calcolatore calorie per gatti e gattini",
+      "description": "Stima il fabbisogno calorico giornaliero di gatti adulti e gattini dal peso corporeo, fase vitale e livello di movimento.",
+      "how": "Inserisci il peso in chilogrammi e imposta lo stato riproduttivo, l'età o il livello di attività fisica.",
+      "limits": "Formule veterinarie di riferimento generale. Non sostituisce piani dietoterapici prescritti per specifiche patologie.",
+      "question": "Cos'è il fabbisogno energetico a riposo (RER) per i felini?",
+      "answer": "Il RER quantifica le calorie necessarie per le sole funzioni vitali basali, ricavato moltiplicando 70 per il peso elevato a 0,75."
+    },
+    "caffeine-half-life-calculator": {
+      "title": "Calcolatore dell'emivita della caffeina",
+      "description": "Calcola la quantità residua di caffeina nel sangue a distanza di ore impostando un tempo di emivita personalizzato.",
+      "how": "Inserisci i milligrammi assunti, le ore trascorse e l'emivita metabolica presunta.",
+      "limits": "Stima farmacocinetica teorica. Il citocromo CYP1A2, farmaci concomitanti e gravidanza alterano la clearance.",
+      "question": "Qual è il tempo di dimezzamento della caffeina?",
+      "answer": "Negli adulti sani l'emivita media si colloca tra 4 e 6 ore; trascorso questo tempo resta in circolo circa il 50% della dose."
+    },
+    "hrv-baseline-deviation-calculator": {
+      "title": "Calcolatore deviazione baseline HRV",
+      "description": "Confronta la variabilità della frequenza cardiaca (HRV) odierna con la tua media di base per monitorare il recupero fisiologico.",
+      "how": "Inserisci la baseline personale calcolata su 7–30 giorni (in ms) e il valore registrato stamattina a riposo.",
+      "limits": "Puro calcolo comparativo. Sonno, idratazione e postura influenzano le metriche; non fornisce diagnosi mediche.",
+      "question": "Cosa indica un calo marcato dell'HRV a riposo?",
+      "answer": "Una marcata riduzione rispetto alla media riflette un'attivazione simpatica dell'organismo dovuta a stanchezza, stress o infezioni."
+    },
+    "wilks-dots-powerlifting-calculator": {
+      "title": "Calcolatore punteggio powerlifting Wilks e DOTS",
+      "description": "Calcola e confronta i coefficienti di forza Wilks e DOTS in base a peso corporeo, totale sollevato e sesso biologico.",
+      "how": "Seleziona la categoria, inserisci il peso corporeo in kg e il totale massimale combinato (squat, panca, stacco) in kg.",
+      "limits": "Normalizza la forza tra le classi di peso senza sostituire i regolamenti federali specifici per le categorie attrezzate.",
+      "question": "Qual è la differenza principale tra i punteggi Wilks e DOTS?",
+      "answer": "Wilks adotta un polinomio di 5° grado del 1994, mentre DOTS mitiga le distorsioni statistiche nelle categorie medie e dei pesi massimi."
+    },
+    "macronutrient-calculator": {
+      "title": "Calcolatore dei macronutrienti",
+      "description": "Determina i target giornalieri di proteine, carboidrati e grassi in grammi e calorie in base a fabbisogno e traguardi atletici.",
+      "how": "Imposta le calorie target giornaliere, seleziona il piano di ripartizione e indica il peso corporeo in kg.",
+      "limits": "Linee guida nutrizionali teoriche. Il dispendio basale e il volume di allenamento richiedono una calibrazione individuale.",
+      "question": "Quante calorie fornisce un grammo di ciascun macronutriente?",
+      "answer": "Secondo i fattori Atwater, proteine e carboidrati apportano 4 kcal/g, mentre i grassi alimentari contengono 9 kcal/g."
+    },
+    "running-pace-calculator": {
+      "title": "Calcolatore del passo di corsa",
+      "description": "Calcola il ritmo chilometrico e al miglio, i tempi intermedi, le previsioni di gara e la velocità dal 5K alla maratona.",
+      "how": "Seleziona una distanza classica o inseriscine una personalizzata, quindi immetti ore, minuti e secondi.",
+      "limits": "Le proiezioni cronometriche applicano la legge di Riegel, che assume un allenamento adeguato alla distanza di destinazione.",
+      "question": "Come funziona la stima dei tempi di Riegel?",
+      "answer": "La formula di Riegel applica la relazione T2 = T1 × (D2 / D1)^1,06 per modellare l'affaticamento aerobico sulle distanze maggiori."
+    },
+    "hydration-calculator": {
+      "title": "Calcolatore del fabbisogno idrico quotidiano",
+      "description": "Stima l'assunzione d'acqua giornaliera in litri, once fluide e bicchieri standard in base a peso, allenamento e clima.",
+      "how": "Inserisci il peso corporeo in kg, i minuti di allenamento giornalieri e le condizioni climatiche prevalenti.",
+      "limits": "Riferimento di massima per soggetti sani. Febbre, disordini renali e sudorazione abbondante richiedono indicazioni mediche.",
+      "question": "L'acqua presente nel cibo concorre al fabbisogno idrico?",
+      "answer": "Sì, cibi ad alto contenuto d'acqua come frutta, ortaggi e zuppe apportano tra il 20% e il 30% del volume totale ingerito."
+    },
+    "one-rep-max-calculator": {
+      "title": "Calcolatore massimale 1RM",
+      "description": "Calcola il massimale su singola ripetizione (1RM) per panca, squat o stacco con le formule Brzycki, Epley e Lander.",
+      "how": "Inserisci il carico sollevato in kg o lb, il numero di ripetizioni completate (1–30) e seleziona la formula di calcolo.",
+      "limits": "Le formule submassimali danno la massima accuratezza tra 2 e 10 ripetizioni; sopra le 10 ripetizioni interviene la resistenza muscolare.",
+      "question": "Quale formula è preferibile per stimare il massimale 1RM?",
+      "answer": "Epley e Brzycki rappresentano i capisaldi; la loro media offre una stima bilanciata per la maggior parte dei sollevatori."
     }
   },
   "flexOptions": {
@@ -949,12 +1029,305 @@
       },
       "note": "La resa teorica applica la costante idrologica standard (1 pollice su 1 piede² = 0,6233 galloni USA) per il coefficiente di deflusso e deviazione iniziale.",
       "textResults": {}
+    },
+    "dog-age-breed-specific-calculator": {
+      "fields": {
+        "dogAge": {
+          "label": "Età del cane (anni)"
+        },
+        "breedSize": {
+          "label": "Categoria di taglia della razza",
+          "help": "Le razze piccole maturano più in fretta nel primo anno ma invecchiano più lentamente negli anni successivi.",
+          "options": {
+            "small": "Piccola (sotto 9 kg / 20 lb)",
+            "medium": "Media (9,5–23 kg / 21–50 lb)",
+            "large": "Grande (23,5–41 kg / 51–90 lb)",
+            "giant": "Gigante (oltre 41 kg / 90+ lb)"
+          }
+        }
+      },
+      "results": {
+        "humanEquivalent": "Età umana equivalente stimata",
+        "lifeStage": "Fase vitale approssimativa"
+      },
+      "note": "L'età equivalente umana costituisce un'approssimazione divulgativa. Genetica, peso corporeo, stile di vita e controlli veterinari determinano l'invecchiamento biologico effettivo.",
+      "textResults": {
+        "lifeStage": "localized"
+      }
+    },
+    "puppy-growth-predictor": {
+      "fields": {
+        "ageWeeks": {
+          "label": "Età del cucciolo (settimane)"
+        },
+        "currentWeight": {
+          "label": "Peso attuale del cucciolo (kg o lb)",
+          "help": "I risultati rifletteranno la medesima unità di misura inserita."
+        },
+        "breedSize": {
+          "label": "Taglia adulta attesa della razza",
+          "help": "Le razze piccole completano lo sviluppo più rapidamente (9–10 mesi) rispetto alle razze giganti (18–24 mesi).",
+          "options": {
+            "small": "Razza piccola (adulto sotto 10 kg / 22 lb)",
+            "medium": "Razza media (adulto 10–25 kg / 22–55 lb)",
+            "large": "Razza grande (adulto 25–45 kg / 55–100 lb)",
+            "giant": "Razza gigante (adulto oltre 45 kg / 100+ lb)"
+          }
+        }
+      },
+      "results": {
+        "estimatedAdultWeight": "Peso adulto stimato",
+        "lowEstimate": "Intervallo minimo stimato",
+        "highEstimate": "Intervallo massimo stimato",
+        "growthProgress": "Avanzamento stimato della crescita"
+      },
+      "note": "Le curve di accrescimento costituiscono stime di popolazione. Alimentazione, patrimonio genetico e salute determinano variazioni individuali.",
+      "textResults": {}
+    },
+    "cat-calorie-calculator": {
+      "fields": {
+        "weightKg": {
+          "label": "Peso del gatto (kg)"
+        },
+        "factor": {
+          "label": "Fattore di attività e fase vitale",
+          "help": "Moltiplica il fabbisogno a riposo (70 × peso^0,75) per il coefficiente della fase vitale.",
+          "options": {
+            "neutered-adult": "Adulto sterilizzato (1,2× RER)",
+            "intact-adult": "Adulto non sterilizzato (1,4× RER)",
+            "inactive-prone": "Adulto sedentario / casalingo (1,0× RER)",
+            "active-adult": "Adulto molto attivo (1,6× RER)",
+            "kitten-young": "Gattino sotto i 4 mesi (2,5× RER)",
+            "kitten-older": "Gattino da 4 a 12 mesi (2,0× RER)",
+            "senior": "Gatto anziano (1,1× RER)"
+          }
+        }
+      },
+      "results": {
+        "rer": "Fabbisogno energetico a riposo (kcal/giorno)",
+        "dailyCalories": "Calorie giornaliere raccomandate (kcal/giorno)"
+      },
+      "note": "Stime energetiche indicative basate su equazioni veterinarie standard. Non costituiscono prescrizione medica per diete cliniche. Consultare un veterinario per piani nutrizionali mirati.",
+      "textResults": {}
+    },
+    "caffeine-half-life-calculator": {
+      "fields": {
+        "doseMg": {
+          "label": "Caffeina consumata (mg)",
+          "help": "Caffè filtro 240 ml ~95 mg; espresso ~63 mg; energy drink ~160 mg."
+        },
+        "hoursElapsed": {
+          "label": "Ore trascorse dall'assunzione"
+        },
+        "halfLifeHours": {
+          "label": "Emivita stimata della caffeina (ore)",
+          "help": "L'emivita tipica negli adulti oscilla tra 4 e 6 ore (media circa 5 ore)."
+        }
+      },
+      "results": {
+        "remainingMg": "Caffeina residua stimata (mg)",
+        "remainingPercent": "Percentuale residua stimata (%)",
+        "eliminatedMg": "Caffeina metabolizzata stimata (mg)"
+      },
+      "note": "Stima farmacocinetica dell'emivita. La clearance individuale è modulata da enzimi epatici (CYP1A2), gravidanza, contraccettivi orali, fumo e terapie farmacologiche.",
+      "textResults": {}
+    },
+    "hrv-baseline-deviation-calculator": {
+      "fields": {
+        "baselineHrv": {
+          "label": "Valore baseline HRV personale (ms)",
+          "help": "La tua media mobile a 7–30 giorni registrata a riposo (es. rMSSD o SDNN)."
+        },
+        "currentHrv": {
+          "label": "Misurazione HRV odierna (ms)",
+          "help": "Rilevata in condizioni standardizzate di riposo mattutino."
+        }
+      },
+      "results": {
+        "absoluteDifference": "Differenza assoluta (ms)",
+        "percentDeviation": "Deviazione percentuale dalla baseline",
+        "ratio": "Rapporto valore odierno / baseline",
+        "direction": "Direzione rispetto alla baseline"
+      },
+      "note": "Elaborazione puramente numerica. Sensori utilizzati, qualità del riposo e postura durante la misurazione condizionano i valori. Non costituisce diagnosi clinica.",
+      "textResults": {
+        "direction": "localized"
+      }
+    },
+    "wilks-dots-powerlifting-calculator": {
+      "fields": {
+        "sex": {
+          "label": "Categoria di gara",
+          "options": {
+            "male": "Uomini",
+            "female": "Donne"
+          }
+        },
+        "bodyweightKg": {
+          "label": "Peso corporeo (kg)"
+        },
+        "totalKg": {
+          "label": "Totale gara powerlifting (kg)",
+          "help": "Somma delle alzate valide in squat, panca piana e stacco da terra in kg."
+        }
+      },
+      "results": {
+        "dotsScore": "Punteggio DOTS",
+        "wilksScore": "Punteggio Wilks",
+        "totalBodyweightRatio": "Rapporto totale / peso corporeo"
+      },
+      "note": "Applica i coefficienti standard pubblicati per DOTS e per il calcolo Wilks 1994. Federazioni ed epoche diverse possono applicare revisioni; per uso divulgativo e allenamento.",
+      "textResults": {}
+    },
+    "macronutrient-calculator": {
+      "fields": {
+        "dailyCalories": {
+          "label": "Fabbisogno calorico giornaliero (kcal)"
+        },
+        "macroSplitGoal": {
+          "label": "Profilo nutrizionale desiderato",
+          "options": {
+            "balanced": "Bilanciato (30% P / 40% C / 30% G)",
+            "fat-loss": "Definizione / Dimagrimento (35% P / 35% C / 30% G)",
+            "muscle-gain": "Massa muscolare (30% P / 50% C / 20% G)",
+            "keto": "Chetogenica / Low-Carb (25% P / 5% C / 70% G)",
+            "endurance": "Atleti di resistenza (20% P / 60% C / 20% G)"
+          }
+        },
+        "bodyWeightKg": {
+          "label": "Peso corporeo (kg, per densità proteica)"
+        }
+      },
+      "results": {
+        "proteinGrams": "Proteine giornaliere (g)",
+        "proteinCalories": "Calorie da proteine (kcal)",
+        "carbGrams": "Carboidrati giornalieri (g)",
+        "carbCalories": "Calorie da carboidrati (kcal)",
+        "fatGrams": "Grassi giornalieri (g)",
+        "fatCalories": "Calorie da grassi (kcal)",
+        "proteinPerKgBodyweight": "Densità proteica (g/kg di peso corporeo)"
+      },
+      "note": "La conversione termica impiega i coefficienti di Atwater (4 kcal/g per proteine e glucidi, 9 kcal/g per i lipidi). Un apporto tra 1,6 e 2,2 g/kg di proteine è diffusamente raccomandato in ambito sportivo.",
+      "textResults": {}
+    },
+    "running-pace-calculator": {
+      "fields": {
+        "raceDistancePreset": {
+          "label": "Distanza di gara predefinita",
+          "options": {
+            "5k": "5 chilometri (5K)",
+            "10k": "10 chilometri (10K)",
+            "half-marathon": "Mezza Maratona (21,1 km / 13,1 mi)",
+            "marathon": "Maratona (42,2 km / 26,2 mi)",
+            "custom": "Distanza personalizzata (campo sotto)"
+          }
+        },
+        "distanceKm": {
+          "label": "Distanza personalizzata (km)"
+        },
+        "timeHours": {
+          "label": "Ore trascorse / previste"
+        },
+        "timeMinutes": {
+          "label": "Minuti"
+        },
+        "timeSeconds": {
+          "label": "Secondi"
+        }
+      },
+      "results": {
+        "pacePerKm": "Passo al chilometro",
+        "pacePerMile": "Passo al miglio",
+        "speedKmh": "Velocità media (km/h)",
+        "speedMph": "Velocità media (mph)",
+        "equivalent5kTime": "Tempo previsto equivalente 5K",
+        "equivalent10kTime": "Tempo previsto equivalente 10K",
+        "equivalentMarathonTime": "Tempo previsto equivalente Maratona"
+      },
+      "note": "Andature e velocità sono calcolate sul tempo totale trascorso. Le equivalenze applicano la legge empirica di Pete Riegel (T2 = T1 × [D2 / D1]^1,06) per la fatica aerobica.",
+      "textResults": {
+        "pacePerKm": "localized",
+        "pacePerMile": "localized",
+        "equivalent5kTime": "machine",
+        "equivalent10kTime": "machine",
+        "equivalentMarathonTime": "machine"
+      }
+    },
+    "hydration-calculator": {
+      "fields": {
+        "bodyWeightKg": {
+          "label": "Peso corporeo (kg)"
+        },
+        "exerciseDurationMinutes": {
+          "label": "Durata allenamento quotidiano (minuti)"
+        },
+        "climateEnvironment": {
+          "label": "Clima e ambiente circostante",
+          "options": {
+            "temperate": "Temperato / Climatizzato",
+            "hot-dry": "Caldo e secco (+400 mL/giorno)",
+            "hot-humid": "Caldo e umido (+600 mL/giorno)",
+            "cold-high-altitude": "Freddo / Alta quota (+300 mL/giorno)"
+          }
+        }
+      },
+      "results": {
+        "totalWaterLiters": "Acqua totale raccomandata (litri/giorno)",
+        "totalFluidOunces": "Volume d'acqua totale (once fluide USA)",
+        "standardCups8oz": "Bicchieri standard da 8 oz (circa 240 ml)",
+        "baselineLiters": "Idratazione basale a riposo (L)",
+        "exerciseAdditionLiters": "Reintegro sudorazione da esercizio (L)"
+      },
+      "note": "Linee guida modellate sugli standard della National Academy of Medicine (35 mL/kg basali con reintegro del sudore da sforzo). Gli alimenti forniscono tipicamente il 20–30% del liquido quotidiano.",
+      "textResults": {}
+    },
+    "one-rep-max-calculator": {
+      "fields": {
+        "weightLifted": {
+          "label": "Carico sollevato (kg o lb)"
+        },
+        "repetitions": {
+          "label": "Ripetizioni completate (1–30)"
+        },
+        "formulaMethod": {
+          "label": "Formula di calcolo del massimale",
+          "options": {
+            "average": "Media consensuale (Epley + Brzycki)",
+            "epley": "Formula di Epley",
+            "brzycki": "Formula di Brzycki",
+            "lander": "Formula di Lander",
+            "lombardi": "Formula di Lombardi"
+          }
+        }
+      },
+      "results": {
+        "estimated1rm": "Massimale stimato (1RM)",
+        "rep95Percent": "95% del massimale (~2 rip)",
+        "rep90Percent": "90% del massimale (~4 rip)",
+        "rep85Percent": "85% del massimale (~6 rip)",
+        "rep80Percent": "80% del massimale (~8 rip)",
+        "rep70Percent": "70% del massimale (~12 rip)",
+        "epleyEstimate": "Valore calcolato con formula Epley",
+        "brzyckiEstimate": "Valore calcolato con formula Brzycki"
+      },
+      "note": "Le equazioni per la stima del carico massimale offrono la massima attendibilità tra 2 e 10 ripetizioni. Oltre le 10 ripetizioni la resistenza altera la stima della forza esplosiva neuromuscolare.",
+      "textResults": {}
     }
   },
   "calculatorStates": {
-    "matched": "Corrispondenti",
-    "mismatch": "Differenza",
-    "flat": "Orizzontale",
-    "vertical": "Verticale"
+    "matched": "Corrispondente",
+    "mismatch": "Discrepanza di formato",
+    "flat": "Piana",
+    "vertical": "Verticale",
+    "puppy": "Cucciolo",
+    "youngAdult": "Giovane adulto",
+    "matureAdult": "Adulto maturo",
+    "senior": "Anziano",
+    "geriatric": "Geriatrico",
+    "aboveBaseline": "Superiore al valore di riferimento",
+    "belowBaseline": "Inferiore al valore di riferimento",
+    "equalToBaseline": "Pari al valore di riferimento",
+    "perKm": "/km",
+    "perMile": "/mi"
   }
 }

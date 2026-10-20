@@ -315,6 +315,86 @@
       "limits": "Hydrology estimate. Excludes roof gutter overflow during extreme storms, freezing conditions and local drinking water treatment rules.",
       "question": "What is the first-flush filter loss?",
       "answer": "The first-flush diverter rejects the initial dirty roof runoff containing dust and debris, typically amounting to 5% of captured precipitation."
+    },
+    "dog-age-breed-specific-calculator": {
+      "title": "Dog Age Calculator — Breed Specific",
+      "description": "Calculate a dog’s human-equivalent age using breed-size life stage curves across puppy, young adult, mature adult, and senior phases.",
+      "how": "Enter your dog’s age in years and select your dog’s adult breed size category from small to giant.",
+      "limits": "Provides statistical approximations based on veterinary size cohorts. Individual genetics, nutrition, and medical history alter biological aging.",
+      "question": "Why do larger dog breeds age faster than smaller breeds?",
+      "answer": "Larger breeds experience accelerated cellular growth and physiological wear, reaching senior and geriatric life stages years earlier than small breeds."
+    },
+    "puppy-growth-predictor": {
+      "title": "Puppy Growth Predictor",
+      "description": "Estimate your puppy’s adult weight and track developmental milestones based on current age, weight, and breed adult size category.",
+      "how": "Enter your puppy’s current age in weeks, present weight, and anticipated adult breed size classification.",
+      "limits": "Growth models represent population averages. Mixed breeds, nutritional differences, and health conditions can create variation.",
+      "question": "At what age do puppies reach their full adult size?",
+      "answer": "Small breeds generally finish physical skeletal growth by 9 to 12 months, whereas large and giant breeds continue filling out until 18 to 24 months."
+    },
+    "cat-calorie-calculator": {
+      "title": "Cat & Kitten Calorie Calculator",
+      "description": "Estimate daily calories for adult cats and kittens from body weight, life stage and activity level using RER and MER energy calculations.",
+      "how": "Enter your cat’s weight in kilograms and select their reproductive status, age bracket, or activity level factor.",
+      "limits": "Informational estimates based on standard feline veterinary formulas. Not intended for therapeutic medical diets or clinical weight loss programs.",
+      "question": "What is Resting Energy Requirement (RER) for cats?",
+      "answer": "RER represents the baseline energy needed for essential bodily functions at rest, calculated as 70 × (weight in kg)^0.75."
+    },
+    "caffeine-half-life-calculator": {
+      "title": "Caffeine Half-Life Calculator",
+      "description": "Estimate how much caffeine may still be in your system after a number of hours using an adjustable caffeine half-life.",
+      "how": "Enter caffeine consumed in milligrams, elapsed hours since intake, and your estimated metabolic half-life.",
+      "limits": "Pharmacokinetic estimates vary widely by individual liver metabolism (CYP1A2 enzyme), pregnancy, medication, smoking, and genetics.",
+      "question": "What is the average half-life of caffeine in healthy adults?",
+      "answer": "For most healthy non-smoking adults, caffeine has an average half-life of 4 to 6 hours, meaning half the original dose remains in circulation after that period."
+    },
+    "hrv-baseline-deviation-calculator": {
+      "title": "HRV Baseline Deviation Calculator",
+      "description": "Compare today’s heart rate variability against your personal rolling baseline to evaluate physiological recovery trends.",
+      "how": "Enter your established 7- to 30-day baseline HRV (in milliseconds) and your morning resting HRV reading.",
+      "limits": "Mathematical comparison only. Sleep quality, hydration, respiration rate, and circadian rhythms affect readings; does not provide medical diagnosis.",
+      "question": "What does a significant drop in resting HRV indicate?",
+      "answer": "A substantial drop below your baseline often reflects autonomic sympathetic dominance, commonly associated with acute physical fatigue, stress, or illness onset."
+    },
+    "wilks-dots-powerlifting-calculator": {
+      "title": "Wilks to DOTS Powerlifting Score Calculator",
+      "description": "Calculate and compare standard Wilks and DOTS strength scores from bodyweight, lifted total, and biological sex using published polynomial formulas.",
+      "how": "Select biological sex category, enter bodyweight in kilograms, and input your combined 3-lift competition total in kilograms.",
+      "limits": "Formulas normalize strength across bodyweight classes but do not substitute for federation-specific rulebooks or equipment divisions.",
+      "question": "What is the difference between Wilks and DOTS scoring?",
+      "answer": "Wilks uses a 5th-degree polynomial introduced in 1994, while DOTS uses updated coefficients designed to reduce bias against middleweight and heavyweight lifters."
+    },
+    "macronutrient-calculator": {
+      "title": "Macronutrient Calculator",
+      "description": "Calculate daily protein, carbohydrate, and fat targets in grams and calories based on your daily energy intake and fitness goals.",
+      "how": "Enter your daily target calories, choose a nutritional goal profile, and input your body weight in kilograms.",
+      "limits": "Nutritional distribution guidelines provide starting estimates. Individual metabolic rates, training loads, and medical considerations require personal adjustment.",
+      "question": "How many calories are in one gram of protein, carb, and fat?",
+      "answer": "Under standard Atwater factors, proteins and carbohydrates provide 4 kcal per gram, while dietary fats provide 9 kcal per gram."
+    },
+    "running-pace-calculator": {
+      "title": "Running Pace Calculator",
+      "description": "Calculate running pace per kilometer and mile, race finish time, splits, and running speed for any distance from 5K to marathon.",
+      "how": "Select a race distance preset or custom distance, and enter your target or elapsed finish time in hours, minutes, and seconds.",
+      "limits": "Race finish projections use Pete Riegel’s endurance scaling law, which assumes adequate endurance training for the target distance.",
+      "question": "How does Riegel’s formula predict race finish times?",
+      "answer": "Riegel's formula applies T2 = T1 × (D2 / D1)^1.06 to project finish times across distances by modeling aerobic fatigue."
+    },
+    "hydration-calculator": {
+      "title": "Hydration Calculator",
+      "description": "Estimate daily recommended water intake in liters, fluid ounces, and standard cups based on body weight, daily exercise duration, and climate.",
+      "how": "Enter body weight in kilograms, daily exercise duration in minutes, and select your prevailing climate and environment.",
+      "limits": "Estimates baseline fluids; high sweat rates, fever, pregnancy, or medical conditions requiring fluid restrictions require clinical guidance.",
+      "question": "Does dietary food intake count toward daily hydration?",
+      "answer": "Yes, water-rich foods like fruits, vegetables, and soups typically account for 20% to 30% of a person’s total daily water intake."
+    },
+    "one-rep-max-calculator": {
+      "title": "One-Rep Max Calculator",
+      "description": "Calculate your one-rep max (1RM) for bench press, squat, or deadlift using Brzycki, Epley, and Lander formulas, with a complete percentage breakdown table.",
+      "how": "Enter the lifted weight in kg or lbs, repetitions completed (1 to 30), and select the desired estimation formula.",
+      "limits": "Submaximal formulas are most reliable between 2 and 10 repetitions; high-repetition sets (>10 reps) test muscular endurance rather than true maximal strength.",
+      "question": "Which formula is best for calculating 1RM?",
+      "answer": "The Epley and Brzycki formulas are the most established standards; averaging both provides a reliable consensus estimate for most lifters."
     }
   },
   "flexOptions": {
@@ -949,12 +1029,305 @@
       },
       "note": "Theoretical yield uses the standard hydrology constant (1 inch of rain on 1 sq ft = 0.6233 US gallons) multiplied by roof runoff efficiency and first-flush diversion. Tank sizing models buffer capacity for user-specified consecutive dry days. Local potable water regulations and filtration standards must be verified before drinking use.",
       "textResults": {}
+    },
+    "dog-age-breed-specific-calculator": {
+      "fields": {
+        "dogAge": {
+          "label": "Dog age (years)"
+        },
+        "breedSize": {
+          "label": "Breed-size category",
+          "help": "Smaller breeds generally mature faster in year 1 but age more slowly in subsequent years.",
+          "options": {
+            "small": "Small (under 20 lbs / 9 kg)",
+            "medium": "Medium (21–50 lbs / 9.5–23 kg)",
+            "large": "Large (51–90 lbs / 23.5–41 kg)",
+            "giant": "Giant (over 90 lbs / 41+ kg)"
+          }
+        }
+      },
+      "results": {
+        "humanEquivalent": "Estimated human-equivalent age",
+        "lifeStage": "Approximate life stage"
+      },
+      "note": "Human-equivalent age is an educational approximation. Genetics, individual weight, lifestyle, and veterinary care significantly influence biological aging.",
+      "textResults": {
+        "lifeStage": "localized"
+      }
+    },
+    "puppy-growth-predictor": {
+      "fields": {
+        "ageWeeks": {
+          "label": "Puppy age (weeks)"
+        },
+        "currentWeight": {
+          "label": "Current puppy weight (lbs or kg)",
+          "help": "Outputs will reflect the same unit entered."
+        },
+        "breedSize": {
+          "label": "Expected breed-size category",
+          "help": "Small breeds reach full size much faster (9–10 months) than giant breeds (18–24 months).",
+          "options": {
+            "small": "Small breed (adult under 22 lbs / 10 kg)",
+            "medium": "Medium breed (adult 22–55 lbs / 10–25 kg)",
+            "large": "Large breed (adult 55–100 lbs / 25–45 kg)",
+            "giant": "Giant breed (adult over 100 lbs / 45+ kg)"
+          }
+        }
+      },
+      "results": {
+        "estimatedAdultWeight": "Estimated adult weight",
+        "lowEstimate": "Estimated lower range",
+        "highEstimate": "Estimated upper range",
+        "growthProgress": "Approximate growth completed"
+      },
+      "note": "Growth curves are population estimates based on typical breed-size timelines. Nutrition, genetics, and health status cause individual variation.",
+      "textResults": {}
+    },
+    "cat-calorie-calculator": {
+      "fields": {
+        "weightKg": {
+          "label": "Cat weight (kg)"
+        },
+        "factor": {
+          "label": "Life stage / activity factor",
+          "help": "Multiplies Resting Energy Requirement (70 × weight^0.75) by the life-stage factor.",
+          "options": {
+            "neutered-adult": "Neutered adult (1.2× RER)",
+            "intact-adult": "Intact adult (1.4× RER)",
+            "inactive-prone": "Inactive adult (1.0× RER)",
+            "active-adult": "Highly active adult (1.6× RER)",
+            "kitten-young": "Kitten under 4 months (2.5× RER)",
+            "kitten-older": "Kitten 4 to 12 months (2.0× RER)",
+            "senior": "Senior cat (1.1× RER)"
+          }
+        }
+      },
+      "results": {
+        "rer": "Resting energy requirement (kcal/day)",
+        "dailyCalories": "Estimated daily calories (kcal/day)"
+      },
+      "note": "General informational energy estimates based on standard feline equations. Not a therapeutic feeding prescription, disease-specific diet, or medical weight-loss plan. Consult a veterinarian for personalized nutritional supervision.",
+      "textResults": {}
+    },
+    "caffeine-half-life-calculator": {
+      "fields": {
+        "doseMg": {
+          "label": "Caffeine consumed (mg)",
+          "help": "Typical 8oz brewed coffee is ~95mg; espresso ~63mg; energy drink ~160mg."
+        },
+        "hoursElapsed": {
+          "label": "Hours since consumption"
+        },
+        "halfLifeHours": {
+          "label": "Estimated caffeine half-life (hours)",
+          "help": "Typical adult half-life is 4–6 hours (average ~5 hours)."
+        }
+      },
+      "results": {
+        "remainingMg": "Estimated caffeine remaining (mg)",
+        "remainingPercent": "Estimated caffeine remaining (%)",
+        "eliminatedMg": "Estimated caffeine metabolized (mg)"
+      },
+      "note": "Pharmacokinetic half-life estimate. Individual clearance rates vary with genetics (CYP1A2), pregnancy, oral contraceptives, smoking, medications, and age.",
+      "textResults": {}
+    },
+    "hrv-baseline-deviation-calculator": {
+      "fields": {
+        "baselineHrv": {
+          "label": "Personal baseline HRV (ms)",
+          "help": "Your established rolling 7–30 day average HRV (e.g., rMSSD or SDNN)."
+        },
+        "currentHrv": {
+          "label": "Current HRV reading (ms)",
+          "help": "Measured under consistent resting morning conditions."
+        }
+      },
+      "results": {
+        "absoluteDifference": "Absolute difference (ms)",
+        "percentDeviation": "Deviation from baseline",
+        "ratio": "Current-to-baseline ratio",
+        "direction": "Direction versus baseline"
+      },
+      "note": "Mathematical comparison only. Device sensors, sleep, circadian rhythm, and measurement posture affect readings. Does not diagnose recovery, fitness, stress, or health status.",
+      "textResults": {
+        "direction": "localized"
+      }
+    },
+    "wilks-dots-powerlifting-calculator": {
+      "fields": {
+        "sex": {
+          "label": "Scoring category",
+          "options": {
+            "male": "Male",
+            "female": "Female"
+          }
+        },
+        "bodyweightKg": {
+          "label": "Bodyweight (kg)"
+        },
+        "totalKg": {
+          "label": "Powerlifting competition total (kg)",
+          "help": "Sum of best valid squat, bench press, and deadlift in kg."
+        }
+      },
+      "results": {
+        "dotsScore": "DOTS score",
+        "wilksScore": "Wilks-style score",
+        "totalBodyweightRatio": "Total / bodyweight ratio"
+      },
+      "note": "Uses published standard coefficients for DOTS and original 1994 Wilks scoring. Different federations or eras may use updated coefficients. For training and comparative analysis only.",
+      "textResults": {}
+    },
+    "macronutrient-calculator": {
+      "fields": {
+        "dailyCalories": {
+          "label": "Daily calorie target (kcal)"
+        },
+        "macroSplitGoal": {
+          "label": "Nutritional goal profile",
+          "options": {
+            "balanced": "Balanced (30% P / 40% C / 30% F)",
+            "fat-loss": "Fat Loss / Cutting (35% P / 35% C / 30% F)",
+            "muscle-gain": "Muscle Gain / Bulking (30% P / 50% C / 20% F)",
+            "keto": "Keto / Low-Carb (25% P / 5% C / 70% F)",
+            "endurance": "Endurance Athlete (20% P / 60% C / 20% F)"
+          }
+        },
+        "bodyWeightKg": {
+          "label": "Body weight (kg, for protein density check)"
+        }
+      },
+      "results": {
+        "proteinGrams": "Daily protein (g)",
+        "proteinCalories": "Protein energy (kcal)",
+        "carbGrams": "Daily carbohydrates (g)",
+        "carbCalories": "Carbohydrate energy (kcal)",
+        "fatGrams": "Daily dietary fat (g)",
+        "fatCalories": "Fat energy (kcal)",
+        "proteinPerKgBodyweight": "Protein density (g/kg body weight)"
+      },
+      "note": "Calorie conversion uses standard Atwater factors (4 kcal/g protein & carbs, 9 kcal/g fat). Protein intake between 1.6 to 2.2 g/kg is widely recommended in sports science literature for muscle preservation and synthesis.",
+      "textResults": {}
+    },
+    "running-pace-calculator": {
+      "fields": {
+        "raceDistancePreset": {
+          "label": "Race distance preset",
+          "options": {
+            "5k": "5 Kilometers (5K)",
+            "10k": "10 Kilometers (10K)",
+            "half-marathon": "Half Marathon (21.1 km / 13.1 mi)",
+            "marathon": "Full Marathon (42.2 km / 26.2 mi)",
+            "custom": "Custom distance (use field below)"
+          }
+        },
+        "distanceKm": {
+          "label": "Custom distance (km)"
+        },
+        "timeHours": {
+          "label": "Target / elapsed hours"
+        },
+        "timeMinutes": {
+          "label": "Minutes"
+        },
+        "timeSeconds": {
+          "label": "Seconds"
+        }
+      },
+      "results": {
+        "pacePerKm": "Pace per kilometer",
+        "pacePerMile": "Pace per mile",
+        "speedKmh": "Speed (km/h)",
+        "speedMph": "Speed (mph)",
+        "equivalent5kTime": "Equivalent 5K finish projection",
+        "equivalent10kTime": "Equivalent 10K finish projection",
+        "equivalentMarathonTime": "Equivalent Marathon finish projection"
+      },
+      "note": "Pace splits and speeds are calculated from total elapsed time. Equivalent race times use Pete Riegel’s endurance scaling law (T2 = T1 × [D2 / D1]^1.06), which models aerobic fatigue across differing race distances.",
+      "textResults": {
+        "pacePerKm": "localized",
+        "pacePerMile": "localized",
+        "equivalent5kTime": "machine",
+        "equivalent10kTime": "machine",
+        "equivalentMarathonTime": "machine"
+      }
+    },
+    "hydration-calculator": {
+      "fields": {
+        "bodyWeightKg": {
+          "label": "Body weight (kg)"
+        },
+        "exerciseDurationMinutes": {
+          "label": "Daily exercise duration (minutes)"
+        },
+        "climateEnvironment": {
+          "label": "Climate & environment",
+          "options": {
+            "temperate": "Temperate / Climate-controlled",
+            "hot-dry": "Hot & Dry (+400 mL/day)",
+            "hot-humid": "Hot & Humid (+600 mL/day)",
+            "cold-high-altitude": "Cold / High Altitude (+300 mL/day)"
+          }
+        }
+      },
+      "results": {
+        "totalWaterLiters": "Total recommended water (liters/day)",
+        "totalFluidOunces": "Total water (US fluid ounces)",
+        "standardCups8oz": "Standard 8-oz glasses/cups",
+        "baselineLiters": "Resting baseline hydration (L)",
+        "exerciseAdditionLiters": "Exercise sweat replenishment (L)"
+      },
+      "note": "Guidelines reflect National Academy of Medicine fluid intake standards (35 mL/kg baseline plus exercise sweat replacement). Food intake typically provides an additional 20–30% of total daily fluid volume.",
+      "textResults": {}
+    },
+    "one-rep-max-calculator": {
+      "fields": {
+        "weightLifted": {
+          "label": "Weight lifted (kg or lbs)"
+        },
+        "repetitions": {
+          "label": "Completed repetitions (1–30)"
+        },
+        "formulaMethod": {
+          "label": "Calculation formula",
+          "options": {
+            "average": "Consensus Average (Epley + Brzycki)",
+            "epley": "Epley Formula",
+            "brzycki": "Brzycki Formula",
+            "lander": "Lander Formula",
+            "lombardi": "Lombardi Formula"
+          }
+        }
+      },
+      "results": {
+        "estimated1rm": "Estimated One-Rep Max (1RM)",
+        "rep95Percent": "95% of 1RM (~2 reps)",
+        "rep90Percent": "90% of 1RM (~4 reps)",
+        "rep85Percent": "85% of 1RM (~6 reps)",
+        "rep80Percent": "80% of 1RM (~8 reps)",
+        "rep70Percent": "70% of 1RM (~12 reps)",
+        "epleyEstimate": "Epley formula result",
+        "brzyckiEstimate": "Brzycki formula result"
+      },
+      "note": "Submaximal rep-max formulas are most accurate when tested between 2 and 10 repetitions. As repetitions exceed 10, muscular endurance skews single-effort neuromuscular maximum estimates.",
+      "textResults": {}
     }
   },
   "calculatorStates": {
     "matched": "Matched",
     "mismatch": "Mismatch",
     "flat": "Flat",
-    "vertical": "Vertical"
+    "vertical": "Vertical",
+    "puppy": "Puppy",
+    "youngAdult": "Young Adult",
+    "matureAdult": "Mature Adult",
+    "senior": "Senior",
+    "geriatric": "Geriatric",
+    "aboveBaseline": "Above baseline",
+    "belowBaseline": "Below baseline",
+    "equalToBaseline": "Equal to baseline",
+    "perKm": "/km",
+    "perMile": "/mi"
   }
 }

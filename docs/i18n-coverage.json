@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 31,
-    "pendingTools": 282,
+    "publishedTools": 41,
+    "pendingTools": 272,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 217,
+    "publishedToolTranslations": 287,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -626,8 +626,16 @@
       "source": "src/app/(english)/tools/caffeine-half-life-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -740,8 +748,16 @@
       "source": "src/app/(english)/tools/cat-calorie-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -1854,8 +1870,16 @@
       "source": "src/app/(english)/tools/dog-age-breed-specific-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2496,8 +2520,16 @@
       "source": "src/app/(english)/tools/hrv-baseline-deviation-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2633,8 +2665,16 @@
       "source": "src/app/(english)/tools/hydration-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3433,8 +3473,16 @@
       "source": "src/app/(english)/tools/macronutrient-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3722,8 +3770,16 @@
       "source": "src/app/(english)/tools/one-rep-max-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -4192,8 +4248,16 @@
       "source": "src/app/(english)/tools/puppy-growth-predictor/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4651,8 +4715,16 @@
       "source": "src/app/(english)/tools/running-pace-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5925,8 +5997,16 @@
       "source": "src/app/(english)/tools/wilks-dots-powerlifting-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -7003,7 +7083,7 @@
     {
       "source": "src/app/(english)/tools/caffeine-half-life-calculator/page.tsx",
       "routeTemplate": "/tools/caffeine-half-life-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7045,7 +7125,7 @@
     {
       "source": "src/app/(english)/tools/cat-calorie-calculator/page.tsx",
       "routeTemplate": "/tools/cat-calorie-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7399,7 +7479,7 @@
     {
       "source": "src/app/(english)/tools/dog-age-breed-specific-calculator/page.tsx",
       "routeTemplate": "/tools/dog-age-breed-specific-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7603,7 +7683,7 @@
     {
       "source": "src/app/(english)/tools/hrv-baseline-deviation-calculator/page.tsx",
       "routeTemplate": "/tools/hrv-baseline-deviation-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7645,7 +7725,7 @@
     {
       "source": "src/app/(english)/tools/hydration-calculator/page.tsx",
       "routeTemplate": "/tools/hydration-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7909,7 +7989,7 @@
     {
       "source": "src/app/(english)/tools/macronutrient-calculator/page.tsx",
       "routeTemplate": "/tools/macronutrient-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7999,7 +8079,7 @@
     {
       "source": "src/app/(english)/tools/one-rep-max-calculator/page.tsx",
       "routeTemplate": "/tools/one-rep-max-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8149,7 +8229,7 @@
     {
       "source": "src/app/(english)/tools/puppy-growth-predictor/page.tsx",
       "routeTemplate": "/tools/puppy-growth-predictor",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8287,7 +8367,7 @@
     {
       "source": "src/app/(english)/tools/running-pace-calculator/page.tsx",
       "routeTemplate": "/tools/running-pace-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8713,7 +8793,7 @@
     {
       "source": "src/app/(english)/tools/wilks-dots-powerlifting-calculator/page.tsx",
       "routeTemplate": "/tools/wilks-dots-powerlifting-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

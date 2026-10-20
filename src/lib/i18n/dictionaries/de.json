@@ -315,6 +315,86 @@
       "limits": "Hydrologische Näherung. Überläufe bei Starkregenereignissen, Frost sowie Trinkwasservorschriften sind gesondert zu beachten.",
       "question": "Was bedeutet der Vorfilter- und Vorlaufverlust?",
       "answer": "Der Erstablaufabscheider leitet den ersten Schmutzwasserschwall mit Staub und Ablagerungen ab, was typischerweise etwa 5 % entspricht."
+    },
+    "dog-age-breed-specific-calculator": {
+      "title": "Hundealter-Rechner — Rasse- und größenabhängig",
+      "description": "Berechnen Sie das biologische Menschenalter Ihres Hundes anhand von rassespezifischen Wachstumskurven vom Welpen bis zum Senior.",
+      "how": "Geben Sie das aktuelle Alter des Hundes in Jahren an und wählen Sie die ausgewachsene Größenkategorie der Rasse.",
+      "limits": "Basiert auf veterinärmedizinischen Kohortenstatistiken. Genetik, Haltung, Ernährung und Gesundheit beeinflussen das biologische Altern maßgeblich.",
+      "question": "Warum altern große Hunderassen schneller als kleine Rassen?",
+      "answer": "Große und Riesenrassen weisen ein intensiveres Zellwachstum und eine raschere physiologische Abnutzung auf, wodurch sie Seniorenphasen früher erreichen."
+    },
+    "puppy-growth-predictor": {
+      "title": "Welpen-Wachstumsrechner",
+      "description": "Schätzen Sie das spätere Endgewicht Ihres Welpen anhand des aktuellen Alters, Gewichts und der rassetypischen Größenklasse ab.",
+      "how": "Geben Sie das Welpenalter in Wochen, das gegenwärtige Gewicht und die erwartete Endgröße der Rasse ein.",
+      "limits": "Wachstumskurven sind populationsbasierte Schätzwerte. Mischlinge, Fütterungsmuster und Vitalität bewirken individuelle Schwankungen.",
+      "question": "Wann ist das Skelettwachstum bei Hunden abgeschlossen?",
+      "answer": "Kleinere Hunderassen sind meist mit 9 bis 12 Monaten ausgewachsen, während Groß- und Riesenrassen bis zu 24 Monate benötigen."
+    },
+    "cat-calorie-calculator": {
+      "title": "Katzen- & Kitten-Kalorienrechner",
+      "description": "Berechnen Sie den täglichen Kalorienbedarf für Katzen und Kitten aus Körpergewicht, Lebensabschnitt und Aktivitätsgrad.",
+      "how": "Tragen Sie das Körpergewicht in Kilogramm ein und wählen Sie den Kastrationsstatus, das Alter oder den Aktivitätsfaktor.",
+      "limits": "Allgemeine Orientierungsformeln für gesunde Tiere. Ersetzt keine tiermedizinische Diätetik bei Organerkrankungen.",
+      "question": "Was besagt der Ruheenergiebedarf (RER) bei Katzen?",
+      "answer": "Der RER beziffert die elementare Stoffwechselenergie in völliger Ruhe, standardmäßig berechnet mit 70 × (Gewicht in kg)^0,75."
+    },
+    "caffeine-half-life-calculator": {
+      "title": "Koffein-Halbwertszeit-Rechner",
+      "description": "Berechnen Sie den verbleibenden Koffeingehalt in Ihrem Körper nach Stunden mithilfe einer anpassbaren biologischen Halbwertszeit.",
+      "how": "Tragen Sie die aufgenommene Koffeinmenge in Milligramm, die verstrichenen Stunden und die geschätzte Halbwertszeit ein.",
+      "limits": "Pharmakokinetische Modellierung. Individueller Lebermetabolismus (CYP1A2), Rauchen, Medikation und Schwangerschaft verändern den Abbau.",
+      "question": "Wie lange ist die durchschnittliche Koffein-Halbwertszeit?",
+      "answer": "Bei gesunden erwachsenen Nichtrauchern beträgt sie im Schnitt 4 bis 6 Stunden, wonach noch die Hälfte der Dosis zirkuliert."
+    },
+    "hrv-baseline-deviation-calculator": {
+      "title": "HRV-Basiswert-Abweichungsrechner",
+      "description": "Setzen Sie Ihre aktuelle Herzfrequenzvariabilität (HRV) ins Verhältnis zu Ihrer rollierenden Baseline zur Beurteilung der Erholung.",
+      "how": "Tragen Sie Ihren 7- bis 30-Tage-Mittelwert (in ms) und Ihren heutigen Ruhewert am Morgen ein.",
+      "limits": "Mathematischer Kennzahlenvergleich. Schlaf, Hydrierung und Messposition wirken sich auf Sensorwerte aus; keine medizinische Diagnose.",
+      "question": "Was bedeutet ein deutlicher Abfall der Ruhe-HRV?",
+      "answer": "Ein starkes Absinken unter den Referenzwert signalisiert meist sympathische Dominanz infolge von Trainingsbelastung, Stress oder Infektanbahnung."
+    },
+    "wilks-dots-powerlifting-calculator": {
+      "title": "Wilks- und DOTS-Powerlifting-Punkterechner",
+      "description": "Ermitteln und vergleichen Sie Ihre relative Kraftleistung nach den Wilks- und DOTS-Formeln aus Körpergewicht, Wettkampftotal und Geschlecht.",
+      "how": "Wählen Sie das biologische Geschlecht, das Körpergewicht in kg und die Summe der drei Grundübungen (Kniebeuge, Bankdrücken, Kreuzheben).",
+      "limits": "Dient dem Leistungsvergleich über Gewichtsklassen hinweg; maßgeblich bleiben die individuellen Verbandsregelwerke.",
+      "question": "Worin besteht der Unterschied zwischen Wilks- und DOTS-Punkten?",
+      "answer": "Wilks nutzt ein Polynom 5. Grades aus dem Jahr 1994, während DOTS modernere Faktoren ansetzt, um Verzerrungen bei Mittel- und Schwergewichten auszugleichen."
+    },
+    "macronutrient-calculator": {
+      "title": "Makronährstoff-Rechner",
+      "description": "Berechnen Sie Ihre täglichen Zielmengen für Proteine, Kohlenhydrate und Fette in Gramm und Kalorien nach Ihren Fitnesszielen.",
+      "how": "Geben Sie Ihre tägliche Zielkalorienmenge ein, wählen Sie ein Verteilungsprofil und tragen Sie Ihr Gewicht in kg ein.",
+      "limits": "Standardisierte ernährungswissenschaftliche Richtwerte. Individueller Stoffwechsel und Trainingsumfang erfordern Feinjustierung.",
+      "question": "Wie viele Kalorien liefert ein Gramm Eiweiß, Kohlenhydrate und Fett?",
+      "answer": "Nach den Atwater-Faktoren liefern Proteine und Kohlenhydrate je 4 kcal/g, während Fette 9 kcal/g bereitstellen."
+    },
+    "running-pace-calculator": {
+      "title": "Lauf-Pace- und Temporechner",
+      "description": "Berechnen Sie Ihre Pace pro Kilometer und Meile, Zwischenzeiten, Laufgeschwindigkeit und Zielzeit-Prognosen von 5K bis Marathon.",
+      "how": "Wählen Sie eine Standarddistanz oder tragen Sie freie Kilometer ein, ergänzt um Stunden, Minuten und Sekunden.",
+      "limits": "Zielzeit-Extrapolationen beruhen auf der Riegel-Formel und setzen ein entsprechendes Grundlagentraining voraus.",
+      "question": "Wie prognostiziert die Riegel-Formel Wettkampfzeiten?",
+      "answer": "Die Formel T2 = T1 × (D2 / D1)^1,06 modelliert die physiologische aerobe Ermüdung über längere Laufstrecken."
+    },
+    "hydration-calculator": {
+      "title": "Flüssigkeitsbedarfs-Rechner",
+      "description": "Schätzen Sie Ihre optimale tägliche Trinkmenge in Litern, Unzen und Standardgläsern anhand von Gewicht, Sportdauer und Umgebungstemperatur.",
+      "how": "Geben Sie Ihr Körpergewicht in kg, die tägliche Trainingszeit in Minuten und die klimatischen Verhältnisse ein.",
+      "limits": "Allgemeine Empfehlungen für gesunde Erwachsene. Bei Herz- oder Nierenleiden ist stets ärztlicher Rat zur Flüssigkeitszufuhr einzuholen.",
+      "question": "Zählt die Flüssigkeit aus Lebensmitteln zum Tagesbedarf?",
+      "answer": "Ja, wasserreiche Nahrungsmittel (Obst, Gemüse, Suppen) stellen üblicherweise 20 % bis 30 % der täglichen Gesamtwasseraufnahme dar."
+    },
+    "one-rep-max-calculator": {
+      "title": "Ein-Wiederholungs-Maximum-Rechner (1RM)",
+      "description": "Ermitteln Sie Ihre Maximalleistung (1RM) für Bankdrücken, Kniebeuge oder Kreuzheben nach Epley, Brzycki und Lander inklusive Prozenttabelle.",
+      "how": "Geben Sie das Trainingsgewicht in kg oder lb, die sauberen Wiederholungen (1 bis 30) und die Berechnungsmethode an.",
+      "limits": "Höchste Genauigkeit bei 2 bis 10 Wiederholungen; höhere Wiederholungszahlen spiegeln eher muskuläre Ausdauer wider.",
+      "question": "Welche Formel ist am besten für die 1RM-Berechnung?",
+      "answer": "Die Formeln von Epley und Brzycki sind die etabliertesten Verfahren; ihr Mittelwert liefert eine zuverlässige Schätzung."
     }
   },
   "flexOptions": {
@@ -949,12 +1029,305 @@
       },
       "note": "Theoretischer Ertrag basiert auf der hydrologischen Konstante (1 Zoll Regen auf 1 Quadratfuß = 0,6233 US-Gallonen) multipliziert mit dem Abflussbeiwert.",
       "textResults": {}
+    },
+    "dog-age-breed-specific-calculator": {
+      "fields": {
+        "dogAge": {
+          "label": "Hundealter (Jahre)"
+        },
+        "breedSize": {
+          "label": "Größenkategorie der Rasse",
+          "help": "Kleinere Rassen entwickeln sich im 1. Lebensjahr rascher, altern in den Folgejahren jedoch deutlich langsamer.",
+          "options": {
+            "small": "Kleine Rasse (unter 9 kg / 20 lb)",
+            "medium": "Mittlere Rasse (9,5 bis 23 kg / 21–50 lb)",
+            "large": "Große Rasse (23,5 bis 41 kg / 51–90 lb)",
+            "giant": "Riesenrasse (über 41 kg / 90+ lb)"
+          }
+        }
+      },
+      "results": {
+        "humanEquivalent": "Geschätztes Menschenalter (Jahre)",
+        "lifeStage": "Biologische Lebensphase"
+      },
+      "note": "Das berechnete Menschenalter ist ein fundierter Richtwert. Genetische Disposition, individuelles Körpergewicht, Lebensführung und tierärztliche Betreuung prägen den biologischen Alterungsprozess.",
+      "textResults": {
+        "lifeStage": "localized"
+      }
+    },
+    "puppy-growth-predictor": {
+      "fields": {
+        "ageWeeks": {
+          "label": "Welpenalter (Wochen)"
+        },
+        "currentWeight": {
+          "label": "Aktuelles Welpengewicht (kg oder lb)",
+          "help": "Die Ausgabe erfolgt in derselben Gewichtseinheit wie die Eingabe."
+        },
+        "breedSize": {
+          "label": "Erwartete Rassengrößenkategorie",
+          "help": "Kleine Rassen erreichen ihr Endgewicht viel schneller (9–10 Monate) als Riesenrassen (18–24 Monate).",
+          "options": {
+            "small": "Kleine Rasse (ausgewachsen unter 10 kg / 22 lb)",
+            "medium": "Mittlere Rasse (ausgewachsen 10–25 kg / 22–55 lb)",
+            "large": "Große Rasse (ausgewachsen 25–45 kg / 55–100 lb)",
+            "giant": "Riesenrasse (ausgewachsen über 45 kg / 100+ lb)"
+          }
+        }
+      },
+      "results": {
+        "estimatedAdultWeight": "Geschätztes Endgewicht",
+        "lowEstimate": "Unterer Schätzbereich",
+        "highEstimate": "Oberer Schätzbereich",
+        "growthProgress": "Bereits absolviertes Wachstum"
+      },
+      "note": "Wachstumskurven stützen sich auf statistische Referenzverläufe nach Rassengröße. Ernährung, Veranlagung und Gesundheitsstatus führen zu individuellen Abweichungen.",
+      "textResults": {}
+    },
+    "cat-calorie-calculator": {
+      "fields": {
+        "weightKg": {
+          "label": "Katzenkörpergewicht (kg)"
+        },
+        "factor": {
+          "label": "Lebensphase und Aktivitätsbeiwert",
+          "help": "Multipliziert den Erhaltungsbedarf in Ruhe (70 × Gewicht^0,75) mit dem Koeffizienten der Lebensphase.",
+          "options": {
+            "neutered-adult": "Kastrierte ausgewachsene Katze (1,2× RER)",
+            "intact-adult": "Unkastrierte ausgewachsene Katze (1,4× RER)",
+            "inactive-prone": "Wohnungskatze / inaktiv (1,0× RER)",
+            "active-adult": "Sehr aktive Freigängerkatze (1,6× RER)",
+            "kitten-young": "Kitten unter 4 Monaten (2,5× RER)",
+            "kitten-older": "Kitten 4 bis 12 Monate (2,0× RER)",
+            "senior": "Seniorkatze (1,1× RER)"
+          }
+        }
+      },
+      "results": {
+        "rer": "Ruheenergiebedarf (kcal/Tag)",
+        "dailyCalories": "Geschätzter Tagesenergiebedarf (kcal/Tag)"
+      },
+      "note": "Orientierende Energiebedarfsberechnung nach tiermedizinischen Standardgleichungen. Keine klinische Ernährungsvorschrift oder Diätplan für erkrankte Katzen. Bei gesundheitlichen Fragen bitte einen Tierarzt konsultieren.",
+      "textResults": {}
+    },
+    "caffeine-half-life-calculator": {
+      "fields": {
+        "doseMg": {
+          "label": "Aufgenommenes Koffein (mg)",
+          "help": "Filterkaffee 240 ml ~95 mg; Espresso ~63 mg; Energydrink ~160 mg."
+        },
+        "hoursElapsed": {
+          "label": "Vergangene Stunden seit Aufnahme"
+        },
+        "halfLifeHours": {
+          "label": "Geschätzte Koffein-Halbwertszeit (Stunden)",
+          "help": "Typische Halbwertszeit bei Erwachsenen liegt bei 4–6 Stunden (Mittelwert ~5 Stunden)."
+        }
+      },
+      "results": {
+        "remainingMg": "Verbleibendes Koffein im Körper (mg)",
+        "remainingPercent": "Verbleibender Anteil an Koffein (%)",
+        "eliminatedMg": "Bereits abgebautes Koffein (mg)"
+      },
+      "note": "Pharmakokinetische Schätzung auf Basis der Eliminationskinetik. Individuelle Clearance-Raten variieren durch Genetik (CYP1A2), Schwangerschaft, orale Kontrazeptiva, Rauchen, Medikamente und Alter.",
+      "textResults": {}
+    },
+    "hrv-baseline-deviation-calculator": {
+      "fields": {
+        "baselineHrv": {
+          "label": "Persönlicher HRV-Basiswert (ms)",
+          "help": "Ihr ermittelter 7- bis 30-Tage-Mittelwert im Ruhezustand (z. B. rMSSD oder SDNN)."
+        },
+        "currentHrv": {
+          "label": "Aktueller HRV-Messwert (ms)",
+          "help": "Unter gleichbleibenden morgendlichen Ruhebedingungen gemessen."
+        }
+      },
+      "results": {
+        "absoluteDifference": "Absolute Abweichung (ms)",
+        "percentDeviation": "Prozentuale Abweichung vom Basiswert",
+        "ratio": "Verhältnis Istwert zu Basiswert",
+        "direction": "Richtung gegenüber dem Basiswert"
+      },
+      "note": "Reine mathematische Auswertung. Sensorsysteme, Schlafzyklus, Tagesrhythmus und Körperhaltung beeinflussen die Messwerte. Dient nicht der medizinischen Diagnostik.",
+      "textResults": {
+        "direction": "localized"
+      }
+    },
+    "wilks-dots-powerlifting-calculator": {
+      "fields": {
+        "sex": {
+          "label": "Wertungskategorie",
+          "options": {
+            "male": "Männlich",
+            "female": "Weiblich"
+          }
+        },
+        "bodyweightKg": {
+          "label": "Körpergewicht des Athleten (kg)"
+        },
+        "totalKg": {
+          "label": "Kraftdreikampf-Gesamtgewicht (kg)",
+          "help": "Summe der besten gültigen Versuche in Kniebeuge, Bankdrücken und Kreuzheben."
+        }
+      },
+      "results": {
+        "dotsScore": "DOTS-Punktzahl",
+        "wilksScore": "Wilks-Punktzahl",
+        "totalBodyweightRatio": "Kraftverhältnis (Total / Körpergewicht)"
+      },
+      "note": "Verwendet die publizierten Standardkoeffizienten für DOTS und die originale Wilks-Formel von 1994. Für Trainingsanalysen und Leistungsvergleiche.",
+      "textResults": {}
+    },
+    "macronutrient-calculator": {
+      "fields": {
+        "dailyCalories": {
+          "label": "Tägliches Kalorienziel (kcal)"
+        },
+        "macroSplitGoal": {
+          "label": "Ernährungsstrategie-Profil",
+          "options": {
+            "balanced": "Ausgewogen (30% P / 40% KH / 30% F)",
+            "fat-loss": "Fettabbau / Definition (35% P / 35% KH / 30% F)",
+            "muscle-gain": "Muskelaufbau / Massephase (30% P / 50% KH / 20% F)",
+            "keto": "Keto / Low-Carb (25% P / 5% KH / 70% F)",
+            "endurance": "Ausdauerathlet (20% P / 60% KH / 20% F)"
+          }
+        },
+        "bodyWeightKg": {
+          "label": "Körpergewicht (kg, zur Prüfung der Proteindichte)"
+        }
+      },
+      "results": {
+        "proteinGrams": "Tägliches Protein (g)",
+        "proteinCalories": "Kalorien aus Protein (kcal)",
+        "carbGrams": "Tägliche Kohlenhydrate (g)",
+        "carbCalories": "Kalorien aus Kohlenhydraten (kcal)",
+        "fatGrams": "Tägliches Fett (g)",
+        "fatCalories": "Kalorien aus Fett (kcal)",
+        "proteinPerKgBodyweight": "Proteindichte (g/kg Körpergewicht)"
+      },
+      "note": "Die Kalorienumrechnung stützt sich auf standardisierte Atwater-Faktoren (4 kcal/g für Proteine & Kohlenhydrate, 9 kcal/g für Fett). Eine Proteinzufuhr von 1,6 bis 2,2 g/kg wird in der Sportwissenschaft für den Muskelerhalt empfohlen.",
+      "textResults": {}
+    },
+    "running-pace-calculator": {
+      "fields": {
+        "raceDistancePreset": {
+          "label": "Vordefinierte Wettkampfstrecke",
+          "options": {
+            "5k": "5 Kilometer (5K)",
+            "10k": "10 Kilometer (10K)",
+            "half-marathon": "Halbmarathon (21,1 km / 13,1 Meilen)",
+            "marathon": "Marathon (42,2 km / 26,2 Meilen)",
+            "custom": "Individuelle Distanz (Feld unten)"
+          }
+        },
+        "distanceKm": {
+          "label": "Individuelle Distanz (km)"
+        },
+        "timeHours": {
+          "label": "Zielzeit / Laufzeit (Stunden)"
+        },
+        "timeMinutes": {
+          "label": "Minuten"
+        },
+        "timeSeconds": {
+          "label": "Sekunden"
+        }
+      },
+      "results": {
+        "pacePerKm": "Pace pro Kilometer",
+        "pacePerMile": "Pace pro Meile",
+        "speedKmh": "Geschwindigkeit (km/h)",
+        "speedMph": "Geschwindigkeit (mph)",
+        "equivalent5kTime": "Äquivalente 5K-Zielzeit-Prognose",
+        "equivalent10kTime": "Äquivalente 10K-Zielzeit-Prognose",
+        "equivalentMarathonTime": "Äquivalente Marathon-Zielzeit-Prognose"
+      },
+      "note": "Pace-Werte und Geschwindigkeiten basieren auf der Gesamtzeit. Äquivalente Rennzeiten berechnen sich nach Pete Riegels Ermüdungsgesetz (T2 = T1 × [D2 / D1]^1,06).",
+      "textResults": {
+        "pacePerKm": "localized",
+        "pacePerMile": "localized",
+        "equivalent5kTime": "machine",
+        "equivalent10kTime": "machine",
+        "equivalentMarathonTime": "machine"
+      }
+    },
+    "hydration-calculator": {
+      "fields": {
+        "bodyWeightKg": {
+          "label": "Körpergewicht (kg)"
+        },
+        "exerciseDurationMinutes": {
+          "label": "Tägliche sportliche Aktivität (Minuten)"
+        },
+        "climateEnvironment": {
+          "label": "Klima und Umgebung",
+          "options": {
+            "temperate": "Gemäßigt / Klimatisierter Raum",
+            "hot-dry": "Heiß & trocken (+400 ml/Tag)",
+            "hot-humid": "Heiß & feucht (+600 ml/Tag)",
+            "cold-high-altitude": "Kalt / Höhenlage (+300 ml/Tag)"
+          }
+        }
+      },
+      "results": {
+        "totalWaterLiters": "Empfohlene Gesamtwassermenge (Liter/Tag)",
+        "totalFluidOunces": "Gesamtmenge (US-Flüssigunzen)",
+        "standardCups8oz": "Standard-Gläser à 240 ml (8 oz)",
+        "baselineLiters": "Basisbedarf in Ruhe (L)",
+        "exerciseAdditionLiters": "Schweißverlust-Ausgleich durch Sport (L)"
+      },
+      "note": "Basiert auf den Standards der National Academy of Medicine (35 ml/kg Grundbedarf zuzüglich Schweißkompensation). Über die feste Nahrung werden typischerweise 20–30 % des täglichen Flüssigkeitsvolumens gedeckt.",
+      "textResults": {}
+    },
+    "one-rep-max-calculator": {
+      "fields": {
+        "weightLifted": {
+          "label": "Bewältigtes Gewicht (kg oder lb)"
+        },
+        "repetitions": {
+          "label": "Gültige Wiederholungen (1–30)"
+        },
+        "formulaMethod": {
+          "label": "Berechnungsformel für 1RM",
+          "options": {
+            "average": "Konsens-Mittelwert (Epley + Brzycki)",
+            "epley": "Epley-Formel",
+            "brzycki": "Brzycki-Formel",
+            "lander": "Lander-Formel",
+            "lombardi": "Lombardi-Formel"
+          }
+        }
+      },
+      "results": {
+        "estimated1rm": "Geschätztes Ein-Wiederholungs-Maximum (1RM)",
+        "rep95Percent": "95% des 1RM (~2 Wdh.)",
+        "rep90Percent": "90% des 1RM (~4 Wdh.)",
+        "rep85Percent": "85% des 1RM (~6 Wdh.)",
+        "rep80Percent": "80% des 1RM (~8 Wdh.)",
+        "rep70Percent": "70% des 1RM (~12 Wdh.)",
+        "epleyEstimate": "Ergebnis nach Epley-Formel",
+        "brzyckiEstimate": "Ergebnis nach Brzycki-Formel"
+      },
+      "note": "Submaximale Formeln sind bei 2 bis 10 Wiederholungen am verlässlichsten. Bei mehr als 10 Wiederholungen verfälscht die muskuläre Ermüdungstoleranz die Schätzung der Maximalkraft.",
+      "textResults": {}
     }
   },
   "calculatorStates": {
     "matched": "Passend",
-    "mismatch": "Abweichung",
-    "flat": "Waagerecht",
-    "vertical": "Senkrecht"
+    "mismatch": "Formatabweichung",
+    "flat": "Flach",
+    "vertical": "Vertikal",
+    "puppy": "Welpe",
+    "youngAdult": "Junger Erwachsener",
+    "matureAdult": "Ausgewachsener Hund",
+    "senior": "Senior",
+    "geriatric": "Hochbetagt",
+    "aboveBaseline": "Über dem Basiswert",
+    "belowBaseline": "Unter dem Basiswert",
+    "equalToBaseline": "Gleich dem Basiswert",
+    "perKm": "/km",
+    "perMile": "/mi"
   }
 }

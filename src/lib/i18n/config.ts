@@ -27,6 +27,16 @@ export const translatedTools = [
   'mortar-calculator',
   'concrete-block-calculator',
   'rainwater-harvesting-calculator',
+  'dog-age-breed-specific-calculator',
+  'puppy-growth-predictor',
+  'cat-calorie-calculator',
+  'caffeine-half-life-calculator',
+  'hrv-baseline-deviation-calculator',
+  'wilks-dots-powerlifting-calculator',
+  'macronutrient-calculator',
+  'running-pace-calculator',
+  'hydration-calculator',
+  'one-rep-max-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
