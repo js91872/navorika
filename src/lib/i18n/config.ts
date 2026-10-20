@@ -111,6 +111,16 @@ export const translatedTools = [
   'waist-to-height-ratio-calculator',
   'waist-to-hip-ratio-calculator',
   'walking-calories-calculator',
+  'aquarium-volume-calculator',
+  'barbell-plate-calculator',
+  'battery-charge-time-calculator',
+  'dimensional-weight-calculator',
+  'electricity-cost-calculator',
+  'fuel-cost-split-calculator',
+  'schengen-90-180-day-calculator',
+  'tire-size-calculator',
+  'unit-price-calculator',
+  'website-worth-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

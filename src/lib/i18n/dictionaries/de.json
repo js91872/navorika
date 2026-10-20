@@ -987,6 +987,86 @@
       "limits": "Steigungen, Rucksackgewicht und unwegsames Gelände steigern den energetischen Aufwand spürbar.",
       "question": "Welchen Vorzug hat zügiges Gehen gegenüber Joggen?",
       "answer": "Gehen verbraucht pro Zeiteinheit weniger Kalorien, schont dafür Gelenkstrukturen und Bänder vor Stoßbelastungen."
+    },
+    "aquarium-volume-calculator": {
+      "title": "Aquarium-Volumen-Rechner",
+      "description": "Berechnen Sie das Fassungsvermögen rechteckiger oder zylindrischer Aquarien sowie das geschätzte reale Wasservolumen in Litern, US-Gallonen, UK-Gallonen und Kubikfuß.",
+      "how": "Wählen Sie die Beckenform (rechteckig oder zylindrisch), tragen Sie die Abmessungen ein und legen Sie Füllhöhe sowie Substratverdrängung fest.",
+      "limits": "Die Schätzung basiert auf geraden Scheiben und berücksichtigt keine gebogenen Panoramafronten oder externe Filterbecken (Technikbecken).",
+      "question": "Wie wirken sich Bodengrund und Dekorationen auf die Wassermenge aus?",
+      "answer": "Kies, Steine und Wurzeln verdrängen Wasser und reduzieren die nutzbare Wassermenge im Vergleich zum Leervolumen meist um 10 bis 20 Prozent."
+    },
+    "barbell-plate-calculator": {
+      "title": "Hantelscheiben-Rechner",
+      "description": "Geben Sie das gewünschte Gesamtgewicht der Langhantel ein und sehen Sie sofort, welche Hantelscheiben pro Seite aufgelegt werden müssen.",
+      "how": "Wählen Sie die Maßeinheit (kg oder lb), das Gewicht der leeren Hantelstange und Ihr Zielgewicht für eine exakte Scheibenaufteilung.",
+      "limits": "Die Berechnungen nutzen gängige Standard-Scheibengrößen und setzen eine absolut symmetrische Belastung beider Hantelenden voraus.",
+      "question": "Warum wird das Restgewicht durch zwei geteilt?",
+      "answer": "Eine Langhantel muss auf beiden Seiten exakt gleich beladen sein, um Stabilität, Hebesymmetrie und Verletzungssicherheit zu gewährleisten."
+    },
+    "battery-charge-time-calculator": {
+      "title": "Akku-Ladezeit-Rechner",
+      "description": "Schätzen Sie die Ladedauer eines Akkus basierend auf Kapazität, Ladestrom, Start- und Zielprozentsatz sowie Ladeeffizienz.",
+      "how": "Geben Sie die Kapazität in Amperestunden (Ah), den Ladestrom in Ampere (A), Anfangs- und Ziel-Ladestand sowie den Wirkungsgrad ein.",
+      "limits": "Das Modell nutzt eine vereinfachte Konstantstromphase; moderne CC/CV-Ladekurven drosseln den Strom auf den letzten 15 bis 20 Prozent der Kapazität.",
+      "question": "Warum verlangsamt sich der Ladevorgang kurz vor Erreichen der 100 Prozent?",
+      "answer": "Ladegeräte wechseln in die Konstantspannungsphase und senken die Stromstärke ab, um thermische Belastungen und Zellalterung zu minimieren."
+    },
+    "dimensional-weight-calculator": {
+      "title": "Volumengewicht-Rechner",
+      "description": "Berechnen Sie das Volumengewicht von Paketen anhand der Kartonmaße und vergleichen Sie es mit dem Realgewicht für das frachtpflichtige Gewicht.",
+      "how": "Wählen Sie metrische oder imperiale Einheiten, tragen Sie Länge, Breite, Höhe und Waagegewicht ein, ergänzt um den Volumendivisor des Paketdienstes.",
+      "limits": "Logistikdienstleister verwenden unterschiedliche Volumendivisoren (oft 5000 im internationalen Luftfrachtbereich oder 139/166 bei Inlandsspeditionen).",
+      "question": "Was versteht man unter Volumengewicht und warum wird danach abgerechnet?",
+      "answer": "Das Volumengewicht spiegelt die Dichte einer Sendung wider. Große, leichte Pakete belegen viel Laderaum, weshalb Frachtführer stets den höheren der beiden Werte berechnen."
+    },
+    "electricity-cost-calculator": {
+      "title": "Stromkostenrechner – kWh und Geräteverbrauch",
+      "description": "Berechnen Sie den Stromverbrauch in kWh und ermitteln Sie die laufenden Betriebskosten anhand von Wattleistung, Nutzungsdauer und Arbeitspreis.",
+      "how": "Tragen Sie die Wattzahl des Geräts, die tägliche Nutzungszeit in Stunden, den Abrechnungszeitraum in Tagen sowie den Strompreis pro Kilowattstunde (kWh) ein.",
+      "limits": "Setzt eine gleichbleibende Nennleistung voraus; taktende Großgeräte wie Kühlschränke oder Wärmepumpen verbrauchen je nach Zyklus schwankende Energie.",
+      "question": "Wo finde ich die genaue Wattleistung eines Elektrogeräts?",
+      "answer": "Auf dem Typenschild oder Netzteil des Produkts, wo die Leistung entweder direkt in Watt (W) oder als Produkt aus Spannung und Stromstärke (V × A = W) steht."
+    },
+    "fuel-cost-split-calculator": {
+      "title": "Spritkostenrechner und Fahrtkosten-Aufteilung",
+      "description": "Berechnen Sie den Kraftstoffverbrauch Ihrer Fahrt, ergänzen Sie Maut- und Parkgebühren und teilen Sie die Gesamtkosten fair durch alle Mitfahrer.",
+      "how": "Geben Sie Reisedistanz, Durchschnittsverbrauch des Fahrzeugs, Kraftstoffpreis, Anzahl der Insassen sowie Zusatzkosten für Maut oder Parken ein.",
+      "limits": "Die Verbrauchsangaben basieren auf normalem Verkehrsfluss; Stop-and-Go-Staus, Dachboxen und Gebirgsstrecken erhöhen den realen Verbrauch.",
+      "question": "Wie teilt man die Spritkosten auf, wenn jemand nur eine Teilstrecke mitfährt?",
+      "answer": "Berechnen Sie die Reise am besten abschnittsweise anhand der jeweils gefahrenen Kilometer und der Insassenzahl der Teilstrecke."
+    },
+    "schengen-90-180-day-calculator": {
+      "title": "Schengen-Rechner 90/180 Tage",
+      "description": "Überwachen Sie visafreie Kurzaufenthalte im Schengen-Raum nach der offiziellen Regel von maximal 90 Tagen innerhalb eines rollierenden 180-Tage-Zeitraums.",
+      "how": "Legen Sie das Referenzdatum fest und tragen Sie bisherige sowie geplante Reisen mit Ein- und Ausreisedatum ein, um verfügbare Resttage zu ermitteln.",
+      "limits": "Bezieht sich auf reguläre Kurzaufenthalte von Drittstaatsangehörigen; nationale Langzeitvisa (Kategorie D) oder Aufenthaltstitel werden nicht erfasst.",
+      "question": "Wie funktioniert das rollierende 180-Tage-Fenster im Schengen-Raum?",
+      "answer": "An jedem Tag des Aufenthalts blickt man genau 180 Tage zurück: Die Summe aller Aufenthaltstage im Schengen-Raum darf in diesem Intervall 90 nicht überschreiten."
+    },
+    "tire-size-calculator": {
+      "title": "Reifenrechner – Reifengrößen vergleichen",
+      "description": "Vergleichen Sie Original- und Ersatzreifengrößen: Gesamtdurchmesser, Flankenhöhe, Abrollumfang, Radumdrehungen und Tachoabweichung.",
+      "how": "Geben Sie Reifenbreite, Querschnittsverhältnis und Felgendurchmesser in Zoll für beide Reifensätze sowie eine Referenzgeschwindigkeit an.",
+      "limits": "Berechnungen nach standardisierten Normmaßen; tatsächliche Reifenabmessungen variieren je nach Reifenhersteller und Felgenmaulweite geringfügig.",
+      "question": "Wie viel Abweichung im Reifendurchmesser ist fahrzeugtechnisch zulässig?",
+      "answer": "Als Faustregel gilt ein Toleranzbereich von maximal ±3 Prozent gegenüber dem Serienrad, um Tachoanzeige und ABS-Regelsysteme nicht zu beeinträchtigen."
+    },
+    "unit-price-calculator": {
+      "title": "Grundpreis-Rechner – Preis pro Einheit vergleichen",
+      "description": "Vergleichen Sie zwei Packungsgrößen nach Preis pro Kilogramm, Liter oder Stück und ermitteln Sie sofort das günstigere Angebot und Ihre Ersparnis.",
+      "how": "Geben Sie Gesamtpreis und Menge für Option A und Option B ein und achten Sie auf dieselbe Maßeinheit (z. B. Gramm, Kilogramm, Liter oder Stück).",
+      "limits": "Der Vergleich berücksichtigt rein rechnerische Mengenkosten; Mindesthaltbarkeitsdaten oder häusliche Lagerkapazitäten fließen nicht ein.",
+      "question": "Wie vergleicht man Produkte mit Gramm- und Kilogramm-Angaben?",
+      "answer": "Rechnen Sie beide Angaben in dieselbe Einheit um: Aus 500 Gramm werden 0,5 Kilogramm, sodass beide Grundpreise einheitlich pro Kilogramm ermittelt werden."
+    },
+    "website-worth-calculator": {
+      "title": "Website-Wert-Rechner – Marktwert schätzen",
+      "description": "Schätzen Sie den Marktwert einer Website anhand von Besucherzahlen, Monatsumsatz und Reingewinn unter Anwendung gängiger Bewertungsmultiplikatoren.",
+      "how": "Geben Sie die Domain für einen technischen Basis-Scan ein und ergänzen Sie monatliche Zugriffe, Umsätze und Monatsgewinn für eine fundierte Wertspanne.",
+      "limits": "Die Schätzung ist ein Richtwert basierend auf normalisierten Erträgen; reale Firmenübernahmen erfordern Due-Diligence-Prüfungen der Bilanzen.",
+      "question": "Welches Gewinnmultiple wird typischerweise zur Website-Bewertung herangezogen?",
+      "answer": "Content-Portale, Webshops und SaaS-Unternehmen werden branchenüblich mit dem 24- bis 40-Fachen des monatlichen Nettogewinns (ca. 2,0- bis 3,5-facher Jahresgewinn) bewertet."
     }
   },
   "flexOptions": {
@@ -3752,6 +3832,177 @@
       "hours": "Geschätzte Gehzeit",
       "met": "MET-Intensitätsfaktor",
       "note": "Gehen bietet gelenkschonendes Herz-Kreislauf-Training mit einem zur Distanz und Masse linearen Kalorienverbrauch."
+    }
+  },
+  "everyday": {
+    "common": {
+      "results": "Ergebnisse",
+      "errorCheck": "Geben Sie gültige positive Werte für die Berechnung ein.",
+      "reset": "Zurücksetzen",
+      "currency": "Währung",
+      "metric": "Metrisch",
+      "imperial": "Imperial"
+    },
+    "aquarium": {
+      "heading": "Beckenmaße und Wassermenge",
+      "shape": "Beckenform",
+      "rectangular": "Rechteckig / Quader",
+      "cylindrical": "Zylindrisch",
+      "unit": "Maßeinheit",
+      "cm": "Zentimeter (cm)",
+      "in": "Zoll",
+      "length": "Länge",
+      "width": "Breite",
+      "height": "Höhe",
+      "diameter": "Durchmesser",
+      "cylinderHeight": "Zylinderhöhe",
+      "fillPercent": "Wasserfüllhöhe (%)",
+      "displacementPercent": "Verdrängung Bodengrund & Deko (%)",
+      "estimatedActualWater": "Effektives Wasservolumen",
+      "grossCapacity": "Bruttovolumen Becken",
+      "usGallons": "US-Gallonen",
+      "ukGallons": "UK-Gallonen",
+      "cubicFeet": "Kubikfuß",
+      "note": "Berechnet das Bruttovolumen sowie die reale Nettowassermenge abzüglich Bodengrund und Sicherheitsrand."
+    },
+    "barbell": {
+      "heading": "Zielgewicht und Scheibenaufteilung",
+      "unit": "Gewichtseinheit",
+      "kg": "Kilogramm (kg)",
+      "lb": "Pfund (lb)",
+      "barWeight": "Gewicht der Hantelstange",
+      "targetWeight": "Gewünschtes Gesamtgewicht",
+      "platesPerSide": "Scheiben pro Seite",
+      "totalWeight": "Erreichtes Gesamtgewicht",
+      "plateWeight": "Reines Scheibengewicht",
+      "weightDifference": "Differenz zum Zielwert",
+      "status": "Genauigkeit",
+      "exact": "Exaktes Zielgewicht erreicht",
+      "targetBelowBar": "Das Zielgewicht darf nicht unter dem Stangengewicht liegen.",
+      "note": "Ermittelt die passenden Hantelscheiben pro Seite für ein symmetrisch austariertes Hanteltraining."
+    },
+    "battery": {
+      "heading": "Batterieladung und Spezifikationen",
+      "capacity": "Akkukapazität (Ah)",
+      "current": "Ladestrom (A)",
+      "start": "Start-Ladestand (%)",
+      "target": "Ziel-Ladestand (%)",
+      "efficiency": "Geschätzter Wirkungsgrad (%)",
+      "chargeTime": "Geschätzte Ladezeit",
+      "totalHours": "Gesamtstunden",
+      "note": "Schätzt die Ladedauer unter vereinfachter Konstantstromannahme inklusive Umwandlungsverlusten."
+    },
+    "dimWeight": {
+      "heading": "Paketabmessungen und Volumengewicht",
+      "system": "Maßsystem",
+      "metricSystem": "Metrisch — cm & kg (Divisor 5000)",
+      "imperialSystem": "Imperial — Zoll & lb (Divisor 139)",
+      "length": "Länge",
+      "width": "Breite",
+      "height": "Höhe",
+      "actualWeight": "Realgewicht der Waage",
+      "divisor": "Volumendivisor",
+      "billableWeight": "Frachtpflichtiges Gewicht",
+      "dimWeightResult": "Berechnetes Volumengewicht",
+      "volume": "Sendungsvolumen",
+      "chargedBy": "Abrechnungsgrundlage",
+      "chargedByDim": "Volumengewicht",
+      "chargedByActual": "Tatsächliches Waagengewicht",
+      "note": "Gleicht Raummaß und Realkilos ab, um das für den Paketversand maßgebliche Abrechnungsgewicht zu ermitteln."
+    },
+    "electricity": {
+      "heading": "Geräteleistung und Stromkostenrechnung",
+      "power": "Leistung des Geräts (Watt)",
+      "hoursPerDay": "Tägliche Betriebsstunden",
+      "days": "Zeitraum (Tage)",
+      "rate": "Stromtarif je kWh",
+      "totalCost": "Gesamte Stromkosten",
+      "totalKwh": "Gesamtverbrauch",
+      "costPerDay": "Kosten pro Tag",
+      "costPerMonth": "Kosten pro Monat (30 Tage)",
+      "costPerYear": "Kosten pro Jahr",
+      "note": "Ermittelt den Kilowattstunden-Bedarf und errechnet die laufenden Stromausgaben gemäß Tarif."
+    },
+    "fuelSplit": {
+      "heading": "Reisedistanz und Spritkosten-Teilung",
+      "distance": "Reisedistanz",
+      "distanceUnit": "Entfernungseinheit",
+      "km": "Kilometer (km)",
+      "mi": "Meilen (mi)",
+      "efficiency": "Verbrauch des Wagens",
+      "efficiencyUnit": "Verbrauchseinheit",
+      "kmpl": "km/L",
+      "l100km": "L/100km",
+      "mpg": "MPG",
+      "fuelPrice": "Kraftstoffpreis je Liter",
+      "passengers": "Zahl der Mitfahrenden",
+      "tolls": "Mautgebühren",
+      "parking": "Parkkosten & Sonstiges",
+      "roundTrip": "Hin- und Rückfahrt (doppelte Distanz)",
+      "costPerPerson": "Kostenanteil pro Mitfahrer",
+      "totalCost": "Gesamte Fahrtkosten",
+      "fuelCost": "Reine Kraftstoffkosten",
+      "fuelNeeded": "Benötigte Kraftstoffmenge",
+      "note": "Splittet die anfallenden Kosten für Kraftstoff, Maut und Parken transparent unter allen Fahrgästen auf."
+    },
+    "schengen": {
+      "heading": "Reisedaten und 180-Tage-Fenster",
+      "referenceDate": "Prüfdatum für die Berechnung",
+      "staysTitle": "Erfasste Aufenthalte im Schengen-Raum",
+      "addStay": "Aufenthalt hinzufügen",
+      "tripLabel": "Reisebezeichnung",
+      "complianceStatus": "Rechtlicher Aufenthaltsstatus",
+      "compliant": "Zulässig (innerhalb des 90-Tage-Limits)",
+      "overstay": "Aufenthaltsüberschreitung",
+      "daysUsed": "Verbrauchte Tage im 180-Tage-Fenster",
+      "daysRemaining": "Verbleibende Aufenthaltstage",
+      "windowStart": "Beginn des rollierenden Fensters",
+      "note": "Ermittelt das Kontingent für visafreie Kurzaufenthalte nach der 90-Tage-Regel im Schengen-Raum."
+    },
+    "tireSize": {
+      "heading": "Reifengrößen-Vergleich und Abrollumfang",
+      "originalTire": "Originale Serienbereifung",
+      "newTire": "Neue Austauschbereifung",
+      "width": "Reifenbreite (mm)",
+      "aspectRatio": "Querschnittsverhältnis (%)",
+      "rimDiameter": "Felgendurchmesser (Zoll)",
+      "referenceSpeed": "Prüfgeschwindigkeit (km/h)",
+      "diameterDiff": "Durchmesser-Abweichung",
+      "speedometerReading": "Tatsächliche Tachoanzeige",
+      "clearanceDiff": "Bodenfreiheitsänderung",
+      "originalDiameter": "Originaler Durchmesser",
+      "newDiameter": "Neuer Durchmesser",
+      "note": "Vergleicht Maße und Abrollumfang beider Reifengrößen und quantifiziert die Geschwindigkeitsabweichung."
+    },
+    "unitPrice": {
+      "heading": "Grundpreisvergleich zweier Packungsgrößen",
+      "itemA": "Option A",
+      "itemB": "Option B",
+      "price": "Gesamtpreis",
+      "quantity": "Menge oder Gewicht",
+      "unitLabel": "Einheitsbezeichnung",
+      "unitPriceA": "Grundpreis Option A",
+      "unitPriceB": "Grundpreis Option B",
+      "cheaperOption": "Günstigeres Angebot",
+      "optionACheaper": "Option A ist günstiger",
+      "optionBCheaper": "Option B ist günstiger",
+      "equalPrice": "Beide Optionen haben denselben Grundpreis",
+      "savingsPercent": "Rechnerische Ersparnis",
+      "priceDifference": "Differenz je Mengeneinheit",
+      "note": "Ermittelt den verlässlichen Grundpreis pro Einheit, um die wirtschaftlichste Packungsgröße zu finden."
+    },
+    "websiteWorth": {
+      "heading": "Marktwertschätzung für Websites",
+      "urlLabel": "Website-Adresse (URL)",
+      "analyzeBtn": "Website analysieren",
+      "analyzing": "Wird analysiert…",
+      "visits": "Monatliche Besucher",
+      "revenue": "Monatlicher Umsatz (USD)",
+      "profit": "Monatlicher Reingewinn (USD)",
+      "marketRange": "Geschätzte Marktpreisspanne",
+      "midpoint": "Mittlerer Schätzwert",
+      "scanFailed": "Die eingegebene Website-URL konnte nicht überprüft werden.",
+      "note": "Ermittelt eine fundierte Bewertungsspanne auf Grundlage branchenüblicher Gewinn- und Traffic-Multiples."
     }
   }
 }

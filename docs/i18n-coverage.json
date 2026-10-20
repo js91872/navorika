@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 115,
-    "pendingTools": 198,
+    "publishedTools": 125,
+    "pendingTools": 188,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 805,
+    "publishedToolTranslations": 875,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -25,7 +25,7 @@
       "jsxText": 3645,
       "visibleAttribute": 337,
       "semanticCopy": 11154,
-      "reviewLiteral": 43631
+      "reviewLiteral": 43633
     },
     "candidateCopyWords": 291689
   },
@@ -173,8 +173,16 @@
       "source": "src/app/(english)/tools/aquarium-volume-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -334,8 +342,16 @@
       "source": "src/app/(english)/tools/barbell-plate-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -400,8 +416,16 @@
       "source": "src/app/(english)/tools/battery-charge-time-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1988,8 +2012,16 @@
       "source": "src/app/(english)/tools/dimensional-weight-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -2172,8 +2204,16 @@
       "source": "src/app/(english)/tools/electricity-cost-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -2461,8 +2501,16 @@
       "source": "src/app/(english)/tools/fuel-cost-split-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5304,8 +5352,16 @@
       "source": "src/app/(english)/tools/schengen-90-180-day-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5840,8 +5896,16 @@
       "source": "src/app/(english)/tools/tire-size-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5974,8 +6038,16 @@
       "source": "src/app/(english)/tools/unit-price-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -6561,8 +6633,16 @@
       "source": "src/app/(english)/tools/website-worth-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -7525,7 +7605,7 @@
     {
       "source": "src/app/(english)/tools/aquarium-volume-calculator/page.tsx",
       "routeTemplate": "/tools/aquarium-volume-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7573,7 +7653,7 @@
     {
       "source": "src/app/(english)/tools/barbell-plate-calculator/page.tsx",
       "routeTemplate": "/tools/barbell-plate-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7597,7 +7677,7 @@
     {
       "source": "src/app/(english)/tools/battery-charge-time-calculator/page.tsx",
       "routeTemplate": "/tools/battery-charge-time-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8059,7 +8139,7 @@
     {
       "source": "src/app/(english)/tools/dimensional-weight-calculator/page.tsx",
       "routeTemplate": "/tools/dimensional-weight-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8107,7 +8187,7 @@
     {
       "source": "src/app/(english)/tools/electricity-cost-calculator/page.tsx",
       "routeTemplate": "/tools/electricity-cost-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8191,7 +8271,7 @@
     {
       "source": "src/app/(english)/tools/fuel-cost-split-calculator/page.tsx",
       "routeTemplate": "/tools/fuel-cost-split-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9001,7 +9081,7 @@
     {
       "source": "src/app/(english)/tools/schengen-90-180-day-calculator/page.tsx",
       "routeTemplate": "/tools/schengen-90-180-day-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9151,7 +9231,7 @@
     {
       "source": "src/app/(english)/tools/tire-size-calculator/page.tsx",
       "routeTemplate": "/tools/tire-size-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9193,7 +9273,7 @@
     {
       "source": "src/app/(english)/tools/unit-price-calculator/page.tsx",
       "routeTemplate": "/tools/unit-price-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9379,7 +9459,7 @@
     {
       "source": "src/app/(english)/tools/website-worth-calculator/page.tsx",
       "routeTemplate": "/tools/website-worth-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

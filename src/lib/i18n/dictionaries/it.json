@@ -987,6 +987,86 @@
       "limits": "Pendenze in salita, zaini pesanti e fondo sconnesso aumentano significativamente il costo metabolico.",
       "question": "Come si confronta la camminata veloce con la corsa per dimagrire?",
       "answer": "La camminata consuma meno calorie al minuto ma preserva tendini e cartilagini articolari dai microtraumi."
+    },
+    "aquarium-volume-calculator": {
+      "title": "Calcolatore volume acquario",
+      "description": "Calcola la capacità di un acquario rettangolare o cilindrico e il volume netto stimato dell’acqua in litri, galloni USA, galloni imperiali e piedi cubi.",
+      "how": "Seleziona la forma della vasca (rettangolare o cilindrica), inserisci le misure e imposta la percentuale di riempimento e l’ingombro di substrato e arredi.",
+      "limits": "I calcoli si basano su geometrie regolari e non includono vetri panoramici curvi o vasche filtro sump esterne.",
+      "question": "In che modo il fondo e le decorazioni incidono sulla quantità d’acqua reale?",
+      "answer": "Ghiaia, rocce e legni occupano volume prezioso, riducendo comunemente la capienza effettiva dell’acquario dal 10% al 20% rispetto alla vasca vuota."
+    },
+    "barbell-plate-calculator": {
+      "title": "Calcolatore dischi bilanciere",
+      "description": "Inserisci il carico totale desiderato e scopri all’istante quali dischi caricare su ciascun lato del bilanciere.",
+      "how": "Seleziona l’unità (kg o lb), il peso del bilanciere e il carico target per ottenere l’elenco esatto dei dischi per lato.",
+      "limits": "Le combinazioni impiegano le pezzature commerciali standard e presuppongono una distribuzione perfettamente speculare.",
+      "question": "Perché il carico rimanente viene diviso per due?",
+      "answer": "Il bilanciere necessita dello stesso identico peso su entrambi i manicotti per garantire equilibrio, sicurezza e simmetria nel sollevamento."
+    },
+    "battery-charge-time-calculator": {
+      "title": "Calcolatore tempo di ricarica batteria",
+      "description": "Stima il tempo necessario per caricare una batteria in base a capacità, corrente del caricatore, percentuali di carica ed efficienza.",
+      "how": "Inserisci la capacità in ampere-ora (Ah), la corrente di carica in ampere (A), le percentuali iniziale e finale e l’efficienza stimata.",
+      "limits": "Il modello presuppone una fase a corrente costante; i profili di ricarica reali (CC/CV) riducono la corrente nelle fasi finali sopra l’80%.",
+      "question": "Per quale ragione la ricarica rallenta vicino al 100%?",
+      "answer": "I caricabatterie commutano su una modalità a tensione costante per ridurre l’intensità della corrente e preservare la chimica degli accumulatori da sovraccarichi."
+    },
+    "dimensional-weight-calculator": {
+      "title": "Calcolatore peso volumetrico",
+      "description": "Calcola il peso volumetrico di una spedizione dalle dimensioni del pacco e confrontalo con il peso effettivo per conoscere il peso tassabile.",
+      "how": "Seleziona il sistema metrico o imperiale, inserisci lunghezza, larghezza, altezza e peso reale rilevato sulla bilancia, specificando il divisore del corriere.",
+      "limits": "I corrieri utilizzano coefficienti dimensionali differenti (ad esempio 5000 per spedizioni aeree internazionali o valori specifici per vettori stradali).",
+      "question": "Che cos’è il peso volumetrico e perché i corrieri lo applicano?",
+      "answer": "Esprime la densità della merce. Colli ingombranti ma leggeri occupano molto spazio nei furgoni e negli aerei, pertanto la tariffa si basa sul valore maggiore tra peso reale e volumetrico."
+    },
+    "electricity-cost-calculator": {
+      "title": "Calcolatore costo elettricità – kWh e consumi",
+      "description": "Calcola i kilowattora consumati da un elettrodomestico e stima la spesa energetica in bolletta in base a potenza, ore di utilizzo e tariffa.",
+      "how": "Inserisci la potenza in watt, le ore medie di funzionamento al giorno, il periodo di fatturazione in giorni e il costo del kWh del tuo fornitore.",
+      "limits": "Il modello presuppone un carico costante; apparecchi come frigoriferi e condizionatori alternano cicli di accensione e spegnimento.",
+      "question": "Dove si trova il valore in watt su un elettrodomestico?",
+      "answer": "Sulla targhetta identificativa o sull’alimentatore del prodotto, dove è riportata la potenza espressa in watt (W) oppure volt e ampere (V × A = W)."
+    },
+    "fuel-cost-split-calculator": {
+      "title": "Calcolatore costo carburante e divisione passeggeri",
+      "description": "Calcola i consumi di carburante del viaggio, somma pedaggi e parcheggi, e dividi la spesa totale equamente tra i partecipanti.",
+      "how": "Inserisci i chilometri da percorrere, il consumo medio dell’auto, il costo del carburante al litro, il numero di persone a bordo ed eventuali spese accessorie.",
+      "limits": "Il calcolo presuppone un’andatura costante e non tiene conto di code prolungate, pendenze montane o stile di guida aggressivo.",
+      "question": "Come si dividono le spese se un passeggero partecipa solo a una parte dell’itinerario?",
+      "answer": "Conviene calcolare separatamente le singole tappe del viaggio in base ai chilometri percorsi da ciascun passeggero o ripartire i costi in proporzione alle tratte."
+    },
+    "schengen-90-180-day-calculator": {
+      "title": "Calcolatore Schengen 90/180 giorni",
+      "description": "Monitora i giorni di soggiorno turistico senza visto nell’area Schengen secondo la norma ufficiale dei 90 giorni su ogni finestra mobile di 180 giorni.",
+      "how": "Imposta la data di riferimento del controllo e inserisci i viaggi passati o futuri con data di ingresso e uscita per calcolare i giorni disponibili.",
+      "limits": "Si applica ai soggiorni brevi esenti da visto per cittadini extra-UE; non monitora visti nazionali per soggiorni lunghi o permessi di soggiorno.",
+      "question": "Come funziona il conteggio della finestra mobile di 180 giorni nell’area Schengen?",
+      "answer": "Per ogni data di soggiorno considerata si contano a ritroso 180 giorni: la somma dei giorni trascorsi nello spazio Schengen non deve mai superare quota 90."
+    },
+    "tire-size-calculator": {
+      "title": "Calcolatore dimensioni pneumatici",
+      "description": "Confronta le misure degli pneumatici originali e nuovi: diametro, altezza spalla, circonferenza di rotolamento e scarto del tachimetro.",
+      "how": "Inserisci larghezza, rapporto d’aspetto e calettamento del cerchio per entrambe le gomme, indicando una velocità di riferimento.",
+      "limits": "I valori si basano sulle misure nominali standard del settore; le dimensioni reali possono variare lievemente a seconda del battistrada e del canale del cerchio.",
+      "question": "Quale tolleranza sul diametro delle gomme è considerata sicura?",
+      "answer": "I costruttori consigliano di non superare uno scostamento di diametro del ±3% rispetto alla gommatura omologata per non falsare tachimetro, ABS ed ESP."
+    },
+    "unit-price-calculator": {
+      "title": "Calcolatore prezzo unitario",
+      "description": "Confronta due confezioni in base al prezzo per chilo, litro o pezzo per individuare subito il formato più conveniente e il risparmio percentuale.",
+      "how": "Inserisci il costo complessivo e il quantitativo per l’opzione A e l’opzione B, impiegando la medesima unità di misura.",
+      "limits": "Il calcolo valuta la pura convenienza economica per unità di peso o volume, senza considerare date di scadenza o capienza di dispensa e freezer.",
+      "question": "Come si confrontano confezioni vendute in grammi e in chilogrammi?",
+      "answer": "È sufficiente convertire entrambe le quantità nella stessa unità: ad esempio, trasforma 500 grammi in 0,5 kg per avere due prezzi unitari riferiti al chilogrammo."
+    },
+    "website-worth-calculator": {
+      "title": "Calcolatore valore sito web",
+      "description": "Stima il valore di mercato di un sito web partendo da visitatori mensili, fatturato e profitto netto applicando i multipli di settore.",
+      "how": "Inserisci l’URL del sito per analizzare i segnali tecnici pubblici, quindi compila visite uniche mensili, ricavi e utile per visualizzare la forbice di prezzo.",
+      "limits": "Offre una valutazione orientativa sui guadagni normalizzati; il prezzo di vendita effettivo è legato a contratti, dipendenza da Google e bilanci verificati.",
+      "question": "Quale multiplo di utile netto si utilizza comunemente per valutare un business online?",
+      "answer": "Portali editoriali, e-commerce e SaaS sono abitualmente scambiati tra 24 e 40 volte il profitto mensile netto (equivalente a 2–3,5 volte l’utile annuale)."
     }
   },
   "flexOptions": {
@@ -3752,6 +3832,177 @@
       "hours": "Tempo di camminata stimato",
       "met": "Fattore di intensità MET",
       "note": "La camminata fornisce un esercizio aerobico a basso impatto articolare con dispendio lineare su distanza."
+    }
+  },
+  "everyday": {
+    "common": {
+      "results": "Risultati",
+      "errorCheck": "Inserisci valori positivi validi per calcolare.",
+      "reset": "Reimposta",
+      "currency": "Valuta",
+      "metric": "Metrico",
+      "imperial": "Imperiale"
+    },
+    "aquarium": {
+      "heading": "Dimensioni vasca e stima dell’acqua",
+      "shape": "Forma dell’acquario",
+      "rectangular": "Rettangolare / A scatola",
+      "cylindrical": "Cilindrico",
+      "unit": "Unità di misura",
+      "cm": "Centimetri (cm)",
+      "in": "Pollici",
+      "length": "Lunghezza",
+      "width": "Larghezza",
+      "height": "Altezza",
+      "diameter": "Diametro",
+      "cylinderHeight": "Altezza cilindro",
+      "fillPercent": "Livello di riempimento (%)",
+      "displacementPercent": "Ingombro fondo e arredi (%)",
+      "estimatedActualWater": "Acqua effettiva stimata",
+      "grossCapacity": "Capacità lorda vasca",
+      "usGallons": "Galloni USA",
+      "ukGallons": "Galloni imperiali",
+      "cubicFeet": "Piedi cubi",
+      "note": "Determina il volume lordo e la quantità netta d’acqua sottraendo lo spazio occupato da ghiaia e arredi."
+    },
+    "barbell": {
+      "heading": "Carico target e combinazione dischi",
+      "unit": "Unità di peso",
+      "kg": "Chilogrammi (kg)",
+      "lb": "Libbre (lb)",
+      "barWeight": "Peso bilanciere vuoto",
+      "targetWeight": "Carico totale desiderato",
+      "platesPerSide": "Dischi per lato",
+      "totalWeight": "Peso totale ottenuto",
+      "plateWeight": "Peso totale dei dischi",
+      "weightDifference": "Scostamento dal target",
+      "status": "Stato precisione",
+      "exact": "Carico esatto raggiunto",
+      "targetBelowBar": "Il carico totale non può essere inferiore al peso del bilanciere.",
+      "note": "Calcola i dischi necessari per caricare entrambi i lati del bilanciere in modo perfettamente bilanciato."
+    },
+    "battery": {
+      "heading": "Parametri di ricarica accumulatore",
+      "capacity": "Capacità della batteria (Ah)",
+      "current": "Corrente del caricatore (A)",
+      "start": "Carica iniziale (%)",
+      "target": "Carica target (%)",
+      "efficiency": "Efficienza energetica (%)",
+      "chargeTime": "Tempo di ricarica stimato",
+      "totalHours": "Durata totale in ore",
+      "note": "Stima il tempo necessario per la ricarica considerando le perdite fisiologiche e l’amperaggio."
+    },
+    "dimWeight": {
+      "heading": "Misure imballo e peso volumetrico",
+      "system": "Sistema di misura",
+      "metricSystem": "Metrico — cm e kg (divisore 5000)",
+      "imperialSystem": "Imperiale — pollici e libbre (divisore 139)",
+      "length": "Lunghezza",
+      "width": "Larghezza",
+      "height": "Altezza",
+      "actualWeight": "Peso effettivo bilancia",
+      "divisor": "Divisore volumetrico",
+      "billableWeight": "Peso tassabile finale",
+      "dimWeightResult": "Peso volumetrico calcolato",
+      "volume": "Volume del pacco",
+      "chargedBy": "Base di calcolo tariffa",
+      "chargedByDim": "Peso volumetrico",
+      "chargedByActual": "Peso reale bilancia",
+      "note": "Mette a confronto il peso volumetrico con la pesata reale per stabilire il costo di spedizione applicabile."
+    },
+    "electricity": {
+      "heading": "Potenza assorbita e spesa in bolletta",
+      "power": "Potenza elettrodomestico (Watt)",
+      "hoursPerDay": "Ore di uso giornaliero",
+      "days": "Intervallo temporale (giorni)",
+      "rate": "Costo unitario per kWh",
+      "totalCost": "Costo elettrico complessivo",
+      "totalKwh": "Energia consumata totale",
+      "costPerDay": "Spesa al giorno",
+      "costPerMonth": "Spesa mensile (30 giorni)",
+      "costPerYear": "Spesa annuale stimata",
+      "note": "Calcola i kilowattora assorbiti e quantifica la spesa corrispondente in bolletta."
+    },
+    "fuelSplit": {
+      "heading": "Chilometraggio e divisione spese viaggio",
+      "distance": "Distanza del tragitto",
+      "distanceUnit": "Unità distanza",
+      "km": "Chilometri (km)",
+      "mi": "Miglia (mi)",
+      "efficiency": "Consumo dell’auto",
+      "efficiencyUnit": "Unità di consumo",
+      "kmpl": "km/L",
+      "l100km": "L/100km",
+      "mpg": "MPG",
+      "fuelPrice": "Prezzo carburante al litro",
+      "passengers": "Numero di viaggiatori",
+      "tolls": "Spese pedaggio autostradale",
+      "parking": "Parcheggio e spese accessorie",
+      "roundTrip": "Andata e ritorno (distanza × 2)",
+      "costPerPerson": "Quota per ciascun passeggero",
+      "totalCost": "Spesa complessiva viaggio",
+      "fuelCost": "Totale spesa carburante",
+      "fuelNeeded": "Litri di carburante stimati",
+      "note": "Divide con precisione le uscite per carburante, pedaggi e parcheggio tra tutti i partecipanti al viaggio."
+    },
+    "schengen": {
+      "heading": "Date di viaggio e finestra mobile di 180 giorni",
+      "referenceDate": "Data di verifica presa a riferimento",
+      "staysTitle": "Soggiorni registrati nell’area Schengen",
+      "addStay": "Aggiungi viaggio",
+      "tripLabel": "Nome del viaggio",
+      "complianceStatus": "Stato di conformità",
+      "compliant": "In regola (entro il massimale di 90 giorni)",
+      "overstay": "Soggiorno oltre il limite",
+      "daysUsed": "Giorni trascorsi negli ultimi 180 giorni",
+      "daysRemaining": "Giorni di soggiorno ancora disponibili",
+      "windowStart": "Data di inizio finestra mobile",
+      "note": "Calcola i giorni esenti da visto secondo il meccanismo mobile 90/180 previsto dalle norme europee."
+    },
+    "tireSize": {
+      "heading": "Confronto misure pneumatici",
+      "originalTire": "Pneumatico originale",
+      "newTire": "Nuovo pneumatico",
+      "width": "Battistrada (mm)",
+      "aspectRatio": "Spalla / Profilo (%)",
+      "rimDiameter": "Calettamento cerchio (pollici)",
+      "referenceSpeed": "Velocità di prova (km/h)",
+      "diameterDiff": "Variazione diametro",
+      "speedometerReading": "Lettura effettiva tachimetro",
+      "clearanceDiff": "Scostamento altezza da terra",
+      "originalDiameter": "Diametro originale",
+      "newDiameter": "Nuovo diametro",
+      "note": "Confronta sviluppo metrico, diametro complessivo ed errore percentuale sul contachilometri."
+    },
+    "unitPrice": {
+      "heading": "Confronto prodotti per prezzo unitario",
+      "itemA": "Opzione A",
+      "itemB": "Opzione B",
+      "price": "Prezzo totale",
+      "quantity": "Quantità o peso",
+      "unitLabel": "Unità di misura",
+      "unitPriceA": "Costo unitario opzione A",
+      "unitPriceB": "Costo unitario opzione B",
+      "cheaperOption": "Scelta più economica",
+      "optionACheaper": "L’opzione A risulta più conveniente",
+      "optionBCheaper": "L’opzione B risulta più conveniente",
+      "equalPrice": "Entrambe le confezioni hanno identico costo unitario",
+      "savingsPercent": "Risparmio percentuale",
+      "priceDifference": "Differenza di prezzo per unità",
+      "note": "Confronta il costo per unità di misura tra formati differenti per massimizzare la convenienza della spesa."
+    },
+    "websiteWorth": {
+      "heading": "Valutazione valore sito web",
+      "urlLabel": "Indirizzo del sito web (URL)",
+      "analyzeBtn": "Analizza sito web",
+      "analyzing": "Analisi in corso…",
+      "visits": "Visite mensili",
+      "revenue": "Ricavi mensili (USD)",
+      "profit": "Utile netto mensile (USD)",
+      "marketRange": "Forbice di valore sul mercato",
+      "midpoint": "Stima del valore mediano",
+      "scanFailed": "Impossibile completare l’analisi dell’indirizzo specificato.",
+      "note": "Fornisce una stima del valore economico di una proprietà web applicando i consueti multipli di rendimento."
     }
   }
 }

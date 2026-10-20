@@ -987,6 +987,86 @@
       "limits": "Incline grade, pack weight, ambient temperature, and footwear mechanical cushioning alter final caloric cost.",
       "question": "How does brisk walking compare to running for fat loss?",
       "answer": "Walking burns fewer calories per minute than running, but places minimal stress on connective joint structures."
+    },
+    "aquarium-volume-calculator": {
+      "title": "Aquarium Volume Calculator",
+      "description": "Calculate rectangular or cylindrical aquarium capacity and estimated actual water volume in litres, US gallons, UK gallons, and cubic feet.",
+      "how": "Select the tank shape (rectangular or cylindrical), enter dimensions, and specify the water fill level and substrate displacement percentage to calculate net water volume.",
+      "limits": "Water volume estimates assume standard tank geometry and do not account for curved bowfront glass or external sump volumes.",
+      "question": "How do substrate and decorations affect aquarium water volume?",
+      "answer": "Gravel, rocks, and driftwood displace water, reducing the actual water capacity of your aquarium typically by 10% to 20% compared to empty volume."
+    },
+    "barbell-plate-calculator": {
+      "title": "Barbell Plate Calculator",
+      "description": "Enter your target barbell weight and instantly calculate which plates to load on each side of the bar.",
+      "how": "Set your measurement unit (kg or lb), bar weight, and target weight to get an exact visual breakdown of plates to load per side.",
+      "limits": "Plate combinations use standard commercial denominations and assume equal plate distribution on both sides of the barbell.",
+      "question": "Why does the plate calculator divide the remaining weight by two?",
+      "answer": "A barbell requires identical weight on both the left and right sleeves to preserve balance, safety, and symmetrical lifting mechanics."
+    },
+    "battery-charge-time-calculator": {
+      "title": "Battery Charge Time Calculator",
+      "description": "Estimate how long it takes to charge a battery based on capacity, charger current, charge levels, and charging efficiency.",
+      "how": "Input the battery capacity in amp-hours (Ah), charger output in amps (A), starting and target percentage, and estimated charging efficiency.",
+      "limits": "Assumes a simplified constant-current phase; multi-stage charging algorithms like CC/CV will taper current in the top 10–20% of capacity.",
+      "question": "Why does charging slow down near 100% capacity?",
+      "answer": "Lithium and lead-acid chargers switch from constant current to constant voltage, reducing current to protect battery chemistry from overheating and voltage spikes."
+    },
+    "dimensional-weight-calculator": {
+      "title": "Dimensional Weight Calculator",
+      "description": "Calculate dimensional or volumetric shipping weight from package dimensions and compare it with actual weight to determine billable weight.",
+      "how": "Select metric or imperial units, enter box length, width, height, and actual scale weight, along with your carrier’s DIM divisor.",
+      "limits": "Different carriers use varying dimensional divisors (e.g. 5000 for metric international courier, 139 or 166 for domestic freight).",
+      "question": "What is dimensional weight and why do carriers charge by it?",
+      "answer": "Dimensional weight reflects parcel density. Bulky lightweight packages take up significant cargo space, so carriers bill whichever is greater: actual weight or volumetric weight."
+    },
+    "electricity-cost-calculator": {
+      "title": "Electricity Cost Calculator – kWh & Appliance Cost",
+      "description": "Calculate appliance electricity use in kWh and estimate running costs from power wattage, daily usage time, billing days, and electricity rate.",
+      "how": "Enter the appliance wattage, average operating hours per day, billing period in days, and local utility rate per kilowatt-hour (kWh).",
+      "limits": "Assumes steady-state electricity consumption; cycling appliances such as refrigerators, air conditioners, and water heaters draw varying power throughout the day.",
+      "question": "How do I find the wattage of an electrical appliance?",
+      "answer": "Check the manufacturer label, nameplate, or power supply sticker on the device, which typically lists power in watts (W) or voltage and current (V × A = W)."
+    },
+    "fuel-cost-split-calculator": {
+      "title": "Fuel Cost & Passenger Split Calculator",
+      "description": "Calculate total trip fuel consumption, include road tolls and parking expenses, and divide the total trip cost evenly per passenger.",
+      "how": "Enter your route distance, vehicle fuel efficiency, fuel price, passenger count, and optional toll and parking costs.",
+      "limits": "Fuel consumption estimates assume consistent driving conditions and do not reflect elevation changes, heavy traffic, or aggressive driving.",
+      "question": "How do I calculate fuel split if some passengers travel only part of the route?",
+      "answer": "Compute each segment separately based on that leg’s distance and the passengers present, or split total costs proportionally by individual mileage."
+    },
+    "schengen-90-180-day-calculator": {
+      "title": "Schengen 90/180 Day Calculator",
+      "description": "Track short-stay visa-free travel days in the Schengen Area according to the official 90 days within any 180-day rolling rule.",
+      "how": "Enter your evaluation reference date and add past or planned trips with entry and exit dates to check compliance and remaining days.",
+      "limits": "This calculator evaluates the standard Schengen 90/180-day rule for non-EU/EEA passport holders and does not track national long-stay visas or residence permits.",
+      "question": "How is the rolling 180-day Schengen window calculated?",
+      "answer": "On any single calendar day, look back exactly 180 days; the total number of days spent inside the Schengen Area during that window must never exceed 90."
+    },
+    "tire-size-calculator": {
+      "title": "Tire Size Calculator",
+      "description": "Compare original and replacement tire sizes including diameter, sidewall height, circumference, revolutions per mile/km, and speedometer error.",
+      "how": "Enter the width, aspect ratio, and rim diameter for both your existing and new tires, along with a reference driving speed.",
+      "limits": "Tire dimensions are calculated according to industry standard nominal sizing; actual mounted tread width and diameter vary slightly by manufacturer and wheel rim width.",
+      "question": "How much tire size difference is safe for a speedometer?",
+      "answer": "Most automotive technicians recommend keeping the total tire diameter difference within ±3% of the factory tire to avoid significant speedometer distortion and ABS/traction control errors."
+    },
+    "unit-price-calculator": {
+      "title": "Unit Price Calculator",
+      "description": "Compare two products or package sizes by price per unit and instantly find the best value option and your percentage savings.",
+      "how": "Enter the total price and quantity/volume for Option A and Option B using the same unit of measure (e.g. grams, kilograms, liters, or pieces).",
+      "limits": "Unit pricing evaluates direct cost per volume or weight; it does not factor in bulk storage limitations, product expiration dates, or minimum spend thresholds.",
+      "question": "How do I compare items sold in different units like grams and kilograms?",
+      "answer": "Convert both items into the same common unit before calculating; for example, convert 500 grams into 0.5 kilograms so both unit prices are measured per kilogram."
+    },
+    "website-worth-calculator": {
+      "title": "Website Worth Calculator",
+      "description": "Estimate website market valuation from traffic, monthly revenue, and profit metrics using standard earnings multiples.",
+      "how": "Enter the website URL to scan public technical signals, then enter monthly visitor volume, gross revenue, and net profit to compute a market value range.",
+      "limits": "Provides indicative valuation multiples based on normalized earnings; actual transactions depend on niche, churn, customer acquisition channels, and verified financials.",
+      "question": "What multiple of profit is typically used to value an online business?",
+      "answer": "Content, e-commerce, and SaaS websites typically sell for 24× to 40× monthly net profit (or 2.0× to 3.5× annual profit), adjusted for growth, defensibility, and risk."
     }
   },
   "flexOptions": {
@@ -3752,6 +3832,177 @@
       "hours": "Estimated walk duration",
       "met": "MET intensity factor",
       "note": "Walking delivers low-impact aerobic conditioning with energy cost scaling linearly by distance and mass."
+    }
+  },
+  "everyday": {
+    "common": {
+      "results": "Results",
+      "errorCheck": "Enter valid positive values to calculate.",
+      "reset": "Reset",
+      "currency": "Currency",
+      "metric": "Metric",
+      "imperial": "Imperial"
+    },
+    "aquarium": {
+      "heading": "Tank dimensions & water estimate",
+      "shape": "Tank shape",
+      "rectangular": "Rectangular / Box",
+      "cylindrical": "Cylindrical",
+      "unit": "Dimension unit",
+      "cm": "Centimetres (cm)",
+      "in": "Inches (in)",
+      "length": "Length",
+      "width": "Width",
+      "height": "Height",
+      "diameter": "Diameter",
+      "cylinderHeight": "Cylinder height",
+      "fillPercent": "Water fill level (%)",
+      "displacementPercent": "Substrate & decor displacement (%)",
+      "estimatedActualWater": "Estimated actual water",
+      "grossCapacity": "Gross tank capacity",
+      "usGallons": "US gallons",
+      "ukGallons": "UK gallons",
+      "cubicFeet": "Cubic feet",
+      "note": "Calculates aquarium gross volume and net water volume accounting for fill level and substrate displacement."
+    },
+    "barbell": {
+      "heading": "Target barbell weight & plate loading",
+      "unit": "Weight unit",
+      "kg": "Kilograms (kg)",
+      "lb": "Pounds (lb)",
+      "barWeight": "Empty bar weight",
+      "targetWeight": "Target total weight",
+      "platesPerSide": "Plates per side",
+      "totalWeight": "Achieved total weight",
+      "plateWeight": "Total plate weight",
+      "weightDifference": "Difference from target",
+      "status": "Match status",
+      "exact": "Exact target weight achieved",
+      "targetBelowBar": "Target weight cannot be lower than the bar weight.",
+      "note": "Calculates standard plate combinations per side to reach the desired target barbell weight."
+    },
+    "battery": {
+      "heading": "Battery charging specifications",
+      "capacity": "Battery capacity (Ah)",
+      "current": "Charger current (A)",
+      "start": "Starting charge (%)",
+      "target": "Target charge (%)",
+      "efficiency": "Estimated efficiency (%)",
+      "chargeTime": "Estimated charge time",
+      "totalHours": "Total hours",
+      "note": "Estimates charge duration under constant-current assumptions accounting for charging efficiency."
+    },
+    "dimWeight": {
+      "heading": "Package dimensions & dimensional weight",
+      "system": "Measurement system",
+      "metricSystem": "Metric — cm & kg (divisor 5000)",
+      "imperialSystem": "Imperial — inches & lb (divisor 139)",
+      "length": "Length",
+      "width": "Width",
+      "height": "Height",
+      "actualWeight": "Actual scale weight",
+      "divisor": "DIM divisor",
+      "billableWeight": "Billable shipping weight",
+      "dimWeightResult": "Dimensional weight",
+      "volume": "Package volume",
+      "chargedBy": "Billing basis",
+      "chargedByDim": "Dimensional weight",
+      "chargedByActual": "Actual scale weight",
+      "note": "Compares package dimensional weight with actual scale weight to determine the carrier billable weight."
+    },
+    "electricity": {
+      "heading": "Appliance power & electricity cost",
+      "power": "Appliance power (Watts)",
+      "hoursPerDay": "Usage per day (hours)",
+      "days": "Billing period (days)",
+      "rate": "Electricity rate per kWh",
+      "totalCost": "Total electricity cost",
+      "totalKwh": "Total energy used",
+      "costPerDay": "Cost per day",
+      "costPerMonth": "Cost per month (30 days)",
+      "costPerYear": "Cost per year",
+      "note": "Calculates energy consumption in kilowatt-hours and estimates running cost based on your local tariff."
+    },
+    "fuelSplit": {
+      "heading": "Trip distance & fuel cost split",
+      "distance": "Trip distance",
+      "distanceUnit": "Distance unit",
+      "km": "Kilometres (km)",
+      "mi": "Miles (mi)",
+      "efficiency": "Fuel efficiency",
+      "efficiencyUnit": "Efficiency unit",
+      "kmpl": "km/L",
+      "l100km": "L/100km",
+      "mpg": "MPG (US)",
+      "fuelPrice": "Fuel price",
+      "passengers": "Number of passengers",
+      "tolls": "Toll fees",
+      "parking": "Parking & extras",
+      "roundTrip": "Round trip (2× distance)",
+      "costPerPerson": "Cost per passenger",
+      "totalCost": "Total road-trip cost",
+      "fuelCost": "Fuel cost",
+      "fuelNeeded": "Fuel needed",
+      "note": "Splits vehicle travel expenses fairly between passengers including fuel, tolls, and parking."
+    },
+    "schengen": {
+      "heading": "Schengen travel dates & 180-day window",
+      "referenceDate": "Evaluation reference date",
+      "staysTitle": "Entered Schengen stays",
+      "addStay": "Add stay",
+      "tripLabel": "Trip label",
+      "complianceStatus": "Compliance status",
+      "compliant": "Within 90-day allowance",
+      "overstay": "Overstay detected",
+      "daysUsed": "Days used in 180-day window",
+      "daysRemaining": "Days remaining",
+      "windowStart": "Window start date",
+      "note": "Tracks short-stay visa-free days in the Schengen Area according to the 90/180-day rolling rule."
+    },
+    "tireSize": {
+      "heading": "Tire size specification comparison",
+      "originalTire": "Original tire",
+      "newTire": "New tire",
+      "width": "Width (mm)",
+      "aspectRatio": "Aspect ratio (%)",
+      "rimDiameter": "Rim diameter (in)",
+      "referenceSpeed": "Reference speed (km/h)",
+      "diameterDiff": "Diameter difference",
+      "speedometerReading": "Speedometer reading",
+      "clearanceDiff": "Ride height change",
+      "originalDiameter": "Original diameter",
+      "newDiameter": "New diameter",
+      "note": "Compares dimensions, circumference, and speedometer variance between original and replacement tire sizes."
+    },
+    "unitPrice": {
+      "heading": "Compare product sizes by unit price",
+      "itemA": "Option A",
+      "itemB": "Option B",
+      "price": "Total price",
+      "quantity": "Quantity / Weight",
+      "unitLabel": "Unit label",
+      "unitPriceA": "Option A price per unit",
+      "unitPriceB": "Option B price per unit",
+      "cheaperOption": "Best value option",
+      "optionACheaper": "Option A is cheaper",
+      "optionBCheaper": "Option B is cheaper",
+      "equalPrice": "Both options cost the same per unit",
+      "savingsPercent": "Cost difference",
+      "priceDifference": "Difference per unit",
+      "note": "Compares unit prices between different product sizes to find the most economical choice."
+    },
+    "websiteWorth": {
+      "heading": "Website traffic & revenue valuation",
+      "urlLabel": "Website URL",
+      "analyzeBtn": "Analyze Website",
+      "analyzing": "Analyzing…",
+      "visits": "Monthly visits",
+      "revenue": "Monthly revenue (USD)",
+      "profit": "Monthly profit (USD)",
+      "marketRange": "Estimated market range",
+      "midpoint": "Midpoint valuation",
+      "scanFailed": "Could not inspect this website URL.",
+      "note": "Provides an estimated website valuation range using traffic, revenue, and earnings multiple models."
     }
   }
 }

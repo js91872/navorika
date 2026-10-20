@@ -54,7 +54,7 @@ test('localized controls do not expose CSS keywords or previously untranslated E
       assert.notEqual(label, keyword, `${locale} exposes raw ${keyword}`);
       assert.notEqual(label, english.flexOptions[keyword as keyof typeof english.flexOptions], `${locale}/${keyword} uses English label`);
     }
-    const text = [...Object.values(d.ui), ...Object.values(d.tools).flatMap((tool) => Object.values(tool)), ...Object.values(d.flexOptions), ...Object.values(d.pdf), ...Object.values(d.printSize), ...Object.values(d.design), ...Object.values(d.developer).flatMap((group) => Object.values(group)), ...Object.values(d.takeoff).flatMap((group) => Object.values(group)), ...Object.values(d.construction).flatMap((group) => Object.values(group)), ...Object.values(d.health).flatMap((group) => Object.values(group))];
+    const text = [...Object.values(d.ui), ...Object.values(d.tools).flatMap((tool) => Object.values(tool)), ...Object.values(d.flexOptions), ...Object.values(d.pdf), ...Object.values(d.printSize), ...Object.values(d.design), ...Object.values(d.developer).flatMap((group) => Object.values(group)), ...Object.values(d.takeoff).flatMap((group) => Object.values(group)), ...Object.values(d.construction).flatMap((group) => Object.values(group)), ...Object.values(d.health).flatMap((group) => Object.values(group)), ...Object.values(d.everyday).flatMap((group) => Object.values(group))];
     for (const value of text) assert.equal(fragments.test(value), false, `${locale}: ${value}`);
   }
 });

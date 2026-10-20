@@ -987,6 +987,86 @@
       "limits": "La pendiente positiva, el peso transportado y el tipo de calzado influyen en el consumo calórico definitivo.",
       "question": "¿Qué ventajas ofrece la caminata ágil frente al running?",
       "answer": "Caminar consume menos calorías por minuto pero protege ligamentos y articulaciones del impacto repetido."
+    },
+    "aquarium-volume-calculator": {
+      "title": "Calculadora de volumen de acuario",
+      "description": "Calcula la capacidad de un acuario rectangular o cilíndrico y el volumen neto estimado de agua en litros, galones estadounidenses, galones imperiales y pies cúbicos.",
+      "how": "Selecciona la forma del tanque (rectangular o cilíndrico), introduce las medidas y define el porcentaje de llenado y el volumen ocupado por el sustrato y la decoración.",
+      "limits": "El cálculo contempla formas regulares y no compensa cristales frontales curvados ni filtros sump auxiliares.",
+      "question": "¿Cómo afectan el sustrato y la decoración a la capacidad real de agua?",
+      "answer": "La grava, las rocas y los troncos desplazan agua, disminuyendo la capacidad útil de un acuario normalmente entre un 10 % y un 20 % respecto al tanque vacío."
+    },
+    "barbell-plate-calculator": {
+      "title": "Calculadora de discos para barra",
+      "description": "Introduce el peso objetivo total de tu barra y calcula al instante qué discos cargar en cada extremo.",
+      "how": "Selecciona la unidad (kg o lb), el peso de la barra vacía y el peso objetivo para ver la combinación óptima de discos por lado.",
+      "limits": "Se calculan discos comerciales habituales suponiendo una carga idéntica en ambos lados del manguito.",
+      "question": "¿Por qué se divide el peso restante entre dos?",
+      "answer": "La barra debe estar equilibrada con exactamente los mismos discos en ambos lados para evitar descompensaciones y riesgos de lesión."
+    },
+    "battery-charge-time-calculator": {
+      "title": "Calculadora de tiempo de carga de batería",
+      "description": "Estima cuánto tarda en cargarse una batería según su capacidad, corriente del cargador, niveles de carga y eficiencia del proceso.",
+      "how": "Introduce la capacidad en amperios-hora (Ah), la corriente del cargador en amperios (A), los porcentajes inicial y final, y la eficiencia estimada.",
+      "limits": "Asume una corriente constante simplificada; los perfiles de carga reales como CC/CV ralentizan la velocidad en el último tramo de recarga.",
+      "question": "¿Por qué la carga se vuelve más lenta al aproximarse al 100 %?",
+      "answer": "Los cargadores pasan a modo de voltaje constante, disminuyendo la intensidad de corriente para proteger las celdas frente al exceso de temperatura y degradación."
+    },
+    "dimensional-weight-calculator": {
+      "title": "Calculadora de peso volumétrico",
+      "description": "Calcula el peso volumétrico o dimensional a partir de las medidas del paquete y compáralo con el peso real para hallar el peso facturable.",
+      "how": "Elige el sistema métrico o imperial, anota longitud, anchura, altura y peso de báscula, e introduce el factor divisor de tu empresa de paquetería.",
+      "limits": "Cada operador logístico emplea divisores particulares (típicamente 5000 para envíos aéreos internacionales o 139 a 166 en el ámbito terrestre).",
+      "question": "¿Qué es el peso dimensional y por qué condiciona las tarifas de envío?",
+      "answer": "Representa la densidad del bulto. Las cajas muy voluminosas pero livianas ocupan espacio crítico en los vehículos, por lo que se factura el mayor entre el peso real y el volumétrico."
+    },
+    "electricity-cost-calculator": {
+      "title": "Calculadora de coste eléctrico – Consumo en kWh",
+      "description": "Calcula el consumo en kilovatios-hora de tus electrodomésticos y estima el gasto en la factura eléctrica según la potencia, tiempo y tarifa.",
+      "how": "Introduce la potencia del aparato en vatios, las horas diarias de funcionamiento, los días de facturación y el precio del kWh estipulado con tu comercializadora.",
+      "limits": "Considera un consumo constante; dispositivos con ciclos de compresor o termostato (neveras, bombas de calor) no demandan potencia continua.",
+      "question": "¿Cómo saber cuántos vatios consume un aparato eléctrico?",
+      "answer": "Revisa la placa de características técnicas o la etiqueta del transformador, donde figura la potencia en vatios (W) o la tensión y corriente (V × A = W)."
+    },
+    "fuel-cost-split-calculator": {
+      "title": "Calculadora de gasolina y reparto de gastos de viaje",
+      "description": "Calcula el consumo de combustible del trayecto, añade peajes y estacionamiento, y divide el coste total en partes iguales entre los ocupantes.",
+      "how": "Introduce la distancia de la ruta, el consumo medio de tu vehículo, el precio del combustible por litro, el número de viajeros y los gastos extra.",
+      "limits": "El cálculo contempla un ritmo de marcha homogéneo; no prevé retenciones intensas, orografía montañosa ni cargas excepcionales en el maletero.",
+      "question": "¿Cómo repartir la gasolina si algún pasajero solo realiza una parte del trayecto?",
+      "answer": "Lo más justo es segmentar la ruta por tramos y calcular el gasto de cada etapa en función de los kilómetros y los pasajeros que viajaban en ella."
+    },
+    "schengen-90-180-day-calculator": {
+      "title": "Calculadora Schengen regla 90/180 días",
+      "description": "Controla los días de estancia corta sin visado en el espacio Schengen aplicando la norma oficial de 90 días dentro de cualquier periodo móvil de 180 días.",
+      "how": "Elige la fecha de referencia para tu evaluación y agrega las fechas de entrada y salida de cada viaje realizado o previsto para comprobar tu límite.",
+      "limits": "Válido para viajes de corta estancia sin visado de turistas extracomunitarios; no computa visados nacionales de larga duración ni autorizaciones de residencia.",
+      "question": "¿Cómo se contabiliza la ventana flotante de 180 días en el espacio Schengen?",
+      "answer": "En cada fecha concreta del viaje se miran los 180 días anteriores: el total acumulado de días dentro del espacio Schengen no debe exceder de 90."
+    },
+    "tire-size-calculator": {
+      "title": "Calculadora de equivalencia de neumáticos",
+      "description": "Compara neumáticos de serie y equivalentes: diámetro total, perfil de flanco, circunferencia de rodadura y desviación del velocímetro.",
+      "how": "Introduce el ancho nominal, la serie (perfil) y el diámetro de llanta de ambas cubiertas, junto con la velocidad de circulación tomada como referencia.",
+      "limits": "El cálculo aplica fórmulas estándar de la industria; las dimensiones reales varían ligeramente según el fabricante del neumático y la garganta de llanta.",
+      "question": "¿Qué margen de diferencia de diámetro es admisible en neumáticos?",
+      "answer": "La normativa técnica y los fabricantes sugieren no exceder una diferencia de diámetro superior al ±3 % respecto a la rueda de fábrica para mantener la precisión del velocímetro y la estabilidad."
+    },
+    "unit-price-calculator": {
+      "title": "Calculadora de precio unitario y ahorro en compras",
+      "description": "Compara dos envases o cantidades por precio unitario (por kilo, litro o unidad) para identificar de inmediato la opción más económica.",
+      "how": "Anota el importe total y la cantidad de las dos alternativas asegurándote de usar la misma unidad (por ejemplo, gramos, kilos, litros o unidades).",
+      "limits": "Compara únicamente el coste monetario directo por unidad métrica, sin ponderar fechas de caducidad ni volumen de almacenamiento disponible en el hogar.",
+      "question": "¿Cómo comparar dos artículos si uno viene en gramos y otro en kilogramos?",
+      "answer": "Iguala las unidades antes de contrastar: expresa 500 gramos como 0,5 kilogramos para que ambos precios unitarios se calculen por kilo."
+    },
+    "website-worth-calculator": {
+      "title": "Calculadora de valor de sitios web",
+      "description": "Estima la valoración de mercado de una página web a partir de visitas, facturación y beneficio mensual según los múltiplos habituales del sector.",
+      "how": "Introduce la URL para revisar métricas técnicas públicas y añade visitas mensuales, ingresos brutos y beneficio limpio para calcular el rango de tasación.",
+      "limits": "Es una valoración preliminar basada en ganancias recurrentes; la venta real requiere auditoría de tráfico, dependencias de publicidad y cuentas anuales.",
+      "question": "¿Qué múltiplo sobre beneficio se suele aplicar para tasar una web?",
+      "answer": "Los proyectos web de contenido, comercio electrónico y SaaS suelen valorarse entre 24 y 40 veces el beneficio neto mensual (o de 2 a 3,5 veces el anual)."
     }
   },
   "flexOptions": {
@@ -3752,6 +3832,177 @@
       "hours": "Tiempo estimado de caminata",
       "met": "Factor de intensidad MET",
       "note": "Caminar proporciona acondicionamiento aeróbico de bajo impacto articular con un gasto proporcional a la distancia."
+    }
+  },
+  "everyday": {
+    "common": {
+      "results": "Resultados",
+      "errorCheck": "Introduce valores positivos válidos para realizar el cálculo.",
+      "reset": "Restablecer",
+      "currency": "Moneda",
+      "metric": "Métrico",
+      "imperial": "Imperial"
+    },
+    "aquarium": {
+      "heading": "Dimensiones del tanque y agua útil",
+      "shape": "Forma del acuario",
+      "rectangular": "Rectangular / Prisma",
+      "cylindrical": "Cilíndrico",
+      "unit": "Unidad de medida",
+      "cm": "Centímetros (cm)",
+      "in": "Pulgadas",
+      "length": "Longitud",
+      "width": "Anchura",
+      "height": "Altura",
+      "diameter": "Diámetro",
+      "cylinderHeight": "Altura del cilindro",
+      "fillPercent": "Nivel de agua (%)",
+      "displacementPercent": "Espacio de sustrato y rocas (%)",
+      "estimatedActualWater": "Agua real estimada",
+      "grossCapacity": "Capacidad bruta del tanque",
+      "usGallons": "Galones estadounidenses",
+      "ukGallons": "Galones imperiales",
+      "cubicFeet": "Pies cúbicos",
+      "note": "Calcula el volumen bruto del acuario y el agua neta descontando el margen superior y el volumen del sustrato."
+    },
+    "barbell": {
+      "heading": "Carga objetivo y distribución de discos",
+      "unit": "Unidad de peso",
+      "kg": "Kilogramos (kg)",
+      "lb": "Libras (lb)",
+      "barWeight": "Peso de la barra vacía",
+      "targetWeight": "Peso total objetivo",
+      "platesPerSide": "Discos por lado",
+      "totalWeight": "Peso total conseguido",
+      "plateWeight": "Peso total de discos",
+      "weightDifference": "Desviación de la meta",
+      "status": "Ajuste",
+      "exact": "Peso exacto obtenido",
+      "targetBelowBar": "El peso objetivo no puede ser inferior al de la barra.",
+      "note": "Calcula los discos comerciales necesarios a cada lado de la barra para completar el levantamiento."
+    },
+    "battery": {
+      "heading": "Parámetros del proceso de carga",
+      "capacity": "Capacidad de la batería (Ah)",
+      "current": "Corriente del cargador (A)",
+      "start": "Carga inicial (%)",
+      "target": "Carga deseada (%)",
+      "efficiency": "Eficiencia estimada (%)",
+      "chargeTime": "Tiempo estimado de carga",
+      "totalHours": "Horas totales",
+      "note": "Estima las horas de recarga necesarias según la corriente suministrada y la pérdida energética."
+    },
+    "dimWeight": {
+      "heading": "Medidas del paquete y peso volumétrico",
+      "system": "Sistema de medidas",
+      "metricSystem": "Métrico — cm y kg (divisor 5000)",
+      "imperialSystem": "Imperial — pulgadas y lb (divisor 139)",
+      "length": "Longitud",
+      "width": "Anchura",
+      "height": "Altura",
+      "actualWeight": "Peso real en báscula",
+      "divisor": "Factor volumétrico",
+      "billableWeight": "Peso facturable final",
+      "dimWeightResult": "Peso dimensional obtenido",
+      "volume": "Volumen del bulto",
+      "chargedBy": "Base de facturación",
+      "chargedByDim": "Peso volumétrico",
+      "chargedByActual": "Peso físico real",
+      "note": "Compara la masa física con el volumen exterior del paquete para fijar el coste del envío."
+    },
+    "electricity": {
+      "heading": "Potencia del equipo y coste de electricidad",
+      "power": "Potencia del electrodoméstico (W)",
+      "hoursPerDay": "Horas de encendido al día",
+      "days": "Días de cómputo",
+      "rate": "Precio del kWh contratado",
+      "totalCost": "Importe total de electricidad",
+      "totalKwh": "Consumo acumulado",
+      "costPerDay": "Gasto por día",
+      "costPerMonth": "Gasto mensual (30 días)",
+      "costPerYear": "Gasto anual estimado",
+      "note": "Convierte vatios y horas en kilovatios-hora y calcula el gasto energético correspondiente."
+    },
+    "fuelSplit": {
+      "heading": "Ruta y reparto de gastos de combustible",
+      "distance": "Distancia de la ruta",
+      "distanceUnit": "Unidad de longitud",
+      "km": "Kilómetros (km)",
+      "mi": "Millas (mi)",
+      "efficiency": "Consumo medio del coche",
+      "efficiencyUnit": "Unidad de consumo",
+      "kmpl": "km/L",
+      "l100km": "L/100km",
+      "mpg": "MPG",
+      "fuelPrice": "Precio por litro de combustible",
+      "passengers": "Número de ocupantes",
+      "tolls": "Peajes de autopista",
+      "parking": "Aparcamiento y otros gastos",
+      "roundTrip": "Ida y vuelta (doble recorrido)",
+      "costPerPerson": "Coste individual por viajero",
+      "totalCost": "Coste total de la travesía",
+      "fuelCost": "Gasto total en gasolina/diésel",
+      "fuelNeeded": "Carburante estimado",
+      "note": "Divide el gasto total de transporte en partes iguales entre los integrantes del trayecto."
+    },
+    "schengen": {
+      "heading": "Fechas de viaje y ventana de 180 días",
+      "referenceDate": "Fecha de referencia evaluada",
+      "staysTitle": "Estancias registradas en Schengen",
+      "addStay": "Añadir viaje",
+      "tripLabel": "Nombre del viaje",
+      "complianceStatus": "Estado de permanencia",
+      "compliant": "Correcto (dentro de los 90 días)",
+      "overstay": "Exceso de días",
+      "daysUsed": "Días consumidos en la ventana",
+      "daysRemaining": "Días disponibles restantes",
+      "windowStart": "Inicio del cómputo móvil",
+      "note": "Calcula con precisión los días de estancia corta para evitar sobrepasar el límite de 90 en 180 días."
+    },
+    "tireSize": {
+      "heading": "Comparador de medidas y equivalencias de neumáticos",
+      "originalTire": "Neumático original",
+      "newTire": "Neumático nuevo",
+      "width": "Anchura nominal (mm)",
+      "aspectRatio": "Perfil de serie (%)",
+      "rimDiameter": "Diámetro de llanta (pulgadas)",
+      "referenceSpeed": "Velocidad de referencia (km/h)",
+      "diameterDiff": "Diferencia de diámetro",
+      "speedometerReading": "Velocidad real de marcha",
+      "clearanceDiff": "Variación de altura de carrocería",
+      "originalDiameter": "Diámetro original",
+      "newDiameter": "Diámetro nuevo",
+      "note": "Calcula el cambio de desarrollo métrico y la desviación producida en la lectura del velocímetro."
+    },
+    "unitPrice": {
+      "heading": "Comparación de compras por precio unitario",
+      "itemA": "Opción A",
+      "itemB": "Opción B",
+      "price": "Precio total",
+      "quantity": "Cantidad o peso",
+      "unitLabel": "Unidad de medida",
+      "unitPriceA": "Precio por unidad opción A",
+      "unitPriceB": "Precio por unidad opción B",
+      "cheaperOption": "Opción más conveniente",
+      "optionACheaper": "La opción A resulta más barata",
+      "optionBCheaper": "La opción B resulta más barata",
+      "equalPrice": "Ambas alternativas tienen exactamente el mismo precio unitario",
+      "savingsPercent": "Porcentaje de ahorro",
+      "priceDifference": "Diferencia por unidad",
+      "note": "Compara el coste por unidad métrica entre tamaños de envase para optimizar el presupuesto del supermercado."
+    },
+    "websiteWorth": {
+      "heading": "Valoración y tasación de sitios web",
+      "urlLabel": "Dirección del sitio web (URL)",
+      "analyzeBtn": "Analizar sitio web",
+      "analyzing": "Analizando…",
+      "visits": "Visitas mensuales",
+      "revenue": "Facturación mensual (USD)",
+      "profit": "Beneficio neto mensual (USD)",
+      "marketRange": "Rango estimado de mercado",
+      "midpoint": "Valoración media calculada",
+      "scanFailed": "No fue posible analizar la dirección del sitio web.",
+      "note": "Ofrece una estimación orientativa de mercado basada en métricas de audiencia y múltiplos de beneficios."
     }
   }
 }
