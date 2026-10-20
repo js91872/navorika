@@ -74,6 +74,7 @@ export const categories: Category[] = [
 ];
 
 export const tools: RegisteredTool[] = ([
+  { slug:'reverse-sales-tax-calculator', title:'Reverse Sales Tax Calculator – Find Price Before Tax', description:'Remove sales tax from a total to find the price before tax and included tax amount. Or find the tax rate from a receipt.', category:'finance-calculators', keywords:['reverse sales tax calculator','price before tax calculator','remove sales tax from total','backwards sales tax calculator','find sales tax rate'], heroTitle:'Reverse Sales Tax Calculator', heroDescription:'Find the original price and tax included in your total.' },
   // ====== PDF TOOLS ======
   { slug: 'vcf-to-csv', title: 'VCF to CSV Converter', description: 'Convert vCard contact files to Excel-ready CSV locally in your browser with a contact preview.', category: 'developer-tools', keywords: ['vcf to csv converter', 'vcf to csv conversion', 'change vcf to csv', 'convert vcard to csv', 'vcf contacts to excel'], heroTitle: 'VCF to CSV Converter', heroDescription: 'Upload or paste a VCF contact file, preview contacts and download a CSV for Excel or Google Sheets.' },
   { slug: 'avif-to-png', title: 'AVIF to PNG Converter', description: 'Convert AVIF images to downloadable PNG files in your browser.', category: 'image-tools', keywords: ["avif to png","convert avif to png"], heroTitle: 'AVIF to PNG Converter', heroDescription: 'Convert AVIF images to downloadable PNG files in your browser.' },

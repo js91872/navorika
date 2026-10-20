@@ -259,6 +259,7 @@
   "tools/resize-image/page.tsx",
   "tools/responsive-srcset-generator/page.tsx",
   "tools/retirement-calculator/page.tsx",
+  "tools/reverse-sales-tax-calculator/page.tsx",
   "tools/rgb-cmyk-image-checker/page.tsx",
   "tools/robots-txt-generator/page.tsx",
   "tools/roof-area-calculator/page.tsx",
