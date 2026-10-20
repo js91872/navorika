@@ -15,6 +15,7 @@ const LocalizedDesignTools = dynamic(() => import('./LocalizedDesignTools'));
 const LocalizedPrintTools = dynamic(() => import('./LocalizedPrintTools'));
 const LocalizedDeveloperTools = dynamic(() => import('./LocalizedDeveloperTools'));
 const LocalizedTakeoffTools = dynamic(() => import('./LocalizedTakeoffTools'));
+const LocalizedConstructionTools = dynamic(() => import('./LocalizedConstructionTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -159,6 +160,20 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
   }
   if (slug === 'cement-calculator' || slug === 'sand-calculator' || slug === 'paint-calculator' || slug === 'tile-calculator' || slug === 'steel-weight-calculator') {
     return <LocalizedTakeoffTools slug={slug} d={dictionary} locale={locale} />;
+  }
+  if (
+    slug === 'roof-pitch-calculator' ||
+    slug === 'stair-stringer-calculator' ||
+    slug === 'deck-board-calculator' ||
+    slug === 'fence-calculator' ||
+    slug === 'post-hole-concrete-calculator' ||
+    slug === 'drywall-calculator' ||
+    slug === 'paver-calculator' ||
+    slug === 'polymeric-sand-calculator' ||
+    slug === 'mulch-calculator' ||
+    slug === 'topsoil-calculator'
+  ) {
+    return <LocalizedConstructionTools slug={slug} d={dictionary} locale={locale} />;
   }
   if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

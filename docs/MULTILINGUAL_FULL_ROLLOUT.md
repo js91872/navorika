@@ -162,8 +162,18 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - Paint Calculator
 - Tile Calculator
 - Steel Weight Calculator
+- Roof Pitch Calculator
+- Stair Stringer Calculator
+- Deck Board Calculator
+- Fence Calculator
+- Post Hole Concrete Calculator
+- Drywall Calculator
+- Paver Calculator
+- Polymeric Sand Calculator
+- Mulch Calculator
+- Topsoil Calculator
 
-This brings branch coverage to 91 tools per language (637 tool variants plus seven directories, 644 localized pages total). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 222 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 101 tools per language (707 tool variants plus seven directories, 714 localized pages total). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 212 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

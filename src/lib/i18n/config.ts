@@ -87,6 +87,16 @@ export const translatedTools = [
   'paint-calculator',
   'tile-calculator',
   'steel-weight-calculator',
+  'roof-pitch-calculator',
+  'stair-stringer-calculator',
+  'deck-board-calculator',
+  'fence-calculator',
+  'post-hole-concrete-calculator',
+  'drywall-calculator',
+  'paver-calculator',
+  'polymeric-sand-calculator',
+  'mulch-calculator',
+  'topsoil-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
