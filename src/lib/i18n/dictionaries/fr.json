@@ -715,6 +715,46 @@
       "limits": "Génération cryptographique via l'API Web Crypto ; l'UUID v7 intègre un horodatage Unix en millisecondes sur 48 bits.",
       "question": "Quel est l'intérêt d'UUID v7 par rapport à UUID v4 ?",
       "answer": "UUID v7 étant ordonné dans le temps, il optimise l'indexation dans les arbres B de bases de données et accélère les insertions."
+    },
+    "regex-tester": {
+      "title": "Testeur d’expressions régulières",
+      "description": "Testez localement dans votre navigateur des expressions régulières JavaScript et leurs modificateurs sur un échantillon de texte.",
+      "how": "Saisissez une expression régulière JavaScript et ses drapeaux (comme g ou i), puis entrez un texte pour examiner les correspondances.",
+      "limits": "Fonctionne avec le moteur RegExp JavaScript de votre navigateur. Des expressions pathologiques peuvent solliciter le processeur.",
+      "question": "Quel moteur d’expression régulière est utilisé ?",
+      "answer": "Les correspondances sont évaluées directement dans votre navigateur via le moteur standard JavaScript RegExp."
+    },
+    "unix-timestamp-converter": {
+      "title": "Convertisseur d’horodatage Unix",
+      "description": "Convertissez des secondes ou millisecondes Unix en date lisible dans le fuseau horaire local de votre navigateur.",
+      "how": "Saisissez un horodatage entier en secondes ou millisecondes, ou cliquez pour charger l’instant présent.",
+      "limits": "Les valeurs comptant jusqu’à dix chiffres sont traitées en secondes ; au-delà, elles sont interprétées en millisecondes.",
+      "question": "Quel fuseau horaire est appliqué à l’affichage ?",
+      "answer": "La date et l’heure sont présentées selon la configuration régionale et le fuseau horaire de votre appareil."
+    },
+    "utm-builder": {
+      "title": "Générateur de liens UTM",
+      "description": "Ajoutez localement des paramètres de campagne source, support et nom à une URL valide dans votre navigateur.",
+      "how": "Indiquez l’URL cible ainsi que la source, le support et le nom de campagne pour obtenir un lien de suivi complet.",
+      "limits": "Les paramètres de requête existants sont conservés, sauf s’ils portent exactement les mêmes clés UTM configurées.",
+      "question": "Ce générateur active-t-il automatiquement le suivi ?",
+      "answer": "Non. Votre site de destination doit disposer d’une solution d’analyse d’audience configurée pour enregistrer les paramètres UTM."
+    },
+    "meta-tag-generator": {
+      "title": "Générateur de balises méta",
+      "description": "Générez localement des balises HTML essentielles pour le titre, la description, Open Graph et Twitter Cards.",
+      "how": "Renseignez le titre, la description et l’URL de visuel pour produire un bloc de balises méta prêt à intégrer.",
+      "limits": "Produit un jeu de balises standard. Les métadonnées spécifiques aux articles, vidéos ou produits s’ajoutent séparément.",
+      "question": "Cet outil transmet-il vos contenus à un serveur distant ?",
+      "answer": "Non. Toutes les balises HTML sont assemblées localement dans votre navigateur sans aucune requête externe."
+    },
+    "robots-txt-generator": {
+      "title": "Générateur de robots.txt",
+      "description": "Générez un bloc robots.txt épuré pour un agent utilisateur, un chemin interdit et l’adresse de votre sitemap.",
+      "how": "Spécifiez le robot cible, le chemin à exclure de l’indexation et l’URL de votre plan de site XML pour composer le fichier.",
+      "limits": "Crée un groupe de directives simple. Les configurations multi-robots ou règles complexes avec jokers s’éditent manuellement.",
+      "question": "Le fichier robots.txt protège-t-il les pages confidentielles ?",
+      "answer": "Non. Les directives robots n’engagent que les robots conformes ; les espaces privés requièrent une authentification robuste."
     }
   },
   "flexOptions": {
@@ -2944,5 +2984,41 @@
     "equalToBaseline": "Égal à la valeur de base",
     "perKm": "/km",
     "perMile": "/mi"
+  },
+  "developer": {
+    "regex": {
+      "patternLabel": "Expression régulière",
+      "flagsLabel": "Modificateurs (flags)",
+      "textLabel": "Texte de test",
+      "resultsLabel": "Résultats des correspondances",
+      "noMatches": "Aucune correspondance trouvée.",
+      "invalidRegex": "Expression régulière non valide."
+    },
+    "timestamp": {
+      "inputLabel": "Horodatage Unix (secondes ou millisecondes)",
+      "useCurrent": "Utiliser l’heure actuelle",
+      "resultLabel": "Date et heure locales",
+      "invalid": "Horodatage non valide"
+    },
+    "utm": {
+      "targetUrl": "URL de destination",
+      "campaignSource": "Source de la campagne",
+      "campaignMedium": "Support de campagne",
+      "campaignName": "Nom de la campagne",
+      "outputLabel": "URL de campagne générée",
+      "invalidUrl": "Veuillez saisir une URL de départ valide (par exemple https://example.com)."
+    },
+    "meta": {
+      "pageTitle": "Titre de la page",
+      "pageDescription": "Description de la page",
+      "ogImage": "URL de l’image Open Graph",
+      "outputLabel": "Balises méta HTML générées"
+    },
+    "robots": {
+      "userAgent": "Agent utilisateur (User-agent)",
+      "disallowPath": "Chemin interdit (Disallow)",
+      "sitemapUrl": "URL du sitemap",
+      "outputLabel": "Fichier robots.txt généré"
+    }
   }
 }

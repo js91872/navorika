@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 81,
-    "pendingTools": 232,
+    "publishedTools": 86,
+    "pendingTools": 227,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 567,
+    "publishedToolTranslations": 602,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -3805,8 +3805,16 @@
       "source": "src/app/(english)/tools/meta-tag-generator/page.tsx",
       "routeExists": true,
       "family": "focused-developer",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -4590,8 +4598,16 @@
       "source": "src/app/(english)/tools/regex-tester/page.tsx",
       "routeExists": true,
       "family": "focused-developer",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -4782,8 +4798,16 @@
       "source": "src/app/(english)/tools/robots-txt-generator/page.tsx",
       "routeExists": true,
       "family": "focused-developer",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5758,8 +5782,16 @@
       "source": "src/app/(english)/tools/unix-timestamp-converter/page.tsx",
       "routeExists": true,
       "family": "focused-developer",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5870,8 +5902,16 @@
       "source": "src/app/(english)/tools/utm-builder/page.tsx",
       "routeExists": true,
       "family": "focused-developer",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -8351,7 +8391,7 @@
     {
       "source": "src/app/(english)/tools/meta-tag-generator/page.tsx",
       "routeTemplate": "/tools/meta-tag-generator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8579,7 +8619,7 @@
     {
       "source": "src/app/(english)/tools/regex-tester/page.tsx",
       "routeTemplate": "/tools/regex-tester",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8633,7 +8673,7 @@
     {
       "source": "src/app/(english)/tools/robots-txt-generator/page.tsx",
       "routeTemplate": "/tools/robots-txt-generator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8927,7 +8967,7 @@
     {
       "source": "src/app/(english)/tools/unix-timestamp-converter/page.tsx",
       "routeTemplate": "/tools/unix-timestamp-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8963,7 +9003,7 @@
     {
       "source": "src/app/(english)/tools/utm-builder/page.tsx",
       "routeTemplate": "/tools/utm-builder",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

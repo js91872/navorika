@@ -715,6 +715,46 @@
       "limits": "Generation uses browser Web Crypto API; UUID v7 embeds millisecond Unix epoch timestamps in the high 48 bits.",
       "question": "What is the advantage of UUID v7 over UUID v4?",
       "answer": "UUID v7 is time-ordered, improving database B-tree index locality and insertion performance compared to random UUID v4."
+    },
+    "regex-tester": {
+      "title": "Regex Tester",
+      "description": "Test JavaScript regular expressions and flags against sample text locally in your browser.",
+      "how": "Enter a JavaScript regular expression and flags (such as g or i), then enter sample text to review matches.",
+      "limits": "Runs using the browser’s JavaScript RegExp engine. Highly complex expressions may consume device processing time.",
+      "question": "Which regular expression engine is used?",
+      "answer": "Matches are evaluated directly in your browser using the standard JavaScript RegExp engine."
+    },
+    "unix-timestamp-converter": {
+      "title": "Unix Timestamp Converter",
+      "description": "Convert Unix seconds or milliseconds to a date in the browser’s local time zone.",
+      "how": "Enter an integer timestamp in seconds or milliseconds, or click to use the current time.",
+      "limits": "Inputs up to ten digits are interpreted as seconds; longer inputs are treated as milliseconds.",
+      "question": "Which time zone is displayed?",
+      "answer": "Dates and times are formatted according to your browser device’s local time zone and locale."
+    },
+    "utm-builder": {
+      "title": "UTM Builder",
+      "description": "Add campaign source, medium, and name parameters to a valid URL locally in your browser.",
+      "how": "Enter your destination URL along with campaign source, medium, and name to generate a tagged link.",
+      "limits": "Existing query parameters are preserved unless they match the standard UTM parameters being set.",
+      "question": "Are UTM campaign links tracked automatically?",
+      "answer": "No. Your destination website must have an analytics platform configured to collect incoming UTM parameters."
+    },
+    "meta-tag-generator": {
+      "title": "Meta Tag Generator",
+      "description": "Generate basic title, description, Open Graph, and Twitter card markup locally.",
+      "how": "Provide your page title, description, and preview image URL to generate ready-to-paste HTML meta tags.",
+      "limits": "Generates standard starter tags. Custom article, video, canonical, or product tags should be configured separately.",
+      "question": "Does this tool upload or verify metadata on live URLs?",
+      "answer": "No. All meta tags are assembled locally in your browser without contacting external web servers."
+    },
+    "robots-txt-generator": {
+      "title": "Robots.txt Generator",
+      "description": "Generate a simple robots.txt block for one user-agent, disallow path, and sitemap URL.",
+      "how": "Specify a crawler user-agent, restricted path, and XML sitemap URL to produce a compliant robots.txt file.",
+      "limits": "Generates a single directive block. Multi-agent configurations or complex wildcard rules can be edited directly.",
+      "question": "Does a robots.txt file prevent public access to sensitive pages?",
+      "answer": "No. Robots directives only guide compliant crawlers; secure private areas require proper authentication."
     }
   },
   "flexOptions": {
@@ -2944,5 +2984,41 @@
     "equalToBaseline": "Equal to baseline",
     "perKm": "/km",
     "perMile": "/mi"
+  },
+  "developer": {
+    "regex": {
+      "patternLabel": "Regular expression",
+      "flagsLabel": "Flags",
+      "textLabel": "Test text",
+      "resultsLabel": "Match results",
+      "noMatches": "No matches found.",
+      "invalidRegex": "Invalid regular expression."
+    },
+    "timestamp": {
+      "inputLabel": "Unix timestamp (seconds or milliseconds)",
+      "useCurrent": "Use current time",
+      "resultLabel": "Local date and time",
+      "invalid": "Invalid timestamp"
+    },
+    "utm": {
+      "targetUrl": "Target URL",
+      "campaignSource": "Campaign source",
+      "campaignMedium": "Campaign medium",
+      "campaignName": "Campaign name",
+      "outputLabel": "Generated campaign URL",
+      "invalidUrl": "Please enter a valid starting URL (for example, https://example.com)."
+    },
+    "meta": {
+      "pageTitle": "Page title",
+      "pageDescription": "Page description",
+      "ogImage": "Open Graph image URL",
+      "outputLabel": "Generated HTML meta tags"
+    },
+    "robots": {
+      "userAgent": "User-agent",
+      "disallowPath": "Disallow path",
+      "sitemapUrl": "Sitemap URL",
+      "outputLabel": "Generated robots.txt"
+    }
   }
 }

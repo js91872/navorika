@@ -715,6 +715,46 @@
       "limits": "Generado mediante Web Crypto API; UUID v7 incluye una marca temporal Unix en milisegundos en los 48 bits superiores.",
       "question": "Qué ventaja ofrece UUID v7 frente a UUID v4?",
       "answer": "Al estar ordenado cronológicamente, UUID v7 optimiza los índices B-tree de las bases de datos mejorando la velocidad de inserción."
+    },
+    "regex-tester": {
+      "title": "Probador de expresiones regulares",
+      "description": "Prueba expresiones regulares JavaScript y modificadores sobre muestras de texto localmente en tu navegador.",
+      "how": "Introduce un patrón regex de JavaScript y sus modificadores (como g o i), luego escribe el texto para ver los aciertos.",
+      "limits": "Utiliza el motor JavaScript RegExp integrado en el navegador. Expresiones muy complejas pueden requerir recursos de cálculo.",
+      "question": "¿Qué motor de expresiones regulares se emplea?",
+      "answer": "La evaluación se realiza de forma directa en el navegador mediante el estándar JavaScript RegExp."
+    },
+    "unix-timestamp-converter": {
+      "title": "Conversor de marcas de tiempo Unix",
+      "description": "Convierte segundos o milisegundos Unix en una fecha comprensible en la zona horaria de tu navegador.",
+      "how": "Ingresa una cantidad entera en segundos o milisegundos, o pulsa para capturar el instante en curso.",
+      "limits": "Cifras de hasta diez dígitos se consideran segundos ; valores de mayor longitud se leen como milisegundos.",
+      "question": "¿En qué huso horario se presentan los resultados?",
+      "answer": "La fecha y la hora se calculan y formatean según el huso y la configuración local de tu dispositivo."
+    },
+    "utm-builder": {
+      "title": "Generador de enlaces UTM",
+      "description": "Incorpora parámetros de campaña para fuente, medio y nombre a una dirección web de manera local.",
+      "how": "Escribe la URL de destino y los valores de fuente, medio y campaña para obtener el enlace etiquetado.",
+      "limits": "Las variables preexistentes en la URL se conservan intactas, salvo que coincidan con las etiquetas UTM fijadas.",
+      "question": "¿Este generador activa métricas de seguimiento automáticamente?",
+      "answer": "No. La web de destino debe contar con un software de analítica configurado para registrar los parámetros UTM."
+    },
+    "meta-tag-generator": {
+      "title": "Generador de etiquetas meta",
+      "description": "Construye localmente etiquetas HTML esenciales para título, descripción, Open Graph y Twitter Cards.",
+      "how": "Rellena el título, la descripción y el enlace de la imagen principal para obtener un bloque de metadatos listo para copiar.",
+      "limits": "Genera etiquetas básicas habituales. Metadatos avanzados para artículos, vídeos o comercios se configuran por separado.",
+      "question": "¿Los datos introducidos se envían a servidores externos?",
+      "answer": "No. La composición del código HTML se ejecuta exclusivamente en tu navegador sin transmisiones externas."
+    },
+    "robots-txt-generator": {
+      "title": "Generador de robots.txt",
+      "description": "Crea un bloque robots.txt conciso con agente de usuario, ruta de exclusión y enlace al mapa del sitio.",
+      "how": "Indica el rastreador asignado, el directorio que debe omitirse y la URL de la sitemap XML para formar el archivo.",
+      "limits": "Produce un grupo simple de instrucciones. Esquemas con rastreadores múltiples precisan ajustes manuales adicionales.",
+      "question": "¿Un archivo robots.txt restringe el acceso a zonas confidenciales?",
+      "answer": "No. Solo orienta a rastreadores legítimos ; las secciones reservadas requieren autenticación real."
     }
   },
   "flexOptions": {
@@ -2944,5 +2984,41 @@
     "equalToBaseline": "Igual al valor inicial",
     "perKm": "/km",
     "perMile": "/mi"
+  },
+  "developer": {
+    "regex": {
+      "patternLabel": "Expresión regular",
+      "flagsLabel": "Modificadores (flags)",
+      "textLabel": "Texto de prueba",
+      "resultsLabel": "Resultados de coincidencias",
+      "noMatches": "No se encontraron coincidencias.",
+      "invalidRegex": "Expresión regular no válida."
+    },
+    "timestamp": {
+      "inputLabel": "Marca de tiempo Unix (segundos o milisegundos)",
+      "useCurrent": "Usar hora actual",
+      "resultLabel": "Fecha y hora locales",
+      "invalid": "Marca de tiempo no válida"
+    },
+    "utm": {
+      "targetUrl": "URL de destino",
+      "campaignSource": "Fuente de campaña",
+      "campaignMedium": "Medio de campaña",
+      "campaignName": "Nombre de campaña",
+      "outputLabel": "URL de campaña generada",
+      "invalidUrl": "Introduce una URL inicial válida (por ejemplo https://example.com)."
+    },
+    "meta": {
+      "pageTitle": "Título de la página",
+      "pageDescription": "Descripción de la página",
+      "ogImage": "URL de imagen Open Graph",
+      "outputLabel": "Etiquetas meta HTML generadas"
+    },
+    "robots": {
+      "userAgent": "Agente de usuario (User-agent)",
+      "disallowPath": "Ruta bloqueada (Disallow)",
+      "sitemapUrl": "URL del sitemap",
+      "outputLabel": "Archivo robots.txt generado"
+    }
   }
 }

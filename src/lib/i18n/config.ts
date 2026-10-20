@@ -77,6 +77,11 @@ export const translatedTools = [
   'responsive-srcset-generator',
   'yaml-json-converter',
   'uuid-generator-validator',
+  'regex-tester',
+  'unix-timestamp-converter',
+  'utm-builder',
+  'meta-tag-generator',
+  'robots-txt-generator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

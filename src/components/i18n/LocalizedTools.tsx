@@ -13,6 +13,7 @@ import { inspectImageColorMode, type RgbCmykImageResult } from '@/lib/calculatio
 const LocalizedBusinessTools = dynamic(() => import('./LocalizedBusinessTools'));
 const LocalizedDesignTools = dynamic(() => import('./LocalizedDesignTools'));
 const LocalizedPrintTools = dynamic(() => import('./LocalizedPrintTools'));
+const LocalizedDeveloperTools = dynamic(() => import('./LocalizedDeveloperTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -152,6 +153,9 @@ function ColorTool({ d, locale }: { d: Dictionary; locale: Locale }) {
 
 export default function LocalizedTools({ slug, dictionary, locale }: { slug: TranslatedTool; dictionary: Dictionary; locale: Locale }) {
   if (isLocalizedCalculator(slug)) return <LocalizedBusinessTools slug={slug} d={dictionary} locale={locale} />;
+  if (slug === 'regex-tester' || slug === 'unix-timestamp-converter' || slug === 'utm-builder' || slug === 'meta-tag-generator' || slug === 'robots-txt-generator') {
+    return <LocalizedDeveloperTools slug={slug} d={dictionary} locale={locale} />;
+  }
   if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'css-flexbox-generator') return <FlexTool d={dictionary} />;

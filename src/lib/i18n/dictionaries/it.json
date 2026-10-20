@@ -715,6 +715,46 @@
       "limits": "Generato tramite Web Crypto API; l'UUID v7 incorpora un timestamp Unix millisecondi nei 48 bit superiori.",
       "question": "Qual è il vantaggio di UUID v7 rispetto a UUID v4?",
       "answer": "Essendo ordinato cronologicamente, l'UUID v7 migliora la localizzazione negli indici B-tree dei database velocizzando gli inserimenti."
+    },
+    "regex-tester": {
+      "title": "Tester di espressioni regolari",
+      "description": "Verifica localmente nel browser espressioni regolari JavaScript e flag su stringhe di testo campione.",
+      "how": "Inserisci un pattern regex JavaScript e i relativi flag (come g o i), quindi digita un testo per analizzare i riscontri.",
+      "limits": "Esegue le corrispondenze mediante il motore JavaScript RegExp nativo. Pattern complessi possono impegnare la CPU.",
+      "question": "Quale motore di espressioni regolari viene impiegato?",
+      "answer": "Le valutazioni avvengono direttamente nel browser tramite l’implementazione standard JavaScript RegExp."
+    },
+    "unix-timestamp-converter": {
+      "title": "Convertitore timestamp Unix",
+      "description": "Converti secondi o millisecondi Unix in una data leggibile nel fuso orario locale del browser.",
+      "how": "Digita un valore numerico in secondi o millisecondi, oppure fai clic per inserire il timestamp corrente.",
+      "limits": "Valori fino a dieci cifre vengono interpretati come secondi ; valori più lunghi come millisecondi.",
+      "question": "Quale fuso orario viene visualizzato?",
+      "answer": "La data e l’ora riflettono le impostazioni locali e il fuso orario del dispositivo in uso."
+    },
+    "utm-builder": {
+      "title": "Generatore di link UTM",
+      "description": "Aggiungi parametri di campagna sorgente, mezzo e nome a un URL valido direttamente nel browser.",
+      "how": "Inserisci l’URL di destinazione insieme ai valori di sorgente, mezzo e campagna per formattare il collegamento tracciato.",
+      "limits": "I parametri preesistenti nell’indirizzo vengono conservati, ad eccezione dei campi UTM sovrascritti.",
+      "question": "Questo strumento attiva automaticamente le statistiche?",
+      "answer": "No. Il sito web di arrivo deve disporre di una piattaforma di analisi predisposta alla ricezione dei parametri UTM."
+    },
+    "meta-tag-generator": {
+      "title": "Generatore di meta tag",
+      "description": "Genera localmente meta tag essenziali per titolo, descrizione, anteprime Open Graph e Twitter Card.",
+      "how": "Inserisci titolo, descrizione e URL dell’immagine di anteprima per produrre codice HTML pronto da inserire nella pagina.",
+      "limits": "Fornisce una base standard. Metadati specifici per articoli, prodotti o canonicità vanno definiti a parte.",
+      "question": "I dati inseriti vengono trasmessi a server esterni?",
+      "answer": "No. Tutti i tag HTML vengono combinati esclusivamente nel browser senza comunicazioni esterne."
+    },
+    "robots-txt-generator": {
+      "title": "Generatore di robots.txt",
+      "description": "Crea una configurazione robots.txt per un user-agent, una direttiva di esclusione e la mappa del sito.",
+      "how": "Definisci il crawler destinatario, il percorso da inibire e l’indirizzo della sitemap XML per assemblare il file.",
+      "limits": "Compila un blocco di regole singole. Strutture complesse per crawler multipli richiedono modifiche testuali dirette.",
+      "question": "Un file robots.txt protegge pagine e file riservati?",
+      "answer": "No. Le istruzioni orientano soltanto i crawler corretti ; la riservatezza richiede sistemi di autenticazione effettivi."
     }
   },
   "flexOptions": {
@@ -2944,5 +2984,41 @@
     "equalToBaseline": "Pari al valore di riferimento",
     "perKm": "/km",
     "perMile": "/mi"
+  },
+  "developer": {
+    "regex": {
+      "patternLabel": "Espressione regolare",
+      "flagsLabel": "Modificatori (flag)",
+      "textLabel": "Testo di prova",
+      "resultsLabel": "Risultati delle corrispondenze",
+      "noMatches": "Nessuna corrispondenza trovata.",
+      "invalidRegex": "Espressione regolare non valida."
+    },
+    "timestamp": {
+      "inputLabel": "Timestamp Unix (secondi o millisecondi)",
+      "useCurrent": "Usa ora corrente",
+      "resultLabel": "Data e ora locali",
+      "invalid": "Timestamp non valido"
+    },
+    "utm": {
+      "targetUrl": "URL di destinazione",
+      "campaignSource": "Sorgente campagna",
+      "campaignMedium": "Mezzo campagna",
+      "campaignName": "Nome campagna",
+      "outputLabel": "URL di campagna generato",
+      "invalidUrl": "Inserisci un URL iniziale valido (ad esempio https://example.com)."
+    },
+    "meta": {
+      "pageTitle": "Titolo della pagina",
+      "pageDescription": "Descrizione della pagina",
+      "ogImage": "URL immagine Open Graph",
+      "outputLabel": "Tag meta HTML generati"
+    },
+    "robots": {
+      "userAgent": "Agente utente",
+      "disallowPath": "Percorso escluso (Disallow)",
+      "sitemapUrl": "URL della sitemap",
+      "outputLabel": "File robots.txt generato"
+    }
   }
 }

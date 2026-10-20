@@ -38,6 +38,8 @@ const slugs = [
   'ip-address-classifier', 'common-port-service-lookup', 'url-parser',
   'cdr-print-readiness-checker', 'responsive-srcset-generator', 'yaml-json-converter',
   'uuid-generator-validator',
+  'regex-tester', 'unix-timestamp-converter', 'utm-builder', 'meta-tag-generator',
+  'robots-txt-generator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -595,6 +597,67 @@ try {
     await page.setViewportSize({ width: 390, height: 844 });
     await noOverflow(`${locale} scaling results`);
     await page.setViewportSize({ width: 1440, height: 1000 });
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/regex-tester`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dd').first().textContent()).includes('[0] Hello'));
+    await page.locator('main input[type="text"]').nth(0).fill('[0-9]+');
+    await page.locator('main textarea').fill('Year 2026');
+    assert.ok((await page.locator('main dd').first().textContent()).includes('[0] 2026'));
+    await page.locator('main input[type="text"]').nth(0).fill('[invalid');
+    assert.ok((await page.locator('main [role="alert"]').textContent()).includes(d.developer.regex.invalidRegex));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dd').first().textContent()).includes('[0] Hello'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('Hello'));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/unix-timestamp-converter`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dd').first().textContent()).includes('2023-11-14'));
+    await page.locator('main input[type="text"]').first().fill('invalid');
+    assert.equal(await page.locator('main [role="alert"]').textContent(), d.developer.timestamp.invalid);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dd').first().textContent()).includes('2023-11-14'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('2023-11-14'));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/utm-builder`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dd').first().textContent()).includes('utm_source=google'));
+    await page.locator('main input[type="text"]').nth(1).fill('newsletter');
+    assert.ok((await page.locator('main dd').first().textContent()).includes('utm_source=newsletter'));
+    await page.locator('main input[type="text"]').first().fill('not-a-url');
+    assert.equal(await page.locator('main [role="alert"]').textContent(), d.developer.utm.invalidUrl);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dd').first().textContent()).includes('utm_source=google'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('utm_source=google'));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/meta-tag-generator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main pre').textContent()).includes('<title>Navorika - Free Tools</title>'));
+    await page.locator('main input[type="text"]').first().fill('Custom Title');
+    assert.ok((await page.locator('main pre').textContent()).includes('<title>Custom Title</title>'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main pre').textContent()).includes('<title>Navorika - Free Tools</title>'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('<title>Navorika - Free Tools</title>'));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/robots-txt-generator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main pre').textContent()).includes('User-agent: *'));
+    assert.ok((await page.locator('main pre').textContent()).includes('Disallow: /private/'));
+    await page.locator('main input[type="text"]').nth(1).fill('/admin/');
+    assert.ok((await page.locator('main pre').textContent()).includes('Disallow: /admin/'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main pre').textContent()).includes('Disallow: /private/'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('Disallow: /private/'));
     workflowsChecked++;
     console.log(`Verified ${locale}: ${slugs.length + 1} translated pages and ${slugs.length} working tools.`);
   }

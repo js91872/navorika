@@ -715,6 +715,46 @@
       "limits": "Generierung über die Web Crypto API; UUID v7 kodiert einen Millisekunden-Unix-Zeitstempel in den oberen 48 Bit.",
       "question": "Welchen Vorteil hat UUID v7 gegenüber UUID v4?",
       "answer": "Da UUID v7 zeitlich geordnet ist, verbessert es die B-Tree-Index-Lokalität in Datenbanken und beschleunigt Einfügevorgänge."
+    },
+    "regex-tester": {
+      "title": "RegEx-Tester",
+      "description": "Prüfen Sie reguläre JavaScript-Ausdrücke und Flags direkt im Browser an individuellen Testtexten.",
+      "how": "Geben Sie ein Regex-Muster und Flags (wie g oder i) ein, und fügen Sie Text ein, um Treffer auszuwerten.",
+      "limits": "Läuft über die JavaScript-RegExp-Engine des Browsers. Komplexe Muster können Rechenzeit beanspruchen.",
+      "question": "Welche Regex-Engine wird verwendet?",
+      "answer": "Die Treffer werden unmittelbar im Browser über die standardisierte JavaScript-RegExp-Engine ermittelt."
+    },
+    "unix-timestamp-converter": {
+      "title": "Unix-Zeitstempel-Konverter",
+      "description": "Rechnen Sie Unix-Sekunden oder -Millisekunden in ein lesbares Datum in der lokalen Zeitzone des Browsers um.",
+      "how": "Geben Sie den Zeitstempel ganzzahlig in Sekunden oder Millisekunden ein oder wählen Sie die Schaltfläche für die Jetztzeit.",
+      "limits": "Werte bis zu zehn Ziffern gelten als Sekunden ; längere Eingaben werden als Millisekunden verarbeitet.",
+      "question": "Welche Zeitzone wird angezeigt?",
+      "answer": "Datum und Uhrzeit richten sich nach der Zeitzone und den Ländereinstellungen Ihres Endgeräts."
+    },
+    "utm-builder": {
+      "title": "UTM-Kampagnen-Generator",
+      "description": "Ergänzen Sie eine gültige Webadresse lokal im Browser um standardisierte Kampagnenparameter.",
+      "how": "Geben Sie die Ziel-URL sowie Quelle, Medium und Kampagnenbezeichnung ein, um einen getaggten Link zu erhalten.",
+      "limits": "Bestehende URL-Parameter bleiben erhalten, sofern sie nicht denselben UTM-Schlüsseln entsprechen.",
+      "question": "Aktiviert dieser Generator die Erfolgsmessung selbstständig?",
+      "answer": "Nein. Die Zielwebsite benötigt ein eingerichtetes Analysetool, um die übergebenen UTM-Parameter zu erfassen."
+    },
+    "meta-tag-generator": {
+      "title": "Meta-Tag-Generator",
+      "description": "Erstellen Sie lokal essenzielle HTML-Tags für Seitentitel, Beschreibung, Open Graph und Twitter Cards.",
+      "how": "Titel, Beschreibung und Vorschau-Bild-URL eintragen, um einen fertigen HTML-Codeblock zum Einfügen zu erhalten.",
+      "limits": "Liefert ein grundlegendes Tag-Set. Spezielle Angaben für Artikel, Videos oder Produktdaten sind gesondert zu pflegen.",
+      "question": "Werden die Daten an externe Server übertragen?",
+      "answer": "Nein. Die Generierung der Meta-Tags erfolgt vollständig im Browser ohne externe Datenübertragung."
+    },
+    "robots-txt-generator": {
+      "title": "robots.txt-Generator",
+      "description": "Erstellen Sie einen kompakten robots.txt-Block mit User-Agent, Sperrpfad und Sitemap-Verweis.",
+      "how": "Bestimmen Sie den Crawler, den auszuschließenden Pfad und die XML-Sitemap-Adresse, um die Datei zusammenzustellen.",
+      "limits": "Erzeugt eine einfache Direktiven-Gruppe. Umfangreiche Regeln für mehrere Bots können manuell ergänzt werden.",
+      "question": "Schützt robots.txt vertrauliche Inhalte vor unbefugtem Zugriff?",
+      "answer": "Nein. Die Anweisungen richten sich nur an kooperative Crawler ; sensible Bereiche erfordern Authentifizierung."
     }
   },
   "flexOptions": {
@@ -2944,5 +2984,41 @@
     "equalToBaseline": "Gleich dem Basiswert",
     "perKm": "/km",
     "perMile": "/mi"
+  },
+  "developer": {
+    "regex": {
+      "patternLabel": "Regulärer Ausdruck",
+      "flagsLabel": "Modifikatoren (Flags)",
+      "textLabel": "Testtext",
+      "resultsLabel": "Trefferübersicht",
+      "noMatches": "Keine Treffer gefunden.",
+      "invalidRegex": "Ungültiger regulärer Ausdruck."
+    },
+    "timestamp": {
+      "inputLabel": "Unix-Zeitstempel (Sekunden oder Millisekunden)",
+      "useCurrent": "Aktuelle Zeit übernehmen",
+      "resultLabel": "Lokale Datums- und Zeitangabe",
+      "invalid": "Ungültiger Zeitstempel"
+    },
+    "utm": {
+      "targetUrl": "Ziel-URL",
+      "campaignSource": "Kampagnenquelle",
+      "campaignMedium": "Kampagnenmedium",
+      "campaignName": "Kampagnenname",
+      "outputLabel": "Erstellte Kampagnen-URL",
+      "invalidUrl": "Bitte eine gültige Ausgangs-URL eingeben (z. B. https://example.com)."
+    },
+    "meta": {
+      "pageTitle": "Seitentitel",
+      "pageDescription": "Seitenbeschreibung",
+      "ogImage": "Open-Graph-Bild-URL",
+      "outputLabel": "Erstellte HTML-Meta-Tags"
+    },
+    "robots": {
+      "userAgent": "Crawler-Kennung",
+      "disallowPath": "Sperrpfad (Disallow)",
+      "sitemapUrl": "Sitemap-URL",
+      "outputLabel": "Erstellte robots.txt-Datei"
+    }
   }
 }
