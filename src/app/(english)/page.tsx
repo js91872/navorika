@@ -34,7 +34,7 @@ export default function HomePage() {
     { slug: 'rotate-pdf', title: 'Rotate PDF', icon: '🔄', category: 'PDF Tools' },
     { slug: 'resize-image', title: 'Resize Image', icon: '🖼️', category: 'Image Tools' },
     { slug: 'bmi-calculator', title: 'BMI Calculator', icon: '⚖️', category: 'Health' },
-    { slug: 'sip-calculator', title: 'SIP Calculator', icon: '📊', category: 'Finance' },
+    { slug: 'reverse-sales-tax-calculator', title: 'Reverse Sales Tax Calculator', icon: '🧾', category: 'Finance' },
     { slug: 'merge-pdf', title: 'Merge PDF', icon: '📑', category: 'PDF Tools' },
     { slug: 'concrete-calculator', title: 'Concrete Calculator', icon: '🏗️', category: 'Construction' },
   ];

@@ -22,7 +22,7 @@ export const financeToolPages: Record<string, ToolPageContent> = {
       { question: 'Does this calculator save my receipts?', answer: 'No receipt upload is needed. Calculations run locally in your browser; the calculator does not send entered amounts to a calculation server.' },
     ],
     relatedTools: [{ slug: 'gst-calculator', name: 'GST Calculator' }, { slug: 'uk-vat-calculator', name: 'UK VAT Calculator' }, { slug: 'profit-margin-markup-calculator', name: 'Profit Margin and Markup Calculator' }],
-    relatedGuides: ['gst-calculation-guide'],
+    relatedGuides: ['how-to-back-out-sales-tax-us', 'gst-calculation-guide'],
   },
   'sip-calculator': {
     slug: 'sip-calculator', name: 'SIP Calculator: Monthly Investment Return Projection', category: 'Finance Calculators', applicationCategory: 'FinanceApplication', description: 'Project SIP maturity value, invested amount, and estimated returns from monthly investment, annual return, and duration.',
@@ -289,6 +289,7 @@ export const financeToolPages: Record<string, ToolPageContent> = {
       { question: 'Is my pricing data stored?', answer: 'No. All calculations run strictly in your web browser.' },
     ],
     relatedTools: [
+      { slug: 'reverse-sales-tax-calculator', name: 'Reverse Sales Tax Calculator' },
       { slug: 'break-even-calculator', name: 'Break-Even Calculator' },
       { slug: 'contractor-estimate-generator', name: 'Contractor Estimate Generator' },
       { slug: 'construction-estimate-builder', name: 'Construction Estimate Builder' },
