@@ -34,6 +34,10 @@ const slugs = [
   'heat-pump-vs-furnace-cost-calculator', 'job-offer-total-comp-calculator', 'lumpsum-investment-calculator',
   'savings-goal-calculator', 'mortgage-affordability-calculator', 'break-even-calculator',
   'profit-margin-markup-calculator',
+  'ipv6-subnet-calculator', 'tcp-udp-port-range-calculator', 'cidr-summarization-calculator',
+  'ip-address-classifier', 'common-port-service-lookup', 'url-parser',
+  'cdr-print-readiness-checker', 'responsive-srcset-generator', 'yaml-json-converter',
+  'uuid-generator-validator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -183,6 +187,16 @@ try {
       ['mortgage-affordability-calculator', 120000, 409712, 792190],
       ['break-even-calculator', 30000, 40, 40],
       ['profit-margin-markup-calculator', 60, 40, -20],
+      ['ipv6-subnet-calculator', 48, 16, 32],
+      ['tcp-udp-port-range-calculator', 1024, 48128, 47104],
+      ['cidr-summarization-calculator', 0, 2, 1],
+      ['ip-address-classifier', 0, 0, 0],
+      ['common-port-service-lookup', 443, 443, 886],
+      ['url-parser', 0, 0, 0],
+      ['cdr-print-readiness-checker', 0, 0, 0],
+      ['responsive-srcset-generator', 1920, 0, 0],
+      ['yaml-json-converter', 0, 0, 0],
+      ['uuid-generator-validator', 10, 0, 0],
     ]) {
       await visit(`/${locale}/tools/${slug}`);
       const ui = d.calculatorUi;
@@ -229,6 +243,38 @@ try {
         assert.ok((await page.locator('main dd').first().textContent()).includes('4:59'));
         await page.locator('main input[type="number"]').nth(1).fill(String(initial * 2));
         assert.ok((await page.locator('main dd').first().textContent()).includes('7:49'));
+      } else if (slug === 'ipv6-subnet-calculator') {
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+        await page.locator('main input[type="number"]').first().fill('32');
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(changed));
+      } else if (slug === 'cidr-summarization-calculator') {
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+        await page.locator('main textarea').first().fill('192.168.0.0/24');
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(changed));
+      } else if (slug === 'ip-address-classifier') {
+        assert.equal(await page.locator('main dd').first().textContent(), 'IPv4');
+        await page.locator('main input[type="text"]').first().fill('2001:db8::1');
+        assert.equal(await page.locator('main dd').first().textContent(), 'IPv6');
+      } else if (slug === 'url-parser') {
+        assert.equal(await page.locator('main dd').first().textContent(), 'https:');
+        await page.locator('main input[type="text"]').first().fill('http://test.org');
+        assert.equal(await page.locator('main dd').first().textContent(), 'http:');
+      } else if (slug === 'cdr-print-readiness-checker') {
+        assert.equal(await page.locator('main dd').first().textContent(), 'READY FOR PRINT');
+        await page.locator('main select').first().selectOption('missing');
+        assert.equal(await page.locator('main dd').first().textContent(), 'ACTION REQUIRED');
+      } else if (slug === 'responsive-srcset-generator') {
+        assert.ok((await page.locator('main dd').first().textContent()).includes('16 / 9'));
+        await page.locator('main input[type="number"]').first().fill('3840');
+        assert.ok((await page.locator('main dd').first().textContent()).includes('3840px'));
+      } else if (slug === 'yaml-json-converter') {
+        assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+        await page.locator('main textarea').first().fill('foo: bar');
+        assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+      } else if (slug === 'uuid-generator-validator') {
+        assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+        await page.locator('main input[type="text"]').first().fill('invalid-uuid');
+        assert.ok((await page.locator('main dd').first().textContent()).includes('Invalid'));
       } else {
         assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
         await page.locator('main input[type="number"]').first().fill(String(initial * 2));
@@ -240,7 +286,15 @@ try {
       assert.ok(copied.includes(d.tools[slug].title));
       assert.doesNotMatch(copied, /Matched|Mismatch|Not applicable|Flat \(/);
       for (const label of Object.values(d.calculators[slug].results)) assert.ok(copied.includes(label));
-      assert.ok(copied.includes(slug === 'running-pace-calculator' ? '7:49' : number.format(changed ?? expected * 2)));
+      const expectedInCopied = slug === 'running-pace-calculator' ? '7:49'
+        : slug === 'ip-address-classifier' ? 'IPv6'
+        : slug === 'url-parser' ? 'http:'
+        : slug === 'cdr-print-readiness-checker' ? 'ACTION REQUIRED'
+        : slug === 'responsive-srcset-generator' ? '3840px'
+        : slug === 'yaml-json-converter' ? 'Valid'
+        : slug === 'uuid-generator-validator' ? 'Invalid'
+        : number.format(changed ?? expected * 2);
+      assert.ok(copied.includes(expectedInCopied), `${slug} in copied text`);
       const downloadEvent = page.waitForEvent('download');
       await page.getByRole('button', { name: ui.csv, exact: true }).click();
       const download = await downloadEvent;
@@ -276,14 +330,34 @@ try {
       await page.evaluate(() => { window.print = () => { window.__printOpened = true; }; });
       await page.locator('main button').last().click();
       assert.equal(await page.evaluate(() => window.__printOpened), true);
-      await page.locator('main input[type="number"]').first().fill('');
-      assert.equal(await page.locator('main').getByRole('alert').textContent(), ui.invalid);
-      assert.equal(await page.getByRole('button', { name: ui.copy, exact: true }).count(), 0);
-      await page.getByRole('button', { name: ui.reset, exact: true }).click();
-      if (slug === 'running-pace-calculator') {
-        assert.ok((await page.locator('main dd').first().textContent()).includes('4:59'));
+      if (slug === 'cdr-print-readiness-checker') {
+        // All options are valid preflight checklist states
       } else {
-        assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+        if (slug === 'cidr-summarization-calculator') {
+          await page.locator('main textarea').first().fill('');
+        } else if (slug === 'ip-address-classifier' || slug === 'url-parser') {
+          await page.locator('main input[type="text"]').first().fill('');
+        } else {
+          await page.locator('main input[type="number"]').first().fill('');
+        }
+        assert.equal(await page.locator('main').getByRole('alert').textContent(), ui.invalid);
+        assert.equal(await page.getByRole('button', { name: ui.copy, exact: true }).count(), 0);
+        await page.getByRole('button', { name: ui.reset, exact: true }).click();
+        if (slug === 'running-pace-calculator') {
+          assert.ok((await page.locator('main dd').first().textContent()).includes('4:59'));
+        } else if (slug === 'ip-address-classifier') {
+          assert.equal(await page.locator('main dd').first().textContent(), 'IPv4');
+        } else if (slug === 'url-parser') {
+          assert.equal(await page.locator('main dd').first().textContent(), 'https:');
+        } else if (slug === 'responsive-srcset-generator') {
+          assert.ok((await page.locator('main dd').first().textContent()).includes('16 / 9'));
+        } else if (slug === 'yaml-json-converter') {
+          assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+        } else if (slug === 'uuid-generator-validator') {
+          assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+        } else {
+          assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+        }
       }
       await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async () => { throw new Error('RAW_BROWSER_ERROR'); } } }));
       await page.getByRole('button', { name: ui.copy, exact: true }).click();

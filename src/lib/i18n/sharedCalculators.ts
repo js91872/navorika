@@ -13,6 +13,7 @@ export const isIntegerCalculatorField = (key: string) => [
   'months', 'customers', 'newCustomers',
   'attendees', 'workingHours', 'duration', 'meetingsPerWeek', 'workingWeeks',
   'timeHorizonYears', 'yearsToReachGoal', 'loanTermYears', 'plannedUnitSales',
+  'parentPrefix', 'subnetPrefix', 'startPort', 'endPort', 'port', 'indentSpaces', 'originalWidth', 'originalHeight',
 ].includes(key);
 
 /** Reject missing, fractional count and out-of-range inputs before permissive engines can clamp them. */
@@ -22,6 +23,10 @@ export function calculateLocalizedValues(slug: LocalizedCalculatorSlug, values: 
     const value = values[field.key];
     if (field.options) {
       if (typeof value !== 'string' || !field.options.some((opt) => opt.value === value)) return null;
+      continue;
+    }
+    if (field.type === 'textarea' || field.type === 'text' || typeof field.defaultValue === 'string') {
+      if (typeof value !== 'string' || value.length > 50000) return null;
       continue;
     }
     if (typeof value !== 'number' || !Number.isFinite(value) || Math.abs(value) > 1e12 ||
@@ -64,8 +69,15 @@ export function calculateLocalizedValues(slug: LocalizedCalculatorSlug, values: 
   if (slug === 'saas-burn-rate-calculator' && Number(values.months) < 1) return null;
   if (slug === 'churn-impact-calculator' && Number(values.months) < 1) return null;
   if (slug === 'net-revenue-retention-calculator' && Number(values.start) <= 0) return null;
+  if (slug === 'ipv6-subnet-calculator' && Number(values.subnetPrefix) < Number(values.parentPrefix)) return null;
+  if (slug === 'tcp-udp-port-range-calculator' && Number(values.startPort) > Number(values.endPort)) return null;
+  if (slug === 'cidr-summarization-calculator' && !String(values.cidrList || '').trim()) return null;
+  if (slug === 'ip-address-classifier' && !String(values.ipAddress || '').trim()) return null;
+  if (slug === 'url-parser' && !String(values.url || '').trim()) return null;
+  if (slug === 'yaml-json-converter' && !String(values.sourceContent || '').trim()) return null;
   try {
     const result = config.calculate(values);
+    if ('valid' in result && result.valid === false) return null;
     return config.results.every(({ key, format }) => {
       const value = Reflect.get(result, key);
       if (value === null) {

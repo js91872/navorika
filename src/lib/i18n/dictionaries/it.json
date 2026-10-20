@@ -635,6 +635,86 @@
       "limits": "L'utile lordo non comprende spese di trasporto, provvigioni di vendita o commissioni di pagamento.",
       "question": "Qual è la distinzione tra margine e ricarico?",
       "answer": "Il margine rapporta il guadagno al prezzo finale di vendita, mentre il ricarico lo rapporta al costo sostenuto per l'acquisto."
+    },
+    "ipv6-subnet-calculator": {
+      "title": "Calcolatore di sottoreti IPv6",
+      "description": "Calcola la capacità delle sottoreti IPv6, le relazioni tra prefissi e il numero di sottoreti disponibili.",
+      "how": "Inserisci la lunghezza del prefisso genitore e quella della sottorete di destinazione per calcolare sottoreti e capacità host.",
+      "limits": "Le allocazioni standard per reti locali non devono essere inferiori a /64 per mantenere la compatibilità SLAAC.",
+      "question": "Perché /64 è la dimensione standard di sottorete in IPv6?",
+      "answer": "La specifica RFC 4291 richiede un identificatore di interfaccia a 64 bit affinché l'autoconfigurazione SLAAC funzioni correttamente."
+    },
+    "tcp-udp-port-range-calculator": {
+      "title": "Calcolatore intervallo porte TCP/UDP",
+      "description": "Calcola il numero inclusivo di numeri di porta TCP o UDP in un intervallo numerico selezionato.",
+      "how": "Inserisci i numeri di porta iniziale e finale tra 0 e 65535.",
+      "limits": "Conta l'estensione numerica secondo gli intervalli standard IANA senza verificare l'accessibilità di rete.",
+      "question": "Quali sono i tre intervalli standard di porte definiti da IANA?",
+      "answer": "Porte di sistema/note (0–1023), porte utente/registrate (1024–49151) e porte dinamiche/private (49152–65535)."
+    },
+    "cidr-summarization-calculator": {
+      "title": "Calcolatore aggregazione CIDR",
+      "description": "Aggrega reti IPv4 CIDR contigue nel set esatto più piccolo di blocchi CIDR unificati.",
+      "how": "Inserisci un prefisso CIDR IPv4 per riga. Il motore aggrega blocchi contigui senza sovraestensioni.",
+      "limits": "Aggrega solo reti gemelle contigue esatte; le sottoreti non adiacenti restano separate per evitare errori di routing.",
+      "question": "Cos'è la summarization o aggregazione delle rotte?",
+      "answer": "È la combinazione di più prefissi di routing in una singola rotta per ridurre la dimensione delle tabelle di instradamento."
+    },
+    "ip-address-classifier": {
+      "title": "Classificatore indirizzi IP",
+      "description": "Classifica un indirizzo IPv4 o IPv6 come privato, pubblico/globale, loopback, link-local, multicast o per uso speciale.",
+      "how": "Inserisci un indirizzo IPv4 o IPv6 per determinarne l'ambito sintattico e la classificazione RFC.",
+      "limits": "Elaborato in locale nel browser secondo i registri ufficiali IANA senza stabilire connessioni di rete.",
+      "question": "Quale RFC regola le allocazioni di indirizzi IPv4 privati?",
+      "answer": "La RFC 1918 definisce i tre intervalli privati: 10.0.0.0/8, 172.16.0.0/12 e 192.168.0.0/16."
+    },
+    "common-port-service-lookup": {
+      "title": "Ricerca porte e servizi comuni",
+      "description": "Consulta i numeri di porta TCP e UDP più utilizzati e i servizi di rete standard corrispondenti.",
+      "how": "Inserisci un numero di porta da 0 a 65535 e seleziona TCP, UDP o entrambi per visualizzare l'assegnazione.",
+      "limits": "Riflette le definizioni ufficiali del registro IANA e non le connessioni attive sulla macchina locale.",
+      "question": "Qual è la differenza fondamentale tra TCP e UDP?",
+      "answer": "TCP è orientato alla connessione e garantisce la consegna ordinata, mentre UDP è connectionless e ottimizzato per la bassa latenza."
+    },
+    "url-parser": {
+      "title": "Analizzatore URL",
+      "description": "Scompone localmente un URL in protocollo, host, porta, percorso, parametri di query e frammento.",
+      "how": "Inserisci un URL assoluto per esaminarne le singole componenti e i valori dei parametri decodificati.",
+      "limits": "L'analisi avviene nel browser tramite le API URL standard, senza trasmettere dati all'esterno.",
+      "question": "Quali elementi compongono un URL assoluto?",
+      "answer": "Schema/protocollo, autorità (host e porta opzionale), percorso gerarchico, stringa di query e identificatore di frammento."
+    },
+    "cdr-print-readiness-checker": {
+      "title": "Controllo prestampa CorelDRAW (CDR)",
+      "description": "Guida alla verifica prestampa per file CorelDRAW: abbondanze, spazio colore CMYK, curve, risoluzione e sovrastampa.",
+      "how": "Verifica lo stato di otto requisiti di prestampa per calcolare il punteggio di conformità e la check-list.",
+      "limits": "Basato sulla verifica dell'utente per intercettare gli errori di stampa commerciale prima dell'invio in macchina.",
+      "question": "Perché convertire i caratteri in curve prima della stampa?",
+      "answer": "La conversione del testo in tracciati vettoriali garantisce una resa tipografica identica senza rischio di font mancanti."
+    },
+    "responsive-srcset-generator": {
+      "title": "Generatore di srcset reattivi",
+      "description": "Genera attributi HTML srcset e tag picture moderni con larghezze di breakpoint, moltiplicatori DPR e formati AVIF/WebP.",
+      "how": "Indica le dimensioni di base, i breakpoint desiderati e la regola sizes per generare snippet HTML pronti all'uso.",
+      "limits": "Genera il codice di marcatura; il ridimensionamento effettivo dei file grafici deve essere gestito dalla pipeline o dal CDN.",
+      "question": "Qual è il vantaggio dell'attributo srcset?",
+      "answer": "Consente al browser di scaricare esclusivamente l'immagine alla risoluzione adatta al dispositivo e alla densità del display."
+    },
+    "yaml-json-converter": {
+      "title": "Convertitore YAML e JSON",
+      "description": "Converti file di configurazione YAML in JSON e JSON in YAML nel tuo browser con validazione e indentazione personalizzata.",
+      "how": "Incolla YAML o JSON nell'editor per rilevare, validare e convertire istantaneamente il documento.",
+      "limits": "Eseguito in locale; non supporta tag personalizzati proprietari di YAML o riferimenti circolari.",
+      "question": "Perché convertire tra YAML e JSON?",
+      "answer": "YAML privilegia la leggibilità umana nei file di configurazione, mentre JSON è il formato d'interscambio standard per API e software."
+    },
+    "uuid-generator-validator": {
+      "title": "Generatore e validatore UUID",
+      "description": "Genera in blocco identificatori sicuri UUID v4 e UUID v7 temporali, convalida la sintassi e analizza versione e variante.",
+      "how": "Scegli versione, maiuscole/minuscole, trattini e quantità per generare UUID, o incolla un identificatore da analizzare.",
+      "limits": "Generato tramite Web Crypto API; l'UUID v7 incorpora un timestamp Unix millisecondi nei 48 bit superiori.",
+      "question": "Qual è il vantaggio di UUID v7 rispetto a UUID v4?",
+      "answer": "Essendo ordinato cronologicamente, l'UUID v7 migliora la localizzazione negli indici B-tree dei database velocizzando gli inserimenti."
     }
   },
   "flexOptions": {
@@ -2499,6 +2579,354 @@
       },
       "note": "Il margine è l'utile lordo rapportato al prezzo di vendita, mentre il ricarico è l'utile lordo rapportato al costo di acquisto. Il margine non può raggiungere o superare il 100% per beni con costo positivo.",
       "textResults": {}
+    },
+    "ipv6-subnet-calculator": {
+      "fields": {
+        "parentPrefix": {
+          "label": "Lunghezza prefisso principale (/0–/128)",
+          "help": "Prefisso di routing a monte (es. allocazione sito /48 o delega /56)."
+        },
+        "subnetPrefix": {
+          "label": "Lunghezza prefisso sottorete (/0–/128)",
+          "help": "Dimensione sottorete desiderata (es. LAN /64 o indirizzo singolo /128)."
+        }
+      },
+      "results": {
+        "subnetBits": "Bit di sottorete",
+        "subnetCount": "Numero di sottoreti",
+        "hostBits": "Bit interfaccia/host per sottorete",
+        "addressesPerSubnet": "Indirizzi per sottorete"
+      },
+      "note": "Il calcolo dei prefissi IPv6 si basa sull'esatta capacità a 128 bit. Un prefisso /64 è l'allocazione standard raccomandata da RFC 4291/7217 per l'autoconfigurazione SLAAC. I conteggi superiori a 2^53 sono calcolati mediante aritmetica intera esatta BigInt.",
+      "textResults": {
+        "subnetCount": "machine",
+        "addressesPerSubnet": "machine"
+      }
+    },
+    "tcp-udp-port-range-calculator": {
+      "fields": {
+        "startPort": {
+          "label": "Porta iniziale (0–65535)"
+        },
+        "endPort": {
+          "label": "Porta finale (0–65535)"
+        }
+      },
+      "results": {
+        "portCount": "Porte nell'intervallo",
+        "range": "Intervallo inclusivo",
+        "classification": "Classificazione intervallo porte"
+      },
+      "note": "Calcola l'estensione numerica inclusiva nello spazio a 16 bit (0–65535). La classificazione rispecchia gli standard IANA: Sistema/Note (0–1023), Utente/Registrate (1024–49151) e Dinamiche/Private (49152–65535). Il conteggio numerico non verifica l'accessibilità reale delle porte.",
+      "textResults": {
+        "range": "machine",
+        "classification": "machine"
+      }
+    },
+    "cidr-summarization-calculator": {
+      "fields": {
+        "cidrList": {
+          "label": "Reti IPv4 in formato CIDR",
+          "help": "Inserisci un prefisso CIDR IPv4 per riga (es. 192.168.0.0/25)."
+        }
+      },
+      "results": {
+        "inputNetworks": "Reti valide inserite",
+        "summaryNetworks": "CIDR aggregati e unificati",
+        "summaryCount": "Numero di blocchi aggregati",
+        "addressesCovered": "Indirizzi IP inclusi"
+      },
+      "note": "L'aggregazione delle rotte normalizza le sottoreti ai limiti di maschera, elimina le reti ridondanti contenute e fonde blocchi gemelli adiacenti di uguale dimensione. Reti non adiacenti restano separate per tutelare l'integrità del routing.",
+      "textResults": {
+        "summaryNetworks": "machine"
+      }
+    },
+    "ip-address-classifier": {
+      "fields": {
+        "ipAddress": {
+          "label": "Indirizzo IP (IPv4 o IPv6)",
+          "help": "Valutato in locale senza interrogazioni di rete né risoluzione DNS.",
+          "placeholder": "es. 192.168.1.1 o 2001:db8::1"
+        }
+      },
+      "results": {
+        "version": "Versione IP",
+        "classification": "Classificazione",
+        "scope": "Ambito / Destinazione speciale",
+        "matchedRange": "Intervallo corrispondente"
+      },
+      "note": "La classificazione analizza la sintassi IP rispetto ai registri ufficiali IANA (RFC 6890, RFC 1918, RFC 4291, RFC 3927). La voce Unicast Globale indica un'assegnazione sintatticamente pubblica; l'effettiva raggiungibilità dipende da topologia e firewall. Nessun dato viene trasmesso in rete.",
+      "textResults": {
+        "version": "machine",
+        "classification": "machine",
+        "scope": "machine",
+        "matchedRange": "machine"
+      }
+    },
+    "common-port-service-lookup": {
+      "fields": {
+        "port": {
+          "label": "Numero porta (0–65535)"
+        },
+        "protocol": {
+          "label": "Protocollo",
+          "options": {
+            "TCP": "TCP",
+            "UDP": "UDP",
+            "Both": "TCP e UDP"
+          }
+        }
+      },
+      "results": {
+        "portNumber": "Porta",
+        "protocol": "Protocollo",
+        "service": "Servizio comune",
+        "rangeClass": "Categoria porta"
+      },
+      "note": "Consulta un elenco locale di assegnazioni standardizzate per porte di rete. Se non vi sono corrispondenze, viene indicato esplicitamente senza ipotizzare servizi inesistenti. La presenza nell'elenco non implica un servizio attivo sul computer locale.",
+      "textResults": {
+        "protocol": "machine",
+        "service": "machine",
+        "rangeClass": "machine"
+      }
+    },
+    "url-parser": {
+      "fields": {
+        "url": {
+          "label": "URL di destinazione",
+          "help": "Deve essere un URL assoluto con schema (es. https://)."
+        }
+      },
+      "results": {
+        "protocol": "Protocollo",
+        "hostname": "Nome host",
+        "port": "Porta",
+        "pathname": "Percorso (Path)",
+        "query": "Stringa di query",
+        "fragment": "Frammento (Hash)",
+        "queryParameters": "Parametri di query decodificati"
+      },
+      "note": "L'analisi dell'URL segue lo standard WHATWG implementato dai browser moderni. Percorsi relativi o schemi mancanti generano un avviso di input non valido. L'analisi dei parametri decodifica chiavi e valori codificati in percentuale.",
+      "textResults": {
+        "protocol": "machine",
+        "hostname": "machine",
+        "port": "machine",
+        "pathname": "machine",
+        "query": "machine",
+        "fragment": "machine",
+        "queryParameters": "machine"
+      }
+    },
+    "cdr-print-readiness-checker": {
+      "fields": {
+        "documentSize": {
+          "label": "Dimensioni documento",
+          "options": {
+            "confirmed": "Confermato / Verificato",
+            "review": "Da verificare / Incerto",
+            "missing": "Mancante / Non verificato"
+          }
+        },
+        "bleed": {
+          "label": "Margine di abbondanza (Bleed)",
+          "options": {
+            "confirmed": "Confermato / Verificato",
+            "review": "Da verificare / Incerto",
+            "missing": "Mancante / Non verificato"
+          }
+        },
+        "colorMode": {
+          "label": "Metodo colore (CMYK)",
+          "options": {
+            "confirmed": "Confermato / Verificato",
+            "review": "Da verificare / Incerto",
+            "missing": "Mancante / Non verificato"
+          }
+        },
+        "fonts": {
+          "label": "Caratteri e tipografia",
+          "options": {
+            "confirmed": "Confermato / Verificato",
+            "review": "Da verificare / Incerto",
+            "missing": "Mancante / Non verificato"
+          }
+        },
+        "imageResolution": {
+          "label": "Risoluzione immagini bitmap",
+          "options": {
+            "confirmed": "Confermato / Verificato",
+            "review": "Da verificare / Incerto",
+            "missing": "Mancante / Non verificato"
+          }
+        },
+        "transparency": {
+          "label": "Trasparenze ed effetti",
+          "options": {
+            "confirmed": "Confermato / Verificato",
+            "review": "Da verificare / Incerto",
+            "missing": "Mancante / Non verificato"
+          }
+        },
+        "overprint": {
+          "label": "Sovrastampa nero / bianco",
+          "options": {
+            "confirmed": "Confermato / Verificato",
+            "review": "Da verificare / Incerto",
+            "missing": "Mancante / Non verificato"
+          }
+        },
+        "exportFormat": {
+          "label": "Formato di esportazione",
+          "options": {
+            "confirmed": "Confermato / Verificato",
+            "review": "Da verificare / Incerto",
+            "missing": "Mancante / Non verificato"
+          }
+        }
+      },
+      "results": {
+        "readinessRating": "Giudizio di conformità prestampa",
+        "score": "Punteggio di idoneità (su 100)",
+        "passedCount": "Criteri verificati",
+        "reviewCount": "Elementi da ricontrollare",
+        "failedCount": "Elementi critici mancanti",
+        "summaryText": "Riepilogo verifica prestampa"
+      },
+      "note": "Check-list guidata per file CorelDRAW basata sulle verifiche dell'operatore. Poiché l'elaborazione nel browser non può decodificare l'albero binario proprietario di CorelDRAW, lo strumento assicura la revisione metodica dei requisiti chiave prima dell'invio in tipografia.",
+      "textResults": {
+        "readinessRating": "machine",
+        "summaryText": "machine"
+      }
+    },
+    "responsive-srcset-generator": {
+      "fields": {
+        "originalWidth": {
+          "label": "Larghezza immagine originale (px)"
+        },
+        "originalHeight": {
+          "label": "Altezza immagine originale (px)"
+        },
+        "imagePath": {
+          "label": "Percorso o nome file di base"
+        },
+        "breakpointWidths": {
+          "label": "Larghezze di breakpoint (px)"
+        },
+        "containerSizesRule": {
+          "label": "Valore attributo HTML sizes"
+        },
+        "modernFormats": {
+          "label": "Formati moderni immagine (AVIF e WebP)",
+          "options": {
+            "true": "Includi elemento <picture> con AVIF e WebP",
+            "false": "Solo tag <img> standard"
+          }
+        }
+      },
+      "results": {
+        "aspectRatioCss": "Rapporto d'aspetto CSS (Aspect Ratio)",
+        "variantCount": "Varianti generate",
+        "imgHtmlTag": "Snippet HTML del tag <img>",
+        "pictureHtmlTag": "Snippet HTML dell'elemento <picture>"
+      },
+      "note": "Genera snippet HTML conformi agli standard web per immagini reattive. Le varianti srcset ottimizzano i parametri Core Web Vitals e LCP. La generazione effettiva dei file grafici deve avvenire nella pipeline di elaborazione o sul CDN.",
+      "textResults": {
+        "aspectRatioCss": "machine",
+        "imgHtmlTag": "machine",
+        "pictureHtmlTag": "machine"
+      }
+    },
+    "yaml-json-converter": {
+      "fields": {
+        "sourceContent": {
+          "label": "Contenuto sorgente YAML o JSON"
+        },
+        "conversionMode": {
+          "label": "Modalità di conversione",
+          "options": {
+            "yaml-to-json": "YAML → JSON",
+            "json-to-yaml": "JSON → YAML",
+            "auto": "Rilevamento automatico"
+          }
+        },
+        "indentSpaces": {
+          "label": "Spaziatura di rientro (spazi)"
+        },
+        "sortKeys": {
+          "label": "Ordina le chiavi alfabeticamente",
+          "options": {
+            "false": "Mantieni ordine originale delle chiavi",
+            "true": "Ordina chiavi alfabeticamente (A-Z)"
+          }
+        }
+      },
+      "results": {
+        "validationStatus": "Stato di validazione",
+        "detectedFormat": "Formato rilevato",
+        "byteSize": "Dimensione output (byte)",
+        "convertedContent": "Output convertito"
+      },
+      "note": "La conversione bidirezionale viene elaborata interamente nel browser senza chiamate verso server esterni. Tag personalizzati e riferimenti circolari non sono supportati nello standard JSON.",
+      "textResults": {
+        "validationStatus": "machine",
+        "detectedFormat": "machine",
+        "convertedContent": "machine"
+      }
+    },
+    "uuid-generator-validator": {
+      "fields": {
+        "quantity": {
+          "label": "Numero di UUID da generare (1–100)"
+        },
+        "uuidVersion": {
+          "label": "Standard versione UUID",
+          "options": {
+            "v4": "UUID v4 (Crittografico casuale - RFC 4122)",
+            "v7": "UUID v7 (Ordinato cronologicamente - RFC 9562)"
+          }
+        },
+        "caseFormat": {
+          "label": "Formato maiuscole/minuscole",
+          "options": {
+            "lowercase": "minuscolo (standard)",
+            "uppercase": "MAIUSCOLO"
+          }
+        },
+        "includeHyphens": {
+          "label": "Formattazione trattini",
+          "options": {
+            "true": "Standard con trattini (8-4-4-4-12)",
+            "false": "Compatto (32 caratteri esadecimali)"
+          }
+        },
+        "outputStructure": {
+          "label": "Struttura di output",
+          "options": {
+            "plain-list": "Elenco semplice (interruzioni di riga)",
+            "comma-separated": "Valori separati da virgola",
+            "json-array": "Array JSON",
+            "sql-values": "Tuple per clausola SQL INSERT VALUES"
+          }
+        },
+        "validationCandidate": {
+          "label": "Analizza / convalida UUID esistente"
+        }
+      },
+      "results": {
+        "candidateIsValid": "Stato di conformità",
+        "candidateVersion": "Versione identificata",
+        "candidateVariant": "Variante identificata",
+        "candidateTimestampIso": "Timestamp estratto (se v7)",
+        "generatedList": "Elenco UUID generati"
+      },
+      "note": "La generazione impiega la Web Crypto API per garantire pseudocasualità crittografica. L'UUID v7 codifica un timestamp Unix millisecondi nei bit alti per fungere da chiave primaria ordinabile nei database.",
+      "textResults": {
+        "candidateIsValid": "machine",
+        "candidateVersion": "machine",
+        "candidateVariant": "machine",
+        "candidateTimestampIso": "machine",
+        "generatedList": "machine"
+      }
     }
   },
   "calculatorStates": {

@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 71,
-    "pendingTools": 242,
+    "publishedTools": 81,
+    "pendingTools": 232,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 497,
+    "publishedToolTranslations": 567,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -25,7 +25,7 @@
       "jsxText": 3645,
       "visibleAttribute": 337,
       "semanticCopy": 11154,
-      "reviewLiteral": 43631
+      "reviewLiteral": 43629
     },
     "candidateCopyWords": 291689
   },
@@ -850,8 +850,16 @@
       "source": "src/app/(english)/tools/cdr-print-readiness-checker/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -1095,8 +1103,16 @@
       "source": "src/app/(english)/tools/cidr-summarization-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -1155,8 +1171,16 @@
       "source": "src/app/(english)/tools/common-port-service-lookup/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -3128,8 +3152,16 @@
       "source": "src/app/(english)/tools/ip-address-classifier/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -3164,8 +3196,16 @@
       "source": "src/app/(english)/tools/ipv6-subnet-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -4672,8 +4712,16 @@
       "source": "src/app/(english)/tools/responsive-srcset-generator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -5504,8 +5552,16 @@
       "source": "src/app/(english)/tools/tcp-udp-port-range-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -5770,8 +5826,16 @@
       "source": "src/app/(english)/tools/url-parser/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -5839,8 +5903,16 @@
       "source": "src/app/(english)/tools/uuid-generator-validator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -6360,8 +6432,16 @@
       "source": "src/app/(english)/tools/yaml-json-converter/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -7377,7 +7457,7 @@
     {
       "source": "src/app/(english)/tools/cdr-print-readiness-checker/page.tsx",
       "routeTemplate": "/tools/cdr-print-readiness-checker",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7449,7 +7529,7 @@
     {
       "source": "src/app/(english)/tools/cidr-summarization-calculator/page.tsx",
       "routeTemplate": "/tools/cidr-summarization-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7467,7 +7547,7 @@
     {
       "source": "src/app/(english)/tools/common-port-service-lookup/page.tsx",
       "routeTemplate": "/tools/common-port-service-lookup",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8073,7 +8153,7 @@
     {
       "source": "src/app/(english)/tools/ip-address-classifier/page.tsx",
       "routeTemplate": "/tools/ip-address-classifier",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8085,7 +8165,7 @@
     {
       "source": "src/app/(english)/tools/ipv6-subnet-calculator/page.tsx",
       "routeTemplate": "/tools/ipv6-subnet-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8535,7 +8615,7 @@
     {
       "source": "src/app/(english)/tools/responsive-srcset-generator/page.tsx",
       "routeTemplate": "/tools/responsive-srcset-generator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8781,7 +8861,7 @@
     {
       "source": "src/app/(english)/tools/tcp-udp-port-range-calculator/page.tsx",
       "routeTemplate": "/tools/tcp-udp-port-range-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8871,7 +8951,7 @@
     {
       "source": "src/app/(english)/tools/url-parser/page.tsx",
       "routeTemplate": "/tools/url-parser",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8889,7 +8969,7 @@
     {
       "source": "src/app/(english)/tools/uuid-generator-validator/page.tsx",
       "routeTemplate": "/tools/uuid-generator-validator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9069,7 +9149,7 @@
     {
       "source": "src/app/(english)/tools/yaml-json-converter/page.tsx",
       "routeTemplate": "/tools/yaml-json-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

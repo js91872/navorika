@@ -635,6 +635,86 @@
       "limits": "Le bénéfice brut ne tient pas compte des charges d'exploitation, des frais d'expédition ni des commissions bancaires.",
       "question": "Quelle est la nuance entre marge bénéficiaire et taux de marque ?",
       "answer": "La marge rapporte le bénéfice au prix de vente final, alors que le taux de marque rapporte le bénéfice au coût d'achat initial."
+    },
+    "ipv6-subnet-calculator": {
+      "title": "Calculateur de sous-réseaux IPv6",
+      "description": "Calculez la capacité des sous-réseaux IPv6, les relations de préfixes et le nombre de sous-réseaux disponibles.",
+      "how": "Saisissez la longueur du préfixe parent et celle du sous-réseau cible pour calculer les sous-réseaux et adresses disponibles.",
+      "limits": "Les allocations LAN standard ne doivent pas être inférieures à /64 afin de préserver l'autoconfiguration SLAAC.",
+      "question": "Pourquoi le préfixe /64 est-il le standard pour les sous-réseaux IPv6 ?",
+      "answer": "La RFC 4291 impose un identifiant d'interface de 64 bits pour le bon fonctionnement de l'autoconfiguration sans état (SLAAC)."
+    },
+    "tcp-udp-port-range-calculator": {
+      "title": "Calculateur de plages de ports TCP/UDP",
+      "description": "Calculez le nombre inclusif de numéros de ports TCP ou UDP dans une plage numérique sélectionnée.",
+      "how": "Indiquez les numéros de port de début et de fin entre 0 et 65535.",
+      "limits": "Compte les plages numériques selon la classification IANA sans tester l'accessibilité réseau réelle.",
+      "question": "Quelles sont les trois plages de ports standard définies par l'IANA ?",
+      "answer": "Ports système ou bien connus (0–1023), ports enregistrés ou utilisateur (1024–49151) et ports dynamiques ou privés (49152–65535)."
+    },
+    "cidr-summarization-calculator": {
+      "title": "Calculateur de résumé CIDR (Agrégation de routes)",
+      "description": "Résumez des réseaux IPv4 CIDR contigus dans le plus petit ensemble exact de blocs CIDR agrégés.",
+      "how": "Saisissez un préfixe CIDR IPv4 par ligne. Le moteur regroupe les blocs contigus sans déborder sur d'autres adresses.",
+      "limits": "Ne fusionne que les réseaux frères contigus exacts afin d'éviter toute fuite ou imprécision de routage.",
+      "question": "Qu'est-ce que l'agrégation de routes (Route Summarization) ?",
+      "answer": "L'agrégation regroupe plusieurs préfixes de routage en une route unique condensée pour optimiser la taille des tables de routage."
+    },
+    "ip-address-classifier": {
+      "title": "Classificateur d'adresses IP",
+      "description": "Identifiez si une adresse IPv4 ou IPv6 est privée, publique/globale, de boucle locale, multidiffusion ou d'usage spécial.",
+      "how": "Saisissez toute adresse IPv4 ou IPv6 pour afficher sa portée syntaxique et sa classification RFC.",
+      "limits": "Évalué localement dans votre navigateur d'après les registres officiels de l'IANA sans solliciter le réseau.",
+      "question": "Quelle RFC régit l'allocation des adresses IPv4 privées ?",
+      "answer": "La RFC 1918 définit les trois plages d'adresses privées : 10.0.0.0/8, 172.16.0.0/12 et 192.168.0.0/16."
+    },
+    "common-port-service-lookup": {
+      "title": "Recherche de service par port usuel",
+      "description": "Consultez les numéros de ports TCP et UDP usuels et les protocoles ou services réseaux standard associés.",
+      "how": "Indiquez un numéro de port de 0 à 65535 et choisissez TCP, UDP ou les deux pour afficher le service officiel.",
+      "limits": "Reflète les affectations standardisées de l'IANA et non les processus locaux actuellement à l'écoute.",
+      "question": "Quelle est la principale différence entre TCP et UDP ?",
+      "answer": "TCP est orienté connexion et garantit l'acheminement ordonné, tandis qu'UDP fonctionne en mode non connecté pour minimiser la latence."
+    },
+    "url-parser": {
+      "title": "Analyseur d'URL (URL Parser)",
+      "description": "Décomposez localement une URL en protocole, nom d'hôte, port, chemin, paramètres de requête et ancre.",
+      "how": "Collez une URL absolue pour inspecter chacun de ses composants et décoder ses paramètres de recherche.",
+      "limits": "L'analyse est exécutée entièrement dans le navigateur à l'aide de l'API URL standard, sans transmission distante.",
+      "question": "Quels sont les composants clés d'une URL absolue ?",
+      "answer": "Le protocole/schéma, l'autorité (hôte et port optionnel), le chemin hiérarchique, les paramètres de requête et le fragment d'ancre."
+    },
+    "cdr-print-readiness-checker": {
+      "title": "Vérificateur de conformité prépresse CDR (CorelDRAW)",
+      "description": "Évaluez la conformité pour l'impression de fichiers CorelDRAW : fonds perdus, mode couleur, polices vectorisées, résolution et surimpression.",
+      "how": "Sélectionnez l'état de huit critères prépresse essentiels pour obtenir votre score de préparation et votre check-list.",
+      "limits": "Guide basé sur vos vérifications manuelles pour prévenir les erreurs d'impression commerciale avant le départ en machine.",
+      "question": "Pourquoi vectoriser les polices (convertir en courbes) avant impression ?",
+      "answer": "La vectorisation garantit que la typographie s'affiche fidèlement sur les RIP des imprimeurs sans risque de police manquante."
+    },
+    "responsive-srcset-generator": {
+      "title": "Générateur de balises HTML srcset adaptatives",
+      "description": "Générez des attributs HTML srcset optimisés et des balises picture modernes avec points de rupture, ratios et formats AVIF/WebP.",
+      "how": "Indiquez les dimensions de base, les largeurs cibles et la règle sizes pour produire un code HTML prêt pour la production.",
+      "limits": "Génère les balises de balisage ; le redimensionnement physique des fichiers doit être effectué par votre pipeline d'images ou CDN.",
+      "question": "Quel est l'avantage de l'attribut srcset en HTML ?",
+      "answer": "Il permet au navigateur de télécharger uniquement l'image à la résolution idéale correspondant à l'écran et à la densité de l'appareil."
+    },
+    "yaml-json-converter": {
+      "title": "Convertisseur YAML / JSON bidirectionnel",
+      "description": "Convertissez vos fichiers de configuration YAML en JSON et JSON en YAML propre avec validation syntaxique et choix d'indentation.",
+      "how": "Collez votre code YAML ou JSON dans l'éditeur pour une détection, validation et conversion instantanées.",
+      "limits": "Traitement 100 % local ; ne prend pas en charge les balises de schéma YAML personnalisées ou les références circulaires.",
+      "question": "Pourquoi convertir entre les formats YAML et JSON ?",
+      "answer": "YAML est optimisé pour la lisibilité humaine des fichiers de configuration, tandis que JSON est le standard universel d'échange de données."
+    },
+    "uuid-generator-validator": {
+      "title": "Générateur et validateur d'UUID (v4 et v7)",
+      "description": "Générez en masse des identifiants sécurisés UUID v4 aléatoires et UUID v7 ordonnés par horodatage, ou validez des UUID existants.",
+      "how": "Choisissez la version, la casse, le format des tirets et la quantité, ou collez un UUID existant pour l'inspecter.",
+      "limits": "Génération cryptographique via l'API Web Crypto ; l'UUID v7 intègre un horodatage Unix en millisecondes sur 48 bits.",
+      "question": "Quel est l'intérêt d'UUID v7 par rapport à UUID v4 ?",
+      "answer": "UUID v7 étant ordonné dans le temps, il optimise l'indexation dans les arbres B de bases de données et accélère les insertions."
     }
   },
   "flexOptions": {
@@ -2499,6 +2579,354 @@
       },
       "note": "La marge est le bénéfice brut divisé par le prix de vente, tandis que le taux de marque est le bénéfice divisé par le coût d'achat. La marge ne peut jamais atteindre 100 % sur des biens à coût positif.",
       "textResults": {}
+    },
+    "ipv6-subnet-calculator": {
+      "fields": {
+        "parentPrefix": {
+          "label": "Longueur du préfixe parent (/0–/128)",
+          "help": "Préfixe de routage d'origine (ex. allocation de site /48 ou délégation /56)."
+        },
+        "subnetPrefix": {
+          "label": "Longueur du préfixe de sous-réseau (/0–/128)",
+          "help": "Taille de sous-réseau souhaitée (ex. réseau local /64 ou adresse unique /128)."
+        }
+      },
+      "results": {
+        "subnetBits": "Bits de sous-réseau",
+        "subnetCount": "Nombre de sous-réseaux",
+        "hostBits": "Bits d'hôte/interface par sous-réseau",
+        "addressesPerSubnet": "Adresses par sous-réseau"
+      },
+      "note": "Les calculs de préfixes IPv6 utilisent la capacité exacte sur 128 bits. Le préfixe /64 est la taille recommandée par les RFC 4291/7217 pour l'autoconfiguration SLAAC, offrant 18,4 trillions d'adresses par sous-réseau. Les calculs dépassant 2^53 sont gérés avec précision entière BigInt.",
+      "textResults": {
+        "subnetCount": "machine",
+        "addressesPerSubnet": "machine"
+      }
+    },
+    "tcp-udp-port-range-calculator": {
+      "fields": {
+        "startPort": {
+          "label": "Port de début (0–65535)"
+        },
+        "endPort": {
+          "label": "Port de fin (0–65535)"
+        }
+      },
+      "results": {
+        "portCount": "Nombre de ports dans la plage",
+        "range": "Plage inclusive",
+        "classification": "Classification de la plage de ports"
+      },
+      "note": "Calcule l'étendue numérique inclusive dans l'espace de ports 16 bits (0–65535). La classification reflète les plages standard IANA : système/bien connus (0–1023), utilisateur/enregistrés (1024–49151) et dynamiques/privés (49152–65535). Ce comptage ne teste pas l'accessibilité réelle des ports.",
+      "textResults": {
+        "range": "machine",
+        "classification": "machine"
+      }
+    },
+    "cidr-summarization-calculator": {
+      "fields": {
+        "cidrList": {
+          "label": "Réseaux IPv4 au format CIDR",
+          "help": "Saisissez un préfixe CIDR IPv4 par ligne (ex. 192.168.0.0/25)."
+        }
+      },
+      "results": {
+        "inputNetworks": "Réseaux valides en entrée",
+        "summaryNetworks": "CIDR agrégés et résumés",
+        "summaryCount": "Nombre de blocs agrégés",
+        "addressesCovered": "Adresses IP couvertes"
+      },
+      "note": "L'agrégation exacte normalise les sous-réseaux sur les limites de masque, élimine les réseaux redondants inclus et fusionne itérativement les blocs frères contigus de taille égale. Les blocs non contigus restent séparés pour garantir l'exactitude du routage.",
+      "textResults": {
+        "summaryNetworks": "machine"
+      }
+    },
+    "ip-address-classifier": {
+      "fields": {
+        "ipAddress": {
+          "label": "Adresse IP (IPv4 ou IPv6)",
+          "help": "Évaluée localement sans requêtes réseau externes ni résolution DNS.",
+          "placeholder": "ex. 192.168.1.1 ou 2001:db8::1"
+        }
+      },
+      "results": {
+        "version": "Version IP",
+        "classification": "Catégorie d’adresse",
+        "scope": "Portée / Usage spécial",
+        "matchedRange": "Plage correspondante"
+      },
+      "note": "L'évaluation compare la syntaxe IP aux registres officiels de l'IANA (RFC 6890, RFC 1918, RFC 4291, RFC 3927). La mention Unicast Global indique une plage publique syntaxique ; l'accessibilité dépend de votre topologie réseau et de vos pare-feu. Aucune connexion n'est émise.",
+      "textResults": {
+        "version": "machine",
+        "classification": "machine",
+        "scope": "machine",
+        "matchedRange": "machine"
+      }
+    },
+    "common-port-service-lookup": {
+      "fields": {
+        "port": {
+          "label": "Numéro de port (0–65535)"
+        },
+        "protocol": {
+          "label": "Protocole",
+          "options": {
+            "TCP": "TCP",
+            "UDP": "UDP",
+            "Both": "TCP et UDP"
+          }
+        }
+      },
+      "results": {
+        "portNumber": "Numéro de port",
+        "protocol": "Protocole",
+        "service": "Service usuel",
+        "rangeClass": "Catégorie de port"
+      },
+      "note": "Recherche dans un référentiel local de services réseau couramment standardisés. Si aucune correspondance n'est répertoriée, l'outil l'indique explicitement au lieu d'inventer un service. Cela n'indique pas la présence d'un service actif sur votre machine locale.",
+      "textResults": {
+        "protocol": "machine",
+        "service": "machine",
+        "rangeClass": "machine"
+      }
+    },
+    "url-parser": {
+      "fields": {
+        "url": {
+          "label": "URL cible",
+          "help": "Doit être une URL absolue avec protocole (ex. https://)."
+        }
+      },
+      "results": {
+        "protocol": "Protocole",
+        "hostname": "Nom d'hôte (Host)",
+        "port": "Numéro de port",
+        "pathname": "Chemin d'accès (Path)",
+        "query": "Chaîne de requête",
+        "fragment": "Ancre (Hash)",
+        "queryParameters": "Paramètres de requête décodés"
+      },
+      "note": "L'analyse d'URL respecte la norme standard WHATWG implémentée par les navigateurs modernes. Les chemins relatifs ou protocoles manquants génèrent une alerte explicite. Les paramètres de requête décodent automatiquement les clés et valeurs encodées en pourcentages.",
+      "textResults": {
+        "protocol": "machine",
+        "hostname": "machine",
+        "port": "machine",
+        "pathname": "machine",
+        "query": "machine",
+        "fragment": "machine",
+        "queryParameters": "machine"
+      }
+    },
+    "cdr-print-readiness-checker": {
+      "fields": {
+        "documentSize": {
+          "label": "Dimensions du document",
+          "options": {
+            "confirmed": "Confirmé / Vérifié",
+            "review": "À vérifier / Incertain",
+            "missing": "Manquant / Non vérifié"
+          }
+        },
+        "bleed": {
+          "label": "Fonds perdus (Bleed)",
+          "options": {
+            "confirmed": "Confirmé / Vérifié",
+            "review": "À vérifier / Incertain",
+            "missing": "Manquant / Non vérifié"
+          }
+        },
+        "colorMode": {
+          "label": "Espace colorimétrique (CMJN)",
+          "options": {
+            "confirmed": "Confirmé / Vérifié",
+            "review": "À vérifier / Incertain",
+            "missing": "Manquant / Non vérifié"
+          }
+        },
+        "fonts": {
+          "label": "Polices et typographies",
+          "options": {
+            "confirmed": "Confirmé / Vérifié",
+            "review": "À vérifier / Incertain",
+            "missing": "Manquant / Non vérifié"
+          }
+        },
+        "imageResolution": {
+          "label": "Résolution des images bitmap",
+          "options": {
+            "confirmed": "Confirmé / Vérifié",
+            "review": "À vérifier / Incertain",
+            "missing": "Manquant / Non vérifié"
+          }
+        },
+        "transparency": {
+          "label": "Transparences et ombres portées",
+          "options": {
+            "confirmed": "Confirmé / Vérifié",
+            "review": "À vérifier / Incertain",
+            "missing": "Manquant / Non vérifié"
+          }
+        },
+        "overprint": {
+          "label": "Surimpression noir / blanc",
+          "options": {
+            "confirmed": "Confirmé / Vérifié",
+            "review": "À vérifier / Incertain",
+            "missing": "Manquant / Non vérifié"
+          }
+        },
+        "exportFormat": {
+          "label": "Format d'exportation final",
+          "options": {
+            "confirmed": "Confirmé / Vérifié",
+            "review": "À vérifier / Incertain",
+            "missing": "Manquant / Non vérifié"
+          }
+        }
+      },
+      "results": {
+        "readinessRating": "Évaluation de conformité prépresse",
+        "score": "Score de préparation (sur 100)",
+        "passedCount": "Critères validés",
+        "reviewCount": "Points à vérifier",
+        "failedCount": "Critères critiques manquants",
+        "summaryText": "Synthèse de l'évaluation prépresse"
+      },
+      "note": "Check-list guidée pour fichiers CorelDRAW basée sur vos vérifications manuelles. L'analyse directe dans le navigateur ne pouvant décoder l'arborescence propriétaire binaire de CorelDRAW, cet outil garantit que les exigences prépresse essentielles sont validées avant envoi à l'imprimeur.",
+      "textResults": {
+        "readinessRating": "machine",
+        "summaryText": "machine"
+      }
+    },
+    "responsive-srcset-generator": {
+      "fields": {
+        "originalWidth": {
+          "label": "Largeur originale de l'image (px)"
+        },
+        "originalHeight": {
+          "label": "Hauteur originale de l'image (px)"
+        },
+        "imagePath": {
+          "label": "Chemin ou nom de fichier de base"
+        },
+        "breakpointWidths": {
+          "label": "Largeurs des points de rupture (px)"
+        },
+        "containerSizesRule": {
+          "label": "Valeur de l'attribut HTML sizes"
+        },
+        "modernFormats": {
+          "label": "Formats modernes d'image (AVIF et WebP)",
+          "options": {
+            "true": "Inclure balise <picture> avec AVIF et WebP",
+            "false": "Balise <img> standard uniquement"
+          }
+        }
+      },
+      "results": {
+        "aspectRatioCss": "Rapport d'aspect CSS (Aspect Ratio)",
+        "variantCount": "Variantes d'images générées",
+        "imgHtmlTag": "Code HTML de la balise <img>",
+        "pictureHtmlTag": "Code HTML de l'élément <picture>"
+      },
+      "note": "Génère des extraits de code HTML conformes aux standards pour les images adaptatives. Les variantes srcset améliorent les scores Core Web Vitals et le LCP. Le redimensionnement effectif des ressources graphiques doit être réalisé dans votre chaîne de traitement ou votre CDN.",
+      "textResults": {
+        "aspectRatioCss": "machine",
+        "imgHtmlTag": "machine",
+        "pictureHtmlTag": "machine"
+      }
+    },
+    "yaml-json-converter": {
+      "fields": {
+        "sourceContent": {
+          "label": "Contenu source YAML ou JSON"
+        },
+        "conversionMode": {
+          "label": "Mode de conversion",
+          "options": {
+            "yaml-to-json": "YAML → JSON",
+            "json-to-yaml": "JSON → YAML",
+            "auto": "Détection automatique"
+          }
+        },
+        "indentSpaces": {
+          "label": "Espacement d'indentation (espaces)"
+        },
+        "sortKeys": {
+          "label": "Trier les clés par ordre alphabétique",
+          "options": {
+            "false": "Conserver l'ordre d'origine",
+            "true": "Trier les clés alphabétiquement (A-Z)"
+          }
+        }
+      },
+      "results": {
+        "validationStatus": "Statut de validation",
+        "detectedFormat": "Format détecté",
+        "byteSize": "Taille de sortie (octets)",
+        "convertedContent": "Résultat de la conversion"
+      },
+      "note": "La conversion bidirectionnelle s'effectue intégralement dans le navigateur sans aucun envoi vers un serveur externe. Les balises personnalisées de schémas YAML et les références d'objets circulaires ne sont pas prises en charge en JSON standard.",
+      "textResults": {
+        "validationStatus": "machine",
+        "detectedFormat": "machine",
+        "convertedContent": "machine"
+      }
+    },
+    "uuid-generator-validator": {
+      "fields": {
+        "quantity": {
+          "label": "Nombre d'UUID à générer (1–100)"
+        },
+        "uuidVersion": {
+          "label": "Norme de version UUID",
+          "options": {
+            "v4": "UUID v4 (Aléatoire cryptographique - RFC 4122)",
+            "v7": "UUID v7 (Ordonné par horodatage Unix - RFC 9562)"
+          }
+        },
+        "caseFormat": {
+          "label": "Casse des caractères",
+          "options": {
+            "lowercase": "minuscules (standard)",
+            "uppercase": "MAJUSCULES"
+          }
+        },
+        "includeHyphens": {
+          "label": "Formatage des tirets",
+          "options": {
+            "true": "Format standard avec tirets (8-4-4-4-12)",
+            "false": "Format compact (32 caractères hexadécimaux)"
+          }
+        },
+        "outputStructure": {
+          "label": "Structure de sortie",
+          "options": {
+            "plain-list": "Liste simple (séparée par des sauts de ligne)",
+            "comma-separated": "Valeurs séparées par des virgules",
+            "json-array": "Tableau JSON",
+            "sql-values": "Tuples de valeurs SQL INSERT"
+          }
+        },
+        "validationCandidate": {
+          "label": "Examiner / valider un UUID existant"
+        }
+      },
+      "results": {
+        "candidateIsValid": "Statut de validation",
+        "candidateVersion": "Version détectée",
+        "candidateVariant": "Variante détectée",
+        "candidateTimestampIso": "Horodatage extrait (si v7)",
+        "generatedList": "Lot d'UUID générés"
+      },
+      "note": "La génération d'UUID s'appuie sur l'API Web Crypto pour assurer un caractère aléatoire sécurisé. L'UUID v7 encode un horodatage Unix en millisecondes dans les bits de poids fort pour optimiser les clés primaires de bases de données.",
+      "textResults": {
+        "candidateIsValid": "machine",
+        "candidateVersion": "machine",
+        "candidateVariant": "machine",
+        "candidateTimestampIso": "machine",
+        "generatedList": "machine"
+      }
     }
   },
   "calculatorStates": {

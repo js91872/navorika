@@ -635,6 +635,86 @@
       "limits": "Gross profit calculations exclude operating expenses, shipping, sales commissions, and merchant fees.",
       "question": "How do profit margin and markup differ?",
       "answer": "Margin measures gross profit as a percentage of selling price, whereas markup measures profit as a percentage of cost."
+    },
+    "ipv6-subnet-calculator": {
+      "title": "IPv6 Subnet Calculator",
+      "description": "Calculate IPv6 subnet capacity, prefix relationships and subnet counts from IPv6 prefix lengths.",
+      "how": "Enter parent routing prefix length and target subnet prefix length to calculate available subnets and host capacities.",
+      "limits": "Standard LAN allocations should not be smaller than /64 to maintain SLAAC compatibility.",
+      "question": "Why is /64 the standard subnet size in IPv6?",
+      "answer": "RFC 4291 mandates a 64-bit interface identifier for Stateless Address Autoconfiguration (SLAAC) to work correctly."
+    },
+    "tcp-udp-port-range-calculator": {
+      "title": "TCP UDP Port Range Calculator",
+      "description": "Calculate the inclusive number of TCP or UDP port numbers in a selected numeric range.",
+      "how": "Enter the starting and ending port numbers between 0 and 65535.",
+      "limits": "Counts numeric port spans within standard IANA ranges without testing network accessibility.",
+      "question": "What are the three standard IANA port ranges?",
+      "answer": "System/Well-Known ports (0–1023), User/Registered ports (1024–49151), and Dynamic/Private ports (49152–65535)."
+    },
+    "cidr-summarization-calculator": {
+      "title": "CIDR Summarization Calculator",
+      "description": "Summarize contiguous IPv4 CIDR networks into the smallest exact set of aggregate CIDR blocks.",
+      "how": "Enter one IPv4 CIDR prefix per line. The engine merges contiguous sibling blocks without over-covering.",
+      "limits": "Only merges exact sibling networks; non-adjacent subnets remain separate to prevent routing leaks.",
+      "question": "What is route summarization?",
+      "answer": "Route summarization combines multiple routing prefixes into a single compact route to minimize routing table size."
+    },
+    "ip-address-classifier": {
+      "title": "IP Address Classifier",
+      "description": "Classify an IPv4 or IPv6 address as private, public/global, loopback, link-local, multicast, documentation or another recognized special-use category.",
+      "how": "Enter any standard IPv4 or IPv6 address to determine its syntactic scope and RFC classification.",
+      "limits": "Evaluated purely locally using IANA special-purpose registries without initiating network connections.",
+      "question": "What RFC governs private IPv4 address allocations?",
+      "answer": "RFC 1918 defines the three private address spaces: 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16."
+    },
+    "common-port-service-lookup": {
+      "title": "Common Port Service Lookup",
+      "description": "Look up common TCP and UDP port numbers and their commonly associated services.",
+      "how": "Enter a port number from 0 to 65535 and select TCP, UDP, or Both to inspect standardized service assignments.",
+      "limits": "Reflects standard IANA service registry definitions rather than active local listening sockets.",
+      "question": "What is the difference between TCP and UDP?",
+      "answer": "TCP is connection-oriented and guarantees ordered delivery, whereas UDP is connectionless and prioritizes low latency."
+    },
+    "url-parser": {
+      "title": "URL Parser",
+      "description": "Parse a URL locally into protocol, hostname, port, pathname, query parameters and fragment.",
+      "how": "Enter any absolute URL to inspect its discrete components and decoded query parameter values.",
+      "limits": "URLs are parsed in-browser using standard URL API semantics with no network transmission.",
+      "question": "What components make up an absolute URL?",
+      "answer": "Scheme/protocol, authority (host and optional port), hierarchical path, query string parameters, and fragment identifier."
+    },
+    "cdr-print-readiness-checker": {
+      "title": "CDR Print Readiness Checker",
+      "description": "Run a guided CorelDRAW print-preflight assessment covering bleed, color mode, fonts, image resolution, transparency, overprint and output preparation.",
+      "how": "Select the status of eight critical preflight criteria to calculate a print readiness score and checklist.",
+      "limits": "Based on user-verified file properties to ensure common commercial printing errors are caught prior to press run.",
+      "question": "Why convert fonts to curves before printing?",
+      "answer": "Converting text to vector curves ensures typography renders identically on print shop RIP systems without missing fonts."
+    },
+    "responsive-srcset-generator": {
+      "title": "Responsive Srcset Generator",
+      "description": "Generate responsive HTML srcset attributes and modern picture tags with breakpoint widths, DPR multipliers, and WebP/AVIF fallbacks.",
+      "how": "Enter image dimensions, target breakpoint widths, and container size rules to generate production-ready HTML.",
+      "limits": "Generates markup tags; actual raster asset rendering must be performed by your image pipeline or CDN.",
+      "question": "What is the benefit of the srcset attribute?",
+      "answer": "Srcset allows browsers to choose and download only the ideal image resolution for the user device viewport and pixel density."
+    },
+    "yaml-json-converter": {
+      "title": "YAML / JSON Converter",
+      "description": "Convert YAML configuration files to JSON and JSON to clean YAML locally in your browser with syntax validation and indentation controls.",
+      "how": "Paste YAML or JSON into the editor to automatically detect, validate, and convert the document.",
+      "limits": "Runs locally in browser; does not support proprietary custom YAML schema tags or circular references.",
+      "question": "Why convert between YAML and JSON?",
+      "answer": "YAML is optimized for human readability in configurations, while JSON is the universal interchange format for APIs and machines."
+    },
+    "uuid-generator-validator": {
+      "title": "UUID Generator & Validator",
+      "description": "Generate bulk cryptographically secure UUID v4 and timestamp-ordered UUID v7 identifiers, validate syntax, and inspect version and variant metadata.",
+      "how": "Choose version, case format, hyphenation, and quantity to generate identifiers, or paste an existing UUID to validate.",
+      "limits": "Generation uses browser Web Crypto API; UUID v7 embeds millisecond Unix epoch timestamps in the high 48 bits.",
+      "question": "What is the advantage of UUID v7 over UUID v4?",
+      "answer": "UUID v7 is time-ordered, improving database B-tree index locality and insertion performance compared to random UUID v4."
     }
   },
   "flexOptions": {
@@ -2499,6 +2579,354 @@
       },
       "note": "Margin is gross profit divided by selling price, while markup is gross profit divided by cost. Margin can never reach or exceed 100% for positive cost goods.",
       "textResults": {}
+    },
+    "ipv6-subnet-calculator": {
+      "fields": {
+        "parentPrefix": {
+          "label": "Parent prefix length (/0–/128)",
+          "help": "Leading routing prefix (e.g. /48 site allocation or /56 delegation)."
+        },
+        "subnetPrefix": {
+          "label": "Subnet prefix length (/0–/128)",
+          "help": "Target subnet size (e.g. /64 standard LAN or /128 single address)."
+        }
+      },
+      "results": {
+        "subnetBits": "Subnet bits",
+        "subnetCount": "Number of subnets",
+        "hostBits": "Interface/host bits per subnet",
+        "addressesPerSubnet": "Addresses per subnet"
+      },
+      "note": "IPv6 prefix mathematics uses exact 128-bit integer capacity. A /64 prefix is the standard LAN allocation recommended by RFC 4291/7217 for SLAAC autoconfiguration, providing 18.4 quintillion addresses per subnet. Subnet counts and address capacities exceeding 2^53 are computed using exact BigInt arithmetic.",
+      "textResults": {
+        "subnetCount": "machine",
+        "addressesPerSubnet": "machine"
+      }
+    },
+    "tcp-udp-port-range-calculator": {
+      "fields": {
+        "startPort": {
+          "label": "Start port (0–65535)"
+        },
+        "endPort": {
+          "label": "End port (0–65535)"
+        }
+      },
+      "results": {
+        "portCount": "Ports in range",
+        "range": "Inclusive range",
+        "classification": "Port range classification"
+      },
+      "note": "Calculates the inclusive numeric port span across the 16-bit port number space (0–65535). Categorization identifies standard IANA port segments: System/Well-Known (0–1023), User/Registered (1024–49151), and Dynamic/Private/Ephemeral (49152–65535). Numeric counting does not test port accessibility or protocol state.",
+      "textResults": {
+        "range": "machine",
+        "classification": "machine"
+      }
+    },
+    "cidr-summarization-calculator": {
+      "fields": {
+        "cidrList": {
+          "label": "IPv4 CIDR networks",
+          "help": "Enter one IPv4 CIDR prefix per line (e.g. 192.168.0.0/25)."
+        }
+      },
+      "results": {
+        "inputNetworks": "Valid input networks",
+        "summaryNetworks": "Summarized CIDRs",
+        "summaryCount": "Summary count",
+        "addressesCovered": "Addresses covered"
+      },
+      "note": "Exact IPv4 route aggregation normalizes subnets to network boundaries, eliminates contained redundant networks, and iteratively merges adjacent equal-sized sibling blocks where the parent exactly covers the address space. Non-sibling or misaligned networks are never combined into wider blocks that cover unsupplied addresses.",
+      "textResults": {
+        "summaryNetworks": "machine"
+      }
+    },
+    "ip-address-classifier": {
+      "fields": {
+        "ipAddress": {
+          "label": "IP address (IPv4 or IPv6)",
+          "help": "Evaluated locally without external network probes or DNS resolution.",
+          "placeholder": "e.g. 192.168.1.1 or 2001:db8::1"
+        }
+      },
+      "results": {
+        "version": "IP version",
+        "classification": "Classification",
+        "scope": "Scope / special use",
+        "matchedRange": "Matched range"
+      },
+      "note": "Classification evaluates IP syntax against authoritative IANA Special-Purpose Address Registries (RFC 6890, RFC 1918, RFC 4291, RFC 3927). A classification of Global Unicast indicates syntactic public allocation; reachability depends on network topology and firewall configurations. No network connections are initiated.",
+      "textResults": {
+        "version": "machine",
+        "classification": "machine",
+        "scope": "machine",
+        "matchedRange": "machine"
+      }
+    },
+    "common-port-service-lookup": {
+      "fields": {
+        "port": {
+          "label": "Port number (0–65535)"
+        },
+        "protocol": {
+          "label": "Protocol",
+          "options": {
+            "TCP": "TCP",
+            "UDP": "UDP",
+            "Both": "TCP & UDP"
+          }
+        }
+      },
+      "results": {
+        "portNumber": "Port",
+        "protocol": "Protocol",
+        "service": "Common service",
+        "rangeClass": "Port range"
+      },
+      "note": "Searches a curated local reference of standardized and commonly observed service port assignments. If no match is found, the lookup explicitly states that no common entry exists rather than estimating or inventing a service. Service assignment does not indicate an active listener on your local machine.",
+      "textResults": {
+        "protocol": "machine",
+        "service": "machine",
+        "rangeClass": "machine"
+      }
+    },
+    "url-parser": {
+      "fields": {
+        "url": {
+          "label": "Target URL",
+          "help": "Must be an absolute URL including scheme (e.g. https://)."
+        }
+      },
+      "results": {
+        "protocol": "Protocol",
+        "hostname": "Hostname",
+        "port": "Port",
+        "pathname": "Path",
+        "query": "Query string",
+        "fragment": "Hash fragment",
+        "queryParameters": "Decoded query parameters"
+      },
+      "note": "URL parsing conforms to the WHATWG URL Standard implemented by modern web browsers. Relative paths or missing protocols produce an explicit invalid input alert rather than assuming an arbitrary default domain. Parameter parsing decodes percent-encoded query keys and values.",
+      "textResults": {
+        "protocol": "machine",
+        "hostname": "machine",
+        "port": "machine",
+        "pathname": "machine",
+        "query": "machine",
+        "fragment": "machine",
+        "queryParameters": "machine"
+      }
+    },
+    "cdr-print-readiness-checker": {
+      "fields": {
+        "documentSize": {
+          "label": "Document Dimensions",
+          "options": {
+            "confirmed": "Confirmed / Verified",
+            "review": "Needs Review / Uncertain",
+            "missing": "Missing / Unverified"
+          }
+        },
+        "bleed": {
+          "label": "Bleed Allowance",
+          "options": {
+            "confirmed": "Confirmed / Verified",
+            "review": "Needs Review / Uncertain",
+            "missing": "Missing / Unverified"
+          }
+        },
+        "colorMode": {
+          "label": "Color Space (CMYK)",
+          "options": {
+            "confirmed": "Confirmed / Verified",
+            "review": "Needs Review / Uncertain",
+            "missing": "Missing / Unverified"
+          }
+        },
+        "fonts": {
+          "label": "Fonts & Typography",
+          "options": {
+            "confirmed": "Confirmed / Verified",
+            "review": "Needs Review / Uncertain",
+            "missing": "Missing / Unverified"
+          }
+        },
+        "imageResolution": {
+          "label": "Raster Image Resolution",
+          "options": {
+            "confirmed": "Confirmed / Verified",
+            "review": "Needs Review / Uncertain",
+            "missing": "Missing / Unverified"
+          }
+        },
+        "transparency": {
+          "label": "Transparency & Effects",
+          "options": {
+            "confirmed": "Confirmed / Verified",
+            "review": "Needs Review / Uncertain",
+            "missing": "Missing / Unverified"
+          }
+        },
+        "overprint": {
+          "label": "Black / White Overprint",
+          "options": {
+            "confirmed": "Confirmed / Verified",
+            "review": "Needs Review / Uncertain",
+            "missing": "Missing / Unverified"
+          }
+        },
+        "exportFormat": {
+          "label": "Export / Output File Format",
+          "options": {
+            "confirmed": "Confirmed / Verified",
+            "review": "Needs Review / Uncertain",
+            "missing": "Missing / Unverified"
+          }
+        }
+      },
+      "results": {
+        "readinessRating": "Print readiness rating",
+        "score": "Readiness score (out of 100)",
+        "passedCount": "Criteria verified",
+        "reviewCount": "Items needing review",
+        "failedCount": "Missing critical items",
+        "summaryText": "Preflight assessment summary"
+      },
+      "note": "Guided preflight checklist for CorelDRAW files based on user-verified preparation conditions. Browser inspection cannot reliably decode proprietary CorelDRAW binary document trees; this tool ensures critical print requirements (bleed, CMYK, curves, DPI, overprint) are systematically reviewed before sending files to a commercial printer.",
+      "textResults": {
+        "readinessRating": "machine",
+        "summaryText": "machine"
+      }
+    },
+    "responsive-srcset-generator": {
+      "fields": {
+        "originalWidth": {
+          "label": "Original image width (px)"
+        },
+        "originalHeight": {
+          "label": "Original image height (px)"
+        },
+        "imagePath": {
+          "label": "Base image path / filename"
+        },
+        "breakpointWidths": {
+          "label": "Target breakpoint widths (px)"
+        },
+        "containerSizesRule": {
+          "label": "HTML sizes attribute value"
+        },
+        "modernFormats": {
+          "label": "Modern picture formats (AVIF & WebP)",
+          "options": {
+            "true": "Include <picture> with AVIF & WebP",
+            "false": "Standard <img> only"
+          }
+        }
+      },
+      "results": {
+        "aspectRatioCss": "CSS Aspect Ratio",
+        "variantCount": "Image variants generated",
+        "imgHtmlTag": "Responsive <img> HTML snippet",
+        "pictureHtmlTag": "Modern <picture> element snippet"
+      },
+      "note": "Generates standards-compliant HTML snippets for responsive web images. Responsive srcset variants improve Core Web Vitals and LCP scores. Image asset generation should be completed in your image pipeline or CDN.",
+      "textResults": {
+        "aspectRatioCss": "machine",
+        "imgHtmlTag": "machine",
+        "pictureHtmlTag": "machine"
+      }
+    },
+    "yaml-json-converter": {
+      "fields": {
+        "sourceContent": {
+          "label": "Input YAML or JSON content"
+        },
+        "conversionMode": {
+          "label": "Conversion mode",
+          "options": {
+            "yaml-to-json": "YAML → JSON",
+            "json-to-yaml": "JSON → YAML",
+            "auto": "Auto-detect source format"
+          }
+        },
+        "indentSpaces": {
+          "label": "Indentation spacing (spaces)"
+        },
+        "sortKeys": {
+          "label": "Sort object keys alphabetically",
+          "options": {
+            "false": "Preserve original key order",
+            "true": "Sort keys alphabetically (A-Z)"
+          }
+        }
+      },
+      "results": {
+        "validationStatus": "Validation status",
+        "detectedFormat": "Detected format",
+        "byteSize": "Output size (bytes)",
+        "convertedContent": "Converted output"
+      },
+      "note": "Bidirectional conversion is processed purely locally in the browser with no server roundtrips. Custom application tags and circular object references are not supported in standard JSON.",
+      "textResults": {
+        "validationStatus": "machine",
+        "detectedFormat": "machine",
+        "convertedContent": "machine"
+      }
+    },
+    "uuid-generator-validator": {
+      "fields": {
+        "quantity": {
+          "label": "Number of UUIDs to generate (1–100)"
+        },
+        "uuidVersion": {
+          "label": "UUID version standard",
+          "options": {
+            "v4": "UUID v4 (Random cryptographic - RFC 4122)",
+            "v7": "UUID v7 (Unix Epoch timestamp-ordered - RFC 9562)"
+          }
+        },
+        "caseFormat": {
+          "label": "Letter case format",
+          "options": {
+            "lowercase": "lowercase (standard)",
+            "uppercase": "UPPERCASE"
+          }
+        },
+        "includeHyphens": {
+          "label": "Hyphen formatting",
+          "options": {
+            "true": "Standard hyphenated (8-4-4-4-12)",
+            "false": "Compact (32 hex characters without hyphens)"
+          }
+        },
+        "outputStructure": {
+          "label": "Output layout",
+          "options": {
+            "plain-list": "Plain list (newline-separated)",
+            "comma-separated": "Comma-separated values",
+            "json-array": "JSON Array",
+            "sql-values": "SQL INSERT VALUES tuples"
+          }
+        },
+        "validationCandidate": {
+          "label": "Inspect / validate existing UUID"
+        }
+      },
+      "results": {
+        "candidateIsValid": "Inspection status",
+        "candidateVersion": "Inspected version",
+        "candidateVariant": "Inspected variant",
+        "candidateTimestampIso": "Extracted timestamp (if v7)",
+        "generatedList": "Generated UUID batch"
+      },
+      "note": "UUID generation uses the Web Crypto API for cryptographically secure pseudorandomness. UUID v7 encodes millisecond Unix epoch timestamps in the high bits for sortable database primary keys.",
+      "textResults": {
+        "candidateIsValid": "machine",
+        "candidateVersion": "machine",
+        "candidateVariant": "machine",
+        "candidateTimestampIso": "machine",
+        "generatedList": "machine"
+      }
     }
   },
   "calculatorStates": {

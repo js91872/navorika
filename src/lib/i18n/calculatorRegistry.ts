@@ -57,6 +57,16 @@ export const localizedCalculatorSlugs = [
   'mortgage-affordability-calculator',
   'break-even-calculator',
   'profit-margin-markup-calculator',
+  'ipv6-subnet-calculator',
+  'tcp-udp-port-range-calculator',
+  'cidr-summarization-calculator',
+  'ip-address-classifier',
+  'common-port-service-lookup',
+  'url-parser',
+  'cdr-print-readiness-checker',
+  'responsive-srcset-generator',
+  'yaml-json-converter',
+  'uuid-generator-validator',
 ] as const;
 export type LocalizedCalculatorSlug = (typeof localizedCalculatorSlugs)[number];
 export const isLocalizedCalculator = (slug: string): slug is LocalizedCalculatorSlug =>

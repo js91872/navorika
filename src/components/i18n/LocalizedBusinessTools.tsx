@@ -25,7 +25,7 @@ export default function LocalizedBusinessTools({ slug, d, locale }: { slug: Loca
     <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
       <div className="flex items-center gap-3"><Calculator aria-hidden="true" className="size-6 text-indigo-600" /><h2 className="text-xl font-bold">{ui.inputs}</h2></div>
       <div className="mt-6 grid min-w-0 gap-4 sm:grid-cols-2">
-        {config.fields.map((field) => <label key={field.key} className="min-w-0 text-sm font-semibold">{field.label}
+        {config.fields.map((field) => <label key={field.key} className={`min-w-0 text-sm font-semibold ${field.type === 'textarea' ? 'sm:col-span-2' : ''}`}>{field.label}
           {field.options ? (
             <select
               className={fieldClass}
@@ -38,6 +38,23 @@ export default function LocalizedBusinessTools({ slug, d, locale }: { slug: Loca
                 </option>
               ))}
             </select>
+          ) : field.type === 'textarea' ? (
+            <textarea
+              className={`${fieldClass} min-h-28`}
+              rows={field.rows ?? 4}
+              placeholder={field.placeholder}
+              value={String(values[field.key] ?? field.defaultValue ?? '')}
+              onChange={(event) => setValues((current) => ({ ...current, [field.key]: event.target.value }))}
+            />
+          ) : field.type === 'text' || typeof field.defaultValue === 'string' ? (
+            <input
+              type="text"
+              dir="ltr"
+              className={fieldClass}
+              placeholder={field.placeholder}
+              value={String(values[field.key] ?? field.defaultValue ?? '')}
+              onChange={(event) => setValues((current) => ({ ...current, [field.key]: event.target.value }))}
+            />
           ) : (
             <input type="number" dir="ltr" inputMode="decimal" className={fieldClass} min={field.min} max={field.max} step={isIntegerCalculatorField(field.key) ? 1 : 'any'} value={values[field.key] ?? ''}
               onChange={(event) => setValues((current) => ({ ...current, [field.key]: event.target.value === '' ? '' : Number(event.target.value) }))} />
@@ -49,7 +66,7 @@ export default function LocalizedBusinessTools({ slug, d, locale }: { slug: Loca
     </section>
     <aside className="min-w-0 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-5 sm:p-7">
       <h2 className="text-xl font-bold">{ui.results}</h2>
-      <div aria-live="polite" aria-atomic="true">{result ? <dl className="mt-5 grid gap-3">{rows.map(([label, value]) => <div key={label} className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4"><dt className="text-sm text-[var(--muted-foreground)]">{label}</dt><dd className="mt-1 break-words text-xl font-black"><bdi dir="ltr">{value}</bdi></dd></div>)}</dl> : <p role="alert" className="mt-5">{ui.invalid}</p>}</div>
+      <div aria-live="polite" aria-atomic="true">{result ? <dl className="mt-5 grid gap-3">{rows.map(([label, value]) => <div key={label} className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4"><dt className="text-sm text-[var(--muted-foreground)]">{label}</dt><dd suppressHydrationWarning className="mt-1 break-words text-xl font-black whitespace-pre-wrap"><bdi dir="ltr" suppressHydrationWarning>{value}</bdi></dd></div>)}</dl> : <p role="alert" className="mt-5">{ui.invalid}</p>}</div>
       {result && <ResultActions key={summary} className="mt-5" messages={resultActionMessages[locale]} actions={[
         { kind: 'copy', label: ui.copy, getContent: () => summary },
         { kind: 'download', label: ui.csv, filename: `${slug}-${locale}.csv`, mimeType: 'text/csv;charset=utf-8', getContent: () => '\uFEFF' + rowsToCsv([[ui.result, ui.value], ...rows]) },

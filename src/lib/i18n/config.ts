@@ -67,6 +67,16 @@ export const translatedTools = [
   'mortgage-affordability-calculator',
   'break-even-calculator',
   'profit-margin-markup-calculator',
+  'ipv6-subnet-calculator',
+  'tcp-udp-port-range-calculator',
+  'cidr-summarization-calculator',
+  'ip-address-classifier',
+  'common-port-service-lookup',
+  'url-parser',
+  'cdr-print-readiness-checker',
+  'responsive-srcset-generator',
+  'yaml-json-converter',
+  'uuid-generator-validator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
