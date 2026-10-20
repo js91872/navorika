@@ -10,6 +10,7 @@ export default function ReverseSalesTaxCalculator() {
   const [base, setBase] = useState('100');
   const [currency, setCurrency] = useState('USD');
   const [status, setStatus] = useState('');
+  const [exporting, setExporting] = useState<'pdf' | 'xlsx' | null>(null);
   let result: ReturnType<typeof reverseSalesTax> | null = null;
   let error = '';
   try {
@@ -19,6 +20,19 @@ export default function ReverseSalesTaxCalculator() {
   const money = (n: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency, minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
   const rateText = result ? Number(result.rate.toFixed(4)).toString() : '';
   const summary = result ? `Navorika reverse sales tax calculator\nTotal including tax: ${money(result.total)}\nPrice before tax: ${money(result.beforeTax)}\nIncluded tax: ${money(result.tax)}\n${mode === 'rate' ? 'Implied' : 'Entered'} tax rate: ${rateText}%\nSingle taxable base; rounded to 2 decimals. https://navorika.com/tools/reverse-sales-tax-calculator` : '';
+  async function exportResult(type: 'pdf' | 'xlsx') {
+    if (!result || exporting) return;
+    setExporting(type);
+    setStatus('Preparing your download...');
+    try {
+      const { createTaxPdf, createTaxExcel, downloadTaxFile } = await import('@/lib/exports/reverseSalesTax');
+      const snapshot = { result, mode, currency };
+      const bytes = await (type === 'pdf' ? createTaxPdf(snapshot) : createTaxExcel(snapshot));
+      downloadTaxFile(bytes, type);
+      setStatus(`${type === 'pdf' ? 'PDF' : 'Excel'} download ready.`);
+    } catch { setStatus('The export could not be created. Please try again.'); }
+    finally { setExporting(null); }
+  }
   const inputClass = 'mt-2 w-full rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 text-lg font-semibold';
   function example(amount: string, percentage: string, original: string) { setTotal(amount); setRate(percentage); setBase(original); setStatus(''); }
   return <div className="space-y-5">
@@ -46,7 +60,7 @@ export default function ReverseSalesTaxCalculator() {
           <div className="mt-6 h-3 overflow-hidden rounded-full bg-amber-400" aria-hidden="true"><div className="h-full bg-indigo-500" style={{ width: `${result.total ? result.beforeTax / result.total * 100 : 100}%` }} /></div><p className="mt-2 text-xs text-[var(--muted-foreground)]">Purple: price before tax · Gold: included tax</p>
           <div className="mt-6 rounded-xl border border-[var(--border)] bg-[var(--card)] p-4"><h3 className="text-sm font-bold">Calculation steps</h3><p className="mt-2 break-words text-sm leading-7">{mode === 'price' ? `${money(result.total)} ÷ (1 + ${rateText} ÷ 100) = ${money(result.beforeTax)} before tax.` : `(${money(result.total)} − ${money(result.beforeTax)}) ÷ ${money(result.beforeTax)} × 100 = ${rateText}%.`}</p><p className="mt-2 text-sm">Included tax: {money(result.total)} − {money(result.beforeTax)} = {money(result.tax)}.</p></div>
         </>}</div>
-        <button type="button" disabled={!result} className="mt-6 min-h-12 rounded-xl bg-indigo-600 px-5 py-3 font-semibold text-white disabled:opacity-40" onClick={async () => { try { await navigator.clipboard.writeText(summary); setStatus('Result copied.'); } catch { setStatus('Copy is unavailable. Select and copy the figures above.'); } }}>Copy result</button><p role="status" className="mt-2 text-sm">{status}</p>
+        <button type="button" disabled={!result} className="mt-6 min-h-12 rounded-xl bg-indigo-600 px-5 py-3 font-semibold text-white disabled:opacity-40" onClick={async () => { try { await navigator.clipboard.writeText(summary); setStatus('Result copied.'); } catch { setStatus('Copy is unavailable. Select and copy the figures above.'); } }}>Copy result</button><div className="mt-3 flex flex-wrap gap-3">{(['pdf', 'xlsx'] as const).map(type => <button type="button" key={type} disabled={!result || exporting !== null} onClick={() => exportResult(type)} className="min-h-12 rounded-xl border border-indigo-500/30 bg-[var(--card)] px-5 py-3 font-semibold disabled:opacity-40">{exporting === type ? 'Preparing...' : type === 'pdf' ? 'Export to PDF' : 'Export to Excel'}</button>)}</div><p className="mt-3 text-xs text-[var(--muted-foreground)]">Download this result as a PDF report or Excel (.xlsx) workbook.</p><p role="status" className="mt-2 text-sm">{status}</p>
       </section>
     </div>
     <p id="tax-scope" className="rounded-2xl border border-[var(--border)] p-4 text-sm leading-6 text-[var(--muted-foreground)]">Use a total with one taxable base and one rate. Exclude tips, exempt items, and fees outside that base. Amounts use two decimal places; receipt rounding can cause a small difference. All calculations run in your browser.</p>
