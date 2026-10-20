@@ -30,6 +30,10 @@ const slugs = [
   'cloud-hosting-cost-calculator', 'cdn-cost-calculator', 'startup-runway-calculator',
   'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator',
   'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator',
+  'drawdown-recovery-calculator', 'meeting-roi-calculator', 'ev-vs-gas-break-even-calculator',
+  'heat-pump-vs-furnace-cost-calculator', 'job-offer-total-comp-calculator', 'lumpsum-investment-calculator',
+  'savings-goal-calculator', 'mortgage-affordability-calculator', 'break-even-calculator',
+  'profit-margin-markup-calculator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -169,6 +173,16 @@ try {
       ['churn-impact-calculator', 1000, 342.05254633485396, 648.210185339416],
       ['rule-of-40-calculator', 30, 0.42, 0.72],
       ['net-revenue-retention-calculator', 100000, 0.97, 0.985],
+      ['drawdown-recovery-calculator', 30, 0.3, 0.6],
+      ['meeting-roi-calculator', 8, 48.07692307692308, 48.07692307692308],
+      ['ev-vs-gas-break-even-calculator', 45000, 10000, 55000],
+      ['heat-pump-vs-furnace-cost-calculator', 15000, 800, 1600],
+      ['job-offer-total-comp-calculator', 100000, 10000, 10000],
+      ['lumpsum-investment-calculator', 100000, 100000, 200000],
+      ['savings-goal-calculator', 100000, 1240, 2673],
+      ['mortgage-affordability-calculator', 120000, 409712, 792190],
+      ['break-even-calculator', 30000, 40, 40],
+      ['profit-margin-markup-calculator', 60, 40, -20],
     ]) {
       await visit(`/${locale}/tools/${slug}`);
       const ui = d.calculatorUi;
@@ -189,10 +203,20 @@ try {
         'saas-burn-rate-calculator',
         'ltv-cac-ratio-calculator',
         'cac-payback-calculator',
+        'meeting-roi-calculator',
+        'ev-vs-gas-break-even-calculator',
+        'heat-pump-vs-furnace-cost-calculator',
+        'job-offer-total-comp-calculator',
+        'lumpsum-investment-calculator',
+        'savings-goal-calculator',
+        'mortgage-affordability-calculator',
+        'break-even-calculator',
+        'profit-margin-markup-calculator',
       ]);
       const percentSlugs = new Set([
         'rule-of-40-calculator',
         'net-revenue-retention-calculator',
+        'drawdown-recovery-calculator',
       ]);
       const isCurrency = currencySlugs.has(slug);
       const isPercent = percentSlugs.has(slug);

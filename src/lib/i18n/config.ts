@@ -57,6 +57,16 @@ export const translatedTools = [
   'churn-impact-calculator',
   'rule-of-40-calculator',
   'net-revenue-retention-calculator',
+  'drawdown-recovery-calculator',
+  'meeting-roi-calculator',
+  'ev-vs-gas-break-even-calculator',
+  'heat-pump-vs-furnace-cost-calculator',
+  'job-offer-total-comp-calculator',
+  'lumpsum-investment-calculator',
+  'savings-goal-calculator',
+  'mortgage-affordability-calculator',
+  'break-even-calculator',
+  'profit-margin-markup-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

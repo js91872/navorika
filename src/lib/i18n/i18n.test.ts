@@ -207,6 +207,16 @@ test('shared calculators have native controls, exact copy coverage and unchanged
     { customersLost: 342.05254633485396, cumulativeRevenueLost: 34205.2546334854, remainingCustomers: 897.9474536651459, endingMrr: 89794.74536651459, netCustomerChange: -102.05254633485413 },
     { score: 42, difference: 2 },
     { retainedRevenue: 97000, expansion: 10000, losses: 13000, netChange: -3000, nrrPercent: 97 },
+    { startValue: 100, currentValue: 70, drawdownPercent: 30, amountLost: 30, recoveryGainPercent: 42.857142857142854, requiredGain: 30, targetValue: 100 },
+    { loadedAnnualCompensation: 100000, hourlyLoadedCost: 48.07692307692308, attendeeHours: 8, costPerMeeting: 384.61538461538464, weeklyMeetingCost: 384.61538461538464, annualMeetingCount: 48, annualMeetingCost: 18461.53846153846, monthlyMeetingCost: 1538.4615384615383, breakEvenValuePerMeeting: 384.61538461538464, netValuePerMeeting: 615.3846153846154, estimatedRoiPercent: 160 },
+    { pricePremium: 10000, evAnnualEnergy: 576, gasAnnualFuel: 1400, annualSavings: 1224, breakEvenYears: 8.169934640522875, breakEvenMiles: 98039.2156862745 },
+    { heatPumpAnnualCost: 800, furnaceAnnualCost: 1333.3333333333335, annualSavings: 533.3333333333335, installPremium: 5000, paybackYears: 9.374999999999998 },
+    { annualizedEquity: 10000, recurringComp: 130000, firstYearComp: 140000, monthlyEquivalent: 10833.333333333334, baseSalaryShare: 76.92307692307693 },
+    { investedPrincipal: 100000, totalInterestEarned: 159374, nominalMaturityValue: 259374, inflationAdjustedValue: 192999, wealthGainMultiple: 2.59 },
+    { requiredMonthlySavings: 1240, requiredAnnualSavings: 14880, totalUserContributions: 84400, totalInterestEarned: 15600, interestFundingSharePercent: 15.6 },
+    { maxHomePurchasePrice: 409712, maxMortgageLoanAmount: 359712, monthlyPaymentPiti: 2801, principalAndInterest: 2274, monthlyPropertyTax: 410, monthlyInsurance: 117, effectiveFrontEndDti: 28, effectiveBackEndDti: 33 },
+    { contributionMarginPerUnit: 40, contributionMarginRatioPercent: 61.5, breakEvenUnits: 750, breakEvenRevenue: 48750, projectedNetProfit: 10000, marginOfSafetyPercent: 25 },
+    { grossProfitAmount: 40, actualMarginPercent: 40, actualMarkupPercent: 66.67, costMultiplier: 1.67, priceFromTargetMarkup: 90, priceFromTargetMargin: 100 },
   ];
   for (const locale of locales) {
     const d = await getDictionary(locale);

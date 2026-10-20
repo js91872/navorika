@@ -555,6 +555,86 @@
       "limits": "Aplica estrictamente a la cartera existente durante el periodo de estudio; no debe incluir facturación de nuevos clientes.",
       "question": "¿Por qué un NRR superior al 100% constituye el principal motor de crecimiento en modelos SaaS?",
       "answer": "Superar el 100% demuestra que la cartera de clientes existente expande su inversión a un ritmo mayor del que cancela, asegurando crecimiento antes de nuevas ventas."
+    },
+    "drawdown-recovery-calculator": {
+      "title": "Calculadora de recuperación de pérdidas (Drawdown)",
+      "description": "Calcula la caída de cartera y el mayor porcentaje de ganancia necesario para recuperarse de una pérdida.",
+      "how": "Introduce directamente el porcentaje de caída o los valores inicial y actual de la cartera.",
+      "limits": "Una pérdida del 100% no se puede recuperar matemáticamente y se indica como no aplicable.",
+      "question": "Por qué una pérdida del 50% requiere una ganancia del 100% para empatar?",
+      "answer": "Una pérdida del 50% reduce el capital a la mitad; volver a la cantidad inicial requiere duplicar (100% de ganancia) la base restante reducida."
+    },
+    "meeting-roi-calculator": {
+      "title": "Calculadora de ROI de reuniones de trabajo",
+      "description": "Calcula el coste laboral con cargas de una reunión según asistentes, retribución y duración, comparándolo con el valor creado.",
+      "how": "Introduce número de asistentes, salario medio, porcentaje de cargas, duración de la reunión y valor estimado.",
+      "limits": "El modelo calcula la retribución directa con cargas y excluye tiempos de preparación y costes de salas.",
+      "question": "Qué es el coste horario con cargas salariales?",
+      "answer": "Es el sueldo bruto incrementado con las aportaciones patronales a la seguridad social, pensiones y beneficios laborales."
+    },
+    "ev-vs-gas-break-even-calculator": {
+      "title": "Calculadora de amortización vehículo eléctrico vs gasolina",
+      "description": "Compara los costes de compra y funcionamiento entre vehículos eléctricos y de gasolina para calcular la recuperación del sobrecoste.",
+      "how": "Indica precios de compra, kilometraje anual, costes de electricidad y gasolina y consumos declarados.",
+      "limits": "No incluye costes de financiación, diferencias en seguros ni la degradación paulatina de la batería.",
+      "question": "Cómo se determina el plazo de amortización del eléctrico?",
+      "answer": "Divide el sobrecoste inicial de compra entre el ahorro operativo neto anual obtenido por menor consumo y mantenimiento."
+    },
+    "heat-pump-vs-furnace-cost-calculator": {
+      "title": "Calculadora bomba de calor vs caldera",
+      "description": "Compara el gasto energético anual de calefacción entre una bomba de calor eléctrica y una caldera de combustible.",
+      "how": "Especifica la demanda térmica útil anual, el COP estacional, el rendimiento de la caldera y los precios energéticos.",
+      "limits": "Modela exclusivamente la calefacción invernal; se descartan la refrigeración estival y los apoyos por resistencia.",
+      "question": "Qué representa el COP estacional de la bomba de calor?",
+      "answer": "Es el coeficiente de rendimiento que indica la cantidad de calor útil aportado por cada unidad de electricidad consumida."
+    },
+    "job-offer-total-comp-calculator": {
+      "title": "Calculadora de compensación total de oferta laboral",
+      "description": "Normaliza salario base, primas, acciones, planes de pensiones y beneficios en una compensación anual total estimada.",
+      "how": "Introduce salario fijo anual, bonus variable, paquete de acciones y periodo de consolidación, aportaciones y beneficios.",
+      "limits": "La valoración de acciones asume cotización constante sin contemplar la volatilidad del mercado ni retenciones fiscales.",
+      "question": "Cómo se computan las acciones anualmente?",
+      "answer": "El importe total asignado se divide equitativamente entre los años de devengo o vesting, habitualmente cuatro."
+    },
+    "lumpsum-investment-calculator": {
+      "title": "Calculadora de inversión a tanto alzado (Lump Sum)",
+      "description": "Calcula el valor futuro al vencimiento, el interés compuesto acumulado, el poder adquisitivo real y el múltiplo patrimonial.",
+      "how": "Indica el capital inicial aportado, rentabilidad anual esperada, duración de la inversión, frecuencia y tasa de inflación.",
+      "limits": "Presupone rentabilidad estable y reinversión automática continuada de dividendos sin extracciones periódicas.",
+      "question": "Cuál es la diferencia entre valor nominal y valor real?",
+      "answer": "El valor nominal es el saldo monetario acumulado al vencimiento, mientras que el valor real refleja el poder de compra neto de inflación."
+    },
+    "savings-goal-calculator": {
+      "title": "Calculadora de meta de ahorro financiero",
+      "description": "Calcula el ahorro mensual o anual necesario para alcanzar un objetivo financiero antes de una fecha límite.",
+      "how": "Especifica la cantidad objetivo, el saldo de ahorro inicial acumulado, el horizonte en años y el tipo de interés esperado.",
+      "limits": "Aplica la fórmula de anualidad ordinaria con aportaciones a fin de mes y capitalización de intereses libre de impuestos.",
+      "question": "De qué manera ayuda el interés compuesto a la meta?",
+      "answer": "Los intereses generados se incorporan al capital y producen nuevos rendimientos, financiando una parte creciente del objetivo."
+    },
+    "mortgage-affordability-calculator": {
+      "title": "Calculadora de capacidad de compra hipotecaria",
+      "description": "Calcula el precio máximo de vivienda y el importe del préstamo hipotecario según ingresos, deudas y límites DTI 28/36.",
+      "how": "Introduce ingresos brutos del hogar, deudas mensuales recurrentes, fondos propios de entrada, tipo de interés y plazo.",
+      "limits": "Aplica los baremos estándar de evaluación crediticia 28/36; no incluye cuotas comunitarias ni seguro hipotecario PMI.",
+      "question": "Qué indican los ratios DTI 28/36?",
+      "answer": "El 28% limita la cuota máxima mensual de la vivienda (PITI), mientras que el 36% limita el total de endeudamiento familiar."
+    },
+    "break-even-calculator": {
+      "title": "Calculadora de punto de equilibrio comercial",
+      "description": "Calcula el umbral de rentabilidad en unidades e ingresos, el margen de contribución unitario, el ratio de margen y el margen de seguridad.",
+      "how": "Introduce los costes fijos periódicos, el coste variable unitario, el precio unitario y las ventas presupuestadas.",
+      "limits": "Asume proporcionalidad lineal perfecta en los costes variables y precio de venta uniforme sin descuentos por volumen.",
+      "question": "Qué mide el margen de seguridad?",
+      "answer": "Mide el porcentaje máximo en que pueden contraerse las ventas previstas antes de incurrir en pérdidas operativas."
+    },
+    "profit-margin-markup-calculator": {
+      "title": "Calculadora de margen de beneficio y margen sobre costes",
+      "description": "Calcula margen sobre ventas, porcentaje sobre costes, beneficio bruto y precio de venta a partir de costes o márgenes fijados.",
+      "how": "Introduce coste de adquisición y precio de venta, o fija tus objetivos comerciales de margen y porcentaje sobre costes.",
+      "limits": "El beneficio bruto no tiene en cuenta gastos operativos indirectos, costes de envío ni comisiones de pago.",
+      "question": "Cuál es la distinción entre margen sobre ventas y sobre costes?",
+      "answer": "El margen sobre ventas calcula el beneficio sobre el precio final, mientras que sobre costes lo calcula respecto al precio de compra."
     }
   },
   "flexOptions": {
@@ -2085,6 +2165,339 @@
         "netChange": "Variación neta"
       },
       "note": "El NRR precisa ingresos recurrentes iniciales positivos. Conserva el mismo intervalo temporal y excluye altas nuevas de la partida de expansión.",
+      "textResults": {}
+    },
+    "drawdown-recovery-calculator": {
+      "fields": {
+        "loss": {
+          "label": "Pérdida de la cartera (%)",
+          "help": "Se utiliza cuando el valor inicial es cero."
+        },
+        "start": {
+          "label": "Valor inicial opcional ($)"
+        },
+        "current": {
+          "label": "Valor actual opcional ($)",
+          "help": "Al introducir un valor inicial, este valor determina la caída."
+        }
+      },
+      "results": {
+        "drawdownPercent": "Porcentaje de caída",
+        "amountLost": "Importe perdido",
+        "recoveryGainPercent": "Ganancia de recuperación requerida",
+        "requiredGain": "Ganancia monetaria requerida",
+        "targetValue": "Objetivo de recuperación"
+      },
+      "note": "Una pérdida y una ganancia de igual porcentaje no se cancelan porque la ganancia parte de una base menor. Una pérdida del 100% no tiene recuperación porcentual finita y se muestra como no aplicable.",
+      "textResults": {}
+    },
+    "meeting-roi-calculator": {
+      "fields": {
+        "attendees": {
+          "label": "Número de asistentes"
+        },
+        "compensation": {
+          "label": "Retribución anual media ($)"
+        },
+        "overhead": {
+          "label": "Cargas sociales y beneficios del empleador (%)"
+        },
+        "workingHours": {
+          "label": "Horas laborables anuales"
+        },
+        "duration": {
+          "label": "Duración de la reunión (minutos)"
+        },
+        "meetingsPerWeek": {
+          "label": "Reuniones por semana"
+        },
+        "workingWeeks": {
+          "label": "Semanas laborables al año"
+        },
+        "estimatedValue": {
+          "label": "Valor estimado creado por reunión ($)"
+        }
+      },
+      "results": {
+        "hourlyLoadedCost": "Coste horario con cargas por asistente",
+        "attendeeHours": "Total de horas-asistente",
+        "costPerMeeting": "Coste por reunión",
+        "weeklyMeetingCost": "Coste semanal de reuniones",
+        "monthlyMeetingCost": "Coste mensual equivalente",
+        "annualMeetingCost": "Coste anual de reuniones",
+        "breakEvenValuePerMeeting": "Valor de equilibrio por reunión",
+        "netValuePerMeeting": "Valor neto generado por reunión",
+        "estimatedRoiPercent": "Retorno de inversión estimado"
+      },
+      "note": "Los costes modelan la retribución salarial directa con cargas y excluyen tiempo de preparación, salas y licencias. El valor creado es una hipótesis de planificación introducida.",
+      "textResults": {}
+    },
+    "ev-vs-gas-break-even-calculator": {
+      "fields": {
+        "evPrice": {
+          "label": "Precio de compra del vehículo eléctrico ($)"
+        },
+        "gasPriceVehicle": {
+          "label": "Precio de compra del vehículo de gasolina ($)"
+        },
+        "annualMiles": {
+          "label": "Distancia anual recorrida (millas)"
+        },
+        "evEfficiency": {
+          "label": "Consumo eléctrico (kWh/100 millas)"
+        },
+        "electricityRate": {
+          "label": "Tarifa eléctrica por kWh ($)"
+        },
+        "gasMpg": {
+          "label": "Consumo del vehículo de gasolina (MPG)"
+        },
+        "fuelPrice": {
+          "label": "Precio de la gasolina por galón ($)"
+        },
+        "evMaintenance": {
+          "label": "Mantenimiento anual del eléctrico ($)"
+        },
+        "gasMaintenance": {
+          "label": "Mantenimiento anual del gasolina ($)"
+        }
+      },
+      "results": {
+        "pricePremium": "Sobrecoste de compra del eléctrico",
+        "evAnnualEnergy": "Gasto anual en recarga eléctrica",
+        "gasAnnualFuel": "Gasto anual en gasolina",
+        "annualSavings": "Ahorro operativo anual",
+        "breakEvenYears": "Plazo de amortización (años)",
+        "breakEvenMiles": "Kilometraje de amortización (millas)"
+      },
+      "note": "Excluye financiación, impuestos, depreciación y ayudas fiscales. La eficiencia real varía según la climatología y el estilo de conducción.",
+      "textResults": {}
+    },
+    "heat-pump-vs-furnace-cost-calculator": {
+      "fields": {
+        "heatingDemand": {
+          "label": "Demanda térmica anual útil (kWh)"
+        },
+        "cop": {
+          "label": "COP estacional de la bomba de calor"
+        },
+        "electricityRate": {
+          "label": "Precio de la electricidad por kWh ($)"
+        },
+        "furnaceEfficiency": {
+          "label": "Rendimiento térmico de la caldera (%)"
+        },
+        "fuelEnergyPrice": {
+          "label": "Precio del combustible por kWh térmico equivalente ($)"
+        },
+        "heatPumpInstall": {
+          "label": "Coste de instalación de la bomba de calor ($)"
+        },
+        "furnaceInstall": {
+          "label": "Coste de instalación de la caldera ($)"
+        }
+      },
+      "results": {
+        "heatPumpAnnualCost": "Coste energético anual de la bomba de calor",
+        "furnaceAnnualCost": "Coste anual en combustible de la caldera",
+        "annualSavings": "Ahorro energético anual",
+        "installPremium": "Sobrecoste de instalación de la bomba de calor",
+        "paybackYears": "Periodo de retorno simple (años)"
+      },
+      "note": "Excluye ventajas de refrigeración estival, resistencias eléctricas auxiliares y subvenciones. El precio del combustible emplea el equivalente térmico en kWh.",
+      "textResults": {}
+    },
+    "job-offer-total-comp-calculator": {
+      "fields": {
+        "salary": {
+          "label": "Salario base anual ($)"
+        },
+        "bonus": {
+          "label": "Bonus anual objetivo ($)"
+        },
+        "equityTotal": {
+          "label": "Valor total del paquete de acciones ($)"
+        },
+        "vestingYears": {
+          "label": "Periodo de consolidación de acciones (años)"
+        },
+        "retirement": {
+          "label": "Aportación patronal a plan de pensiones anual ($)"
+        },
+        "benefits": {
+          "label": "Otros beneficios pagados por la empresa ($)"
+        },
+        "signingBonus": {
+          "label": "Bonus de incorporación único ($)"
+        }
+      },
+      "results": {
+        "annualizedEquity": "Valor de acciones anualizado",
+        "recurringComp": "Compensación anual recurrente estimada",
+        "firstYearComp": "Compensación estimada del primer año",
+        "monthlyEquivalent": "Equivalente mensual recurrente",
+        "baseSalaryShare": "Participación del salario base"
+      },
+      "note": "Los valores accionariales y primas son estimaciones de planificación. La volatilidad bursátil, las retenciones fiscales y los calendarios de devengo modifican el neto real percibido.",
+      "textResults": {}
+    },
+    "lumpsum-investment-calculator": {
+      "fields": {
+        "initialInvestment": {
+          "label": "Importe de la inversión inicial ($)"
+        },
+        "expectedAnnualReturnPercent": {
+          "label": "Rendimiento anual esperado (%)"
+        },
+        "timeHorizonYears": {
+          "label": "Horizonte temporal de inversión (años)"
+        },
+        "compoundingFrequencyPerYear": {
+          "label": "Frecuencia de capitalización",
+          "options": {
+            "1": "Anual (1x/año)",
+            "2": "Semestral (2x/año)",
+            "4": "Trimestral (4x/año)",
+            "12": "Mensual (12x/año)"
+          }
+        },
+        "estimatedInflationRatePercent": {
+          "label": "Inflación anual estimada (%)"
+        }
+      },
+      "results": {
+        "investedPrincipal": "Capital principal invertido",
+        "totalInterestEarned": "Interés compuesto total generado",
+        "nominalMaturityValue": "Valor nominal al vencimiento",
+        "inflationAdjustedValue": "Poder adquisitivo real (ajustado por inflación)",
+        "wealthGainMultiple": "Multiplicador patrimonial (x inicial)"
+      },
+      "note": "Las proyecciones asumen la reinversión continua de todos los dividendos. El poder adquisitivo real descuenta el valor futuro a una inflación constante. Impuestos y gastos excluidos.",
+      "textResults": {}
+    },
+    "savings-goal-calculator": {
+      "fields": {
+        "targetGoalAmount": {
+          "label": "Importe del objetivo de ahorro ($)"
+        },
+        "currentSavings": {
+          "label": "Ahorro inicial ya acumulado ($)"
+        },
+        "yearsToReachGoal": {
+          "label": "Plazo para alcanzar la meta (años)"
+        },
+        "expectedAnnualInterestRatePercent": {
+          "label": "Tipo de interés o rentabilidad anual prevista (%)"
+        }
+      },
+      "results": {
+        "requiredMonthlySavings": "Ahorro mensual necesario",
+        "requiredAnnualSavings": "Ahorro anual equivalente necesario",
+        "totalUserContributions": "Total de aportaciones propias realizadas",
+        "totalInterestEarned": "Total de intereses y plusvalías generadas",
+        "interestFundingSharePercent": "Porcentaje financiado por el interés compuesto"
+      },
+      "note": "El cálculo emplea renta ordinaria con aportaciones a final de mes generando intereses. El capital de partida genera intereses compuestos durante todo el periodo.",
+      "textResults": {}
+    },
+    "mortgage-affordability-calculator": {
+      "fields": {
+        "annualGrossIncome": {
+          "label": "Ingresos brutos familiares anuales ($)"
+        },
+        "monthlyDebts": {
+          "label": "Deudas y cuotas mensuales recurrentes ($)",
+          "help": "Préstamos de coche, créditos estudiantiles, cuotas mínimas de tarjetas"
+        },
+        "downPaymentAmount": {
+          "label": "Entrada o fondos propios disponibles ($)"
+        },
+        "mortgageInterestRatePercent": {
+          "label": "Tipo de interés hipotecario (%)"
+        },
+        "loanTermYears": {
+          "label": "Plazo del préstamo (años)"
+        },
+        "annualPropertyTaxRatePercent": {
+          "label": "Tipo de gravamen del impuesto sobre bienes inmuebles (%)"
+        },
+        "annualHomeownersInsurance": {
+          "label": "Prima anual del seguro de hogar ($)"
+        },
+        "targetFrontEndDtiPercent": {
+          "label": "Límite de endeudamiento para vivienda (Front-End %)",
+          "help": "Cuota de vivienda sobre los ingresos brutos mensuales (estándar: 28%)"
+        },
+        "targetBackEndDtiPercent": {
+          "label": "Límite de endeudamiento total (Back-End %)",
+          "help": "Total de compromisos financieros sobre los ingresos brutos (estándar: 36%)"
+        }
+      },
+      "results": {
+        "maxHomePurchasePrice": "Precio máximo de compra accesible",
+        "maxMortgageLoanAmount": "Importe máximo del préstamo hipotecario",
+        "monthlyPaymentPiti": "Cuota mensual total estimada PITI",
+        "principalAndInterest": "Amortización de principal e intereses (PI)",
+        "monthlyPropertyTax": "Estimación mensual de impuestos inmobiliarios",
+        "monthlyInsurance": "Estimación mensual de seguro de vivienda",
+        "effectiveFrontEndDti": "Ratio de endeudamiento de vivienda efectivo",
+        "effectiveBackEndDti": "Ratio de endeudamiento total efectivo"
+      },
+      "note": "La capacidad de compra se rige por el más restrictivo de los límites estándar de endeudamiento residencial o global. Gastos de comunidad y seguros privados PMI no incluidos.",
+      "textResults": {}
+    },
+    "break-even-calculator": {
+      "fields": {
+        "fixedCosts": {
+          "label": "Costes fijos periódicos totales ($)",
+          "help": "Alquileres, sueldos base, seguros, licencias de software"
+        },
+        "variableCostPerUnit": {
+          "label": "Coste variable por unidad ($)",
+          "help": "Materias primas, envases, mano de obra directa"
+        },
+        "salePricePerUnit": {
+          "label": "Precio de venta por unidad ($)"
+        },
+        "plannedUnitSales": {
+          "label": "Volumen de ventas planificado (unidades)"
+        }
+      },
+      "results": {
+        "contributionMarginPerUnit": "Margen de contribución unitario",
+        "contributionMarginRatioPercent": "Ratio de margen de contribución",
+        "breakEvenUnits": "Volumen de equilibrio en ventas (unidades)",
+        "breakEvenRevenue": "Ingresos de facturación en el punto muerto",
+        "projectedNetProfit": "Beneficio operativo a las ventas planificadas",
+        "marginOfSafetyPercent": "Margen de seguridad protector"
+      },
+      "note": "El margen de contribución representa los ingresos restantes tras cubrir los costes variables para absorber los costes fijos. El margen de seguridad indica cuánto pueden descender las ventas antes de incurrir en pérdidas.",
+      "textResults": {}
+    },
+    "profit-margin-markup-calculator": {
+      "fields": {
+        "costAmount": {
+          "label": "Coste de producción o compra ($)"
+        },
+        "sellingPrice": {
+          "label": "Precio de venta actual u objetivo ($)"
+        },
+        "targetMarkupPercent": {
+          "label": "Porcentaje sobre el coste deseado (%)"
+        },
+        "targetMarginPercent": {
+          "label": "Margen de beneficio sobre ventas deseado (%)"
+        }
+      },
+      "results": {
+        "grossProfitAmount": "Beneficio bruto unitario",
+        "actualMarginPercent": "Margen de beneficio comercial",
+        "actualMarkupPercent": "Porcentaje de beneficio sobre el coste",
+        "costMultiplier": "Multiplicador de coste a precio (x)",
+        "priceFromTargetMarkup": "Precio requerido para el margen sobre coste deseado",
+        "priceFromTargetMargin": "Precio requerido para el margen sobre ventas deseado"
+      },
+      "note": "El margen es el beneficio bruto dividido por el precio de venta, mientras que el porcentaje sobre costes es el beneficio dividido por el coste. El margen sobre ventas nunca puede alcanzar ni superar el 100% para productos con coste positivo.",
       "textResults": {}
     }
   },

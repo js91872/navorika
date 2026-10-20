@@ -555,6 +555,86 @@
       "limits": "S'applique exclusivement à une cohorte installée sur la période donnée ; exclut tout chiffre d'affaires issu de nouveaux clients.",
       "question": "Pourquoi un NRR supérieur à 100 % est-il le moteur le plus puissant de la croissance SaaS ?",
       "answer": "Un NRR au-delà de 100 % prouve que la cohorte existante génère davantage de revenus additionnels qu'elle n'en perd, assurant une croissance mécanique sans nouvelles ventes."
+    },
+    "drawdown-recovery-calculator": {
+      "title": "Calculateur de récupération après perte (Drawdown)",
+      "description": "Calculez la baisse de portefeuille et le pourcentage de gain requis pour récupérer d'une perte financière.",
+      "how": "Saisissez directement le pourcentage de perte du portefeuille, ou entrez la valeur initiale et actuelle.",
+      "limits": "Une perte de 100 % ne peut être récupérée mathématiquement et est indiquée comme non applicable.",
+      "question": "Pourquoi une perte de 50 % nécessite-t-elle un gain de 100 % pour atteindre l'équilibre ?",
+      "answer": "Une baisse de 50 % divise le capital par deux ; retrouver le montant initial exige de doubler (gain de 100 %) la base réduite restante."
+    },
+    "meeting-roi-calculator": {
+      "title": "Calculateur de rentabilité des réunions",
+      "description": "Calculez le coût salarial chargé d'une réunion selon les participants, la rémunération et la durée, puis comparez-le à la valeur produite.",
+      "how": "Renseignez le nombre de participants, le salaire moyen, le taux de charges, la durée et la valeur attendue.",
+      "limits": "Le calcul modélise la rémunération chargée directe et exclut les frais de locaux et le temps de préparation.",
+      "question": "Qu'est-ce que le coût horaire chargé ?",
+      "answer": "Il regroupe le salaire de base brut augmenté des cotisations patronales, mutuelle, retraite et avantages sociaux."
+    },
+    "ev-vs-gas-break-even-calculator": {
+      "title": "Calculateur de rentabilité véhicule électrique vs thermique",
+      "description": "Comparez les coûts d'achat et d'exploitation d'un véhicule électrique et à essence pour estimer l'amortissement du surcoût.",
+      "how": "Indiquez les prix d'achat, le kilométrage annuel, les tarifs du carburant et de l'électricité, ainsi que les rendements.",
+      "limits": "Exclut les intérêts de financement, les disparités d'assurance et la dégradation de la batterie.",
+      "question": "Comment le délai de rentabilité est-il calculé ?",
+      "answer": "Il divise le surcoût d'achat initial par les économies annuelles nettes générées sur le carburant et l'entretien."
+    },
+    "heat-pump-vs-furnace-cost-calculator": {
+      "title": "Calculateur pompe à chaleur vs chaudière",
+      "description": "Comparez les coûts énergétiques de chauffage annuel entre une pompe à chaleur électrique et une chaudière à combustible.",
+      "how": "Saisissez le besoin annuel de chauffage, le COP saisonnier, le rendement de la chaudière et les prix de l'énergie.",
+      "limits": "Modélise uniquement le chauffage ambiant ; la climatisation estivale et les appoints résistifs sont exclus.",
+      "question": "Qu'est-ce que le COP saisonnier d'une pompe à chaleur ?",
+      "answer": "Le coefficient de performance mesure la quantité de chaleur utile restituée par unité d'électricité consommée sur la saison."
+    },
+    "job-offer-total-comp-calculator": {
+      "title": "Calculateur de rémunération globale d'embauche",
+      "description": "Normalisez salaire de base, primes, actions, épargne retraite et avantages en une rémunération annuelle totale estimée.",
+      "how": "Entrez le salaire de base, la prime cible, l'attribution d'actions et sa période d'acquisition, l'abondement retraite et les avantages.",
+      "limits": "La valorisation des actions suppose un cours stable sans intégrer la volatilité boursière ni la fiscalité.",
+      "question": "Comment les actions sont-elles annualisées ?",
+      "answer": "L'enveloppe totale attribuée est divisée équitablement par le nombre d'années d'acquisition, généralement quatre ans."
+    },
+    "lumpsum-investment-calculator": {
+      "title": "Calculateur de placement forfaitaire unique",
+      "description": "Calculez la valeur future, l'enrichissement composé total, le pouvoir d'achat réel et le multiple patrimonial d'un investissement ponctuel.",
+      "how": "Renseignez le capital initial, le rendement annuel escompté, la durée, la fréquence de capitalisation et l'inflation.",
+      "limits": "Suppose un rendement régulier et le réinvestissement continu des gains sans retraits intermédiaires.",
+      "question": "Quelle est la différence entre valeur nominale et valeur réelle ?",
+      "answer": "La valeur nominale représente le solde bancaire à terme, tandis que la valeur réelle reflète le pouvoir d'achat corrigé de l'inflation."
+    },
+    "savings-goal-calculator": {
+      "title": "Calculateur d'objectif d'épargne",
+      "description": "Déterminez l'épargne mensuelle ou annuelle exacte requise pour atteindre un objectif financier à une échéance donnée.",
+      "how": "Saisissez le montant cible, l'épargne initiale disponible, le nombre d'années et le taux d'intérêt annuel prévu.",
+      "limits": "Modélise des versements réguliers en fin de période produisant des intérêts composés sans imposition.",
+      "question": "Comment les intérêts composés allègent-ils l'effort d'épargne ?",
+      "answer": "Les intérêts générés s'ajoutent au capital et produisent eux-mêmes des gains, finançant une part croissante de votre objectif."
+    },
+    "mortgage-affordability-calculator": {
+      "title": "Calculateur de capacité d'emprunt immobilier",
+      "description": "Calculez le prix maximal d'achat immobilier et le montant du prêt selon vos revenus, dettes, apport et ratios d'endettement standard 28/36.",
+      "how": "Indiquez les revenus bruts du foyer, les dettes mensuelles, l'apport personnel, le taux d'intérêt et la durée du prêt.",
+      "limits": "Applique les normes de souscription américaines standard 28/36 ; frais de copropriété et assurance PMI exclus.",
+      "question": "Que signifient les ratios d'endettement 28/36 ?",
+      "answer": "Le ratio de 28 % plafonne les charges de logement (PITI), tandis que le ratio de 36 % plafonne l'ensemble des dettes du ménage."
+    },
+    "break-even-calculator": {
+      "title": "Calculateur de seuil de rentabilité",
+      "description": "Calculez le seuil de rentabilité en volume et chiffre d'affaires, la marge sur coûts variables et la marge de sécurité.",
+      "how": "Renseignez les coûts fixes périodiques, le coût variable unitaire, le prix de vente et les ventes prévues.",
+      "limits": "Suppose des coûts variables strictement linéaires et un prix de vente uniforme quel que soit le volume.",
+      "question": "Qu'est-ce que la marge de sécurité ?",
+      "answer": "Elle représente le pourcentage maximal de baisse des ventes que l'activité peut subir avant de devenir déficitaire."
+    },
+    "profit-margin-markup-calculator": {
+      "title": "Calculateur de marge bénéficiaire et taux de marque",
+      "description": "Calculez la marge bénéficiaire, le taux de marge, le bénéfice brut et le prix de vente à partir des coûts ou d'objectifs commerciaux.",
+      "how": "Indiquez le coût d'achat et le prix de vente, ou renseignez vos objectifs de marge et de taux de marque.",
+      "limits": "Le bénéfice brut ne tient pas compte des charges d'exploitation, des frais d'expédition ni des commissions bancaires.",
+      "question": "Quelle est la nuance entre marge bénéficiaire et taux de marque ?",
+      "answer": "La marge rapporte le bénéfice au prix de vente final, alors que le taux de marque rapporte le bénéfice au coût d'achat initial."
     }
   },
   "flexOptions": {
@@ -2085,6 +2165,339 @@
         "netChange": "Variation nette"
       },
       "note": "Le NRR exige un revenu de départ positif. Conservez une définition de période et d'assiette identique et n'intégrez pas les nouveaux clients dans l'expansion.",
+      "textResults": {}
+    },
+    "drawdown-recovery-calculator": {
+      "fields": {
+        "loss": {
+          "label": "Perte du portefeuille (%)",
+          "help": "Utilisé lorsque la valeur de départ est zéro."
+        },
+        "start": {
+          "label": "Valeur de départ facultative ($)"
+        },
+        "current": {
+          "label": "Valeur actuelle facultative ($)",
+          "help": "Lorsqu'une valeur de départ est saisie, cette valeur détermine la baisse."
+        }
+      },
+      "results": {
+        "drawdownPercent": "Baisse (Drawdown)",
+        "amountLost": "Montant perdu",
+        "recoveryGainPercent": "Gain de récupération requis",
+        "requiredGain": "Gain en valeur requis",
+        "targetValue": "Cible de récupération"
+      },
+      "note": "Une perte et un gain de pourcentage égal ne s'annulent pas car le gain s'applique à une base réduite. Une perte de 100 % n'a pas de récupération en pourcentage fini et s'affiche comme non applicable.",
+      "textResults": {}
+    },
+    "meeting-roi-calculator": {
+      "fields": {
+        "attendees": {
+          "label": "Nombre de participants"
+        },
+        "compensation": {
+          "label": "Rémunération annuelle moyenne ($)"
+        },
+        "overhead": {
+          "label": "Charges patronales et avantages (%)"
+        },
+        "workingHours": {
+          "label": "Heures travaillées par an"
+        },
+        "duration": {
+          "label": "Durée de la réunion (minutes)"
+        },
+        "meetingsPerWeek": {
+          "label": "Réunions par semaine"
+        },
+        "workingWeeks": {
+          "label": "Semaines travaillées par an"
+        },
+        "estimatedValue": {
+          "label": "Valeur estimée créée par réunion ($)"
+        }
+      },
+      "results": {
+        "hourlyLoadedCost": "Coût horaire chargé par participant",
+        "attendeeHours": "Total des heures-participants",
+        "costPerMeeting": "Coût par réunion",
+        "weeklyMeetingCost": "Coût hebdomadaire des réunions",
+        "monthlyMeetingCost": "Équivalent mensuel des réunions",
+        "annualMeetingCost": "Coût annuel des réunions",
+        "breakEvenValuePerMeeting": "Valeur d'équilibre par réunion",
+        "netValuePerMeeting": "Valeur nette créée par réunion",
+        "estimatedRoiPercent": "Retour sur investissement estimé"
+      },
+      "note": "Les estimations de coût modélisent la rémunération directe chargée des salariés et excluent le temps de préparation, les logiciels et les locaux. La valeur créée est une hypothèse de planification.",
+      "textResults": {}
+    },
+    "ev-vs-gas-break-even-calculator": {
+      "fields": {
+        "evPrice": {
+          "label": "Prix d'achat du véhicule électrique ($)"
+        },
+        "gasPriceVehicle": {
+          "label": "Prix d'achat du véhicule thermique ($)"
+        },
+        "annualMiles": {
+          "label": "Distance annuelle parcourue (milles)"
+        },
+        "evEfficiency": {
+          "label": "Efficacité électrique (kWh/100 milles)"
+        },
+        "electricityRate": {
+          "label": "Prix de l'électricité par kWh ($)"
+        },
+        "gasMpg": {
+          "label": "Consommation du véhicule thermique (MPG)"
+        },
+        "fuelPrice": {
+          "label": "Prix du carburant par gallon ($)"
+        },
+        "evMaintenance": {
+          "label": "Entretien annuel électrique ($)"
+        },
+        "gasMaintenance": {
+          "label": "Entretien annuel thermique ($)"
+        }
+      },
+      "results": {
+        "pricePremium": "Surcoût à l'achat du véhicule électrique",
+        "evAnnualEnergy": "Coût énergétique annuel électrique",
+        "gasAnnualFuel": "Coût annuel de carburant thermique",
+        "annualSavings": "Économies annuelles d'exploitation",
+        "breakEvenYears": "Délai de rentabilité (années)",
+        "breakEvenMiles": "Kilométrage d'équilibre (milles)"
+      },
+      "note": "Exclut le financement, les taxes, la dépréciation et les aides fiscales. L'efficacité réelle varie selon la météo et la conduite.",
+      "textResults": {}
+    },
+    "heat-pump-vs-furnace-cost-calculator": {
+      "fields": {
+        "heatingDemand": {
+          "label": "Besoin de chauffage annuel utile (kWh)"
+        },
+        "cop": {
+          "label": "COP saisonnier de la pompe à chaleur"
+        },
+        "electricityRate": {
+          "label": "Tarif de l'électricité par kWh ($)"
+        },
+        "furnaceEfficiency": {
+          "label": "Rendement de la chaudière (%)"
+        },
+        "fuelEnergyPrice": {
+          "label": "Prix du combustible par kWh équivalent ($)"
+        },
+        "heatPumpInstall": {
+          "label": "Coût d'installation de la pompe à chaleur ($)"
+        },
+        "furnaceInstall": {
+          "label": "Coût d'installation de la chaudière ($)"
+        }
+      },
+      "results": {
+        "heatPumpAnnualCost": "Coût énergétique annuel pompe à chaleur",
+        "furnaceAnnualCost": "Coût annuel de combustible chaudière",
+        "annualSavings": "Économies annuelles d'énergie",
+        "installPremium": "Surcoût d'installation pompe à chaleur",
+        "paybackYears": "Retour sur investissement simple (années)"
+      },
+      "note": "Exclut les bénéfices de climatisation, le chauffage d'appoint résistif et les subventions. Le prix du combustible utilise l'équivalent thermique en kWh.",
+      "textResults": {}
+    },
+    "job-offer-total-comp-calculator": {
+      "fields": {
+        "salary": {
+          "label": "Salaire annuel de base ($)"
+        },
+        "bonus": {
+          "label": "Prime annuelle cible ($)"
+        },
+        "equityTotal": {
+          "label": "Valeur totale de l'attribution d'actions ($)"
+        },
+        "vestingYears": {
+          "label": "Période d'acquisition des actions (années)"
+        },
+        "retirement": {
+          "label": "Contribution patronale retraite annuelle ($)"
+        },
+        "benefits": {
+          "label": "Autres avantages sociaux payés par l'employeur ($)"
+        },
+        "signingBonus": {
+          "label": "Prime d'embauche exceptionnelle ($)"
+        }
+      },
+      "results": {
+        "annualizedEquity": "Actions annualisées",
+        "recurringComp": "Rémunération annuelle récurrente estimée",
+        "firstYearComp": "Rémunération totale estimée la première année",
+        "monthlyEquivalent": "Équivalent mensuel récurrent",
+        "baseSalaryShare": "Part du salaire de base"
+      },
+      "note": "Les valeurs d'actions et les primes sont des estimations de planification. La volatilité boursière, les retenues fiscales et les calendriers d'acquisition influent sur le montant net perçu.",
+      "textResults": {}
+    },
+    "lumpsum-investment-calculator": {
+      "fields": {
+        "initialInvestment": {
+          "label": "Montant du placement initial ($)"
+        },
+        "expectedAnnualReturnPercent": {
+          "label": "Rendement annuel attendu (%)"
+        },
+        "timeHorizonYears": {
+          "label": "Durée du placement (années)"
+        },
+        "compoundingFrequencyPerYear": {
+          "label": "Fréquence de capitalisation",
+          "options": {
+            "1": "Annuelle (1x/an)",
+            "2": "Semestrielle (2x/an)",
+            "4": "Trimestrielle (4x/an)",
+            "12": "Mensuelle (12x/an)"
+          }
+        },
+        "estimatedInflationRatePercent": {
+          "label": "Inflation annuelle estimée (%)"
+        }
+      },
+      "results": {
+        "investedPrincipal": "Capital principal investi",
+        "totalInterestEarned": "Intérêts composés cumulés",
+        "nominalMaturityValue": "Valeur nominale à l'échéance",
+        "inflationAdjustedValue": "Pouvoir d'achat réel (ajusté de l'inflation)",
+        "wealthGainMultiple": "Multiplicateur de richesse patrimoniale (x initial)"
+      },
+      "note": "Les projections supposent le réinvestissement continu des dividendes. Le pouvoir d'achat réel calcule la valeur future corrigée de l'inflation constante. Impôts et frais de gestion exclus.",
+      "textResults": {}
+    },
+    "savings-goal-calculator": {
+      "fields": {
+        "targetGoalAmount": {
+          "label": "Montant cible de l'objectif d'épargne ($)"
+        },
+        "currentSavings": {
+          "label": "Épargne initiale déjà constituée ($)"
+        },
+        "yearsToReachGoal": {
+          "label": "Échéance visée (années)"
+        },
+        "expectedAnnualInterestRatePercent": {
+          "label": "Taux d'intérêt ou rendement annuel prévu (%)"
+        }
+      },
+      "results": {
+        "requiredMonthlySavings": "Épargne mensuelle requise",
+        "requiredAnnualSavings": "Équivalent d'épargne annuelle requise",
+        "totalUserContributions": "Total des versements personnels",
+        "totalInterestEarned": "Total des intérêts et plus-values générés",
+        "interestFundingSharePercent": "Part financée par les intérêts composés"
+      },
+      "note": "Le calcul utilise une formule d'annuité ordinaire où les versements mensuels produisent des intérêts à terme échu. Le capital initial fructifie sur toute la période.",
+      "textResults": {}
+    },
+    "mortgage-affordability-calculator": {
+      "fields": {
+        "annualGrossIncome": {
+          "label": "Revenu brut annuel du ménage ($)"
+        },
+        "monthlyDebts": {
+          "label": "Dettes mensuelles récurrentes ($)",
+          "help": "Prêts auto, prêts étudiants, mensualités minimales de cartes"
+        },
+        "downPaymentAmount": {
+          "label": "Apport personnel disponible ($)"
+        },
+        "mortgageInterestRatePercent": {
+          "label": "Taux d'intérêt du prêt immobilier (%)"
+        },
+        "loanTermYears": {
+          "label": "Durée du prêt (années)"
+        },
+        "annualPropertyTaxRatePercent": {
+          "label": "Taux de taxe foncière annuelle (%)"
+        },
+        "annualHomeownersInsurance": {
+          "label": "Coût annuel d'assurance habitation ($)"
+        },
+        "targetFrontEndDtiPercent": {
+          "label": "Plafond d'endettement logement (Front-End %)",
+          "help": "Mensualité de logement en % du revenu brut mensuel (standard : 28 %)"
+        },
+        "targetBackEndDtiPercent": {
+          "label": "Plafond d'endettement total (Back-End %)",
+          "help": "Total des charges financières en % du revenu brut (standard : 36 %)"
+        }
+      },
+      "results": {
+        "maxHomePurchasePrice": "Prix d'achat maximal finançable",
+        "maxMortgageLoanAmount": "Montant maximal du prêt immobilier",
+        "monthlyPaymentPiti": "Mensualité totale estimée PITI",
+        "principalAndInterest": "Principal et intérêts mensuels (PI)",
+        "monthlyPropertyTax": "Estimation mensuelle de taxe foncière",
+        "monthlyInsurance": "Estimation mensuelle d'assurance habitation",
+        "effectiveFrontEndDti": "Ratio d'endettement logement effectif",
+        "effectiveBackEndDti": "Ratio d'endettement total effectif"
+      },
+      "note": "La capacité d'achat est limitée par le plus restrictif des plafonds standard d'endettement logement ou total. L'assurance emprunteur PMI et les charges de copropriété ne sont pas incluses.",
+      "textResults": {}
+    },
+    "break-even-calculator": {
+      "fields": {
+        "fixedCosts": {
+          "label": "Charges fixes périodiques totales ($)",
+          "help": "Loyers, salaires fixes, assurances, abonnements"
+        },
+        "variableCostPerUnit": {
+          "label": "Coût variable unitaire ($)",
+          "help": "Matières premières, emballage, main-d'œuvre directe"
+        },
+        "salePricePerUnit": {
+          "label": "Prix de vente unitaire ($)"
+        },
+        "plannedUnitSales": {
+          "label": "Volume de ventes prévu (unités)"
+        }
+      },
+      "results": {
+        "contributionMarginPerUnit": "Marge sur coût variable unitaire",
+        "contributionMarginRatioPercent": "Taux de marge sur coût variable",
+        "breakEvenUnits": "Volume d'équilibre des ventes (unités)",
+        "breakEvenRevenue": "Chiffre d'affaires au point mort",
+        "projectedNetProfit": "Bénéfice d'exploitation aux ventes prévues",
+        "marginOfSafetyPercent": "Marge de sécurité protectrice"
+      },
+      "note": "La marge sur coût variable correspond aux revenus restant après déduction des coûts variables pour couvrir les charges fixes. La marge de sécurité indique la baisse possible des ventes avant d'entrer en perte.",
+      "textResults": {}
+    },
+    "profit-margin-markup-calculator": {
+      "fields": {
+        "costAmount": {
+          "label": "Coût d'achat ou de revient ($)"
+        },
+        "sellingPrice": {
+          "label": "Prix de vente actuel ou visé ($)"
+        },
+        "targetMarkupPercent": {
+          "label": "Taux de marque visé (%)"
+        },
+        "targetMarginPercent": {
+          "label": "Marge bénéficiaire visée (%)"
+        }
+      },
+      "results": {
+        "grossProfitAmount": "Marge brute unitaire",
+        "actualMarginPercent": "Marge brute commerciale",
+        "actualMarkupPercent": "Taux de marque sur coût d'achat",
+        "costMultiplier": "Coefficient multiplicateur coût-vente (x)",
+        "priceFromTargetMarkup": "Prix requis pour le taux de marque visé",
+        "priceFromTargetMargin": "Prix requis pour la marge visée"
+      },
+      "note": "La marge est le bénéfice brut divisé par le prix de vente, tandis que le taux de marque est le bénéfice divisé par le coût d'achat. La marge ne peut jamais atteindre 100 % sur des biens à coût positif.",
       "textResults": {}
     }
   },

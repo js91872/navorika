@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 61,
-    "pendingTools": 252,
+    "publishedTools": 71,
+    "pendingTools": 242,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 427,
+    "publishedToolTranslations": 497,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -556,8 +556,16 @@
       "source": "src/app/(english)/tools/break-even-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -1962,8 +1970,16 @@
       "source": "src/app/(english)/tools/drawdown-recovery-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2123,8 +2139,16 @@
       "source": "src/app/(english)/tools/ev-vs-gas-break-even-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2492,8 +2516,16 @@
       "source": "src/app/(english)/tools/heat-pump-vs-furnace-cost-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -3168,8 +3200,16 @@
       "source": "src/app/(english)/tools/job-offer-total-comp-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3519,8 +3559,16 @@
       "source": "src/app/(english)/tools/lumpsum-investment-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3639,8 +3687,16 @@
       "source": "src/app/(english)/tools/meeting-roi-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3754,8 +3810,16 @@
       "source": "src/app/(english)/tools/mortgage-affordability-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4305,8 +4369,16 @@
       "source": "src/app/(english)/tools/profit-margin-markup-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4927,8 +4999,16 @@
       "source": "src/app/(english)/tools/savings-goal-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -7219,7 +7299,7 @@
     {
       "source": "src/app/(english)/tools/break-even-calculator/page.tsx",
       "routeTemplate": "/tools/break-even-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7645,7 +7725,7 @@
     {
       "source": "src/app/(english)/tools/drawdown-recovery-calculator/page.tsx",
       "routeTemplate": "/tools/drawdown-recovery-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7693,7 +7773,7 @@
     {
       "source": "src/app/(english)/tools/ev-vs-gas-break-even-calculator/page.tsx",
       "routeTemplate": "/tools/ev-vs-gas-break-even-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7807,7 +7887,7 @@
     {
       "source": "src/app/(english)/tools/heat-pump-vs-furnace-cost-calculator/page.tsx",
       "routeTemplate": "/tools/heat-pump-vs-furnace-cost-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8017,7 +8097,7 @@
     {
       "source": "src/app/(english)/tools/job-offer-total-comp-calculator/page.tsx",
       "routeTemplate": "/tools/job-offer-total-comp-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8131,7 +8211,7 @@
     {
       "source": "src/app/(english)/tools/lumpsum-investment-calculator/page.tsx",
       "routeTemplate": "/tools/lumpsum-investment-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8167,7 +8247,7 @@
     {
       "source": "src/app/(english)/tools/meeting-roi-calculator/page.tsx",
       "routeTemplate": "/tools/meeting-roi-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8203,7 +8283,7 @@
     {
       "source": "src/app/(english)/tools/mortgage-affordability-calculator/page.tsx",
       "routeTemplate": "/tools/mortgage-affordability-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8371,7 +8451,7 @@
     {
       "source": "src/app/(english)/tools/profit-margin-markup-calculator/page.tsx",
       "routeTemplate": "/tools/profit-margin-markup-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8545,7 +8625,7 @@
     {
       "source": "src/app/(english)/tools/savings-goal-calculator/page.tsx",
       "routeTemplate": "/tools/savings-goal-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

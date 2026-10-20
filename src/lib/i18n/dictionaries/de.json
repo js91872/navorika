@@ -555,6 +555,86 @@
       "limits": "Gilt ausschließlich für eine bestehende Kohorte im gewählten Zeitraum; Erlöse neu gewonnener Kunden dürfen nicht enthalten sein.",
       "question": "Warum gilt eine Net Revenue Retention von über 100 % als wichtigster Wachstumstreiber in SaaS?",
       "answer": "Liegt die NRR über 100 %, wächst der Umsatz der Bestandskunden stärker als Verluste durch Kündigungen, was ein organisches Wachstum ohne Neukundengeschäft sichert."
+    },
+    "drawdown-recovery-calculator": {
+      "title": "Drawdown-Verlust-Erholungsrechner",
+      "description": "Berechnen Sie den Portfolio-Drawdown und den erforderlichen höheren prozentualen Zuwachs zur Verlustdeckung.",
+      "how": "Geben Sie den prozentualen Portfolioverlust direkt ein oder erfassen Sie Anfangs- und aktuellen Portfoliowert.",
+      "limits": "Ein 100%-Verlust kann mathematisch nicht erholt werden und wird als nicht anwendbar deklariert.",
+      "question": "Warum erfordert ein Verlust von 50 % einen Gewinn von 100 % zum Ausgleich?",
+      "answer": "Ein Verlust von 50 % halbiert das Kapital; um den Ausgangsstand zu erreichen, muss die verbliebene Basis verdoppelt werden (100 % Zuwachs)."
+    },
+    "meeting-roi-calculator": {
+      "title": "Meeting-ROI- und Kostenrechner",
+      "description": "Ermitteln Sie die vollen Personalkosten einer Besprechung anhand von Teilnehmerzahl, Gehalt und Dauer und vergleichen Sie diese mit dem geschaffenen Wert.",
+      "how": "Geben Sie Teilnehmerzahl, Durchschnittsgehalt, Gemeinkostenzuschlag, Dauer und den erwarteten geschaffenen Wert ein.",
+      "limits": "Berechnet direkte Personalkosten inklusive Lohnnebenkosten; Vorbereitungsaufwand und Raumkosten sind ausgeschlossen.",
+      "question": "Was versteht man unter dem Vollkosten-Stundensatz?",
+      "answer": "Er umfasst das Grundgehalt zuzüglich der gesetzlichen und freiwilligen Arbeitgeberbeiträge zur Sozialversicherung und Nebenleistungen."
+    },
+    "ev-vs-gas-break-even-calculator": {
+      "title": "Amortisationsrechner Elektro- vs. Verbrennerfahrzeug",
+      "description": "Vergleichen Sie Anschaffungs- und Betriebskosten von Elektro- und Benzinautos zur Ermittlung der Amortisationszeit.",
+      "how": "Erfassen Sie Anschaffungspreise, Jahresfahrleistung, Strom- und Kraftstoffpreise sowie die jeweiligen Verbrauchswerte.",
+      "limits": "Schließt Finanzierungszinsen, Versicherungsunterschiede und langfristige Batteriedegradation aus.",
+      "question": "Wie wird der Amortisationszeitpunkt ermittelt?",
+      "answer": "Er teilt den anfänglichen Anschaffungsmehrpreis durch die jährlichen Netto-Betriebskosteneinsparungen bei Strom und Wartung."
+    },
+    "heat-pump-vs-furnace-cost-calculator": {
+      "title": "Kostenrechner Wärmepumpe vs. Heizkessel",
+      "description": "Vergleichen Sie die jährlichen Heizenergiekosten zwischen elektrischer Wärmepumpe und brennstoffbasiertem Kessel.",
+      "how": "Geben Sie Nutzwärmebedarf, Jahresarbeitszahl (COP), Kesselwirkungsgrad und lokale Energiepreise ein.",
+      "limits": "Bildet rein den Raumwärmebedarf ab; sommerliche Kühlungseffekte und elektrische Zusatzheizstäbe bleiben unberücksichtigt.",
+      "question": "Was sagt die saisonale Leistungszahl (COP) aus?",
+      "answer": "Sie beziffert das Verhältnis von nutzbarer erzeugter Wärmeenergie pro verbrauchter Stromeinheit über die gesamte Heizperiode."
+    },
+    "job-offer-total-comp-calculator": {
+      "title": "Vergütungspaket-Gesamtrechner für Jobangebote",
+      "description": "Fassen Sie Grundgehalt, Boni, Mitarbeiteraktien, Altersvorsorge und Zusatzleistungen in einer geschätzten Jahres-Gesamtvergütung zusammen.",
+      "how": "Erfassen Sie Grundgehalt, Zielbonus, Aktienzuteilung und Sperrfristen sowie bAV-Zuschüsse und Nebenleistungen.",
+      "limits": "Aktienbewertungen gehen von stabilen Kursen aus, ohne Kursvolatilität oder individuelle Steuern einzurechnen.",
+      "question": "Wie werden Mitarbeiteraktien auf ein Jahr umgerechnet?",
+      "answer": "Der Gesamtwert der Aktienzuteilung wird gleichmäßig auf die Jahre der Vesting-Laufzeit aufgeteilt, in der Regel vier Jahre."
+    },
+    "lumpsum-investment-calculator": {
+      "title": "Einmalanlage-Investitionsrechner (Lump Sum)",
+      "description": "Berechnen Sie Endwert, aufgelaufene Zinseszinsen, reale Kaufkraft und Vermögensmultiplikator einer einmaligen Kapitalanlage.",
+      "how": "Geben Sie Anlagebetrag, erwartete Rendite, Anlagedauer, Zinseszins-Intervall und geschätzte Inflation ein.",
+      "limits": "Setzt eine gleichmäßige Wertentwicklung und die ständige Wiederanlage von Ausschüttungen ohne Entnahmen voraus.",
+      "question": "Worin besteht der Unterschied zwischen Nominalwert und realem Kaufkraftwert?",
+      "answer": "Der Nominalwert beziffert den reinen Geldbetrag bei Fälligkeit, der Realwert bereinigt diesen um die aufgelaufene Inflation."
+    },
+    "savings-goal-calculator": {
+      "title": "Sparziel- und Vermögensaufbaurechner",
+      "description": "Berechnen Sie die erforderliche monatliche oder jährliche Sparrate zum Erreichen eines Zielvermögens im gewünschten Zeitraum.",
+      "how": "Erfassen Sie Sparziel, Startkapital, Laufzeit in Jahren und die erwartete jährliche Rendite.",
+      "limits": "Kalkuliert mit nachschüssiger Monatsrente und steuerfreier Zinseszinssammlung.",
+      "question": "Wie entlastet der Zinseszinseffekt den Sparaufwand?",
+      "answer": "Erwirtschaftete Zinsen werden mitverzinst und erzeugen Folgeerträge, sodass Zinserträge einen wachsenden Teil des Sparziels tragen."
+    },
+    "mortgage-affordability-calculator": {
+      "title": "Baufinanzierungs- und Budgetrechner",
+      "description": "Berechnen Sie den maximal tragbaren Kaufpreis und Darlehensbetrag auf Basis von Einkommen, Verbindlichkeiten und 28/36-DTI-Richtwerten.",
+      "how": "Geben Sie Haushaltseinkommen, laufende Monatskredite, Eigenkapital, Sollzins und gewünschte Laufzeit ein.",
+      "limits": "Richtet sich nach den US-Standardrichtwerten 28/36; Hausgeld und private Restschuldversicherungen (PMI) sind exkludiert.",
+      "question": "Was bedeuten die Belastungsquoten 28/36?",
+      "answer": "Die 28%-Quote begrenzt die reine Wohnkostenrate (PITI), während die 36%-Quote alle monatlichen Schuldendienste zusammenfasst."
+    },
+    "break-even-calculator": {
+      "title": "Gewinnschwellenrechner (Break-Even-Point)",
+      "description": "Berechnen Sie die Gewinnschwelle in Stückzahl und Umsatz, den Stückdeckungsbeitrag, die Deckungsbeitragsquote und das Sicherheitsrisiko.",
+      "how": "Erfassen Sie fixe Gemeinkosten, variable Stückkosten, Verkaufspreis pro Einheit und geplante Absatzmenge.",
+      "limits": "Unterstellt einen streng linearen Kostenverlauf sowie mengenunabhängige einheitliche Verkaufspreise.",
+      "question": "Was besagt die Sicherheitsmarge?",
+      "answer": "Sie beziffert den Prozentsatz, um den der tatsächliche Absatz einbrechen darf, bevor das Unternehmen Verluste schreibt."
+    },
+    "profit-margin-markup-calculator": {
+      "title": "Handelsspannen- und Kalkulationsaufschlagsrechner",
+      "description": "Berechnen Sie Handelsspanne, Kalkulationsaufschlag, Rohgewinn und Verkaufspreis anhand von Selbstkosten oder Margenzielen.",
+      "how": "Geben Sie Einstandspreis und Verkaufspreis ein, oder steuern Sie die Berechnung über Zielaufschlag und Zielmarge.",
+      "limits": "Der Rohgewinn berücksichtigt keine Vertriebsgemeinkosten, Verpackungs- und Frachtkosten oder Kartengebühren.",
+      "question": "Worin unterscheiden sich Handelsspanne und Kalkulationsaufschlag?",
+      "answer": "Die Handelsspanne bezieht den Rohgewinn auf den Verkaufspreis, während der Aufschlag den Gewinn auf die Selbstkosten bezieht."
     }
   },
   "flexOptions": {
@@ -2085,6 +2165,339 @@
         "netChange": "Netto-Veränderung"
       },
       "note": "NRR setzt einen positiven Anfangsumsatz voraus. Halten Sie Zeitraum und Kennzahlendefinition konsistent und schließen Sie Neukundenerlöse aus der Expansion aus.",
+      "textResults": {}
+    },
+    "drawdown-recovery-calculator": {
+      "fields": {
+        "loss": {
+          "label": "Portfolioverlust (%)",
+          "help": "Wird verwendet, wenn der Anfangswert null beträgt."
+        },
+        "start": {
+          "label": "Optionaler Anfangswert ($)"
+        },
+        "current": {
+          "label": "Optionaler aktueller Wert ($)",
+          "help": "Wird ein Anfangswert eingegeben, bestimmt dieser Wert den Drawdown."
+        }
+      },
+      "results": {
+        "drawdownPercent": "Drawdown-Verlust",
+        "amountLost": "Verlorener Geldbetrag",
+        "recoveryGainPercent": "Erforderlicher Erholungszuwachs",
+        "requiredGain": "Erforderlicher Wertgewinn",
+        "targetValue": "Erholungszielwert"
+      },
+      "note": "Ein Verlust und ein gleich hoher prozentualer Gewinn heben sich nicht auf, da der Zuwachs von einer reduzierten Basis ausgeht. Ein 100%-Verlust hat keine endliche prozentuale Erholung und wird als nicht anwendbar ausgewiesen.",
+      "textResults": {}
+    },
+    "meeting-roi-calculator": {
+      "fields": {
+        "attendees": {
+          "label": "Anzahl der Teilnehmer"
+        },
+        "compensation": {
+          "label": "Durchschnittliche Jahresvergütung ($)"
+        },
+        "overhead": {
+          "label": "Lohnnebenkosten und Arbeitgeberbeiträge (%)"
+        },
+        "workingHours": {
+          "label": "Arbeitsstunden pro Jahr"
+        },
+        "duration": {
+          "label": "Besprechungsdauer (Minuten)"
+        },
+        "meetingsPerWeek": {
+          "label": "Besprechungen pro Woche"
+        },
+        "workingWeeks": {
+          "label": "Arbeitswochen im Jahr"
+        },
+        "estimatedValue": {
+          "label": "Geschätzter geschaffener Wert pro Besprechung ($)"
+        }
+      },
+      "results": {
+        "hourlyLoadedCost": "Vollkosten-Stundensatz je Teilnehmer",
+        "attendeeHours": "Gesamte Teilnehmerstunden",
+        "costPerMeeting": "Kosten je Einzelbesprechung",
+        "weeklyMeetingCost": "Wöchentliche Besprechungskosten",
+        "monthlyMeetingCost": "Monatsäquivalent der Besprechungskosten",
+        "annualMeetingCost": "Jährliche Gesamtkosten für Besprechungen",
+        "breakEvenValuePerMeeting": "Kostendeckender Wert je Besprechung",
+        "netValuePerMeeting": "Geschaffener Nettowert je Besprechung",
+        "estimatedRoiPercent": "Geschätzte Besprechungsrendite (ROI)"
+      },
+      "note": "Kostenschätzungen bilden direkte Arbeitgeber-Gesamtkosten ab und schließen Vorbereitung, Raum- und Softwarelizenzen aus. Geschaffener Wert ist eine planerische Annahme.",
+      "textResults": {}
+    },
+    "ev-vs-gas-break-even-calculator": {
+      "fields": {
+        "evPrice": {
+          "label": "Kaufpreis Elektrofahrzeug ($)"
+        },
+        "gasPriceVehicle": {
+          "label": "Kaufpreis Verbrennerfahrzeug ($)"
+        },
+        "annualMiles": {
+          "label": "Jährliche Fahrleistung (Meilen)"
+        },
+        "evEfficiency": {
+          "label": "Stromverbrauch (kWh/100 Meilen)"
+        },
+        "electricityRate": {
+          "label": "Strompreis je kWh ($)"
+        },
+        "gasMpg": {
+          "label": "Kraftstoffeffizienz Verbrenner (MPG)"
+        },
+        "fuelPrice": {
+          "label": "Benzinpreis je Gallone ($)"
+        },
+        "evMaintenance": {
+          "label": "Jährliche Wartung Elektrofahrzeug ($)"
+        },
+        "gasMaintenance": {
+          "label": "Jährliche Wartung Verbrenner ($)"
+        }
+      },
+      "results": {
+        "pricePremium": "Aufpreis des Elektrofahrzeugs",
+        "evAnnualEnergy": "Jährliche Stromladekosten",
+        "gasAnnualFuel": "Jährliche Kraftstoffkosten",
+        "annualSavings": "Jährliche Betriebskostenersparnis",
+        "breakEvenYears": "Amortisationsdauer (Jahre)",
+        "breakEvenMiles": "Amortisations-Fahrleistung (Meilen)"
+      },
+      "note": "Schließt Finanzierung, Steuern, Wertverlust und Förderprämien aus. Reale Verbrauchswerte weichen witterungs- und fahrstilbedingt ab.",
+      "textResults": {}
+    },
+    "heat-pump-vs-furnace-cost-calculator": {
+      "fields": {
+        "heatingDemand": {
+          "label": "Jährlicher Nutzwärmebedarf (kWh)"
+        },
+        "cop": {
+          "label": "Saisonale Jahresarbeitszahl (COP) der Wärmepumpe"
+        },
+        "electricityRate": {
+          "label": "Stromtarif je kWh ($)"
+        },
+        "furnaceEfficiency": {
+          "label": "Nutzungsgrad des Heizkessels (%)"
+        },
+        "fuelEnergyPrice": {
+          "label": "Brennstoffpreis je thermisches kWh-Äquivalent ($)"
+        },
+        "heatPumpInstall": {
+          "label": "Installationskosten Wärmepumpe ($)"
+        },
+        "furnaceInstall": {
+          "label": "Installationskosten Heizkessel ($)"
+        }
+      },
+      "results": {
+        "heatPumpAnnualCost": "Jährliche Wärmepumpen-Stromkosten",
+        "furnaceAnnualCost": "Jährliche Brennstoffkosten Heizkessel",
+        "annualSavings": "Jährliche Heizkostenersparnis",
+        "installPremium": "Installations-Mehraufwand Wärmepumpe",
+        "paybackYears": "Statische Amortisationszeit (Jahre)"
+      },
+      "note": "Kühlfunktionen im Sommer, elektrische Heizstäbe und Förderungen sind ausgeschlossen. Der Brennstoffpreis nutzt das thermische kWh-Äquivalent.",
+      "textResults": {}
+    },
+    "job-offer-total-comp-calculator": {
+      "fields": {
+        "salary": {
+          "label": "Jährliches Grundgehalt ($)"
+        },
+        "bonus": {
+          "label": "Ziel-Jahresbonus ($)"
+        },
+        "equityTotal": {
+          "label": "Gesamtwert der Aktienzuteilung ($)"
+        },
+        "vestingYears": {
+          "label": "Vesting-Sperrfrist der Aktien (Jahre)"
+        },
+        "retirement": {
+          "label": "Arbeitgeberbeitrag zur Altersvorsorge p. a. ($)"
+        },
+        "benefits": {
+          "label": "Sonstige arbeitgeberfinanzierte Zusatzleistungen ($)"
+        },
+        "signingBonus": {
+          "label": "Einmalige Antrittsprämie (Signing Bonus) ($)"
+        }
+      },
+      "results": {
+        "annualizedEquity": "Annualisierter Aktienwert",
+        "recurringComp": "Geschätzte wiederkehrende Jahresvergütung",
+        "firstYearComp": "Geschätzte Gesamtvergütung im ersten Jahr",
+        "monthlyEquivalent": "Monatlicher Wiederkehrender Gegenwert",
+        "baseSalaryShare": "Anteil des Grundgehalts"
+      },
+      "note": "Aktienwerte und Boni stellen Planungsannahmen dar. Kurschwankungen, steuerliche Abzüge und Sperrfristen beeinflussen das tatsächliche Nettoeinkommen.",
+      "textResults": {}
+    },
+    "lumpsum-investment-calculator": {
+      "fields": {
+        "initialInvestment": {
+          "label": "Einmaliger Anlagebetrag ($)"
+        },
+        "expectedAnnualReturnPercent": {
+          "label": "Erwartete Jahresrendite (%)"
+        },
+        "timeHorizonYears": {
+          "label": "Anlagehorizont (Jahre)"
+        },
+        "compoundingFrequencyPerYear": {
+          "label": "Zinseszins-Intervall",
+          "options": {
+            "1": "Jährlich (1x pro Jahr)",
+            "2": "Halbjährlich (2x pro Jahr)",
+            "4": "Vierteljährlich (4x pro Jahr)",
+            "12": "Monatlich (12x pro Jahr)"
+          }
+        },
+        "estimatedInflationRatePercent": {
+          "label": "Geschätzte jährliche Inflationsrate (%)"
+        }
+      },
+      "results": {
+        "investedPrincipal": "Eingesetztes Anfangskapital",
+        "totalInterestEarned": "Erzielter Zinseszinsertrag gesamt",
+        "nominalMaturityValue": "Geschätzter nominaler Endwert",
+        "inflationAdjustedValue": "Reale Kaufkraft (inflationsbereinigt)",
+        "wealthGainMultiple": "Vermögensmultiplikator (x Ausgangswert)"
+      },
+      "note": "Projektionen unterstellen die fortlaufende Reinvestition sämtlicher Ausschüttungen. Die reale Kaufkraft diskontiert den Endwert um die Inflation. Steuern und Depotgebühren sind unberücksichtigt.",
+      "textResults": {}
+    },
+    "savings-goal-calculator": {
+      "fields": {
+        "targetGoalAmount": {
+          "label": "Angestrebtes Sparziel ($)"
+        },
+        "currentSavings": {
+          "label": "Bereits vorhandenes Startguthaben ($)"
+        },
+        "yearsToReachGoal": {
+          "label": "Zeitrahmen bis zum Sparziel (Jahre)"
+        },
+        "expectedAnnualInterestRatePercent": {
+          "label": "Erwarteter Jahreszins bzw. Rendite (%)"
+        }
+      },
+      "results": {
+        "requiredMonthlySavings": "Erforderliche monatliche Sparrate",
+        "requiredAnnualSavings": "Erforderliche jährliche Sparrate",
+        "totalUserContributions": "Summe eigener Einzahlungen",
+        "totalInterestEarned": "Gesamtertrag aus Zinsen und Wertzuwachs",
+        "interestFundingSharePercent": "Zinsanteil an der Zielsumme"
+      },
+      "note": "Die Berechnung basiert auf nachschüssiger Rentenrechnung mit monatlicher Verzinsung. Das Startkapital verzinst sich über die gesamte Laufzeit mit Zinseszins.",
+      "textResults": {}
+    },
+    "mortgage-affordability-calculator": {
+      "fields": {
+        "annualGrossIncome": {
+          "label": "Brutto-Haushaltseinkommen pro Jahr ($)"
+        },
+        "monthlyDebts": {
+          "label": "Monatliche laufende Verbindlichkeiten ($)",
+          "help": "Autokredite, Ratenkredite, Mindestrückzahlungen Kreditkarten"
+        },
+        "downPaymentAmount": {
+          "label": "Verfügbares Eigenkapital ($)"
+        },
+        "mortgageInterestRatePercent": {
+          "label": "Bauzins bzw. Sollzinssatz (%)"
+        },
+        "loanTermYears": {
+          "label": "Kreditlaufzeit (Jahre)"
+        },
+        "annualPropertyTaxRatePercent": {
+          "label": "Grundsteuer-Hebesatz p. a. (%)"
+        },
+        "annualHomeownersInsurance": {
+          "label": "Jährliche Wohngebäudeversicherung ($)"
+        },
+        "targetFrontEndDtiPercent": {
+          "label": "Wohnkosten-Belastungsgrenze (Front-End %)",
+          "help": "Wohnbelastung bezogen auf das Bruttoeinkommen (Standard: 28%)"
+        },
+        "targetBackEndDtiPercent": {
+          "label": "Gesamtverschuldungs-Grenze (Back-End %)",
+          "help": "Gesamtschuldendienst bezogen auf das Bruttoeinkommen (Standard: 36%)"
+        }
+      },
+      "results": {
+        "maxHomePurchasePrice": "Maximal leistbarer Immobilienkaufpreis",
+        "maxMortgageLoanAmount": "Maximaler Darlehensbetrag",
+        "monthlyPaymentPiti": "Geschätzte monatliche Gesamtrate PITI",
+        "principalAndInterest": "Monatliche Tilgung und Zins (PI)",
+        "monthlyPropertyTax": "Geschätzte monatliche Grundsteuer",
+        "monthlyInsurance": "Geschätzte monatliche Gebäudeversicherung",
+        "effectiveFrontEndDti": "Tatsächliche Wohnkostenquote",
+        "effectiveBackEndDti": "Tatsächliche Gesamtschuldenquote"
+      },
+      "note": "Die Finanzierbarkeit wird durch die strengere der standardisierten Wohn- oder Gesamtverschuldungsquoten begrenzt. Hausgeld und private Restschuldversicherungen (PMI) sind nicht enthalten.",
+      "textResults": {}
+    },
+    "break-even-calculator": {
+      "fields": {
+        "fixedCosts": {
+          "label": "Periodische fixe Gesamtkosten ($)",
+          "help": "Miete, Grundgehälter, Versicherungen, Softwareverträge"
+        },
+        "variableCostPerUnit": {
+          "label": "Variable Stückkosten ($)",
+          "help": "Material, Verpackung, direkte Fertigungslöhne"
+        },
+        "salePricePerUnit": {
+          "label": "Verkaufspreis pro Stück ($)"
+        },
+        "plannedUnitSales": {
+          "label": "Geplante Absatzmenge (Stück)"
+        }
+      },
+      "results": {
+        "contributionMarginPerUnit": "Stückdeckungsbeitrag",
+        "contributionMarginRatioPercent": "Deckungsbeitragsquote",
+        "breakEvenUnits": "Gewinnschwelle nach Absatzmenge (Stück)",
+        "breakEvenRevenue": "Mindestumsatz an der Gewinnschwelle",
+        "projectedNetProfit": "Betriebsgewinn bei geplanter Absatzmenge",
+        "marginOfSafetyPercent": "Sicherheitsmarge (Abstand zur Gewinnschwelle)"
+      },
+      "note": "Der Deckungsbeitrag entspricht dem Erlös abzüglich der variablen Kosten zur Deckung der Fixkosten. Die Sicherheitsmarge gibt an, um wie viel Prozent der Absatz einbrechen darf, bevor Verluste entstehen.",
+      "textResults": {}
+    },
+    "profit-margin-markup-calculator": {
+      "fields": {
+        "costAmount": {
+          "label": "Bezugspreis bzw. Selbstkosten ($)"
+        },
+        "sellingPrice": {
+          "label": "Aktueller oder angestrebter Verkaufspreis ($)"
+        },
+        "targetMarkupPercent": {
+          "label": "Angestrebter Kalkulationsaufschlag auf Kosten (%)"
+        },
+        "targetMarginPercent": {
+          "label": "Angestrebte Handelsspanne vom Verkaufspreis (%)"
+        }
+      },
+      "results": {
+        "grossProfitAmount": "Rohgewinn pro Einheit",
+        "actualMarginPercent": "Tatsächliche Handelsspanne",
+        "actualMarkupPercent": "Tatsächlicher Aufschlag auf Kosten",
+        "costMultiplier": "Kalkulationsfaktor Kosten-zu-Preis (x)",
+        "priceFromTargetMarkup": "Erforderlicher Preis für Ziel-Aufschlag",
+        "priceFromTargetMargin": "Erforderlicher Preis für Ziel-Handelsspanne"
+      },
+      "note": "Die Marge ist der Rohgewinn bezogen auf den Verkaufspreis, während der Aufschlag der Rohgewinn bezogen auf die Kosten ist. Bei Produkten mit positiven Kosten kann die Marge 100 % niemals erreichen oder überschreiten.",
       "textResults": {}
     }
   },

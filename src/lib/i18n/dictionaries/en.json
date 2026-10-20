@@ -555,6 +555,86 @@
       "limits": "Applies to an identical baseline cohort over the selected timeframe; do not include revenue from newly acquired customers.",
       "question": "Why is Net Revenue Retention (NRR) greater than 100% considered the ultimate engine of compounding SaaS growth?",
       "answer": "When NRR exceeds 100%, existing customer spending grows faster than accounts cancel or downgrade, guaranteeing organic revenue expansion before closing any new accounts."
+    },
+    "drawdown-recovery-calculator": {
+      "title": "Drawdown Recovery Calculator",
+      "description": "Calculate portfolio drawdown and the larger percentage gain required to recover from a loss.",
+      "how": "Enter portfolio loss percentage directly, or enter optional starting and current portfolio values.",
+      "limits": "A 100% loss cannot be recovered mathematically and is reported as not applicable.",
+      "question": "Why does a 50% loss require a 100% gain to break even?",
+      "answer": "A 50% loss cuts capital in half; returning to the initial amount requires doubling (100% gain on) the remaining reduced base."
+    },
+    "meeting-roi-calculator": {
+      "title": "Meeting ROI Calculator",
+      "description": "Calculate the labor cost of a meeting from attendees, compensation, overhead, duration and frequency, then compare the cost with estimated value created.",
+      "how": "Input attendee count, average compensation, overhead rate, meeting duration, and expected value creation.",
+      "limits": "Cost models direct loaded compensation and excludes meeting room overhead and preparation time.",
+      "question": "What is loaded hourly cost in meeting calculations?",
+      "answer": "Loaded cost includes base wages plus employer payroll taxes, healthcare, pension contributions, and operational benefits."
+    },
+    "ev-vs-gas-break-even-calculator": {
+      "title": "EV vs Gas Break-Even Calculator",
+      "description": "Compare electric and gasoline vehicle purchase and operating costs and estimate when fuel and maintenance savings recover an EV price premium.",
+      "how": "Enter vehicle prices, annual mileage, fuel/electricity prices, and vehicle efficiencies.",
+      "limits": "Excludes vehicle financing interest, insurance rate disparities, and regional battery degradation factors.",
+      "question": "How is the EV break-even period calculated?",
+      "answer": "It divides the upfront purchase price difference by the net annual operating savings generated from cheaper electricity and lower maintenance."
+    },
+    "heat-pump-vs-furnace-cost-calculator": {
+      "title": "Heat Pump vs Furnace Cost Calculator",
+      "description": "Compare estimated annual heating energy costs for an electric heat pump and a fuel furnace using efficiency, energy prices and heating demand.",
+      "how": "Enter annual heating demand, heat pump seasonal COP, furnace efficiency rating, and local energy rates.",
+      "limits": "Models space heating demand only; auxiliary resistive strip heat and cooling benefits are excluded.",
+      "question": "What is heat pump seasonal COP?",
+      "answer": "The Coefficient of Performance (COP) measures the ratio of useful heat energy output per unit of electricity consumed across the heating season."
+    },
+    "job-offer-total-comp-calculator": {
+      "title": "Job Offer Total Compensation Calculator",
+      "description": "Normalize salary, bonus, equity, retirement contributions and recurring benefits into estimated annual total compensation.",
+      "how": "Input base salary, target annual bonus, equity grant and vesting schedule, retirement match, and benefits.",
+      "limits": "Equity valuations assume stable share prices without accounting for market volatility or tax withholding.",
+      "question": "How is equity annualized in a compensation package?",
+      "answer": "The total grant valuation is divided evenly over the vesting duration in years, typically four years."
+    },
+    "lumpsum-investment-calculator": {
+      "title": "Lumpsum Investment Calculator",
+      "description": "Calculate future maturity value, total compound wealth gained, real purchasing power, and wealth multiple for a one-time lump-sum investment.",
+      "how": "Enter one-time principal, expected annual return, investment duration, compounding frequency, and inflation.",
+      "limits": "Assumes constant annual growth rates and continuous dividend reinvestment without periodic capital withdrawals.",
+      "question": "What is the difference between nominal and inflation-adjusted value?",
+      "answer": "Nominal value is the total cash balance at maturity, while inflation-adjusted value shows actual purchasing power in today's dollars."
+    },
+    "savings-goal-calculator": {
+      "title": "Savings Goal Calculator",
+      "description": "Calculate the exact monthly or annual savings required to reach a target financial goal by a target date, given starting savings and interest rate.",
+      "how": "Input target goal amount, initial savings, timeframe in years, and expected annual interest rate.",
+      "limits": "Models end-of-period ordinary annuity deposits and steady compound interest without tax deductions.",
+      "question": "How does compound interest reduce required savings?",
+      "answer": "Earned interest compounds on existing balances, so future investment returns fund an increasing portion of your target goal."
+    },
+    "mortgage-affordability-calculator": {
+      "title": "Mortgage Affordability Calculator",
+      "description": "Calculate maximum affordable home purchase price and loan amount based on income, monthly debts, down payment, and 28/36 DTI limits.",
+      "how": "Enter gross household income, monthly recurring debts, down payment cash, interest rate, and loan term.",
+      "limits": "Underwriting adheres to standard US 28/36 DTI caps; HOA fees and private mortgage insurance (PMI) are excluded.",
+      "question": "What are front-end and back-end DTI caps?",
+      "answer": "Front-end DTI caps housing costs (PITI) at 28% of gross monthly income, while back-end DTI caps all monthly debt payments at 36%."
+    },
+    "break-even-calculator": {
+      "title": "Break-Even Calculator",
+      "description": "Calculate break-even sales volume in units and revenue, contribution margin per unit, margin ratio, and margin of safety.",
+      "how": "Enter total fixed overhead costs, variable production cost per unit, unit selling price, and planned volume.",
+      "limits": "Assumes linear variable costs and uniform selling price across all produced unit quantities.",
+      "question": "What is the margin of safety?",
+      "answer": "Margin of safety is the percentage cushion by which current or projected sales can fall before reaching the zero-profit break-even point."
+    },
+    "profit-margin-markup-calculator": {
+      "title": "Profit Margin & Markup Calculator",
+      "description": "Calculate profit margin, markup, gross profit and selling price from cost and price, or from a target margin or markup.",
+      "how": "Enter wholesale cost and selling price, or enter target markup and margin percentages.",
+      "limits": "Gross profit calculations exclude operating expenses, shipping, sales commissions, and merchant fees.",
+      "question": "How do profit margin and markup differ?",
+      "answer": "Margin measures gross profit as a percentage of selling price, whereas markup measures profit as a percentage of cost."
     }
   },
   "flexOptions": {
@@ -2085,6 +2165,339 @@
         "netChange": "Net change"
       },
       "note": "NRR requires positive starting recurring revenue. Keep the period and revenue definition consistent and exclude new-customer revenue from expansion.",
+      "textResults": {}
+    },
+    "drawdown-recovery-calculator": {
+      "fields": {
+        "loss": {
+          "label": "Portfolio loss (%)",
+          "help": "Used when start value is zero."
+        },
+        "start": {
+          "label": "Optional start value ($)"
+        },
+        "current": {
+          "label": "Optional current value ($)",
+          "help": "When a start value is entered, this value determines the drawdown."
+        }
+      },
+      "results": {
+        "drawdownPercent": "Drawdown",
+        "amountLost": "Amount lost",
+        "recoveryGainPercent": "Required recovery gain",
+        "requiredGain": "Required gain in value",
+        "targetValue": "Recovery target"
+      },
+      "note": "A loss and an equal percentage gain do not cancel because the gain starts from a smaller base. A 100% loss has no finite percentage recovery and is shown as not applicable.",
+      "textResults": {}
+    },
+    "meeting-roi-calculator": {
+      "fields": {
+        "attendees": {
+          "label": "Number of attendees"
+        },
+        "compensation": {
+          "label": "Average annual compensation ($)"
+        },
+        "overhead": {
+          "label": "Employer overhead / benefits (%)"
+        },
+        "workingHours": {
+          "label": "Working hours per year"
+        },
+        "duration": {
+          "label": "Meeting duration (minutes)"
+        },
+        "meetingsPerWeek": {
+          "label": "Meetings per week"
+        },
+        "workingWeeks": {
+          "label": "Working weeks per year"
+        },
+        "estimatedValue": {
+          "label": "Estimated value created per meeting ($)"
+        }
+      },
+      "results": {
+        "hourlyLoadedCost": "Loaded hourly cost per attendee",
+        "attendeeHours": "Total attendee-hours",
+        "costPerMeeting": "Cost per meeting",
+        "weeklyMeetingCost": "Weekly meeting cost",
+        "monthlyMeetingCost": "Monthly equivalent meeting cost",
+        "annualMeetingCost": "Annual meeting cost",
+        "breakEvenValuePerMeeting": "Break-even value per meeting",
+        "netValuePerMeeting": "Net value per meeting",
+        "estimatedRoiPercent": "Estimated ROI"
+      },
+      "note": "Cost estimates model direct loaded employee compensation and exclude preparation, follow-up, room, software, and opportunity costs. Value created is an entered planning assumption, not an accounting fact.",
+      "textResults": {}
+    },
+    "ev-vs-gas-break-even-calculator": {
+      "fields": {
+        "evPrice": {
+          "label": "EV purchase price ($)"
+        },
+        "gasPriceVehicle": {
+          "label": "Gas vehicle purchase price ($)"
+        },
+        "annualMiles": {
+          "label": "Annual driving distance (miles)"
+        },
+        "evEfficiency": {
+          "label": "EV efficiency (kWh/100 miles)"
+        },
+        "electricityRate": {
+          "label": "Electricity price per kWh ($)"
+        },
+        "gasMpg": {
+          "label": "Gas vehicle fuel economy (MPG)"
+        },
+        "fuelPrice": {
+          "label": "Gasoline price per gallon ($)"
+        },
+        "evMaintenance": {
+          "label": "EV annual maintenance ($)"
+        },
+        "gasMaintenance": {
+          "label": "Gas annual maintenance ($)"
+        }
+      },
+      "results": {
+        "pricePremium": "EV purchase-price premium",
+        "evAnnualEnergy": "EV annual energy cost",
+        "gasAnnualFuel": "Gas annual fuel cost",
+        "annualSavings": "Annual operating savings",
+        "breakEvenYears": "Break-even time (years)",
+        "breakEvenMiles": "Break-even mileage"
+      },
+      "note": "Excludes financing, taxes, depreciation, insurance, and tax incentives. Real-world efficiency varies with weather, speed, and driving style.",
+      "textResults": {}
+    },
+    "heat-pump-vs-furnace-cost-calculator": {
+      "fields": {
+        "heatingDemand": {
+          "label": "Annual useful heating demand (kWh)"
+        },
+        "cop": {
+          "label": "Heat pump seasonal COP"
+        },
+        "electricityRate": {
+          "label": "Electricity price per kWh ($)"
+        },
+        "furnaceEfficiency": {
+          "label": "Furnace efficiency (%)"
+        },
+        "fuelEnergyPrice": {
+          "label": "Furnace fuel price per kWh equivalent ($)"
+        },
+        "heatPumpInstall": {
+          "label": "Heat pump installed cost ($)"
+        },
+        "furnaceInstall": {
+          "label": "Furnace installed cost ($)"
+        }
+      },
+      "results": {
+        "heatPumpAnnualCost": "Heat pump annual energy cost",
+        "furnaceAnnualCost": "Furnace annual fuel cost",
+        "annualSavings": "Annual energy savings",
+        "installPremium": "Heat pump installation premium",
+        "paybackYears": "Simple payback (years)"
+      },
+      "note": "Excludes cooling benefits, auxiliary resistive heat, incentives, and equipment replacement lifespans. Fuel price uses thermal kWh equivalent.",
+      "textResults": {}
+    },
+    "job-offer-total-comp-calculator": {
+      "fields": {
+        "salary": {
+          "label": "Annual base salary ($)"
+        },
+        "bonus": {
+          "label": "Target annual bonus ($)"
+        },
+        "equityTotal": {
+          "label": "Total equity grant value ($)"
+        },
+        "vestingYears": {
+          "label": "Equity vesting period (years)"
+        },
+        "retirement": {
+          "label": "Annual employer retirement contribution ($)"
+        },
+        "benefits": {
+          "label": "Other annual employer-paid benefits ($)"
+        },
+        "signingBonus": {
+          "label": "One-time signing bonus ($)"
+        }
+      },
+      "results": {
+        "annualizedEquity": "Annualized equity",
+        "recurringComp": "Estimated recurring annual compensation",
+        "firstYearComp": "Estimated first-year compensation",
+        "monthlyEquivalent": "Recurring monthly equivalent",
+        "baseSalaryShare": "Base salary share"
+      },
+      "note": "Equity values and bonuses are planning estimates. Stock price volatility, tax withholding, vesting cliffs, and non-guaranteed bonuses can alter actual take-home compensation.",
+      "textResults": {}
+    },
+    "lumpsum-investment-calculator": {
+      "fields": {
+        "initialInvestment": {
+          "label": "One-time investment amount ($)"
+        },
+        "expectedAnnualReturnPercent": {
+          "label": "Expected annual return (%)"
+        },
+        "timeHorizonYears": {
+          "label": "Investment period (years)"
+        },
+        "compoundingFrequencyPerYear": {
+          "label": "Compounding frequency",
+          "options": {
+            "1": "Annually (1x/yr)",
+            "2": "Semi-Annually (2x/yr)",
+            "4": "Quarterly (4x/yr)",
+            "12": "Monthly (12x/yr)"
+          }
+        },
+        "estimatedInflationRatePercent": {
+          "label": "Estimated annual inflation (%)"
+        }
+      },
+      "results": {
+        "investedPrincipal": "Invested principal",
+        "totalInterestEarned": "Total compound growth earned",
+        "nominalMaturityValue": "Estimated maturity value (nominal)",
+        "inflationAdjustedValue": "Real purchasing power (inflation-adjusted)",
+        "wealthGainMultiple": "Wealth multiplier (x initial)"
+      },
+      "note": "Compounding projections assume continuous reinvestment of all dividends and capital returns. Real purchasing power calculates future value discounted by constant inflation. Taxes and investment management expenses are excluded.",
+      "textResults": {}
+    },
+    "savings-goal-calculator": {
+      "fields": {
+        "targetGoalAmount": {
+          "label": "Target savings goal amount ($)"
+        },
+        "currentSavings": {
+          "label": "Current initial savings already banked ($)"
+        },
+        "yearsToReachGoal": {
+          "label": "Target timeframe (years)"
+        },
+        "expectedAnnualInterestRatePercent": {
+          "label": "Expected annual interest / yield (%)"
+        }
+      },
+      "results": {
+        "requiredMonthlySavings": "Required monthly savings",
+        "requiredAnnualSavings": "Required annual savings equivalent",
+        "totalUserContributions": "Total out-of-pocket contributions",
+        "totalInterestEarned": "Total interest / growth earned",
+        "interestFundingSharePercent": "Share funded by compound interest"
+      },
+      "note": "Calculation uses ordinary annuity compounding where monthly savings deposits earn interest at the end of each monthly period. Starting capital compounds across the full duration.",
+      "textResults": {}
+    },
+    "mortgage-affordability-calculator": {
+      "fields": {
+        "annualGrossIncome": {
+          "label": "Gross household annual income ($)"
+        },
+        "monthlyDebts": {
+          "label": "Monthly recurring debts ($)",
+          "help": "Auto loans, student debt, credit card minimums"
+        },
+        "downPaymentAmount": {
+          "label": "Available down payment ($)"
+        },
+        "mortgageInterestRatePercent": {
+          "label": "Mortgage interest rate (%)"
+        },
+        "loanTermYears": {
+          "label": "Loan duration (years)"
+        },
+        "annualPropertyTaxRatePercent": {
+          "label": "Annual property tax rate (%)"
+        },
+        "annualHomeownersInsurance": {
+          "label": "Annual insurance cost ($)"
+        },
+        "targetFrontEndDtiPercent": {
+          "label": "Front-end DTI cap (%)",
+          "help": "Housing payment as % of gross monthly income (standard: 28%)"
+        },
+        "targetBackEndDtiPercent": {
+          "label": "Back-end DTI cap (%)",
+          "help": "Total debt obligations as % of gross income (standard: 36%)"
+        }
+      },
+      "results": {
+        "maxHomePurchasePrice": "Maximum affordable home price",
+        "maxMortgageLoanAmount": "Maximum qualifying mortgage loan",
+        "monthlyPaymentPiti": "Estimated total monthly PITI",
+        "principalAndInterest": "Monthly principal & interest (PI)",
+        "monthlyPropertyTax": "Monthly property tax estimate",
+        "monthlyInsurance": "Monthly hazard insurance estimate",
+        "effectiveFrontEndDti": "Effective front-end DTI",
+        "effectiveBackEndDti": "Effective back-end DTI"
+      },
+      "note": "Affordability is constrained by the more restrictive of the front-end (housing ratio) or back-end (total debt ratio) standard underwriting limits. Private mortgage insurance (PMI) and HOA fees are not included.",
+      "textResults": {}
+    },
+    "break-even-calculator": {
+      "fields": {
+        "fixedCosts": {
+          "label": "Total periodic fixed costs ($)",
+          "help": "Rent, base salaries, insurance, software leases"
+        },
+        "variableCostPerUnit": {
+          "label": "Variable cost per unit ($)",
+          "help": "Materials, packaging, direct assembly labor"
+        },
+        "salePricePerUnit": {
+          "label": "Selling price per unit ($)"
+        },
+        "plannedUnitSales": {
+          "label": "Target / planned sales volume (units)"
+        }
+      },
+      "results": {
+        "contributionMarginPerUnit": "Contribution margin per unit",
+        "contributionMarginRatioPercent": "Contribution margin ratio",
+        "breakEvenUnits": "Break-even sales volume (units)",
+        "breakEvenRevenue": "Break-even gross revenue",
+        "projectedNetProfit": "Operating profit at planned sales",
+        "marginOfSafetyPercent": "Margin of safety buffer"
+      },
+      "note": "Contribution margin represents revenue remaining after variable unit costs to cover fixed operational overhead. Margin of safety indicates the percentage sales can drop before the operation incurs a loss.",
+      "textResults": {}
+    },
+    "profit-margin-markup-calculator": {
+      "fields": {
+        "costAmount": {
+          "label": "Wholesale / production cost ($)"
+        },
+        "sellingPrice": {
+          "label": "Current / target selling price ($)"
+        },
+        "targetMarkupPercent": {
+          "label": "Target markup rate (%)"
+        },
+        "targetMarginPercent": {
+          "label": "Target profit margin (%)"
+        }
+      },
+      "results": {
+        "grossProfitAmount": "Gross profit amount",
+        "actualMarginPercent": "Gross profit margin",
+        "actualMarkupPercent": "Markup percentage on cost",
+        "costMultiplier": "Wholesale-to-retail multiplier (x)",
+        "priceFromTargetMarkup": "Price required for target markup",
+        "priceFromTargetMargin": "Price required for target margin"
+      },
+      "note": "Margin is gross profit divided by selling price, while markup is gross profit divided by cost. Margin can never reach or exceed 100% for positive cost goods.",
       "textResults": {}
     }
   },

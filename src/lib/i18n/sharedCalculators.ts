@@ -11,6 +11,8 @@ export const isIntegerCalculatorField = (key: string) => [
   'availableNights',
   'input', 'output', 'cached', 'requests', 'days', 'gpus', 'instances',
   'months', 'customers', 'newCustomers',
+  'attendees', 'workingHours', 'duration', 'meetingsPerWeek', 'workingWeeks',
+  'timeHorizonYears', 'yearsToReachGoal', 'loanTermYears', 'plannedUnitSales',
 ].includes(key);
 
 /** Reject missing, fractional count and out-of-range inputs before permissive engines can clamp them. */
@@ -73,6 +75,10 @@ export function calculateLocalizedValues(slug: LocalizedCalculatorSlug, values: 
         if (slug === 'ltv-cac-ratio-calculator' && (key === 'ltv' || key === 'ratio' || key === 'paybackMonths')) return true;
         if (slug === 'cac-payback-calculator' && key === 'paybackMonths') return true;
         if (slug === 'net-revenue-retention-calculator' && key === 'nrrPercent') return true;
+        if (slug === 'drawdown-recovery-calculator' && key === 'recoveryGainPercent') return true;
+        if (slug === 'meeting-roi-calculator' && key === 'estimatedRoiPercent') return true;
+        if (slug === 'ev-vs-gas-break-even-calculator' && (key === 'breakEvenYears' || key === 'breakEvenMiles')) return true;
+        if (slug === 'heat-pump-vs-furnace-cost-calculator' && key === 'paybackYears') return true;
         return false;
       }
       if (format === 'text') return typeof value === 'string';
