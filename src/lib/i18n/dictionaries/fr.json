@@ -395,6 +395,70 @@
       "limits": "Les formules sous-maximales sont optimales entre 2 et 10 répétitions ; au-delà de 10, l’endurance musculaire fausse l’estimation de la force brute.",
       "question": "Quelle formule offre la meilleure précision pour estimer le 1RM ?",
       "answer": "Les formules d’Epley et de Brzycki constituent les références historiques ; faire la moyenne des deux assure une excellente fiabilité."
+    },
+    "rental-property-cash-flow-calculator": {
+      "title": "Simulateur de flux de trésorerie locative",
+      "description": "Estimez les revenus locatifs effectifs, les dépenses d'exploitation, le résultat d'exploitation (NOI), le service de la dette et le cashflow.",
+      "how": "Saisissez le loyer mensuel, les autres revenus, la vacance locative, les taxes foncières, l'assurance, l'entretien, les frais de gestion, les charges et la mensualité d'emprunt.",
+      "limits": "Le résultat net d'exploitation (NOI) exclut le service de la dette. Les gros travaux, la fiscalité personnelle et la plus-value nécessitent une analyse distincte.",
+      "question": "Pourquoi le service de la dette du prêt est-il exclu du NOI ?",
+      "answer": "Le NOI mesure la performance opérationnelle intrinsèque du bien, indépendamment du niveau d'endettement ou du mode de financement choisi par l'acquéreur."
+    },
+    "rental-yield-calculator": {
+      "title": "Calculateur de rendement locatif",
+      "description": "Calculez les revenus locatifs annuels ainsi que le rendement locatif brut et net après dépenses.",
+      "how": "Indiquez le prix d'achat ou la valeur marchande, le loyer mensuel, l'éventuel loyer annuel de remplacement et les charges d'exploitation annuelles.",
+      "limits": "Les frais de financement, l'impôt sur le revenu, la plus-value immobilière et les réparations exceptionnelles ne sont pas inclus.",
+      "question": "Quelle est la différence entre le rendement brut et le rendement net ?",
+      "answer": "Le rendement brut rapporte le loyer annuel total au prix du bien, alors que le rendement net déduit d'abord les dépenses d'exploitation."
+    },
+    "cap-rate-calculator": {
+      "title": "Calculateur de taux de capitalisation",
+      "description": "Calculez le revenu locatif effectif, le résultat net d'exploitation (NOI) et le taux de capitalisation.",
+      "how": "Indiquez la valeur du bien ou son prix d'achat, les revenus locatifs annuels, le taux de vacance locative et les charges annuelles.",
+      "limits": "Le taux de capitalisation mesure la rentabilité sans effet de levier ; le crédit immobilier, l'amortissement et les impôts sont exclus du NOI.",
+      "question": "Quand faut-il utiliser le taux de capitalisation ?",
+      "answer": "Le taux de capitalisation est idéal pour comparer le potentiel de revenu intrinsèque de différents biens sur un marché donné sans distorsion de prêt."
+    },
+    "cash-on-cash-return-calculator": {
+      "title": "Calculateur de rendement cash-on-cash",
+      "description": "Calculez le capital initial total investi et le rendement cash-on-cash avant impôt à partir du flux de trésorerie.",
+      "how": "Saisissez l'apport personnel, les frais de clôture/notaire, les coûts de rénovation initiaux, les autres liquidités et le cashflow annuel avant impôt.",
+      "limits": "Mesure le rendement net en liquidités sur les fonds investis ; exclut le remboursement du capital du prêt, la plus-value et la fiscalité.",
+      "question": "Pourquoi le rendement cash-on-cash varie-t-il avec l'effet de levier ?",
+      "answer": "Un prêt diminue l'apport nécessaire tout en déduisant les mensualités du cashflow, ce qui amplifie les rendements positifs ou les pertes."
+    },
+    "brrrr-calculator": {
+      "title": "Calculateur de stratégie BRRRR",
+      "description": "Estimez les fonds engagés, le refinancement, le capital résiduel, le cashflow locatif et le rendement post-refinancement.",
+      "how": "Indiquez prix d'achat, frais d'acquisition, budget travaux, valeur après travaux, ratio LTV de refinancement, frais, loyer, vacance et charges.",
+      "limits": "N'évalue pas les conditions d'octroi bancaire, les délais de portage obligatoires, les écarts d'expertise ou les contraintes réglementaires.",
+      "question": "Que signifie le capital résiduel dans l'opération ?",
+      "answer": "Il s'agit des fonds propres encore immobilisés dans le bien après remboursement des frais d'achat et de travaux par le nouveau prêt."
+    },
+    "fix-and-flip-profit-calculator": {
+      "title": "Calculateur de profit achat-revente (Fix & Flip)",
+      "description": "Estimez le prix de revient d'une rénovation-revente, le produit net, le bénéfice, le ROI, la marge et le prix d'équilibre.",
+      "how": "Saisissez prix d'achat, frais d'acquisition, budget travaux, frais financiers et intérêts, coûts de portage, prix de revente et commissions.",
+      "limits": "Modèle de simulation. Exclut l'imposition des plus-values, les droits de mutation spécifiques, les retards de chantier et aléas structurels.",
+      "question": "Qu'est-ce que le prix de vente d'équilibre ?",
+      "answer": "Le prix de cession minimal permettant de rembourser l'intégralité des coûts d'achat, de travaux, de portage, de crédit et de vente sans subir de perte."
+    },
+    "short-term-rental-break-even-calculator": {
+      "title": "Calculateur de rentabilité pour location courte durée",
+      "description": "Estimez les revenus de location saisonnière, les charges d'exploitation, le bénéfice mensuel et le taux d'occupation d'équilibre.",
+      "how": "Indiquez tarif moyen par nuitée, nuits disponibles, taux d'occupation, coût variable de ménage/blanchisserie, charges fixes et commissions.",
+      "limits": "Exclut les taxes de séjour touristiques, les fortes variations saisonnières, la tarification dynamique et les licences municipales obligatoires.",
+      "question": "Qu'est-ce que le taux d'occupation d'équilibre pour une location saisonnière ?",
+      "answer": "Le pourcentage de nuits louées chaque mois indispensable pour générer une marge nette couvrant l'ensemble des charges fixes de l'appartement."
+    },
+    "house-hacking-effective-rent-calculator": {
+      "title": "Calculateur de loyer effectif (House Hacking)",
+      "description": "Estimez votre coût effectif de logement après déduction des loyers perçus auprès de colocataires ou locataires.",
+      "how": "Indiquez la mensualité de prêt, les impôts/assurances, les charges de copropriété, les fluides, la réserve de maintenance, les loyers perçus et la vacance.",
+      "limits": "Calcul de flux de trésorerie uniquement. Exclut l'enrichissement par amortissement du capital, la plus-value latente et la fiscalité.",
+      "question": "Le coût effectif du logement peut-il être négatif ?",
+      "answer": "Oui. Si les loyers perçus auprès des locataires dépassent l'ensemble de vos charges de logement, vous vous logez gratuitement et générez un excédent net."
     }
   },
   "flexOptions": {
@@ -1311,6 +1375,279 @@
         "brzyckiEstimate": "Résultat formule de Brzycki"
       },
       "note": "Les formules d’estimation du 1RM sont les plus fiables entre 2 et 10 répétitions. Au-delà de 10, l’endurance musculaire tend à surestimer ou sous-estimer la force maximale neuromusculaire.",
+      "textResults": {}
+    },
+    "rental-property-cash-flow-calculator": {
+      "fields": {
+        "rent": {
+          "label": "Loyer mensuel ($)"
+        },
+        "income": {
+          "label": "Autres revenus mensuels ($)"
+        },
+        "vacancy": {
+          "label": "Marge de vacance locative (%)"
+        },
+        "tax": {
+          "label": "Taxe foncière mensuelle ($)"
+        },
+        "insurance": {
+          "label": "Assurance mensuelle ($)"
+        },
+        "maintenance": {
+          "label": "Entretien mensuel ($)"
+        },
+        "management": {
+          "label": "Gestion locative mensuelle ($)"
+        },
+        "hoa": {
+          "label": "Charges de copropriété mensuelles ($)"
+        },
+        "utilities": {
+          "label": "Charges payées par le propriétaire ($)"
+        },
+        "other": {
+          "label": "Autres dépenses d'exploitation ($)"
+        },
+        "debt": {
+          "label": "Mensualité de prêt / service de la dette ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Revenu locatif effectif",
+        "operatingExpenses": "Dépenses d'exploitation",
+        "noi": "Résultat opérationnel net mensuel (NOI)",
+        "debtService": "Service de la dette (après NOI)",
+        "monthlyCashFlow": "Flux de trésorerie mensuel",
+        "annualCashFlow": "Flux de trésorerie annuel"
+      },
+      "note": "Le résultat net d'exploitation (NOI) déduit les dépenses d'exploitation du revenu effectif et exclut le prêt. Le service de la dette est déduit ensuite pour estimer le flux de trésorerie.",
+      "textResults": {}
+    },
+    "rental-yield-calculator": {
+      "fields": {
+        "value": {
+          "label": "Valeur du bien ou prix d'achat ($)"
+        },
+        "monthlyRent": {
+          "label": "Loyer mensuel ($)"
+        },
+        "annualRent": {
+          "label": "Loyer annuel personnalisé facultatif ($)",
+          "help": "Si supérieur à zéro, ce montant remplace le loyer mensuel × 12."
+        },
+        "expenses": {
+          "label": "Dépenses annuelles d'exploitation ($)"
+        }
+      },
+      "results": {
+        "annualRent": "Revenu locatif annuel",
+        "netIncome": "Loyer après dépenses saisies",
+        "grossYield": "Rendement locatif brut",
+        "netYield": "Rendement locatif net"
+      },
+      "note": "Le rendement brut correspond au loyer annuel divisé par la valeur du bien. Le rendement net déduit d'abord les dépenses saisies ; les frais de crédit et impôts personnels ne sont pas inclus.",
+      "textResults": {}
+    },
+    "cap-rate-calculator": {
+      "fields": {
+        "value": {
+          "label": "Valeur du bien ou prix d'achat ($)"
+        },
+        "rent": {
+          "label": "Revenu locatif annuel ($)"
+        },
+        "vacancy": {
+          "label": "Marge de vacance (%)"
+        },
+        "expenses": {
+          "label": "Dépenses d'exploitation annuelles ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Revenu annuel effectif",
+        "noi": "Résultat net d'exploitation",
+        "capRate": "Taux de capitalisation"
+      },
+      "note": "Le taux de capitalisation est égal au NOI divisé par la valeur du bien. Le NOI exclut le prêt, l'amortissement, l'impôt sur le revenu et les dépenses d'investissement.",
+      "textResults": {}
+    },
+    "cash-on-cash-return-calculator": {
+      "fields": {
+        "down": {
+          "label": "Apport personnel ($)"
+        },
+        "closing": {
+          "label": "Frais d'acquisition et de notaire ($)"
+        },
+        "rehab": {
+          "label": "Rénovation et travaux initiaux ($)"
+        },
+        "other": {
+          "label": "Autres liquidités initiales ($)"
+        },
+        "cashFlow": {
+          "label": "Flux de trésorerie avant impôt annuel ($)"
+        }
+      },
+      "results": {
+        "cashInvested": "Total des fonds propres investis",
+        "annualCashFlow": "Flux de trésorerie annuel avant impôt",
+        "returnPercent": "Rendement cash-on-cash"
+      },
+      "note": "Le rendement cash-on-cash rapporte le flux de trésorerie annuel avant impôt aux liquidités initiales investies. Il exclut la plus-value, le remboursement de capital et la fiscalité.",
+      "textResults": {}
+    },
+    "brrrr-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Prix d'achat ($)"
+        },
+        "purchaseCosts": {
+          "label": "Frais d'achat et de clôture ($)"
+        },
+        "rehab": {
+          "label": "Coût des travaux ($)"
+        },
+        "arv": {
+          "label": "Valeur après travaux (ARV) ($)"
+        },
+        "ltv": {
+          "label": "Ratio prêt/valeur du refinancement (LTV) (%)"
+        },
+        "refiCosts": {
+          "label": "Frais de refinancement ($)"
+        },
+        "rent": {
+          "label": "Loyer mensuel ($)"
+        },
+        "vacancy": {
+          "label": "Vacance locative (%)"
+        },
+        "expenses": {
+          "label": "Dépenses d'exploitation mensuelles ($)"
+        },
+        "debt": {
+          "label": "Mensualité de remboursement estimée ($)"
+        }
+      },
+      "results": {
+        "totalProjectCash": "Liquidités engagées avant refinancement",
+        "refinanceLoan": "Montant estimé du nouveau prêt",
+        "cashRecovered": "Liquidités récupérées nettes de frais",
+        "cashLeftInDeal": "Fonds propres restants dans l'opération",
+        "monthlyCashFlow": "Flux de trésorerie mensuel",
+        "annualCashFlow": "Flux de trésorerie annuel",
+        "cashOnCashPercent": "Rendement cash-on-cash post-refinancement"
+      },
+      "note": "Le produit du refinancement, la valeur, les coûts, le loyer, la vacance et le service de la dette sont des estimations. L'accord bancaire, l'expertise et les imprévus ne sont pas modélisés.",
+      "textResults": {}
+    },
+    "fix-and-flip-profit-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Prix d'achat ($)"
+        },
+        "acquisition": {
+          "label": "Frais d'acquisition et de clôture ($)"
+        },
+        "rehab": {
+          "label": "Coût de rénovation ($)"
+        },
+        "financing": {
+          "label": "Frais financiers et intérêts ($)"
+        },
+        "holding": {
+          "label": "Coûts de portage ($)"
+        },
+        "sale": {
+          "label": "Prix de vente ($)"
+        },
+        "sellingCosts": {
+          "label": "Frais de vente et commissions ($)"
+        },
+        "other": {
+          "label": "Autres coûts ($)"
+        }
+      },
+      "results": {
+        "costBasis": "Prix de revient avant frais de vente",
+        "netSaleProceeds": "Produit net de cession",
+        "profit": "Bénéfice estimé",
+        "roiPercent": "Rendement sur prix de revient (ROI)",
+        "profitMarginPercent": "Marge bénéficiaire sur prix de vente",
+        "breakEvenSalePrice": "Prix de vente d'équilibre"
+      },
+      "note": "Cette estimation prévisionnelle exclut toute conclusion fiscale ou juridique. Les coûts réels dépendent du périmètre des travaux, des délais, des taux et du marché.",
+      "textResults": {}
+    },
+    "short-term-rental-break-even-calculator": {
+      "fields": {
+        "nightlyRate": {
+          "label": "Tarif moyen par nuitée ($)"
+        },
+        "availableNights": {
+          "label": "Nuitées disponibles par mois"
+        },
+        "occupancy": {
+          "label": "Taux d'occupation prévisionnel (%)"
+        },
+        "variableCost": {
+          "label": "Coût variable par nuitée occupée ($)"
+        },
+        "fixedCosts": {
+          "label": "Coûts fixes d'exploitation mensuels ($)"
+        },
+        "platformFee": {
+          "label": "Commissions plateforme et paiement (%)"
+        }
+      },
+      "results": {
+        "occupiedNights": "Nuitées occupées",
+        "grossRevenue": "Chiffre d'affaires brut des réservations",
+        "platformFees": "Frais de plateforme et commissions",
+        "totalCosts": "Total des charges mensuelles",
+        "monthlyProfit": "Bénéfice mensuel estimé",
+        "breakEvenOccupancy": "Taux d'occupation d'équilibre"
+      },
+      "note": "Exclut l'impôt sur le revenu, l'amortissement du prêt, les variations saisonnières et les redevances locales de meublé touristique.",
+      "textResults": {}
+    },
+    "house-hacking-effective-rent-calculator": {
+      "fields": {
+        "mortgage": {
+          "label": "Mensualité de prêt immobilier ($)"
+        },
+        "taxInsurance": {
+          "label": "Impôt foncier et assurance mensuels ($)"
+        },
+        "hoa": {
+          "label": "Charges de copropriété mensuelles ($)"
+        },
+        "utilities": {
+          "label": "Charges et fluides payés par le propriétaire ($)"
+        },
+        "maintenance": {
+          "label": "Réserve mensuelle pour entretien ($)"
+        },
+        "other": {
+          "label": "Autres dépenses mensuelles liées au logement ($)"
+        },
+        "rentReceived": {
+          "label": "Loyer mensuel perçu attendu ($)"
+        },
+        "vacancy": {
+          "label": "Marge de vacance locative (%)"
+        }
+      },
+      "results": {
+        "grossHousingCost": "Coût mensuel brut du logement",
+        "effectiveRentIncome": "Loyer perçu net de vacance",
+        "effectiveHousingCost": "Coût effectif mensuel du logement",
+        "annualEffectiveCost": "Coût effectif annuel du logement",
+        "costOffsetPercent": "Part des dépenses couverte par le loyer"
+      },
+      "note": "Calcul de flux de trésorerie prévisionnel. Exclut l'accumulation de capital par amortissement, la plus-value latente et la fiscalité.",
       "textResults": {}
     }
   },

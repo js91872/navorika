@@ -22,6 +22,10 @@ const slugs = [
   'cat-calorie-calculator', 'caffeine-half-life-calculator', 'hrv-baseline-deviation-calculator',
   'wilks-dots-powerlifting-calculator', 'macronutrient-calculator', 'running-pace-calculator',
   'hydration-calculator', 'one-rep-max-calculator',
+  'rental-property-cash-flow-calculator', 'rental-yield-calculator',
+  'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator',
+  'fix-and-flip-profit-calculator', 'short-term-rental-break-even-calculator',
+  'house-hacking-effective-rent-calculator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -141,10 +145,28 @@ try {
       ['running-pace-calculator', 1, 0, 0],
       ['hydration-calculator', 70, 2.98, 5.43],
       ['one-rep-max-calculator', 100, 115, 229],
+      ['rental-property-cash-flow-calculator', 2500, 2470, 4845],
+      ['rental-yield-calculator', 400000, 30000, 30000],
+      ['cap-rate-calculator', 400000, 30000, 30000],
+      ['cash-on-cash-return-calculator', 80000, 100000, 180000],
+      ['brrrr-calculator', 200000, 260000, 460000],
+      ['fix-and-flip-profit-calculator', 200000, 295000, 495000],
+      ['short-term-rental-break-even-calculator', 180, 19.5, 19.5],
+      ['house-hacking-effective-rent-calculator', 2200, 3350, 5550],
     ]) {
       await visit(`/${locale}/tools/${slug}`);
       const ui = d.calculatorUi;
-      const isCurrency = slug === 'attic-insulation-payback-calculator';
+      const currencySlugs = new Set([
+        'attic-insulation-payback-calculator',
+        'rental-property-cash-flow-calculator',
+        'rental-yield-calculator',
+        'cap-rate-calculator',
+        'cash-on-cash-return-calculator',
+        'brrrr-calculator',
+        'fix-and-flip-profit-calculator',
+        'house-hacking-effective-rent-calculator',
+      ]);
+      const isCurrency = currencySlugs.has(slug);
       const number = isCurrency
         ? new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', currencyDisplay: 'code', maximumFractionDigits: 2 })
         : new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });

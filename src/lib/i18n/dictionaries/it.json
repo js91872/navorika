@@ -395,6 +395,70 @@
       "limits": "Le formule submassimali danno la massima accuratezza tra 2 e 10 ripetizioni; sopra le 10 ripetizioni interviene la resistenza muscolare.",
       "question": "Quale formula è preferibile per stimare il massimale 1RM?",
       "answer": "Epley e Brzycki rappresentano i capisaldi; la loro media offre una stima bilanciata per la maggior parte dei sollevatori."
+    },
+    "rental-property-cash-flow-calculator": {
+      "title": "Calcolatore del flusso di cassa degli immobili in locazione",
+      "description": "Stima il reddito da locazione effettivo, le spese operative, il NOI, il servizio del debito e il flusso di cassa mensile o annuale.",
+      "how": "Inserisci canone mensile, altri redditi, quota sfitti, imposte, assicurazione, manutenzione, spese di gestione, condominio e rata del mutuo.",
+      "limits": "Il NOI esclude il capitale e gli interessi del mutuo. Le spese straordinarie, le imposte sul reddito e l'apprezzamento richiedono analisi separate.",
+      "question": "Perché il servizio del debito del mutuo è escluso dal NOI?",
+      "answer": "Il NOI misura la produttività operativa intrinseca dell'immobile, indipendentemente dal livello di leva finanziaria o finanziamento utilizzato."
+    },
+    "rental-yield-calculator": {
+      "title": "Calcolatore del rendimento da locazione",
+      "description": "Calcola il reddito annuo da locazione insieme al rendimento lordo e netto al netto delle spese.",
+      "how": "Inserisci il prezzo di acquisto o valore di mercato, il canone mensile, eventuale canone annuo manuale e le spese operative annue.",
+      "limits": "I costi di finanziamento, le imposte personali, l'apprezzamento dell'immobile e le spese straordinarie non sono inclusi.",
+      "question": "Qual è la differenza tra rendimento lordo e rendimento netto?",
+      "answer": "Il rendimento lordo confronta le entrate annue totali con il valore, mentre il rendimento netto sottrae prima le spese operative."
+    },
+    "cap-rate-calculator": {
+      "title": "Calcolatore del tasso di capitalizzazione",
+      "description": "Calcola il reddito locativo effettivo, il risultato operativo netto e il tasso di capitalizzazione senza debito nel NOI.",
+      "how": "Inserisci il valore o prezzo di acquisto, il canone annuo, la percentuale di sfitto e le spese operative annue.",
+      "limits": "Il cap rate valuta la redditività operativa senza leva; il debito del mutuo, l'ammortamento e le imposte sono esclusi dal NOI.",
+      "question": "Quando è consigliabile usare il tasso di capitalizzazione?",
+      "answer": "Il cap rate è ideale per confrontare il potenziale di reddito operativo tra diversi immobili nello stesso mercato a parità di condizioni."
+    },
+    "cash-on-cash-return-calculator": {
+      "title": "Calcolatore del rendimento cash-on-cash",
+      "description": "Calcola il capitale iniziale totale investito e il rendimento cash-on-cash lordo dal flusso di cassa annuale.",
+      "how": "Inserisci anticipo, spese di chiusura, costi di ristrutturazione iniziale, altra liquidità e flusso di cassa annuo pre-imposte.",
+      "limits": "Misura il rendimento in cassa sul capitale proprio investito; esclude l'ammortamento del capitale, la rivalutazione e i benefici fiscali.",
+      "question": "Perché il rendimento cash-on-cash cambia con la leva finanziaria?",
+      "answer": "Il mutuo riduce il capitale iniziale necessario ma grava sul flusso di cassa, amplificando i rendimenti o le perdite sul capitale proprio."
+    },
+    "brrrr-calculator": {
+      "title": "Calcolatore della strategia BRRRR",
+      "description": "Stima la liquidità del progetto BRRRR, il rifinanziamento, il capitale residuo, il flusso di cassa e il rendimento.",
+      "how": "Inserisci prezzo d'acquisto, costi di chiusura, budget ristrutturazione, valore post-lavori, LTV rifinanziamento, costi, affitto e spese.",
+      "limits": "Non valuta i requisiti di concessione del mutuo, i periodi minimi di possesso bancari o le difformità di perizia estimativa.",
+      "question": "Cosa si intende per capitale residuo nell'operazione?",
+      "answer": "È il capitale proprio che rimane bloccato nell'immobile dopo che il nuovo mutuo ha restituito i costi di acquisto e ristrutturazione."
+    },
+    "fix-and-flip-profit-calculator": {
+      "title": "Calcolatore del profitto acquisto e rivendita (Fix & Flip)",
+      "description": "Stima la base di costo di un'operazione flip, il ricavo netto, il profitto, il ROI, il margine e il pareggio.",
+      "how": "Inserisci prezzo di acquisto, spese notarili, budget ristrutturazione, interessi e oneri finanziari, costi di possesso, prezzo di vendita e provvigioni.",
+      "limits": "Modello previsionale. Esclude la tassazione sulle plusvalenze, imposte locali di registro, penali per ritardi e imprevisti strutturali.",
+      "question": "Che cos'è il prezzo di vendita di pareggio?",
+      "answer": "Il prezzo di vendita minimo necessario per coprire tutti i costi di acquisto, ristrutturazione, possesso, finanziamento e vendita a pareggio zero."
+    },
+    "short-term-rental-break-even-calculator": {
+      "title": "Calcolatore di pareggio per locazioni brevi",
+      "description": "Stima i ricavi da affitto breve, i costi di gestione, l'utile mensile e il tasso di occupazione necessario per il pareggio.",
+      "how": "Inserisci tariffa media a notte, notti disponibili, occupazione prevista, costi variabili di pulizia, spese fisse e commissioni dei portali.",
+      "limits": "Esclude imposte di soggiorno, oscillazioni stagionali dei flussi turistici, prezzi dinamici e adempimenti per licenze comunali.",
+      "question": "Che cos'è l'occupazione di pareggio in una locazione turistica?",
+      "answer": "La percentuale di notti prenotate al mese necessaria a produrre una marginalità netta sufficiente a coprire tutte le spese fisse di gestione."
+    },
+    "house-hacking-effective-rent-calculator": {
+      "title": "Calcolatore del costo effettivo dell'alloggio (House Hacking)",
+      "description": "Stima il costo effettivo personale dell'alloggio detraendo i canoni incassati da coinquilini o altre unità.",
+      "how": "Inserisci mutuo, imposte e assicurazione, condominio, utenze, riserva manutenzione, canoni incassati dagli inquilini e margine di sfitto.",
+      "limits": "Calcolo di pianificazione dei flussi di cassa. Esclude l'ammortamento del debito residuo, la rivalutazione dell'immobile e le imposte personali.",
+      "question": "Il costo effettivo dell'alloggio può essere negativo?",
+      "answer": "Sì. Se i canoni incassati superano le spese abitative totali del mese, il costo netto è negativo, consentendo di vivere a costo zero con surplus di cassa."
     }
   },
   "flexOptions": {
@@ -1311,6 +1375,279 @@
         "brzyckiEstimate": "Valore calcolato con formula Brzycki"
       },
       "note": "Le equazioni per la stima del carico massimale offrono la massima attendibilità tra 2 e 10 ripetizioni. Oltre le 10 ripetizioni la resistenza altera la stima della forza esplosiva neuromuscolare.",
+      "textResults": {}
+    },
+    "rental-property-cash-flow-calculator": {
+      "fields": {
+        "rent": {
+          "label": "Canone mensile ($)"
+        },
+        "income": {
+          "label": "Altri redditi mensili ($)"
+        },
+        "vacancy": {
+          "label": "Tolleranza per sfitti (%)"
+        },
+        "tax": {
+          "label": "Imposta sugli immobili mensile ($)"
+        },
+        "insurance": {
+          "label": "Assicurazione mensile ($)"
+        },
+        "maintenance": {
+          "label": "Manutenzione mensile ($)"
+        },
+        "management": {
+          "label": "Gestione mensile ($)"
+        },
+        "hoa": {
+          "label": "Spese condominiali mensili ($)"
+        },
+        "utilities": {
+          "label": "Utenze a carico del proprietario ($)"
+        },
+        "other": {
+          "label": "Altre spese operative ($)"
+        },
+        "debt": {
+          "label": "Servizio del debito / mutuo mensile ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Reddito locativo effettivo",
+        "operatingExpenses": "Spese operative",
+        "noi": "Risultato operativo netto mensile (NOI)",
+        "debtService": "Servizio del debito (dopo il NOI)",
+        "monthlyCashFlow": "Flusso di cassa mensile",
+        "annualCashFlow": "Flusso di cassa annuale"
+      },
+      "note": "Il NOI sottrae le spese operative dal reddito effettivo ed esclude il mutuo. Il servizio del debito viene dedotto successivamente per stimare il flusso di cassa.",
+      "textResults": {}
+    },
+    "rental-yield-calculator": {
+      "fields": {
+        "value": {
+          "label": "Valore dell'immobile o prezzo di acquisto ($)"
+        },
+        "monthlyRent": {
+          "label": "Canone mensile ($)"
+        },
+        "annualRent": {
+          "label": "Sostituzione opzionale del canone annuo ($)",
+          "help": "Se maggiore di zero, questo valore sostituisce il canone mensile × 12."
+        },
+        "expenses": {
+          "label": "Spese operative annue ($)"
+        }
+      },
+      "results": {
+        "annualRent": "Reddito da locazione annuo",
+        "netIncome": "Canone al netto delle spese inserite",
+        "grossYield": "Rendimento lordo da locazione",
+        "netYield": "Rendimento netto da locazione"
+      },
+      "note": "Il rendimento lordo è canone annuo ÷ valore dell'immobile. Il rendimento netto sottrae prima le spese inserite; finanziamento e imposte personali non sono inclusi.",
+      "textResults": {}
+    },
+    "cap-rate-calculator": {
+      "fields": {
+        "value": {
+          "label": "Valore dell'immobile o prezzo di acquisto ($)"
+        },
+        "rent": {
+          "label": "Canone di locazione annuo ($)"
+        },
+        "vacancy": {
+          "label": "Quota sfitti (%)"
+        },
+        "expenses": {
+          "label": "Spese operative annue ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Reddito annuo effettivo",
+        "noi": "Risultato operativo netto",
+        "capRate": "Tasso di capitalizzazione"
+      },
+      "note": "Il cap rate è pari a NOI ÷ valore dell'immobile. Il NOI esclude il debito del mutuo, l'ammortamento, le imposte e le spese straordinarie.",
+      "textResults": {}
+    },
+    "cash-on-cash-return-calculator": {
+      "fields": {
+        "down": {
+          "label": "Anticipo ($)"
+        },
+        "closing": {
+          "label": "Spese di chiusura / notarili ($)"
+        },
+        "rehab": {
+          "label": "Ristrutturazione e lavori iniziali ($)"
+        },
+        "other": {
+          "label": "Altri fondi iniziali ($)"
+        },
+        "cashFlow": {
+          "label": "Flusso di cassa annuo prima delle imposte ($)"
+        }
+      },
+      "results": {
+        "cashInvested": "Totale capitale investito",
+        "annualCashFlow": "Flusso di cassa annuo al lordo delle imposte",
+        "returnPercent": "Rendimento cash-on-cash"
+      },
+      "note": "Il rendimento cash-on-cash confronta il flusso di cassa annuo lordo con il capitale iniziale investito. Esclude rivalutazione, ammortamento del mutuo e imposte.",
+      "textResults": {}
+    },
+    "brrrr-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Prezzo di acquisto ($)"
+        },
+        "purchaseCosts": {
+          "label": "Costi di acquisto e notarili ($)"
+        },
+        "rehab": {
+          "label": "Spese di ristrutturazione ($)"
+        },
+        "arv": {
+          "label": "Valore post-ristrutturazione (ARV) ($)"
+        },
+        "ltv": {
+          "label": "LTV del rifinanziamento (%)"
+        },
+        "refiCosts": {
+          "label": "Spese di rifinanziamento ($)"
+        },
+        "rent": {
+          "label": "Canone mensile ($)"
+        },
+        "vacancy": {
+          "label": "Sfitto stimato (%)"
+        },
+        "expenses": {
+          "label": "Spese operative mensili ($)"
+        },
+        "debt": {
+          "label": "Servizio del debito mensile stimato ($)"
+        }
+      },
+      "results": {
+        "totalProjectCash": "Liquidità investita prima del rifinanziamento",
+        "refinanceLoan": "Importo stimato del nuovo mutuo",
+        "cashRecovered": "Liquidità recuperata al netto dei costi",
+        "cashLeftInDeal": "Capitale residuo nell'operazione",
+        "monthlyCashFlow": "Flusso di cassa mensile",
+        "annualCashFlow": "Flusso di cassa annuale",
+        "cashOnCashPercent": "Cash-on-cash post-rifinanziamento"
+      },
+      "note": "Il ricavo del rifinanziamento, valore, costi, affitto, sfitto e servizio del debito sono stime. L'approvazione del mutuo, la perizia e le riparazioni impreviste non sono modellate.",
+      "textResults": {}
+    },
+    "fix-and-flip-profit-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Prezzo di acquisto ($)"
+        },
+        "acquisition": {
+          "label": "Spese di acquisto e notarili ($)"
+        },
+        "rehab": {
+          "label": "Spese di ristrutturazione ($)"
+        },
+        "financing": {
+          "label": "Costi finanziari e interessi ($)"
+        },
+        "holding": {
+          "label": "Costi di detenzione ($)"
+        },
+        "sale": {
+          "label": "Prezzo di vendita ($)"
+        },
+        "sellingCosts": {
+          "label": "Spese di vendita e provvigioni ($)"
+        },
+        "other": {
+          "label": "Altri costi ($)"
+        }
+      },
+      "results": {
+        "costBasis": "Base di costo prima delle spese di vendita",
+        "netSaleProceeds": "Ricavo netto della vendita",
+        "profit": "Utile stimato",
+        "roiPercent": "ROI sulla base di costo",
+        "profitMarginPercent": "Margine di profitto sul prezzo di vendita",
+        "breakEvenSalePrice": "Prezzo di vendita di pareggio"
+      },
+      "note": "Questa stima previsionale esclude conclusioni fiscali o legali. I costi effettivi possono variare con l'entità dei lavori, i tempi, i tassi di finanziamento e il mercato.",
+      "textResults": {}
+    },
+    "short-term-rental-break-even-calculator": {
+      "fields": {
+        "nightlyRate": {
+          "label": "Tariffa media giornaliera ($)"
+        },
+        "availableNights": {
+          "label": "Notti disponibili al mese"
+        },
+        "occupancy": {
+          "label": "Tasso di occupazione previsto (%)"
+        },
+        "variableCost": {
+          "label": "Costo variabile per notte occupata ($)"
+        },
+        "fixedCosts": {
+          "label": "Costi fissi di gestione mensili ($)"
+        },
+        "platformFee": {
+          "label": "Commissioni di piattaforma e pagamento (%)"
+        }
+      },
+      "results": {
+        "occupiedNights": "Notti occupate",
+        "grossRevenue": "Ricavi lordi delle prenotazioni",
+        "platformFees": "Commissioni di piattaforma",
+        "totalCosts": "Totale costi mensili",
+        "monthlyProfit": "Utile mensile stimato",
+        "breakEvenOccupancy": "Occupazione di pareggio"
+      },
+      "note": "Esclude imposte sul reddito, ammortamento del mutuo, fluttuazioni stagionali e tasse locali di soggiorno per locazioni brevi.",
+      "textResults": {}
+    },
+    "house-hacking-effective-rent-calculator": {
+      "fields": {
+        "mortgage": {
+          "label": "Rata mensile del mutuo ($)"
+        },
+        "taxInsurance": {
+          "label": "Imposte immobiliari e assicurazione mensili ($)"
+        },
+        "hoa": {
+          "label": "Quota condominiale mensile ($)"
+        },
+        "utilities": {
+          "label": "Utenze pagate dal proprietario ($)"
+        },
+        "maintenance": {
+          "label": "Fondo di riserva per manutenzione mensile ($)"
+        },
+        "other": {
+          "label": "Altri costi mensili dell'immobile ($)"
+        },
+        "rentReceived": {
+          "label": "Canone mensile percepito previsto ($)"
+        },
+        "vacancy": {
+          "label": "Quota di sfitto prevista (%)"
+        }
+      },
+      "results": {
+        "grossHousingCost": "Costo abitativo lordo mensile",
+        "effectiveRentIncome": "Canoni incassati al netto degli sfitti",
+        "effectiveHousingCost": "Costo effettivo mensile dell'alloggio",
+        "annualEffectiveCost": "Costo effettivo annuo dell'alloggio",
+        "costOffsetPercent": "Percentuale dei costi coperta dall'affitto"
+      },
+      "note": "Calcolo di pianificazione del flusso di cassa. Esclude l'accumulo di capitale netto, la rivalutazione dell'immobile e le imposte.",
       "textResults": {}
     }
   },

@@ -395,6 +395,70 @@
       "limits": "A precisão é maior entre 2 e 10 repetições; acima de 10 repetições, a resistência muscular distorce o cálculo de força pura.",
       "question": "Qual a melhor equação para cálculo de 1RM?",
       "answer": "As fórmulas de Epley e Brzycki são as mais difundidas e consolidadas; utilizar a média entre ambas oferece excelente estabilidade."
+    },
+    "rental-property-cash-flow-calculator": {
+      "title": "Calculadora de fluxo de caixa de imóvel para aluguel",
+      "description": "Estime a receita efetiva de aluguel, despesas operacionais, NOI, serviço da dívida e o fluxo de caixa mensal ou anual.",
+      "how": "Insira o aluguel mensal, outras rendas, desocupação, impostos, seguro, manutenção, taxa de administração, condomínio e parcela do financiamento.",
+      "limits": "O NOI exclui juros e amortização da dívida. Despesas de capital, impostos de renda e valorização imobiliária exigem análises separadas.",
+      "question": "Por que o serviço da dívida hipotecária é excluído do NOI?",
+      "answer": "O NOI mede a produtividade operacional intrínseca do imóvel, independente de quanta alavancagem ou financiamento o investidor utiliza."
+    },
+    "rental-yield-calculator": {
+      "title": "Calculadora de rentabilidade do aluguel",
+      "description": "Calcule a renda anual de aluguel e a rentabilidade bruta e líquida ajustada às despesas do imóvel.",
+      "how": "Insira o preço de compra ou valor de mercado, o aluguel mensal, aluguel anual opcional e despesas operacionais anuais.",
+      "limits": "Custos de financiamento, impostos de renda, valorização do imóvel e reformas estruturais não estão incluídos.",
+      "question": "Qual é a diferença entre rentabilidade bruta e rentabilidade líquida?",
+      "answer": "A rentabilidade bruta compara a receita anual total ao valor do imóvel, enquanto a rentabilidade líquida deduz as despesas operacionais antes da divisão."
+    },
+    "cap-rate-calculator": {
+      "title": "Calculadora de taxa de capitalização (Cap Rate)",
+      "description": "Calcule a receita efetiva de aluguel, o NOI e a taxa de capitalização sem incluir o serviço da dívida no NOI.",
+      "how": "Insira o valor ou preço de compra, renda de aluguel anual, percentual de vacância e despesas operacionais anuais.",
+      "limits": "O cap rate avalia a lucratividade operacional sem alavancagem; financiamento, depreciação e impostos de renda ficam fora do NOI.",
+      "question": "Quando devo utilizar a taxa de capitalização?",
+      "answer": "O cap rate é ideal para comparar o potencial de rendimento operacional entre diferentes imóveis no mesmo mercado sem distorção de dívida."
+    },
+    "cash-on-cash-return-calculator": {
+      "title": "Calculadora de retorno cash-on-cash",
+      "description": "Calcule o capital inicial total investido e o retorno cash-on-cash antes dos impostos sobre o fluxo de caixa.",
+      "how": "Insira a entrada, custos de fechamento, reformas iniciais, outros recursos iniciais e o fluxo de caixa anual antes dos impostos.",
+      "limits": "Mede o rendimento financeiro sobre o capital próprio investido; exclui amortização da dívida, valorização a longo prazo e benefícios fiscais.",
+      "question": "Por que o retorno cash-on-cash varia com a alavancagem?",
+      "answer": "A hipoteca reduz o capital inicial necessário, mas consome parte do fluxo com parcelas, amplificando retornos ou perdas financeiras."
+    },
+    "brrrr-calculator": {
+      "title": "Calculadora de estratégia BRRRR",
+      "description": "Estime o capital no projeto BRRRR, refinanciamento, dinheiro retido no negócio, fluxo de caixa e retorno final.",
+      "how": "Insira preço de compra, custos de aquisição, orçamento da reforma, valor pós-reforma, LTV do refinanciamento, taxas, aluguel e despesas.",
+      "limits": "Não avalia critérios de aprovação de crédito bancário, prazos mínimos exigidos pelo banco ou variações no laudo de avaliação.",
+      "question": "O que significa capital retido no negócio?",
+      "answer": "É o montante de capital próprio que continua imobilizado no imóvel depois que o novo empréstimo devolve os custos de compra e reforma."
+    },
+    "fix-and-flip-profit-calculator": {
+      "title": "Calculadora de lucro para compra e revenda (Fix & Flip)",
+      "description": "Estime a base de custos de compra e revenda, receita líquida, lucro, ROI, margem e preço de venda de equilíbrio.",
+      "how": "Insira preço de compra, custos de escritura, reforma, juros e financiamento, custos de manutenção, preço de venda e comissões.",
+      "limits": "Modelo estimativo. Exclui tributação de ganho de capital, impostos de transmissão locais, penalidades por atraso e imprevistos estruturais.",
+      "question": "O que é o preço de venda de equilíbrio?",
+      "answer": "O preço mínimo de venda necessário para recuperar todos os gastos de compra, reforma, manutenção, juros e corretagem sem prejuízo."
+    },
+    "short-term-rental-break-even-calculator": {
+      "title": "Calculadora de ponto de equilíbrio para aluguel por temporada",
+      "description": "Estime a receita de locação por temporada, custos operacionais, lucro mensal e a ocupação para atingir o equilíbrio.",
+      "how": "Insira a diária média, noites disponíveis, ocupação prevista, custo variável por estadia, despesas fixas e comissão das plataformas.",
+      "limits": "Exclui taxas de turismo locais, oscilações acentuadas de sazonalidade, precificação dinâmica e licenças municipais obrigatórias.",
+      "question": "O que é a taxa de ocupação de equilíbrio para um aluguel de temporada?",
+      "answer": "O percentual de diárias alugadas por mês necessário para que a margem cubra integralmente os custos fixos de manutenção e condomínio."
+    },
+    "house-hacking-effective-rent-calculator": {
+      "title": "Calculadora de custo efetivo de moradia (House Hacking)",
+      "description": "Estime seu custo efetivo de moradia após abater a renda de aluguel recebida de inquilinos ou colegas.",
+      "how": "Insira prestação do financiamento, impostos e seguro, condomínio, contas de consumo, reserva de manutenção, aluguéis recebidos e vacância.",
+      "limits": "Cálculo de planejamento de fluxo de caixa. Exclui amortização de saldo devedor, valorização patrimonial e impostos sobre a renda.",
+      "question": "O custo efetivo de moradia pode ser negativo?",
+      "answer": "Sim. Se o aluguel recebido dos inquilinos superar o total dos gastos de moradia, o custo líquido é negativo, permitindo morar de graça e ter lucro."
     }
   },
   "flexOptions": {
@@ -1311,6 +1375,279 @@
         "brzyckiEstimate": "Resultado pela fórmula de Brzycki"
       },
       "note": "Equações submáximas têm melhor acurácia na faixa de 2 a 10 repetições. Séries com mais de 10 repetições recrutam predominantemente resistência metabólica, distorcendo o teto de força neuromuscular.",
+      "textResults": {}
+    },
+    "rental-property-cash-flow-calculator": {
+      "fields": {
+        "rent": {
+          "label": "Aluguel mensal ($)"
+        },
+        "income": {
+          "label": "Outras rendas mensais ($)"
+        },
+        "vacancy": {
+          "label": "Provisão para desocupação (%)"
+        },
+        "tax": {
+          "label": "Imposto predial mensal ($)"
+        },
+        "insurance": {
+          "label": "Seguro mensal ($)"
+        },
+        "maintenance": {
+          "label": "Manutenção mensal ($)"
+        },
+        "management": {
+          "label": "Gestão mensal ($)"
+        },
+        "hoa": {
+          "label": "Condomínio mensal ($)"
+        },
+        "utilities": {
+          "label": "Serviços públicos pagos pelo proprietário ($)"
+        },
+        "other": {
+          "label": "Outras despesas operacionais ($)"
+        },
+        "debt": {
+          "label": "Serviço da dívida / hipoteca mensal ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Renda de aluguel efetiva",
+        "operatingExpenses": "Despesas operacionais",
+        "noi": "Receita operacional líquida mensal (NOI)",
+        "debtService": "Serviço da dívida (após NOI)",
+        "monthlyCashFlow": "Fluxo de caixa mensal",
+        "annualCashFlow": "Fluxo de caixa anual"
+      },
+      "note": "O NOI subtrai despesas operacionais da renda efetiva e exclui financiamento. O serviço da dívida é deduzido depois para estimar o fluxo de caixa.",
+      "textResults": {}
+    },
+    "rental-yield-calculator": {
+      "fields": {
+        "value": {
+          "label": "Valor do imóvel ou preço de compra ($)"
+        },
+        "monthlyRent": {
+          "label": "Aluguel mensal ($)"
+        },
+        "annualRent": {
+          "label": "Substituição opcional do aluguel anual ($)",
+          "help": "Quando maior que zero, substitui o cálculo de aluguel mensal × 12."
+        },
+        "expenses": {
+          "label": "Despesas operacionais anuais ($)"
+        }
+      },
+      "results": {
+        "annualRent": "Renda de aluguel anual",
+        "netIncome": "Aluguel após despesas informadas",
+        "grossYield": "Rentabilidade bruta do aluguel",
+        "netYield": "Rentabilidade líquida do aluguel"
+      },
+      "note": "A rentabilidade bruta é o aluguel anual ÷ valor do imóvel. A líquida deduz as despesas operacionais informadas; financiamento e impostos de renda não estão incluídos.",
+      "textResults": {}
+    },
+    "cap-rate-calculator": {
+      "fields": {
+        "value": {
+          "label": "Valor do imóvel ou preço de compra ($)"
+        },
+        "rent": {
+          "label": "Renda de aluguel anual ($)"
+        },
+        "vacancy": {
+          "label": "Provisão para vacância (%)"
+        },
+        "expenses": {
+          "label": "Despesas operacionais anuais ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Renda anual efetiva",
+        "noi": "Receita operacional líquida",
+        "capRate": "Taxa de capitalização"
+      },
+      "note": "A taxa de capitalização é NOI ÷ valor do imóvel. O NOI exclui dívida hipotecária, depreciação, imposto de renda e despesas de capital.",
+      "textResults": {}
+    },
+    "cash-on-cash-return-calculator": {
+      "fields": {
+        "down": {
+          "label": "Entrada / pagamento inicial ($)"
+        },
+        "closing": {
+          "label": "Custos de escritura e fechamento ($)"
+        },
+        "rehab": {
+          "label": "Reforma e reformas iniciais ($)"
+        },
+        "other": {
+          "label": "Outros recursos iniciais ($)"
+        },
+        "cashFlow": {
+          "label": "Fluxo de caixa anual antes dos impostos ($)"
+        }
+      },
+      "results": {
+        "cashInvested": "Total de capital investido",
+        "annualCashFlow": "Fluxo de caixa anual antes dos impostos",
+        "returnPercent": "Retorno cash-on-cash"
+      },
+      "note": "O retorno cash-on-cash compara o fluxo de caixa anual pré-impostos ao capital inicial investido. Exclui valorização, amortização de dívida e benefícios fiscais.",
+      "textResults": {}
+    },
+    "brrrr-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Preço de compra ($)"
+        },
+        "purchaseCosts": {
+          "label": "Custos de compra e escritura ($)"
+        },
+        "rehab": {
+          "label": "Custos de reforma ($)"
+        },
+        "arv": {
+          "label": "Valor pós-reforma (ARV) ($)"
+        },
+        "ltv": {
+          "label": "LTV de refinanciamento (%)"
+        },
+        "refiCosts": {
+          "label": "Custos de refinanciamento ($)"
+        },
+        "rent": {
+          "label": "Aluguel mensal ($)"
+        },
+        "vacancy": {
+          "label": "Vacância (%)"
+        },
+        "expenses": {
+          "label": "Despesas operacionais mensais ($)"
+        },
+        "debt": {
+          "label": "Serviço da dívida mensal estimado ($)"
+        }
+      },
+      "results": {
+        "totalProjectCash": "Capital no projeto antes do refinanciamento",
+        "refinanceLoan": "Empréstimo estimado de refinanciamento",
+        "cashRecovered": "Capital recuperado após custos de refinanciamento",
+        "cashLeftInDeal": "Capital retido na operação",
+        "monthlyCashFlow": "Fluxo de caixa mensal",
+        "annualCashFlow": "Fluxo de caixa anual",
+        "cashOnCashPercent": "Cash-on-cash pós-refinanciamento"
+      },
+      "note": "Os valores de refinanciamento, custos, aluguel, vacância e dívida são estimativas. Aprovação bancária, avaliação pericial e imprevistos não são modelados.",
+      "textResults": {}
+    },
+    "fix-and-flip-profit-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Preço de compra ($)"
+        },
+        "acquisition": {
+          "label": "Custos de aquisição e escritura ($)"
+        },
+        "rehab": {
+          "label": "Custo de reforma ($)"
+        },
+        "financing": {
+          "label": "Financiamento e juros ($)"
+        },
+        "holding": {
+          "label": "Custos de manutenção do imóvel ($)"
+        },
+        "sale": {
+          "label": "Preço de venda ($)"
+        },
+        "sellingCosts": {
+          "label": "Comissões e custos de venda ($)"
+        },
+        "other": {
+          "label": "Outros custos ($)"
+        }
+      },
+      "results": {
+        "costBasis": "Base de custo antes dos custos de venda",
+        "netSaleProceeds": "Receita líquida da venda",
+        "profit": "Lucro estimado",
+        "roiPercent": "Retorno sobre a base de custo (ROI)",
+        "profitMarginPercent": "Margem de lucro sobre o preço de venda",
+        "breakEvenSalePrice": "Preço de venda de equilíbrio"
+      },
+      "note": "Esta estimativa não constitui parecer fiscal ou jurídico. Os custos reais podem mudar com o escopo da obra, tempo, taxas de financiamento e condições de mercado.",
+      "textResults": {}
+    },
+    "short-term-rental-break-even-calculator": {
+      "fields": {
+        "nightlyRate": {
+          "label": "Diária média ($)"
+        },
+        "availableNights": {
+          "label": "Noites disponíveis por mês"
+        },
+        "occupancy": {
+          "label": "Ocupação esperada (%)"
+        },
+        "variableCost": {
+          "label": "Custo variável por noite ocupada ($)"
+        },
+        "fixedCosts": {
+          "label": "Custos fixos operacionais mensais ($)"
+        },
+        "platformFee": {
+          "label": "Taxas de plataforma e pagamento (%)"
+        }
+      },
+      "results": {
+        "occupiedNights": "Noites ocupadas",
+        "grossRevenue": "Receita bruta de reservas",
+        "platformFees": "Taxas de plataforma e processamento",
+        "totalCosts": "Custos mensais totais",
+        "monthlyProfit": "Lucro mensal estimado",
+        "breakEvenOccupancy": "Ocupação de equilíbrio"
+      },
+      "note": "Exclui imposto de renda, amortização da dívida, flutuações sazonais e taxas municipais de hospedagem por temporada.",
+      "textResults": {}
+    },
+    "house-hacking-effective-rent-calculator": {
+      "fields": {
+        "mortgage": {
+          "label": "Parcela mensal do financiamento ($)"
+        },
+        "taxInsurance": {
+          "label": "Imposto predial e seguro mensais ($)"
+        },
+        "hoa": {
+          "label": "Condomínio mensal ($)"
+        },
+        "utilities": {
+          "label": "Contas de consumo pagas pelo proprietário ($)"
+        },
+        "maintenance": {
+          "label": "Fundo de reserva mensal para manutenção ($)"
+        },
+        "other": {
+          "label": "Outros custos mensais de moradia ($)"
+        },
+        "rentReceived": {
+          "label": "Aluguel mensal esperado a receber ($)"
+        },
+        "vacancy": {
+          "label": "Margem de vacância do aluguel (%)"
+        }
+      },
+      "results": {
+        "grossHousingCost": "Custo bruto mensal de moradia",
+        "effectiveRentIncome": "Renda de aluguel ajustada pela vacância",
+        "effectiveHousingCost": "Custo efetivo mensal de moradia",
+        "annualEffectiveCost": "Custo efetivo anual de moradia",
+        "costOffsetPercent": "Despesas de moradia compensadas pelo aluguel"
+      },
+      "note": "Cálculo de planejamento de fluxo de caixa. Exclui amortização de saldo, valorização patrimonial, impostos e custos de fechamento.",
       "textResults": {}
     }
   },

@@ -27,6 +27,14 @@ export const localizedCalculatorSlugs = [
   'running-pace-calculator',
   'hydration-calculator',
   'one-rep-max-calculator',
+  'rental-property-cash-flow-calculator',
+  'rental-yield-calculator',
+  'cap-rate-calculator',
+  'cash-on-cash-return-calculator',
+  'brrrr-calculator',
+  'fix-and-flip-profit-calculator',
+  'short-term-rental-break-even-calculator',
+  'house-hacking-effective-rent-calculator',
 ] as const;
 export type LocalizedCalculatorSlug = (typeof localizedCalculatorSlugs)[number];
 export const isLocalizedCalculator = (slug: string): slug is LocalizedCalculatorSlug =>

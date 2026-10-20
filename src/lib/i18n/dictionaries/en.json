@@ -395,6 +395,70 @@
       "limits": "Submaximal formulas are most reliable between 2 and 10 repetitions; high-repetition sets (>10 reps) test muscular endurance rather than true maximal strength.",
       "question": "Which formula is best for calculating 1RM?",
       "answer": "The Epley and Brzycki formulas are the most established standards; averaging both provides a reliable consensus estimate for most lifters."
+    },
+    "rental-property-cash-flow-calculator": {
+      "title": "Rental Property Cash Flow Calculator",
+      "description": "Estimate effective rental income, operating expenses, NOI, debt service, and monthly or annual property cash flow.",
+      "how": "Enter monthly rent, other income, vacancy allowance, property taxes, insurance, maintenance, management fees, HOA, utilities, and mortgage payments.",
+      "limits": "NOI excludes debt service principal and interest. Capital expenditures, income taxes, appreciation, and transaction fees require separate analysis.",
+      "question": "Why is mortgage debt service excluded from NOI?",
+      "answer": "NOI measures the fundamental operating productivity of the property itself, independent of how much leverage or financing a specific buyer uses."
+    },
+    "rental-yield-calculator": {
+      "title": "Rental Yield Calculator",
+      "description": "Calculate annual rental income plus gross and expense-adjusted net rental yield from property value.",
+      "how": "Enter the purchase price or estimated market value, monthly rent, optional annual rent override, and annual operating expenses.",
+      "limits": "Financing costs, personal income taxes, property appreciation, and irregular capital repairs are not automatically added.",
+      "question": "What is the difference between gross yield and net yield?",
+      "answer": "Gross yield compares total annual rental revenue directly to property value, while net yield subtracts operating expenses before dividing by value."
+    },
+    "cap-rate-calculator": {
+      "title": "Cap Rate Calculator",
+      "description": "Calculate effective rental income, net operating income, and capitalization rate without including mortgage debt service in NOI.",
+      "how": "Enter the property value or purchase price, annual rental income, vacancy allowance percentage, and annual operating expenses.",
+      "limits": "Cap rate evaluates unleveraged operational profitability; mortgage debt service, depreciation, and income taxes are excluded from NOI.",
+      "question": "When should I use capitalization rate?",
+      "answer": "Cap rate is ideal for comparing the unleveraged earning potential of different commercial or residential properties across a local market."
+    },
+    "cash-on-cash-return-calculator": {
+      "title": "Cash-on-Cash Return Calculator",
+      "description": "Calculate total initial cash invested and pre-tax cash-on-cash return from annual property cash flow.",
+      "how": "Enter your down payment, closing costs, rehab and upfront improvement expenses, other initial cash, and annual pre-tax cash flow.",
+      "limits": "Measures cash yield on initial cash invested; excludes loan amortization equity paydown, long-term appreciation, and tax benefits.",
+      "question": "Why does cash-on-cash return change with leverage?",
+      "answer": "A mortgage lowers required initial cash while taking debt service from cash flow, which magnifies positive or negative returns on cash."
+    },
+    "brrrr-calculator": {
+      "title": "BRRRR Calculator",
+      "description": "Estimate BRRRR project cash, refinance proceeds, cash left in the deal, rental cash flow, and post-refinance return.",
+      "how": "Enter purchase price, purchase costs, rehab budget, after-repair value, refinance loan-to-value, refinance costs, rent, vacancy, expenses, and debt service.",
+      "limits": "Does not evaluate bank underwriting criteria, seasoning rules, appraisal discrepancies, lender reserve covenants, or local tenant laws.",
+      "question": "What does cash left in the deal mean?",
+      "answer": "It is the net capital still locked in the property after the new refinance loan pays back purchase, closing, and renovation expenditures."
+    },
+    "fix-and-flip-profit-calculator": {
+      "title": "Fix and Flip Profit Calculator",
+      "description": "Estimate a property flip cost basis, net sale proceeds, profit, ROI, margin, and break-even sale price.",
+      "how": "Enter acquisition price, purchase closing costs, rehab budget, financing and interest fees, holding costs, selling price, and commissions.",
+      "limits": "Planning model only. Excludes capital gains taxation, local transfer levies, contractor delay penalties, and unexpected structural repairs.",
+      "question": "What is the break-even sale price?",
+      "answer": "The minimum final selling price required to recover all acquisition, rehabilitation, holding, financing, and disposition expenses without a loss."
+    },
+    "short-term-rental-break-even-calculator": {
+      "title": "Short-Term Rental Break-Even Calculator",
+      "description": "Estimate short-term rental revenue, operating costs, monthly profit and the occupancy rate required to break even.",
+      "how": "Enter the average nightly rate, available calendar nights, expected occupancy, variable cleaning/laundry cost, fixed overhead, and platform fees.",
+      "limits": "Excludes hospitality lodging taxes, seasonal booking variations, dynamic pricing strategies, and local short-term registration licensing.",
+      "question": "What is break-even occupancy for a vacation rental?",
+      "answer": "The percentage of nights booked each month needed to generate enough net contribution to fully pay fixed utilities, HOA, and base overhead."
+    },
+    "house-hacking-effective-rent-calculator": {
+      "title": "House Hacking Effective Rent Calculator",
+      "description": "Estimate your effective personal housing cost after rent received from roommates, units or other occupants.",
+      "how": "Enter mortgage payments, property tax and insurance, HOA fees, owner utilities, maintenance reserves, expected tenant rents, and vacancy allowance.",
+      "limits": "Cash-flow planning calculation. Excludes principal accumulation, property appreciation, income taxes, and transaction closing costs.",
+      "question": "Can effective housing cost be negative?",
+      "answer": "Yes. If rental income from tenants exceeds total monthly housing expenses, your net housing cost is negative, meaning you live for free and pocket surplus cash flow."
     }
   },
   "flexOptions": {
@@ -1311,6 +1375,279 @@
         "brzyckiEstimate": "Brzycki formula result"
       },
       "note": "Submaximal rep-max formulas are most accurate when tested between 2 and 10 repetitions. As repetitions exceed 10, muscular endurance skews single-effort neuromuscular maximum estimates.",
+      "textResults": {}
+    },
+    "rental-property-cash-flow-calculator": {
+      "fields": {
+        "rent": {
+          "label": "Monthly rent ($)"
+        },
+        "income": {
+          "label": "Other monthly income ($)"
+        },
+        "vacancy": {
+          "label": "Vacancy allowance (%)"
+        },
+        "tax": {
+          "label": "Monthly property tax ($)"
+        },
+        "insurance": {
+          "label": "Monthly insurance ($)"
+        },
+        "maintenance": {
+          "label": "Monthly maintenance ($)"
+        },
+        "management": {
+          "label": "Monthly management ($)"
+        },
+        "hoa": {
+          "label": "Monthly HOA ($)"
+        },
+        "utilities": {
+          "label": "Owner-paid utilities ($)"
+        },
+        "other": {
+          "label": "Other operating expenses ($)"
+        },
+        "debt": {
+          "label": "Monthly mortgage/debt service ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Effective rental income",
+        "operatingExpenses": "Operating expenses",
+        "noi": "Monthly NOI",
+        "debtService": "Debt service (after NOI)",
+        "monthlyCashFlow": "Monthly cash flow",
+        "annualCashFlow": "Annual cash flow"
+      },
+      "note": "NOI subtracts operating expenses from effective income and deliberately excludes mortgage principal and interest. Debt service is deducted afterward to estimate cash flow.",
+      "textResults": {}
+    },
+    "rental-yield-calculator": {
+      "fields": {
+        "value": {
+          "label": "Property value or purchase price ($)"
+        },
+        "monthlyRent": {
+          "label": "Monthly rent ($)"
+        },
+        "annualRent": {
+          "label": "Optional annual rent override ($)",
+          "help": "When greater than zero, this replaces monthly rent × 12."
+        },
+        "expenses": {
+          "label": "Annual operating expenses ($)"
+        }
+      },
+      "results": {
+        "annualRent": "Annual rental income",
+        "netIncome": "Rent after entered expenses",
+        "grossYield": "Gross rental yield",
+        "netYield": "Net rental yield"
+      },
+      "note": "Gross yield is annual rent ÷ property value. Net yield subtracts the entered operating expenses first; financing and taxes on your personal income are not included.",
+      "textResults": {}
+    },
+    "cap-rate-calculator": {
+      "fields": {
+        "value": {
+          "label": "Property value or purchase price ($)"
+        },
+        "rent": {
+          "label": "Annual rental income ($)"
+        },
+        "vacancy": {
+          "label": "Vacancy allowance (%)"
+        },
+        "expenses": {
+          "label": "Annual operating expenses ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Effective annual income",
+        "noi": "Net operating income",
+        "capRate": "Capitalization rate"
+      },
+      "note": "Cap rate equals NOI ÷ property value. NOI excludes mortgage/debt service, depreciation, income tax, and capital expenditures unless you deliberately include an allowance in operating expenses.",
+      "textResults": {}
+    },
+    "cash-on-cash-return-calculator": {
+      "fields": {
+        "down": {
+          "label": "Down payment ($)"
+        },
+        "closing": {
+          "label": "Closing costs ($)"
+        },
+        "rehab": {
+          "label": "Rehab and initial work ($)"
+        },
+        "other": {
+          "label": "Other initial cash ($)"
+        },
+        "cashFlow": {
+          "label": "Annual pre-tax cash flow ($)"
+        }
+      },
+      "results": {
+        "cashInvested": "Total cash invested",
+        "annualCashFlow": "Annual pre-tax cash flow",
+        "returnPercent": "Cash-on-cash return"
+      },
+      "note": "Cash-on-cash return compares annual pre-tax cash flow with initial cash invested. It excludes appreciation, principal paydown, sale proceeds, and tax effects.",
+      "textResults": {}
+    },
+    "brrrr-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Purchase price ($)"
+        },
+        "purchaseCosts": {
+          "label": "Purchase and closing costs ($)"
+        },
+        "rehab": {
+          "label": "Rehab costs ($)"
+        },
+        "arv": {
+          "label": "After-repair value ($)"
+        },
+        "ltv": {
+          "label": "Refinance LTV (%)"
+        },
+        "refiCosts": {
+          "label": "Refinance costs ($)"
+        },
+        "rent": {
+          "label": "Monthly rent ($)"
+        },
+        "vacancy": {
+          "label": "Vacancy (%)"
+        },
+        "expenses": {
+          "label": "Monthly operating expenses ($)"
+        },
+        "debt": {
+          "label": "Estimated monthly debt service ($)"
+        }
+      },
+      "results": {
+        "totalProjectCash": "Project cash before refinance",
+        "refinanceLoan": "Estimated refinance loan",
+        "cashRecovered": "Cash recovered after refi costs",
+        "cashLeftInDeal": "Cash left in deal",
+        "monthlyCashFlow": "Monthly cash flow",
+        "annualCashFlow": "Annual cash flow",
+        "cashOnCashPercent": "Post-refinance cash-on-cash"
+      },
+      "note": "Refinance proceeds, value, costs, rent, vacancy, and debt service are estimates. Lending approval, appraisal, seasoning rules, taxes, reserves, and unplanned repairs are not modeled.",
+      "textResults": {}
+    },
+    "fix-and-flip-profit-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Purchase price ($)"
+        },
+        "acquisition": {
+          "label": "Acquisition and closing costs ($)"
+        },
+        "rehab": {
+          "label": "Rehab cost ($)"
+        },
+        "financing": {
+          "label": "Financing and interest ($)"
+        },
+        "holding": {
+          "label": "Holding costs ($)"
+        },
+        "sale": {
+          "label": "Selling price ($)"
+        },
+        "sellingCosts": {
+          "label": "Selling costs and commission ($)"
+        },
+        "other": {
+          "label": "Other costs ($)"
+        }
+      },
+      "results": {
+        "costBasis": "Cost basis before sale costs",
+        "netSaleProceeds": "Net sale proceeds",
+        "profit": "Estimated profit",
+        "roiPercent": "ROI on cost basis",
+        "profitMarginPercent": "Profit margin on sale price",
+        "breakEvenSalePrice": "Break-even sale price"
+      },
+      "note": "This planning estimate excludes tax and legal conclusions. Actual costs can change with project scope, time, financing terms, inspections, market conditions, and transaction details.",
+      "textResults": {}
+    },
+    "short-term-rental-break-even-calculator": {
+      "fields": {
+        "nightlyRate": {
+          "label": "Average nightly rate ($)"
+        },
+        "availableNights": {
+          "label": "Available nights per month"
+        },
+        "occupancy": {
+          "label": "Expected occupancy (%)"
+        },
+        "variableCost": {
+          "label": "Variable cost per occupied night ($)"
+        },
+        "fixedCosts": {
+          "label": "Monthly fixed operating costs ($)"
+        },
+        "platformFee": {
+          "label": "Platform/payment fees (%)"
+        }
+      },
+      "results": {
+        "occupiedNights": "Occupied nights",
+        "grossRevenue": "Gross booking revenue",
+        "platformFees": "Platform/payment fees",
+        "totalCosts": "Total monthly costs",
+        "monthlyProfit": "Estimated monthly profit",
+        "breakEvenOccupancy": "Break-even occupancy"
+      },
+      "note": "Excludes income taxes, debt service principal paydown, seasonality fluctuations, and local short-term rental compliance fees.",
+      "textResults": {}
+    },
+    "house-hacking-effective-rent-calculator": {
+      "fields": {
+        "mortgage": {
+          "label": "Monthly mortgage payment ($)"
+        },
+        "taxInsurance": {
+          "label": "Monthly property tax and insurance ($)"
+        },
+        "hoa": {
+          "label": "Monthly HOA ($)"
+        },
+        "utilities": {
+          "label": "Owner-paid utilities ($)"
+        },
+        "maintenance": {
+          "label": "Monthly maintenance reserve ($)"
+        },
+        "other": {
+          "label": "Other monthly housing costs ($)"
+        },
+        "rentReceived": {
+          "label": "Expected monthly rent received ($)"
+        },
+        "vacancy": {
+          "label": "Rental vacancy allowance (%)"
+        }
+      },
+      "results": {
+        "grossHousingCost": "Gross monthly housing cost",
+        "effectiveRentIncome": "Vacancy-adjusted rent received",
+        "effectiveHousingCost": "Effective monthly housing cost",
+        "annualEffectiveCost": "Annual effective housing cost",
+        "costOffsetPercent": "Housing cost offset by rent"
+      },
+      "note": "Cash-flow planning calculation. Excludes principal accumulation, property appreciation, income taxes, and transaction closing costs.",
       "textResults": {}
     }
   },

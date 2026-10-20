@@ -395,6 +395,70 @@
       "limits": "Höchste Genauigkeit bei 2 bis 10 Wiederholungen; höhere Wiederholungszahlen spiegeln eher muskuläre Ausdauer wider.",
       "question": "Welche Formel ist am besten für die 1RM-Berechnung?",
       "answer": "Die Formeln von Epley und Brzycki sind die etabliertesten Verfahren; ihr Mittelwert liefert eine zuverlässige Schätzung."
+    },
+    "rental-property-cash-flow-calculator": {
+      "title": "Cashflow-Rechner für Mietimmobilien",
+      "description": "Berechnen Sie effektive Mieteinnahmen, Betriebsausgaben, NOI, Schuldendienst sowie den monatlichen oder jährlichen Cashflow.",
+      "how": "Geben Sie Monatsmiete, sonstige Einnahmen, Leerstand, Steuern, Versicherung, Instandhaltung, Verwaltungskosten, Hausgeld und Hypothekenzahlungen ein.",
+      "limits": "Der NOI schließt Tilgung und Zinsen des Schuldendienstes aus. Größere Instandsetzungen, Einkommensteuern und Wertsteigerung erfordern separate Berechnungen.",
+      "question": "Warum wird der Hypothekenschuldendienst aus dem NOI ausgeschlossen?",
+      "answer": "Der NOI misst die rein operative Leistungsfähigkeit der Immobilie selbst, unabhängig von Fremdkapitalquote oder Finanzierungsstruktur."
+    },
+    "rental-yield-calculator": {
+      "title": "Mietrendite-Rechner",
+      "description": "Berechnen Sie jährliche Mieteinnahmen sowie die Brutto- und ausgabenbereinigte Nettomietrendite aus dem Immobilienwert.",
+      "how": "Geben Sie Kaufpreis oder Marktwert, monatliche Miete, optionalen Jahresmietwert und jährliche Betriebskosten ein.",
+      "limits": "Finanzierungskosten, persönliche Einkommensteuern, Wertsteigerung und unregelmäßige Großreparaturen sind nicht enthalten.",
+      "question": "Was ist der Unterschied zwischen Brutto- und Nettomietrendite?",
+      "answer": "Die Bruttorendite setzt die Jahresbruttomiete ins Verhältnis zum Kaufpreis, während die Nettorendite zuvor alle Betriebskosten abzieht."
+    },
+    "cap-rate-calculator": {
+      "title": "Kapitalisierungszins-Rechner (Cap Rate)",
+      "description": "Berechnen Sie effektive Mieteinnahmen, Nettobetriebsertrag und die Cap-Rate ohne Schuldendienst im NOI.",
+      "how": "Geben Sie Immobilienwert oder Kaufpreis, jährliche Mieteinnahmen, Leerstandsquote und jährliche Betriebskosten ein.",
+      "limits": "Die Cap-Rate bewertet die fremdkapitalunabhängige Ertragskraft; Hypothekenschulden, Abschreibungen und Steuern bleiben im NOI unberücksichtigt.",
+      "question": "Wann sollte die Kapitalisierungsrate verwendet werden?",
+      "answer": "Die Cap-Rate eignet sich ideal zum objektiven Vergleich der Ertragskraft verschiedener Immobilien im Markt ohne Finanzierungseinflüsse."
+    },
+    "cash-on-cash-return-calculator": {
+      "title": "Cash-on-Cash-Rendite-Rechner",
+      "description": "Berechnen Sie das gesamte investierte Eigenkapital und die Vorsteuer-Cash-on-Cash-Rendite aus dem Cashflow.",
+      "how": "Geben Sie Anzahlung, Abschlusskosten, anfängliche Renovierungsausgaben, sonstige Barmittel und den Jahres-Cashflow vor Steuern ein.",
+      "limits": "Misst die reine Barrendite auf das eingesetzte Eigenkapital; schließt Tilgungsgewinne, langfristige Wertsteigerung und Steuereffekte aus.",
+      "question": "Warum verändert sich die Cash-on-Cash-Rendite durch Fremdkapitalhebel?",
+      "answer": "Ein Darlehen senkt den Eigenkapitalbedarf bei gleichzeitigem Schuldendienst, was Gewinne wie auch Verluste auf das Eigenkapital hebelt."
+    },
+    "brrrr-calculator": {
+      "title": "BRRRR-Strategie-Rechner",
+      "description": "Berechnen Sie BRRRR-Kapitalbedarf, Refinanzierungserlös, gebundenes Restkapital, Cashflow und die Nach-Refi-Rendite.",
+      "how": "Geben Sie Kaufpreis, Nebenkosten, Sanierungsbudget, Wert nach Sanierung, Beleihungsauslauf (LTV), Refinanzierungskosten und Mietdaten ein.",
+      "limits": "Prüft keine bankinternen Vergabekriterien, Haltefristen vor Refinanzierung, Gutachterabweichungen oder behördliche Auflagen.",
+      "question": "Was bedeutet im Geschäft verbleibendes Eigenkapital?",
+      "answer": "Es ist das eigene Kapital, das in der Immobilie gebunden bleibt, nachdem das neue Darlehen Kauf- und Sanierungskosten erstattet hat."
+    },
+    "fix-and-flip-profit-calculator": {
+      "title": "Fix-and-Flip-Gewinnrechner",
+      "description": "Berechnen Sie die Kostenbasis eines Flips, Nettoerlös, Gewinn, Rendite, Marge und den Break-Even-Verkaufspreis.",
+      "how": "Geben Sie Ankaufspreis, Kaufnebenkosten, Sanierungskosten, Finanzierungszinsen, Haltekosten, Verkaufspreis und Maklerprovisionen ein.",
+      "limits": "Reines Planungsmodell. Schließt Spekulationssteuern, Grunderwerbsteuerdetails, Bauverzögerungsstrafen und verdeckte Bauschäden aus.",
+      "question": "Was ist der Break-Even-Verkaufspreis?",
+      "answer": "Der Mindestverkaufspreis, der nötig ist, um alle Ankauf-, Sanierungs-, Halte-, Finanzierungs- und Vertriebskosten verlustfrei zu decken."
+    },
+    "short-term-rental-break-even-calculator": {
+      "title": "Break-Even-Rechner für Kurzzeitvermietung",
+      "description": "Berechnen Sie Einnahmen aus Kurzzeitvermietung, Betriebskosten, Monatsgewinn und die Break-Even-Auslastung.",
+      "how": "Geben Sie Durchschnittspreis pro Nacht, verfügbare Nächte, Auslastung, variable Reinigungskosten, fixe Betriebskosten und Plattformgebühren ein.",
+      "limits": "Schließt Kurtaxen, saisonale Nachfragespitzen, dynamische Preisalgorithmen und kommunale Registrierungsauflagen aus.",
+      "question": "Was ist die Break-Even-Auslastung bei Kurzzeitvermietung?",
+      "answer": "Der monatliche Buchungsprozentsatz, der erforderlich ist, damit der Deckungsbeitrag sämtliche fixen Wohn- und Betriebskosten deckt."
+    },
+    "house-hacking-effective-rent-calculator": {
+      "title": "House-Hacking-Wohnkostenrechner",
+      "description": "Berechnen Sie Ihre effektiven Wohnkosten nach Abzug der Mieteinnahmen von Mitbewohnern oder Mietern.",
+      "how": "Geben Sie Kreditrate, Grundsteuer/Versicherung, Hausgeld, Nebenkosten, Instandhaltungsrücklage, Mieteinnahmen und Leerstandspuffer ein.",
+      "limits": "Reine Liquiditätsberechnung. Schließt Vermögensaufbau durch Tilgung, Wertsteigerung, Einkommensteuern und Transaktionskosten aus.",
+      "question": "Können die effektiven Wohnkosten negativ sein?",
+      "answer": "Ja. Wenn die Mieteinnahmen höher sind als alle monatlichen Wohnkosten, ist das Ergebnis negativ: Sie wohnen mietfrei und erzielen Überschüsse."
     }
   },
   "flexOptions": {
@@ -1311,6 +1375,279 @@
         "brzyckiEstimate": "Ergebnis nach Brzycki-Formel"
       },
       "note": "Submaximale Formeln sind bei 2 bis 10 Wiederholungen am verlässlichsten. Bei mehr als 10 Wiederholungen verfälscht die muskuläre Ermüdungstoleranz die Schätzung der Maximalkraft.",
+      "textResults": {}
+    },
+    "rental-property-cash-flow-calculator": {
+      "fields": {
+        "rent": {
+          "label": "Monatliche Miete ($)"
+        },
+        "income": {
+          "label": "Sonstige monatliche Einnahmen ($)"
+        },
+        "vacancy": {
+          "label": "Leerstandsabschlag (%)"
+        },
+        "tax": {
+          "label": "Monatliche Grundsteuer ($)"
+        },
+        "insurance": {
+          "label": "Monatliche Versicherung ($)"
+        },
+        "maintenance": {
+          "label": "Monatliche Instandhaltung ($)"
+        },
+        "management": {
+          "label": "Monatliche Hausverwaltung ($)"
+        },
+        "hoa": {
+          "label": "Monatliches Hausgeld ($)"
+        },
+        "utilities": {
+          "label": "Vom Eigentümer bezahlte Nebenkosten ($)"
+        },
+        "other": {
+          "label": "Sonstige Betriebskosten ($)"
+        },
+        "debt": {
+          "label": "Monatlicher Schuldendienst / Hypothekenrate ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Effektive Mieteinnahmen",
+        "operatingExpenses": "Betriebskosten",
+        "noi": "Monatlicher Nettobetriebsertrag (NOI)",
+        "debtService": "Schuldendienst (nach NOI)",
+        "monthlyCashFlow": "Monatlicher Cashflow",
+        "annualCashFlow": "Jährlicher Cashflow"
+      },
+      "note": "Der NOI zieht Betriebsausgaben von den effektiven Einnahmen ab und schließt die Hypothek aus. Der Schuldendienst wird danach abgezogen, um den Cashflow zu berechnen.",
+      "textResults": {}
+    },
+    "rental-yield-calculator": {
+      "fields": {
+        "value": {
+          "label": "Immobilienwert oder Kaufpreis ($)"
+        },
+        "monthlyRent": {
+          "label": "Monatliche Miete ($)"
+        },
+        "annualRent": {
+          "label": "Optionaler jährlicher Mietüberschreibungswert ($)",
+          "help": "Wenn größer als null, ersetzt dieser Betrag die Monatsmiete × 12."
+        },
+        "expenses": {
+          "label": "Jährliche Betriebskosten ($)"
+        }
+      },
+      "results": {
+        "annualRent": "Jährliche Mieteinnahmen",
+        "netIncome": "Miete nach eingegebenen Ausgaben",
+        "grossYield": "Bruttomietrendite",
+        "netYield": "Nettomietrendite"
+      },
+      "note": "Die Bruttorendite ist Jahresmiete ÷ Immobilienwert. Die Nettorendite zieht zuvor die Betriebskosten ab; Finanzierung und Einkommensteuern sind nicht enthalten.",
+      "textResults": {}
+    },
+    "cap-rate-calculator": {
+      "fields": {
+        "value": {
+          "label": "Immobilienwert oder Kaufpreis ($)"
+        },
+        "rent": {
+          "label": "Jährliche Mieteinnahmen ($)"
+        },
+        "vacancy": {
+          "label": "Leerstandsquote (%)"
+        },
+        "expenses": {
+          "label": "Jährliche Betriebsausgaben ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Effektive Jahreseinnahmen",
+        "noi": "Nettobetriebseinkommen",
+        "capRate": "Kapitalisierungszinssatz"
+      },
+      "note": "Die Cap-Rate entspricht NOI ÷ Immobilienwert. Der NOI schließt Hypothekenschuldendienst, Abschreibung, Einkommensteuer und größere Investitionen aus.",
+      "textResults": {}
+    },
+    "cash-on-cash-return-calculator": {
+      "fields": {
+        "down": {
+          "label": "Eigenkapital / Anzahlung ($)"
+        },
+        "closing": {
+          "label": "Kaufnebenkosten ($)"
+        },
+        "rehab": {
+          "label": "Renovierung und anfängliche Arbeiten ($)"
+        },
+        "other": {
+          "label": "Sonstige anfängliche Barmittel ($)"
+        },
+        "cashFlow": {
+          "label": "Jährlicher Cashflow vor Steuern ($)"
+        }
+      },
+      "results": {
+        "cashInvested": "Gesamtes investiertes Eigenkapital",
+        "annualCashFlow": "Jährlicher Cashflow vor Steuern",
+        "returnPercent": "Cash-on-Cash-Rendite"
+      },
+      "note": "Die Cash-on-Cash-Rendite vergleicht den Jahres-Cashflow vor Steuern mit dem investierten Eigenkapital. Wertsteigerung, Tilgung und Steuern sind ausgeschlossen.",
+      "textResults": {}
+    },
+    "brrrr-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Kaufpreis ($)"
+        },
+        "purchaseCosts": {
+          "label": "Kauf- und Notarkosten ($)"
+        },
+        "rehab": {
+          "label": "Renovierungskosten ($)"
+        },
+        "arv": {
+          "label": "Wert nach Renovierung (ARV) ($)"
+        },
+        "ltv": {
+          "label": "Beleihungsauslauf Refinanzierung (LTV) (%)"
+        },
+        "refiCosts": {
+          "label": "Refinanzierungskosten ($)"
+        },
+        "rent": {
+          "label": "Monatliche Miete ($)"
+        },
+        "vacancy": {
+          "label": "Leerstand (%)"
+        },
+        "expenses": {
+          "label": "Monatliche Betriebsausgaben ($)"
+        },
+        "debt": {
+          "label": "Geschätzter monatlicher Schuldendienst ($)"
+        }
+      },
+      "results": {
+        "totalProjectCash": "Projektaufwand vor Refinanzierung",
+        "refinanceLoan": "Geschätztes Refinanzierungsdarlehen",
+        "cashRecovered": "Rückfließende Mittel nach Refinanzierungskosten",
+        "cashLeftInDeal": "Im Geschäft verbleibendes Eigenkapital",
+        "monthlyCashFlow": "Monatlicher Cashflow",
+        "annualCashFlow": "Jährlicher Cashflow",
+        "cashOnCashPercent": "Cash-on-Cash-Rendite nach Refinanzierung"
+      },
+      "note": "Refinanzierungserlös, Wert, Kosten, Miete, Leerstand und Schuldendienst sind Schätzungen. Kreditvergabe, Wertgutachten und unvorhergesehene Arbeiten sind nicht modelliert.",
+      "textResults": {}
+    },
+    "fix-and-flip-profit-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Kaufpreis ($)"
+        },
+        "acquisition": {
+          "label": "Anschaffungs- und Abschlusskosten ($)"
+        },
+        "rehab": {
+          "label": "Renovierungskosten ($)"
+        },
+        "financing": {
+          "label": "Finanzierungskosten und Zinsen ($)"
+        },
+        "holding": {
+          "label": "Laufende Haltekosten ($)"
+        },
+        "sale": {
+          "label": "Verkaufspreis ($)"
+        },
+        "sellingCosts": {
+          "label": "Verkaufsnebenkosten und Provisionen ($)"
+        },
+        "other": {
+          "label": "Sonstige Kosten ($)"
+        }
+      },
+      "results": {
+        "costBasis": "Kostenbasis vor Verkaufskosten",
+        "netSaleProceeds": "Nettoverkaufserlös",
+        "profit": "Geschätzter Gewinn",
+        "roiPercent": "Kapitalrendite (ROI) bezogen auf Kostenbasis",
+        "profitMarginPercent": "Gewinnmarge bezogen auf den Verkaufspreis",
+        "breakEvenSalePrice": "Break-Even-Verkaufspreis"
+      },
+      "note": "Diese Planungsschätzung ersetzt keine steuerliche oder rechtliche Beratung. Tatsächliche Kosten hängen von Bauumfang, Dauer, Zinsen und Marktlage ab.",
+      "textResults": {}
+    },
+    "short-term-rental-break-even-calculator": {
+      "fields": {
+        "nightlyRate": {
+          "label": "Durchschnittspreis pro Nacht ($)"
+        },
+        "availableNights": {
+          "label": "Verfügbare Nächte pro Monat"
+        },
+        "occupancy": {
+          "label": "Erwartete Auslastung (%)"
+        },
+        "variableCost": {
+          "label": "Variable Kosten pro belegter Nacht ($)"
+        },
+        "fixedCosts": {
+          "label": "Monatliche fixe Betriebskosten ($)"
+        },
+        "platformFee": {
+          "label": "Plattform- und Zahlungsgebühren (%)"
+        }
+      },
+      "results": {
+        "occupiedNights": "Belegte Nächte",
+        "grossRevenue": "Bruttobuchungsumsatz",
+        "platformFees": "Plattform- und Transaktionsgebühren",
+        "totalCosts": "Gesamte monatliche Kosten",
+        "monthlyProfit": "Geschätzter Monatsgewinn",
+        "breakEvenOccupancy": "Break-Even-Auslastung"
+      },
+      "note": "Schließt Einkommensteuern, Darlehenstilgung, Saisonschwankungen und lokale Registrierungsgebühren für Ferienvermietung aus.",
+      "textResults": {}
+    },
+    "house-hacking-effective-rent-calculator": {
+      "fields": {
+        "mortgage": {
+          "label": "Monatliche Hypothekenrate ($)"
+        },
+        "taxInsurance": {
+          "label": "Monatliche Grundsteuer und Versicherung ($)"
+        },
+        "hoa": {
+          "label": "Monatliches Hausgeld ($)"
+        },
+        "utilities": {
+          "label": "Vom Eigentümer getragene Nebenkosten ($)"
+        },
+        "maintenance": {
+          "label": "Monatliche Instandhaltungsrücklage ($)"
+        },
+        "other": {
+          "label": "Sonstige monatliche Wohnkosten ($)"
+        },
+        "rentReceived": {
+          "label": "Erwartete monatliche Mieteinnahmen ($)"
+        },
+        "vacancy": {
+          "label": "Leerstandspuffer für Vermietung (%)"
+        }
+      },
+      "results": {
+        "grossHousingCost": "Brutto-Wohnkosten pro Monat",
+        "effectiveRentIncome": "Leerstandsbereinigte Mieteinnahmen",
+        "effectiveHousingCost": "Effektive Wohnkosten pro Monat",
+        "annualEffectiveCost": "Effektive Wohnkosten pro Jahr",
+        "costOffsetPercent": "Durch Mieteinnahmen gedeckter Kostenanteil"
+      },
+      "note": "Liquiditätsplanung. Schließt Vermögensaufbau durch Tilgung, Wertsteigerung, Einkommensteuern und Transaktionskosten aus.",
       "textResults": {}
     }
   },

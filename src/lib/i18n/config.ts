@@ -37,6 +37,14 @@ export const translatedTools = [
   'running-pace-calculator',
   'hydration-calculator',
   'one-rep-max-calculator',
+  'rental-property-cash-flow-calculator',
+  'rental-yield-calculator',
+  'cap-rate-calculator',
+  'cash-on-cash-return-calculator',
+  'brrrr-calculator',
+  'fix-and-flip-profit-calculator',
+  'short-term-rental-break-even-calculator',
+  'house-hacking-effective-rent-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

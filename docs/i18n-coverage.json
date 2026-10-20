@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 41,
-    "pendingTools": 272,
+    "publishedTools": 49,
+    "pendingTools": 264,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 287,
+    "publishedToolTranslations": 343,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -586,8 +586,16 @@
       "source": "src/app/(english)/tools/brrrr-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -690,8 +698,16 @@
       "source": "src/app/(english)/tools/cap-rate-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -710,8 +726,16 @@
       "source": "src/app/(english)/tools/cash-on-cash-return-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2215,8 +2239,16 @@
       "source": "src/app/(english)/tools/fix-and-flip-profit-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2500,8 +2532,16 @@
       "source": "src/app/(english)/tools/house-hacking-effective-rent-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4383,8 +4423,16 @@
       "source": "src/app/(english)/tools/rental-property-cash-flow-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4403,8 +4451,16 @@
       "source": "src/app/(english)/tools/rental-yield-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4886,8 +4942,16 @@
       "source": "src/app/(english)/tools/short-term-rental-break-even-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -7071,7 +7135,7 @@
     {
       "source": "src/app/(english)/tools/brrrr-calculator/page.tsx",
       "routeTemplate": "/tools/brrrr-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7101,13 +7165,13 @@
     {
       "source": "src/app/(english)/tools/cap-rate-calculator/page.tsx",
       "routeTemplate": "/tools/cap-rate-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/cash-on-cash-return-calculator/page.tsx",
       "routeTemplate": "/tools/cash-on-cash-return-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7581,7 +7645,7 @@
     {
       "source": "src/app/(english)/tools/fix-and-flip-profit-calculator/page.tsx",
       "routeTemplate": "/tools/fix-and-flip-profit-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7677,7 +7741,7 @@
     {
       "source": "src/app/(english)/tools/house-hacking-effective-rent-calculator/page.tsx",
       "routeTemplate": "/tools/house-hacking-effective-rent-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8265,13 +8329,13 @@
     {
       "source": "src/app/(english)/tools/rental-property-cash-flow-calculator/page.tsx",
       "routeTemplate": "/tools/rental-property-cash-flow-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/rental-yield-calculator/page.tsx",
       "routeTemplate": "/tools/rental-yield-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8421,7 +8485,7 @@
     {
       "source": "src/app/(english)/tools/short-term-rental-break-even-calculator/page.tsx",
       "routeTemplate": "/tools/short-term-rental-break-even-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

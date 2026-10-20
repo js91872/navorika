@@ -8,6 +8,7 @@ export const isIntegerCalculatorField = (key: string) => [
   'widthPixels', 'heightPixels', 'channels', 'bitsPerChannel', 'imagesPerView',
   'pageViews', 'quantity', 'extraStuds', 'unitCount', 'storageDays',
   'ageWeeks', 'timeHours', 'timeMinutes', 'timeSeconds', 'repetitions',
+  'availableNights',
 ].includes(key);
 
 /** Reject missing, fractional count and out-of-range inputs before permissive engines can clamp them. */
@@ -46,6 +47,12 @@ export function calculateLocalizedValues(slug: LocalizedCalculatorSlug, values: 
   if (slug === 'macronutrient-calculator' && (Number(values.dailyCalories) <= 0 || Number(values.bodyWeightKg) <= 0)) return null;
   if (slug === 'hydration-calculator' && Number(values.bodyWeightKg) <= 0) return null;
   if (slug === 'one-rep-max-calculator' && (Number(values.weightLifted) <= 0 || Number(values.repetitions) <= 0)) return null;
+  if (slug === 'rental-yield-calculator' && Number(values.value) <= 0) return null;
+  if (slug === 'cap-rate-calculator' && Number(values.value) <= 0) return null;
+  if (slug === 'cash-on-cash-return-calculator' && (Number(values.down) + Number(values.closing) + Number(values.rehab) + Number(values.other) <= 0)) return null;
+  if (slug === 'fix-and-flip-profit-calculator' && (Number(values.purchase) + Number(values.acquisition) + Number(values.rehab) + Number(values.financing) + Number(values.holding) + Number(values.other) <= 0)) return null;
+  if (slug === 'short-term-rental-break-even-calculator' && Number(values.availableNights) <= 0) return null;
+  if (slug === 'house-hacking-effective-rent-calculator' && (Number(values.mortgage) + Number(values.taxInsurance) + Number(values.hoa) + Number(values.utilities) + Number(values.maintenance) + Number(values.other) <= 0)) return null;
   try {
     const result = config.calculate(values);
     return config.results.every(({ key, format }) => {

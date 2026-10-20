@@ -395,6 +395,70 @@
       "limits": "Máxima fiabilidad en rangos de 2 a 10 repeticiones; series de más de 10 repeticiones miden resistencia muscular antes que fuerza explosiva.",
       "question": "¿Qué fórmula predice mejor la 1RM?",
       "answer": "Las fórmulas de Epley y Brzycki son las más contrastadas; la media de ambas aporta una estimación sólida y equilibrada."
+    },
+    "rental-property-cash-flow-calculator": {
+      "title": "Calculadora de flujo de caja para propiedades de alquiler",
+      "description": "Calcule los ingresos efectivos por alquiler, gastos operativos, NOI, servicio de deuda y el flujo de caja mensual o anual.",
+      "how": "Ingrese el alquiler mensual, otros ingresos, desocupación, impuestos, seguro, mantenimiento, honorarios de administración, cuota y pagos hipotecarios.",
+      "limits": "El NOI excluye capital e intereses de la deuda. Las inversiones mayores de capital, impuestos personales y plusvalía requieren análisis aparte.",
+      "question": "¿Por qué se excluye el servicio de la deuda hipotecaria del NOI?",
+      "answer": "El NOI mide la productividad operativa intrínseca del inmueble, con independencia del nivel de apalancamiento o financiación utilizado."
+    },
+    "rental-yield-calculator": {
+      "title": "Calculadora de rentabilidad del alquiler",
+      "description": "Calcule los ingresos anuales por alquiler junto con el rendimiento bruto y neto ajustado por gastos.",
+      "how": "Ingrese el precio de compra o valor de mercado, el alquiler mensual, el valor anual opcional y los gastos operativos anuales.",
+      "limits": "Los costos de financiación, impuestos personales sobre la renta, plusvalía y reparaciones extraordinarias no están incluidos.",
+      "question": "¿Cuál es la diferencia entre el rendimiento bruto y el neto?",
+      "answer": "El rendimiento bruto compara los ingresos anuales totales con el valor, mientras que el neto descuenta primero los gastos de explotación."
+    },
+    "cap-rate-calculator": {
+      "title": "Calculadora de tasa de capitalización (Cap Rate)",
+      "description": "Calcule los ingresos efectivos, el resultado operativo neto (NOI) y la tasa de capitalización excluyendo la deuda.",
+      "how": "Ingrese el valor o precio de compra, los ingresos anuales por alquiler, el porcentaje de desocupación y los gastos operativos anuales.",
+      "limits": "El cap rate evalúa la rentabilidad operativa sin apalancamiento; la deuda hipotecaria, amortización e impuestos se excluyen del NOI.",
+      "question": "¿Cuándo se debe utilizar la tasa de capitalización?",
+      "answer": "El cap rate es ideal para comparar el rendimiento operativo potencial de diferentes propiedades en un mercado local sin distorsión financiera."
+    },
+    "cash-on-cash-return-calculator": {
+      "title": "Calculadora de rentabilidad cash-on-cash",
+      "description": "Calcule el capital inicial total invertido y la rentabilidad cash-on-cash antes de impuestos según el flujo de caja.",
+      "how": "Ingrese el anticipo, gastos de cierre, obras y mejoras iniciales, otros fondos iniciales y el flujo de caja anual antes de impuestos.",
+      "limits": "Mide el rendimiento en efectivo sobre el capital desembolsado; excluye la amortización del principal, plusvalía a largo plazo y ventajas fiscales.",
+      "question": "¿Por qué cambia la rentabilidad cash-on-cash con el apalancamiento?",
+      "answer": "La hipoteca reduce el capital inicial necesario a costa de deducir cuotas del flujo de caja, lo que amplifica retornos o pérdidas."
+    },
+    "brrrr-calculator": {
+      "title": "Calculadora de estrategia BRRRR",
+      "description": "Estime el capital del proyecto BRRRR, fondos de refinanciación, dinero remanente, flujo de caja y rentabilidad.",
+      "how": "Ingrese precio de compra, costos de adquisición, presupuesto de obras, valor post-reforma, LTV de refinanciación, gastos, alquiler y deuda.",
+      "limits": "No evalúa los requisitos de concesión bancaria, periodos de permanencia obligatorios ni divergencias de tasación pericial.",
+      "question": "¿Qué significa el dinero remanente en la operación?",
+      "answer": "Es el dinero propio que permanece inmovilizado en la propiedad después de que el nuevo préstamo devuelve los costes de compra y obra."
+    },
+    "fix-and-flip-profit-calculator": {
+      "title": "Calculadora de beneficios compra y venta (Fix & Flip)",
+      "description": "Estime los costos de una reforma y reventa, el importe neto de venta, beneficio, ROI, margen y precio de equilibrio.",
+      "how": "Ingrese precio de compra, gastos de escrituración, reformas, intereses financieros, costes de tenencia, precio de venta y comisiones.",
+      "limits": "Modelo orientativo. Excluye tributación sobre plusvalías, impuestos locales de transmisiones, demoras de contratistas e imprevistos de obra.",
+      "question": "¿Qué es el precio de venta de equilibrio?",
+      "answer": "El precio mínimo de venta necesario para recuperar todos los costes de compra, obra, tenencia, crédito y comercialización sin pérdidas."
+    },
+    "short-term-rental-break-even-calculator": {
+      "title": "Calculadora de punto de equilibrio para alquiler temporal",
+      "description": "Estime ingresos de alquiler temporal, costos operativos, beneficio mensual y la tasa de ocupación de equilibrio.",
+      "how": "Ingrese tarifa media por noche, noches disponibles, ocupación esperada, costos variables de limpieza, costes fijos y comisiones.",
+      "limits": "Excluye tasas turísticas locales, fuertes oscilaciones estacionales, precios dinámicos y licencias de alquiler vacacional obligatorio.",
+      "question": "¿Qué es la ocupación de equilibrio en un alquiler vacacional?",
+      "answer": "El porcentaje de noches reservadas al mes necesario para que el margen neto cubra íntegramente los gastos fijos del alojamiento."
+    },
+    "house-hacking-effective-rent-calculator": {
+      "title": "Calculadora de costo efectivo de vivienda (House Hacking)",
+      "description": "Estime su costo neto de vivienda tras descontar los ingresos de alquiler obtenidos de inquilinos o cuartos.",
+      "how": "Ingrese hipoteca, impuestos y seguros, comunidad, suministros, provisión para mantenimiento, alquileres cobrados y desocupación.",
+      "limits": "Cálculo de tesorería mensual. Excluye la amortización del saldo pendiente, la revalorización del activo y el impacto impositivo.",
+      "question": "¿Puede ser negativo el coste efectivo de la vivienda?",
+      "answer": "Sí. Si los ingresos por alquiler superan todos los costes mensuales de la vivienda, el coste neto es negativo, viviendo gratis y acumulando beneficio."
     }
   },
   "flexOptions": {
@@ -1311,6 +1375,279 @@
         "brzyckiEstimate": "Resultado según fórmula Brzycki"
       },
       "note": "Las fórmulas submáximas resultan más exactas con cargas que permitan entre 2 y 10 repeticiones. Al superar las 10 repeticiones, la fatiga y la resistencia muscular distorsionan la estimación de fuerza neuromuscular.",
+      "textResults": {}
+    },
+    "rental-property-cash-flow-calculator": {
+      "fields": {
+        "rent": {
+          "label": "Alquiler mensual ($)"
+        },
+        "income": {
+          "label": "Otros ingresos mensuales ($)"
+        },
+        "vacancy": {
+          "label": "Provisión para desocupación (%)"
+        },
+        "tax": {
+          "label": "Impuesto predial mensual ($)"
+        },
+        "insurance": {
+          "label": "Seguro mensual ($)"
+        },
+        "maintenance": {
+          "label": "Mantenimiento mensual ($)"
+        },
+        "management": {
+          "label": "Gestión mensual ($)"
+        },
+        "hoa": {
+          "label": "Cuota de copropiedad mensual ($)"
+        },
+        "utilities": {
+          "label": "Servicios pagados por el propietario ($)"
+        },
+        "other": {
+          "label": "Otros gastos de explotación ($)"
+        },
+        "debt": {
+          "label": "Servicio de deuda / hipoteca mensual ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Ingresos efectivos por alquiler",
+        "operatingExpenses": "Gastos operativos",
+        "noi": "Ingresos operativos netos mensuales (NOI)",
+        "debtService": "Servicio de la deuda (después del NOI)",
+        "monthlyCashFlow": "Flujo de caixa mensual",
+        "annualCashFlow": "Flujo de caja anual"
+      },
+      "note": "El NOI resta los gastos operativos de los ingresos efectivos y excluye la hipoteca. El servicio de la deuda se deduce después para calcular el flujo de caja.",
+      "textResults": {}
+    },
+    "rental-yield-calculator": {
+      "fields": {
+        "value": {
+          "label": "Valor del inmueble o precio de compra ($)"
+        },
+        "monthlyRent": {
+          "label": "Alquiler mensual ($)"
+        },
+        "annualRent": {
+          "label": "Ajuste opcional del alquiler anual ($)",
+          "help": "Cuando es mayor que cero, sustituye el cálculo de alquiler mensual × 12."
+        },
+        "expenses": {
+          "label": "Gastos operativos anuales ($)"
+        }
+      },
+      "results": {
+        "annualRent": "Ingresos anuales por alquiler",
+        "netIncome": "Alquiler después de los gastos ingresados",
+        "grossYield": "Rendimiento bruto del alquiler",
+        "netYield": "Rendimiento neto del alquiler"
+      },
+      "note": "El rendimiento bruto es alquiler anual ÷ valor del inmueble. El neto descuenta primero los gastos ingresados; financiación e impuestos personales no se incluyen.",
+      "textResults": {}
+    },
+    "cap-rate-calculator": {
+      "fields": {
+        "value": {
+          "label": "Valor de la propiedad o precio de compra ($)"
+        },
+        "rent": {
+          "label": "Ingresos anuales por alquiler ($)"
+        },
+        "vacancy": {
+          "label": "Margen de desocupación (%)"
+        },
+        "expenses": {
+          "label": "Gastos de explotación anuales ($)"
+        }
+      },
+      "results": {
+        "effectiveIncome": "Ingreso anual efectivo",
+        "noi": "Ingresos operativos netos",
+        "capRate": "Tasa de capitalización"
+      },
+      "note": "El cap rate es igual a NOI ÷ valor del inmueble. El NOI excluye servicio de deuda, amortizaciones, impuestos y gastos mayores de capital.",
+      "textResults": {}
+    },
+    "cash-on-cash-return-calculator": {
+      "fields": {
+        "down": {
+          "label": "Pago inicial ($)"
+        },
+        "closing": {
+          "label": "Costos de cierre y escrituración ($)"
+        },
+        "rehab": {
+          "label": "Remodelación y obras iniciales ($)"
+        },
+        "other": {
+          "label": "Otros fondos iniciales ($)"
+        },
+        "cashFlow": {
+          "label": "Flujo de caja anual antes de impuestos ($)"
+        }
+      },
+      "results": {
+        "cashInvested": "Total de capital invertido",
+        "annualCashFlow": "Flujo de caja anual antes de impuestos",
+        "returnPercent": "Rentabilidad cash-on-cash"
+      },
+      "note": "La rentabilidad cash-on-cash compara el flujo anual antes de impuestos con el capital inicial desembolsado. Excluye plusvalía, amortización de principal y fiscalidad.",
+      "textResults": {}
+    },
+    "brrrr-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Precio de compra ($)"
+        },
+        "purchaseCosts": {
+          "label": "Costos de compra y cierre ($)"
+        },
+        "rehab": {
+          "label": "Costos de renovación ($)"
+        },
+        "arv": {
+          "label": "Valor tras renovación (ARV) ($)"
+        },
+        "ltv": {
+          "label": "Relación préstamo/valor de refinanciación (%)"
+        },
+        "refiCosts": {
+          "label": "Costos de refinanciación ($)"
+        },
+        "rent": {
+          "label": "Alquiler mensual ($)"
+        },
+        "vacancy": {
+          "label": "Desocupación (%)"
+        },
+        "expenses": {
+          "label": "Gastos operativos mensuales ($)"
+        },
+        "debt": {
+          "label": "Servicio mensual de la deuda estimado ($)"
+        }
+      },
+      "results": {
+        "totalProjectCash": "Capital invertido antes de la refinanciación",
+        "refinanceLoan": "Préstamo estimado de refinanciación",
+        "cashRecovered": "Capital recuperado tras costos de refinanciación",
+        "cashLeftInDeal": "Capital retenido en la operación",
+        "monthlyCashFlow": "Flujo de caja mensual",
+        "annualCashFlow": "Flujo de caja anual",
+        "cashOnCashPercent": "Cash-on-cash posterior a la refinanciación"
+      },
+      "note": "Los fondos de refinanciación, valor, costes, alquiler, desocupación y deuda son estimaciones. La aprobación del préstamo, tasación y reformas imprevistas no están modeladas.",
+      "textResults": {}
+    },
+    "fix-and-flip-profit-calculator": {
+      "fields": {
+        "purchase": {
+          "label": "Precio de compra ($)"
+        },
+        "acquisition": {
+          "label": "Costos de adquisición y cierre ($)"
+        },
+        "rehab": {
+          "label": "Costo de remodelación ($)"
+        },
+        "financing": {
+          "label": "Costos financieros e intereses ($)"
+        },
+        "holding": {
+          "label": "Costos de mantenimiento durante la tenencia ($)"
+        },
+        "sale": {
+          "label": "Precio de venta ($)"
+        },
+        "sellingCosts": {
+          "label": "Costos de venta y comisiones ($)"
+        },
+        "other": {
+          "label": "Otros costos ($)"
+        }
+      },
+      "results": {
+        "costBasis": "Base de costos antes de gastos de venta",
+        "netSaleProceeds": "Ingresos netos de la venta",
+        "profit": "Beneficio estimado",
+        "roiPercent": "ROI sobre la base de costo",
+        "profitMarginPercent": "Margen de beneficio sobre el precio de venta",
+        "breakEvenSalePrice": "Precio de venta de equilibrio"
+      },
+      "note": "Esta estimación de planificación no constituye asesoramiento fiscal o legal. Los costes reales varían con el alcance de la obra, plazos, financiación y mercado.",
+      "textResults": {}
+    },
+    "short-term-rental-break-even-calculator": {
+      "fields": {
+        "nightlyRate": {
+          "label": "Tarifa promedio por noche ($)"
+        },
+        "availableNights": {
+          "label": "Noches disponibles al mes"
+        },
+        "occupancy": {
+          "label": "Ocupación esperada (%)"
+        },
+        "variableCost": {
+          "label": "Costo variable por noche ocupada ($)"
+        },
+        "fixedCosts": {
+          "label": "Costos fijos operativos mensuales ($)"
+        },
+        "platformFee": {
+          "label": "Comisiones de plataforma y cobro (%)"
+        }
+      },
+      "results": {
+        "occupiedNights": "Noches ocupadas",
+        "grossRevenue": "Ingresos brutos por reservas",
+        "platformFees": "Tarifas de plataforma y procesamiento",
+        "totalCosts": "Costos mensuales totales",
+        "monthlyProfit": "Beneficio mensual estimado",
+        "breakEvenOccupancy": "Ocupación de equilibrio"
+      },
+      "note": "Excluye impuestos sobre la renta, amortización del principal, variaciones por estacionalidad y tasas municipales de alquiler vacacional.",
+      "textResults": {}
+    },
+    "house-hacking-effective-rent-calculator": {
+      "fields": {
+        "mortgage": {
+          "label": "Cuota hipotecaria mensual ($)"
+        },
+        "taxInsurance": {
+          "label": "Impuesto a la propiedad y seguro mensuales ($)"
+        },
+        "hoa": {
+          "label": "Cuota mensual de comunidad ($)"
+        },
+        "utilities": {
+          "label": "Servicios públicos cubiertos por el dueño ($)"
+        },
+        "maintenance": {
+          "label": "Reserva mensual para mantenimiento ($)"
+        },
+        "other": {
+          "label": "Otros gastos mensuales de vivienda ($)"
+        },
+        "rentReceived": {
+          "label": "Alquiler mensual previsto a percibir ($)"
+        },
+        "vacancy": {
+          "label": "Provisión por desocupación (%)"
+        }
+      },
+      "results": {
+        "grossHousingCost": "Costo mensual bruto de vivienda",
+        "effectiveRentIncome": "Ingresos por alquiler ajustados por desocupación",
+        "effectiveHousingCost": "Costo mensual efectivo de vivienda",
+        "annualEffectiveCost": "Costo anual efectivo de vivienda",
+        "costOffsetPercent": "Costos de vivienda compensados por el alquiler"
+      },
+      "note": "Cálculo de previsión de tesorería. Excluye la acumulación de capital por amortización, plusvalía inmobiliaria y costes de escrituración.",
       "textResults": {}
     }
   },

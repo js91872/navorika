@@ -112,8 +112,16 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - Running Pace Calculator
 - Daily Hydration Calculator
 - One Rep Max Calculator
+- Rental Property Cash Flow Calculator
+- Rental Yield Calculator
+- Cap Rate Calculator
+- Cash on Cash Return Calculator
+- BRRRR Calculator
+- Fix and Flip Profit Calculator
+- Short-Term Rental Break-Even Calculator
+- House Hacking Effective Rent Calculator
 
-This brings branch coverage to 41 tools per language (287 tool variants plus seven directories). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 272 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 49 tools per language (343 tool variants plus seven directories). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 264 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

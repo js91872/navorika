@@ -187,6 +187,14 @@ test('shared calculators have native controls, exact copy coverage and unchanged
     { pacePerKm: '4:59 /km', pacePerMile: '8:01 /mi', speedKmh: 12.06, speedMph: 7.49, equivalent5kTime: '22:50', equivalent10kTime: '47:35', equivalentMarathonTime: '3:38:55' },
     { totalWaterLiters: 2.98, totalFluidOunces: 100.8, standardCups8oz: 12.6, baselineLiters: 2.45, exerciseAdditionLiters: 0.53 },
     { estimated1rm: 115, epleyEstimate: 117, brzyckiEstimate: 113, landerEstimate: 114, rep95Percent: 109, rep90Percent: 104, rep85Percent: 98, rep80Percent: 92, rep70Percent: 81 },
+    { grossIncome: 2600, vacancyLoss: 130, effectiveIncome: 2470, operatingExpenses: 850, noi: 1620, debtService: 1200, monthlyCashFlow: 420, annualCashFlow: 5040 },
+    { annualRent: 30000, netIncome: 22000, grossYield: 7.5, netYield: 5.5 },
+    { effectiveIncome: 30000, noi: 20000, capRate: 5 },
+    { cashInvested: 100000, annualCashFlow: 12000, returnPercent: 12 },
+    { totalProjectCash: 260000, refinanceLoan: 262500, cashRecovered: 257500, cashLeftInDeal: 2500, noi: 1860, monthlyCashFlow: 360, annualCashFlow: 4320, cashOnCashPercent: 172.8 },
+    { costBasis: 295000, netSaleProceeds: 350000, profit: 55000, roiPercent: 18.64406779661017, profitMarginPercent: 14.666666666666666, breakEvenSalePrice: 320000 },
+    { occupiedNights: 19.5, grossRevenue: 3510, platformFees: 105.3, totalCosts: 2987.8, monthlyProfit: 522.1999999999998, breakEvenOccupancy: 52.53104106972303 },
+    { grossHousingCost: 3350, effectiveRentIncome: 1710, effectiveHousingCost: 1640, annualEffectiveCost: 19680, costOffsetPercent: 51.04477611940299 },
   ];
   for (const locale of locales) {
     const d = await getDictionary(locale);
@@ -251,5 +259,10 @@ test('native PPI and ramp status adapters cover mismatch, flat, vertical and nul
 
     const paceKm = calculatorTextFormatters('running-pace-calculator', {}, d, locale).pacePerKm('4:59 /km');
     assert.equal(paceKm, `4:59 ${d.calculatorStates.perKm}`);
+
+    assert.ok(calculateLocalizedValues('rental-property-cash-flow-calculator', { rent: 2500, income: 100, vacancy: 5, tax: 300, insurance: 150, maintenance: 200, management: 200, hoa: 0, utilities: 0, other: 0, debt: 1200 }));
+    assert.equal(calculateLocalizedValues('rental-yield-calculator', { value: 0, monthlyRent: 2500, annualRent: 0, expenses: 8000 }), null);
+    assert.equal(calculateLocalizedValues('short-term-rental-break-even-calculator', { nightlyRate: 180, availableNights: 0, occupancy: 65, variableCost: 35, fixedCosts: 2200, platformFee: 3 }), null);
+    assert.ok(calculateLocalizedValues('fix-and-flip-profit-calculator', { purchase: 200000, acquisition: 10000, rehab: 60000, financing: 15000, holding: 10000, sale: 375000, sellingCosts: 25000, other: 0 }));
   }
 });
