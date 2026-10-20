@@ -26,6 +26,10 @@ const slugs = [
   'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator',
   'fix-and-flip-profit-calculator', 'short-term-rental-break-even-calculator',
   'house-hacking-effective-rent-calculator',
+  'ai-token-calculator', 'llm-api-cost-calculator', 'gpu-compute-cost-calculator',
+  'cloud-hosting-cost-calculator', 'cdn-cost-calculator', 'startup-runway-calculator',
+  'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator',
+  'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -153,6 +157,18 @@ try {
       ['fix-and-flip-profit-calculator', 200000, 295000, 495000],
       ['short-term-rental-break-even-calculator', 180, 19.5, 19.5],
       ['house-hacking-effective-rent-calculator', 2200, 3350, 5550],
+      ['ai-token-calculator', 1000, 1500, 2500],
+      ['llm-api-cost-calculator', 1000, 6, 12],
+      ['gpu-compute-cost-calculator', 2, 3, 6],
+      ['cloud-hosting-cost-calculator', 2, 146, 292],
+      ['cdn-cost-calculator', 1000, 50, 100],
+      ['startup-runway-calculator', 120000, 20000, 20000],
+      ['saas-burn-rate-calculator', 500000, 83333.33333333333, 83333.33333333333],
+      ['ltv-cac-ratio-calculator', 100, 80, 160],
+      ['cac-payback-calculator', 1200, 160, 160],
+      ['churn-impact-calculator', 1000, 342.05254633485396, 648.210185339416],
+      ['rule-of-40-calculator', 30, 0.42, 0.72],
+      ['net-revenue-retention-calculator', 100000, 0.97, 0.985],
     ]) {
       await visit(`/${locale}/tools/${slug}`);
       const ui = d.calculatorUi;
@@ -165,10 +181,25 @@ try {
         'brrrr-calculator',
         'fix-and-flip-profit-calculator',
         'house-hacking-effective-rent-calculator',
+        'llm-api-cost-calculator',
+        'gpu-compute-cost-calculator',
+        'cloud-hosting-cost-calculator',
+        'cdn-cost-calculator',
+        'startup-runway-calculator',
+        'saas-burn-rate-calculator',
+        'ltv-cac-ratio-calculator',
+        'cac-payback-calculator',
+      ]);
+      const percentSlugs = new Set([
+        'rule-of-40-calculator',
+        'net-revenue-retention-calculator',
       ]);
       const isCurrency = currencySlugs.has(slug);
+      const isPercent = percentSlugs.has(slug);
       const number = isCurrency
         ? new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', currencyDisplay: 'code', maximumFractionDigits: 2 })
+        : isPercent
+        ? new Intl.NumberFormat(locale, { style: 'percent', maximumFractionDigits: 3 })
         : new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
       if (slug === 'running-pace-calculator') {
         assert.ok((await page.locator('main dd').first().textContent()).includes('4:59'));
@@ -481,6 +512,7 @@ try {
   // Language selection stays available without opening the mobile menu.
   for (const width of [320, 360, 390, 640]) {
     await page.setViewportSize({ width, height: 844 });
+    await page.mouse.move(0, 0);
     const language = page.locator('summary[aria-label="Language: English"]');
     await language.waitFor({ state: 'visible' });
     const controls = [language, page.getByRole('button', { name: 'Search tools' }), page.getByRole('button', { name: 'Toggle theme' }), page.getByRole('button', { name: 'Toggle menu' })];

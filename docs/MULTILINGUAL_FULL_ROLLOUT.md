@@ -79,7 +79,7 @@ Before release, also require:
 
 ## Current session checkpoint
 
-The draft branch now includes native controls, metadata, explanatory copy, result labels, validation messages, clipboard summaries and UTF-8 CSV reports for thirty-one additional calculators in all seven languages (41 tools total per locale):
+The draft branch now includes native controls, metadata, explanatory copy, result labels, validation messages, clipboard summaries and UTF-8 CSV reports for fifty-one additional calculators in all seven languages (61 tools total per locale):
 
 - Image File Size Estimator
 - Photo Storage Calculator
@@ -120,8 +120,20 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - Fix and Flip Profit Calculator
 - Short-Term Rental Break-Even Calculator
 - House Hacking Effective Rent Calculator
+- AI Token Calculator
+- LLM API Cost Calculator
+- GPU Compute Cost Calculator
+- Cloud Hosting Cost Calculator
+- CDN Cost Calculator
+- Startup Runway Calculator
+- SaaS Burn Rate Calculator
+- LTV:CAC Ratio Calculator
+- CAC Payback Period Calculator
+- Churn Impact Calculator
+- Rule of 40 Calculator
+- Net Revenue Retention (NRR) Calculator
 
-This brings branch coverage to 49 tools per language (343 tool variants plus seven directories). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 264 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 61 tools per language (427 tool variants plus seven directories). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 252 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

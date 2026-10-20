@@ -195,6 +195,18 @@ test('shared calculators have native controls, exact copy coverage and unchanged
     { costBasis: 295000, netSaleProceeds: 350000, profit: 55000, roiPercent: 18.64406779661017, profitMarginPercent: 14.666666666666666, breakEvenSalePrice: 320000 },
     { occupiedNights: 19.5, grossRevenue: 3510, platformFees: 105.3, totalCosts: 2987.8, monthlyProfit: 522.1999999999998, breakEvenOccupancy: 52.53104106972303 },
     { grossHousingCost: 3350, effectiveRentIncome: 1710, effectiveHousingCost: 1640, annualEffectiveCost: 19680, costOffsetPercent: 51.04477611940299 },
+    { tokensPerRequest: 1500, cachedTokensMonth: 0, dailyInputTokens: 100000, dailyOutputTokens: 50000, dailyTotalTokens: 150000, inputTokensMonth: 3000000, outputTokensMonth: 1500000, totalTokensMonth: 4500000, annualTokens: 54000000 },
+    { tokensPerRequest: 1500, cachedTokensMonth: 0, dailyInputTokens: 100000, dailyOutputTokens: 50000, dailyTotalTokens: 150000, inputTokensMonth: 3000000, outputTokensMonth: 1500000, totalTokensMonth: 4500000, annualTokens: 54000000, inputCost: 6, outputCost: 12, monthlyCost: 18, annualCost: 216, costPerRequest: 0.006 },
+    { fleetHourlyCost: 3, costPerRun: 30, scheduledGpuHours: 20, utilizedGpuHours: 20, dailyCost: 30, monthlyCost: 900, annualCost: 10800 },
+    { computeCost: 146, computePercent: 77.6595744680851, storageCost: 2, storagePercent: 1.0638297872340425, bandwidthCost: 40, bandwidthPercent: 21.27659574468085, additionalCost: 0, additionalPercent: 0, monthlyCost: 188, annualCost: 2256 },
+    { bandwidthCost: 50, requestCost: 7.5, originTrafficGb: 150.00000000000003, originCost: 12.000000000000002, monthlyCost: 69.5, annualCost: 834 },
+    { netBurn: 20000, simpleRunwayMonths: 6, projectedRunwayMonths: 6, profitable: false, endingCash: 0 },
+    { grossBurn: 83333.33333333333, netBurn: 33333.333333333336, cashBurn: 33333.333333333336, runwayMonths: 12 },
+    { grossProfitPerMonth: 80, ltv: 2666.666666666667, ratio: 2.2222222222222223, paybackMonths: 15 },
+    { monthlyGrossProfit: 160, paybackMonths: 7.5 },
+    { customersLost: 342.05254633485396, cumulativeRevenueLost: 34205.2546334854, remainingCustomers: 897.9474536651459, endingMrr: 89794.74536651459, netCustomerChange: -102.05254633485413 },
+    { score: 42, difference: 2 },
+    { retainedRevenue: 97000, expansion: 10000, losses: 13000, netChange: -3000, nrrPercent: 97 },
   ];
   for (const locale of locales) {
     const d = await getDictionary(locale);
@@ -208,7 +220,10 @@ test('shared calculators have native controls, exact copy coverage and unchanged
       for (const row of native.results) assert.notEqual(row.label, source.results.find((item) => item.key === row.key)!.label);
       const defaults = Object.fromEntries(native.fields.map((field) => [field.key, field.defaultValue]));
       assert.deepEqual(calculateLocalizedValues(slug, defaults), expected[index], `${locale}/${slug}`);
-      for (const invalid of ['', NaN, Infinity, -1, 1e20]) assert.equal(calculateLocalizedValues(slug, { ...defaults, [native.fields[0].key]: invalid }), null);
+      for (const invalid of ['', NaN, Infinity, -1, 1e20]) {
+        if (slug === 'rule-of-40-calculator' && invalid === -1) continue;
+        assert.equal(calculateLocalizedValues(slug, { ...defaults, [native.fields[0].key]: invalid }), null);
+      }
       const count = native.fields.find((field) => isIntegerCalculatorField(field.key));
       if (count) assert.equal(calculateLocalizedValues(slug, { ...defaults, [count.key]: 1.5 }), null);
     }
@@ -235,6 +250,7 @@ test('native PPI and ramp status adapters cover mismatch, flat, vertical and nul
     assert.equal(formatCalculatorNumber(null, 'percent', locale, d.calculatorUi.notApplicable), d.calculatorUi.notApplicable);
     assert.equal(formatCalculatorNumber(25, 'percent', locale, ''), new Intl.NumberFormat(locale, { style: 'percent', maximumFractionDigits: 3 }).format(0.25));
     assert.equal(formatCalculatorNumber(1704, 'currency', locale, ''), new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', currencyDisplay: 'code', maximumFractionDigits: 2 }).format(1704));
+    assert.equal(formatCalculatorNumber(6, 'months', locale, ''), new Intl.NumberFormat(locale, { style: 'unit', unit: 'month', unitDisplay: 'long', maximumFractionDigits: 2 }).format(6));
     assert.ok(calculateLocalizedValues('construction-material-waste-calculator', { netQuantity: 2.5, wastePercent: 12.5, unitCost: 4 }));
     assert.equal(calculateLocalizedValues('roofing-shingle-calculator', { roofArea: 20, wastePercent: 101, bundlesPerSquare: 3 }), null);
     const joistRatio = (span: number, uniformLoad: number, width: number, depth: number) =>

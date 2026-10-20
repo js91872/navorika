@@ -35,6 +35,18 @@ export const localizedCalculatorSlugs = [
   'fix-and-flip-profit-calculator',
   'short-term-rental-break-even-calculator',
   'house-hacking-effective-rent-calculator',
+  'ai-token-calculator',
+  'llm-api-cost-calculator',
+  'gpu-compute-cost-calculator',
+  'cloud-hosting-cost-calculator',
+  'cdn-cost-calculator',
+  'startup-runway-calculator',
+  'saas-burn-rate-calculator',
+  'ltv-cac-ratio-calculator',
+  'cac-payback-calculator',
+  'churn-impact-calculator',
+  'rule-of-40-calculator',
+  'net-revenue-retention-calculator',
 ] as const;
 export type LocalizedCalculatorSlug = (typeof localizedCalculatorSlugs)[number];
 export const isLocalizedCalculator = (slug: string): slug is LocalizedCalculatorSlug =>

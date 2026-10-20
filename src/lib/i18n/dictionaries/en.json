@@ -459,6 +459,102 @@
       "limits": "Cash-flow planning calculation. Excludes principal accumulation, property appreciation, income taxes, and transaction closing costs.",
       "question": "Can effective housing cost be negative?",
       "answer": "Yes. If rental income from tenants exceeds total monthly housing expenses, your net housing cost is negative, meaning you live for free and pocket surplus cash flow."
+    },
+    "ai-token-calculator": {
+      "title": "AI Token Calculator",
+      "description": "Estimate input, output, cached, daily, monthly, and annual token volume for LLM API workloads.",
+      "how": "Enter input tokens per request, expected output tokens, cached tokens, requests per day, and active days per month.",
+      "limits": "Token counts are direct estimates. Different tokenizers and languages produce different token-to-word ratios.",
+      "question": "How do cached tokens affect total monthly token volume?",
+      "answer": "Cached tokens reduce latency and API pricing on supported providers, but they still count toward your total monthly context volume processed."
+    },
+    "llm-api-cost-calculator": {
+      "title": "LLM API Cost Calculator",
+      "description": "Estimate provider-independent LLM input, output, cached-input, monthly, and annual API costs with editable rates.",
+      "how": "Enter tokens per request, request volume, and prices per 1M tokens for input, output, and cached input.",
+      "limits": "Pricing models change frequently. Enter current published rates for the specific provider and model you plan to deploy.",
+      "question": "How do cached input token rates reduce API expenditure?",
+      "answer": "Many LLM providers offer significant discounts (often 50% to 80%) on prompt tokens that hit an active prompt cache."
+    },
+    "gpu-compute-cost-calculator": {
+      "title": "GPU Compute Cost Calculator",
+      "description": "Estimate fleet hourly, per-run, daily, monthly, and annual GPU compute costs from editable rates.",
+      "how": "Enter the number of GPUs, hourly rate per GPU, run duration, daily run frequency, utilization percentage, and active days.",
+      "limits": "Estimates compute fees only. Does not include memory, storage, data egress, setup overhead, or taxes.",
+      "question": "Why does billable utilization matter for compute cost estimates?",
+      "answer": "Cloud GPU clusters are frequently provisioned for standing availability or batch windows; utilization accounts for idle cluster time versus active inference or training."
+    },
+    "cloud-hosting-cost-calculator": {
+      "title": "Cloud Hosting Cost Calculator",
+      "description": "Estimate provider-independent compute, storage, bandwidth, additional-service, monthly, and annual cloud costs.",
+      "how": "Enter compute instance count, hourly price, monthly runtime, storage in GB, storage rates, outbound traffic, and auxiliary service fees.",
+      "limits": "Generic planning model. Provider-specific discount tiers, committed use contracts, IOPS tiers, and multi-region costs vary.",
+      "question": "What constitutes the majority of standard cloud infrastructure expenditure?",
+      "answer": "For most web and SaaS applications, virtual machine compute instances and outbound internet data transfer represent the largest cost components."
+    },
+    "cdn-cost-calculator": {
+      "title": "CDN Cost Calculator",
+      "description": "Estimate CDN bandwidth, request, cache-miss origin traffic, monthly, and annual delivery costs.",
+      "how": "Enter monthly CDN egress volume, egress rate per GB, request counts, request rates, cache-hit percentage, and origin egress rates.",
+      "limits": "Does not model edge compute functions, image transformation APIs, regional pricing tiers, or cache invalidation costs.",
+      "question": "How does the cache-hit ratio lower overall content delivery costs?",
+      "answer": "A high cache-hit ratio prevents requests from reaching the origin server, significantly reducing costly origin bandwidth and processing loads."
+    },
+    "startup-runway-calculator": {
+      "title": "Startup Runway Calculator",
+      "description": "Estimate how many months your startup cash will last based on current reserves, burn rate, and revenue growth.",
+      "how": "Enter bank balance, monthly revenue, operating expenses, and expected month-over-month growth rates.",
+      "limits": "Growth projections assume constant rates. Does not account for fundraising closes, sudden cap-ex, or tax liabilities.",
+      "question": "What is the difference between simple runway and projected runway?",
+      "answer": "Simple runway divides current cash by today's net burn rate, whereas projected runway models changes in revenue and expenses over future months."
+    },
+    "saas-burn-rate-calculator": {
+      "title": "SaaS Burn Rate Calculator",
+      "description": "Calculate gross, net operating, and cash burn rates across historical periods to assess financial runway.",
+      "how": "Enter beginning and ending cash balances, period duration in months, and total revenue and expenses incurred during that timeframe.",
+      "limits": "Past burn rates do not guarantee future cash consumption if hiring, contract terms, or billing cycles change.",
+      "question": "What is the difference between net operating burn and cash burn?",
+      "answer": "Net operating burn tracks operating losses (expenses minus revenues), whereas cash burn reflects the actual total cash decline including financing and working-capital shifts."
+    },
+    "ltv-cac-ratio-calculator": {
+      "title": "LTV CAC Ratio Calculator",
+      "description": "Compare customer lifetime value with customer acquisition cost and estimate whether acquisition spending is sustainable.",
+      "how": "Enter average revenue per user (ARPU), gross margin percentage, monthly churn rate, and customer acquisition cost (CAC).",
+      "limits": "Uses steady-state ARPU and churn assumptions. Does not model cohort retention decay, expansion curves, or discount rates.",
+      "question": "What is considered a healthy LTV:CAC ratio for subscription SaaS businesses?",
+      "answer": "A ratio around 3.0:1 is widely considered benchmark-healthy; significantly lower indicates inefficient acquisition, while much higher may imply under-investing in growth."
+    },
+    "cac-payback-calculator": {
+      "title": "CAC Payback Calculator",
+      "description": "Estimate how many months it takes to recover customer acquisition costs from gross profit margins.",
+      "how": "Enter customer acquisition cost (CAC), monthly recurring revenue per customer (MRR), and gross margin percentage.",
+      "limits": "Assumes linear cash collection and constant gross margin. Excludes churn, upsells, and payment processing lags.",
+      "question": "Why does CAC payback rely on gross margin rather than total revenue?",
+      "answer": "Direct costs of serving a customer (hosting, support, licensing) reduce the actual funds available to reimburse sales and marketing spending."
+    },
+    "churn-impact-calculator": {
+      "title": "Churn Impact Calculator",
+      "description": "Estimate how customer churn affects customer retention, lost revenue, and ending recurring revenue over time.",
+      "how": "Enter starting customer count, monthly revenue per customer, gross monthly churn rate, new customers acquired monthly, and projection timeframe.",
+      "limits": "Applies constant churn and ARPU across the entire cohort. Does not differentiate between logo churn and revenue contraction.",
+      "question": "Why does compound churn accelerate revenue loss over long horizons?",
+      "answer": "Because churn is applied multiplicatively to each period's starting customer base, customer loss compounds and raises the hurdle for new customer acquisition."
+    },
+    "rule-of-40-calculator": {
+      "title": "Rule of 40 Calculator",
+      "description": "Add annual revenue growth rate to profitability margins to calculate and benchmark your Rule of 40 score.",
+      "how": "Enter your year-over-year revenue growth percentage and your chosen profitability margin (EBITDA, free cash flow, or net income).",
+      "limits": "The Rule of 40 is a high-level screening heuristic; it does not measure churn, capital structure, or product sustainability.",
+      "question": "Which profitability metric is most commonly paired with growth in the Rule of 40?",
+      "answer": "Free-cash-flow margin is the most rigorous and common metric used by institutional SaaS investors, though EBITDA margin is also widely accepted."
+    },
+    "net-revenue-retention-calculator": {
+      "title": "Net Revenue Retention Calculator",
+      "description": "Calculate Net Revenue Retention (NRR) from baseline recurring revenue, expansion, contraction, and churn.",
+      "how": "Enter beginning ARR/MRR for an existing customer cohort, then input expansion revenue, contraction losses, and churned revenue.",
+      "limits": "Applies to an identical baseline cohort over the selected timeframe; do not include revenue from newly acquired customers.",
+      "question": "Why is Net Revenue Retention (NRR) greater than 100% considered the ultimate engine of compounding SaaS growth?",
+      "answer": "When NRR exceeds 100%, existing customer spending grows faster than accounts cancel or downgrade, guaranteeing organic revenue expansion before closing any new accounts."
     }
   },
   "flexOptions": {
@@ -1648,6 +1744,347 @@
         "costOffsetPercent": "Housing cost offset by rent"
       },
       "note": "Cash-flow planning calculation. Excludes principal accumulation, property appreciation, income taxes, and transaction closing costs.",
+      "textResults": {}
+    },
+    "ai-token-calculator": {
+      "fields": {
+        "input": {
+          "label": "Input tokens per request"
+        },
+        "output": {
+          "label": "Output tokens per request"
+        },
+        "cached": {
+          "label": "Cached input tokens per request",
+          "help": "Must be part of the entered input-token count."
+        },
+        "requests": {
+          "label": "Requests per day"
+        },
+        "days": {
+          "label": "Days per month"
+        }
+      },
+      "results": {
+        "tokensPerRequest": "Tokens per request",
+        "dailyTotalTokens": "Daily tokens",
+        "inputTokensMonth": "Monthly input tokens",
+        "cachedTokensMonth": "Monthly cached input tokens",
+        "outputTokensMonth": "Monthly output tokens",
+        "totalTokensMonth": "Monthly total tokens",
+        "annualTokens": "Annualized tokens"
+      },
+      "note": "Token counts are entered directly. Character-to-token ratios vary by tokenizer, language, and model, so this tool does not claim an exact text conversion.",
+      "textResults": {}
+    },
+    "llm-api-cost-calculator": {
+      "fields": {
+        "input": {
+          "label": "Input tokens per request"
+        },
+        "output": {
+          "label": "Output tokens per request"
+        },
+        "cached": {
+          "label": "Cached input tokens per request"
+        },
+        "requests": {
+          "label": "Requests per day"
+        },
+        "days": {
+          "label": "Days per month"
+        },
+        "inputPrice": {
+          "label": "Input price per 1M tokens ($)"
+        },
+        "outputPrice": {
+          "label": "Output price per 1M tokens ($)"
+        },
+        "cachedPrice": {
+          "label": "Cached input price per 1M ($)"
+        }
+      },
+      "results": {
+        "inputCost": "Monthly input cost",
+        "outputCost": "Monthly output cost",
+        "costPerRequest": "Cost per request",
+        "monthlyCost": "Monthly cost",
+        "annualCost": "Annualized cost"
+      },
+      "note": "All prices are editable planning inputs. Verify current provider and model rates, billing units, cache rules, batch discounts, and taxes before relying on the estimate.",
+      "textResults": {}
+    },
+    "gpu-compute-cost-calculator": {
+      "fields": {
+        "gpus": {
+          "label": "Number of GPUs"
+        },
+        "rate": {
+          "label": "Hourly rate per GPU ($)"
+        },
+        "hours": {
+          "label": "Hours per run"
+        },
+        "runs": {
+          "label": "Runs per day"
+        },
+        "utilization": {
+          "label": "Billable utilization (%)"
+        },
+        "days": {
+          "label": "Days per month"
+        }
+      },
+      "results": {
+        "fleetHourlyCost": "Fleet cost per hour",
+        "costPerRun": "Cost per run at 100%",
+        "utilizedGpuHours": "Daily utilized GPU-hours",
+        "dailyCost": "Daily cost",
+        "monthlyCost": "Monthly cost",
+        "annualCost": "Annualized cost"
+      },
+      "note": "This generic estimate uses the entered billable rate. Reserved capacity, startup time, storage, networking, CPU/RAM, taxes, and provider-specific rounding are not included.",
+      "textResults": {}
+    },
+    "cloud-hosting-cost-calculator": {
+      "fields": {
+        "instances": {
+          "label": "Compute instances"
+        },
+        "hourly": {
+          "label": "Hourly cost per instance ($)"
+        },
+        "hours": {
+          "label": "Runtime hours per month"
+        },
+        "storage": {
+          "label": "Storage (GB)"
+        },
+        "storageRate": {
+          "label": "Storage cost per GB-month ($)"
+        },
+        "bandwidth": {
+          "label": "Outbound bandwidth (GB)"
+        },
+        "bandwidthRate": {
+          "label": "Bandwidth rate per GB ($)"
+        },
+        "additional": {
+          "label": "Additional monthly services ($)"
+        }
+      },
+      "results": {
+        "computeCost": "Compute",
+        "computePercent": "Compute share",
+        "storageCost": "Storage",
+        "storagePercent": "Storage share",
+        "bandwidthCost": "Bandwidth",
+        "bandwidthPercent": "Bandwidth share",
+        "additionalCost": "Additional services",
+        "additionalPercent": "Additional share",
+        "monthlyCost": "Monthly total",
+        "annualCost": "Annual total"
+      },
+      "note": "This is a provider-independent planning estimator, not an exact AWS, Azure, or Google Cloud bill. Enter rates that match your region and service configuration.",
+      "textResults": {}
+    },
+    "cdn-cost-calculator": {
+      "fields": {
+        "bandwidth": {
+          "label": "Monthly CDN bandwidth (GB)"
+        },
+        "egress": {
+          "label": "CDN egress price per GB ($)"
+        },
+        "requests": {
+          "label": "Monthly requests"
+        },
+        "requestRate": {
+          "label": "Request price per 1M ($)"
+        },
+        "cacheHit": {
+          "label": "Cache-hit ratio (%)"
+        },
+        "originRate": {
+          "label": "Origin egress price per GB ($)"
+        }
+      },
+      "results": {
+        "bandwidthCost": "CDN bandwidth cost",
+        "requestCost": "Request cost",
+        "originTrafficGb": "Estimated origin traffic",
+        "originCost": "Origin cost",
+        "monthlyCost": "Monthly total",
+        "annualCost": "Annualized cost"
+      },
+      "note": "Origin traffic is estimated as CDN bandwidth × (1 − cache-hit ratio). Real billing can count requests, cache misses, revalidation, regional tiers, and origin transfer differently.",
+      "textResults": {}
+    },
+    "startup-runway-calculator": {
+      "fields": {
+        "cash": {
+          "label": "Current cash ($)"
+        },
+        "revenue": {
+          "label": "Monthly revenue ($)"
+        },
+        "expenses": {
+          "label": "Monthly operating expenses ($)"
+        },
+        "revenueGrowth": {
+          "label": "Monthly revenue growth (%)"
+        },
+        "expenseGrowth": {
+          "label": "Monthly expense growth (%)"
+        }
+      },
+      "results": {
+        "netBurn": "Current net burn",
+        "simpleRunwayMonths": "Simple runway",
+        "projectedRunwayMonths": "Projected runway",
+        "endingCash": "Cash at projection end"
+      },
+      "note": "When revenue meets or exceeds expenses, simple runway is shown as not applicable rather than infinity. Growth projections are scenarios, not forecasts.",
+      "textResults": {}
+    },
+    "saas-burn-rate-calculator": {
+      "fields": {
+        "start": {
+          "label": "Starting cash ($)"
+        },
+        "end": {
+          "label": "Ending cash ($)"
+        },
+        "months": {
+          "label": "Period length (months)"
+        },
+        "revenue": {
+          "label": "Revenue during period ($)"
+        },
+        "expenses": {
+          "label": "Expenses during period ($)"
+        }
+      },
+      "results": {
+        "grossBurn": "Average gross burn",
+        "netBurn": "Average operating net burn",
+        "cashBurn": "Average cash burn",
+        "runwayMonths": "Runway at cash-burn pace"
+      },
+      "note": "Gross burn is average expenses; operating net burn is expenses minus revenue; cash burn is the observed decline in cash. Financing and working-capital changes can make them differ.",
+      "textResults": {}
+    },
+    "ltv-cac-ratio-calculator": {
+      "fields": {
+        "arpu": {
+          "label": "Monthly ARPU ($)"
+        },
+        "margin": {
+          "label": "Gross margin (%)"
+        },
+        "churn": {
+          "label": "Monthly customer churn (%)"
+        },
+        "cac": {
+          "label": "Customer acquisition cost ($)"
+        }
+      },
+      "results": {
+        "grossProfitPerMonth": "Monthly gross profit/customer",
+        "ltv": "Estimated LTV",
+        "ratio": "LTV:CAC ratio",
+        "paybackMonths": "Gross-profit payback"
+      },
+      "note": "This uses ARPU × gross margin ÷ monthly churn. Cohort, revenue-retention, discount-rate, contribution-margin, and contract models can produce different LTV estimates.",
+      "textResults": {}
+    },
+    "cac-payback-calculator": {
+      "fields": {
+        "cac": {
+          "label": "Customer acquisition cost ($)"
+        },
+        "mrr": {
+          "label": "MRR per customer ($)"
+        },
+        "margin": {
+          "label": "Gross margin (%)"
+        }
+      },
+      "results": {
+        "monthlyGrossProfit": "Monthly gross profit/customer",
+        "paybackMonths": "CAC payback period"
+      },
+      "note": "Payback uses steady monthly gross profit and does not model churn, expansion, collections timing, sales commissions outside CAC, or the time value of money.",
+      "textResults": {}
+    },
+    "churn-impact-calculator": {
+      "fields": {
+        "customers": {
+          "label": "Starting customers"
+        },
+        "arpu": {
+          "label": "Monthly revenue per customer ($)"
+        },
+        "churn": {
+          "label": "Monthly gross churn (%)"
+        },
+        "newCustomers": {
+          "label": "New customers per month"
+        },
+        "months": {
+          "label": "Projection months"
+        }
+      },
+      "results": {
+        "customersLost": "Cumulative customers lost",
+        "cumulativeRevenueLost": "Cumulative monthly revenue lost",
+        "remainingCustomers": "Ending customers",
+        "endingMrr": "Ending MRR",
+        "netCustomerChange": "Net customer change"
+      },
+      "note": "Gross churn is applied to each month’s opening customer base, then new customers are added. New customers affect net change but do not reduce the reported gross losses.",
+      "textResults": {}
+    },
+    "rule-of-40-calculator": {
+      "fields": {
+        "growth": {
+          "label": "Annual revenue growth (%)"
+        },
+        "margin": {
+          "label": "Profitability margin (%)",
+          "help": "Use either EBITDA or free-cash-flow margin consistently."
+        }
+      },
+      "results": {
+        "score": "Rule of 40 score",
+        "difference": "Difference from 40"
+      },
+      "note": "The score is growth plus the selected profitability margin. It is a screening heuristic—not proof that a company is healthy, valuable, or suitable for investment.",
+      "textResults": {}
+    },
+    "net-revenue-retention-calculator": {
+      "fields": {
+        "start": {
+          "label": "Starting recurring revenue ($)"
+        },
+        "expansion": {
+          "label": "Expansion revenue ($)"
+        },
+        "contraction": {
+          "label": "Contraction revenue ($)"
+        },
+        "churn": {
+          "label": "Churned revenue ($)"
+        }
+      },
+      "results": {
+        "nrrPercent": "Net revenue retention",
+        "retainedRevenue": "Ending retained revenue",
+        "expansion": "Expansion",
+        "losses": "Contraction + churn",
+        "netChange": "Net change"
+      },
+      "note": "NRR requires positive starting recurring revenue. Keep the period and revenue definition consistent and exclude new-customer revenue from expansion.",
       "textResults": {}
     }
   },

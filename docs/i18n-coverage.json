@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 49,
-    "pendingTools": 264,
+    "publishedTools": 61,
+    "pendingTools": 252,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 343,
+    "publishedToolTranslations": 427,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -128,8 +128,16 @@
       "source": "src/app/(english)/tools/ai-token-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -614,8 +622,16 @@
       "source": "src/app/(english)/tools/cac-payback-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -800,8 +816,16 @@
       "source": "src/app/(english)/tools/cdn-cost-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -1018,8 +1042,16 @@
       "source": "src/app/(english)/tools/churn-impact-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -1073,8 +1105,16 @@
       "source": "src/app/(english)/tools/cloud-hosting-cost-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -2353,8 +2393,16 @@
       "source": "src/app/(english)/tools/gpu-compute-cost-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -3381,8 +3429,16 @@
       "source": "src/app/(english)/tools/llm-api-cost-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
@@ -3435,8 +3491,16 @@
       "source": "src/app/(english)/tools/ltv-cac-ratio-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3790,8 +3854,16 @@
       "source": "src/app/(english)/tools/net-revenue-retention-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4733,8 +4805,16 @@
       "source": "src/app/(english)/tools/rule-of-40-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4799,8 +4879,16 @@
       "source": "src/app/(english)/tools/saas-burn-rate-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5130,8 +5218,16 @@
       "source": "src/app/(english)/tools/startup-runway-calculator/page.tsx",
       "routeExists": true,
       "family": "shared-calculator",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6985,7 +7081,7 @@
     {
       "source": "src/app/(english)/tools/ai-token-calculator/page.tsx",
       "routeTemplate": "/tools/ai-token-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7141,7 +7237,7 @@
     {
       "source": "src/app/(english)/tools/cac-payback-calculator/page.tsx",
       "routeTemplate": "/tools/cac-payback-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7195,7 +7291,7 @@
     {
       "source": "src/app/(english)/tools/cdn-cost-calculator/page.tsx",
       "routeTemplate": "/tools/cdn-cost-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7261,7 +7357,7 @@
     {
       "source": "src/app/(english)/tools/churn-impact-calculator/page.tsx",
       "routeTemplate": "/tools/churn-impact-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7279,7 +7375,7 @@
     {
       "source": "src/app/(english)/tools/cloud-hosting-cost-calculator/page.tsx",
       "routeTemplate": "/tools/cloud-hosting-cost-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -7681,7 +7777,7 @@
     {
       "source": "src/app/(english)/tools/gpu-compute-cost-calculator/page.tsx",
       "routeTemplate": "/tools/gpu-compute-cost-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8005,7 +8101,7 @@
     {
       "source": "src/app/(english)/tools/llm-api-cost-calculator/page.tsx",
       "routeTemplate": "/tools/llm-api-cost-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8029,7 +8125,7 @@
     {
       "source": "src/app/(english)/tools/ltv-cac-ratio-calculator/page.tsx",
       "routeTemplate": "/tools/ltv-cac-ratio-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8137,7 +8233,7 @@
     {
       "source": "src/app/(english)/tools/net-revenue-retention-calculator/page.tsx",
       "routeTemplate": "/tools/net-revenue-retention-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8419,7 +8515,7 @@
     {
       "source": "src/app/(english)/tools/rule-of-40-calculator/page.tsx",
       "routeTemplate": "/tools/rule-of-40-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8437,7 +8533,7 @@
     {
       "source": "src/app/(english)/tools/saas-burn-rate-calculator/page.tsx",
       "routeTemplate": "/tools/saas-burn-rate-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8539,7 +8635,7 @@
     {
       "source": "src/app/(english)/tools/startup-runway-calculator/page.tsx",
       "routeTemplate": "/tools/startup-runway-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

@@ -459,6 +459,102 @@
       "limits": "Cálculo de planejamento de fluxo de caixa. Exclui amortização de saldo devedor, valorização patrimonial e impostos sobre a renda.",
       "question": "O custo efetivo de moradia pode ser negativo?",
       "answer": "Sim. Se o aluguel recebido dos inquilinos superar o total dos gastos de moradia, o custo líquido é negativo, permitindo morar de graça e ter lucro."
+    },
+    "ai-token-calculator": {
+      "title": "Calculadora de tokens de IA",
+      "description": "Estime o volume de tokens de entrada, saída, em cache, diários, mensais e anuais para cargas de trabalho de LLM.",
+      "how": "Insira os tokens de entrada por requisição, tokens de saída esperados, tokens em cache, requisições diárias e dias por mês.",
+      "limits": "As contagens são estimativas diretas. Os tokenizadores e idiomas produzem proporções variadas entre palavras e tokens.",
+      "question": "Como os tokens em cache afetam o volume mensal total?",
+      "answer": "Os tokens em cache diminuem a latência e o custo nos provedores compatíveis, mas continuam contando para o volume total de contexto processado."
+    },
+    "llm-api-cost-calculator": {
+      "title": "Calculadora de custos de API de LLM",
+      "description": "Estime custos de API para tokens de entrada, saída, em cache, mensais e anuais com tarifas totalmente editáveis.",
+      "how": "Informe os tokens por requisição, o volume de chamadas e as tarifas por milhão de tokens de entrada, saída e em cache.",
+      "limits": "Tabelas de preços mudam com frequência. Insira os valores oficiais vigentes para o provedor e modelo escolhidos.",
+      "question": "Como as tarifas de tokens em cache diminuem os custos da API?",
+      "answer": "Muitos provedores oferecem descontos expressivos (em geral de 50% a 80%) em tokens de prompt retidos no cache."
+    },
+    "gpu-compute-cost-calculator": {
+      "title": "Calculadora de custo de computação GPU",
+      "description": "Estime despesas horárias da frota, por execução, diárias, mensais e anuais de instâncias de GPU na nuvem.",
+      "how": "Insira o número de GPUs, valor da hora por GPU, duração do job, frequência diária, utilização faturável e dias ativos.",
+      "limits": "Cálculo restrito ao poder de processamento. Desconsidera armazenamento, tráfego de saída, inicialização e impostos.",
+      "question": "Qual a relevância da utilização faturável na previsão de custos?",
+      "answer": "Servidores de GPU muitas vezes ficam ociosos entre lotes de inferência ou treino; o índice de utilização pondera a capacidade real aproveitada."
+    },
+    "cloud-hosting-cost-calculator": {
+      "title": "Calculadora de custos de hospedagem em nuvem",
+      "description": "Projete custos mensais e anuais de processamento, armazenamento, transferência de dados e serviços extras na nuvem.",
+      "how": "Defina instâncias de computação, valor por hora, tempo de execução, GB de disco, taxas de dados trafegados e serviços adicionais.",
+      "limits": "Modelo indicativo de planejamento. Contratos de uso contínuo, IOPS provisionados e zonas de disponibilidade têm regras próprias.",
+      "question": "Qual componente costuma representar a maior fatia da conta de nuvem?",
+      "answer": "Na maioria dos aplicativos web, instâncias virtuais de computação e tráfego de dados de saída para a internet somam a maior parte dos custos."
+    },
+    "cdn-cost-calculator": {
+      "title": "Calculadora de custos de CDN",
+      "description": "Estime despesas de entrega de conteúdo (CDN) com base no consumo de banda, requisições e tráfego de origem em cache misses.",
+      "how": "Insira o tráfego mensal da CDN, preço por GB, volume de requisições, índice de acertos de cache e custo de saída do servidor de origem.",
+      "limits": "Não contempla funções serverless na borda (edge workers), compressão dinâmica de mídia nem custos de expurgo de cache.",
+      "question": "Como a taxa de acerto do cache (cache-hit) diminui os custos operacionais?",
+      "answer": "Com alta taxa de cache-hit, quase todo o conteúdo é entregue pelos pontos de presença (PoPs), poupando transferências caras do servidor de origem."
+    },
+    "startup-runway-calculator": {
+      "title": "Calculadora de runway para startups",
+      "description": "Projete quantos meses de fôlego financeiro a empresa possui com base em caixa, queima líquida e ritmo de crescimento.",
+      "how": "Informe o saldo bancário, faturamento mensal, despesas operacionais e projeções mensais de evolução de receitas e gastos.",
+      "limits": "Assume taxas de crescimento homogêneas. Não modela aportes iminentes de rodadas nem despesas de capital atípicas.",
+      "question": "Qual a diferença entre runway simples e runway projetado?",
+      "answer": "O runway simples divide o saldo pelo burn rate líquido atual; já o projetado simula a dinâmica de expansão de receitas e custos mês a mês."
+    },
+    "saas-burn-rate-calculator": {
+      "title": "Calculadora de taxa de queima (burn rate) SaaS",
+      "description": "Meça a queima bruta, queima operacional líquida e queima efetiva de caixa ao longo de períodos consolidados.",
+      "how": "Insira o caixa no início e no fim do período, número de meses, além do total de receitas e despesas registradas.",
+      "limits": "Métricas pretéritas de queima não garantem o ritmo futuro quando há contratações ou sazonalidade.",
+      "question": "Qual a diferença entre queima operacional líquida e queima de caixa?",
+      "answer": "A queima operacional líquida avalia o déficit operacional (despesas menos faturamento); a queima de caixa mensura a variação monetária real da conta bancária."
+    },
+    "ltv-cac-ratio-calculator": {
+      "title": "Calculadora da proporção LTV/CAC",
+      "description": "Compare o valor do ciclo de vida do cliente (LTV) com o custo de aquisição (CAC) para verificar a saúde da operação SaaS.",
+      "how": "Insira a receita média por cliente (ARPU), margem bruta percentual, cancelamento mensal (churn) e o custo de aquisição (CAC).",
+      "limits": "Usa projeção linear de churn e margem. Não inclui taxas de desconto financeiro nem curvas de expansão de coorte.",
+      "question": "Qual proporção LTV:CAC costuma ser tida como referência saudável?",
+      "answer": "Uma relação próxima de 3,0:1 é a referência padrão de mercado: indica retorno sólido sem deixar de investir agressivamente em aquisição."
+    },
+    "cac-payback-calculator": {
+      "title": "Calculadora de retorno do CAC (Payback)",
+      "description": "Estime quantos meses de margem bruta são necessários para recuperar o custo de aquisição de clientes.",
+      "how": "Informe o custo de aquisição (CAC), receita recorrente mensal por cliente (MRR) e a margem bruta percentual.",
+      "limits": "Assume margens estáveis e pagamento contínuo. Não inclui churn nos primeiros meses, upgrades nem juros.",
+      "question": "Por que o payback do CAC considera o lucro bruto e não a receita bruta?",
+      "answer": "Custos diretos de entrega da solução (hospedagem, suporte, infraestrutura) consomem parte da receita antes que o investimento em vendas seja pago."
+    },
+    "churn-impact-calculator": {
+      "title": "Calculadora do impacto de cancelamentos (churn)",
+      "description": "Estime as perdas de clientes e de receita recorrente mensal causadas pelo churn ao longo do tempo.",
+      "how": "Indique a base inicial de clientes, ARPU mensal, percentual de churn bruto, novas contas mensais e período da simulação.",
+      "limits": "Supõe comportamento uniforme de churn e faturamento. Não separa o cancelamento de contas da contração de licenças.",
+      "question": "Por que o churn composto eleva drasticamente a perda de faturamento?",
+      "answer": "Como o percentual incide sobre a base ativa em cada ciclo, a evasão cumulativa corrói a receita futura e exige esforços crescentes de atração de novos clientes."
+    },
+    "rule-of-40-calculator": {
+      "title": "Calculadora da regra dos 40",
+      "description": "Some a taxa de crescimento anual da receita à margem de lucro para obter e comparar sua pontuação na Rule of 40.",
+      "how": "Insira o crescimento percentual anual de receita e a margem operacional de lucro adotada (EBITDA ou fluxo de caixa livre).",
+      "limits": "A regra dos 40 é uma heurística comparativa rápida; não reflete endividamento, liquidez nem qualidade da retenção.",
+      "question": "Qual medida de lucratividade é a mais recomendada na análise da regra dos 40?",
+      "answer": "A margem de fluxo de caixa livre (FCF margin) é considerada o padrão ouro pelos investidores, embora a margem EBITDA seja amplamente utilizada."
+    },
+    "net-revenue-retention-calculator": {
+      "title": "Calculadora de retenção líquida de receita (NRR)",
+      "description": "Calcule o Net Revenue Retention (NRR) considerando receita recorrente inicial, expansão, contração e cancelamentos.",
+      "how": "Informe a receita recorrente inicial de uma base, os ganhos com upgrades (expansão), perdas com downgrades e cancelamentos totais.",
+      "limits": "Restrito à coorte preexistente no período avaliado; não misture faturamento oriundo de clientes recém-conquistados.",
+      "question": "Por que um NRR acima de 100% é considerado o maior catalisador de valor em SaaS?",
+      "answer": "Com NRR superior a 100%, a receita gerada pelos clientes atuais cresce mesmo com cancelamentos eventuais, permitindo avanço orgânico antes de novos fechamentos."
     }
   },
   "flexOptions": {
@@ -1648,6 +1744,347 @@
         "costOffsetPercent": "Despesas de moradia compensadas pelo aluguel"
       },
       "note": "Cálculo de planejamento de fluxo de caixa. Exclui amortização de saldo, valorização patrimonial, impostos e custos de fechamento.",
+      "textResults": {}
+    },
+    "ai-token-calculator": {
+      "fields": {
+        "input": {
+          "label": "Tokens de entrada por requisição"
+        },
+        "output": {
+          "label": "Tokens de saída por requisição"
+        },
+        "cached": {
+          "label": "Tokens de entrada em cache por requisição",
+          "help": "Deve fazer parte da contagem de tokens de entrada inserida."
+        },
+        "requests": {
+          "label": "Requisições por dia"
+        },
+        "days": {
+          "label": "Dias por mês"
+        }
+      },
+      "results": {
+        "tokensPerRequest": "Tokens por requisição",
+        "dailyTotalTokens": "Tokens diários",
+        "inputTokensMonth": "Tokens de entrada mensais",
+        "cachedTokensMonth": "Tokens de entrada em cache mensais",
+        "outputTokensMonth": "Tokens de saída mensais",
+        "totalTokensMonth": "Total mensal de tokens",
+        "annualTokens": "Volume anualizado de tokens"
+      },
+      "note": "As contagens de tokens são inseridas diretamente. As proporções caractere/token variam conforme o modelo e o idioma, sem conversão exata de texto.",
+      "textResults": {}
+    },
+    "llm-api-cost-calculator": {
+      "fields": {
+        "input": {
+          "label": "Tokens de entrada por requisição"
+        },
+        "output": {
+          "label": "Tokens de saída por requisição"
+        },
+        "cached": {
+          "label": "Tokens de entrada em cache por requisição"
+        },
+        "requests": {
+          "label": "Requisições por dia"
+        },
+        "days": {
+          "label": "Dias por mês"
+        },
+        "inputPrice": {
+          "label": "Preço de entrada por 1M de tokens ($)"
+        },
+        "outputPrice": {
+          "label": "Preço de saída por 1M de tokens ($)"
+        },
+        "cachedPrice": {
+          "label": "Preço de entrada em cache por 1M ($)"
+        }
+      },
+      "results": {
+        "inputCost": "Custo mensal de entrada",
+        "outputCost": "Custo mensal de saída",
+        "costPerRequest": "Custo por requisição",
+        "monthlyCost": "Custo mensal",
+        "annualCost": "Custo anualizado"
+      },
+      "note": "Todos os preços são parâmetros editáveis de planejamento. Confirme tarifas vigentes, unidades de cobrança, regras de cache e tributos aplicáveis.",
+      "textResults": {}
+    },
+    "gpu-compute-cost-calculator": {
+      "fields": {
+        "gpus": {
+          "label": "Número de GPUs"
+        },
+        "rate": {
+          "label": "Taxa horária por GPU ($)"
+        },
+        "hours": {
+          "label": "Horas por execução"
+        },
+        "runs": {
+          "label": "Execuções por dia"
+        },
+        "utilization": {
+          "label": "Utilização faturável (%)"
+        },
+        "days": {
+          "label": "Dias por mês"
+        }
+      },
+      "results": {
+        "fleetHourlyCost": "Custo horário da frota",
+        "costPerRun": "Custo por execução a 100%",
+        "utilizedGpuHours": "Horas-GPU diárias utilizadas",
+        "dailyCost": "Custo diário",
+        "monthlyCost": "Custo mensal",
+        "annualCost": "Custo anualizado"
+      },
+      "note": "Estimativa genérica com base na taxa horária informada. Instâncias reservadas, boot, discos, tráfego e encargos fiscais não estão inclusos.",
+      "textResults": {}
+    },
+    "cloud-hosting-cost-calculator": {
+      "fields": {
+        "instances": {
+          "label": "Instâncias de computação"
+        },
+        "hourly": {
+          "label": "Custo horário por instância ($)"
+        },
+        "hours": {
+          "label": "Horas de execução por mês"
+        },
+        "storage": {
+          "label": "Armazenamento (GB)"
+        },
+        "storageRate": {
+          "label": "Custo de armazenamento por GB-mês ($)"
+        },
+        "bandwidth": {
+          "label": "Tráfego de saída (GB)"
+        },
+        "bandwidthRate": {
+          "label": "Tarifa de tráfego por GB ($)"
+        },
+        "additional": {
+          "label": "Serviços mensais adicionais ($)"
+        }
+      },
+      "results": {
+        "computeCost": "Computação",
+        "computePercent": "Fatia de computação",
+        "storageCost": "Armazenamento",
+        "storagePercent": "Fatia de armazenamento",
+        "bandwidthCost": "Largura de banda",
+        "bandwidthPercent": "Fatia de largura de banda",
+        "additionalCost": "Serviços adicionais",
+        "additionalPercent": "Fatia de serviços adicionais",
+        "monthlyCost": "Total mensal",
+        "annualCost": "Total anual"
+      },
+      "note": "Estimador neutro de planejamento, não substituindo simulações oficiais de AWS, Azure ou GCP. Use valores condizentes com sua região e stack.",
+      "textResults": {}
+    },
+    "cdn-cost-calculator": {
+      "fields": {
+        "bandwidth": {
+          "label": "Banda CDN mensal (GB)"
+        },
+        "egress": {
+          "label": "Preço de saída CDN por GB ($)"
+        },
+        "requests": {
+          "label": "Requisições mensais"
+        },
+        "requestRate": {
+          "label": "Preço por 1M de requisições ($)"
+        },
+        "cacheHit": {
+          "label": "Taxa de acertos de cache (%)"
+        },
+        "originRate": {
+          "label": "Tarifa de saída da origem por GB ($)"
+        }
+      },
+      "results": {
+        "bandwidthCost": "Custo de banda da CDN",
+        "requestCost": "Custo de requisições",
+        "originTrafficGb": "Tráfego estimado da origem",
+        "originCost": "Custo da origem",
+        "monthlyCost": "Total mensal",
+        "annualCost": "Custo anualizado"
+      },
+      "note": "O tráfego de origem é calculado como banda CDN × (1 − taxa de cache). A cobrança real varia segundo regras de revalidação e zonas geográficas.",
+      "textResults": {}
+    },
+    "startup-runway-calculator": {
+      "fields": {
+        "cash": {
+          "label": "Caixa atual ($)"
+        },
+        "revenue": {
+          "label": "Receita mensal ($)"
+        },
+        "expenses": {
+          "label": "Despesas operacionais mensais ($)"
+        },
+        "revenueGrowth": {
+          "label": "Crescimento mensal da receita (%)"
+        },
+        "expenseGrowth": {
+          "label": "Crescimento mensal das despesas (%)"
+        }
+      },
+      "results": {
+        "netBurn": "Queima líquida atual",
+        "simpleRunwayMonths": "Runway simples",
+        "projectedRunwayMonths": "Runway projetado",
+        "endingCash": "Caixa ao final da projeção"
+      },
+      "note": "Quando a receita se iguala ou supera as despesas, o runway simples é apresentado como não aplicável em vez de infinito. Projeções são cenários simulados.",
+      "textResults": {}
+    },
+    "saas-burn-rate-calculator": {
+      "fields": {
+        "start": {
+          "label": "Caixa inicial ($)"
+        },
+        "end": {
+          "label": "Caixa final ($)"
+        },
+        "months": {
+          "label": "Duração do período (meses)"
+        },
+        "revenue": {
+          "label": "Receita no período ($)"
+        },
+        "expenses": {
+          "label": "Despesas no período ($)"
+        }
+      },
+      "results": {
+        "grossBurn": "Queima bruta média",
+        "netBurn": "Queima operacional líquida média",
+        "cashBurn": "Queima média de caixa",
+        "runwayMonths": "Runway no ritmo da queima de caixa"
+      },
+      "note": "A queima bruta reflete despesas médias; a queima líquida deduz a receita; a queima de caixa expressa a redução observada no saldo monetário.",
+      "textResults": {}
+    },
+    "ltv-cac-ratio-calculator": {
+      "fields": {
+        "arpu": {
+          "label": "ARPU mensal ($)"
+        },
+        "margin": {
+          "label": "Margem bruta (%)"
+        },
+        "churn": {
+          "label": "Churn mensal de clientes (%)"
+        },
+        "cac": {
+          "label": "Custo de aquisição de clientes ($)"
+        }
+      },
+      "results": {
+        "grossProfitPerMonth": "Lucro bruto mensal/cliente",
+        "ltv": "LTV estimada",
+        "ratio": "Proporção LTV:CAC",
+        "paybackMonths": "Retorno sobre lucro bruto"
+      },
+      "note": "A fórmula aplica ARPU × margem bruta ÷ churn mensal. Análises de coorte, retenção de receita e desconto temporal podem gerar outros valores.",
+      "textResults": {}
+    },
+    "cac-payback-calculator": {
+      "fields": {
+        "cac": {
+          "label": "Custo de aquisição de clientes ($)"
+        },
+        "mrr": {
+          "label": "MRR por cliente ($)"
+        },
+        "margin": {
+          "label": "Margem bruta (%)"
+        }
+      },
+      "results": {
+        "monthlyGrossProfit": "Lucro bruto mensal/cliente",
+        "paybackMonths": "Período de retorno do CAC"
+      },
+      "note": "O payback adota lucro bruto mensal estável e não simula cancelamentos, expansões, prazos de recebimento nem o valor do dinheiro no tempo.",
+      "textResults": {}
+    },
+    "churn-impact-calculator": {
+      "fields": {
+        "customers": {
+          "label": "Clientes iniciais"
+        },
+        "arpu": {
+          "label": "Receita mensal por cliente ($)"
+        },
+        "churn": {
+          "label": "Churn mensal bruto (%)"
+        },
+        "newCustomers": {
+          "label": "Novos clientes por mês"
+        },
+        "months": {
+          "label": "Meses de projeção"
+        }
+      },
+      "results": {
+        "customersLost": "Total cumulativo de clientes perdidos",
+        "cumulativeRevenueLost": "Receita mensal perdida acumulada",
+        "remainingCustomers": "Clientes ao final",
+        "endingMrr": "MRR final",
+        "netCustomerChange": "Variação líquida de clientes"
+      },
+      "note": "O churn bruto incide sobre a base do início de cada mês antes da adição de novos clientes. Entradas recentes alteram o saldo líquido, mas não anulam perdas brutas reportadas.",
+      "textResults": {}
+    },
+    "rule-of-40-calculator": {
+      "fields": {
+        "growth": {
+          "label": "Crescimento anual da receita (%)"
+        },
+        "margin": {
+          "label": "Margem de rentabilidade (%)",
+          "help": "Utilize de forma consistente a margem EBITDA ou a margem de fluxo de caixa livre."
+        }
+      },
+      "results": {
+        "score": "Pontuação da regra dos 40",
+        "difference": "Diferença em relação a 40"
+      },
+      "note": "O índice soma o crescimento à margem selecionada. Trata-se de uma métrica de triagem, não de atestado de liquidez ou solvência.",
+      "textResults": {}
+    },
+    "net-revenue-retention-calculator": {
+      "fields": {
+        "start": {
+          "label": "Receita recorrente inicial ($)"
+        },
+        "expansion": {
+          "label": "Receita de expansão ($)"
+        },
+        "contraction": {
+          "label": "Receita de contração ($)"
+        },
+        "churn": {
+          "label": "Receita perdida por cancelamento ($)"
+        }
+      },
+      "results": {
+        "nrrPercent": "Retenção líquida de receita",
+        "retainedRevenue": "Receita retida final",
+        "expansion": "Expansão",
+        "losses": "Contração + cancelamentos",
+        "netChange": "Variação líquida"
+      },
+      "note": "O NRR exige receita recorrente inicial maior que zero. Mantenha os mesmos critérios temporais e não inclua receita de novos clientes na expansão.",
       "textResults": {}
     }
   },

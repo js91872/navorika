@@ -459,6 +459,102 @@
       "limits": "Reine Liquiditätsberechnung. Schließt Vermögensaufbau durch Tilgung, Wertsteigerung, Einkommensteuern und Transaktionskosten aus.",
       "question": "Können die effektiven Wohnkosten negativ sein?",
       "answer": "Ja. Wenn die Mieteinnahmen höher sind als alle monatlichen Wohnkosten, ist das Ergebnis negativ: Sie wohnen mietfrei und erzielen Überschüsse."
+    },
+    "ai-token-calculator": {
+      "title": "KI-Token-Rechner",
+      "description": "Schätzen Sie das monatliche, tägliche und jährliche Token-Volumen für Eingabe, Ausgabe und Cache bei LLM-Workloads.",
+      "how": "Geben Sie Eingabetoken pro Anfrage, erwartete Ausgabetoken, Cache-Token, tägliche Anfragen und Tage pro Monat ein.",
+      "limits": "Token-Zahlen sind direkte Schätzwerte. Verschiedene Tokenizer und Sprachen führen zu abweichenden Wort-Token-Verhältnissen.",
+      "question": "Wie wirken sich zwischengespeicherte Token auf das Monatsvolumen aus?",
+      "answer": "Cache-Token senken Latenz und API-Preise bei unterstützten Anbietern, zählen jedoch weiterhin zum gesamten monatlichen Verarbeitungskontext."
+    },
+    "llm-api-cost-calculator": {
+      "title": "LLM-API-Kostenrechner",
+      "description": "Berechnen Sie anbieterunabhängig monatliche und jährliche Kosten für Eingabe-, Ausgabe- und gecachte Token.",
+      "how": "Geben Sie Token pro Anfrage, Anfragenvolumen und Preise pro 1 Mio. Token für Input, Output und Cache ein.",
+      "limits": "Preise ändern sich fortlaufend. Tragen Sie die aktuellen Tarife des gewünschten Anbieters und Modells ein.",
+      "question": "Wie reduzieren Cache-Token-Tarife die API-Gesamtkosten?",
+      "answer": "Zahlreiche LLM-Anbieter gewähren Rabatte von 50 % bis 80 % auf Prompt-Token, die aus dem aktiven Cache abgerufen werden."
+    },
+    "gpu-compute-cost-calculator": {
+      "title": "GPU-Rechenkosten-Rechner",
+      "description": "Schätzen Sie stündliche Flottenkosten sowie Kosten pro Lauf, Tag, Monat und Jahr für Cloud-GPUs.",
+      "how": "Tragen Sie GPU-Anzahl, Stundensatz, Laufzeit, Ausführungen pro Tag, Auslastung in Prozent und Tage pro Monat ein.",
+      "limits": "Berechnet ausschließlich Rechenzeit. Speicherplatz, Datentransfer, Initialisierungszeiten und Steuern sind nicht enthalten.",
+      "question": "Warum ist die abrechenbare Auslastung bei GPU-Kosten entscheidend?",
+      "answer": "Cloud-GPU-Cluster werden oft dauerhaft bereitgestellt; die Auslastung erfasst die tatsächliche Rechendauer im Vergleich zu Leerlaufzeiten."
+    },
+    "cloud-hosting-cost-calculator": {
+      "title": "Cloud-Hosting-Kostenrechner",
+      "description": "Ermitteln Sie anbieterunabhängig monatliche und jährliche Kosten für Serverinstanzen, Speicher, Datentransfer und Extras.",
+      "how": "Geben Sie Instanzen, Stundensatz, Monatslaufzeit, Speicher in GB, Speicherraten, ausgehenden Datenverkehr und Zusatzdienste ein.",
+      "limits": "Allgemeines Planungsmodell. Spezifische Rabatte für reservierte Instanzen, Speicherklassen und Mehrzonen-Netzwerke weichen ab.",
+      "question": "Welche Posten machen den größten Teil typischer Cloud-Rechnungen aus?",
+      "answer": "In den meisten SaaS- und Web-Infrastrukturen entfallen die höchsten Beträge auf virtuelle Recheninstanzen und den ausgehenden Datenverkehr ins Internet."
+    },
+    "cdn-cost-calculator": {
+      "title": "CDN-Kostenrechner",
+      "description": "Kalkulieren Sie monatliche und jährliche CDN-Kosten für Bandbreite, Anfragen und Ursprungsserver-Traffic bei Cache-Misses.",
+      "how": "Tragen Sie monatlichen CDN-Traffic, Gigabyte-Preise, Anfragevolumen, Cache-Hit-Quote und Transferkosten des Origin-Servers ein.",
+      "limits": "Edge-Computing, Bildoptimierungsdienste und Gebühren für manuelle Cache-Invalidierungen sind nicht berücksichtigt.",
+      "question": "Wie reduziert die Cache-Hit-Ratio die Gesamtkosten der Auslieferung?",
+      "answer": "Eine hohe Trefferquote liefert Inhalte direkt über Edge-Server aus und spart teuren Datentransfer sowie Rechenlast auf dem Ursprungsserver."
+    },
+    "startup-runway-calculator": {
+      "title": "Startup-Runway-Rechner",
+      "description": "Ermitteln Sie die Liquiditätsreichweite Ihres Startups auf Basis von Kontostand, Netto-Burn-Rate und Umsatzentwicklung.",
+      "how": "Geben Sie Bankguthaben, monatliche Einnahmen, Betriebsausgaben sowie erwartete monatliche Wachstumsraten ein.",
+      "limits": "Wachstumsannahmen basieren auf gleichbleibenden Raten. Künftige Finanzierungsrunden oder unvorhergesehene Investitionen sind ausgeschlossen.",
+      "question": "Was ist der Unterschied zwischen einfacher und prognostizierter Runway?",
+      "answer": "Die einfache Runway teilt das Guthaben durch die aktuelle Netto-Burn-Rate; die prognostizierte Runway modelliert Einnahmen- und Ausgabenveränderungen über künftige Monate."
+    },
+    "saas-burn-rate-calculator": {
+      "title": "SaaS-Burn-Rate-Rechner",
+      "description": "Kalkulieren Sie Brutto-, Netto-Betriebs- und Cash-Burn-Raten über Vergangenheitszeiträume zur Analyse der Finanzstabilität.",
+      "how": "Tragen Sie Anfangs- und Endliquidität, Betrachtungsmonate sowie Gesamterlöse und Gesamtausgaben des Zeitraums ein.",
+      "limits": "Frühere Burn-Raten garantieren keinen künftigen Verlauf bei Neueinstellungen oder geänderten Abrechnungsintervallen.",
+      "question": "Wie unterscheiden sich operativer Netto-Burn und Cash-Burn?",
+      "answer": "Der operative Netto-Burn erfasst das operative Defizit (Ausgaben minus Erlöse); der Cash-Burn bildet den tatsächlichen Rückgang der liquiden Mittel auf dem Bankkonto ab."
+    },
+    "ltv-cac-ratio-calculator": {
+      "title": "LTV-zu-CAC-Verhältnis-Rechner",
+      "description": "Vergleichen Sie Kundenlebenszeitwert (LTV) mit Kundengewinnungskosten (CAC) zur Überprüfung Ihrer SaaS-Einheitsökonomie.",
+      "how": "Tragen Sie monatlichen ARPU, Bruttomarge in Prozent, monatliche Abwanderung (Churn) und den CAC ein.",
+      "limits": "Geht von stabilen Raten aus. Kohortenabwanderung, Expansionserlöse und finanzielle Diskontierungssätze sind nicht modelliert.",
+      "question": "Welches LTV:CAC-Verhältnis gilt in der Softwarebranche als gesund?",
+      "answer": "Ein Wert um 3,0:1 gilt als Benchmark: Er signalisiert rentable Kundengewinnung bei gleichzeitig ambitioniertem Wachstumstempo."
+    },
+    "cac-payback-calculator": {
+      "title": "CAC-Amortisationszeit-Rechner",
+      "description": "Ermitteln Sie die Anzahl der Monate, die erforderlich sind, um die Akquisitionskosten über den Bruttogewinn einzuspielen.",
+      "how": "Tragen Sie Kundenakquisitionskosten (CAC), monatlich wiederkehrenden Umsatz pro Kunde (MRR) und die Bruttomarge ein.",
+      "limits": "Setzt kontinuierliche Umsätze voraus. Frühe Abwanderung, Produkterweiterungen und Zahlungsverzögerungen bleiben unberücksichtigt.",
+      "question": "Warum basiert die CAC-Amortisation auf der Bruttomarge statt auf dem Bruttoumsatz?",
+      "answer": "Direkte Bereitstellungskosten (Hosting, Support, Lizenzen) schmälern den Betrag, der tatsächlich zur Deckung der Vertriebs- und Marketingausgaben zur Verfügung steht."
+    },
+    "churn-impact-calculator": {
+      "title": "Churn-Auswirkungs-Rechner",
+      "description": "Simulieren Sie, wie Kundenabwanderung die verbleibende Abonnentenbasis und den monatlich wiederkehrenden Umsatz schwächt.",
+      "how": "Geben Sie Startkunden, monatlichen Erlös pro Kunde, Bruttoabwanderungsrate, monatliche Neukundenzugänge und Betrachtungszeitraum ein.",
+      "limits": "Setzt einheitliches Abwanderungsverhalten voraus. Unterscheidet nicht zwischen Kündigung und Downgrade.",
+      "question": "Warum verstärkt kumulierte Abwanderung den Umsatzverlust über längere Zeiträume?",
+      "answer": "Da der Prozentsatz in jedem Monat auf die verbleibende Kundenbasis wirkt, summiert sich der entgangene Umsatz und verlangt immer höhere Neukundenzahlen zum Ausgleich."
+    },
+    "rule-of-40-calculator": {
+      "title": "Rule-of-40-Rechner",
+      "description": "Addieren Sie jährliches Umsatzwachstum und Gewinnmarge, um den Rule-of-40-Score Ihres SaaS-Unternehmens zu bestimmen.",
+      "how": "Geben Sie prozentuales Umsatzwachstum im Jahresvergleich und die gewählte Gewinnmarge (EBITDA oder Free Cash Flow) ein.",
+      "limits": "Die Rule of 40 ist eine vereinfachte Kennzahl; sie misst weder Kapitalstruktur noch Abwanderungsqualität oder Produktstabilität.",
+      "question": "Welche Rentabilitätskennzahl wird in der Rule of 40 am häufigsten angesetzt?",
+      "answer": "Die Free-Cash-Flow-Marge gilt unter Investoren als aussagekräftigste Kennzahl, wenngleich die EBITDA-Marge ebenfalls weit verbreitet ist."
+    },
+    "net-revenue-retention-calculator": {
+      "title": "Nettoumsatzbindungs-Rechner (NRR)",
+      "description": "Berechnen Sie die Net Revenue Retention (NRR) aus wiederkehrendem Basisumsatz, Upgrades, Downgrades und Abwanderung.",
+      "how": "Tragen Sie den Anfangs-ARR/MRR einer festen Kohorte, Upsell-Erlöse (Expansion), Erlösreduktionen (Kontraktion) und Churn ein.",
+      "limits": "Gilt ausschließlich für eine bestehende Kohorte im gewählten Zeitraum; Erlöse neu gewonnener Kunden dürfen nicht enthalten sein.",
+      "question": "Warum gilt eine Net Revenue Retention von über 100 % als wichtigster Wachstumstreiber in SaaS?",
+      "answer": "Liegt die NRR über 100 %, wächst der Umsatz der Bestandskunden stärker als Verluste durch Kündigungen, was ein organisches Wachstum ohne Neukundengeschäft sichert."
     }
   },
   "flexOptions": {
@@ -1648,6 +1744,347 @@
         "costOffsetPercent": "Durch Mieteinnahmen gedeckter Kostenanteil"
       },
       "note": "Liquiditätsplanung. Schließt Vermögensaufbau durch Tilgung, Wertsteigerung, Einkommensteuern und Transaktionskosten aus.",
+      "textResults": {}
+    },
+    "ai-token-calculator": {
+      "fields": {
+        "input": {
+          "label": "Eingabetoken pro Anfrage"
+        },
+        "output": {
+          "label": "Ausgabetoken pro Anfrage"
+        },
+        "cached": {
+          "label": "Gecachte Eingabetoken pro Anfrage",
+          "help": "Muss Teil der eingegebenen Eingabetoken-Anzahl sein."
+        },
+        "requests": {
+          "label": "Anfragen pro Tag"
+        },
+        "days": {
+          "label": "Tage pro Monat"
+        }
+      },
+      "results": {
+        "tokensPerRequest": "Token pro Anfrage",
+        "dailyTotalTokens": "Tägliche Token",
+        "inputTokensMonth": "Monatliche Eingabetoken",
+        "cachedTokensMonth": "Monatliche gecachte Eingabetoken",
+        "outputTokensMonth": "Monatliche Ausgabetoken",
+        "totalTokensMonth": "Monatliche Gesamt-Token",
+        "annualTokens": "Jährliches Token-Volumen"
+      },
+      "note": "Token-Mengen werden direkt eingegeben. Zeichen-Token-Verhältnisse variieren je nach Tokenizer, Sprache und Modell; keine exakte Textkonvertierung.",
+      "textResults": {}
+    },
+    "llm-api-cost-calculator": {
+      "fields": {
+        "input": {
+          "label": "Eingabetoken pro Anfrage"
+        },
+        "output": {
+          "label": "Ausgabetoken pro Anfrage"
+        },
+        "cached": {
+          "label": "Gecachte Eingabetoken pro Anfrage"
+        },
+        "requests": {
+          "label": "Anfragen pro Tag"
+        },
+        "days": {
+          "label": "Tage pro Monat"
+        },
+        "inputPrice": {
+          "label": "Preis pro 1 Mio. Eingabetoken ($)"
+        },
+        "outputPrice": {
+          "label": "Preis pro 1 Mio. Ausgabetoken ($)"
+        },
+        "cachedPrice": {
+          "label": "Preis pro 1 Mio. gecachte Token ($)"
+        }
+      },
+      "results": {
+        "inputCost": "Monatliche Eingabekosten",
+        "outputCost": "Monatliche Ausgabekosten",
+        "costPerRequest": "Kosten pro Anfrage",
+        "monthlyCost": "Monatliche Gesamtkosten",
+        "annualCost": "Jährliche Gesamtkosten"
+      },
+      "note": "Alle Preise sind anpassbare Planungswerte. Prüfen Sie gültige Tarife, Abrechnungseinheiten, Cache-Regeln und Steuern des jeweiligen Anbieters.",
+      "textResults": {}
+    },
+    "gpu-compute-cost-calculator": {
+      "fields": {
+        "gpus": {
+          "label": "Anzahl der GPUs"
+        },
+        "rate": {
+          "label": "Stundensatz pro GPU ($)"
+        },
+        "hours": {
+          "label": "Stunden pro Ausführung"
+        },
+        "runs": {
+          "label": "Ausführungen pro Tag"
+        },
+        "utilization": {
+          "label": "Abrechenbare Auslastung (%)"
+        },
+        "days": {
+          "label": "Tage pro Monat"
+        }
+      },
+      "results": {
+        "fleetHourlyCost": "Flottenkosten pro Stunde",
+        "costPerRun": "Kosten pro Lauf bei 100 %",
+        "utilizedGpuHours": "Genutzte GPU-Stunden pro Tag",
+        "dailyCost": "Tägliche Kosten",
+        "monthlyCost": "Monatliche Kosten",
+        "annualCost": "Jährliche Gesamtkosten"
+      },
+      "note": "Standardisierte Schätzung auf Basis des Stundensatzes. Reservierte Kapazitäten, Setup, Speicher, Netzwerk und Steuern sind nicht berücksichtigt.",
+      "textResults": {}
+    },
+    "cloud-hosting-cost-calculator": {
+      "fields": {
+        "instances": {
+          "label": "Recheninstanzen"
+        },
+        "hourly": {
+          "label": "Stundensatz pro Instanz ($)"
+        },
+        "hours": {
+          "label": "Laufzeitstunden pro Monat"
+        },
+        "storage": {
+          "label": "Speicherkapazität (GB)"
+        },
+        "storageRate": {
+          "label": "Speicherkosten pro GB-Monat ($)"
+        },
+        "bandwidth": {
+          "label": "Ausgehender Datentransfer (GB)"
+        },
+        "bandwidthRate": {
+          "label": "Transferpreis pro GB ($)"
+        },
+        "additional": {
+          "label": "Monatliche Zusatzdienste ($)"
+        }
+      },
+      "results": {
+        "computeCost": "Rechenleistung",
+        "computePercent": "Anteil Rechenleistung",
+        "storageCost": "Speicher",
+        "storagePercent": "Anteil Speicher",
+        "bandwidthCost": "Datentransfer",
+        "bandwidthPercent": "Anteil Datentransfer",
+        "additionalCost": "Zusatzdienste",
+        "additionalPercent": "Anteil Zusatzdienste",
+        "monthlyCost": "Monatliche Gesamtsumme",
+        "annualCost": "Jährliche Gesamtsumme"
+      },
+      "note": "Anbieterneutrales Planungsinstrument, kein exakter Ersatz für AWS-, Azure- oder Google-Cloud-Abrechnungen. Wählen Sie regionsspezifische Tarife.",
+      "textResults": {}
+    },
+    "cdn-cost-calculator": {
+      "fields": {
+        "bandwidth": {
+          "label": "Monatlicher CDN-Traffic (GB)"
+        },
+        "egress": {
+          "label": "CDN-Ausgangspreis pro GB ($)"
+        },
+        "requests": {
+          "label": "Monatliche Anfragen"
+        },
+        "requestRate": {
+          "label": "Anfragenpreis pro 1 Mio. ($)"
+        },
+        "cacheHit": {
+          "label": "Cache-Hit-Quote (%)"
+        },
+        "originRate": {
+          "label": "Origin-Ausgangspreis pro GB ($)"
+        }
+      },
+      "results": {
+        "bandwidthCost": "CDN-Bandbreitenkosten",
+        "requestCost": "Anfragekosten",
+        "originTrafficGb": "Geschätzter Origin-Traffic",
+        "originCost": "Kosten für Ursprungsserver",
+        "monthlyCost": "Monatliche Gesamtsumme",
+        "annualCost": "Jährliche Gesamtsumme"
+      },
+      "note": "Origin-Traffic wird geschätzt aus CDN-Traffic × (1 − Cache-Hit-Quote). Reale Rechnungen unterscheiden nach Regionen und Revalidierungsanfragen.",
+      "textResults": {}
+    },
+    "startup-runway-calculator": {
+      "fields": {
+        "cash": {
+          "label": "Aktuelles Guthaben ($)"
+        },
+        "revenue": {
+          "label": "Monatlicher Umsatz ($)"
+        },
+        "expenses": {
+          "label": "Monatliche Betriebsausgaben ($)"
+        },
+        "revenueGrowth": {
+          "label": "Monatliches Umsatzwachstum (%)"
+        },
+        "expenseGrowth": {
+          "label": "Monatliches Ausgabenwachstum (%)"
+        }
+      },
+      "results": {
+        "netBurn": "Aktuelle Netto-Burn-Rate",
+        "simpleRunwayMonths": "Einfache Runway",
+        "projectedRunwayMonths": "Prognostizierte Runway",
+        "endingCash": "Guthaben am Prognoseende"
+      },
+      "note": "Decken die Einnahmen die Ausgaben, wird die einfache Runway als nicht zutreffend ausgewiesen statt unendlich. Prognosen sind Modellrechnungen, keine Garantien.",
+      "textResults": {}
+    },
+    "saas-burn-rate-calculator": {
+      "fields": {
+        "start": {
+          "label": "Anfangsliquidität ($)"
+        },
+        "end": {
+          "label": "Endliquidität ($)"
+        },
+        "months": {
+          "label": "Periodendauer (Monate)"
+        },
+        "revenue": {
+          "label": "Umsatz im Zeitraum ($)"
+        },
+        "expenses": {
+          "label": "Ausgaben im Zeitraum ($)"
+        }
+      },
+      "results": {
+        "grossBurn": "Durchschnittlicher Brutto-Burn",
+        "netBurn": "Durchschnittlicher operativer Netto-Burn",
+        "cashBurn": "Durchschnittlicher Cash-Burn",
+        "runwayMonths": "Runway beim Cash-Burn-Tempo"
+      },
+      "note": "Brutto-Burn entspricht Durchschnittsausgaben; operativer Netto-Burn zieht Erlöse ab; Cash-Burn zeigt die tatsächliche Abnahme der Barmittel.",
+      "textResults": {}
+    },
+    "ltv-cac-ratio-calculator": {
+      "fields": {
+        "arpu": {
+          "label": "Monatlicher ARPU ($)"
+        },
+        "margin": {
+          "label": "Bruttomarge (%)"
+        },
+        "churn": {
+          "label": "Monatliche Kundenabwanderung (%)"
+        },
+        "cac": {
+          "label": "Kundengewinnungskosten (CAC) ($)"
+        }
+      },
+      "results": {
+        "grossProfitPerMonth": "Monatlicher Bruttogewinn/Kunde",
+        "ltv": "Geschätzter LTV",
+        "ratio": "LTV:CAC-Verhältnis",
+        "paybackMonths": "Amortisation über Bruttogewinn"
+      },
+      "note": "Formel: ARPU × Bruttomarge ÷ Monatsabwanderung. Kohortenanalysen und Abzinsungsmodelle können abweichende LTV-Werte ergeben.",
+      "textResults": {}
+    },
+    "cac-payback-calculator": {
+      "fields": {
+        "cac": {
+          "label": "Kundenakquisitionskosten ($)"
+        },
+        "mrr": {
+          "label": "MRR pro Kunde ($)"
+        },
+        "margin": {
+          "label": "Bruttomarge (%)"
+        }
+      },
+      "results": {
+        "monthlyGrossProfit": "Monatlicher Bruttogewinn/Kunde",
+        "paybackMonths": "CAC-Amortisationszeit"
+      },
+      "note": "Die Amortisation basiert auf stetigem Bruttogewinn und modelliert weder Abwanderung noch Expansion, Zahlungsfristen oder Kapitalwert.",
+      "textResults": {}
+    },
+    "churn-impact-calculator": {
+      "fields": {
+        "customers": {
+          "label": "Kunden zu Beginn"
+        },
+        "arpu": {
+          "label": "Monatlicher Erlös pro Kunde ($)"
+        },
+        "churn": {
+          "label": "Monatliche Bruttoabwanderung (%)"
+        },
+        "newCustomers": {
+          "label": "Neukunden pro Monat"
+        },
+        "months": {
+          "label": "Prognosemonate"
+        }
+      },
+      "results": {
+        "customersLost": "Kumuliert verlorene Kunden",
+        "cumulativeRevenueLost": "Kumuliert entgangener Monatsumsatz",
+        "remainingCustomers": "Verbleibende Kunden am Ende",
+        "endingMrr": "Endgültiger MRR",
+        "netCustomerChange": "Netto-Kundenveränderung"
+      },
+      "note": "Die Bruttoabwanderung wird auf den Monatsanfangsbestand angewendet, bevor Neukunden hinzugerechnet werden. Neukunden beeinflussen das Nettoergebnis, mindern jedoch nicht die Bruttoverluste.",
+      "textResults": {}
+    },
+    "rule-of-40-calculator": {
+      "fields": {
+        "growth": {
+          "label": "Jährliches Umsatzwachstum (%)"
+        },
+        "margin": {
+          "label": "Rentabilitätsmarge (%)",
+          "help": "Verwenden Sie durchgehend entweder die EBITDA- oder die Free-Cash-Flow-Marge."
+        }
+      },
+      "results": {
+        "score": "Rule-of-40-Wert",
+        "difference": "Differenz zu 40"
+      },
+      "note": "Der Wert ergibt sich aus Wachstum plus gewählter Marge. Es handelt sich um eine Heuristik zur Schnellbewertung, nicht um eine Anlageempfehlung.",
+      "textResults": {}
+    },
+    "net-revenue-retention-calculator": {
+      "fields": {
+        "start": {
+          "label": "Wiederkehrender Anfangsumsatz ($)"
+        },
+        "expansion": {
+          "label": "Expansionserlöse ($)"
+        },
+        "contraction": {
+          "label": "Kontraktionsverluste ($)"
+        },
+        "churn": {
+          "label": "Abwanderungsverluste ($)"
+        }
+      },
+      "results": {
+        "nrrPercent": "Nettoumsatzbindung",
+        "retainedRevenue": "Verbleibender Endumsatz",
+        "expansion": "Expansionserlöse",
+        "losses": "Kontraktion + Churn",
+        "netChange": "Netto-Veränderung"
+      },
+      "note": "NRR setzt einen positiven Anfangsumsatz voraus. Halten Sie Zeitraum und Kennzahlendefinition konsistent und schließen Sie Neukundenerlöse aus der Expansion aus.",
       "textResults": {}
     }
   },
