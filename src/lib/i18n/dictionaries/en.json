@@ -1403,6 +1403,102 @@
       "limits": "Assumes static annual inflation and returns, whereas historical inflation fluctuates and living cost increases vary across expenditure baskets.",
       "question": "What is real return versus nominal return?",
       "answer": "Nominal return is the raw percentage gain before expenses, while real return subtracts inflation to reflect actual expansion of purchasing power."
+    },
+    "merge-pdf": {
+      "title": "Merge PDF Online",
+      "description": "Combine multiple PDF files into one clean document directly in your browser without uploading files to an external server.",
+      "how": "Upload two or more PDF files, arrange their order, and click merge to produce a single consolidated document.",
+      "limits": "Encrypted or password-protected PDF files must be unlocked before merging.",
+      "question": "Are my files uploaded to a remote server when merging?",
+      "answer": "No. All PDF merging takes place entirely inside your web browser using local client-side memory."
+    },
+    "split-pdf": {
+      "title": "Split PDF Online",
+      "description": "Separate specific page ranges or extract individual sections from your PDF file instantly and securely in your browser.",
+      "how": "Select your PDF document, define the comma-separated page ranges or page numbers to separate, and save the extracted document.",
+      "limits": "Does not modify or re-encode password-protected documents unless permissions are granted.",
+      "question": "Can I extract non-consecutive pages from a PDF?",
+      "answer": "Yes. You can specify individual page numbers and ranges such as 1-3, 5, 8-10 to extract distinct segments."
+    },
+    "rotate-pdf": {
+      "title": "Rotate PDF Pages Online",
+      "description": "Rotate inverted or landscape PDF pages by 90, 180, or 270 degrees to correct document orientation locally.",
+      "how": "Choose your PDF, select the rotation angle, and apply the rotation to generate an upright document ready for viewing or printing.",
+      "limits": "Applies rotation across document pages without altering existing text or embedded vector elements.",
+      "question": "Does rotating PDF pages degrade visual resolution?",
+      "answer": "No. PDF page rotation updates standard viewing transformation matrices without recompressing underlying graphics or rasterizing text."
+    },
+    "reorder-pdf": {
+      "title": "Reorder PDF Pages Online",
+      "description": "Rearrange and resequence the page order of your PDF document locally without uploading files to third-party services.",
+      "how": "Upload your document, enter the desired numeric page sequence separated by commas, and rebuild your document.",
+      "limits": "Requires entering valid numeric indices corresponding to existing pages in the uploaded document.",
+      "question": "Can I repeat or duplicate pages when reordering?",
+      "answer": "Yes. Specifying a page number multiple times in the sequence allows you to duplicate pages into the output document."
+    },
+    "delete-pdf-pages": {
+      "title": "Delete PDF Pages Online",
+      "description": "Remove unwanted, blank, or duplicate pages from your PDF file quickly and privately in your browser.",
+      "how": "Select your document, specify the page numbers or ranges to exclude, and download the trimmed PDF.",
+      "limits": "You cannot delete all pages; at least one page must remain in the final output document.",
+      "question": "Is the page deletion process permanent?",
+      "answer": "The original file on your computer remains untouched; a new cleaned PDF file is generated for download."
+    },
+    "extract-pdf-pages": {
+      "title": "Extract PDF Pages Online",
+      "description": "Extract key sections, tables, or individual pages from a PDF document into a standalone, lightweight document.",
+      "how": "Upload your PDF file, enter the targeted page numbers or ranges, and extract them into a newly compiled file.",
+      "limits": "Extracted pages preserve original media dimensions, content streams, and embedded fonts.",
+      "question": "Does extracting pages preserve clickable hyperlinks?",
+      "answer": "Yes, standard internal and external annotations associated with the extracted pages are retained."
+    },
+    "compress-pdf": {
+      "title": "Compress PDF Online",
+      "description": "Optimize and reduce the file size of PDF documents locally in your browser to facilitate sharing and email attachments.",
+      "how": "Upload your PDF file, choose your preferred compression level, and download the streamlined document.",
+      "limits": "Files already heavily compressed or containing mostly raw text may show minimal additional size reduction.",
+      "question": "Will compression make text blurry?",
+      "answer": "Vector text and fonts remain crisp; optimization focuses on streamlining document object streams and discarding redundant metadata."
+    },
+    "pdf-page-size-checker": {
+      "title": "PDF Page Size Checker",
+      "description": "Detect physical sheet dimensions, standard paper formats, and page orientations across any PDF document instantly.",
+      "how": "Upload a PDF document to inspect dimensions in millimeters, centimeters, and points, along with matched paper standards like A4, Letter, or Legal.",
+      "limits": "Documents with mixed page sizes report standard classifications based on inspected individual page boxes.",
+      "question": "Why is checking PDF sheet size important before printing?",
+      "answer": "Printers require exact physical dimensions to prevent unwanted automatic scaling, clipping, or incorrect paper tray feeds."
+    },
+    "pdf-metadata-editor": {
+      "title": "PDF Metadata Editor",
+      "description": "Inspect and update PDF title, author, subject, and keyword metadata tags directly within your browser for better organization.",
+      "how": "Choose your PDF document, review the current document properties, type your updated metadata fields, and save the modified file.",
+      "limits": "Updates document information dictionaries and XMP packets without altering body content.",
+      "question": "Why should PDF metadata be updated before distribution?",
+      "answer": "Accurate metadata ensures search engines, document readers, and cataloging systems correctly identify the author and title."
+    },
+    "pdf-word-counter": {
+      "title": "PDF Word Counter Online",
+      "description": "Count words, characters, sentences, and paragraphs in PDF documents with estimated reading times without uploading files.",
+      "how": "Upload any readable PDF file to instantly parse extractable text streams and calculate word and character distributions.",
+      "limits": "Scanned image PDFs without an OCR text layer contain no extractable text characters and require OCR prior to analysis.",
+      "question": "Can this tool read scanned paper documents?",
+      "answer": "It reads digital text streams; if a document consists purely of scanned raster images without OCR text, word count will show zero."
+    },
+    "flatten-pdf": {
+      "title": "Flatten PDF Forms Online",
+      "description": "Convert interactive PDF form fields, checkboxes, and annotations into static document content that cannot be edited.",
+      "how": "Upload your filled PDF form and click flatten to merge active form widgets and text fields directly into static page content.",
+      "limits": "Flattening is irreversible in the exported file; form fields can no longer be edited interactively once flattened.",
+      "question": "Why should you flatten a completed PDF form?",
+      "answer": "Flattening locks entered data so recipients or automated viewers cannot accidentally alter or erase form entries."
+    },
+    "interleave-pdf": {
+      "title": "Interleave PDF Pages Online",
+      "description": "Merge two PDF documents by alternating pages, ideal for combining separate odd and even duplex scanner scans.",
+      "how": "Select Document A containing front or odd pages, select Document B containing back or even pages, and click interleave.",
+      "limits": "If documents have unequal page counts, remaining pages from the longer document are appended in order.",
+      "question": "Can I reverse the second document if it was scanned backwards?",
+      "answer": "Yes, enable the reverse option for Document B to automatically flip reverse-feed scanner batches into correct sequential order."
     }
   },
   "flexOptions": {
@@ -4956,6 +5052,114 @@
       "annualInflation": "Anticipated Annual Inflation (%)",
       "investmentReturn": "Nominal Annual Investment Return (%)",
       "timeHorizon": "Investment Horizon (Years)"
+    }
+  },
+  "pdfTools": {
+    "common": {
+      "selectFiles": "Select PDF Files",
+      "selectFile": "Select a PDF File",
+      "selectDocA": "Select First PDF Document",
+      "selectDocB": "Select Second PDF Document",
+      "fileSizeExceeded": "File exceeds allowable local size limit of 100MB.",
+      "statusError": "An error occurred while processing the document.",
+      "statusReady": "Ready",
+      "statusSuccess": "Completed successfully",
+      "status": "Status",
+      "downloadPdf": "Download Processed PDF",
+      "results": "Processing Summary",
+      "pages": "Pages"
+    },
+    "merge": {
+      "heading": "Combine Multiple PDF Documents",
+      "mergeAction": "Merge Selected PDFs",
+      "fileCount": "Number of Files",
+      "totalPages": "Combined Total Pages"
+    },
+    "split": {
+      "heading": "Extract or Split PDF Range",
+      "splitAction": "Extract Specified Pages",
+      "splitRange": "Page Range (e.g. 1-3, 5)",
+      "originalPages": "Original Total Pages",
+      "extractedPages": "Pages Selected"
+    },
+    "rotate": {
+      "heading": "Rotate PDF Page Orientation",
+      "rotateAction": "Rotate Pages",
+      "angle": "Rotation Angle",
+      "rotate90": "90° Clockwise",
+      "rotate180": "180° Flip",
+      "rotate270": "270° Clockwise (90° CCW)",
+      "angleApplied": "Applied Rotation",
+      "rotatedPages": "Pages Processed"
+    },
+    "reorder": {
+      "heading": "Rearrange Document Page Order",
+      "reorderAction": "Reorder Document Pages",
+      "pageOrder": "Desired Sequence (e.g. 3, 1, 2)",
+      "newOrder": "Target Page Order",
+      "totalPages": "Total Pages"
+    },
+    "deletePages": {
+      "heading": "Remove Unwanted Pages",
+      "deleteAction": "Remove Specified Pages",
+      "pagesToDelete": "Pages to Delete (e.g. 2, 4-5)",
+      "deletedCount": "Pages Target Removed",
+      "remainingPages": "Pages Retained"
+    },
+    "extract": {
+      "heading": "Extract Specific Pages",
+      "extractAction": "Extract Pages to New Document"
+    },
+    "compress": {
+      "heading": "Optimize PDF File Size",
+      "compressAction": "Compress Document",
+      "level": "Compression Strength",
+      "levelQuality": "Light (Best Quality)",
+      "levelBalanced": "Medium (Balanced)",
+      "levelHigh": "Strong (Maximum Compression)",
+      "originalSize": "Initial Size",
+      "compressedSize": "Resulting Size",
+      "reduction": "Estimated Reduction"
+    },
+    "pageSize": {
+      "heading": "Inspect Sheet Geometry & Standard",
+      "pageCount": "Document Total Pages",
+      "pageSizeName": "Detected Format",
+      "dimensions": "Sheet Dimensions",
+      "orientation": "Document Aspect",
+      "portrait": "Portrait (Vertical)",
+      "landscape": "Landscape (Horizontal)"
+    },
+    "metadata": {
+      "heading": "Edit Document Properties",
+      "title": "Document Title",
+      "author": "Document Author",
+      "subject": "Document Subject",
+      "keywords": "Keywords (comma-separated)",
+      "saveAction": "Apply Metadata",
+      "updated": "Metadata Status"
+    },
+    "wordCount": {
+      "heading": "Document Text Statistics",
+      "words": "Word Count",
+      "characters": "Character Count",
+      "paragraphs": "Paragraph Count",
+      "readingTime": "Estimated Reading Duration",
+      "minutes": "Minutes"
+    },
+    "flatten": {
+      "heading": "Flatten Interactive Forms",
+      "flattenAction": "Flatten Form Elements",
+      "flattenedPages": "Processed Pages",
+      "statusFlattened": "Form Fields Converted to Static Content"
+    },
+    "interleave": {
+      "heading": "Alternate Two PDF Documents",
+      "interleaveAction": "Interleave Document Pages",
+      "reverseB": "Reverse Page Order of Second Document",
+      "docAPages": "Document A Page Count",
+      "docBPages": "Document B Page Count",
+      "combinedPages": "Interleaved Total Pages"
     }
   }
 }

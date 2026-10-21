@@ -163,6 +163,18 @@ export const translatedTools = [
   'savings-retirement-hub',
   'taxation-compliance-deck',
   'wealth-inflation-matrix',
+  'merge-pdf',
+  'split-pdf',
+  'rotate-pdf',
+  'reorder-pdf',
+  'delete-pdf-pages',
+  'extract-pdf-pages',
+  'compress-pdf',
+  'pdf-page-size-checker',
+  'pdf-metadata-editor',
+  'pdf-word-counter',
+  'flatten-pdf',
+  'interleave-pdf',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

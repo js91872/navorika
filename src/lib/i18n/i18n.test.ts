@@ -19,7 +19,7 @@ test('every dictionary is complete, nonempty and contains translated tool conten
   for (const locale of locales) {
     const d = await getDictionary(locale);
     assert.deepEqual(Object.keys(d).sort(), Object.keys(english).sort(), locale);
-    for (const section of ['ui', 'pdf', 'printSize', 'design', 'developer', 'takeoff', 'construction', 'finance', 'wealth'] as const) assert.deepEqual(Object.keys(d[section]).sort(), Object.keys(english[section]).sort(), `${locale}/${section}`);
+    for (const section of ['ui', 'pdf', 'printSize', 'design', 'developer', 'takeoff', 'construction', 'finance', 'wealth', 'pdfTools'] as const) assert.deepEqual(Object.keys(d[section]).sort(), Object.keys(english[section]).sort(), `${locale}/${section}`);
     assert.deepEqual(Object.keys(d.tools).sort(), [...translatedTools].sort(), locale);
     for (const value of Object.values(d.ui)) assert.ok(value.trim().length > 0, locale);
     for (const slug of translatedTools) {
@@ -54,7 +54,7 @@ test('localized controls do not expose CSS keywords or previously untranslated E
       assert.notEqual(label, keyword, `${locale} exposes raw ${keyword}`);
       assert.notEqual(label, english.flexOptions[keyword as keyof typeof english.flexOptions], `${locale}/${keyword} uses English label`);
     }
-    const text = [...Object.values(d.ui), ...Object.values(d.tools).flatMap((tool) => Object.values(tool)), ...Object.values(d.flexOptions), ...Object.values(d.pdf), ...Object.values(d.printSize), ...Object.values(d.design), ...Object.values(d.developer).flatMap((group) => Object.values(group)), ...Object.values(d.takeoff).flatMap((group) => Object.values(group)), ...Object.values(d.construction).flatMap((group) => Object.values(group)), ...Object.values(d.health).flatMap((group) => Object.values(group)), ...Object.values(d.everyday).flatMap((group) => Object.values(group)), ...Object.values(d.finance).flatMap((group) => Object.values(group)), ...Object.values(d.wealth).flatMap((group) => Object.values(group))];
+    const text = [...Object.values(d.ui), ...Object.values(d.tools).flatMap((tool) => Object.values(tool)), ...Object.values(d.flexOptions), ...Object.values(d.pdf), ...Object.values(d.printSize), ...Object.values(d.design), ...Object.values(d.developer).flatMap((group) => Object.values(group)), ...Object.values(d.takeoff).flatMap((group) => Object.values(group)), ...Object.values(d.construction).flatMap((group) => Object.values(group)), ...Object.values(d.health).flatMap((group) => Object.values(group)), ...Object.values(d.everyday).flatMap((group) => Object.values(group)), ...Object.values(d.finance).flatMap((group) => Object.values(group)), ...Object.values(d.wealth).flatMap((group) => Object.values(group)), ...Object.values(d.pdfTools).flatMap((group) => Object.values(group))];
     for (const value of text) assert.equal(fragments.test(value), false, `${locale}: ${value}`);
   }
 });

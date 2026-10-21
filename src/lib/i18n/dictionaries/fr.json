@@ -1403,6 +1403,102 @@
       "limits": "Suppose des taux annuels constants alors que l'inflation réelle fluctue selon les postes de consommation.",
       "question": "Quelle est la distinction entre rendement nominal et rendement réel ?",
       "answer": "Le rendement nominal correspond au gain brut en pourcentage, alors que le rendement réel en soustrait l'inflation pour mesurer le gain effectif de pouvoir d'achat."
+    },
+    "merge-pdf": {
+      "title": "Fusionner PDF en ligne",
+      "description": "Combinez plusieurs fichiers PDF en un seul document ordonné directement dans votre navigateur sans téléversement sur un serveur externe.",
+      "how": "Sélectionnez deux ou plusieurs fichiers PDF, ajustez leur ordre d'apparition et lancez la fusion pour générer un document unique.",
+      "limits": "Les fichiers PDF verrouillés par mot de passe doivent être déverrouillés avant toute opération de fusion.",
+      "question": "Mes fichiers sont-ils envoyés sur un serveur distant lors de la fusion ?",
+      "answer": "Non. Toute la fusion PDF s'exécute localement dans votre navigateur web via la mémoire locale de votre appareil."
+    },
+    "split-pdf": {
+      "title": "Diviser PDF en ligne",
+      "description": "Séparez des plages de pages précises ou isolez des sections de votre document PDF de manière rapide et sécurisée.",
+      "how": "Chargez votre fichier PDF, définissez les numéros ou plages de pages séparés par des virgules et téléchargez le document extrait.",
+      "limits": "Ne permet pas de modifier des documents chiffrés sans autorisations d'accès préalables.",
+      "question": "Puis-je extraire des pages non consécutives d'un document PDF ?",
+      "answer": "Oui. Vous pouvez saisir des plages et numéros individuels comme 1-3, 5, 8-10 pour extraire des sections indépendantes."
+    },
+    "rotate-pdf": {
+      "title": "Pivoter les pages PDF en ligne",
+      "description": "Faites pivoter les pages inversées ou horizontales de 90, 180 ou 270 degrés pour corriger l'orientation de lecture.",
+      "how": "Choisissez votre PDF, sélectionnez l'angle souhaité et appliquez la rotation pour obtenir un document prêt à l'impression.",
+      "limits": "La rotation s'applique aux pages entières sans altérer le texte ou les éléments vectoriels intégrés.",
+      "question": "La rotation altère-t-elle la netteté visuelle du document ?",
+      "answer": "Non. L'opération met à jour les matrices d'affichage du format sans recomprimer les graphismes ni pixelliser les polices."
+    },
+    "reorder-pdf": {
+      "title": "Réorganiser les pages PDF en ligne",
+      "description": "Modifiez l'agencement et l'ordre des pages de votre fichier PDF en toute confidentialité sur votre ordinateur.",
+      "how": "Téléversez votre document, spécifiez l'ordre numérique souhaité en séparant par des virgules et enregistrez le nouveau fichier.",
+      "limits": "Nécessite la saisie d'indices numériques correspondant aux pages réelles du document chargé.",
+      "question": "Est-il possible de dupliquer une page en réorganisant ?",
+      "answer": "Oui. Répéter un numéro de page dans la suite demandée permet d'insérer plusieurs fois la même page."
+    },
+    "delete-pdf-pages": {
+      "title": "Supprimer des pages PDF en ligne",
+      "description": "Supprimez les pages blanches, inutiles ou dupliquées de votre fichier PDF en quelques secondes.",
+      "how": "Chargez votre document, entrez les numéros ou plages de pages à éliminer et téléchargez le document nettoyé.",
+      "limits": "Vous ne pouvez pas supprimer l'intégralité des pages ; au moins une page doit subsister dans le fichier final.",
+      "question": "La suppression modifie-t-elle mon document d'origine ?",
+      "answer": "Non. Votre document original sur disque reste intact ; un nouveau document PDF allégé est généré."
+    },
+    "extract-pdf-pages": {
+      "title": "Extraire des pages PDF en ligne",
+      "description": "Extrayez des chapitres, feuilles ou pages sélectionnées d'un PDF volumineux vers un document autonome.",
+      "how": "Ouvrez votre fichier PDF, renseignez les numéros de pages cibles et isolez-les dans un document distinct.",
+      "limits": "Les pages extraites préservent fidèlement les dimensions géométriques d'origine et les polices intégrées.",
+      "question": "Les liens hypertextes cliquables sont-ils conservés ?",
+      "answer": "Oui, les annotations et hyperliens internes et externes rattachés aux pages extraites sont conservés."
+    },
+    "compress-pdf": {
+      "title": "Compresser PDF en ligne",
+      "description": "Réduisez le poids de vos fichiers PDF directement dans le navigateur pour simplifier leur transmission par courriel.",
+      "how": "Choisissez votre document PDF, sélectionnez le degré de compression voulu et téléchargez le fichier optimisé.",
+      "limits": "Les documents déjà fortement compressés ou ne comportant que du texte brut présentent une réduction minime.",
+      "question": "La compression rend-elle le texte flou ?",
+      "answer": "Non, les polices et tracés vectoriels restent nets ; l'optimisation supprime les métadonnées redondantes et restructure les flux."
+    },
+    "pdf-page-size-checker": {
+      "title": "Vérificateur de format de page PDF",
+      "description": "Identifiez les dimensions physiques, les formats standards et l'orientation des feuilles de tout document PDF.",
+      "how": "Importez un document PDF pour examiner ses mesures exactes en millimètres, centimètres et points, avec reconnaissance A4, Lettre ou Légal.",
+      "limits": "Les fichiers présentant des formats hétérogènes analysent et catégorisent les dimensions de chaque feuille inspectée.",
+      "question": "Pourquoi vérifier les dimensions physiques avant l'impression ?",
+      "answer": "Cela garantit que l'imprimante utilise le bon bac et prévient tout rognage ou redimensionnement involontaire."
+    },
+    "pdf-metadata-editor": {
+      "title": "Éditeur de métadonnées PDF",
+      "description": "Consultez et modifiez le titre, l'auteur, l'objet et les mots-clés de votre fichier PDF en toute simplicité.",
+      "how": "Ouvrez votre fichier PDF, visualisez les champs documentaires, mettez à jour les informations et enregistrez la version modifiée.",
+      "limits": "Met à jour le dictionnaire descriptif et les métadonnées XMP sans altérer le corps visuel du document.",
+      "question": "Pourquoi renseigner les métadonnées d'un PDF avant diffusion ?",
+      "answer": "Des métadonnées exactes permettent aux lecteurs, logiciels d'indexation et catalogues de classer convenablement vos documents."
+    },
+    "pdf-word-counter": {
+      "title": "Compteur de mots PDF en ligne",
+      "description": "Comptez les mots, signes, phrases et paragraphes d'un fichier PDF avec estimation de lecture sans téléversement.",
+      "how": "Déposez votre document PDF pour analyser instantanément les flux de caractères et évaluer les statistiques textuelles.",
+      "limits": "Les documents numérisés sans couche textuelle issue de reconnaissance optique ne contiennent pas de texte extractible.",
+      "question": "L'outil peut-il lire un document papier numérisé ?",
+      "answer": "Il décompte le texte numérique natif ; si le document n'est composé que d'images scannées sans couche textuelle, le total sera nul."
+    },
+    "flatten-pdf": {
+      "title": "Aplatir un formulaire PDF en ligne",
+      "description": "Convertissez les champs de formulaire éditables, cases à cocher et annotations en éléments graphiques permanents.",
+      "how": "Téléversez votre formulaire complété et lancez l'aplatissement pour intégrer définitivement vos données dans la page.",
+      "limits": "L'opération est irréversible dans le fichier généré ; les champs ne pourront plus être modifiés interactivement.",
+      "question": "Pourquoi aplatir un formulaire PDF avant envoi ?",
+      "answer": "L'aplatissement fige définitivement les informations saisies afin d'empêcher toute modification accidentelle par les destinataires."
+    },
+    "interleave-pdf": {
+      "title": "Entrelacer les pages PDF en ligne",
+      "description": "Fusionnez deux fichiers PDF en alternant leurs pages, idéal pour combiner des numérisations recto et verso distinctes.",
+      "how": "Sélectionnez le document A (rectos), sélectionnez le document B (versos) et générez le document unifié ordonné.",
+      "limits": "Si les documents comptent un nombre de pages inégal, les pages restantes du document le plus long sont ajoutées à la fin.",
+      "question": "Puis-je inverser le second document s'il a été numérisé à l'envers ?",
+      "answer": "Oui, cochez l'option d'inversion pour le document B pour replacer automatiquement les pages dans le bon ordre séquentiel."
     }
   },
   "flexOptions": {
@@ -4956,6 +5052,114 @@
       "annualInflation": "Inflation annuelle estimée (%)",
       "investmentReturn": "Rendement nominal annuel (%)",
       "timeHorizon": "Horizon temporel (années)"
+    }
+  },
+  "pdfTools": {
+    "common": {
+      "selectFiles": "Sélectionner des fichiers PDF",
+      "selectFile": "Sélectionner un fichier PDF",
+      "selectDocA": "Sélectionner le premier document PDF",
+      "selectDocB": "Sélectionner le deuxième document PDF",
+      "fileSizeExceeded": "Le fichier dépasse la limite locale autorisée de 100 Mo.",
+      "statusError": "Une erreur est survenue lors du traitement du document.",
+      "statusReady": "Prêt",
+      "statusSuccess": "Opération terminée avec succès",
+      "status": "État",
+      "downloadPdf": "Télécharger le PDF traité",
+      "results": "Récapitulatif du traitement",
+      "pages": "Pages"
+    },
+    "merge": {
+      "heading": "Fusionner plusieurs documents PDF",
+      "mergeAction": "Fusionner les PDF sélectionnés",
+      "fileCount": "Nombre de fichiers",
+      "totalPages": "Total combiné de pages"
+    },
+    "split": {
+      "heading": "Extraire ou diviser une plage PDF",
+      "splitAction": "Extraire les pages indiquées",
+      "splitRange": "Plage de pages (ex. 1-3, 5)",
+      "originalPages": "Pages initiales",
+      "extractedPages": "Pages sélectionnées"
+    },
+    "rotate": {
+      "heading": "Pivoter l'orientation des pages PDF",
+      "rotateAction": "Faire pivoter les pages",
+      "angle": "Angle de rotation",
+      "rotate90": "90° sens horaire",
+      "rotate180": "180° retournement",
+      "rotate270": "270° sens horaire (90° antihoraire)",
+      "angleApplied": "Rotation appliquée",
+      "rotatedPages": "Pages traitées"
+    },
+    "reorder": {
+      "heading": "Réorganiser l'ordre des pages",
+      "reorderAction": "Réorganiser les pages du document",
+      "pageOrder": "Ordre souhaité (ex. 3, 1, 2)",
+      "newOrder": "Nouvel ordre des pages",
+      "totalPages": "Nombre total de pages"
+    },
+    "deletePages": {
+      "heading": "Supprimer des pages indésirables",
+      "deleteAction": "Supprimer les pages indiquées",
+      "pagesToDelete": "Pages à supprimer (ex. 2, 4-5)",
+      "deletedCount": "Pages cibles supprimées",
+      "remainingPages": "Pages conservées"
+    },
+    "extract": {
+      "heading": "Extraire des pages spécifiques",
+      "extractAction": "Extraire vers un nouveau document"
+    },
+    "compress": {
+      "heading": "Optimiser le poids du fichier PDF",
+      "compressAction": "Compresser le document",
+      "level": "Niveau de compression",
+      "levelQuality": "Légère (qualité maximale)",
+      "levelBalanced": "Moyenne (équilibrée)",
+      "levelHigh": "Forte (compression maximale)",
+      "originalSize": "Taille initiale",
+      "compressedSize": "Taille finale",
+      "reduction": "Réduction estimée"
+    },
+    "pageSize": {
+      "heading": "Examiner la géométrie et le format de feuille",
+      "pageCount": "Pages totales du document",
+      "pageSizeName": "Format détecté",
+      "dimensions": "Dimensions de feuille",
+      "orientation": "Sens du document",
+      "portrait": "Portrait (vertical)",
+      "landscape": "Paysage (horizontal)"
+    },
+    "metadata": {
+      "heading": "Modifier les métadonnées du document",
+      "title": "Titre du document",
+      "author": "Auteur du document",
+      "subject": "Sujet du document",
+      "keywords": "Mots-clés (séparés par des virgules)",
+      "saveAction": "Appliquer les métadonnées",
+      "updated": "État des métadonnées"
+    },
+    "wordCount": {
+      "heading": "Statistiques textuelles du document",
+      "words": "Nombre de mots",
+      "characters": "Nombre de caractères",
+      "paragraphs": "Nombre de paragraphes",
+      "readingTime": "Temps de lecture estimé",
+      "minutes": "Minutes"
+    },
+    "flatten": {
+      "heading": "Aplatir les formulaires interactifs",
+      "flattenAction": "Aplatir les champs de formulaire",
+      "flattenedPages": "Pages traitées",
+      "statusFlattened": "Champs convertis en contenu statique"
+    },
+    "interleave": {
+      "heading": "Entrelacer deux documents PDF",
+      "interleaveAction": "Entrelacer les pages des documents",
+      "reverseB": "Inverser l'ordre des pages du second document",
+      "docAPages": "Pages du document A",
+      "docBPages": "Pages du document B",
+      "combinedPages": "Total des pages entrelacées"
     }
   }
 }

@@ -1403,6 +1403,102 @@
       "limits": "Assume parametri costanti, mentre linflazione reale varia a seconda della composizione delle spese personali.",
       "question": "Qual è il significato di rendimento reale rispetto a quello nominale?",
       "answer": "Il rendimento nominale rappresenta la crescita percentuale grezza, mentre il rendimento reale scorpora linflazione per mostrare la crescita effettiva del potere dacquisto."
+    },
+    "merge-pdf": {
+      "title": "Unisci PDF online",
+      "description": "Combina più file PDF in un unico documento ordinato direttamente nel browser senza caricare file su server esterni.",
+      "how": "Seleziona due o più file PDF, definisci l'ordine desiderato e avvia l'unione per scaricare il documento unificato.",
+      "limits": "I documenti PDF protetti da password devono essere sbloccati prima dell'operazione di unione.",
+      "question": "I miei file vengono inviati a un server esterno durante l'unione?",
+      "answer": "No. L'unione avviene interamente all'interno del browser web tramite la memoria locale del dispositivo."
+    },
+    "split-pdf": {
+      "title": "Dividi PDF online",
+      "description": "Separa intervalli di pagine specifici o estrai sezioni dal documento PDF in modo rapido e sicuro.",
+      "how": "Carica il file PDF, indica i numeri di pagina o gli intervalli separati da virgole e scarica il file estratto.",
+      "limits": "Non consente la modifica di documenti crittografati senza i necessari permessi di accesso.",
+      "question": "Posso estrarre pagine non consecutive da un PDF?",
+      "answer": "Sì. Puoi specificare singoli numeri di pagina e intervalli come 1-3, 5, 8-10 per estrarre segmenti separati."
+    },
+    "rotate-pdf": {
+      "title": "Ruota pagine PDF online",
+      "description": "Ruota pagine PDF capovolte o orizzontali di 90, 180 o 270 gradi per correggere l'orientamento di visualizzazione.",
+      "how": "Scegli il file PDF, seleziona l'angolo di rotazione voluto e applica la modifica per ottenere un documento orientato correttamente.",
+      "limits": "La rotazione viene applicata all'intera pagina senza alterare il testo o le grafiche vettoriali integrate.",
+      "question": "La rotazione delle pagine riduce la nitidezza visiva del documento?",
+      "answer": "No. La procedura aggiorna i parametri di visualizzazione del formato senza ricomprimere la grafica o rasterizzare il testo."
+    },
+    "reorder-pdf": {
+      "title": "Riorganizza pagine PDF online",
+      "description": "Modifica la sequenza e l'ordine delle pagine del tuo file PDF in locale con la massima riservatezza.",
+      "how": "Carica il documento, inserisci la nuova sequenza numerica separata da virgole e ricostruisci il file.",
+      "limits": "Richiede l'inserimento di numeri validi corrispondenti alle pagine effettive presenti nel documento.",
+      "question": "Posso duplicare pagine durante la riorganizzazione?",
+      "answer": "Sì. Indicare più volte lo stesso numero di pagina nella sequenza permette di duplicarla nel file di output."
+    },
+    "delete-pdf-pages": {
+      "title": "Elimina pagine PDF online",
+      "description": "Rimuovi pagine vuote, superflue o duplicate dal tuo file PDF in modo semplice e veloce.",
+      "how": "Carica il documento, specifica i numeri o gli intervalli di pagine da escludere e scarica il file ridotto.",
+      "limits": "Non è consentito cancellare tutte le pagine; nel documento finale deve rimanere almeno una pagina.",
+      "question": "L'eliminazione modifica il file originale memorizzato sul computer?",
+      "answer": "No. Il file originario memorizzato sul computer non viene modificato; viene prodotto un nuovo file alleggerito."
+    },
+    "extract-pdf-pages": {
+      "title": "Estrai pagine PDF online",
+      "description": "Estrai capitoli, fogli o selezioni specifiche da un documento PDF voluminoso verso un file autonomo.",
+      "how": "Carica il documento PDF, specifica i numeri di pagina desiderati ed estraili in un nuovo file compatto.",
+      "limits": "Le pagine estratte mantengono fedelmente le proporzioni originali, i font e i contenuti grafici.",
+      "question": "I collegamenti ipertestuali rimangono cliccabili dopo l'estrazione?",
+      "answer": "Sì, i link e le annotazioni standard interni ed esterni collegati alle pagine estratte vengono preservati."
+    },
+    "compress-pdf": {
+      "title": "Comprimi PDF online",
+      "description": "Riduci il peso del tuo file PDF direttamente nel browser per facilitarne l'invio via email e la condivisione.",
+      "how": "Carica il file PDF, scegli il livello di compressione desiderato e scarica il documento snellito.",
+      "limits": "File già compressi o composti prevalentemente da testo puro mostrano riduzioni di dimensione minime.",
+      "question": "La compressione rende il testo sfocato?",
+      "answer": "I font vettoriali restano nitidi; l'ottimizzazione elimina dati ridondanti e riorganizza la struttura interna."
+    },
+    "pdf-page-size-checker": {
+      "title": "Verifica formato pagine PDF",
+      "description": "Rileva dimensioni fisiche, formati standard e orientamento dei fogli di qualsiasi documento PDF.",
+      "how": "Carica un file PDF per esaminare larghezza e altezza in millimetri, centimetri e punti, con riconoscimento A4, Lettera o Legale.",
+      "limits": "Documenti con pagine di dimensioni miste riportano la classificazione specifica per ciascun foglio analizzato.",
+      "question": "Perché è utile verificare le dimensioni della pagina prima di stampare?",
+      "answer": "Previene ritagli indesiderati, ridimensionamenti automatici errati e assicura l'alimentazione dal cassetto corretto."
+    },
+    "pdf-metadata-editor": {
+      "title": "Modifica metadati PDF",
+      "description": "Visualizza e aggiorna titolo, autore, oggetto e parole chiave del documento PDF in totale semplicità.",
+      "how": "Carica il documento PDF, consulta i valori correnti, digita i nuovi dati nei campi desiderati e salva il file aggiornato.",
+      "limits": "Aggiorna il blocco descrittivo e i metadati XMP senza apportare modifiche al contenuto visibile del foglio.",
+      "question": "Perché conviene aggiornare i metadati prima di inviare un PDF?",
+      "answer": "Metadati precisi consentono a motori di ricerca, lettori digitali e archivi di identificare correttamente autore e titolo."
+    },
+    "pdf-word-counter": {
+      "title": "Conteggio parole PDF online",
+      "description": "Conta parole, caratteri, frasi e paragrafi di documenti PDF con stima del tempo di lettura senza caricamenti esterni.",
+      "how": "Inserisci il file PDF per elaborare istantaneamente il testo digitale estraibile e ricavare statistiche dettagliate.",
+      "limits": "Documenti costituiti da scansioni prive di riconoscimento ottico dei caratteri non contengono testo leggibile.",
+      "question": "Questo strumento può contare parole da una scansione cartacea?",
+      "answer": "Elabora testo digitale codificato; se il PDF contiene solo immagini raster senza livello OCR, il conteggio sarà zero."
+    },
+    "flatten-pdf": {
+      "title": "Appiattisci moduli PDF online",
+      "description": "Converti moduli interattivi compilabili, caselle di selezione e note in elementi statici non modificabili.",
+      "how": "Carica il modulo PDF compilato e premi il pulsante di appiattimento per bloccare i dati inseriti nel foglio.",
+      "limits": "La conversione è definitiva nel file scaricato; i campi non potranno più essere modificati in modo interattivo.",
+      "question": "Qual è il vantaggio di appiattire un modulo compilato?",
+      "answer": "Fissa stabilmente i valori inseriti, impedendo modifiche involontarie da parte di destinatari o lettori software."
+    },
+    "interleave-pdf": {
+      "title": "Intercala pagine PDF online",
+      "description": "Unisci due file PDF alternandone i fogli, ideale per combinare scansioni separate di pagine pari e dispari.",
+      "how": "Seleziona il documento A (pagine dispari), seleziona il documento B (pagine pari) e unisci i file nella sequenza alternata.",
+      "limits": "In caso di numero dispari o diseguale di fogli, le pagine rimanenti del file più lungo vengono aggiunte al termine.",
+      "question": "Posso invertire il secondo file se è stato scansionato a ritroso?",
+      "answer": "Sì, attiva l'opzione di inversione per il documento B per ristabilire automaticamente l'ordine corretto dei fogli."
     }
   },
   "flexOptions": {
@@ -4956,6 +5052,114 @@
       "annualInflation": "Tasso di inflazione annuo atteso (%)",
       "investmentReturn": "Rendimento nominale annuo (%)",
       "timeHorizon": "Orizzonte dell’investimento (anni)"
+    }
+  },
+  "pdfTools": {
+    "common": {
+      "selectFiles": "Seleziona file PDF",
+      "selectFile": "Seleziona un file PDF",
+      "selectDocA": "Seleziona il primo documento PDF",
+      "selectDocB": "Seleziona il secondo documento PDF",
+      "fileSizeExceeded": "Il file supera il limite massimo consentito di 100 MB.",
+      "statusError": "Si è verificato un errore durante l'elaborazione del documento.",
+      "statusReady": "Pronto",
+      "statusSuccess": "Operazione completata con successo",
+      "status": "Stato",
+      "downloadPdf": "Scarica PDF elaborato",
+      "results": "Riepilogo elaborazione",
+      "pages": "Pagine"
+    },
+    "merge": {
+      "heading": "Unisci più documenti PDF",
+      "mergeAction": "Unisci i PDF selezionati",
+      "fileCount": "Numero di file",
+      "totalPages": "Pagine complessive unite"
+    },
+    "split": {
+      "heading": "Estrai o dividi intervallo PDF",
+      "splitAction": "Estrai le pagine specificate",
+      "splitRange": "Intervallo pagine (es. 1-3, 5)",
+      "originalPages": "Pagine iniziali",
+      "extractedPages": "Pagine selezionate"
+    },
+    "rotate": {
+      "heading": "Ruota orientamento pagine PDF",
+      "rotateAction": "Ruota pagine",
+      "angle": "Angolo di rotazione",
+      "rotate90": "90° orario",
+      "rotate180": "180° ribaltamento",
+      "rotate270": "270° orario (90° antiorario)",
+      "angleApplied": "Rotazione applicata",
+      "rotatedPages": "Pagine elaborate"
+    },
+    "reorder": {
+      "heading": "Riorganizza sequenza pagine",
+      "reorderAction": "Riorganizza pagine del documento",
+      "pageOrder": "Sequenza desiderata (es. 3, 1, 2)",
+      "newOrder": "Nuovo ordine pagine",
+      "totalPages": "Pagine totali"
+    },
+    "deletePages": {
+      "heading": "Rimuovi pagine indesiderate",
+      "deleteAction": "Elimina le pagine specificate",
+      "pagesToDelete": "Pagine da rimuovere (es. 2, 4-5)",
+      "deletedCount": "Pagine rimosse",
+      "remainingPages": "Pagine mantenute"
+    },
+    "extract": {
+      "heading": "Estrai pagine specifiche",
+      "extractAction": "Estrai in un nuovo documento"
+    },
+    "compress": {
+      "heading": "Riduci dimensioni file PDF",
+      "compressAction": "Comprimi documento",
+      "level": "Livello di compressione",
+      "levelQuality": "Leggera (massima qualità)",
+      "levelBalanced": "Media (bilanciata)",
+      "levelHigh": "Elevata (massima riduzione)",
+      "originalSize": "Dimensione iniziale",
+      "compressedSize": "Dimensione risultante",
+      "reduction": "Riduzione stimata"
+    },
+    "pageSize": {
+      "heading": "Verifica formato e geometria foglio",
+      "pageCount": "Pagine totali documento",
+      "pageSizeName": "Formato rilevato",
+      "dimensions": "Dimensioni foglio",
+      "orientation": "Orientamento",
+      "portrait": "Verticale (ritratto)",
+      "landscape": "Orizzontale (paesaggio)"
+    },
+    "metadata": {
+      "heading": "Modifica proprietà documento",
+      "title": "Titolo documento",
+      "author": "Autore documento",
+      "subject": "Oggetto documento",
+      "keywords": "Parole chiave (separate da virgole)",
+      "saveAction": "Salva metadati",
+      "updated": "Stato metadati"
+    },
+    "wordCount": {
+      "heading": "Statistiche testo documento",
+      "words": "Conteggio parole",
+      "characters": "Conteggio caratteri",
+      "paragraphs": "Conteggio paragrafi",
+      "readingTime": "Tempo stimato di lettura",
+      "minutes": "Minuti"
+    },
+    "flatten": {
+      "heading": "Appiattisci moduli interattivi",
+      "flattenAction": "Appiattisci campi modulo",
+      "flattenedPages": "Pagine elaborate",
+      "statusFlattened": "Campi convertiti in elementi statici"
+    },
+    "interleave": {
+      "heading": "Intercala due documenti PDF",
+      "interleaveAction": "Intercala pagine documenti",
+      "reverseB": "Inverti ordine secondo documento",
+      "docAPages": "Pagine documento A",
+      "docBPages": "Pagine documento B",
+      "combinedPages": "Totale pagine intercalate"
     }
   }
 }

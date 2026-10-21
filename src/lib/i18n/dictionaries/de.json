@@ -1403,6 +1403,102 @@
       "limits": "Verwendet konstante Jahresdurchschnitte, während die tatsächliche Inflation je nach individuellem Konsumverhalten abweicht.",
       "question": "Was unterscheidet die nominale von der realen Rendite?",
       "answer": "Die Nominalrendite bezeichnet den reinen prozentualen Zuwachs, während die Realrendite die Inflation abzieht und den echten Kaufkraftzuwachs anzeigt."
+    },
+    "merge-pdf": {
+      "title": "PDF zusammenfügen online",
+      "description": "Fügen Sie mehrere PDF-Dateien direkt im Browser zu einem geordneten Dokument zusammen, ohne Daten auf externe Server hochzuladen.",
+      "how": "Wählen Sie zwei oder mehr PDF-Dateien aus, bestimmen Sie deren Abfolge und starten Sie das Zusammenführen für den Download.",
+      "limits": "Passwortgeschützte oder gesperrte PDF-Dateien müssen vor der Verarbeitung entsperrt werden.",
+      "question": "Werden meine Dateien beim Zusammenführen auf einen externen Server geladen?",
+      "answer": "Nein. Die gesamte Verarbeitung erfolgt vollständig lokal im Arbeitsspeicher Ihres Webbrowsers."
+    },
+    "split-pdf": {
+      "title": "PDF teilen online",
+      "description": "Trennen Sie bestimmte Seitenbereiche ab oder extrahieren Sie einzelne Abschnitte aus Ihrem PDF sicher und zügig im Browser.",
+      "how": "Laden Sie die PDF-Datei, geben Sie die gewünschten Seitennummern oder Bereiche kommagetrennt an und speichern Sie das Teildokument.",
+      "limits": "Verschlüsselte Dateien ohne entsprechende Freigaben können nicht getrennt oder verändert werden.",
+      "question": "Kann ich nicht aufeinanderfolgende Einzelseiten entnehmen?",
+      "answer": "Ja. Sie können beliebige Einzelseiten und Bereiche wie 1-3, 5, 8-10 definieren, um getrennte Teile zu entnehmen."
+    },
+    "rotate-pdf": {
+      "title": "PDF-Seiten drehen online",
+      "description": "Drehen Sie verkehrt ausgerichtete oder querliegende Seiten um 90, 180 oder 270 Grad, um die Lesbarkeit des Dokuments anzupassen.",
+      "how": "Wählen Sie die PDF-Datei, bestimmen Sie den gewünschten Drehwinkel und wenden Sie ihn an, um ein aufrechtes Dokument zu erhalten.",
+      "limits": "Die Drehung wirkt auf die gesamte Seite, ohne eingebettete Texte oder Vektorgrafiken qualitativ zu beeinträchtigen.",
+      "question": "Verschlechtert das Drehen die Bildauflösung des Dokuments?",
+      "answer": "Nein. Die Drehung passt lediglich Anzeigewerte im Dokumentenstandard an, ohne Schriften zu rastern oder Grafiken neu zu komprimieren."
+    },
+    "reorder-pdf": {
+      "title": "PDF-Seiten neu ordnen online",
+      "description": "Passen Sie die Seitenreihenfolge Ihres PDF-Dokuments lokal und vertraulich auf Ihrem Rechner an.",
+      "how": "Laden Sie das Dokument, tragen Sie die neue Zahlenfolge kommagetrennt ein und laden Sie die neu sortierte Datei herunter.",
+      "limits": "Erfordert gültige Seitenzahlen, die im Ausgangsdokument tatsächlich vorhanden sind.",
+      "question": "Können Seiten beim Umsortieren mehrfach verwendet werden?",
+      "answer": "Ja. Wird eine Seitennummer in der Abfolge mehrfach angegeben, wird die betreffende Seite im Ausgabedokument dupliziert."
+    },
+    "delete-pdf-pages": {
+      "title": "PDF-Seiten löschen online",
+      "description": "Entfernen Sie leere, überflüssige oder doppelte Seiten schnell und geschützt aus Ihrer PDF-Datei.",
+      "how": "Dokument auswählen, auszuschließende Seitennummern oder Abschnitte angeben und bereinigte PDF-Datei herunterladen.",
+      "limits": "Es können nicht sämtliche Seiten entfernt werden; mindestens eine Seite muss im Dokument verbleiben.",
+      "question": "Wird meine Ausgangsdatei auf der Festplatte verändert?",
+      "answer": "Nein. Die Originaldatei auf Ihrem Computer bleibt unverändert; es wird eine neue bereinigte Datei bereitgestellt."
+    },
+    "extract-pdf-pages": {
+      "title": "PDF-Seiten extrahieren online",
+      "description": "Extrahieren Sie wichtige Kapitel, Übersichten oder Einzelseiten aus umfangreichen Dokumenten in eine eigenständige Datei.",
+      "how": "Öffnen Sie Ihre PDF-Datei, benennen Sie die gewünschten Seitenzahlen und erstellen Sie ein neues kompaktes Dokument.",
+      "limits": "Extrahierte Seiten behalten ursprüngliche Abmessungen, Schriftsätze und visuelle Komponenten unverändert bei.",
+      "question": "Bleiben Hyperlinks nach dem Extrahieren anklickbar?",
+      "answer": "Ja, Verweise und standardisierte Anmerkungen auf den gewählten Seiten bleiben im extrahierten Dokument erhalten."
+    },
+    "compress-pdf": {
+      "title": "PDF komprimieren online",
+      "description": "Reduzieren Sie die Dateigröße von PDF-Dokumenten direkt im Browser für mühelosen Versand per E-Mail.",
+      "how": "PDF-Datei auswählen, passende Komprimierungsstufe wählen und das verkleinerte Dokument speichern.",
+      "limits": "Bereits voroptimierte Dokumente oder reine Textdokumente weisen in der Regel geringere Einsparpotenziale auf.",
+      "question": "Werden Texte durch die Komprimierung undeutlich?",
+      "answer": "Vektorschriften bleiben scharf; die Optimierung entfernt überflüssige Metadaten und bereinigt interne Datenströme."
+    },
+    "pdf-page-size-checker": {
+      "title": "PDF-Seitenformat prüfen",
+      "description": "Ermitteln Sie Abmessungen, Standardformate und Ausrichtungen der Seiten in jedem PDF-Dokument verlässlich.",
+      "how": "PDF-Dokument laden und Maße in Millimetern, Zentimetern und Punkten samt Standards wie A4, Letter oder Legal einsehen.",
+      "limits": "Bei Dokumenten mit unterschiedlichen Seitenformaten wird die Abmessung jeder geprüften Einzelseite ausgewiesen.",
+      "question": "Warum ist die Formatprüfung vor dem Druckvorgang bedeutsam?",
+      "answer": "Sie verhindert unerwünschte automatische Skalierungen, Randabschnitte und fehlerhafte Papierschachtansteuerungen."
+    },
+    "pdf-metadata-editor": {
+      "title": "PDF-Metadaten bearbeiten",
+      "description": "Prüfen und aktualisieren Sie Titel, Verfasser, Thema und Schlagwörter Ihrer PDF-Dateien komfortabel im Browser.",
+      "how": "PDF-Datei laden, vorhandene Werte prüfen, neue Angaben eintragen und das modifizierte Dokument sichern.",
+      "limits": "Aktualisiert Informationsfelder und XMP-Pakete, ohne den sichtbaren Seiteninhalt zu verändern.",
+      "question": "Weshalb sollten Metadaten vor der Weitergabe gepflegt werden?",
+      "answer": "Aussagekräftige Angaben erleichtern Katalogen, Leseprogrammen und Suchsystemen das zutreffende Zuordnen von Verfasser und Werk."
+    },
+    "pdf-word-counter": {
+      "title": "PDF-Wortzähler online",
+      "description": "Zählen Sie Wörter, Zeichen, Sätze und Absätze in PDF-Dateien samt Lesezeitberechnung ohne Dateiupload.",
+      "how": "PDF-Datei einfügen, um Textströme unmittelbar auszulesen und statistische Textmerkmale aufzuschlüsseln.",
+      "limits": "Eingescannte Bilddokumente ohne OCR-Texterkennungsschicht enthalten keinen maschinenlesbaren Text.",
+      "question": "Funktioniert das Zählen bei eingescannten Papierbelegen?",
+      "answer": "Das Werkzeug liest digitale Schriftzeichen; bei reinen Bilddateien ohne OCR-Schicht beträgt das Ergebnis null."
+    },
+    "flatten-pdf": {
+      "title": "PDF-Formulare einbetten online",
+      "description": "Wandeln Sie ausfüllbare Formularfelder, Auswahlkästchen und Kommentare in unveränderliche Inhalte um.",
+      "how": "Ausgefülltes Formular hochladen und Vorgang starten, um Eingaben dauerhaft mit der Seite zu verschmelzen.",
+      "limits": "Der Schritt ist in der Ausgabedatei endgültig; Felder können nachträglich nicht mehr dynamisch ausgefüllt werden.",
+      "question": "Welchen Zweck hat das Einbetten ausgefüllter Formulare?",
+      "answer": "Es fixiert eingegebene Angaben verlässlich gegen versehentliche Modifikationen durch Empfänger oder Anzeigesoftware."
+    },
+    "interleave-pdf": {
+      "title": "PDF-Seiten verschachteln online",
+      "description": "Fügen Sie zwei Dokumente abwechselnd zusammen, ideal zum Kombinieren getrennter Vorder- und Rückseitenscans.",
+      "how": "Dokument A (Vorderseiten) und Dokument B (Rückseiten) bestimmen und zu einem Dokument verweben.",
+      "limits": "Bei ungleicher Seitenanzahl werden überzählige Seiten des längeren Dokuments am Ende fortlaufend angefügt.",
+      "question": "Kann Dokument B umgekehrt eingelesen werden, falls es rückwärts gescannt wurde?",
+      "answer": "Ja, aktivieren Sie die Umkehrfunktion für Dokument B, um die Seitenfolge automatisch richtigzustellen."
     }
   },
   "flexOptions": {
@@ -4956,6 +5052,114 @@
       "annualInflation": "Erwartete jährliche Inflationsrate (%)",
       "investmentReturn": "Nominale jährliche Anlagerendite (%)",
       "timeHorizon": "Anlagezeitraum (Jahre)"
+    }
+  },
+  "pdfTools": {
+    "common": {
+      "selectFiles": "PDF-Dateien auswählen",
+      "selectFile": "PDF-Datei auswählen",
+      "selectDocA": "Erstes PDF-Dokument auswählen",
+      "selectDocB": "Zweites PDF-Dokument auswählen",
+      "fileSizeExceeded": "Datei überschreitet das lokale Größenlimit von 100 MB.",
+      "statusError": "Fehler beim Verarbeiten des Dokuments aufgetreten.",
+      "statusReady": "Bereit",
+      "statusSuccess": "Erfolgreich abgeschlossen",
+      "status": "Status",
+      "downloadPdf": "Verarbeitetes PDF herunterladen",
+      "results": "Verarbeitungsübersicht",
+      "pages": "Seiten"
+    },
+    "merge": {
+      "heading": "Mehrere PDF-Dokumente zusammenfügen",
+      "mergeAction": "Ausgewählte PDFs zusammenführen",
+      "fileCount": "Dateianzahl",
+      "totalPages": "Gesamte Seitenzahl"
+    },
+    "split": {
+      "heading": "PDF-Bereich aufteilen oder extrahieren",
+      "splitAction": "Ausgewählte Seiten extrahieren",
+      "splitRange": "Seitenbereich (z. B. 1-3, 5)",
+      "originalPages": "Ursprüngliche Seitenanzahl",
+      "extractedPages": "Ausgewählte Seiten"
+    },
+    "rotate": {
+      "heading": "Seitenausrichtung der PDF drehen",
+      "rotateAction": "Seiten drehen",
+      "angle": "Drehwinkel",
+      "rotate90": "90° im Uhrzeigersinn",
+      "rotate180": "180° umkehren",
+      "rotate270": "270° im Uhrzeigersinn (90° gegen den Uhrzeigersinn)",
+      "angleApplied": "Angewendete Drehung",
+      "rotatedPages": "Verarbeitete Seiten"
+    },
+    "reorder": {
+      "heading": "Seitenreihenfolge im Dokument anpassen",
+      "reorderAction": "Seiten neu ordnen",
+      "pageOrder": "Gewünschte Abfolge (z. B. 3, 1, 2)",
+      "newOrder": "Neue Seitenreihenfolge",
+      "totalPages": "Gesamtseiten"
+    },
+    "deletePages": {
+      "heading": "Unerwünschte Seiten entfernen",
+      "deleteAction": "Ausgewählte Seiten löschen",
+      "pagesToDelete": "Zu entfernende Seiten (z. B. 2, 4-5)",
+      "deletedCount": "Entfernte Seiten",
+      "remainingPages": "Verbleibende Seiten"
+    },
+    "extract": {
+      "heading": "Bestimmte Seiten extrahieren",
+      "extractAction": "Seiten in neues Dokument extrahieren"
+    },
+    "compress": {
+      "heading": "PDF-Dateigröße verringern",
+      "compressAction": "Dokument komprimieren",
+      "level": "Komprimierungsstufe",
+      "levelQuality": "Gering (beste Qualität)",
+      "levelBalanced": "Mittel (ausgewogen)",
+      "levelHigh": "Stark (maximale Komprimierung)",
+      "originalSize": "Ausgangsgröße",
+      "compressedSize": "Ergebnisgröße",
+      "reduction": "Geschätzte Ersparnis"
+    },
+    "pageSize": {
+      "heading": "Blattgeometrie und Format prüfen",
+      "pageCount": "Gesamte Blattanzahl",
+      "pageSizeName": "Erkanntes Format",
+      "dimensions": "Abmessungen der Seite",
+      "orientation": "Ausrichtung",
+      "portrait": "Hochformat (vertikal)",
+      "landscape": "Querformat (horizontal)"
+    },
+    "metadata": {
+      "heading": "Dokumenteigenschaften bearbeiten",
+      "title": "Dokumenttitel",
+      "author": "Verfasser des Dokuments",
+      "subject": "Thema des Dokuments",
+      "keywords": "Schlüsselwörter (durch Kommas getrennt)",
+      "saveAction": "Metadaten speichern",
+      "updated": "Metadatenstatus"
+    },
+    "wordCount": {
+      "heading": "Textstatistiken des Dokuments",
+      "words": "Wortanzahl",
+      "characters": "Zeichenanzahl",
+      "paragraphs": "Absatzanzahl",
+      "readingTime": "Geschätzte Lesezeit",
+      "minutes": "Minuten"
+    },
+    "flatten": {
+      "heading": "Interaktive Formulare zusammenführen",
+      "flattenAction": "Formularfelder einbetten",
+      "flattenedPages": "Verarbeitete Seiten",
+      "statusFlattened": "Formularfelder in statischen Inhalt umgewandelt"
+    },
+    "interleave": {
+      "heading": "Zwei PDF-Dokumente abwechselnd verweben",
+      "interleaveAction": "Dokumentseiten verschachteln",
+      "reverseB": "Reihenfolge des zweiten Dokuments umkehren",
+      "docAPages": "Seitenanzahl Dokument A",
+      "docBPages": "Seitenanzahl Dokument B",
+      "combinedPages": "Gesamte verwebte Seiten"
     }
   }
 }
