@@ -6,7 +6,7 @@ import { chromium } from 'playwright';
 import { PDFDocument } from 'pdf-lib';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
-const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
+const locales = process.env.LOCALES ? process.env.LOCALES.split(',') : ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
 const slugs = [
   'aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker',
   'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator',
@@ -70,6 +70,16 @@ const slugs = [
   'tire-size-calculator',
   'unit-price-calculator',
   'website-worth-calculator',
+  'asphalt-calculator',
+  'board-foot-calculator',
+  'brick-calculator',
+  'concrete-calculator',
+  'dumpster-weight-calculator',
+  'flooring-calculator',
+  'gravel-calculator',
+  'rebar-calculator',
+  'roof-area-calculator',
+  'saw-kerf-calculator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -92,7 +102,7 @@ try {
   browser = await chromium.launch({
     headless: true,
     ...(process.env.CHROMIUM_EXECUTABLE ? { executablePath: process.env.CHROMIUM_EXECUTABLE } : {}),
-    args: ['--no-sandbox', '--disable-dev-shm-usage', '--no-zygote', '--single-process', '--disable-gpu'],
+    args: ['--no-sandbox', '--disable-dev-shm-usage', '--no-zygote', '--disable-gpu'],
   });
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   await context.route('**/*', (route) => route.request().url().startsWith(base) ? route.continue() : route.abort());
@@ -809,6 +819,18 @@ try {
     assert.ok((await page.locator('main dl').textContent()).includes('120'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['electricity-cost-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/brick-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    const formatBrick = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(val);
+    assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(1504)));
+    await page.locator('main input[type="number"]').first().fill('20');
+    assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(3008)));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(1504)));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['brick-calculator'].title));
     workflowsChecked++;
     console.log(`Verified ${locale}: ${slugs.length + 1} translated pages and ${slugs.length} working tools.`);
   }

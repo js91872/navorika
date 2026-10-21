@@ -79,7 +79,7 @@ Before release, also require:
 
 ## Current session checkpoint
 
-The draft branch now includes native controls, metadata, explanatory copy, result labels, validation messages, clipboard summaries and UTF-8 CSV reports for one hundred fifteen additional calculators in all seven languages (125 tools total per locale, completing 100% of the 75 shared business calculators and 100% of the everyday calculators category):
+The draft branch now includes native controls, metadata, explanatory copy, result labels, validation messages, clipboard summaries and UTF-8 CSV reports for one hundred twenty-five additional calculators in all seven languages (135 tools total per locale, completing 100% of the 75 shared business calculators and 100% of the everyday calculators category):
 
 - Image File Size Estimator
 - Photo Storage Calculator
@@ -196,8 +196,18 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - Tire Size Calculator
 - Unit Price Calculator
 - Website Worth Calculator
+- Asphalt Calculator
+- Board Foot Calculator
+- Brick Calculator
+- Concrete Calculator
+- Dumpster Weight Calculator
+- Flooring Calculator
+- Gravel Calculator
+- Rebar Calculator
+- Roof Area Calculator
+- Saw Kerf Calculator
 
-This brings branch coverage to 125 tools per language (875 tool variants plus seven directories, 882 localized pages total, covering 100% of the everyday-calculators category). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 188 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 135 tools per language (945 tool variants plus seven directories, 952 localized pages total). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 178 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 
