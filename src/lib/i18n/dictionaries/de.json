@@ -1339,6 +1339,70 @@
       "limits": "Gilt nur für Einzelpersonen im neuen Steuersystem. Enthält keine Abzüge des alten Systems wie 80C, 80D oder Mietzuschüsse.",
       "question": "Bis zu welchem Einkommen fällt im Veranlagungsjahr 2026–27 keine Steuer an?",
       "answer": "Bis zu einem Einkommen von 12 Lakh ₹ beträgt die tatsächliche Steuer null, da der erweiterte Abzug nach Section 87A greift."
+    },
+    "debt-snowball-vs-avalanche-calculator": {
+      "title": "Schuldentilgung: Lawinen- vs. Schneeballmethode Rechner",
+      "description": "Vergleichen Sie die beschleunigte Schuldentilgung nach höchstem Zinssatz (Lawinenmethode) oder niedrigstem Restsaldo (Schneeballmethode).",
+      "how": "Geben Sie Restschulden, Zinssätze, Mindestraten und Ihre monatliche Sondertilgung ein, um Tilgungsdauer und Zinsersparnis zu vergleichen.",
+      "limits": "Setzt unveränderte Zinssätze und kontinuierliche Zahlungen ohne Neuverschuldung oder Verzugszinsen voraus.",
+      "question": "Worin liegt der Unterschied zwischen Lawinen- und Schneeballmethode?",
+      "answer": "Die Lawinenmethode tilgt zuerst Schulden mit dem höchsten Zinssatz zur Maximierung der Zinsersparnis, während die Schneeballmethode kleinste Beträge für schnelle psychologische Erfolge abbaut."
+    },
+    "retirement-calculator": {
+      "title": "Altersvorsorge & Ruhestandskapital Rechner",
+      "description": "Simulieren Sie das erforderliche Vorsorgevermögen, den Zinseszinseffekt, das inflationsbereinigte Renteneinkommen und die Kapitalnachhaltigkeit.",
+      "how": "Tragen Sie aktuelles Alter, gewünschtes Rentenalter, Lebenshaltungskosten, vorhandenes Vermögen, monatliche Sparrate und Renditeerwartung ein.",
+      "limits": "Deterministisches Berechnungsmodell ohne Berücksichtigung von Renditereihenfolgerisiken oder unerwarteten Krankheitskosten.",
+      "question": "Wie wirkt sich die Inflation auf das nötige Ruhestandskapital aus?",
+      "answer": "Die Inflation mindert die zukünftige Kaufkraft kontinuierlich, sodass ein deutlich größeres Vermögen nötig ist, um denselben Lebensstandard zu sichern."
+    },
+    "cashflow-budget-architect": {
+      "title": "Cashflow-Planer & 50/30/20 Budgetrechner",
+      "description": "Strukturieren Sie Ihre monatlichen Finanzen, verteilen Sie Einnahmen nach der 50/30/20-Regel auf Bedürfnisse und Wünsche und planen Sie Notgroschen.",
+      "how": "Geben Sie Ihr monatliches Nettoeinkommen, grundlegende Fixkosten, Freizeitkonsum und geplante monatliche Sparbeträge ein.",
+      "limits": "Orientierungsleitfaden; saisonale Schwankungen und variables Einkommen sollten als Jahresdurchschnitt berechnet werden.",
+      "question": "Was besagt die 50/30/20-Budgetregel?",
+      "answer": "Die Regel empfiehlt, 50 % des Nettoeinkommens für Grundbedürfnisse, 30 % für persönliche Wünsche und 20 % für Ersparnisse oder Schuldentilgung zu verwenden."
+    },
+    "investment-return-profiler": {
+      "title": "Anlagerendite & CAGR Wachstumsrechner",
+      "description": "Ermitteln Sie die durchschnittliche jährliche Wachstumsrate (CAGR), den Return on Investment (ROI), Nettogewinne und den Vermögensmultiplikator.",
+      "how": "Geben Sie Anfangskapital, Endwert des Portfolios, Anlagedauer in Jahren und optionale jährliche Zuzahlungen an.",
+      "limits": "Berücksichtigt weder Kapitalertragsteuern noch Transaktionsgebühren oder Währungskursschwankungen.",
+      "question": "Warum ist der CAGR-Wert aussagekräftiger als der arithmetische Durchschnittsgewinn?",
+      "answer": "Der CAGR berücksichtigt den Zinseszins und geometrische Volatilität, wodurch er die tatsächliche konstante Jahresrendite widerspiegelt."
+    },
+    "loan-amortization-suite": {
+      "title": "Tilgungsplan & Sondertilgung Rechner",
+      "description": "Analysieren Sie Darlehenstilgungspläne, die Zinsersparnis durch Sondertilgungen und die Verkürzung der Kreditlaufzeit.",
+      "how": "Erfassen Sie Darlehensbetrag, jährlichen Sollzins, Sollzinsbindung in Jahren und die geplante monatliche Sondertilgung.",
+      "limits": "Berechnung auf Restschuldbasis; Bearbeitungsgebühren, Restschuldversicherungen und Vorfälligkeitsentschädigungen sind ausgenommen.",
+      "question": "Wie verringern monatliche Sondertilgungen die Gesamtkreditkosten?",
+      "answer": "Sondertilgungen senken direkt die verbleibende Restschuld, stoppen den zukünftigen Zinsanfall und verkürzen die Gesamtlaufzeit des Kredits."
+    },
+    "savings-retirement-hub": {
+      "title": "Sparziel & Vermögensaufbau Rechner",
+      "description": "Ermitteln Sie die erforderliche monatliche Sparrate, um Ihr finanzielles Zielvermögen im festgelegten Zeithorizont zu erreichen.",
+      "how": "Geben Sie Zielvermögen, Anlagehorizont in Jahren, erwartete jährliche Rendite und bereits vorhandene Ersparnisse an.",
+      "limits": "Setzt eine kontinuierliche thesaurierende Rendite ohne Markteinbrüche oder steuerliche Abzüge bei Auszahlung voraus.",
+      "question": "Warum macht ein frühzeitiger Sparbeginn einen so großen Unterschied?",
+      "answer": "Ein langer Anlagehorizont lässt den Zinseszinseffekt voll zur Wirkung kommen, wodurch die nötige monatliche Eigenleistung drastisch sinkt."
+    },
+    "taxation-compliance-deck": {
+      "title": "Steuerregime-Vergleich & Abzugsrechner",
+      "description": "Vergleichen Sie die jährliche Einkommensteuerbelastung zwischen neuem und altem Steuersystem unter Anrechnung zulässiger Freibeträge.",
+      "how": "Tragen Sie zu versteuerndes Bruttoeinkommen und abzugsfähige Beträge ein, um Steuerdifferenz und Empfehlung direkt einzusehen.",
+      "limits": "Ausgelegt auf Standardfälle natürlicher Personen; komplexe Unternehmensgewinne sind nicht abgebildet.",
+      "question": "Wann ist das traditionelle Steuersystem vorteilhafter als das Pauschalsystem?",
+      "answer": "Das traditionelle System lohnt sich, wenn die Summe der nachgewiesenen Freibeträge den Pauschalvorteil der reduzierten Steuersätze übersteigt."
+    },
+    "wealth-inflation-matrix": {
+      "title": "Vermögensentwicklung & Realwertverlust durch Inflation",
+      "description": "Verfolgen Sie die reale Kaufkraftentwicklung Ihres Vermögens durch Gegenüberstellung von Nominalverzinsung und Teuerungsrate.",
+      "how": "Geben Sie Ausgangsvermögen, erwartete jährliche Inflationsrate, nominale Anlagerendite und Anlagehorizont in Jahren an.",
+      "limits": "Verwendet konstante Jahresdurchschnitte, während die tatsächliche Inflation je nach individuellem Konsumverhalten abweicht.",
+      "question": "Was unterscheidet die nominale von der realen Rendite?",
+      "answer": "Die Nominalrendite bezeichnet den reinen prozentualen Zuwachs, während die Realrendite die Inflation abzieht und den echten Kaufkraftzuwachs anzeigt."
     }
   },
   "flexOptions": {
@@ -4789,6 +4853,109 @@
       "effectiveRate": "Effektiver Steuersatz",
       "income": "Jährliches zu versteuerndes Bruttoeinkommen (₹)",
       "regimeNote": "Berechnet nach Indiens neuem Steuersystem (Abschnitt 115BAC) für das Veranlagungsjahr 2026–27 mit Abzug bis 12 Lakh ₹, Grenzentlastung und 4% Zusatzabgabe."
+    }
+  },
+  "wealth": {
+    "common": {
+      "results": "Ergebnisse der Finanzanalyse"
+    },
+    "debtStrategy": {
+      "heading": "Schuldentilgungsstrategie: Lawine vs. Schneeball",
+      "avalancheInterest": "Gesamtzinsen (Lawinenmethode)",
+      "snowballInterest": "Gesamtzinsen (Schneeballmethode)",
+      "interestSaved": "Erzielte Zinsersparnis",
+      "monthsToPayoff": "Monate bis zur vollständigen Schuldenfreiheit",
+      "debt1Balance": "Restsaldo Schuld 1 ($)",
+      "debt1Rate": "Zinssatz Schuld 1 (%)",
+      "debt1Min": "Mindestrate Schuld 1 ($)",
+      "debt2Balance": "Restsaldo Schuld 2 ($)",
+      "debt2Rate": "Zinssatz Schuld 2 (%)",
+      "debt2Min": "Mindestrate Schuld 2 ($)",
+      "extraPayment": "Monatliche Sondertilgung ($)"
+    },
+    "retirement": {
+      "heading": "Projektion des Altersvorsorgevermögens",
+      "projectedCorpus": "Errechnetes Endvermögen bei Renteneintritt",
+      "monthlyIncome": "Inflationsbereinigte Monatsrente",
+      "corpusShortfall": "Geschätzte Vorsorgelücke",
+      "yearsCoverage": "Gesicherte Rentenjahre",
+      "sustainabilityScore": "Vermögens-Nachhaltigkeitsindex",
+      "currentAge": "Aktuelles Lebensalter",
+      "retirementAge": "Geplantes Renteneintrittsalter",
+      "monthlyExpenses": "Monatliche Lebenshaltungskosten ($)",
+      "currentSavings": "Bereits vorhandenes Vorsorgekapital ($)",
+      "monthlyContribution": "Monatliche Sparrate ($)",
+      "expectedReturn": "Erwartete jährliche Rendite (%)"
+    },
+    "cashflow": {
+      "heading": "Cashflow-Analyse & 50/30/20 Budgetplan",
+      "netCashflow": "Monatlicher Netto-Cashflow",
+      "savingsRate": "Tatsächliche Sparquote",
+      "needsRatio": "Anteil Grundbedürfnisse",
+      "wantsRatio": "Anteil persönliche Wünsche",
+      "emergencyFundTarget": "Ziel-Notgroschen (6 Monatsausgaben)",
+      "monthlyIncome": "Monatliches Nettoeinkommen ($)",
+      "needsExpenses": "Fixe Grundausgaben ($)",
+      "wantsExpenses": "Freizeit- und variable Ausgaben ($)",
+      "savingsAmount": "Monatlich investierter Betrag ($)"
+    },
+    "investment": {
+      "heading": "Anlageentwicklung & CAGR-Berechnung",
+      "cagr": "Durchschnittliche jährliche Wachstumsrate (CAGR)",
+      "totalRoi": "Gesamtrendite der Anlage (ROI)",
+      "netGains": "Nettokapitalgewinn",
+      "wealthMultiplier": "Faktor des Vermögenszuwachses",
+      "initialInvestment": "Anfänglich investiertes Kapital ($)",
+      "finalValue": "Endwert des Portfolios ($)",
+      "holdingPeriod": "Anlagedauer (Jahre)",
+      "annualAddition": "Jährliche Zuzahlung ($)"
+    },
+    "amortization": {
+      "heading": "Tilgungsplan & Sondertilgungsanalyse",
+      "monthlyPayment": "Reguläre Monatsrate",
+      "interestSaved": "Eingesparte Zinsen durch Sondertilgung",
+      "payoffMonthsReduced": "Laufzeitverkürzung (Monate)",
+      "totalInterest": "Gesamte Zinsaufwendungen",
+      "loanAmount": "Nettodarlehensbetrag ($)",
+      "interestRate": "Sollzinssatz p. a. (%)",
+      "tenure": "Zinsbindungsdauer (Jahre)",
+      "monthlyPrepayment": "Monatliche Sondertilgung ($)"
+    },
+    "savingsHub": {
+      "heading": "Zielsparen & Vermögensakkumulation",
+      "monthlySavingsNeeded": "Erforderliche monatliche Sparrate",
+      "totalDeposited": "Summe aller eigenen Einzahlungen",
+      "projectedInterest": "Erwirtschafteter Zinseszins",
+      "targetCorpus": "Angestrebtes Zielkapital ($)",
+      "years": "Anlagezeitraum (Jahre)",
+      "expectedReturn": "Erwartete Jahresrendite (%)",
+      "existingSavings": "Bereits angespartes Startkapital ($)"
+    },
+    "taxCompliance": {
+      "heading": "Steuerregime-Vergleich & Optimierung",
+      "recommendedRegime": "Empfohlenes Steuersystem",
+      "newRegime": "Neues vereinfachtes Steuersystem",
+      "oldRegime": "Altes System mit Einzelabzügen",
+      "newRegimeTax": "Steuerschuld (neues System)",
+      "oldRegimeTax": "Steuerschuld (altes System)",
+      "annualTaxSavings": "Jährliche Steuerersparnis",
+      "totalDeductions": "Gesamtsumme anerkannter Freibeträge",
+      "grossIncome": "Zu versteuerndes Bruttojahreseinkommen (₹)",
+      "sec80c": "Freibeträge nach Abschnitt 80C (₹)",
+      "nps": "Rentenbeitrag NPS Abschnitt 80CCD (₹)",
+      "healthIns": "Krankenversicherung Abschnitt 80D (₹)",
+      "hra": "Wohnkostenzuschuss & Hypothekenzinsen (₹)"
+    },
+    "wealthMatrix": {
+      "heading": "Reales Vermögen & Inflationsentwertung",
+      "futureNominalValue": "Künftiger Nominalwert des Vermögens",
+      "realPurchasingPower": "Reale inflationsbereinigte Kaufkraft",
+      "purchasingPowerLost": "Kaufkraftverlust durch Inflation",
+      "realAnnualReturn": "Reale jährliche Nettorendite",
+      "presentAmount": "Ausgangsvermögen ($)",
+      "annualInflation": "Erwartete jährliche Inflationsrate (%)",
+      "investmentReturn": "Nominale jährliche Anlagerendite (%)",
+      "timeHorizon": "Anlagezeitraum (Jahre)"
     }
   }
 }

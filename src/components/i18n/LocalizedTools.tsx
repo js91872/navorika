@@ -22,6 +22,7 @@ const LocalizedStructuralTools = dynamic(() => import('./LocalizedStructuralTool
 const LocalizedJobsiteTools = dynamic(() => import('./LocalizedJobsiteTools'));
 const LocalizedBuildingTools = dynamic(() => import('./LocalizedBuildingTools'));
 const LocalizedFinanceTools = dynamic(() => import('./LocalizedFinanceTools'));
+const LocalizedWealthTools = dynamic(() => import('./LocalizedWealthTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -262,6 +263,18 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
     slug === 'tax-calculator'
   ) {
     return <LocalizedFinanceTools slug={slug} dictionary={dictionary} locale={locale} />;
+  }
+  if (
+    slug === 'debt-snowball-vs-avalanche-calculator' ||
+    slug === 'retirement-calculator' ||
+    slug === 'cashflow-budget-architect' ||
+    slug === 'investment-return-profiler' ||
+    slug === 'loan-amortization-suite' ||
+    slug === 'savings-retirement-hub' ||
+    slug === 'taxation-compliance-deck' ||
+    slug === 'wealth-inflation-matrix'
+  ) {
+    return <LocalizedWealthTools slug={slug} dictionary={dictionary} locale={locale} />;
   }
   if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

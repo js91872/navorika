@@ -11,23 +11,23 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 159,
-    "pendingTools": 154,
+    "publishedTools": 167,
+    "pendingTools": 146,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 1113,
+    "publishedToolTranslations": 1169,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
     "candidateCounts": {
       "jsxText": 3645,
       "visibleAttribute": 337,
-      "semanticCopy": 11154,
-      "reviewLiteral": 43635
+      "semanticCopy": 11164,
+      "reviewLiteral": 43652
     },
-    "candidateCopyWords": 291689
+    "candidateCopyWords": 291783
   },
   "tools": [
     {
@@ -882,8 +882,16 @@
       "source": "src/app/(english)/tools/cashflow-budget-architect/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2012,8 +2020,16 @@
       "source": "src/app/(english)/tools/debt-snowball-vs-avalanche-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3422,8 +3438,16 @@
       "source": "src/app/(english)/tools/investment-return-profiler/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3847,8 +3871,16 @@
       "source": "src/app/(english)/tools/loan-amortization-suite/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5138,8 +5170,16 @@
       "source": "src/app/(english)/tools/retirement-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5515,8 +5555,16 @@
       "source": "src/app/(english)/tools/savings-retirement-hub/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6030,8 +6078,16 @@
       "source": "src/app/(english)/tools/taxation-compliance-deck/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6757,8 +6813,16 @@
       "source": "src/app/(english)/tools/wealth-inflation-matrix/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -8063,7 +8127,7 @@
     {
       "source": "src/app/(english)/tools/cashflow-budget-architect/page.tsx",
       "routeTemplate": "/tools/cashflow-budget-architect",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8387,7 +8451,7 @@
     {
       "source": "src/app/(english)/tools/debt-snowball-vs-avalanche-calculator/page.tsx",
       "routeTemplate": "/tools/debt-snowball-vs-avalanche-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8771,7 +8835,7 @@
     {
       "source": "src/app/(english)/tools/investment-return-profiler/page.tsx",
       "routeTemplate": "/tools/investment-return-profiler",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8897,7 +8961,7 @@
     {
       "source": "src/app/(english)/tools/loan-amortization-suite/page.tsx",
       "routeTemplate": "/tools/loan-amortization-suite",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9245,7 +9309,7 @@
     {
       "source": "src/app/(english)/tools/retirement-calculator/page.tsx",
       "routeTemplate": "/tools/retirement-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9341,7 +9405,7 @@
     {
       "source": "src/app/(english)/tools/savings-retirement-hub/page.tsx",
       "routeTemplate": "/tools/savings-retirement-hub",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9479,7 +9543,7 @@
     {
       "source": "src/app/(english)/tools/taxation-compliance-deck/page.tsx",
       "routeTemplate": "/tools/taxation-compliance-deck",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9683,7 +9747,7 @@
     {
       "source": "src/app/(english)/tools/wealth-inflation-matrix/page.tsx",
       "routeTemplate": "/tools/wealth-inflation-matrix",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

@@ -1339,6 +1339,70 @@
       "limits": "Applies exclusively to individual taxpayers under the New Tax Regime. Does not account for Old Regime deductions like 80C, 80D, or HRA.",
       "question": "What is the tax rebate threshold under the New Tax Regime for AY 2026-27?",
       "answer": "Under the revised New Tax Regime, taxable income up to ₹12 lakh incurs zero net tax due to the enhanced Section 87A rebate and marginal relief."
+    },
+    "debt-snowball-vs-avalanche-calculator": {
+      "title": "Debt Snowball vs Avalanche Calculator",
+      "description": "Compare month-by-month debt payoff acceleration between highest interest rate (avalanche) and lowest balance (snowball) strategies.",
+      "how": "Enter balances, interest rates, minimum payments, and your optional monthly extra payment to compare payoff timeline and interest savings.",
+      "limits": "Assumes static interest rates and consistent payments without new charges, penalty rates, or variable credit card APR shifts.",
+      "question": "What is the primary difference between debt avalanche and debt snowball?",
+      "answer": "The avalanche method pays off highest-interest debt first to save the most total interest, while the snowball method prioritizes smallest balances for fast psychological wins."
+    },
+    "retirement-calculator": {
+      "title": "Retirement Corpus & Income Calculator",
+      "description": "Simulate your required retirement corpus, projected savings growth, inflation-adjusted post-retirement income, and sustainability score.",
+      "how": "Enter your current age, target retirement age, monthly expenses, existing retirement corpus, monthly contribution, and assumed investment return.",
+      "limits": "Uses deterministic compounding and inflation models; does not incorporate sequence-of-returns risk or unpredictable healthcare shocks.",
+      "question": "How does inflation impact retirement corpus requirements?",
+      "answer": "Even moderate inflation drastically erodes future purchasing power, requiring a significantly larger retirement corpus to sustain identical lifestyle expenses."
+    },
+    "cashflow-budget-architect": {
+      "title": "Cashflow & Budget Architecture Planner",
+      "description": "Organize monthly personal cash flow, audit 50/30/20 budget allocations across needs and wants, and calculate emergency runway reserves.",
+      "how": "Enter your monthly take-home income along with essential needs expenses, discretionary wants spending, and committed savings deposits.",
+      "limits": "Allocations are guideline models; variable utility costs, seasonal expenses, and irregular freelance earnings should be averaged.",
+      "question": "What is the traditional 50/30/20 personal budgeting rule?",
+      "answer": "The 50/30/20 rule recommends dedicating 50% of net income to essential needs, 30% to discretionary wants, and 20% to savings and debt reduction."
+    },
+    "investment-return-profiler": {
+      "title": "Investment Return & CAGR Profiler",
+      "description": "Calculate compound annual growth rate (CAGR), absolute return on investment (ROI), net capital gains, and wealth accumulation multiples.",
+      "how": "Specify your initial investment capital, ending value, investment duration in years, and optional annual recurring capital additions.",
+      "limits": "Does not account for capital gains taxation, dividend reinvestment timing, transaction brokerage charges, or currency fluctuations.",
+      "question": "Why is CAGR preferred over average annual return for multi-year investments?",
+      "answer": "CAGR accounts for compound interest and geometric volatility, accurately reflecting the constant annual growth rate needed to reach final portfolio value."
+    },
+    "loan-amortization-suite": {
+      "title": "Loan Amortization & Accelerated Payoff Suite",
+      "description": "Analyze monthly loan amortization schedules, accelerated prepayment impact, interest reductions, and payoff tenure contraction.",
+      "how": "Provide your total loan principal, annual interest rate, tenure in years, and planned monthly prepayment amount.",
+      "limits": "Calculations apply reducing balance compounding and do not include loan origination fees, mortgage insurance, or prepayment penalties.",
+      "question": "How does extra monthly principal prepayment reduce overall loan cost?",
+      "answer": "Prepayments directly lower the remaining loan principal, preventing future compound interest accrual and shortening the overall amortization period."
+    },
+    "savings-retirement-hub": {
+      "title": "Savings Target & Wealth Accumulation Hub",
+      "description": "Calculate the necessary monthly recurring savings required to achieve a targeted financial corpus within your chosen investment timeline.",
+      "how": "Enter your target financial goal, planning horizon in years, expected annual return rate, and existing accumulated savings.",
+      "limits": "Assumes continuous compounding and stable reinvestment returns without considering market drawdowns or withdrawal tax implications.",
+      "question": "How do starting early and compound interest affect monthly savings needs?",
+      "answer": "Longer investment horizons allow compound interest to do the heavy lifting, dramatically reducing the monthly contribution required to hit your target corpus."
+    },
+    "taxation-compliance-deck": {
+      "title": "Tax Regime Comparison & Compliance Deck",
+      "description": "Evaluate annual personal income tax liabilities under New vs Old tax regimes with eligible deductions under Section 80C, 80D, NPS, and HRA.",
+      "how": "Input your annual gross taxable earnings alongside qualifying deductions to instantly view side-by-side tax liability and regime recommendations.",
+      "limits": "Calculated under standard individual slab structures for salaried taxpayers; does not cover capital gains, business income, or foreign earnings.",
+      "question": "When is the Old Tax Regime more beneficial than the New Tax Regime?",
+      "answer": "The Old Regime is generally more advantageous when total eligible deductions (80C, 80D, NPS, home loan interest, and HRA) exceed regime crossover thresholds."
+    },
+    "wealth-inflation-matrix": {
+      "title": "Wealth & Inflation Purchasing Power Matrix",
+      "description": "Model the real purchasing power of wealth over time by contrasting nominal compound returns against expected long-term inflation rates.",
+      "how": "Input present wealth capital, anticipated annual inflation rate, expected investment return rate, and forward time horizon in years.",
+      "limits": "Assumes static annual inflation and returns, whereas historical inflation fluctuates and living cost increases vary across expenditure baskets.",
+      "question": "What is real return versus nominal return?",
+      "answer": "Nominal return is the raw percentage gain before expenses, while real return subtracts inflation to reflect actual expansion of purchasing power."
     }
   },
   "flexOptions": {
@@ -4789,6 +4853,109 @@
       "effectiveRate": "Effective Tax Rate",
       "income": "Annual Gross Taxable Income (₹)",
       "regimeNote": "Calculated under India's Section 115BAC New Tax Regime for AY 2026-27 with rebate up to ₹12 lakh, marginal relief, and 4% cess."
+    }
+  },
+  "wealth": {
+    "common": {
+      "results": "Financial Analysis Results"
+    },
+    "debtStrategy": {
+      "heading": "Debt Snowball vs Avalanche Analysis",
+      "avalancheInterest": "Avalanche Total Interest",
+      "snowballInterest": "Snowball Total Interest",
+      "interestSaved": "Interest Saved (Avalanche)",
+      "monthsToPayoff": "Months to Debt Freedom",
+      "debt1Balance": "Debt 1 Balance ($)",
+      "debt1Rate": "Debt 1 Interest Rate (%)",
+      "debt1Min": "Debt 1 Minimum Payment ($)",
+      "debt2Balance": "Debt 2 Balance ($)",
+      "debt2Rate": "Debt 2 Interest Rate (%)",
+      "debt2Min": "Debt 2 Minimum Payment ($)",
+      "extraPayment": "Monthly Extra Payment ($)"
+    },
+    "retirement": {
+      "heading": "Retirement Corpus Projection",
+      "projectedCorpus": "Projected Retirement Corpus",
+      "monthlyIncome": "Inflation-Adjusted Monthly Income",
+      "corpusShortfall": "Estimated Corpus Shortfall",
+      "yearsCoverage": "Years of Post-Retirement Coverage",
+      "sustainabilityScore": "Corpus Sustainability Score",
+      "currentAge": "Current Age",
+      "retirementAge": "Target Retirement Age",
+      "monthlyExpenses": "Current Monthly Living Expenses ($)",
+      "currentSavings": "Current Retirement Savings ($)",
+      "monthlyContribution": "Monthly Savings Contribution ($)",
+      "expectedReturn": "Pre-Retirement Annual Return (%)"
+    },
+    "cashflow": {
+      "heading": "Cashflow & 50/30/20 Budget Blueprint",
+      "netCashflow": "Monthly Net Cashflow",
+      "savingsRate": "Effective Savings Rate",
+      "needsRatio": "Essential Needs Ratio",
+      "wantsRatio": "Discretionary Wants Ratio",
+      "emergencyFundTarget": "6-Month Emergency Fund Target",
+      "monthlyIncome": "Monthly Take-Home Income ($)",
+      "needsExpenses": "Essential Monthly Needs ($)",
+      "wantsExpenses": "Discretionary Wants Spending ($)",
+      "savingsAmount": "Monthly Committed Savings ($)"
+    },
+    "investment": {
+      "heading": "Investment Performance & CAGR Analysis",
+      "cagr": "Compound Annual Growth Rate (CAGR)",
+      "totalRoi": "Total Return on Investment (ROI)",
+      "netGains": "Total Capital Gains",
+      "wealthMultiplier": "Capital Growth Multiplier",
+      "initialInvestment": "Initial Principal Investment ($)",
+      "finalValue": "Maturity / Ending Portfolio Value ($)",
+      "holdingPeriod": "Holding Period (Years)",
+      "annualAddition": "Annual Capital Addition ($)"
+    },
+    "amortization": {
+      "heading": "Amortization & Prepayment Modeling",
+      "monthlyPayment": "Base Monthly Payment",
+      "interestSaved": "Interest Saved via Prepayment",
+      "payoffMonthsReduced": "Months Cut From Loan Term",
+      "totalInterest": "Total Loan Interest Payable",
+      "loanAmount": "Loan Principal Amount ($)",
+      "interestRate": "Annual Interest Rate (%)",
+      "tenure": "Loan Term (Years)",
+      "monthlyPrepayment": "Monthly Prepayment Amount ($)"
+    },
+    "savingsHub": {
+      "heading": "Savings Target Accumulation Plan",
+      "monthlySavingsNeeded": "Monthly Savings Required",
+      "totalDeposited": "Total Projected Contributions",
+      "projectedInterest": "Total Compound Interest Earned",
+      "targetCorpus": "Target Corpus Goal ($)",
+      "years": "Time Horizon (Years)",
+      "expectedReturn": "Expected Annual Return (%)",
+      "existingSavings": "Current Starting Savings ($)"
+    },
+    "taxCompliance": {
+      "heading": "Tax Regime Optimization Comparison",
+      "recommendedRegime": "Optimal Tax Strategy",
+      "newRegime": "New Tax Regime (Lower Slabs)",
+      "oldRegime": "Old Tax Regime (With Deductions)",
+      "newRegimeTax": "Tax Liability (New Regime)",
+      "oldRegimeTax": "Tax Liability (Old Regime)",
+      "annualTaxSavings": "Annual Tax Savings",
+      "totalDeductions": "Total Eligible Deductions",
+      "grossIncome": "Annual Gross Taxable Income (₹)",
+      "sec80c": "Section 80C Deductions (₹)",
+      "nps": "Section 80CCD NPS Deduction (₹)",
+      "healthIns": "Section 80D Health Insurance (₹)",
+      "hra": "HRA / Home Loan Interest Exemption (₹)"
+    },
+    "wealthMatrix": {
+      "heading": "Real Wealth & Inflation Depreciation",
+      "futureNominalValue": "Future Nominal Wealth",
+      "realPurchasingPower": "Real Purchasing Power (Inflation-Adjusted)",
+      "purchasingPowerLost": "Purchasing Power Lost to Inflation",
+      "realAnnualReturn": "Net Real Annual Return",
+      "presentAmount": "Initial Wealth Amount ($)",
+      "annualInflation": "Anticipated Annual Inflation (%)",
+      "investmentReturn": "Nominal Annual Investment Return (%)",
+      "timeHorizon": "Investment Horizon (Years)"
     }
   }
 }

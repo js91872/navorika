@@ -155,6 +155,14 @@ export const translatedTools = [
   'gst-calculator',
   'loan-emi-calculator',
   'tax-calculator',
+  'debt-snowball-vs-avalanche-calculator',
+  'retirement-calculator',
+  'cashflow-budget-architect',
+  'investment-return-profiler',
+  'loan-amortization-suite',
+  'savings-retirement-hub',
+  'taxation-compliance-deck',
+  'wealth-inflation-matrix',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

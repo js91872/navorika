@@ -1339,6 +1339,70 @@
       "limits": "Spécifique aux personnes physiques relevant du nouveau régime. N’intègre pas les déductions de l’ancien régime (80C, 80D, HRA).",
       "question": "Quel est le seuil d’exonération nette dans le nouveau régime fiscal pour 2026-27 ?",
       "answer": "Les revenus imposables jusqu’à 12 lakhs ₹ bénéficient d’un impôt net nul grâce à l’abattement renforcé de l’article 87A."
+    },
+    "debt-snowball-vs-avalanche-calculator": {
+      "title": "Calculateur boule de neige vs avalanche de dettes",
+      "description": "Comparez l'accélération du remboursement de vos dettes entre la méthode du taux d'intérêt le plus élevé (avalanche) et celle du plus petit solde (boule de neige).",
+      "how": "Indiquez les soldes, taux d'intérêt, mensualités minimales et votre versement supplémentaire mensuel pour comparer le calendrier et l'économie d'intérêts.",
+      "limits": "Suppose des taux fixes et des versements réguliers sans nouveaux débits ni pénalités de retard.",
+      "question": "Quelle est la différence essentielle entre la méthode avalanche et la boule de neige ?",
+      "answer": "La méthode avalanche rembourse d'abord la dette au taux le plus élevé pour maximiser l'économie d'intérêts, tandis que la boule de neige liquide les plus petits soldes pour renforcer la motivation."
+    },
+    "retirement-calculator": {
+      "title": "Calculateur de capital retraite et rente",
+      "description": "Simulez le capital retraite nécessaire, l'évolution de votre épargne, le revenu mensuel ajusté de l'inflation et le score de pérennité.",
+      "how": "Renseignez votre âge actuel, l'âge souhaité de départ, vos dépenses mensuelles, l'épargne déjà constituée, votre versement mensuel et le rendement espéré.",
+      "limits": "Modélisation déterministe qui n'intègre pas les aléas de marché séquencés ni les dépenses imprévues de santé.",
+      "question": "Quel est l'impact de l'inflation sur le capital retraite ?",
+      "answer": "L'inflation érode progressivement le pouvoir d'achat futur, obligeant à accumuler un capital plus conséquent pour maintenir un niveau de vie équivalent."
+    },
+    "cashflow-budget-architect": {
+      "title": "Planificateur de trésorerie et budget 50/30/20",
+      "description": "Structurez vos flux financiers mensuels, équilibrez la règle 50/30/20 entre besoins et envies, et calculez votre fonds de réserve durgence.",
+      "how": "Indiquez votre revenu net mensuel ainsi que vos dépenses indispensables, vos loisirs et votre épargne programmée.",
+      "limits": "Modèle indicatif ; il convient de mensualiser les charges variables et les revenus irréguliers.",
+      "question": "Qu'est-ce que la règle budgétaire 50/30/20 ?",
+      "answer": "Cette méthode conseille d'allouer 50 % du revenu net aux besoins vitaux, 30 % aux envies et loisirs, et 20 % à l'épargne ou au désendettement."
+    },
+    "investment-return-profiler": {
+      "title": "Calculateur de rendement et taux de croissance annuel composé (CAGR)",
+      "description": "Calculez le taux de croissance annuel composé (CAGR), le retour sur investissement (ROI), les gains nets et le multiplicateur de capital.",
+      "how": "Indiquez le capital de départ, la valeur finale, la durée en années et les apports annuels éventuels.",
+      "limits": "Ne déduit ni la fiscalité sur les plus-values, ni les frais de courtage, ni les variations de change.",
+      "question": "Pourquoi privilégier le CAGR plutôt qu'un rendement annuel moyen ?",
+      "answer": "Le CAGR intègre les intérêts composés et la volatilité géométrique, reflétant le taux annuel constant ayant produit la valorisation finale."
+    },
+    "loan-amortization-suite": {
+      "title": "Calculateur d'amortissement et remboursement anticipé",
+      "description": "Analysez l'échéancier d'amortissement, l'impact des remboursements anticipés, la réduction des intérêts et le gain sur la durée du prêt.",
+      "how": "Saisissez le montant emprunté, le taux annuel, la durée en années et le versement supplémentaire mensuel envisagé.",
+      "limits": "Calcul sur capital restant dû n'incluant pas les frais de dossier, l'assurance emprunteur ni les pénalités éventuelles.",
+      "question": "Comment un remboursement anticipé réduit-il le coût du crédit ?",
+      "answer": "Chaque versement supplémentaire vient directement réduire le capital restant dû, stoppant la production d'intérêts futurs et raccourcissant le prêt."
+    },
+    "savings-retirement-hub": {
+      "title": "Calculateur d'objectif d'épargne et capitalisation",
+      "description": "Calculez l'effort d'épargne mensuel nécessaire pour atteindre un capital cible selon votre horizon de placement et le rendement attendu.",
+      "how": "Indiquez votre objectif financier, l'horizon en années, le taux de rendement annuel espéré et votre épargne initiale.",
+      "limits": "Repose sur des rendements stables réinvestis en continu sans tenir compte des baisses temporaires de marché ni de la fiscalité au retrait.",
+      "question": "Pourquoi commencer à épargner tôt fait-il une telle différence ?",
+      "answer": "Un horizon plus long permet aux intérêts composés de démultiplier le capital, ce qui diminue fortement l'effort mensuel nécessaire."
+    },
+    "taxation-compliance-deck": {
+      "title": "Comparateur fiscal des régimes d'imposition",
+      "description": "Comparez l'impôt annuel sur le revenu entre le nouveau et l'ancien barème avec les déductions admissibles (80C, 80D, NPS et indemnités logement).",
+      "how": "Saisissez votre revenu brut annuel imposable et vos déductions pour visualiser immédiatement le comparatif d'imposition et le régime optimal.",
+      "limits": "Barèmes standard pour contribuables particuliers ; n'inclut pas les plus-values professionnelles ou mobilières.",
+      "question": "Dans quel cas l'ancien régime fiscal est-il plus avantageux ?",
+      "answer": "L'ancien barème devient intéressant dès que le cumul des déductions réelles dépasse le seuil d'arbitrage face aux taux réduits du nouveau barème."
+    },
+    "wealth-inflation-matrix": {
+      "title": "Matrice de patrimoine et érosion monétaire",
+      "description": "Mesurez l'évolution réelle de votre pouvoir d'achat en confrontant les rendements nominaux composés à l'inflation prévisionnelle.",
+      "how": "Indiquez le capital de départ, le taux d'inflation estimé, le rendement nominal espéré et l'horizon d'investissement en années.",
+      "limits": "Suppose des taux annuels constants alors que l'inflation réelle fluctue selon les postes de consommation.",
+      "question": "Quelle est la distinction entre rendement nominal et rendement réel ?",
+      "answer": "Le rendement nominal correspond au gain brut en pourcentage, alors que le rendement réel en soustrait l'inflation pour mesurer le gain effectif de pouvoir d'achat."
     }
   },
   "flexOptions": {
@@ -4789,6 +4853,109 @@
       "effectiveRate": "Taux d'imposition effectif",
       "income": "Revenu imposable annuel brut (₹)",
       "regimeNote": "Calculé selon le nouveau régime fiscal indien (article 115BAC) pour l'année d'imposition 2026-27 avec abattement jusqu'à 12 lakhs ₹, allégement marginal et surtaxe de 4 %."
+    }
+  },
+  "wealth": {
+    "common": {
+      "results": "Résultats de l'analyse financière"
+    },
+    "debtStrategy": {
+      "heading": "Stratégie de désendettement : avalanche vs boule de neige",
+      "avalancheInterest": "Intérêts totaux (méthode avalanche)",
+      "snowballInterest": "Intérêts totaux (boule de neige)",
+      "interestSaved": "Économie d'intérêts réalisée",
+      "monthsToPayoff": "Mois jusqu'au désendettement complet",
+      "debt1Balance": "Solde de la dette 1 ($)",
+      "debt1Rate": "Taux d'intérêt de la dette 1 (%)",
+      "debt1Min": "Mensualité minimale de la dette 1 ($)",
+      "debt2Balance": "Solde de la dette 2 ($)",
+      "debt2Rate": "Taux d'intérêt de la dette 2 (%)",
+      "debt2Min": "Mensualité minimale de la dette 2 ($)",
+      "extraPayment": "Versement mensuel supplémentaire ($)"
+    },
+    "retirement": {
+      "heading": "Projection du capital retraite",
+      "projectedCorpus": "Capital retraite projeté",
+      "monthlyIncome": "Rente mensuelle ajustée de l'inflation",
+      "corpusShortfall": "Déficit d'épargne estimé",
+      "yearsCoverage": "Années de couverture financées",
+      "sustainabilityScore": "Indice de pérennité du capital",
+      "currentAge": "Âge actuel",
+      "retirementAge": "Âge de départ souhaité",
+      "monthlyExpenses": "Dépenses de subsistance actuelles ($)",
+      "currentSavings": "Épargne retraite actuelle ($)",
+      "monthlyContribution": "Versement mensuel d'épargne ($)",
+      "expectedReturn": "Rendement annuel anticipé (%)"
+    },
+    "cashflow": {
+      "heading": "Flux de trésorerie et répartition budgétaire 50/30/20",
+      "netCashflow": "Flux net mensuel",
+      "savingsRate": "Taux d'épargne effectif",
+      "needsRatio": "Part des besoins vitaux",
+      "wantsRatio": "Part des dépenses de loisirs",
+      "emergencyFundTarget": "Fonds d'urgence cible (6 mois)",
+      "monthlyIncome": "Revenu net mensuel ($)",
+      "needsExpenses": "Dépenses incompressibles ($)",
+      "wantsExpenses": "Dépenses discrétionnaires ($)",
+      "savingsAmount": "Épargne mensuelle engagée ($)"
+    },
+    "investment": {
+      "heading": "Rendement financier et calcul du CAGR",
+      "cagr": "Taux de croissance annuel composé (CAGR)",
+      "totalRoi": "Retour global sur investissement (ROI)",
+      "netGains": "Plus-values nettes réalisées",
+      "wealthMultiplier": "Coefficient multiplicateur du capital",
+      "initialInvestment": "Mise de départ ($)",
+      "finalValue": "Valeur finale du portefeuille ($)",
+      "holdingPeriod": "Durée de détention (années)",
+      "annualAddition": "Apport annuel complémentaire ($)"
+    },
+    "amortization": {
+      "heading": "Échéancier et remboursement anticipé",
+      "monthlyPayment": "Mensualité de base",
+      "interestSaved": "Économie d'intérêts cumulée",
+      "payoffMonthsReduced": "Mois de crédit économisés",
+      "totalInterest": "Total des intérêts exigibles",
+      "loanAmount": "Capital emprunté ($)",
+      "interestRate": "Taux d'intérêt annuel (%)",
+      "tenure": "Durée d'emprunt (années)",
+      "monthlyPrepayment": "Remboursement anticipé mensuel ($)"
+    },
+    "savingsHub": {
+      "heading": "Planification de l'objectif d'épargne",
+      "monthlySavingsNeeded": "Épargne mensuelle requise",
+      "totalDeposited": "Total des versements cumulés",
+      "projectedInterest": "Intérêts composés générés",
+      "targetCorpus": "Montant cible recherché ($)",
+      "years": "Durée du projet (années)",
+      "expectedReturn": "Rendement annuel prévisionnel (%)",
+      "existingSavings": "Épargne déjà disponible ($)"
+    },
+    "taxCompliance": {
+      "heading": "Arbitrage et optimisation fiscale",
+      "recommendedRegime": "Régime fiscal recommandé",
+      "newRegime": "Nouveau barème (taux simplifiés)",
+      "oldRegime": "Ancien barème (avec déductions)",
+      "newRegimeTax": "Montant de l'impôt (nouveau barème)",
+      "oldRegimeTax": "Montant de l'impôt (ancien barème)",
+      "annualTaxSavings": "Économie fiscale annuelle",
+      "totalDeductions": "Total des déductions admissibles",
+      "grossIncome": "Revenu brut annuel imposable (₹)",
+      "sec80c": "Déductions de l'article 80C (₹)",
+      "nps": "Cotisation retraite NPS (art. 80CCD) (₹)",
+      "healthIns": "Assurance santé (art. 80D) (₹)",
+      "hra": "Indemnité logement / intérêts d'emprunt (₹)"
+    },
+    "wealthMatrix": {
+      "heading": "Capital réel et dépréciation par l'inflation",
+      "futureNominalValue": "Capital nominal futur",
+      "realPurchasingPower": "Pouvoir d’achat réel ajusté",
+      "purchasingPowerLost": "Perte de valeur liée à l'inflation",
+      "realAnnualReturn": "Rendement annuel réel net",
+      "presentAmount": "Capital présent ($)",
+      "annualInflation": "Inflation annuelle estimée (%)",
+      "investmentReturn": "Rendement nominal annuel (%)",
+      "timeHorizon": "Horizon temporel (années)"
     }
   }
 }

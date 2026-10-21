@@ -104,6 +104,14 @@ const slugs = [
   'gst-calculator',
   'loan-emi-calculator',
   'tax-calculator',
+  'debt-snowball-vs-avalanche-calculator',
+  'retirement-calculator',
+  'cashflow-budget-architect',
+  'investment-return-profiler',
+  'loan-amortization-suite',
+  'savings-retirement-hub',
+  'taxation-compliance-deck',
+  'wealth-inflation-matrix',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -901,6 +909,28 @@ try {
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['currency-converter'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/debt-snowball-vs-avalanche-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    await page.waitForSelector('main dl');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.locator('main input[type="number"]').first().fill('8000');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['debt-snowball-vs-avalanche-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/retirement-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    await page.waitForSelector('main dl');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.locator('main input[type="number"]').first().fill('35');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['retirement-calculator'].title));
     workflowsChecked++;
     console.log(`Verified ${locale}: ${slugs.length + 1} translated pages and ${slugs.length} working tools.`);
   }

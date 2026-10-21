@@ -1339,6 +1339,70 @@
       "limits": "Aplica-se apenas a contribuintes individuais no Novo Regime. Não contempla deduções do regime antigo como 80C, 80D ou HRA.",
       "question": "Qual é o limite de isenção de imposto pelo Novo Regime para 2026-27?",
       "answer": "Rendimentos tributáveis de até 12 lakhs ₹ resultam em imposto zero após a concessão da isenção especial da Seção 87A."
+    },
+    "debt-snowball-vs-avalanche-calculator": {
+      "title": "Calculadora bola de neve vs avalanche de dívidas",
+      "description": "Compare a quitação acelerada de dívidas priorizando a maior taxa de juros (avalanche) ou o menor saldo devedor (bola de neve).",
+      "how": "Insira saldos, taxas de juros, pagamentos mínimos e a quantia extra mensal para comparar prazos e economia total de juros.",
+      "limits": "Assume taxas nominais fixas e amortizações contínuas sem novas faturas em atraso ou encargos de mora.",
+      "question": "Qual é a diferença central entre o método avalanche e a bola de neve?",
+      "answer": "A avalanche liquida primeiro a dívida com os juros mais caros para minimizar os custos financeiros, enquanto a bola de neve quita saldos menores para gerar impulso psicológico."
+    },
+    "retirement-calculator": {
+      "title": "Calculadora de patrimônio e renda de aposentadoria",
+      "description": "Simule o patrimônio necessário para a aposentadoria, a evolução dos aportes, a renda mensal ajustada pela inflação e a taxa de sustentabilidade.",
+      "how": "Informe idade atual, idade desejada de aposentadoria, custos de vida mensais, reserva acumulada, aporte mensal e rendimento esperado.",
+      "limits": "Modelo determinístico que desconsidera o risco de sequência de retornos desfavoráveis e despesas médicas extraordinárias.",
+      "question": "De que maneira a inflação afeta o patrimônio de aposentadoria?",
+      "answer": "A inflação corrói continuamente o poder de compra, exigindo um montante acumulado consideravelmente maior para manter o mesmo padrão de vida no futuro."
+    },
+    "cashflow-budget-architect": {
+      "title": "Planejador de fluxo de caixa e orçamento 50/30/20",
+      "description": "Estruture seu fluxo financeiro mensal, adeque as despesas à regra 50/30/20 entre necessidades e desejos, e dimensione sua reserva de emergência.",
+      "how": "Informe sua receita líquida mensal, custos essenciais, gastos discricionários e o montante destinado a investimentos.",
+      "limits": "Parâmetro orientativo; despesas sazonais e rendimentos variáveis de autônomos devem ser inseridos pela média anualizada.",
+      "question": "Como funciona a divisão orçamentária 50/30/20?",
+      "answer": "O método propõe destinar 50% dos rendimentos líquidos às despesas essenciais, 30% a estilo de vida e lazer, e 20% a reservas e quitação de dívidas."
+    },
+    "investment-return-profiler": {
+      "title": "Calculadora de retorno de investimentos e taxa CAGR",
+      "description": "Calcule a taxa de crescimento anual composta (CAGR), o retorno sobre o investimento (ROI), os ganhos de capital líquidos e o multiplicador patrimonial.",
+      "how": "Informe o aporte inicial, o valor final obtido, o prazo em anos e eventuais aportes recorrentes anuais.",
+      "limits": "Não deduz tributos sobre ganho de capital, taxas de corretagem nem oscilações cambiais.",
+      "question": "Por que o CAGR é superior à média aritmética de rentabilidade?",
+      "answer": "O CAGR incorpora juros compostos e o efeito da volatilidade geométrica, indicando a taxa constante exata que produziu o valor patrimonial final."
+    },
+    "loan-amortization-suite": {
+      "title": "Simulador de amortização e antecipação de parcelas",
+      "description": "Avalie a tabela de amortização do empréstimo, a antecipação de parcelas, a redução dos juros totais e o encurtamento do prazo de quitação.",
+      "how": "Insira o saldo devedor principal, a taxa de juros anual, o prazo em anos e a quantia mensal extra para amortização.",
+      "limits": "Calcula sobre saldo devedor corrigido; exclui taxas de cadastro, seguro habitacional e eventuais multas de pré-pagamento.",
+      "question": "Como a amortização antecipada diminui o custo total do financiamento?",
+      "answer": "Os pagamentos adicionais abatem diretamente o principal da dívida, impedindo a incidência de juros compostos futuros e reduzindo a duração do contrato."
+    },
+    "savings-retirement-hub": {
+      "title": "Calculadora de meta de poupança e acumulação",
+      "description": "Descubra o aporte mensal necessário para atingir seu objetivo patrimonial no prazo planejado com base na rentabilidade estimada.",
+      "how": "Defina a meta financeira, o prazo em anos, a taxa de rentabilidade anual esperada e o montante inicial já disponível.",
+      "limits": "Presume rentabilidade contínua reinvestida sem considerar correções pontuais de mercado ou custos tributários no resgate.",
+      "question": "Por que começar a investir cedo faz tanta diferença?",
+      "answer": "Prazos mais longos permitem que os juros compostos multipliquem o patrimônio, reduzindo substancialmente o esforço financeiro de aportes mensais."
+    },
+    "taxation-compliance-deck": {
+      "title": "Comparador de regimes tributários e deduções de renda",
+      "description": "Avalie o imposto de renda anual comparando os regimes simplificado e completo com deduções legais (previdência, saúde e despesas com moradia).",
+      "how": "Insira sua receita tributável bruta e as deduções para conferir o regime mais vantajoso e a economia tributária correspondente.",
+      "limits": "Modelado para pessoas físicas padrão; não contempla lucros de atividade rural, empresas ou ganhos de capital complexos.",
+      "question": "Quando o regime com deduções é mais vantajoso que o regime simplificado?",
+      "answer": "O regime completo compensa quando a soma das deduções permitidas supera o desconto padrão concedido no regime simplificado."
+    },
+    "wealth-inflation-matrix": {
+      "title": "Matriz patrimonial e perda de poder de compra",
+      "description": "Examine a preservação real do seu patrimônio contrapondo a rentabilidade nominal composta à taxa de inflação projetada.",
+      "how": "Insira o montante atual, a inflação anual prevista, o rendimento nominal esperado e o prazo de investimento em anos.",
+      "limits": "Assume índices anuais médios estáveis, embora a inflação real dependa da cesta de consumo individual.",
+      "question": "O que diferencia o retorno nominal do retorno real?",
+      "answer": "O retorno nominal expressa o ganho bruto em percentual, enquanto o retorno real subtrai a inflação para evidenciar o ganho efetivo de poder de compra."
     }
   },
   "flexOptions": {
@@ -4789,6 +4853,109 @@
       "effectiveRate": "Alíquota efetiva de imposto",
       "income": "Renda tributável bruta anual (₹)",
       "regimeNote": "Calculado pelo Novo Regime Fiscal da Índia (Seção 115BAC) para o ano-base 2026-27 com isenção até 12 lakhs ₹, alívio marginal e taxa de 4%."
+    }
+  },
+  "wealth": {
+    "common": {
+      "results": "Resultados da análise financeira"
+    },
+    "debtStrategy": {
+      "heading": "Estratégia de quitação de dívidas: avalanche vs bola de neve",
+      "avalancheInterest": "Juros totais (método avalanche)",
+      "snowballInterest": "Juros totais (método bola de neve)",
+      "interestSaved": "Economia total de juros obtida",
+      "monthsToPayoff": "Meses até a liquidação completa",
+      "debt1Balance": "Saldo da dívida 1 ($)",
+      "debt1Rate": "Taxa de juros da dívida 1 (%)",
+      "debt1Min": "Parcela mínima da dívida 1 ($)",
+      "debt2Balance": "Saldo da dívida 2 ($)",
+      "debt2Rate": "Taxa de juros da dívida 2 (%)",
+      "debt2Min": "Parcela mínima da dívida 2 ($)",
+      "extraPayment": "Aporte extra mensal ($)"
+    },
+    "retirement": {
+      "heading": "Projeção do patrimônio de aposentadoria",
+      "projectedCorpus": "Patrimônio acumulado estimado",
+      "monthlyIncome": "Renda mensal corrigida pela inflação",
+      "corpusShortfall": "Déficit patrimonial estimado",
+      "yearsCoverage": "Anos de subsistência cobertos",
+      "sustainabilityScore": "Índice de sustentabilidade financeira",
+      "currentAge": "Idade atual",
+      "retirementAge": "Idade planejada para aposentadoria",
+      "monthlyExpenses": "Gastos de subsistência mensais ($)",
+      "currentSavings": "Patrimônio acumulado atual ($)",
+      "monthlyContribution": "Aporte mensal planejado ($)",
+      "expectedReturn": "Rentabilidade anual esperada (%)"
+    },
+    "cashflow": {
+      "heading": "Fluxo de caixa e planejamento orçamentário 50/30/20",
+      "netCashflow": "Fluxo de caixa líquido mensal",
+      "savingsRate": "Taxa de poupança efetiva",
+      "needsRatio": "Percentual de gastos essenciais",
+      "wantsRatio": "Percentual de gastos discricionários",
+      "emergencyFundTarget": "Reserva de emergência recomendada (6 meses)",
+      "monthlyIncome": "Renda líquida mensal ($)",
+      "needsExpenses": "Despesas indispensáveis ($)",
+      "wantsExpenses": "Gastos com estilo de vida ($)",
+      "savingsAmount": "Montante mensal aportado ($)"
+    },
+    "investment": {
+      "heading": "Rentabilidade de investimentos e cálculo de CAGR",
+      "cagr": "Taxa de crescimento anual composta (CAGR)",
+      "totalRoi": "Retorno total sobre investimento (ROI)",
+      "netGains": "Ganho líquido de capital",
+      "wealthMultiplier": "Multiplicador de crescimento do patrimônio",
+      "initialInvestment": "Capital inicial investido ($)",
+      "finalValue": "Montante final acumulado ($)",
+      "holdingPeriod": "Prazo da aplicação (anos)",
+      "annualAddition": "Aporte anual recorrente ($)"
+    },
+    "amortization": {
+      "heading": "Amortização e quitação antecipada",
+      "monthlyPayment": "Prestação mensal regular",
+      "interestSaved": "Juros poupados com amortização extra",
+      "payoffMonthsReduced": "Meses reduzidos do prazo original",
+      "totalInterest": "Total de juros contratuais",
+      "loanAmount": "Valor principal financiado ($)",
+      "interestRate": "Taxa de juros anual (%)",
+      "tenure": "Prazo do financiamento (anos)",
+      "monthlyPrepayment": "Amortização extra mensal ($)"
+    },
+    "savingsHub": {
+      "heading": "Planejamento de meta financeira e poupança",
+      "monthlySavingsNeeded": "Aporte mensal indispensável",
+      "totalDeposited": "Total de recursos aplicados",
+      "projectedInterest": "Juros compostos acumulados",
+      "targetCorpus": "Meta patrimonial final ($)",
+      "years": "Prazo total de acumulação (anos)",
+      "expectedReturn": "Rentabilidade anual prevista (%)",
+      "existingSavings": "Patrimônio inicial existente ($)"
+    },
+    "taxCompliance": {
+      "heading": "Comparação de regimes fiscais e deduções",
+      "recommendedRegime": "Regime tributário sugerido",
+      "newRegime": "Novo regime simplificado",
+      "oldRegime": "Regime tradicional com deduções",
+      "newRegimeTax": "Imposto estimado (novo regime)",
+      "oldRegimeTax": "Imposto estimado (regime tradicional)",
+      "annualTaxSavings": "Economia fiscal anual",
+      "totalDeductions": "Total de deduções aproveitadas",
+      "grossIncome": "Rendimento tributável bruto anual (₹)",
+      "sec80c": "Deduções nos termos da Seção 80C (₹)",
+      "nps": "Aporte em previdência NPS Seção 80CCD (₹)",
+      "healthIns": "Despesas com plano de saúde Seção 80D (₹)",
+      "hra": "Auxílio-moradia e juros imobiliários (₹)"
+    },
+    "wealthMatrix": {
+      "heading": "Preservação de capital e perda inflacionária",
+      "futureNominalValue": "Patrimônio nominal futuro",
+      "realPurchasingPower": "Poder de compra real deflacionado",
+      "purchasingPowerLost": "Patrimônio erodido pela inflação",
+      "realAnnualReturn": "Taxa real anual líquida",
+      "presentAmount": "Patrimônio de partida ($)",
+      "annualInflation": "Taxa anual de inflação estimada (%)",
+      "investmentReturn": "Rentabilidade nominal anual (%)",
+      "timeHorizon": "Horizonte do investimento (anos)"
     }
   }
 }
