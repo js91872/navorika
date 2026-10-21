@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 179,
-    "pendingTools": 134,
+    "publishedTools": 191,
+    "pendingTools": 122,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 1253,
+    "publishedToolTranslations": 1337,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -25,7 +25,7 @@
       "jsxText": 3645,
       "visibleAttribute": 337,
       "semanticCopy": 11164,
-      "reviewLiteral": 43652
+      "reviewLiteral": 43656
     },
     "candidateCopyWords": 291783
   },
@@ -67,8 +67,16 @@
       "source": "src/app/(english)/tools/add-image-to-pdf/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -83,8 +91,16 @@
       "source": "src/app/(english)/tools/add-page-numbers/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -99,8 +115,16 @@
       "source": "src/app/(english)/tools/add-watermark/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1847,8 +1871,16 @@
       "source": "src/app/(english)/tools/crop-pdf/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -2493,8 +2525,16 @@
       "source": "src/app/(english)/tools/extract-pdf-text/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -2903,8 +2943,16 @@
       "source": "src/app/(english)/tools/heic-to-pdf/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -3668,8 +3716,16 @@
       "source": "src/app/(english)/tools/jpg-to-pdf/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -4085,8 +4141,16 @@
       "source": "src/app/(english)/tools/markdown-to-pdf/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -4608,8 +4672,16 @@
       "source": "src/app/(english)/tools/pdf-to-image/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -4625,8 +4697,16 @@
       "source": "src/app/(english)/tools/pdf-to-jpg/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5778,8 +5858,16 @@
       "source": "src/app/(english)/tools/sign-pdf/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -7023,8 +7111,16 @@
       "source": "src/app/(english)/tools/webp-to-pdf/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -8001,19 +8097,19 @@
     {
       "source": "src/app/(english)/tools/add-image-to-pdf/page.tsx",
       "routeTemplate": "/tools/add-image-to-pdf",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/add-page-numbers/page.tsx",
       "routeTemplate": "/tools/add-page-numbers",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/add-watermark/page.tsx",
       "routeTemplate": "/tools/add-watermark",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8499,7 +8595,7 @@
     {
       "source": "src/app/(english)/tools/crop-pdf/page.tsx",
       "routeTemplate": "/tools/crop-pdf",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8661,7 +8757,7 @@
     {
       "source": "src/app/(english)/tools/extract-pdf-text/page.tsx",
       "routeTemplate": "/tools/extract-pdf-text",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8763,7 +8859,7 @@
     {
       "source": "src/app/(english)/tools/heic-to-pdf/page.tsx",
       "routeTemplate": "/tools/heic-to-pdf",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8979,7 +9075,7 @@
     {
       "source": "src/app/(english)/tools/jpg-to-pdf/page.tsx",
       "routeTemplate": "/tools/jpg-to-pdf",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9099,7 +9195,7 @@
     {
       "source": "src/app/(english)/tools/markdown-to-pdf/page.tsx",
       "routeTemplate": "/tools/markdown-to-pdf",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9237,13 +9333,13 @@
     {
       "source": "src/app/(english)/tools/pdf-to-image/page.tsx",
       "routeTemplate": "/tools/pdf-to-image",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/pdf-to-jpg/page.tsx",
       "routeTemplate": "/tools/pdf-to-jpg",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9531,7 +9627,7 @@
     {
       "source": "src/app/(english)/tools/sign-pdf/page.tsx",
       "routeTemplate": "/tools/sign-pdf",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9879,7 +9975,7 @@
     {
       "source": "src/app/(english)/tools/webp-to-pdf/page.tsx",
       "routeTemplate": "/tools/webp-to-pdf",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

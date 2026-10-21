@@ -175,6 +175,18 @@ export const translatedTools = [
   'pdf-word-counter',
   'flatten-pdf',
   'interleave-pdf',
+  'add-image-to-pdf',
+  'add-page-numbers',
+  'add-watermark',
+  'crop-pdf',
+  'extract-pdf-text',
+  'heic-to-pdf',
+  'jpg-to-pdf',
+  'markdown-to-pdf',
+  'pdf-to-image',
+  'pdf-to-jpg',
+  'sign-pdf',
+  'webp-to-pdf',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

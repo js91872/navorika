@@ -1499,6 +1499,102 @@
       "limits": "In caso di numero dispari o diseguale di fogli, le pagine rimanenti del file più lungo vengono aggiunte al termine.",
       "question": "Posso invertire il secondo file se è stato scansionato a ritroso?",
       "answer": "Sì, attiva l'opzione di inversione per il documento B per ristabilire automaticamente l'ordine corretto dei fogli."
+    },
+    "add-image-to-pdf": {
+      "title": "Aggiungi immagine a PDF online",
+      "description": "Inserisci immagini JPG, PNG o WebP su una specifica pagina PDF regolando dimensioni e posizione nel browser.",
+      "how": "Seleziona il documento PDF, carica l'immagine desiderata, specifica pagina e posizione e scarica il file modificato.",
+      "limits": "Supporta file immagine JPG, PNG e WebP entro i limiti di memoria del dispositivo.",
+      "question": "Posso posizionare l'immagine liberamente sulla pagina?",
+      "answer": "Sì, puoi collocare l'immagine al centro o negli angoli con scalatura proporzionale rispetto alla pagina."
+    },
+    "add-page-numbers": {
+      "title": "Numera pagine PDF online",
+      "description": "Aggiungi numeri di pagina sui tuoi documenti PDF con posizione, formato e numero iniziale personalizzabili.",
+      "how": "Scegli il file PDF, indica la collocazione preferita e il valore di partenza, quindi scarica il documento numerato.",
+      "limits": "Documenti protetti da password devono essere preventivamente sbloccati per poter applicare la numerazione.",
+      "question": "I numeri di pagina possono coprire il testo esistente?",
+      "answer": "I numeri vengono posizionati in prossimità dei bordi per non interferire con il contenuto centrale."
+    },
+    "add-watermark": {
+      "title": "Aggiungi filigrana a PDF online",
+      "description": "Inserisci una filigrana testuale diagonale semitrasparente su tutte le pagine del tuo file PDF con facilità.",
+      "how": "Carica il documento PDF, digita il testo desiderato come Bozza o Riservato e scarica il file con la filigrana.",
+      "limits": "Applica una dicitura diagonale uniforme su ciascuna pagina inclusa nel documento.",
+      "question": "La filigrana può essere rimossa da chi riceve il documento?",
+      "answer": "Il testo viene integrato nel flusso del documento e non può essere disattivato dai normali visualizzatori."
+    },
+    "crop-pdf": {
+      "title": "Ritaglia margini PDF online",
+      "description": "Regola ed elimina le cornici esterne del documento PDF impostando i valori di ritaglio in punti tipografici.",
+      "how": "Carica il file, indica i punti da rimuovere sui quattro bordi del foglio e scarica il documento ritagliato.",
+      "limits": "I valori di ritaglio non devono oltrepassare le dimensioni complessive della pagina analizzata.",
+      "question": "Il ritaglio riduce le dimensioni del file?",
+      "answer": "Il ritaglio modifica l'area visibile senza ricomprimere le grafiche né rimuovere dati fuori campo."
+    },
+    "extract-pdf-text": {
+      "title": "Estrai testo da PDF online",
+      "description": "Estrai il testo incorporato da documenti PDF direttamente nel browser e salvalo in un file TXT ordinato.",
+      "how": "Scegli un documento PDF con testo digitale per estrarre i contenuti, visualizzarli e copiarli o scaricarli.",
+      "limits": "Scansioni grafiche prive di livello di riconoscimento caratteri OCR non contengono testo estraibile.",
+      "question": "Vengono mantenuti stili e caratteri tipografici?",
+      "answer": "L'estrazione recupera caratteri semplici e interruzioni di riga senza formattazioni o colori."
+    },
+    "heic-to-pdf": {
+      "title": "Converti HEIC in PDF online",
+      "description": "Trasforma le fotografie HEIC scattate con iPhone in documenti PDF di alta definizione senza invio a server.",
+      "how": "Carica la foto HEIC dal tuo dispositivo e avvia la conversione per ottenere subito il documento PDF.",
+      "limits": "Le dimensioni del file convertibile sono determinate dalla memoria disponibile nel browser.",
+      "question": "Le mie fotografie personali lasciano il mio computer?",
+      "answer": "No. La decodifica e la compilazione del documento PDF avvengono unicamente nel browser del dispositivo."
+    },
+    "jpg-to-pdf": {
+      "title": "Converti JPG in PDF online",
+      "description": "Unisci più immagini JPG o JPEG in un unico documento PDF ordinato con una fotografia per pagina.",
+      "how": "Seleziona le immagini JPG, stabilisci la sequenza voluta e scarica il file PDF risultante.",
+      "limits": "Ciascuna immagine viene incorporata su una pagina distinta preservandone le proporzioni native.",
+      "question": "La qualità visiva viene compressa durante la creazione del PDF?",
+      "answer": "No. I dati compressi originali dell'immagine JPEG vengono inseriti direttamente senza perdite ulteriori."
+    },
+    "markdown-to-pdf": {
+      "title": "Converti Markdown in PDF online",
+      "description": "Converti appunti e testi in formato Markdown in documenti PDF puliti e comodi da distribuire.",
+      "how": "Incolla il testo Markdown o carica un file con estensione MD, controlla la resa e salva il file PDF.",
+      "limits": "Ottimizzato per titoli, elenchi e paragrafi; tabelle complesse possono essere rappresentate in forma base.",
+      "question": "Posso inserire testo Markdown direttamente senza caricare file?",
+      "answer": "Sì. Puoi digitare o incollare il testo direttamente nell'area di compilazione disponibile sullo schermo."
+    },
+    "pdf-to-image": {
+      "title": "Converti pagina PDF in immagine online",
+      "description": "Trasforma una pagina di un documento PDF in un file immagine PNG o JPG nitido con risoluzione su misura.",
+      "how": "Apri il documento PDF, seleziona il numero della pagina, specifica il formato voluto e scarica l'immagine.",
+      "limits": "Elabora una pagina per volta per assicurare tempi rapidi e stabilità con documenti consistenti.",
+      "question": "Posso scegliere la densità di visualizzazione dell'immagine?",
+      "answer": "Sì. È possibile regolare la scala grafica dalla densità standard a una risoluzione definita ad alta qualità."
+    },
+    "pdf-to-jpg": {
+      "title": "Converti pagina PDF in JPG online",
+      "description": "Estrai e converti una pagina specifica del documento PDF in immagine JPG con qualità regolabile.",
+      "how": "Carica il file PDF, indica il numero di pagina e la qualità di compressione desiderata, quindi scarica il file JPG.",
+      "limits": "Gli sfondi trasparenti vengono renderizzati su un fondo bianco opaco proprio dello standard JPG.",
+      "question": "Il formato JPG supporta trasparenze presenti nel PDF?",
+      "answer": "Il formato JPG è opaco per definizione; le aree trasparenti vengono riempite con bianco durante il rendering."
+    },
+    "sign-pdf": {
+      "title": "Firma PDF online gratis",
+      "description": "Traccia la tua firma autografa sullo schermo e posizionala sulla pagina PDF indicata con totale riservatezza.",
+      "how": "Carica il file PDF, disegna la firma sul riquadro interattivo, indica la pagina e le coordinate, poi esporta.",
+      "limits": "Applica un timbro grafico visibile; non genera certificati digitali crittografici x.509.",
+      "question": "La firma viene salvata su server esterni?",
+      "answer": "No. Il disegno della firma e l'inserimento sul documento avvengono solo nella sessione locale del browser."
+    },
+    "webp-to-pdf": {
+      "title": "Converti WebP in PDF online",
+      "description": "Trasforma immagini e grafiche in formato WebP in documenti PDF pronti per la visualizzazione o la stampa.",
+      "how": "Carica le tue immagini WebP, decidi l'ordine delle pagine e scarica il documento PDF generato.",
+      "limits": "Decodifica i fotogrammi WebP incorporandoli come livelli grafici a tutta pagina nel PDF.",
+      "question": "Posso raggruppare diverse immagini WebP in un solo file PDF?",
+      "answer": "Sì. Puoi selezionare più file WebP insieme per comporre un documento multipagina sequenziale."
     }
   },
   "flexOptions": {
@@ -5160,6 +5256,90 @@
       "docAPages": "Pagine documento A",
       "docBPages": "Pagine documento B",
       "combinedPages": "Totale pagine intercalate"
+    },
+    "addImage": {
+      "heading": "Inserisci immagine su pagina scelta",
+      "pdfDocument": "Documento PDF",
+      "choosePdf": "Scegli file PDF",
+      "chooseImage": "Scegli immagine JPG, PNG o WebP",
+      "targetPage": "Numero pagina desiderata",
+      "imageWidth": "Dimensione relativa alla pagina",
+      "position": "Posizione immagine",
+      "center": "Centro",
+      "topLeft": "In alto a sinistra",
+      "topRight": "In alto a destra",
+      "bottomLeft": "In basso a sinistra",
+      "bottomRight": "In basso a destra",
+      "addAction": "Inserisci immagine e scarica",
+      "processing": "Inserimento immagine in corso..."
+    },
+    "pageNumbers": {
+      "heading": "Aggiungi numeri di pagina al documento",
+      "startNumber": "Valore primo numero",
+      "position": "Posizione numero",
+      "bottomCenter": "In basso al centro",
+      "bottomRight": "In basso a destra",
+      "bottomLeft": "In basso a sinistra",
+      "topCenter": "In alto al centro",
+      "topRight": "In alto a destra",
+      "topLeft": "In alto a sinistra",
+      "addAction": "Applica numerazione e scarica",
+      "appliedPages": "Pagine numerate"
+    },
+    "watermark": {
+      "heading": "Aggiungi filigrana diagonale di testo",
+      "watermarkText": "Testo filigrana",
+      "sampleText": "RISERVATO",
+      "addAction": "Applica filigrana e scarica",
+      "stampedPages": "Pagine con filigrana"
+    },
+    "crop": {
+      "heading": "Ritaglia margini del documento",
+      "topMargin": "Margine superiore (punti)",
+      "bottomMargin": "Margine inferiore (punti)",
+      "leftMargin": "Margine sinistro (punti)",
+      "rightMargin": "Margine destro (punti)",
+      "cropAction": "Ritaglia margini e scarica",
+      "croppedPages": "Pagine ritagliate"
+    },
+    "extractText": {
+      "heading": "Estrai testo dal file PDF",
+      "extractAction": "Estrai testo leggibile",
+      "copied": "Testo estratto copiato",
+      "downloadTxt": "Scarica file TXT",
+      "characterCount": "Caratteri estratti"
+    },
+    "sign": {
+      "heading": "Firma documento PDF",
+      "drawSignature": "Traccia firma",
+      "clearSignature": "Cancella riquadro",
+      "targetPage": "Pagina della firma",
+      "posX": "Scostamento orizzontale (punti)",
+      "posY": "Scostamento verticale (punti)",
+      "signAction": "Applica firma e scarica"
+    },
+    "imageToPdf": {
+      "heading": "Converti immagini in file PDF",
+      "addImages": "Seleziona immagini",
+      "convertAction": "Trasforma immagini in PDF",
+      "imagesSelected": "Immagini selezionate",
+      "moveUp": "Sposta prima",
+      "moveDown": "Sposta dopo",
+      "remove": "Rimuovi"
+    },
+    "pdfToImage": {
+      "heading": "Converti pagina PDF in immagine",
+      "selectPage": "Pagina da convertire",
+      "format": "Formato immagine",
+      "resolution": "Risoluzione output (scala)",
+      "convertAction": "Renderizza e scarica immagine",
+      "preview": "Anteprima immagine generata"
+    },
+    "converters": {
+      "heading": "Converti file in formato PDF",
+      "selectFile": "Seleziona file",
+      "convertAction": "Converti e scarica PDF",
+      "unsupported": "Formato file non supportato"
     }
   }
 }

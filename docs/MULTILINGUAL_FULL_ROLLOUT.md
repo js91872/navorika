@@ -250,8 +250,20 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - PDF Word Counter
 - Flatten PDF
 - Interleave PDF
+- Add Image to PDF
+- Add Page Numbers to PDF
+- Add Watermark to PDF
+- Crop PDF
+- Extract Text from PDF
+- HEIC to PDF Converter
+- JPG to PDF Converter
+- Markdown to PDF Converter
+- PDF to Image Converter
+- PDF to JPG Converter
+- Sign PDF
+- WebP to PDF Converter
 
-This brings branch coverage to 179 tools per language (1,253 tool variants plus seven directories, 1,260 localized pages total), advancing PDF tools to 13/25 (52% complete). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 134 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 191 tools per language (1,337 tool variants plus seven directories, 1,344 localized pages total), completing 100% of the PDF tools category (25/25 tools). The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 122 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

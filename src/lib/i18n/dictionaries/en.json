@@ -1499,6 +1499,102 @@
       "limits": "If documents have unequal page counts, remaining pages from the longer document are appended in order.",
       "question": "Can I reverse the second document if it was scanned backwards?",
       "answer": "Yes, enable the reverse option for Document B to automatically flip reverse-feed scanner batches into correct sequential order."
+    },
+    "add-image-to-pdf": {
+      "title": "Add Image to PDF Online",
+      "description": "Insert a JPG, PNG or WebP image into a selected PDF page and choose its size and position directly in your browser.",
+      "how": "Upload your PDF file, choose the picture you want to add, choose the target page number and position, then download the modified document.",
+      "limits": "Supported image formats are JPG, PNG and WebP up to browser memory limits.",
+      "question": "Can I position the image anywhere on the page?",
+      "answer": "Yes, you can position the image in the center, top-left, top-right, bottom-left, or bottom-right with relative scaling."
+    },
+    "add-page-numbers": {
+      "title": "Add Page Numbers to PDF Online",
+      "description": "Number pages in PDF documents automatically with customizable positions, formats, and starting number values.",
+      "how": "Select your document, pick your desired number placement and starting integer, then save the numbered PDF file.",
+      "limits": "Password-encrypted documents must be decrypted before page numbering can be applied.",
+      "question": "Will page numbers obscure existing page text?",
+      "answer": "Numbers are placed near page margins; you can select top or bottom corners to avoid overlapping content."
+    },
+    "add-watermark": {
+      "title": "Add Watermark to PDF Online",
+      "description": "Stamp a semi-transparent diagonal text watermark across every page of your PDF document securely in your browser.",
+      "how": "Upload your PDF, enter custom watermark wording such as Confidential or Draft, and download the stamped document.",
+      "limits": "Applies a uniform diagonal watermark layer across all pages in the document.",
+      "question": "Can watermarks be removed easily by viewers?",
+      "answer": "Watermark text becomes an integrated part of the PDF content stream and cannot be toggled off in standard readers."
+    },
+    "crop-pdf": {
+      "title": "Crop PDF Margins Online",
+      "description": "Trim outer borders and margins from PDF document pages uniformly by specifying point dimensions.",
+      "how": "Upload your file, define margin points to remove from top, bottom, left and right edges, and download the cropped file.",
+      "limits": "Values must not exceed the physical width and height of the inspected page geometry.",
+      "question": "Does cropping reduce PDF file size?",
+      "answer": "Cropping updates boundary display boxes without re-encoding embedded artwork or stripping off-screen elements."
+    },
+    "extract-pdf-text": {
+      "title": "Extract Text from PDF Online",
+      "description": "Extract readable text streams from PDF documents locally and download the plain text content as a TXT file.",
+      "how": "Select a readable PDF file to parse text streams page by page, preview the extracted sentences, and download or copy the output.",
+      "limits": "Scanned bitmap pages without an OCR text layer contain no selectable digital characters.",
+      "question": "Are formatting and font styles preserved?",
+      "answer": "Text extraction extracts plain text characters and line breaks without styling, font weights, or colors."
+    },
+    "heic-to-pdf": {
+      "title": "HEIC to PDF Converter Online",
+      "description": "Convert iPhone and Apple HEIC photos into high-quality PDF documents locally without server uploads.",
+      "how": "Choose a HEIC or HEIF photo from your device and click convert to generate a single-page PDF document instantly.",
+      "limits": "Maximum photo size is constrained by available client-side device memory.",
+      "question": "Do my private photos leave my computer?",
+      "answer": "No. HEIC decoding and PDF document creation run entirely inside your browser sandbox."
+    },
+    "jpg-to-pdf": {
+      "title": "JPG to PDF Converter Online",
+      "description": "Convert one or more JPG and JPEG pictures into an organized, multipage PDF document in your browser.",
+      "how": "Select your JPG files, arrange their page sequence, and generate a downloadable PDF with one image per page.",
+      "limits": "Each JPG image is embedded on its own dedicated page matching the image aspect ratio.",
+      "question": "Is image quality compressed during conversion?",
+      "answer": "No. The original JPEG byte stream is embedded directly into the PDF without lossy re-encoding."
+    },
+    "markdown-to-pdf": {
+      "title": "Markdown to PDF Converter Online",
+      "description": "Turn Markdown syntax notes, documentation, or MD files into cleanly formatted downloadable PDF documents.",
+      "how": "Paste your Markdown notes or upload an MD file, preview the formatting, and export a clean PDF document.",
+      "limits": "Designed for standard headings, paragraphs, and lists; complex raw HTML tables may be simplified.",
+      "question": "Can I paste raw Markdown text directly?",
+      "answer": "Yes. You can paste notes directly into the text area or upload a markdown file from your disk."
+    },
+    "pdf-to-image": {
+      "title": "PDF to Image Converter Online",
+      "description": "Render selected pages of a PDF document into sharp PNG or JPG image files with custom resolution scaling.",
+      "how": "Upload your PDF, select the page number you wish to render, choose PNG or JPG format, and save the resulting image.",
+      "limits": "Renders one page at a time to maintain responsive browser performance on large documents.",
+      "question": "Can I choose the output image resolution?",
+      "answer": "Yes. You can adjust the render scale from 1x standard resolution up to 3x high-DPI crisp output."
+    },
+    "pdf-to-jpg": {
+      "title": "PDF to JPG Converter Online",
+      "description": "Convert individual PDF document pages into high-resolution JPG images with adjustable compression quality.",
+      "how": "Upload a PDF, select your desired page number and JPG compression quality, and download the converted photo file.",
+      "limits": "Transparent PDF backgrounds are automatically rendered with a clean opaque white backdrop for JPG format.",
+      "question": "Does JPG support transparent PDF backgrounds?",
+      "answer": "JPG is an opaque format; transparent backgrounds are blended onto a clean white canvas during rendering."
+    },
+    "sign-pdf": {
+      "title": "Sign PDF Online Free",
+      "description": "Draw your handwritten signature directly on your screen and position it onto any PDF document page securely.",
+      "how": "Upload your PDF, draw your signature on the interactive canvas, choose the target page and offset, and export.",
+      "limits": "Places a visible graphical signature stamp; does not apply cryptographic x.509 digital certificates.",
+      "question": "Is my signature saved on an external server?",
+      "answer": "No. Signature drawing and document stamping execute exclusively within your local web browser session."
+    },
+    "webp-to-pdf": {
+      "title": "WebP to PDF Converter Online",
+      "description": "Convert WebP graphics and photos into clean, standard PDF documents with one image per page.",
+      "how": "Upload one or multiple WebP files, order them as desired, and download the consolidated PDF document.",
+      "limits": "Decodes WebP frames into clean raster image layers embedded directly into the PDF pages.",
+      "question": "Can I convert multiple WebP images into a single PDF?",
+      "answer": "Yes. Select several WebP files at once to compile a multipage document in sequential order."
     }
   },
   "flexOptions": {
@@ -5160,6 +5256,90 @@
       "docAPages": "Document A Page Count",
       "docBPages": "Document B Page Count",
       "combinedPages": "Interleaved Total Pages"
+    },
+    "addImage": {
+      "heading": "Add Image to Selected Page",
+      "pdfDocument": "PDF Document",
+      "choosePdf": "Choose PDF File",
+      "chooseImage": "Choose JPG, PNG, or WebP Image",
+      "targetPage": "Target Page Number",
+      "imageWidth": "Image Size Relative to Page",
+      "position": "Image Position",
+      "center": "Center",
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "addAction": "Insert Image & Download PDF",
+      "processing": "Inserting Image into Document..."
+    },
+    "pageNumbers": {
+      "heading": "Add Page Numbers to Document",
+      "startNumber": "First Number Value",
+      "position": "Number Position",
+      "bottomCenter": "Bottom Center",
+      "bottomRight": "Bottom Right",
+      "bottomLeft": "Bottom Left",
+      "topCenter": "Top Center",
+      "topRight": "Top Right",
+      "topLeft": "Top Left",
+      "addAction": "Apply Page Numbers & Download",
+      "appliedPages": "Numbered Pages"
+    },
+    "watermark": {
+      "heading": "Add Diagonal Text Watermark",
+      "watermarkText": "Watermark Text",
+      "sampleText": "SAMPLE",
+      "addAction": "Stamp Watermark & Download",
+      "stampedPages": "Watermarked Pages"
+    },
+    "crop": {
+      "heading": "Crop Document Margins",
+      "topMargin": "Top Margin (Points)",
+      "bottomMargin": "Bottom Margin (Points)",
+      "leftMargin": "Left Margin (Points)",
+      "rightMargin": "Right Margin (Points)",
+      "cropAction": "Crop Margins & Download",
+      "croppedPages": "Cropped Pages"
+    },
+    "extractText": {
+      "heading": "Extract Text from PDF",
+      "extractAction": "Extract Readable Text",
+      "copied": "Extracted Text Copied",
+      "downloadTxt": "Download TXT File",
+      "characterCount": "Extracted Characters"
+    },
+    "sign": {
+      "heading": "Sign PDF Document",
+      "drawSignature": "Draw Signature",
+      "clearSignature": "Clear Canvas",
+      "targetPage": "Signature Page",
+      "posX": "Horizontal Offset (Points)",
+      "posY": "Vertical Offset (Points)",
+      "signAction": "Apply Signature & Download"
+    },
+    "imageToPdf": {
+      "heading": "Convert Images into PDF Document",
+      "addImages": "Select Images",
+      "convertAction": "Convert Images to PDF",
+      "imagesSelected": "Selected Images",
+      "moveUp": "Move Before",
+      "moveDown": "Move After",
+      "remove": "Remove"
+    },
+    "pdfToImage": {
+      "heading": "Convert PDF Page to Image",
+      "selectPage": "Target Page",
+      "format": "Image Format",
+      "resolution": "Output Resolution (Scale)",
+      "convertAction": "Render & Download Image",
+      "preview": "Rendered Image Preview"
+    },
+    "converters": {
+      "heading": "Convert File to PDF",
+      "selectFile": "Select File",
+      "convertAction": "Convert & Download PDF",
+      "unsupported": "Unsupported File Format"
     }
   }
 }

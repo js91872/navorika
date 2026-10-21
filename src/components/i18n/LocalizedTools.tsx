@@ -24,6 +24,7 @@ const LocalizedBuildingTools = dynamic(() => import('./LocalizedBuildingTools'))
 const LocalizedFinanceTools = dynamic(() => import('./LocalizedFinanceTools'));
 const LocalizedWealthTools = dynamic(() => import('./LocalizedWealthTools'));
 const LocalizedPdfTools = dynamic(() => import('./LocalizedPdfTools'));
+const LocalizedPdfSuiteTools = dynamic(() => import('./LocalizedPdfSuiteTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -292,6 +293,22 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
     slug === 'interleave-pdf'
   ) {
     return <LocalizedPdfTools slug={slug} dictionary={dictionary} locale={locale} />;
+  }
+  if (
+    slug === 'add-image-to-pdf' ||
+    slug === 'add-page-numbers' ||
+    slug === 'add-watermark' ||
+    slug === 'crop-pdf' ||
+    slug === 'extract-pdf-text' ||
+    slug === 'heic-to-pdf' ||
+    slug === 'jpg-to-pdf' ||
+    slug === 'markdown-to-pdf' ||
+    slug === 'pdf-to-image' ||
+    slug === 'pdf-to-jpg' ||
+    slug === 'sign-pdf' ||
+    slug === 'webp-to-pdf'
+  ) {
+    return <LocalizedPdfSuiteTools slug={slug} dictionary={dictionary} locale={locale} />;
   }
   if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

@@ -1499,6 +1499,102 @@
       "limits": "Bei ungleicher Seitenanzahl werden überzählige Seiten des längeren Dokuments am Ende fortlaufend angefügt.",
       "question": "Kann Dokument B umgekehrt eingelesen werden, falls es rückwärts gescannt wurde?",
       "answer": "Ja, aktivieren Sie die Umkehrfunktion für Dokument B, um die Seitenfolge automatisch richtigzustellen."
+    },
+    "add-image-to-pdf": {
+      "title": "Bild in PDF einfügen online",
+      "description": "Fügen Sie JPG-, PNG- oder WebP-Bilder auf einer ausgewählten PDF-Seite ein und bestimmen Sie Größe und Lage im Browser.",
+      "how": "PDF-Datei öffnen, gewünschte Bilddatei wählen, Zielseite und Position festlegen und das bearbeitete Dokument herunterladen.",
+      "limits": "Unterstützt Bilddateien der Formate JPG, PNG und WebP im Rahmen des verfügbaren Arbeitsspeichers.",
+      "question": "Kann das Bild flexibel platziert werden?",
+      "answer": "Ja, Sie können das Bild in der Mitte oder in den Ecken mit proportionaler Skalierung einfügen."
+    },
+    "add-page-numbers": {
+      "title": "Seitenzahlen zu PDF hinzufügen online",
+      "description": "Versehen Sie PDF-Dokumente automatisch mit Seitenzahlen bei flexibler Platzierung und anpassbarem Startwert.",
+      "how": "Dokument auswählen, gewünschte Position und Anfangszahl festlegen und nummerierte PDF-Datei sichern.",
+      "limits": "Passwortgeschützte Dokumente müssen vor dem Nummerieren der Seiten entsperrt werden.",
+      "question": "Können Seitenzahlen vorhandenen Text überlagern?",
+      "answer": "Seitenzahlen werden an den Außenrändern positioniert, um Überschneidungen mit Inhalten zu vermeiden."
+    },
+    "add-watermark": {
+      "title": "Wasserzeichen zu PDF hinzufügen online",
+      "description": "Prägen Sie ein halbtransparentes diagonales Textwasserzeichen auf alle Seiten Ihrer PDF-Datei verlässlich auf.",
+      "how": "PDF-Datei laden, gewünschten Hinweis wie Entwurf oder Vertraulich eingeben und Dokument mit Wasserzeichen speichern.",
+      "limits": "Fügt allen enthaltenen Seiten des Dokuments ein einheitliches diagonales Textmuster hinzu.",
+      "question": "Kann das Wasserzeichen nachträglich einfach entfernt werden?",
+      "answer": "Das Wasserzeichen wird fest in den Seiteninhalt eingebettet und lässt sich in normalen Leseprogrammen nicht abschalten."
+    },
+    "crop-pdf": {
+      "title": "PDF-Ränder zuschneiden online",
+      "description": "Entfernen Sie äußere Randflächen aus den Seiten Ihres PDF-Dokuments durch Angabe von Schnittpunkten.",
+      "how": "Datei hochladen, Punktwerte für die vier Ränder angeben und zugeschnittene PDF-Datei herunterladen.",
+      "limits": "Die Randwerte dürfen die Gesamtbreite und Gesamthöhe der geprüften Seite nicht überschreiten.",
+      "question": "Verringert das Zuschneiden die Dateigröße der PDF?",
+      "answer": "Der Zuschnitt definiert den sichtbaren Anzeigebereich neu, entfernt jedoch keine außerhalb liegenden Daten."
+    },
+    "extract-pdf-text": {
+      "title": "Text aus PDF extrahieren online",
+      "description": "Lesen Sie eingebetteten Text aus PDF-Dokumenten direkt im Webbrowser aus und sichern Sie ihn als TXT-Datei.",
+      "how": "Wählen Sie eine lesbare PDF-Datei, um den enthaltenen Text darzustellen und unkompliziert zu kopieren oder zu speichern.",
+      "limits": "Eingescannte Bildseiten ohne OCR-Texterkennungsschicht besitzen keine auslesbaren Schriftzeichen.",
+      "question": "Werden Schriftarten und Formatierungen beibehalten?",
+      "answer": "Das Werkzeug liest reinen Text und Zeilenumbrüche ohne Schriftstile, Strichstärken oder Farben aus."
+    },
+    "heic-to-pdf": {
+      "title": "HEIC in PDF umwandeln online",
+      "description": "Konvertieren Sie HEIC-Fotos von Apple-Geräten in hochwertige PDF-Dokumente ohne Weitergabe an externe Server.",
+      "how": "Wählen Sie ein HEIC-Bild auf Ihrem Gerät und starten Sie die Umwandlung zur sofortigen Erstellung der PDF-Datei.",
+      "limits": "Die maximal verarbeitbare Bildgröße richtet sich nach dem verfügbaren Gerätespeicher.",
+      "question": "Werden meine persönlichen Aufnahmen ins Netz übertragen?",
+      "answer": "Nein. Die Bildverarbeitung und Erstellung des PDF-Dokuments erfolgen vollständig auf Ihrem Rechner."
+    },
+    "jpg-to-pdf": {
+      "title": "JPG in PDF umwandeln online",
+      "description": "Kombinieren Sie mehrere JPG- oder JPEG-Bilder zu einem übersichtlichen PDF-Dokument mit einem Bild je Seite.",
+      "how": "JPG-Dateien auswählen, Reihenfolge festlegen und fertiges PDF-Dokument auf Ihr Gerät herunterladen.",
+      "limits": "Jedes Bild wird auf einer eigenen Seite unter Erhalt der ursprünglichen Proportionen eingebunden.",
+      "question": "Geht bei der Umwandlung Bildqualität verloren?",
+      "answer": "Nein. Die komprimierten Originaldaten der JPEG-Datei werden direkt eingebettet, ohne neue Verluste zu erzeugen."
+    },
+    "markdown-to-pdf": {
+      "title": "Markdown in PDF umwandeln online",
+      "description": "Wandeln Sie Texte und Dokumente im Markdown-Format in übersichtliche PDF-Dateien zum Drucken oder Versenden um.",
+      "how": "Fügen Sie Markdown-Text ein oder laden Sie eine MD-Datei, prüfen Sie die Darstellung und exportieren Sie das Dokument.",
+      "limits": "Für gängige Überschriften, Listen und Absätze ausgelegt; sehr verschachtelte Tabellen werden vereinfacht dargestellt.",
+      "question": "Kann ich Markdown-Inhalte direkt per Tastatur eingeben?",
+      "answer": "Ja. Sie können Texte unmittelbar in das Eingabefeld eintippen oder bestehende Dateien hochladen."
+    },
+    "pdf-to-image": {
+      "title": "PDF-Seite in Bild umwandeln online",
+      "description": "Rendern Sie ausgewählte Einzelseiten eines PDF-Dokuments in klare PNG- oder JPG-Bilder mit wählbarer Auflösung.",
+      "how": "PDF-Datei laden, gewünschte Seitenzahl bestimmen, Bildformat wählen und erzeugtes Bild herunterladen.",
+      "limits": "Wandelt jeweils eine Seite pro Durchlauf um, um auch bei umfangreichen Dokumenten schnelle Reaktionszeiten zu sichern.",
+      "question": "Lässt sich die Ausgabequalität des Bildes anpassen?",
+      "answer": "Ja. Sie können den Skalierungsfaktor von Standardauflösung bis hin zu hoher Randschärfe einstellen."
+    },
+    "pdf-to-jpg": {
+      "title": "PDF-Seite in JPG umwandeln online",
+      "description": "Konvertieren Sie eine ausgewählte PDF-Seite in ein JPG-Bild mit gezielter Qualitäts- und Kompressionssteuerung.",
+      "how": "PDF-Datei öffnen, Seitennummer sowie Qualitätsstufe festlegen und die generierte JPG-Datei speichern.",
+      "limits": "Transparente Bildbereiche werden für das JPG-Format automatisch mit weißem Hintergrund gerendert.",
+      "question": "Unterstützt das JPG-Format transparente Hintergründe?",
+      "answer": "Das JPG-Format ist deckend; transparente Bereiche werden während der Darstellung durch Weiß ersetzt."
+    },
+    "sign-pdf": {
+      "title": "PDF online kostenlos unterschreiben",
+      "description": "Zeichnen Sie Ihre persönliche Signatur auf dem Bildschirm und platzieren Sie sie geschützt auf einer PDF-Seite.",
+      "how": "PDF laden, Unterschrift auf der Zeichenfläche anfertigen, Zielseite und Lage bestimmen und Datei exportieren.",
+      "limits": "Fügt eine sichtbare grafische Signatur ein; ersetzt kein kryptografisches x.509-Zertifikat.",
+      "question": "Wird meine Signatur auf fremden Servern hinterlegt?",
+      "answer": "Nein. Das Zeichnen und Aufbringen der Signatur findet ausschließlich in Ihrer lokalen Browsersitzung statt."
+    },
+    "webp-to-pdf": {
+      "title": "WebP in PDF umwandeln online",
+      "description": "Bündeln Sie Grafiken und Fotos im WebP-Format zu sauber strukturierten PDF-Dateien für Archiv und Versand.",
+      "how": "WebP-Bilder auswählen, Reihenfolge arrangieren und das zusammengefasste PDF-Dokument herunterladen.",
+      "limits": "Wandelt WebP-Grafiken in passende Bildseiten innerhalb des resultierenden PDF-Dokuments um.",
+      "question": "Können mehrere WebP-Bilder in ein einziges PDF zusammengefasst werden?",
+      "answer": "Ja. Sie können mehrere WebP-Dateien gemeinsam auswählen, um ein mehrseitiges Dokument zu erstellen."
     }
   },
   "flexOptions": {
@@ -5160,6 +5256,90 @@
       "docAPages": "Seitenanzahl Dokument A",
       "docBPages": "Seitenanzahl Dokument B",
       "combinedPages": "Gesamte verwebte Seiten"
+    },
+    "addImage": {
+      "heading": "Bild auf ausgewählter Seite einfügen",
+      "pdfDocument": "PDF-Dokument",
+      "choosePdf": "PDF-Datei auswählen",
+      "chooseImage": "JPG-, PNG- oder WebP-Bild wählen",
+      "targetPage": "Zielseitennummer",
+      "imageWidth": "Bildgröße relativ zur Seite",
+      "position": "Bildposition",
+      "center": "Mitte",
+      "topLeft": "Oben links",
+      "topRight": "Oben rechts",
+      "bottomLeft": "Unten links",
+      "bottomRight": "Unten rechts",
+      "addAction": "Bild einbetten und herunterladen",
+      "processing": "Bild wird in das Dokument eingefügt..."
+    },
+    "pageNumbers": {
+      "heading": "Seitennummern zum Dokument hinzufügen",
+      "startNumber": "Startwert der Zählung",
+      "position": "Nummernposition",
+      "bottomCenter": "Unten zentriert",
+      "bottomRight": "Unten rechts",
+      "bottomLeft": "Unten links",
+      "topCenter": "Oben zentriert",
+      "topRight": "Oben rechts",
+      "topLeft": "Oben links",
+      "addAction": "Seitenzahlen anwenden und herunterladen",
+      "appliedPages": "Nummerierte Seiten"
+    },
+    "watermark": {
+      "heading": "Diagonales Textwasserzeichen anbringen",
+      "watermarkText": "Wasserzeichentext",
+      "sampleText": "VERTRAULICH",
+      "addAction": "Wasserzeichen stempeln und herunterladen",
+      "stampedPages": "Wasserzeichenseiten"
+    },
+    "crop": {
+      "heading": "Dokumentränder beschneiden",
+      "topMargin": "Oberer Rand (Punkte)",
+      "bottomMargin": "Unterer Rand (Punkte)",
+      "leftMargin": "Linker Rand (Punkte)",
+      "rightMargin": "Rechter Rand (Punkte)",
+      "cropAction": "Ränder zuschneiden und herunterladen",
+      "croppedPages": "Zugeschnittene Seiten"
+    },
+    "extractText": {
+      "heading": "Text aus PDF extrahieren",
+      "extractAction": "Lesbaren Text auslesen",
+      "copied": "Extrahierter Text kopiert",
+      "downloadTxt": "TXT-Datei herunterladen",
+      "characterCount": "Ausgelesene Zeichen"
+    },
+    "sign": {
+      "heading": "PDF-Dokument signieren",
+      "drawSignature": "Unterschrift zeichnen",
+      "clearSignature": "Feld leeren",
+      "targetPage": "Signaturseite",
+      "posX": "Horizontaler Versatz (Punkte)",
+      "posY": "Vertikaler Versatz (Punkte)",
+      "signAction": "Signatur anwenden und herunterladen"
+    },
+    "imageToPdf": {
+      "heading": "Bilder in PDF-Dokument umwandeln",
+      "addImages": "Bilder auswählen",
+      "convertAction": "Bilder zu PDF konvertieren",
+      "imagesSelected": "Ausgewählte Bilder",
+      "moveUp": "Nach oben",
+      "moveDown": "Nach unten",
+      "remove": "Entfernen"
+    },
+    "pdfToImage": {
+      "heading": "PDF-Seite in Bild konvertieren",
+      "selectPage": "Gewählte Einzelseite",
+      "format": "Bildformat",
+      "resolution": "Ausgabeauflösung (Skalierung)",
+      "convertAction": "Bild berechnen und herunterladen",
+      "preview": "Vorschau des erzeugten Bildes"
+    },
+    "converters": {
+      "heading": "Datei in PDF konvertieren",
+      "selectFile": "Datei auswählen",
+      "convertAction": "In PDF umwandeln und herunterladen",
+      "unsupported": "Nicht unterstütztes Dateiformat"
     }
   }
 }
