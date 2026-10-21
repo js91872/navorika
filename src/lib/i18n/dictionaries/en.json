@@ -1595,6 +1595,102 @@
       "limits": "Decodes WebP frames into clean raster image layers embedded directly into the PDF pages.",
       "question": "Can I convert multiple WebP images into a single PDF?",
       "answer": "Yes. Select several WebP files at once to compile a multipage document in sequential order."
+    },
+    "compress-image": {
+      "title": "Compress Image",
+      "description": "Re-encode JPEG and WebP images with adjustable quality or convert PNG to compressed WebP directly in your browser.",
+      "how": "Upload an image, adjust the quality slider to your desired compression level, and download the optimized image.",
+      "limits": "Lossless PNG files must be converted to WebP or JPEG for significant lossy size reduction.",
+      "question": "Are my photos uploaded to a remote server during compression?",
+      "answer": "No. All image compression occurs locally in your browser memory using HTML5 canvas without uploading."
+    },
+    "compress-image-to-20kb": {
+      "title": "Compress Image to 20KB",
+      "description": "Compress images down to 20KB or less for strict web forms, avatar limits, and portal uploads.",
+      "how": "Select an image file, choose your output format, and our binary search compressor automatically determines the optimal dimensions and quality to fit under 20KB.",
+      "limits": "Extremely large high-resolution images may require dimensional downscaling to achieve a 20KB file size.",
+      "question": "How does the tool ensure the image is under 20KB?",
+      "answer": "It runs a multi-step binary search over compression qualities and dimensions until the file size is strictly under 20KB."
+    },
+    "compress-image-to-50kb": {
+      "title": "Compress Image to 50KB",
+      "description": "Reduce photo and document file size to 50KB or less for government applications and strict portals.",
+      "how": "Upload your image, choose format preferences, and the tool compresses it to stay under 50KB.",
+      "limits": "Very high-resolution images will be proportionally scaled if minimum compression quality cannot reach 50KB.",
+      "question": "Will image clarity remain usable at 50KB?",
+      "answer": "Yes. The algorithm searches for the highest visual quality step that stays under the 50KB target threshold."
+    },
+    "compress-image-to-100kb": {
+      "title": "Compress Image to 100KB",
+      "description": "Compress photos and images to 100KB or less for resume uploads, job applications, and email attachments.",
+      "how": "Upload an image, preview the compressed result, and download your 100KB-compliant file.",
+      "limits": "Raw photo formats must be converted to standard web formats like JPEG or WebP.",
+      "question": "Why is 100KB such a common size requirement?",
+      "answer": "Many corporate job boards, passport portals, and document upload forms set 100KB as the maximum allowed file size."
+    },
+    "compress-image-to-200kb": {
+      "title": "Compress Image to 200KB",
+      "description": "Optimize images to stay strictly under 200KB while preserving high visual fidelity and sharpness.",
+      "how": "Upload your file, inspect the target size comparison, and download the compressed image.",
+      "limits": "Complex transparency layers in PNG format may require conversion to WebP to fit under 200KB.",
+      "question": "Does 200KB allow higher resolution than smaller presets?",
+      "answer": "Yes. A 200KB allowance permits larger pixel dimensions and higher JPEG/WebP quality factors than tighter limits."
+    },
+    "compress-jpg": {
+      "title": "Compress JPG",
+      "description": "Reduce JPG and JPEG file size online with customizable quality settings and real-time browser encoding.",
+      "how": "Select a JPG file, adjust the compression slider to balance clarity and file size, and download the result.",
+      "limits": "Progressive JPEG features depend on browser canvas export support.",
+      "question": "Does compressing a JPG remove image metadata?",
+      "answer": "Canvas re-encoding strips unnecessary EXIF headers, which helps reduce the total file size."
+    },
+    "compress-jpg-to-100kb": {
+      "title": "Compress JPG to 100KB",
+      "description": "Compress JPEG and JPG pictures to 100KB or less with optimal quality and dimensional control.",
+      "how": "Upload a JPG photo and the browser algorithm adjusts JPEG quality and bounds to ensure output is under 100KB.",
+      "limits": "Photos with very large resolutions may require slight downscaling to meet the 100KB limit.",
+      "question": "Can I keep the original pixel dimensions when compressing JPG to 100KB?",
+      "answer": "You can enable dimension preservation, though very large images may require downscaling if minimum quality exceeds 100KB."
+    },
+    "compress-png": {
+      "title": "Compress PNG",
+      "description": "Optimize PNG images with lossless re-encoding or convert to modern WebP for smaller file sizes.",
+      "how": "Upload a PNG, choose between lossless preservation or WebP compression, and download the optimized file.",
+      "limits": "Standard browser canvas cannot perform lossy PNG palettization without converting to WebP or JPEG.",
+      "question": "Is PNG compression lossless?",
+      "answer": "Re-encoding preserves pixel values without loss, while switching to WebP offers lossy compression with transparency."
+    },
+    "compress-png-to-100kb": {
+      "title": "Compress PNG to 100KB",
+      "description": "Compress PNG files to 100KB or less through lossless re-encoding, dimensional downscaling, or WebP conversion.",
+      "how": "Upload a PNG file, select your preferred strategy (preserve PNG format or switch to WebP), and download the result.",
+      "limits": "Preserving PNG format on detailed images requires dimensional downscaling because PNG is inherently lossless.",
+      "question": "How does the tool achieve under 100KB for PNG files?",
+      "answer": "It either scales pixel dimensions in lossless PNG mode or shifts to WebP to leverage lossy compression while keeping transparency."
+    },
+    "compress-webp": {
+      "title": "Compress WebP",
+      "description": "Compress WebP pictures with adjustable quality settings to reduce web page load times.",
+      "how": "Upload a WebP image, select your desired quality level, and download the compressed file.",
+      "limits": "Animated WebP files are flattened to their first frame when processed through HTML5 canvas.",
+      "question": "Why is WebP better for image compression?",
+      "answer": "WebP provides superior lossy and lossless compression algorithms compared to older JPEG and PNG formats."
+    },
+    "resize-image": {
+      "title": "Resize Image",
+      "description": "Change image pixel dimensions online with proportional aspect ratio lock and high-quality smoothing.",
+      "how": "Upload an image, enter custom width and height or pick a scale percentage, and download the resized graphic.",
+      "limits": "Upscaling low-resolution images beyond their original dimensions will not magically add new detail.",
+      "question": "Will resizing distort my photo proportions?",
+      "answer": "Not if you keep the aspect ratio lock enabled, which automatically adjusts height when you enter width."
+    },
+    "rotate-image": {
+      "title": "Rotate Image",
+      "description": "Rotate photos 90, 180, or 270 degrees clockwise or counter-clockwise, and flip horizontally or vertically.",
+      "how": "Upload an image, click the rotation and flip controls to achieve the desired orientation, and download the transformed PNG.",
+      "limits": "Rotations are performed at exact 90-degree orthogonal increments.",
+      "question": "Does rotating an image decrease its visual quality?",
+      "answer": "Orthogonal 90-degree rotations reposition pixels directly on a canvas grid without lossy compression degradation."
     }
   },
   "flexOptions": {
@@ -5340,6 +5436,64 @@
       "selectFile": "Select File",
       "convertAction": "Convert & Download PDF",
       "unsupported": "Unsupported File Format"
+    }
+  },
+  "imageTools": {
+    "common": {
+      "uploadPrompt": "Click to upload or drag & drop an image",
+      "uploadFormats": "Supports JPG, PNG, and WebP (up to 25 MB)",
+      "chooseImage": "Choose Image",
+      "changeImage": "Change Image",
+      "removeImage": "Remove Image",
+      "processing": "Processing...",
+      "downloadImage": "Download Image",
+      "originalSize": "Original size",
+      "outputSize": "Output size",
+      "dimensions": "Dimensions",
+      "quality": "Target Quality",
+      "targetSize": "Target file size",
+      "reduction": "Reduction",
+      "success": "Processing completed successfully.",
+      "errorUnsupported": "Unsupported or invalid image file. Please provide a standard image.",
+      "errorTooLarge": "Image file exceeds the 25 MB browser safety limit."
+    },
+    "compression": {
+      "compressBtn": "Compress Image",
+      "targetPresetBanner": "Deterministic Browser-Local Optimization",
+      "preset20kbDesc": "Optimized for extreme avatar limits and micro form attachments.",
+      "preset50kbDesc": "Ideal for government application portals and strict identity uploads.",
+      "preset100kbDesc": "Standard target for web forms, email attachments, and resumes.",
+      "preset200kbDesc": "Higher visual detail while staying strictly under common 200KB gates.",
+      "pngStrategyTitle": "PNG Optimization Strategy",
+      "pngPreserveTitle": "Preserve PNG Format",
+      "pngPreserveDesc": "Lossless re-encoding. Scales dimensions if needed to stay under target.",
+      "pngShiftTitle": "Smaller File (WebP / JPG)",
+      "pngShiftDesc": "Converts to WebP or JPG for dramatically smaller size with lossy quality search.",
+      "pngConvertTo": "Convert PNG to:",
+      "webpPreserveAlpha": "WebP (Preserves transparency)",
+      "jpgWhiteAlpha": "JPG (Replaces transparency with white)",
+      "outputFormat": "Output Format:",
+      "preserveDims": "Preserve original pixel dimensions",
+      "preserveDimsNote": "May prevent reaching target if image has complex high-frequency detail.",
+      "compressToTarget": "Compress to",
+      "reencoding": "Compressing with binary quality search..."
+    },
+    "resize": {
+      "resizeBtn": "Resize Image",
+      "width": "Width",
+      "height": "Height",
+      "maintainRatio": "Maintain aspect ratio",
+      "scalePercent": "Scale Percentage",
+      "resizing": "Resizing image..."
+    },
+    "rotate": {
+      "rotateCw": "Rotate 90° Clockwise",
+      "rotateCcw": "Rotate 90° Counter-Clockwise",
+      "rotate180": "Rotate 180°",
+      "flipH": "Flip Horizontal",
+      "flipV": "Flip Vertical",
+      "reset": "Reset Transforms",
+      "downloadTransformed": "Download Transformed Image"
     }
   }
 }

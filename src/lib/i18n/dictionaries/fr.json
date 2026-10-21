@@ -1595,6 +1595,102 @@
       "limits": "Décode les éléments WebP pour les intégrer directement en pleine page dans le document PDF.",
       "question": "Puis-je assembler plusieurs images WebP dans un seul fichier ?",
       "answer": "Oui. Vous pouvez sélectionner plusieurs fichiers WebP pour constituer un document multipage ordonné."
+    },
+    "compress-image": {
+      "title": "Compresser une image",
+      "description": "Ré-encodez des images JPEG et WebP avec une qualité ajustable ou convertissez des PNG en WebP compressé directement dans votre navigateur.",
+      "how": "Téléversez une image, réglez le curseur de qualité au niveau souhaité et téléchargez l'image optimisée.",
+      "limits": "Les fichiers PNG doivent être convertis en WebP ou JPEG pour une réduction de taille avec perte significative.",
+      "question": "Mes photos sont-elles envoyées sur un serveur distant pendant la compression ?",
+      "answer": "Non. Toute la compression s'effectue localement dans la mémoire de votre navigateur via l'élément canvas HTML5."
+    },
+    "compress-image-to-20kb": {
+      "title": "Compresser une image à 20 Ko",
+      "description": "Réduisez la taille de vos images à 20 Ko ou moins pour les formulaires web stricts et les téléversements d'avatars.",
+      "how": "Sélectionnez une image, choisissez votre format de sortie et notre algorithme ajuste automatiquement les dimensions et la qualité sous 20 Ko.",
+      "limits": "Les images à très haute résolution peuvent nécessiter une réduction d'échelle pour atteindre 20 Ko.",
+      "question": "Comment l'outil garantit-il un résultat inférieur à 20 Ko ?",
+      "answer": "Il exécute une recherche binaire sur les niveaux de qualité et les dimensions jusqu'à respecter strictement le seuil de 20 Ko."
+    },
+    "compress-image-to-50kb": {
+      "title": "Compresser une image à 50 Ko",
+      "description": "Diminuez la taille de vos photos et documents à 50 Ko ou moins pour les portails administratifs et officiels.",
+      "how": "Téléversez votre image, indiquez vos préférences de format et l'outil la compresse pour rester sous 50 Ko.",
+      "limits": "Les photos très volumineuses seront réduites proportionnellement si la compression seule ne suffit pas.",
+      "question": "La lisibilité de l'image reste-t-elle convenable à 50 Ko ?",
+      "answer": "Oui. L'algorithme cherche la qualité visuelle la plus élevée possible sous le plafond de 50 Ko."
+    },
+    "compress-image-to-100kb": {
+      "title": "Compresser une image à 100 Ko",
+      "description": "Compressez vos photos et images à 100 Ko ou moins pour les candidatures, CV et pièces jointes de courriel.",
+      "how": "Déposez une image, prévisualisez le rendu compressé et téléchargez votre fichier conforme à la limite de 100 Ko.",
+      "limits": "Les formats bruts doivent être convertis en formats web standards tels que JPEG ou WebP.",
+      "question": "Pourquoi la limite de 100 Ko est-elle si fréquente ?",
+      "answer": "De nombreux sites d'emploi et plateformes de passeport imposent 100 Ko comme taille maximale admissible."
+    },
+    "compress-image-to-200kb": {
+      "title": "Compresser une image à 200 Ko",
+      "description": "Optimisez vos images pour rester strictement sous 200 Ko tout en conservant une grande netteté visuelle.",
+      "how": "Téléversez votre fichier, comparez les tailles avant et après compression, puis téléchargez l'image finale.",
+      "limits": "Les calques de transparence complexes en PNG peuvent nécessiter une conversion en WebP sous 200 Ko.",
+      "question": "La limite de 200 Ko offre-t-elle une meilleure définition qu'un seuil plus bas ?",
+      "answer": "Oui. Une limite de 200 Ko autorise de plus grandes dimensions et un facteur de qualité supérieur."
+    },
+    "compress-jpg": {
+      "title": "Compresser un JPG",
+      "description": "Réduisez le poids de fichiers JPG et JPEG en ligne avec réglage personnalisé de la qualité dans votre navigateur.",
+      "how": "Sélectionnez un fichier JPG, déplacez le curseur pour équilibrer clarté et légèreté, puis téléchargez le résultat.",
+      "limits": "Les options de JPEG progressif dépendent des capacités d'exportation du navigateur.",
+      "question": "La compression d'un JPG supprime-t-elle les métadonnées ?",
+      "answer": "La ré-encodage par canvas retire les en-têtes EXIF non essentiels, ce qui réduit la taille globale."
+    },
+    "compress-jpg-to-100kb": {
+      "title": "Compresser un JPG à 100 Ko",
+      "description": "Compressez vos photos JPG à 100 Ko ou moins avec un contrôle précis des dimensions et de la qualité.",
+      "how": "Téléversez une photo JPG et le navigateur ajuste la qualité et l'échelle pour rester sous 100 Ko.",
+      "limits": "Les photos de très grand format peuvent subir un léger redimensionnement pour respecter le seuil.",
+      "question": "Puis-je conserver les dimensions d'origine en compressant un JPG à 100 Ko ?",
+      "answer": "Vous pouvez activer le maintien des dimensions, sauf si la taille minimale dépasse encore 100 Ko."
+    },
+    "compress-png": {
+      "title": "Compresser un PNG",
+      "description": "Optimisez des images PNG avec ré-encodage sans perte ou convertissez-les en WebP moderne plus léger.",
+      "how": "Téléversez un PNG, choisissez entre conservation sans perte ou compression WebP, puis téléchargez le fichier.",
+      "limits": "Le canvas natif ne permet pas la réduction de palette PNG sans conversion vers WebP ou JPEG.",
+      "question": "La compression PNG est-elle sans perte ?",
+      "answer": "Le ré-encodage direct préserve chaque pixel, tandis que le passage en WebP permet une compression avec perte."
+    },
+    "compress-png-to-100kb": {
+      "title": "Compresser un PNG à 100 Ko",
+      "description": "Compressez des fichiers PNG à 100 Ko ou moins via ré-encodage sans perte, redimensionnement ou conversion WebP.",
+      "how": "Téléversez un PNG, choisissez votre stratégie (garder le format PNG ou basculer vers WebP) et téléchargez le résultat.",
+      "limits": "Garder le format PNG sur une image détaillée impose une réduction d'échelle car le PNG est sans perte.",
+      "question": "Comment atteindre moins de 100 Ko avec un fichier PNG ?",
+      "answer": "Soit en réduisant l'échelle en mode PNG pur, soit en passant en WebP avec compression avec perte et transparence."
+    },
+    "compress-webp": {
+      "title": "Compresser un WebP",
+      "description": "Compressez des images WebP avec paramètres de qualité modulables pour accélérer l'affichage de vos pages web.",
+      "how": "Téléversez une image WebP, sélectionnez votre degré de compression et téléchargez le fichier optimisé.",
+      "limits": "Les fichiers WebP animés sont réduits à leur première image lors du traitement dans le canvas.",
+      "question": "Pourquoi le format WebP compresse-t-il mieux ?",
+      "answer": "WebP intègre des algorithmes prédictifs plus modernes que les anciens standards JPEG et PNG."
+    },
+    "resize-image": {
+      "title": "Redimensionner une image",
+      "description": "Modifiez les dimensions en pixels d'une image en ligne avec verrouillage du ratio d'aspect et lissage soigné.",
+      "how": "Téléversez une image, saisissez la largeur et la hauteur voulues ou choisissez un pourcentage, puis téléchargez.",
+      "limits": "Agrandir une petite image au-delà de ses dimensions d'origine ne recrée pas les détails manquants.",
+      "question": "Le redimensionnement va-t-il déformer mon image ?",
+      "answer": "Non, tant que le verrouillage des proportions est activé, la hauteur s'adapte automatiquement à la largeur."
+    },
+    "rotate-image": {
+      "title": "Pivoter une image",
+      "description": "Pivotez vos photos à 90, 180 ou 270 degrés et appliquez des miroirs horizontaux ou verticaux sans perte.",
+      "how": "Sélectionnez une image, utilisez les commandes de rotation et de miroir pour obtenir l'orientation voulue, puis enregistrez.",
+      "limits": "Les rotations s'effectuent par crans orthogonaux stricts de 90 degrés.",
+      "question": "Faire pivoter une image dégrade-t-il sa netteté ?",
+      "answer": "Une rotation orthogonale replace directement les pixels sur la grille du canvas sans dégradation destructive."
     }
   },
   "flexOptions": {
@@ -5340,6 +5436,64 @@
       "selectFile": "Sélectionner un fichier",
       "convertAction": "Convertir et télécharger le PDF",
       "unsupported": "Format de fichier non pris en charge"
+    }
+  },
+  "imageTools": {
+    "common": {
+      "uploadPrompt": "Cliquez pour téléverser ou glissez-déposez une image",
+      "uploadFormats": "Prend en charge JPG, PNG et WebP (jusqu'à 25 Mo)",
+      "chooseImage": "Choisir une image",
+      "changeImage": "Changer d'image",
+      "removeImage": "Supprimer l'image",
+      "processing": "Traitement en cours...",
+      "downloadImage": "Télécharger l'image",
+      "originalSize": "Taille d'origine",
+      "outputSize": "Taille obtenue",
+      "dimensions": "Dimensions",
+      "quality": "Qualité cible",
+      "targetSize": "Taille de fichier visée",
+      "reduction": "Réduction",
+      "success": "Traitement terminé avec succès.",
+      "errorUnsupported": "Fichier image non pris en charge ou invalide.",
+      "errorTooLarge": "Le fichier dépasse la limite de sécurité du navigateur de 25 Mo."
+    },
+    "compression": {
+      "compressBtn": "Compresser l'image",
+      "targetPresetBanner": "Optimisation déterministe locale au navigateur",
+      "preset20kbDesc": "Idéal pour les limites d'avatar et les micro-pièces jointes.",
+      "preset50kbDesc": "Idéal pour les portails administratifs et pièces d'identité strictes.",
+      "preset100kbDesc": "Cible standard pour formulaires web, CV et pièces jointes de courriel.",
+      "preset200kbDesc": "Fidélité visuelle supérieure tout en restant sous le seuil de 200 Ko.",
+      "pngStrategyTitle": "Stratégie d'optimisation PNG",
+      "pngPreserveTitle": "Conserver le format PNG",
+      "pngPreserveDesc": "Ré-encodage sans perte. Réduit les dimensions si nécessaire pour respecter la cible.",
+      "pngShiftTitle": "Fichier plus petit (WebP / JPG)",
+      "pngShiftDesc": "Convertit vers WebP ou JPG pour une taille nettement plus compacte.",
+      "pngConvertTo": "Convertir PNG vers :",
+      "webpPreserveAlpha": "WebP (préserve la transparence)",
+      "jpgWhiteAlpha": "JPG (remplace la transparence par du blanc)",
+      "outputFormat": "Format de sortie :",
+      "preserveDims": "Préserver les dimensions en pixels d'origine",
+      "preserveDimsNote": "Peut empêcher d'atteindre la cible sur des images complexes.",
+      "compressToTarget": "Compresser sous",
+      "reencoding": "Compression par recherche binaire de qualité..."
+    },
+    "resize": {
+      "resizeBtn": "Redimensionner l'image",
+      "width": "Largeur",
+      "height": "Hauteur",
+      "maintainRatio": "Conserver les proportions",
+      "scalePercent": "Pourcentage d'échelle",
+      "resizing": "Redimensionnement en cours..."
+    },
+    "rotate": {
+      "rotateCw": "Pivoter de 90° vers la droite",
+      "rotateCcw": "Pivoter de 90° vers la gauche",
+      "rotate180": "Pivoter de 180°",
+      "flipH": "Miroir horizontal",
+      "flipV": "Miroir vertical",
+      "reset": "Réinitialiser les transformations",
+      "downloadTransformed": "Télécharger l'image transformée"
     }
   }
 }

@@ -187,6 +187,18 @@ export const translatedTools = [
   'pdf-to-jpg',
   'sign-pdf',
   'webp-to-pdf',
+  'compress-image',
+  'compress-image-to-20kb',
+  'compress-image-to-50kb',
+  'compress-image-to-100kb',
+  'compress-image-to-200kb',
+  'compress-jpg',
+  'compress-jpg-to-100kb',
+  'compress-png',
+  'compress-png-to-100kb',
+  'compress-webp',
+  'resize-image',
+  'rotate-image',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

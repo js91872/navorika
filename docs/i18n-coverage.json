@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 191,
-    "pendingTools": 122,
+    "publishedTools": 203,
+    "pendingTools": 110,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 1337,
+    "publishedToolTranslations": 1421,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -1341,8 +1341,16 @@
       "source": "src/app/(english)/tools/compress-image/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1357,8 +1365,16 @@
       "source": "src/app/(english)/tools/compress-image-to-100kb/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1375,8 +1391,16 @@
       "source": "src/app/(english)/tools/compress-image-to-200kb/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1393,8 +1417,16 @@
       "source": "src/app/(english)/tools/compress-image-to-20kb/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1411,8 +1443,16 @@
       "source": "src/app/(english)/tools/compress-image-to-50kb/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1429,8 +1469,16 @@
       "source": "src/app/(english)/tools/compress-jpg/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1445,8 +1493,16 @@
       "source": "src/app/(english)/tools/compress-jpg-to-100kb/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1487,8 +1543,16 @@
       "source": "src/app/(english)/tools/compress-png/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1504,8 +1568,16 @@
       "source": "src/app/(english)/tools/compress-png-to-100kb/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1522,8 +1594,16 @@
       "source": "src/app/(english)/tools/compress-webp/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5271,8 +5351,16 @@
       "source": "src/app/(english)/tools/resize-image/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5517,8 +5605,16 @@
       "source": "src/app/(english)/tools/rotate-image/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -8433,43 +8529,43 @@
     {
       "source": "src/app/(english)/tools/compress-image-to-100kb/page.tsx",
       "routeTemplate": "/tools/compress-image-to-100kb",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/compress-image-to-200kb/page.tsx",
       "routeTemplate": "/tools/compress-image-to-200kb",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/compress-image-to-20kb/page.tsx",
       "routeTemplate": "/tools/compress-image-to-20kb",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/compress-image-to-50kb/page.tsx",
       "routeTemplate": "/tools/compress-image-to-50kb",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/compress-image/page.tsx",
       "routeTemplate": "/tools/compress-image",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/compress-jpg-to-100kb/page.tsx",
       "routeTemplate": "/tools/compress-jpg-to-100kb",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/compress-jpg/page.tsx",
       "routeTemplate": "/tools/compress-jpg",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8481,19 +8577,19 @@
     {
       "source": "src/app/(english)/tools/compress-png-to-100kb/page.tsx",
       "routeTemplate": "/tools/compress-png-to-100kb",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/compress-png/page.tsx",
       "routeTemplate": "/tools/compress-png",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/compress-webp/page.tsx",
       "routeTemplate": "/tools/compress-webp",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9489,7 +9585,7 @@
     {
       "source": "src/app/(english)/tools/resize-image/page.tsx",
       "routeTemplate": "/tools/resize-image",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9543,7 +9639,7 @@
     {
       "source": "src/app/(english)/tools/rotate-image/page.tsx",
       "routeTemplate": "/tools/rotate-image",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
