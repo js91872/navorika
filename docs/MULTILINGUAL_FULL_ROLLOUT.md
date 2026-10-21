@@ -274,8 +274,20 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - Compress WebP
 - Resize Image
 - Rotate Image
+- Convert JPG to PNG
+- Convert JPG to WebP
+- Convert PNG to JPG
+- Convert PNG to WebP
+- Convert WebP to JPG
+- WebP to PNG Converter
+- Image Converter – JPG, PNG & WebP
+- SVG to PNG Converter
+- SVG to ICO Converter
+- WebP to ICO Converter
+- WebP to GIF Converter
+- JFIF to PNG Converter
 
-This brings branch coverage to 203 tools per language (1,421 tool variants plus seven directories, 1,428 localized pages total), advancing Image Tools to 25/63 tools translated. The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 110 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 215 tools per language (1,505 tool variants plus seven directories, 1,512 localized pages total), advancing Image Tools to 37/63 tools translated. The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 98 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

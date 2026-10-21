@@ -26,6 +26,7 @@ const LocalizedWealthTools = dynamic(() => import('./LocalizedWealthTools'));
 const LocalizedPdfTools = dynamic(() => import('./LocalizedPdfTools'));
 const LocalizedPdfSuiteTools = dynamic(() => import('./LocalizedPdfSuiteTools'));
 const LocalizedImageTools = dynamic(() => import('./LocalizedImageTools'));
+const LocalizedImageConverterTools = dynamic(() => import('./LocalizedImageConverterTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -326,6 +327,22 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
     slug === 'rotate-image'
   ) {
     return <LocalizedImageTools slug={slug} dictionary={dictionary} locale={locale} />;
+  }
+  if (
+    slug === 'convert-jpg-to-png' ||
+    slug === 'convert-jpg-to-webp' ||
+    slug === 'convert-png-to-jpg' ||
+    slug === 'convert-png-to-webp' ||
+    slug === 'convert-webp-to-jpg' ||
+    slug === 'webp-to-png' ||
+    slug === 'image-converter' ||
+    slug === 'svg-to-png' ||
+    slug === 'svg-to-ico' ||
+    slug === 'webp-to-ico' ||
+    slug === 'webp-to-gif' ||
+    slug === 'jfif-to-png'
+  ) {
+    return <LocalizedImageConverterTools slug={slug} dictionary={dictionary} locale={locale} />;
   }
   if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

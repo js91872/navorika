@@ -1691,6 +1691,102 @@
       "limits": "Le rotazioni avvengono con passi ortogonali fissi di 90 gradi.",
       "question": "La rotazione riduce la qualità visiva dell'immagine?",
       "answer": "Le rotazioni ortogonali riposizionano i pixel senza ricompressone distruttiva sul canvas."
+    },
+    "convert-jpg-to-png": {
+      "title": "Convertitore da JPG a PNG",
+      "description": "Converti immagini JPG o JPEG in formato PNG senza perdite nel browser mantenendo le dimensioni in pixel.",
+      "how": "Carica una foto JPG, visualizza l'anteprima decodificata e scarica il tuo file PNG senza perdite.",
+      "limits": "Convertire un JPG con perdita in PNG non ricrea dettagli già rimossi nella compressione originale.",
+      "question": "La conversione da JPG a PNG migliora la qualità dell'immagine?",
+      "answer": "Previene ulteriori degradazioni nelle modifiche successive, senza poter ricostruire i dati grezzi della fotocamera."
+    },
+    "convert-jpg-to-webp": {
+      "title": "Converti JPG in WebP",
+      "description": "Ricodifica immagini JPG in WebP con qualità regolabile per velocizzare i tempi di caricamento del sito.",
+      "how": "Carica un file JPG, seleziona la qualità desiderata e scarica la moderna immagine WebP ottimizzata.",
+      "limits": "I browser molto datati potrebbero richiedere immagini JPEG di riserva per retrocompatibilità.",
+      "question": "Di quanto è più piccolo il formato WebP rispetto a JPG?",
+      "answer": "I file WebP risultano solitamente dal 25% al 35% più leggeri a parità di resa visiva rispetto a JPEG."
+    },
+    "convert-png-to-jpg": {
+      "title": "Converti PNG in JPG",
+      "description": "Converti grafiche PNG in JPG online riempiendo automaticamente le trasparenze con uno sfondo bianco pulito.",
+      "how": "Carica un file PNG, adatta la qualità di compressione desiderata e scarica l'immagine JPG unificata.",
+      "limits": "Il formato JPEG non supporta la trasparenza; i pixel trasparenti vengono disegnati su sfondo bianco opaco.",
+      "question": "Cosa accade alla trasparenza di un PNG convertendolo in JPG?",
+      "answer": "Le parti trasparenti vengono unite su uno sfondo bianco continuo per assicurare bordi uniformi."
+    },
+    "convert-png-to-webp": {
+      "title": "Converti PNG in WebP",
+      "description": "Converti immagini PNG nel moderno formato WebP preservando completamente il canale alfa di trasparenza.",
+      "how": "Seleziona un'immagine PNG, imposta la qualità di codifica e scarica il tuo file WebP alleggerito.",
+      "limits": "Tavolozze PNG a 16 bit complesse vengono ricondotte allo spazio colore standard a 8 bit per canale.",
+      "question": "WebP mantiene la trasparenza presente nel file PNG?",
+      "answer": "Sì. WebP supporta la trasparenza alfa a 8 bit producendo file significativamente più piccoli di un PNG."
+    },
+    "convert-webp-to-jpg": {
+      "title": "Converti WebP in JPG",
+      "description": "Trasforma immagini WebP in file JPG universalmente compatibili con regolazione della compressione.",
+      "how": "Scegli un file WebP, imposta il livello qualitativo e scarica una foto JPG compatibile ovunque.",
+      "limits": "Eventuali sezioni trasparenti dell'immagine WebP saranno renderizzate su sfondo bianco uniforme.",
+      "question": "Per quale motivo convertire WebP in JPG?",
+      "answer": "JPG è universalmente riconosciuto da tutti i visualizzatori di immagini e sistemi operativi storici."
+    },
+    "webp-to-png": {
+      "title": "Convertitore da WebP a PNG",
+      "description": "Converti file WebP in formato PNG senza perdite online mantenendo la piena trasparenza.",
+      "how": "Carica un file WebP, verifica la vista renderizzata e scarica la grafica PNG non compressa.",
+      "limits": "Le sequenze animate in formato WebP verranno esportate come singola immagine fissa del primo fotogramma.",
+      "question": "La conversione da WebP a PNG è priva di perdite?",
+      "answer": "Il motore PNG riproduce esattamente i pixel RGB e alfa decodificati senza compressione distruttiva."
+    },
+    "image-converter": {
+      "title": "Convertitore immagini – JPG, PNG e WebP",
+      "description": "Converti liberamente tra i formati JPG, PNG e WebP con gestione diretta della qualità nel browser.",
+      "how": "Carica un'immagine in un formato valido, seleziona il formato finale voluto e scarica il file elaborato.",
+      "limits": "La risoluzione massima consentita è limitata a 25 megapixel per salvaguardare la memoria operativa.",
+      "question": "Le immagini vengono inviate a un server remoto?",
+      "answer": "No. Tutta la procedura di conversione viene gestita in locale tramite la memoria del browser."
+    },
+    "svg-to-png": {
+      "title": "Convertitore da SVG a PNG",
+      "description": "Rasterizza grafiche vettoriali SVG in immagini PNG nitide alle loro dimensioni originali.",
+      "how": "Carica un file vettoriale SVG, controlla l'anteprima rasterizzata e scarica la tua immagine PNG.",
+      "limits": "Font esterni o risorse di rete dichiarate nel file SVG potrebbero non comparire se bloccati dal browser.",
+      "question": "La conversione da SVG a PNG mantiene lo sfondo trasparente?",
+      "answer": "Sì. Lo sfondo trasparente del vettore viene conservato fedelmente nel file PNG ottenuto."
+    },
+    "svg-to-ico": {
+      "title": "Convertitore da SVG a ICO",
+      "description": "Trasforma loghi e icone SVG in file favicon ICO da 64 × 64 pixel senza inviare file a server esterni.",
+      "how": "Carica il file SVG, verifica il riquadro dell'icona da 64 pixel e scarica il tuo favicon ICO.",
+      "limits": "L'icona generata presenta un formato 64 × 64 pixel a 32 bit di colore per le schede del browser.",
+      "question": "Posso utilizzare il file ICO generato come favicon del mio sito?",
+      "answer": "Sì. La struttura binaria prodotta rispetta gli standard multipiattaforma per l'uso come favicon.ico."
+    },
+    "webp-to-ico": {
+      "title": "Convertitore da WebP a ICO",
+      "description": "Crea un favicon ICO standard da 64 × 64 pixel da un'immagine WebP direttamente nel tuo browser.",
+      "how": "Carica una grafica WebP, verifica la centratura del riquadro quadrato e salva il favicon ICO.",
+      "limits": "Immagini rettangolari vengono scalate in modo proporzionale e posizionate al centro dei 64 × 64 pixel.",
+      "question": "Il convertitore ICO conserva la trasparenza del file WebP?",
+      "answer": "Sì. I dati RGBA a 32 bit restano intatti nel formato finale mantenendo trasparenti le aree vuote."
+    },
+    "webp-to-gif": {
+      "title": "Convertitore da WebP a GIF",
+      "description": "Converti immagini WebP nel formato GIF standard in locale senza trasferire i tuoi dati sulla rete.",
+      "how": "Carica una foto WebP e scarica direttamente la nuova immagine GIF convertita dal browser.",
+      "limits": "Il formato GIF supporta al massimo 256 colori, introducendo una leggera retinatura sulle sfumature.",
+      "question": "Perché convertire un'immagine WebP in GIF?",
+      "answer": "Il formato GIF assicura la massima compatibilità retroattiva con forum e software legacy."
+    },
+    "jfif-to-png": {
+      "title": "Convertitore da JFIF a PNG",
+      "description": "Converti foto JFIF e JPEG in normali immagini PNG all'interno del browser web.",
+      "how": "Carica un file JFIF, visualizza l'immagine decodificata e salva la copia PNG convertita.",
+      "limits": "JFIF è un'intestazione specifica JPEG la cui lettura dipende dal decoder integrato nel browser.",
+      "question": "Cos'è un file JFIF?",
+      "answer": "JFIF è una variante standard del formato JPEG spesso generata salvando immagini da siti internet."
     }
   },
   "flexOptions": {
@@ -5494,6 +5590,18 @@
       "flipV": "Rifletti verticalmente",
       "reset": "Reimposta trasformazioni",
       "downloadTransformed": "Scarica immagine trasformata"
+    },
+    "converters": {
+      "convertBtn": "Converti in",
+      "converting": "Conversione immagine in corso...",
+      "sourceImage": "Immagine di origine",
+      "convertedPreview": "Anteprima convertita",
+      "outputFormat": "Formato di output",
+      "encoderQuality": "Qualità di codifica",
+      "previewPlaceholder": "Converti per visualizzare l'anteprima",
+      "whiteBgNote": "Aree trasparenti riempite con sfondo bianco",
+      "alphaPreserved": "Trasparenza decodificata preservata",
+      "icoNotice": "Generato come favicon da 64 × 64 px"
     }
   }
 }

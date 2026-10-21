@@ -199,6 +199,18 @@ export const translatedTools = [
   'compress-webp',
   'resize-image',
   'rotate-image',
+  'convert-jpg-to-png',
+  'convert-jpg-to-webp',
+  'convert-png-to-jpg',
+  'convert-png-to-webp',
+  'convert-webp-to-jpg',
+  'webp-to-png',
+  'image-converter',
+  'svg-to-png',
+  'svg-to-ico',
+  'webp-to-ico',
+  'webp-to-gif',
+  'jfif-to-png',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
