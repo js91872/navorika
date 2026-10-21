@@ -147,6 +147,14 @@ export const translatedTools = [
   'construction-estimate-builder',
   'contractor-estimate-generator',
   'house-construction-cost-calculator',
+  'currency-converter',
+  'uk-vat-calculator',
+  'sip-calculator',
+  'ppf-calculator',
+  'fd-calculator',
+  'gst-calculator',
+  'loan-emi-calculator',
+  'tax-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

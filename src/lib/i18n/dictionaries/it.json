@@ -1275,6 +1275,70 @@
       "limits": "Stima indicativa di prefattibilità. Tipo di fondazioni, conformazione del terreno, classe energetica e pregio delle finiture incidono ampiamente sulla spesa reale.",
       "question": "Quanto costa costruire una casa al metro quadro?",
       "answer": "La costruzione residenziale chiavi in mano varia solitamente tra 1.300 € e 2.200 € al m² per standard medi, superando i 3.000 € al m² per finiture di lusso (escluso il terreno)."
+    },
+    "currency-converter": {
+      "title": "Convertitore di valute",
+      "description": "Converti le principali valute mondiali utilizzando i tassi di riferimento della Banca centrale europea con supporto di calcolo offline.",
+      "how": "Inserisci la cifra da convertire, seleziona la divisa iniziale e quella desiderata. Il rapporto viene aggiornato all’istante.",
+      "limits": "I tassi di riferimento rappresentano valori mediani indicativi e non includono commissioni bancarie o spread applicati dagli intermediari.",
+      "question": "Con quale cadenza vengono pubblicati i tassi di cambio della BCE?",
+      "answer": "La Banca centrale europea aggiorna i valori di riferimento nei giorni lavorativi del sistema TARGET, solitamente attorno alle 16:00 CET."
+    },
+    "uk-vat-calculator": {
+      "title": "Calcolatore IVA Regno Unito (UK VAT)",
+      "description": "Calcola l’imposta sul valore aggiunto nel Regno Unito con aliquote HMRC (20%, 5% e 0%) aggiungendo o scorporando l’importo fiscale.",
+      "how": "Inserisci il prezzo in sterline britanniche (£), seleziona l’aliquota e scegli se sommare o scorporare l’IVA.",
+      "limits": "Rispetta i criteri stabiliti da HMRC nel Regno Unito senza verificare eventuali regimi d’esenzione particolari o schemi forfettari.",
+      "question": "Qual è l’aliquota ordinaria di IVA applicata nel Regno Unito?",
+      "answer": "L’aliquota IVA ordinaria fissata da HMRC per beni e servizi nel Regno Unito è pari al 20%, affiancata dall’aliquota al 5% e da quella allo 0%."
+    },
+    "sip-calculator": {
+      "title": "Calcolatore piano di investimento sistematico (SIP)",
+      "description": "Calcola la crescita del capitale in un piano di accumulo rateale, la rivalutazione stimata e il montante composto nel tempo.",
+      "how": "Inserisci l’importo della quota periodica mensile, il tasso di rendimento annuo atteso e gli anni di durata dell’investimento.",
+      "limits": "I mercati finanziari presentano oscillazioni di valore. I conteggi ipotizzano un rendimento costante escludendo imposte di bollo e commissioni.",
+      "question": "In cosa consiste un piano di accumulo sistematico?",
+      "answer": "È una strategia di investimento con cui si versa periodicamente un importo costante in fondi per ridurre l’impatto della volatilità temporanea."
+    },
+    "ppf-calculator": {
+      "title": "Calcolatore fondo di previdenza pubblica (PPF)",
+      "description": "Calcola il capitale a termine, i versamenti aggregati e gli interessi maturati su un conto previdenziale a lungo termine.",
+      "how": "Inserisci il versamento annuale (fino a 1,5 lakh ₹), il tasso di rendimento annuo governativo e gli anni di durata.",
+      "limits": "Soggetto alle revisioni periodiche dei tassi ufficiali e ai limiti massimi di versamento annuo consentiti per legge.",
+      "question": "Qual è il vincolo temporale minimo di un conto PPF?",
+      "answer": "Il piano prevede una durata minima vincolata di 15 anni fiscali, con facoltà di proroga in blocchi quinquennali successivi."
+    },
+    "fd-calculator": {
+      "title": "Calcolatore deposito vincolato a termine (FD)",
+      "description": "Calcola il capitale restituito a scadenza, gli interessi maturati e il rendimento annuo effettivo in base alla frequenza di accredito.",
+      "how": "Specifica la somma depositata, il tasso di interesse pattuito, il periodo di vincolo e la periodicità di capitalizzazione.",
+      "limits": "Non tiene conto delle ritenute fiscali sugli interessi né di eventuali penali contrattuali per svincolo anticipato.",
+      "question": "In che modo la capitalizzazione degli interessi influisce sul rendimento?",
+      "answer": "Una capitalizzazione più frequente (come trimestrale o mensile) genera una resa effettiva leggermente superiore rispetto a quella annuale."
+    },
+    "gst-calculator": {
+      "title": "Calcolatore imposta su beni e servizi (GST)",
+      "description": "Calcola gli importi dell’imposta GST, la base imponibile netta e il prezzo lordo con suddivisione dettagliata tra CGST e SGST.",
+      "how": "Inserisci l’importo della fattura, scegli l’aliquota prevista (5%, 12%, 18% o 28%) e indica se il valore è già comprensivo di imposta.",
+      "limits": "Configurato sulla ripartizione paritaria 50:50 all’interno dello stato. Per transazioni interstatali si applica l’aliquota IGST.",
+      "question": "Qual è il divario tra prezzo con imposta inclusa o esclusa?",
+      "answer": "Un prezzo con imposta inclusa contiene già l’onere fiscale, mentre un prezzo esclusa imposta prevede l’applicazione del tributo."
+    },
+    "loan-emi-calculator": {
+      "title": "Calcolatore rata costante di finanziamento (EMI)",
+      "description": "Determina l’importo della rata mensile, il montante complessivo degli interessi e il costo totale del piano di ammortamento.",
+      "how": "Inserisci il capitale finanziato, il tasso di interesse annuo concordato e la durata in anni del piano di rientro.",
+      "limits": "Basato su piano di ammortamento a tasso fisso con debito residuo decrescente. Spese di istruttoria e polizze sono escluse.",
+      "question": "Come viene determinata la rata costante nel metodo francese?",
+      "answer": "La rata viene calcolata moltiplicando il capitale residuo per il tasso periodico ponderato in base alle scadenze mensili totali."
+    },
+    "tax-calculator": {
+      "title": "Calcolatore imposta sul reddito in India",
+      "description": "Calcola l’imposta sui redditi personali con il nuovo regime fiscale indiano (sezione 115BAC), detrazione 87A e sgravio marginale.",
+      "how": "Inserisci il reddito annuo complessivo imponibile per visualizzare scaglioni aggiornati, detrazioni e contributo integrativo al 4%.",
+      "limits": "Riservato ai contribuenti che aderiscono al nuovo regime. Non include le detrazioni del regime precedente (80C, 80D o indennità affitto).",
+      "question": "Qual è la soglia di esenzione effettiva nel nuovo regime per il 2026-27?",
+      "answer": "I redditi fino a 12 lakh ₹ azzerano l’imposta finale per effetto della detrazione potenziata della sezione 87A e dello sgravio marginale."
     }
   },
   "flexOptions": {
@@ -4628,6 +4692,103 @@
       "midpoint": "Stima del valore mediano",
       "scanFailed": "Impossibile completare l’analisi dell’indirizzo specificato.",
       "note": "Fornisce una stima del valore economico di una proprietà web applicando i consueti multipli di rendimento."
+    }
+  },
+  "finance": {
+    "common": {
+      "results": "Risultati del calcolo"
+    },
+    "currencyConverter": {
+      "heading": "Convertitore di valute",
+      "convertedAmount": "Importo convertito",
+      "exchangeRate": "Tasso di cambio",
+      "dataSource": "Origine dati",
+      "offlineFallback": "Matrice di riferimento (offline)",
+      "ecbLive": "Tasso di riferimento BCE",
+      "sameCurrency": "Valute identiche",
+      "amount": "Importo",
+      "fromCurrency": "Valuta di origine",
+      "toCurrency": "Valuta di destinazione",
+      "offlineFallbackNotice": "Utilizzo di tassi indicativi di riferimento offline perché il servizio BCE in tempo reale non è raggiungibile."
+    },
+    "ukVat": {
+      "heading": "Calcolatore IVA Regno Unito (UK VAT)",
+      "priceNet": "Prezzo al netto di IVA",
+      "vatAmount": "Importo IVA",
+      "priceGross": "Prezzo totale (lordo)",
+      "effectiveRate": "Aliquota IVA applicata",
+      "amount": "Importo (£)",
+      "vatRate": "Aliquota IVA",
+      "rateStandard": "20% Aliquota ordinaria",
+      "rateReduced": "5% Aliquota ridotta",
+      "rateZero": "0% Aliquota zero",
+      "calculationMode": "Modalità di calcolo",
+      "modeAdd": "Aggiungi IVA al prezzo",
+      "modeRemove": "Scorpora IVA dal prezzo"
+    },
+    "sip": {
+      "heading": "Piano di investimento sistematico (SIP)",
+      "totalValue": "Capitale a scadenza stimato",
+      "investedAmount": "Capitale totale investito",
+      "estimatedReturns": "Rendimenti stimati",
+      "monthlyInvestment": "Rata mensile (₹)",
+      "expectedRate": "Rendimento annuo stimato (%)",
+      "timePeriod": "Orizzonte temporale (anni)"
+    },
+    "ppf": {
+      "heading": "Fondo di previdenza pubblica (PPF)",
+      "maturityAmount": "Capitale totale a scadenza",
+      "totalInvested": "Totale versato",
+      "totalInterest": "Interessi totali maturati",
+      "annualInvestment": "Versamento annuale (₹)",
+      "interestRate": "Tasso di interesse annuo (%)",
+      "tenure": "Durata (anni, minimo 15)"
+    },
+    "fd": {
+      "heading": "Deposito a termine fisso (FD)",
+      "maturityAmount": "Rimborso a scadenza",
+      "totalInterest": "Interessi totali maturati",
+      "effectiveYield": "Rendimento effettivo annuo",
+      "principal": "Capitale iniziale (₹)",
+      "interestRate": "Tasso di interesse annuo (%)",
+      "tenure": "Durata (anni)",
+      "compoundingFrequency": "Frequenza di capitalizzazione",
+      "quarterly": "Capitalizzazione trimestrale",
+      "monthly": "Capitalizzazione mensile",
+      "yearly": "Capitalizzazione annuale"
+    },
+    "gst": {
+      "heading": "Imposta su beni e servizi (GST)",
+      "totalGross": "Importo totale lordo",
+      "netAmount": "Importo netto (senza imposta)",
+      "totalGst": "Importo totale GST",
+      "cgst": "GST centrale (CGST)",
+      "sgst": "GST statale (SGST)",
+      "amount": "Importo base (₹)",
+      "rate": "Scaglione fiscale GST",
+      "type": "Modalità di applicazione",
+      "exclusive": "Esclusa imposta (aggiungi GST)",
+      "inclusive": "Inclusa imposta (scorpora GST)"
+    },
+    "loanEmi": {
+      "heading": "Rata mensile del prestito (EMI)",
+      "monthlyPayment": "Rata mensile costante",
+      "totalPayment": "Rimborso totale (capitale + interessi)",
+      "totalInterest": "Totale interessi passivi",
+      "principal": "Importo del prestito (₹)",
+      "rate": "Tasso di interesse annuo (%)",
+      "tenure": "Durata del prestito (anni)"
+    },
+    "tax": {
+      "heading": "Imposta sul reddito in India (nuovo regime)",
+      "totalTax": "Imposta totale dovuta (inclusa addizionale)",
+      "slabTax": "Imposta lorda da scaglioni",
+      "rebate": "Detrazione sezione 87A",
+      "marginalRelief": "Sgravio marginale",
+      "cess": "Addizionale salute e istruzione (4%)",
+      "effectiveRate": "Aliquota fiscale effettiva",
+      "income": "Reddito imponibile annuo lordo (₹)",
+      "regimeNote": "Calcolato secondo il nuovo regime fiscale indiano (sezione 115BAC) per l'anno fiscale 2026-27 con detrazione fino a 12 lakh ₹, sgravio marginale e addizionale del 4%."
     }
   }
 }

@@ -96,6 +96,14 @@ const slugs = [
   'construction-estimate-builder',
   'contractor-estimate-generator',
   'house-construction-cost-calculator',
+  'currency-converter',
+  'uk-vat-calculator',
+  'sip-calculator',
+  'ppf-calculator',
+  'fd-calculator',
+  'gst-calculator',
+  'loan-emi-calculator',
+  'tax-calculator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -870,6 +878,29 @@ try {
     assert.ok((await page.locator('main dl').textContent()).includes(formatVd(10.42)));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['voltage-drop-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/uk-vat-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    const formatVat = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(val);
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVat(120)));
+    await page.locator('main input[type="number"]').first().fill('200');
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVat(240)));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVat(120)));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['uk-vat-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/currency-converter`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    await page.waitForSelector('main dl');
+    assert.ok((await page.locator('main dl').textContent()).includes('EUR'));
+    await page.locator('main input[type="number"]').first().fill('50');
+    assert.ok((await page.locator('main dl').textContent()).includes('EUR'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['currency-converter'].title));
     workflowsChecked++;
     console.log(`Verified ${locale}: ${slugs.length + 1} translated pages and ${slugs.length} working tools.`);
   }

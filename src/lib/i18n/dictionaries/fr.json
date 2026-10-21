@@ -1275,6 +1275,70 @@
       "limits": "Estimation préliminaire de faisabilité. La complexité architecturale, la qualité des finitions, l'étude de sol et les taxes d'urbanisme modifient le coût final.",
       "question": "Combien coûte la construction d'une maison au mètre carré ?",
       "answer": "Le coût moyen se situe entre 1 400 € et 2 500 € par m² pour une construction standard, et peut dépasser 3 500 € par m² pour du haut de gamme, hors coût du terrain."
+    },
+    "currency-converter": {
+      "title": "Convertisseur de devises",
+      "description": "Convertissez les principales devises mondiales à partir des taux de référence en direct de la Banque centrale européenne avec solution de repli hors ligne.",
+      "how": "Saisissez le montant, choisissez votre devise de départ et votre devise cible. Le calcul s’ajuste automatiquement.",
+      "limits": "Les cours de référence sont des valeurs médianes indicatives et n’intègrent pas les commissions bancaires ni les marges de change des cartes.",
+      "question": "À quelle fréquence les taux de change de la BCE sont-ils actualisés ?",
+      "answer": "La Banque centrale européenne publie ses taux indicatifs de référence une fois par jour ouvré TARGET, vers 16 h 00 CET."
+    },
+    "uk-vat-calculator": {
+      "title": "Calculateur de TVA britannique (UK VAT)",
+      "description": "Calculez la taxe sur la valeur ajoutée britannique selon les barèmes HMRC (20 %, 5 % et 0 %) en ajoutant ou en extrayant la taxe.",
+      "how": "Indiquez le montant en livres sterling (£), choisissez le taux de TVA applicable et optez pour l’ajout ou l’extraction de la taxe.",
+      "limits": "Conforme aux règles de l’administration fiscale britannique (HMRC). N’analyse pas les régimes sectoriels spécifiques ni les dérogations.",
+      "question": "Quel est le taux normal de TVA en vigueur au Royaume-Uni ?",
+      "answer": "Le taux normal de TVA britannique établi par HMRC s’élève à 20 %, complété par un taux réduit à 5 % et un taux zéro à 0 %."
+    },
+    "sip-calculator": {
+      "title": "Calculateur de plan d'investissement systématique (SIP)",
+      "description": "Estimez les rendements d’un plan d’investissement programmé en fonds, le capital final cumulé et l’effet des intérêts composés.",
+      "how": "Indiquez votre versement périodique mensuel, le rendement annuel anticipé et l’horizon de placement en années.",
+      "limits": "Les investissements financiers comportent des risques de fluctuation. Le calcul suppose un taux stable sans déduction des frais de gestion.",
+      "question": "Qu'est-ce qu'un plan d'investissement programmé (SIP) ?",
+      "answer": "Un plan d’investissement systématique consiste à placer une somme déterminée à intervalles réguliers afin de lisser le coût moyen d’achat."
+    },
+    "ppf-calculator": {
+      "title": "Calculateur de fonds public de prévoyance (PPF)",
+      "description": "Calculez le capital à l’échéance, les dépôts cumulés et les intérêts garantis d’un compte d’épargne à long terme PPF.",
+      "how": "Renseignez votre cotisation annuelle (plafond de 1,5 lakh ₹), le taux d’intérêt officiel et la durée de conservation.",
+      "limits": "Tributaire des révisions trimestrielles des taux fixés par l’État et des plafonds statutaires de versement annuel.",
+      "question": "Quelle est la durée de blocage initiale d’un compte PPF ?",
+      "answer": "Un compte de prévoyance public arrive à échéance après 15 exercices fiscaux complets, renouvelables par blocs de 5 ans."
+    },
+    "fd-calculator": {
+      "title": "Calculateur de dépôt à terme (FD)",
+      "description": "Calculez le montant remboursé à terme, les intérêts produits et le rendement effectif selon la périodicité de capitalisation.",
+      "how": "Renseignez le montant du dépôt initial, le taux bancaire nominal, la durée et la fréquence de calcul des intérêts composés.",
+      "limits": "N’inclut pas les retenues à la source fiscales ni les pénalités éventuelles en cas de déblocage anticipé des fonds.",
+      "question": "Comment la fréquence de capitalisation modifie-t-elle le rendement ?",
+      "answer": "Une fréquence plus rapprochée (trimestrielle ou mensuelle) offre un rendement actuariel effectif légèrement supérieur à une capitalisation annuelle."
+    },
+    "gst-calculator": {
+      "title": "Calculateur de taxe sur les produits et services (GST)",
+      "description": "Déterminez les montants de taxe GST, les prix hors taxe et les totaux TTC avec ventilation entre part centrale (CGST) et étatique (SGST).",
+      "how": "Saisissez le montant de la transaction, choisissez le barème de taxe (5 %, 12 %, 18 % ou 28 %) et le mode d’imposition.",
+      "limits": "Modélise la répartition 50/50 intra-étatique. En cas de livraison inter-états, la taxe globale relève de l’Integrated GST (IGST).",
+      "question": "Quelle est la différence entre un prix HT et un prix TTC sous le régime GST ?",
+      "answer": "Le prix TTC intègre déjà la part fiscale, alors que le prix HT nécessite l’ajout du montant de taxe à la valeur de base."
+    },
+    "loan-emi-calculator": {
+      "title": "Calculateur de mensualité de prêt (EMI)",
+      "description": "Calculez vos mensualités constantes de crédit, le coût total des intérêts et la somme des remboursements pour tout type de prêt.",
+      "how": "Indiquez le capital emprunté, le taux débiteur annuel nominal et la durée de remboursement échelonnée en années.",
+      "limits": "Hypothèse d’un taux fixe sur amortissement dégressif standard. Les frais de dossier et les primes d’assurance ne sont pas inclus.",
+      "question": "Comment s’établit la formule d’une mensualité constante ?",
+      "answer": "La formule mathématique standard applique le rapport entre le capital emprunté, le taux périodique et le nombre total d’échéances."
+    },
+    "tax-calculator": {
+      "title": "Calculateur d'impôt sur le revenu en Inde",
+      "description": "Estimez votre impôt selon le nouveau régime fiscal indien (article 115BAC), avec abattement de l’article 87A et allégement marginal.",
+      "how": "Indiquez votre revenu brut annuel imposable pour obtenir le barème applicable, l’abattement légal et la surtaxe de 4 %.",
+      "limits": "Spécifique aux personnes physiques relevant du nouveau régime. N’intègre pas les déductions de l’ancien régime (80C, 80D, HRA).",
+      "question": "Quel est le seuil d’exonération nette dans le nouveau régime fiscal pour 2026-27 ?",
+      "answer": "Les revenus imposables jusqu’à 12 lakhs ₹ bénéficient d’un impôt net nul grâce à l’abattement renforcé de l’article 87A."
     }
   },
   "flexOptions": {
@@ -4628,6 +4692,103 @@
       "midpoint": "Valeur médiane estimée",
       "scanFailed": "Impossible d’analyser cette adresse de site.",
       "note": "Évalue la valeur marchande indicative d’un actif web selon les multiples de bénéfice et le trafic."
+    }
+  },
+  "finance": {
+    "common": {
+      "results": "Résultats du calcul"
+    },
+    "currencyConverter": {
+      "heading": "Convertisseur de devises",
+      "convertedAmount": "Montant converti",
+      "exchangeRate": "Taux de change",
+      "dataSource": "Source des données",
+      "offlineFallback": "Matrice de référence (hors ligne)",
+      "ecbLive": "Taux de référence BCE",
+      "sameCurrency": "Devises identiques",
+      "amount": "Montant",
+      "fromCurrency": "Devise source",
+      "toCurrency": "Devise cible",
+      "offlineFallbackNotice": "Utilisation des taux indicatifs hors ligne car le service en direct de la BCE est inaccessible."
+    },
+    "ukVat": {
+      "heading": "Calculateur de TVA britannique (UK VAT)",
+      "priceNet": "Prix hors taxe (net)",
+      "vatAmount": "Montant de TVA",
+      "priceGross": "Prix total (TTC)",
+      "effectiveRate": "Taux de TVA appliqué",
+      "amount": "Montant (£)",
+      "vatRate": "Taux de TVA",
+      "rateStandard": "20 % Taux normal",
+      "rateReduced": "5 % Taux réduit",
+      "rateZero": "0 % Taux zéro",
+      "calculationMode": "Mode de calcul",
+      "modeAdd": "Ajouter la TVA au prix",
+      "modeRemove": "Extraire la TVA du prix"
+    },
+    "sip": {
+      "heading": "Plan d'investissement systématique (SIP)",
+      "totalValue": "Capital final estimé",
+      "investedAmount": "Total investi",
+      "estimatedReturns": "Plus-values estimées",
+      "monthlyInvestment": "Versement mensuel (₹)",
+      "expectedRate": "Rendement annuel attendu (%)",
+      "timePeriod": "Horizon d'investissement (années)"
+    },
+    "ppf": {
+      "heading": "Fonds public de prévoyance (PPF)",
+      "maturityAmount": "Capital constitué à l'échéance",
+      "totalInvested": "Total des versements effectués",
+      "totalInterest": "Total des intérêts générés",
+      "annualInvestment": "Dépôt annuel (₹)",
+      "interestRate": "Taux d'intérêt annuel (%)",
+      "tenure": "Durée (années, min 15)"
+    },
+    "fd": {
+      "heading": "Dépôt à terme (FD)",
+      "maturityAmount": "Montant net à l'échéance",
+      "totalInterest": "Intérêts cumulés",
+      "effectiveYield": "Rendement annualisé effectif",
+      "principal": "Capital initial (₹)",
+      "interestRate": "Taux d'intérêt annuel (%)",
+      "tenure": "Durée (années)",
+      "compoundingFrequency": "Périodicité de capitalisation",
+      "quarterly": "Capitalisation trimestrielle",
+      "monthly": "Capitalisation mensuelle",
+      "yearly": "Capitalisation annuelle"
+    },
+    "gst": {
+      "heading": "Taxe sur les produits et services (GST)",
+      "totalGross": "Montant total brut",
+      "netAmount": "Montant net (hors taxe)",
+      "totalGst": "Montant total de GST",
+      "cgst": "GST centrale (CGST)",
+      "sgst": "GST d'État (SGST)",
+      "amount": "Montant de base (₹)",
+      "rate": "Barème de taxe GST",
+      "type": "Mode de calcul fiscal",
+      "exclusive": "Hors taxe (ajouter la GST)",
+      "inclusive": "TTC (extraire la GST)"
+    },
+    "loanEmi": {
+      "heading": "Mensualité de prêt (EMI)",
+      "monthlyPayment": "Mensualité constante",
+      "totalPayment": "Remboursement total (capital + intérêts)",
+      "totalInterest": "Total des intérêts à payer",
+      "principal": "Capital emprunté (₹)",
+      "rate": "Taux d'intérêt annuel (%)",
+      "tenure": "Durée du crédit (années)"
+    },
+    "tax": {
+      "heading": "Impôt sur le revenu en Inde (nouveau régime)",
+      "totalTax": "Total de l'impôt dû (avec surtaxe)",
+      "slabTax": "Impôt brut selon le barème",
+      "rebate": "Abattement article 87A",
+      "marginalRelief": "Allégement marginal",
+      "cess": "Contribution santé et éducation (4 %)",
+      "effectiveRate": "Taux d'imposition effectif",
+      "income": "Revenu imposable annuel brut (₹)",
+      "regimeNote": "Calculé selon le nouveau régime fiscal indien (article 115BAC) pour l'année d'imposition 2026-27 avec abattement jusqu'à 12 lakhs ₹, allégement marginal et surtaxe de 4 %."
     }
   }
 }

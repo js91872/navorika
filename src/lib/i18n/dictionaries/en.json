@@ -1275,6 +1275,70 @@
       "limits": "Preliminary feasibility tool. Architectural complexity, premium interior finishes, foundation soil conditions, municipal permit fees, and geographic market variations substantially affect actual turnkey costs.",
       "question": "How much does it cost to build a house per square foot?",
       "answer": "Turnkey home construction costs typically range from $120 to $250+ per square foot for standard builds, and upwards of $400+ per square foot for custom architectural builds, excluding land."
+    },
+    "currency-converter": {
+      "title": "Currency Converter",
+      "description": "Convert major global currencies using live European Central Bank (ECB) reference rates with automatic offline fallback.",
+      "how": "Enter the amount, select your source currency, and choose your destination currency. The tool updates rates dynamically.",
+      "limits": "Reference rates are indicative mid-market figures and do not include commercial bank margins, credit card spreads, or payment gateway fees.",
+      "question": "How often are ECB foreign exchange reference rates updated?",
+      "answer": "The European Central Bank updates reference exchange rates once daily on TARGET business days, usually around 16:00 CET."
+    },
+    "uk-vat-calculator": {
+      "title": "UK VAT Calculator",
+      "description": "Calculate UK Value Added Tax (VAT) for standard (20%), reduced (5%), and zero rates (0%) by adding or extracting tax from prices.",
+      "how": "Enter the gross or net price in British Pounds (GBP), select the applicable VAT rate, and choose whether to add or remove VAT.",
+      "limits": "Applies strictly to United Kingdom HMRC VAT schedules. Does not verify VAT exemption certificates or special industry schemes.",
+      "question": "What is the standard VAT rate in the United Kingdom?",
+      "answer": "The standard UK VAT rate set by HMRC is 20%, applied to most commercial goods and services, alongside a 5% reduced rate and 0% zero rate."
+    },
+    "sip-calculator": {
+      "title": "SIP Calculator",
+      "description": "Calculate mutual fund Systematic Investment Plan (SIP) returns, wealth accumulation corpus, and compound growth.",
+      "how": "Enter your monthly investment installment, expected annual return rate, and investment tenure in years.",
+      "limits": "Mutual fund investments are subject to market volatility. Assumes a constant annualized return rate without tax or expense deductions.",
+      "question": "What is a Systematic Investment Plan (SIP)?",
+      "answer": "A SIP is an investment method where an investor deposits a fixed amount regularly into a mutual fund scheme to benefit from rupee cost averaging."
+    },
+    "ppf-calculator": {
+      "title": "PPF Calculator",
+      "description": "Calculate Public Provident Fund (PPF) maturity value, total deposit accumulation, and government interest returns.",
+      "how": "Enter your annual contribution amount (up to ₹1.5 lakh), statutory interest rate (currently 7.1%), and investment duration.",
+      "limits": "Subject to sovereign government revisions of quarterly interest rates and statutory annual deposit limits between ₹500 and ₹1,50,000.",
+      "question": "What is the lock-in period for a PPF account?",
+      "answer": "A Public Provident Fund account matures after 15 full financial years, after which it can be extended in 5-year blocks with or without contributions."
+    },
+    "fd-calculator": {
+      "title": "Fixed Deposit Calculator",
+      "description": "Calculate bank Fixed Deposit (FD) maturity proceeds, accrued interest, and annualized yield across compounding intervals.",
+      "how": "Specify the principal deposit amount, annual bank interest rate, investment duration, and compounding frequency.",
+      "limits": "Does not factor in Tax Deducted at Source (TDS) under Section 194A or premature withdrawal penalty clauses.",
+      "question": "How does compounding frequency impact Fixed Deposit returns?",
+      "answer": "More frequent compounding (such as quarterly or monthly) produces a marginally higher effective annualized yield than annual compounding."
+    },
+    "gst-calculator": {
+      "title": "GST Calculator",
+      "description": "Compute Goods and Services Tax (GST) amounts, pre-tax net values, and inclusive or exclusive gross totals with CGST and SGST splits.",
+      "how": "Enter the transaction amount, select the applicable GST tax bracket (5%, 12%, 18%, or 28%), and choose inclusive or exclusive mode.",
+      "limits": "Calculates intra-state 50:50 CGST/SGST split. For inter-state supplies, the entire tax applies as Integrated GST (IGST).",
+      "question": "What is the difference between GST inclusive and exclusive pricing?",
+      "answer": "GST inclusive prices already contain the tax amount, whereas GST exclusive prices require adding the tax to the base price."
+    },
+    "loan-emi-calculator": {
+      "title": "Loan EMI Calculator",
+      "description": "Calculate Equated Monthly Installments (EMI), total interest payments, and total repayment schedules for home, personal, or car loans.",
+      "how": "Enter your borrowing principal amount, annual lending interest rate, and loan repayment tenure in years.",
+      "limits": "Assumes a fixed interest rate with standard reducing balance amortization. Processing fees, insurance, and prepayment charges are excluded.",
+      "question": "How is loan EMI calculated using the reducing balance method?",
+      "answer": "EMI is calculated using P × r × (1 + r)^n / ((1 + r)^n - 1), where P is principal, r is periodic interest rate, and n is total monthly installments."
+    },
+    "tax-calculator": {
+      "title": "India Income Tax Calculator",
+      "description": "Estimate personal income tax liability under India’s New Tax Regime (Section 115BAC) with Section 87A rebate and marginal relief.",
+      "how": "Enter your total annual gross taxable income. The calculator applies AY 2026-27 revised tax slabs, rebate, marginal relief, and 4% cess.",
+      "limits": "Applies exclusively to individual taxpayers under the New Tax Regime. Does not account for Old Regime deductions like 80C, 80D, or HRA.",
+      "question": "What is the tax rebate threshold under the New Tax Regime for AY 2026-27?",
+      "answer": "Under the revised New Tax Regime, taxable income up to ₹12 lakh incurs zero net tax due to the enhanced Section 87A rebate and marginal relief."
     }
   },
   "flexOptions": {
@@ -4628,6 +4692,103 @@
       "midpoint": "Midpoint valuation",
       "scanFailed": "Could not inspect this website URL.",
       "note": "Provides an estimated website valuation range using traffic, revenue, and earnings multiple models."
+    }
+  },
+  "finance": {
+    "common": {
+      "results": "Calculation Results"
+    },
+    "currencyConverter": {
+      "heading": "Currency Converter",
+      "convertedAmount": "Converted Amount",
+      "exchangeRate": "Exchange Rate",
+      "dataSource": "Data Source",
+      "offlineFallback": "Benchmark Matrix (Offline)",
+      "ecbLive": "ECB Reference Rate",
+      "sameCurrency": "Identical Currencies",
+      "amount": "Amount",
+      "fromCurrency": "From Currency",
+      "toCurrency": "To Currency",
+      "offlineFallbackNotice": "Using offline reference benchmark rates because the live ECB service is unreachable."
+    },
+    "ukVat": {
+      "heading": "UK VAT Calculator",
+      "priceNet": "Price Before VAT (Net)",
+      "vatAmount": "VAT Amount",
+      "priceGross": "Total Price (Gross)",
+      "effectiveRate": "VAT Rate Applied",
+      "amount": "Amount (£)",
+      "vatRate": "VAT Rate",
+      "rateStandard": "20% Standard Rate",
+      "rateReduced": "5% Reduced Rate",
+      "rateZero": "0% Zero Rate",
+      "calculationMode": "Calculation Mode",
+      "modeAdd": "Add VAT to Price",
+      "modeRemove": "Remove VAT from Price"
+    },
+    "sip": {
+      "heading": "Systematic Investment Plan (SIP)",
+      "totalValue": "Expected Maturity Value",
+      "investedAmount": "Total Invested",
+      "estimatedReturns": "Estimated Capital Gains",
+      "monthlyInvestment": "Monthly Investment (₹)",
+      "expectedRate": "Expected Annual Return (%)",
+      "timePeriod": "Investment Horizon (Years)"
+    },
+    "ppf": {
+      "heading": "Public Provident Fund (PPF)",
+      "maturityAmount": "Maturity Corpus",
+      "totalInvested": "Total Amount Deposited",
+      "totalInterest": "Total Interest Earned",
+      "annualInvestment": "Annual Deposit (₹)",
+      "interestRate": "Annual Interest Rate (%)",
+      "tenure": "Tenure (Years, min 15)"
+    },
+    "fd": {
+      "heading": "Fixed Deposit (FD)",
+      "maturityAmount": "Maturity Proceeds",
+      "totalInterest": "Total Interest Accrued",
+      "effectiveYield": "Annualized Yield",
+      "principal": "Principal Amount (₹)",
+      "interestRate": "Annual Interest Rate (%)",
+      "tenure": "Tenure (Years)",
+      "compoundingFrequency": "Compounding Frequency",
+      "quarterly": "Quarterly Compounding",
+      "monthly": "Monthly Compounding",
+      "yearly": "Annual Compounding"
+    },
+    "gst": {
+      "heading": "Goods and Services Tax (GST)",
+      "totalGross": "Gross Total Amount",
+      "netAmount": "Net Amount (Pre-GST)",
+      "totalGst": "Total GST Amount",
+      "cgst": "Central GST (CGST)",
+      "sgst": "State GST (SGST)",
+      "amount": "Base Amount (₹)",
+      "rate": "GST Tax Slab",
+      "type": "Tax Application Mode",
+      "exclusive": "GST Exclusive (Add GST)",
+      "inclusive": "GST Inclusive (Extract GST)"
+    },
+    "loanEmi": {
+      "heading": "Loan Equated Monthly Installment (EMI)",
+      "monthlyPayment": "Monthly EMI Payment",
+      "totalPayment": "Total Payment (Principal + Interest)",
+      "totalInterest": "Total Interest Payable",
+      "principal": "Loan Amount (Principal ₹)",
+      "rate": "Annual Interest Rate (%)",
+      "tenure": "Loan Duration (Years)"
+    },
+    "tax": {
+      "heading": "India Income Tax (New Regime)",
+      "totalTax": "Total Tax Payable (Inc. Cess)",
+      "slabTax": "Slab Tax Before Rebate",
+      "rebate": "Section 87A Rebate",
+      "marginalRelief": "Marginal Relief",
+      "cess": "Health and Education Cess (4%)",
+      "effectiveRate": "Effective Tax Rate",
+      "income": "Annual Gross Taxable Income (₹)",
+      "regimeNote": "Calculated under India's Section 115BAC New Tax Regime for AY 2026-27 with rebate up to ₹12 lakh, marginal relief, and 4% cess."
     }
   }
 }

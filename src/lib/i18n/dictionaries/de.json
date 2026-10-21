@@ -1275,6 +1275,70 @@
       "limits": "Vorkalkulation zur Orientierung. Bodenbeschaffenheit, statische Anforderungen, energetische Standards (KfW) und individuelle Ausstattung prägen die tatsächlichen Kosten.",
       "question": "Was kostet der Bau eines Hauses pro Quadratmeter?",
       "answer": "Reine Baukosten liegen üblicherweise zwischen 1.800 € und 3.000 € pro m² Wohnfläche für solide Standards, exklusive Grundstück und individueller Baunebenkosten."
+    },
+    "currency-converter": {
+      "title": "Währungsrechner",
+      "description": "Wandeln Sie wichtige internationale Währungen anhand der Referenzkurse der Europäischen Zentralbank mit Offline-Absicherung um.",
+      "how": "Geben Sie den Geldbetrag ein und wählen Sie Ausgangs- sowie Zielwährung. Der Umrechnungswert wird umgehend kalkuliert.",
+      "limits": "EZB-Referenzkurse sind unverbindliche Mittelkurse und enthalten keine individuellen Bankspannen, Kartengebühren oder Wechselaufschläge.",
+      "question": "Wann aktualisiert die Europäische Zentralbank ihre Wechselkurse?",
+      "answer": "Die Europäische Zentralbank veröffentlicht ihre Referenzkurse an jedem TARGET-Geschäftstag einmal täglich gegen 16:00 Uhr MEZ."
+    },
+    "uk-vat-calculator": {
+      "title": "UK-Mehrwertsteuerrechner (UK VAT)",
+      "description": "Berechnen Sie die britische Mehrwertsteuer nach HMRC-Richtlinien (20 %, 5 % und 0 %) durch Aufschlagen oder Herausrechnen des Steuerbetrags.",
+      "how": "Geben Sie den Rechnungsbetrag in britischen Pfund (£) ein, wählen Sie den Steuersatz und bestimmen Sie, ob die Steuer addiert oder subtrahiert wird.",
+      "limits": "Basiert auf den Vorgaben der britischen Finanzbehörde HMRC. Berücksichtigt keine individuellen Sonderbefreiungen oder Spezialbesteuerungen.",
+      "question": "Wie hoch ist der reguläre Mehrwertsteuersatz im Vereinigten Königreich?",
+      "answer": "Der von der HMRC festgesetzte Standardsteuersatz im Vereinigten Königreich beträgt 20 %, ergänzt durch einen ermäßigten Satz von 5 % und 0 %."
+    },
+    "sip-calculator": {
+      "title": "Systematischer Sparplan-Rechner (SIP)",
+      "description": "Kalkulieren Sie das Endkapital regelmäßiger Fondsinvestitionen, den Zinseszinseffekt und das langfristige Vermögenswachstum.",
+      "how": "Tragen Sie die monatliche Sparrate, die erwartete Jahresrendite und die geplante Anlagedauer in Jahren ein.",
+      "limits": "Wertpapierinvestitionen unterliegen Marktschwankungen. Die Modellrechnung unterstellt eine gleichmäßige Rendite ohne Steuer- oder Gebührenabzug.",
+      "question": "Wie funktioniert ein systematischer Fondssparplan?",
+      "answer": "Ein Sparplan investiert wiederkehrend feste Beträge in Wertpapierfonds, um durch den Durchschnittskosteneffekt Kursschwankungen abzufedern."
+    },
+    "ppf-calculator": {
+      "title": "Rechner für staatliche Vorsorgefonds (PPF)",
+      "description": "Ermitteln Sie das Fälligkeitskapital, die Summe aller Einzahlungen und Zinsgewinne eines staatlichen Vorsorgekontos.",
+      "how": "Geben Sie den jährlichen Anlagebetrag (bis zu 1,5 Lakh ₹), den Zinssatz und die Laufzeit des Sparvertrags an.",
+      "limits": "Unterliegt vierteljährlichen Anpassungen durch die Staatsbank sowie gesetzlich vorgegebenen Einzahlungsobergrenzen.",
+      "question": "Wie lang ist die Mindestbindungsfrist eines PPF-Kontos?",
+      "answer": "Das Vorsorgekonto läuft regulär über 15 volle Finanzjahre und kann danach in 5-Jahres-Schritten fortgeführt werden."
+    },
+    "fd-calculator": {
+      "title": "Festgeld-Rechner (FD)",
+      "description": "Berechnen Sie den Auszahlungsbetrag am Ende der Laufzeit, die Zinserträge und die effektive Rendite nach Zinseszinsperiode.",
+      "how": "Geben Sie den Anlagebetrag, den Nominalzins, die Anlagedauer und den Turnus der Zinsgutschrift an.",
+      "limits": "Berücksichtigt keine Kapitalertragsteuer mit Solidaritätszuschlag oder Zinsabschläge bei vorzeitiger Kündigung.",
+      "question": "Welchen Einfluss hat das Zinsintervall auf den Gesamtertrag?",
+      "answer": "Kürzere Zinsgutschriftabstände (etwa vierteljährlich oder monatlich) führen durch den Zinseszinseffekt zu einer höheren Jahresrendite."
+    },
+    "gst-calculator": {
+      "title": "Waren- und Dienstleistungssteuer-Rechner (GST)",
+      "description": "Ermitteln Sie GST-Steuerbeträge, Nettopreise und Bruttosummen inklusive Aufteilung auf den bundesweiten und bundesstaatlichen Anteil.",
+      "how": "Geben Sie den Betrag ein, wählen Sie die Steuerstufe (5 %, 12 %, 18 % oder 28 %) und legen Sie die Berechnungsrichtung fest.",
+      "limits": "Gilt für Binnentransaktionen mit 50:50-Teilung. Bei Lieferungen zwischen verschiedenen Bundesstaaten greift die einheitliche IGST.",
+      "question": "Was ist der Unterschied zwischen Bruttopreis und Nettopreis bei der GST?",
+      "answer": "Ein Bruttopreis beinhaltet den Steueranteil bereits, während beim Nettopreis die Steuer auf den Grundbetrag aufgeschlagen wird."
+    },
+    "loan-emi-calculator": {
+      "title": "Kredit- und Ratenrechner (EMI)",
+      "description": "Ermitteln Sie die gleichbleibende monatliche Kreditrate, die aufgelaufene Zinslast und die Gesamtkosten Ihres Darlehens.",
+      "how": "Tragen Sie den Nettodarlehensbetrag, den Sollzinssatz pro Jahr und die gewünschte Gesamtlaufzeit in Jahren ein.",
+      "limits": "Unterstellt ein Annuitätendarlehen mit festem Zinssatz. Bearbeitungsentgelte oder Restschuldversicherungen sind nicht einbezogen.",
+      "question": "Wie wird die feste monatliche Annuitätenrate berechnet?",
+      "answer": "Die Rate errechnet sich über die Annuitätenformel aus Kreditsumme, Monatszins und Gesamtzahl der Rückzahlungsmonate."
+    },
+    "tax-calculator": {
+      "title": "Einkommensteuerrechner für Indien",
+      "description": "Ermitteln Sie die Steuerlast nach Indiens neuem Steuersystem (Abschnitt 115BAC) inklusive Freibetrag nach Section 87A und Grenzentlastung.",
+      "how": "Tragen Sie das jährliche steuerpflichtige Bruttoeinkommen ein. Die Berechnung berücksichtigt Stufen, Nachlässe und 4 % Sonderabgabe.",
+      "limits": "Gilt nur für Einzelpersonen im neuen Steuersystem. Enthält keine Abzüge des alten Systems wie 80C, 80D oder Mietzuschüsse.",
+      "question": "Bis zu welchem Einkommen fällt im Veranlagungsjahr 2026–27 keine Steuer an?",
+      "answer": "Bis zu einem Einkommen von 12 Lakh ₹ beträgt die tatsächliche Steuer null, da der erweiterte Abzug nach Section 87A greift."
     }
   },
   "flexOptions": {
@@ -4628,6 +4692,103 @@
       "midpoint": "Mittlerer Schätzwert",
       "scanFailed": "Die eingegebene Website-URL konnte nicht überprüft werden.",
       "note": "Ermittelt eine fundierte Bewertungsspanne auf Grundlage branchenüblicher Gewinn- und Traffic-Multiples."
+    }
+  },
+  "finance": {
+    "common": {
+      "results": "Berechnungsergebnisse"
+    },
+    "currencyConverter": {
+      "heading": "Währungsrechner",
+      "convertedAmount": "Umgerechneter Betrag",
+      "exchangeRate": "Wechselkurs",
+      "dataSource": "Datenquelle",
+      "offlineFallback": "Referenzmatrix (offline)",
+      "ecbLive": "EZB-Referenzkurs",
+      "sameCurrency": "Identische Währungen",
+      "amount": "Betrag",
+      "fromCurrency": "Ausgangswährung",
+      "toCurrency": "Zielwährung",
+      "offlineFallbackNotice": "Verwendung von Offline-Referenzkursen, da der EZB-Echtzeitdienst nicht erreichbar ist."
+    },
+    "ukVat": {
+      "heading": "UK-Mehrwertsteuerrechner (UK VAT)",
+      "priceNet": "Preis vor Mehrwertsteuer (netto)",
+      "vatAmount": "Mehrwertsteuerbetrag",
+      "priceGross": "Gesamtpreis (brutto)",
+      "effectiveRate": "Angewandter Steuersatz",
+      "amount": "Betrag (£)",
+      "vatRate": "Mehrwertsteuersatz",
+      "rateStandard": "20% Standardsatz",
+      "rateReduced": "5% Ermäßigter Satz",
+      "rateZero": "0% Nullsatz",
+      "calculationMode": "Berechnungsmodus",
+      "modeAdd": "Mehrwertsteuer hinzurechnen",
+      "modeRemove": "Mehrwertsteuer herausrechnen"
+    },
+    "sip": {
+      "heading": "Systematischer Sparplan (SIP)",
+      "totalValue": "Erwarteter Endwert",
+      "investedAmount": "Gesamteinzahlung",
+      "estimatedReturns": "Geschätzter Kapitalgewinn",
+      "monthlyInvestment": "Monatliche Sparrate (₹)",
+      "expectedRate": "Erwartete Jahresrendite (%)",
+      "timePeriod": "Anlagezeitraum (Jahre)"
+    },
+    "ppf": {
+      "heading": "Staatlicher Vorsorgefonds (PPF)",
+      "maturityAmount": "Endguthaben bei Fälligkeit",
+      "totalInvested": "Gesamteinzahlungsbetrag",
+      "totalInterest": "Gesamte Zinserträge",
+      "annualInvestment": "Jährliche Einzahlung (₹)",
+      "interestRate": "Jährlicher Zinssatz (%)",
+      "tenure": "Laufzeit (Jahre, mind. 15)"
+    },
+    "fd": {
+      "heading": "Festgeldkonto (FD)",
+      "maturityAmount": "Auszahlungsbetrag bei Fälligkeit",
+      "totalInterest": "Gesamte Zinserträge",
+      "effectiveYield": "Effektive Jahresrendite",
+      "principal": "Anlagebetrag (₹)",
+      "interestRate": "Jährlicher Zinssatz (%)",
+      "tenure": "Anlagedauer (Jahre)",
+      "compoundingFrequency": "Zinseszins-Intervall",
+      "quarterly": "Vierteljährliche Zinsgutschrift",
+      "monthly": "Monatliche Zinsgutschrift",
+      "yearly": "Jährliche Zinsgutschrift"
+    },
+    "gst": {
+      "heading": "Waren- und Dienstleistungssteuer (GST)",
+      "totalGross": "Gesamtbetrag brutto",
+      "netAmount": "Nettobetrag (ohne Steuer)",
+      "totalGst": "Gesamter GST-Steuerbetrag",
+      "cgst": "Zentraler GST-Anteil (CGST)",
+      "sgst": "Bundesstaatlicher GST-Anteil (SGST)",
+      "amount": "Basisbetrag (₹)",
+      "rate": "GST-Steuerstufe",
+      "type": "Steueranwendungsart",
+      "exclusive": "Exklusive Steuer (GST aufschlagen)",
+      "inclusive": "Inklusive Steuer (GST herausrechnen)"
+    },
+    "loanEmi": {
+      "heading": "Monatliche Kreditrate (EMI)",
+      "monthlyPayment": "Monatliche Annuitätenrate",
+      "totalPayment": "Gesamtrückzahlung (Tilgung + Zinsen)",
+      "totalInterest": "Gesamte Zinslast",
+      "principal": "Darlehensbetrag (₹)",
+      "rate": "Jährlicher Sollzins (%)",
+      "tenure": "Kreditlaufzeit (Jahre)"
+    },
+    "tax": {
+      "heading": "Einkommensteuer Indien (Neues Steuersystem)",
+      "totalTax": "Gesamte zu zahlende Steuer (inkl. Abgabe)",
+      "slabTax": "Stufensteuer vor Rabatt",
+      "rebate": "Steuerabzug nach Section 87A",
+      "marginalRelief": "Marginale Entlastung",
+      "cess": "Bildungs- und Gesundheitsabgabe (4%)",
+      "effectiveRate": "Effektiver Steuersatz",
+      "income": "Jährliches zu versteuerndes Bruttoeinkommen (₹)",
+      "regimeNote": "Berechnet nach Indiens neuem Steuersystem (Abschnitt 115BAC) für das Veranlagungsjahr 2026–27 mit Abzug bis 12 Lakh ₹, Grenzentlastung und 4% Zusatzabgabe."
     }
   }
 }

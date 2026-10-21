@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 151,
-    "pendingTools": 162,
+    "publishedTools": 159,
+    "pendingTools": 154,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 1057,
+    "publishedToolTranslations": 1113,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -25,7 +25,7 @@
       "jsxText": 3645,
       "visibleAttribute": 337,
       "semanticCopy": 11154,
-      "reviewLiteral": 43633
+      "reviewLiteral": 43635
     },
     "candidateCopyWords": 291689
   },
@@ -1986,8 +1986,16 @@
       "source": "src/app/(english)/tools/currency-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2489,8 +2497,16 @@
       "source": "src/app/(english)/tools/fd-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2717,8 +2733,16 @@
       "source": "src/app/(english)/tools/gst-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -3841,8 +3865,16 @@
       "source": "src/app/(english)/tools/loan-emi-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -4683,8 +4715,16 @@
       "source": "src/app/(english)/tools/ppf-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5618,8 +5658,16 @@
       "source": "src/app/(english)/tools/sip-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5956,8 +6004,16 @@
       "source": "src/app/(english)/tools/tax-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6178,8 +6234,16 @@
       "source": "src/app/(english)/tools/uk-vat-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -8317,7 +8381,7 @@
     {
       "source": "src/app/(english)/tools/currency-converter/page.tsx",
       "routeTemplate": "/tools/currency-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8449,7 +8513,7 @@
     {
       "source": "src/app/(english)/tools/fd-calculator/page.tsx",
       "routeTemplate": "/tools/fd-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8509,7 +8573,7 @@
     {
       "source": "src/app/(english)/tools/gst-calculator/page.tsx",
       "routeTemplate": "/tools/gst-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8839,7 +8903,7 @@
     {
       "source": "src/app/(english)/tools/loan-emi-calculator/page.tsx",
       "routeTemplate": "/tools/loan-emi-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9073,7 +9137,7 @@
     {
       "source": "src/app/(english)/tools/ppf-calculator/page.tsx",
       "routeTemplate": "/tools/ppf-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9313,7 +9377,7 @@
     {
       "source": "src/app/(english)/tools/sip-calculator/page.tsx",
       "routeTemplate": "/tools/sip-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9403,7 +9467,7 @@
     {
       "source": "src/app/(english)/tools/tax-calculator/page.tsx",
       "routeTemplate": "/tools/tax-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9469,7 +9533,7 @@
     {
       "source": "src/app/(english)/tools/uk-vat-calculator/page.tsx",
       "routeTemplate": "/tools/uk-vat-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
