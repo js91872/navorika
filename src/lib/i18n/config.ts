@@ -139,6 +139,14 @@ export const translatedTools = [
   'land-area-converter',
   'osha-portable-toilet-calculator',
   'solar-panel-calculator',
+  'voltage-drop-calculator',
+  'wallpaper-calculator',
+  'water-tank-calculator',
+  'wire-size-calculator',
+  '12-foot-gambrel-roof-truss-calculator',
+  'construction-estimate-builder',
+  'contractor-estimate-generator',
+  'house-construction-cost-calculator',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];

@@ -88,6 +88,14 @@ const slugs = [
   'land-area-converter',
   'osha-portable-toilet-calculator',
   'solar-panel-calculator',
+  'voltage-drop-calculator',
+  'wallpaper-calculator',
+  'water-tank-calculator',
+  'wire-size-calculator',
+  '12-foot-gambrel-roof-truss-calculator',
+  'construction-estimate-builder',
+  'contractor-estimate-generator',
+  'house-construction-cost-calculator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -850,6 +858,18 @@ try {
     assert.ok((await page.locator('main dl').textContent()).includes('19'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['solar-panel-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/voltage-drop-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    const formatVd = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(val);
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVd(10.42)));
+    await page.locator('main input[type="number"]').nth(2).fill('10');
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVd(2.08)));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVd(10.42)));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['voltage-drop-calculator'].title));
     workflowsChecked++;
     console.log(`Verified ${locale}: ${slugs.length + 1} translated pages and ${slugs.length} working tools.`);
   }

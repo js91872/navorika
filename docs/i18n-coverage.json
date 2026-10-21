@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 319,
-    "publishedTools": 143,
-    "pendingTools": 170,
+    "publishedTools": 151,
+    "pendingTools": 162,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 57,
     "trustPages": 7,
-    "publishedToolTranslations": 1001,
+    "publishedToolTranslations": 1057,
     "targetToolTranslations": 2191,
     "pendingGuideTranslations": 399,
     "pendingTrustTranslations": 49,
@@ -38,8 +38,16 @@
       "source": "src/app/(english)/tools/12-foot-gambrel-roof-truss-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -1570,8 +1578,16 @@
       "source": "src/app/(english)/tools/construction-estimate-builder/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -1617,8 +1633,16 @@
       "source": "src/app/(english)/tools/contractor-estimate-generator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -2842,8 +2866,16 @@
       "source": "src/app/(english)/tools/house-construction-cost-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6469,8 +6501,16 @@
       "source": "src/app/(english)/tools/voltage-drop-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6565,8 +6605,16 @@
       "source": "src/app/(english)/tools/wallpaper-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6583,8 +6631,16 @@
       "source": "src/app/(english)/tools/water-tank-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6833,8 +6889,16 @@
       "source": "src/app/(english)/tools/wire-size-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -7707,7 +7771,7 @@
     {
       "source": "src/app/(english)/tools/12-foot-gambrel-roof-truss-calculator/page.tsx",
       "routeTemplate": "/tools/12-foot-gambrel-roof-truss-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8133,7 +8197,7 @@
     {
       "source": "src/app/(english)/tools/construction-estimate-builder/page.tsx",
       "routeTemplate": "/tools/construction-estimate-builder",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8145,7 +8209,7 @@
     {
       "source": "src/app/(english)/tools/contractor-estimate-generator/page.tsx",
       "routeTemplate": "/tools/contractor-estimate-generator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8487,7 +8551,7 @@
     {
       "source": "src/app/(english)/tools/house-construction-cost-calculator/page.tsx",
       "routeTemplate": "/tools/house-construction-cost-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9501,7 +9565,7 @@
     {
       "source": "src/app/(english)/tools/voltage-drop-calculator/page.tsx",
       "routeTemplate": "/tools/voltage-drop-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9525,13 +9589,13 @@
     {
       "source": "src/app/(english)/tools/wallpaper-calculator/page.tsx",
       "routeTemplate": "/tools/wallpaper-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/water-tank-calculator/page.tsx",
       "routeTemplate": "/tools/water-tank-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9615,7 +9679,7 @@
     {
       "source": "src/app/(english)/tools/wire-size-calculator/page.tsx",
       "routeTemplate": "/tools/wire-size-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
