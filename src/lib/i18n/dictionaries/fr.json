@@ -1147,6 +1147,70 @@
       "limits": "Suppose des coupes parallèles rectilignes sans corroyage préalable de rive ni élimination de défauts d’aubier.",
       "question": "Pourquoi le trait de scie est-il crucial en menuiserie ?",
       "answer": "Chaque coupe transforme de la matière en sciure (souvent 2,4 à 3,2 mm). Oublier ce trait engendre des erreurs cumulées et réduit le nombre de pièces finies."
+    },
+    "air-compressor-cfm-calculator": {
+      "title": "Calculateur CFM et Autonomie de Compresseur d'Air",
+      "description": "Vérifiez si un compresseur d'air peut alimenter vos outils pneumatiques selon le débit, le facteur de marche et la cuve.",
+      "how": "Indiquez la consommation de l'outil en CFM et sa pression requise, puis comparez avec le débit fourni par le compresseur et le volume de cuve.",
+      "limits": "Estimation d'équilibre de débit nominal. Les frottements de tuyauterie, les appels d'air par impulsions et les détendeurs modifient la pression soutenue.",
+      "question": "Quel débit CFM un compresseur d'air doit-il fournir pour des outils pneumatiques ?",
+      "answer": "Le compresseur doit fournir au minimum la consommation moyenne de l'outil pondérée par son facteur de marche, avec une marge de réserve de 20 % à 30 %."
+    },
+    "construction-cost-calculator": {
+      "title": "Calculateur de Coût de Construction",
+      "description": "Estimez le coût de construction d'après la superficie du projet et votre tarif unitaire, avec options de frais généraux et imprévus.",
+      "how": "Saisissez la surface de plancher en pieds carrés ou mètres carrés, le prix de base unitaire, la part de main-d'œuvre et les marges d'imprévus.",
+      "limits": "Modèle budgétaire préliminaire. Les spécifications de matériaux, la main-d'œuvre locale, les permis et le terrain influencent le montant final.",
+      "question": "Quel pourcentage d'imprévus prévoir sur un chantier de construction ?",
+      "answer": "Une provision de 10 % à 15 % est habituelle pour une construction résidentielle neuve, alors qu'une rénovation nécessite souvent 15 % à 20 % pour les surprises structurelles."
+    },
+    "egress-window-code-checker": {
+      "title": "Vérificateur d'Ouverture de Fenêtre d'Évacuation",
+      "description": "Contrôlez la largeur, hauteur, surface libre nette et hauteur d'allège selon les normes usuelles d'évacuation d'urgence IRC.",
+      "how": "Mesurez et renseignez la largeur et la hauteur libres d'ouverture ainsi que la hauteur d'allège au-dessus du sol fini.",
+      "limits": "Contrôle des critères géométriques prescriptifs. Les règlements municipaux, la protection incendie et les puits de lumière s'appliquent également.",
+      "question": "Quelles sont les dimensions minimales d'une fenêtre d'évacuation d'urgence ?",
+      "answer": "Les critères usuels exigent au moins 5,7 pi² de surface libre nette (5,0 pi² au rez-de-chaussée), une largeur minimale de 20 po, une hauteur minimale de 24 po et une allège maximale de 44 po."
+    },
+    "excavation-calculator": {
+      "title": "Calculateur de Terrassement et Déblai",
+      "description": "Calculez le volume de terrassement en place, le volume foisonné, la masse totale et le nombre de camions d'évacuation.",
+      "how": "Précisez la longueur, largeur et profondeur de la fouille en mètres ou pieds, le taux de foisonnement et la charge utile du camion benne.",
+      "limits": "Calcul géométrique théorique. Le talutage de sécurité, le blindage des tranchées et la teneur en eau du sol modifient les volumes réels transportés.",
+      "question": "Pourquoi le volume de terre augmente-t-il lors du terrassement ?",
+      "answer": "Le sol en place est tassé naturellement ; l'excavation aère la terre et crée des vides interstitiels, entraînant un foisonnement de 15 % à 30 % selon sa nature."
+    },
+    "ladder-safe-reach-calculator": {
+      "title": "Calculateur de Portée et Règle 4:1 d'Échelle",
+      "description": "Estimez l'écartement de base, l'angle d'inclinaison, la hauteur d'appui et la portée utile d'une échelle avec la géométrie 4:1.",
+      "how": "Saisissez la longueur de l'échelle, la taille de l'utilisateur et le type d'échelle pour obtenir l'écartement sécuritaire et la portée maximale.",
+      "limits": "Aide géométrique indicative. Le travail en hauteur impose de respecter les consignes constructeur, de ne jamais monter sur les derniers échelons et de garder 3 points d'appui.",
+      "question": "Quelle est la règle de sécurité 4:1 pour la pose d'une échelle ?",
+      "answer": "Pour chaque tranche de 4 pieds de hauteur verticale d'appui, le pied de l'échelle doit être reculé de 1 pied du mur, créant une pente stable d'environ 75,5 degrés."
+    },
+    "land-area-converter": {
+      "title": "Convertisseur de Superficie de Terrain",
+      "description": "Convertissez les superficies de terrain entre pieds carrés, mètres carrés, acres, hectares et verges carrées.",
+      "how": "Indiquez la valeur du terrain, choisissez l'unité de mesure de départ et l'unité cible pour visualiser la conversion exacte et l'ensemble des équivalences.",
+      "limits": "Conversions mathématiques exactes de surfaces planes. Les actes fonciers et arpentages officiels requièrent les relevés d'un géomètre-expert assermenté.",
+      "question": "Combien de mètres carrés compte un hectare de terrain ?",
+      "answer": "Un hectare de terrain correspond rigoureusement à 10 000 mètres carrés, ce qui représente environ 2,471 acres ou 107 639 pieds carrés."
+    },
+    "osha-portable-toilet-calculator": {
+      "title": "Calculateur de Toilettes de Chantier",
+      "description": "Calculez le nombre minimal de cabines sanitaires et d'urinoirs de chantier selon l'effectif en conformité avec les normes sanitaires.",
+      "how": "Indiquez le nombre d'ouvriers présents sur le chantier durant le quart de travail pour connaître les équipements sanitaires minimaux obligatoires.",
+      "limits": "Base normative pour chantiers de construction. La cadence de vidange, les chantiers à étages et les décrets sanitaires locaux peuvent imposer des unités supplémentaires.",
+      "question": "Combien de cabines sanitaires sont requises sur un chantier de travaux ?",
+      "answer": "La norme prescrit au moins 1 installation sanitaire jusqu'à 20 ouvriers, puis 1 cabinet et 1 urinoir par tranche de 40 travailleurs entre 21 et 199 personnes."
+    },
+    "solar-panel-calculator": {
+      "title": "Calculateur de Panneaux Solaires",
+      "description": "Calculez le dimensionnement d'un champ solaire, la puissance crête requise et la production annuelle d'électricité propre.",
+      "how": "Saisissez la consommation quotidienne en kilowattheures, les heures d'ensoleillement effectives de crête, la puissance du panneau et les pertes globales.",
+      "limits": "Dimensionnement photovoltaïque préliminaire. L'orientation du toit, les ombrages portés, la température et le rendement de l'onduleur modifient la production réelle.",
+      "question": "Combien de panneaux solaires faut-il pour alimenter un bâtiment ?",
+      "answer": "Divisez la consommation quotidienne d'énergie par les heures d'ensoleillement utiles et le rendement de l'installation pour obtenir la puissance crête en kW, puis divisez par la puissance d'un panneau."
     }
   },
   "flexOptions": {
@@ -3903,6 +3967,121 @@
       "offcut": "Chute restante",
       "efficiency": "Rendement de débitage (%)",
       "note": "Détermine le nombre de bandes régulières découpées en déduisant la largeur du trait de lame à chaque passe."
+    },
+    "airCompressor": {
+      "heading": "Paramètres du compresseur et des outils",
+      "toolCfm": "Débit d'air de l'outil (CFM)",
+      "toolPsi": "Pression de service (PSI)",
+      "dutyCycle": "Facteur de marche (%)",
+      "compressorScfm": "Débit fourni par le compresseur (SCFM)",
+      "compressorPsi": "Pression nominale du compresseur (PSI)",
+      "tankGallons": "Capacité du réservoir (gallons)",
+      "avgDemand": "Consommation d'air moyenne",
+      "demandRatio": "Rapport demande / alimentation",
+      "continuousSurplus": "Surplus / déficit de débit d'air",
+      "approxRuntime": "Autonomie estimée sur cuve",
+      "recommendedScfm": "Débit recommandé pour le compresseur (SCFM)",
+      "statusComfortable": "Capacité confortable",
+      "statusBorderline": "Capacité limite",
+      "statusInsufficient": "Débit continu insuffisant",
+      "continuousAdequate": "Alimentation continue suffisante",
+      "intermittentOnly": "Usage intermittent seulement (baisse de pression)"
+    },
+    "constructionCost": {
+      "heading": "Dimensions du projet et budget",
+      "area": "Surface de plancher",
+      "unit": "Unité de mesure",
+      "sqft": "Pieds carrés (pi²)",
+      "sqm": "Mètres carrés (m²)",
+      "costPerUnit": "Tarif de base unitaire ($)",
+      "laborPct": "Part de la main-d'œuvre (%)",
+      "materialPct": "Part des matériaux (%)",
+      "overheadPct": "Frais généraux (%)",
+      "contingencyPct": "Imprévus et marge de sécurité (%)",
+      "baseCost": "Coût direct de construction",
+      "laborCost": "Coût de la main-d'œuvre",
+      "materialCost": "Coût des matériaux",
+      "overheadCost": "Frais généraux",
+      "contingencyCost": "Provision pour aléas",
+      "totalCost": "Coût global estimé du chantier",
+      "costPerSqFt": "Coût moyen au pied carré"
+    },
+    "egressWindow": {
+      "heading": "Dimensions de l'ouverture (conformité d'évacuation)",
+      "clearWidth": "Largeur libre d'ouverture (po)",
+      "clearHeight": "Hauteur libre d'ouverture (po)",
+      "sillHeight": "Hauteur d'allège au-dessus du sol (po)",
+      "gradeFloor": "Ouverture de plain-pied (seuil de 5,0 pi²)",
+      "clearArea": "Surface libre nette",
+      "requiredArea": "Surface minimale requise",
+      "compliant": "Conforme aux normes d'évacuation",
+      "nonCompliant": "Non conforme aux critères",
+      "widthCheck": "Largeur nette minimale",
+      "heightCheck": "Hauteur nette minimale",
+      "areaCheck": "Surface libre minimale",
+      "sillCheck": "Hauteur d'allège maximale"
+    },
+    "excavation": {
+      "heading": "Volume de terrassement et de fouille",
+      "length": "Longueur",
+      "width": "Largeur",
+      "depth": "Profondeur de fouille",
+      "unit": "Système d'unités",
+      "meters": "Mètres (m)",
+      "feet": "Pieds (pi)",
+      "swellPct": "Foisonnement des terres (%)",
+      "density": "Masse volumique apparente (kg/m³)",
+      "truckPayload": "Charge utile du camion (kg)",
+      "bankVolume": "Volume en place (en déblai)",
+      "looseVolume": "Volume foisonné évacué",
+      "looseWeight": "Masse totale foisonnée",
+      "truckLoads": "Nombre de rotations de camion"
+    },
+    "ladderSafeReach": {
+      "heading": "Géométrie de l'échelle (règle 4:1)",
+      "ladderLength": "Longueur totale de l'échelle (pi)",
+      "userHeight": "Taille de l'opérateur (pi)",
+      "ladderType": "Catégorie d'échelle",
+      "extension": "Échelle coulissante / simple (en appui)",
+      "step": "Escabeau (autostable)",
+      "baseDistance": "Écartement du pied au mur (pi)",
+      "verticalHeight": "Hauteur d'appui verticale (pi)",
+      "ladderAngle": "Pente / inclinaison de l'échelle",
+      "approxReach": "Portée de travail estimée (pi)",
+      "roofExtension": "Dépassement recommandé au débouché"
+    },
+    "landArea": {
+      "heading": "Conversion de surface de terrain",
+      "sourceValue": "Superficie d'origine",
+      "fromUnit": "Convertir depuis",
+      "toUnit": "Convertir vers",
+      "sqft": "Pieds carrés (pi²)",
+      "sqm": "Mètres carrés (m²)",
+      "acre": "Acres",
+      "hectare": "Hectares (ha)",
+      "sqyd": "Verges carrées (vg²)",
+      "convertedValue": "Superficie convertie",
+      "formula": "Facteur d'échelle"
+    },
+    "oshaToilet": {
+      "heading": "Installations sanitaires de chantier",
+      "workers": "Nombre d'ouvriers sur site",
+      "facilities": "Cabines sanitaires requises",
+      "toiletSeats": "Sièges d'aisance minimaux",
+      "urinals": "Urinoirs minimaux",
+      "fixtureRatio": "Ratio de personnel par ensemble sanitaire",
+      "oshaRule": "Réglementation de sécurité au travail"
+    },
+    "solarPanel": {
+      "heading": "Dimensionnement de l'installation solaire",
+      "dailyUsage": "Consommation journalière (kWh/j)",
+      "sunHours": "Heures d'ensoleillement de crête",
+      "panelWatts": "Puissance unitaire du panneau (Watts)",
+      "systemLoss": "Pertes et détarage de l'installation (%)",
+      "requiredKw": "Puissance crête requise (kWc)",
+      "panelsCount": "Nombre total de panneaux solaires",
+      "actualKw": "Puissance réelle installée (kWc)",
+      "annualOutput": "Production annuelle estimée (kWh/an)"
     }
   },
   "health": {

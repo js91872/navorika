@@ -1147,6 +1147,70 @@
       "limits": "Assumes uniform parallel through-cuts without initial rough edge jointing or defect trimming. Curved cuts and grain selection require extra stock.",
       "question": "What is saw kerf and why does it matter?",
       "answer": "Kerf is the thickness of wood removed by the saw blade teeth during each cut. Neglecting kerf causes cumulative dimensional errors and reduces piece yield."
+    },
+    "air-compressor-cfm-calculator": {
+      "title": "Air Compressor CFM & Tank Runtime Calculator",
+      "description": "Check whether an air compressor can keep up with your air tools using airflow, duty cycle, and tank size.",
+      "how": "Enter your tool rated CFM demand and operating PSI along with duty cycle, then compare against compressor SCFM rating and tank capacity.",
+      "limits": "Estimates nominal airflow balance. Line friction, rapid pulsing tools, ambient temperature, elevation, and regulator loss affect actual sustained pressure.",
+      "question": "How much CFM does an air compressor need for air tools?",
+      "answer": "The compressor must supply at least the average tool consumption (rated CFM multiplied by duty cycle fraction), ideally with a 20% to 30% safety margin for reliable cycling."
+    },
+    "construction-cost-calculator": {
+      "title": "Construction Cost Calculator",
+      "description": "Estimate building cost from project size and your own cost per square foot, with overhead and contingency options.",
+      "how": "Enter the planned floor area in square feet or meters, base cost rate per unit, labor and material percentages, plus overhead and contingency percentages.",
+      "limits": "Rough conceptual budgeting model. Material grade specifications, regional labor rates, permitting fees, site topography, and structural complexity alter final bids.",
+      "question": "What is a good contingency percentage for construction?",
+      "answer": "A 10% to 15% contingency reserve is standard for new residential builds, while remodeling and historic renovations frequently require 15% to 20% for unforeseen conditions."
+    },
+    "egress-window-code-checker": {
+      "title": "Egress Window Code Checker",
+      "description": "Check net clear window opening width, height, area and sill height against commonly referenced IRC emergency escape and rescue opening dimensions.",
+      "how": "Measure and input net clear opening width, clear height, and sill height above finished floor, selecting grade-floor opening if located at ground level.",
+      "limits": "Checks baseline IRC prescriptive opening minimums. Local building codes, historic district rules, window well sizes, and operational latch styles must also be satisfied.",
+      "question": "What is the minimum size for an egress window?",
+      "answer": "Standard IRC requirements specify a minimum net clear opening of 5.7 sq ft (5.0 sq ft at grade floor), minimum clear width of 20 inches, minimum clear height of 24 inches, and maximum 44 inches sill height."
+    },
+    "excavation-calculator": {
+      "title": "Excavation Calculator",
+      "description": "Calculate soil excavation volume, loose expanded volume, total weight, and haul truck loads for foundations and trenches.",
+      "how": "Specify trench or pit length, width, and depth in meters or feet, along with soil swell allowance, loose material density, and truck haul payload.",
+      "limits": "Geometric bank excavation estimate. Sloped trench walls, shoring requirements, over-dig for formwork, and moisture changes in soil density vary actual disposal volume.",
+      "question": "Why does soil volume expand during excavation?",
+      "answer": "In-situ undisturbed soil is compacted under natural pressure; digging loosens soil particles and introduces air voids, causing a swell of 15% to 30% depending on soil composition."
+    },
+    "ladder-safe-reach-calculator": {
+      "title": "Ladder Safe Reach & 4:1 Calculator",
+      "description": "Estimate extension ladder base distance, setup angle, vertical height and approximate working reach using OSHA 4:1 geometry.",
+      "how": "Input ladder length, user height, and ladder style (extension leaning vs step ladder) to calculate safe standoff distance and approximate working reach.",
+      "limits": "Theoretical geometric reach aid. Safe standing level is limited to manufacturer rung restrictions, never stand on top rungs, and maintain three points of contact.",
+      "question": "What is the OSHA 4:1 ladder safety rule?",
+      "answer": "For every 4 feet of vertical ladder working height, the base of the ladder should be positioned 1 foot away from the supporting structure, yielding a stable ~75.5 degree pitch."
+    },
+    "land-area-converter": {
+      "title": "Land Area Converter",
+      "description": "Convert land measurements between square feet, square meters, acres, hectares, and square yards.",
+      "how": "Input the land area value, choose the source measurement unit, and select the target unit to see precise converted area and full equivalent values.",
+      "limits": "Pure mathematical boundary area conversions. Surveying tolerances, earth curvature over vast tracts, and legal boundary descriptions require licensed surveyor verification.",
+      "question": "How many square feet are in an acre of land?",
+      "answer": "One statute acre contains exactly 43,560 square feet, which equals approximately 4,046.86 square meters or 0.4047 hectares."
+    },
+    "osha-portable-toilet-calculator": {
+      "title": "OSHA Portable Toilet Calculator",
+      "description": "Calculate construction-jobsite toilet fixture minimums from workforce size using OSHA 29 CFR 1926.51(c)(1), Table D-1.",
+      "how": "Enter the maximum number of workers on the jobsite during any single shift to determine compliant toilet facilities, seats, and urinals.",
+      "limits": "Applies OSHA construction jobsite standards (Table D-1). Servicing frequency, multi-floor high-rise access, and local public health ordinances may mandate additional units.",
+      "question": "How many portable toilets are required on an OSHA jobsite?",
+      "answer": "OSHA mandates at least 1 facility for 20 or fewer workers, 1 toilet seat and 1 urinal per 40 workers for crews of 21 to 199, and 1 seat and 1 urinal per 50 workers for 200 or more."
+    },
+    "solar-panel-calculator": {
+      "title": "Solar Panel Calculator",
+      "description": "Calculate solar panel requirements, total array rating, and estimated annual clean energy production for your home or business.",
+      "how": "Enter average daily electricity consumption in kilowatt-hours, peak daily sun hours, individual solar panel rating in watts, and expected system losses.",
+      "limits": "Preliminary photovoltaic sizing. Shading patterns, roof azimuth pitch, inverter clipping, seasonal sunlight variance, and local utility interconnect caps alter real output.",
+      "question": "How many solar panels do I need for my house?",
+      "answer": "Divide your daily energy consumption by peak sun hours and derating efficiency to get required kW capacity, then divide by individual panel wattage to determine total panels."
     }
   },
   "flexOptions": {
@@ -3903,6 +3967,121 @@
       "offcut": "Remaining offcut scrap",
       "efficiency": "Cutting yield efficiency (%)",
       "note": "Calculates the maximum whole pieces cut from board stock while subtracting blade kerf loss for each through-cut."
+    },
+    "airCompressor": {
+      "heading": "Air compressor & tool parameters",
+      "toolCfm": "Tool air demand (CFM)",
+      "toolPsi": "Operating pressure (PSI)",
+      "dutyCycle": "Duty cycle (%)",
+      "compressorScfm": "Compressor delivery (SCFM)",
+      "compressorPsi": "Compressor rated PSI",
+      "tankGallons": "Tank capacity (gallons)",
+      "avgDemand": "Average airflow demand",
+      "demandRatio": "Demand-to-supply ratio",
+      "continuousSurplus": "Surplus / deficit airflow",
+      "approxRuntime": "Estimated buffer runtime",
+      "recommendedScfm": "Recommended compressor SCFM",
+      "statusComfortable": "Comfortable capacity",
+      "statusBorderline": "Borderline capacity",
+      "statusInsufficient": "Insufficient continuous output",
+      "continuousAdequate": "Continuous supply adequate",
+      "intermittentOnly": "Intermittent use only (runs out of air)"
+    },
+    "constructionCost": {
+      "heading": "Project dimensions & budget",
+      "area": "Project floor area",
+      "unit": "Measurement unit",
+      "sqft": "Square feet (sq ft)",
+      "sqm": "Square meters (m²)",
+      "costPerUnit": "Base rate per unit ($)",
+      "laborPct": "Labor allocation (%)",
+      "materialPct": "Material allocation (%)",
+      "overheadPct": "Overhead markup (%)",
+      "contingencyPct": "Contingency buffer (%)",
+      "baseCost": "Base construction cost",
+      "laborCost": "Labor cost",
+      "materialCost": "Material cost",
+      "overheadCost": "Overhead cost",
+      "contingencyCost": "Contingency reserve",
+      "totalCost": "Total estimated project cost",
+      "costPerSqFt": "Effective cost per sq ft"
+    },
+    "egressWindow": {
+      "heading": "Opening dimensions (IRC compliance)",
+      "clearWidth": "Clear opening width (in)",
+      "clearHeight": "Clear opening height (in)",
+      "sillHeight": "Sill height above floor (in)",
+      "gradeFloor": "Qualifying grade-floor opening (5.0 sq ft threshold)",
+      "clearArea": "Net clear opening area",
+      "requiredArea": "Required minimum area",
+      "compliant": "Meets egress code criteria",
+      "nonCompliant": "Does not meet code criteria",
+      "widthCheck": "Net clear width",
+      "heightCheck": "Net clear height",
+      "areaCheck": "Clear opening area",
+      "sillCheck": "Sill height above finished floor"
+    },
+    "excavation": {
+      "heading": "Excavation trench & pit volume",
+      "length": "Length",
+      "width": "Width",
+      "depth": "Excavation depth",
+      "unit": "Unit system",
+      "meters": "Meters (m)",
+      "feet": "Feet (ft)",
+      "swellPct": "Soil swell / expansion (%)",
+      "density": "Loose density (kg/m³)",
+      "truckPayload": "Truck load capacity (kg)",
+      "bankVolume": "In-situ bank volume",
+      "looseVolume": "Excavated loose volume",
+      "looseWeight": "Total loose weight",
+      "truckLoads": "Estimated truck loads"
+    },
+    "ladderSafeReach": {
+      "heading": "Ladder geometry (OSHA 4:1 rule)",
+      "ladderLength": "Ladder total length (ft)",
+      "userHeight": "User standing height (ft)",
+      "ladderType": "Ladder category",
+      "extension": "Extension ladder (leaning)",
+      "step": "Step ladder (self-supporting)",
+      "baseDistance": "Safe distance from base of wall (ft)",
+      "verticalHeight": "Vertical support height (ft)",
+      "ladderAngle": "Working ladder pitch / angle",
+      "approxReach": "Estimated working reach (ft)",
+      "roofExtension": "Recommended roof landing extension"
+    },
+    "landArea": {
+      "heading": "Land area conversion",
+      "sourceValue": "Land measure value",
+      "fromUnit": "Convert from",
+      "toUnit": "Convert to",
+      "sqft": "Square Feet (sq ft)",
+      "sqm": "Square Meters (m²)",
+      "acre": "Acres",
+      "hectare": "Hectares (ha)",
+      "sqyd": "Square Yards (sq yd)",
+      "convertedValue": "Converted land measure",
+      "formula": "Conversion factor"
+    },
+    "oshaToilet": {
+      "heading": "Jobsite workforce requirements",
+      "workers": "Number of workers on site",
+      "facilities": "Portable toilet units required",
+      "toiletSeats": "Minimum toilet seats",
+      "urinals": "Minimum urinals",
+      "fixtureRatio": "Workforce ratio per fixture set",
+      "oshaRule": "OSHA standard 29 CFR 1926.51(c)(1)"
+    },
+    "solarPanel": {
+      "heading": "Solar array sizing parameters",
+      "dailyUsage": "Daily consumption (kWh/day)",
+      "sunHours": "Peak sun hours per day",
+      "panelWatts": "Individual panel rating (Watts)",
+      "systemLoss": "System losses & derating (%)",
+      "requiredKw": "Required array rating (kW DC)",
+      "panelsCount": "Total solar panels required",
+      "actualKw": "Actual array installed size (kW)",
+      "annualOutput": "Estimated annual output (kWh/year)"
     }
   },
   "health": {

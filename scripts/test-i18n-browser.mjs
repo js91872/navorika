@@ -80,6 +80,14 @@ const slugs = [
   'rebar-calculator',
   'roof-area-calculator',
   'saw-kerf-calculator',
+  'air-compressor-cfm-calculator',
+  'construction-cost-calculator',
+  'egress-window-code-checker',
+  'excavation-calculator',
+  'ladder-safe-reach-calculator',
+  'land-area-converter',
+  'osha-portable-toilet-calculator',
+  'solar-panel-calculator',
 ];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
@@ -831,6 +839,17 @@ try {
     assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(1504)));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['brick-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/solar-panel-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('19'));
+    await page.locator('main input[type="number"]').first().fill('60');
+    assert.ok((await page.locator('main dl').textContent()).includes('38'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('19'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['solar-panel-calculator'].title));
     workflowsChecked++;
     console.log(`Verified ${locale}: ${slugs.length + 1} translated pages and ${slugs.length} working tools.`);
   }

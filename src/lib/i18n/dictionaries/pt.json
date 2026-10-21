@@ -1147,6 +1147,70 @@
       "limits": "Considera cortes retos contínuos sem desbaste prévio de alinhamento ou expurgo de nós e fendas da madeira.",
       "question": "O que é o traço da serra e qual o seu impacto?",
       "answer": "O traço é a espessura de madeira destruída pela lâmina em cada corte (2,4 a 3,2 mm). Desconsiderá-lo gera erros acumulados."
+    },
+    "air-compressor-cfm-calculator": {
+      "title": "Calculadora CFM e Autonomia do Compressor de Ar",
+      "description": "Verifique se um compressor de ar atende às ferramentas pneumáticas com base na vazão, fator de carga e volume do reservatório.",
+      "how": "Informe o consumo da ferramenta em CFM e a pressão de trabalho, comparando com a vazão fornecida pelo compressor e a capacidade da câmara.",
+      "limits": "Estimativa de equilíbrio de fluxo nominal. Atritos na tubulação, acionamentos intermitentes e perda de carga no regulador afetam a pressão constante.",
+      "question": "Qual a vazão em CFM necessária para ferramentas pneumáticas?",
+      "answer": "O compressor deve fornecer no mínimo a vazão média da ferramenta ponderada pelo fator de utilização, recomendando-se margem de 20% a 30% para operação contínua."
+    },
+    "construction-cost-calculator": {
+      "title": "Calculadora de Custos de Construção",
+      "description": "Estime o custo de obra com base na metragem do projeto e taxa unitária de referência, com margem de contingência e taxas administrativas.",
+      "how": "Insira a área construída, o valor base por unidade de área, a distribuição percentual de mão de obra e materiais, além da margem para imprevistos.",
+      "limits": "Estimativa orçamentária de planejamento. Padrão de acabamento, custo de mão de obra regional, taxas de licenciamento e fundações afetam o orçamento final.",
+      "question": "Qual porcentagem de contingência é recomendada em obras civis?",
+      "answer": "Uma margem de reserva entre 10% e 15% é padrão para novas construções residenciais, ao passo que reformas e restauros costumam exigir de 15% a 20%."
+    },
+    "egress-window-code-checker": {
+      "title": "Verificador de Janela de Saída de Emergência",
+      "description": "Avalie largura, altura, área livre útil e altura do peitoril de acordo com as normas de rota de fuga de emergência.",
+      "how": "Meça e preencha a largura útil, altura útil e cota do peitoril acima do piso acabado.",
+      "limits": "Verificação geométrica de padrões prescritivos. Normas edilícias municipais, exigências do corpo de bombeiros e poços de iluminação devem ser observados.",
+      "question": "Qual a dimensão mínima para janelas de rota de fuga?",
+      "answer": "Os parâmetros usuais requerem área líquida mínima de 5,7 pés quadrados (5,0 no térreo), largura livre mínima de 20 polegadas, altura de 24 polegadas e peitoril a até 44 polegadas."
+    },
+    "excavation-calculator": {
+      "title": "Calculadora de Escavação e Terraplenagem",
+      "description": "Calcule o volume de corte no banco, o volume solto empolado, o peso total e o número de viagens de caminhão basculante.",
+      "how": "Informe comprimento, largura e profundidade da cava em metros ou pés, além do coeficiente de empolamento do solo e carga líquida do caminhão.",
+      "limits": "Cálculo geométrico teórico de corte. Taludes de segurança, escoramentos de vala e variações de umidade na terra alteram o volume real a transportar.",
+      "question": "Por que o volume do solo aumenta durante a escavação?",
+      "answer": "O solo natural intacto encontra-se adensado; o corte desagrega as partículas e insere vazios de ar, gerando um empolamento de 15% a 30% conforme o tipo de solo."
+    },
+    "ladder-safe-reach-calculator": {
+      "title": "Calculadora de Alcance Seguro e Regra 4:1 de Escadas",
+      "description": "Estime a distância de base segura, ângulo de inclinação, altura de apoio e alcance de trabalho com a regra 4:1.",
+      "how": "Digite o comprimento da escada, altura do operador e tipo de escada para planejar o afastamento correto da parede e altura máxima de serviço.",
+      "limits": "Auxílio geométrico de segurança. Obedeça sempre as recomendações de carga do fabricante, nunca pise nos últimos degraus e mantenha 3 pontos de contato.",
+      "question": "Como funciona a regra 4:1 de segurança para escadas portáteis?",
+      "answer": "Para cada 4 pés de altura vertical do ponto de apoio superior, a base da escada deve ser posicionada a 1 pé de distância do plano vertical (~75,5° de inclinação)."
+    },
+    "land-area-converter": {
+      "title": "Conversor de Medidas de Terrenos e Áreas",
+      "description": "Converta dimensões de glebas e terrenos entre pés quadrados, metros quadrados, acres, hectares e jardas quadradas.",
+      "how": "Digite a metragem da área, selecione a unidade de origem e a unidade de destino para conferir a conversão exata e tabela de equivalências.",
+      "limits": "Conversões matemáticas ideais de áreas planas. Desmembramentos de áreas e escrituras públicas exigem levantamento topográfico por engenheiro credenciado.",
+      "question": "Quantos metros quadrados existem em um hectare de terra?",
+      "answer": "Um hectare possui rigorosamente 10.000 metros quadrados, correspondendo a aproximadamente 2,471 acres ou 107.639 pés quadrados."
+    },
+    "osha-portable-toilet-calculator": {
+      "title": "Calculadora de Sanitários Portáteis de Obra",
+      "description": "Calcule a quantidade mínima obrigatória de cabines sanitárias químicas e mictórios para canteiros de obra conforme o efetivo.",
+      "how": "Insira o número total de operários presentes no canteiro durante o turno de trabalho para dimensionar os módulos sanitários exigidos.",
+      "limits": "Exigência normativa de higiene no trabalho. Frequência de sucção e higienização, edificações em altura e normas sanitárias locais podem requerer mais unidades.",
+      "question": "Quantos banheiros químicos são necessários em um canteiro de obras?",
+      "answer": "As normas recomendam no mínimo 1 sanitário para equipes de até 20 operários, e 1 vaso com 1 mictório para cada 40 trabalhadores em equipes de 21 a 199 operários."
+    },
+    "solar-panel-calculator": {
+      "title": "Calculadora de Painéis Solares Fotovoltaicos",
+      "description": "Calcule a quantidade de módulos solares, potência nominal do gerador fotovoltaico e produção anual estimada de energia limpa.",
+      "how": "Informe o consumo diário em quilowatt-hora, as horas diárias de sol de pico locais, a potência nominal da placa e as perdas do sistema.",
+      "limits": "Dimensionamento solar preliminar. Inclinação do telhado, sombreamentos locais, temperatura de operação e eficiência do inversor alteram a geração real.",
+      "question": "De quantas placas solares minha residência precisa?",
+      "answer": "Divida o consumo médio diário em kWh pelas horas de sol pleno e fator de desempenho do sistema para obter a potência em kW, dividindo em seguida pela potência da placa."
     }
   },
   "flexOptions": {
@@ -3903,6 +3967,121 @@
       "offcut": "Sobra residual",
       "efficiency": "Rendimento de corte (%)",
       "note": "Calcula o número de tiras retiradas de uma peça, deduzindo a espessura do corte em cada passada."
+    },
+    "airCompressor": {
+      "heading": "Parâmetros do compressor e ferramentas",
+      "toolCfm": "Consumo de ar da ferramenta (CFM)",
+      "toolPsi": "Pressão de trabalho (PSI)",
+      "dutyCycle": "Fator de carga (%)",
+      "compressorScfm": "Vazão fornecida pelo compressor (SCFM)",
+      "compressorPsi": "Pressão nominal do compressor (PSI)",
+      "tankGallons": "Capacidade do tanque (galões)",
+      "avgDemand": "Consumo médio de vazão",
+      "demandRatio": "Proporção demanda / suprimento",
+      "continuousSurplus": "Sobras / déficit de vazão de ar",
+      "approxRuntime": "Autonomia estimada no reservatório",
+      "recommendedScfm": "Vazão recomendada do compressor (SCFM)",
+      "statusComfortable": "Capacidade confortável",
+      "statusBorderline": "Capacidade no limite",
+      "statusInsufficient": "Vazão contínua insuficiente",
+      "continuousAdequate": "Suprimento contínuo satisfatório",
+      "intermittentOnly": "Apenas uso intermitente (queda de pressão)"
+    },
+    "constructionCost": {
+      "heading": "Dimensões e orçamento de obra",
+      "area": "Área construída total",
+      "unit": "Unidade de medida",
+      "sqft": "Pés quadrados (sq ft)",
+      "sqm": "Metros quadrados (m²)",
+      "costPerUnit": "Custo base por unidade ($)",
+      "laborPct": "Parcela de mão de obra (%)",
+      "materialPct": "Parcela de materiais (%)",
+      "overheadPct": "Despesas indiretas / BDI (%)",
+      "contingencyPct": "Margem de contingência (%)",
+      "baseCost": "Custo direto de construção",
+      "laborCost": "Custo de mão de obra",
+      "materialCost": "Custo de materiais",
+      "overheadCost": "Despesas administrativas",
+      "contingencyCost": "Reserva para contingências",
+      "totalCost": "Custo total estimado da obra",
+      "costPerSqFt": "Custo médio por pé quadrado"
+    },
+    "egressWindow": {
+      "heading": "Dimensões da abertura (rota de fuga)",
+      "clearWidth": "Largura útil de abertura (pol)",
+      "clearHeight": "Altura útil de abertura (pol)",
+      "sillHeight": "Altura do peitoril sobre o piso (pol)",
+      "gradeFloor": "Abertura no nível do solo (mínimo 5,0 sq ft)",
+      "clearArea": "Área útil desimpedida",
+      "requiredArea": "Área mínima obrigatória",
+      "compliant": "Em conformidade com as normas",
+      "nonCompliant": "Não atende aos requisitos",
+      "widthCheck": "Largura livre mínima",
+      "heightCheck": "Altura livre mínima",
+      "areaCheck": "Área livre mínima",
+      "sillCheck": "Altura máxima do peitoril"
+    },
+    "excavation": {
+      "heading": "Volume de escavação e terraplenagem",
+      "length": "Comprimento",
+      "width": "Largura",
+      "depth": "Profundidade de escavação",
+      "unit": "Sistema de unidades",
+      "meters": "Metros (m)",
+      "feet": "Pés (ft)",
+      "swellPct": "Empolamento do solo (%)",
+      "density": "Massa específica solta (kg/m³)",
+      "truckPayload": "Carga útil do caminhão (kg)",
+      "bankVolume": "Volume no corte original",
+      "looseVolume": "Volume solto empolado",
+      "looseWeight": "Peso total solto",
+      "truckLoads": "Viagens estimadas de caminhão"
+    },
+    "ladderSafeReach": {
+      "heading": "Geometria da escada (regra 4:1)",
+      "ladderLength": "Comprimento da escada (ft)",
+      "userHeight": "Estatura do operador (ft)",
+      "ladderType": "Categoria da escada",
+      "extension": "Escada extensível (encostada)",
+      "step": "Escada articulada de abrir",
+      "baseDistance": "Afastamento seguro da base (ft)",
+      "verticalHeight": "Altura vertical de apoio (ft)",
+      "ladderAngle": "Inclinação de trabalho da escada",
+      "approxReach": "Alcance estimado de trabalho (ft)",
+      "roofExtension": "Extensão recomendada no topo"
+    },
+    "landArea": {
+      "heading": "Conversão de áreas e terrenos",
+      "sourceValue": "Valor da área",
+      "fromUnit": "Converter de",
+      "toUnit": "Converter para",
+      "sqft": "Pés quadrados (sq ft)",
+      "sqm": "Metros quadrados (m²)",
+      "acre": "Acres",
+      "hectare": "Hectares (ha)",
+      "sqyd": "Jardas quadradas (sq yd)",
+      "convertedValue": "Área convertida",
+      "formula": "Fator de proporção"
+    },
+    "oshaToilet": {
+      "heading": "Instalações sanitárias de canteiro",
+      "workers": "Número de trabalhadores no local",
+      "facilities": "Cabines sanitárias mínimas",
+      "toiletSeats": "Assentos sanitários mínimos",
+      "urinals": "Mictórios mínimos",
+      "fixtureRatio": "Proporção de equipe por módulo",
+      "oshaRule": "Norma regulamentadora de segurança"
+    },
+    "solarPanel": {
+      "heading": "Dimensionamento de gerador solar",
+      "dailyUsage": "Consumo diário (kWh/dia)",
+      "sunHours": "Horas de sol de pico por dia",
+      "panelWatts": "Potência de cada módulo (Watts)",
+      "systemLoss": "Perdas e eficiência do sistema (%)",
+      "requiredKw": "Potência de pico necessária (kWp)",
+      "panelsCount": "Total de módulos fotovoltaicos",
+      "actualKw": "Potência real instalada (kWp)",
+      "annualOutput": "Geração anual estimada (kWh/ano)"
     }
   },
   "health": {

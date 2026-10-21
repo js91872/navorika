@@ -19,6 +19,7 @@ const LocalizedConstructionTools = dynamic(() => import('./LocalizedConstruction
 const LocalizedHealthTools = dynamic(() => import('./LocalizedHealthTools'));
 const LocalizedEverydayTools = dynamic(() => import('./LocalizedEverydayTools'));
 const LocalizedStructuralTools = dynamic(() => import('./LocalizedStructuralTools'));
+const LocalizedJobsiteTools = dynamic(() => import('./LocalizedJobsiteTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -223,6 +224,18 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
     slug === 'saw-kerf-calculator'
   ) {
     return <LocalizedStructuralTools slug={slug} dictionary={dictionary} locale={locale} />;
+  }
+  if (
+    slug === 'air-compressor-cfm-calculator' ||
+    slug === 'construction-cost-calculator' ||
+    slug === 'egress-window-code-checker' ||
+    slug === 'excavation-calculator' ||
+    slug === 'ladder-safe-reach-calculator' ||
+    slug === 'land-area-converter' ||
+    slug === 'osha-portable-toilet-calculator' ||
+    slug === 'solar-panel-calculator'
+  ) {
+    return <LocalizedJobsiteTools slug={slug} dictionary={dictionary} locale={locale} />;
   }
   if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
   if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

@@ -1147,6 +1147,70 @@
       "limits": "Presume tagli paralleli senza preventiva refilatura del bordo grezzo o scarto di difetti del legno.",
       "question": "Che cos’è il saw kerf e perché è fondamentale?",
       "answer": "Il kerf è lo spessore asportato dai denti della lama (2,4-3,2 mm). Ometterlo provoca errori dimensionali cumulativi."
+    },
+    "air-compressor-cfm-calculator": {
+      "title": "Calcolatore CFM e Autonomia Compressore d'Aria",
+      "description": "Verifica se un compressore d'aria soddisfa i requisiti dei tuoi utensili pneumatici in base a portata, ciclo di lavoro e serbatoio.",
+      "how": "Inserisci il consumo in CFM dell'utensile e la pressione d'esercizio, confrontandoli con la portata erogata dal compressore e la capacità del serbatoio.",
+      "limits": "Stima del bilancio di portata nominale. Perdite di carico nelle tubazioni, impulsi ripetuti e perdite nei riduttori influiscono sulla pressione continua.",
+      "question": "Quanti CFM deve erogare un compressore d'aria per utensili da lavoro?",
+      "answer": "Il compressore deve erogare almeno il consumo medio dell'utensile pesato sul fattore di servizio, consigliando un margine di riserva del 20% - 30%."
+    },
+    "construction-cost-calculator": {
+      "title": "Calcolatore Costi di Costruzione",
+      "description": "Stima il costo di costruzione in base all'area di progetto e al costo unitario, con opzioni per spese generali e imprevisti.",
+      "how": "Immetti la superficie utile, la tariffa base per unità di misura, le quote percentuali di manodopera e materiali, oltre alle maggiorazioni per imprevisti.",
+      "limits": "Valutazione economica preliminare. Finiture di pregio, costi di manodopera territoriale, pratiche autorizzative e morfologia del suolo incidono sui preventivi definitivi.",
+      "question": "Quale percentuale di riserva per imprevisti è consigliata nei cantieri edili?",
+      "answer": "Una riserva tra il 10% e il 15% è prassi comune per nuove costruzioni, mentre nelle ristrutturazioni di fabbricati esistenti si consiglia spesso il 15% - 20%."
+    },
+    "egress-window-code-checker": {
+      "title": "Verificatore Finestra di Evacuazione e Sicurezza",
+      "description": "Controlla larghezza, altezza, superficie utile netta e altezza del parapetto secondo le norme di via di fuga d'emergenza.",
+      "how": "Misura e inserisci larghezza libera, altezza libera e quota del parapetto rispetto al piano di calpestio finito.",
+      "limits": "Verifica geometrica dei requisiti minimi prescrittivi. Normative edilizie locali, regolamenti antincendio e pozzi di luce interrati devono essere verificati.",
+      "question": "Quali sono le dimensioni minime per una finestra di via di fuga?",
+      "answer": "I criteri standard prevedono almeno 5,7 piedi quadrati di luce netta (5,0 a piano terra), larghezza minima di 20 pollici, altezza di 24 pollici e davanzale a massimo 44 pollici."
+    },
+    "excavation-calculator": {
+      "title": "Calcolatore di Scavo e Movimento Terra",
+      "description": "Calcola il volume di terra in banco, il volume sciolto espanso, il peso totale e i carichi di autocarro necessari.",
+      "how": "Indica lunghezza, larghezza e profondità dello scavo in metri o piedi, la percentuale di rigonfiamento del terreno e la portata utile del cassone.",
+      "limits": "Calcolo volumetrico teorico. Angoli di scarpata naturale, armature provvisionali e umidità del suolo possono variare i volumi reali da smaltire.",
+      "question": "Perché il terreno aumenta di volume durante lo scavo?",
+      "answer": "Il terreno naturale intatto è compattato dal peso del suolo; lo scavo allenta le particelle e introduce sacche d'aria, determinando un rigonfiamento dal 15% al 30%."
+    },
+    "ladder-safe-reach-calculator": {
+      "title": "Calcolatore Portata e Regola 4:1 per Scale",
+      "description": "Stima la distanza di base sicura, l'inclinazione corretta, l'altezza utile e la portata di lavoro con la geometria 4:1.",
+      "how": "Inserisci lunghezza della scala, statura dell'operatore e tipologia di scala per determinare la distanza di appoggio sicura e la portata utile.",
+      "limits": "Guida geometrica per la pianificazione sicura. Rispettare sempre le istruzioni del produttore, non sostare sugli ultimi pioli e mantenere 3 punti di presa.",
+      "question": "In cosa consiste la regola 4:1 per la sicurezza delle scale?",
+      "answer": "Per ogni 4 piedi di quota verticale del punto di appoggio superiore, la base della scala deve essere distanziata di 1 piede dalla parete d'appoggio (~75,5° di pendenza)."
+    },
+    "land-area-converter": {
+      "title": "Convertitore Superficie Terreni",
+      "description": "Converti le misure di appezzamenti e terreni tra piedi quadri, metri quadri, acri, ettari e iarde quadrate.",
+      "how": "Inserisci il valore dell'area, seleziona l'unità di partenza e quella di destinazione per ottenere la misura convertita e tutte le equivalenze.",
+      "limits": "Conversioni matematiche piane standard. Frazionamenti catastali e confini di proprietà vincolanti richiedono rilievi topografici certificati.",
+      "question": "Quanti metri quadrati contiene un ettaro di terreno?",
+      "answer": "Un ettaro corrisponde esattamente a 10.000 metri quadrati, equivalenti a circa 2,471 acri o 107.639 piedi quadrati."
+    },
+    "osha-portable-toilet-calculator": {
+      "title": "Calcolatore Servizi Igienici da Cantiere",
+      "description": "Calcola il numero minimo di cabine igieniche mobili e orinatoi da cantiere in base al numero di lavoratori presenti.",
+      "how": "Inserisci il numero massimo di maestranze presenti nel cantiere per turno di lavoro per conoscere i requisiti minimi di legge.",
+      "limits": "Fabbisogno normativo di base per cantieri edili. Frequenza di spurgo, cantieri multipiano e regolamenti sanitari locali possono richiedere unità aggiuntive.",
+      "question": "Quanti bagni chimici mobili sono obbligatori in un cantiere?",
+      "answer": "Le norme di tutela prevedono almeno 1 cabina fino a 20 lavoratori, poi 1 vaso e 1 orinatoio ogni 40 lavoratori per squadre tra 21 e 199 addetti."
+    },
+    "solar-panel-calculator": {
+      "title": "Calcolatore Pannelli Solari Fotovoltaici",
+      "description": "Calcola il fabbisogno di moduli fotovoltaici, la potenza complessiva di picco e la produzione elettrica pulita annuale.",
+      "how": "Inserisci il consumo energetico giornaliero in kWh, le ore equivalenti di sole di picco, la potenza nominale del modulo e le perdite stimate.",
+      "limits": "Dimensionamento preliminare. Inclinazione del tetto, azimut, ombreggiamenti orografici, declassamento termico ed efficienza dell'inverter modificano la resa reale.",
+      "question": "Di quanti pannelli solari ha bisogno un'abitazione?",
+      "answer": "Dividi il consumo energetico giornaliero per le ore di sole di picco e il fattore di rendimento del sistema per trovare la potenza in kW, quindi dividi per la potenza del singolo modulo."
     }
   },
   "flexOptions": {
@@ -3903,6 +3967,121 @@
       "offcut": "Rifilo residuo",
       "efficiency": "Resa utile di taglio (%)",
       "note": "Calcola il numero massimo di pezzi ricavati tenendo conto dello spessore della lama per ogni passaggio."
+    },
+    "airCompressor": {
+      "heading": "Parametri del compressore e utensili",
+      "toolCfm": "Fabbisogno d'aria dell'utensile (CFM)",
+      "toolPsi": "Pressione di lavoro (PSI)",
+      "dutyCycle": "Fattore di servizio (%)",
+      "compressorScfm": "Portata erogata dal compressore (SCFM)",
+      "compressorPsi": "Pressione nominale del compressore (PSI)",
+      "tankGallons": "Capacità serbatoio (galloni)",
+      "avgDemand": "Consumo medio d'aria",
+      "demandRatio": "Rapporto consumo / erogazione",
+      "continuousSurplus": "Margine / deficit di portata",
+      "approxRuntime": "Autonomia stimata con serbatoio",
+      "recommendedScfm": "Portata consigliata compressore (SCFM)",
+      "statusComfortable": "Capacità ottimale",
+      "statusBorderline": "Capacità limite",
+      "statusInsufficient": "Portata continua insufficiente",
+      "continuousAdequate": "Alimentazione continua adeguata",
+      "intermittentOnly": "Solo uso intermittente (calo di pressione)"
+    },
+    "constructionCost": {
+      "heading": "Superficie di progetto e budget",
+      "area": "Superficie utile di calpestio",
+      "unit": "Unità di misura",
+      "sqft": "Piedi quadrati (sq ft)",
+      "sqm": "Metri quadrati (m²)",
+      "costPerUnit": "Tariffa base per unità ($)",
+      "laborPct": "Quota manodopera (%)",
+      "materialPct": "Quota materiali (%)",
+      "overheadPct": "Spese generali (%)",
+      "contingencyPct": "Fondo imprevisti (%)",
+      "baseCost": "Costo diretto di costruzione",
+      "laborCost": "Costo manodopera",
+      "materialCost": "Costo materiali",
+      "overheadCost": "Spese generali",
+      "contingencyCost": "Riserva per imprevisti",
+      "totalCost": "Costo stimato totale del progetto",
+      "costPerSqFt": "Costo medio al piede quadrato"
+    },
+    "egressWindow": {
+      "heading": "Dimensioni apertura (conformità via di fuga)",
+      "clearWidth": "Larghezza libera netta (pollici)",
+      "clearHeight": "Altezza libera netta (pollici)",
+      "sillHeight": "Altezza parapetto da pavimento (pollici)",
+      "gradeFloor": "Apertura a piano terra (soglia 5,0 sq ft)",
+      "clearArea": "Superficie netta d'apertura",
+      "requiredArea": "Superficie minima richiesta",
+      "compliant": "Conforme alle norme di evacuazione",
+      "nonCompliant": "Non conforme ai requisiti",
+      "widthCheck": "Larghezza minima netta",
+      "heightCheck": "Altezza minima netta",
+      "areaCheck": "Superficie libera minima",
+      "sillCheck": "Altezza massima parapetto"
+    },
+    "excavation": {
+      "heading": "Volume scavo di sbancamento e trincea",
+      "length": "Lunghezza",
+      "width": "Larghezza",
+      "depth": "Profondità di scavo",
+      "unit": "Sistema di unità",
+      "meters": "Metri (m)",
+      "feet": "Piedi (ft)",
+      "swellPct": "Rigonfiamento del terreno (%)",
+      "density": "Densità apparente sciolta (kg/m³)",
+      "truckPayload": "Portata utile autocarro (kg)",
+      "bankVolume": "Volume in banco naturale",
+      "looseVolume": "Volume sciolto scavato",
+      "looseWeight": "Peso totale sciolto",
+      "truckLoads": "Viaggi autocarro stimati"
+    },
+    "ladderSafeReach": {
+      "heading": "Geometria scala (regola 4:1)",
+      "ladderLength": "Lunghezza totale scala (ft)",
+      "userHeight": "Altezza operatore (ft)",
+      "ladderType": "Tipologia scala",
+      "extension": "Scala d'appoggio / allungabile",
+      "step": "Scala doppia a libretto",
+      "baseDistance": "Distanza sicura dalla parete (ft)",
+      "verticalHeight": "Altezza d'appoggio verticale (ft)",
+      "ladderAngle": "Inclinazione operativa della scala",
+      "approxReach": "Altezza di lavoro raggiungibile (ft)",
+      "roofExtension": "Sporgenza consigliata oltre il piano"
+    },
+    "landArea": {
+      "heading": "Conversione superfici agrarie ed edili",
+      "sourceValue": "Misura di superficie",
+      "fromUnit": "Converti da",
+      "toUnit": "Converti in",
+      "sqft": "Piedi quadrati (sq ft)",
+      "sqm": "Metri quadrati (m²)",
+      "acre": "Acri",
+      "hectare": "Ettari (ha)",
+      "sqyd": "Iarde quadrate (sq yd)",
+      "convertedValue": "Superficie convertita",
+      "formula": "Fattore di scala"
+    },
+    "oshaToilet": {
+      "heading": "Fabbisogno servizi igienici di cantiere",
+      "workers": "Numero operai presenti",
+      "facilities": "Moduli igienici minimi richiesti",
+      "toiletSeats": "Sedute WC minime",
+      "urinals": "Orinatoi minimi",
+      "fixtureRatio": "Rapporto lavoratori per set igienico",
+      "oshaRule": "Normativa di tutela e igiene sul lavoro"
+    },
+    "solarPanel": {
+      "heading": "Dimensionamento impianto fotovoltaico",
+      "dailyUsage": "Fabbisogno giornaliero (kWh/giorno)",
+      "sunHours": "Ore di sole di picco al giorno",
+      "panelWatts": "Potenza singolo modulo (Watt)",
+      "systemLoss": "Perdite ed efficienza impianto (%)",
+      "requiredKw": "Potenza di picco richiesta (kWp)",
+      "panelsCount": "Numero totale moduli solari",
+      "actualKw": "Potenza effettiva installata (kWp)",
+      "annualOutput": "Produzione annua stimata (kWh/anno)"
     }
   },
   "health": {

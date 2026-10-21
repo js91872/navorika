@@ -1147,6 +1147,70 @@
       "limits": "Gilt für parallele Durchtrennungsschnitte ohne vorheriges Besäumen oder Auskappen von Rissen.",
       "question": "Was ist die Sägefuge (Kerf) und warum ist sie wichtig?",
       "answer": "Die Sägefuge ist die Materialbreite, die das Sägeblatt zu Sägemehl zerspant (ca. 2,4 bis 3,2 mm). Wird sie ignoriert, summieren sich Maßabweichungen."
+    },
+    "air-compressor-cfm-calculator": {
+      "title": "Druckluft-Kompressor CFM & Laufzeit-Rechner",
+      "description": "Prüfen Sie anhand von Luftbedarf, Einschaltdauer und Kesselgröße, ob ein Druckluftkompressor Ihre Werkzeuge zuverlässig versorgt.",
+      "how": "Geben Sie den CFM-Bedarf des Werkzeugs und den Betriebsdruck ein und vergleichen Sie diese mit der Liefermenge des Kompressors und dem Kesselvolumen.",
+      "limits": "Abschätzung des nominellen Strömungsgleichgewichts. Leitungsreibung, Impulswerkzeuge und Druckmindererverluste verändern den Dauerdruck.",
+      "question": "Wie viel Liefermenge CFM benötigt ein Kompressor für Druckluftwerkzeuge?",
+      "answer": "Der Kompressor sollte mindestens den durchschnittlichen Luftverbrauch des Werkzeugs decken, idealerweise mit einer Sicherheitsreserve von 20 % bis 30 %."
+    },
+    "construction-cost-calculator": {
+      "title": "Baukosten-Rechner",
+      "description": "Ermitteln Sie die voraussichtlichen Baukosten aus der Gebäudefläche und Ihrem Quadratmeter-Richtsatz mit Baunebenkosten und Reserven.",
+      "how": "Tragen Sie die Nutzfläche in Quadratmetern oder Quadratfuß, den Basispreis je Flächeneinheit, Lohn- und Materialanteile sowie Reserveaufschläge ein.",
+      "limits": "Konzeptionelles Budgetmodell. Ausstattungsstandards, regionale Handwerkerpreise, Genehmigungsgebühren und Baugrundverhältnisse bestimmen das Endangebot.",
+      "question": "Wie viel Prozent Unvorhergesehenes sollte man bei Baukosten einplanen?",
+      "answer": "Ein Puffer von 10 % bis 15 % gilt bei Neubauten als Richtwert, während bei Altbausanierungen oft 15 % bis 20 % für verborgene Baumängel nötig sind."
+    },
+    "egress-window-code-checker": {
+      "title": "Notausstiegsfenster Norm-Prüfer",
+      "description": "Prüfen Sie lichte Öffnungsbreite, Öffnungshöhe, lichte Fläche und Brüstungshöhe gemäß den Bauvorgaben für Rettungswege.",
+      "how": "Messen und erfassen Sie lichte Durchgangsbreite, Durchgangshöhe und die Höhe der Fensterbrüstung über dem fertigen Fußboden.",
+      "limits": "Überprüfung geometrischer baurechtlicher Mindestmaße. Örtliche Landesbauordnungen, Brandschutzkonzepte und Lichtschächte müssen geprüft werden.",
+      "question": "Welche Mindestmaße gelten für ein Notausstiegsfenster als Fluchtweg?",
+      "answer": "Typische Vorgaben verlangen mindestens 5,7 Quadratfuß lichte Öffnungsfläche (5,0 im Erdgeschoss), 20 Zoll Mindestbreite, 24 Zoll Mindesthöhe und maximal 44 Zoll Brüstungshöhe."
+    },
+    "excavation-calculator": {
+      "title": "Erdaushub- und Erdbau-Rechner",
+      "description": "Berechnen Sie das feste Aushubvolumen, das aufgelockerte Abfuhrvolumen, das Gesamtgewicht und die benötigten Lkw-Fahrten.",
+      "how": "Geben Sie Länge, Breite und Tiefe der Baugrube in Metern oder Fuß an, ergänzt um den Auflockerungsfaktor und die Nutzlast des Abfuhr-Lkw.",
+      "limits": "Geometrische Modellrechnung. Böschungswinkel, Grabenverbau und witterungsbedingte Bodenfeuchte verändern das tatsächliche Abtransportvolumen.",
+      "question": "Warum vergrößert sich das Erdvolumen beim Aushub einer Baugrube?",
+      "answer": "Gewachsener Boden ist unter Eigengewicht verdichtet; durch das Abgraben entstehen Hohlräume zwischen den Bodenpartikeln, was zu einer Auflockerung von 15 % bis 30 % führt."
+    },
+    "ladder-safe-reach-calculator": {
+      "title": "Leiter-Sicherheitsabstand & 4:1-Regel Rechner",
+      "description": "Ermitteln Sie den sicheren Standabstand, Anstellwinkel, die senkrechte Anlegehöhe und die Arbeitshöhe mit der 4:1-Geometrie.",
+      "how": "Geben Sie Leiterlänge, Körpergröße und Leitertyp an, um den vorschriftsmäßigen Wandabstand und die sichere Greifhöhe zu berechnen.",
+      "limits": "Geometrische Planungshilfe für Arbeitssicherheit. Herstelleranweisungen beachten, niemals auf den obersten Sprossen stehen und drei Kontaktpunkte wahren.",
+      "question": "Was besagt die 4:1-Sicherheitsregel für Anlegeleitern?",
+      "answer": "Pro 4 Fuß vertikaler Anlegehöhe muss der Leiterfuß 1 Fuß von der Wand abgesetzt werden, was einen sicheren Anstellwinkel von etwa 75,5 Grad ergibt."
+    },
+    "land-area-converter": {
+      "title": "Grundstücksflächen-Umrechner",
+      "description": "Rechnen Sie Flächenmaße von Grundstücken und Parzellen zwischen Quadratmetern, Quadratfuß, Ar, Hektar und Acres um.",
+      "how": "Geben Sie die Flächengröße ein, wählen Sie Ausgangs- und Zieleinheit und prüfen Sie den Umrechnungswert sowie alle Maßäquivalente.",
+      "limits": "Mathematische Planflächenumrechnung. Rechtssichere Flurstücksgrenzen und Grundbucheinträge erfordern amtliche Einmessungen durch Vermessungsingenieure.",
+      "question": "Wie viele Quadratmeter hat ein Hektar Land?",
+      "answer": "Ein Hektar umfasst exakt 10.000 Quadratmeter, was genau 100 Ar, rund 2,471 Acres oder 107.639 Quadratfuß entspricht."
+    },
+    "osha-portable-toilet-calculator": {
+      "title": "Baustellen-Mobiltoiletten Rechner",
+      "description": "Berechnen Sie die vorgeschriebene Mindestanzahl mobiler Toilettenkabinen und Urinale auf der Baustelle anhand der Belegschaft.",
+      "how": "Geben Sie die Anzahl der Arbeitskräfte je Schicht ein, um die vorgeschriebenen Sanitärkabinen und Becken zu ermitteln.",
+      "limits": "Arbeitsschutzrechtlicher Mindeststandard für Baustellen. Reinigungsintervalle, Hochbaugeschosse und örtliche Gesundheitsauflagen können mehr Einheiten erfordern.",
+      "question": "Wie viele Mobiltoiletten sind auf einer Baustelle vorgeschrieben?",
+      "answer": "Arbeitsschutzregeln fordern mindestens 1 Sanitärzelle für bis zu 20 Arbeitskräfte sowie je 1 Toilettensitz und 1 Urinal pro 40 Personen bei 21 bis 199 Beschäftigten."
+    },
+    "solar-panel-calculator": {
+      "title": "Photovoltaik- & Solaranlagen-Rechner",
+      "description": "Berechnen Sie die benötigte Anzahl an Solarmodulen, die installierte Nennleistung in kWp und den geschätzten Jahresertrag.",
+      "how": "Tragen Sie Ihren täglichen Stromverbrauch in kWh, die lokalen Sonnen-Vollaststunden, die Modulleistung in Watt und die Systemverluste ein.",
+      "limits": "Überschlägige Auslegungsrechnung. Dachneigung, Ausrichtung, Teilverschattungen, Wechselrichterwirkungsgrad und Temperatur beeinflussen den Ertrag.",
+      "question": "Wie viele Solarmodule benötigt ein Wohnhaus für die Stromversorgung?",
+      "answer": "Teilen Sie den Tagesstrombedarf durch Sonnen-Spitzenstunden und Anlagenwirkungsgrad für die kWp-Leistung, und teilen Sie diesen Wert durch die Einzelleistung der Module."
     }
   },
   "flexOptions": {
@@ -3903,6 +3967,121 @@
       "offcut": "Verbleibender Restverschnitt",
       "efficiency": "Schnittausbeute (%)",
       "note": "Ermittelt die maximale Stückzahl gleich breiter Leisten unter Abzug der Sägeblattbreite je Schnitt."
+    },
+    "airCompressor": {
+      "heading": "Kompressor- & Werkzeugparameter",
+      "toolCfm": "Luftbedarf des Werkzeugs (CFM)",
+      "toolPsi": "Betriebsdruck (PSI)",
+      "dutyCycle": "Einschaltdauer (%)",
+      "compressorScfm": "Liefermenge des Kompressors (SCFM)",
+      "compressorPsi": "Nenndruck des Kompressors (PSI)",
+      "tankGallons": "Kesselinhalt (Gallonen)",
+      "avgDemand": "Durchschnittlicher Luftbedarf",
+      "demandRatio": "Bedarf-Liefermenge-Verhältnis",
+      "continuousSurplus": "Überschuss / Defizit Liefermenge",
+      "approxRuntime": "Geschätzte Kessellaufzeit",
+      "recommendedScfm": "Empfohlene Kompressor-Liefermenge (SCFM)",
+      "statusComfortable": "Komfortable Leistungsreserve",
+      "statusBorderline": "Grenzwertige Leistung",
+      "statusInsufficient": "Ungenügende Dauerfördermenge",
+      "continuousAdequate": "Dauerversorgung ausreichend",
+      "intermittentOnly": "Nur Intervallbetrieb (Druckabfall droht)"
+    },
+    "constructionCost": {
+      "heading": "Fläche und Baubudget",
+      "area": "Brutto-Grundfläche",
+      "unit": "Maßeinheit",
+      "sqft": "Quadratfuß (sq ft)",
+      "sqm": "Quadratmeter (m²)",
+      "costPerUnit": "Basispreis je Einheit ($)",
+      "laborPct": "Lohnkostenanteil (%)",
+      "materialPct": "Materialkostenanteil (%)",
+      "overheadPct": "Gemeinkosten und Wagnis (%)",
+      "contingencyPct": "Unvorhergesehenes / Puffer (%)",
+      "baseCost": "Reine Baukosten",
+      "laborCost": "Lohnkosten",
+      "materialCost": "Materialkosten",
+      "overheadCost": "Gemeinkosten",
+      "contingencyCost": "Unvorhergesehenes Rücklage",
+      "totalCost": "Geschätzte Gesamtkosten",
+      "costPerSqFt": "Kosten je Quadratfuß"
+    },
+    "egressWindow": {
+      "heading": "Öffnungsmaße (Fluchtwegfenster)",
+      "clearWidth": "Lichte Öffnungsbreite (Zoll)",
+      "clearHeight": "Lichte Öffnungshöhe (Zoll)",
+      "sillHeight": "Brüstungshöhe über Fertigfußboden (Zoll)",
+      "gradeFloor": "Erdgeschoss-Öffnung (Mindestmaß 5,0 sq ft)",
+      "clearArea": "Lichte freie Öffnungsfläche",
+      "requiredArea": "Erforderliche Mindestfläche",
+      "compliant": "Erfüllt Fluchtweg-Anforderungen",
+      "nonCompliant": "Erfüllt Mindestanforderungen nicht",
+      "widthCheck": "Lichte Mindestbreite",
+      "heightCheck": "Lichte Mindesthöhe",
+      "areaCheck": "Lichte Mindestfläche",
+      "sillCheck": "Maximale Brüstungshöhe"
+    },
+    "excavation": {
+      "heading": "Baugruben- und Erdaushubvolumen",
+      "length": "Länge",
+      "width": "Breite",
+      "depth": "Aushubtiefe",
+      "unit": "Einheitensystem",
+      "meters": "Meter (m)",
+      "feet": "Fuß (ft)",
+      "swellPct": "Auflockerungsfaktor Boden (%)",
+      "density": "Schüttdichte des Aushubs (kg/m³)",
+      "truckPayload": "Nutzlast des Abfuhr-Lkw (kg)",
+      "bankVolume": "Festvolumen im gewachsenen Boden",
+      "looseVolume": "Gelockertes Schüttvolumen",
+      "looseWeight": "Gesamtgewicht Aushub",
+      "truckLoads": "Geschätzte Lkw-Fuhren"
+    },
+    "ladderSafeReach": {
+      "heading": "Leitergeometrie (4:1-Regel)",
+      "ladderLength": "Gesamtlänge der Leiter (ft)",
+      "userHeight": "Körpergröße der Arbeitskraft (ft)",
+      "ladderType": "Leiterkategorie",
+      "extension": "Anlegeleiter / Schiebeleiter",
+      "step": "Stehleiter (freistehend)",
+      "baseDistance": "Sicherer Wandabstand am Fuß (ft)",
+      "verticalHeight": "Senkrechte Anlegehöhe (ft)",
+      "ladderAngle": "Arbeitsneigungswinkel der Leiter",
+      "approxReach": "Geschätzte Arbeitshöhe (ft)",
+      "roofExtension": "Empfohlener Überstand an Austritt"
+    },
+    "landArea": {
+      "heading": "Grundstücksflächen-Umrechnung",
+      "sourceValue": "Flächengröße",
+      "fromUnit": "Umrechnen von",
+      "toUnit": "Umrechnen in",
+      "sqft": "Quadratfuß (sq ft)",
+      "sqm": "Quadratmeter (m²)",
+      "acre": "Acres",
+      "hectare": "Hektar (ha)",
+      "sqyd": "Quadratyards (sq yd)",
+      "convertedValue": "Umgerechnete Fläche",
+      "formula": "Umrechnungsfaktor"
+    },
+    "oshaToilet": {
+      "heading": "Baustellen-Sanitäranforderungen",
+      "workers": "Arbeitskräfte auf der Baustelle",
+      "facilities": "Erforderliche Toilettenkabinen",
+      "toiletSeats": "Mindestanzahl Toilettensitze",
+      "urinals": "Mindestanzahl Urinale",
+      "fixtureRatio": "Personalschlüssel je Sanitäreinheit",
+      "oshaRule": "Arbeitsschutz-Vorschrift"
+    },
+    "solarPanel": {
+      "heading": "Photovoltaik-Auslegungsparameter",
+      "dailyUsage": "Täglicher Strombedarf (kWh/Tag)",
+      "sunHours": "Sonnen-Spitzenstunden pro Tag",
+      "panelWatts": "Nennleistung je Modul (Watt)",
+      "systemLoss": "Systemverluste und Minderungsfaktor (%)",
+      "requiredKw": "Erforderliche Nennleistung (kWp)",
+      "panelsCount": "Gesamtanzahl Solarmodule",
+      "actualKw": "Installierte Anlagenleistung (kWp)",
+      "annualOutput": "Geschätzter Jahresertrag (kWh/Jahr)"
     }
   },
   "health": {

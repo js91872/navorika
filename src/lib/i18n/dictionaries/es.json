@@ -1147,6 +1147,70 @@
       "limits": "Para cortes rectos paralelos sin canteado previo ni saneado de grietas en los cantos de la madera.",
       "question": "¿Qué es el corte de sierra (kerf) y por qué importa?",
       "answer": "El kerf es la ranura que desbasta el diente de la sierra (unos 2,4 a 3,2 mm). Omitirlo acumula errores de cota."
+    },
+    "air-compressor-cfm-calculator": {
+      "title": "Calculadora CFM y Autonomía de Compresor de Aire",
+      "description": "Compruebe si un compresor de aire satisface el consumo de sus herramientas según caudal, ciclo de trabajo y tamaño del depósito.",
+      "how": "Introduzca el consumo en CFM de la herramienta y la presión requerida, comparándolos con el caudal suministrado por el compresor y el volumen del calderín.",
+      "limits": "Estimación de balance de caudal nominal. Fricciones en mangueras, herramientas de impacto pulsante y pérdidas en reguladores varían la presión sostenida.",
+      "question": "¿Cuánto caudal CFM necesita un compresor de aire para herramientas neumáticas?",
+      "answer": "El compresor debe suministrar al menos el consumo medio de la herramienta ponderado por su ciclo de trabajo, aconsejándose un margen de seguridad del 20% al 30%."
+    },
+    "construction-cost-calculator": {
+      "title": "Calculadora de Costos de Construcción",
+      "description": "Calcule el presupuesto de obra a partir de la superficie del proyecto y su coste unitario, con márgenes de gastos generales e imprevistos.",
+      "how": "Indique los metros cuadrados o pies cuadrados de superficie, tarifa base por unidad, porcentajes de mano de obra y materiales, además de reservas de contingencia.",
+      "limits": "Modelo presupuestario conceptual. Calidades constructivas, mano de obra local, licencias municipales y condiciones geotécnicas alteran el presupuesto final.",
+      "question": "¿Qué porcentaje de imprevistos es recomendable en una obra de construcción?",
+      "answer": "Una reserva de contingencia entre el 10% y el 15% es habitual en obras residenciales de nueva planta, mientras que en rehabilitaciones se suele fijar en un 15% - 20%."
+    },
+    "egress-window-code-checker": {
+      "title": "Comprobador de Ventana de Evacuación de Emergencia",
+      "description": "Verifique anchura, altura, superficie libre neta y altura de antepecho según los estándares de salida de emergencia IRC.",
+      "how": "Mida e introduzca anchura libre neta, altura libre neta y cota del antepecho sobre el suelo terminado.",
+      "limits": "Comprobación de requisitos prescriptivos básicos. Normativas urbanísticas locales, protección contra incendios y dimensiones de huecos de luz deben ser validadas.",
+      "question": "¿Cuáles son las medidas mínimas de una ventana de evacuación de emergencia?",
+      "answer": "Los criterios habituales exigen al menos 5,7 pies cuadrados de apertura neta (5,0 en planta baja), anchura mínima de 20 pulgadas, altura de 24 pulgadas y antepecho de hasta 44 pulgadas."
+    },
+    "excavation-calculator": {
+      "title": "Calculadora de Excavación y Movimiento de Tierras",
+      "description": "Calcule el volumen de excavación en banco, volumen esponjado suelto, masa total y número de camiones de transporte necesarios.",
+      "how": "Indique longitud, anchura y profundidad de la zanja en metros o pies, coeficiente de esponjamiento del terreno y capacidad de carga útil del camión.",
+      "limits": "Cálculo geométrico teórico de desmonte. Taludes de seguridad, entibaciones de zanja y variaciones de humedad en la tierra alteran los volúmenes reales a transportar.",
+      "question": "¿Por qué aumenta el volumen de la tierra al excavar?",
+      "answer": "El terreno natural no alterado está densamente compactado; al excavar se separan las partículas y entra aire, provocando un esponjamiento del 15% al 30% según el tipo de suelo."
+    },
+    "ladder-safe-reach-calculator": {
+      "title": "Calculadora de Alcance Seguro y Regla 4:1 de Escaleras",
+      "description": "Estime la separación de base segura, ángulo de apoyo, altura vertical y alcance de trabajo con la regla geométrica 4:1.",
+      "how": "Indique la longitud de la escalera, altura del usuario y tipo de escalera para calcular la distancia segura a la pared y el alcance máximo de trabajo.",
+      "limits": "Guía geométrica de seguridad en altura. Respete siempre las indicaciones del fabricante, nunca trabaje en los peldaños superiores y mantenga 3 puntos de contacto.",
+      "question": "¿En qué consiste la regla 4:1 de seguridad para escaleras portátiles?",
+      "answer": "Por cada 4 pies de altura vertical del punto de apoyo superior, la base de la escalera debe separarse 1 pie de la pared, generando una inclinación estable de unos 75,5 grados."
+    },
+    "land-area-converter": {
+      "title": "Convertidor de Medidas de Terrenos y Parcelas",
+      "description": "Convierta superficies de solares y terrenos entre pies cuadrados, metros cuadrados, acres, hectáreas y yardas cuadradas.",
+      "how": "Escriba el valor de la superficie, seleccione la unidad de origen y la unidad final para comprobar la conversión exacta y la tabla comparativa.",
+      "limits": "Conversiones matemáticas sobre planos horizontales. Lindes registrales, segregaciones de fincas y escrituras públicas exigen levantamientos de topógrafo colegiado.",
+      "question": "¿Cuántos metros cuadrados hay en una hectárea de terreno?",
+      "answer": "Una hectárea contiene con total exactitud 10.000 metros cuadrados, equivalentes a unas 2,471 acres o 107.639 pies cuadrados."
+    },
+    "osha-portable-toilet-calculator": {
+      "title": "Calculadora de Sanitarios Portátiles para Obra",
+      "description": "Calcule la dotación mínima requerida de cabinas higiénicas móviles y urinarios en obra según el tamaño de la plantilla laboral.",
+      "how": "Introduzca el número de operarios en obra durante el turno de trabajo para determinar las cabinas y urinarios legalmente exigibles.",
+      "limits": "Estándar normativo básico de seguridad e higiene laboral. Frecuencias de limpieza, obras en altura y ordenanzas locales de salud pueden requerir módulos adicionales.",
+      "question": "¿Cuántas cabinas de sanitarios portátiles son obligatorias en una obra?",
+      "answer": "Las normas laborales exigen al menos 1 instalación para 20 trabajadores o menos, y 1 inodoro con 1 urinario por cada 40 operarios para plantillas de 21 a 199 trabajadores."
+    },
+    "solar-panel-calculator": {
+      "title": "Calculadora de Paneles Solares Fotovoltaicos",
+      "description": "Calcule la cantidad de módulos solares necesarios, potencia pico del campo fotovoltaico y producción anual estimada de energía limpia.",
+      "how": "Indique su consumo diario en kilovatios-hora, horas de sol pico de su localidad, potencia nominal de la placa y porcentaje de pérdidas del sistema.",
+      "limits": "Cálculo fotovoltaico preliminar. Inclinación del tejado, orientación, sombras cercanas, pérdidas de temperatura y rendimiento del inversor modifican la producción real.",
+      "question": "¿Cuántas placas solares necesito para mi casa o negocio?",
+      "answer": "Divida el consumo diario de energía entre las horas de sol pico y el rendimiento del sistema para calcular la potencia en kW, y divida el resultado entre los vatios de cada panel."
     }
   },
   "flexOptions": {
@@ -3903,6 +3967,121 @@
       "offcut": "Recorte sobrante",
       "efficiency": "Rendimiento de corte (%)",
       "note": "Calcula el número de piezas idénticas que se pueden sacar deduciendo el ancho del corte en cada pasada."
+    },
+    "airCompressor": {
+      "heading": "Parámetros del compresor y herramientas",
+      "toolCfm": "Consumo de aire de la herramienta (CFM)",
+      "toolPsi": "Presión de trabajo (PSI)",
+      "dutyCycle": "Ciclo de trabajo (%)",
+      "compressorScfm": "Caudal suministrado por compresor (SCFM)",
+      "compressorPsi": "Presión nominal del compresor (PSI)",
+      "tankGallons": "Capacidad del depósito (galones)",
+      "avgDemand": "Consumo medio de caudal",
+      "demandRatio": "Relación demanda / suministro",
+      "continuousSurplus": "Superávit / déficit de caudal",
+      "approxRuntime": "Autonomía estimada con calderín",
+      "recommendedScfm": "Caudal recomendado del compresor (SCFM)",
+      "statusComfortable": "Capacidad desahogada",
+      "statusBorderline": "Capacidad al límite",
+      "statusInsufficient": "Caudal continuo insuficiente",
+      "continuousAdequate": "Suministro continuo adecuado",
+      "intermittentOnly": "Solo uso intermitente (caída de presión)"
+    },
+    "constructionCost": {
+      "heading": "Superficie y presupuesto de obra",
+      "area": "Superficie construida total",
+      "unit": "Unidad de medida",
+      "sqft": "Pies cuadrados (sq ft)",
+      "sqm": "Metros cuadrados (m²)",
+      "costPerUnit": "Coste base por unidad ($)",
+      "laborPct": "Partida mano de obra (%)",
+      "materialPct": "Partida materiales (%)",
+      "overheadPct": "Gastos generales y beneficio (%)",
+      "contingencyPct": "Fondo de contingencias (%)",
+      "baseCost": "Coste directo de construcción",
+      "laborCost": "Coste mano de obra",
+      "materialCost": "Coste materiales",
+      "overheadCost": "Gastos generales",
+      "contingencyCost": "Reserva de imprevistos",
+      "totalCost": "Coste total estimado de obra",
+      "costPerSqFt": "Coste medio por pie cuadrado"
+    },
+    "egressWindow": {
+      "heading": "Dimensiones de apertura (salida de emergencia)",
+      "clearWidth": "Anchura libre neta (pulgadas)",
+      "clearHeight": "Altura libre neta (pulgadas)",
+      "sillHeight": "Altura del antepecho sobre el suelo (pulgadas)",
+      "gradeFloor": "Hueco en planta baja (mínimo 5,0 sq ft)",
+      "clearArea": "Superficie neta despejada",
+      "requiredArea": "Superficie mínima obligatoria",
+      "compliant": "Cumple con las normas de evacuación",
+      "nonCompliant": "No cumple los requisitos mínimos",
+      "widthCheck": "Anchura mínima libre",
+      "heightCheck": "Altura mínima libre",
+      "areaCheck": "Superficie mínima libre",
+      "sillCheck": "Altura máxima de antepecho"
+    },
+    "excavation": {
+      "heading": "Volumen de excavación y vaciado",
+      "length": "Longitud",
+      "width": "Anchura",
+      "depth": "Profundidad de excavación",
+      "unit": "Sistema de unidades",
+      "meters": "Metros (m)",
+      "feet": "Pies (ft)",
+      "swellPct": "Esponjamiento del suelo (%)",
+      "density": "Densidad aparente suelta (kg/m³)",
+      "truckPayload": "Carga útil del camión (kg)",
+      "bankVolume": "Volumen en banco natural",
+      "looseVolume": "Volumen suelto esponjado",
+      "looseWeight": "Peso total suelto",
+      "truckLoads": "Viajes estimados de camión"
+    },
+    "ladderSafeReach": {
+      "heading": "Geometría de la escalera (regla 4:1)",
+      "ladderLength": "Longitud de la escalera (ft)",
+      "userHeight": "Estatura del operario (ft)",
+      "ladderType": "Tipo de escalera",
+      "extension": "Escalera extensible / apoyada",
+      "step": "Escalera de tijera (autoestable)",
+      "baseDistance": "Separación segura de la base (ft)",
+      "verticalHeight": "Altura vertical de apoyo (ft)",
+      "ladderAngle": "Inclinación de trabajo de la escalera",
+      "approxReach": "Alcance útil de trabajo (ft)",
+      "roofExtension": "Saliente recomendado en coronación"
+    },
+    "landArea": {
+      "heading": "Conversión de medidas de terrenos",
+      "sourceValue": "Valor de la superficie",
+      "fromUnit": "Convertir de",
+      "toUnit": "Convertir a",
+      "sqft": "Pies cuadrados (sq ft)",
+      "sqm": "Metros cuadrados (m²)",
+      "acre": "Acres",
+      "hectare": "Hectáreas (ha)",
+      "sqyd": "Yardas cuadradas (sq yd)",
+      "convertedValue": "Superficie convertida",
+      "formula": "Factor de proporción"
+    },
+    "oshaToilet": {
+      "heading": "Instalaciones de aseo en obra",
+      "workers": "Número de trabajadores en obra",
+      "facilities": "Casetas de aseo requeridas",
+      "toiletSeats": "Inodoros mínimos obligatorios",
+      "urinals": "Urinarios mínimos",
+      "fixtureRatio": "Ratio de plantilla por conjunto higiénico",
+      "oshaRule": "Normativa de seguridad e higiene laboral"
+    },
+    "solarPanel": {
+      "heading": "Dimensionamiento de instalación solar",
+      "dailyUsage": "Consumo diario (kWh/día)",
+      "sunHours": "Horas de sol pico al día",
+      "panelWatts": "Potencia del módulo (Vatios)",
+      "systemLoss": "Pérdidas y eficiencia del sistema (%)",
+      "requiredKw": "Potencia pico requerida (kWp)",
+      "panelsCount": "Número total de placas solares",
+      "actualKw": "Potencia real instalada (kWp)",
+      "annualOutput": "Producción anual estimada (kWh/año)"
     }
   },
   "health": {
