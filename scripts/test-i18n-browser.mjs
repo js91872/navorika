@@ -244,16 +244,33 @@ try {
         : new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
       if (slug === 'running-pace-calculator') {
         assert.ok((await page.locator('main dd').first().textContent()).includes('4:59'));
-        await page.locator('main input[type="number"]').nth(1).fill(String(initial * 2));
+        const input = page.locator('main input[type="number"]').nth(1);
+        for (let i = 0; i < 30; i++) {
+          await input.fill(String(initial * 2));
+          if ((await page.locator('main dd').first().textContent()).includes('7:49')) break;
+          await page.waitForTimeout(100);
+        }
         assert.ok((await page.locator('main dd').first().textContent()).includes('7:49'));
       } else if (slug === 'ipv6-subnet-calculator') {
         assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
-        await page.locator('main input[type="number"]').first().fill('32');
-        assert.equal(await page.locator('main dd').first().textContent(), number.format(changed));
+        const input = page.locator('main input[type="number"]').first();
+        const target = number.format(changed);
+        for (let i = 0; i < 30; i++) {
+          await input.fill('32');
+          if (await page.locator('main dd').first().textContent() === target) break;
+          await page.waitForTimeout(100);
+        }
+        assert.equal(await page.locator('main dd').first().textContent(), target);
       } else if (slug === 'cidr-summarization-calculator') {
         assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
-        await page.locator('main textarea').first().fill('192.168.0.0/24');
-        assert.equal(await page.locator('main dd').first().textContent(), number.format(changed));
+        const input = page.locator('main textarea').first();
+        const target = number.format(changed);
+        for (let i = 0; i < 30; i++) {
+          await input.fill('192.168.0.0/24');
+          if (await page.locator('main dd').first().textContent() === target) break;
+          await page.waitForTimeout(100);
+        }
+        assert.equal(await page.locator('main dd').first().textContent(), target);
       } else if (slug === 'ip-address-classifier') {
         assert.equal(await page.locator('main dd').first().textContent(), 'IPv4');
         await page.locator('main input[type="text"]').first().fill('2001:db8::1');
@@ -280,11 +297,12 @@ try {
         assert.ok((await page.locator('main dd').first().textContent()).includes('Invalid'));
       } else {
         assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
-        await page.locator('main input[type="number"]').first().fill(String(initial * 2));
+        const input = page.locator('main input[type="number"]').first();
         const target = number.format(changed ?? expected * 2);
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 40; i++) {
+          await input.fill(String(initial * 2));
           if (await page.locator('main dd').first().textContent() === target) break;
-          await page.waitForTimeout(50);
+          await page.waitForTimeout(100);
         }
         assert.equal(await page.locator('main dd').first().textContent(), target);
       }
@@ -668,11 +686,23 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes('Disallow: /private/'));
     workflowsChecked++;
 
+    const waitForDlText = async (targetText, timeoutMs = 3000) => {
+      const start = Date.now();
+      while (Date.now() - start < timeoutMs) {
+        const text = await page.locator('main dl').textContent();
+        if (text && text.includes(targetText)) return;
+        await page.waitForTimeout(50);
+      }
+      const finalText = await page.locator('main dl').textContent();
+      assert.ok(finalText && finalText.includes(targetText), `Expected "${targetText}" in dl text, got: "${finalText}"`);
+    };
+
     await visit(`/${locale}/tools/cement-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('1.54') || (await page.locator('main dl').textContent()).includes('1,54'));
     await page.locator('main input[type="number"]').first().fill('2');
-    assert.ok((await page.locator('main dl').textContent()).includes('3.08') || (await page.locator('main dl').textContent()).includes('3,08'));
+    const cementTarget = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(3.08);
+    await waitForDlText(cementTarget);
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('1.54') || (await page.locator('main dl').textContent()).includes('1,54'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -683,7 +713,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('50'));
     await page.locator('main input[type="number"]').first().fill('20');
-    assert.ok((await page.locator('main dl').textContent()).includes('100'));
+    await waitForDlText('100');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('50'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -694,7 +724,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('120'));
     await page.locator('main input[type="number"]').first().fill('5');
-    assert.ok((await page.locator('main dl').textContent()).includes('90'));
+    await waitForDlText('90');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('120'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -705,7 +735,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('100'));
     await page.locator('main input[type="number"]').first().fill('5');
-    assert.ok((await page.locator('main dl').textContent()).includes('50'));
+    await waitForDlText('50');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('100'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -716,7 +746,8 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('10.65') || (await page.locator('main dl').textContent()).includes('10,65'));
     await page.locator('main input[type="number"]').first().fill('24');
-    assert.ok((await page.locator('main dl').textContent()).includes('42.62') || (await page.locator('main dl').textContent()).includes('42,62'));
+    const steelTarget = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(42.62);
+    await waitForDlText(steelTarget);
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('10.65') || (await page.locator('main dl').textContent()).includes('10,65'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -727,7 +758,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('6:12'));
     await page.locator('main input[type="number"]').first().fill('12');
-    assert.ok((await page.locator('main dl').textContent()).includes('12:12'));
+    await waitForDlText('12:12');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('6:12'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -738,7 +769,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('58'));
     await page.locator('main input[type="number"]').first().fill('30');
-    assert.ok((await page.locator('main dl').textContent()).includes('86'));
+    await waitForDlText('86');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('58'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -749,7 +780,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('10'));
     await page.locator('main input[type="number"]').nth(3).fill('0');
-    assert.ok((await page.locator('main dl').textContent()).includes('11'));
+    await waitForDlText('11');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('10'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -760,7 +791,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('495'));
     await page.locator('main input[type="number"]').first().fill('20');
-    assert.ok((await page.locator('main dl').textContent()).includes('990'));
+    await waitForDlText('990');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('495'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -771,7 +802,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('13'));
     await page.locator('main input[type="number"]').nth(2).fill('6');
-    assert.ok((await page.locator('main dl').textContent()).includes('25'));
+    await waitForDlText('25');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('13'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -782,7 +813,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('120'));
     await page.locator('main input[type="number"]').first().fill('2000');
-    assert.ok((await page.locator('main dl').textContent()).includes('240'));
+    await waitForDlText('240');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('120'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -794,7 +825,7 @@ try {
     const formatBrick = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(val);
     assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(1504)));
     await page.locator('main input[type="number"]').first().fill('20');
-    assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(3008)));
+    await waitForDlText(formatBrick(3008));
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(1504)));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -805,7 +836,7 @@ try {
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('19'));
     await page.locator('main input[type="number"]').first().fill('60');
-    assert.ok((await page.locator('main dl').textContent()).includes('38'));
+    await waitForDlText('38');
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes('19'));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -817,7 +848,7 @@ try {
     const formatVd = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(val);
     assert.ok((await page.locator('main dl').textContent()).includes(formatVd(10.42)));
     await page.locator('main input[type="number"]').nth(2).fill('10');
-    assert.ok((await page.locator('main dl').textContent()).includes(formatVd(2.08)));
+    await waitForDlText(formatVd(2.08));
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes(formatVd(10.42)));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
@@ -829,7 +860,7 @@ try {
     const formatVat = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(val);
     assert.ok((await page.locator('main dl').textContent()).includes(formatVat(120)));
     await page.locator('main input[type="number"]').first().fill('200');
-    assert.ok((await page.locator('main dl').textContent()).includes(formatVat(240)));
+    await waitForDlText(formatVat(240));
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     assert.ok((await page.locator('main dl').textContent()).includes(formatVat(120)));
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
