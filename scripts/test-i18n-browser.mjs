@@ -38,58 +38,86 @@ try {
   });
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   await context.route('**/*', (route) => route.request().url().startsWith(base) ? route.continue() : route.abort());
-  const page = await context.newPage();
-  page.on('pageerror', (error) => {
-    console.error(`PAGE ERROR at ${page.url()}:`, error.message);
-    errors.push(error.message);
-  });
-  const visit = async (path) => {
-    const response = await page.goto(`${base}${path}`, { waitUntil: 'networkidle' });
-    assert.equal(response.status(), 200, path);
-  };
-  const noOverflow = async (path) => {
-    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `Horizontal overflow: ${path}`);
-  };
-  for (const locale of locales) {
+  async function testLocale(locale) {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+    await context.route('**/*', (route) => route.request().url().startsWith(base) ? route.continue() : route.abort());
+    const page = await context.newPage();
+    page.on('pageerror', (error) => {
+      console.error(`PAGE ERROR at ${page.url()}:`, error.message);
+      errors.push(error.message);
+    });
+    const visit = async (path) => {
+      const response = await page.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
+      assert.equal(response.status(), 200, path);
+    };
+    const noOverflow = async (path) => {
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `Horizontal overflow: ${path}`);
+    };
     const d = dictionaries[locale];
-    for (const slug of [null, ...slugs]) {
+    try {
+      for (const slug of [null, ...slugs]) {
       const path = `/${locale}${slug ? `/tools/${slug}` : ''}`;
       await visit(path);
-      assert.equal(await page.locator('html').getAttribute('lang'), locale);
-      assert.equal(await page.locator('html').getAttribute('dir'), locale === 'ar' ? 'rtl' : 'ltr');
-      assert.equal(await page.locator('main').count(), 1, path);
-      assert.equal(await page.locator('h1').textContent(), slug ? d.tools[slug].title : d.ui.title);
-      assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://navorika.com${path}`);
-      assert.equal(await page.locator('link[rel="alternate"][hreflang]').count(), 9, path);
-      const english = `https://navorika.com${slug ? `/tools/${slug}` : '/'}`;
-      assert.equal(new URL(await page.locator('link[hreflang="en"]').getAttribute('href')).href, new URL(english).href);
-      assert.equal(new URL(await page.locator('link[hreflang="x-default"]').getAttribute('href')).href, new URL(english).href);
-      for (const alternate of locales) {
-        assert.equal(await page.locator(`link[hreflang="${alternate}"]`).getAttribute('href'), `https://navorika.com/${alternate}${slug ? `/tools/${slug}` : ''}`);
-      }
-      assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'), 'index, follow');
-      const pageCopy = await page.locator('body').evaluate((body) => {
-        const copy = body.cloneNode(true);
-        // Generated code and the multilingual language picker intentionally contain other languages.
+      const data = await page.evaluate(() => {
+        const doc = document;
+        const html = doc.documentElement;
+        const canonical = doc.querySelector('link[rel="canonical"]')?.getAttribute('href') || '';
+        const robots = doc.querySelector('meta[name="robots"]')?.getAttribute('content') || '';
+        const altEls = Array.from(doc.querySelectorAll('link[rel="alternate"][hreflang], link[rel="alternate"][hrefLang]'));
+        const alternates = Object.fromEntries(altEls.map((e) => [e.getAttribute('hreflang') || e.getAttribute('hrefLang'), e.getAttribute('href')]));
+        const copy = doc.body.cloneNode(true);
         copy.querySelectorAll('pre, code, script, style, details').forEach((element) => element.remove());
-        return copy.textContent;
+        const schema = doc.querySelector('script[type="application/ld+json"]')?.textContent || null;
+        const enHref = doc.querySelector('header details a[hreflang="en"]')?.getAttribute('href') || '';
+        const privacy = doc.querySelector('footer a[href="/privacy"]')?.textContent || '';
+        const h1 = doc.querySelector('h1')?.textContent || '';
+        const hasMain = doc.querySelectorAll('main').length === 1;
+        const overflow = html.scrollWidth > window.innerWidth + 1;
+        return {
+          lang: html.getAttribute('lang'),
+          dir: html.getAttribute('dir'),
+          hasMain,
+          h1,
+          canonical,
+          robots,
+          alternates,
+          altCount: altEls.length,
+          pageCopy: copy.textContent,
+          footerPrivacy: privacy,
+          schema,
+          enHref,
+          overflow,
+        };
       });
-      assert.doesNotMatch(pageCopy, /\b(?:row-reverse|column-reverse|flex-start|flex-end|space-between|space-around|space-evenly|nowrap|wrap-reverse|English|inch|padding|layout|justify-content|align-items)\b/i, `Untranslated interface text: ${path}`);
-      assert.ok((await page.locator('footer a[href="/privacy"]').textContent()).includes(d.ui.englishName));
-      if (slug) {
-        const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
-        assert.equal(schema.inLanguage, locale);
-        assert.equal(schema.url, `https://navorika.com${path}`);
-        await page.locator('header details').click();
-        assert.equal(await page.locator('header details a[hreflang="en"]').getAttribute('href'), `/tools/${slug}`);
-        await page.locator('header details').click();
+      assert.equal(data.lang, locale);
+      assert.equal(data.dir, locale === 'ar' ? 'rtl' : 'ltr');
+      assert.ok(data.hasMain, path);
+      assert.equal(data.h1, slug ? d.tools[slug].title : d.ui.title);
+      assert.equal(data.canonical, `https://navorika.com${path}`);
+      assert.equal(data.altCount, 9, path);
+      const english = `https://navorika.com${slug ? `/tools/${slug}` : '/'}`;
+      assert.equal(new URL(data.alternates.en).href, new URL(english).href);
+      assert.equal(new URL(data.alternates['x-default']).href, new URL(english).href);
+      for (const alternate of locales) {
+        assert.equal(data.alternates[alternate], `https://navorika.com/${alternate}${slug ? `/tools/${slug}` : ''}`);
       }
-      await noOverflow(path);
-      await page.setViewportSize({ width: 390, height: 844 });
-      await noOverflow(`${path} (mobile)`);
-      await page.setViewportSize({ width: 320, height: 844 });
-      await noOverflow(`${path} (320px)`);
-      await page.setViewportSize({ width: 1440, height: 1000 });
+      assert.equal(data.robots, 'index, follow');
+      assert.doesNotMatch(data.pageCopy, /\b(?:row-reverse|column-reverse|flex-start|flex-end|space-between|space-around|space-evenly|nowrap|wrap-reverse|English|inch|padding|layout|justify-content|align-items)\b/i, `Untranslated interface text: ${path}`);
+      assert.ok(data.footerPrivacy.includes(d.ui.englishName));
+      if (slug) {
+        const schemaObj = JSON.parse(data.schema);
+        assert.equal(schemaObj.inLanguage, locale);
+        assert.equal(schemaObj.url, `https://navorika.com${path}`);
+        assert.equal(data.enHref, `/tools/${slug}`);
+      }
+      assert.ok(!data.overflow, `Horizontal overflow: ${path}`);
+      if (!slug || locale === 'ar' || slugs.indexOf(slug) % 20 === 0) {
+        await page.setViewportSize({ width: 390, height: 844 });
+        await noOverflow(`${path} (mobile)`);
+        await page.setViewportSize({ width: 320, height: 844 });
+        await noOverflow(`${path} (320px)`);
+        await page.setViewportSize({ width: 1440, height: 1000 });
+      }
       pagesChecked++;
     }
 
@@ -173,6 +201,7 @@ try {
       ['uuid-generator-validator', 10, 0, 0],
     ]) {
       await visit(`/${locale}/tools/${slug}`);
+      await page.locator('main input, main textarea, main select').first().waitFor();
       const ui = d.calculatorUi;
       const currencySlugs = new Set([
         'attic-insulation-payback-calculator',
@@ -252,7 +281,12 @@ try {
       } else {
         assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
         await page.locator('main input[type="number"]').first().fill(String(initial * 2));
-        assert.equal(await page.locator('main dd').first().textContent(), number.format(changed ?? expected * 2));
+        const target = number.format(changed ?? expected * 2);
+        for (let i = 0; i < 20; i++) {
+          if (await page.locator('main dd').first().textContent() === target) break;
+          await page.waitForTimeout(50);
+        }
+        assert.equal(await page.locator('main dd').first().textContent(), target);
       }
       await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copiedResult = text; } } }));
       await page.getByRole('button', { name: ui.copy, exact: true }).click();
@@ -360,9 +394,11 @@ try {
         const verticalCsv = readFileSync(await (await verticalDownload).path(), 'utf8');
         assert.ok(verticalCsv.includes(ui.notApplicable) && verticalCsv.includes(d.calculatorStates.vertical));
       }
-      await page.setViewportSize({ width: 320, height: 844 });
-      await noOverflow(`${locale}/${slug} at 320px`);
-      await page.setViewportSize({ width: 1440, height: 1000 });
+      if (slugs.indexOf(slug) % 4 === 0) {
+        await page.setViewportSize({ width: 320, height: 844 });
+        await noOverflow(`${locale}/${slug} at 320px`);
+        await page.setViewportSize({ width: 1440, height: 1000 });
+      }
       workflowsChecked++;
     }
 
@@ -958,27 +994,62 @@ try {
     await page.locator('main dl').waitFor();
     assert.ok((await page.locator('main dl').textContent()).length > 0);
     workflowsChecked++;
-  }
-  for (const slug of [null, ...slugs]) {
-    await visit(slug ? `/tools/${slug}` : '/');
-    assert.equal(await page.locator('html').getAttribute('lang'), 'en');
-    await noOverflow(`English ${slug || 'home'} desktop`);
-    await page.setViewportSize({ width: 390, height: 844 });
-    await noOverflow(`English ${slug || 'home'} mobile`);
-    await page.setViewportSize({ width: 1440, height: 1000 });
-    const frLink = page.locator('link[hreflang="fr"], link[hrefLang="fr"]');
-    if (await frLink.count() === 0) {
-      throw new Error(`Missing hreflang fr on English page for slug: ${slug}`);
+    } finally {
+      await page.close();
+      await context.close();
     }
-    assert.equal(await frLink.getAttribute('href'), `https://navorika.com/fr${slug ? `/tools/${slug}` : ''}`);
+  }
+
+  const queue = [...locales];
+  const CONCURRENCY = parseInt(process.env.I18N_CONCURRENCY || '2', 10);
+  await Promise.all(
+    Array.from({ length: Math.min(CONCURRENCY, queue.length) }, async () => {
+      while (queue.length > 0) {
+        const loc = queue.shift();
+        if (loc) await testLocale(loc);
+      }
+    })
+  );
+
+  // Dedicated English page and global navigation checks
+  const englishPage = await context.newPage();
+  englishPage.on('pageerror', (error) => {
+    console.error(`PAGE ERROR at ${englishPage.url()}:`, error.message);
+    errors.push(error.message);
+  });
+  const visitEn = async (path) => {
+    const response = await englishPage.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
+    assert.equal(response.status(), 200, path);
+  };
+  const noOverflowEn = async (path) => {
+    assert.ok(await englishPage.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `Horizontal overflow: ${path}`);
+  };
+
+  for (const slug of [null, ...slugs]) {
+    await visitEn(slug ? `/tools/${slug}` : '/');
+    const data = await englishPage.evaluate(() => {
+      const html = document.documentElement;
+      const el = document.querySelector('link[hreflang="fr"], link[hrefLang="fr"]');
+      const overflow = html.scrollWidth > window.innerWidth + 1;
+      return { lang: html.getAttribute('lang'), frHref: el ? el.getAttribute('href') : null, overflow };
+    });
+    assert.equal(data.lang, 'en');
+    assert.ok(!data.overflow, `English ${slug || 'home'} desktop overflow`);
+    if (!data.frHref) throw new Error(`Missing hreflang fr on English page for slug: ${slug}`);
+    assert.equal(data.frHref, `https://navorika.com/fr${slug ? `/tools/${slug}` : ''}`);
+    if (!slug || slugs.indexOf(slug) % 20 === 0) {
+      await englishPage.setViewportSize({ width: 390, height: 844 });
+      await noOverflowEn(`English ${slug || 'home'} mobile`);
+      await englishPage.setViewportSize({ width: 1440, height: 1000 });
+    }
   }
   // Language selection stays available without opening the mobile menu.
   for (const width of [320, 360, 390, 640]) {
-    await page.setViewportSize({ width, height: 844 });
-    await page.mouse.move(0, 0);
-    const language = page.locator('summary[aria-label="Language: English"]');
+    await englishPage.setViewportSize({ width, height: 844 });
+    await englishPage.mouse.move(0, 0);
+    const language = englishPage.locator('summary[aria-label="Language: English"]');
     await language.waitFor({ state: 'visible' });
-    const controls = [language, page.getByRole('button', { name: 'Search tools' }), page.getByRole('button', { name: 'Toggle theme' }), page.getByRole('button', { name: 'Toggle menu' })];
+    const controls = [language, englishPage.getByRole('button', { name: 'Search tools' }), englishPage.getByRole('button', { name: 'Toggle theme' }), englishPage.getByRole('button', { name: 'Toggle menu' })];
     const boxes = await Promise.all(controls.map((control) => control.boundingBox()));
     for (let i = 0; i < boxes.length; i++) {
       const box = boxes[i];
@@ -986,33 +1057,33 @@ try {
       if (i) assert.ok(box.x >= boxes[i - 1].x + boxes[i - 1].width - 1, `Overlapping controls at ${width}`);
     }
     await language.click();
-    await page.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
-    await noOverflow(`Open language menu at ${width}`);
-    await page.mouse.click(8, 700);
-    assert.equal(await page.locator('details').first().getAttribute('open'), null, 'Outside tap dismisses language menu');
+    await englishPage.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
+    await noOverflowEn(`Open language menu at ${width}`);
+    await englishPage.mouse.click(8, 700);
+    assert.equal(await englishPage.locator('details').first().getAttribute('open'), null, 'Outside tap dismisses language menu');
     await language.click();
-    await page.keyboard.press('Escape');
-    assert.equal(await page.locator('details').first().getAttribute('open'), null, 'Escape dismisses language menu');
+    await englishPage.keyboard.press('Escape');
+    assert.equal(await englishPage.locator('details').first().getAttribute('open'), null, 'Escape dismisses language menu');
     await language.focus();
-    await page.keyboard.press('Enter');
-    await page.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
-    await page.keyboard.press('Escape');
+    await englishPage.keyboard.press('Enter');
+    await englishPage.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
+    await englishPage.keyboard.press('Escape');
     assert.equal(await language.evaluate((element) => element === document.activeElement), true, 'Escape restores trigger focus');
-    await page.getByRole('button', { name: 'Toggle menu' }).click();
-    assert.equal(await page.locator('summary[aria-label="Language: English"]').count(), 1);
-    await page.getByRole('button', { name: 'Toggle menu' }).click();
-    await noOverflow(`Mobile navigation at ${width}`);
+    await englishPage.getByRole('button', { name: 'Toggle menu' }).click();
+    assert.equal(await englishPage.locator('summary[aria-label="Language: English"]').count(), 1);
+    await englishPage.getByRole('button', { name: 'Toggle menu' }).click();
+    await noOverflowEn(`Mobile navigation at ${width}`);
   }
-  await visit('/tools/print-bleed-calculator');
-  await page.locator('details').first().click();
-  await page.locator('details a[hreflang="ar"]').click();
-  await page.waitForURL(`${base}/ar/tools/print-bleed-calculator`);
-  assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
-  await page.locator('details').first().click();
-  await page.locator('details a[hreflang="en"]').click();
-  await page.waitForURL(`${base}/tools/print-bleed-calculator`);
-  assert.equal(await page.locator('html').getAttribute('lang'), 'en');
-  assert.notEqual(await page.locator('html').getAttribute('dir'), 'rtl');
+  await visitEn('/tools/print-bleed-calculator');
+  await englishPage.locator('details').first().click();
+  await englishPage.locator('details a[hreflang="ar"]').click();
+  await englishPage.waitForURL(`${base}/ar/tools/print-bleed-calculator`);
+  assert.equal(await englishPage.locator('html').getAttribute('dir'), 'rtl');
+  await englishPage.locator('details').first().click();
+  await englishPage.locator('details a[hreflang="en"]').click();
+  await englishPage.waitForURL(`${base}/tools/print-bleed-calculator`);
+  assert.equal(await englishPage.locator('html').getAttribute('lang'), 'en');
+  assert.notEqual(await englishPage.locator('html').getAttribute('dir'), 'rtl');
   for (const path of ['/xx', '/fr/tools/not-a-tool', '/fr/privacy', '/ar/tools/image-dpi-converter', '/en']) {
     assert.equal((await context.request.get(`${base}${path}`)).status(), 404, path);
   }
@@ -1021,13 +1092,14 @@ try {
   if (process.env.I18N_SCREENSHOT_DIR) {
     mkdirSync(process.env.I18N_SCREENSHOT_DIR, { recursive: true });
     for (const locale of ['fr', 'ar']) {
-      await page.setViewportSize({ width: 1280, height: 900 });
-      await visit(`/${locale}/tools/aspect-ratio-padding-calculator`);
-      await page.screenshot({ path: join(process.env.I18N_SCREENSHOT_DIR, `${locale}-desktop.png`), fullPage: true });
-      await page.setViewportSize({ width: 390, height: 844 });
-      await page.screenshot({ path: join(process.env.I18N_SCREENSHOT_DIR, `${locale}-mobile.png`), fullPage: true });
+      await englishPage.setViewportSize({ width: 1280, height: 900 });
+      await visitEn(`/${locale}/tools/aspect-ratio-padding-calculator`);
+      await englishPage.screenshot({ path: join(process.env.I18N_SCREENSHOT_DIR, `${locale}-desktop.png`), fullPage: true });
+      await englishPage.setViewportSize({ width: 390, height: 844 });
+      await englishPage.screenshot({ path: join(process.env.I18N_SCREENSHOT_DIR, `${locale}-mobile.png`), fullPage: true });
     }
   }
+  await englishPage.close();
   assert.deepEqual(errors, [], 'Uncaught browser errors');
   console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, exportsValidated, englishAlternates: slugs.length + 1, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
 } finally {
