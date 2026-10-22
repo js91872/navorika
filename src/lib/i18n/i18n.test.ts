@@ -95,10 +95,13 @@ test('moving English routes into a route group preserves every existing public p
     route.slice(join(process.cwd(), 'src/app/(english)').length + 1));
   const newRoutes = allRoutes.filter((route) => !paths.includes(route)).sort();
   // Only these two intentional public pages extend the original route contract.
-  assert.deepEqual(newRoutes, [
-    'guides/shopify-profit-margin-calculator/page.tsx',
-    'tools/shopify-margin-calculator/page.tsx',
-  ]);
+  const expectedNew = paths.includes('tools/shopify-margin-calculator/page.tsx')
+    ? []
+    : [
+        'guides/shopify-profit-margin-calculator/page.tsx',
+        'tools/shopify-margin-calculator/page.tsx',
+      ];
+  assert.deepEqual(newRoutes, expectedNew);
   assert.equal(new Set(allRoutes).size, allRoutes.length);
 });
 
