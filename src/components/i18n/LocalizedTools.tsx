@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import { isLocalizedCalculator } from '@/lib/i18n/calculatorRegistry';
 import { CopyResult, fieldClass, buttonClass } from './ToolControls';
-import { useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale, TranslatedTool } from '@/lib/i18n/config';
 import { aspectRatio, flexCss, printDimensions } from '@/lib/i18n/calculations';
@@ -165,188 +165,197 @@ function ColorTool({ d, locale }: { d: Dictionary; locale: Locale }) {
 }
 
 export default function LocalizedTools({ slug, dictionary, locale }: { slug: TranslatedTool; dictionary: Dictionary; locale: Locale }) {
-  if (isLocalizedCalculator(slug)) return <LocalizedBusinessTools slug={slug} d={dictionary} locale={locale} />;
-  if (slug === 'regex-tester' || slug === 'unix-timestamp-converter' || slug === 'utm-builder' || slug === 'meta-tag-generator' || slug === 'robots-txt-generator') {
-    return <LocalizedDeveloperTools slug={slug} d={dictionary} locale={locale} />;
-  }
-  if (slug === 'cement-calculator' || slug === 'sand-calculator' || slug === 'paint-calculator' || slug === 'tile-calculator' || slug === 'steel-weight-calculator') {
-    return <LocalizedTakeoffTools slug={slug} d={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'roof-pitch-calculator' ||
-    slug === 'stair-stringer-calculator' ||
-    slug === 'deck-board-calculator' ||
-    slug === 'fence-calculator' ||
-    slug === 'post-hole-concrete-calculator' ||
-    slug === 'drywall-calculator' ||
-    slug === 'paver-calculator' ||
-    slug === 'polymeric-sand-calculator' ||
-    slug === 'mulch-calculator' ||
-    slug === 'topsoil-calculator'
-  ) {
-    return <LocalizedConstructionTools slug={slug} d={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'bmi-calculator' ||
-    slug === 'bmr-calculator' ||
-    slug === 'body-fat-calculator' ||
-    slug === 'calorie-calculator' ||
-    slug === 'calories-burned-calculator' ||
-    slug === 'healthy-weight-calculator' ||
-    slug === 'heart-rate-calculator' ||
-    slug === 'ideal-weight-calculator' ||
-    slug === 'lean-body-mass-calculator' ||
-    slug === 'running-calories-calculator' ||
-    slug === 'tdee-calculator' ||
-    slug === 'waist-to-height-ratio-calculator' ||
-    slug === 'waist-to-hip-ratio-calculator' ||
-    slug === 'walking-calories-calculator'
-  ) {
-    return <LocalizedHealthTools slug={slug} d={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'aquarium-volume-calculator' ||
-    slug === 'barbell-plate-calculator' ||
-    slug === 'battery-charge-time-calculator' ||
-    slug === 'dimensional-weight-calculator' ||
-    slug === 'electricity-cost-calculator' ||
-    slug === 'fuel-cost-split-calculator' ||
-    slug === 'schengen-90-180-day-calculator' ||
-    slug === 'tire-size-calculator' ||
-    slug === 'unit-price-calculator' ||
-    slug === 'website-worth-calculator'
-  ) {
-    return <LocalizedEverydayTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'asphalt-calculator' ||
-    slug === 'board-foot-calculator' ||
-    slug === 'brick-calculator' ||
-    slug === 'concrete-calculator' ||
-    slug === 'dumpster-weight-calculator' ||
-    slug === 'flooring-calculator' ||
-    slug === 'gravel-calculator' ||
-    slug === 'rebar-calculator' ||
-    slug === 'roof-area-calculator' ||
-    slug === 'saw-kerf-calculator'
-  ) {
-    return <LocalizedStructuralTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'air-compressor-cfm-calculator' ||
-    slug === 'construction-cost-calculator' ||
-    slug === 'egress-window-code-checker' ||
-    slug === 'excavation-calculator' ||
-    slug === 'ladder-safe-reach-calculator' ||
-    slug === 'land-area-converter' ||
-    slug === 'osha-portable-toilet-calculator' ||
-    slug === 'solar-panel-calculator'
-  ) {
-    return <LocalizedJobsiteTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'voltage-drop-calculator' ||
-    slug === 'wallpaper-calculator' ||
-    slug === 'water-tank-calculator' ||
-    slug === 'wire-size-calculator' ||
-    slug === '12-foot-gambrel-roof-truss-calculator' ||
-    slug === 'construction-estimate-builder' ||
-    slug === 'contractor-estimate-generator' ||
-    slug === 'house-construction-cost-calculator'
-  ) {
-    return <LocalizedBuildingTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'currency-converter' ||
-    slug === 'uk-vat-calculator' ||
-    slug === 'sip-calculator' ||
-    slug === 'ppf-calculator' ||
-    slug === 'fd-calculator' ||
-    slug === 'gst-calculator' ||
-    slug === 'loan-emi-calculator' ||
-    slug === 'tax-calculator'
-  ) {
-    return <LocalizedFinanceTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'debt-snowball-vs-avalanche-calculator' ||
-    slug === 'retirement-calculator' ||
-    slug === 'cashflow-budget-architect' ||
-    slug === 'investment-return-profiler' ||
-    slug === 'loan-amortization-suite' ||
-    slug === 'savings-retirement-hub' ||
-    slug === 'taxation-compliance-deck' ||
-    slug === 'wealth-inflation-matrix'
-  ) {
-    return <LocalizedWealthTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'merge-pdf' ||
-    slug === 'split-pdf' ||
-    slug === 'rotate-pdf' ||
-    slug === 'reorder-pdf' ||
-    slug === 'delete-pdf-pages' ||
-    slug === 'extract-pdf-pages' ||
-    slug === 'compress-pdf' ||
-    slug === 'pdf-page-size-checker' ||
-    slug === 'pdf-metadata-editor' ||
-    slug === 'pdf-word-counter' ||
-    slug === 'flatten-pdf' ||
-    slug === 'interleave-pdf'
-  ) {
-    return <LocalizedPdfTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'add-image-to-pdf' ||
-    slug === 'add-page-numbers' ||
-    slug === 'add-watermark' ||
-    slug === 'crop-pdf' ||
-    slug === 'extract-pdf-text' ||
-    slug === 'heic-to-pdf' ||
-    slug === 'jpg-to-pdf' ||
-    slug === 'markdown-to-pdf' ||
-    slug === 'pdf-to-image' ||
-    slug === 'pdf-to-jpg' ||
-    slug === 'sign-pdf' ||
-    slug === 'webp-to-pdf'
-  ) {
-    return <LocalizedPdfSuiteTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'compress-image' ||
-    slug === 'compress-image-to-20kb' ||
-    slug === 'compress-image-to-50kb' ||
-    slug === 'compress-image-to-100kb' ||
-    slug === 'compress-image-to-200kb' ||
-    slug === 'compress-jpg' ||
-    slug === 'compress-jpg-to-100kb' ||
-    slug === 'compress-png' ||
-    slug === 'compress-png-to-100kb' ||
-    slug === 'compress-webp' ||
-    slug === 'resize-image' ||
-    slug === 'rotate-image'
-  ) {
-    return <LocalizedImageTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (
-    slug === 'convert-jpg-to-png' ||
-    slug === 'convert-jpg-to-webp' ||
-    slug === 'convert-png-to-jpg' ||
-    slug === 'convert-png-to-webp' ||
-    slug === 'convert-webp-to-jpg' ||
-    slug === 'webp-to-png' ||
-    slug === 'image-converter' ||
-    slug === 'svg-to-png' ||
-    slug === 'svg-to-ico' ||
-    slug === 'webp-to-ico' ||
-    slug === 'webp-to-gif' ||
-    slug === 'jfif-to-png'
-  ) {
-    return <LocalizedImageConverterTools slug={slug} dictionary={dictionary} locale={locale} />;
-  }
-  if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
-  if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;
-  if (slug === 'css-flexbox-generator') return <FlexTool d={dictionary} />;
-  if (slug === 'rgb-cmyk-image-checker') return <ColorTool d={dictionary} locale={locale} />;
-  return <NumericTools slug={slug} d={dictionary} locale={locale} />;
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  const renderTool = () => {
+    if (isLocalizedCalculator(slug)) return <LocalizedBusinessTools slug={slug} d={dictionary} locale={locale} />;
+    if (slug === 'regex-tester' || slug === 'unix-timestamp-converter' || slug === 'utm-builder' || slug === 'meta-tag-generator' || slug === 'robots-txt-generator') {
+      return <LocalizedDeveloperTools slug={slug} d={dictionary} locale={locale} />;
+    }
+    if (slug === 'cement-calculator' || slug === 'sand-calculator' || slug === 'paint-calculator' || slug === 'tile-calculator' || slug === 'steel-weight-calculator') {
+      return <LocalizedTakeoffTools slug={slug} d={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'roof-pitch-calculator' ||
+      slug === 'stair-stringer-calculator' ||
+      slug === 'deck-board-calculator' ||
+      slug === 'fence-calculator' ||
+      slug === 'post-hole-concrete-calculator' ||
+      slug === 'drywall-calculator' ||
+      slug === 'paver-calculator' ||
+      slug === 'polymeric-sand-calculator' ||
+      slug === 'mulch-calculator' ||
+      slug === 'topsoil-calculator'
+    ) {
+      return <LocalizedConstructionTools slug={slug} d={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'bmi-calculator' ||
+      slug === 'bmr-calculator' ||
+      slug === 'body-fat-calculator' ||
+      slug === 'calorie-calculator' ||
+      slug === 'calories-burned-calculator' ||
+      slug === 'healthy-weight-calculator' ||
+      slug === 'heart-rate-calculator' ||
+      slug === 'ideal-weight-calculator' ||
+      slug === 'lean-body-mass-calculator' ||
+      slug === 'running-calories-calculator' ||
+      slug === 'tdee-calculator' ||
+      slug === 'waist-to-height-ratio-calculator' ||
+      slug === 'waist-to-hip-ratio-calculator' ||
+      slug === 'walking-calories-calculator'
+    ) {
+      return <LocalizedHealthTools slug={slug} d={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'aquarium-volume-calculator' ||
+      slug === 'barbell-plate-calculator' ||
+      slug === 'battery-charge-time-calculator' ||
+      slug === 'dimensional-weight-calculator' ||
+      slug === 'electricity-cost-calculator' ||
+      slug === 'fuel-cost-split-calculator' ||
+      slug === 'schengen-90-180-day-calculator' ||
+      slug === 'tire-size-calculator' ||
+      slug === 'unit-price-calculator' ||
+      slug === 'website-worth-calculator'
+    ) {
+      return <LocalizedEverydayTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'asphalt-calculator' ||
+      slug === 'board-foot-calculator' ||
+      slug === 'brick-calculator' ||
+      slug === 'concrete-calculator' ||
+      slug === 'dumpster-weight-calculator' ||
+      slug === 'flooring-calculator' ||
+      slug === 'gravel-calculator' ||
+      slug === 'rebar-calculator' ||
+      slug === 'roof-area-calculator' ||
+      slug === 'saw-kerf-calculator'
+    ) {
+      return <LocalizedStructuralTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'air-compressor-cfm-calculator' ||
+      slug === 'construction-cost-calculator' ||
+      slug === 'egress-window-code-checker' ||
+      slug === 'excavation-calculator' ||
+      slug === 'ladder-safe-reach-calculator' ||
+      slug === 'land-area-converter' ||
+      slug === 'osha-portable-toilet-calculator' ||
+      slug === 'solar-panel-calculator'
+    ) {
+      return <LocalizedJobsiteTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'voltage-drop-calculator' ||
+      slug === 'wallpaper-calculator' ||
+      slug === 'water-tank-calculator' ||
+      slug === 'wire-size-calculator' ||
+      slug === '12-foot-gambrel-roof-truss-calculator' ||
+      slug === 'construction-estimate-builder' ||
+      slug === 'contractor-estimate-generator' ||
+      slug === 'house-construction-cost-calculator'
+    ) {
+      return <LocalizedBuildingTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'currency-converter' ||
+      slug === 'uk-vat-calculator' ||
+      slug === 'sip-calculator' ||
+      slug === 'ppf-calculator' ||
+      slug === 'fd-calculator' ||
+      slug === 'gst-calculator' ||
+      slug === 'loan-emi-calculator' ||
+      slug === 'tax-calculator'
+    ) {
+      return <LocalizedFinanceTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'debt-snowball-vs-avalanche-calculator' ||
+      slug === 'retirement-calculator' ||
+      slug === 'cashflow-budget-architect' ||
+      slug === 'investment-return-profiler' ||
+      slug === 'loan-amortization-suite' ||
+      slug === 'savings-retirement-hub' ||
+      slug === 'taxation-compliance-deck' ||
+      slug === 'wealth-inflation-matrix'
+    ) {
+      return <LocalizedWealthTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'merge-pdf' ||
+      slug === 'split-pdf' ||
+      slug === 'rotate-pdf' ||
+      slug === 'reorder-pdf' ||
+      slug === 'delete-pdf-pages' ||
+      slug === 'extract-pdf-pages' ||
+      slug === 'compress-pdf' ||
+      slug === 'pdf-page-size-checker' ||
+      slug === 'pdf-metadata-editor' ||
+      slug === 'pdf-word-counter' ||
+      slug === 'flatten-pdf' ||
+      slug === 'interleave-pdf'
+    ) {
+      return <LocalizedPdfTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'add-image-to-pdf' ||
+      slug === 'add-page-numbers' ||
+      slug === 'add-watermark' ||
+      slug === 'crop-pdf' ||
+      slug === 'extract-pdf-text' ||
+      slug === 'heic-to-pdf' ||
+      slug === 'jpg-to-pdf' ||
+      slug === 'markdown-to-pdf' ||
+      slug === 'pdf-to-image' ||
+      slug === 'pdf-to-jpg' ||
+      slug === 'sign-pdf' ||
+      slug === 'webp-to-pdf'
+    ) {
+      return <LocalizedPdfSuiteTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'compress-image' ||
+      slug === 'compress-image-to-20kb' ||
+      slug === 'compress-image-to-50kb' ||
+      slug === 'compress-image-to-100kb' ||
+      slug === 'compress-image-to-200kb' ||
+      slug === 'compress-jpg' ||
+      slug === 'compress-jpg-to-100kb' ||
+      slug === 'compress-png' ||
+      slug === 'compress-png-to-100kb' ||
+      slug === 'compress-webp' ||
+      slug === 'resize-image' ||
+      slug === 'rotate-image'
+    ) {
+      return <LocalizedImageTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'convert-jpg-to-png' ||
+      slug === 'convert-jpg-to-webp' ||
+      slug === 'convert-png-to-jpg' ||
+      slug === 'convert-png-to-webp' ||
+      slug === 'convert-webp-to-jpg' ||
+      slug === 'webp-to-png' ||
+      slug === 'image-converter' ||
+      slug === 'svg-to-png' ||
+      slug === 'svg-to-ico' ||
+      slug === 'webp-to-ico' ||
+      slug === 'webp-to-gif' ||
+      slug === 'jfif-to-png'
+    ) {
+      return <LocalizedImageConverterTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
+    if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;
+    if (slug === 'css-flexbox-generator') return <FlexTool d={dictionary} />;
+    if (slug === 'rgb-cmyk-image-checker') return <ColorTool d={dictionary} locale={locale} />;
+    return <NumericTools slug={slug} d={dictionary} locale={locale} />;
+  };
+
+  return <div data-hydrated={hydrated}>{renderTool()}</div>;
 }

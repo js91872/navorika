@@ -50,6 +50,10 @@ try {
       const response = await page.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
       assert.equal(response.status(), 200, path);
     };
+    const visitTool = async (path) => {
+      await visit(path);
+      await page.locator('[data-hydrated="true"]').waitFor({ timeout: 10000 });
+    };
     const noOverflow = async (path) => {
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `Horizontal overflow: ${path}`);
     };
@@ -200,7 +204,7 @@ try {
       ['yaml-json-converter', 0, 0, 0],
       ['uuid-generator-validator', 10, 0, 0],
     ]) {
-      await visit(`/${locale}/tools/${slug}`);
+      await visitTool(`/${locale}/tools/${slug}`);
       await page.locator('main input, main textarea, main select').first().waitFor();
       const ui = d.calculatorUi;
       const currencySlugs = new Set([
@@ -300,6 +304,7 @@ try {
         const input = page.locator('main input[type="number"]').first();
         const target = number.format(changed ?? expected * 2);
         for (let i = 0; i < 40; i++) {
+          await input.fill('');
           await input.fill(String(initial * 2));
           if (await page.locator('main dd').first().textContent() === target) break;
           await page.waitForTimeout(100);
