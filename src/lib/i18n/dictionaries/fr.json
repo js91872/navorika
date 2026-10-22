@@ -5525,13 +5525,19 @@
       "format": "Format d'image",
       "resolution": "Résolution de sortie (échelle)",
       "convertAction": "Générer et télécharger l'image",
-      "preview": "Aperçu de l'image générée"
+      "preview": "Aperçu de l'image générée",
+      "scaleStandard": "1x (Standard)",
+      "scaleHighDef": "2x (Haute Définition)",
+      "scaleUltraSharp": "3x (Ultra Net)"
     },
     "converters": {
       "heading": "Convertir le fichier en PDF",
       "selectFile": "Sélectionner un fichier",
       "convertAction": "Convertir et télécharger le PDF",
-      "unsupported": "Format de fichier non pris en charge"
+      "unsupported": "Format de fichier non pris en charge",
+      "markdownText": "Texte Markdown",
+      "canvasUnavailable": "Le traitement Canvas n'est pas disponible dans cet environnement.",
+      "imageFailed": "La génération de l'image a échoué."
     }
   },
   "imageTools": {
@@ -5601,7 +5607,12 @@
       "previewPlaceholder": "Convertissez pour afficher l'aperçu",
       "whiteBgNote": "Zones transparentes remplies avec un fond blanc",
       "alphaPreserved": "Transparence décodée conservée",
-      "icoNotice": "Généré en icône favicon de 64 × 64 px"
+      "icoNotice": "Généré en icône favicon de 64 × 64 px",
+      "dimensionsExceeded": "Les dimensions de l'image dépassent la limite de 25 mégapixels.",
+      "canvasUnavailable": "Le traitement Canvas n'est pas disponible dans cet environnement.",
+      "pngFailed": "La conversion PNG a échoué.",
+      "gifFailed": "L'encodage GIF a échoué.",
+      "imageFailed": "L'encodage de l'image a échoué."
     }
   }
 }

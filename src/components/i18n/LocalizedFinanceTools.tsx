@@ -1,13 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import {
   ArrowRightLeft,
   Banknote,
   Calculator,
   CircleDollarSign,
   Globe,
-  LoaderCircle,
   Percent,
   PiggyBank,
   Receipt,
@@ -15,6 +14,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import ResultActions from '@/components/ui/ResultActions';
+import { resultActionMessages } from '@/lib/i18n/actionMessages';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
 import { fieldClass, buttonClass } from './ToolControls';
@@ -114,19 +114,14 @@ export default function LocalizedFinanceTools({
   const ui = d.ui;
   const fin = (d as unknown as { finance: Record<string, Record<string, string>> }).finance;
 
-  const format = (n: number, maxDigits = 2) =>
-    new Intl.NumberFormat(locale, { maximumFractionDigits: maxDigits }).format(n);
+  const format = useCallback(
+    (n: number, maxDigits = 2) =>
+      new Intl.NumberFormat(locale, { maximumFractionDigits: maxDigits }).format(n),
+    [locale]
+  );
 
-  const formatCurrency = (n: number, currencyCode = 'USD') => {
-    return new Intl.NumberFormat(locale, {
-      style: 'currency',
-      currency: currencyCode,
-      maximumFractionDigits: 2,
-    }).format(n);
-  };
-
-  const formatRupees = (n: number) => `₹${format(Math.round(n), 0)}`;
-  const formatPounds = (n: number) => `£${format(n, 2)}`;
+  const formatRupees = useCallback((n: number) => `₹${format(Math.round(n), 0)}`, [format]);
+  const formatPounds = useCallback((n: number) => `£${format(n, 2)}`, [format]);
 
   // 1. Currency Converter State
   const [ccAmount, setCcAmount] = useState<number>(100);
@@ -135,49 +130,45 @@ export default function LocalizedFinanceTools({
   const [ccRate, setCcRate] = useState<number>(BASELINE_USD_RATES.EUR / BASELINE_USD_RATES.USD);
   const [ccDate, setCcDate] = useState<string>('');
   const [ccIsFallback, setCcIsFallback] = useState<boolean>(false);
-  const [ccLoading, setCcLoading] = useState<boolean>(false);
-  const [ccError, setCcError] = useState<string>('');
-
-  const fetchRate = async (from: string, to: string) => {
-    if (from === to) {
-      setCcRate(1.0);
-      setCcDate('');
-      setCcIsFallback(false);
-      setCcError('');
-      return;
-    }
-    setCcLoading(true);
-    setCcError('');
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 4000);
-      const res = await fetch(`https://api.frankfurter.dev/v2/rate/${from}/${to}?providers=ECB`, {
-        signal: controller.signal,
-      });
-      clearTimeout(timeoutId);
-      if (!res.ok) throw new Error('ECB API unavailable');
-      const data = await res.json();
-      if (!data || !Number.isFinite(data.rate)) throw new Error('Invalid rate response');
-      setCcRate(data.rate);
-      setCcDate(data.date || '');
-      setCcIsFallback(false);
-    } catch {
-      // Offline fallback: calculate relative benchmark rate
-      const fromRate = BASELINE_USD_RATES[from] || 1.0;
-      const toRate = BASELINE_USD_RATES[to] || 1.0;
-      const benchmarkRate = toRate / fromRate;
-      setCcRate(benchmarkRate);
-      setCcDate('');
-      setCcIsFallback(true);
-    } finally {
-      setCcLoading(false);
-    }
-  };
 
   useEffect(() => {
-    if (slug === 'currency-converter') {
-      fetchRate(ccFrom, ccTo);
-    }
+    if (slug !== 'currency-converter' || ccFrom === ccTo) return;
+
+    let ignore = false;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+    fetch(`https://api.frankfurter.dev/v2/rate/${ccFrom}/${ccTo}?providers=ECB`, {
+      signal: controller.signal,
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('ECB API unavailable');
+        return res.json();
+      })
+      .then((data) => {
+        if (ignore) return;
+        if (!data || !Number.isFinite(data.rate)) throw new Error('Invalid rate response');
+        setCcRate(data.rate);
+        setCcDate(data.date || '');
+        setCcIsFallback(false);
+      })
+      .catch(() => {
+        if (ignore) return;
+        const fromRate = BASELINE_USD_RATES[ccFrom] || 1.0;
+        const toRate = BASELINE_USD_RATES[ccTo] || 1.0;
+        setCcRate(toRate / fromRate);
+        setCcDate('');
+        setCcIsFallback(true);
+      })
+      .finally(() => {
+        clearTimeout(timeoutId);
+      });
+
+    return () => {
+      ignore = true;
+      controller.abort();
+      clearTimeout(timeoutId);
+    };
   }, [slug, ccFrom, ccTo]);
 
   // 2. UK VAT State (HMRC 20% Standard, 5% Reduced, 0% Zero)
@@ -215,13 +206,15 @@ export default function LocalizedFinanceTools({
   const [taxIncome, setTaxIncome] = useState<number>(1200000);
 
   // Calculation Results
+  const effectiveRate = ccFrom === ccTo ? 1.0 : ccRate;
+
   const currentResults = useMemo(() => {
     const results: Array<[string, string]> = [];
 
     if (slug === 'currency-converter') {
-      const converted = ccAmount * ccRate;
+      const converted = ccAmount * effectiveRate;
       results.push([fin.currencyConverter.convertedAmount, `${format(converted, 2)} ${ccTo}`]);
-      results.push([fin.currencyConverter.exchangeRate, `1 ${ccFrom} = ${format(ccRate, 4)} ${ccTo}`]);
+      results.push([fin.currencyConverter.exchangeRate, `1 ${ccFrom} = ${format(effectiveRate, 4)} ${ccTo}`]);
       results.push([
         fin.currencyConverter.dataSource,
         ccIsFallback
@@ -303,7 +296,7 @@ export default function LocalizedFinanceTools({
   }, [
     slug,
     ccAmount,
-    ccRate,
+    effectiveRate,
     ccFrom,
     ccTo,
     ccIsFallback,
@@ -794,6 +787,7 @@ export default function LocalizedFinanceTools({
             </dl>
 
             <ResultActions
+              messages={resultActionMessages[locale]}
               actions={[
                 { kind: 'copy', label: d.ui.copy, getContent: () => activeSummary },
                 {

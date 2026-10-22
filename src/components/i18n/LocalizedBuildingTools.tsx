@@ -11,6 +11,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import ResultActions from '@/components/ui/ResultActions';
+import { resultActionMessages } from '@/lib/i18n/actionMessages';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
 import { fieldClass, buttonClass } from './ToolControls';
@@ -716,7 +717,7 @@ export default function LocalizedBuildingTools({
                 {con.waterTank.shape}
                 <select
                   value={wtShape}
-                  onChange={(e) => setWtShape(e.target.value as any)}
+                  onChange={(e) => setWtShape(e.target.value as 'rectangular' | 'cylindrical' | 'spherical')}
                   className={fieldClass}
                 >
                   <option value="rectangular">{con.waterTank.rectangular}</option>
@@ -864,7 +865,7 @@ export default function LocalizedBuildingTools({
                 {con.wireSize.conductor}
                 <select
                   value={wsConductor}
-                  onChange={(e) => setWsConductor(e.target.value as any)}
+                  onChange={(e) => setWsConductor(e.target.value as 'copper' | 'aluminum')}
                   className={fieldClass}
                 >
                   <option value="copper">{con.wireSize.copper}</option>
@@ -875,7 +876,7 @@ export default function LocalizedBuildingTools({
                 {con.wireSize.phase}
                 <select
                   value={wsPhase}
-                  onChange={(e) => setWsPhase(e.target.value as any)}
+                  onChange={(e) => setWsPhase(e.target.value as 'single' | 'three')}
                   className={fieldClass}
                 >
                   <option value="single">{con.wireSize.singlePhase}</option>
@@ -1260,6 +1261,7 @@ export default function LocalizedBuildingTools({
             </dl>
 
             <ResultActions
+              messages={resultActionMessages[locale]}
               actions={[
                 { kind: 'copy', label: d.ui.copy, getContent: () => activeSummary },
                 {

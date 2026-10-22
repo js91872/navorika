@@ -1,21 +1,21 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 import {
   Upload,
   Download,
   RotateCcw,
-  CheckCircle,
   AlertCircle,
   Loader2,
   FileImage,
-  ImageIcon,
-  ArrowRight,
   Sparkles,
 } from 'lucide-react';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
 import { fieldClass, buttonClass } from './ToolControls';
+import { encodePngToIco } from '@/lib/image/icoEncoder';
+import { encodeCanvasToGif } from '@/lib/image/gifEncoder';
 
 export type ConverterToolSlug =
   | 'convert-jpg-to-png'
@@ -113,36 +113,46 @@ export default function LocalizedImageConverterTools({
   const [quality, setQuality] = useState(0.92);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const prevSourceUrlRef = useRef<string | null>(null);
+  const prevResultUrlRef = useRef<string | null>(null);
+  const activeOpIdRef = useRef(0);
 
-  const cleanupUrls = useCallback(() => {
-    if (sourceUrl) URL.revokeObjectURL(sourceUrl);
-    if (resultUrl) URL.revokeObjectURL(resultUrl);
-  }, [sourceUrl, resultUrl]);
+  useEffect(() => {
+    if (prevSourceUrlRef.current && prevSourceUrlRef.current !== sourceUrl) {
+      URL.revokeObjectURL(prevSourceUrlRef.current);
+    }
+    prevSourceUrlRef.current = sourceUrl;
+  }, [sourceUrl]);
+
+  useEffect(() => {
+    if (prevResultUrlRef.current && prevResultUrlRef.current !== resultUrl) {
+      URL.revokeObjectURL(prevResultUrlRef.current);
+    }
+    prevResultUrlRef.current = resultUrl;
+  }, [resultUrl]);
 
   useEffect(() => {
     return () => {
-      cleanupUrls();
+      if (prevSourceUrlRef.current) URL.revokeObjectURL(prevSourceUrlRef.current);
+      if (prevResultUrlRef.current) URL.revokeObjectURL(prevResultUrlRef.current);
     };
-  }, [cleanupUrls]);
+  }, []);
 
   const handleReset = () => {
-    cleanupUrls();
+    activeOpIdRef.current++;
     setFile(null);
     setSourceUrl(null);
     setResultUrl(null);
     setResultBlob(null);
     setError(null);
-    setSuccess(null);
     setSelectedFormat(initialTargetFormat);
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const handleFileSelect = (selectedFile: File) => {
     setError(null);
-    setSuccess(null);
     setResultUrl(null);
     setResultBlob(null);
 
@@ -160,30 +170,33 @@ export default function LocalizedImageConverterTools({
   // Execute Conversion
   const convertImage = async () => {
     if (!file || !sourceUrl) return;
+    const opId = ++activeOpIdRef.current;
     setError(null);
     setBusy(true);
 
     try {
-      const img = new Image();
+      const img = new window.Image();
       await new Promise<void>((resolve, reject) => {
         img.onload = () => resolve();
         img.onerror = () => reject(new Error(c.errorUnsupported));
         img.src = sourceUrl;
       });
 
+      if (opId !== activeOpIdRef.current) return;
+
       const isIcon = selectedFormat === 'ico';
       const width = isIcon ? 64 : img.naturalWidth || img.width;
       const height = isIcon ? 64 : img.naturalHeight || img.height;
 
       if (!width || !height || width * height > 25000000) {
-        throw new Error('Image dimensions exceed the 25 megapixel limit.');
+        throw new Error(conv.dimensionsExceeded || c.errorTooLarge);
       }
 
       const canvas = document.createElement('canvas');
       canvas.width = width;
       canvas.height = height;
       const ctx = canvas.getContext('2d');
-      if (!ctx) throw new Error('Canvas processing is unavailable in this environment.');
+      if (!ctx) throw new Error(conv.canvasUnavailable || c.errorUnsupported);
 
       if (selectedFormat === 'jpeg') {
         // Fill transparent background with white
@@ -207,46 +220,32 @@ export default function LocalizedImageConverterTools({
       if (isIcon) {
         // Produce 64x64 PNG and package into ICO binary structure
         const pngBlob = await new Promise<Blob>((resolve, reject) => {
-          canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('PNG conversion failed'))), 'image/png');
+          canvas.toBlob((b) => (b ? resolve(b) : reject(new Error(conv.pngFailed || c.errorUnsupported))), 'image/png');
         });
         const pngBytes = new Uint8Array(await pngBlob.arrayBuffer());
-        const header = new ArrayBuffer(22);
-        const view = new DataView(header);
-        view.setUint16(2, 1, true); // 1 image
-        view.setUint8(4, 64); // width
-        view.setUint8(5, 64); // height
-        view.setUint16(10, 1, true); // color planes
-        view.setUint16(12, 32, true); // bits per pixel
-        view.setUint32(14, pngBytes.length, true); // size of image
-        view.setUint32(18, 22, true); // offset
-        outputBlob = new Blob([header, pngBytes], { type: 'image/x-icon' });
+        const icoBytes = encodePngToIco(pngBytes, { width: 64, height: 64 });
+        outputBlob = new Blob([icoBytes.buffer as ArrayBuffer], { type: 'image/x-icon' });
       } else if (selectedFormat === 'gif') {
-        // Attempt image/gif or fallback
-        outputBlob = await new Promise<Blob>((resolve, reject) => {
-          canvas.toBlob((b) => {
-            if (b && b.type === 'image/gif') resolve(b);
-            else {
-              // Browser canvas toBlob('image/gif') may fallback to PNG in some browsers
-              canvas.toBlob((b2) => (b2 ? resolve(b2) : reject(new Error('GIF encoding failed'))), 'image/png');
-            }
-          }, 'image/gif');
-        });
+        outputBlob = encodeCanvasToGif(canvas);
       } else {
         const mime = selectedFormat === 'jpeg' ? 'image/jpeg' : selectedFormat === 'webp' ? 'image/webp' : 'image/png';
         const qualityParam = selectedFormat === 'png' ? undefined : quality;
         outputBlob = await new Promise<Blob>((resolve, reject) => {
-          canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('Image encoding failed'))), mime, qualityParam);
+          canvas.toBlob((b) => (b ? resolve(b) : reject(new Error(conv.imageFailed || c.errorUnsupported))), mime, qualityParam);
         });
       }
 
+      if (opId !== activeOpIdRef.current) return;
       setResultBlob(outputBlob);
-      if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(outputBlob));
-      setSuccess(c.success);
     } catch (err) {
-      setError(err instanceof Error ? err.message : c.errorUnsupported);
+      if (opId === activeOpIdRef.current) {
+        setError(err instanceof Error ? err.message : c.errorUnsupported);
+      }
     } finally {
-      setBusy(false);
+      if (opId === activeOpIdRef.current) {
+        setBusy(false);
+      }
     }
   };
 
@@ -332,12 +331,14 @@ export default function LocalizedImageConverterTools({
                 <p className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)] mb-2">
                   {conv.sourceImage}
                 </p>
-                <div className="h-56 rounded-xl bg-slate-100 dark:bg-slate-950 border border-[var(--border)] p-3 flex items-center justify-center overflow-hidden">
+                <div className="relative h-56 rounded-xl bg-slate-100 dark:bg-slate-950 border border-[var(--border)] p-3 flex items-center justify-center overflow-hidden">
                   {sourceUrl ? (
-                    <img
+                    <Image
                       src={sourceUrl}
                       alt={conv.sourceImage}
-                      className="max-h-full max-w-full object-contain shadow-sm"
+                      unoptimized
+                      fill
+                      className="object-contain p-2"
                     />
                   ) : null}
                 </div>
@@ -347,12 +348,14 @@ export default function LocalizedImageConverterTools({
                 <p className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)] mb-2">
                   {conv.convertedPreview}
                 </p>
-                <div className="h-56 rounded-xl bg-slate-100 dark:bg-slate-950 border border-[var(--border)] p-3 flex items-center justify-center overflow-hidden">
+                <div className="relative h-56 rounded-xl bg-slate-100 dark:bg-slate-950 border border-[var(--border)] p-3 flex items-center justify-center overflow-hidden">
                   {resultUrl ? (
-                    <img
+                    <Image
                       src={resultUrl}
                       alt={conv.convertedPreview}
-                      className="max-h-full max-w-full object-contain shadow-sm"
+                      unoptimized
+                      fill
+                      className="object-contain p-2"
                     />
                   ) : (
                     <span className="text-xs text-[var(--muted-foreground)]">{conv.previewPlaceholder}</span>

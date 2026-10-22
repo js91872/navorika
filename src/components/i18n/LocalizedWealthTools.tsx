@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useCallback } from 'react';
 import {
   Calculator,
   DollarSign,
@@ -13,6 +13,7 @@ import {
   Wallet,
 } from 'lucide-react';
 import ResultActions from '@/components/ui/ResultActions';
+import { resultActionMessages } from '@/lib/i18n/actionMessages';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
 import { fieldClass, buttonClass } from './ToolControls';
@@ -42,13 +43,19 @@ export default function LocalizedWealthTools({
   const ui = d.ui;
   const w = (d as unknown as { wealth: Record<string, Record<string, string>> }).wealth;
 
-  const format = (n: number, maxDigits = 2) =>
-    new Intl.NumberFormat(locale, { maximumFractionDigits: maxDigits }).format(n);
+  const format = useCallback(
+    (n: number, maxDigits = 2) =>
+      new Intl.NumberFormat(locale, { maximumFractionDigits: maxDigits }).format(n),
+    [locale]
+  );
 
-  const formatMoney = (n: number) =>
-    new Intl.NumberFormat(locale, {
-      maximumFractionDigits: 0,
-    }).format(Math.round(n));
+  const formatMoney = useCallback(
+    (n: number) =>
+      new Intl.NumberFormat(locale, {
+        maximumFractionDigits: 0,
+      }).format(Math.round(n)),
+    [locale]
+  );
 
   // 1. Debt Strategy State
   const [d1Bal, setD1Bal] = useState<number>(5000);
@@ -971,6 +978,7 @@ export default function LocalizedWealthTools({
             </dl>
 
             <ResultActions
+              messages={resultActionMessages[locale]}
               actions={[
                 { kind: 'copy', label: d.ui.copy, getContent: () => activeSummary },
                 {

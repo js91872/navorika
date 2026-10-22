@@ -1,9 +1,8 @@
 'use client';
 
-import { useMemo, useState, useRef } from 'react';
+import { useMemo, useState, useCallback } from 'react';
 import {
   FileText,
-  Upload,
   Download,
   RotateCw,
   Scissors,
@@ -16,12 +15,12 @@ import {
   BookOpen,
   GitMerge,
   RotateCcw,
-  CheckCircle,
   AlertCircle,
   Loader2,
 } from 'lucide-react';
 import { PDFDocument, degrees } from 'pdf-lib';
 import ResultActions from '@/components/ui/ResultActions';
+import { resultActionMessages } from '@/lib/i18n/actionMessages';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
 import { fieldClass, buttonClass } from './ToolControls';
@@ -125,8 +124,11 @@ export default function LocalizedPdfTools({
     pagesB: number;
   } | null>(null);
 
-  const formatNum = (n: number, maxDigits = 2) =>
-    new Intl.NumberFormat(locale, { maximumFractionDigits: maxDigits }).format(n);
+  const formatNum = useCallback(
+    (n: number, maxDigits = 2) =>
+      new Intl.NumberFormat(locale, { maximumFractionDigits: maxDigits }).format(n),
+    [locale]
+  );
 
   const formatBytes = (bytes: number) => {
     if (bytes < 1024) return `${bytes} B`;
@@ -612,6 +614,7 @@ export default function LocalizedPdfTools({
     wordCountResult,
     flattenResult,
     interleaveResult,
+    formatNum,
   ]);
 
   const copySummary = useMemo(() => {
@@ -778,7 +781,7 @@ export default function LocalizedPdfTools({
             <select
               value={compressionLevel}
               className={fieldClass}
-              onChange={(e) => setCompressionLevel(e.target.value as any)}
+              onChange={(e) => setCompressionLevel(e.target.value as 'high' | 'balanced' | 'quality')}
             >
               <option value="balanced">{p.compress.levelBalanced}</option>
               <option value="high">{p.compress.levelHigh}</option>
@@ -985,7 +988,10 @@ export default function LocalizedPdfTools({
       </div>
 
       {/* Result Actions */}
-      <ResultActions actions={[{ kind: 'copy', label: d.ui.copy, getContent: () => copySummary }]} />
+      <ResultActions
+        messages={resultActionMessages[locale]}
+        actions={[{ kind: 'copy', label: d.ui.copy, getContent: () => copySummary }]}
+      />
     </section>
   );
 }

@@ -22,6 +22,8 @@ import {
 } from 'lucide-react';
 import { PDFDocument, StandardFonts, rgb, degrees } from 'pdf-lib';
 import ResultActions from '@/components/ui/ResultActions';
+import { resultActionMessages } from '@/lib/i18n/actionMessages';
+import { convertMarkdownToPdf } from '@/lib/pdf/markdownToPdf';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
 import { decodeWebpToPng } from '@/lib/images/browser';
@@ -65,7 +67,6 @@ export default function LocalizedPdfSuiteTools({
   dictionary: Dictionary;
 }) {
   const d = dictionary;
-  const ui = d.ui;
   const p = d.pdfTools;
 
   const [busy, setBusy] = useState(false);
@@ -129,7 +130,7 @@ export default function LocalizedPdfSuiteTools({
   const [targetRenderPage, setTargetRenderPage] = useState<number>(1);
   const [renderFormat, setRenderFormat] = useState<'png' | 'jpeg'>(slug === 'pdf-to-jpg' ? 'jpeg' : 'png');
   const [renderScale, setRenderScale] = useState<number>(2);
-  const [renderQuality, setRenderQuality] = useState<number>(0.92);
+  const renderQuality = 0.92;
   const [renderedImageUrl, setRenderedImageUrl] = useState<string | null>(null);
 
   // Cleanup effect
@@ -500,39 +501,9 @@ export default function LocalizedPdfSuiteTools({
     setBusy(true);
     setError(null);
     try {
-      const pdf = await PDFDocument.create();
-      const regular = await pdf.embedFont(StandardFonts.Helvetica);
-      const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
-      let page = pdf.addPage([595, 842]);
-      let y = 790;
-
-      for (const raw of markdownInput.split(/\r?\n/)) {
-        const heading = /^#{1,5}\s/.test(raw);
-        const size = heading ? 16 : 11;
-        let remaining = raw.replace(/^#{1,5}\s/, '').replace(/\*\*|__/g, '').replace(/[^\x20-\x7e\u00a0-\u00ff]/g, '?');
-
-        if (!remaining) {
-          y -= 10;
-          continue;
-        }
-
-        while (remaining.length) {
-          let part = remaining.slice(0, heading ? 52 : 84);
-          if (remaining.length > part.length) {
-            const j = part.lastIndexOf(' ');
-            if (j > 25) part = part.slice(0, j);
-          }
-          if (y < 55) {
-            page = pdf.addPage([595, 842]);
-            y = 790;
-          }
-          page.drawText(part, { x: 40, y, size, font: heading ? bold : regular, color: rgb(0.1, 0.15, 0.25) });
-          y -= size * 1.6;
-          remaining = remaining.slice(part.length).trimStart();
-        }
-      }
-
-      const pdfBytes = await pdf.save({ useObjectStreams: true });
+      const pdfBytes = await convertMarkdownToPdf(markdownInput, {
+        title: (d.tools as Record<string, { title: string }>)[slug]?.title || 'Markdown Document',
+      });
       const blob = new Blob([pdfBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
       setDownloadUrl(URL.createObjectURL(blob));
       setDownloadFilename('markdown_document.pdf');
@@ -562,7 +533,7 @@ export default function LocalizedPdfSuiteTools({
       canvas.width = viewport.width;
       canvas.height = viewport.height;
       const ctx = canvas.getContext('2d');
-      if (!ctx) throw new Error('Canvas unavailable');
+      if (!ctx) throw new Error(p.converters.canvasUnavailable || p.common.statusError);
 
       // For JPEG format, fill white background to prevent black/transparent borders
       if (renderFormat === 'jpeg' || slug === 'pdf-to-jpg') {
@@ -579,7 +550,7 @@ export default function LocalizedPdfSuiteTools({
       const blob = await new Promise<Blob | null>((resolve) =>
         canvas.toBlob((b) => resolve(b), mimeType, renderQuality)
       );
-      if (!blob) throw new Error('Image generation failed');
+      if (!blob) throw new Error(p.converters.imageFailed || p.common.statusError);
 
       const url = URL.createObjectURL(blob);
       setRenderedImageUrl(url);
@@ -1289,7 +1260,7 @@ export default function LocalizedPdfSuiteTools({
 
           <div>
             <label htmlFor="markdown-text-area" className="mb-2 block text-sm font-semibold">
-              Markdown Text
+              {p.converters.markdownText || 'Markdown Text'}
             </label>
             <textarea
               id="markdown-text-area"
@@ -1401,9 +1372,9 @@ export default function LocalizedPdfSuiteTools({
                 onChange={(e) => setRenderScale(Number(e.target.value))}
                 className={fieldClass}
               >
-                <option value={1}>1x (Standard)</option>
-                <option value={2}>2x (High Definition)</option>
-                <option value={3}>3x (Ultra Sharp)</option>
+                <option value={1}>{p.pdfToImage.scaleStandard || '1x (Standard)'}</option>
+                <option value={2}>{p.pdfToImage.scaleHighDef || '2x (High Definition)'}</option>
+                <option value={3}>{p.pdfToImage.scaleUltraSharp || '3x (Ultra Sharp)'}</option>
               </select>
             </label>
           </div>
@@ -1483,7 +1454,10 @@ export default function LocalizedPdfSuiteTools({
       </div>
 
       <div className="mt-4">
-        <ResultActions actions={[{ kind: 'copy', label: d.ui.copy, getContent: () => copySummary }]} />
+        <ResultActions
+          messages={resultActionMessages[locale]}
+          actions={[{ kind: 'copy', label: d.ui.copy, getContent: () => copySummary }]}
+        />
       </div>
     </section>
   );

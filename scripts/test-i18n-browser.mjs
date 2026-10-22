@@ -4,119 +4,19 @@ import { readFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { chromium } from 'playwright';
 import { PDFDocument } from 'pdf-lib';
+import sharp from 'sharp';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
 const locales = process.env.LOCALES ? process.env.LOCALES.split(',') : ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
-const slugs = [
-  'aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker',
-  'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator',
-  'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
-  'image-file-size-estimator', 'photo-storage-calculator', 'image-bandwidth-calculator',
-  'square-footage-calculator', 'cubic-yard-calculator', 'roofing-shingle-calculator',
-  'rafter-length-calculator', 'stud-calculator', 'drywall-mud-calculator',
-  'roof-ridge-height-calculator', 'fascia-replacement-cost-calculator', 'ppi-calculator',
-  'shed-ramp-angle-calculator', 'construction-material-waste-calculator', 'print-bleed-calculator',
-  'soffit-fascia-calculator', 'attic-insulation-payback-calculator', 'joist-deflection-calculator',
-  'hvac-duct-cfm-calculator', 'mortar-calculator', 'concrete-block-calculator',
-  'rainwater-harvesting-calculator', 'dog-age-breed-specific-calculator', 'puppy-growth-predictor',
-  'cat-calorie-calculator', 'caffeine-half-life-calculator', 'hrv-baseline-deviation-calculator',
-  'wilks-dots-powerlifting-calculator', 'macronutrient-calculator', 'running-pace-calculator',
-  'hydration-calculator', 'one-rep-max-calculator',
-  'rental-property-cash-flow-calculator', 'rental-yield-calculator',
-  'cap-rate-calculator', 'cash-on-cash-return-calculator', 'brrrr-calculator',
-  'fix-and-flip-profit-calculator', 'short-term-rental-break-even-calculator',
-  'house-hacking-effective-rent-calculator',
-  'ai-token-calculator', 'llm-api-cost-calculator', 'gpu-compute-cost-calculator',
-  'cloud-hosting-cost-calculator', 'cdn-cost-calculator', 'startup-runway-calculator',
-  'saas-burn-rate-calculator', 'ltv-cac-ratio-calculator', 'cac-payback-calculator',
-  'churn-impact-calculator', 'rule-of-40-calculator', 'net-revenue-retention-calculator',
-  'drawdown-recovery-calculator', 'meeting-roi-calculator', 'ev-vs-gas-break-even-calculator',
-  'heat-pump-vs-furnace-cost-calculator', 'job-offer-total-comp-calculator', 'lumpsum-investment-calculator',
-  'savings-goal-calculator', 'mortgage-affordability-calculator', 'break-even-calculator',
-  'profit-margin-markup-calculator',
-  'ipv6-subnet-calculator', 'tcp-udp-port-range-calculator', 'cidr-summarization-calculator',
-  'ip-address-classifier', 'common-port-service-lookup', 'url-parser',
-  'cdr-print-readiness-checker', 'responsive-srcset-generator', 'yaml-json-converter',
-  'uuid-generator-validator',
-  'regex-tester', 'unix-timestamp-converter', 'utm-builder', 'meta-tag-generator',
-  'robots-txt-generator',
-  'cement-calculator', 'sand-calculator', 'paint-calculator', 'tile-calculator',
-  'steel-weight-calculator',
-  'roof-pitch-calculator', 'stair-stringer-calculator', 'deck-board-calculator',
-  'fence-calculator', 'post-hole-concrete-calculator', 'drywall-calculator',
-  'paver-calculator', 'polymeric-sand-calculator', 'mulch-calculator',
-  'topsoil-calculator',
-  'bmi-calculator',
-  'bmr-calculator',
-  'body-fat-calculator',
-  'calorie-calculator',
-  'calories-burned-calculator',
-  'healthy-weight-calculator',
-  'heart-rate-calculator',
-  'ideal-weight-calculator',
-  'lean-body-mass-calculator',
-  'running-calories-calculator',
-  'tdee-calculator',
-  'waist-to-height-ratio-calculator',
-  'waist-to-hip-ratio-calculator',
-  'walking-calories-calculator',
-  'aquarium-volume-calculator',
-  'barbell-plate-calculator',
-  'battery-charge-time-calculator',
-  'dimensional-weight-calculator',
-  'electricity-cost-calculator',
-  'fuel-cost-split-calculator',
-  'schengen-90-180-day-calculator',
-  'tire-size-calculator',
-  'unit-price-calculator',
-  'website-worth-calculator',
-  'asphalt-calculator',
-  'board-foot-calculator',
-  'brick-calculator',
-  'concrete-calculator',
-  'dumpster-weight-calculator',
-  'flooring-calculator',
-  'gravel-calculator',
-  'rebar-calculator',
-  'roof-area-calculator',
-  'saw-kerf-calculator',
-  'air-compressor-cfm-calculator',
-  'construction-cost-calculator',
-  'egress-window-code-checker',
-  'excavation-calculator',
-  'ladder-safe-reach-calculator',
-  'land-area-converter',
-  'osha-portable-toilet-calculator',
-  'solar-panel-calculator',
-  'voltage-drop-calculator',
-  'wallpaper-calculator',
-  'water-tank-calculator',
-  'wire-size-calculator',
-  '12-foot-gambrel-roof-truss-calculator',
-  'construction-estimate-builder',
-  'contractor-estimate-generator',
-  'house-construction-cost-calculator',
-  'currency-converter',
-  'uk-vat-calculator',
-  'sip-calculator',
-  'ppf-calculator',
-  'fd-calculator',
-  'gst-calculator',
-  'loan-emi-calculator',
-  'tax-calculator',
-  'debt-snowball-vs-avalanche-calculator',
-  'retirement-calculator',
-  'cashflow-budget-architect',
-  'investment-return-profiler',
-  'loan-amortization-suite',
-  'savings-retirement-hub',
-  'taxation-compliance-deck',
-  'wealth-inflation-matrix',
-];
+
+// Programmatically reconcile enabled tool inventory from actual config
+const configText = readFileSync('src/lib/i18n/config.ts', 'utf8');
+const match = configText.match(/export const translatedTools = \[([\s\S]*?)\] as const;/);
+const slugs = match ? match[1].match(/'([^']+)'/g).map((s) => s.replace(/'/g, '')) : [];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
 let serverOutput = '';
-let pagesChecked = 0, workflowsChecked = 0;
+let pagesChecked = 0, workflowsChecked = 0, exportsValidated = 0;
 const errors = [];
 try {
   if (!process.env.I18N_BASE_URL) {
@@ -932,7 +832,132 @@ try {
     await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['retirement-calculator'].title));
     workflowsChecked++;
-    console.log(`Verified ${locale}: ${slugs.length + 1} translated pages and ${slugs.length} working tools.`);
+
+    // 1. Functional workflow & export validation: Markdown to PDF with Arabic & Russian
+    await visit(`/${locale}/tools/markdown-to-pdf`);
+    const mdInput = page.locator('#markdown-text-area');
+    await mdInput.waitFor();
+    await mdInput.fill(`# Заголовок документа\n\nЭто текст на русском языке для проверки Unicode в PDF.\n\n# عنوان تجريبي\n\nهذا نص عربي لاختبار التصدير والاتجاه.`);
+    await page.getByRole('button', { name: d.pdfTools.converters.convertAction, exact: true }).click();
+    const mdDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('link', { name: d.pdfTools.common.downloadPdf, exact: true }).click();
+    const mdDownload = await mdDownloadPromise;
+    const mdPdfBytes = readFileSync(await mdDownload.path());
+    assert.equal(String.fromCharCode(...mdPdfBytes.subarray(0, 5)), '%PDF-');
+    const mdPdfDoc = await PDFDocument.load(mdPdfBytes);
+    assert.ok(mdPdfDoc.getPageCount() >= 1, 'Markdown PDF has at least 1 page');
+    workflowsChecked++;
+    exportsValidated++;
+
+    // 2. Functional workflow & export validation: WebP to GIF (genuine GIF89a encoding)
+    await visit(`/${locale}/tools/webp-to-gif`);
+    const testPngBuffer = await sharp({
+      create: { width: 32, height: 32, channels: 4, background: { r: 60, g: 120, b: 240, alpha: 1 } },
+    }).png().toBuffer();
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.png',
+      mimeType: 'image/png',
+      buffer: testPngBuffer,
+    });
+    await page.getByRole('button', { name: new RegExp(d.imageTools.converters.convertBtn, 'i') }).click();
+    const gifDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: new RegExp(d.imageTools.common.downloadImage, 'i') }).click();
+    const gifDownload = await gifDownloadPromise;
+    const gifBytes = readFileSync(await gifDownload.path());
+    assert.equal(String.fromCharCode(...gifBytes.subarray(0, 6)), 'GIF89a', 'Genuine GIF89a header');
+    const gifMeta = await sharp(gifBytes).metadata();
+    assert.equal(gifMeta.format, 'gif', 'Sharp verified real GIF');
+    assert.equal(gifMeta.width, 32);
+    assert.equal(gifMeta.height, 32);
+    // Test reset clears preview
+    await page.getByRole('button', { name: d.imageTools.common.changeImage, exact: true }).click();
+    assert.equal(await page.locator('input[type="file"]').inputValue(), '');
+    workflowsChecked++;
+    exportsValidated++;
+
+    // 3. Functional workflow & export validation: SVG/WebP to ICO (genuine ICO header & 64x64 entry)
+    await visit(`/${locale}/tools/webp-to-ico`);
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.png',
+      mimeType: 'image/png',
+      buffer: testPngBuffer,
+    });
+    await page.getByRole('button', { name: new RegExp(d.imageTools.converters.convertBtn, 'i') }).click();
+    const icoDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: new RegExp(d.imageTools.common.downloadImage, 'i') }).click();
+    const icoDownload = await icoDownloadPromise;
+    const icoBytes = readFileSync(await icoDownload.path());
+    const icoView = new DataView(icoBytes.buffer, icoBytes.byteOffset, icoBytes.byteLength);
+    assert.equal(icoView.getUint16(0, true), 0, 'ICO reserved is 0');
+    assert.equal(icoView.getUint16(2, true), 1, 'ICO type is 1');
+    assert.equal(icoView.getUint16(4, true), 1, 'ICO count is 1');
+    assert.equal(icoView.getUint8(6), 64, 'Entry width is 64');
+    assert.equal(icoView.getUint8(7), 64, 'Entry height is 64');
+    assert.equal(icoView.getUint16(10, true), 1, 'Planes is 1');
+    assert.equal(icoView.getUint16(12, true), 32, 'BPP is 32');
+    assert.equal(icoView.getUint32(18, true), 22, 'Payload offset is 22');
+    const icoInnerPng = icoBytes.subarray(22);
+    const icoInnerMeta = await sharp(icoInnerPng).metadata();
+    assert.equal(icoInnerMeta.format, 'png');
+    assert.equal(icoInnerMeta.width, 64);
+    assert.equal(icoInnerMeta.height, 64);
+    workflowsChecked++;
+    exportsValidated++;
+
+    // 4. Functional workflow & export validation: Image conversion (JPG to PNG)
+    await visit(`/${locale}/tools/convert-jpg-to-png`);
+    const testJpgBuffer = await sharp({
+      create: { width: 48, height: 48, channels: 3, background: { r: 200, g: 80, b: 40 } },
+    }).jpeg().toBuffer();
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.jpg',
+      mimeType: 'image/jpeg',
+      buffer: testJpgBuffer,
+    });
+    await page.getByRole('button', { name: new RegExp(d.imageTools.converters.convertBtn, 'i') }).click();
+    const pngDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: new RegExp(d.imageTools.common.downloadImage, 'i') }).click();
+    const pngDownload = await pngDownloadPromise;
+    const pngBytes = readFileSync(await pngDownload.path());
+    assert.equal(pngBytes[0], 0x89);
+    assert.equal(pngBytes[1], 0x50); // P
+    assert.equal(pngBytes[2], 0x4e); // N
+    assert.equal(pngBytes[3], 0x47); // G
+    const pngMeta = await sharp(pngBytes).metadata();
+    assert.equal(pngMeta.format, 'png');
+    workflowsChecked++;
+    exportsValidated++;
+
+    // 5. Functional workflow: Target compression (compress-image-to-100kb)
+    await visit(`/${locale}/tools/compress-image-to-100kb`);
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.png',
+      mimeType: 'image/png',
+      buffer: testPngBuffer,
+    });
+    await page.getByRole('button', { name: new RegExp(d.imageTools.compression.compressToTarget, 'i') }).click();
+    await page.locator('main').getByText(d.imageTools.common.success).waitFor();
+    const compDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: new RegExp(d.imageTools.common.downloadImage, 'i') }).click();
+    const compDownload = await compDownloadPromise;
+    const compBytes = readFileSync(await compDownload.path());
+    assert.ok(compBytes.length <= 100 * 1024, 'Output is under 100 KB');
+    workflowsChecked++;
+    exportsValidated++;
+
+    // 6. Functional workflow: PDF Word Counter with sample PDF
+    await visit(`/${locale}/tools/pdf-word-counter`);
+    const sampleDoc = await PDFDocument.create();
+    sampleDoc.addPage([595, 842]);
+    const sampleDocBytes = Buffer.from(await sampleDoc.save());
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'doc.pdf',
+      mimeType: 'application/pdf',
+      buffer: sampleDocBytes,
+    });
+    await page.locator('main dl').waitFor();
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    workflowsChecked++;
   }
   for (const slug of [null, ...slugs]) {
     await visit(slug ? `/tools/${slug}` : '/');
@@ -941,7 +966,11 @@ try {
     await page.setViewportSize({ width: 390, height: 844 });
     await noOverflow(`English ${slug || 'home'} mobile`);
     await page.setViewportSize({ width: 1440, height: 1000 });
-    assert.equal(await page.locator('link[hreflang="fr"]').getAttribute('href'), `https://navorika.com/fr${slug ? `/tools/${slug}` : ''}`);
+    const frLink = page.locator('link[hreflang="fr"], link[hrefLang="fr"]');
+    if (await frLink.count() === 0) {
+      throw new Error(`Missing hreflang fr on English page for slug: ${slug}`);
+    }
+    assert.equal(await frLink.getAttribute('href'), `https://navorika.com/fr${slug ? `/tools/${slug}` : ''}`);
   }
   // Language selection stays available without opening the mobile menu.
   for (const width of [320, 360, 390, 640]) {
@@ -1000,7 +1029,7 @@ try {
     }
   }
   assert.deepEqual(errors, [], 'Uncaught browser errors');
-  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, englishAlternates: slugs.length + 1, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
+  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, exportsValidated, englishAlternates: slugs.length + 1, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
 } finally {
   await browser?.close();
   server?.kill('SIGTERM');

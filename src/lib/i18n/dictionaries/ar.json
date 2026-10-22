@@ -5526,13 +5526,19 @@
       "format": "تنسيق الصورة",
       "resolution": "دقة الإخراج (المقياس)",
       "convertAction": "توليد وتنزيل الصورة",
-      "preview": "معاينة الصورة الناتجة"
+      "preview": "معاينة الصورة الناتجة",
+      "scaleStandard": "1x (قياسي)",
+      "scaleHighDef": "2x (عالي الدقة)",
+      "scaleUltraSharp": "3x (فائق الوضوح)"
     },
     "converters": {
       "heading": "تحويل الملف إلى PDF",
       "selectFile": "اختيار ملف",
       "convertAction": "تحويل وتنزيل PDF",
-      "unsupported": "صيغة ملف غير مدعومة"
+      "unsupported": "صيغة ملف غير مدعومة",
+      "markdownText": "نص ماركداون",
+      "canvasUnavailable": "معالجة اللوحة (Canvas) غير متوفرة في هذه البيئة.",
+      "imageFailed": "فشل إنشاء الصورة."
     }
   },
   "imageTools": {
@@ -5602,7 +5608,12 @@
       "previewPlaceholder": "قم بالتحويل لمعاينة النتيجة",
       "whiteBgNote": "تم استبدال المساحات الشفافة بخلفية بيضاء",
       "alphaPreserved": "تم الحفاظ على الشفافية المستخرجة",
-      "icoNotice": "تم التصدير كأيقونة مفضلة بمقاس 64 × 64 بكسل"
+      "icoNotice": "تم التصدير كأيقونة مفضلة بمقاس 64 × 64 بكسل",
+      "dimensionsExceeded": "أبعاد الصورة تتجاوز الحد الأقصى البالغ 25 ميغابكسل.",
+      "canvasUnavailable": "معالجة اللوحة (Canvas) غير متوفرة في هذه البيئة.",
+      "pngFailed": "فشل تحويل PNG.",
+      "gifFailed": "فشل ترميز GIF.",
+      "imageFailed": "فشل ترميز الصورة."
     }
   }
 }

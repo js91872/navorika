@@ -10,24 +10,24 @@
     "de"
   ],
   "summary": {
-    "tools": 319,
+    "tools": 321,
     "publishedTools": 215,
-    "pendingTools": 98,
+    "pendingTools": 100,
     "underReviewTools": 6,
     "sharedCalculators": 75,
-    "guides": 57,
+    "guides": 61,
     "trustPages": 7,
     "publishedToolTranslations": 1505,
-    "targetToolTranslations": 2191,
-    "pendingGuideTranslations": 399,
+    "targetToolTranslations": 2205,
+    "pendingGuideTranslations": 427,
     "pendingTrustTranslations": 49,
     "candidateCounts": {
-      "jsxText": 3645,
-      "visibleAttribute": 337,
-      "semanticCopy": 11164,
-      "reviewLiteral": 43664
+      "jsxText": 3778,
+      "visibleAttribute": 351,
+      "semanticCopy": 11380,
+      "reviewLiteral": 44371
     },
-    "candidateCopyWords": 291783
+    "candidateCopyWords": 305597
   },
   "tools": [
     {
@@ -2741,6 +2741,26 @@
         "src/app/(english)/tools/fence-calculator/page.tsx",
         "src/components/tools/ExpansionToolPage.tsx",
         "src/components/tools/FenceCalculator.tsx"
+      ]
+    },
+    {
+      "slug": "fertilizer-calculator",
+      "title": "Fertilizer Calculator – How Much Fertilizer to Apply",
+      "category": "construction-calculators",
+      "route": "/tools/fertilizer-calculator",
+      "source": "src/app/(english)/tools/fertilizer-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [
+        "domain-assumptions"
+      ],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/fertilizer-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/FertilizerCalculator.tsx"
       ]
     },
     {
@@ -5493,6 +5513,27 @@
       ]
     },
     {
+      "slug": "reverse-sales-tax-calculator",
+      "title": "Reverse Sales Tax Calculator – Find Price Before Tax",
+      "category": "finance-calculators",
+      "route": "/tools/reverse-sales-tax-calculator",
+      "source": "src/app/(english)/tools/reverse-sales-tax-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [
+        "domain-assumptions"
+      ],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/reverse-sales-tax-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/ReverseSalesTaxArticle.tsx",
+        "src/components/tools/ReverseSalesTaxCalculator.tsx"
+      ]
+    },
+    {
       "slug": "rgb-cmyk-image-checker",
       "title": "RGB or CMYK Image Checker",
       "category": "image-tools",
@@ -7585,6 +7626,30 @@
       "translatedLocales": []
     },
     {
+      "slug": "how-to-calculate-fertilizer-for-a-lawn",
+      "title": "How to Calculate Fertilizer for a Lawn: Area, Rate & N-P-K",
+      "category": "Construction",
+      "route": "/guides/how-to-calculate-fertilizer-for-a-lawn",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "fertilizer-npk-numbers-explained",
+      "title": "Fertilizer N-P-K Numbers Explained: What the Label Means",
+      "category": "Construction",
+      "route": "/guides/fertilizer-npk-numbers-explained",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-calculate-fertilizer-from-a-soil-test",
+      "title": "How to Calculate Fertilizer from a Soil Test",
+      "category": "Construction",
+      "route": "/guides/how-to-calculate-fertilizer-from-a-soil-test",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
       "slug": "how-to-convert-image-to-pdf-on-iphone",
       "title": "How to Convert Image to PDF on iPhone (4 Free Ways)",
       "category": "PDF",
@@ -7594,7 +7659,7 @@
     },
     {
       "slug": "how-to-show-battery-percentage-on-mac",
-      "title": "How to Show Battery Percentage on MacBook Air & Pro (2026)",
+      "title": "How to Show Battery Percentage on Mac (2026): MacBook Air & Pro",
       "category": "Everyday",
       "route": "/guides/how-to-show-battery-percentage-on-mac",
       "status": "pending",
@@ -8013,6 +8078,14 @@
       "title": "How to Clear RAM on a Mac: Safe Ways to Free Up Memory",
       "category": "Everyday",
       "route": "/guides/how-to-clear-ram-on-mac",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-back-out-sales-tax-us",
+      "title": "How to Back Out Sales Tax in the US: Receipts & Excel",
+      "category": "Finance",
+      "route": "/guides/how-to-back-out-sales-tax-us",
       "status": "pending",
       "translatedLocales": []
     }
@@ -8971,6 +9044,12 @@
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
+      "source": "src/app/(english)/tools/fertilizer-calculator/page.tsx",
+      "routeTemplate": "/tools/fertilizer-calculator",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
       "source": "src/app/(english)/tools/fix-and-flip-profit-calculator/page.tsx",
       "routeTemplate": "/tools/fix-and-flip-profit-calculator",
       "status": "published",
@@ -9694,6 +9773,12 @@
       "source": "src/app/(english)/tools/retirement-calculator/page.tsx",
       "routeTemplate": "/tools/retirement-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/reverse-sales-tax-calculator/page.tsx",
+      "routeTemplate": "/tools/reverse-sales-tax-calculator",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

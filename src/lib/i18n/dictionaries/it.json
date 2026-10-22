@@ -5525,13 +5525,19 @@
       "format": "Formato immagine",
       "resolution": "Risoluzione output (scala)",
       "convertAction": "Renderizza e scarica immagine",
-      "preview": "Anteprima immagine generata"
+      "preview": "Anteprima immagine generata",
+      "scaleStandard": "1x (Standard)",
+      "scaleHighDef": "2x (Alta Definizione)",
+      "scaleUltraSharp": "3x (Ultra Nitido)"
     },
     "converters": {
       "heading": "Converti file in formato PDF",
       "selectFile": "Seleziona file",
       "convertAction": "Converti e scarica PDF",
-      "unsupported": "Formato file non supportato"
+      "unsupported": "Formato file non supportato",
+      "markdownText": "Testo Markdown",
+      "canvasUnavailable": "L'elaborazione Canvas non è disponibile in questo ambiente.",
+      "imageFailed": "Generazione dell'immagine non riuscita."
     }
   },
   "imageTools": {
@@ -5601,7 +5607,12 @@
       "previewPlaceholder": "Converti per visualizzare l'anteprima",
       "whiteBgNote": "Aree trasparenti riempite con sfondo bianco",
       "alphaPreserved": "Trasparenza decodificata preservata",
-      "icoNotice": "Generato come favicon da 64 × 64 px"
+      "icoNotice": "Generato come favicon da 64 × 64 px",
+      "dimensionsExceeded": "Le dimensioni dell'immagine superano il limite di 25 megapixel.",
+      "canvasUnavailable": "L'elaborazione Canvas non è disponibile in questo ambiente.",
+      "pngFailed": "Conversione PNG non riuscita.",
+      "gifFailed": "Codifica GIF non riuscita.",
+      "imageFailed": "Codifica dell'immagine non riuscita."
     }
   }
 }

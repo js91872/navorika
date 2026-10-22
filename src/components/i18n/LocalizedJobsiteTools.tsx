@@ -4,8 +4,6 @@ import { useMemo, useState } from 'react';
 import {
   Wind,
   DollarSign,
-  CheckCircle2,
-  CircleX,
   Shovel,
   Ruler,
   Compass,
@@ -14,6 +12,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import ResultActions from '@/components/ui/ResultActions';
+import { resultActionMessages } from '@/lib/i18n/actionMessages';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
 import { fieldClass, buttonClass } from './ToolControls';
@@ -780,7 +779,7 @@ export default function LocalizedJobsiteTools({
                 {con.landArea.fromUnit}
                 <select
                   value={landFrom}
-                  onChange={(e) => setLandFrom(e.target.value as any)}
+                  onChange={(e) => setLandFrom(e.target.value as 'sqft' | 'sqm' | 'acre' | 'hectare' | 'sqyd')}
                   className={fieldClass}
                 >
                   {Object.entries(unitsMap).map(([k, label]) => (
@@ -794,7 +793,7 @@ export default function LocalizedJobsiteTools({
                 {con.landArea.toUnit}
                 <select
                   value={landTo}
-                  onChange={(e) => setLandTo(e.target.value as any)}
+                  onChange={(e) => setLandTo(e.target.value as 'sqft' | 'sqm' | 'acre' | 'hectare' | 'sqyd')}
                   className={fieldClass}
                 >
                   {Object.entries(unitsMap).map(([k, label]) => (
@@ -911,6 +910,7 @@ export default function LocalizedJobsiteTools({
             </dl>
 
             <ResultActions
+              messages={resultActionMessages[locale]}
               actions={[
                 { kind: 'copy', label: d.ui.copy, getContent: () => activeSummary },
                 {

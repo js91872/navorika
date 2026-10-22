@@ -5,18 +5,13 @@ import {
   Upload,
   Download,
   RotateCcw,
-  CheckCircle,
   AlertCircle,
   Loader2,
   FileImage,
-  ImageIcon,
   Maximize2,
-  Sliders,
   RotateCw,
   FlipHorizontal,
   FlipVertical,
-  Scissors,
-  Layers,
   Sparkles,
 } from 'lucide-react';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
@@ -95,7 +90,6 @@ export default function LocalizedImageTools({
   const [originalDims, setOriginalDims] = useState<{ width: number; height: number } | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
   // Target Compression State
   const [targetPreset, setTargetPreset] = useState<'20kb' | '50kb' | '100kb' | '200kb'>(defaultPreset);
@@ -124,28 +118,69 @@ export default function LocalizedImageTools({
   const [rotation, setRotation] = useState(0);
   const [flipH, setFlipH] = useState(false);
   const [flipV, setFlipV] = useState(false);
-  const [rotatedBlob, setRotatedBlob] = useState<Blob | null>(null);
   const [rotatedUrl, setRotatedUrl] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const rotateCanvasRef = useRef<HTMLCanvasElement>(null);
 
-  const cleanupUrls = useCallback(() => {
+  const prevPreviewSrcRef = useRef<string | null>(null);
+  const prevTargetUrlRef = useRef<string | null>(null);
+  const prevGenUrlRef = useRef<string | null>(null);
+  const prevResizedUrlRef = useRef<string | null>(null);
+  const prevRotatedUrlRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (prevPreviewSrcRef.current && prevPreviewSrcRef.current !== previewSrc) {
+      URL.revokeObjectURL(prevPreviewSrcRef.current);
+    }
+    prevPreviewSrcRef.current = previewSrc;
+  }, [previewSrc]);
+
+  useEffect(() => {
+    const cur = targetResult?.objectUrl || null;
+    if (prevTargetUrlRef.current && prevTargetUrlRef.current !== cur) {
+      URL.revokeObjectURL(prevTargetUrlRef.current);
+    }
+    prevTargetUrlRef.current = cur;
+  }, [targetResult]);
+
+  useEffect(() => {
+    if (prevGenUrlRef.current && prevGenUrlRef.current !== genCompressedUrl) {
+      URL.revokeObjectURL(prevGenUrlRef.current);
+    }
+    prevGenUrlRef.current = genCompressedUrl;
+  }, [genCompressedUrl]);
+
+  useEffect(() => {
+    if (prevResizedUrlRef.current && prevResizedUrlRef.current !== resizedUrl) {
+      URL.revokeObjectURL(prevResizedUrlRef.current);
+    }
+    prevResizedUrlRef.current = resizedUrl;
+  }, [resizedUrl]);
+
+  useEffect(() => {
+    if (prevRotatedUrlRef.current && prevRotatedUrlRef.current !== rotatedUrl) {
+      URL.revokeObjectURL(prevRotatedUrlRef.current);
+    }
+    prevRotatedUrlRef.current = rotatedUrl;
+  }, [rotatedUrl]);
+
+  useEffect(() => {
+    return () => {
+      if (prevPreviewSrcRef.current) URL.revokeObjectURL(prevPreviewSrcRef.current);
+      if (prevTargetUrlRef.current) URL.revokeObjectURL(prevTargetUrlRef.current);
+      if (prevGenUrlRef.current) URL.revokeObjectURL(prevGenUrlRef.current);
+      if (prevResizedUrlRef.current) URL.revokeObjectURL(prevResizedUrlRef.current);
+      if (prevRotatedUrlRef.current) URL.revokeObjectURL(prevRotatedUrlRef.current);
+    };
+  }, []);
+
+  const handleReset = () => {
     if (previewSrc) URL.revokeObjectURL(previewSrc);
     if (targetResult?.objectUrl) URL.revokeObjectURL(targetResult.objectUrl);
     if (genCompressedUrl) URL.revokeObjectURL(genCompressedUrl);
     if (resizedUrl) URL.revokeObjectURL(resizedUrl);
     if (rotatedUrl) URL.revokeObjectURL(rotatedUrl);
-  }, [previewSrc, targetResult, genCompressedUrl, resizedUrl, rotatedUrl]);
-
-  useEffect(() => {
-    return () => {
-      cleanupUrls();
-    };
-  }, [cleanupUrls]);
-
-  const handleReset = () => {
-    cleanupUrls();
     setFile(null);
     setPreviewSrc(null);
     setOriginalDims(null);
@@ -154,10 +189,8 @@ export default function LocalizedImageTools({
     setGenCompressedUrl(null);
     setResizedBlob(null);
     setResizedUrl(null);
-    setRotatedBlob(null);
     setRotatedUrl(null);
     setError(null);
-    setSuccess(null);
     setRotation(0);
     setFlipH(false);
     setFlipV(false);
@@ -166,13 +199,11 @@ export default function LocalizedImageTools({
 
   const handleFileSelect = (selectedFile: File) => {
     setError(null);
-    setSuccess(null);
     setTargetResult(null);
     setGenCompressedBlob(null);
     setGenCompressedUrl(null);
     setResizedBlob(null);
     setResizedUrl(null);
-    setRotatedBlob(null);
     setRotatedUrl(null);
 
     const MAX_INPUT_BYTES = 25 * 1024 * 1024;
@@ -239,9 +270,8 @@ export default function LocalizedImageTools({
       });
 
       setTargetResult(compressed);
-      setSuccess(c.success);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Compression error');
+      setError(err instanceof Error ? err.message : c.errorUnsupported);
     } finally {
       setBusy(false);
     }
@@ -289,7 +319,6 @@ export default function LocalizedImageTools({
               setGenCompressedBlob(blob);
               if (genCompressedUrl) URL.revokeObjectURL(genCompressedUrl);
               setGenCompressedUrl(URL.createObjectURL(blob));
-              setSuccess(c.success);
             } else {
               setError(c.errorUnsupported);
             }
@@ -337,7 +366,6 @@ export default function LocalizedImageTools({
             setResizedBlob(blob);
             if (resizedUrl) URL.revokeObjectURL(resizedUrl);
             setResizedUrl(URL.createObjectURL(blob));
-            setSuccess(c.success);
           } else {
             setError(c.errorUnsupported);
           }
@@ -392,7 +420,6 @@ export default function LocalizedImageTools({
 
     canvas.toBlob((blob) => {
       if (blob) {
-        setRotatedBlob(blob);
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -402,7 +429,6 @@ export default function LocalizedImageTools({
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-        setSuccess(c.success);
       }
       setBusy(false);
     }, 'image/png');
