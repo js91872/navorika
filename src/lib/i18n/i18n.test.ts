@@ -91,7 +91,15 @@ test('moving English routes into a route group preserves every existing public p
   for (const path of paths) assert.ok(existsSync(join(process.cwd(), 'src/app/(english)', path)), path);
   const walk = (dir: string): string[] => readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
     entry.isDirectory() ? walk(join(dir, entry.name)) : entry.name === 'page.tsx' ? [join(dir, entry.name)] : []);
-  assert.equal(walk(join(process.cwd(), 'src/app/(english)')).length, paths.length);
+  const allRoutes = walk(join(process.cwd(), 'src/app/(english)')).map((route) =>
+    route.slice(join(process.cwd(), 'src/app/(english)').length + 1));
+  const newRoutes = allRoutes.filter((route) => !paths.includes(route)).sort();
+  // Only these two intentional public pages extend the original route contract.
+  assert.deepEqual(newRoutes, [
+    'guides/shopify-profit-margin-calculator/page.tsx',
+    'tools/shopify-margin-calculator/page.tsx',
+  ]);
+  assert.equal(new Set(allRoutes).size, allRoutes.length);
 });
 
 test('PDF reports translate every geometry interpretation and all report columns', async () => {
