@@ -3,6 +3,27 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const commonLimits = ['Results are projections, not guaranteed returns or financial advice.', 'Rates, taxes, fees, timing, and product rules can materially change real outcomes.'];
 
 export const financeToolPages: Record<string, ToolPageContent> = {
+  'reverse-sales-tax-calculator': {
+    slug: 'reverse-sales-tax-calculator', name: 'Reverse Sales Tax Calculator – Find Price Before Tax', category: 'Finance Calculators', applicationCategory: 'FinanceApplication',
+    description: 'Use this free reverse sales tax calculator to find the price before tax and tax included in a total. See the formula, receipt examples, and tax-rate calculation.',
+    longTailKeywords: ['reverse sales tax calculator', 'price before tax calculator', 'remove sales tax from total', 'backwards sales tax calculator', 'how to calculate sales tax backwards', 'find sales tax rate from receipt'],
+    intro: ['A reverse sales tax calculator finds the original price and included tax from a final amount and a known tax rate. Divide the total by 1 plus the rate as a decimal, then subtract the original price from the total.', 'For example, a $108 total at 8% contains a $100 price and $8 sales tax. Use the second mode if you know both receipt amounts and want to find the implied tax rate.'],
+    formula: [{ title: 'Price before tax', body: 'Total including tax ÷ (1 + tax rate ÷ 100).' }, { title: 'Tax included in the total', body: 'Total including tax − price before tax.' }, { title: 'Find an unknown tax rate', body: '(Total including tax − price before tax) ÷ price before tax × 100.' }],
+    steps: ['Enter the total that already includes sales tax, excluding any tips or unrelated charges.', 'Enter the applicable combined tax rate as a percentage, such as 8.25. Currency selection does not set the rate.', 'Read the price before tax, included tax, and calculation steps. Copy the breakdown if needed.', 'To check an unknown rate, choose Find tax rate and enter the total and the price before tax.'],
+    interpretation: ['The included tax is already part of the total. Do not add it again.', 'An implied rate is calculated from your amounts. It does not confirm the legally applicable rate or whether every item was taxable.', 'The price before tax is rounded to the nearest cent. Included tax is the total minus that rounded price, so the displayed amounts reconcile.'],
+    limitations: ['This tool performs arithmetic and does not choose a tax rate or determine tax liability.', 'Use one taxable base and one rate. Mixed taxable and exempt purchases, compound taxes, and separately taxed fees need separate calculations.', 'Amounts are rounded to two decimals. Per-item rounding and invoice-level rounding can give different results.', 'The rate input accepts 0–100% with up to four decimal places. Currency labels do not convert money.'],
+    faqs: [
+      { question: 'How do I calculate sales tax backwards?', answer: 'Divide the tax-inclusive total by 1 plus the tax rate divided by 100. At 8%, $108 ÷ 1.08 = $100 before tax, leaving $8 tax.' },
+      { question: 'How do I remove 8.25% sales tax from a total?', answer: 'Divide the total by 1.0825. For example, $216.50 ÷ 1.0825 = $200 before tax and $16.50 included tax.' },
+      { question: 'Can I just subtract the tax percentage?', answer: 'No. Sales tax is calculated on the original price. Taking 8% off $108 leaves $99.36, while the correct original price is $100.' },
+      { question: 'Can I find the tax rate from a receipt?', answer: 'Yes, when you know the taxable price before tax and the matching total. Subtract the price from the total, divide by the price, and multiply by 100. Mixed tax treatments and rounding can distort the implied rate.' },
+      { question: 'Can I use this for VAT or GST?', answer: 'The same arithmetic works for a single percentage included in one taxable amount. It does not handle tax credits, reverse-charge rules, exemptions, or compound taxes.' },
+      { question: 'What if I only know the total?', answer: 'You also need the applicable tax rate or the price before tax. A total alone cannot uniquely identify both the original price and the tax.' },
+      { question: 'Does this calculator save my receipts?', answer: 'No receipt upload is needed. Calculations run locally in your browser; the calculator does not send entered amounts to a calculation server.' },
+    ],
+    relatedTools: [{ slug: 'gst-calculator', name: 'GST Calculator' }, { slug: 'uk-vat-calculator', name: 'UK VAT Calculator' }, { slug: 'profit-margin-markup-calculator', name: 'Profit Margin and Markup Calculator' }],
+    relatedGuides: ['how-to-back-out-sales-tax-us', 'gst-calculation-guide'],
+  },
   'sip-calculator': {
     slug: 'sip-calculator', name: 'SIP Calculator: Monthly Investment Return Projection', category: 'Finance Calculators', applicationCategory: 'FinanceApplication', description: 'Project SIP maturity value, invested amount, and estimated returns from monthly investment, annual return, and duration.',
     longTailKeywords: ['SIP calculator', 'monthly SIP return calculator', 'mutual fund SIP maturity calculator', 'SIP future value calculator', 'SIP calculator with annual breakdown'],
@@ -31,7 +52,7 @@ export const financeToolPages: Record<string, ToolPageContent> = {
     steps: ['Enter the amount before GST.', 'Enter the applicable percentage rate.', 'Review the tax amount and tax-inclusive total.'],
     interpretation: ['The output assumes the entered amount excludes GST.', 'Confirm the legally applicable rate and supply treatment independently.'], limitations: [...commonLimits, 'The tool does not calculate reverse GST from an inclusive price, split CGST/SGST, IGST, input credits, or filing obligations.'],
     faqs: [{ question: 'Does the amount entered include GST?', answer: 'No. The current tool treats it as a tax-exclusive base.' }, { question: 'Does it choose the correct GST rate?', answer: 'No. You must enter the appropriate rate.' }, { question: 'Does it calculate CGST and SGST?', answer: 'No. It currently returns total GST only.' }, { question: 'Is invoice data stored?', answer: 'No.' }],
-    relatedTools: [{ slug: 'tax-calculator', name: 'Income Tax Calculator' }, { slug: 'taxation-compliance-deck', name: 'Tax Calculators' }, { slug: 'cashflow-budget-architect', name: 'Budget & Cash Flow Calculator' }, { slug: 'currency-converter', name: 'Currency Converter' }], relatedGuides: ['gst-calculation-guide', 'tax-planning-guide-2026'],
+    relatedTools: [{ slug: 'reverse-sales-tax-calculator', name: 'Reverse Sales Tax Calculator' }, { slug: 'tax-calculator', name: 'Income Tax Calculator' }, { slug: 'taxation-compliance-deck', name: 'Tax Calculators' }, { slug: 'cashflow-budget-architect', name: 'Budget & Cash Flow Calculator' }, { slug: 'currency-converter', name: 'Currency Converter' }], relatedGuides: ['gst-calculation-guide', 'tax-planning-guide-2026'],
   },
   'fd-calculator': {
     slug: 'fd-calculator', name: 'Fixed Deposit Calculator: Maturity & Interest', category: 'Finance Calculators', applicationCategory: 'FinanceApplication', description: 'Project fixed-deposit maturity and interest from principal, annual rate, and years using annual compound interest.',
@@ -268,6 +289,7 @@ export const financeToolPages: Record<string, ToolPageContent> = {
       { question: 'Is my pricing data stored?', answer: 'No. All calculations run strictly in your web browser.' },
     ],
     relatedTools: [
+      { slug: 'reverse-sales-tax-calculator', name: 'Reverse Sales Tax Calculator' },
       { slug: 'break-even-calculator', name: 'Break-Even Calculator' },
       { slug: 'contractor-estimate-generator', name: 'Contractor Estimate Generator' },
       { slug: 'construction-estimate-builder', name: 'Construction Estimate Builder' },

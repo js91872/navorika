@@ -4,6 +4,25 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-back-out-sales-tax-us': [
+    { name: 'CDTFA — Basic Sales and Use Tax training (tax-inclusive calculation method)', url: 'https://www.cdtfa.ca.gov/seminar/BSUTS.pdf' },
+    { name: 'CDTFA — Applying Tax to Your Sales and Purchases (California-specific guidance)', url: 'https://www.cdtfa.ca.gov/taxes-and-fees/applying-tax-sales-purchases-faq.htm' },
+    { name: 'Microsoft Support — ROUND function', url: 'https://support.microsoft.com/en-us/excel/functions/round-function' },
+  ],
+  'how-to-calculate-fertilizer-for-a-lawn': [
+    { name: 'Penn State Extension — Calculations Used to Determine the Amount of Fertilizer Needed to Treat Turf', url: 'https://extension.psu.edu/calculations-used-to-determine-the-amount-of-fertilizer-needed-to-treat-turf' },
+    { name: 'University of Maryland Extension — Maintaining an Established Lawn', url: 'https://extension.umd.edu/resource/maintaining-established-lawn' },
+    { name: 'Utah State University Extension — Selecting and Using Inorganic Fertilizers', url: 'https://extension.usu.edu/yardandgarden/research/selecting-and-using-inorganic-fertilizers' },
+  ],
+  'fertilizer-npk-numbers-explained': [
+    { name: 'Utah State University Extension — Selecting and Using Inorganic Fertilizers', url: 'https://extension.usu.edu/yardandgarden/research/selecting-and-using-inorganic-fertilizers' },
+    { name: 'Penn State Extension — How to Calculate a Fertilizer Ratio', url: 'https://extension.psu.edu/how-to-calculate-a-fertilizer-ratio' },
+  ],
+  'how-to-calculate-fertilizer-from-a-soil-test': [
+    { name: 'Utah State University Extension — Tips for Growing Garden Vegetables in Utah: Soil Fertilization', url: 'https://extension.usu.edu/yardandgarden/research/tips-for-growing-vegetables-in-utah-soil-fertilization' },
+    { name: 'Penn State Extension — Calculations Used to Determine the Amount of Fertilizer Needed to Treat Turf', url: 'https://extension.psu.edu/calculations-used-to-determine-the-amount-of-fertilizer-needed-to-treat-turf' },
+    { name: 'University of Maryland Extension — Maintaining an Established Lawn', url: 'https://extension.umd.edu/resource/maintaining-established-lawn' },
+  ],
   'free-website-audit-checklist': [
     { name: 'Google Search Central — SEO Starter Guide', url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide' },
     { name: 'Google PageSpeed Insights', url: 'https://pagespeed.web.dev/' },
@@ -22,8 +41,10 @@ export const guideSources: Record<string, GuideSource[]> = {
     { name: 'Apple Support — Scan text and documents with Notes on iPhone', url: 'https://support.apple.com/guide/iphone/scan-text-and-documents-iph653f28965/ios' },
   ],
   'how-to-show-battery-percentage-on-mac': [
-    { name: 'Apple Support — Monitor your Mac laptop’s battery', url: 'https://support.apple.com/guide/mac-help/monitor-your-macs-battery-mchlp1115/mac' },
-    { name: 'Apple Support — Change Battery settings on a Mac laptop', url: 'https://support.apple.com/guide/mac-help/change-battery-settings-mchlfc3b7879/mac' },
+    { name: 'Apple Support — Monitor your Mac laptop’s battery (macOS 27)', url: 'https://support.apple.com/en-in/guide/mac-help/mchlp1115/27/mac/27' },
+    { name: 'Apple Support — Monitor your Mac laptop’s battery (macOS Tahoe 26)', url: 'https://support.apple.com/guide/mac-help/mchlp1115/26/mac/26' },
+    { name: 'Apple Support — Find out which macOS your Mac is using', url: 'https://support.apple.com/en-in/109033' },
+    { name: 'Apple — macOS 27 is available', url: 'https://www.apple.com/newsroom/2026/09/major-updates-for-apples-software-platforms-are-now-available/' },
   ],
   'video-editing-software-for-mac': [
     { name: 'Apple — iMovie for Mac', url: 'https://www.apple.com/imovie/' },

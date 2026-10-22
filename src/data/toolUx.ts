@@ -19,6 +19,8 @@ export interface ToolCapabilitySnapshot {
 }
 
 export const toolUx: Record<string, ToolUxConfig> = {
+  'reverse-sales-tax-calculator': { processingMode: 'local', noUpload: true, noAccount: true },
+  'fertilizer-calculator': { processingMode: 'local', noUpload: true, noAccount: true },
   'house-construction-cost-calculator': {
     processingMode: 'local', noUpload: true, noAccount: true,
     resultActions: ['copy-summary', 'download-csv', 'print'], longForm: true,

@@ -52,6 +52,30 @@ const guideDefinitions: GuideDefinition[] = [
     featuredImage: { src: '/images/guides/free-website-audit-checklist-feature.svg', alt: 'Free website audit checklist illustration with UX, design, conversion, mobile and accessibility checks', caption: 'Check website usability, mobile design, conversion elements, speed and accessibility.' },
   },
   {
+    slug: 'how-to-calculate-fertilizer-for-a-lawn',
+    title: 'How to Calculate Fertilizer for a Lawn: Area, Rate & N-P-K',
+    description: 'Find the amount of lawn fertilizer from your measured area, a rate from your soil test or product directions, and the N-P-K label numbers.',
+    category: 'Construction', publishedDate: 'October 2026', readTime: '12 min read', author: 'Navorika Team',
+    keywords: ['lawn fertilizer calculator', 'how much fertilizer for lawn', 'how to calculate lawn fertilizer', 'fertilizer calculator formula', 'fertilizer per 1000 square feet', 'fertilizer calculator per acre'],
+    featuredImage: { src: '/images/guides/fertilizer-calculator-guide.svg', alt: 'Fertilizer calculator showing lawn area, product weight, and an N-P-K label', caption: 'Calculate product weight from the lawn area, supplied nutrient rate, and fertilizer label.' },
+  },
+  {
+    slug: 'fertilizer-npk-numbers-explained',
+    title: 'Fertilizer N-P-K Numbers Explained: What the Label Means',
+    description: 'Learn what the three numbers on a fertilizer bag mean, how N-P-K percentages are used, and how they change the amount of product needed.',
+    category: 'Construction', publishedDate: 'October 2026', readTime: '11 min read', author: 'Navorika Team',
+    keywords: ['fertilizer numbers explained', 'what do fertilizer numbers mean', 'N-P-K fertilizer numbers', 'what does 10-10-10 fertilizer mean', 'fertilizer calculator npk', 'fertilizer label numbers'],
+    featuredImage: { src: '/images/guides/fertilizer-calculator-guide.svg', alt: 'A fertilizer label with N-P-K percentages beside a calculator result', caption: 'The three label numbers list nitrogen, phosphate, and potash percentages in order.' },
+  },
+  {
+    slug: 'how-to-calculate-fertilizer-from-a-soil-test',
+    title: 'How to Calculate Fertilizer from a Soil Test',
+    description: 'Use a soil-test nutrient rate and fertilizer label to calculate product weight per 1,000 square feet or acre without guessing an application rate.',
+    category: 'Construction', publishedDate: 'October 2026', readTime: '12 min read', author: 'Navorika Team',
+    keywords: ['fertilizer calculator based on soil test', 'how to calculate fertilizer from soil test', 'soil test fertilizer rate calculator', 'fertilizer application rate formula', 'fertilizer calculator per acre'],
+    featuredImage: { src: '/images/guides/fertilizer-calculator-guide.svg', alt: 'A fertilizer calculator and bag label used with a soil-test nutrient rate', caption: 'Start with the nutrient rate from the soil-test report, then calculate product weight.' },
+  },
+  {
     slug: 'how-to-convert-image-to-pdf-on-iphone',
     title: 'How to Convert Image to PDF on iPhone (4 Free Ways)',
     description: 'Convert photos, screenshots, JPG and HEIC images to PDF on iPhone for free. Save one or multiple pictures as a PDF without an app.',
@@ -63,13 +87,14 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'how-to-show-battery-percentage-on-mac',
-    title: 'How to Show Battery Percentage on MacBook Air & Pro (2026)',
-    description: 'Learn how to show battery percentage on MacBook Air or Pro in macOS Tahoe, Sequoia, Sonoma, and older versions. Easy steps and fixes if it is missing.',
+    title: 'How to Show Battery Percentage on Mac (2026): MacBook Air & Pro',
+    description: 'Show battery percentage on MacBook Air or Pro in macOS 27, Tahoe 26, and older versions. Follow the steps and fix a missing battery icon.',
     category: 'Everyday',
     publishedDate: 'October 2026',
-    readTime: '10 min read',
+    readTime: '5 min read',
     author: 'Navorika Team',
-    keywords: ['how to show battery percentage on mac', 'how to show battery percentage on mac air', 'how do i show battery percentage on macbook', 'show battery percentage macbook pro', 'macos tahoe battery percentage', 'macos sequoia show battery percentage', 'macos sonoma battery percentage', 'macbook air battery percentage not showing'],
+    keywords: ['how to show battery percentage on mac', 'how to show battery percentage on macbook', 'how to show battery percentage on macbook air', 'how to show battery percentage on macbook pro', 'macos 27 battery percentage', 'macos tahoe 26 battery percentage', 'how to show battery percentage on macbook air 2026', 'macbook battery percentage not showing'],
+    featuredImage: { src: '/images/guides/mac-battery-percentage-settings.svg', alt: 'Illustration of the Mac battery percentage option in System Settings, with 82% visible in the menu bar.', caption: 'On macOS 27 and Tahoe 26, turn on Show Percentage in System Settings > Menu Bar > Battery > Battery Options.' },
   },
 
   {
@@ -602,6 +627,7 @@ const guideDefinitions: GuideDefinition[] = [
     keywords: ['how to clear ram on mac', 'how to clear ram memory on mac', 'how to clear the ram on a mac', 'how to clear ram on a mac', 'how to clean up ram on mac', 'how to free up ram on mac', 'check ram usage on mac', 'reduce memory usage on mac', 'mac memory pressure', 'activity monitor memory usage'],
     featuredImage: { src: '/images/guides/how-to-clear-ram-on-mac.webp', alt: 'A Mac laptop with a memory-pressure graph and a RAM chip illustration', caption: 'Use Activity Monitor to understand memory pressure and find apps using RAM.' },
   },
+  { slug: 'how-to-back-out-sales-tax-us', title: 'How to Back Out Sales Tax in the US: Receipts & Excel', description: 'Remove sales tax from a US receipt total, check rounding and mixed purchases, and use Excel formulas with a free editable workbook.', category: 'Finance', publishedDate: 'October 2026', readTime: '14 min read', author: 'Navorika Team', keywords: ['how to back out sales tax', 'reverse sales tax formula excel', 'calculate price before tax', 'remove sales tax from total', 'US receipt tax calculator'], featuredImage: { src: '/images/guides/us-reverse-sales-tax.svg', alt: 'US receipt showing 100 dollars before tax, 8 dollars and 25 cents sales tax, and a 108 dollar and 25 cent total', caption: 'An illustrative 8.25% example: USD 100.00 before tax plus USD 8.25 tax equals USD 108.25.' } },
 ];
 
 const newBatchSlugs = new Set([
@@ -618,7 +644,8 @@ const octoberMacVideoSlugs = new Set([
   'easy-video-editing-software-for-mac',
 ]);
 
-const newOctoberGuideDates = new Set(['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook','free-website-audit-checklist', 'how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac']);
+const fertilizerGuideSlugs = new Set(['how-to-calculate-fertilizer-for-a-lawn', 'fertilizer-npk-numbers-explained', 'how-to-calculate-fertilizer-from-a-soil-test']);
+const newOctoberGuideDates = new Set(['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook','free-website-audit-checklist', 'how-to-save-a-screenshot-as-a-pdf', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac', ...fertilizerGuideSlugs]);
 
 const recentUpdateSlugs = new Set([
   'how-to-calculate-emi',
@@ -635,8 +662,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    datePublished: guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    dateModified: guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,
