@@ -10,6 +10,7 @@ const relatedTools = [
 ];
 const relatedGuides = [
   { href: '/guides/shopify-profit-margin-calculator', title: 'How to Calculate Shopify Profit Margin', text: 'Detailed guide to Shopify fees, product pricing, ads, returns and break-even calculations.' },
+  { href: '/guides/how-to-back-out-sales-tax-us', title: 'How to Back Out Sales Tax in the US', text: 'Separate sales tax from tax-inclusive receipts and avoid counting remitted sales tax as profit.' },
 ];
 export default function ShopifyRelatedContent({current}: {current:'tool'|'guide'}) {
   const guides = current === 'guide' ? [] : relatedGuides;
