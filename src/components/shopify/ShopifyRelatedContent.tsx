@@ -13,7 +13,7 @@ const relatedGuides = [
   { href: '/guides/how-to-back-out-sales-tax-us', title: 'How to Back Out Sales Tax in the US', text: 'Separate sales tax from tax-inclusive receipts and avoid counting remitted sales tax as profit.' },
 ];
 export default function ShopifyRelatedContent({current}: {current:'tool'|'guide'}) {
-  const guides = current === 'guide' ? [] : relatedGuides;
+  const guides = relatedGuides.filter(item => current !== 'guide' || item.href !== '/guides/shopify-profit-margin-calculator');
   return <aside aria-label="Related Shopify tools and guides" className="mt-14 border-t border-[var(--border)] pt-10 text-[var(--foreground)]">
     <section aria-labelledby="shopify-related-tools">
       <h2 id="shopify-related-tools" className="text-2xl font-bold">Related profit and business calculators</h2>
@@ -36,6 +36,10 @@ export default function ShopifyRelatedContent({current}: {current:'tool'|'guide'
           <h3 className="font-bold text-emerald-700 dark:text-emerald-400">{item.title} →</h3><p className="mt-2 text-sm text-[var(--muted-foreground)]">{item.text}</p>
         </Link>)}
       </div>
+    </section>}
+    {current === 'guide' && <section className="mt-9" aria-labelledby="shopify-related-articles-guide">
+      <h2 id="shopify-related-articles-guide" className="text-2xl font-bold">Related articles and guides</h2>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">{guides.map(item => <Link key={item.href} href={item.href} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 hover:border-emerald-500"><h3 className="font-bold text-emerald-700 dark:text-emerald-400">{item.title} →</h3><p className="mt-2 text-sm text-[var(--muted-foreground)]">{item.text}</p></Link>)}</div>
     </section>}
   </aside>;
 }
