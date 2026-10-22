@@ -60,7 +60,7 @@ export default function InvestmentProfilerTool() {
   }, [suboption, valA, valB, valC, valD]);
 
   return (
-    <main className="min-h-[calc(100dvh-80px)] w-full relative overflow-visible font-sans flex flex-col p-4 lg:p-8">
+    <main className="min-h-[calc(100dvh-80px)] w-full relative overflow-hidden font-sans flex flex-col p-4 lg:p-8">
       
       {/* Ambient Background Glows */}
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-screen"></div>

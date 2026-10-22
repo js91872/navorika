@@ -14,9 +14,9 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
       className="mb-8 w-full rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3" />
     <div className="grid gap-5 md:grid-cols-2">
       {matches.map((slug) => <Link key={slug} href={localizedPath(locale, slug)}
-        className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition hover:border-indigo-500">
-        <h2 className="text-xl font-bold text-indigo-600 dark:text-indigo-400">{d.tools[slug].title}</h2>
-        <p className="mt-3 leading-7 text-[var(--muted-foreground)]">{d.tools[slug].description}</p>
+        className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition hover:border-indigo-500">
+        <h2 className="break-words text-xl font-bold text-indigo-600 dark:text-indigo-400">{d.tools[slug].title}</h2>
+        <p className="mt-3 break-words leading-7 text-[var(--muted-foreground)]">{d.tools[slug].description}</p>
       </Link>)}
     </div>
     <p role="status" className="mt-4">{matches.length === 0 ? d.ui.noResults : ''}</p>

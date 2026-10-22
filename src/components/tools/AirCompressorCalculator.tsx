@@ -104,8 +104,8 @@ export default function AirCompressorCalculator() {
           };
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
-      <div className="space-y-6">
+    <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+      <div className="min-w-0 space-y-6">
         <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
           <div className="flex items-center gap-3">
             <Gauge className="size-6 text-indigo-600" />

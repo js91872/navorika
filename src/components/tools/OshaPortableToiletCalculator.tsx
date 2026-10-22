@@ -30,8 +30,8 @@ export default function OshaPortableToiletCalculator() {
   const result = outcome.result;
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.8fr)]">
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
+    <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.8fr)]">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
         <div className="flex items-center gap-3">
           <HardHat className="size-6 text-indigo-600" />
           <h2 className="text-xl font-bold">

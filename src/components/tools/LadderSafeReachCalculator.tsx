@@ -28,8 +28,8 @@ export default function LadderSafeReachCalculator() {
   const result = outcome.result;
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
+    <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
         <h2 className="text-xl font-bold">Ladder dimensions</h2>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -73,21 +73,21 @@ export default function LadderSafeReachCalculator() {
         </div>
 
         {ladderType === 'extension' && result && (
-          <div className="mt-8 rounded-3xl border border-[var(--border)] bg-[var(--background)] p-6">
-            <div className="mx-auto flex max-w-md items-end justify-center">
-              <div className="relative h-64 w-72">
+          <div className="mt-8 overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--background)] p-4 sm:p-6">
+            <div className="mx-auto flex max-w-full items-end justify-center overflow-hidden">
+              <div className="relative h-64 w-64 max-w-full sm:w-72">
                 <div className="absolute bottom-0 right-4 h-60 w-1 bg-[var(--foreground)]" />
-                <div className="absolute bottom-0 left-8 right-4 h-1 bg-[var(--foreground)]" />
+                <div className="absolute bottom-0 left-4 right-4 h-1 bg-[var(--foreground)]" />
 
                 <div
-                  className="absolute bottom-0 left-14 h-1 origin-left bg-indigo-600"
+                  className="absolute bottom-0 left-10 h-1 origin-left bg-indigo-600"
                   style={{
-                    width: '220px',
+                    width: '190px',
                     transform: `rotate(-${result.ladderAngleDegrees.toFixed(1)}deg)`,
                   }}
                 />
 
-                <span className="absolute bottom-4 left-24 text-xs font-semibold text-[var(--muted-foreground)]">
+                <span className="absolute bottom-4 left-16 text-xs font-semibold text-[var(--muted-foreground)]">
                   ≈ {result.baseDistanceFeet.toFixed(1)} ft base
                 </span>
               </div>
@@ -100,7 +100,7 @@ export default function LadderSafeReachCalculator() {
         )}
       </section>
 
-      <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+      <aside className="min-w-0 space-y-6 lg:sticky lg:top-24 lg:self-start">
         <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-lg">
           {!result ? (
             <p role="alert" className="rounded-2xl border border-red-500/30 bg-red-500/10 p-5 text-sm text-red-700 dark:text-red-300">{outcome.error}</p>

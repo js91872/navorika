@@ -42,7 +42,7 @@ export default async function LocalizedToolPage({ params }: Props) {
     <div className="mb-7 flex flex-wrap items-center justify-between gap-4">
       <Link href={`/${locale}`} className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">{d.ui.home} / {d.ui.tools}</Link>
     </div>
-    <h1 className="max-w-4xl text-3xl font-extrabold leading-tight text-indigo-600 sm:text-4xl dark:text-indigo-400">{tool.title}</h1>
+    <h1 className="max-w-4xl [overflow-wrap:anywhere] text-3xl font-extrabold leading-tight text-indigo-600 sm:text-4xl dark:text-indigo-400">{tool.title}</h1>
     <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--muted-foreground)]"><BidiText text={tool.description} /></p>
     <p className="my-7 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-sm leading-7">{d.ui.local}</p>
     <LocalizedTools key={`${locale}/${slug}`} locale={locale} slug={slug} dictionary={d} />

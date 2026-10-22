@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Calculator from './Calculator';
+import { languageAlternates } from '@/lib/i18n/config';
 export const metadata: Metadata = {
  title: 'UK VAT Calculator – Add VAT or Remove VAT From a Price | Navorika',
  description: 'Free UK VAT calculator. Add or remove 20% or 5% VAT, calculate the price before VAT, VAT amount and total price with worked examples.',
  keywords: ['before VAT calculator','price before VAT calculator','UK VAT calculator','remove VAT from price','VAT calculator 20 percent','VAT calculator 5 percent'],
- alternates: { canonical: 'https://navorika.com/tools/uk-vat-calculator' },
+ alternates: {
+  canonical: 'https://navorika.com/tools/uk-vat-calculator',
+  languages: languageAlternates('uk-vat-calculator'),
+ },
  openGraph: {title:'UK VAT Calculator – Add or Remove VAT',description:'Calculate VAT-inclusive and VAT-exclusive prices online.',url:'https://navorika.com/tools/uk-vat-calculator',type:'website'}
 };
 export default function Page(){
