@@ -28,6 +28,7 @@ export interface Toolkit {
 }
 
 export const clusters: ToolCluster[] = [
+  { id: 'speaker-audio', name: 'Speaker Audio Tools', description: 'Test phone speakers and explore audio troubleshooting with browser-based sounds.', category: 'everyday-calculators', toolSlugs: ['speaker-dust-cleaning-sound'] },
   { id: 'pdf-organize', name: 'Organize PDF Pages', description: 'Combine, separate, reorder, rotate, and extract pages in document workflows.', category: 'pdf-tools', toolSlugs: ['merge-pdf', 'split-pdf', 'reorder-pdf', 'rotate-pdf', 'delete-pdf-pages', 'extract-pdf-pages', 'interleave-pdf'] },
   { id: 'pdf-convert', name: 'PDF Conversion', description: 'Move content between PDF, image, and text formats.', category: 'pdf-tools', toolSlugs: ['jpg-to-pdf', 'webp-to-pdf', 'pdf-to-image', 'pdf-to-jpg', 'extract-pdf-text', 'pdf-word-counter', 'heic-to-pdf', 'markdown-to-pdf'] },
   { id: 'pdf-edit', name: 'Edit and Prepare PDFs', description: 'Prepare page appearance, metadata, numbering, and reusable document output.', category: 'pdf-tools', toolSlugs: ['add-image-to-pdf', 'add-page-numbers', 'add-watermark', 'compress-pdf', 'crop-pdf', 'flatten-pdf', 'pdf-metadata-editor', 'pdf-bleed-trim-checker', 'pdf-page-size-checker'] },
