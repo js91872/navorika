@@ -94,10 +94,12 @@ test('moving English routes into a route group preserves every existing public p
   const allRoutes = walk(join(process.cwd(), 'src/app/(english)')).map((route) =>
     route.slice(join(process.cwd(), 'src/app/(english)').length + 1));
   const newRoutes = allRoutes.filter((route) => !paths.includes(route)).sort();
-  // Only these two intentional public pages extend the original route contract.
+  // Explicitly approved public pages added after the original route contract.
   assert.deepEqual(newRoutes, [
+    'guides/how-to-clean-phone-speaker/page.tsx',
     'guides/shopify-profit-margin-calculator/page.tsx',
     'tools/shopify-margin-calculator/page.tsx',
+    'tools/speaker-dust-cleaning-sound/page.tsx',
   ]);
   assert.equal(new Set(allRoutes).size, allRoutes.length);
 });
