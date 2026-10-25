@@ -1,3 +1,4 @@
+import { macSpeakerGuideContent } from './guideContentMacSpeaker';
 import { usSalesTaxGuideContent } from './guideContentUsSalesTax';
 import { macEverydayGuideContent } from './guideContentMacEveryday';
 import { additionalGuideContent } from './guideContentAdditional';
@@ -39,6 +40,7 @@ export interface GuideContent {
 
 export const guideContent: Record<string, GuideContent> = {
   ...fertilizerGuideContent,
+  ...macSpeakerGuideContent,
   'how-to-calculate-sip-returns': {
     intro: "Systematic Investment Plans (SIPs) have transformed personal finance by enabling retail investors to accumulate substantial long-term wealth through disciplined, periodic allocations into mutual fund portfolios. Rather than committing large lump-sum capital or attempting the notoriously unpredictable task of timing equity market peaks and troughs, a SIP allows an investor to deploy a predictable rupee amount on a scheduled recurring date\u2014most commonly monthly. However, despite widespread adoption, considerable confusion persists surrounding how returns on periodic cash flows are statistically and mathematically measured. Many retail investors mistakenly evaluate SIP performance using point-to-point compound annual growth rates (CAGR) or simple absolute percentages, leading to miscalibrated wealth expectations and faulty asset allocation decisions. This comprehensive guide provides an exhaustive technical and practical breakdown of SIP return calculation. We derive the underlying annuity mathematics, compare the precision of Extended Internal Rate of Return (XIRR) against traditional metrics, model the compounding mechanics of annual step-up increments, quantify the mathematical impact of market volatility through rupee cost averaging, analyze friction from expense ratios and statutory taxes, and offer step-by-step protocols for modeling financial milestones using Navorika's client-side SIP calculator.",
     sections: [
