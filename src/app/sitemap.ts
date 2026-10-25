@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/categories',
     '/toolkits',
     '/guides',
+    '/guides/how-to-convert-jpg-to-dxf',
     '/about',
     '/contact',
     '/glossary',
