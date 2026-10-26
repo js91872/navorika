@@ -1811,6 +1811,110 @@
       "limits": "Provides per-order profit estimates before corporate and income taxes. Payment processing rates reflect standard card fees unless customized.",
       "question": "What is the formula for net profit margin on Shopify?",
       "answer": "Net profit margin equals order revenue minus all product, shipping, fulfillment, advertising, payment, and allocated overhead costs, divided by order revenue, multiplied by 100."
+    },
+    "avif-to-png": {
+      "title": "AVIF to PNG Converter",
+      "description": "Convert modern AVIF images into universally compatible lossless PNG files locally in your browser.",
+      "how": "Select or drag an AVIF image file to immediately decode pixels and export as a crisp PNG graphic.",
+      "limits": "AVIF images with advanced HDR metadata will be mapped to standard sRGB color gamut during PNG export.",
+      "question": "Why convert AVIF to PNG?",
+      "answer": "PNG provides broad compatibility across older image editors and software that do not yet support AVIF."
+    },
+    "heic-to-jpg": {
+      "title": "HEIC to JPG Converter",
+      "description": "Convert Apple HEIC and HEIF photos to high-compatibility JPG format locally with custom compression quality.",
+      "how": "Upload your iPhone HEIC photo, adjust target JPEG quality, and download the converted image.",
+      "limits": "Live photo video clips and multi-frame bursts will export the primary still photo.",
+      "question": "Can I convert HEIC photos without uploading to a server?",
+      "answer": "Yes, Navorika decodes HEIC containers directly within your browser web worker for complete confidentiality."
+    },
+    "heic-to-png": {
+      "title": "HEIC to PNG Converter",
+      "description": "Convert iPhone HEIC and HEIF photos to lossless PNG format preserving transparency and original resolution.",
+      "how": "Choose a HEIC photo to decode its image data and export as an uncompressed PNG.",
+      "limits": "Apple depth maps and portrait lighting metadata are flattened into the rendered PNG bitmap.",
+      "question": "Does converting HEIC to PNG preserve photo resolution?",
+      "answer": "Yes, the full pixel dimensions of your original camera capture are preserved without downsampling."
+    },
+    "batch-image-converter": {
+      "title": "Batch Image Converter",
+      "description": "Convert multiple images simultaneously across JPG, PNG, and WebP formats directly in your browser.",
+      "how": "Select multiple files at once, choose your desired target format, and download the converted batch.",
+      "limits": "Batch size is constrained only by available client system memory.",
+      "question": "Are multiple images uploaded to any remote server?",
+      "answer": "No, every image is converted sequentially in client memory using your browser canvas."
+    },
+    "black-and-white-image-converter": {
+      "title": "Black and White Image Converter",
+      "description": "Transform color photos into elegant monochrome grayscale images using standard luminance weighting.",
+      "how": "Upload any JPG, PNG, or WebP photo to preview the monochrome result and download as PNG or JPG.",
+      "limits": "Grayscale conversion replaces chrominance values with luminance; original colors cannot be reconstructed.",
+      "question": "What formula calculates the grayscale tone?",
+      "answer": "We use the standard ITU-R Rec. 709 luminance formula: 0.2126 Red + 0.7152 Green + 0.0722 Blue."
+    },
+    "resize-image-to-1000x1000": {
+      "title": "1000x1000 Image Resizer",
+      "description": "Resize any photo to exactly 1000x1000 pixels with precision crop, contain, or stretch modes.",
+      "how": "Upload your photo, select fit mode and background fill color, then export as square PNG, JPG, or WebP.",
+      "limits": "Enlarging small source images to 1000x1000 will interpolate pixels and may reduce sharpness.",
+      "question": "What is the difference between Crop and Contain modes?",
+      "answer": "Crop fills the square and trims outer edges, whereas Contain fits the entire picture with border fill."
+    },
+    "change-image-resolution": {
+      "title": "Change Image Resolution",
+      "description": "Change image pixel dimensions to standard Full HD, 4K UHD, 2K QHD, or square resolutions.",
+      "how": "Choose an image, select a target resolution preset, and download the resized graphic.",
+      "limits": "Non-matching aspect ratios are proportionally scaled to fit within the selected boundary.",
+      "question": "Can I scale down high-resolution camera photos?",
+      "answer": "Yes, downscaling high-resolution photos reduces file size while maintaining excellent visual fidelity."
+    },
+    "image-to-base64-converter": {
+      "title": "Image to Base64 Converter",
+      "description": "Encode images into standard Base64 text strings, HTML image tags, and CSS Data URLs.",
+      "how": "Upload any graphic to instantly generate and copy the corresponding Base64 Data URL or string.",
+      "limits": "Base64 encoding increases data size by approximately 33 percent compared to binary files.",
+      "question": "When should Base64 image strings be used?",
+      "answer": "Base64 strings are ideal for embedding small icons directly into HTML or CSS without extra HTTP requests."
+    },
+    "base64-to-image-converter": {
+      "title": "Base64 to Image Converter",
+      "description": "Decode Base64 text and Data URLs back into viewable and downloadable image files.",
+      "how": "Paste a Base64 string or Data URL, preview the decoded graphic, and download as PNG or JPG.",
+      "limits": "The input text must be valid Base64 encoded binary data or a valid RFC 2397 Data URL.",
+      "question": "Can this tool detect the image format automatically?",
+      "answer": "Yes, Data URL headers and magic bytes are inspected to determine whether the file is PNG, JPG, WebP, or SVG."
+    },
+    "txt-to-image": {
+      "title": "Text to Image Converter",
+      "description": "Render text notes, code snippets, or quotes into clean downloadable PNG images.",
+      "how": "Type or paste your text, adjust typography font size and light or dark background, then export.",
+      "limits": "Text lines are wrapped to canvas boundaries; very long words may overflow if no spaces exist.",
+      "question": "Does this tool generate images locally?",
+      "answer": "Yes, the canvas API renders the text directly in your web browser with zero server latency."
+    },
+    "html-to-image": {
+      "title": "HTML to Image Converter",
+      "description": "Render HTML and CSS markup into high-resolution JPG or PNG graphics within a secure client sandbox.",
+      "how": "Paste HTML markup, adjust render scale, and export the rendered visual output.",
+      "limits": "External network scripts and remote font URLs are neutralized for security.",
+      "question": "How is client security enforced during HTML rendering?",
+      "answer": "HTML is sanitized and rendered inside an isolated SVG container with restrictive security policies."
+    },
+    "html-to-jpg-converter": {
+      "title": "HTML to JPG Converter",
+      "description": "Convert HTML snippets and components into compressed JPEG image files with white background fill.",
+      "how": "Enter HTML code, configure JPEG compression quality, and download the resulting graphic.",
+      "limits": "Transparency in HTML components is composited onto an opaque background.",
+      "question": "Can I render complex CSS flexbox or grid components?",
+      "answer": "Yes, modern CSS properties supported by your browser engine will render accurately."
+    },
+    "html-to-png-converter": {
+      "title": "HTML to PNG Converter",
+      "description": "Convert HTML code into crisp lossless PNG images with full alpha transparency support.",
+      "how": "Input your HTML markup, preview the transparent rendering, and download as a lossless PNG.",
+      "limits": "Rendered dimension defaults to content height up to 8192 pixels.",
+      "question": "Are transparent backgrounds preserved in PNG output?",
+      "answer": "Yes, when no background color is declared in your HTML, the PNG output retains transparent pixels."
     }
   },
   "flexOptions": {
@@ -5765,6 +5869,33 @@
       "pngFailed": "PNG conversion failed.",
       "gifFailed": "GIF encoding failed.",
       "imageFailed": "Image encoding failed."
+    },
+    "studio": {
+      "batchPrompt": "Select or drag multiple image files",
+      "batchProcess": "Convert All Images",
+      "batchCount": "images selected",
+      "batchDownloading": "Exporting batch images...",
+      "grayscaleTitle": "Black & White Grayscale",
+      "grayscaleNote": "Rec. 709 luminance weights: 0.2126 R + 0.7152 G + 0.0722 B",
+      "fitMode": "Fit Mode",
+      "fitCrop": "Crop to fill square",
+      "fitContain": "Fit entire image (borders)",
+      "fitStretch": "Direct stretch",
+      "targetResolution": "Target Resolution",
+      "base64Input": "Base64 String or Data URL",
+      "base64Output": "Base64 Output",
+      "copyBase64": "Copy Base64",
+      "copyDataUrl": "Copy Data URL",
+      "copied": "Copied to clipboard",
+      "textInput": "Text to render into image",
+      "fontSize": "Font Size",
+      "darkTheme": "Dark Theme",
+      "htmlInput": "HTML & CSS Code",
+      "renderHtml": "Render HTML to Image",
+      "invalidBase64": "Invalid Base64 or Data URL image string.",
+      "htmlSandboxNote": "Local SVG container with disabled scripts and no external network access.",
+      "downloadImage": "Download Processed Image",
+      "reset": "Reset Form"
     }
   }
 }

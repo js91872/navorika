@@ -1811,6 +1811,110 @@
       "limits": "Estima o lucro por pedido antes dos tributos sobre a renda e o lucro societário.",
       "question": "Como se calcula a margem de lucro líquida na Shopify?",
       "answer": "A margem líquida é a receita do pedido menos custos de produto, envio, taxas e marketing, dividida pela receita e multiplicada por 100."
+    },
+    "avif-to-png": {
+      "title": "Conversor de AVIF para PNG",
+      "description": "Converta imagens AVIF modernas em arquivos PNG sem perdas amplamente compatíveis no navegador.",
+      "how": "Carregue uma imagem AVIF para decodificar imediatamente os dados e salvar como PNG nítido.",
+      "limits": "Metadados HDR avançados são convertidos para o padrão sRGB durante a exportação.",
+      "question": "Por que converter de AVIF para PNG?",
+      "answer": "O formato PNG oferece suporte universal em aplicativos antigos que ainda não abrem AVIF."
+    },
+    "heic-to-jpg": {
+      "title": "Conversor de HEIC para JPG",
+      "description": "Converta fotos HEIC e HEIF de iPhone para o formato JPG com controle de compressão.",
+      "how": "Envie sua imagem HEIC, defina o nível de qualidade desejado e baixe a foto convertida.",
+      "limits": "Em fotos com animação Live Photo, apenas o quadro estático principal será extraído.",
+      "question": "A conversão ocorre sem enviar fotos a servidores?",
+      "answer": "Sim, o arquivo HEIC é processado diretamente no seu navegador com total privacidade."
+    },
+    "heic-to-png": {
+      "title": "Conversor de HEIC para PNG",
+      "description": "Converta fotografias HEIC em PNG sem perdas mantendo resolução e transparência originais.",
+      "how": "Escolha o arquivo HEIC para decodificar a foto e exportar um arquivo PNG completo.",
+      "limits": "Os dados de profundidade do modo retrato são combinados na imagem PNG final.",
+      "question": "A nitidez da câmera é reduzida?",
+      "answer": "Não, a contagem exata de pixels da captura original é integralmente mantida."
+    },
+    "batch-image-converter": {
+      "title": "Conversor de imagens em lote",
+      "description": "Processe diversas imagens simultaneamente entre JPG, PNG e WebP sem sair da página.",
+      "how": "Selecione múltiplos arquivos juntos, marque o formato de destino e inicie o processamento.",
+      "limits": "A quantidade de itens no lote depende apenas da memória livre do seu computador.",
+      "question": "Os arquivos saem do meu dispositivo?",
+      "answer": "Não, cada arquivo é convertido localmente pela memória do seu navegador web."
+    },
+    "black-and-white-image-converter": {
+      "title": "Conversor preto e branco",
+      "description": "Transforme imagens coloridas em monocromáticas elegantes usando ponderação de luminância padrão.",
+      "how": "Carregue sua foto para ver a prévia em escala de cinza e faça o download em PNG ou JPG.",
+      "limits": "A crominância é descartada em favor da luminância; cores originais não podem ser refeitas.",
+      "question": "Qual fórmula gera a escala de cinza?",
+      "answer": "Aplicamos a recomendação internacional ITU-R Rec. 709: 0,2126 Vermelho + 0,7152 Verde + 0,0722 Azul."
+    },
+    "resize-image-to-1000x1000": {
+      "title": "Redimensionar imagem para 1000x1000",
+      "description": "Ajuste qualquer foto para a dimensão quadrada exata de 1000x1000 pixels com corte ou bordas.",
+      "how": "Envie a imagem, selecione o método de enquadramento e salve em formato PNG, JPG ou WebP.",
+      "limits": "Ampliar fotos pequenas para 1000x1000 pixels pode suavizar detalhes da textura.",
+      "question": "Qual a diferença entre Cortar e Conter?",
+      "answer": "Cortar preenche o quadrado aparando extremidades, enquanto Conter mantém a imagem toda com bordas."
+    },
+    "change-image-resolution": {
+      "title": "Alterar resolução de imagem",
+      "description": "Mude as medidas em pixels para padrões como Full HD, 4K UHD, 2K QHD ou formato quadrado.",
+      "how": "Selecione o arquivo gráfico, indique o perfil de resolução e baixe a imagem dimensionada.",
+      "limits": "Proporções diferentes são adaptadas proporcionalmente dentro dos limites escolhidos.",
+      "question": "É possível diminuir o tamanho em bytes de fotos pesadas?",
+      "answer": "Sim, reduzir a resolução diminui substancialmente o arquivo mantendo excelente nitidez."
+    },
+    "image-to-base64-converter": {
+      "title": "Conversor de imagem para Base64",
+      "description": "Transforme imagens em cadeias de texto Base64, tags HTML e Data URLs para código web.",
+      "how": "Selecione um arquivo para gerar na hora a sequência Base64 com botão de cópia fácil.",
+      "limits": "O formato textual Base64 aumenta o peso final em cerca de 33 por cento sobre o binário.",
+      "question": "Quando é indicado usar Base64?",
+      "answer": "É recomendado para embutir ícones pequenos em folhas de estilo sem requisições HTTP extras."
+    },
+    "base64-to-image-converter": {
+      "title": "Conversor de Base64 para imagem",
+      "description": "Decodifique sequências de texto Base64 e Data URLs de volta em arquivos gráficos comuns.",
+      "how": "Cole a cadeia Base64, visualize a imagem detectada e baixe o arquivo em PNG ou JPG.",
+      "limits": "O conteúdo informado deve conter codificação válida conforme o padrão RFC 2397.",
+      "question": "O tipo do arquivo é reconhecido sozinho?",
+      "answer": "Sim, os primeiros marcadores binários indicam se a imagem é PNG, JPG, WebP ou SVG."
+    },
+    "txt-to-image": {
+      "title": "Conversor de texto para imagem",
+      "description": "Converta anotações, pequenos trechos de código ou frases em arquivos PNG prontos para envio.",
+      "how": "Digite o conteúdo desejado, defina o tamanho das letras e o fundo claro ou escuro antes de baixar.",
+      "limits": "As frases quebram de linha no limite; palavras compridas sem espaço podem ultrapassar.",
+      "question": "A imagem é montada localmente?",
+      "answer": "Sim, a renderização ocorre no próprio navegador sem necessidade de conexão externa."
+    },
+    "html-to-image": {
+      "title": "Conversor de HTML para imagem",
+      "description": "Exiba trechos de código HTML e regras CSS como imagens nítidas dentro de um ambiente isolado.",
+      "how": "Cole o código HTML, ajuste a escala de ampliação e exporte o gráfico resultante.",
+      "limits": "Scripts de programação e conexões a fontes externas são bloqueados por proteção.",
+      "question": "Como a proteção é garantida?",
+      "answer": "O conteúdo é filtrado e exibido dentro de uma estrutura SVG isolada de redes externas."
+    },
+    "html-to-jpg-converter": {
+      "title": "Conversor de HTML para JPG",
+      "description": "Converta marcação HTML em arquivos JPG leves com fundo de cor sólida definido.",
+      "how": "Insira o código, ajuste a taxa de compactação visual e obtenha a imagem gerada.",
+      "limits": "Áreas transparentes do código HTML são preenchidas com fundo branco uniforme.",
+      "question": "Recursos de alinhamento funcionam?",
+      "answer": "Sim, as propriedades de estilização modernas do navegador são aplicadas com precisão."
+    },
+    "html-to-png-converter": {
+      "title": "Conversor de HTML para PNG",
+      "description": "Crie arquivos PNG precisos a partir de HTML com preservação de canais transparentes.",
+      "how": "Forneça as marcações HTML, confira a prévia transparente e baixe o arquivo sem perdas.",
+      "limits": "A altura vertical expande conforme o texto até o teto estipulado de 8192 pixels.",
+      "question": "O fundo permanece transparente?",
+      "answer": "Sim, caso nenhuma cor de fundo seja estipulada no código, a transparência é mantida."
     }
   },
   "flexOptions": {
@@ -5765,6 +5869,33 @@
       "pngFailed": "A conversão para PNG falhou.",
       "gifFailed": "A codificação GIF falhou.",
       "imageFailed": "A codificação da imagem falhou."
+    },
+    "studio": {
+      "batchPrompt": "Selecione múltiplos arquivos de imagem",
+      "batchProcess": "Converter todas as imagens",
+      "batchCount": "imagens selecionadas",
+      "batchDownloading": "Exportando lote de imagens...",
+      "grayscaleTitle": "Monocromático preto e branco",
+      "grayscaleNote": "Pesos de luminância Rec. 709: 0,2126 R + 0,7152 G + 0,0722 B",
+      "fitMode": "Modo de enquadramento",
+      "fitCrop": "Cortar para preencher o quadrado",
+      "fitContain": "Conter imagem inteira (bordas)",
+      "fitStretch": "Esticar diretamente",
+      "targetResolution": "Resolução de destino",
+      "base64Input": "Cadeia Base64 ou Data URL",
+      "base64Output": "Resultado Base64",
+      "copyBase64": "Copiar Base64",
+      "copyDataUrl": "Copiar Data URL",
+      "copied": "Copiado para a área de transferência",
+      "textInput": "Texto para transformar em imagem",
+      "fontSize": "Tamanho da fonte",
+      "darkTheme": "Fundo escuro",
+      "htmlInput": "Código HTML e estilos CSS",
+      "renderHtml": "Gerar imagem do HTML",
+      "invalidBase64": "Cadeia Base64 ou Data URL inválida.",
+      "htmlSandboxNote": "Contêiner SVG local seguro sem scripts nem rede externa.",
+      "downloadImage": "Baixar imagem processada",
+      "reset": "Redefinir"
     }
   }
 }

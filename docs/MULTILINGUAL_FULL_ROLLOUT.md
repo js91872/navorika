@@ -289,8 +289,21 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - Fertilizer Calculator
 - Reverse Sales Tax Calculator
 - Shopify Margin Calculator
+- AVIF to PNG Converter
+- HEIC to JPG Converter
+- HEIC to PNG Converter
+- Batch Image Converter
+- Black and White Image Converter
+- 1000x1000 Image Converter & Resizer
+- Change Image Resolution
+- Image to Base64 Converter
+- Base64 to Image Converter
+- Text to Image Converter
+- HTML to Image
+- HTML to JPG Converter
+- HTML to PNG Converter
 
-This brings branch coverage to 218 tools per language (1,526 tool variants plus seven directories, 1,533 localized pages total), advancing published coverage across the platform. The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 98 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 231 tools per language (1,617 tool variants plus seven directories, 1,624 localized pages total), advancing published coverage across the platform. The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 85 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

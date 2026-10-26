@@ -1811,6 +1811,110 @@
       "limits": "Fornisce stime per ordine al lordo delle imposte societarie e sul reddito.",
       "question": "Qual è la formula del margine netto per un negozio Shopify?",
       "answer": "Il margine netto è pari ai ricavi netti dell'ordine meno tutti i costi operativi, di spedizione, pubblicitari e bancari, diviso per i ricavi e moltiplicato per 100."
+    },
+    "avif-to-png": {
+      "title": "Convertitore da AVIF a PNG",
+      "description": "Converti file AVIF in immagini PNG senza perdita universalmente leggibili direttamente nel browser.",
+      "how": "Carica un file AVIF per visualizzare l'anteprima istantanea ed esportare una grafica PNG definita.",
+      "limits": "I dati HDR avanzati vengono convertiti nello spazio colore standard sRGB durante l'esportazione.",
+      "question": "Per quale motivo convertire da AVIF a PNG?",
+      "answer": "PNG assicura massima compatibilità con vecchi programmi di grafica che non gestiscono AVIF."
+    },
+    "heic-to-jpg": {
+      "title": "Convertitore da HEIC a JPG",
+      "description": "Converti scatti HEIC ed HEIF di iPhone nel diffuso formato JPG con compressione controllata.",
+      "how": "Seleziona la foto HEIC, imposta la qualità desiderata e scarica l'immagine JPEG convertita.",
+      "limits": "Gli scatti Live Photo animati salvano la fotografia statica principale.",
+      "question": "Le immagini vengono elaborate senza server esterni?",
+      "answer": "Sì, l'elaborazione del file HEIC avviene interamente nella memoria locale del tuo browser."
+    },
+    "heic-to-png": {
+      "title": "Convertitore da HEIC a PNG",
+      "description": "Trasforma foto HEIC in PNG senza perdita conservando risoluzione e trasparenza originali.",
+      "how": "Scegli un'immagine HEIC per decodificare i dati visivi ed esportare un file PNG completo.",
+      "limits": "I dati di profondità dei ritratti vengono uniti nell'immagine PNG finale.",
+      "question": "La risoluzione della fotocamera viene ridotta?",
+      "answer": "No, l'esatta griglia di pixel della foto originale viene conservata senza ridimensionamento."
+    },
+    "batch-image-converter": {
+      "title": "Convertitore immagini in blocco",
+      "description": "Elabora serie di immagini simultaneamente tra JPG, PNG e WebP senza trasferimenti esterni.",
+      "how": "Indica più elementi insieme, seleziona il formato prescelto e avvia la conversione collettiva.",
+      "limits": "La quantità di file contemporanei è circoscritta solo dalla memoria operativa del sistema.",
+      "question": "I file lasciano il mio dispositivo?",
+      "answer": "No, ogni immagine viene processata in sequenza direttamente nel canvas del browser."
+    },
+    "black-and-white-image-converter": {
+      "title": "Convertitore in bianco e nero",
+      "description": "Trasforma fotografie a colori in immagini monocromatiche con ponderazione di luminanza ottimale.",
+      "how": "Carica la foto desiderata per visualizzare l'effetto in scala di grigi e scaricarla in PNG o JPG.",
+      "limits": "I valori cromatici vengono sostituiti dalla luminanza; i colori originali non sono recuperabili.",
+      "question": "Quale calcolo genera la scala di grigi?",
+      "answer": "Adottiamo lo standard ITU-R Rec. 709: 0,2126 Rosso + 0,7152 Verde + 0,0722 Blu."
+    },
+    "resize-image-to-1000x1000": {
+      "title": "Ridimensiona immagine a 1000x1000",
+      "description": "Adatta qualsiasi foto alla misura quadrata esatta di 1000x1000 pixel con ritaglio o bordi.",
+      "how": "Seleziona la foto, imposta la modalità di adattamento e salva il risultato in PNG, JPG o WebP.",
+      "limits": "Ingrandire immagini di ridotte dimensioni verso 1000x1000 pixel può provocare sfocature.",
+      "question": "Quale differenza intercorre tra Ritaglia e Contieni?",
+      "answer": "Ritaglia riempie l'area tagliando i margini eccedenti, mentre Contieni mostra l'immagine intera con bordi."
+    },
+    "change-image-resolution": {
+      "title": "Cambia risoluzione immagine",
+      "description": "Modifica la risoluzione in pixel verso formati standard come Full HD, 4K UHD o formati quadrati.",
+      "how": "Seleziona l'immagine, scegli il profilo di risoluzione desiderato e scarica il file proporzionato.",
+      "limits": "Rapporti di forma differenti vengono adattati per rientrare nella cornice selezionata.",
+      "question": "È possibile ridurre il peso di fotografie molto pesanti?",
+      "answer": "Sì, scalare la risoluzione riduce notevolmente il peso del file conservando ottima definizione."
+    },
+    "image-to-base64-converter": {
+      "title": "Convertitore immagine in Base64",
+      "description": "Converti file grafici in testo codificato Base64, elementi HTML e Data URL da incorporare.",
+      "how": "Carica un elemento visivo per ricevere istantaneamente la stringa Base64 pronta da copiare.",
+      "limits": "La codifica in formato testuale comporta un incremento di peso di circa il 33 per cento.",
+      "question": "Quando è opportuno usare stringhe Base64?",
+      "answer": "È utile per inserire piccole icone direttamente nel codice senza richiedere ulteriori richieste web."
+    },
+    "base64-to-image-converter": {
+      "title": "Convertitore da Base64 a immagine",
+      "description": "Decodifica stringhe di testo Base64 e Data URL ricreando file grafici pronti allo scaricamento.",
+      "how": "Incolla la stringa Base64, controlla l'anteprima mostrata e salva il file in formato PNG o JPG.",
+      "limits": "Il testo deve contenere dati codificati validi conformi alle specifiche Data URL RFC 2397.",
+      "question": "Il tipo di immagine viene riconosciuto automaticamente?",
+      "answer": "Sì, l'intestazione e i primi byte identificativi rivelano se si tratta di PNG, JPG, WebP o SVG."
+    },
+    "txt-to-image": {
+      "title": "Convertitore da testo a immagine",
+      "description": "Trasforma righe di testo, appunti o citazioni in immagini grafiche PNG da condividere facilmente.",
+      "how": "Digita il tuo testo, imposta la grandezza dei caratteri e lo sfondo desiderato, quindi esporta.",
+      "limits": "Le frasi vanno a capo automaticamente; parole lunghissime senza spazi potrebbero fuoriuscire.",
+      "question": "La composizione avviene sul dispositivo locale?",
+      "answer": "Sì, il canvas del browser disegna le lettere localmente senza trasmettere informazioni."
+    },
+    "html-to-image": {
+      "title": "Convertitore da HTML a immagine",
+      "description": "Riproduci porzioni di codice HTML e stili CSS in immagini ad alta fedeltà in ambiente sicuro.",
+      "how": "Incolla il codice HTML, seleziona la proporzione di ingrandimento e scarica il risultato visivo.",
+      "limits": "Script dinamici e connessioni a risorse remote esterne sono disattivati per protezione.",
+      "question": "In che modo viene protetta la sicurezza?",
+      "answer": "Il markup viene ripulito e visualizzato all'interno di un contenitore SVG privo di accessi di rete."
+    },
+    "html-to-jpg-converter": {
+      "title": "Convertitore da HTML a JPG",
+      "description": "Trasforma frammenti HTML in immagini JPEG compresse con sfondo solido opaco.",
+      "how": "Inserisci il codice, calibra il fattore di compressione e preleva l'immagine finale generata.",
+      "limits": "Ogni trasparenza presente nel codice HTML viene fusa su un fondo bianco compatto.",
+      "question": "I fogli di stile avanzati sono supportati?",
+      "answer": "Sì, tutte le proprietà di visualizzazione supportate dal browser vengono rispettate."
+    },
+    "html-to-png-converter": {
+      "title": "Convertitore da HTML a PNG",
+      "description": "Genera immagini PNG nitide dal codice HTML preservando i canali di trasparenza.",
+      "how": "Scrivi il markup HTML, verifica l'anteprima trasparente e scarica il PNG senza perdita.",
+      "limits": "L'altezza si estende per coprire il testo fino a un tetto massimo di 8192 pixel.",
+      "question": "Lo sfondo trasparente viene mantenuto?",
+      "answer": "Sì, se non specifichi un colore di sfondo nel codice, i pixel trasparenti rimangono inalterati."
     }
   },
   "flexOptions": {
@@ -5765,6 +5869,33 @@
       "pngFailed": "Conversione PNG non riuscita.",
       "gifFailed": "Codifica GIF non riuscita.",
       "imageFailed": "Codifica dell'immagine non riuscita."
+    },
+    "studio": {
+      "batchPrompt": "Seleziona più file immagine contemporaneamente",
+      "batchProcess": "Converti tutte le immagini",
+      "batchCount": "immagini selezionate",
+      "batchDownloading": "Esportazione del gruppo in corso...",
+      "grayscaleTitle": "Monocromatico bianco e nero",
+      "grayscaleNote": "Pesi di luminanza Rec. 709: 0,2126 R + 0,7152 G + 0,0722 B",
+      "fitMode": "Modalità di adattamento",
+      "fitCrop": "Ritaglia per riempire il quadrato",
+      "fitContain": "Adatta immagine intera (bordi)",
+      "fitStretch": "Allarga direttamente",
+      "targetResolution": "Risoluzione desiderata",
+      "base64Input": "Stringa Base64 o Data URL",
+      "base64Output": "Risultato Base64",
+      "copyBase64": "Copia Base64",
+      "copyDataUrl": "Copia Data URL",
+      "copied": "Copiato negli appunti",
+      "textInput": "Testo da convertire in immagine",
+      "fontSize": "Dimensione caratteri",
+      "darkTheme": "Sfondo scuro",
+      "htmlInput": "Codice HTML e CSS",
+      "renderHtml": "Genera immagine da HTML",
+      "invalidBase64": "Stringa Base64 o Data URL non valida.",
+      "htmlSandboxNote": "Struttura SVG locale sicura senza script né accessi di rete.",
+      "downloadImage": "Scarica immagine elaborata",
+      "reset": "Reimposta"
     }
   }
 }

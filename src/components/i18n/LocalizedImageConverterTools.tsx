@@ -29,7 +29,11 @@ export type ConverterToolSlug =
   | 'svg-to-ico'
   | 'webp-to-ico'
   | 'webp-to-gif'
-  | 'jfif-to-png';
+  | 'jfif-to-png'
+  | 'avif-to-png'
+  | 'heic-to-jpg'
+  | 'heic-to-png'
+  | 'black-and-white-image-converter';
 
 type TargetFormat = 'png' | 'jpeg' | 'webp' | 'ico' | 'gif';
 
@@ -74,6 +78,13 @@ export default function LocalizedImageConverterTools({
         return 'image/svg+xml,.svg';
       case 'jfif-to-png':
         return 'image/jpeg,image/jfif,.jfif,.jpeg,.jpg';
+      case 'avif-to-png':
+        return 'image/avif,.avif';
+      case 'heic-to-jpg':
+      case 'heic-to-png':
+        return '.heic,.heif,image/heic,image/heif';
+      case 'black-and-white-image-converter':
+        return 'image/jpeg,image/png,image/webp,image/jpg';
       case 'image-converter':
       default:
         return 'image/jpeg,image/png,image/webp,image/jpg';
@@ -87,12 +98,16 @@ export default function LocalizedImageConverterTools({
       case 'webp-to-png':
       case 'svg-to-png':
       case 'jfif-to-png':
+      case 'avif-to-png':
+      case 'heic-to-png':
+      case 'black-and-white-image-converter':
         return 'png';
       case 'convert-jpg-to-webp':
       case 'convert-png-to-webp':
         return 'webp';
       case 'convert-png-to-jpg':
       case 'convert-webp-to-jpg':
+      case 'heic-to-jpg':
         return 'jpeg';
       case 'svg-to-ico':
       case 'webp-to-ico':
@@ -174,13 +189,28 @@ export default function LocalizedImageConverterTools({
     setError(null);
     setBusy(true);
 
+    let effectiveSourceUrl = sourceUrl;
+    let tempHeicBlobUrl: string | null = null;
+
     try {
+      if (slug === 'heic-to-jpg' || slug === 'heic-to-png') {
+        const { default: heic2any } = await import('heic2any');
+        const converted = await heic2any({ blob: file, toType: 'image/png' });
+        const blob: Blob = Array.isArray(converted) ? converted[0] : converted;
+        tempHeicBlobUrl = URL.createObjectURL(blob);
+        effectiveSourceUrl = tempHeicBlobUrl;
+      }
+
       const img = new window.Image();
       await new Promise<void>((resolve, reject) => {
         img.onload = () => resolve();
         img.onerror = () => reject(new Error(c.errorUnsupported));
-        img.src = sourceUrl;
+        img.src = effectiveSourceUrl;
       });
+
+      if (tempHeicBlobUrl) {
+        URL.revokeObjectURL(tempHeicBlobUrl);
+      }
 
       if (opId !== activeOpIdRef.current) return;
 
@@ -213,6 +243,18 @@ export default function LocalizedImageConverterTools({
         ctx.drawImage(img, (64 - w) / 2, (64 - h) / 2, w, h);
       } else {
         ctx.drawImage(img, 0, 0, width, height);
+      }
+
+      if (slug === 'black-and-white-image-converter') {
+        const imgData = ctx.getImageData(0, 0, width, height);
+        const data = imgData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          const gray = Math.round(0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2]);
+          data[i] = gray;
+          data[i + 1] = gray;
+          data[i + 2] = gray;
+        }
+        ctx.putImageData(imgData, 0, 0);
       }
 
       let outputBlob: Blob;
@@ -364,8 +406,8 @@ export default function LocalizedImageConverterTools({
               </div>
             </div>
 
-            {/* Target format dropdown (if image-converter) */}
-            {slug === 'image-converter' && (
+            {/* Target format dropdown (if image-converter or black-and-white-image-converter) */}
+            {(slug === 'image-converter' || slug === 'black-and-white-image-converter') && (
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)] mb-2">
                   {conv.outputFormat}
@@ -379,9 +421,18 @@ export default function LocalizedImageConverterTools({
                   }}
                   className={fieldClass}
                 >
-                  <option value="webp">WebP</option>
-                  <option value="jpeg">JPG / JPEG</option>
-                  <option value="png">PNG</option>
+                  {slug === 'black-and-white-image-converter' ? (
+                    <>
+                      <option value="png">PNG</option>
+                      <option value="jpeg">JPG / JPEG</option>
+                    </>
+                  ) : (
+                    <>
+                      <option value="webp">WebP</option>
+                      <option value="jpeg">JPG / JPEG</option>
+                      <option value="png">PNG</option>
+                    </>
+                  )}
                 </select>
               </div>
             )}

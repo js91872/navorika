@@ -213,6 +213,9 @@ export const translatedTools = [
   'jfif-to-png',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
   'fertilizer-calculator', 'reverse-sales-tax-calculator', 'shopify-margin-calculator',
+  'avif-to-png', 'heic-to-jpg', 'heic-to-png', 'batch-image-converter', 'black-and-white-image-converter',
+  'resize-image-to-1000x1000', 'change-image-resolution', 'image-to-base64-converter', 'base64-to-image-converter',
+  'txt-to-image', 'html-to-image', 'html-to-jpg-converter', 'html-to-png-converter',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
 export const isLocale = (value: string): value is Locale =>

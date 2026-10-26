@@ -27,6 +27,7 @@ const LocalizedPdfTools = dynamic(() => import('./LocalizedPdfTools'));
 const LocalizedPdfSuiteTools = dynamic(() => import('./LocalizedPdfSuiteTools'));
 const LocalizedImageTools = dynamic(() => import('./LocalizedImageTools'));
 const LocalizedImageConverterTools = dynamic(() => import('./LocalizedImageConverterTools'));
+const LocalizedImageStudioTools = dynamic(() => import('./LocalizedImageStudioTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -349,9 +350,26 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'svg-to-ico' ||
       slug === 'webp-to-ico' ||
       slug === 'webp-to-gif' ||
-      slug === 'jfif-to-png'
+      slug === 'jfif-to-png' ||
+      slug === 'avif-to-png' ||
+      slug === 'heic-to-jpg' ||
+      slug === 'heic-to-png' ||
+      slug === 'black-and-white-image-converter'
     ) {
       return <LocalizedImageConverterTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'batch-image-converter' ||
+      slug === 'resize-image-to-1000x1000' ||
+      slug === 'change-image-resolution' ||
+      slug === 'image-to-base64-converter' ||
+      slug === 'base64-to-image-converter' ||
+      slug === 'txt-to-image' ||
+      slug === 'html-to-image' ||
+      slug === 'html-to-jpg-converter' ||
+      slug === 'html-to-png-converter'
+    ) {
+      return <LocalizedImageStudioTools slug={slug} dictionary={dictionary} locale={locale} />;
     }
     if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
     if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

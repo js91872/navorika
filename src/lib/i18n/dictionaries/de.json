@@ -1811,6 +1811,110 @@
       "limits": "Liefert Schätzwerte pro Bestellung vor Berücksichtigung von Körperschafts- und Ertragsteuern.",
       "question": "Wie lautet die Formel für die Nettomarge bei Shopify?",
       "answer": "Die Nettogewinnmarge entspricht dem Bestellumsatz abzüglich Wareneinsatz, Versand-, Werbe- und Transaktionskosten, geteilt durch den Umsatz multipliziert mit 100."
+    },
+    "avif-to-png": {
+      "title": "AVIF zu PNG Konverter",
+      "description": "Konvertieren Sie moderne AVIF-Bilder in verlustfreie, universell kompatible PNG-Dateien im Browser.",
+      "how": "Wählen Sie eine AVIF-Datei aus, um Bildpunkte sofort zu dekodieren und als PNG abzuspeichern.",
+      "limits": "Erweiterte HDR-Informationen werden beim Export in den standardisierten sRGB-Farbraum überführt.",
+      "question": "Weshalb AVIF in PNG umwandeln?",
+      "answer": "PNG bietet zuverlässige Lesbarkeit in älteren Bildbearbeitungsprogrammen ohne AVIF-Unterstützung."
+    },
+    "heic-to-jpg": {
+      "title": "HEIC zu JPG Konverter",
+      "description": "Wandeln Sie Apple HEIC- und HEIF-Aufnahmen in gebräuchliche JPG-Dateien mit Qualitätsregelung um.",
+      "how": "HEIC-Foto laden, die gewünschte Kompressionsstufe festlegen und das fertige JPG herunterladen.",
+      "limits": "Bei bewegten Live-Photo-Serien wird ausschließlich das primäre Standbild verarbeitet.",
+      "question": "Erfolgt die Konvertierung ohne Serverübertragung?",
+      "answer": "Ja, Navorika liest und verarbeitet HEIC-Dateien direkt im Arbeitsspeicher Ihres Webbrowsers."
+    },
+    "heic-to-png": {
+      "title": "HEIC zu PNG Konverter",
+      "description": "Konvertieren Sie HEIC-Fotos in verlustfreie PNG-Dateien unter Erhalt von Auflösung und Transparenz.",
+      "how": "HEIC-Aufnahme auswählen, Bilddaten einlesen und als unkomprimierte PNG-Datei speichern.",
+      "limits": "Tiefeninformationen für Porträtaufnahmen werden in der finalen Bitmap zusammengeführt.",
+      "question": "Bleibt die ursprüngliche Kameraauflösung bestehen?",
+      "answer": "Ja, die vollständige Pixelanzahl der Originalaufnahme bleibt ohne Reduktion erhalten."
+    },
+    "batch-image-converter": {
+      "title": "Stapel-Bildkonverter",
+      "description": "Konvertieren Sie mehrere Grafiken gleichzeitig zwischen JPG, PNG und WebP ohne externe Server.",
+      "how": "Mehrere Dateien zusammen auswählen, Zielformat festlegen und die Serie gebündelt umwandeln.",
+      "limits": "Die maximale Anzahl gleichzeitiger Bilder hängt vom Arbeitsspeicher Ihres Endgeräts ab.",
+      "question": "Verlassen meine Daten das Gerät?",
+      "answer": "Nein, sämtliche Bilddateien werden nacheinander lokal auf der Zeichenfläche des Browsers berechnet."
+    },
+    "black-and-white-image-converter": {
+      "title": "Schwarz-Weiß-Bildkonverter",
+      "description": "Verwandeln Sie Farbbilder in klassische Graustufenfotos mithilfe genormter Helligkeitsgewichtung.",
+      "how": "Bilddatei auswählen, Monochrom-Vorschau prüfen und das Resultat als PNG oder JPG sichern.",
+      "limits": "Farbwerte werden durch Helligkeitswerte ersetzt; Originalfarben lassen sich nicht rekonstruieren.",
+      "question": "Nach welcher mathematischen Formel erfolgt die Umwandlung?",
+      "answer": "Wir nutzen die ITU-R Rec. 709 Norm: 0,2126 Rot + 0,7152 Grün + 0,0722 Blau."
+    },
+    "resize-image-to-1000x1000": {
+      "title": "Bild auf 1000x1000 anpassen",
+      "description": "Passen Sie jedes Bild auf exakt 1000x1000 Pixel mit präzisem Zuschnitt oder Randanpassung an.",
+      "how": "Grafik laden, Anpassungsmodus wählen und als quadratische PNG-, JPG- oder WebP-Datei speichern.",
+      "limits": "Das Vergrößern kleiner Quellbilder auf 1000x1000 Pixel kann zu weicheren Kanten führen.",
+      "question": "Worin besteht der Unterschied zwischen Zuschneiden und Einpassen?",
+      "answer": "Zuschneiden füllt das Quadrat durch Kantenbeschnitt; Einpassen zeigt das gesamte Bild mit Rändern."
+    },
+    "change-image-resolution": {
+      "title": "Bildauflösung ändern",
+      "description": "Ändern Sie Bildabmessungen in gängige Pixelformate wie Full HD, 4K UHD oder quadratische Werte.",
+      "how": "Bild hochladen, gewünschte Auflösungsstufe anklicken und die angepasste Fassung abrufen.",
+      "limits": "Abweichende Seitenverhältnisse werden proportional in den gewählten Rahmen eingepasst.",
+      "question": "Kann man damit große Kameradateien verkleinern?",
+      "answer": "Ja, das Skalieren verringert den Speicherbedarf erheblich bei weiterhin hoher Bildschärfe."
+    },
+    "image-to-base64-converter": {
+      "title": "Bild zu Base64 Konverter",
+      "description": "Kodieren Sie Bilddateien in Base64-Textzeichen, HTML-Einbettungen und Data URLs für Webprojekte.",
+      "how": "Grafik auswählen, um die fertige Base64-Zeichenkette zur direkten Übernahme zu generieren.",
+      "limits": "Die Textdarstellung vergrößert das Datenvolumen um rund 33 Prozent gegenüber Binärdateien.",
+      "question": "Wann ist der Einsatz von Base64 sinnvoll?",
+      "answer": "Sehr praktisch für kompakte Symbole in Quellcodes, um zusätzliche Serverabrufe zu vermeiden."
+    },
+    "base64-to-image-converter": {
+      "title": "Base64 zu Bild Konverter",
+      "description": "Dekodieren Sie Base64-Text und Data URLs zurück in darstellbare Bilddateien zum Download.",
+      "how": "Base64-Zeichen einfügen, Bildvorschau kontrollieren und die Datei als PNG oder JPG sichern.",
+      "limits": "Der eingegebene Text muss eine korrekte Kodierung gemäß RFC 2397 aufweisen.",
+      "question": "Wird das Format selbsttätig erkannt?",
+      "answer": "Ja, Kennzeichen in den Startbytes weisen zuverlässig auf PNG, JPG, WebP oder SVG hin."
+    },
+    "txt-to-image": {
+      "title": "Text zu Bild Konverter",
+      "description": "Verwandeln Sie Notizen, Codezeilen oder Zitate in saubere PNG-Grafiken zum unkomplizierten Teilen.",
+      "how": "Schreiben Sie Ihren Text, stellen Sie Schriftgröße und Farbstil ein und laden Sie das PNG herunter.",
+      "limits": "Zeilen werden am Rand umbrochen; extrem lange Wörter ohne Leerzeichen können überstehen.",
+      "question": "Erfolgt das Zeichnen auf dem Rechner?",
+      "answer": "Ja, der Browser zeichnet die Schriftzüge unmittelbar auf eine interne Zeichenfläche."
+    },
+    "html-to-image": {
+      "title": "HTML zu Bild Konverter",
+      "description": "Rendern Sie HTML-Ausschnitte und CSS-Stile in scharfe Bildgrafiken in einer sicheren Umgebung.",
+      "how": "HTML-Code einfügen, Skalierungsfaktor wählen und das entstandene Bild abspeichern.",
+      "limits": "Ausführende Skripte und externe Schriftartenverbindungen werden zur Sicherheit unterbunden.",
+      "question": "Wie wird die Systemsicherheit gewährleistet?",
+      "answer": "Der Quelltext wird gefiltert und in einer geschützten SVG-Kapsel ohne Netzzugang ausgeführt."
+    },
+    "html-to-jpg-converter": {
+      "title": "HTML zu JPG Konverter",
+      "description": "Erstellen Sie aus HTML-Komponenten kompakte JPEG-Dateien mit deckendem Hintergrund.",
+      "how": "Geben Sie Ihren HTML-Code ein, regulieren Sie die Kompression und laden Sie das Bild herunter.",
+      "limits": "Durchsichtige Bereiche im HTML-Aufbau werden auf einer weißen Grundfläche dargestellt.",
+      "question": "Werden moderne Flexbox-Regeln gezeichnet?",
+      "answer": "Ja, alle vom Browser unterstützten Formatierungsregeln werden präzise wiedergegeben."
+    },
+    "html-to-png-converter": {
+      "title": "HTML zu PNG Konverter",
+      "description": "Wandeln Sie HTML-Elemente in klare PNG-Bilder mit voller Unterstützung transparenter Flächen um.",
+      "how": "HTML-Befehle einsetzen, Transparenzvorschau prüfen und als verlustfreies PNG herunterladen.",
+      "limits": "Die Höhe passt sich dem Textumfang flexibel bis maximal 8192 Pixel an.",
+      "question": "Bleibt transparenter Hintergrund erhalten?",
+      "answer": "Ja, wenn keine Hintergrundfarbe im Code definiert wird, bleiben transparente Pixel bestehen."
     }
   },
   "flexOptions": {
@@ -5765,6 +5869,33 @@
       "pngFailed": "PNG-Konvertierung fehlgeschlagen.",
       "gifFailed": "GIF-Codierung fehlgeschlagen.",
       "imageFailed": "Bildcodierung fehlgeschlagen."
+    },
+    "studio": {
+      "batchPrompt": "Mehrere Bilddateien gleichzeitig auswählen",
+      "batchProcess": "Alle Bilder umwandeln",
+      "batchCount": "Bilder ausgewählt",
+      "batchDownloading": "Stapelverarbeitung läuft...",
+      "grayscaleTitle": "Monochrom Schwarz-Weiß",
+      "grayscaleNote": "Rec. 709 Helligkeitswerte: 0,2126 R + 0,7152 G + 0,0722 B",
+      "fitMode": "Anpassungsmodus",
+      "fitCrop": "Zuschneiden zum Ausfüllen",
+      "fitContain": "Gesamtes Bild einpassen (Ränder)",
+      "fitStretch": "Direkt strecken",
+      "targetResolution": "Zielauflösung",
+      "base64Input": "Base64-Zeichenkette oder Data URL",
+      "base64Output": "Base64-Ergebnis",
+      "copyBase64": "Base64 kopieren",
+      "copyDataUrl": "Data URL kopieren",
+      "copied": "In die Zwischenablage kopiert",
+      "textInput": "In Grafik umzuwandelnder Text",
+      "fontSize": "Schriftgröße",
+      "darkTheme": "Dunkler Hintergrund",
+      "htmlInput": "HTML-Code und CSS-Regeln",
+      "renderHtml": "HTML-Grafik erstellen",
+      "invalidBase64": "Ungültige Base64- oder Data URL-Zeichenkette.",
+      "htmlSandboxNote": "Lokale SVG-Umgebung ohne Skriptausführung und ohne Netzzugang.",
+      "downloadImage": "Verarbeitetes Bild herunterladen",
+      "reset": "Zurücksetzen"
     }
   }
 }
