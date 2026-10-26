@@ -219,6 +219,9 @@ export const translatedTools = [
   'crop-image', 'icon-sticker-maker', 'id-photo-maker', 'image-color-picker', 'image-metadata-viewer',
   'image-to-pdf', 'meme-generator', 'photo-collage-maker', 'photo-editor', 'social-media-resizer',
   'svg-dimensions-checker', 'upscale-image', 'watermark-image',
+  'audio-bitrate-calculator', 'audio-video-tools', 'extract-audio-from-video', 'm4a-to-mp3-converter',
+  'mov-to-mp3-converter', 'mp3-to-wav-converter', 'mp4-to-mp3-converter', 'video-to-audio-converter',
+  'video-to-mp3-converter', 'wav-to-mp3-converter', 'webm-to-mp3-converter',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
 export const isLocale = (value: string): value is Locale =>

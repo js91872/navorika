@@ -2019,6 +2019,94 @@
       "limits": "Watermarks are permanently rendered into the exported image pixel data for copyright protection.",
       "question": "Can watermarks be placed in corners or centered?",
       "answer": "Yes. Five preset positions are supported: top-left, top-right, bottom-left, bottom-right, and center."
+    },
+    "audio-bitrate-calculator": {
+      "title": "Audio Bitrate Calculator",
+      "description": "Calculate audio bitrates, estimated file sizes, and duration requirements across streaming tiers.",
+      "how": "Enter the file size and duration or specify a target bitrate to estimate resulting storage requirements.",
+      "limits": "Calculations assume constant bitrate encoding; variable bitrate files fluctuate with content complexity.",
+      "question": "What is the recommended MP3 bitrate for music?",
+      "answer": "A bitrate of 192 kbps or 256 kbps delivers exceptional music fidelity while maintaining compact file size."
+    },
+    "audio-video-tools": {
+      "title": "Audio & Video Media Tools",
+      "description": "In-browser audio extraction, transcoding, and bitrate calculation utilities with zero server upload.",
+      "how": "Choose a media utility to extract soundtrack audio, convert between codecs, or calculate storage requirements.",
+      "limits": "Media processing performance depends on local browser memory and device processor speed.",
+      "question": "Are media files uploaded to remote servers?",
+      "answer": "No. All media extraction and audio conversion operate entirely within your browser tab using WebAssembly."
+    },
+    "extract-audio-from-video": {
+      "title": "Extract Audio from Video",
+      "description": "Separate and extract soundtrack audio from video clips directly in your browser as MP3 or WAV without uploading.",
+      "how": "Select a video file, choose your output audio format and bitrate, and download the extracted audio stream.",
+      "limits": "Supports major video formats up to five hundred megabytes directly within browser memory.",
+      "question": "Does extracting audio re-encode video data?",
+      "answer": "No. Video frames are discarded and only the audio stream is decoded and packaged into your target format."
+    },
+    "m4a-to-mp3-converter": {
+      "title": "M4A to MP3 Converter",
+      "description": "Convert Apple voice memos, podcasts, and AAC/M4A recordings into universal MP3 audio files in your browser.",
+      "how": "Upload an M4A audio file, select your desired MP3 quality tier, and download the converted audio.",
+      "limits": "Protected DRM audio files from subscription services cannot be decoded in browser environments.",
+      "question": "Why convert M4A files to MP3?",
+      "answer": "MP3 provides universal compatibility with virtually all media players, car stereos, and editing software."
+    },
+    "mov-to-mp3-converter": {
+      "title": "MOV to MP3 Converter",
+      "description": "Extract audio tracks from Apple QuickTime MOV recordings and convert them to standard MP3 files locally.",
+      "how": "Choose a MOV video file, select your preferred MP3 bitrate tier, and download the extracted audio track.",
+      "limits": "Conversion processes entirely within browser memory without remote cloud uploading.",
+      "question": "Can I extract audio from iPhone MOV videos?",
+      "answer": "Yes. MOV clips recorded on iOS devices can be processed directly in modern desktop and mobile browsers."
+    },
+    "mp3-to-wav-converter": {
+      "title": "MP3 to WAV Converter",
+      "description": "Decode compressed MP3 audio into uncompressed PCM WAV format with native Web Audio speed in your browser.",
+      "how": "Select an MP3 file to instantly decode audio samples into clean uncompressed PCM WAV format.",
+      "limits": "Decompressing lossy MP3 to WAV creates larger uncompressed files but cannot restore discarded frequencies.",
+      "question": "Why convert MP3 to WAV format?",
+      "answer": "Audio editing programs and production hardware often require uncompressed WAV format for low-latency editing."
+    },
+    "mp4-to-mp3-converter": {
+      "title": "MP4 to MP3 Converter",
+      "description": "Convert MP4 video clips, webinars, and screen recordings to MP3 audio files locally in your browser.",
+      "how": "Upload an MP4 video, select your preferred audio quality level, and download the converted MP3 track.",
+      "limits": "Supports MP4 containers with AAC, MP3, or Opus audio tracks up to five hundred megabytes.",
+      "question": "Is the video deleted after extraction?",
+      "answer": "Your local video remains completely untouched on your device, and only the audio track is saved as MP3."
+    },
+    "video-to-audio-converter": {
+      "title": "Video to Audio Converter",
+      "description": "Convert MP4, WebM, MOV, MKV, and AVI video files into high-quality MP3 or WAV audio in your browser.",
+      "how": "Select any video file, pick your preferred audio format and bitrate, and download the extracted soundtrack.",
+      "limits": "Processing executes inside browser memory using WebAssembly without external server transmission.",
+      "question": "Which audio format should I choose?",
+      "answer": "MP3 is optimal for general listening and sharing, while WAV offers uncompressed quality for studio editing."
+    },
+    "video-to-mp3-converter": {
+      "title": "Video to MP3 Converter",
+      "description": "Convert any common video format into universal MP3 audio files directly inside your web browser.",
+      "how": "Drag and drop your video file, pick your target bitrate tier, and download the processed MP3 audio.",
+      "limits": "Local browser processing ensures private videos are never transmitted across the network.",
+      "question": "Does audio quality depend on the original video?",
+      "answer": "Yes. Output quality cannot exceed the original audio stream fidelity encoded in the source video."
+    },
+    "wav-to-mp3-converter": {
+      "title": "WAV to MP3 Converter",
+      "description": "Compress large uncompressed WAV files into compact, high-quality MP3 audio files in your browser.",
+      "how": "Select a WAV audio file, choose your compression bitrate level, and download the space-saving MP3 file.",
+      "limits": "Reduces file size by up to ninety percent while preserving clear acoustic clarity.",
+      "question": "How much disk space does WAV to MP3 save?",
+      "answer": "Compressing CD-quality WAV to 192 kbps MP3 typically reduces file size by approximately eighty-five percent."
+    },
+    "webm-to-mp3-converter": {
+      "title": "WebM to MP3 Converter",
+      "description": "Convert modern WebM videos and voice recordings into universal MP3 audio files directly in your browser.",
+      "how": "Upload a WebM video or audio clip, choose your desired MP3 quality setting, and download your audio file.",
+      "limits": "Extracts Opus or Vorbis audio tracks from WebM containers and re-encodes to standard MP3.",
+      "question": "Can WebM voice recordings be converted?",
+      "answer": "Yes. WebM recordings from browser microphones and webcams are fully supported for conversion to MP3."
     }
   },
   "flexOptions": {
@@ -6082,6 +6170,56 @@
       "xOffset": "Horizontal Offset (px)",
       "yOffset": "Vertical Offset (px)",
       "zoom": "Zoom Factor"
+    }
+  },
+  "mediaTools": {
+    "converter": {
+      "audioQualityBitrate": "Audio Quality Bitrate",
+      "bitrate": "Bitrate",
+      "convertAction": "Convert to Audio",
+      "downloadAudio": "Download Audio File",
+      "dropPrompt": "Drop audio or video file here or click to select",
+      "duration": "Duration",
+      "engine": "Processing Engine",
+      "extractAction": "Extract Audio Track",
+      "fileSize": "File Size",
+      "format": "Format",
+      "inputDetails": "Source File Details",
+      "largeFileNotice": "Large files over 200 MB may require additional memory to process.",
+      "localEngineNotice": "100% In-Browser Privacy: Conversion processed locally via Web Audio and WebAssembly.",
+      "outputDetails": "Output File Details",
+      "processing": "Processing media stream...",
+      "selectFile": "Select Media File",
+      "targetAudioFormat": "Target Audio Format",
+      "unsupportedFile": "The selected file is not supported or is corrupted."
+    },
+    "calculator": {
+      "channels": "Audio Channels",
+      "copySummary": "Copy Calculation Summary",
+      "duration": "Playback Duration",
+      "estimatedBitrate": "Estimated Bitrate",
+      "estimatedSize": "Estimated File Size",
+      "fileSize": "File Size",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "modeBitrateFromSize": "Calculate Bitrate from File Size",
+      "modeSizeFromBitrate": "Calculate File Size from Bitrate",
+      "mono": "Mono (1 Channel)",
+      "seconds": "Seconds",
+      "stereo": "Stereo (2 Channels)",
+      "streamingTier": "Recommended Audio Tier",
+      "targetBitrate": "Target Bitrate"
+    },
+    "hub": {
+      "badge": "In-Browser Media Studio",
+      "privacyDesc": "Media extraction and audio transcoding execute locally in your browser without uploading to any remote server.",
+      "privacyTitle": "100% In-Browser Privacy & Local Processing Architecture",
+      "sectionExtraction": "Video to Audio Extraction",
+      "sectionExtractionDesc": "Extract clean audio tracks from popular video containers directly in your browser.",
+      "sectionPlanning": "Audio Bitrate & Storage Planning",
+      "sectionPlanningDesc": "Calculate bitrates and predict storage requirements across streaming tiers.",
+      "sectionTranscoding": "Audio Format Transcoding",
+      "sectionTranscodingDesc": "Transcode between audio codecs, voice memos, and universal MP3 or WAV."
     }
   }
 }

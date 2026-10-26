@@ -315,8 +315,19 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - SVG Dimensions Checker
 - Upscale Image
 - Watermark Image
+- Audio Bitrate Calculator
+- Audio & Video Tools
+- Extract Audio from Video
+- M4A to MP3 Converter
+- MOV to MP3 Converter
+- MP3 to WAV Converter
+- MP4 to MP3 Converter
+- Video to Audio Converter
+- Video to MP3 Converter
+- WAV to MP3 Converter
+- WEBM to MP3 Converter
 
-This brings branch coverage to 244 tools per language (1,708 tool variants plus seven directories, 1,715 localized pages total), advancing published coverage across the platform. Image Tools category is now 100% complete! Exactly 72 active tools (Developer Tools), 57 guides, seven public pages and full-inventory surface reviews remain pending. Keep this PR in draft.
+This brings branch coverage to 255 tools per language (1,785 tool variants plus seven directories, 1,792 localized pages total), advancing published coverage across the platform. Audio & Video media suite is now 100% complete! Exactly 61 active tools (Developer Tools), 57 guides, seven public pages and full-inventory surface reviews remain pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

@@ -2019,6 +2019,94 @@
       "limits": "A marca d’água é gravada de forma definitiva nos pixels da imagem para salvaguardar seus direitos.",
       "question": "Posso aplicar a marca d’água nos cantos ou no centro?",
       "answer": "Sim. Estão disponíveis cinco opções: superior esquerdo, superior direito, inferior esquerdo, inferior direito e centro."
+    },
+    "audio-bitrate-calculator": {
+      "title": "Calculadora de taxa de bits de áudio",
+      "description": "Calcule taxas de bits de áudio, estimativas de tamanho de arquivo e requisitos de duração para streaming.",
+      "how": "Insira o tamanho do arquivo e a duração ou indique a taxa de bits desejada para prever o armazenamento.",
+      "limits": "Os cálculos consideram taxa constante; arquivos com taxa variável oscilam conforme a faixa sonora.",
+      "question": "Qual taxa de bits MP3 é recomendada para músicas?",
+      "answer": "Uma taxa de 192 kbps ou 256 kbps entrega fidelidade sonora impecável com arquivos de tamanho moderado."
+    },
+    "audio-video-tools": {
+      "title": "Ferramentas de áudio e vídeo",
+      "description": "Utilitários de extração de áudio, conversão e cálculo de taxa de bits sem envio para servidores.",
+      "how": "Escolha uma ferramenta para extrair trilhas sonoras, converter entre formatos ou planejar o armazenamento.",
+      "limits": "O desempenho do processamento depende da memória disponível no navegador e do processador do aparelho.",
+      "question": "Os arquivos de mídia são enviados a servidores externos?",
+      "answer": "Não. Todas as conversões e extrações operam integralmente dentro da aba do seu navegador usando WebAssembly."
+    },
+    "extract-audio-from-video": {
+      "title": "Extrair áudio de vídeo",
+      "description": "Separe e extraia trilhas sonoras de vídeos diretamente no navegador em MP3 ou WAV sem uploads.",
+      "how": "Selecione um arquivo de vídeo, defina o formato de áudio e a taxa de bits, e baixe o áudio extraído.",
+      "limits": "Compatível com os principais formatos de vídeo de até quinhentos megabytes na memória do navegador.",
+      "question": "A extração de áudio recodifica os dados de vídeo?",
+      "answer": "Não. Os quadros visuais são descartados e apenas o fluxo sonoro é decodificado para o formato de destino."
+    },
+    "m4a-to-mp3-converter": {
+      "title": "Conversor de M4A para MP3",
+      "description": "Converta gravações de voz, podcasts e áudios AAC/M4A em arquivos MP3 universais no seu navegador.",
+      "how": "Envie um arquivo M4A, escolha o nível de qualidade MP3 desejado e baixe o áudio convertido.",
+      "limits": "Arquivos protegidos por DRM comercial não podem ser decodificados no ambiente do navegador.",
+      "question": "Por que converter arquivos M4A para MP3?",
+      "answer": "O formato MP3 garante compatibilidade universal com tocadores de mídia, aparelhos de som e editores de áudio."
+    },
+    "mov-to-mp3-converter": {
+      "title": "Conversor de MOV para MP3",
+      "description": "Extraia faixas de áudio de vídeos QuickTime MOV e converta-as para arquivos MP3 padrão localmente.",
+      "how": "Escolha um arquivo de vídeo MOV, selecione a taxa de bits MP3 desejada e baixe o áudio extraído.",
+      "limits": "A conversão é processada inteiramente na memória do navegador sem envio para a nuvem.",
+      "question": "Posso extrair o áudio de vídeos MOV gravados no iPhone?",
+      "answer": "Sim. Clipes MOV gravados em aparelhos iOS podem ser convertidos diretamente em navegadores modernos."
+    },
+    "mp3-to-wav-converter": {
+      "title": "Conversor de MP3 para WAV",
+      "description": "Decodifique áudios MP3 comprimidos para o formato PCM WAV não comprimido com a agilidade do Web Audio.",
+      "how": "Selecione um arquivo MP3 para decodificar amostras de áudio para o formato PCM WAV instantaneamente.",
+      "limits": "Descompactar MP3 para WAV gera arquivos maiores, mas não recupera frequências cortadas na compressão original.",
+      "question": "Por que converter MP3 para o formato WAV?",
+      "answer": "Softwares de produção e estações de áudio costumam exigir WAV sem compressão para mixagens precisas."
+    },
+    "mp4-to-mp3-converter": {
+      "title": "Conversor de MP4 para MP3",
+      "description": "Converta vídeos MP4, reuniões e gravações de tela em arquivos de áudio MP3 no seu navegador.",
+      "how": "Envie um vídeo MP4, selecione o nível de qualidade desejado e baixe a faixa de áudio MP3.",
+      "limits": "Compatível com arquivos MP4 com trilhas AAC, MP3 ou Opus de até quinhentos megabytes.",
+      "question": "O vídeo original é apagado após a extração?",
+      "answer": "O vídeo original em seu disco permanece intacto, sendo gerada uma faixa de áudio MP3 independente."
+    },
+    "video-to-audio-converter": {
+      "title": "Conversor de vídeo para áudio",
+      "description": "Converta vídeos MP4, WebM, MOV, MKV e AVI em áudios MP3 ou WAV de alta fidelidade no navegador.",
+      "how": "Selecione qualquer vídeo, defina formato e taxa de bits desejados e baixe a trilha sonora resultante.",
+      "limits": "O processamento ocorre na memória do navegador via WebAssembly sem tráfego de dados para servidores.",
+      "question": "Qual formato de áudio devo escolher?",
+      "answer": "MP3 é ideal para ouvir no dia a dia e compartilhar; WAV oferece fidelidade absoluta sem compressão."
+    },
+    "video-to-mp3-converter": {
+      "title": "Conversor de vídeo para MP3",
+      "description": "Converta qualquer formato de vídeo em arquivos de áudio MP3 universais diretamente no navegador.",
+      "how": "Arraste o arquivo de vídeo, defina a taxa de bits pretendida e baixe o áudio MP3 gerado.",
+      "limits": "O processamento local assegura que seus vídeos particulares nunca sejam transmitidos pela rede.",
+      "question": "A qualidade do áudio depende do vídeo original?",
+      "answer": "Sim. A qualidade final não pode superar a fidelidade da faixa sonora gravada no vídeo de origem."
+    },
+    "wav-to-mp3-converter": {
+      "title": "Conversor de WAV para MP3",
+      "description": "Comprima arquivos WAV volumosos em arquivos MP3 leves e de alta fidelidade diretamente no navegador.",
+      "how": "Escolha um arquivo WAV, defina o nível de taxa de bits e baixe o arquivo MP3 com economia de espaço.",
+      "limits": "Diminui o tamanho do arquivo em até noventa por cento preservando excelente clareza sonora.",
+      "question": "Quanto espaço em disco a conversão de WAV para MP3 economiza?",
+      "answer": "A compressão de um WAV padrão para MP3 a 192 kbps normalmente reduz o arquivo em cerca de oitenta e cinco por cento."
+    },
+    "webm-to-mp3-converter": {
+      "title": "Conversor de WebM para MP3",
+      "description": "Converta vídeos WebM e gravações de voz em arquivos de áudio MP3 universais no seu navegador.",
+      "how": "Envie um vídeo ou áudio WebM, escolha o padrão de qualidade MP3 e baixe seu arquivo sonoro.",
+      "limits": "Extrai trilhas Opus ou Vorbis de arquivos WebM e as recodifica para o formato padrão MP3.",
+      "question": "É possível converter gravações de voz feitas em WebM?",
+      "answer": "Sim. Gravações de microfone ou webcam capturadas em WebM são totalmente suportadas para conversão."
     }
   },
   "flexOptions": {
@@ -6082,6 +6170,56 @@
       "xOffset": "Deslocamento horizontal (px)",
       "yOffset": "Deslocamento vertical (px)",
       "zoom": "Fator de zoom"
+    }
+  },
+  "mediaTools": {
+    "converter": {
+      "audioQualityBitrate": "Taxa de bits e qualidade",
+      "bitrate": "Taxa de transferência",
+      "convertAction": "Converter para áudio",
+      "downloadAudio": "Baixar arquivo de áudio",
+      "dropPrompt": "Arraste o arquivo de áudio ou vídeo aqui ou clique para selecionar",
+      "duration": "Duração",
+      "engine": "Mecanismo de processamento",
+      "extractAction": "Extrair faixa de áudio",
+      "fileSize": "Tamanho do arquivo",
+      "format": "Formato de áudio",
+      "inputDetails": "Detalhes do arquivo de origem",
+      "largeFileNotice": "Arquivos acima de 200 MB podem demandar mais memória do navegador.",
+      "localEngineNotice": "Privacidade total no navegador: conversão realizada localmente via Web Audio e WebAssembly.",
+      "outputDetails": "Detalhes do arquivo gerado",
+      "processing": "Processando fluxo de mídia...",
+      "selectFile": "Selecionar arquivo de mídia",
+      "targetAudioFormat": "Formato de áudio de saída",
+      "unsupportedFile": "O arquivo selecionado não é suportado ou está corrompido."
+    },
+    "calculator": {
+      "channels": "Canais de áudio",
+      "copySummary": "Copiar resumo do cálculo",
+      "duration": "Duração da reprodução",
+      "estimatedBitrate": "Taxa de bits calculada",
+      "estimatedSize": "Tamanho estimado do arquivo",
+      "fileSize": "Tamanho do arquivo",
+      "hours": "Horas",
+      "minutes": "Minutos",
+      "modeBitrateFromSize": "Calcular taxa de bits pelo tamanho do arquivo",
+      "modeSizeFromBitrate": "Calcular tamanho do arquivo pela taxa de bits",
+      "mono": "Mono (1 canal)",
+      "seconds": "Segundos",
+      "stereo": "Estéreo (2 canais)",
+      "streamingTier": "Nível de áudio recomendado",
+      "targetBitrate": "Taxa de bits desejada"
+    },
+    "hub": {
+      "badge": "Estúdio multimídia no navegador",
+      "privacyDesc": "A extração de mídia e a transcodificação de áudio ocorrem localmente sem upload para servidores.",
+      "privacyTitle": "Privacidade absoluta e processamento local no navegador",
+      "sectionExtraction": "Extração de vídeo para áudio",
+      "sectionExtractionDesc": "Extraia trilhas de áudio nítidas dos formatos de vídeo mais populares no navegador.",
+      "sectionPlanning": "Planejamento de taxa de bits e armazenamento",
+      "sectionPlanningDesc": "Calcule taxas de bits e preveja necessidades de espaço para diferentes qualidades de transmissão.",
+      "sectionTranscoding": "Transcodificação de formatos de áudio",
+      "sectionTranscodingDesc": "Transcodifique entre codecs de áudio, memorandos de voz e formatos universais MP3 ou WAV."
     }
   }
 }

@@ -29,6 +29,7 @@ const LocalizedImageTools = dynamic(() => import('./LocalizedImageTools'));
 const LocalizedImageConverterTools = dynamic(() => import('./LocalizedImageConverterTools'));
 const LocalizedImageStudioTools = dynamic(() => import('./LocalizedImageStudioTools'));
 const LocalizedImageCanvasTools = dynamic(() => import('./LocalizedImageCanvasTools'));
+const LocalizedMediaTools = dynamic(() => import('./LocalizedMediaTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -388,6 +389,21 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'watermark-image'
     ) {
       return <LocalizedImageCanvasTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'audio-bitrate-calculator' ||
+      slug === 'audio-video-tools' ||
+      slug === 'extract-audio-from-video' ||
+      slug === 'm4a-to-mp3-converter' ||
+      slug === 'mov-to-mp3-converter' ||
+      slug === 'mp3-to-wav-converter' ||
+      slug === 'mp4-to-mp3-converter' ||
+      slug === 'video-to-audio-converter' ||
+      slug === 'video-to-mp3-converter' ||
+      slug === 'wav-to-mp3-converter' ||
+      slug === 'webm-to-mp3-converter'
+    ) {
+      return <LocalizedMediaTools slug={slug} dictionary={dictionary} locale={locale} />;
     }
     if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
     if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

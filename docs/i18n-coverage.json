@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 322,
-    "publishedTools": 244,
-    "pendingTools": 72,
+    "publishedTools": 255,
+    "pendingTools": 61,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 61,
     "trustPages": 7,
-    "publishedToolTranslations": 1708,
+    "publishedToolTranslations": 1785,
     "targetToolTranslations": 2212,
     "pendingGuideTranslations": 427,
     "pendingTrustTranslations": 49,
@@ -315,8 +315,16 @@
       "source": "src/app/(english)/tools/audio-bitrate-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -335,8 +343,16 @@
       "source": "src/app/(english)/tools/audio-video-tools/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -2649,8 +2665,16 @@
       "source": "src/app/(english)/tools/extract-audio-from-video/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -4375,8 +4399,16 @@
       "source": "src/app/(english)/tools/m4a-to-mp3-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -4658,8 +4690,16 @@
       "source": "src/app/(english)/tools/mov-to-mp3-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -4678,8 +4718,16 @@
       "source": "src/app/(english)/tools/mp3-to-wav-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -4698,8 +4746,16 @@
       "source": "src/app/(english)/tools/mp4-to-mp3-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -7200,8 +7256,16 @@
       "source": "src/app/(english)/tools/video-to-audio-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -7220,8 +7284,16 @@
       "source": "src/app/(english)/tools/video-to-mp3-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -7438,8 +7510,16 @@
       "source": "src/app/(english)/tools/wav-to-mp3-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -7500,8 +7580,16 @@
       "source": "src/app/(english)/tools/webm-to-mp3-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -8680,13 +8768,13 @@
     {
       "source": "src/app/(english)/tools/audio-bitrate-calculator/page.tsx",
       "routeTemplate": "/tools/audio-bitrate-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/audio-video-tools/page.tsx",
       "routeTemplate": "/tools/audio-video-tools",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9268,7 +9356,7 @@
     {
       "source": "src/app/(english)/tools/extract-audio-from-video/page.tsx",
       "routeTemplate": "/tools/extract-audio-from-video",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9706,7 +9794,7 @@
     {
       "source": "src/app/(english)/tools/m4a-to-mp3-converter/page.tsx",
       "routeTemplate": "/tools/m4a-to-mp3-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9778,19 +9866,19 @@
     {
       "source": "src/app/(english)/tools/mov-to-mp3-converter/page.tsx",
       "routeTemplate": "/tools/mov-to-mp3-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/mp3-to-wav-converter/page.tsx",
       "routeTemplate": "/tools/mp3-to-wav-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/mp4-to-mp3-converter/page.tsx",
       "routeTemplate": "/tools/mp4-to-mp3-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10408,13 +10496,13 @@
     {
       "source": "src/app/(english)/tools/video-to-audio-converter/page.tsx",
       "routeTemplate": "/tools/video-to-audio-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/video-to-mp3-converter/page.tsx",
       "routeTemplate": "/tools/video-to-mp3-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10468,7 +10556,7 @@
     {
       "source": "src/app/(english)/tools/wav-to-mp3-converter/page.tsx",
       "routeTemplate": "/tools/wav-to-mp3-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10492,7 +10580,7 @@
     {
       "source": "src/app/(english)/tools/webm-to-mp3-converter/page.tsx",
       "routeTemplate": "/tools/webm-to-mp3-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

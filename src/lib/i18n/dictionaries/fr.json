@@ -2019,6 +2019,94 @@
       "limits": "Le filigrane est incrusté de façon permanente dans les pixels de l’image pour protéger vos droits d’auteur.",
       "question": "Le filigrane peut-il être placé dans les coins ou au centre ?",
       "answer": "Oui. Cinq emplacements sont prévus : en haut à gauche, en haut à droite, en bas à gauche, en bas à droite et au centre."
+    },
+    "audio-bitrate-calculator": {
+      "title": "Calculateur de débit binaire audio",
+      "description": "Calculez les débits audio, les tailles de fichier estimées et la durée selon les niveaux de diffusion.",
+      "how": "Saisissez la taille et la durée ou indiquez un débit cible pour estimer l’espace de stockage nécessaire.",
+      "limits": "Les calculs reposent sur un débit constant ; les fichiers à débit variable fluctuent selon le contenu.",
+      "question": "Quel débit MP3 est recommandé pour la musique ?",
+      "answer": "Un débit de 192 kbps ou 256 kbps garantit une excellente fidélité musicale tout en conservant un fichier léger."
+    },
+    "audio-video-tools": {
+      "title": "Outils multimédia audio et vidéo",
+      "description": "Outils d’extraction audio, de transcodage et de calcul de débit exécutés localement sans aucun transfert.",
+      "how": "Sélectionnez un outil pour extraire des pistes audio, convertir vos formats ou calculer vos besoins d’espace.",
+      "limits": "La vitesse de traitement dépend de la mémoire de votre navigateur et de la puissance de votre appareil.",
+      "question": "Les fichiers sont-ils envoyés sur des serveurs distants ?",
+      "answer": "Non. Toutes les opérations s’exécutent entièrement dans votre navigateur grâce à WebAssembly et Web Audio."
+    },
+    "extract-audio-from-video": {
+      "title": "Extraire l’audio d’une vidéo",
+      "description": "Séparez et extrayez la bande-son de clips vidéo directement dans votre navigateur au format MP3 ou WAV sans téléversement.",
+      "how": "Choisissez un fichier vidéo, définissez le format audio et le débit, puis téléchargez la piste extraite.",
+      "limits": "Prend en charge les formats vidéo courants jusqu’à cinq cents mégaoctets dans la mémoire du navigateur.",
+      "question": "L’extraction audio réencode-t-elle la vidéo ?",
+      "answer": "Non. Les images vidéo sont écartées et seul le flux audio est décodé et converti dans le format cible."
+    },
+    "m4a-to-mp3-converter": {
+      "title": "Convertisseur M4A en MP3",
+      "description": "Convertissez mémos vocaux, podcasts et enregistrements AAC/M4A en fichiers MP3 universels dans votre navigateur.",
+      "how": "Téléversez un fichier M4A, déterminez le niveau de qualité MP3 souhaité et téléchargez le son converti.",
+      "limits": "Les fichiers audio protégés par DRM ne peuvent pas être décodés dans l’environnement du navigateur.",
+      "question": "Pourquoi convertir des fichiers M4A en MP3 ?",
+      "answer": "Le format MP3 offre une compatibilité universelle avec les lecteurs multimédias, autoradios et logiciels de montage."
+    },
+    "mov-to-mp3-converter": {
+      "title": "Convertisseur MOV en MP3",
+      "description": "Extrayez les pistes audio de vidéos QuickTime MOV et convertissez-les en fichiers MP3 standards localement.",
+      "how": "Sélectionnez une vidéo MOV, choisissez le débit binaire MP3 souhaité et téléchargez la piste audio extraite.",
+      "limits": "La conversion s’exécute dans la mémoire locale sans téléversement sur des serveurs distants.",
+      "question": "Puis-je extraire le son de vidéos MOV filmées sur iPhone ?",
+      "answer": "Oui. Les vidéos MOV enregistrées sur iPhone sont prises en charge directement dans les navigateurs récents."
+    },
+    "mp3-to-wav-converter": {
+      "title": "Convertisseur MP3 en WAV",
+      "description": "Décodez des fichiers MP3 compressés en format PCM WAV non compressé avec la rapidité native de Web Audio.",
+      "how": "Sélectionnez un fichier MP3 pour décoder instantanément les échantillons sonores en format WAV non compressé.",
+      "limits": "Décompresser du MP3 vers WAV produit un fichier plus volumineux sans restituer les fréquences éliminées.",
+      "question": "Pourquoi convertir du MP3 en format WAV ?",
+      "answer": "Les logiciels de mixage et appareils de production exigent souvent du WAV pour un travail sans latence."
+    },
+    "mp4-to-mp3-converter": {
+      "title": "Convertisseur MP4 en MP3",
+      "description": "Convertissez clips vidéo MP4, webinaires et captures d’écran en fichiers audio MP3 dans votre navigateur.",
+      "how": "Téléversez une vidéo MP4, choisissez la qualité audio souhaitée et téléchargez le fichier MP3 obtenu.",
+      "limits": "Prend en charge les fichiers MP4 avec pistes AAC, MP3 ou Opus jusqu’à cinq cents mégaoctets.",
+      "question": "La vidéo est-elle modifiée après l’extraction ?",
+      "answer": "Votre vidéo originale reste intacte sur votre appareil, seule la piste sonore étant enregistrée en MP3."
+    },
+    "video-to-audio-converter": {
+      "title": "Convertisseur vidéo en audio",
+      "description": "Convertissez des vidéos MP4, WebM, MOV, MKV et AVI en pistes audio MP3 ou WAV de haute qualité.",
+      "how": "Choisissez une vidéo, sélectionnez le format et le débit binaire désirés, puis téléchargez la bande-son.",
+      "limits": "Le traitement s’effectue dans la mémoire du navigateur sans transmission vers des serveurs distants.",
+      "question": "Quel format audio dois-je choisir ?",
+      "answer": "Le format MP3 convient parfaitement à l’écoute courante, tandis que le WAV offre une qualité sans compression."
+    },
+    "video-to-mp3-converter": {
+      "title": "Convertisseur vidéo en MP3",
+      "description": "Convertissez n’importe quel format vidéo en fichiers audio MP3 universels directement dans votre navigateur.",
+      "how": "Glissez-déposez votre vidéo, choisissez le débit cible et téléchargez le fichier audio MP3 produit.",
+      "limits": "Le traitement local garantit que vos vidéos privées ne transitent jamais sur le réseau.",
+      "question": "La qualité audio dépend-elle de la vidéo source ?",
+      "answer": "Oui. La fidélité du fichier produit ne peut pas dépasser la qualité de la piste audio intégrée au fichier vidéo."
+    },
+    "wav-to-mp3-converter": {
+      "title": "Convertisseur WAV en MP3",
+      "description": "Compressez des fichiers WAV volumineux en fichiers MP3 compacts et nets directement dans votre navigateur.",
+      "how": "Sélectionnez un fichier WAV, choisissez le débit binaire souhaité et téléchargez votre fichier MP3 optimisé.",
+      "limits": "Réduit la taille du fichier jusqu’à quatre-vingt-dix pour cent tout en conservant une grande clarté acoustique.",
+      "question": "Combien d’espace disque économise-t-on de WAV à MP3 ?",
+      "answer": "Compresser un WAV de qualité CD en MP3 à 192 kbps réduit le poids du fichier d’environ quatre-vingt-cinq pour cent."
+    },
+    "webm-to-mp3-converter": {
+      "title": "Convertisseur WebM en MP3",
+      "description": "Convertissez vidéos WebM et captures vocales en fichiers audio MP3 universels directement dans votre navigateur.",
+      "how": "Téléversez un clip WebM, déterminez le niveau de qualité MP3 souhaité et téléchargez votre fichier audio.",
+      "limits": "Extrait les pistes audio Opus ou Vorbis des conteneurs WebM pour les réencoder en MP3 standard.",
+      "question": "Les enregistrements vocaux WebM sont-ils pris en charge ?",
+      "answer": "Oui. Les enregistrements de microphones et webcams au format WebM sont totalement compatibles pour la conversion MP3."
     }
   },
   "flexOptions": {
@@ -6082,6 +6170,56 @@
       "xOffset": "Décalage horizontal (px)",
       "yOffset": "Décalage vertical (px)",
       "zoom": "Facteur de zoom"
+    }
+  },
+  "mediaTools": {
+    "converter": {
+      "audioQualityBitrate": "Débit binaire et qualité",
+      "bitrate": "Débit binaire",
+      "convertAction": "Convertir en audio",
+      "downloadAudio": "Télécharger le fichier audio",
+      "dropPrompt": "Déposez votre fichier audio ou vidéo ici ou cliquez pour choisir",
+      "duration": "Durée",
+      "engine": "Moteur de traitement",
+      "extractAction": "Extraire la piste audio",
+      "fileSize": "Taille du fichier",
+      "format": "Format audio",
+      "inputDetails": "Détails du fichier source",
+      "largeFileNotice": "Les fichiers volumineux de plus de 200 Mo peuvent nécessiter une mémoire accrue.",
+      "localEngineNotice": "Confidentialité totale : conversion traitée localement par Web Audio et WebAssembly sans transfert.",
+      "outputDetails": "Détails du fichier produit",
+      "processing": "Traitement du flux multimédia en cours...",
+      "selectFile": "Sélectionner un fichier multimédia",
+      "targetAudioFormat": "Format audio de sortie",
+      "unsupportedFile": "Le fichier choisi n’est pas pris en charge ou est endommagé."
+    },
+    "calculator": {
+      "channels": "Canaux audio",
+      "copySummary": "Copier le résumé du calcul",
+      "duration": "Durée de lecture",
+      "estimatedBitrate": "Débit binaire estimé",
+      "estimatedSize": "Taille estimée du fichier",
+      "fileSize": "Taille du fichier",
+      "hours": "Heures",
+      "minutes": "Minutes (min)",
+      "modeBitrateFromSize": "Calculer le débit depuis la taille du fichier",
+      "modeSizeFromBitrate": "Calculer la taille depuis le débit binaire",
+      "mono": "Mono (1 canal)",
+      "seconds": "Secondes",
+      "stereo": "Stéréo (2 canaux)",
+      "streamingTier": "Niveau audio recommandé",
+      "targetBitrate": "Débit binaire cible"
+    },
+    "hub": {
+      "badge": "Studio multimédia intégré",
+      "privacyDesc": "L’extraction multimédia et le transcodage audio s’exécutent directement dans votre navigateur sans téléversement.",
+      "privacyTitle": "Confidentialité totale et architecture de traitement local",
+      "sectionExtraction": "Extraction vidéo vers audio",
+      "sectionExtractionDesc": "Extrayez des pistes audio nettes depuis les formats vidéo courants directement dans votre navigateur.",
+      "sectionPlanning": "Calcul de débit binaire et planification du stockage",
+      "sectionPlanningDesc": "Calculez les débits binaires et prévoyez l’espace disque selon les niveaux de diffusion.",
+      "sectionTranscoding": "Transcodage de formats audio",
+      "sectionTranscodingDesc": "Transcodez entre différents codecs audio, mémos vocaux et formats universels MP3 ou WAV."
     }
   }
 }

@@ -2019,6 +2019,94 @@
       "limits": "Das Wasserzeichen wird zum Schutz des Urheberrechts fest in die Bilddaten der exportierten Datei gerendert.",
       "question": "Kann das Wasserzeichen in Ecken oder mittig platziert werden?",
       "answer": "Ja. Fünf Positionen stehen bereit: oben links, oben rechts, unten links, unten rechts und zentriert."
+    },
+    "audio-bitrate-calculator": {
+      "title": "Audio-Bitraten-Rechner",
+      "description": "Berechnen Sie Audio-Bitraten, geschätzte Dateigrößen und Speichervorgaben für verschiedene Audiostufen.",
+      "how": "Geben Sie Dateigröße und Dauer ein oder bestimmen Sie eine Zielbitrate zur Berechnung des Speicherbedarfs.",
+      "limits": "Berechnungen basieren auf konstanter Bitrate; variable Bitraten schwanken je nach Klangkomplexität.",
+      "question": "Welche MP3-Bitrate empfiehlt sich für Musik?",
+      "answer": "Eine Bitrate von 192 kbps oder 256 kbps bietet hervorragenden Klang bei gleichzeitig moderater Dateigröße."
+    },
+    "audio-video-tools": {
+      "title": "Audio- und Video-Werkzeuge",
+      "description": "Werkzeuge zur Audioextraktion, Transkodierung und Bitratenberechnung ohne externen Server-Upload.",
+      "how": "Wählen Sie ein Tool, um Audiospuren zu extrahieren, Codecs umzuwandeln oder Speicheranforderungen zu prüfen.",
+      "limits": "Die Verarbeitungsgeschwindigkeit hängt von Arbeitsspeicher und Prozessorleistung Ihres Geräts ab.",
+      "question": "Werden Mediendateien auf externe Server geladen?",
+      "answer": "Nein. Alle Extraktionen und Konvertierungen laufen vollständig im lokalen Browser-Tab via WebAssembly."
+    },
+    "extract-audio-from-video": {
+      "title": "Audio aus Video extrahieren",
+      "description": "Trennen und extrahieren Sie Tonspuren aus Videoclips direkt im Webbrowser als MP3 oder WAV ohne Upload.",
+      "how": "Wählen Sie eine Videodatei, bestimmen Sie Audioformat und Bitrate und laden Sie die extrahierte Tonspur herunter.",
+      "limits": "Unterstützt gängige Videoformate bis zu fünfhundert Megabyte direkt im lokalen Arbeitsspeicher.",
+      "question": "Werden bei der Audioextraktion Videodaten neu kodiert?",
+      "answer": "Nein. Videobilder werden verworfen und ausschließlich die Audiospur wird in das Zielformat konvertiert."
+    },
+    "m4a-to-mp3-converter": {
+      "title": "M4A-in-MP3-Konverter",
+      "description": "Konvertieren Sie Sprachmemos, Podcasts und AAC/M4A-Aufnahmen in universelle MP3-Audiodateien im Browser.",
+      "how": "Laden Sie eine M4A-Datei hoch, wählen Sie die gewünschte MP3-Qualitätsstufe und laden Sie das Audio herunter.",
+      "limits": "DRM-geschützte Audiodateien aus Abodiensten können im Browser nicht dekodiert werden.",
+      "question": "Warum sollten M4A-Dateien in MP3 umgewandelt werden?",
+      "answer": "MP3 gewährleistet universelle Kompatibilität mit nahezu allen Wiedergabegeräten, Autoradios und Schnittprogrammen."
+    },
+    "mov-to-mp3-converter": {
+      "title": "MOV-in-MP3-Konverter",
+      "description": "Extrahieren Sie Audiospuren aus QuickTime-MOV-Aufnahmen und wandeln Sie diese lokal in MP3-Dateien um.",
+      "how": "Wählen Sie eine MOV-Videodatei, bestimmen Sie die MP3-Bitrate und laden Sie die extrahierte Tonspur herunter.",
+      "limits": "Die Umwandlung läuft vollständig im Browser-Speicher ohne Übertragung in eine externe Cloud.",
+      "question": "Kann Audio aus iPhone-MOV-Videos extrahiert werden?",
+      "answer": "Ja. Mit iOS-Geräten aufgenommene MOV-Dateien können direkt im Browser verarbeitet werden."
+    },
+    "mp3-to-wav-converter": {
+      "title": "MP3-in-WAV-Konverter",
+      "description": "Dekodieren Sie komprimiertes MP3-Audio in unkomprimiertes PCM-WAV mit nativer Web-Audio-Geschwindigkeit.",
+      "how": "Wählen Sie eine MP3-Datei aus, um Audiosamples direkt in unkomprimiertes PCM-WAV umzuwandeln.",
+      "limits": "Das Entpacken von MP3 nach WAV erzeugt größere Dateien, kann jedoch abgeschnittene Frequenzen nicht wiederherstellen.",
+      "question": "Warum sollte MP3 in das WAV-Format konvertiert werden?",
+      "answer": "Schnittprogramme und Audiogeräte erfordern häufig unkomprimiertes WAV für verzögerungsfreie Weiterverarbeitung."
+    },
+    "mp4-to-mp3-converter": {
+      "title": "MP4-in-MP3-Konverter",
+      "description": "Wandeln Sie MP4-Videos, Webinare und Bildschirmaufnahmen direkt im Browser in MP3-Dateien um.",
+      "how": "Laden Sie ein MP4-Video hoch, wählen Sie die Qualitätsstufe und laden Sie die extrahierte MP3-Spur herunter.",
+      "limits": "Unterstützt MP4-Dateien mit AAC-, MP3- oder Opus-Audiospuren bis zu fünfhundert Megabyte.",
+      "question": "Wird das Video nach der Extraktion gelöscht?",
+      "answer": "Ihre Videodatei bleibt auf Ihrem Gerät unangetastet; lediglich die Tonspur wird als MP3 gespeichert."
+    },
+    "video-to-audio-converter": {
+      "title": "Video-in-Audio-Konverter",
+      "description": "Wandeln Sie MP4-, WebM-, MOV-, MKV- und AVI-Videos in hochwertige MP3- oder WAV-Audiodateien um.",
+      "how": "Wählen Sie ein Video, legen Sie Audioformat und Bitrate fest und laden Sie die extrahierte Audiospur herunter.",
+      "limits": "Die Verarbeitung erfolgt lokal im Arbeitsspeicher via WebAssembly ohne externe Serververbindungen.",
+      "question": "Welches Audioformat sollte gewählt werden?",
+      "answer": "MP3 eignet sich ideal zum mobilen Hören; WAV liefert unkomprimierte Qualität für professionelle Bearbeitung."
+    },
+    "video-to-mp3-converter": {
+      "title": "Video-in-MP3-Konverter",
+      "description": "Wandeln Sie gängige Videoformate direkt im Webbrowser in universelle MP3-Audiodateien um.",
+      "how": "Ziehen Sie Ihre Videodatei ins Fenster, wählen Sie die Bitrate und laden Sie das fertige MP3-Audio herunter.",
+      "limits": "Lokale Verarbeitung im Browser stellt sicher, dass private Videos das Endgerät niemals verlassen.",
+      "question": "Hängt die Audioqualität vom Originalvideo ab?",
+      "answer": "Ja. Die Ausgabequalität kann die im Quellvideo enthaltene Audioabtastung nicht überschreiten."
+    },
+    "wav-to-mp3-converter": {
+      "title": "WAV-in-MP3-Konverter",
+      "description": "Komprimieren Sie große WAV-Dateien in handliche, klangreine MP3-Dateien direkt in Ihrem Browser.",
+      "how": "Wählen Sie eine WAV-Datei, bestimmen Sie die Kompressionsbitrate und laden Sie das platzsparende MP3 herunter.",
+      "limits": "Reduziert die Dateigröße um bis zu neunzig Prozent bei erstaunlich hoher klanglicher Präzision.",
+      "question": "Wie viel Speicherplatz spart die Umwandlung von WAV in MP3?",
+      "answer": "Die Komprimierung von CD-Qualität-WAV zu 192 kbps MP3 reduziert die Dateigröße in der Regel um etwa fünfundachtzig Prozent."
+    },
+    "webm-to-mp3-converter": {
+      "title": "WebM-in-MP3-Konverter",
+      "description": "Wandeln Sie WebM-Videos und Sprachaufnahmen direkt im Browser in universelle MP3-Audiodateien um.",
+      "how": "Laden Sie einen WebM-Clip hoch, wählen Sie die MP3-Qualitätsstufe und laden Sie die Audiodatei herunter.",
+      "limits": "Extrahiert Opus- oder Vorbis-Audiospuren aus WebM-Dateien und kodiert diese in standardkonformes MP3 um.",
+      "question": "Können WebM-Sprachaufnahmen umgewandelt werden?",
+      "answer": "Ja. WebM-Aufnahmen von Mikrofonen oder Webcams werden uneingeschränkt für die Umwandlung nach MP3 unterstützt."
     }
   },
   "flexOptions": {
@@ -6082,6 +6170,56 @@
       "xOffset": "Horizontaler Versatz (px)",
       "yOffset": "Vertikaler Versatz (px)",
       "zoom": "Zoomfaktor"
+    }
+  },
+  "mediaTools": {
+    "converter": {
+      "audioQualityBitrate": "Audio-Bitrate und Qualität",
+      "bitrate": "Audio-Bitrate",
+      "convertAction": "In Audio umwandeln",
+      "downloadAudio": "Audiodatei herunterladen",
+      "dropPrompt": "Audio- oder Videodatei hier ablegen oder zum Auswählen klicken",
+      "duration": "Dauer",
+      "engine": "Verarbeitungsmodul",
+      "extractAction": "Audiospur extrahieren",
+      "fileSize": "Dateigröße",
+      "format": "Audioformat",
+      "inputDetails": "Details der Quelldatei",
+      "largeFileNotice": "Dateien über 200 MB benötigen möglicherweise zusätzlichen Arbeitsspeicher.",
+      "localEngineNotice": "100 % lokaler Datenschutz: Umwandlung direkt im Browser via Web Audio und WebAssembly.",
+      "outputDetails": "Details der Ausgabedatei",
+      "processing": "Medienstream wird verarbeitet...",
+      "selectFile": "Mediendatei auswählen",
+      "targetAudioFormat": "Ziel-Audioformat",
+      "unsupportedFile": "Die ausgewählte Datei wird nicht unterstützt oder ist beschädigt."
+    },
+    "calculator": {
+      "channels": "Audiokanäle",
+      "copySummary": "Berechnungsübersicht kopieren",
+      "duration": "Wiedergabedauer",
+      "estimatedBitrate": "Berechnete Bitrate",
+      "estimatedSize": "Geschätzte Dateigröße",
+      "fileSize": "Dateigröße",
+      "hours": "Stunden",
+      "minutes": "Minuten",
+      "modeBitrateFromSize": "Bitrate anhand der Dateigröße berechnen",
+      "modeSizeFromBitrate": "Dateigröße anhand der Bitrate berechnen",
+      "mono": "Mono (1 Kanal)",
+      "seconds": "Sekunden",
+      "stereo": "Stereo (2 Kanäle)",
+      "streamingTier": "Empfohlene Qualitätsstufe",
+      "targetBitrate": "Zielbitrate"
+    },
+    "hub": {
+      "badge": "Lokales Medienstudio",
+      "privacyDesc": "Audioextraktion und Transkodierung laufen direkt in Ihrem Webbrowser ohne Upload auf externe Server.",
+      "privacyTitle": "100 % lokaler Datenschutz und browserbasierte Architektur",
+      "sectionExtraction": "Video-zu-Audio-Extraktion",
+      "sectionExtractionDesc": "Extrahieren Sie klare Audiospuren aus gängigen Videoformaten direkt in Ihrem Browser.",
+      "sectionPlanning": "Planung von Audio-Bitrate und Speicherbedarf",
+      "sectionPlanningDesc": "Ermitteln Sie Bitraten und schätzen Sie den Speicherbedarf für unterschiedliche Streaming-Stufen.",
+      "sectionTranscoding": "Audioformat-Transkodierung",
+      "sectionTranscodingDesc": "Konvertieren Sie Sprachmemos und Audiocodecs in universelle MP3- oder WAV-Dateien."
     }
   }
 }
