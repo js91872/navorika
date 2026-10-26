@@ -2107,6 +2107,134 @@
       "limits": "Extrait les pistes audio Opus ou Vorbis des conteneurs WebM pour les réencoder en MP3 standard.",
       "question": "Les enregistrements vocaux WebM sont-ils pris en charge ?",
       "answer": "Oui. Les enregistrements de microphones et webcams au format WebM sont totalement compatibles pour la conversion MP3."
+    },
+    "csv-to-json-converter": {
+      "title": "Convertisseur CSV en JSON",
+      "description": "Convertissez vos tableaux CSV en tableaux d’objets JSON avec détection automatique des types et séparateurs réglables.",
+      "how": "Collez vos données CSV ou importez un fichier. Choisissez le délimiteur (virgule, point-virgule, tabulation), activez l’inférence des types et téléchargez le JSON.",
+      "limits": "Traite des fichiers CSV entre guillemets multilignes jusqu’à 100 000 lignes dans la mémoire locale.",
+      "question": "Le convertisseur détecte-t-il les nombres et les booléens ?",
+      "answer": "Oui. Lorsque l’option est active, les nombres, valeurs booléennes et valeurs nulles sont convertis dans leurs types JSON natifs."
+    },
+    "csv-to-vcard": {
+      "title": "Convertisseur CSV en vCard",
+      "description": "Convertissez vos tableaux de contacts CSV en fichiers .vcf compatibles Apple Contacts, Google et Outlook.",
+      "how": "Collez vos lignes CSV ou téléversez un fichier. Confirmez la correspondance des noms, téléphones et emails, puis téléchargez vos fiches vCard 3.0.",
+      "limits": "Génère des fiches universelles vCard 3.0 jusqu’à 10 000 contacts en une seule session locale.",
+      "question": "Quels en-têtes de colonnes sont automatiquement identifiés ?",
+      "answer": "Reconnaît les champs Prénom, Nom, Nom complet, Téléphone, Email, Société et Fonction ainsi que leurs variantes courantes."
+    },
+    "json-diff-compare": {
+      "title": "Outil de comparaison JSON Diff",
+      "description": "Comparez deux documents JSON sémantiquement par chemin d’accès pour repérer ajouts, suppressions et modifications.",
+      "how": "Collez vos deux textes JSON dans les éditeurs juxtaposés. Examinez les différences structurelles classées et exportez un récapitulatif détaillé.",
+      "limits": "Compare récursivement des structures JSON complexes jusqu’à 20 Mo dans votre navigateur.",
+      "question": "La comparaison ignore-t-elle l’ordre des clés ?",
+      "answer": "Oui. La comparaison est sémantique et non textuelle : un ordre de clés différent ne génère pas de fausses alertes."
+    },
+    "json-formatter": {
+      "title": "Formateur et validateur JSON",
+      "description": "Mettez en forme, embellissez, validez et compactez du code JSON avec repérage précis des erreurs de syntaxe.",
+      "how": "Collez votre code JSON brut. Choisissez une indentation de 2 ou 4 espaces ou le mode compact, repérez les erreurs éventuelles et copiez le résultat.",
+      "limits": "Traite et formate des documents JSON jusqu’à 50 Mo de manière quasi instantanée.",
+      "question": "L’outil vérifie-t-il la conformité stricte aux standards JSON ?",
+      "answer": "Oui. Il contrôle la conformité à la norme RFC 8259 et signale avec exactitude les virgules superflues ou parenthèses manquantes."
+    },
+    "json-schema-validator": {
+      "title": "Validateur de schéma JSON",
+      "description": "Validez vos données JSON par rapport à un schéma JSON avec diagnostic précis des chemins d’erreur.",
+      "how": "Saisissez votre définition de schéma JSON et vos données. Lancez l’analyse pour repérer clés manquantes et non-conformités de type.",
+      "limits": "Prend en charge les mots-clés essentiels de JSON Schema (type, properties, required, items, enum, minimum, maximum).",
+      "question": "La validation s’effectue-t-elle sans transmettre les schémas ?",
+      "answer": "Oui. L’évaluation du schéma et la vérification des données ont lieu intégralement sur votre machine sans appel réseau."
+    },
+    "json-to-csv-flattener": {
+      "title": "Aplatisseur JSON en CSV",
+      "description": "Aplatissez des structures JSON complexes et imbriquées en fichiers tabulaires CSV avec colonnes à notation pointée.",
+      "how": "Collez votre code JSON. Définissez la gestion des listes enfants, prévisualisez le tableau résultant et téléchargez votre fichier CSV structuré.",
+      "limits": "Traite des hiérarchies JSON imbriquées jusqu’à 20 niveaux de profondeur et 50 000 objets dans le navigateur.",
+      "question": "Comment les propriétés imbriquées sont-elles nommées en colonnes ?",
+      "answer": "Les clés profondes sont jointes par des points comme utilisateur.adresse.ville pour une consultation limpide dans un tableur."
+    },
+    "json-to-toml-converter": {
+      "title": "Convertisseur JSON en TOML",
+      "description": "Convertissez vos fichiers JSON en configurations TOML 1.0 pour vos projets Rust, Python ou Go.",
+      "how": "Collez votre code JSON. Transformez-le en tables et tableaux TOML valides, contrôlez la syntaxe et téléchargez le résultat.",
+      "limits": "Génère des structures conformes à TOML 1.0 à partir de documents JSON jusqu’à 20 Mo.",
+      "question": "Comment les objets imbriqués sont-ils traduits en TOML ?",
+      "answer": "Les objets internes sont automatiquement convertis en sections de tables ([table]) et tables répétitives ([[table]])."
+    },
+    "json-to-yaml-converter": {
+      "title": "Convertisseur JSON en YAML",
+      "description": "Convertissez vos fichiers JSON en YAML structuré avec retrait à 2 ou 4 espaces pour Docker et Kubernetes.",
+      "how": "Collez votre code JSON. Sélectionnez l’espacement souhaité et convertissez instantanément en YAML prêt pour vos pipelines CI/CD.",
+      "limits": "Convertit des documents JSON volumineux jusqu’à 25 Mo dans la mémoire du navigateur.",
+      "question": "Comment les chaînes multilignes sont-elles traitées en YAML ?",
+      "answer": "Les blocs de texte sur plusieurs lignes sont transcrits à l’aide des scalaires de bloc standard pour une clarté optimale."
+    },
+    "merge-xml-files": {
+      "title": "Fusionner des fichiers XML",
+      "description": "Combinez plusieurs documents XML en un seul fichier consolidé avec conteneur racine personnalisable.",
+      "how": "Sélectionnez plusieurs fichiers XML. Choisissez la balise racine souhaitée ou conservez la valeur par défaut, puis téléchargez le fichier unifié.",
+      "limits": "Fusionne jusqu’à 500 fichiers XML pour une taille cumulée maximale de 10 Mo directement dans le navigateur.",
+      "question": "La fusion élimine-t-elle les balises racines redondantes ?",
+      "answer": "Oui. Les racines individuelles de chaque fichier sont intégrées proprement sous un élément racine commun unique."
+    },
+    "toml-to-json-converter": {
+      "title": "Convertisseur TOML en JSON",
+      "description": "Convertissez vos tables de configuration TOML en fichiers JSON formatés avec contrôle de syntaxe.",
+      "how": "Collez votre code TOML. Obtenez un code JSON propre, examinez la conversion des types et téléchargez ou copiez le résultat.",
+      "limits": "Analyse des documents TOML 1.0 avec dates, tables et tableaux imbriqués jusqu’à 20 Mo.",
+      "question": "Les dates et heures TOML sont-elles conservées en JSON ?",
+      "answer": "Oui. Les horodatages et dates TOML sont retranscrits sous la forme de chaînes standard ISO 8601 en JSON."
+    },
+    "vcf-to-csv": {
+      "title": "Convertisseur VCF en CSV",
+      "description": "Convertissez vos contacts vCard VCF en fichiers CSV pour Excel localement dans votre navigateur.",
+      "how": "Déposez votre fichier .vcf dans le convertisseur. Prévisualisez les coordonnées avec noms, numéros de téléphone et adresses électroniques, puis téléchargez le tableau CSV.",
+      "limits": "Prend en charge les formats vCard 2.1, 3.0 et 4.0 directement dans la mémoire locale jusqu’à 50 Mo.",
+      "question": "Mes coordonnées personnelles sont-elles transmises à un serveur distant ?",
+      "answer": "Non. L’analyse des contacts et la création du fichier tabulaire s’exécutent exclusivement en local dans votre navigateur."
+    },
+    "word-to-xml-converter": {
+      "title": "Convertisseur Word en XML",
+      "description": "Extrayez le contenu XML sémantique structuré ou le code WordprocessingML brut de vos fichiers .docx.",
+      "how": "Téléversez votre document .docx. Visualisez la structure XML extraite ou inspectez les composants internes, puis téléchargez le fichier XML obtenu.",
+      "limits": "Décompresse et analyse les fichiers OpenXML DOCX jusqu’à 50 Mo dans la mémoire locale.",
+      "question": "L’outil extrait-il les images ou les macros intégrées ?",
+      "answer": "Le convertisseur extrait les textes, styles, paragraphes et tableaux tout en écartant les macros exécutables pour votre sécurité."
+    },
+    "xml-to-csv": {
+      "title": "Convertisseur XML en CSV",
+      "description": "Transformez vos documents XML structurés en feuilles tabulaires CSV avec aplatissement automatique.",
+      "how": "Collez votre code XML ou déposez votre fichier .xml. Le moteur extrait les nœuds répétitifs, génère les en-têtes et prépare le téléchargement CSV.",
+      "limits": "Traite les documents XML bien formés jusqu’à 25 Mo dans la mémoire de votre navigateur.",
+      "question": "Comment les sous-éléments XML imbriqués sont-ils traités ?",
+      "answer": "Les balises enfants sont reliées par des points pour composer des en-têtes de colonnes clairs et réguliers."
+    },
+    "xml-to-word-converter": {
+      "title": "Convertisseur XML en Word",
+      "description": "Convertissez vos fichiers XML en documents Microsoft Word .docx présentés sous forme de tableaux ou d’arborescences.",
+      "how": "Déposez votre fichier XML. Choisissez le style de mise en page (tableau d’enregistrements, plan hiérarchique ou bloc de code), puis téléchargez votre fichier DOCX.",
+      "limits": "Génère des documents DOCX conformes aux normes OpenXML directement dans le navigateur sans suite bureautique externe.",
+      "question": "Le document Word obtenu est-il modifiable dans Word et LibreOffice ?",
+      "answer": "Oui. Le document DOCX créé respecte le format standard et s’ouvre parfaitement dans Microsoft Word, Google Docs et LibreOffice."
+    },
+    "yaml-to-json-converter": {
+      "title": "Convertisseur YAML en JSON",
+      "description": "Convertissez vos documents YAML en JSON formaté avec validation de syntaxe et réglage de l’indentation.",
+      "how": "Collez votre texte YAML. Obtenez un code JSON valide, ajustez la mise en page et copiez ou téléchargez le résultat.",
+      "limits": "Prend en charge la spécification YAML 1.2 avec ancres et alias jusqu’à 25 Mo.",
+      "question": "Les ancres et alias YAML sont-ils pris en compte lors de la conversion ?",
+      "answer": "Oui. Les références d’ancres sont automatiquement résolues et dupliquées en valeurs JSON conformes."
+    },
+    "yaml-validator": {
+      "title": "Validateur YAML",
+      "description": "Validez la syntaxe YAML, repérez les erreurs de retrait et examinez l’arborescence avec diagnostics précis.",
+      "how": "Collez votre code YAML. Le validateur confirme la conformité de la syntaxe ou pointe la ligne, la colonne et l’extrait de l’erreur.",
+      "limits": "Vérifie la syntaxe YAML 1.1 et 1.2 localement dans votre navigateur sans téléversement.",
+      "question": "Le validateur repère-t-il les tabulations interdites ?",
+      "answer": "Oui. Le format YAML proscrivant les tabulations pour le retrait, l’outil signale immédiatement leur emplacement exact."
     }
   },
   "flexOptions": {
@@ -6221,5 +6349,23 @@
       "sectionTranscoding": "Transcodage de formats audio",
       "sectionTranscodingDesc": "Transcodez entre différents codecs audio, mémos vocaux et formats universels MP3 ou WAV."
     }
+  },
+  "dataTools": {
+    "beautifyAction": "Mettre en forme",
+    "clearAction": "Effacer le texte",
+    "convertAction": "Convertir les données",
+    "delimiter": "Délimiteur CSV",
+    "downloadAction": "Télécharger le fichier exporté",
+    "format": "Format des données",
+    "headerRow": "La première ligne contient les en-têtes",
+    "indentation": "Espacement de retrait",
+    "input": "Données sources d’entrée",
+    "invalidSyntax": "Erreur de syntaxe détectée",
+    "localPrivacy": "Traitement 100 % confidentiel dans le navigateur : vos données ne sont pas transférées.",
+    "minifyAction": "Compacter le code",
+    "output": "Données converties en sortie",
+    "sampleAction": "Charger un exemple",
+    "validSyntax": "Syntaxe de document valide",
+    "validateAction": "Valider la syntaxe"
   }
 }

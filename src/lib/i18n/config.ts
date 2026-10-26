@@ -222,6 +222,10 @@ export const translatedTools = [
   'audio-bitrate-calculator', 'audio-video-tools', 'extract-audio-from-video', 'm4a-to-mp3-converter',
   'mov-to-mp3-converter', 'mp3-to-wav-converter', 'mp4-to-mp3-converter', 'video-to-audio-converter',
   'video-to-mp3-converter', 'wav-to-mp3-converter', 'webm-to-mp3-converter',
+  'vcf-to-csv', 'xml-to-csv', 'csv-to-vcard', 'merge-xml-files', 'xml-to-word-converter',
+  'word-to-xml-converter', 'csv-to-json-converter', 'json-to-csv-flattener', 'json-formatter',
+  'json-diff-compare', 'json-schema-validator', 'json-to-yaml-converter', 'yaml-to-json-converter',
+  'json-to-toml-converter', 'toml-to-json-converter', 'yaml-validator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
 export const isLocale = (value: string): value is Locale =>

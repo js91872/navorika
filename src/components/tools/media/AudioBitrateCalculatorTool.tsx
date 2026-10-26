@@ -110,7 +110,7 @@ export default function AudioBitrateCalculatorTool() {
   };
 
   return (
-    <div className="mx-auto max-w-4xl">
+    <div suppressHydrationWarning className="mx-auto max-w-4xl">
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">
         {/* Mode Selector Tabs */}
         <div className="flex rounded-2xl bg-slate-100 p-1.5 dark:bg-slate-800">

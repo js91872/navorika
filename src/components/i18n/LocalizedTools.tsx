@@ -30,6 +30,7 @@ const LocalizedImageConverterTools = dynamic(() => import('./LocalizedImageConve
 const LocalizedImageStudioTools = dynamic(() => import('./LocalizedImageStudioTools'));
 const LocalizedImageCanvasTools = dynamic(() => import('./LocalizedImageCanvasTools'));
 const LocalizedMediaTools = dynamic(() => import('./LocalizedMediaTools'));
+const LocalizedDataTools = dynamic(() => import('./LocalizedDataTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -404,6 +405,26 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'webm-to-mp3-converter'
     ) {
       return <LocalizedMediaTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'vcf-to-csv' ||
+      slug === 'xml-to-csv' ||
+      slug === 'csv-to-vcard' ||
+      slug === 'merge-xml-files' ||
+      slug === 'xml-to-word-converter' ||
+      slug === 'word-to-xml-converter' ||
+      slug === 'csv-to-json-converter' ||
+      slug === 'json-to-csv-flattener' ||
+      slug === 'json-formatter' ||
+      slug === 'json-diff-compare' ||
+      slug === 'json-schema-validator' ||
+      slug === 'json-to-yaml-converter' ||
+      slug === 'yaml-to-json-converter' ||
+      slug === 'json-to-toml-converter' ||
+      slug === 'toml-to-json-converter' ||
+      slug === 'yaml-validator'
+    ) {
+      return <LocalizedDataTools slug={slug} dictionary={dictionary} locale={locale} />;
     }
     if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
     if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;
