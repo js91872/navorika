@@ -302,8 +302,21 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - HTML to Image
 - HTML to JPG Converter
 - HTML to PNG Converter
+- Crop Image
+- Icon Sticker Maker
+- ID Photo Maker
+- Color Picker from Image
+- Image Metadata Viewer
+- Image to PDF Converter
+- Meme Generator
+- Photo Collage Maker
+- Photo Editor
+- Social Media Resizer
+- SVG Dimensions Checker
+- Upscale Image
+- Watermark Image
 
-This brings branch coverage to 231 tools per language (1,617 tool variants plus seven directories, 1,624 localized pages total), advancing published coverage across the platform. The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 85 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 244 tools per language (1,708 tool variants plus seven directories, 1,715 localized pages total), advancing published coverage across the platform. Image Tools category is now 100% complete! Exactly 72 active tools (Developer Tools), 57 guides, seven public pages and full-inventory surface reviews remain pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

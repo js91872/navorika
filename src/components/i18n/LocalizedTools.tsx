@@ -28,6 +28,7 @@ const LocalizedPdfSuiteTools = dynamic(() => import('./LocalizedPdfSuiteTools'))
 const LocalizedImageTools = dynamic(() => import('./LocalizedImageTools'));
 const LocalizedImageConverterTools = dynamic(() => import('./LocalizedImageConverterTools'));
 const LocalizedImageStudioTools = dynamic(() => import('./LocalizedImageStudioTools'));
+const LocalizedImageCanvasTools = dynamic(() => import('./LocalizedImageCanvasTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -313,6 +314,7 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'crop-pdf' ||
       slug === 'extract-pdf-text' ||
       slug === 'heic-to-pdf' ||
+      slug === 'image-to-pdf' ||
       slug === 'jpg-to-pdf' ||
       slug === 'markdown-to-pdf' ||
       slug === 'pdf-to-image' ||
@@ -370,6 +372,22 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'html-to-png-converter'
     ) {
       return <LocalizedImageStudioTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'crop-image' ||
+      slug === 'icon-sticker-maker' ||
+      slug === 'id-photo-maker' ||
+      slug === 'image-color-picker' ||
+      slug === 'image-metadata-viewer' ||
+      slug === 'meme-generator' ||
+      slug === 'photo-collage-maker' ||
+      slug === 'photo-editor' ||
+      slug === 'social-media-resizer' ||
+      slug === 'svg-dimensions-checker' ||
+      slug === 'upscale-image' ||
+      slug === 'watermark-image'
+    ) {
+      return <LocalizedImageCanvasTools slug={slug} dictionary={dictionary} locale={locale} />;
     }
     if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
     if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

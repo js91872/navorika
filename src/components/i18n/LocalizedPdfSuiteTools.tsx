@@ -36,6 +36,7 @@ export type PdfSuiteToolSlug =
   | 'crop-pdf'
   | 'extract-pdf-text'
   | 'heic-to-pdf'
+  | 'image-to-pdf'
   | 'jpg-to-pdf'
   | 'markdown-to-pdf'
   | 'pdf-to-image'
@@ -589,7 +590,7 @@ export default function LocalizedPdfSuiteTools({
     } else if (slug === 'sign-pdf') {
       rows.push([p.sign.targetPage, `${signPage}`]);
       rows.push([p.common.status, downloadUrl ? p.common.statusSuccess : p.common.statusReady]);
-    } else if (slug === 'jpg-to-pdf' || slug === 'webp-to-pdf') {
+    } else if (slug === 'jpg-to-pdf' || slug === 'webp-to-pdf' || slug === 'image-to-pdf') {
       rows.push([p.imageToPdf.imagesSelected, `${batchImages.length}`]);
       rows.push([p.common.status, downloadUrl ? p.common.statusSuccess : p.common.statusReady]);
     } else if (slug === 'heic-to-pdf') {
@@ -1130,8 +1131,8 @@ export default function LocalizedPdfSuiteTools({
         </div>
       )}
 
-      {/* 7 & 8. JPG / WebP to PDF */}
-      {(slug === 'jpg-to-pdf' || slug === 'webp-to-pdf') && (
+      {/* 7 & 8. JPG / WebP / Image to PDF */}
+      {(slug === 'jpg-to-pdf' || slug === 'webp-to-pdf' || slug === 'image-to-pdf') && (
         <div className="space-y-6">
           <h2 className="text-xl font-bold">{p.imageToPdf.heading}</h2>
 
@@ -1148,7 +1149,7 @@ export default function LocalizedPdfSuiteTools({
               ref={batchImagesInputRef}
               type="file"
               multiple
-              accept={slug === 'jpg-to-pdf' ? 'image/jpeg,.jpg,.jpeg' : 'image/webp,.webp'}
+              accept={slug === 'jpg-to-pdf' ? 'image/jpeg,.jpg,.jpeg' : slug === 'webp-to-pdf' ? 'image/webp,.webp' : 'image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp'}
               className="hidden"
               onChange={(e) => {
                 if (e.target.files) {

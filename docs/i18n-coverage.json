@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 322,
-    "publishedTools": 231,
-    "pendingTools": 85,
+    "publishedTools": 244,
+    "pendingTools": 72,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 61,
     "trustPages": 7,
-    "publishedToolTranslations": 1617,
+    "publishedToolTranslations": 1708,
     "targetToolTranslations": 2212,
     "pendingGuideTranslations": 427,
     "pendingTrustTranslations": 49,
@@ -2015,8 +2015,16 @@
       "source": "src/app/(english)/tools/crop-image/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -3441,8 +3449,16 @@
       "source": "src/app/(english)/tools/icon-sticker-maker/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -3457,8 +3473,16 @@
       "source": "src/app/(english)/tools/id-photo-maker/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -3525,8 +3549,16 @@
       "source": "src/app/(english)/tools/image-color-picker/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -3635,8 +3667,16 @@
       "source": "src/app/(english)/tools/image-metadata-viewer/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -3729,8 +3769,16 @@
       "source": "src/app/(english)/tools/image-to-pdf/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -4463,8 +4511,16 @@
       "source": "src/app/(english)/tools/meme-generator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5000,8 +5056,16 @@
       "source": "src/app/(english)/tools/photo-collage-maker/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5016,8 +5080,16 @@
       "source": "src/app/(english)/tools/photo-editor/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -6241,8 +6313,16 @@
       "source": "src/app/(english)/tools/social-media-resizer/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -6495,8 +6575,16 @@
       "source": "src/app/(english)/tools/svg-dimensions-checker/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -6941,8 +7029,16 @@
       "source": "src/app/(english)/tools/upscale-image/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -7318,8 +7414,16 @@
       "source": "src/app/(english)/tools/watermark-image/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -9008,7 +9112,7 @@
     {
       "source": "src/app/(english)/tools/crop-image/page.tsx",
       "routeTemplate": "/tools/crop-image",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9356,13 +9460,13 @@
     {
       "source": "src/app/(english)/tools/icon-sticker-maker/page.tsx",
       "routeTemplate": "/tools/icon-sticker-maker",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/id-photo-maker/page.tsx",
       "routeTemplate": "/tools/id-photo-maker",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9380,7 +9484,7 @@
     {
       "source": "src/app/(english)/tools/image-color-picker/page.tsx",
       "routeTemplate": "/tools/image-color-picker",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9410,7 +9514,7 @@
     {
       "source": "src/app/(english)/tools/image-metadata-viewer/page.tsx",
       "routeTemplate": "/tools/image-metadata-viewer",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9434,7 +9538,7 @@
     {
       "source": "src/app/(english)/tools/image-to-pdf/page.tsx",
       "routeTemplate": "/tools/image-to-pdf",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9638,7 +9742,7 @@
     {
       "source": "src/app/(english)/tools/meme-generator/page.tsx",
       "routeTemplate": "/tools/meme-generator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9776,13 +9880,13 @@
     {
       "source": "src/app/(english)/tools/photo-collage-maker/page.tsx",
       "routeTemplate": "/tools/photo-collage-maker",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/photo-editor/page.tsx",
       "routeTemplate": "/tools/photo-editor",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10076,7 +10180,7 @@
     {
       "source": "src/app/(english)/tools/social-media-resizer/page.tsx",
       "routeTemplate": "/tools/social-media-resizer",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10136,7 +10240,7 @@
     {
       "source": "src/app/(english)/tools/svg-dimensions-checker/page.tsx",
       "routeTemplate": "/tools/svg-dimensions-checker",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10256,7 +10360,7 @@
     {
       "source": "src/app/(english)/tools/upscale-image/page.tsx",
       "routeTemplate": "/tools/upscale-image",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10358,7 +10462,7 @@
     {
       "source": "src/app/(english)/tools/watermark-image/page.tsx",
       "routeTemplate": "/tools/watermark-image",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
