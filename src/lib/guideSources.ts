@@ -4,6 +4,12 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'is-claude-better-than-chatgpt': [
+    { name: 'Anthropic — Claude pricing', url: 'https://claude.com/pricing' },
+    { name: 'OpenAI — ChatGPT pricing', url: 'https://chatgpt.com/pricing' },
+    { name: 'Anthropic — Claude documentation', url: 'https://support.claude.com/' },
+    { name: 'OpenAI — Help Center', url: 'https://help.openai.com/' },
+  ],
   'how-to-clean-macbook-speakers': [
     { name: 'Apple Support — How to clean your Apple products', url: 'https://support.apple.com/en-us/103258' },
     { name: 'Apple Support — If the internal speakers on your Mac are not working', url: 'https://support.apple.com/en-us/102411' },
