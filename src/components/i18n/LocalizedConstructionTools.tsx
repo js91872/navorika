@@ -18,6 +18,12 @@ import {
   roofPitch,
   stairs,
 } from '@/lib/calculations/constructionExpansion';
+import {
+  calculateFertilizer,
+  type FertilizerAreaUnit,
+  type FertilizerNutrient,
+  type FertilizerRateUnit,
+} from '@/lib/calculations/fertilizer';
 
 export type ConstructionToolSlug =
   | 'roof-pitch-calculator'
@@ -29,7 +35,8 @@ export type ConstructionToolSlug =
   | 'paver-calculator'
   | 'polymeric-sand-calculator'
   | 'mulch-calculator'
-  | 'topsoil-calculator';
+  | 'topsoil-calculator'
+  | 'fertilizer-calculator';
 
 function safeCalc<T>(fn: () => T, defaultError: string) {
   try {
@@ -148,6 +155,17 @@ export default function LocalizedConstructionTools({
   const [topsoilArea, setTopsoilArea] = useState(100);
   const [topsoilDepth, setTopsoilDepth] = useState(3);
   const [topsoilDensity, setTopsoilDensity] = useState(75);
+
+  // 11. Fertilizer
+  const [fertArea, setFertArea] = useState(5000);
+  const [fertAreaUnit, setFertAreaUnit] = useState<FertilizerAreaUnit>('sqft');
+  const [fertRate, setFertRate] = useState(1);
+  const [fertRateUnit, setFertRateUnit] = useState<FertilizerRateUnit>('per-1000-sqft');
+  const [fertNutrient, setFertNutrient] = useState<FertilizerNutrient>('n');
+  const [fertN, setFertN] = useState(26);
+  const [fertP, setFertP] = useState(5);
+  const [fertK, setFertK] = useState(10);
+  const [fertBag, setFertBag] = useState(40);
 
   // Computations
   const pitchResult = useMemo(
@@ -268,6 +286,24 @@ export default function LocalizedConstructionTools({
     [topsoilBaseArea, topsoilDepth, com.errorCheck]
   );
 
+  const fertilizerResult = useMemo(
+    () =>
+      safeCalc(
+        () =>
+          calculateFertilizer({
+            area: fertArea,
+            areaUnit: fertAreaUnit,
+            rate: fertRate,
+            rateUnit: fertRateUnit,
+            nutrient: fertNutrient,
+            npk: { n: fertN, p2o5: fertP, k2o: fertK },
+            ...(fertBag ? { bagWeightLb: fertBag } : {}),
+          }),
+        com.errorCheck
+      ),
+    [fertArea, fertAreaUnit, fertRate, fertRateUnit, fertNutrient, fertN, fertP, fertK, fertBag, com.errorCheck]
+  );
+
   // Reset handlers
   const handleReset = () => {
     switch (slug) {
@@ -360,6 +396,17 @@ export default function LocalizedConstructionTools({
         setTopsoilArea(100);
         setTopsoilDepth(3);
         setTopsoilDensity(75);
+        break;
+      case 'fertilizer-calculator':
+        setFertArea(5000);
+        setFertAreaUnit('sqft');
+        setFertRate(1);
+        setFertRateUnit('per-1000-sqft');
+        setFertNutrient('n');
+        setFertN(26);
+        setFertP(5);
+        setFertK(10);
+        setFertBag(40);
         break;
     }
   };
@@ -501,6 +548,23 @@ export default function LocalizedConstructionTools({
         [c.topsoil.tons, `${format((r.ft3 * topsoilDensity) / 2000)} t`],
       ];
     }
+  } else if (slug === 'fertilizer-calculator') {
+    currentError = fertilizerResult.error;
+    const r = fertilizerResult.data;
+    if (r) {
+      currentResults = [
+        [c.fertilizer.productFullArea, `${format(r.totalProductLb)} lb`],
+        [c.fertilizer.nitrogenFullArea, `${format(r.nutrientsForArea.n)} lb`],
+        [c.fertilizer.phosphateFullArea, `${format(r.nutrientsForArea.p2o5)} lb`],
+        [c.fertilizer.potashFullArea, `${format(r.nutrientsForArea.k2o)} lb`],
+        ...(r.bagCoverageSqFt !== null
+          ? [[c.fertilizer.coveragePerBag, `${format(r.bagCoverageSqFt)} sq ft`] as [string, string]]
+          : []),
+        ...(r.exactBags !== null && r.wholeBags !== null
+          ? [[c.fertilizer.bagsForArea, `${format(r.exactBags)} ${c.fertilizer.exactBags} · ${r.wholeBags} ${c.fertilizer.wholeBags}`] as [string, string]]
+          : []),
+      ];
+    }
   }
 
   const activeSummary = `${d.tools[slug].title}\n${currentResults.map(([k, v]) => `${k}: ${v}`).join('\n')}`;
@@ -526,6 +590,7 @@ export default function LocalizedConstructionTools({
             {slug === 'polymeric-sand-calculator' && c.polymericSand.heading}
             {slug === 'mulch-calculator' && c.mulch.heading}
             {slug === 'topsoil-calculator' && c.topsoil.heading}
+            {slug === 'fertilizer-calculator' && c.fertilizer.heading}
           </h2>
         </div>
 
@@ -1449,6 +1514,130 @@ export default function LocalizedConstructionTools({
               </label>
             </>
           )}
+
+          {/* 11. Fertilizer Inputs */}
+          {slug === 'fertilizer-calculator' && (
+            <>
+              <label className="text-sm font-semibold">
+                {c.fertilizer.areaLabel}
+                <input
+                  aria-label={c.fertilizer.areaLabel}
+                  type="number"
+                  min="1"
+                  step="any"
+                  value={fertArea}
+                  onChange={(e) => setFertArea(Number(e.target.value))}
+                  className={fieldClass}
+                />
+              </label>
+              <label className="text-sm font-semibold">
+                {c.fertilizer.areaUnitLabel}
+                <select
+                  aria-label={c.fertilizer.areaUnitLabel}
+                  value={fertAreaUnit}
+                  onChange={(e) => setFertAreaUnit(e.target.value as FertilizerAreaUnit)}
+                  className={fieldClass}
+                >
+                  <option value="sqft">{c.fertilizer.unitSqFt}</option>
+                  <option value="acre">{c.fertilizer.unitAcre}</option>
+                </select>
+              </label>
+              <label className="text-sm font-semibold">
+                {c.fertilizer.rateLabel}
+                <input
+                  aria-label={c.fertilizer.rateLabel}
+                  type="number"
+                  min="0.01"
+                  step="any"
+                  value={fertRate}
+                  onChange={(e) => setFertRate(Number(e.target.value))}
+                  className={fieldClass}
+                />
+              </label>
+              <label className="text-sm font-semibold">
+                {c.fertilizer.rateUnitLabel}
+                <select
+                  aria-label={c.fertilizer.rateUnitLabel}
+                  value={fertRateUnit}
+                  onChange={(e) => setFertRateUnit(e.target.value as FertilizerRateUnit)}
+                  className={fieldClass}
+                >
+                  <option value="per-1000-sqft">{c.fertilizer.ratePer1000}</option>
+                  <option value="per-acre">{c.fertilizer.ratePerAcre}</option>
+                </select>
+              </label>
+              <label className="text-sm font-semibold">
+                {c.fertilizer.nutrientLabel}
+                <select
+                  aria-label={c.fertilizer.nutrientLabel}
+                  value={fertNutrient}
+                  onChange={(e) => setFertNutrient(e.target.value as FertilizerNutrient)}
+                  className={fieldClass}
+                >
+                  <option value="n">{c.fertilizer.nutrientN}</option>
+                  <option value="p2o5">{c.fertilizer.nutrientP}</option>
+                  <option value="k2o">{c.fertilizer.nutrientK}</option>
+                </select>
+              </label>
+              <label className="text-sm font-semibold">
+                {c.fertilizer.bagWeightLabel}
+                <input
+                  aria-label={c.fertilizer.bagWeightLabel}
+                  type="number"
+                  min="0"
+                  step="any"
+                  value={fertBag}
+                  onChange={(e) => setFertBag(Number(e.target.value))}
+                  className={fieldClass}
+                />
+              </label>
+              <div className="sm:col-span-2 rounded-2xl border border-[var(--border)] p-4">
+                <p className="text-sm font-bold">{c.fertilizer.npkLegend}</p>
+                <p className="text-xs text-[var(--muted-foreground)] mb-3">{c.fertilizer.npkHint}</p>
+                <div className="grid grid-cols-3 gap-3">
+                  <label className="text-xs font-semibold">
+                    {c.fertilizer.nitrogenLabel}
+                    <input
+                      aria-label={c.fertilizer.nitrogenLabel}
+                      type="number"
+                      min="0"
+                      max="100"
+                      step="any"
+                      value={fertN}
+                      onChange={(e) => setFertN(Number(e.target.value))}
+                      className={fieldClass}
+                    />
+                  </label>
+                  <label className="text-xs font-semibold">
+                    {c.fertilizer.phosphateLabel}
+                    <input
+                      aria-label={c.fertilizer.phosphateLabel}
+                      type="number"
+                      min="0"
+                      max="100"
+                      step="any"
+                      value={fertP}
+                      onChange={(e) => setFertP(Number(e.target.value))}
+                      className={fieldClass}
+                    />
+                  </label>
+                  <label className="text-xs font-semibold">
+                    {c.fertilizer.potashLabel}
+                    <input
+                      aria-label={c.fertilizer.potashLabel}
+                      type="number"
+                      min="0"
+                      max="100"
+                      step="any"
+                      value={fertK}
+                      onChange={(e) => setFertK(Number(e.target.value))}
+                      className={fieldClass}
+                    />
+                  </label>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
@@ -1466,6 +1655,7 @@ export default function LocalizedConstructionTools({
           {slug === 'drywall-calculator' && c.drywall.note}
           {slug === 'polymeric-sand-calculator' && c.polymericSand.note}
           {slug === 'topsoil-calculator' && c.topsoil.note}
+          {slug === 'fertilizer-calculator' && c.fertilizer.checkBeforeApplying}
         </p>
       </section>
 

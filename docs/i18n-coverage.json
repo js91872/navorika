@@ -11,13 +11,13 @@
   ],
   "summary": {
     "tools": 322,
-    "publishedTools": 215,
-    "pendingTools": 101,
+    "publishedTools": 218,
+    "pendingTools": 98,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 61,
     "trustPages": 7,
-    "publishedToolTranslations": 1505,
+    "publishedToolTranslations": 1526,
     "targetToolTranslations": 2212,
     "pendingGuideTranslations": 427,
     "pendingTrustTranslations": 49,
@@ -25,7 +25,7 @@
       "jsxText": 3879,
       "visibleAttribute": 353,
       "semanticCopy": 11398,
-      "reviewLiteral": 44646
+      "reviewLiteral": 44648
     },
     "candidateCopyWords": 307644
   },
@@ -2751,8 +2751,16 @@
       "source": "src/app/(english)/tools/fertilizer-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -5520,8 +5528,16 @@
       "source": "src/app/(english)/tools/reverse-sales-tax-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -6023,8 +6039,16 @@
       "source": "src/app/(english)/tools/shopify-margin-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "domain-assumptions"
       ],
@@ -9072,7 +9096,7 @@
     {
       "source": "src/app/(english)/tools/fertilizer-calculator/page.tsx",
       "routeTemplate": "/tools/fertilizer-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9804,7 +9828,7 @@
     {
       "source": "src/app/(english)/tools/reverse-sales-tax-calculator/page.tsx",
       "routeTemplate": "/tools/reverse-sales-tax-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9924,7 +9948,7 @@
     {
       "source": "src/app/(english)/tools/shopify-margin-calculator/page.tsx",
       "routeTemplate": "/tools/shopify-margin-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

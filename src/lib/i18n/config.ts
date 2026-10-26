@@ -212,6 +212,7 @@ export const translatedTools = [
   'webp-to-gif',
   'jfif-to-png',
   'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator',
+  'fertilizer-calculator', 'reverse-sales-tax-calculator', 'shopify-margin-calculator',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
 export const isLocale = (value: string): value is Locale =>

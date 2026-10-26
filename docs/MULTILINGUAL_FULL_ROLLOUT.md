@@ -286,8 +286,11 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - WebP to ICO Converter
 - WebP to GIF Converter
 - JFIF to PNG Converter
+- Fertilizer Calculator
+- Reverse Sales Tax Calculator
+- Shopify Margin Calculator
 
-This brings branch coverage to 215 tools per language (1,505 tool variants plus seven directories, 1,512 localized pages total), advancing Image Tools to 37/63 tools translated. The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 98 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
+This brings branch coverage to 218 tools per language (1,526 tool variants plus seven directories, 1,533 localized pages total), advancing published coverage across the platform. The live approved release still contains 10 tools per language. The generated inventory calls enabled routes “published”; on this draft branch that describes route availability in the build, not a production deployment. There are still 98 active tools, 57 guides, seven public pages and full-inventory surface reviews pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 

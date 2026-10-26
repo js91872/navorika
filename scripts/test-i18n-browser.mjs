@@ -905,6 +905,39 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['retirement-calculator'].title));
     workflowsChecked++;
 
+    await visit(`/${locale}/tools/fertilizer-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('lb'));
+    await page.locator('main input[type="number"]').first().fill('');
+    await page.locator('main input[type="number"]').first().fill('10000');
+    await waitForDlText('lb');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['fertilizer-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/reverse-sales-tax-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('100'));
+    await page.locator('main input[type="number"]').first().fill('');
+    await page.locator('main input[type="number"]').first().fill('216.50');
+    await waitForDlText('200');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['reverse-sales-tax-calculator'].title));
+    workflowsChecked++;
+
+    await visit(`/${locale}/tools/shopify-margin-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.locator('main input[type="number"]').first().fill('');
+    await page.locator('main input[type="number"]').first().fill('100');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['shopify-margin-calculator'].title));
+    workflowsChecked++;
+
     // 1. Functional workflow & export validation: Markdown to PDF with Arabic & Russian
     await visit(`/${locale}/tools/markdown-to-pdf`);
     const mdInput = page.locator('#markdown-text-area');

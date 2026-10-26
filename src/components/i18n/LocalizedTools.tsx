@@ -188,7 +188,8 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'paver-calculator' ||
       slug === 'polymeric-sand-calculator' ||
       slug === 'mulch-calculator' ||
-      slug === 'topsoil-calculator'
+      slug === 'topsoil-calculator' ||
+      slug === 'fertilizer-calculator'
     ) {
       return <LocalizedConstructionTools slug={slug} d={dictionary} locale={locale} />;
     }
@@ -270,7 +271,9 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'fd-calculator' ||
       slug === 'gst-calculator' ||
       slug === 'loan-emi-calculator' ||
-      slug === 'tax-calculator'
+      slug === 'tax-calculator' ||
+      slug === 'reverse-sales-tax-calculator' ||
+      slug === 'shopify-margin-calculator'
     ) {
       return <LocalizedFinanceTools slug={slug} dictionary={dictionary} locale={locale} />;
     }
