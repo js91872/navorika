@@ -98,6 +98,7 @@ test('moving English routes into a route group preserves every existing public p
   assert.deepEqual(newRoutes, [
     'guides/how-to-clean-phone-speaker/page.tsx',
     'guides/how-to-convert-jpg-to-dxf/page.tsx',
+    'guides/is-claude-better-than-chatgpt/page.tsx',
     'guides/shopify-profit-margin-calculator/page.tsx',
     'tools/jpg-to-dxf/page.tsx',
     'tools/shopify-margin-calculator/page.tsx',
