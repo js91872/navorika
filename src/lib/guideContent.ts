@@ -1,4 +1,5 @@
 import { macSpeakerGuideContent } from './guideContentMacSpeaker';
+import { claudeComparisonGuideContent } from './guideContentClaude';
 import { usSalesTaxGuideContent } from './guideContentUsSalesTax';
 import { macEverydayGuideContent } from './guideContentMacEveryday';
 import { additionalGuideContent } from './guideContentAdditional';
@@ -39,6 +40,7 @@ export interface GuideContent {
 }
 
 export const guideContent: Record<string, GuideContent> = {
+  ...claudeComparisonGuideContent,
   ...fertilizerGuideContent,
   ...macSpeakerGuideContent,
   'how-to-calculate-sip-returns': {
