@@ -310,7 +310,7 @@ export default function CronExpressionGeneratorTool() {
 
         {/* Right: Live Interpretation, Next Runs & Validator */}
         <div className="space-y-6">
-          {/* Plain-English Schedule Card */}
+          {/* Schedule Card */}
           <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 md:p-8 shadow-sm space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <span
@@ -340,7 +340,7 @@ export default function CronExpressionGeneratorTool() {
               <div className="space-y-4">
                 <div className="rounded-2xl border border-indigo-500/20 bg-indigo-500/5 p-5">
                   <p className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1.5">
-                    Plain-English Meaning
+                    Schedule Meaning
                   </p>
                   <p className="text-xl sm:text-2xl font-black text-[var(--foreground)] leading-snug">
                     {analysis.humanDescription}

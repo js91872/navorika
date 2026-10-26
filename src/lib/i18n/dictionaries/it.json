@@ -2355,6 +2355,126 @@
       "limits": "Formatta e comprime il codice usando motori di analisi integrati direttamente nel browser.",
       "question": "La minificazione modifica il comportamento del programma?",
       "answer": "No. La minificazione elimina spazi, ritorni a capo e commenti non necessari mantenendo inalterata la semantica di esecuzione."
+    },
+    "uuid-generator": {
+      "title": "Generatore di UUID",
+      "description": "Genera identificatori UUID v4 e v7 standard con impostazioni per generazione multipla, maiuscole/minuscole e formattazione.",
+      "how": "Scegli quantità, versione, formato e delimitatori. Clicca su genera per creare identificatori univoci pronti per essere copiati.",
+      "limits": "Genera blocchi da 1 a 500 UUID in locale tramite Web Crypto.",
+      "question": "Qual è la differenza tra UUID v4 e UUID v7?",
+      "answer": "L'UUID v4 è puramente casuale, mentre l'UUID v7 include un prefisso temporale in millisecondi che migliora l'indicizzazione nei database."
+    },
+    "ulid-generator": {
+      "title": "Generatore di ULID",
+      "description": "Genera ULID a 128 bit ordinabili conformi agli standard, visualizza timestamp incorporati e decodifica Crockford Base32.",
+      "how": "Crea identificatori ordinabili cronologicamente o incolla un ULID esistente per estrarre la data di creazione precisa.",
+      "limits": "Genera blocchi da 1 a 100 ULID nel browser con decodifica Base32 istantanea.",
+      "question": "Perché gli ULID sono utili per le chiavi di database?",
+      "answer": "Gli ULID uniscono un timestamp a 48 bit con 80 bit di entropia casuale in 26 caratteri sicuri per il web che garantiscono l'ordinamento naturale."
+    },
+    "cron-expression-generator": {
+      "title": "Generatore di espressioni Cron",
+      "description": "Genera, modifica e spiega espressioni cron a 5 campi con selettori visuali, preset e anteprime delle esecuzioni.",
+      "how": "Imposta minuto, ora, giorno del mese, mese e giorno della settimana per visualizzare la descrizione della pianificazione e i prossimi avvii.",
+      "limits": "Elabora espressioni cron a 5 campi standard Linux direttamente nel browser.",
+      "question": "Cosa rappresentano i cinque campi in una pianificazione cron?",
+      "answer": "I cinque campi indicano minuto (0-59), ora (0-23), giorno del mese (1-31), mese (1-12) e giorno della settimana (0-7, dove 0 e 7 indicano domenica)."
+    },
+    "cron-expression-humanizer": {
+      "title": "Traduttore di espressioni Cron in testo chiaro",
+      "description": "Valida espressioni cron, converti pianificazioni complesse in frasi comprensibili e controlla i prossimi orari.",
+      "how": "Incolla un'espressione cron a 5 campi per ricevere subito una spiegazione testuale chiara del programma ricorrente.",
+      "limits": "Converte la sintassi cron in descrizioni in linguaggio naturale direttamente nel browser.",
+      "question": "Come vengono interpretati i valori a intervalli come */15?",
+      "answer": "I valori con barra indicano ripetizioni periodiche; ad esempio, */15 nella colonna dei minuti significa ogni 15 minuti."
+    },
+    "cron-next-run-calculator": {
+      "title": "Calcolatore prossime esecuzioni Cron",
+      "description": "Valida espressioni cron a 5 campi e calcola i prossimi avvii nei principali fusi orari IANA.",
+      "how": "Inserisci l'espressione cron, seleziona il fuso orario desiderato e ottieni le date e gli orari precisi delle future esecuzioni.",
+      "limits": "Calcola le date future per espressioni cron a 5 campi tenendo conto dei fusi orari nel browser.",
+      "question": "Lo strumento gestisce l'ora legale?",
+      "answer": "Sì. Utilizza il database dei fusi orari Intl del browser per adeguare i calcoli in caso di cambi stagionali dell'ora."
+    },
+    "epoch-time-converter": {
+      "title": "Convertitore timestamp Unix Epoch",
+      "description": "Converti timestamp Unix in date leggibili e date in secondi o millisecondi con supporto dei fusi orari e orologio dal vivo.",
+      "how": "Inserisci un timestamp in secondi o millisecondi o seleziona una data dal calendario per ottenere la conversione bidirezionale.",
+      "limits": "Supporta timestamp in secondi e millisecondi per qualsiasi epoca storica o futura direttamente nel browser.",
+      "question": "Che cos'è l'epoca Unix?",
+      "answer": "L'epoca Unix è il 1° gennaio 1970 alle 00:00:00 UTC, punto di riferimento temporale fondamentale per l'architettura dei sistemi operativi."
+    },
+    "binary-to-decimal-with-steps": {
+      "title": "Convertitore da binario a decimale con passaggi",
+      "description": "Converti numeri binari in decimali con spiegazioni matematiche passo dopo passo, potenze di 2 e precisione BigInt.",
+      "how": "Digita una sequenza binaria per vedere i pesi posizionali, le moltiplicazioni per potenze di due e la somma decimale finale.",
+      "limits": "Elabora valori binari da 8 bit fino a 256 bit direttamente nel browser con aritmetica BigInt ad alta precisione.",
+      "question": "Come si converte un numero binario in decimale?",
+      "answer": "Ogni cifra binaria viene moltiplicata per 2 elevato alla potenza corrispondente alla sua posizione da destra a sinistra, sommando poi tutti i risultati."
+    },
+    "gitignore-generator": {
+      "title": "Generatore di file .gitignore",
+      "description": "Crea file .gitignore puliti per linguaggi di programmazione, framework, editor e sistemi operativi.",
+      "how": "Scegli tecnologie e ambienti (come Node.js, Python, macOS o VS Code), aggiungi regole personalizzate e scarica il file pronto all'uso.",
+      "limits": "Compone elenchi di esclusione strutturati da modelli ufficiali direttamente nel browser.",
+      "question": "Perché è utile escludere file di sistema come .DS_Store?",
+      "answer": "Ignorare file temporanei e impostazioni locali dei sistemi operativi mantiene puliti i repository condivisi e previene conflitti inutili."
+    },
+    "docker-run-command-generator": {
+      "title": "Generatore di comandi Docker Run",
+      "description": "Crea comandi docker run sicuri e completi configurando immagini, porte, volumi, riavvio e variabili d'ambiente.",
+      "how": "Specifica nome dell'immagine, nome del container, mappatura delle porte, punti di montaggio dei volumi e criteri di riavvio.",
+      "limits": "Compone comandi da riga di comando per Docker in locale senza connessione al demone remoto.",
+      "question": "A cosa serve l'opzione -d nel comando docker run?",
+      "answer": "L'opzione -d avvia il container in background (modalità detached), lasciando libero il terminale mentre il processo continua l'esecuzione."
+    },
+    "git-commit-message-formatter": {
+      "title": "Formattatore messaggi di commit Git",
+      "description": "Formatta messaggi di commit concisi secondo lo standard Conventional Commits con tipo, ambito e modifiche sostanziali.",
+      "how": "Seleziona il tipo (feat, fix, refactor, docs, chore), specifica l'ambito e la descrizione e ricevi avvisi sul limite di caratteri.",
+      "limits": "Valida e compone messaggi Conventional Commits 1.0.0 nel browser con controlli di lunghezza a 50 e 72 caratteri.",
+      "question": "Perché è consigliato limitare il titolo a 50 caratteri?",
+      "answer": "Mantenere il titolo breve permette una consultazione rapida del log di Git e previene troncamenti nelle interfacce grafiche."
+    },
+    "typescript-to-zod-schema-converter": {
+      "title": "Convertitore da TypeScript a schemi Zod",
+      "description": "Converti interfacce e definizioni di tipo TypeScript in schemi di convalida a runtime Zod.",
+      "how": "Incolla un'interfaccia o un tipo TypeScript per ottenere istantaneamente lo schema Zod corrispondente per il controllo dei dati.",
+      "limits": "Elabora proprietà, campi facoltativi, array e unioni di primitive direttamente in memoria locale.",
+      "question": "Perché è utile la validazione Zod insieme a TypeScript?",
+      "answer": "I tipi TypeScript sono rimossi dopo la compilazione; Zod convalida a runtime i dati esterni provenienti da API e form utente."
+    },
+    "markup-formatter": {
+      "title": "Formattatore di markup e dati strutturati",
+      "description": "Formatta e valida SQL, XML e YAML in locale con motori di parsing specializzati.",
+      "how": "Scegli il formato (SQL, XML o YAML), incolla il testo e ordina il markup con un'indentazione pulita.",
+      "limits": "Elabora query e documenti strutturati nella memoria del browser salvaguardando la privacy dei dati.",
+      "question": "Lo strumento verifica la correttezza della sintassi prima di formattare?",
+      "answer": "Sì. L'analizzatore controlla la validità del codice prima di applicare l'indentazione e segnala eventuali errori."
+    },
+    "psd-to-html": {
+      "title": "Convertitore da PSD a HTML",
+      "description": "Esamina mockup PSD, verifica dimensioni e spazio colore, genera codice HTML5 semantico e scarica report per sviluppatori.",
+      "how": "Trascina un file Photoshop .psd per esplorare livelli, dimensioni e profili colore, quindi genera il codice HTML e CSS di base.",
+      "limits": "Analizza file binari PSD e strutture di livelli direttamente nel browser fino a 100 MB.",
+      "question": "I file PSD caricati vengono inviati a server esterni?",
+      "answer": "No. L'analisi dei metadati e dei livelli del file Photoshop avviene completamente in locale tramite JavaScript nel browser."
+    },
+    "step-to-3d-pdf-converter": {
+      "title": "Convertitore da STEP a PDF 3D",
+      "description": "Converti modelli CAD STEP e STP in documenti PDF 3D interattivi con geometria PRC integrata.",
+      "how": "Carica o trascina un file STEP o STP. Il sistema valida i solidi e genera un documento PDF 3D esplorabile nei lettori supportati.",
+      "limits": "Supporta modelli STEP AP203, AP214 e AP242 con inclusione della geometria 3D interattiva.",
+      "question": "I PDF 3D possono essere visualizzati con i normali lettori PDF?",
+      "answer": "Sì. I PDF 3D utilizzano il formato standard PRC supportato dai principali lettori desktop come Adobe Acrobat Reader."
+    },
+    "developer-utils": {
+      "title": "Hub di utilità per sviluppatori",
+      "description": "Una suite completa su browser per test regex, timestamp Unix, identificatori e generazione di codice.",
+      "how": "Accedi a strumenti mirati per espressioni regolari, gestione oraria, generazione di UUID e ULID e configurazioni DevOps.",
+      "limits": "Centralizza l'accesso a strumenti di sistema e programmazione in locale.",
+      "question": "Perché questi strumenti per sviluppatori funzionano in locale?",
+      "answer": "L'elaborazione locale assicura che porzioni di codice, schemi di database e token riservati restino sempre protetti sul tuo dispositivo."
     }
   },
   "flexOptions": {

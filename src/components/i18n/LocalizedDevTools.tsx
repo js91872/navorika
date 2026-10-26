@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import {
   Network,
   Copy,
@@ -22,6 +23,8 @@ import {
 } from 'lucide-react';
 import QRCode from 'qrcode';
 import jsQR from 'jsqr';
+import cronstrue from 'cronstrue/i18n';
+import { CronExpressionParser } from 'cron-parser';
 import { calculateCidrSubnet } from '@/lib/calculations/cidrSubnet';
 import { calculateIpRange, allocateVlsm, type VlsmRequest } from '@/lib/calculations/networkExpansion';
 import { calculateUnicodeBytes } from '@/lib/calculations/unicodeBytes';
@@ -31,9 +34,31 @@ import {
   type GlacierStorageClass,
 } from '@/lib/calculations/awsGlacierRetrieval';
 import { beautifyCode, minifyCode, type CodeLanguage, type BeautifyIndent } from '@/lib/formatters/codeMinifier';
+import {
+  formatSqlCode,
+  validateAndFormatXml,
+  validateAndFormatYaml,
+  SQL_DIALECTS,
+  type MarkupLanguage,
+  type MarkupIndent,
+} from '@/lib/formatters/markupFormatter';
+import type { SqlLanguage } from 'sql-formatter';
+import { getToolIcon } from '@/lib/toolIcons';
 import { localizedPath, type Locale, type TranslatedTool } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import { fieldClass } from './ToolControls';
+
+const UlidGeneratorTool = dynamic(() => import('@/components/tools/identifiers/UlidGeneratorTool'));
+const CronExpressionGeneratorTool = dynamic(() => import('@/components/tools/cron/CronExpressionGeneratorTool'));
+const CronNextRunCalculator = dynamic(() => import('@/components/tools/CronNextRunCalculator'));
+const EpochTimeConverterTool = dynamic(() => import('@/components/tools/time/EpochTimeConverterTool'));
+const BinaryToDecimalTool = dynamic(() => import('@/components/tools/number-systems/BinaryToDecimalTool'));
+const GitignoreGenerator = dynamic(() => import('@/components/tools/GitignoreGenerator'));
+const DockerRunGenerator = dynamic(() => import('@/components/tools/DockerRunGenerator'));
+const GitCommitFormatter = dynamic(() => import('@/components/tools/GitCommitFormatter'));
+const TypescriptToZodConverter = dynamic(() => import('@/components/tools/TypescriptToZodConverter'));
+const PsdToHtmlTool = dynamic(() => import('@/components/tools/PsdToHtmlTool'));
+const StepTo3dPdfTool = dynamic(() => import('@/components/tools/cad/StepTo3dPdfTool'));
 
 export type DevToolSlug =
   | 'cidr-subnet-wildcard-calculator'
@@ -50,7 +75,22 @@ export type DevToolSlug =
   | 'webmaster-seo-builder'
   | 'web-crypto-studio'
   | 'qr-code-generator'
-  | 'code-minifier-beautifier';
+  | 'code-minifier-beautifier'
+  | 'uuid-generator'
+  | 'ulid-generator'
+  | 'cron-expression-generator'
+  | 'cron-expression-humanizer'
+  | 'cron-next-run-calculator'
+  | 'epoch-time-converter'
+  | 'binary-to-decimal-with-steps'
+  | 'gitignore-generator'
+  | 'docker-run-command-generator'
+  | 'git-commit-message-formatter'
+  | 'typescript-to-zod-schema-converter'
+  | 'markup-formatter'
+  | 'psd-to-html'
+  | 'step-to-3d-pdf-converter'
+  | 'developer-utils';
 
 interface Props {
   slug: DevToolSlug;
@@ -1895,6 +1935,635 @@ function LocalizedCodeMinifier({ dictionary }: { dictionary: Dictionary }) {
 }
 
 // -------------------------------------------------------------
+// 16. UUID Generator
+// -------------------------------------------------------------
+function LocalizedUuidGenerator({ dictionary }: { dictionary: Dictionary }) {
+  const [version, setVersion] = useState<'v4' | 'v7'>('v7');
+  const [quantity, setQuantity] = useState(10);
+  const [format, setFormat] = useState<'standard' | 'compact' | 'braces'>('standard');
+  const [casing, setCasing] = useState<'lowercase' | 'uppercase'>('lowercase');
+  const [uuids, setUuids] = useState<string[]>([]);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  const t = dictionary.devTools;
+
+  const generate = () => {
+    const list: string[] = [];
+    for (let i = 0; i < quantity; i++) {
+      let raw: string;
+      if (version === 'v7') {
+        const bytes = new Uint8Array(16);
+        crypto.getRandomValues(bytes);
+        const timestamp = Date.now();
+        bytes[0] = Math.floor(timestamp / 2 ** 40) & 0xff;
+        bytes[1] = Math.floor(timestamp / 2 ** 32) & 0xff;
+        bytes[2] = Math.floor(timestamp / 2 ** 24) & 0xff;
+        bytes[3] = Math.floor(timestamp / 2 ** 16) & 0xff;
+        bytes[4] = Math.floor(timestamp / 2 ** 8) & 0xff;
+        bytes[5] = timestamp & 0xff;
+        bytes[6] = (bytes[6] & 0x0f) | 0x70;
+        bytes[8] = (bytes[8] & 0x3f) | 0x80;
+        const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, '0'));
+        raw = [
+          hex.slice(0, 4).join(''),
+          hex.slice(4, 6).join(''),
+          hex.slice(6, 8).join(''),
+          hex.slice(8, 10).join(''),
+          hex.slice(10, 16).join(''),
+        ].join('-');
+      } else {
+        if (typeof crypto.randomUUID === 'function') {
+          raw = crypto.randomUUID();
+        } else {
+          const bytes = new Uint8Array(16);
+          crypto.getRandomValues(bytes);
+          bytes[6] = (bytes[6] & 0x0f) | 0x40;
+          bytes[8] = (bytes[8] & 0x3f) | 0x80;
+          const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, '0'));
+          raw = [
+            hex.slice(0, 4).join(''),
+            hex.slice(4, 6).join(''),
+            hex.slice(6, 8).join(''),
+            hex.slice(8, 10).join(''),
+            hex.slice(10, 16).join(''),
+          ].join('-');
+        }
+      }
+
+      if (format === 'compact') raw = raw.replaceAll('-', '');
+      if (format === 'braces') raw = `{${raw}}`;
+      list.push(casing === 'uppercase' ? raw.toUpperCase() : raw.toLowerCase());
+    }
+    setUuids(list);
+  };
+
+  useEffect(() => {
+    generate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [version, quantity, format, casing]);
+
+  const copy = (text: string, key: string) => {
+    void navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey(null), 1500);
+  };
+
+  const downloadText = () => {
+    if (!uuids.length) return;
+    const blob = new Blob([uuids.join('\n')], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `uuid-${version}.txt`;
+    anchor.click();
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(340px,1.15fr)]">
+      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7 space-y-6">
+        <div className="flex items-center gap-3">
+          <Fingerprint className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+          <h2 className="text-xl font-bold">UUID / GUID</h2>
+        </div>
+
+        <div>
+          <label className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Version</label>
+          <div className="mt-2 grid grid-cols-2 gap-2">
+            {(['v7', 'v4'] as const).map((v) => (
+              <button
+                key={v}
+                type="button"
+                onClick={() => setVersion(v)}
+                className={`rounded-xl py-2.5 text-sm font-bold transition ${
+                  version === v
+                    ? 'bg-indigo-600 text-white'
+                    : 'border border-[var(--border)] bg-[var(--background)] hover:border-indigo-500'
+                }`}
+              >
+                UUID {v.toUpperCase()}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <label className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Count</label>
+          <select
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+            className={`mt-2 ${fieldClass}`}
+          >
+            {[1, 5, 10, 25, 50, 100].map((num) => (
+              <option key={num} value={num}>
+                {num}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Format</label>
+          <div className="mt-2 grid grid-cols-3 gap-2">
+            {(['standard', 'compact', 'braces'] as const).map((f) => (
+              <button
+                key={f}
+                type="button"
+                onClick={() => setFormat(f)}
+                className={`rounded-xl py-2 text-xs font-semibold capitalize transition ${
+                  format === f
+                    ? 'bg-indigo-600 text-white'
+                    : 'border border-[var(--border)] bg-[var(--background)] hover:border-indigo-500'
+                }`}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <label className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Case</label>
+          <div className="mt-2 grid grid-cols-2 gap-2">
+            {(['lowercase', 'uppercase'] as const).map((c) => (
+              <button
+                key={c}
+                type="button"
+                onClick={() => setCasing(c)}
+                className={`rounded-xl py-2 text-xs font-semibold capitalize transition ${
+                  casing === c
+                    ? 'bg-indigo-600 text-white'
+                    : 'border border-[var(--border)] bg-[var(--background)] hover:border-indigo-500'
+                }`}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={generate}
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3 font-semibold text-white shadow-sm transition hover:bg-indigo-700"
+        >
+          <RefreshCw className="h-4 w-4" />
+          {t.generate}
+        </button>
+      </section>
+
+      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7 space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border)] pb-3">
+          <span className="text-sm font-bold text-[var(--foreground)]">
+            {uuids.length} Generated IDs
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => copy(uuids.join('\n'), 'all')}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-xs font-medium hover:border-indigo-500"
+            >
+              {copiedKey === 'all' ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
+              {copiedKey === 'all' ? t.copied : t.copyAll}
+            </button>
+            <button
+              type="button"
+              onClick={downloadText}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-xs font-medium hover:border-indigo-500"
+            >
+              <Download className="h-3.5 w-3.5" />
+              {t.download}
+            </button>
+          </div>
+        </div>
+
+        <div className="max-h-[500px] space-y-2 overflow-y-auto pr-1">
+          {uuids.map((id, index) => (
+            <div
+              key={`${id}-${index}`}
+              className="flex items-center justify-between gap-2 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3.5 py-2.5 transition hover:border-indigo-400"
+            >
+              <code dir="ltr" className="break-all font-mono text-xs text-slate-800 dark:text-slate-200">
+                {id}
+              </code>
+              <button
+                type="button"
+                onClick={() => copy(id, id)}
+                className="shrink-0 text-[var(--muted-foreground)] hover:text-indigo-600"
+              >
+                {copiedKey === id ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// -------------------------------------------------------------
+// 17. Cron Expression Humanizer
+// -------------------------------------------------------------
+function LocalizedCronHumanizer({ locale, dictionary }: { locale: Locale; dictionary: Dictionary }) {
+  const [expression, setExpression] = useState('0 9 * * 1-5');
+  const [use24Hour, setUse24Hour] = useState(true);
+  const [copied, setCopied] = useState(false);
+
+  const t = dictionary.devTools;
+
+  const presets = [
+    { label: '* * * * *', value: '* * * * *' },
+    { label: '*/5 * * * *', value: '*/5 * * * *' },
+    { label: '0 * * * *', value: '0 * * * *' },
+    { label: '0 9 * * *', value: '0 9 * * *' },
+    { label: '0 9 * * 1-5', value: '0 9 * * 1-5' },
+    { label: '0 0 * * 0', value: '0 0 * * 0' },
+    { label: '0 0 1 * *', value: '0 0 1 * *' },
+  ];
+
+  const cronLocale = locale === 'ar' ? 'en' : locale === 'pt' ? 'pt_BR' : locale;
+
+  const result = useMemo(() => {
+    const normalized = expression.trim().replace(/\s+/g, ' ');
+    if (!normalized) {
+      return { valid: false, description: '', error: 'Enter a cron expression', nextRuns: [] as Date[] };
+    }
+    const parts = normalized.split(' ');
+    if (parts.length !== 5) {
+      return { valid: false, description: '', error: 'Standard 5-field cron syntax required', nextRuns: [] as Date[] };
+    }
+    try {
+      const description = cronstrue.toString(normalized, {
+        locale: cronLocale,
+        use24HourTimeFormat: use24Hour,
+      });
+      const parser = CronExpressionParser.parse(normalized, { currentDate: new Date() });
+      const nextRuns = parser.take(5).map((item) => item.toDate());
+      return { valid: true, description, error: '', nextRuns };
+    } catch (e) {
+      return { valid: false, description: '', error: e instanceof Error ? e.message : 'Invalid cron expression', nextRuns: [] as Date[] };
+    }
+  }, [expression, cronLocale, use24Hour]);
+
+  const copy = () => {
+    if (!result.description) return;
+    void navigator.clipboard.writeText(result.description);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(340px,1.15fr)]">
+      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7 space-y-6">
+        <div>
+          <label className="text-sm font-semibold">{t.input}</label>
+          <input
+            type="text"
+            dir="ltr"
+            value={expression}
+            onChange={(e) => setExpression(e.target.value)}
+            className={`mt-2 font-mono ${fieldClass}`}
+            placeholder="0 9 * * 1-5"
+          />
+        </div>
+
+        <div>
+          <span className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Presets</span>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {presets.map((p) => (
+              <button
+                key={p.value}
+                type="button"
+                onClick={() => setExpression(p.value)}
+                className={`rounded-lg px-2.5 py-1.5 font-mono text-xs transition ${
+                  expression === p.value
+                    ? 'bg-indigo-600 text-white font-bold'
+                    : 'border border-[var(--border)] bg-[var(--background)] hover:border-indigo-400'
+                }`}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <input
+            type="checkbox"
+            id="use24HourToggle"
+            checked={use24Hour}
+            onChange={(e) => setUse24Hour(e.target.checked)}
+            className="size-4 rounded accent-indigo-600"
+          />
+          <label htmlFor="use24HourToggle" className="cursor-pointer text-sm font-medium">
+            24-hour time
+          </label>
+        </div>
+      </section>
+
+      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7 space-y-6">
+        <div>
+          <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
+            <span className="text-sm font-bold text-[var(--foreground)]">{t.output}</span>
+            {result.valid && (
+              <button
+                type="button"
+                onClick={copy}
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+              >
+                {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                {copied ? t.copied : t.copy}
+              </button>
+            )}
+          </div>
+
+          {result.valid ? (
+            <div className="mt-4 rounded-2xl border border-indigo-500/20 bg-indigo-500/10 p-5">
+              <p className="text-base font-bold text-indigo-900 dark:text-indigo-200">
+                {result.description}
+              </p>
+            </div>
+          ) : (
+            <div className="mt-4 rounded-2xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-600 dark:text-red-400">
+              {result.error}
+            </div>
+          )}
+        </div>
+
+        {result.nextRuns.length > 0 && (
+          <div className="space-y-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
+              Next scheduled runs
+            </span>
+            <div className="space-y-2">
+              {result.nextRuns.map((d, index) => (
+                <div
+                  key={`${d.toISOString()}-${index}`}
+                  className="flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-2.5 text-sm"
+                >
+                  <span className="font-mono text-xs font-bold text-[var(--muted-foreground)]">
+                    #{index + 1}
+                  </span>
+                  <time dateTime={d.toISOString()} className="font-semibold">
+                    {new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(d)}
+                  </time>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}
+
+// -------------------------------------------------------------
+// 18. Markup & Query Formatter
+// -------------------------------------------------------------
+function LocalizedMarkupFormatter({ dictionary }: { dictionary: Dictionary }) {
+  const [language, setLanguage] = useState<MarkupLanguage>('sql');
+  const [input, setInput] = useState('');
+  const [status, setStatus] = useState<string>('');
+  const [copied, setCopied] = useState(false);
+  const [indent, setIndent] = useState<MarkupIndent>(2);
+  const [sqlDialect, setSqlDialect] = useState<SqlLanguage>('sql');
+
+  const t = dictionary.devTools;
+
+  const handleFormat = () => {
+    if (!input.trim()) return;
+    if (language === 'sql') {
+      const res = formatSqlCode(input, { dialect: sqlDialect, tabWidth: indent, keywordCase: 'upper' });
+      if (res.success) {
+        setInput(res.output);
+        setStatus('Formatted SQL query.');
+      } else {
+        setStatus(res.error || 'SQL formatting failed.');
+      }
+    } else if (language === 'xml') {
+      const res = validateAndFormatXml(input, { tabWidth: indent });
+      if (res.success) {
+        setInput(res.output);
+        setStatus('Formatted XML document.');
+      } else {
+        setStatus(res.error || 'Invalid XML syntax.');
+      }
+    } else if (language === 'yaml') {
+      const res = validateAndFormatYaml(input, { tabWidth: indent });
+      if (res.success) {
+        setInput(res.output);
+        setStatus('Formatted YAML configuration.');
+      } else {
+        setStatus(res.error || 'Invalid YAML syntax.');
+      }
+    }
+  };
+
+  const copy = () => {
+    if (!input) return;
+    void navigator.clipboard.writeText(input);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7 space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
+        <div className="flex flex-wrap items-center gap-3">
+          <label className="text-sm font-semibold">
+            Format:
+            <select
+              value={language}
+              onChange={(e) => {
+                setLanguage(e.target.value as MarkupLanguage);
+                setStatus('');
+              }}
+              className="ml-2 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-sm"
+            >
+              <option value="sql">SQL</option>
+              <option value="xml">XML</option>
+              <option value="yaml">YAML</option>
+            </select>
+          </label>
+
+          {language === 'sql' && (
+            <label className="text-sm font-semibold">
+              Dialect:
+              <select
+                value={sqlDialect}
+                onChange={(e) => setSqlDialect(e.target.value as SqlLanguage)}
+                className="ml-2 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-sm"
+              >
+                {SQL_DIALECTS.map((d) => (
+                  <option key={d.value} value={d.value}>
+                    {d.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+
+          <label className="text-sm font-semibold">
+            Indent:
+            <select
+              value={indent}
+              onChange={(e) => setIndent(Number(e.target.value) as MarkupIndent)}
+              className="ml-2 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-sm"
+            >
+              <option value={2}>2 spaces</option>
+              <option value={4}>4 spaces</option>
+            </select>
+          </label>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={copy}
+            disabled={!input}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3.5 py-2 text-xs font-medium hover:border-indigo-500 disabled:opacity-50"
+          >
+            {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
+            {copied ? t.copied : t.copy}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setInput('');
+              setStatus('');
+            }}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3.5 py-2 text-xs font-medium hover:border-red-500"
+          >
+            <Trash2 className="h-4 w-4" />
+            {t.clear}
+          </button>
+        </div>
+      </div>
+
+      <textarea
+        dir="ltr"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Enter SQL, XML, or YAML code here..."
+        rows={12}
+        className={`font-mono text-xs ${fieldClass}`}
+      />
+
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+        <button
+          type="button"
+          onClick={handleFormat}
+          disabled={!input.trim()}
+          className="rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:opacity-50"
+        >
+          {t.format}
+        </button>
+        {status && <span className="text-xs font-semibold text-[var(--muted-foreground)]">{status}</span>}
+      </div>
+    </section>
+  );
+}
+
+// -------------------------------------------------------------
+// 19. Developer Utilities Hub
+// -------------------------------------------------------------
+function LocalizedDeveloperUtilsHub({ locale, dictionary }: { locale: Locale; dictionary: Dictionary }) {
+  const t = dictionary.devTools;
+
+  const sections = [
+    {
+      title: 'Text, Patterns & Time Utilities',
+      description:
+        'Test regular expressions, convert epoch timestamps, humanize cron schedules, and calculate upcoming run dates.',
+      slugs: [
+        'regex-tester',
+        'epoch-time-converter',
+        'cron-expression-generator',
+        'cron-expression-humanizer',
+        'cron-next-run-calculator',
+      ],
+    },
+    {
+      title: 'Identifiers & Binary Number Systems',
+      description:
+        'Generate cryptographic UUIDs and ULIDs, inspect millisecond timestamps, and convert binary numbers with step-by-step arithmetic.',
+      slugs: ['uuid-generator', 'ulid-generator', 'binary-to-decimal-with-steps'],
+    },
+    {
+      title: 'DevOps, Formats & Schema Generation',
+      description:
+        'Scaffold .gitignore files, assemble Docker run commands, format conventional git commits, and generate Zod validation schemas.',
+      slugs: [
+        'gitignore-generator',
+        'docker-run-command-generator',
+        'git-commit-message-formatter',
+        'typescript-to-zod-schema-converter',
+        'markup-formatter',
+      ],
+    },
+    {
+      title: 'CAD & Design Handoff Utilities',
+      description:
+        'Convert STEP CAD files to interactive 3D PDFs and inspect PSD mockups for HTML and CSS generation.',
+      slugs: ['step-to-3d-pdf-converter', 'psd-to-html'],
+    },
+  ];
+
+  return (
+    <div className="space-y-10">
+      <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-6">
+        <div className="flex items-center gap-2 font-bold text-emerald-800 dark:text-emerald-300">
+          <ShieldCheck className="h-5 w-5 text-emerald-600" />
+          <span>{t.hubTitle}</span>
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-emerald-900/90 dark:text-emerald-200/90">
+          {t.hubDescription}
+        </p>
+      </div>
+
+      {sections.map((section) => (
+        <div key={section.title} className="space-y-4">
+          <h2 className="border-b border-[var(--border)] pb-2 text-lg font-bold text-slate-900 dark:text-white">
+            {section.title}
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {section.slugs.map((toolSlug) => {
+              const meta = dictionary.tools[toolSlug as TranslatedTool];
+              if (!meta) return null;
+              const icon = getToolIcon(toolSlug);
+              return (
+                <Link
+                  key={toolSlug}
+                  href={localizedPath(locale, toolSlug as TranslatedTool)}
+                  className="group flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:border-indigo-500 hover:shadow-md"
+                >
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-xl transition group-hover:bg-indigo-600 dark:bg-slate-800 dark:group-hover:bg-indigo-500">
+                        <span>{icon}</span>
+                      </div>
+                      <h3 className="font-bold text-slate-900 transition group-hover:text-indigo-600 dark:text-white dark:group-hover:text-indigo-400">
+                        {meta.title}
+                      </h3>
+                    </div>
+                    <p className="mt-3 line-clamp-2 text-xs leading-relaxed text-[var(--muted-foreground)]">
+                      {meta.description}
+                    </p>
+                  </div>
+                  <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+                    <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// -------------------------------------------------------------
 // Main Dispatcher Component
 // -------------------------------------------------------------
 export default function LocalizedDevTools({ slug, locale, dictionary }: Props) {
@@ -1913,6 +2582,23 @@ export default function LocalizedDevTools({ slug, locale, dictionary }: Props) {
   if (slug === 'web-crypto-studio') return <LocalizedWebCrypto dictionary={dictionary} />;
   if (slug === 'qr-code-generator') return <LocalizedQrCodeTool dictionary={dictionary} />;
   if (slug === 'code-minifier-beautifier') return <LocalizedCodeMinifier dictionary={dictionary} />;
+
+  // Cohort 19D additions
+  if (slug === 'uuid-generator') return <LocalizedUuidGenerator dictionary={dictionary} />;
+  if (slug === 'ulid-generator') return <UlidGeneratorTool />;
+  if (slug === 'cron-expression-generator') return <CronExpressionGeneratorTool />;
+  if (slug === 'cron-expression-humanizer') return <LocalizedCronHumanizer locale={locale} dictionary={dictionary} />;
+  if (slug === 'cron-next-run-calculator') return <CronNextRunCalculator />;
+  if (slug === 'epoch-time-converter') return <EpochTimeConverterTool />;
+  if (slug === 'binary-to-decimal-with-steps') return <BinaryToDecimalTool />;
+  if (slug === 'gitignore-generator') return <GitignoreGenerator />;
+  if (slug === 'docker-run-command-generator') return <DockerRunGenerator />;
+  if (slug === 'git-commit-message-formatter') return <GitCommitFormatter />;
+  if (slug === 'typescript-to-zod-schema-converter') return <TypescriptToZodConverter />;
+  if (slug === 'markup-formatter') return <LocalizedMarkupFormatter dictionary={dictionary} />;
+  if (slug === 'psd-to-html') return <PsdToHtmlTool />;
+  if (slug === 'step-to-3d-pdf-converter') return <StepTo3dPdfTool />;
+  if (slug === 'developer-utils') return <LocalizedDeveloperUtilsHub locale={locale} dictionary={dictionary} />;
 
   return null;
 }

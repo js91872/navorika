@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import Link from 'next/link';
 import {
   AlertCircle,
@@ -18,11 +18,23 @@ import {
   type GeneratedUlidItem,
 } from '@/lib/identifiers';
 
+const STATIC_INITIAL_ULIDS: GeneratedUlidItem[] = [
+  { id: '01ARZ3NDEKTSV4RRFFQ69G5FAV', timeMs: 1469918176371, iso: '2016-07-30T22:36:16.371Z', local: '2016-07-30 22:36:16 UTC' },
+  { id: '01ARZ3NDEKTSV4RRFFQ69G5FAW', timeMs: 1469918176371, iso: '2016-07-30T22:36:16.371Z', local: '2016-07-30 22:36:16 UTC' },
+  { id: '01ARZ3NDEKTSV4RRFFQ69G5FAX', timeMs: 1469918176371, iso: '2016-07-30T22:36:16.371Z', local: '2016-07-30 22:36:16 UTC' },
+  { id: '01ARZ3NDEKTSV4RRFFQ69G5FAY', timeMs: 1469918176371, iso: '2016-07-30T22:36:16.371Z', local: '2016-07-30 22:36:16 UTC' },
+  { id: '01ARZ3NDEKTSV4RRFFQ69G5FAZ', timeMs: 1469918176371, iso: '2016-07-30T22:36:16.371Z', local: '2016-07-30 22:36:16 UTC' },
+];
+
 export default function UlidGeneratorTool() {
   const inspectInputId = useId();
   const [bulkCount, setBulkCount] = useState<number>(5);
-  const [items, setItems] = useState<GeneratedUlidItem[]>(() => generateBulkUlids(5));
+  const [items, setItems] = useState<GeneratedUlidItem[]>(STATIC_INITIAL_ULIDS);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  useEffect(() => {
+    setItems(generateBulkUlids(5));
+  }, []);
 
   // Inspector state
   const [inspectorInput, setInspectorInput] = useState<string>('');

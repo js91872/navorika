@@ -143,7 +143,7 @@ export const GITIGNORE_TEMPLATES: Record<string, GitignoreTemplate> = {
     id: 'windows',
     name: 'Windows',
     category: 'os',
-    description: 'Thumbnail caches, desktop layout, and recycle bin',
+    description: 'Thumbnail caches, desktop settings, and recycle bin',
     patterns: [
       'Thumbs.db',
       'Thumbs.db:encryptable',

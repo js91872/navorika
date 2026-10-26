@@ -442,7 +442,22 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'webmaster-seo-builder' ||
       slug === 'web-crypto-studio' ||
       slug === 'qr-code-generator' ||
-      slug === 'code-minifier-beautifier'
+      slug === 'code-minifier-beautifier' ||
+      slug === 'uuid-generator' ||
+      slug === 'ulid-generator' ||
+      slug === 'cron-expression-generator' ||
+      slug === 'cron-expression-humanizer' ||
+      slug === 'cron-next-run-calculator' ||
+      slug === 'epoch-time-converter' ||
+      slug === 'binary-to-decimal-with-steps' ||
+      slug === 'gitignore-generator' ||
+      slug === 'docker-run-command-generator' ||
+      slug === 'git-commit-message-formatter' ||
+      slug === 'typescript-to-zod-schema-converter' ||
+      slug === 'markup-formatter' ||
+      slug === 'psd-to-html' ||
+      slug === 'step-to-3d-pdf-converter' ||
+      slug === 'developer-utils'
     ) {
       return <LocalizedDevTools slug={slug} dictionary={dictionary} locale={locale} />;
     }

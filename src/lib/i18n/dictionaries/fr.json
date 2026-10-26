@@ -2355,6 +2355,126 @@
       "limits": "Formate et compresse les scripts et feuilles de style dans le navigateur via des analyseurs syntaxiques locaux.",
       "question": "La minification altère-t-elle le fonctionnement du programme ?",
       "answer": "Non. La minification supprime les espaces superflus, sauts de ligne et commentaires tout en conservant scrupuleusement la logique d'exécution."
+    },
+    "uuid-generator": {
+      "title": "Générateur d'UUID",
+      "description": "Générez des identifiants UUID v4 et v7 conformes aux standards avec options de lot, de casse et de format.",
+      "how": "Sélectionnez le nombre souhaité, la version, la casse et le délimiteur. Cliquez sur générer pour obtenir des identifiants uniques prêts à copier.",
+      "limits": "Génère des lots de 1 à 500 UUID directement dans la mémoire locale grâce à Web Crypto.",
+      "question": "Quelle est la différence entre UUID v4 et UUID v7 ?",
+      "answer": "L'UUID v4 est entièrement aléatoire, tandis que l'UUID v7 intègre un horodatage en millisecondes pour un indexage chronologique optimal en base de données."
+    },
+    "ulid-generator": {
+      "title": "Générateur d'ULID",
+      "description": "Générez des ULID 128 bits triables conformes aux spécifications, inspectez les horodatages intégrés et décodez le format Base32 de Crockford.",
+      "how": "Générez des identifiants triables par ordre lexicographique ou collez un ULID pour inspecter son horodatage de création.",
+      "limits": "Génère des lots de 1 à 100 ULID côté client avec décodage Crockford Base32.",
+      "question": "Pourquoi les ULID sont-ils avantageux pour les bases de données ?",
+      "answer": "Les ULID combinent un horodatage sur 48 bits et 80 bits d'aléa dans une chaîne de 26 caractères sûre pour les URL et triable chronologiquement."
+    },
+    "cron-expression-generator": {
+      "title": "Générateur d'expressions Cron",
+      "description": "Générez, éditez et comprenez les expressions cron standard à 5 champs avec contrôles visuels, préréglages et dates d'exécution.",
+      "how": "Ajustez les paramètres de minute, heure, jour, mois et jour de la semaine pour visualiser la planification et les prochaines exécutions.",
+      "limits": "Génère des expressions cron standard à 5 champs pour serveurs Linux directement en mémoire locale.",
+      "question": "Que signifient les cinq champs d'une tâche cron standard ?",
+      "answer": "Les cinq champs correspondent à la minute (0-59), l'heure (0-23), le jour du mois (1-31), le mois (1-12) et le jour de la semaine (0-7, 0 et 7 étant dimanche)."
+    },
+    "cron-expression-humanizer": {
+      "title": "Traducteur d'expressions Cron en langage naturel",
+      "description": "Validez les expressions cron, traduisez les planifications en texte clair et prévisualisez les dates d'exécution.",
+      "how": "Collez une expression cron à 5 champs pour obtenir instantanément une explication claire et naturelle de sa fréquence.",
+      "limits": "Traduit la syntaxe cron en texte explicatif côté client avec prise en charge multilingue.",
+      "question": "Comment le traducteur interprète-t-il les pas d'intervalle comme */15 ?",
+      "answer": "Les pas définissent un intervalle régulier ; par exemple, */15 dans la colonne des minutes signifie toutes les 15 minutes."
+    },
+    "cron-next-run-calculator": {
+      "title": "Calculateur des prochaines exécutions Cron",
+      "description": "Validez les expressions cron à 5 champs et calculez les prochaines dates d'exécution selon les fuseaux horaires IANA.",
+      "how": "Saisissez votre expression cron, choisissez le fuseau horaire cible et affichez la liste des prochaines dates et heures d'exécution.",
+      "limits": "Calcule les horodatages futurs pour les planifications à 5 champs avec décalages de fuseaux en mémoire locale.",
+      "question": "Le calculateur prend-il en compte le passage à l'heure d'été ?",
+      "answer": "Oui. Il s'appuie sur la base de données de fuseaux IANA du navigateur pour calculer exactement les heures lors des changements d'heure."
+    },
+    "epoch-time-converter": {
+      "title": "Convertisseur d'horodatage Unix Epoch",
+      "description": "Convertissez les timestamps Unix en dates et inversement en secondes ou millisecondes avec gestion des fuseaux horaires et horloge en direct.",
+      "how": "Saisissez un horodatage en secondes ou millisecondes, ou choisissez une date dans le calendrier pour obtenir la conversion immédiate.",
+      "limits": "Prend en charge les horodatages en secondes et millisecondes pour toutes les périodes historiques et futures en mémoire locale.",
+      "question": "Qu'est-ce que l'époque Unix ?",
+      "answer": "L'époque Unix correspond au 1er janvier 1970 à 00:00:00 UTC, servant de point de repère temporel universel pour les systèmes informatiques."
+    },
+    "binary-to-decimal-with-steps": {
+      "title": "Convertisseur binaire en décimal avec étapes",
+      "description": "Convertissez des nombres binaires en décimal avec explications mathématiques pas à pas, décomposition des puissances de 2 et précision BigInt.",
+      "how": "Saisissez une chaîne binaire pour visualiser la pondération de chaque bit, les étapes de multiplication et le calcul de la somme décimale.",
+      "limits": "Traite les valeurs binaires d'un seul octet jusqu'à 256 bits avec calcul BigInt de précision illimitée en mémoire locale.",
+      "question": "Comment fonctionne mathématiquement la conversion binaire-décimal ?",
+      "answer": "Chaque bit est multiplié par 2 élevé à la puissance de sa position de droite à gauche (en partant de zéro), puis les produits sont additionnés."
+    },
+    "gitignore-generator": {
+      "title": "Générateur de fichier .gitignore",
+      "description": "Générez des fichiers .gitignore propres pour langages de programmation, frameworks, environnements de développement et systèmes d'exploitation.",
+      "how": "Sélectionnez vos technologies (Node.js, Python, macOS, VS Code), ajoutez des règles personnalisées et téléchargez votre fichier .gitignore.",
+      "limits": "Assemble des fichiers d'exclusion complets à partir de modèles éprouvés directement en mémoire locale.",
+      "question": "Pourquoi ignorer les fichiers système comme .DS_Store ?",
+      "answer": "Exclure les fichiers de métadonnées générés par le système évite de polluer les dépôts partagés et élimine les conflits entre développeurs."
+    },
+    "docker-run-command-generator": {
+      "title": "Générateur de commandes Docker Run",
+      "description": "Construisez des commandes docker run sûres et structurées à partir des paramètres d'image, ports, volumes et variables d'environnement.",
+      "how": "Indiquez le nom de l'image, le conteneur, le mappage des ports, les volumes montés et la politique de redémarrage pour obtenir la commande complète.",
+      "limits": "Génère des commandes CLI Docker standard côté client sans interaction réseau avec le démon.",
+      "question": "À quoi sert le paramètre -d dans docker run ?",
+      "answer": "Le paramètre -d lance le conteneur en arrière-plan en mode détaché, libérant ainsi votre terminal tout en maintenant le conteneur actif."
+    },
+    "git-commit-message-formatter": {
+      "title": "Formateur de messages de commit Git",
+      "description": "Formatez des messages de commit Git conformes au standard Conventional Commits avec type, portée et indicateurs de rupture.",
+      "how": "Choisissez le type de commit (feat, fix, refactor, docs, chore), indiquez la portée, décrivez l'action et observez les recommandations de longueur.",
+      "limits": "Génère des messages conformes à Conventional Commits 1.0.0 en mémoire locale avec alertes de dépassement.",
+      "question": "Pourquoi limiter la première ligne d'un commit à 50 caractères ?",
+      "answer": "Une première ligne concise facilite la lecture de l'historique git log et évite la coupure du texte dans les outils de gestion de code."
+    },
+    "typescript-to-zod-schema-converter": {
+      "title": "Convertisseur TypeScript en schémas Zod",
+      "description": "Convertissez des interfaces et définitions de types TypeScript en schémas de validation Zod prêts à l'emploi.",
+      "how": "Collez votre interface ou type TypeScript pour générer instantanément les schémas de validation à l'exécution Zod équivalents.",
+      "limits": "Analyse les propriétés, champs optionnels, tableaux et unions primitives directement dans le navigateur.",
+      "question": "Pourquoi associer la validation Zod aux types TypeScript ?",
+      "answer": "Les types TypeScript disparaissent à la compilation ; Zod permet de valider les données dynamiques reçues d'API ou de formulaires à l'exécution."
+    },
+    "markup-formatter": {
+      "title": "Formateur de balisage et données structurées",
+      "description": "Formatez et validez le code SQL, XML et YAML localement grâce à des analyseurs syntaxiques rigoureux.",
+      "how": "Sélectionnez le format (SQL, XML ou YAML), collez votre document et lancez le formatage pour obtenir une indentation uniforme.",
+      "limits": "Traite les documents de données et requêtes directement dans le navigateur sans transmission externe.",
+      "question": "La structure du document est-elle validée avant le formatage ?",
+      "answer": "Oui. Chaque moteur vérifie la syntaxe du document et signale les erreurs de parsing avec indication de ligne."
+    },
+    "psd-to-html": {
+      "title": "Convertisseur PSD en HTML",
+      "description": "Inspectez les maquettes PSD, vérifiez dimensions et profil colorimétrique, générez des modèles HTML5 sémantiques et exportez vos fiches de développement.",
+      "how": "Glissez-déposez un fichier Photoshop .psd pour analyser les calques, dimensions et modes de couleur, puis générez le balisage HTML et CSS.",
+      "limits": "Analyse les en-têtes binaires et calques PSD directement dans le navigateur jusqu'à 100 Mo.",
+      "question": "Les fichiers de maquette PSD sont-ils transmis à un serveur ?",
+      "answer": "Non. La structure binaire du fichier Photoshop est lue et analysée intégralement en JavaScript local dans votre onglet."
+    },
+    "step-to-3d-pdf-converter": {
+      "title": "Convertisseur STEP en PDF 3D",
+      "description": "Convertissez des modèles CAO STEP et STP en documents PDF 3D interactifs avec géométrie PRC intégrée.",
+      "how": "Sélectionnez ou déposez un fichier STEP ou STP. Le convertisseur valide les solides et produit un PDF 3D manipulable dans les lecteurs compatibles.",
+      "limits": "Prend en charge les modèles STEP AP203, AP214 et AP242 avec intégration de géométrie interactive.",
+      "question": "Les fichiers PDF 3D sont-ils lisibles dans les visionneuses standard ?",
+      "answer": "Oui. Les documents PDF 3D interactifs utilisent le conteneur PRC standard reconnu par les lecteurs comme Adobe Acrobat Reader."
+    },
+    "developer-utils": {
+      "title": "Portail d'utilitaires pour développeurs",
+      "description": "Une suite complète sur navigateur pour tests d'expressions régulières, horodatages Unix, identifiants et modèles de code.",
+      "how": "Explorez des utilitaires ciblés pour expressions régulières, horodatages, génération d'UUID et ULID, et scaffolding de code.",
+      "limits": "Offre un accès centralisé aux utilitaires de développement et d'administration système côté client.",
+      "question": "Pourquoi exécuter ces outils de développement dans le navigateur ?",
+      "answer": "Le traitement local garantit que vos extraits de code, schémas de données et jetons privés ne quittent jamais votre poste de travail."
     }
   },
   "flexOptions": {

@@ -2355,6 +2355,126 @@
       "limits": "Formats and compresses code using local parsing engines directly in your browser tab.",
       "question": "Does minification alter program behavior or code functionality?",
       "answer": "No. Minification strips unnecessary whitespace, line breaks, and comments while preserving syntactic structure and execution semantics."
+    },
+    "uuid-generator": {
+      "title": "UUID Generator",
+      "description": "Generate standards-compliant UUID v4 and UUID v7 identifiers with custom bulk counts, casing, and format controls.",
+      "how": "Select the required quantity, version, casing, and delimiter options. Click generate to produce unique cryptographic identifiers ready to copy or download.",
+      "limits": "Generates batches of 1 to 500 UUIDs directly in browser memory using Web Crypto.",
+      "question": "What is the difference between UUID v4 and UUID v7?",
+      "answer": "UUID v4 is completely random, whereas UUID v7 includes a millisecond timestamp prefix that enables natural chronological database indexing."
+    },
+    "ulid-generator": {
+      "title": "ULID Generator",
+      "description": "Generate standards-compliant 128-bit ULIDs, bulk generate sortable IDs, inspect embedded timestamps, and decode Crockford Base32.",
+      "how": "Generate lexicographically sortable Universally Unique Lexicographically Sortable Identifiers or paste an existing ULID to inspect its creation timestamp.",
+      "limits": "Generates batches of 1 to 100 ULIDs client-side with Crockford Base32 decoding.",
+      "question": "Why are ULIDs advantageous for distributed database keys?",
+      "answer": "ULIDs combine a 48-bit millisecond timestamp with 80 bits of cryptographic randomness in a 26-character URL-safe string that sorts chronologically."
+    },
+    "cron-expression-generator": {
+      "title": "Cron Expression Generator",
+      "description": "Generate, edit, and explain standard 5-field cron expressions with visual builders, presets, and scheduled runs.",
+      "how": "Configure minute, hour, day, month, and day-of-week controls or type a direct cron expression. View real-time schedule breakdowns and upcoming execution dates.",
+      "limits": "Generates standard 5-field Linux cron expressions directly in browser memory.",
+      "question": "What do the five fields in a standard cron schedule represent?",
+      "answer": "The five fields represent minute (0-59), hour (0-23), day of month (1-31), month (1-12), and day of week (0-7, where both 0 and 7 mean Sunday)."
+    },
+    "cron-expression-humanizer": {
+      "title": "Cron Expression Humanizer",
+      "description": "Validate cron expressions, translate schedules into clear natural language, and preview upcoming run times.",
+      "how": "Paste any valid 5-field cron expression into the input field to generate an immediate, clear natural-language explanation of its recurring schedule.",
+      "limits": "Translates standard cron syntax into descriptive text client-side with multi-language support.",
+      "question": "How does the humanizer interpret step values like */15?",
+      "answer": "Step values describe recurring intervals; for instance, */15 in the minute position is interpreted as every 15 minutes."
+    },
+    "cron-next-run-calculator": {
+      "title": "Cron Next Run Calculator",
+      "description": "Validate standard five-field cron expressions and calculate upcoming runs in common IANA time zones.",
+      "how": "Enter a standard five-field cron expression, select your target timezone, and calculate the exact upcoming dates and times of execution.",
+      "limits": "Calculates future run timestamps for 5-field cron schedules with timezone offsets in client memory.",
+      "question": "Does this calculator account for Daylight Saving Time shifts?",
+      "answer": "Yes. It uses the browser Intl timezone database to correctly compute future execution moments across seasonal clock transitions."
+    },
+    "epoch-time-converter": {
+      "title": "Unix / Epoch Timestamp Converter",
+      "description": "Convert Unix timestamps to dates and dates to epoch seconds or milliseconds with timezone awareness and live clock display.",
+      "how": "Enter an epoch timestamp in seconds or milliseconds, or select a calendar date and time. Switch timezones to view instant reciprocal conversions.",
+      "limits": "Supports second and millisecond timestamps from historical periods through future centuries client-side.",
+      "question": "What is the Unix epoch?",
+      "answer": "The Unix epoch is defined as January 1, 1970 at 00:00:00 UTC, serving as the universal reference point for computer time systems."
+    },
+    "binary-to-decimal-with-steps": {
+      "title": "Binary to Decimal Converter with Steps",
+      "description": "Convert binary numbers to decimal with step-by-step mathematical explanations, powers of 2 breakdown, and BigInt precision.",
+      "how": "Type a binary string into the input field. View bit position weights, positional multiplication steps, and intermediate decimal calculations.",
+      "limits": "Evaluates binary values from single bytes to 256-bit sequences client-side with arbitrary-precision BigInt arithmetic.",
+      "question": "How does binary-to-decimal conversion work mathematically?",
+      "answer": "Each binary bit is multiplied by 2 raised to its position exponent from right to left (starting at zero), and the resulting products are summed."
+    },
+    "gitignore-generator": {
+      "title": ".gitignore Generator",
+      "description": "Generate clean .gitignore files for programming languages, frameworks, IDEs, and operating systems.",
+      "how": "Select frameworks, languages, and environments (like Node.js, Python, macOS, or VS Code), add custom exclusion rules, and download your .gitignore.",
+      "limits": "Assembles structured ignore files from curated templates directly in browser memory.",
+      "question": "Why should operating system files like .DS_Store be included in .gitignore?",
+      "answer": "Excluding OS-generated cache and folder attribute files prevents cluttering shared repositories and avoids merge conflicts across teams."
+    },
+    "docker-run-command-generator": {
+      "title": "Docker Run Command Generator",
+      "description": "Build safe and structured Docker run commands from container, port, volume, restart, and environment settings.",
+      "how": "Specify image name, container name, host and container port mappings, volume mounts, environment variables, and restart policies.",
+      "limits": "Assembles standard Docker CLI execution commands client-side without remote socket communication.",
+      "question": "What is the function of the -d flag in docker run?",
+      "answer": "The -d flag runs the container in detached background mode, freeing your terminal while keeping the process running."
+    },
+    "git-commit-message-formatter": {
+      "title": "Git Commit Message Formatter",
+      "description": "Format concise Git commit messages using Conventional Commits style with type, scope, and breaking change flags.",
+      "how": "Choose a commit type (feat, fix, refactor, docs, chore), add an optional scope, enter a concise description, and view formatting warnings.",
+      "limits": "Formats Conventional Commits 1.0.0 messages client-side with 50/72 character boundary warnings.",
+      "question": "Why is the 50-character limit recommended for commit message titles?",
+      "answer": "Keeping the subject line under 50 characters ensures concise git log overviews and prevents truncation in version control interfaces."
+    },
+    "typescript-to-zod-schema-converter": {
+      "title": "TypeScript to Zod Schema Converter",
+      "description": "Convert common TypeScript interfaces and type definitions into starter Zod validation schemas.",
+      "how": "Paste your TypeScript interface or type definition, select sample models, and instantly generate equivalent runtime Zod schemas.",
+      "limits": "Parses TypeScript property types, optional fields, arrays, and primitive unions client-side.",
+      "question": "Why is runtime Zod validation needed alongside TypeScript types?",
+      "answer": "TypeScript types are erased at compile time; Zod validates external untrusted runtime data such as API responses and form submissions."
+    },
+    "markup-formatter": {
+      "title": "Markup Formatter",
+      "description": "Format and validate SQL, XML, and YAML locally with grammar-aware processing engines.",
+      "how": "Select the format (SQL, XML, or YAML), paste your text, and format or minify your markup with consistent indentation.",
+      "limits": "Processes markup code and structured documents directly in browser memory without sending data to servers.",
+      "question": "Is formatted markup validated for structural correctness?",
+      "answer": "Yes. Each parsing engine checks document syntax before reformatting and reports syntax errors with line indicators."
+    },
+    "psd-to-html": {
+      "title": "PSD to HTML Converter",
+      "description": "Inspect PSD mockups, verify canvas dimensions and color space, generate semantic HTML5 or responsive email templates, and download developer handoff briefs.",
+      "how": "Upload or drop a Photoshop .psd file. Inspect layer structure, canvas bounds, and color profiles, then generate clean HTML and CSS scaffolding.",
+      "limits": "Parses PSD binary file headers and layer hierarchies client-side up to 100 MB.",
+      "question": "Are uploaded PSD design files sent to any remote processing server?",
+      "answer": "No. Photoshop binary structures and layer directories are parsed entirely client-side using JavaScript in your browser tab."
+    },
+    "step-to-3d-pdf-converter": {
+      "title": "STEP to 3D PDF Converter",
+      "description": "Convert STEP and STP CAD models into interactive 3D PDF documents with embedded PRC geometry.",
+      "how": "Select or drag a STEP or STP file. The converter validates solid entities and generates a 3D PDF document that can be rotated in standard PDF readers.",
+      "limits": "Processes standard STEP AP203, AP214, and AP242 models with interactive geometry embedding.",
+      "question": "Can 3D PDFs be viewed in standard PDF software?",
+      "answer": "Yes. Interactive 3D PDFs use the standard PRC geometry container supported by desktop PDF readers such as Adobe Acrobat Reader."
+    },
+    "developer-utils": {
+      "title": "Developer Utilities Hub",
+      "description": "A browser-based suite for regex testing, Unix timestamp conversion, identifiers, and code scaffolding.",
+      "how": "Explore focused developer tools for regular expressions, timestamps, UUID and ULID generation, and code scaffolding.",
+      "limits": "Provides comprehensive navigation across browser-based development and systems utilities.",
+      "question": "Why are these developer tools built to run client-side?",
+      "answer": "Executing tools entirely in your browser ensures that private code snippets, confidential data schemas, and proprietary tokens never leave your device."
     }
   },
   "flexOptions": {

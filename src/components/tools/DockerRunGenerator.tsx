@@ -270,7 +270,7 @@ export default function DockerRunGenerator() {
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
               Volume Mounts (-v)
             </h3>
-            <div className="mt-2.5 flex flex-wrap gap-2 sm:flex-nowrap">
+            <div className="mt-2.5 flex flex-wrap gap-2 sm:flex-row">
               <input
                 type="text"
                 value={newHostPath}

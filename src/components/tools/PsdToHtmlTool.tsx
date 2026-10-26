@@ -195,7 +195,7 @@ export default function PsdToHtmlTool() {
         recommendedBreakpoint: 'HTML Email (600px fixed-width table container)',
         notes: [
           'Preflight confirmed: 600px artboard optimized for desktop and mobile email clients.',
-          'Layout target: Nested table architecture with inline CSS styles.',
+          'Architecture target: Nested table architecture with inline CSS styles.',
           'Client compatibility: Microsoft Outlook, Apple Mail, and Gmail compliant.',
         ],
       });
@@ -265,7 +265,7 @@ export default function PsdToHtmlTool() {
             Pixel-Perfect Email from Your PSD
           </h1>
           <p style="margin: 0 0 28px 0; font-size: 16px; line-height: 1.6; color: #94a3b8; max-width: 480px; display: inline-block;">
-            Table-based layout engineered for strict email client compatibility across Outlook, Gmail, and Apple Mail.
+            Table-based structure engineered for strict email client compatibility across Outlook, Gmail, and Apple Mail.
           </p>
           <div>
             <!-- Bulletproof Button -->
@@ -1045,7 +1045,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
         )}
       </section>
 
-      {/* 2. Target Framework & Layout Scaffolding Controls */}
+      {/* 2. Target Framework & Scaffolding Controls */}
       <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
         <div className="flex items-center gap-3 border-b border-[var(--border)] pb-5">
           <div className="grid size-10 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
@@ -1118,7 +1118,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                 <span>Responsive HTML Email</span>
               </div>
               <p className="mt-1 text-xs text-[var(--muted-foreground)]">
-                Nested table layout, inline CSS, Outlook conditionals (MSO), and 600px max-width standard.
+                Nested table structure, inline CSS, Outlook conditionals (MSO), and 600px max-width standard.
               </p>
             </button>
           </div>
@@ -1223,7 +1223,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
               <Layers className="size-5" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-[var(--foreground)]">Interactive Layout Preview</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)]">Interactive Mockup Preview</h2>
               <p className="text-xs text-[var(--muted-foreground)]">
                 Responsive visual render of the scaffolded DOM components.
               </p>
@@ -1307,7 +1307,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   style={{ color: brandColor, backgroundColor: `${brandColor}15` }}
                   className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3"
                 >
-                  Photoshop Sliced Layout
+                  Photoshop Sliced Mockup
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
                   High-Fidelity Code from Photoshop Mockups
@@ -1315,7 +1315,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                 <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
                   {conversionMode === 'email'
                     ? 'Engineered with nested 600px tables and inline CSS for flawless rendering across Outlook and Gmail.'
-                    : 'Structured with semantic HTML5 tags and flexible CSS layout properties.'}
+                    : 'Structured with semantic HTML5 tags and flexible CSS styling properties.'}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2.5">
                   <span
@@ -1513,7 +1513,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                     </span>
                   </div>
                   <div className="py-2.5 flex items-start gap-3">
-                    <span className="font-bold text-indigo-600 shrink-0">Layout Math:</span>
+                    <span className="font-bold text-indigo-600 shrink-0">Structure Math:</span>
                     <span className="text-[var(--muted-foreground)]">
                       Map multi-column containers to CSS Flexbox with gap spacing. Test parent and child alignment with our <Link href="/tools/css-flexbox-generator" className="text-indigo-600 underline">CSS Flexbox Generator</Link> or follow our <Link href="/guides/psd-to-html-conversion-guide" className="text-indigo-600 underline">PSD to HTML Conversion Guide</Link>.
                     </span>

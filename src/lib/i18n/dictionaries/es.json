@@ -2355,6 +2355,126 @@
       "limits": "Formatea y comprime código con analizadores sintácticos locales en la memoria del navegador.",
       "question": "¿Modifica la minificación el funcionamiento del código?",
       "answer": "No. La minificación elimina espacios redundantes, saltos de línea y comentarios sin alterar en absoluto la estructura lógica ni el resultado de ejecución."
+    },
+    "uuid-generator": {
+      "title": "Generador de UUID",
+      "description": "Genera identificadores UUID v4 y v7 estándar con opciones para lotes, mayúsculas/minúsculas y separadores.",
+      "how": "Elige la cantidad, versión, formato y delimitadores. Pulsa generar para crear identificadores únicos listos para copiar.",
+      "limits": "Genera lotes de 1 a 500 UUIDs en memoria local utilizando Web Crypto.",
+      "question": "¿Cuál es la diferencia entre UUID v4 y UUID v7?",
+      "answer": "El UUID v4 es puramente aleatorio, mientras que el UUID v7 añade una marca de tiempo en milisegundos que optimiza la indexación en bases de datos."
+    },
+    "ulid-generator": {
+      "title": "Generador de ULID",
+      "description": "Genera ULIDs de 128 bits ordenables, inspecciona marcas de tiempo integradas y decodifica el formato Crockford Base32.",
+      "how": "Genera identificadores ordenables alfabéticamente o introduce un ULID existente para revelar su fecha y hora de creación.",
+      "limits": "Produce lotes de 1 a 100 ULIDs de forma local con decodificación Crockford Base32.",
+      "question": "¿Por qué usar ULID en bases de datos distribuidas?",
+      "answer": "El formato ULID une una marca temporal de 48 bits y 80 bits de entropía en 26 caracteres seguros para la web que se ordenan cronológicamente."
+    },
+    "cron-expression-generator": {
+      "title": "Generador de expresiones Cron",
+      "description": "Genera, edita y analiza expresiones cron estándar de 5 campos con selectores visuales, plantillas y próximas ejecuciones.",
+      "how": "Configura minuto, hora, día del mes, mes y día de la semana para comprobar el desglose temporal y las fechas previstas.",
+      "limits": "Procesa expresiones cron estándar de 5 campos para entornos Linux de forma local.",
+      "question": "¿Qué significan los cinco campos en una expresión cron?",
+      "answer": "Representan minuto (0-59), hora (0-23), día del mes (1-31), mes (1-12) y día de la semana (0-7, siendo 0 y 7 el domingo)."
+    },
+    "cron-expression-humanizer": {
+      "title": "Traductor de expresiones Cron a lenguaje natural",
+      "description": "Valida expresiones cron, convierte programaciones técnicas en texto claro y consulta los próximos momentos de ejecución.",
+      "how": "Pega cualquier expresión cron de 5 campos para generar de inmediato una explicación descriptiva en lenguaje comprensible.",
+      "limits": "Transforma sintaxis cron en lenguaje natural en memoria local con soporte multilingüe.",
+      "question": "¿Cómo se interpretan los pasos de intervalo como */15?",
+      "answer": "Los valores con barra indican frecuencias periódicas; por ejemplo, */15 en la posición de minutos se interpreta como cada 15 minutos."
+    },
+    "cron-next-run-calculator": {
+      "title": "Calculadora de próximas ejecuciones Cron",
+      "description": "Valida expresiones cron de 5 campos y calcula las próximas fechas de ejecución en zonas horarias IANA habituales.",
+      "how": "Introduce la expresión cron, elige la zona horaria correspondiente y revisa la secuencia de fechas y horas futuras de inicio.",
+      "limits": "Calcula marcas temporales futuras para expresiones cron de 5 campos con gestión de zonas horarias en memoria local.",
+      "question": "¿Tiene en cuenta el cambio al horario de verano?",
+      "answer": "Sí. Utiliza la base de zonas horarias Intl del navegador para mantener la coherencia en las transiciones horarias estacionales."
+    },
+    "epoch-time-converter": {
+      "title": "Conversor de marcas de tiempo Unix Epoch",
+      "description": "Convierte timestamps Unix a fechas legibles y fechas a segundos o milisegundos con soporte de zonas horarias y reloj en tiempo real.",
+      "how": "Escribe una marca de tiempo en segundos o milisegundos, o selecciona fecha y hora en el selector para realizar la conversión al instante.",
+      "limits": "Admite marcas temporales en segundos y milisegundos para cualquier fecha histórica o futura en memoria local.",
+      "question": "¿Qué representa la época Unix?",
+      "answer": "La época Unix se define como el 1 de enero de 1970 a las 00:00:00 UTC, funcionando como origen temporal estándar en informática."
+    },
+    "binary-to-decimal-with-steps": {
+      "title": "Conversor de binario a decimal con pasos",
+      "description": "Convierte números binarios a decimal con explicaciones matemáticas detalladas, descomposición de potencias de 2 y precisión BigInt.",
+      "how": "Escribe una cifra binaria para comprobar los pesos de posición, el desarrollo de las multiplicaciones por potencias de 2 y la suma final.",
+      "limits": "Resuelve secuencias binarias desde 8 bits hasta 256 bits en memoria local con precisión arbitraria BigInt.",
+      "question": "¿Cómo se realiza el cálculo de binario a decimal?",
+      "answer": "Cada dígito binario se multiplica por 2 elevado a su exponente de posición de derecha a izquierda (empezando en cero) y se suman los productos."
+    },
+    "gitignore-generator": {
+      "title": "Generador de archivos .gitignore",
+      "description": "Genera archivos .gitignore optimizados para lenguajes de programación, frameworks, entornos de desarrollo y sistemas operativos.",
+      "how": "Selecciona las tecnologías y herramientas (como Node.js, Python, macOS o VS Code), añade reglas a medida y descarga tu archivo .gitignore.",
+      "limits": "Organiza reglas de exclusión estructuradas a partir de plantillas consolidadas en memoria local.",
+      "question": "¿Por qué se deben incluir archivos del sistema como .DS_Store?",
+      "answer": "Omitir archivos temporales y metadatos del sistema operativo previene sobrecargar los repositorios compartidos y evita conflictos entre ramas."
+    },
+    "docker-run-command-generator": {
+      "title": "Generador de comandos Docker Run",
+      "description": "Construye comandos docker run seguros y organizados configurando imagen, puertos, volúmenes y variables de entorno.",
+      "how": "Indica el nombre de la imagen y del contenedor, asignación de puertos, volúmenes compartidos y política de reinicio para copiar la instrucción.",
+      "limits": "Genera comandos oficiales para la interfaz de comandos de Docker de forma local sin comunicarse con el motor.",
+      "question": "¿Qué función cumple el parámetro -d en docker run?",
+      "answer": "El parámetro -d inicia el contenedor en segundo plano de manera desacoplada, liberando la consola mientras el servicio permanece activo."
+    },
+    "git-commit-message-formatter": {
+      "title": "Formateador de mensajes de commit Git",
+      "description": "Estructura mensajes de confirmación Git claros según la norma Conventional Commits con tipo, alcance y avisos de cambios mayores.",
+      "how": "Selecciona el tipo (feat, fix, refactor, docs, chore), añade el alcance y la descripción para obtener un mensaje formateado y advertencias de longitud.",
+      "limits": "Compone mensajes bajo el estándar Conventional Commits 1.0.0 de forma local con límites de 50 y 72 caracteres.",
+      "question": "¿Por qué se aconseja no superar los 50 caracteres en el título?",
+      "answer": "Un encabezado breve mejora la claridad en los registros de git log y garantiza que el texto no se corte en plataformas de código."
+    },
+    "typescript-to-zod-schema-converter": {
+      "title": "Conversor de TypeScript a esquemas Zod",
+      "description": "Convierte interfaces y definiciones de tipos TypeScript en esquemas de validación Zod para tiempo de ejecución.",
+      "how": "Pega tu interfaz o tipo TypeScript para generar al instante el esquema equivalente en Zod listo para validar datos.",
+      "limits": "Interpreta propiedades, campos opcionales, matrices y uniones de tipos básicos de forma local.",
+      "question": "¿Por qué es importante validar con Zod si ya se usa TypeScript?",
+      "answer": "El tipado de TypeScript se elimina al compilar; Zod garantiza la comprobación de datos externos en tiempo real en llamadas API y formularios."
+    },
+    "markup-formatter": {
+      "title": "Formateador de marcado y datos estructurados",
+      "description": "Formatea y valida código SQL, XML y YAML localmente con motores de análisis basados en gramáticas oficiales.",
+      "how": "Elige el formato (SQL, XML o YAML), pega el documento y optimiza el marcado con una indentación uniforme y clara.",
+      "limits": "Procesa consultas y documentos técnicos en la memoria del navegador manteniendo la confidencialidad.",
+      "question": "¿Se comprueba la validez estructural del documento antes de formatear?",
+      "answer": "Sí. El analizador sintáctico verifica las reglas de apertura y cierre y alerta sobre errores de sintaxis detectados."
+    },
+    "psd-to-html": {
+      "title": "Conversor de PSD a HTML",
+      "description": "Inspecciona maquetas PSD, comprueba dimensiones y perfiles de color, genera plantillas HTML5 semánticas y descarga especificaciones de desarrollo.",
+      "how": "Arrastra un archivo Photoshop .psd para revisar capas, dimensiones y modos de color, y genera la base de código HTML y CSS.",
+      "limits": "Analiza cabeceras binarias y jerarquías de capas PSD en memoria local hasta 100 MB.",
+      "question": "¿Se cargan los diseños PSD en servidores remotos?",
+      "answer": "No. La lectura de capas y datos binarios del archivo Photoshop se ejecuta de forma íntegra en JavaScript local dentro de tu navegador."
+    },
+    "step-to-3d-pdf-converter": {
+      "title": "Conversor de STEP a PDF 3D",
+      "description": "Convierte modelos CAD STEP y STP en documentos PDF 3D interactivos con geometría PRC incrustada.",
+      "how": "Carga un archivo STEP o STP. La herramienta valida los sólidos geométricos y produce un PDF 3D interactivo listo para examinar.",
+      "limits": "Admite modelos STEP AP203, AP214 y AP242 con generación de geometría 3D interactiva.",
+      "question": "¿Se pueden ver los PDF 3D en lectores habituales?",
+      "answer": "Sí. Los PDF 3D interactivos emplean el estándar PRC reconocido por programas de escritorio como Adobe Acrobat Reader."
+    },
+    "developer-utils": {
+      "title": "Centro de utilidades para desarrolladores",
+      "description": "Una suite en el navegador para pruebas de expresiones regulares, timestamps Unix, identificadores y generación de código.",
+      "how": "Descubre utilidades específicas para expresiones regulares, marcas temporales, generación de UUID y ULID y plantillas de desarrollo.",
+      "limits": "Facilita la navegación ágil entre herramientas de desarrollo y gestión de sistemas de forma local.",
+      "question": "¿Por qué funcionan estas utilidades en el navegador?",
+      "answer": "El procesamiento en el cliente evita que fragmentos de código, esquemas de bases de datos y claves privadas salgan de tu entorno de trabajo."
     }
   },
   "flexOptions": {
