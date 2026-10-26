@@ -28,6 +28,7 @@ export interface Toolkit {
 }
 
 export const clusters: ToolCluster[] = [
+  { id: 'ai-video-prompts', name: 'AI Video Prompt Tools', description: 'Plan video scenes and generate structured prompts for AI video workflows.', category: 'developer-tools', toolSlugs: ['ai-video-prompt-generator'] },
   { id: 'speaker-audio', name: 'Speaker Audio Tools', description: 'Test phone speakers and explore audio troubleshooting with browser-based sounds.', category: 'everyday-calculators', toolSlugs: ['speaker-dust-cleaning-sound'] },
   { id: 'pdf-organize', name: 'Organize PDF Pages', description: 'Combine, separate, reorder, rotate, and extract pages in document workflows.', category: 'pdf-tools', toolSlugs: ['merge-pdf', 'split-pdf', 'reorder-pdf', 'rotate-pdf', 'delete-pdf-pages', 'extract-pdf-pages', 'interleave-pdf'] },
   { id: 'pdf-convert', name: 'PDF Conversion', description: 'Move content between PDF, image, and text formats.', category: 'pdf-tools', toolSlugs: ['jpg-to-pdf', 'webp-to-pdf', 'pdf-to-image', 'pdf-to-jpg', 'extract-pdf-text', 'pdf-word-counter', 'heic-to-pdf', 'markdown-to-pdf'] },
