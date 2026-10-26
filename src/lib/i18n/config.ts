@@ -226,6 +226,11 @@ export const translatedTools = [
   'word-to-xml-converter', 'csv-to-json-converter', 'json-to-csv-flattener', 'json-formatter',
   'json-diff-compare', 'json-schema-validator', 'json-to-yaml-converter', 'yaml-to-json-converter',
   'json-to-toml-converter', 'toml-to-json-converter', 'yaml-validator',
+  'cidr-subnet-wildcard-calculator', 'ip-range-calculator', 'vlsm-subnet-calculator',
+  'mac-address-generator', 'http-status-code-lookup', 'url-encoder-decoder',
+  'html-entity-encoder-decoder', 'base64-encoder', 'jwt-decoder',
+  'utf8-vs-utf16-byte-calculator', 'aws-glacier-retrieval-calculator', 'webmaster-seo-builder',
+  'web-crypto-studio', 'qr-code-generator', 'code-minifier-beautifier',
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
 export const isLocale = (value: string): value is Locale =>

@@ -2235,6 +2235,126 @@
       "limits": "Überprüft YAML-1.1- und 1.2-Syntax direkt im Arbeitsspeicher ohne Serververbindungen.",
       "question": "Erkennt der Validator unerlaubte Tabulator-Einrückungen?",
       "answer": "Ja. Da YAML Tabulatoren für Einrückungen untersagt, hebt das Werkzeug Tabulatorzeichen und deren Position sofort hervor."
+    },
+    "cidr-subnet-wildcard-calculator": {
+      "title": "CIDR-, Subnetz- und Wildcard-Masken-Rechner",
+      "description": "Konvertieren Sie IPv4-CIDR-Notation in Subnetzmasken, Cisco-Wildcard-Masken, Netzwerk- und Broadcast-Adressen, Hostbereiche und Adressanzahlen.",
+      "how": "Geben Sie eine IPv4-Adresse mit CIDR-Präfix ein (z. B. 192.168.1.0/24). Sehen Sie sofort Netzwerkbereiche, Broadcast-Adressen, Wildcard-Masken und nutzbare Host-Zahlen.",
+      "limits": "Verarbeitet IPv4-Präfixlängen von /0 bis /32 inklusive Punkt-zu-Punkt-Netzen /31 direkt im Arbeitsspeicher des Browsers.",
+      "question": "Was ist eine Wildcard-Maske?",
+      "answer": "Eine Wildcard-Maske ist die bitweise Umkehrung einer Subnetzmaske und wird bei Cisco-Zugriffssteuerungslisten und OSPF-Routing verwendet."
+    },
+    "ip-range-calculator": {
+      "title": "IP-Bereichsrechner",
+      "description": "Berechnen Sie IPv4-Bereichsgröße, Grenzen, kleinstes übergeordnetes CIDR und eine exakte CIDR-Blockzerlegung.",
+      "how": "Geben Sie Start- und End-IPv4-Adressen ein. Der Rechner ermittelt sofort Adressanzahl, kleinstes übergeordnetes CIDR und die Liste exakter CIDR-Blöcke.",
+      "limits": "Verarbeitet beliebige gültige IPv4-Adressbereiche im Browser mit präziser Subnetzzerlegung.",
+      "question": "Wie werden die exakten CIDR-Blöcke ermittelt?",
+      "answer": "Der Rechner teilt die Bereichsgrenzen in Zweierpotenz-Subnetze auf, die an Bitgrenzen ausgerichtet sind, ohne Adressen auszulassen."
+    },
+    "vlsm-subnet-calculator": {
+      "title": "VLSM-Subnetzrechner",
+      "description": "Weisen Sie überlappungsfreie IPv4-Subnetze variabler Länge nach dem Largest-First-Prinzip basierend auf Host-Bedarfen zu.",
+      "how": "Legen Sie ein übergeordnetes CIDR-Netzwerk fest, fügen Sie Subnetze mit benötigten Hostzahlen hinzu und weisen Sie diese absteigend sortiert zu.",
+      "limits": "Berechnet dynamische VLSM-Zuweisungen bis zur Grenze des Basisnetzwerks direkt im Browser.",
+      "question": "Warum ist die Zuweisung nach Größe wichtig?",
+      "answer": "Die Sortierung nach absteigendem Host-Bedarf stellt die binäre Ausrichtung an Netzwerkadressgrenzen sicher und verhindert Fragmentierung."
+    },
+    "mac-address-generator": {
+      "title": "MAC-Adressen-Generator",
+      "description": "Generieren Sie zufällige Unicast-MAC-Adressen mittels Web Crypto mit Steuerung für lokales Bit, Groß-/Kleinschreibung und Trennzeichen.",
+      "how": "Wählen Sie Anzahl, Schreibweise (Groß- oder Kleinbuchstaben), Trennzeichen (Doppelpunkt, Bindestrich oder keines) und steuern Sie das lokale Bit.",
+      "limits": "Erzeugt 1 bis 100 kryptografische synthetische MAC-Adressen pro Durchlauf clientseitig.",
+      "question": "Was besagt das lokal verwaltete Bit bei einer MAC-Adresse?",
+      "answer": "Das zweitniedrigste Bit des ersten Oktetts gibt an, ob die MAC-Adresse lokal (virtuell) verwaltet wird oder weltweit durch einen OUI-Hersteller registriert ist."
+    },
+    "http-status-code-lookup": {
+      "title": "HTTP-Statuscode-Verzeichnis",
+      "description": "Durchsuchen Sie standardisierte HTTP-Statuscodes nach Nummer, Text, Klasse, Bedeutung, Verwendungszweck und Hinweisen.",
+      "how": "Geben Sie einen Code oder Suchbegriff ein oder filtern Sie nach Statuscode-Klassen (1xx bis 5xx), um Erklärungen und RFC-Kontexte abzurufen.",
+      "limits": "Umfasst gängige IANA- und RFC-definierte HTTP-Antwortcodes mit sofortiger clientseitiger Filterung.",
+      "question": "Worin liegt der Unterschied zwischen 301- und 308-Weiterleitungen?",
+      "answer": "Ein 301-Redirect erlaubte historisch den Wechsel von POST zu GET, während ein 308 Permanent Redirect HTTP-Methode und Anfragetext unverändert beibehält."
+    },
+    "url-encoder-decoder": {
+      "title": "URL-Codierer und -Decodierer",
+      "description": "Codieren und decodieren Sie URLs oder URL-Komponenten lokal mit Kopieren, Tauschen, Löschen und Fehlerbehandlung.",
+      "how": "Fügen Sie Text oder URLs ein, wählen Sie Codieren oder Decodieren und schalten Sie den Komponentenmodus um, um Trennzeichen zu steuern.",
+      "limits": "Verarbeitet beliebige UTF-8-Zeichenketten clientseitig ohne Längenbeschränkung oder externe Netzwerkabfragen.",
+      "question": "Was unterscheidet encodeURI von encodeURIComponent?",
+      "answer": "encodeURI behält Protokoll- und Pfadtrennzeichen wie Schrägstriche bei, während encodeURIComponent alle reservierten Trennzeichen für Abfrageparameter maskiert."
+    },
+    "html-entity-encoder-decoder": {
+      "title": "HTML-Entitäten-Codierer und -Decodierer",
+      "description": "Codieren Sie reservierte HTML-Zeichen und decodieren Sie benannte oder numerische HTML-Entitäten sicher als Klartext.",
+      "how": "Geben Sie Text oder HTML-Quellcode ein. Wählen Sie Codieren, um reservierte Zeichen zu maskieren, oder Decodieren, um Entitäten zurückzuwandeln.",
+      "limits": "Verarbeitet benannte und numerische HTML-Entitäten lokal im Speicher, ohne potenziell unsichere DOM-Elemente darzustellen.",
+      "question": "Warum müssen HTML-Entitäten codiert werden?",
+      "answer": "Das Maskieren von Zeichen wie <, > und & verhindert Interpretationsfehler des Browsers und schützt vor Sicherheitsrisiken wie Cross-Site-Scripting."
+    },
+    "base64-encoder": {
+      "title": "Base64-Codierer und -Decodierer",
+      "description": "Codieren Sie UTF-8-Text in Base64 oder decodieren Sie Base64 lokal zurück in UTF-8-Text.",
+      "how": "Geben Sie Ihren Text ein oder fügen Sie ihn ein. Wechseln Sie zwischen den Modi Text zu Base64 und Base64 zu Text für die sofortige Konvertierung.",
+      "limits": "Verarbeitet Unicode-UTF-8-Zeichenketten bis zu 50 MB direkt im Arbeitsspeicher des Browsers.",
+      "question": "Bietet Base64 eine Verschlüsselung für vertrauliche Daten?",
+      "answer": "Nein. Base64 ist lediglich ein Codierungsverfahren zum Transport binärer Daten über Textprotokolle und keine kryptografische Verschlüsselung."
+    },
+    "jwt-decoder": {
+      "title": "JWT-Decodierer",
+      "description": "Decodieren Sie JWT-Header und -Payload-JSON lokal ohne Überprüfung der Token-Signatur.",
+      "how": "Fügen Sie ein kompaktes JSON Web Token ein. Das Werkzeug parst Header-Attribute und Nutzlast-Claims und formatiert Zeitstempel lesbar.",
+      "limits": "Decodiert dreiteilige RFC-7519-Token lokal im Browser ohne Übertragung an externe Server.",
+      "question": "Überprüft dieses Werkzeug die kryptografische Signatur?",
+      "answer": "Nein. Dieses Tool dient ausschließlich der Inspektion; die Signaturprüfung erfordert Ihren geheimen Schlüssel auf einem autorisierten Server."
+    },
+    "utf8-vs-utf16-byte-calculator": {
+      "title": "UTF-8 vs. UTF-16 Byte-Rechner",
+      "description": "Vergleichen Sie codierte Byte-Größen in UTF-8 und UTF-16 für Text, einschließlich Unicode-Zeichen und Emojis.",
+      "how": "Geben Sie Text ein, aktivieren Sie bei Bedarf das Byte Order Mark (BOM) und vergleichen Sie den Speicherbedarf von UTF-8 und UTF-16.",
+      "limits": "Analysiert Unicode-Zeichenketten clientseitig inklusive Codepoints und Surrogat-Paaren.",
+      "question": "Warum ist UTF-8 bei lateinischen Schriften oft kompakter als UTF-16?",
+      "answer": "UTF-8 benötigt für ASCII-Zeichen nur ein Byte pro Zeichen, während UTF-16 für jedes Zeichen mindestens zwei Byte beansprucht."
+    },
+    "aws-glacier-retrieval-calculator": {
+      "title": "AWS S3 Glacier Wiederherstellungskosten-Rechner",
+      "description": "Schätzen Sie die Wiederherstellungskosten für S3 Glacier Flexible Retrieval und Deep Archive anhand regionaler Abruf-, Anfrage- und temporärer Speichertarife.",
+      "how": "Wählen Sie Speicherklasse und Abrufgeschwindigkeit. Geben Sie Datenvolumen in Gigabyte und Objektanzahl ein, um die geschätzten Gesamtkosten zu berechnen.",
+      "limits": "Berechnet AWS-Abrufszenarien mit anpassbaren Tarifen direkt im Browser.",
+      "question": "Aus welchen Faktoren setzen sich die Glacier-Wiederherstellungskosten zusammen?",
+      "answer": "Die Kosten umfassen das abgerufene Datenvolumen, Gebühren pro 1.000 Anfragen sowie die temporäre S3-Standard-Speicherung für die Nutzungsdauer."
+    },
+    "webmaster-seo-builder": {
+      "title": "Webmaster SEO-Werkzeuge",
+      "description": "Entdecken Sie browserbasierte SEO-Werkzeuge für Kampagnen-URLs, Seitenmetadaten und Crawler-Anweisungen.",
+      "how": "Navigieren Sie durch ausgewählte Werkzeuge zur Erstellung von Kampagnenlinks, Meta-Tags, robots.txt-Direktiven und optimierten Nutzdaten.",
+      "limits": "Bietet schnellen lokalen Zugriff auf Suchmaschinen- und Webmaster-Werkzeuge.",
+      "question": "Warum sollten Webmaster-Werkzeuge lokal laufen?",
+      "answer": "Lokale Verarbeitung schützt vertrauliche Kampagnenparameter und geplante Seitenstrukturen vor der Übermittlung an fremde Server."
+    },
+    "web-crypto-studio": {
+      "title": "Web-Crypto-Studio",
+      "description": "Erstellen Sie SHA-256-Hashes, kryptografische Zufallspasswörter und UUID-v4-Bezeichner lokal.",
+      "how": "Geben Sie Text für sofortige SHA-256-Prüfsummen ein, wählen Sie die Kennwortlänge für hochsichere Passwörter und generieren Sie UUID-v4-Schlüssel.",
+      "limits": "Nutzt die standardisierte W3C Web Crypto API direkt im Browser ohne Datenübertragung über das Netzwerk.",
+      "question": "Sind die erzeugten Zufallskennwörter kryptografisch sicher?",
+      "answer": "Ja. Die Generierung erfolgt über crypto.getRandomValues und nutzt den Entropiepool des Betriebssystems anstelle einfacher Zufallsfunktionen."
+    },
+    "qr-code-generator": {
+      "title": "QR-Code-Generator und -Scanner",
+      "description": "Erstellen Sie farbige QR-Codes oder lesen Sie einen QR-Code aus einem hochgeladenen Bild lokal aus.",
+      "how": "Geben Sie eine URL oder einen Text ein, wählen Sie die Farbe und laden Sie Ihren hochauflösenden QR-Code herunter, oder scannen Sie ein Bild.",
+      "limits": "Erstellt und dekodiert QR-Codes clientseitig mit anpassbarer Fehlerkorrektur ohne Server-Uploads.",
+      "question": "Werden hochgeladene Bilder zur Erkennung an einen Server übermittelt?",
+      "answer": "Nein. Die Erkennung erfolgt über ein HTML5-Canvas direkt mit lokalem JavaScript im Browser ohne Netzwerkübertragung."
+    },
+    "code-minifier-beautifier": {
+      "title": "Code-Minifizierer und -Formatierer",
+      "description": "Formatieren und komprimieren Sie JavaScript-, CSS- und HTML-Code lokal mit präzisen Analyse-Engines.",
+      "how": "Wählen Sie die Sprache (JavaScript, CSS oder HTML), fügen Sie den Code ein und wählen Sie Formatieren für saubere Einrückung oder Minifizieren zur Größenreduktion.",
+      "limits": "Formatiert und komprimiert Code mithilfe lokaler Parser direkt im Arbeitsspeicher des Browsers.",
+      "question": "Verändert die Minifizierung die Funktionsweise des Programms?",
+      "answer": "Nein. Die Minifizierung entfernt lediglich überflüssige Leerzeichen, Zeilenumbrüche und Kommentare, während die Ausführungslogik unverändert bleibt."
     }
   },
   "flexOptions": {
@@ -6367,5 +6487,28 @@
     "sampleAction": "Beispieldaten laden",
     "validSyntax": "Dokumentsyntax ist fehlerfrei",
     "validateAction": "Syntax prüfen"
+  },
+  "devTools": {
+    "encode": "Codieren",
+    "decode": "Decodieren",
+    "generate": "Generieren",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "clear": "Löschen",
+    "swap": "Tauschen",
+    "download": "Herunterladen",
+    "input": "Eingabe",
+    "output": "Ausgabe",
+    "error": "Fehler",
+    "search": "Statuscode, Begriff oder Beschreibung suchen",
+    "all": "Alle",
+    "format": "Formatieren",
+    "minify": "Minifizieren",
+    "reset": "Zurücksetzen",
+    "calculate": "Berechnen",
+    "addNetwork": "Netzwerk hinzufügen",
+    "copyAll": "Alles kopieren",
+    "hubTitle": "Webmaster- und Entwickler-Tools",
+    "hubDescription": "Leistungsstarke browserbasierte Werkzeuge für Netzwerkplanung, Web-Codierung, Kryptografie und Entwicklung."
   }
 }

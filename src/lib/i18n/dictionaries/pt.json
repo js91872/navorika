@@ -2235,6 +2235,126 @@
       "limits": "Valida regras das especificações YAML 1.1 e 1.2 na memória local sem envio a servidores.",
       "question": "O validador detecta erros causados por tabulações?",
       "answer": "Sim. Como o YAML veda o uso de tabulações em recuos, a ferramenta aponta imediatamente os caracteres problemáticos."
+    },
+    "cidr-subnet-wildcard-calculator": {
+      "title": "Calculadora de CIDR, máscara de sub-rede e wildcard",
+      "description": "Converta a notação CIDR IPv4 em máscaras de sub-rede, máscaras wildcard Cisco, endereços de rede e broadcast, intervalos de hosts e contagens de endereços.",
+      "how": "Insira um endereço IPv4 com prefixo CIDR (como 192.168.1.0/24). Veja imediatamente os limites de rede, transmissões de broadcast, wildcard e contagens de hosts utilizáveis.",
+      "limits": "Calcula comprimentos de prefixo IPv4 de /0 a /32 com suporte a redes ponto a ponto /31 diretamente no navegador.",
+      "question": "O que é uma máscara wildcard?",
+      "answer": "Uma máscara wildcard é o inverso binário de uma máscara de sub-rede, usada com frequência em listas de controle de acesso Cisco e tabelas de roteamento."
+    },
+    "ip-range-calculator": {
+      "title": "Calculadora de intervalo de IP",
+      "description": "Calcule o tamanho do intervalo IPv4, limites, menor CIDR contentor e a decomposição exata em blocos CIDR.",
+      "how": "Insira os endereços IPv4 inicial e final. A ferramenta avalia o total de endereços, o prefixo CIDR contentor e a lista de blocos CIDR exatos.",
+      "limits": "Calcula qualquer intervalo IPv4 válido no navegador com agregação e decomposição completas.",
+      "question": "Como os blocos CIDR são calculados?",
+      "answer": "O sistema divide o intervalo em sub-redes com potências de dois alinhadas aos limites de bits sem lacunas ou repetições."
+    },
+    "vlsm-subnet-calculator": {
+      "title": "Calculadora de sub-redes VLSM",
+      "description": "Aloque sub-redes IPv4 de comprimento variável sem sobreposição priorizando as maiores necessidades de hosts utilizáveis.",
+      "how": "Informe o bloco CIDR pai, adicione sub-redes com o número de hosts necessários e faça a alocação ordenada por tamanho.",
+      "limits": "Executa o particionamento VLSM no navegador até o limite da capacidade da rede pai.",
+      "question": "Por que alocar do maior para o menor?",
+      "answer": "Priorizar os maiores blocos garante o alinhamento binário correto na máscara e previne a fragmentação de endereços utilizáveis."
+    },
+    "mac-address-generator": {
+      "title": "Gerador de endereços MAC",
+      "description": "Gere endereços MAC unicast aleatórios usando Web Crypto com controles de bit local, maiúsculas/minúsculas e separadores.",
+      "how": "Defina a quantidade, maiúsculas ou minúsculas, separador (dois-pontos, hífen ou sem delimitador) e ative o bit administrado localmente.",
+      "limits": "Gera lotes de 1 a 100 endereços MAC criptográficos sintéticos diretamente no cliente.",
+      "question": "O que é o bit de administração local em um MAC?",
+      "answer": "O segundo bit menos significativo do primeiro octeto indica se o endereço MAC foi administrado localmente (virtual) ou atribuído formalmente por um fornecedor IEEE."
+    },
+    "http-status-code-lookup": {
+      "title": "Consulta de códigos de status HTTP",
+      "description": "Consulte códigos de status HTTP padronizados comuns por número, frase, classe, significado, uso e observações.",
+      "how": "Digite o número ou termo de busca, ou filtre pelas faixas (1xx, 2xx, 3xx, 4xx, 5xx) para ler as explicações técnicas e cenários de uso.",
+      "limits": "Reúne códigos de resposta HTTP padronizados pela IANA e RFCs com pesquisa instantânea.",
+      "question": "Qual é a diferença entre os redirecionamentos 301 e 308?",
+      "answer": "O redirecionamento 301 permite historicamente que navegadores alterem POST para GET, enquanto o 308 preserva estritamente o método e o corpo da requisição."
+    },
+    "url-encoder-decoder": {
+      "title": "Codificador e decodificador de URL",
+      "description": "Codifique e decodifique URLs ou parâmetros de URL localmente com cópia, inversão, limpeza e tratamento de erros.",
+      "how": "Cole a URL ou texto, escolha Codificar ou Decodificar e alterne o modo componente para definir o tratamento de separadores de rota.",
+      "limits": "Codifica e decodifica sequências de texto UTF-8 sem limites arbitrários e sem conexões com servidores externos.",
+      "question": "Qual a diferença entre encodeURI e encodeURIComponent?",
+      "answer": "encodeURI preserva os delimitadores de protocolo e caminho, enquanto encodeURIComponent escapa todos os símbolos especiais para uso em parâmetros."
+    },
+    "html-entity-encoder-decoder": {
+      "title": "Codificador e decodificador de entidades HTML",
+      "description": "Codifique caracteres HTML reservados e decodifique entidades HTML nomeadas ou numéricas como texto simples com segurança.",
+      "how": "Insira o texto ou código HTML. Escolha Codificar para escapar tags e símbolos ou Decodificar para converter entidades de volta em caracteres.",
+      "limits": "Processa entidades nomeadas e numéricas no navegador sem renderizar elementos DOM perigosos.",
+      "question": "Por que codificar entidades HTML?",
+      "answer": "Escapar caracteres especiais como <, > e & evita erros de exibição no navegador e protege aplicações contra ataques de injeção XSS."
+    },
+    "base64-encoder": {
+      "title": "Codificador e decodificador Base64",
+      "description": "Codifique texto UTF-8 em Base64 ou decodifique Base64 para texto UTF-8 localmente.",
+      "how": "Digite ou cole seu conteúdo no campo de entrada. Alterne entre Texto para Base64 e Base64 para Texto para converter os dados instantaneamente.",
+      "limits": "Converte sequências de texto Unicode UTF-8 de até 50 MB em memória local.",
+      "question": "O Base64 funciona como criptografia para dados confidenciais?",
+      "answer": "Não. O Base64 é apenas um método de codificação para transportar dados binários em formatos de texto, não oferecendo segurança criptográfica."
+    },
+    "jwt-decoder": {
+      "title": "Decodificador de JWT",
+      "description": "Decodifique o cabeçalho e a carga útil JSON de um token JWT localmente sem verificar a assinatura.",
+      "how": "Cole um JSON Web Token compacto na área de entrada. A ferramenta divide os segmentos e exibe as propriedades JSON e datas formatadas.",
+      "limits": "Processa tokens de três partes conformes à RFC 7519 diretamente no navegador sem enviar chaves privadas.",
+      "question": "A ferramenta valida a assinatura criptográfica do token?",
+      "answer": "Não. Este utilitário apenas decodifica os campos para inspeção; a validação de assinatura exige a chave secreta em um servidor seguro."
+    },
+    "utf8-vs-utf16-byte-calculator": {
+      "title": "Calculadora de bytes UTF-8 vs UTF-16",
+      "description": "Compare os tamanhos em bytes codificados em UTF-8 e UTF-16 para textos, incluindo caracteres Unicode e emojis.",
+      "how": "Insira o texto desejado, ative opcionalmente a marca de ordem de bytes (BOM) e analise o consumo em bytes entre UTF-8 e UTF-16.",
+      "limits": "Analisa caracteres Unicode no cliente com detecção completa de pontos de código e pares substitutos.",
+      "question": "Por que o UTF-8 consome menos memória para textos ocidentais?",
+      "answer": "O UTF-8 armazena caracteres ASCII em um único byte, enquanto o UTF-16 requer pelo menos dois bytes por caractere."
+    },
+    "aws-glacier-retrieval-calculator": {
+      "title": "Calculadora de custos de recuperação AWS S3 Glacier",
+      "description": "Estime os custos de restauração do S3 Glacier Flexible Retrieval e Deep Archive usando as taxas regionais de recuperação, solicitações e armazenamento temporário.",
+      "how": "Escolha a classe e a velocidade de recuperação. Informe o volume em gigabytes e a contagem de objetos para obter o valor estimado.",
+      "limits": "Calcula cenários de restauração na nuvem AWS com taxas ajustáveis diretamente no navegador.",
+      "question": "Como são calculadas as cobranças de restauração no Glacier?",
+      "answer": "Os custos combinam o volume de dados resgatados, taxas por milhar de solicitações e a estadia temporária no S3 Standard durante o período definido."
+    },
+    "webmaster-seo-builder": {
+      "title": "Ferramentas de SEO para webmasters",
+      "description": "Explore utilitários de SEO no navegador para URLs de campanhas, metadados de páginas e diretivas de rastreamento.",
+      "how": "Acesse utilitários para criar links com tags de rastreamento, configurar metadados de compartilhamento e gerar arquivos de diretivas para buscadores.",
+      "limits": "Centraliza o acesso a ferramentas para desenvolvedores e administradores web no navegador.",
+      "question": "Qual a vantagem de usar ferramentas webmaster no navegador?",
+      "answer": "O processamento local mantém seus parâmetros confidenciais de campanha e estruturas de páginas em sigilo sem upload para servidores."
+    },
+    "web-crypto-studio": {
+      "title": "Estúdio de criptografia Web Crypto",
+      "description": "Gere hashes SHA-256, senhas aleatórias criptográficas e identificadores UUID v4 localmente.",
+      "how": "Insira o texto para gerar hashes SHA-256, selecione o tamanho para obter senhas seguras com alta entropia e crie identificadores UUID v4.",
+      "limits": "Emprega a API Web Crypto padrão do W3C no navegador sem envio de senhas ou chaves pela rede.",
+      "question": "O gerador de senhas é seguro do ponto de vista criptográfico?",
+      "answer": "Sim. Ele utiliza a função crypto.getRandomValues, que obtém entropia criptográfica diretamente do sistema operacional."
+    },
+    "qr-code-generator": {
+      "title": "Gerador e leitor de código QR",
+      "description": "Gere códigos QR coloridos ou decodifique um código QR a partir de uma imagem enviada localmente.",
+      "how": "Digite um link ou mensagem, personalize a cor e baixe seu código QR em alta definição, ou use o modo leitura para decodificar um arquivo de imagem.",
+      "limits": "Cria e analisa códigos QR padrão no navegador com níveis de correção de erro ajustáveis.",
+      "question": "As imagens enviadas para leitura de QR são salvas em algum servidor?",
+      "answer": "Não. O leitor analisa os pixels diretamente em um elemento canvas local via JavaScript sem tráfego de dados para a internet."
+    },
+    "code-minifier-beautifier": {
+      "title": "Minificador e formatador de código",
+      "description": "Formate e reduza códigos JavaScript, CSS e HTML localmente com analisadores sintáticos robustos.",
+      "how": "Selecione a linguagem (JavaScript, CSS ou HTML), cole o código e escolha Formatar com indentação ou Reduzir para diminuir o tamanho.",
+      "limits": "Organiza e compacta arquivos de código diretamente no navegador com motores de análise em memória.",
+      "question": "A minificação altera o comportamento do código?",
+      "answer": "Não. O processo remove apenas espaços em branco desnecessários, quebras de linha e comentários, preservando a lógica de execução."
     }
   },
   "flexOptions": {
@@ -6367,5 +6487,28 @@
     "sampleAction": "Carregar exemplo",
     "validSyntax": "Sintaxe do documento válida",
     "validateAction": "Validar sintaxe"
+  },
+  "devTools": {
+    "encode": "Codificar",
+    "decode": "Decodificar",
+    "generate": "Gerar",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "clear": "Limpar",
+    "swap": "Inverter",
+    "download": "Baixar",
+    "input": "Entrada",
+    "output": "Saída",
+    "error": "Erro",
+    "search": "Pesquisar código de status, frase ou descrição",
+    "all": "Todos",
+    "format": "Formatar",
+    "minify": "Reduzir",
+    "reset": "Redefinir",
+    "calculate": "Calcular",
+    "addNetwork": "Adicionar rede",
+    "copyAll": "Copiar tudo",
+    "hubTitle": "Ferramentas para Webmasters e Desenvolvedores",
+    "hubDescription": "Utilitários de alto desempenho no navegador para planejamento de rede, codificação web, criptografia e desenvolvimento."
   }
 }

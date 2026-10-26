@@ -11,23 +11,23 @@
   ],
   "summary": {
     "tools": 322,
-    "publishedTools": 271,
-    "pendingTools": 45,
+    "publishedTools": 286,
+    "pendingTools": 30,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 61,
     "trustPages": 7,
-    "publishedToolTranslations": 1897,
+    "publishedToolTranslations": 2002,
     "targetToolTranslations": 2212,
     "pendingGuideTranslations": 427,
     "pendingTrustTranslations": 49,
     "candidateCounts": {
-      "jsxText": 3879,
-      "visibleAttribute": 353,
-      "semanticCopy": 11398,
-      "reviewLiteral": 44662
+      "jsxText": 3882,
+      "visibleAttribute": 354,
+      "semanticCopy": 11404,
+      "reviewLiteral": 44700
     },
-    "candidateCopyWords": 307644
+    "candidateCopyWords": 307743
   },
   "tools": [
     {
@@ -397,8 +397,16 @@
       "source": "src/app/(english)/tools/aws-glacier-retrieval-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -438,8 +446,16 @@
       "source": "src/app/(english)/tools/base64-encoder/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1286,8 +1302,16 @@
       "source": "src/app/(english)/tools/cidr-subnet-wildcard-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -1355,8 +1379,16 @@
       "source": "src/app/(english)/tools/code-minifier-beautifier/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -3320,8 +3352,16 @@
       "source": "src/app/(english)/tools/html-entity-encoder-decoder/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -3415,8 +3455,16 @@
       "source": "src/app/(english)/tools/http-status-code-lookup/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -3910,8 +3958,16 @@
       "source": "src/app/(english)/tools/ip-range-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -4234,8 +4290,16 @@
       "source": "src/app/(english)/tools/jwt-decoder/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -4491,8 +4555,16 @@
       "source": "src/app/(english)/tools/mac-address-generator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -5520,8 +5592,16 @@
       "source": "src/app/(english)/tools/qr-code-generator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -7189,8 +7269,16 @@
       "source": "src/app/(english)/tools/url-encoder-decoder/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -7233,8 +7321,16 @@
       "source": "src/app/(english)/tools/utf8-vs-utf16-byte-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -7400,8 +7496,16 @@
       "source": "src/app/(english)/tools/vlsm-subnet-calculator/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -7652,8 +7756,16 @@
       "source": "src/app/(english)/tools/web-crypto-studio/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
@@ -7696,12 +7808,22 @@
       "source": "src/app/(english)/tools/webmaster-seo-builder/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [],
       "definitionSource": null,
       "sources": [
-        "src/app/(english)/tools/webmaster-seo-builder/page.tsx"
+        "src/app/(english)/tools/webmaster-seo-builder/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/webmaster/WebmasterSeoHub.tsx"
       ]
     },
     {
@@ -8914,7 +9036,7 @@
     {
       "source": "src/app/(english)/tools/aws-glacier-retrieval-calculator/page.tsx",
       "routeTemplate": "/tools/aws-glacier-retrieval-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -8926,7 +9048,7 @@
     {
       "source": "src/app/(english)/tools/base64-encoder/page.tsx",
       "routeTemplate": "/tools/base64-encoder",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9142,7 +9264,7 @@
     {
       "source": "src/app/(english)/tools/cidr-subnet-wildcard-calculator/page.tsx",
       "routeTemplate": "/tools/cidr-subnet-wildcard-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9160,7 +9282,7 @@
     {
       "source": "src/app/(english)/tools/code-minifier-beautifier/page.tsx",
       "routeTemplate": "/tools/code-minifier-beautifier",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9634,7 +9756,7 @@
     {
       "source": "src/app/(english)/tools/html-entity-encoder-decoder/page.tsx",
       "routeTemplate": "/tools/html-entity-encoder-decoder",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9658,7 +9780,7 @@
     {
       "source": "src/app/(english)/tools/http-status-code-lookup/page.tsx",
       "routeTemplate": "/tools/http-status-code-lookup",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9784,7 +9906,7 @@
     {
       "source": "src/app/(english)/tools/ip-range-calculator/page.tsx",
       "routeTemplate": "/tools/ip-range-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9862,7 +9984,7 @@
     {
       "source": "src/app/(english)/tools/jwt-decoder/page.tsx",
       "routeTemplate": "/tools/jwt-decoder",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9928,7 +10050,7 @@
     {
       "source": "src/app/(english)/tools/mac-address-generator/page.tsx",
       "routeTemplate": "/tools/mac-address-generator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10180,7 +10302,7 @@
     {
       "source": "src/app/(english)/tools/qr-code-generator/page.tsx",
       "routeTemplate": "/tools/qr-code-generator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10582,7 +10704,7 @@
     {
       "source": "src/app/(english)/tools/url-encoder-decoder/page.tsx",
       "routeTemplate": "/tools/url-encoder-decoder",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10594,7 +10716,7 @@
     {
       "source": "src/app/(english)/tools/utf8-vs-utf16-byte-calculator/page.tsx",
       "routeTemplate": "/tools/utf8-vs-utf16-byte-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10636,7 +10758,7 @@
     {
       "source": "src/app/(english)/tools/vlsm-subnet-calculator/page.tsx",
       "routeTemplate": "/tools/vlsm-subnet-calculator",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10702,7 +10824,7 @@
     {
       "source": "src/app/(english)/tools/web-crypto-studio/page.tsx",
       "routeTemplate": "/tools/web-crypto-studio",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10714,7 +10836,7 @@
     {
       "source": "src/app/(english)/tools/webmaster-seo-builder/page.tsx",
       "routeTemplate": "/tools/webmaster-seo-builder",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

@@ -2235,6 +2235,126 @@
       "limits": "Validates YAML 1.1 and 1.2 syntax directly in browser memory without sending data to servers.",
       "question": "Does this validator detect tab indentation errors?",
       "answer": "Yes. Since YAML forbids literal tabs for indentation, the validator immediately flags tab characters and displays their exact locations."
+    },
+    "cidr-subnet-wildcard-calculator": {
+      "title": "CIDR, Subnet & Wildcard Mask Calculator",
+      "description": "Convert IPv4 CIDR notation into subnet masks, Cisco wildcard masks, network and broadcast addresses, host ranges and address counts.",
+      "how": "Enter an IPv4 address and CIDR prefix (such as 192.168.1.0/24 or 10.0.0.0/8). View instantaneous calculations of network boundaries, broadcast addresses, wildcard masks, and usable host counts.",
+      "limits": "Processes IPv4 network prefix lengths from /0 to /32 with point-to-point /31 handling directly in browser memory.",
+      "question": "What is a wildcard mask and how is it used?",
+      "answer": "A wildcard mask is the bitwise inverse of a subnet mask, commonly used in Cisco router access control lists and OSPF configurations to match IP address ranges."
+    },
+    "ip-range-calculator": {
+      "title": "IP Range Calculator",
+      "description": "Calculate IPv4 range size, boundaries, smallest containing CIDR and an exact CIDR block decomposition.",
+      "how": "Enter start and end IPv4 addresses. The calculator instantly evaluates total address volume, smallest enclosing CIDR prefix, and exact non-overlapping CIDR blocks.",
+      "limits": "Evaluates arbitrary valid IPv4 start and end bounds client-side with complete CIDR aggregation.",
+      "question": "How are exact CIDR blocks calculated?",
+      "answer": "The calculator splits arbitrary IP boundaries into power-of-two subnets aligned to standard network boundaries without overlap or omitted addresses."
+    },
+    "vlsm-subnet-calculator": {
+      "title": "VLSM Subnet Calculator",
+      "description": "Allocate non-overlapping variable-length IPv4 subnets largest-first from usable-host requirements.",
+      "how": "Specify a major parent CIDR network, add subnet names with required usable-host counts, and allocate subnets in descending order of size.",
+      "limits": "Allocates dynamic VLSM subnets with host requirements up to parent network boundaries entirely client-side.",
+      "question": "Why is largest-first allocation required in VLSM?",
+      "answer": "Sorting subnets by descending host requirements ensures binary alignment on natural address boundaries and eliminates unroutable fragmentation."
+    },
+    "mac-address-generator": {
+      "title": "MAC Address Generator",
+      "description": "Generate random unicast MAC addresses using Web Crypto with local-bit, case and separator controls.",
+      "how": "Select count, case formatting (uppercase or lowercase), delimiter (colon, hyphen, or none), and toggle the locally administered bit.",
+      "limits": "Generates batches of 1 to 100 cryptographic synthetic MAC addresses directly client-side.",
+      "question": "What is the locally administered address bit in a MAC?",
+      "answer": "The second least significant bit of the first octet indicates whether a MAC address is locally administered (virtual/synthetic) or globally assigned by an IEEE OUI vendor."
+    },
+    "http-status-code-lookup": {
+      "title": "HTTP Status Code Lookup",
+      "description": "Search common standardized HTTP status codes by number, phrase, class, meaning, use and caveat.",
+      "how": "Type any status number, phrase, or keyword into the search bar, or filter by HTTP category (1xx, 2xx, 3xx, 4xx, 5xx) to view standardized RFC explanations.",
+      "limits": "Covers standardized IANA and RFC HTTP response status codes with client-side instant filtering.",
+      "question": "What is the difference between 301 and 308 redirects?",
+      "answer": "A 301 redirect allows clients to switch POST requests to GET historically, whereas a 308 Permanent Redirect strictly preserves the original HTTP request method and body."
+    },
+    "url-encoder-decoder": {
+      "title": "URL Encoder & Decoder",
+      "description": "Encode and decode URLs or URL components locally with copy, swap, clear and malformed-input handling.",
+      "how": "Paste your text or URL, choose Encode or Decode, and toggle component mode to control whether protocol separators are escaped.",
+      "limits": "Encodes and decodes arbitrary UTF-8 text strings client-side without length constraints or remote network requests.",
+      "question": "What is the difference between encodeURI and encodeURIComponent?",
+      "answer": "encodeURI preserves protocol and path delimiters like slashes and colons, while encodeURIComponent escapes all reserved delimiters for query parameters."
+    },
+    "html-entity-encoder-decoder": {
+      "title": "HTML Entity Encoder & Decoder",
+      "description": "Encode reserved HTML characters and decode named or numeric HTML entities safely as plain text.",
+      "how": "Enter text or HTML source. Choose Encode to escape markup delimiters, or Decode to convert entity references back to standard text characters.",
+      "limits": "Processes HTML entities and numeric Unicode code points in client memory without rendering untrusted DOM elements.",
+      "question": "Why should HTML entities be encoded?",
+      "answer": "Escaping characters like <, >, and & prevents browser HTML parser confusion and mitigates cross-site scripting vulnerabilities in web output."
+    },
+    "base64-encoder": {
+      "title": "Base64 Encoder & Decoder",
+      "description": "Encode UTF-8 text to Base64 or decode Base64 back to UTF-8 text locally.",
+      "how": "Type or paste your text into the input field. Switch between Text to Base64 and Base64 to Text modes to process strings instantaneously.",
+      "limits": "Processes Unicode UTF-8 strings up to 50 MB directly in browser memory.",
+      "question": "Does Base64 provide encryption for confidential data?",
+      "answer": "No. Base64 is a binary-to-text encoding format designed for safe data transport across text protocols, not a cryptographic encryption mechanism."
+    },
+    "jwt-decoder": {
+      "title": "JWT Decoder",
+      "description": "Decode JWT header and payload JSON locally without verifying the token signature.",
+      "how": "Paste a compact JSON Web Token into the input area. The tool parses header parameters and claim payloads, formatting dates and timestamps instantly.",
+      "limits": "Decodes RFC 7519 compact three-segment tokens client-side without sending secrets to any server.",
+      "question": "Does this tool verify the cryptographic signature of the token?",
+      "answer": "No. This tool decodes and formats token contents for inspection only; signature verification requires your secret key on an authorized backend service."
+    },
+    "utf8-vs-utf16-byte-calculator": {
+      "title": "UTF-8 vs UTF-16 Byte Calculator",
+      "description": "Compare UTF-8 and UTF-16 encoded byte sizes for text, including Unicode characters and emoji.",
+      "how": "Type or paste sample text, optionally include Byte Order Marks (BOM), and compare memory footprint across UTF-8, UTF-16, and code point counts.",
+      "limits": "Evaluates Unicode strings client-side with complete code unit and surrogate pair inspection.",
+      "question": "Why does UTF-8 consume fewer bytes for Western text than UTF-16?",
+      "answer": "UTF-8 encodes ASCII characters using a single byte per character, whereas UTF-16 uses at least two bytes per character regardless of alphabet."
+    },
+    "aws-glacier-retrieval-calculator": {
+      "title": "AWS S3 Glacier Retrieval Cost Calculator",
+      "description": "Estimate S3 Glacier Flexible Retrieval and Deep Archive restore costs using current regional retrieval, request and temporary-storage rates.",
+      "how": "Select storage tier (Flexible Retrieval or Deep Archive) and speed tier (Expedited, Standard, Bulk). Enter archive size in gigabytes and object count to calculate total restore fees.",
+      "limits": "Calculates regional AWS retrieval scenarios with customizable unit prices directly in browser memory.",
+      "question": "What is the primary cost factor in S3 Glacier restores?",
+      "answer": "Restoration expenses combine data retrieval volume fees, per-thousand request charges, and the temporary S3 Standard storage fee required while accessing restored objects."
+    },
+    "webmaster-seo-builder": {
+      "title": "Webmaster SEO Tools",
+      "description": "Explore browser-based SEO utilities for campaign URLs, page metadata, and crawler directives.",
+      "how": "Navigate through curated webmaster and SEO tools to build tracked links, format meta tags, generate robot instructions, and prepare clean web payloads.",
+      "limits": "Provides fast client-side navigation across webmaster and search optimization tools.",
+      "question": "Why should webmaster utilities be run in the browser?",
+      "answer": "Local processing ensures that confidential marketing URLs, draft page tags, and proprietary site architecture never leave your secure browser session."
+    },
+    "web-crypto-studio": {
+      "title": "Web Crypto Studio",
+      "description": "Generate SHA-256 hashes, cryptographic random passwords, and UUID v4 identifiers locally.",
+      "how": "Type text to compute instant SHA-256 digests, choose password length to generate secure passwords with high entropy, and create UUID v4 identifiers.",
+      "limits": "Uses the standard W3C Web Crypto API directly in browser memory without sending keys or text over the network.",
+      "question": "Is the random password generator cryptographically secure?",
+      "answer": "Yes. It leverages crypto.getRandomValues, drawing from the operating system cryptographic entropy pool rather than pseudo-random math."
+    },
+    "qr-code-generator": {
+      "title": "QR Code Generator",
+      "description": "Generate colored QR codes or decode a QR code from an uploaded image locally.",
+      "how": "Type a URL or message, choose foreground color, and download your high-resolution PNG QR code, or switch to scan mode to decode an uploaded image.",
+      "limits": "Generates and decodes standard QR matrices client-side with configurable error correction and zero remote uploads.",
+      "question": "Are uploaded QR code images sent to any server during scanning?",
+      "answer": "No. The QR decoder runs pure JavaScript image processing on an HTML5 canvas inside your browser tab without network requests."
+    },
+    "code-minifier-beautifier": {
+      "title": "Code Minifier Beautifier",
+      "description": "Format and minify JavaScript, CSS, and HTML locally with parser-backed processing engines.",
+      "how": "Select your language (JavaScript, CSS, or HTML), paste your code, and choose Beautify with custom indentation or Minify to reduce file footprint.",
+      "limits": "Formats and compresses code using local parsing engines directly in your browser tab.",
+      "question": "Does minification alter program behavior or code functionality?",
+      "answer": "No. Minification strips unnecessary whitespace, line breaks, and comments while preserving syntactic structure and execution semantics."
     }
   },
   "flexOptions": {
@@ -6367,5 +6487,28 @@
     "sampleAction": "Load Sample",
     "validSyntax": "Valid Document Syntax",
     "validateAction": "Validate Syntax"
+  },
+  "devTools": {
+    "encode": "Encode",
+    "decode": "Decode",
+    "generate": "Generate",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "clear": "Clear",
+    "swap": "Swap",
+    "download": "Download",
+    "input": "Input",
+    "output": "Output",
+    "error": "Error",
+    "search": "Search status code, phrase or description",
+    "all": "All",
+    "format": "Beautify",
+    "minify": "Minify",
+    "reset": "Reset",
+    "calculate": "Calculate",
+    "addNetwork": "Add network",
+    "copyAll": "Copy all",
+    "hubTitle": "Webmaster & Developer Tools",
+    "hubDescription": "High-performance browser-based utilities for network planning, web encoding, cryptography and development."
   }
 }

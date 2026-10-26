@@ -2235,6 +2235,126 @@
       "limits": "Vérifie la syntaxe YAML 1.1 et 1.2 localement dans votre navigateur sans téléversement.",
       "question": "Le validateur repère-t-il les tabulations interdites ?",
       "answer": "Oui. Le format YAML proscrivant les tabulations pour le retrait, l’outil signale immédiatement leur emplacement exact."
+    },
+    "cidr-subnet-wildcard-calculator": {
+      "title": "Calculateur CIDR, masque de sous-réseau et masque générique",
+      "description": "Convertissez la notation CIDR IPv4 en masques de sous-réseau, masques génériques Cisco, adresses réseau et de diffusion, plages d'hôtes et nombre d'adresses.",
+      "how": "Saisissez une adresse IPv4 avec son préfixe CIDR (comme 192.168.1.0/24). Consultez instantanément les masques génériques Cisco, adresses de diffusion et plages d'hôtes utilisables.",
+      "limits": "Traite les longueurs de préfixe IPv4 de /0 à /32 avec prise en charge des liaisons point-à-point /31 en mémoire locale.",
+      "question": "Qu'est-ce qu'un masque générique wildcard ?",
+      "answer": "Un masque générique est l'inverse binaire d'un masque de sous-réseau, fréquemment employé dans les listes de contrôle d'accès Cisco et les configurations OSPF."
+    },
+    "ip-range-calculator": {
+      "title": "Calculateur de plage d'adresses IP",
+      "description": "Calculez la taille, les limites, le plus petit CIDR englobant et la décomposition exacte en blocs CIDR d'une plage IPv4.",
+      "how": "Saisissez les adresses IPv4 de début et de fin. Le calculateur évalue immédiatement le nombre d'adresses, le CIDR minimum englobant et les blocs CIDR exacts.",
+      "limits": "Traite toute plage IPv4 valide côté client avec agrégation et décomposition complètes.",
+      "question": "Comment les blocs CIDR exacts sont-ils décomposés ?",
+      "answer": "L'outil décompose la plage en sous-réseaux de puissances de deux alignés sur les frontières de bits standard sans chevauchement."
+    },
+    "vlsm-subnet-calculator": {
+      "title": "Calculateur de sous-réseau VLSM",
+      "description": "Allouez des sous-réseaux IPv4 à longueur variable sans chevauchement en priorité aux plus grands besoins d'hôtes utilisables.",
+      "how": "Définissez un réseau CIDR parent, ajoutez des sous-réseaux avec leurs besoins en hôtes et allouez les masques par ordre décroissant de taille.",
+      "limits": "Alloue des sous-réseaux VLSM dynamiques dans les limites du réseau parent directement en mémoire locale.",
+      "question": "Pourquoi allouer les sous-réseaux du plus grand au plus petit ?",
+      "answer": "Trier par besoin d'hôtes décroissant garantit un alignement binaire naturel des adresses et évite le gaspillage d'espace réseau."
+    },
+    "mac-address-generator": {
+      "title": "Générateur d'adresses MAC",
+      "description": "Générez des adresses MAC unicast aléatoires avec Web Crypto grâce aux contrôles du bit local, de la casse et des séparateurs.",
+      "how": "Choisissez la quantité, la casse (majuscule ou minuscule), le séparateur (deux-points, tiret ou aucun) et configurez le bit local.",
+      "limits": "Génère des lots de 1 à 100 adresses MAC synthétiques cryptographiques en toute sécurité côté client.",
+      "question": "À quoi correspond le bit d'administration locale ?",
+      "answer": "Le deuxième bit de poids faible du premier octet indique si une adresse MAC est administrée localement (virtuelle) ou attribuée par un fabricant via un OUI IEEE."
+    },
+    "http-status-code-lookup": {
+      "title": "Recherche de codes d'état HTTP",
+      "description": "Recherchez les codes d'état HTTP standardisés courants par numéro, phrase, classe, signification, usage et remarques.",
+      "how": "Saisissez un numéro de code ou un mot-clé dans la barre de recherche, ou filtrez par catégorie (1xx, 2xx, 3xx, 4xx, 5xx) pour consulter les définitions RFC.",
+      "limits": "Couvre les codes d'état HTTP normalisés de l'IANA et des RFC avec filtrage instantané côté client.",
+      "question": "Quelle est la différence entre les redirections 301 et 308 ?",
+      "answer": "Une redirection 301 permettait historiquement de changer une méthode POST en GET, alors qu'une 308 préserve obligatoirement la méthode et le corps d'origine."
+    },
+    "url-encoder-decoder": {
+      "title": "Encodeur et décodeur d'URL",
+      "description": "Encodez et décodez des URL ou des composants d'URL localement avec copie, permutation, effacement et gestion des erreurs.",
+      "how": "Collez votre texte ou URL, choisissez l'action (Encoder ou Décoder), et basculez le mode composant pour préserver ou échapper les délimiteurs.",
+      "limits": "Traite des chaînes de texte UTF-8 sans restriction de longueur ni transfert réseau externe.",
+      "question": "Quelle est la différence entre encodeURI et encodeURIComponent ?",
+      "answer": "encodeURI préserve les séparateurs de protocole et de chemin (comme / et :), tandis qu'encodeURIComponent échappe tous les caractères réservés pour les paramètres de requête."
+    },
+    "html-entity-encoder-decoder": {
+      "title": "Encodeur et décodeur d'entités HTML",
+      "description": "Encodez les caractères HTML réservés et décodez les entités HTML nommées ou numériques en texte brut en toute sécurité.",
+      "how": "Entrez votre texte ou code source HTML. Choisissez Encoder pour neutraliser les balises ou Décoder pour retrouver les caractères d'origine.",
+      "limits": "Traite les entités nommées et numériques Unicode en mémoire locale sans interpréter de code DOM non sécurisé.",
+      "question": "Pourquoi encoder les entités HTML ?",
+      "answer": "Échapper les caractères tels que <, > et & empêche les erreurs d'interprétation des navigateurs et neutralise les failles de sécurité de type XSS."
+    },
+    "base64-encoder": {
+      "title": "Encodeur et décodeur Base64",
+      "description": "Encodez du texte UTF-8 en Base64 ou décodez du Base64 en texte UTF-8 localement.",
+      "how": "Tapez ou collez votre texte dans le champ de saisie. Basculez entre les modes Texte vers Base64 et Base64 vers Texte pour convertir instantanément.",
+      "limits": "Traite les chaînes Unicode UTF-8 jusqu'à 50 Mo directement dans la mémoire de votre navigateur.",
+      "question": "Le Base64 constitue-t-il un chiffrement sécurisé ?",
+      "answer": "Non. Le Base64 est un format d'encodage binaire-texte conçu pour transporter des données sur des canaux textuels, et non un mécanisme de chiffrement."
+    },
+    "jwt-decoder": {
+      "title": "Décodeur de jetons JWT",
+      "description": "Décodez l'en-tête et la charge utile JSON d'un jeton JWT localement sans vérification de signature.",
+      "how": "Collez un jeton JSON Web Token compact dans la zone de saisie. L'outil extrait l'en-tête et les déclarations en formatant les dates immédiatement.",
+      "limits": "Décode les jetons compacts à trois segments selon la RFC 7519 directement sur votre appareil sans partage de secret.",
+      "question": "Cet outil vérifie-t-il la signature cryptographique du jeton ?",
+      "answer": "Non. Cet outil décode les données pour analyse uniquement ; la vérification de signature requiert votre clé secrète sur votre serveur sécurisé."
+    },
+    "utf8-vs-utf16-byte-calculator": {
+      "title": "Calculateur d'octets UTF-8 vs UTF-16",
+      "description": "Comparez les tailles d'octets encodés en UTF-8 et UTF-16 pour tout texte, symboles Unicode et émojis inclus.",
+      "how": "Saisissez du texte, activez éventuellement l'indicateur d'ordre des octets (BOM) et comparez la taille mémoire entre UTF-8 et UTF-16.",
+      "limits": "Analyse les chaînes Unicode côté client avec détection précise des paires de substitution et points de code.",
+      "question": "Pourquoi l'UTF-8 est-il plus compact que l'UTF-16 pour les textes latins ?",
+      "answer": "L'UTF-8 code les caractères ASCII sur un seul octet, tandis que l'UTF-16 requiert au minimum deux octets par caractère quel que soit le texte."
+    },
+    "aws-glacier-retrieval-calculator": {
+      "title": "Calculateur de coûts de récupération AWS S3 Glacier",
+      "description": "Estimez les coûts de restauration S3 Glacier Flexible Retrieval et Deep Archive selon les tarifs régionaux de récupération, de requêtes et de stockage temporaire.",
+      "how": "Sélectionnez la classe de stockage et la vitesse (Accélérée, Standard, Vrac). Indiquez le volume en gigaoctets et le nombre d'objets pour estimer le coût total.",
+      "limits": "Calcule les scénarios de restauration AWS régionaux avec tarifs personnalisables en mémoire locale.",
+      "question": "Quels sont les éléments de coût d'une restauration Glacier ?",
+      "answer": "Les frais comprennent le volume de données récupéré, les requêtes d'accès par millier d'objets et le stockage temporaire S3 Standard pendant la durée de consultation."
+    },
+    "webmaster-seo-builder": {
+      "title": "Outils SEO pour webmasters",
+      "description": "Découvrez des utilitaires SEO basés sur navigateur pour URL de campagne, métadonnées de page et directives d'indexation.",
+      "how": "Parcourez une sélection d'outils webmaster et SEO pour configurer des liens avec paramètres UTM, générer des balises meta et préparer vos directives robots.",
+      "limits": "Offre une navigation fluide vers l'ensemble des utilitaires d'optimisation web côté client.",
+      "question": "Pourquoi exécuter les outils webmaster dans le navigateur ?",
+      "answer": "Le traitement local garantit que vos paramètres de campagne, balises de pré-lancement et structures de site restent strictement confidentiels."
+    },
+    "web-crypto-studio": {
+      "title": "Studio cryptographique Web Crypto",
+      "description": "Générez des condensats SHA-256, des mots de passe aléatoires sécurisés et des identifiants UUID v4 localement.",
+      "how": "Entrez du texte pour calculer des hachages SHA-256, réglez la longueur pour créer des mots de passe à haute entropie et générez des UUID v4.",
+      "limits": "Utilise l'API standard Web Crypto du W3C dans le navigateur sans transmettre vos données sur le réseau.",
+      "question": "Le générateur de mots de passe est-il cryptographiquement sûr ?",
+      "answer": "Oui. Il fait appel à crypto.getRandomValues, qui puise dans la source d'entropie cryptographique du système d'exploitation."
+    },
+    "qr-code-generator": {
+      "title": "Générateur et scanner de code QR",
+      "description": "Générez des codes QR personnalisés ou décodez un code QR à partir d'une image téléversée localement.",
+      "how": "Saisissez une URL ou un message, choisissez la couleur et téléchargez votre code QR PNG haute définition, ou scannez une image existante.",
+      "limits": "Génère et décode des matrices QR standard côté client avec correction d'erreur sans aucun envoi vers un serveur.",
+      "question": "Les images téléversées pour le scan sont-elles transmises à un serveur ?",
+      "answer": "Non. Le lecteur de code QR analyse l'image via un canevas HTML5 en JavaScript local sans aucune transmission de données."
+    },
+    "code-minifier-beautifier": {
+      "title": "Minificateur et embellisseur de code",
+      "description": "Formatez et compressez le code JavaScript, CSS et HTML localement avec des moteurs de parsing fiables.",
+      "how": "Sélectionnez votre langage (JavaScript, CSS ou HTML), collez votre code et choisissez Embellir avec indentation ou Compresser pour alléger le fichier.",
+      "limits": "Formate et compresse les scripts et feuilles de style dans le navigateur via des analyseurs syntaxiques locaux.",
+      "question": "La minification altère-t-elle le fonctionnement du programme ?",
+      "answer": "Non. La minification supprime les espaces superflus, sauts de ligne et commentaires tout en conservant scrupuleusement la logique d'exécution."
     }
   },
   "flexOptions": {
@@ -6367,5 +6487,28 @@
     "sampleAction": "Charger un exemple",
     "validSyntax": "Syntaxe de document valide",
     "validateAction": "Valider la syntaxe"
+  },
+  "devTools": {
+    "encode": "Encoder",
+    "decode": "Décoder",
+    "generate": "Générer",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "clear": "Effacer",
+    "swap": "Permuter",
+    "download": "Télécharger",
+    "input": "Entrée",
+    "output": "Sortie",
+    "error": "Erreur",
+    "search": "Rechercher code d'état, terme ou description",
+    "all": "Tous",
+    "format": "Embellir",
+    "minify": "Compresser",
+    "reset": "Réinitialiser",
+    "calculate": "Calculer",
+    "addNetwork": "Ajouter un réseau",
+    "copyAll": "Tout copier",
+    "hubTitle": "Outils Webmaster & Développeur",
+    "hubDescription": "Utilitaires haute performance sur navigateur pour planification réseau, encodage web, cryptographie et développement."
   }
 }

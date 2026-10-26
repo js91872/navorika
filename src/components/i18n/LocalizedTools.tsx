@@ -31,6 +31,7 @@ const LocalizedImageStudioTools = dynamic(() => import('./LocalizedImageStudioTo
 const LocalizedImageCanvasTools = dynamic(() => import('./LocalizedImageCanvasTools'));
 const LocalizedMediaTools = dynamic(() => import('./LocalizedMediaTools'));
 const LocalizedDataTools = dynamic(() => import('./LocalizedDataTools'));
+const LocalizedDevTools = dynamic(() => import('./LocalizedDevTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -425,6 +426,25 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'yaml-validator'
     ) {
       return <LocalizedDataTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'cidr-subnet-wildcard-calculator' ||
+      slug === 'ip-range-calculator' ||
+      slug === 'vlsm-subnet-calculator' ||
+      slug === 'mac-address-generator' ||
+      slug === 'http-status-code-lookup' ||
+      slug === 'url-encoder-decoder' ||
+      slug === 'html-entity-encoder-decoder' ||
+      slug === 'base64-encoder' ||
+      slug === 'jwt-decoder' ||
+      slug === 'utf8-vs-utf16-byte-calculator' ||
+      slug === 'aws-glacier-retrieval-calculator' ||
+      slug === 'webmaster-seo-builder' ||
+      slug === 'web-crypto-studio' ||
+      slug === 'qr-code-generator' ||
+      slug === 'code-minifier-beautifier'
+    ) {
+      return <LocalizedDevTools slug={slug} dictionary={dictionary} locale={locale} />;
     }
     if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
     if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

@@ -342,8 +342,23 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - JSON to TOML Converter
 - TOML to JSON Converter
 - YAML Validator
+- CIDR, Subnet & Wildcard Mask Calculator
+- IP Range Calculator
+- VLSM Subnet Calculator
+- MAC Address Generator
+- HTTP Status Code Lookup
+- URL Encoder & Decoder
+- HTML Entity Encoder & Decoder
+- Base64 Encoder & Decoder
+- JWT Decoder
+- UTF-8 vs UTF-16 Byte Calculator
+- AWS S3 Glacier Retrieval Cost Calculator
+- Webmaster SEO Tools
+- Web Crypto Studio
+- QR Code Generator
+- Code Minifier Beautifier
 
-This brings branch coverage to 271 tools per language (1,897 tool variants plus seven directories, 1,904 localized pages total), advancing published coverage across the platform. Exactly 45 active tools (Developer Tools), 57 guides, seven public pages and full-inventory surface reviews remain pending. Keep this PR in draft.
+This brings branch coverage to 286 tools per language (2,002 tool variants plus seven directories, 2,009 localized pages total), advancing published coverage across the platform. Exactly 30 active tools (Developer Tools), 57 guides, seven public pages and full-inventory surface reviews remain pending. Keep this PR in draft.
 
 The localized calculator renderer preserves the approved panels and uses the existing calculation engines. It rejects blank, nonfinite, negative, fractional count and out-of-range inputs before engines can silently normalize them. English calculator behavior is unchanged. Native number formatting is used in displayed and exported results; Arabic inputs and numeric results retain explicit direction isolation. Storage conversion assumptions remain explicit (the existing engines use binary conversions despite GB/MB labels).
 
