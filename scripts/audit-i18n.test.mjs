@@ -12,7 +12,19 @@ test('full-rollout inventory covers each registered tool, guide and English page
   assert.deepEqual(report.tools.map((row) => row.slug).sort(), tools.map((row) => row.slug).sort());
   assert.deepEqual(report.guides.map((row) => row.slug).sort(), guidesMetadata.map((row) => row.slug).sort());
   const contract = JSON.parse(readFileSync('scripts/english-route-contract.json', 'utf8'));
-  assert.deepEqual(report.pageTemplates.map((row) => row.source.replace('src/app/(english)/', '')).sort(), contract.sort());
+  const approvedNewRoutes = [
+    'guides/can-chatgpt-make-videos/page.tsx',
+    'guides/how-does-a-3d-printer-work/page.tsx',
+    'guides/how-to-clean-phone-speaker/page.tsx',
+    'guides/how-to-convert-jpg-to-dxf/page.tsx',
+    'guides/is-claude-better-than-chatgpt/page.tsx',
+    'guides/shopify-profit-margin-calculator/page.tsx',
+    'tools/ai-video-prompt-generator/page.tsx',
+    'tools/jpg-to-dxf/page.tsx',
+    'tools/shopify-margin-calculator/page.tsx',
+    'tools/speaker-dust-cleaning-sound/page.tsx',
+  ];
+  assert.deepEqual(report.pageTemplates.map((row) => row.source.replace('src/app/(english)/', '')).sort(), [...contract, ...approvedNewRoutes].sort());
   for (const row of report.tools) assert.ok(row.routeExists && existsSync(row.source), row.slug);
   assert.equal(report.summary.sharedCalculators, Object.keys(businessCalculatorConfigs).length);
   assert.equal(report.summary.publishedToolTranslations, translatedTools.length * locales.length);

@@ -22,12 +22,12 @@
     "pendingGuideTranslations": 441,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4195,
-      "visibleAttribute": 364,
-      "semanticCopy": 11530,
-      "reviewLiteral": 46243
+      "jsxText": 4214,
+      "visibleAttribute": 367,
+      "semanticCopy": 11535,
+      "reviewLiteral": 46395
     },
-    "candidateCopyWords": 316221
+    "candidateCopyWords": 316501
   },
   "tools": [
     {
@@ -9246,6 +9246,12 @@
       "routeTemplate": "/guides/can-chatgpt-make-videos",
       "status": "pending",
       "localizedSource": "src/app/[locale]/guides/can-chatgpt-make-videos/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/guides/how-does-a-3d-printer-work/page.tsx",
+      "routeTemplate": "/guides/how-does-a-3d-printer-work",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/guides/how-does-a-3d-printer-work/page.tsx"
     },
     {
       "source": "src/app/(english)/guides/how-to-clean-phone-speaker/page.tsx",
