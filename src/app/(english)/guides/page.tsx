@@ -16,7 +16,7 @@ export default function GuidesPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Navorika Guides & Articles',
-    itemListElement: guidesMetadata.map((guide, index) => ({ '@type': 'ListItem', position: index + 1, name: guide.title, url: `https://navorika.com/guides/${guide.slug}` })),
+    itemListElement: [{ '@type': 'ListItem', position: 1, name: 'How Does a 3D Printer Work? Step-by-Step Beginner’s Guide', url: 'https://navorika.com/guides/how-does-a-3d-printer-work' }, ...guidesMetadata.map((guide, index) => ({ '@type': 'ListItem', position: index + 2, name: guide.title, url: `https://navorika.com/guides/${guide.slug}` }))],
   };
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
@@ -38,6 +38,16 @@ export default function GuidesPage() {
         </section>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Link href="/guides/how-does-a-3d-printer-work" className="group overflow-hidden bg-[var(--card)] border border-[var(--border)] rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover:border-indigo-500/40">
+            <Image src="/images/guides/feature.webp" width={1200} height={630} alt="3D printer creating a model, illustrating the 3D printing process" className="aspect-[1200/630] w-full object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" />
+            <div className="p-6">
+              <div className="mb-3"><span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full">Developer</span></div>
+              <h2 className="text-xl font-bold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">How Does a 3D Printer Work? Step-by-Step Beginner’s Guide</h2>
+              <p className="text-sm text-[var(--muted-foreground)] mt-2 line-clamp-2">Learn how a 3D printer turns a digital model into a physical object, from slicing and filament printing to resin, materials and troubleshooting.</p>
+              <div className="flex items-center gap-4 mt-4 text-xs text-[var(--muted-foreground)]"><span className="flex items-center gap-1"><Calendar className="h-3 w-3" />October 2026</span><span className="flex items-center gap-1"><Clock className="h-3 w-3" />16 min read</span></div>
+              <div className="mt-4 pt-4 border-t border-[var(--border)] flex items-center justify-between"><span className="text-xs text-[var(--muted-foreground)] flex items-center gap-1"><User className="h-3 w-3" />Navorika Team</span><ArrowRight className="h-4 w-4 text-indigo-500 transition-transform group-hover:translate-x-1" /></div>
+            </div>
+          </Link>
           {guidesMetadata.map((guide) => (
             <Link
               key={guide.slug}
