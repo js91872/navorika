@@ -327,24 +327,24 @@ function LocalizedVlsmSubnet({ dictionary, locale }: { dictionary: Dictionary; l
 
   return (
     <div className="space-y-6">
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6 shadow-sm">
         <label className="block text-sm font-semibold">
           Parent IPv4 CIDR
           <input
             value={parent}
             onChange={(e) => setParent(e.target.value)}
             dir="ltr"
-            className={`${fieldClass} mt-2 font-mono`}
+            className={`${fieldClass} mt-2 w-full min-w-0 font-mono`}
           />
         </label>
 
         <div className="mt-5 space-y-3">
           {rows.map((row) => (
-            <div key={row.id} className="grid grid-cols-[1fr_120px_40px] gap-2">
+            <div key={row.id} className="grid min-w-0 grid-cols-[minmax(0,1fr)_80px_36px] sm:grid-cols-[minmax(0,1fr)_120px_40px] gap-2">
               <input
                 value={row.name}
                 onChange={(e) => update(row.id, 'name', e.target.value)}
-                className="rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm"
+                className="w-full min-w-0 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm"
               />
               <input
                 type="number"
@@ -353,7 +353,7 @@ function LocalizedVlsmSubnet({ dictionary, locale }: { dictionary: Dictionary; l
                 value={row.hosts}
                 onChange={(e) => update(row.id, 'hosts', e.target.value)}
                 dir="ltr"
-                className="rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm font-mono"
+                className="w-full min-w-0 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm font-mono"
               />
               <button
                 type="button"
@@ -382,36 +382,38 @@ function LocalizedVlsmSubnet({ dictionary, locale }: { dictionary: Dictionary; l
       </section>
 
       {result.allocations && result.allocations.length > 0 && (
-        <section className="overflow-x-auto rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm">
+        <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-5 shadow-sm">
           <h2 className="text-xl font-bold">{t.output}</h2>
-          <table className="mt-4 min-w-[900px] text-left text-sm">
-            <thead>
-              <tr className="border-b border-[var(--border)] text-[var(--muted-foreground)]">
-                <th className="p-3">Name</th>
-                <th className="p-3">Network</th>
-                <th className="p-3">Mask</th>
-                <th className="p-3">First Usable</th>
-                <th className="p-3">Last Usable</th>
-                <th className="p-3">Broadcast</th>
-                <th className="p-3">Capacity</th>
-                <th className="p-3">Waste</th>
-              </tr>
-            </thead>
-            <tbody>
-              {result.allocations.map((a) => (
-                <tr key={a.id} className="border-t border-[var(--border)]">
-                  <td className="p-3 font-bold">{a.name}</td>
-                  <td dir="ltr" className="p-3 font-mono">{a.network}/{a.prefix}</td>
-                  <td dir="ltr" className="p-3 font-mono">{a.mask}</td>
-                  <td dir="ltr" className="p-3 font-mono">{a.first}</td>
-                  <td dir="ltr" className="p-3 font-mono">{a.last}</td>
-                  <td dir="ltr" className="p-3 font-mono">{a.broadcast}</td>
-                  <td dir="ltr" className="p-3">{a.capacity.toLocaleString(locale)}</td>
-                  <td dir="ltr" className="p-3">{a.waste.toLocaleString(locale)}</td>
+          <div className="mt-4 w-full min-w-0 overflow-x-auto">
+            <table className="min-w-[900px] text-left text-sm">
+              <thead>
+                <tr className="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+                  <th className="p-3">Name</th>
+                  <th className="p-3">Network</th>
+                  <th className="p-3">Mask</th>
+                  <th className="p-3">First Usable</th>
+                  <th className="p-3">Last Usable</th>
+                  <th className="p-3">Broadcast</th>
+                  <th className="p-3">Capacity</th>
+                  <th className="p-3">Waste</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {result.allocations.map((a) => (
+                  <tr key={a.id} className="border-t border-[var(--border)]">
+                    <td className="p-3 font-bold">{a.name}</td>
+                    <td dir="ltr" className="p-3 font-mono">{a.network}/{a.prefix}</td>
+                    <td dir="ltr" className="p-3 font-mono">{a.mask}</td>
+                    <td dir="ltr" className="p-3 font-mono">{a.first}</td>
+                    <td dir="ltr" className="p-3 font-mono">{a.last}</td>
+                    <td dir="ltr" className="p-3 font-mono">{a.broadcast}</td>
+                    <td dir="ltr" className="p-3">{a.capacity.toLocaleString(locale)}</td>
+                    <td dir="ltr" className="p-3">{a.waste.toLocaleString(locale)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           {result.valid && (
             <p className="mt-4 text-xs text-[var(--muted-foreground)]">
               Remaining Addresses: <strong dir="ltr">{result.remaining.toLocaleString(locale)}</strong>
@@ -1508,15 +1510,20 @@ function LocalizedWebCrypto({ dictionary }: { dictionary: Dictionary }) {
   const [hashInput, setHashInput] = useState('Navorika Secure String');
   const [hash, setHash] = useState('');
   const [pwdLength, setPwdLength] = useState(20);
-  const [password, setPassword] = useState(() =>
-    typeof crypto !== 'undefined' ? generateRandomPassword(20) : ''
-  );
-  const [uuid, setUuid] = useState(() =>
-    typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : ''
-  );
+  const [password, setPassword] = useState('NavorikaSecurePass2026!');
+  const [uuid, setUuid] = useState('00000000-0000-4000-8000-000000000000');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const t = dictionary.devTools;
+
+  useEffect(() => {
+    if (typeof crypto !== 'undefined') {
+      setPassword(generateRandomPassword(20));
+      if (crypto.randomUUID) {
+        setUuid(crypto.randomUUID());
+      }
+    }
+  }, []);
 
   const makeHash = async () => {
     if (!hashInput) {
@@ -1539,7 +1546,7 @@ function LocalizedWebCrypto({ dictionary }: { dictionary: Dictionary }) {
   };
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid gap-6 lg:grid-cols-2" suppressHydrationWarning>
       {/* SHA-256 Section */}
       <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-6 space-y-4">
         <div className="flex items-center justify-between">
@@ -1615,7 +1622,7 @@ function LocalizedWebCrypto({ dictionary }: { dictionary: Dictionary }) {
             <span dir="ltr" className="font-mono text-xs font-bold">{pwdLength} chars</span>
           </div>
           <div className="flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--background)] p-3">
-            <code dir="ltr" className="break-all font-mono text-xs">{password}</code>
+            <code dir="ltr" className="break-all font-mono text-xs" suppressHydrationWarning>{password}</code>
             <button
               type="button"
               onClick={() => copy(password, 'pwd')}
@@ -1641,7 +1648,7 @@ function LocalizedWebCrypto({ dictionary }: { dictionary: Dictionary }) {
             </button>
           </div>
           <div className="flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--background)] p-3">
-            <code dir="ltr" className="break-all font-mono text-xs">{uuid}</code>
+            <code dir="ltr" className="break-all font-mono text-xs" suppressHydrationWarning>{uuid}</code>
             <button
               type="button"
               onClick={() => copy(uuid, 'uuid')}
@@ -2168,6 +2175,11 @@ function LocalizedCronHumanizer({ locale, dictionary }: { locale: Locale; dictio
   const [expression, setExpression] = useState('0 9 * * 1-5');
   const [use24Hour, setUse24Hour] = useState(true);
   const [copied, setCopied] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const t = dictionary.devTools;
 
@@ -2197,13 +2209,15 @@ function LocalizedCronHumanizer({ locale, dictionary }: { locale: Locale; dictio
         locale: cronLocale,
         use24HourTimeFormat: use24Hour,
       });
-      const parser = CronExpressionParser.parse(normalized, { currentDate: new Date() });
+      const parser = CronExpressionParser.parse(normalized, {
+        currentDate: mounted ? new Date() : new Date('2026-01-01T00:00:00Z'),
+      });
       const nextRuns = parser.take(5).map((item) => item.toDate());
       return { valid: true, description, error: '', nextRuns };
     } catch (e) {
       return { valid: false, description: '', error: e instanceof Error ? e.message : 'Invalid cron expression', nextRuns: [] as Date[] };
     }
-  }, [expression, cronLocale, use24Hour]);
+  }, [expression, cronLocale, use24Hour, mounted]);
 
   const copy = () => {
     if (!result.description) return;
@@ -2291,11 +2305,11 @@ function LocalizedCronHumanizer({ locale, dictionary }: { locale: Locale; dictio
         </div>
 
         {result.nextRuns.length > 0 && (
-          <div className="space-y-3">
+          <div className="space-y-3" suppressHydrationWarning>
             <span className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
               Next scheduled runs
             </span>
-            <div className="space-y-2">
+            <div className="space-y-2" suppressHydrationWarning>
               {result.nextRuns.map((d, index) => (
                 <div
                   key={`${d.toISOString()}-${index}`}
@@ -2304,8 +2318,8 @@ function LocalizedCronHumanizer({ locale, dictionary }: { locale: Locale; dictio
                   <span className="font-mono text-xs font-bold text-[var(--muted-foreground)]">
                     #{index + 1}
                   </span>
-                  <time dateTime={d.toISOString()} className="font-semibold">
-                    {new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(d)}
+                  <time dateTime={d.toISOString()} className="font-semibold" suppressHydrationWarning>
+                    {mounted ? new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(d) : d.toISOString()}
                   </time>
                 </div>
               ))}
@@ -2367,7 +2381,7 @@ function LocalizedMarkupFormatter({ dictionary }: { dictionary: Dictionary }) {
   };
 
   return (
-    <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7 space-y-4">
+    <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-7 space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
         <div className="flex flex-wrap items-center gap-3">
           <label className="text-sm font-semibold">

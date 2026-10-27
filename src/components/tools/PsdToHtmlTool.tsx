@@ -905,9 +905,9 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
   const uploadInputId = useId();
 
   return (
-    <div className="space-y-10">
+    <div className="min-w-0 space-y-10">
       {/* 1. PSD Upload & Header Preflight Analysis */}
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border)] pb-5">
           <div className="flex items-center gap-3">
             <div className="grid size-10 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
@@ -1046,7 +1046,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
       </section>
 
       {/* 2. Target Framework & Scaffolding Controls */}
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-8">
         <div className="flex items-center gap-3 border-b border-[var(--border)] pb-5">
           <div className="grid size-10 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
             <Sliders className="size-5" />
@@ -1216,7 +1216,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
       </section>
 
       {/* 3. Live Visual Preview */}
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
           <div className="flex items-center gap-3">
             <div className="grid size-10 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
@@ -1372,7 +1372,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
       </section>
 
       {/* 4. Production Code Generation & Shareable Handoff Brief */}
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
           <div className="flex items-center gap-2">
             <FileText className="size-5 text-indigo-600 dark:text-indigo-400" />
@@ -1454,9 +1454,11 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   </button>
                 </div>
               </div>
-              <pre className="max-h-96 overflow-auto rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-emerald-400">
-                <code>{generatedHtml}</code>
-              </pre>
+              <div className="w-full min-w-0 overflow-x-auto">
+                <pre className="max-h-96 rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-emerald-400">
+                  <code>{generatedHtml}</code>
+                </pre>
+              </div>
             </div>
           )}
 
@@ -1483,9 +1485,11 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   </button>
                 </div>
               </div>
-              <pre className="max-h-96 overflow-auto rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-sky-300">
-                <code>{generatedCss}</code>
-              </pre>
+              <div className="w-full min-w-0 overflow-x-auto">
+                <pre className="max-h-96 rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-sky-300">
+                  <code>{generatedCss}</code>
+                </pre>
+              </div>
             </div>
           )}
 
@@ -1546,16 +1550,18 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   </button>
                 </div>
               </div>
-              <pre className="max-h-96 overflow-auto rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-amber-200">
-                <code>{developerBriefMarkdown}</code>
-              </pre>
+              <div className="w-full min-w-0 overflow-x-auto">
+                <pre className="max-h-96 rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-amber-200">
+                  <code>{developerBriefMarkdown}</code>
+                </pre>
+              </div>
             </div>
           )}
         </div>
       </section>
 
       {/* 5. Honest Capability & Workflow Guardrails */}
-      <section className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6 text-xs text-[var(--muted-foreground)]">
+      <section className="min-w-0 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-[var(--muted-foreground)] sm:p-6">
         <div className="flex items-start gap-3">
           <AlertTriangle className="size-5 shrink-0 text-amber-600 dark:text-amber-400 mt-0.5" />
           <div className="space-y-2">

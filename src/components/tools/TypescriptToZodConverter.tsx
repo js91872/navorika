@@ -94,9 +94,9 @@ export default function TypescriptToZodConverter() {
   };
 
   return (
-    <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.1fr)]">
+    <div className="grid min-w-0 gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.1fr)]">
       {/* Input Section */}
-      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-7">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border)] pb-4">
           <div className="flex items-center gap-3">
             <Code2 className="size-6 text-indigo-600 dark:text-indigo-400" />
@@ -142,7 +142,7 @@ export default function TypescriptToZodConverter() {
             rows={15}
             spellCheck={false}
             placeholder="interface User {&#10;  name: string;&#10;  age: number;&#10;  active?: boolean;&#10;}"
-            className="w-full resize-y rounded-2xl border border-[var(--border)] bg-slate-50 p-4 font-mono text-xs leading-relaxed text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:bg-slate-950 dark:text-slate-100"
+            className="w-full min-w-0 resize-y rounded-2xl border border-[var(--border)] bg-slate-50 p-4 font-mono text-xs leading-relaxed text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:bg-slate-950 dark:text-slate-100"
           />
         </div>
 
@@ -153,7 +153,7 @@ export default function TypescriptToZodConverter() {
       </section>
 
       {/* Output Section */}
-      <aside className="min-w-0 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-5 sm:p-7">
+      <aside className="min-w-0 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-4 sm:p-7">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="text-xl font-bold">Starter Zod Schema</h2>
@@ -203,14 +203,16 @@ export default function TypescriptToZodConverter() {
         )}
 
         {/* Code Box */}
-        <div className="mt-4 overflow-hidden rounded-2xl border border-[var(--border)] bg-slate-950 shadow-inner">
+        <div className="mt-4 w-full min-w-0 overflow-hidden rounded-2xl border border-[var(--border)] bg-slate-950 shadow-inner">
           <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900 px-4 py-2 text-xs font-mono text-slate-400">
             <span>zodSchema.ts</span>
             <span>zod v3</span>
           </div>
-          <pre className="max-h-[520px] overflow-auto p-4 font-mono text-xs leading-relaxed text-indigo-300">
-            <code>{zodSchema}</code>
-          </pre>
+          <div className="w-full min-w-0 overflow-x-auto p-4">
+            <pre className="max-h-[520px] font-mono text-xs leading-relaxed text-indigo-300">
+              <code>{zodSchema}</code>
+            </pre>
+          </div>
         </div>
 
         <div className="mt-4 rounded-2xl border border-indigo-500/20 bg-[var(--card)] p-4 text-xs leading-relaxed text-[var(--muted-foreground)]">

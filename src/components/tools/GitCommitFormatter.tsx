@@ -54,12 +54,12 @@ export default function GitCommitFormatter() {
   const commonScopes = ['auth', 'ui', 'api', 'db', 'docs', 'deps', 'router', 'config'];
 
   const inputClass =
-    'mt-1.5 w-full rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm font-medium outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20';
+    'mt-1.5 w-full min-w-0 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm font-medium outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20';
 
   return (
-    <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
+    <div className="grid min-w-0 gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
       {/* Form Controls */}
-      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-7">
         <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
           <div className="flex items-center gap-3">
             <GitCommit className="size-6 text-indigo-600 dark:text-indigo-400" />
@@ -206,7 +206,7 @@ export default function GitCommitFormatter() {
       </section>
 
       {/* Formatted Output Box */}
-      <aside className="min-w-0 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-5 sm:p-7">
+      <aside className="min-w-0 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-4 sm:p-7">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="text-xl font-bold">Conventional Commit</h2>
@@ -244,14 +244,16 @@ export default function GitCommitFormatter() {
         )}
 
         {/* Output Pre */}
-        <div className="mt-5 overflow-hidden rounded-2xl border border-[var(--border)] bg-slate-950 shadow-inner">
+        <div className="mt-5 w-full min-w-0 overflow-hidden rounded-2xl border border-[var(--border)] bg-slate-950 shadow-inner">
           <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900 px-4 py-2 text-xs font-mono text-slate-400">
             <span>commit message</span>
             <span>{headerLength} characters</span>
           </div>
-          <pre className="max-h-[380px] overflow-auto p-4 font-mono text-xs leading-relaxed text-emerald-400">
-            <code>{message}</code>
-          </pre>
+          <div className="w-full min-w-0 overflow-x-auto p-4">
+            <pre className="max-h-[380px] font-mono text-xs leading-relaxed text-emerald-400">
+              <code>{message}</code>
+            </pre>
+          </div>
         </div>
 
         {/* Git CLI quick command preview */}
@@ -259,7 +261,7 @@ export default function GitCommitFormatter() {
           <p className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
             Terminal Usage
           </p>
-          <div className="mt-2 overflow-x-auto rounded-xl bg-slate-950 p-3 font-mono text-xs text-slate-200">
+          <div className="mt-2 w-full min-w-0 overflow-x-auto rounded-xl bg-slate-950 p-3 font-mono text-xs text-slate-200">
             <code>git commit -m &quot;{header}&quot;</code>
           </div>
         </div>

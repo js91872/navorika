@@ -32,6 +32,7 @@ const LocalizedImageCanvasTools = dynamic(() => import('./LocalizedImageCanvasTo
 const LocalizedMediaTools = dynamic(() => import('./LocalizedMediaTools'));
 const LocalizedDataTools = dynamic(() => import('./LocalizedDataTools'));
 const LocalizedDevTools = dynamic(() => import('./LocalizedDevTools'));
+const LocalizedCorelTools = dynamic(() => import('./LocalizedCorelTools'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -460,6 +461,25 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
       slug === 'developer-utils'
     ) {
       return <LocalizedDevTools slug={slug} dictionary={dictionary} locale={locale} />;
+    }
+    if (
+      slug === 'coreldraw-tools' ||
+      slug === 'cdr-viewer' ||
+      slug === 'cdr-version-converter' ||
+      slug === 'cdr-to-pdf-converter' ||
+      slug === 'cdr-to-svg-converter' ||
+      slug === 'cdr-to-png-converter' ||
+      slug === 'cdr-to-jpg-converter' ||
+      slug === 'cdr-to-eps-converter' ||
+      slug === 'pdf-to-cdr-converter' ||
+      slug === 'word-to-cdr-converter' ||
+      slug === 'png-to-cdr-converter' ||
+      slug === 'jpg-to-cdr-converter' ||
+      slug === 'svg-to-cdr-converter' ||
+      slug === 'ai-to-cdr-converter' ||
+      slug === 'eps-to-cdr-converter'
+    ) {
+      return <LocalizedCorelTools slug={slug} dictionary={dictionary} locale={locale} />;
     }
     if (slug === 'css-gradient-generator' || slug === 'css-clamp-font-generator' || slug === 'image-scaling-calculator') return <LocalizedDesignTools slug={slug} d={dictionary} locale={locale} />;
     if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;

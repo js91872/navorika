@@ -174,7 +174,7 @@ export default function StepTo3dPdfTool() {
   const isBusy = status === 'uploading' || status === 'processing' || status === 'generating';
 
   return (
-    <section className="mx-auto max-w-4xl space-y-6 rounded-3xl border border-slate-200 bg-white p-5 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+    <section className="mx-auto max-w-4xl min-w-0 space-y-6 rounded-3xl border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">
       <CadPrivacyNotice />
       <CadViewerNotice />
 

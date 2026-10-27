@@ -699,7 +699,7 @@ function LocalizedAudioBitrateCalculator({
         <button
           type="button"
           onClick={() => setMode('bitrate-from-size')}
-          className={`flex-1 rounded-xl px-4 py-3 text-sm font-semibold transition ${
+          className={`min-w-0 flex-1 rounded-xl px-3 py-2.5 text-xs font-semibold transition sm:px-4 sm:py-3 sm:text-sm ${
             mode === 'bitrate-from-size'
               ? 'bg-white text-indigo-600 shadow-sm dark:bg-slate-900 dark:text-indigo-400'
               : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
@@ -710,7 +710,7 @@ function LocalizedAudioBitrateCalculator({
         <button
           type="button"
           onClick={() => setMode('size-from-bitrate')}
-          className={`flex-1 rounded-xl px-4 py-3 text-sm font-semibold transition ${
+          className={`min-w-0 flex-1 rounded-xl px-3 py-2.5 text-xs font-semibold transition sm:px-4 sm:py-3 sm:text-sm ${
             mode === 'size-from-bitrate'
               ? 'bg-white text-indigo-600 shadow-sm dark:bg-slate-900 dark:text-indigo-400'
               : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
@@ -720,22 +720,22 @@ function LocalizedAudioBitrateCalculator({
         </button>
       </div>
 
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+      <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">
         {mode === 'bitrate-from-size' ? (
           <div className="space-y-6">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
+            <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+              <div className="min-w-0">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   {calc.fileSize}
                 </label>
-                <div className="mt-1.5 flex gap-2">
+                <div className="mt-1.5 flex min-w-0 gap-2">
                   <input
                     type="number"
                     min="0.01"
                     step="any"
                     value={fileSizeValue}
                     onChange={(e) => setFileSizeValue(e.target.value)}
-                    className="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
+                    className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
                   />
                   <select
                     value={fileSizeUnit}
@@ -751,14 +751,14 @@ function LocalizedAudioBitrateCalculator({
                 </div>
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   {calc.channels}
                 </label>
                 <select
                   value={channelsA}
                   onChange={(e) => setChannelsA(e.target.value)}
-                  className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
+                  className="mt-1.5 w-full min-w-0 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
                 >
                   <option value="1">{calc.mono}</option>
                   <option value="2">{calc.stereo}</option>
@@ -767,23 +767,23 @@ function LocalizedAudioBitrateCalculator({
             </div>
 
             {/* Duration Fields */}
-            <div>
+            <div className="min-w-0">
               <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 {calc.duration}
               </label>
-              <div className="mt-1.5 grid grid-cols-3 gap-3">
-                <div>
+              <div className="mt-1.5 grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
+                <div className="min-w-0">
                   <input
                     type="number"
                     min="0"
                     placeholder="0"
                     value={hoursA}
                     onChange={(e) => setHoursA(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
+                    className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-2 py-2.5 text-center text-sm dark:border-slate-700 dark:bg-slate-800 sm:px-3"
                   />
                   <span className="mt-1 block text-center text-xs text-slate-400">{calc.hours}</span>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <input
                     type="number"
                     min="0"
@@ -791,11 +791,11 @@ function LocalizedAudioBitrateCalculator({
                     placeholder="0"
                     value={minutesA}
                     onChange={(e) => setMinutesA(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
+                    className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-2 py-2.5 text-center text-sm dark:border-slate-700 dark:bg-slate-800 sm:px-3"
                   />
                   <span className="mt-1 block text-center text-xs text-slate-400">{calc.minutes}</span>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <input
                     type="number"
                     min="0"
@@ -803,7 +803,7 @@ function LocalizedAudioBitrateCalculator({
                     placeholder="0"
                     value={secondsA}
                     onChange={(e) => setSecondsA(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
+                    className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-2 py-2.5 text-center text-sm dark:border-slate-700 dark:bg-slate-800 sm:px-3"
                   />
                   <span className="mt-1 block text-center text-xs text-slate-400">{calc.seconds}</span>
                 </div>
@@ -812,31 +812,31 @@ function LocalizedAudioBitrateCalculator({
 
             {/* Calculated Result */}
             {resultA && (
-              <div className="space-y-4 rounded-2xl border border-indigo-100 bg-indigo-50/50 p-6 dark:border-indigo-950/40 dark:bg-indigo-950/20">
-                <div>
+              <div className="min-w-0 space-y-4 rounded-2xl border border-indigo-100 bg-indigo-50/50 p-4 sm:p-6 dark:border-indigo-950/40 dark:bg-indigo-950/20">
+                <div className="min-w-0">
                   <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
                     {calc.estimatedBitrate}
                   </span>
-                  <div className="mt-1 flex items-baseline gap-2">
-                    <span className="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl">
+                  <div className="mt-1 flex flex-wrap items-baseline gap-2">
+                    <span className="text-2xl font-black text-slate-900 dark:text-white sm:text-4xl">
                       {resultA.bitrateKbps.toLocaleString(locale)}
                     </span>
-                    <span className="text-lg font-semibold text-slate-600 dark:text-slate-300">kbps</span>
+                    <span className="text-base font-semibold text-slate-600 dark:text-slate-300 sm:text-lg">kbps</span>
                     <span className="text-xs text-slate-400">
                       ({resultA.bitrateMbps} Mbps)
                     </span>
                   </div>
                 </div>
 
-                <div className="grid gap-3 pt-2 sm:grid-cols-2">
-                  <div className="rounded-xl border border-indigo-200/50 bg-white/80 p-3.5 dark:border-indigo-900/40 dark:bg-slate-900/80">
+                <div className="grid min-w-0 gap-3 pt-2 sm:grid-cols-2">
+                  <div className="min-w-0 rounded-xl border border-indigo-200/50 bg-white/80 p-3.5 dark:border-indigo-900/40 dark:bg-slate-900/80">
                     <span className="text-xs text-slate-500 dark:text-slate-400">{calc.streamingTier}</span>
                     <p className="mt-0.5 text-sm font-bold text-slate-800 dark:text-slate-200">
                       {getLocalizedBitrateTier(resultA.bitrateKbps, locale)}
                     </p>
                   </div>
                   {resultA.perChannelKbps !== null && (
-                    <div className="rounded-xl border border-indigo-200/50 bg-white/80 p-3.5 dark:border-indigo-900/40 dark:bg-slate-900/80">
+                    <div className="min-w-0 rounded-xl border border-indigo-200/50 bg-white/80 p-3.5 dark:border-indigo-900/40 dark:bg-slate-900/80">
                       <span className="text-xs text-slate-500 dark:text-slate-400">{calc.channels}</span>
                       <p className="mt-0.5 text-sm font-bold text-slate-800 dark:text-slate-200">
                         {resultA.perChannelKbps.toLocaleString(locale)} kbps / ch
@@ -849,19 +849,19 @@ function LocalizedAudioBitrateCalculator({
           </div>
         ) : (
           <div className="space-y-6">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
+            <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+              <div className="min-w-0">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   {calc.targetBitrate}
                 </label>
-                <div className="mt-1.5 flex gap-2">
+                <div className="mt-1.5 flex min-w-0 gap-2">
                   <input
                     type="number"
                     min="1"
                     step="any"
                     value={bitrateValue}
                     onChange={(e) => setBitrateValue(e.target.value)}
-                    className="flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
+                    className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
                   />
                   <select
                     value={bitrateUnit}
@@ -875,7 +875,7 @@ function LocalizedAudioBitrateCalculator({
                 </div>
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   {calc.streamingTier}
                 </label>
@@ -898,23 +898,23 @@ function LocalizedAudioBitrateCalculator({
             </div>
 
             {/* Duration Fields */}
-            <div>
+            <div className="min-w-0">
               <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 {calc.duration}
               </label>
-              <div className="mt-1.5 grid grid-cols-3 gap-3">
-                <div>
+              <div className="mt-1.5 grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
+                <div className="min-w-0">
                   <input
                     type="number"
                     min="0"
                     placeholder="0"
                     value={hoursB}
                     onChange={(e) => setHoursB(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
+                    className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-2 py-2.5 text-center text-sm dark:border-slate-700 dark:bg-slate-800 sm:px-3"
                   />
                   <span className="mt-1 block text-center text-xs text-slate-400">{calc.hours}</span>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <input
                     type="number"
                     min="0"
@@ -922,11 +922,11 @@ function LocalizedAudioBitrateCalculator({
                     placeholder="0"
                     value={minutesB}
                     onChange={(e) => setMinutesB(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
+                    className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-2 py-2.5 text-center text-sm dark:border-slate-700 dark:bg-slate-800 sm:px-3"
                   />
                   <span className="mt-1 block text-center text-xs text-slate-400">{calc.minutes}</span>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <input
                     type="number"
                     min="0"
@@ -934,7 +934,7 @@ function LocalizedAudioBitrateCalculator({
                     placeholder="0"
                     value={secondsB}
                     onChange={(e) => setSecondsB(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800"
+                    className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-2 py-2.5 text-center text-sm dark:border-slate-700 dark:bg-slate-800 sm:px-3"
                   />
                   <span className="mt-1 block text-center text-xs text-slate-400">{calc.seconds}</span>
                 </div>
@@ -943,30 +943,30 @@ function LocalizedAudioBitrateCalculator({
 
             {/* Calculated Result */}
             {resultB && (
-              <div className="space-y-4 rounded-2xl border border-indigo-100 bg-indigo-50/50 p-6 dark:border-indigo-950/40 dark:bg-indigo-950/20">
-                <div>
+              <div className="min-w-0 space-y-4 rounded-2xl border border-indigo-100 bg-indigo-50/50 p-4 sm:p-6 dark:border-indigo-950/40 dark:bg-indigo-950/20">
+                <div className="min-w-0">
                   <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
                     {calc.estimatedSize}
                   </span>
-                  <div className="mt-1 flex items-baseline gap-2">
-                    <span className="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl">
+                  <div className="mt-1 flex flex-wrap items-baseline gap-2">
+                    <span className="text-2xl font-black text-slate-900 dark:text-white sm:text-4xl">
                       {resultB.bytesDecimal.mb.toLocaleString(locale)}
                     </span>
-                    <span className="text-lg font-semibold text-slate-600 dark:text-slate-300">MB</span>
+                    <span className="text-base font-semibold text-slate-600 dark:text-slate-300 sm:text-lg">MB</span>
                     <span className="text-xs text-slate-400">
                       ({resultB.bytesBinary.mib.toLocaleString(locale)} MiB)
                     </span>
                   </div>
                 </div>
 
-                <div className="grid gap-3 pt-2 sm:grid-cols-2">
-                  <div className="rounded-xl border border-indigo-200/50 bg-white/80 p-3.5 dark:border-indigo-900/40 dark:bg-slate-900/80">
+                <div className="grid min-w-0 gap-3 pt-2 sm:grid-cols-2">
+                  <div className="min-w-0 rounded-xl border border-indigo-200/50 bg-white/80 p-3.5 dark:border-indigo-900/40 dark:bg-slate-900/80">
                     <span className="text-xs text-slate-500 dark:text-slate-400">1 Hour Storage</span>
                     <p className="mt-0.5 text-sm font-bold text-slate-800 dark:text-slate-200">
                       {resultB.sizePerHourMb.toLocaleString(locale)} MB / hr
                     </p>
                   </div>
-                  <div className="rounded-xl border border-indigo-200/50 bg-white/80 p-3.5 dark:border-indigo-900/40 dark:bg-slate-900/80">
+                  <div className="min-w-0 rounded-xl border border-indigo-200/50 bg-white/80 p-3.5 dark:border-indigo-900/40 dark:bg-slate-900/80">
                     <span className="text-xs text-slate-500 dark:text-slate-400">1 Minute Storage</span>
                     <p className="mt-0.5 text-sm font-bold text-slate-800 dark:text-slate-200">
                       {resultB.sizePerMinuteMb.toLocaleString(locale)} MB / min

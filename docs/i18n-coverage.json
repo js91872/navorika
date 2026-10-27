@@ -11,23 +11,23 @@
   ],
   "summary": {
     "tools": 322,
-    "publishedTools": 301,
-    "pendingTools": 15,
+    "publishedTools": 316,
+    "pendingTools": 0,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 61,
     "trustPages": 7,
-    "publishedToolTranslations": 2107,
+    "publishedToolTranslations": 2212,
     "targetToolTranslations": 2212,
     "pendingGuideTranslations": 427,
     "pendingTrustTranslations": 49,
     "candidateCounts": {
-      "jsxText": 3885,
+      "jsxText": 3886,
       "visibleAttribute": 355,
       "semanticCopy": 11412,
-      "reviewLiteral": 44747
+      "reviewLiteral": 44775
     },
-    "candidateCopyWords": 307860
+    "candidateCopyWords": 307863
   },
   "tools": [
     {
@@ -139,8 +139,16 @@
       "source": "src/app/(english)/tools/ai-to-cdr-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -1084,8 +1092,16 @@
       "source": "src/app/(english)/tools/cdr-to-eps-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -1105,8 +1121,16 @@
       "source": "src/app/(english)/tools/cdr-to-jpg-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -1126,8 +1150,16 @@
       "source": "src/app/(english)/tools/cdr-to-pdf-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -1147,8 +1179,16 @@
       "source": "src/app/(english)/tools/cdr-to-png-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -1168,8 +1208,16 @@
       "source": "src/app/(english)/tools/cdr-to-svg-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -1189,8 +1237,16 @@
       "source": "src/app/(english)/tools/cdr-version-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -1209,8 +1265,16 @@
       "source": "src/app/(english)/tools/cdr-viewer/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -1999,8 +2063,16 @@
       "source": "src/app/(english)/tools/coreldraw-tools/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -2696,8 +2768,16 @@
       "source": "src/app/(english)/tools/eps-to-cdr-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -4166,8 +4246,16 @@
       "source": "src/app/(english)/tools/jpg-to-cdr-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -5241,8 +5329,16 @@
       "source": "src/app/(english)/tools/pdf-to-cdr-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -5412,8 +5508,16 @@
       "source": "src/app/(english)/tools/png-to-cdr-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -6907,8 +7011,16 @@
       "source": "src/app/(english)/tools/svg-to-cdr-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -8140,8 +8252,16 @@
       "source": "src/app/(english)/tools/word-to-cdr-converter/page.tsx",
       "routeExists": true,
       "family": "individual-or-other-shared",
-      "status": "pending",
-      "translatedLocales": [],
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
       "review": [
         "server-errors-and-processing-disclosure"
       ],
@@ -9098,7 +9218,7 @@
     {
       "source": "src/app/(english)/tools/ai-to-cdr-converter/page.tsx",
       "routeTemplate": "/tools/ai-to-cdr-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9326,43 +9446,43 @@
     {
       "source": "src/app/(english)/tools/cdr-to-eps-converter/page.tsx",
       "routeTemplate": "/tools/cdr-to-eps-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/cdr-to-jpg-converter/page.tsx",
       "routeTemplate": "/tools/cdr-to-jpg-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/cdr-to-pdf-converter/page.tsx",
       "routeTemplate": "/tools/cdr-to-pdf-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/cdr-to-png-converter/page.tsx",
       "routeTemplate": "/tools/cdr-to-png-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/cdr-to-svg-converter/page.tsx",
       "routeTemplate": "/tools/cdr-to-svg-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/cdr-version-converter/page.tsx",
       "routeTemplate": "/tools/cdr-version-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
       "source": "src/app/(english)/tools/cdr-viewer/page.tsx",
       "routeTemplate": "/tools/cdr-viewer",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9548,7 +9668,7 @@
     {
       "source": "src/app/(english)/tools/coreldraw-tools/page.tsx",
       "routeTemplate": "/tools/coreldraw-tools",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9710,7 +9830,7 @@
     {
       "source": "src/app/(english)/tools/eps-to-cdr-converter/page.tsx",
       "routeTemplate": "/tools/eps-to-cdr-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10058,7 +10178,7 @@
     {
       "source": "src/app/(english)/tools/jpg-to-cdr-converter/page.tsx",
       "routeTemplate": "/tools/jpg-to-cdr-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10316,7 +10436,7 @@
     {
       "source": "src/app/(english)/tools/pdf-to-cdr-converter/page.tsx",
       "routeTemplate": "/tools/pdf-to-cdr-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10358,7 +10478,7 @@
     {
       "source": "src/app/(english)/tools/png-to-cdr-converter/page.tsx",
       "routeTemplate": "/tools/png-to-cdr-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10706,7 +10826,7 @@
     {
       "source": "src/app/(english)/tools/svg-to-cdr-converter/page.tsx",
       "routeTemplate": "/tools/svg-to-cdr-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -11006,7 +11126,7 @@
     {
       "source": "src/app/(english)/tools/word-to-cdr-converter/page.tsx",
       "routeTemplate": "/tools/word-to-cdr-converter",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

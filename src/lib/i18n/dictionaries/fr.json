@@ -2475,6 +2475,126 @@
       "limits": "Offre un accès centralisé aux utilitaires de développement et d'administration système côté client.",
       "question": "Pourquoi exécuter ces outils de développement dans le navigateur ?",
       "answer": "Le traitement local garantit que vos extraits de code, schémas de données et jetons privés ne quittent jamais votre poste de travail."
+    },
+    "coreldraw-tools": {
+      "title": "Outils CorelDRAW et convertisseurs CDR gratuits",
+      "description": "Ouvrez des fichiers CDR en ligne, convertissez PDF et images pour CorelDRAW, exportez en PDF, SVG, PNG, JPG ou EPS, et inspectez vos versions CDR.",
+      "how": "Sélectionnez un utilitaire de conversion ou d'analyse. Déposez vos créations vectorielles ou matricielles pour générer des fichiers compatibles ou inspecter l'en-tête.",
+      "limits": "Taille maximale de 15 Mo par fichier. Traitement local pour la version ; bac à sable sécurisé pour l'interchange.",
+      "question": "Peut-on ouvrir un fichier CDR sans posséder CorelDRAW ?",
+      "answer": "Oui, notre suite permet de visualiser, vérifier la version et exporter le contenu CDR vers PDF, SVG ou images haute résolution sans logiciel payant."
+    },
+    "cdr-viewer": {
+      "title": "Visionneuse CDR en ligne",
+      "description": "Ouvrez et visualisez des fichiers CDR pris en charge sans CorelDRAW. Prévisualisez vos fichiers en PDF, SVG ou PNG avant impression ou partage.",
+      "how": "Déposez votre fichier CDR. Le moteur génère un aperçu fidèle au format PDF, SVG ou PNG directement consultable et téléchargeable.",
+      "limits": "Taille maximale de 15 Mo. Prise en charge des archives PK-ZIP récentes et des conteneurs RIFF patrimoniaux.",
+      "question": "Comment fonctionne la visionneuse CDR en ligne ?",
+      "answer": "Elle convertit le document dans un bac à sable sécurisé pour restituer un aperçu vectoriel ou PDF fidèle sans logiciel propriétaire."
+    },
+    "cdr-version-converter": {
+      "title": "Vérificateur de version CDR",
+      "description": "Identifiez à quelle version ou génération de CorelDRAW correspond un fichier CDR. Analyse l'en-tête localement dans votre navigateur en toute sécurité.",
+      "how": "Sélectionnez votre fichier CDR. Le navigateur analyse les 64 premiers octets pour détecter le conteneur et la signature de version exacte.",
+      "limits": "Traitement 100% côté client. Aucun téléversement. Fichiers jusqu'à 15 Mo.",
+      "question": "Cet outil convertit-il un CDR récent vers une version antérieure ?",
+      "answer": "Il s'agit d'un inspecteur d'en-tête. La réécriture vers une ancienne version native nécessite l'option Enregistrer sous de CorelDRAW ou l'export PDF/SVG."
+    },
+    "cdr-to-pdf-converter": {
+      "title": "Convertisseur CDR en PDF",
+      "description": "Convertissez vos fichiers CDR en PDF en ligne sans CorelDRAW. Créez des documents PDF haute fidélité prêts pour l'impression, l'affichage et l'archivage.",
+      "how": "Déposez votre fichier vectoriel CDR. Le convertisseur transforme les pages lisibles en un document PDF standard prêt au téléchargement.",
+      "limits": "Taille maximale de 15 Mo. Convertit l'ensemble des pages lisibles du conteneur CDR.",
+      "question": "Le PDF converti conserve-t-il les graphiques vectoriels ?",
+      "answer": "Oui, les tracés vectoriels, formes et polices vectorisées sont préservés sous forme d'objets vectoriels PDF."
+    },
+    "cdr-to-svg-converter": {
+      "title": "Convertisseur CDR en SVG",
+      "description": "Convertissez vos fichiers CDR en SVG en ligne. Exportez la première page en vecteur SVG pour Illustrator, Inkscape, Figma ou la découpeuse.",
+      "how": "Déposez votre fichier CDR. L'outil extrait les éléments vectoriels de la première page pour produire un code SVG propre et standard.",
+      "limits": "Jusqu'à 15 Mo. Exporte la première page sous forme de graphiques vectoriels adaptatifs.",
+      "question": "Puis-je éditer le SVG obtenu dans Inkscape ou Illustrator ?",
+      "answer": "Oui, le SVG généré repose sur des balises vectorielles standards éditables dans tout logiciel graphique moderne."
+    },
+    "cdr-to-png-converter": {
+      "title": "Convertisseur CDR en PNG",
+      "description": "Convertissez vos fichiers CDR en images PNG en ligne. Exportez la première page avec résolution réglable de 72 à 600 DPI et prise en charge de la transparence.",
+      "how": "Déposez votre fichier CDR. Ajustez la résolution souhaitée de 72 à 600 DPI puis téléchargez votre image PNG d'une grande netteté.",
+      "limits": "Jusqu'à 15 Mo. Restitution de la première page en PNG jusqu'à 600 DPI.",
+      "question": "Peut-on exporter en haute résolution pour l'impression ?",
+      "answer": "Oui, réglez la résolution jusqu'à 600 DPI pour obtenir une image matricielle ultra-précise adaptée aux épreuves d'impression."
+    },
+    "cdr-to-jpg-converter": {
+      "title": "Convertisseur CDR en JPG",
+      "description": "Convertissez vos fichiers CDR en JPG en ligne. Exportez la première page en JPEG avec paramètres personnalisables de qualité et de résolution.",
+      "how": "Déposez votre fichier CDR, ajustez le curseur de qualité JPEG et la résolution, puis téléchargez votre image optimisée.",
+      "limits": "Jusqu'à 15 Mo. Restitution de la première page de 72 à 600 DPI et qualité de 20 à 100%.",
+      "question": "Quand privilégier le format JPG par rapport au PNG ?",
+      "answer": "Le JPG est parfait pour les illustrations très riches en couleurs et les visuels destinés au web nécessitant un poids de fichier réduit."
+    },
+    "cdr-to-eps-converter": {
+      "title": "Convertisseur CDR en EPS",
+      "description": "Convertissez vos fichiers CDR en EPS en ligne. Exportez la première page en vecteur Encapsulated PostScript pour les imprimeurs et la découpe d'enseignes.",
+      "how": "Déposez votre fichier CDR. Le moteur traite la première page et génère un fichier PostScript EPS standard adapté aux ateliers d'impression.",
+      "limits": "Jusqu'à 15 Mo. Exporte la page principale au format EPS PostScript Niveau 2/3.",
+      "question": "Pourquoi utiliser le format EPS en imprimerie ?",
+      "answer": "L'EPS reste un standard universel pour les traceurs de découpe, logiciels d'enseignes et processeurs RIP de presse professionnelle."
+    },
+    "pdf-to-cdr-converter": {
+      "title": "Convertisseur PDF en CDR",
+      "description": "Préparez vos documents PDF pour CorelDRAW en ligne. Exportez en PDF optimisé, SVG éditable ou EPS prêt à être importé dans CorelDRAW.",
+      "how": "Déposez votre document PDF, sélectionnez l'option de conservation ou d'export SVG/EPS, puis importez le résultat dans CorelDRAW.",
+      "limits": "Taille maximale de 15 Mo. Génère des formats d'interchange officiels pris en charge nativement.",
+      "question": "Comment enregistrer le fichier en CDR natif ?",
+      "answer": "Importez le PDF ou SVG dans CorelDRAW, inspectez les calques et polices, puis choisissez Fichier → Enregistrer sous → CDR."
+    },
+    "word-to-cdr-converter": {
+      "title": "Convertisseur Word en CDR",
+      "description": "Convertissez vos documents Word DOC et DOCX pour CorelDRAW. Préservez la mise en forme en PDF ou préparez un export SVG/EPS pour CorelDRAW.",
+      "how": "Déposez votre document Word. Choisissez la préservation du document en PDF ou l'export SVG vectoriel, puis importez dans CorelDRAW.",
+      "limits": "Taille maximale de 15 Mo. Convertit tableaux et typographies en formats d'interchange vectoriels.",
+      "question": "Comment préserver les polices lors de l'import ?",
+      "answer": "Utilisez le mode de préservation PDF pour figer la typographie et les tableaux avant l'import dans CorelDRAW."
+    },
+    "png-to-cdr-converter": {
+      "title": "Convertisseur PNG en CDR",
+      "description": "Convertissez vos images PNG pour CorelDRAW en ligne. Conservez les photos matricielles ou vectorisez les logos en tracés éditables pour CorelDRAW.",
+      "how": "Déposez votre image PNG. Choisissez d'incorporer l'image originale ou de la vectoriser en SVG, puis importez le résultat dans CorelDRAW.",
+      "limits": "Jusqu'à 15 Mo et 24 mégapixels. Vectorisation avec palettes de 2, 4 ou 8 couleurs et suppression du fond.",
+      "question": "Faut-il vectoriser le PNG avant l'import dans CorelDRAW ?",
+      "answer": "Vectorisez les logos et dessins au trait. Pour les photos et dégradés, préservez l'image matricielle pour garder une netteté parfaite."
+    },
+    "jpg-to-cdr-converter": {
+      "title": "Convertisseur JPG en CDR",
+      "description": "Convertissez vos images JPG et JPEG pour CorelDRAW en ligne. Préservez les photos matricielles ou vectorisez les logos en tracés pour CorelDRAW.",
+      "how": "Déposez votre image JPG. Choisissez l'incorporation directe ou la vectorisation en tracés SVG, puis ouvrez le résultat dans CorelDRAW.",
+      "limits": "Jusqu'à 15 Mo et 24 mégapixels. Traitement OffscreenCanvas local respectant votre vie privée.",
+      "question": "Puis-je modifier les vecteurs dans CorelDRAW ?",
+      "answer": "Oui, avec l'option vectoriser, l'image est convertie en courbes SVG éditables, redimensionnables et recolorables dans CorelDRAW."
+    },
+    "svg-to-cdr-converter": {
+      "title": "Convertisseur SVG en CDR",
+      "description": "Convertissez vos fichiers SVG pour CorelDRAW en ligne. Préparez des fichiers SVG, PDF ou EPS validés prêts à être ouverts et sauvegardés en CDR.",
+      "how": "Déposez votre graphique SVG. L'outil valide le code vectoriel, élimine les scripts et génère un fichier prêt pour l'import dans CorelDRAW.",
+      "limits": "Jusqu'à 15 Mo. Valide le code XML et supprime automatiquement les scripts superflus.",
+      "question": "Pourquoi valider le SVG avant l'import dans CorelDRAW ?",
+      "answer": "La validation neutralise les balises non reconnues et garantit que CorelDRAW interprète correctement les courbes de Bézier et les aplats."
+    },
+    "ai-to-cdr-converter": {
+      "title": "Convertisseur AI en CDR",
+      "description": "Convertissez vos fichiers Adobe Illustrator AI pour CorelDRAW en ligne. Préparez des fichiers PDF, SVG ou EPS prêts à être importés et enregistrés en CDR.",
+      "how": "Déposez votre fichier Illustrator AI. Le convertisseur extrait la géométrie vectorielle en format PDF ou SVG prêt pour CorelDRAW.",
+      "limits": "Jusqu'à 15 Mo. Prend en charge les fichiers Illustrator compatibles PDF et PostScript.",
+      "question": "CorelDRAW peut-il ouvrir les fichiers AI directement ?",
+      "answer": "Bien que CorelDRAW gère certains fichiers AI, les versions récentes ou effets complexes posent souvent problème. La conversion en format standard garantit une ouverture fluide."
+    },
+    "eps-to-cdr-converter": {
+      "title": "Convertisseur EPS en CDR",
+      "description": "Convertissez vos fichiers EPS vectoriels pour CorelDRAW en ligne. Générez des fichiers PDF, SVG ou EPS normalisés prêts à être importés et sauvés en CDR.",
+      "how": "Déposez votre fichier EPS PostScript. Le moteur normalise les vecteurs et polices pour fournir un fichier prêt pour CorelDRAW.",
+      "limits": "Jusqu'à 15 Mo. Normalise les fichiers EPS PostScript Niveau 2 et 3.",
+      "question": "Pourquoi convertir un EPS avant de l'ouvrir dans CorelDRAW ?",
+      "answer": "La conversion normalise les en-têtes binaires et opérateurs complexes, garantissant l'import fidèle des polices et masques de découpe."
     }
   },
   "flexOptions": {
@@ -6630,5 +6750,44 @@
     "copyAll": "Tout copier",
     "hubTitle": "Outils Webmaster & Développeur",
     "hubDescription": "Utilitaires haute performance sur navigateur pour planification réseau, encodage web, cryptographie et développement."
+  },
+  "corelDraw": {
+    "dropPrompt": "Déposez votre fichier ici ou cliquez pour parcourir",
+    "chooseFile": "Sélectionner un fichier",
+    "nativeNoticeTitle": "Format CDR natif ou sortie prête pour CorelDRAW",
+    "nativeNoticeDesc": "Le CDR est le format propriétaire de CorelDRAW. Pour garantir une compatibilité optimale sans fichier corrompu, Navorika produit des fichiers d'interchange vectoriels ou matriciels vérifiés, prêts à être importés dans CorelDRAW.",
+    "privacyNotice": "Vos fichiers sont traités en toute sécurité et supprimés automatiquement dès la fin de l'opération.",
+    "localPrivacyNotice": "Traitement réalisé intégralement dans votre navigateur. Aucun fichier n'est téléversé.",
+    "versionNotice": "Cet outil examine la structure du conteneur et le code d'en-tête CDR dans votre navigateur. La conversion vers un CDR antérieur requiert l'option Enregistrer sous de CorelDRAW.",
+    "detectedContainer": "Conteneur détecté",
+    "headerCode": "Code d'en-tête",
+    "likelyVersion": "Version CorelDRAW",
+    "fileSize": "Taille du fichier",
+    "conversionMode": "Mode de conversion",
+    "outputFormat": "Format de sortie",
+    "resolution": "Résolution",
+    "quality": "Qualité",
+    "vectorize": "Vectoriser en tracés",
+    "preserveRaster": "Conserver l'image originale",
+    "vectorizeHelp": "Vectorise les zones de couleur en tracés SVG parfaits pour les logos et dessins au trait.",
+    "preserveHelp": "Intègre le visuel matriciel haute résolution directement sans distorsion vectorielle.",
+    "removeBackground": "Supprimer le fond blanc",
+    "colorCount": "Palette de couleurs",
+    "tracingDetail": "Niveau de détail",
+    "detailLow": "Faible (compact)",
+    "detailMedium": "Équilibré",
+    "detailHigh": "Haute précision",
+    "convertBtn": "Convertir pour CorelDRAW",
+    "converting": "Conversion en cours...",
+    "ready": "Fichier prêt au téléchargement",
+    "download": "Télécharger",
+    "reset": "Convertir un autre fichier",
+    "hubSubtitle": "Outils d'interchange et utilitaires gratuits pour CorelDRAW",
+    "hubSection1Title": "Convertir vers CorelDRAW",
+    "hubSection1Desc": "Générez des fichiers d'interchange PDF, SVG ou EPS que CorelDRAW importe parfaitement sans astuces douteuses ni faux fichiers CDR.",
+    "hubSection2Title": "Convertir depuis CorelDRAW",
+    "hubSection2Desc": "Lisez les fichiers CDR pris en charge via nos filtres serveur et exportez vers des formats ouverts vectoriels ou matriciels.",
+    "hubSection3Title": "Utilitaires CDR et vérification prépresse",
+    "hubSection3Desc": "Inspectez les conteneurs, prévisualisez les illustrations, identifiez les versions et vérifiez l'aptitude à l'impression."
   }
 }

@@ -106,12 +106,12 @@ export default function DockerRunGenerator() {
   };
 
   const inputClass =
-    'mt-1.5 w-full rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm font-medium outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20';
+    'mt-1.5 w-full min-w-0 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm font-medium outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20';
 
   return (
-    <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
+    <div className="grid min-w-0 gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
       {/* Inputs Configuration Form */}
-      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-sm sm:p-7">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-7">
         <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
           <div className="flex items-center gap-3">
             <Terminal className="size-6 text-indigo-600 dark:text-indigo-400" />
@@ -128,8 +128,8 @@ export default function DockerRunGenerator() {
 
         <div className="mt-6 space-y-4">
           {/* Image & Container Name */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <div className="min-w-0">
               <label className="text-sm font-semibold">Docker Image</label>
               <input
                 type="text"
@@ -139,7 +139,7 @@ export default function DockerRunGenerator() {
                 className={inputClass}
               />
             </div>
-            <div>
+            <div className="min-w-0">
               <label className="text-sm font-semibold">Container Name (--name)</label>
               <input
                 type="text"
@@ -152,8 +152,8 @@ export default function DockerRunGenerator() {
           </div>
 
           {/* Detached mode & Restart Policy */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <div className="min-w-0">
               <label className="text-sm font-semibold">Restart Policy (--restart)</label>
               <select
                 value={restartPolicy}
@@ -166,7 +166,7 @@ export default function DockerRunGenerator() {
                 <option value="no">no (default non-daemon)</option>
               </select>
             </div>
-            <div className="flex flex-col justify-end">
+            <div className="flex min-w-0 flex-col justify-end">
               <label className="flex cursor-pointer items-center gap-2.5 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3 py-2.5">
                 <input
                   type="checkbox"
@@ -180,12 +180,12 @@ export default function DockerRunGenerator() {
           </div>
 
           {/* Port Mapping */}
-          <div className="rounded-2xl border border-[var(--border)] bg-[var(--background)] p-4">
+          <div className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--background)] p-3 sm:p-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
               Port Mapping (-p host:container)
             </h3>
-            <div className="mt-2.5 grid grid-cols-2 gap-3">
-              <div>
+            <div className="mt-2.5 grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
+              <div className="min-w-0">
                 <label className="text-xs font-semibold text-[var(--muted-foreground)]">Host Port</label>
                 <input
                   type="number"
@@ -197,7 +197,7 @@ export default function DockerRunGenerator() {
                   className={inputClass}
                 />
               </div>
-              <div>
+              <div className="min-w-0">
                 <label className="text-xs font-semibold text-[var(--muted-foreground)]">Container Port</label>
                 <input
                   type="number"
@@ -213,29 +213,29 @@ export default function DockerRunGenerator() {
           </div>
 
           {/* Environment Variables */}
-          <div className="rounded-2xl border border-[var(--border)] bg-[var(--background)] p-4">
+          <div className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--background)] p-3 sm:p-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
               Environment Variables (-e)
             </h3>
-            <div className="mt-2.5 flex gap-2">
+            <div className="mt-2.5 flex flex-wrap gap-2">
               <input
                 type="text"
                 value={newEnvKey}
                 onChange={(e) => setNewEnvKey(e.target.value)}
                 placeholder="KEY (e.g. NODE_ENV)"
-                className="w-1/3 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs font-mono outline-none"
+                className="w-full min-w-0 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs font-mono outline-none sm:w-1/3"
               />
               <input
                 type="text"
                 value={newEnvVal}
                 onChange={(e) => setNewEnvVal(e.target.value)}
                 placeholder="VALUE (e.g. production)"
-                className="flex-1 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs font-mono outline-none"
+                className="min-w-0 flex-1 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs font-mono outline-none"
               />
               <button
                 type="button"
                 onClick={() => addEnvVar()}
-                className="inline-flex items-center gap-1 rounded-xl bg-indigo-600 px-3 py-2 text-xs font-bold text-white hover:bg-indigo-700"
+                className="inline-flex shrink-0 items-center gap-1 rounded-xl bg-indigo-600 px-3 py-2 text-xs font-bold text-white hover:bg-indigo-700"
               >
                 <Plus className="size-3.5" /> Add
               </button>
@@ -246,16 +246,16 @@ export default function DockerRunGenerator() {
                 {envVars.map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between rounded-lg border border-[var(--border)] bg-[var(--card)] px-2.5 py-1 text-xs font-mono"
+                    className="flex min-w-0 items-center justify-between gap-2 rounded-lg border border-[var(--border)] bg-[var(--card)] px-2.5 py-1 text-xs font-mono"
                   >
-                    <span>
+                    <span className="min-w-0 break-all">
                       <strong className="text-indigo-600 dark:text-indigo-400">{item.key}</strong>=
                       {item.value}
                     </span>
                     <button
                       type="button"
                       onClick={() => removeEnvVar(idx)}
-                      className="text-[var(--muted-foreground)] hover:text-red-500"
+                      className="shrink-0 text-[var(--muted-foreground)] hover:text-red-500"
                     >
                       <Trash2 className="size-3" />
                     </button>
@@ -266,29 +266,29 @@ export default function DockerRunGenerator() {
           </div>
 
           {/* Volume Mounts */}
-          <div className="rounded-2xl border border-[var(--border)] bg-[var(--background)] p-4">
+          <div className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--background)] p-3 sm:p-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
               Volume Mounts (-v)
             </h3>
-            <div className="mt-2.5 flex flex-wrap gap-2 sm:flex-row">
+            <div className="mt-2.5 flex flex-wrap gap-2">
               <input
                 type="text"
                 value={newHostPath}
                 onChange={(e) => setNewHostPath(e.target.value)}
                 placeholder="Host path (/data/db)"
-                className="flex-1 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs font-mono outline-none"
+                className="min-w-0 flex-1 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs font-mono outline-none"
               />
               <input
                 type="text"
                 value={newContainerPath}
                 onChange={(e) => setNewContainerPath(e.target.value)}
                 placeholder="Container path (/var/lib/data)"
-                className="flex-1 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs font-mono outline-none"
+                className="min-w-0 flex-1 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs font-mono outline-none"
               />
               <select
                 value={newVolMode}
                 onChange={(e) => setNewVolMode(e.target.value as 'ro' | 'rw')}
-                className="rounded-xl border border-[var(--border)] bg-[var(--card)] px-2 py-2 text-xs font-mono outline-none"
+                className="shrink-0 rounded-xl border border-[var(--border)] bg-[var(--card)] px-2 py-2 text-xs font-mono outline-none"
               >
                 <option value="rw">rw</option>
                 <option value="ro">ro</option>
@@ -296,7 +296,7 @@ export default function DockerRunGenerator() {
               <button
                 type="button"
                 onClick={() => addVolume()}
-                className="inline-flex items-center gap-1 rounded-xl bg-indigo-600 px-3 py-2 text-xs font-bold text-white hover:bg-indigo-700"
+                className="inline-flex shrink-0 items-center gap-1 rounded-xl bg-indigo-600 px-3 py-2 text-xs font-bold text-white hover:bg-indigo-700"
               >
                 <Plus className="size-3.5" /> Add
               </button>
@@ -307,16 +307,16 @@ export default function DockerRunGenerator() {
                 {volumes.map((vol, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between rounded-lg border border-[var(--border)] bg-[var(--card)] px-2.5 py-1 text-xs font-mono"
+                    className="flex min-w-0 items-center justify-between gap-2 rounded-lg border border-[var(--border)] bg-[var(--card)] px-2.5 py-1 text-xs font-mono"
                   >
-                    <span>
+                    <span className="min-w-0 break-all">
                       {vol.hostPath}:{vol.containerPath}
                       {vol.mode === 'ro' ? ':ro' : ''}
                     </span>
                     <button
                       type="button"
                       onClick={() => removeVolume(idx)}
-                      className="text-[var(--muted-foreground)] hover:text-red-500"
+                      className="shrink-0 text-[var(--muted-foreground)] hover:text-red-500"
                     >
                       <Trash2 className="size-3" />
                     </button>
@@ -329,7 +329,7 @@ export default function DockerRunGenerator() {
       </section>
 
       {/* Generated Command Output */}
-      <aside className="min-w-0 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-5 sm:p-7">
+      <aside className="min-w-0 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-4 sm:p-7">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="text-xl font-bold">Generated Docker Run</h2>
@@ -392,14 +392,16 @@ export default function DockerRunGenerator() {
         )}
 
         {/* Command Box */}
-        <div className="mt-5 overflow-hidden rounded-2xl border border-[var(--border)] bg-slate-950 shadow-inner">
+        <div className="mt-5 w-full min-w-0 overflow-hidden rounded-2xl border border-[var(--border)] bg-slate-950 shadow-inner">
           <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900 px-4 py-2 text-xs font-mono text-slate-400">
             <span>bash / zsh terminal</span>
             <span>docker cli</span>
           </div>
-          <pre className="overflow-x-auto p-4 font-mono text-xs leading-relaxed text-emerald-400">
-            <code>{displayedCommand}</code>
-          </pre>
+          <div className="w-full min-w-0 overflow-x-auto p-4">
+            <pre className="font-mono text-xs leading-relaxed text-emerald-400">
+              <code>{displayedCommand}</code>
+            </pre>
+          </div>
         </div>
 
         {/* Security & Verification Callout */}
