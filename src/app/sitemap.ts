@@ -41,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/toolkits',
     '/guides',
     '/guides/how-to-convert-jpg-to-dxf',
+    '/guides/how-does-a-3d-printer-work',
     '/about',
     '/contact',
     '/glossary',
