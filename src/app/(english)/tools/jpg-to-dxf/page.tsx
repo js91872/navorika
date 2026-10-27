@@ -1,12 +1,13 @@
 import type {Metadata} from 'next';
 import Link from 'next/link';
 import Converter from './Converter';
+import { languageAlternates } from '@/lib/i18n/config';
 const url='https://navorika.com/tools/jpg-to-dxf';
 export const metadata:Metadata={
  title:'JPG to DXF Converter – Free Online Image to CAD Tool',
  description:'Convert JPG to DXF online for free. Trace images into editable CAD vector paths for AutoCAD, CNC and laser cutting. Preview, adjust and download.',
  keywords:['jpg to dxf','jpg to dxf converter','convert jpg to dxf','jpeg to dxf converter','image to dxf','raster to dxf','jpg to autocad','jpg to dxf online free','image to cad converter'],
- alternates:{canonical:url},
+ alternates:{canonical:url,languages:languageAlternates('jpg-to-dxf')},
  openGraph:{title:'Free JPG to DXF Converter | Navorika',description:'Trace image outlines into editable DXF CAD polylines, right in your browser.',url}
 };
 const faqs=[

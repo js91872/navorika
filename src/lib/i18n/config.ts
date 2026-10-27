@@ -233,6 +233,7 @@ export const translatedTools = [
   'web-crypto-studio', 'qr-code-generator', 'code-minifier-beautifier',
   'uuid-generator', 'ulid-generator', 'cron-expression-generator', 'cron-expression-humanizer', 'cron-next-run-calculator', 'epoch-time-converter', 'binary-to-decimal-with-steps', 'gitignore-generator', 'docker-run-command-generator', 'git-commit-message-formatter', 'typescript-to-zod-schema-converter', 'markup-formatter', 'psd-to-html', 'step-to-3d-pdf-converter', 'developer-utils',
   'coreldraw-tools', 'cdr-viewer', 'cdr-version-converter', 'cdr-to-pdf-converter', 'cdr-to-svg-converter', 'cdr-to-png-converter', 'cdr-to-jpg-converter', 'cdr-to-eps-converter', 'pdf-to-cdr-converter', 'word-to-cdr-converter', 'png-to-cdr-converter', 'jpg-to-cdr-converter', 'svg-to-cdr-converter', 'ai-to-cdr-converter', 'eps-to-cdr-converter',
+  'ai-video-prompt-generator', 'jpg-to-dxf', 'speaker-dust-cleaning-sound',
 
 ] as const;
 export type TranslatedTool = (typeof translatedTools)[number];
@@ -248,4 +249,14 @@ export function languageAlternates(slug?: TranslatedTool) {
   return Object.fromEntries(['en', ...locales].map((locale) => [
     locale, `https://navorika.com${localizedPath(locale as Language, slug)}`,
   ]).concat([['x-default', `https://navorika.com${localizedPath('en', slug)}`]]));
+}
+
+export function publicPageAlternates(path: string) {
+  const norm = path.startsWith('/') ? path : `/${path}`;
+  return Object.fromEntries(
+    ['en', ...locales].map((loc) => [
+      loc,
+      `https://navorika.com${loc === 'en' ? '' : `/${loc}`}${norm}`,
+    ]).concat([['x-default', `https://navorika.com${norm}`]])
+  );
 }

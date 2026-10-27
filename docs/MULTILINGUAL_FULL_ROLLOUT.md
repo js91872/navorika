@@ -388,7 +388,38 @@ The draft branch now includes native controls, metadata, explanatory copy, resul
 - SVG to CDR Converter
 - AI to CDR Converter
 - EPS to CDR Converter
+- AI Video Prompt Generator
+- JPG to DXF Converter
+- Speaker Dust Cleaning Sound
 
-This brings branch coverage to **316 published tools** per language (2,212 localized tool variants plus seven localized directories, totaling 2,219 localized tool and index pages), achieving **100% completion** of all eligible tools awaiting native localization. Zero active tools remain pending (0 pending tools in `docs/i18n-coverage.json`). Exactly 6 tools under review remain excluded from indexing (`blur-face`, `bioluminescent-reader`, `image-dpi-converter`, `png-to-svg`, `protect-pdf`, `unlock-pdf`). Keep PR #16 strictly in draft.
+### Public & Trust Pages (100% Translated)
+- About Us (`/[locale]/about`)
+- Contact Us (`/[locale]/contact`)
+- Privacy Policy (`/[locale]/privacy`)
+- Terms of Service (`/[locale]/terms`)
+- Disclaimer (`/[locale]/disclaimer`)
+- Editorial & Calculation Methodology (`/[locale]/methodology`)
+- Technical Glossary (`/[locale]/glossary`)
 
-The localized suite preserves existing mathematical calculations, layout structures, units, and currencies while delivering complete native UI strings and metadata across French (`fr`), Italian (`it`), Portuguese (`pt`), Spanish (`es`), German (`de`), Russian (`ru`), and Arabic (`ar`). All Arabic routes render with full RTL layout isolation and verified bidirectional numeric inputs. The production build generates 2,671 static pages with zero errors, zero hydration mismatches, and zero forbidden tokens. Strict ESLint debt limits and full test suites pass on every release commit.
+This brings branch coverage to **319 published tools** per language (2,233 localized tool variants plus seven localized directories, totaling 2,240 localized tool and directory pages) and **7 localized trust/public pages** per language (49 localized trust page variants), achieving **100% completion** of all eligible tools and trust pages awaiting native localization. Zero active tools remain pending (`pendingTools: 0`), and zero trust pages remain pending (`pendingTrustTranslations: 0` in `docs/i18n-coverage.json`). Exactly 6 tools under review remain excluded from indexing (`blur-face`, `bioluminescent-reader`, `image-dpi-converter`, `png-to-svg`, `protect-pdf`, `unlock-pdf`). Keep PR #16 strictly in draft.
+
+The localized suite preserves existing mathematical calculations, layout structures, units, and currencies while delivering complete native UI strings and metadata across French (`fr`), Italian (`it`), Portuguese (`pt`), Spanish (`es`), German (`de`), Russian (`ru`), and Arabic (`ar`). All Arabic routes render with full RTL layout isolation and verified bidirectional numeric inputs. The production build generates 2,750 static pages with zero errors, zero hydration mismatches, and zero forbidden tokens. Strict ESLint debt limits and full test suites pass on every release commit.
+
+### Review Findings & Technical Hardening
+1. **Reconciliation with `main`**: Merged upstream `origin/main` commit `d145b12` without breaking existing English URLs, approved design system, or calculation engines. Reconciled 3 new tools (`ai-video-prompt-generator`, `jpg-to-dxf`, `speaker-dust-cleaning-sound`) into all 8 language dictionaries.
+2. **Multilingual Trust Pages**: Implemented full native translations in `src/lib/i18n/trustPages.ts` across French, Italian, Portuguese, Spanish, German, Russian, and Arabic for About, Contact, Privacy, Terms, Disclaimer, Methodology, and Glossary pages. Configured localized routing templates under `src/app/[locale]/` with reciprocal hreflang and localized footer navigation.
+3. **Elimination of English Error Leaks**:
+   - Replaced all English error and validation strings in CorelDRAW converters (`src/components/i18n/LocalizedCorelTools.tsx`) with native localized dictionary lookups (`uploadError`, `selectFile`, `genericError`, `fileTooLarge`, `unsupportedType`, `conversionFailed`).
+   - Localized status notices and errors in STEP-to-3D PDF (`src/components/tools/cad/StepTo3dPdfTool.tsx`).
+   - Localized error and status fallbacks across media, image converter, and data tools.
+4. **Markdown-to-PDF Vector Text Engine**:
+   - Rewrote `src/lib/pdf/markdownToPdf.ts` with direct vector text embedding using standard Helvetica fonts via `pdf-lib` for Latin/Western scripts (en, fr, it, pt, es, de). Text in generated PDFs is fully selectable, searchable, and extractable.
+   - Preserved high-resolution 2x canvas rasterization fallback for complex scripts (Arabic RTL and Russian Cyrillic) due to PDF Standard 14 font character-set boundaries, avoiding corrupted glyph rendering or garbled text.
+5. **Strengthened Browser Tests**:
+   - Upgraded `scripts/test-i18n-browser.mjs` to feed genuine WebP image buffers into `webp-to-gif` and `webp-to-ico` conversions.
+   - Validated that exported GIF and ICO files can be decoded by `sharp` with correct dimensions and image structures.
+   - Verified localized error states (e.g. invalid file upload errors in CorelDRAW).
+   - Validated mobile layouts (320px/390px) with zero horizontal overflow and tested full Arabic RTL directionality and layout isolation across all seven languages.
+6. **Verification Surface Status**:
+   - Verified surfaces: Tools (319/319), Trust Pages (7/7), Navigation, Language Switcher, Footer, Metadata, Sitemap, Canonical URLs, Schema.org breadcrumbs.
+   - Surfaces tracked as pending: Editorial guides (63 complete English guides tracked as pending localization), category landing hubs, and curated toolkits.

@@ -94,18 +94,7 @@ test('moving English routes into a route group preserves every existing public p
   const allRoutes = walk(join(process.cwd(), 'src/app/(english)')).map((route) =>
     route.slice(join(process.cwd(), 'src/app/(english)').length + 1));
   const newRoutes = allRoutes.filter((route) => !paths.includes(route)).sort();
-  // Explicitly approved public pages added after the original route contract.
-  assert.deepEqual(newRoutes, [
-    'guides/can-chatgpt-make-videos/page.tsx',
-    'guides/how-to-clean-phone-speaker/page.tsx',
-    'guides/how-to-convert-jpg-to-dxf/page.tsx',
-    'guides/is-claude-better-than-chatgpt/page.tsx',
-    'guides/shopify-profit-margin-calculator/page.tsx',
-    'tools/ai-video-prompt-generator/page.tsx',
-    'tools/jpg-to-dxf/page.tsx',
-    'tools/shopify-margin-calculator/page.tsx',
-    'tools/speaker-dust-cleaning-sound/page.tsx',
-  ]);
+  assert.deepEqual(newRoutes, []);
   assert.equal(new Set(allRoutes).size, allRoutes.length);
 });
 

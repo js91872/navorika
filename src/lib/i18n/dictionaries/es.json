@@ -2595,6 +2595,30 @@
       "limits": "Máximo 15 MB. Normaliza archivos EPS PostScript Nivel 2 y 3.",
       "question": "¿Por qué conviene normalizar un archivo EPS antes de abrirlo en CorelDRAW?",
       "answer": "La normalización soluciona discrepancias de cabecera binaria, asegurando que fuentes, trazados y tintas planas se importen con exactitud."
+    },
+    "ai-video-prompt-generator": {
+      "title": "Generador de Prompts de Video con IA",
+      "description": "Genere prompts de video estructurados para flujos texto a video e imagen a video con controles de cámara e iluminación.",
+      "how": "Seleccione el modo, elija proporciones y duración, configure el estilo visual y copie su descripción creativa lista para producción.",
+      "limits": "Esta herramienta elabora instrucciones de texto para modelos creativos; no procesa ni exporta archivos de video directamente.",
+      "question": "¿Puedo usar el prompt generado en plataformas externas de video?",
+      "answer": "Sí. Copie el texto generado y péguelo en su generador o asistente de video preferido."
+    },
+    "jpg-to-dxf": {
+      "title": "Convertidor de JPG a DXF",
+      "description": "Convierta imágenes JPG en líneas vectoriales DXF 2D editables para CAD, CNC y corte láser en su navegador.",
+      "how": "Suba una imagen, ajuste el umbral de contraste, revise la vista previa de polilíneas y descargue el archivo DXF.",
+      "limits": "Traza siluetas contrastadas hasta 640 px; no recrea tolerancias dimensionales de ingeniería.",
+      "question": "¿Puede abrirse el archivo DXF en programas CAD o CNC?",
+      "answer": "Sí. El DXF generado utiliza geometrías estándar compatibles con la mayoría de software CAD y CAM."
+    },
+    "speaker-dust-cleaning-sound": {
+      "title": "Sonido de Limpieza de Altavoz",
+      "description": "Reproduzca tonos de baja frecuencia y barridos de audio para probar y revisar los altavoces de su móvil de forma segura.",
+      "how": "Seleccione un modo, ajuste el volumen a un nivel prudente, coloque el dispositivo y escuche la claridad del sonido.",
+      "limits": "Las vibraciones ayudan a desalojar gotas de agua superficiales; no disuelven suciedad adherida ni reparan componentes dañados.",
+      "question": "¿Puede el sonido reparar un altavoz apagado o distorsionado?",
+      "answer": "Las frecuencias ayudan a evaluar la respuesta y expulsar humedad ligera, pero obstrucciones sólidas requieren limpieza especializada."
     }
   },
   "flexOptions": {
@@ -6788,6 +6812,13 @@
     "hubSection2Title": "Convertir desde CorelDRAW",
     "hubSection2Desc": "Abra archivos CDR admitidos mediante filtros especializados y exporte a formatos estándar vectoriales o raster.",
     "hubSection3Title": "Utilidades CDR y comprobación previa",
-    "hubSection3Desc": "Examine contenedores, previsualice diseños, verifique versiones y revise la preparación para impresión."
+    "hubSection3Desc": "Examine contenedores, previsualice diseños, verifique versiones y revise la preparación para impresión.",
+    "errorUnsupported": "El formato de archivo seleccionado no es compatible con esta conversión.",
+    "errorTooLarge": "El archivo supera el límite de subida de 15 MB.",
+    "errorHeader": "No se pudo leer el encabezado CDR. Verifique que sea un archivo CorelDRAW válido.",
+    "errorConversion": "La conversión falló de forma segura. Verifique el archivo y vuelva a intentarlo.",
+    "errorRateLimit": "Demasiadas solicitudes de conversión. Espere un minuto e inténtelo de nuevo.",
+    "errorServer": "El servidor de conversión no está disponible temporalmente. Inténtelo más tarde.",
+    "errorRasterLarge": "La resolución de la imagen es demasiado grande (máximo 24 megapíxeles)."
   }
 }

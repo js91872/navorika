@@ -2611,7 +2611,7 @@ export default function LocalizedDevTools({ slug, locale, dictionary }: Props) {
   if (slug === 'typescript-to-zod-schema-converter') return <TypescriptToZodConverter />;
   if (slug === 'markup-formatter') return <LocalizedMarkupFormatter dictionary={dictionary} />;
   if (slug === 'psd-to-html') return <PsdToHtmlTool />;
-  if (slug === 'step-to-3d-pdf-converter') return <StepTo3dPdfTool />;
+  if (slug === 'step-to-3d-pdf-converter') return <StepTo3dPdfTool locale={locale} />;
   if (slug === 'developer-utils') return <LocalizedDeveloperUtilsHub locale={locale} dictionary={dictionary} />;
 
   return null;

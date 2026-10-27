@@ -270,8 +270,8 @@ export default function LocalizedImageTools({
       });
 
       setTargetResult(compressed);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : c.errorUnsupported);
+    } catch {
+      setError(c.errorUnsupported);
     } finally {
       setBusy(false);
     }
@@ -333,8 +333,8 @@ export default function LocalizedImageTools({
         setBusy(false);
       };
       img.src = previewSrc || URL.createObjectURL(file);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Processing error');
+    } catch {
+      setError(c.errorUnsupported);
       setBusy(false);
     }
   };
@@ -377,8 +377,8 @@ export default function LocalizedImageTools({
         setBusy(false);
       };
       img.src = previewSrc || URL.createObjectURL(file);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Processing error');
+    } catch {
+      setError(c.errorUnsupported);
       setBusy(false);
     }
   };

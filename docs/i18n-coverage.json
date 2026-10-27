@@ -10,24 +10,24 @@
     "de"
   ],
   "summary": {
-    "tools": 322,
-    "publishedTools": 316,
+    "tools": 325,
+    "publishedTools": 319,
     "pendingTools": 0,
     "underReviewTools": 6,
     "sharedCalculators": 75,
-    "guides": 61,
+    "guides": 63,
     "trustPages": 7,
-    "publishedToolTranslations": 2212,
-    "targetToolTranslations": 2212,
-    "pendingGuideTranslations": 427,
-    "pendingTrustTranslations": 49,
+    "publishedToolTranslations": 2233,
+    "targetToolTranslations": 2233,
+    "pendingGuideTranslations": 441,
+    "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 3886,
-      "visibleAttribute": 355,
-      "semanticCopy": 11412,
-      "reviewLiteral": 44775
+      "jsxText": 4195,
+      "visibleAttribute": 364,
+      "semanticCopy": 11530,
+      "reviewLiteral": 46243
     },
-    "candidateCopyWords": 307863
+    "candidateCopyWords": 316221
   },
   "tools": [
     {
@@ -184,6 +184,31 @@
         "src/app/(english)/tools/ai-token-calculator/page.tsx",
         "src/components/tools/BusinessCalculatorTool.tsx",
         "src/components/tools/ExpansionToolPage.tsx"
+      ]
+    },
+    {
+      "slug": "ai-video-prompt-generator",
+      "title": "AI Video Prompt Generator – Free Text & Image Video Prompts",
+      "category": "developer-tools",
+      "route": "/tools/ai-video-prompt-generator",
+      "source": "src/app/(english)/tools/ai-video-prompt-generator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/ai-video-prompt-generator/page.tsx",
+        "src/components/tools/AIVideoPromptGenerator.tsx"
       ]
     },
     {
@@ -4267,6 +4292,30 @@
       ]
     },
     {
+      "slug": "jpg-to-dxf",
+      "title": "JPG to DXF Converter – Free Online Image to CAD Tool",
+      "category": "image-tools",
+      "route": "/tools/jpg-to-dxf",
+      "source": "src/app/(english)/tools/jpg-to-dxf/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/jpg-to-dxf/page.tsx"
+      ]
+    },
+    {
       "slug": "jpg-to-pdf",
       "title": "JPG to PDF Converter",
       "category": "pdf-tools",
@@ -6786,6 +6835,31 @@
       ]
     },
     {
+      "slug": "speaker-dust-cleaning-sound",
+      "title": "Speaker Dust Cleaning Sound – Free Online Speaker Cleaner",
+      "category": "everyday-calculators",
+      "route": "/tools/speaker-dust-cleaning-sound",
+      "source": "src/app/(english)/tools/speaker-dust-cleaning-sound/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/speaker-dust-cleaning-sound/page.tsx",
+        "src/components/tools/SpeakerAudioStudio.tsx"
+      ]
+    },
+    {
       "slug": "split-pdf",
       "title": "Split PDF Online",
       "category": "pdf-tools",
@@ -8434,6 +8508,22 @@
   ],
   "guides": [
     {
+      "slug": "is-claude-better-than-chatgpt",
+      "title": "Is Claude Better Than ChatGPT? An Honest Comparison",
+      "category": "Developer",
+      "route": "/guides/is-claude-better-than-chatgpt",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-clean-macbook-speakers",
+      "title": "How to Clean MacBook Speakers Safely (MacBook Air & Pro)",
+      "category": "Everyday",
+      "route": "/guides/how-to-clean-macbook-speakers",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
       "slug": "how-to-copy-and-paste-on-macbook",
       "title": "How to Copy and Paste on a MacBook: Keyboard, Trackpad, Files and Photos",
       "category": "Everyday",
@@ -8928,66 +9018,122 @@
       "route": "/about",
       "source": "src/app/(english)/about/page.tsx",
       "routeExists": true,
-      "status": "pending",
-      "translatedLocales": []
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ]
     },
     {
       "slug": "contact",
       "route": "/contact",
       "source": "src/app/(english)/contact/page.tsx",
       "routeExists": true,
-      "status": "pending",
-      "translatedLocales": []
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ]
     },
     {
       "slug": "privacy",
       "route": "/privacy",
       "source": "src/app/(english)/privacy/page.tsx",
       "routeExists": true,
-      "status": "pending",
-      "translatedLocales": []
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ]
     },
     {
       "slug": "terms",
       "route": "/terms",
       "source": "src/app/(english)/terms/page.tsx",
       "routeExists": true,
-      "status": "pending",
-      "translatedLocales": []
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ]
     },
     {
       "slug": "disclaimer",
       "route": "/disclaimer",
       "source": "src/app/(english)/disclaimer/page.tsx",
       "routeExists": true,
-      "status": "pending",
-      "translatedLocales": []
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ]
     },
     {
       "slug": "methodology",
       "route": "/methodology",
       "source": "src/app/(english)/methodology/page.tsx",
       "routeExists": true,
-      "status": "pending",
-      "translatedLocales": []
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ]
     },
     {
       "slug": "glossary",
       "route": "/glossary",
       "source": "src/app/(english)/glossary/page.tsx",
       "routeExists": true,
-      "status": "pending",
-      "translatedLocales": []
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ]
     }
   ],
   "infrastructure": [
     {
       "surface": "home",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "tool-directory",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "categories",
@@ -9007,35 +9153,35 @@
     },
     {
       "surface": "navigation",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "breadcrumbs",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "upload-feedback",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "copy-and-download-feedback",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "errors",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "server-responses",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "metadata",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "structured-data",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     },
     {
       "surface": "sitemap",
@@ -9043,14 +9189,14 @@
     },
     {
       "surface": "language-alternates",
-      "status": "pending-full-inventory-verification"
+      "status": "verified"
     }
   ],
   "pageTemplates": [
     {
       "source": "src/app/(english)/about/page.tsx",
       "routeTemplate": "/about",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/about/page.tsx"
     },
     {
@@ -9068,7 +9214,7 @@
     {
       "source": "src/app/(english)/contact/page.tsx",
       "routeTemplate": "/contact",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/contact/page.tsx"
     },
     {
@@ -9080,13 +9226,13 @@
     {
       "source": "src/app/(english)/disclaimer/page.tsx",
       "routeTemplate": "/disclaimer",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/disclaimer/page.tsx"
     },
     {
       "source": "src/app/(english)/glossary/page.tsx",
       "routeTemplate": "/glossary",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/glossary/page.tsx"
     },
     {
@@ -9094,6 +9240,30 @@
       "routeTemplate": "/guides/[slug]",
       "status": "pending",
       "localizedSource": "src/app/[locale]/guides/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/guides/can-chatgpt-make-videos/page.tsx",
+      "routeTemplate": "/guides/can-chatgpt-make-videos",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/guides/can-chatgpt-make-videos/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/guides/how-to-clean-phone-speaker/page.tsx",
+      "routeTemplate": "/guides/how-to-clean-phone-speaker",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/guides/how-to-clean-phone-speaker/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/guides/how-to-convert-jpg-to-dxf/page.tsx",
+      "routeTemplate": "/guides/how-to-convert-jpg-to-dxf",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/guides/how-to-convert-jpg-to-dxf/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/guides/is-claude-better-than-chatgpt/page.tsx",
+      "routeTemplate": "/guides/is-claude-better-than-chatgpt",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/guides/is-claude-better-than-chatgpt/page.tsx"
     },
     {
       "source": "src/app/(english)/guides/page.tsx",
@@ -9116,7 +9286,7 @@
     {
       "source": "src/app/(english)/methodology/page.tsx",
       "routeTemplate": "/methodology",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/methodology/page.tsx"
     },
     {
@@ -9158,7 +9328,7 @@
     {
       "source": "src/app/(english)/privacy/page.tsx",
       "routeTemplate": "/privacy",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/privacy/page.tsx"
     },
     {
@@ -9176,7 +9346,7 @@
     {
       "source": "src/app/(english)/terms/page.tsx",
       "routeTemplate": "/terms",
-      "status": "pending",
+      "status": "published",
       "localizedSource": "src/app/[locale]/terms/page.tsx"
     },
     {
@@ -9224,6 +9394,12 @@
     {
       "source": "src/app/(english)/tools/ai-token-calculator/page.tsx",
       "routeTemplate": "/tools/ai-token-calculator",
+      "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/ai-video-prompt-generator/page.tsx",
+      "routeTemplate": "/tools/ai-video-prompt-generator",
       "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
@@ -10182,6 +10358,12 @@
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
+      "source": "src/app/(english)/tools/jpg-to-dxf/page.tsx",
+      "routeTemplate": "/tools/jpg-to-dxf",
+      "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
       "source": "src/app/(english)/tools/jpg-to-pdf/page.tsx",
       "routeTemplate": "/tools/jpg-to-pdf",
       "status": "published",
@@ -10772,6 +10954,12 @@
     {
       "source": "src/app/(english)/tools/solar-panel-calculator/page.tsx",
       "routeTemplate": "/tools/solar-panel-calculator",
+      "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/speaker-dust-cleaning-sound/page.tsx",
+      "routeTemplate": "/tools/speaker-dust-cleaning-sound",
       "status": "published",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },

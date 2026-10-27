@@ -342,8 +342,8 @@ export default function LocalizedImageStudioTools({
         throw new Error(res.error || studio.invalidBase64);
       }
       setB64DecodedUrl(res.dataUrl);
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : studio.invalidBase64);
+    } catch {
+      setError(studio.invalidBase64);
     } finally {
       setBusy(false);
     }
@@ -392,7 +392,7 @@ export default function LocalizedImageStudioTools({
         setBusy(false);
       }, 'image/png');
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : c.errorUnsupported);
+      setError(err instanceof Error && err.message === c.errorTooLarge ? c.errorTooLarge : c.errorUnsupported);
       setBusy(false);
     }
   };
@@ -420,8 +420,8 @@ export default function LocalizedImageStudioTools({
       setHtmlResultUrl(res.url);
       setHtmlResultWidth(res.width);
       setHtmlResultHeight(res.height);
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : c.errorUnsupported);
+    } catch {
+      setError(c.errorUnsupported);
     } finally {
       if (op === activeOpRef.current) setBusy(false);
     }

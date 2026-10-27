@@ -2595,6 +2595,30 @@
       "limits": "Jusqu'à 15 Mo. Normalise les fichiers EPS PostScript Niveau 2 et 3.",
       "question": "Pourquoi convertir un EPS avant de l'ouvrir dans CorelDRAW ?",
       "answer": "La conversion normalise les en-têtes binaires et opérateurs complexes, garantissant l'import fidèle des polices et masques de découpe."
+    },
+    "ai-video-prompt-generator": {
+      "title": "Générateur de Prompts Vidéo IA",
+      "description": "Générez des prompts vidéo IA structurés et prêts pour la production avec contrôles de caméra et d'éclairage.",
+      "how": "Sélectionnez votre mode, indiquez le format et la durée, choisissez les mouvements de caméra et l'éclairage, puis copiez votre prompt.",
+      "limits": "Cet outil crée des instructions textuelles structurées ; il ne génère pas directement de fichiers vidéo.",
+      "question": "Puis-je utiliser le prompt avec des outils de génération vidéo externes ?",
+      "answer": "Oui. Copiez le texte généré et collez-le directement dans votre plateforme de création vidéo préférée."
+    },
+    "jpg-to-dxf": {
+      "title": "Convertisseur JPG en DXF",
+      "description": "Convertissez des images JPG en tracés vectoriels DXF 2D modifiables pour la CAO, CNC et découpe laser dans votre navigateur.",
+      "how": "Téléversez une image, ajustez le seuil noir et blanc, contrôlez la réduction des contours et téléchargez le fichier DXF généré.",
+      "limits": "Vectorise les contours à fort contraste jusqu'à 640 px ; ne reconstitue pas les cotes mécaniques précises.",
+      "question": "Les logiciels de CAO peuvent-ils ouvrir le fichier DXF téléchargé ?",
+      "answer": "Oui. Le fichier contient des polylignes standard compatibles avec la plupart des logiciels CAO et CAM."
+    },
+    "speaker-dust-cleaning-sound": {
+      "title": "Son de Nettoyage de Haut-Parleur",
+      "description": "Émettez des tonalités basses fréquences et des balayages sonores pour tester et vérifier vos haut-parleurs mobiles.",
+      "how": "Choisissez un mode sonore, réglez un volume modéré, placez votre téléphone et écoutez la réponse acoustique.",
+      "limits": "Les vibrations sonores peuvent aider à déloger de petites gouttes d'eau ; elles ne réparent pas le matériel défectueux.",
+      "question": "Le son peut-il réparer un haut-parleur étouffé ?",
+      "answer": "Les tonalités aident au diagnostic et à l'expulsion d'eau superficielle, mais les obstructions denses nécessitent un nettoyage manuel."
     }
   },
   "flexOptions": {
@@ -6788,6 +6812,13 @@
     "hubSection2Title": "Convertir depuis CorelDRAW",
     "hubSection2Desc": "Lisez les fichiers CDR pris en charge via nos filtres serveur et exportez vers des formats ouverts vectoriels ou matriciels.",
     "hubSection3Title": "Utilitaires CDR et vérification prépresse",
-    "hubSection3Desc": "Inspectez les conteneurs, prévisualisez les illustrations, identifiez les versions et vérifiez l'aptitude à l'impression."
+    "hubSection3Desc": "Inspectez les conteneurs, prévisualisez les illustrations, identifiez les versions et vérifiez l'aptitude à l'impression.",
+    "errorUnsupported": "Le format de fichier sélectionné n'est pas pris en charge pour cette conversion.",
+    "errorTooLarge": "Le fichier dépasse la limite de téléversement de 15 Mo.",
+    "errorHeader": "Impossible de lire l'en-tête CDR. Veuillez vérifier qu'il s'agit d'un fichier CorelDRAW valide.",
+    "errorConversion": "La conversion a échoué en toute sécurité. Veuillez vérifier le fichier et réessayer.",
+    "errorRateLimit": "Trop de requêtes de conversion. Veuillez patienter une minute et réessayer.",
+    "errorServer": "Le serveur de conversion est temporairement indisponible. Veuillez réessayer plus tard.",
+    "errorRasterLarge": "La résolution de l'image est trop grande (maximum 24 mégapixels)."
   }
 }

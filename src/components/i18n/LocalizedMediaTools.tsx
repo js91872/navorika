@@ -336,7 +336,7 @@ function LocalizedMediaConverter({
         setProgressPercent(0);
         return;
       }
-      setError(err instanceof Error ? err.message : mc.unsupportedFile);
+      setError(mc.unsupportedFile);
       setStatus('error');
     } finally {
       abortControllerRef.current = null;

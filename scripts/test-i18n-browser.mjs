@@ -34,25 +34,35 @@ try {
   browser = await chromium.launch({
     headless: true,
     ...(process.env.CHROMIUM_EXECUTABLE ? { executablePath: process.env.CHROMIUM_EXECUTABLE } : {}),
-    args: ['--no-sandbox', '--disable-dev-shm-usage', '--no-zygote', '--disable-gpu'],
+    args: ['--no-sandbox', '--disable-dev-shm-usage', '--no-zygote', '--disable-gpu', '--js-flags=--max-old-space-size=4096'],
   });
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   await context.route('**/*', (route) => route.request().url().startsWith(base) ? route.continue() : route.abort());
   async function testLocale(locale) {
     const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
     await context.route('**/*', (route) => route.request().url().startsWith(base) ? route.continue() : route.abort());
-    const page = await context.newPage();
-    page.on('pageerror', (error) => {
-      console.error(`PAGE ERROR at ${page.url()}:`, error.message);
-      errors.push(error.message);
-    });
+    let page = await context.newPage();
+    const attachPage = (p) => {
+      p.on('pageerror', (error) => {
+        console.error(`PAGE ERROR at ${p.url()}:`, error.message);
+        errors.push(error.message);
+      });
+    };
+    attachPage(page);
+    let navCount = 0;
     const visit = async (path) => {
+      navCount++;
+      if (navCount % 50 === 0) {
+        await page.close();
+        page = await context.newPage();
+        attachPage(page);
+      }
       const response = await page.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
       assert.equal(response.status(), 200, path);
     };
     const visitTool = async (path) => {
       await visit(path);
-      await page.locator('[data-hydrated="true"]').waitFor({ timeout: 10000 });
+      await page.locator('[data-hydrated="true"]').waitFor({ state: 'attached', timeout: 30000 });
     };
     const noOverflow = async (path) => {
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `Horizontal overflow: ${path}`);
@@ -425,7 +435,7 @@ try {
       workflowsChecked++;
     }
 
-    await visit(`/${locale}/tools/aspect-ratio-padding-calculator`);
+    await visitTool(`/${locale}/tools/aspect-ratio-padding-calculator`);
     assert.match(await page.locator('pre').textContent(), /padding-top: 56.25%/);
     assert.ok((await page.locator('bdi[dir="ltr"]').allTextContents()).some((value) => /^1920\s*×\s*1080/.test(value)), 'Numeric examples must retain width × height order');
     await page.locator('input[type="number"]').nth(0).fill('100');
@@ -444,13 +454,13 @@ try {
     await page.getByText(d.ui.copyError, { exact: true }).waitFor();
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/image-megapixel-calculator`);
+    await visitTool(`/${locale}/tools/image-megapixel-calculator`);
     assert.ok((await page.locator('[aria-live="polite"]').textContent()).includes(`24 ${d.ui.mpUnit}`));
     await page.locator('input[type="number"]').nth(0).fill('1.5');
     assert.equal(await page.locator('main').getByRole('alert').textContent(), d.ui.invalid);
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/print-bleed-calculator`);
+    await visitTool(`/${locale}/tools/print-bleed-calculator`);
     const numbers = page.locator('input[type="number"]');
     assert.ok((await page.locator('[aria-live="polite"]').textContent()).includes(new Intl.NumberFormat(locale).format(216)));
     await page.locator('select').selectOption('inch');
@@ -462,7 +472,7 @@ try {
     assert.equal(await page.locator('main').getByRole('alert').textContent(), d.ui.invalid);
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/css-flexbox-generator`);
+    await visitTool(`/${locale}/tools/css-flexbox-generator`);
     await page.locator('select').nth(0).selectOption('column-reverse');
     await page.locator('select').nth(1).selectOption('space-between');
     assert.equal(await page.locator('select').nth(0).locator('option:checked').textContent(), d.flexOptions['column-reverse']);
@@ -471,7 +481,7 @@ try {
     assert.match(await page.locator('pre').textContent(), /justify-content: space-between/);
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/rgb-cmyk-image-checker`);
+    await visitTool(`/${locale}/tools/rgb-cmyk-image-checker`);
     assert.match(await page.locator('input[type="file"]').getAttribute('class'), /sr-only/);
     const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLbtAAAAABJRU5ErkJggg==', 'base64');
     await page.locator('input[type="file"]').setInputFiles({ name: 'test.png', mimeType: 'image/png', buffer: png });
@@ -486,7 +496,7 @@ try {
     assert.equal(await page.locator('main').getByRole('alert').textContent(), d.ui.fileError);
     assert.equal(await page.locator('dl').count(), 0, 'Previous image result must be cleared');
     workflowsChecked++;
-    await visit(`/${locale}/tools/image-print-size-calculator`);
+    await visitTool(`/${locale}/tools/image-print-size-calculator`);
     const printFields = page.locator('input[type="number"]');
     const formatPrint = (value) => new Intl.NumberFormat(locale, { maximumFractionDigits: 3 }).format(value);
     assert.deepEqual(await page.locator('dl dd').allTextContents(), [10, 8, 25.4, 20.32].map(formatPrint));
@@ -509,7 +519,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.printSize.widthCm));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/pdf-bleed-trim-checker`);
+    await visitTool(`/${locale}/tools/pdf-bleed-trim-checker`);
     const pdf = await PDFDocument.create();
     const pt = (mm) => mm / 25.4 * 72;
     for (let i = 0; i < 5; i++) {
@@ -553,7 +563,7 @@ try {
       assert.equal(await page.locator('main').getByRole('alert').textContent(), d.pdf.tooLarge);
     }
     workflowsChecked++;
-    await visit(`/${locale}/tools/css-gradient-generator`);
+    await visitTool(`/${locale}/tools/css-gradient-generator`);
     const chooseColor = async (index, value) => page.locator('input[type="color"]').nth(index).evaluate((element, next) => {
       Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(element, next);
       element.dispatchEvent(new Event('input', { bubbles: true }));
@@ -576,7 +586,7 @@ try {
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/css-clamp-font-generator`);
+    await visitTool(`/${locale}/tools/css-clamp-font-generator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.equal(await page.locator('[data-font-preview]').textContent(), d.design.sample);
     const fontFields = page.locator('input[type="number"]');
@@ -602,7 +612,7 @@ try {
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/image-scaling-calculator`);
+    await visitTool(`/${locale}/tools/image-scaling-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     const scaleFields = page.locator('input[type="number"]');
     const formatScale = (value) => new Intl.NumberFormat(locale, { maximumFractionDigits: 6 }).format(value);
@@ -630,7 +640,7 @@ try {
     await page.setViewportSize({ width: 1440, height: 1000 });
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/regex-tester`);
+    await visitTool(`/${locale}/tools/regex-tester`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dd').first().textContent()).includes('[0] Hello'));
     await page.locator('main input[type="text"]').nth(0).fill('[0-9]+');
@@ -644,7 +654,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes('Hello'));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/unix-timestamp-converter`);
+    await visitTool(`/${locale}/tools/unix-timestamp-converter`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dd').first().textContent()).includes('2023-11-14'));
     await page.locator('main input[type="text"]').first().fill('invalid');
@@ -655,7 +665,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes('2023-11-14'));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/utm-builder`);
+    await visitTool(`/${locale}/tools/utm-builder`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dd').first().textContent()).includes('utm_source=google'));
     await page.locator('main input[type="text"]').nth(1).fill('newsletter');
@@ -668,7 +678,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes('utm_source=google'));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/meta-tag-generator`);
+    await visitTool(`/${locale}/tools/meta-tag-generator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main pre').textContent()).includes('<title>Navorika - Free Tools</title>'));
     await page.locator('main input[type="text"]').first().fill('Custom Title');
@@ -679,7 +689,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes('<title>Navorika - Free Tools</title>'));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/robots-txt-generator`);
+    await visitTool(`/${locale}/tools/robots-txt-generator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main pre').textContent()).includes('User-agent: *'));
     assert.ok((await page.locator('main pre').textContent()).includes('Disallow: /private/'));
@@ -702,7 +712,7 @@ try {
       assert.ok(finalText && finalText.includes(targetText), `Expected "${targetText}" in dl text, got: "${finalText}"`);
     };
 
-    await visit(`/${locale}/tools/cement-calculator`);
+    await visitTool(`/${locale}/tools/cement-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('1.54') || (await page.locator('main dl').textContent()).includes('1,54'));
     await page.locator('main input[type="number"]').first().fill('2');
@@ -714,7 +724,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['cement-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/sand-calculator`);
+    await visitTool(`/${locale}/tools/sand-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('50'));
     await page.locator('main input[type="number"]').first().fill('20');
@@ -725,7 +735,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['sand-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/paint-calculator`);
+    await visitTool(`/${locale}/tools/paint-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('120'));
     await page.locator('main input[type="number"]').first().fill('5');
@@ -736,7 +746,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['paint-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/tile-calculator`);
+    await visitTool(`/${locale}/tools/tile-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('100'));
     await page.locator('main input[type="number"]').first().fill('5');
@@ -747,7 +757,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['tile-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/steel-weight-calculator`);
+    await visitTool(`/${locale}/tools/steel-weight-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('10.65') || (await page.locator('main dl').textContent()).includes('10,65'));
     await page.locator('main input[type="number"]').first().fill('24');
@@ -759,7 +769,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['steel-weight-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/roof-pitch-calculator`);
+    await visitTool(`/${locale}/tools/roof-pitch-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('6:12'));
     await page.locator('main input[type="number"]').first().fill('12');
@@ -770,7 +780,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['roof-pitch-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/deck-board-calculator`);
+    await visitTool(`/${locale}/tools/deck-board-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('58'));
     await page.locator('main input[type="number"]').first().fill('30');
@@ -781,7 +791,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['deck-board-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/drywall-calculator`);
+    await visitTool(`/${locale}/tools/drywall-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('10'));
     await page.locator('main input[type="number"]').nth(3).fill('0');
@@ -792,7 +802,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['drywall-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/paver-calculator`);
+    await visitTool(`/${locale}/tools/paver-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('495'));
     await page.locator('main input[type="number"]').first().fill('20');
@@ -803,7 +813,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['paver-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/mulch-calculator`);
+    await visitTool(`/${locale}/tools/mulch-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('13'));
     await page.locator('main input[type="number"]').nth(2).fill('6');
@@ -814,7 +824,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['mulch-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/electricity-cost-calculator`);
+    await visitTool(`/${locale}/tools/electricity-cost-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('120'));
     await page.locator('main input[type="number"]').first().fill('2000');
@@ -825,7 +835,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['electricity-cost-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/brick-calculator`);
+    await visitTool(`/${locale}/tools/brick-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     const formatBrick = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(val);
     assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(1504)));
@@ -837,7 +847,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['brick-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/solar-panel-calculator`);
+    await visitTool(`/${locale}/tools/solar-panel-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('19'));
     await page.locator('main input[type="number"]').first().fill('60');
@@ -848,7 +858,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['solar-panel-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/voltage-drop-calculator`);
+    await visitTool(`/${locale}/tools/voltage-drop-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     const formatVd = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(val);
     assert.ok((await page.locator('main dl').textContent()).includes(formatVd(10.42)));
@@ -860,7 +870,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['voltage-drop-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/uk-vat-calculator`);
+    await visitTool(`/${locale}/tools/uk-vat-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     const formatVat = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(val);
     assert.ok((await page.locator('main dl').textContent()).includes(formatVat(120)));
@@ -872,7 +882,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['uk-vat-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/currency-converter`);
+    await visitTool(`/${locale}/tools/currency-converter`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     await page.waitForSelector('main dl');
     assert.ok((await page.locator('main dl').textContent()).includes('EUR'));
@@ -883,7 +893,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['currency-converter'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/debt-snowball-vs-avalanche-calculator`);
+    await visitTool(`/${locale}/tools/debt-snowball-vs-avalanche-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     await page.waitForSelector('main dl');
     assert.ok((await page.locator('main dl').textContent()).length > 0);
@@ -894,7 +904,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['debt-snowball-vs-avalanche-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/retirement-calculator`);
+    await visitTool(`/${locale}/tools/retirement-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     await page.waitForSelector('main dl');
     assert.ok((await page.locator('main dl').textContent()).length > 0);
@@ -905,7 +915,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['retirement-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/fertilizer-calculator`);
+    await visitTool(`/${locale}/tools/fertilizer-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('lb'));
     await page.locator('main input[type="number"]').first().fill('');
@@ -916,7 +926,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['fertilizer-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/reverse-sales-tax-calculator`);
+    await visitTool(`/${locale}/tools/reverse-sales-tax-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).includes('100'));
     await page.locator('main input[type="number"]').first().fill('');
@@ -927,7 +937,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['reverse-sales-tax-calculator'].title));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/shopify-margin-calculator`);
+    await visitTool(`/${locale}/tools/shopify-margin-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.ok((await page.locator('main dl').textContent()).length > 0);
     await page.locator('main input[type="number"]').first().fill('');
@@ -939,7 +949,7 @@ try {
     workflowsChecked++;
 
     // 1. Functional workflow & export validation: Markdown to PDF with Arabic & Russian
-    await visit(`/${locale}/tools/markdown-to-pdf`);
+    await visitTool(`/${locale}/tools/markdown-to-pdf`);
     const mdInput = page.locator('#markdown-text-area');
     await mdInput.waitFor();
     await mdInput.fill(`# Заголовок документа\n\nЭто текст на русском языке для проверки Unicode в PDF.\n\n# عنوان تجريبي\n\nهذا نص عربي لاختبار التصدير والاتجاه.`);
@@ -954,15 +964,15 @@ try {
     workflowsChecked++;
     exportsValidated++;
 
-    // 2. Functional workflow & export validation: WebP to GIF (genuine GIF89a encoding)
-    await visit(`/${locale}/tools/webp-to-gif`);
-    const testPngBuffer = await sharp({
+    // 2. Functional workflow & export validation: WebP to GIF (genuine WebP input -> genuine GIF89a encoding)
+    await visitTool(`/${locale}/tools/webp-to-gif`);
+    const testWebpBuffer = await sharp({
       create: { width: 32, height: 32, channels: 4, background: { r: 60, g: 120, b: 240, alpha: 1 } },
-    }).png().toBuffer();
+    }).webp().toBuffer();
     await page.locator('input[type="file"]').setInputFiles({
-      name: 'sample.png',
-      mimeType: 'image/png',
-      buffer: testPngBuffer,
+      name: 'sample.webp',
+      mimeType: 'image/webp',
+      buffer: testWebpBuffer,
     });
     await page.getByRole('button', { name: new RegExp(d.imageTools.converters.convertBtn, 'i') }).click();
     const gifDownloadPromise = page.waitForEvent('download');
@@ -980,12 +990,12 @@ try {
     workflowsChecked++;
     exportsValidated++;
 
-    // 3. Functional workflow & export validation: SVG/WebP to ICO (genuine ICO header & 64x64 entry)
-    await visit(`/${locale}/tools/webp-to-ico`);
+    // 3. Functional workflow & export validation: WebP to ICO (genuine WebP input -> valid ICO header & 64x64 entry)
+    await visitTool(`/${locale}/tools/webp-to-ico`);
     await page.locator('input[type="file"]').setInputFiles({
-      name: 'sample.png',
-      mimeType: 'image/png',
-      buffer: testPngBuffer,
+      name: 'sample.webp',
+      mimeType: 'image/webp',
+      buffer: testWebpBuffer,
     });
     await page.getByRole('button', { name: new RegExp(d.imageTools.converters.convertBtn, 'i') }).click();
     const icoDownloadPromise = page.waitForEvent('download');
@@ -1009,8 +1019,12 @@ try {
     workflowsChecked++;
     exportsValidated++;
 
+    const testPngBuffer = await sharp({
+      create: { width: 32, height: 32, channels: 4, background: { r: 60, g: 120, b: 240, alpha: 1 } },
+    }).png().toBuffer();
+
     // 4. Functional workflow & export validation: Image conversion (JPG to PNG)
-    await visit(`/${locale}/tools/convert-jpg-to-png`);
+    await visitTool(`/${locale}/tools/convert-jpg-to-png`);
     const testJpgBuffer = await sharp({
       create: { width: 48, height: 48, channels: 3, background: { r: 200, g: 80, b: 40 } },
     }).jpeg().toBuffer();
@@ -1034,7 +1048,7 @@ try {
     exportsValidated++;
 
     // 5. Functional workflow: Target compression (compress-image-to-100kb)
-    await visit(`/${locale}/tools/compress-image-to-100kb`);
+    await visitTool(`/${locale}/tools/compress-image-to-100kb`);
     await page.locator('input[type="file"]').setInputFiles({
       name: 'sample.png',
       mimeType: 'image/png',
@@ -1051,7 +1065,7 @@ try {
     exportsValidated++;
 
     // 6. Functional workflow: PDF Word Counter with sample PDF
-    await visit(`/${locale}/tools/pdf-word-counter`);
+    await visitTool(`/${locale}/tools/pdf-word-counter`);
     const sampleDoc = await PDFDocument.create();
     sampleDoc.addPage([595, 842]);
     const sampleDocBytes = Buffer.from(await sampleDoc.save());
@@ -1062,6 +1076,19 @@ try {
     });
     await page.locator('main dl').waitFor();
     assert.ok((await page.locator('main dl').textContent()).length > 0);
+    workflowsChecked++;
+
+    // 7. Functional workflow & error validation: CorelDRAW localized validation without English leaks
+    await visitTool(`/${locale}/tools/cdr-to-pdf-converter`);
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'unsupported.txt',
+      mimeType: 'text/plain',
+      buffer: Buffer.from('unsupported text file content'),
+    });
+    const alertLocator = page.locator('main [role="alert"]');
+    await alertLocator.waitFor({ state: 'visible' });
+    const alertText = await alertLocator.textContent();
+    assert.equal(alertText.trim(), d.corelDraw.errorUnsupported);
     workflowsChecked++;
     } finally {
       await page.close();
@@ -1081,12 +1108,22 @@ try {
   );
 
   // Dedicated English page and global navigation checks
-  const englishPage = await context.newPage();
-  englishPage.on('pageerror', (error) => {
-    console.error(`PAGE ERROR at ${englishPage.url()}:`, error.message);
-    errors.push(error.message);
-  });
+  let englishPage = await context.newPage();
+  const attachEn = (p) => {
+    p.on('pageerror', (error) => {
+      console.error(`PAGE ERROR at ${p.url()}:`, error.message);
+      errors.push(error.message);
+    });
+  };
+  attachEn(englishPage);
+  let enCount = 0;
   const visitEn = async (path) => {
+    enCount++;
+    if (enCount % 50 === 0) {
+      await englishPage.close();
+      englishPage = await context.newPage();
+      attachEn(englishPage);
+    }
     const response = await englishPage.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
     assert.equal(response.status(), 200, path);
   };
@@ -1153,8 +1190,14 @@ try {
   await englishPage.waitForURL(`${base}/tools/print-bleed-calculator`);
   assert.equal(await englishPage.locator('html').getAttribute('lang'), 'en');
   assert.notEqual(await englishPage.locator('html').getAttribute('dir'), 'rtl');
-  for (const path of ['/xx', '/fr/tools/not-a-tool', '/fr/privacy', '/ar/tools/image-dpi-converter', '/en']) {
+  for (const path of ['/xx', '/fr/tools/not-a-tool', '/fr/not-a-page', '/ar/tools/image-dpi-converter', '/en']) {
     assert.equal((await context.request.get(`${base}${path}`)).status(), 404, path);
+  }
+  for (const pageName of ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary']) {
+    for (const locale of locales) {
+      const res = await context.request.get(`${base}/${locale}/${pageName}`);
+      assert.equal(res.status(), 200, `/${locale}/${pageName}`);
+    }
   }
   const sitemap = await (await context.request.get(`${base}/sitemap.xml`)).text();
   for (const locale of locales) for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`));

@@ -33,6 +33,9 @@ const LocalizedMediaTools = dynamic(() => import('./LocalizedMediaTools'));
 const LocalizedDataTools = dynamic(() => import('./LocalizedDataTools'));
 const LocalizedDevTools = dynamic(() => import('./LocalizedDevTools'));
 const LocalizedCorelTools = dynamic(() => import('./LocalizedCorelTools'));
+const AIVideoPromptGenerator = dynamic(() => import('@/components/tools/AIVideoPromptGenerator'));
+const JpgToDxfConverter = dynamic(() => import('@/components/tools/JpgToDxfConverter'));
+const SpeakerAudioStudio = dynamic(() => import('@/components/tools/SpeakerAudioStudio'));
 
 function NumericTools({ slug, d, locale }: { slug: TranslatedTool; d: Dictionary; locale: Locale }) {
   const isMega = slug === 'image-megapixel-calculator';
@@ -485,6 +488,9 @@ export default function LocalizedTools({ slug, dictionary, locale }: { slug: Tra
     if (slug === 'pdf-bleed-trim-checker' || slug === 'image-print-size-calculator') return <LocalizedPrintTools slug={slug} d={dictionary} locale={locale} />;
     if (slug === 'css-flexbox-generator') return <FlexTool d={dictionary} />;
     if (slug === 'rgb-cmyk-image-checker') return <ColorTool d={dictionary} locale={locale} />;
+    if (slug === 'ai-video-prompt-generator') return <AIVideoPromptGenerator />;
+    if (slug === 'jpg-to-dxf') return <JpgToDxfConverter />;
+    if (slug === 'speaker-dust-cleaning-sound') return <SpeakerAudioStudio />;
     return <NumericTools slug={slug} d={dictionary} locale={locale} />;
   };
 

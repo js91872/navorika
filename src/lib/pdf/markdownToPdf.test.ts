@@ -50,7 +50,7 @@ describe('Markdown to PDF Unicode Preservation', () => {
     assert.ok(doc.getPageCount() >= 1);
   });
 
-  it('converts multilingual and accented Latin markdown correctly', async () => {
+  it('converts multilingual and accented Latin markdown correctly with selectable vector text', async () => {
     const md = `# Multilingual Test: Français, Español, Deutsch & Italiano
 - Français: Les élèves étudient l'ingénierie à l'université de Genève.
 - Español: Mañana habrá una reunión de diseño en el año 2026.
@@ -63,5 +63,20 @@ describe('Markdown to PDF Unicode Preservation', () => {
 
     const doc = await PDFDocument.load(pdfBytes);
     assert.equal(doc.getPageCount(), 1);
+
+    // Verify vector text is selectable and extractable using pdfjs-dist
+    const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
+    const loadingTask = pdfjs.getDocument({ data: pdfBytes });
+    const pdf = await loadingTask.promise;
+    const page = await pdf.getPage(1);
+    const content = await page.getTextContent();
+    const extracted = content.items.map((item: any) => item.str).join(' ');
+
+    assert.ok(extracted.includes('Multilingual Test'), 'H1 title extracted');
+    assert.ok(extracted.includes('Français'), 'French text extracted');
+    assert.ok(extracted.includes('Español'), 'Spanish text extracted');
+    assert.ok(extracted.includes('Deutsch'), 'German text extracted');
+    assert.ok(extracted.includes('Italiano'), 'Italian text extracted');
+    assert.ok(pdfBytes.length < 10000, 'Vector PDF is compact (<10KB)');
   });
 });

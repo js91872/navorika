@@ -282,7 +282,7 @@ export default function LocalizedImageConverterTools({
       setResultUrl(URL.createObjectURL(outputBlob));
     } catch (err) {
       if (opId === activeOpIdRef.current) {
-        setError(err instanceof Error ? err.message : c.errorUnsupported);
+        setError(c.errorUnsupported);
       }
     } finally {
       if (opId === activeOpIdRef.current) {

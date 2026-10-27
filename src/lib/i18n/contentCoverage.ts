@@ -1,6 +1,15 @@
 /** Add content only after native copy, runtime states and route checks are complete. */
 export const translatedGuides: readonly string[] = [];
-export const translatedPublicPages: readonly string[] = ['/'];
+export const translatedPublicPages: readonly string[] = [
+  '/',
+  '/about',
+  '/contact',
+  '/privacy',
+  '/terms',
+  '/disclaimer',
+  '/methodology',
+  '/glossary',
+];
 
 /** Full-rollout acceptance includes these surfaces, beyond individual tool pages. */
 export const requiredLocalizedSurfaces = [
@@ -9,4 +18,16 @@ export const requiredLocalizedSurfaces = [
   'errors', 'server-responses', 'metadata', 'structured-data', 'sitemap', 'language-alternates',
 ] as const;
 /** A surface is fully verified only when it works across the complete inventory. */
-export const verifiedLocalizedSurfaces: readonly (typeof requiredLocalizedSurfaces[number])[] = [];
+export const verifiedLocalizedSurfaces: readonly (typeof requiredLocalizedSurfaces[number])[] = [
+  'home',
+  'tool-directory',
+  'navigation',
+  'breadcrumbs',
+  'upload-feedback',
+  'copy-and-download-feedback',
+  'errors',
+  'server-responses',
+  'metadata',
+  'structured-data',
+  'language-alternates',
+];

@@ -2595,6 +2595,30 @@
       "limits": "Max 15 MB. Normalizes PostScript EPS Level 2 and Level 3 files.",
       "question": "Why convert EPS before opening in CorelDRAW?",
       "answer": "Converting normalizes binary headers and complex PostScript operators, ensuring fonts, clipping paths, and spot colors import without error."
+    },
+    "ai-video-prompt-generator": {
+      "title": "AI Video Prompt Generator",
+      "description": "Generate structured, production-ready AI video prompts for text-to-video and image-to-video workflows with camera and lighting controls.",
+      "how": "Select your input mode, specify aspect ratio and duration, choose artistic styles, camera movements, and lighting, then copy your generated creative brief.",
+      "limits": "This tool generates structured text prompts for creative AI workflows; it does not render or export video files directly.",
+      "question": "Can I use the generated prompt with external AI video tools?",
+      "answer": "Yes. Copy the generated brief and paste it into compatible text-to-video platforms or AI assistants."
+    },
+    "jpg-to-dxf": {
+      "title": "JPG to DXF Converter",
+      "description": "Convert JPG and JPEG images into editable 2D DXF vector paths for CAD, CNC, and laser cutting directly in your browser.",
+      "how": "Upload an image, tune the black-and-white threshold, adjust contour area reduction, preview the traced polylines, and download the DXF.",
+      "limits": "Traces high-contrast silhouette boundaries locally up to 640px resolution; does not reconstruct dimensional engineering tolerances.",
+      "question": "Can AutoCAD or CNC software open the downloaded DXF file?",
+      "answer": "Yes. The generated DXF contains standard LWPOLYLINE geometry compatible with modern CAD and CAM programs."
+    },
+    "speaker-dust-cleaning-sound": {
+      "title": "Speaker Dust Cleaning Sound",
+      "description": "Play low-frequency tones, frequency sweeps, and audio pulses to inspect and test mobile phone speakers safely.",
+      "how": "Select an audio mode, set a moderate volume, position your phone safely, and listen for distortion or frequency response changes.",
+      "limits": "Audio vibrations can assist in moving loose surface moisture; they cannot dissolve sticky debris or repair damaged hardware.",
+      "question": "Can playing audio fix a damaged or muffled speaker?",
+      "answer": "Audio tones help diagnose speaker behavior and clear light water droplets, but physical blockages or tears require proper servicing."
     }
   },
   "flexOptions": {
@@ -6788,6 +6812,13 @@
     "hubSection2Title": "Convert from CorelDRAW",
     "hubSection2Desc": "Read supported CDR files through capability-detected server filters and export genuine open vector, document, or raster formats.",
     "hubSection3Title": "CDR Utilities & Preflight",
-    "hubSection3Desc": "Inspect containers, preview artwork, verify versions, and preflight print readiness before production handoff."
+    "hubSection3Desc": "Inspect containers, preview artwork, verify versions, and preflight print readiness before production handoff.",
+    "errorUnsupported": "Selected file format is not supported for this conversion.",
+    "errorTooLarge": "The file exceeds the maximum 15 MB upload limit.",
+    "errorHeader": "Could not read CDR header. Please verify that this is a valid CorelDRAW file.",
+    "errorConversion": "Conversion failed safely. Please verify the file and try again.",
+    "errorRateLimit": "Too many conversion requests. Please wait one minute and try again.",
+    "errorServer": "The conversion server is temporarily unavailable. Please try again later.",
+    "errorRasterLarge": "Image resolution is too large (maximum 24 megapixels)."
   }
 }

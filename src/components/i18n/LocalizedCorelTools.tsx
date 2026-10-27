@@ -394,7 +394,7 @@ function LocalizedCdrVersionChecker({
     setInfo(null);
     if (!/\.cdr$/i.test(next.name) || !next.size || next.size > CORELDRAW_MAX_UPLOAD_BYTES) {
       setFile(null);
-      setError(d.tools['cdr-version-converter']?.limits ?? 'File must be under 15 MB.');
+      setError(!/\.cdr$/i.test(next.name) ? ui.errorUnsupported : ui.errorTooLarge);
       return;
     }
     try {
@@ -402,9 +402,9 @@ function LocalizedCdrVersionChecker({
       const detected = detectCdrVersion(bytes);
       setFile(next);
       setInfo({ ...detected, size: next.size });
-    } catch (cause) {
+    } catch {
       setFile(null);
-      setError(cause instanceof Error ? cause.message : 'Could not read header.');
+      setError(ui.errorHeader);
     }
   };
 
@@ -493,12 +493,12 @@ function LocalizedRasterToCorelTool({
     const expected = format === 'jpg' ? /\.jpe?g$/i : /\.png$/i;
     if (!expected.test(next.name) || !next.type.startsWith('image/')) {
       setFile(null);
-      setError(`Format: .${format.toUpperCase()}`);
+      setError(ui.errorUnsupported);
       return;
     }
     if (!next.size || next.size > CORELDRAW_MAX_UPLOAD_BYTES) {
       setFile(null);
-      setError('Maximum 15 MB.');
+      setError(ui.errorTooLarge);
       return;
     }
     setFile(next);
@@ -515,7 +515,7 @@ function LocalizedRasterToCorelTool({
       const bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
       if (bitmap.width * bitmap.height > CORELDRAW_MAX_RASTER_PIXELS) {
         bitmap.close();
-        throw new Error('Image exceeds 24 MP.');
+        throw new Error('TOO_LARGE');
       }
 
       let blob: Blob;
@@ -535,7 +535,7 @@ function LocalizedRasterToCorelTool({
           const height = Math.max(1, Math.round(bitmap.height * scale));
           const canvas = new OffscreenCanvas(width, height);
           const ctx = canvas.getContext('2d', { willReadFrequently: true });
-          if (!ctx) throw new Error('Canvas unavailable.');
+          if (!ctx) throw new Error('CANVAS_UNAVAILABLE');
           ctx.drawImage(bitmap, 0, 0, width, height);
           const pixels = ctx.getImageData(0, 0, width, height).data;
           const svg = vectorizeRgbaToSvg(pixels, width, height, {
@@ -549,7 +549,7 @@ function LocalizedRasterToCorelTool({
           const reader = new FileReader();
           const dataUrl = await new Promise<string>((resolve, reject) => {
             reader.onload = () => resolve(String(reader.result));
-            reader.onerror = () => reject(new Error('Read failed.'));
+            reader.onerror = () => reject(new Error('READ_FAILED'));
             reader.readAsDataURL(file);
           });
           const escaped = dataUrl.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
@@ -563,7 +563,7 @@ function LocalizedRasterToCorelTool({
         name: `${file.name.replace(/\.[^.]+$/, '')}-coreldraw-ready.${output}`,
       });
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : 'Error processing image.');
+      setError(cause instanceof Error && cause.message === 'TOO_LARGE' ? ui.errorRasterLarge : ui.errorConversion);
     } finally {
       setBusy(false);
     }
@@ -779,12 +779,12 @@ function LocalizedCorelServerTool({
     const extension = next.name.toLowerCase().split('.').pop() as CorelInputFormat;
     if (!config.inputFormats.includes(extension)) {
       setFile(null);
-      setError(`Supported formats: ${config.inputFormats.map((f) => `.${f}`).join(', ')}`);
+      setError(ui.errorUnsupported);
       return;
     }
     if (!next.size || next.size > CORELDRAW_MAX_UPLOAD_BYTES) {
       setFile(null);
-      setError('Maximum 15 MB.');
+      setError(ui.errorTooLarge);
       return;
     }
     setFile(next);
@@ -809,8 +809,10 @@ function LocalizedCorelServerTool({
 
       const response = await fetch('/api/coreldraw/convert', { method: 'POST', body: form });
       if (!response.ok) {
-        const body = (await response.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(body?.error ?? 'Conversion failed safely.');
+        if (response.status === 429) throw new Error('RATE_LIMIT');
+        if (response.status === 413) throw new Error('TOO_LARGE');
+        if (response.status === 503 || response.status === 502) throw new Error('SERVER_UNAVAILABLE');
+        throw new Error('CONVERSION_FAILED');
       }
 
       const blob = await response.blob();
@@ -822,7 +824,11 @@ function LocalizedCorelServerTool({
         note: response.headers.get('x-conversion-note') ?? '',
       });
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : 'Conversion failed safely.');
+      const code = cause instanceof Error ? cause.message : '';
+      if (code === 'RATE_LIMIT') setError(ui.errorRateLimit);
+      else if (code === 'TOO_LARGE') setError(ui.errorTooLarge);
+      else if (code === 'SERVER_UNAVAILABLE') setError(ui.errorServer);
+      else setError(ui.errorConversion);
     } finally {
       setBusy(false);
     }

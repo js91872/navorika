@@ -131,8 +131,8 @@ function LocalizedXmlToCsv({
       a.download = `${(file?.name.replace(/\.[^.]+$/, '') || 'navorika_export')}.csv`;
       a.click();
       setTimeout(() => URL.revokeObjectURL(url), 1500);
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : d.ui.invalid);
+    } catch {
+      setError(d.ui.invalid);
     } finally {
       setBusy(false);
     }

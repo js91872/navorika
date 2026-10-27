@@ -2595,6 +2595,30 @@
       "limits": "Maximal 15 MB pro Datei. Normalisiert PostScript EPS Level 2 und Level 3.",
       "question": "Warum sollte man EPS vor dem CorelDRAW-Import konvertieren?",
       "answer": "Die Konvertierung bereinigt binäre Header und komplexe PostScript-Befehle, sodass Kurven und Beschneidungspfade fehlerfrei importiert werden."
+    },
+    "ai-video-prompt-generator": {
+      "title": "KI-Video-Prompt-Generator",
+      "description": "Erstellen Sie strukturierte KI-Video-Prompts für Text-to-Video- und Image-to-Video-Workflows mit Kamera- und Lichtsteuerung.",
+      "how": "Wählen Sie Eingabemodus, Seitenverhältnis und Dauer, definieren Sie Kamerabewegung und Beleuchtung und kopieren Sie das fertige Briefing.",
+      "limits": "Dieses Werkzeug erstellt strukturierte Textanweisungen für KI-Modelle; es rendert keine Videodateien direkt.",
+      "question": "Kann ich den Prompt für externe Video-Tools verwenden?",
+      "answer": "Ja. Kopieren Sie den Text und fügen Sie ihn in Ihre bevorzugte KI-Videoplattform ein."
+    },
+    "jpg-to-dxf": {
+      "title": "JPG-zu-DXF-Konverter",
+      "description": "Konvertieren Sie JPG-Bilder direkt im Browser in bearbeitbare 2D-DXF-Vektorpfade für CAD, CNC und Laserschneiden.",
+      "how": "Laden Sie ein Bild hoch, passen Sie den Schwellenwert an, prüfen Sie die Vektorkonturen und laden Sie die DXF-Datei herunter.",
+      "limits": "Vektorisiert kontrastreiche Konturen bis 640 px; rekonstruiert keine exakten technischen Bemaßungen.",
+      "question": "Können CAD-Programme die heruntergeladene DXF-Datei öffnen?",
+      "answer": "Ja. Die erzeugte DXF-Datei enthält standardkonforme Polylinien für gängige CAD- und CAM-Systeme."
+    },
+    "speaker-dust-cleaning-sound": {
+      "title": "Lautsprecher-Reinigungston",
+      "description": "Spielen Sie Tieffrequenztöne und Frequenzdurchläufe ab, um Smartphone-Lautsprecher sicher zu prüfen und zu testen.",
+      "how": "Wählen Sie einen Modus, stellen Sie eine moderate Lautstärke ein, platzieren Sie das Telefon und überprüfen Sie die Klangqualität.",
+      "limits": "Schallschwingungen können leichte Feuchtigkeit lösen; sie entfernen keinen verklebten Schmutz und reparieren keine Hardware.",
+      "question": "Kann ein Ton einen gedämpften Lautsprecher reparieren?",
+      "answer": "Die Frequenzen dienen der akustischen Diagnose und dem Ausstoßen von Wassertröpfchen, ersetzen jedoch keine mechanische Reparatur."
     }
   },
   "flexOptions": {
@@ -6788,6 +6812,13 @@
     "hubSection2Title": "Aus CorelDRAW konvertieren",
     "hubSection2Desc": "Öffnen Sie unterstützte CDR-Dateien und exportieren Sie in offene Vektor-, Dokument- oder Bildformate.",
     "hubSection3Title": "CDR-Dienstprogramme und Druckvorstufe",
-    "hubSection3Desc": "Untersuchen Sie Container, prüfen Sie Vorschauen, stellen Sie Versionen fest und testen Sie die Druckreife."
+    "hubSection3Desc": "Untersuchen Sie Container, prüfen Sie Vorschauen, stellen Sie Versionen fest und testen Sie die Druckreife.",
+    "errorUnsupported": "Das ausgewählte Dateiformat wird für diese Konvertierung nicht unterstützt.",
+    "errorTooLarge": "Die Datei überschreitet die Upload-Grenze von 15 MB.",
+    "errorHeader": "CDR-Header konnte nicht gelesen werden. Bitte prüfen Sie, ob es sich um eine gültige CorelDRAW-Datei handelt.",
+    "errorConversion": "Die Konvertierung ist sicher fehlgeschlagen. Bitte überprüfen Sie die Datei und versuchen Sie es erneut.",
+    "errorRateLimit": "Zu viele Konvertierungsanfragen. Bitte warten Sie eine Minute und versuchen Sie es erneut.",
+    "errorServer": "Der Konvertierungsserver ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut.",
+    "errorRasterLarge": "Die Bildauflösung ist zu groß (maximal 24 Megapixel)."
   }
 }
