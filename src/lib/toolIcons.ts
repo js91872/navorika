@@ -1,5 +1,55 @@
 // Comprehensive icon mapping for all tools
 export const toolIcons: Record<string, string> = {
+  // ====== OCTOBER 2026 REGISTRY COVERAGE: 48 NEW TOOL ICONS ======
+  'ai-video-prompt-generator': '🎬',
+  'jpg-to-dxf': '📐',
+  'speaker-dust-cleaning-sound': '🔊',
+  'shopify-margin-calculator': '📊',
+  'reverse-sales-tax-calculator': '🧾',
+  'vcf-to-csv': '📇',
+  'avif-to-png': '🖼️',
+  'webp-to-gif': '🎞️',
+  'svg-to-ico': '🎨',
+  'heic-to-pdf': '📄',
+  'markdown-to-pdf': '📑',
+  'xml-to-csv': '📊',
+  'jfif-to-png': '🖼️',
+  'webp-to-ico': '🎨',
+  'txt-to-image': '🖼️',
+  'csv-to-vcard': '📇',
+  'website-worth-calculator': '🌐',
+  'resize-image-to-1000x1000': '📐',
+  'ppi-calculator': '🔍',
+  'fertilizer-calculator': '🌱',
+  'square-footage-calculator': '📏',
+  'cubic-yard-calculator': '📦',
+  'roofing-shingle-calculator': '🏠',
+  'rafter-length-calculator': '📐',
+  'stud-calculator': '🪵',
+  'drywall-mud-calculator': '🧱',
+  'roof-ridge-height-calculator': '🏠',
+  'fascia-replacement-cost-calculator': '🏡',
+  'battery-charge-time-calculator': '🔋',
+  'black-and-white-image-converter': '◐',
+  'uk-vat-calculator': '🇬🇧',
+  'json-to-yaml-converter': '🔄',
+  'yaml-to-json-converter': '🔄',
+  'json-to-toml-converter': '🔄',
+  'toml-to-json-converter': '🔄',
+  'yaml-validator': '✅',
+  'epoch-time-converter': '🕒',
+  'binary-to-decimal-with-steps': '🔢',
+  'ulid-generator': '🆔',
+  'cron-expression-generator': '⏰',
+  'image-to-base64-converter': '🖼️',
+  'base64-to-image-converter': '🖼️',
+  'compress-image-to-20kb': '📦',
+  'compress-image-to-50kb': '📦',
+  'compress-image-to-100kb': '📦',
+  'compress-image-to-200kb': '📦',
+  'compress-jpg-to-100kb': '📦',
+  'compress-png-to-100kb': '📦',
+
   // ====== AUTO-AUDITED TOOL ICONS ======
   'css-gradient-generator': '🎨',
   'finance-calculators': '🛠️',
@@ -305,8 +355,6 @@ export const toolIcons: Record<string, string> = {
 
 export const getToolIcon = (slug: string): string => {
   if (toolIcons[slug]) return toolIcons[slug];
-  for (const [key, icon] of Object.entries(toolIcons)) {
-    if (slug.includes(key)) return icon;
-  }
-  return '🔧';
+  // Unknown tools receive a neutral icon rather than a misleading wrench.
+  return '🧩';
 };
