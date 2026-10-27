@@ -1,0 +1,28 @@
+import type { GuideContent } from './guideContent';
+
+export const claudeComparisonGuideContent: Record<string, GuideContent> = {
+  'is-claude-better-than-chatgpt': {
+    intro: 'Is Claude better than ChatGPT? Not in every situation. These two AI assistants can both help with writing, coding, studying and document analysis, but practical usefulness depends on your precise task, current model, subscription plan and workflow. This independent guide compares their strengths without asserting an untested universal winner.',
+    sections: [
+      { title: 'Quick verdict: choose based on the task', content: 'Claude is worth testing for editing lengthy prose, working with documents and coding workflows. ChatGPT is worth testing for an all-purpose workflow that may include images, voice, research, coding and connected services. Both can produce mistakes. Do not choose solely because of viral benchmarks or subjective testimonials. Test the versions available to you against the same realistic work.' },
+      { title: 'Writing and editing comparison', content: 'Give both assistants a sample of your actual writing, target audience, word count and factual constraints. Compare whether they preserve meaning, improve flow and avoid invented references. A pleasant writing style is not the same as factual accuracy. Use both as editors, not as substitutes for reviewing your publication.' },
+      { title: 'Coding: Claude Code versus Codex', content: 'Both providers have developer-oriented coding tools and assistants. The best comparison is a real issue in a real codebase: look for a correct diagnosis, minimal diff, safe handling of edge cases and passing tests. Never trust claims that software was tested unless the execution results are available. Review generated changes before production deployment.' },
+      { title: 'Is Claude better than ChatGPT for school?', content: 'Both can help explain concepts, generate practice quizzes and review draft answers. Ask for a worked example followed by an exercise you can attempt independently. Verify claims against course material and comply with school rules on AI assistance. Submitting an entire generated assignment as your own may violate academic integrity requirements.' },
+      { title: 'PDFs, long documents and research', content: 'Check document-upload limits and capabilities for your specific plan. Ask each assistant to locate findings and show the source page, then verify it yourself. Neither assistant should be assumed to read every diagram, footnote or scanned table perfectly. Research claims should be traced to primary sources with publication dates.' },
+      { title: 'Voice, images and integrations', content: 'ChatGPT provides image and voice features on eligible plans. Claude offers different interactive and developer workflows. Availability changes with plan, region and device. Before subscribing, check the precise feature you need instead of assuming the products are identical.' },
+      { title: 'Pricing and value', content: 'Both have free and paid tiers. Review official Claude and ChatGPT pricing pages for current charges, limits and regional availability. Try representative tasks before subscribing; paying for both is justified only when each contributes a distinct benefit.' },
+      { title: 'How to compare fairly', content: 'Test both assistants with the same prompts, inputs and clear success criteria. Rate accuracy, instruction-following, writing quality, number of corrections and time saved. Repeat the test with multiple samples and record errors, not just polished language. Both assistants can hallucinate and neither should independently make high-stakes medical, financial or legal decisions.' },
+      { title: 'What we can and cannot conclude', content: 'This is an editorial decision guide based on product documentation and practical evaluation principles, not a controlled benchmark study. Personal preferences, software releases and subscription features vary. Recheck original product documentation for changing claims.' }
+    ],
+    faqs: [
+      { question: 'Is Claude AI better than ChatGPT overall?', answer: 'There is no universal winner; evaluate the current tools for your particular tasks.' },
+      { question: 'Why do some people say Claude is better than ChatGPT?', answer: 'They may prefer its writing style or coding workflow. Such preferences do not establish superiority across all tasks.' },
+      { question: 'Is Claude better than ChatGPT for coding?', answer: 'Either may be effective. Compare their patches on your actual repository and run the same tests.' },
+      { question: 'Is Claude better than ChatGPT for school?', answer: 'Both can help students learn; verify explanations and follow academic integrity rules.' },
+      { question: 'Which is better for reviewing PDFs?', answer: 'Test both on your exact document and verify quoted source pages and tables.' },
+      { question: 'Is it worth paying for both?', answer: 'Only if their distinct capabilities save enough time or improve outcomes to justify the additional cost.' }
+    ],
+    summary: 'Claude and ChatGPT are both capable AI assistants, but neither is best at everything. Choose using the same real-world writing, code, school and research tasks, verify claims and review current official subscription terms.',
+    schema: { '@context': 'https://schema.org', '@type': 'Article', headline: 'Is Claude Better Than ChatGPT? An Honest Comparison', description: 'Compare Claude and ChatGPT for writing, coding, school, PDFs, research and everyday work.', author: { '@type': 'Organization', name: 'Navorika' }, datePublished: '2026-10-26', dateModified: '2026-10-26' }
+  }
+};
