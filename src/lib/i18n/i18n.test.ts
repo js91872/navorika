@@ -97,6 +97,7 @@ test('moving English routes into a route group preserves every existing public p
   // Explicitly approved public pages added after the original route contract.
   assert.deepEqual(newRoutes, [
     'guides/can-chatgpt-make-videos/page.tsx',
+    'guides/how-does-a-3d-printer-work/page.tsx',
     'guides/how-to-clean-phone-speaker/page.tsx',
     'guides/how-to-convert-jpg-to-dxf/page.tsx',
     'guides/is-claude-better-than-chatgpt/page.tsx',
