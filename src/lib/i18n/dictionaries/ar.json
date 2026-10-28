@@ -65,7 +65,11 @@
     "englishName": "بالإنجليزية",
     "mpUnit": "ميغابكسل",
     "rgbLabel": "RGB",
-    "cmykLabel": "CMYK"
+    "cmykLabel": "CMYK",
+    "about": "حول الموقع",
+    "disclaimer": "إخلاء المسؤولية",
+    "methodology": "المنهجية",
+    "glossary": "المسرد"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
@@ -4698,8 +4702,8 @@
       },
       "note": "قائمة إرشادية لفحص ملفات CorelDRAW بناءً على تدقيق المستخدم اليدوي. نظراً لعدم إمكانية قراءة شجرة ملفات CorelDRAW الثنائية داخل المتصفح، تضمن هذه الأداة مراجعة المتطلبات الحاسمة قبل إرسال الملفات للمطبعة التجارية.",
       "textResults": {
-        "readinessRating": "machine",
-        "summaryText": "machine"
+        "readinessRating": "localized",
+        "summaryText": "localized"
       }
     },
     "responsive-srcset-generator": {
@@ -4847,7 +4851,13 @@
     "belowBaseline": "أدنى من خط الأساس",
     "equalToBaseline": "مطابق لخط الأساس",
     "perKm": "/كم",
-    "perMile": "/ميل"
+    "perMile": "/ميل",
+    "readyForPrint": "جاهز للطباعة",
+    "reviewRecommended": "يوصى بالمراجعة",
+    "actionRequired": "مطلوب اتخاذ إجراء",
+    "cdrSummaryReady": "تم استيفاء جميع معايير ما قبل الطباعة التي تم التحقق منها والبالغ عددها {passed} (النتيجة {score}/100). المستند جاهز للطباعة التجارية أو تصدير PDF/X.",
+    "cdrSummaryReview": "يتطلب {count} عنصر (عناصر) مراجعة (النتيجة {score}/100). لم يتم تأكيد أي مشكلات حرجة، ولكن التحقق من العناصر غير المؤكدة سيمنع عيوب الطباعة.",
+    "cdrSummaryAction": "تم اكتشاف مشكلات حرجة ({count} عنصر حرج مفقود أو به خلل، النتيجة {score}/100). لا ترسل الملف إلى المطبعة دون معالجة عناصر التحذير."
   },
   "developer": {
     "regex": {
@@ -6820,6 +6830,8 @@
     "errorConversion": "فشل التحويل بأمان. يُرجى التحقق من الملف والمحاولة مرة أخرى.",
     "errorRateLimit": "طلبات تحويل كثيرة جدًا. يُرجى الانتظار دقيقة واحدة ثم المحاولة مرة أخرى.",
     "errorServer": "خادم التحويل غير متاح مؤقتًا. يُرجى المحاولة مرة أخرى لاحقًا.",
-    "errorRasterLarge": "دقة الصورة كبيرة جدًا (الحد الأقصى 24 ميغابكسل)."
+    "errorRasterLarge": "دقة الصورة كبيرة جدًا (الحد الأقصى 24 ميغابكسل).",
+    "noticeVectorFirstPage": "يحتوي التصدير المتجهي على الصفحة الأولى فقط.",
+    "noticePreviewBackend": "تم إنشاء المعاينة عبر واجهة استيراد CDR المتاحة."
   }
 }

@@ -56,5 +56,15 @@ export async function convertCorelFile(options: { kind: ServerConversionKind; in
   const finalPath = inputFormat === 'svg' && output === 'svg' ? source : await pdfToOutput(source, output, directory, options.quality ?? 90, options.resolution ?? 150);
   const stablePath = join(directory, `${safeOutputStem(originalName)}-coreldraw-ready.${output}`);
   if (finalPath !== stablePath) await copyFile(finalPath, stablePath);
-  return { path: stablePath, fileName: stablePath.split('/').pop()!, mime: outputMimes[output], note: output === 'svg' || output === 'eps' ? 'Vector export contains the first page only.' : kind === 'cdr-viewer' ? 'Preview generated through the available CDR import backend.' : undefined };
+  const noticeCode = output === 'svg' || output === 'eps'
+    ? 'VECTOR_FIRST_PAGE_ONLY'
+    : kind === 'cdr-viewer'
+      ? 'PREVIEW_BACKEND_GENERATED'
+      : undefined;
+  const note = output === 'svg' || output === 'eps'
+    ? 'Vector export contains the first page only.'
+    : kind === 'cdr-viewer'
+      ? 'Preview generated through the available CDR import backend.'
+      : undefined;
+  return { path: stablePath, fileName: stablePath.split('/').pop()!, mime: outputMimes[output], note, noticeCode };
 }

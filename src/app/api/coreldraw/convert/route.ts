@@ -38,7 +38,16 @@ export async function POST(request: Request) {
       if ((await stat(result.path)).size > CORELDRAW_MAX_OUTPUT_BYTES) throw new CorelConversionError('The converted output exceeds the 60 MB response limit.', 413);
       return { ...result, bytes: await readFile(result.path) };
     });
-    return new Response(converted.bytes, { headers: { 'Content-Type': converted.mime, 'Content-Disposition': `attachment; filename="${converted.fileName}"`, 'Cache-Control': 'no-store', 'X-Conversion-Note': converted.note ?? '', 'X-Robots-Tag': 'noindex, nofollow, noarchive' } });
+    return new Response(converted.bytes, {
+      headers: {
+        'Content-Type': converted.mime,
+        'Content-Disposition': `attachment; filename="${converted.fileName}"`,
+        'Cache-Control': 'no-store',
+        'X-Conversion-Note': converted.note ?? '',
+        'X-Conversion-Notice-Code': converted.noticeCode ?? '',
+        'X-Robots-Tag': 'noindex, nofollow, noarchive',
+      },
+    });
   } catch (error) {
     const known = error instanceof CorelConversionError; return NextResponse.json({ error: known ? error.message : 'Conversion failed safely. Please verify the file and try again.' }, { status: known ? error.status : 500, headers: { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow, noarchive' } });
   }

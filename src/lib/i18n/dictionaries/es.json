@@ -65,7 +65,11 @@
     "englishName": "inglés",
     "mpUnit": "MP",
     "rgbLabel": "RGB",
-    "cmykLabel": "CMYK"
+    "cmykLabel": "CMYK",
+    "about": "Acerca de",
+    "disclaimer": "Descargo de responsabilidad",
+    "methodology": "Metodología",
+    "glossary": "Glosario"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
@@ -4698,8 +4702,8 @@
       },
       "note": "Guía de comprobación para archivos CorelDRAW sujeta a verificación del diseñador. Dado que el navegador no puede interpretar el árbol binario propietario de CorelDRAW, esta utilidad garantiza que los parámetros críticos se auditen antes de remitirlos a la imprenta.",
       "textResults": {
-        "readinessRating": "machine",
-        "summaryText": "machine"
+        "readinessRating": "localized",
+        "summaryText": "localized"
       }
     },
     "responsive-srcset-generator": {
@@ -4847,7 +4851,13 @@
     "belowBaseline": "Por debajo del valor inicial",
     "equalToBaseline": "Igual al valor inicial",
     "perKm": "/km",
-    "perMile": "/mi"
+    "perMile": "/mi",
+    "readyForPrint": "LISTO PARA IMPRESIÓN",
+    "reviewRecommended": "REVISIÓN RECOMENDADA",
+    "actionRequired": "ACCIÓN REQUERIDA",
+    "cdrSummaryReady": "Se cumplen los {passed} criterios de comprobación previa verificados (puntuación de {score}/100). El documento está listo para la preparación para imprenta comercial o la exportación a PDF/X.",
+    "cdrSummaryReview": "{count} elemento(s) requieren revisión (puntuación de {score}/100). No se confirmaron bloqueos críticos, pero verificar los elementos inciertos evitará defectos de impresión.",
+    "cdrSummaryAction": "Problemas críticos detectados ({count} elemento(s) crítico(s) faltantes o fallidos, puntuación de {score}/100). No envíe a imprenta sin corregir los elementos de alerta roja."
   },
   "developer": {
     "regex": {
@@ -6819,6 +6829,8 @@
     "errorConversion": "La conversión falló de forma segura. Verifique el archivo y vuelva a intentarlo.",
     "errorRateLimit": "Demasiadas solicitudes de conversión. Espere un minuto e inténtelo de nuevo.",
     "errorServer": "El servidor de conversión no está disponible temporalmente. Inténtelo más tarde.",
-    "errorRasterLarge": "La resolución de la imagen es demasiado grande (máximo 24 megapíxeles)."
+    "errorRasterLarge": "La resolución de la imagen es demasiado grande (máximo 24 megapíxeles).",
+    "noticeVectorFirstPage": "La exportación vectorial solo contiene la primera página.",
+    "noticePreviewBackend": "Vista previa generada a través del backend de importación CDR disponible."
   }
 }

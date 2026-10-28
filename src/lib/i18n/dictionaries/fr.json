@@ -65,7 +65,11 @@
     "englishName": "anglais",
     "mpUnit": "MP",
     "rgbLabel": "RVB",
-    "cmykLabel": "CMJN"
+    "cmykLabel": "CMJN",
+    "about": "À propos",
+    "disclaimer": "Avis de non-responsabilité",
+    "methodology": "Méthodologie",
+    "glossary": "Glossaire"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
@@ -4698,8 +4702,8 @@
       },
       "note": "Check-list guidée pour fichiers CorelDRAW basée sur vos vérifications manuelles. L'analyse directe dans le navigateur ne pouvant décoder l'arborescence propriétaire binaire de CorelDRAW, cet outil garantit que les exigences prépresse essentielles sont validées avant envoi à l'imprimeur.",
       "textResults": {
-        "readinessRating": "machine",
-        "summaryText": "machine"
+        "readinessRating": "localized",
+        "summaryText": "localized"
       }
     },
     "responsive-srcset-generator": {
@@ -4847,7 +4851,13 @@
     "belowBaseline": "Inférieur à la valeur de base",
     "equalToBaseline": "Égal à la valeur de base",
     "perKm": "/km",
-    "perMile": "/mi"
+    "perMile": "/mi",
+    "readyForPrint": "PRÊT POUR L'IMPRESSION",
+    "reviewRecommended": "RÉVISION RECOMMANDÉE",
+    "actionRequired": "ACTION REQUISE",
+    "cdrSummaryReady": "Les {passed} critères de contrôle validés sont satisfaits (score de {score}/100). Le document est prêt pour la préparation à l'impression commerciale ou l'exportation PDF/X.",
+    "cdrSummaryReview": "{count} élément(s) nécessitent un examen (score de {score}/100). Aucun blocage critique confirmé, mais la vérification des points incertains évitera les défauts d'impression.",
+    "cdrSummaryAction": "Problèmes critiques détectés ({count} élément(s) critique(s) manquants ou en échec, score de {score}/100). Ne pas envoyer en impression sans corriger les alertes rouges."
   },
   "developer": {
     "regex": {
@@ -6819,6 +6829,8 @@
     "errorConversion": "La conversion a échoué en toute sécurité. Veuillez vérifier le fichier et réessayer.",
     "errorRateLimit": "Trop de requêtes de conversion. Veuillez patienter une minute et réessayer.",
     "errorServer": "Le serveur de conversion est temporairement indisponible. Veuillez réessayer plus tard.",
-    "errorRasterLarge": "La résolution de l'image est trop grande (maximum 24 mégapixels)."
+    "errorRasterLarge": "La résolution de l'image est trop grande (maximum 24 mégapixels).",
+    "noticeVectorFirstPage": "L'exportation vectorielle ne contient que la première page.",
+    "noticePreviewBackend": "Aperçu généré via le backend d'importation CDR disponible."
   }
 }

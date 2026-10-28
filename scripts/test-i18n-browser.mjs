@@ -16,7 +16,7 @@ const slugs = match ? match[1].match(/'([^']+)'/g).map((s) => s.replace(/'/g, ''
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
 let serverOutput = '';
-let pagesChecked = 0, workflowsChecked = 0, exportsValidated = 0;
+let pagesChecked = 0, workflowsChecked = 0, exportsValidated = 0, mockedChecksChecked = 0;
 const errors = [];
 try {
   if (!process.env.I18N_BASE_URL) {
@@ -294,9 +294,9 @@ try {
         await page.locator('main input[type="text"]').first().fill('http://test.org');
         assert.equal(await page.locator('main dd').first().textContent(), 'http:');
       } else if (slug === 'cdr-print-readiness-checker') {
-        assert.equal(await page.locator('main dd').first().textContent(), 'READY FOR PRINT');
+        assert.equal(await page.locator('main dd').first().textContent(), d.calculatorStates.readyForPrint);
         await page.locator('main select').first().selectOption('missing');
-        assert.equal(await page.locator('main dd').first().textContent(), 'ACTION REQUIRED');
+        assert.equal(await page.locator('main dd').first().textContent(), d.calculatorStates.actionRequired);
       } else if (slug === 'responsive-srcset-generator') {
         assert.ok((await page.locator('main dd').first().textContent()).includes('16 / 9'));
         await page.locator('main input[type="number"]').first().fill('3840');
@@ -330,7 +330,7 @@ try {
       const expectedInCopied = slug === 'running-pace-calculator' ? '7:49'
         : slug === 'ip-address-classifier' ? 'IPv6'
         : slug === 'url-parser' ? 'http:'
-        : slug === 'cdr-print-readiness-checker' ? 'ACTION REQUIRED'
+        : slug === 'cdr-print-readiness-checker' ? d.calculatorStates.actionRequired
         : slug === 'responsive-srcset-generator' ? '3840px'
         : slug === 'yaml-json-converter' ? 'Valid'
         : slug === 'uuid-generator-validator' ? 'Invalid'
@@ -367,6 +367,10 @@ try {
       if (slug === 'running-pace-calculator') {
         assert.ok(copied.includes(d.calculatorStates.perKm));
         assert.ok(csv.includes(d.calculatorStates.perKm));
+      }
+      if (slug === 'cdr-print-readiness-checker') {
+        assert.ok(copied.includes(d.calculatorStates.actionRequired));
+        assert.ok(csv.includes(d.calculatorStates.actionRequired));
       }
       await page.evaluate(() => { window.print = () => { window.__printOpened = true; }; });
       await page.locator('main button').last().click();
@@ -990,7 +994,7 @@ try {
     workflowsChecked++;
     exportsValidated++;
 
-    // 3. Functional workflow & export validation: WebP to ICO (genuine WebP input -> valid ICO header & 64x64 entry)
+    // 3. Functional workflow & export validation: WebP to ICO (genuine WebP input -> header/container assertions plus decoding the embedded PNG)
     await visitTool(`/${locale}/tools/webp-to-ico`);
     await page.locator('input[type="file"]').setInputFiles({
       name: 'sample.webp',
@@ -1090,6 +1094,32 @@ try {
     const alertText = await alertLocator.textContent();
     assert.equal(alertText.trim(), d.corelDraw.errorUnsupported);
     workflowsChecked++;
+
+    // 8. Controlled response fixture: Test Corel conversion notices without backend dependency (mocked check)
+    await page.route('**/api/coreldraw/convert', (route) => {
+      route.fulfill({
+        status: 200,
+        headers: {
+          'Content-Type': 'image/svg+xml',
+          'Content-Disposition': 'attachment; filename="sample-coreldraw-ready.svg"',
+          'X-Conversion-Notice-Code': 'VECTOR_FIRST_PAGE_ONLY',
+          'X-Conversion-Note': 'Vector export contains the first page only.',
+        },
+        body: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"></svg>',
+      });
+    });
+    await visitTool(`/${locale}/tools/svg-to-cdr-converter`);
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.svg',
+      mimeType: 'image/svg+xml',
+      buffer: Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"></svg>'),
+    });
+    await page.getByRole('button', { name: new RegExp(d.corelDraw.convertBtn, 'i') }).click();
+    await page.locator('main [aria-live="polite"]').waitFor({ state: 'visible' });
+    const noticeText = await page.locator('main [aria-live="polite"] p.text-xs').textContent();
+    assert.equal(noticeText.trim(), d.corelDraw.noticeVectorFirstPage);
+    mockedChecksChecked++;
+    await page.unroute('**/api/coreldraw/convert');
     } finally {
       await page.close();
       await context.close();
@@ -1193,14 +1223,81 @@ try {
   for (const path of ['/xx', '/fr/tools/not-a-tool', '/fr/not-a-page', '/ar/tools/image-dpi-converter', '/en']) {
     assert.equal((await context.request.get(`${base}${path}`)).status(), 404, path);
   }
-  for (const pageName of ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary']) {
+  const trustSlugs = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary'];
+  let trustPagesChecked = 0;
+  for (const pageName of trustSlugs) {
     for (const locale of locales) {
-      const res = await context.request.get(`${base}/${locale}/${pageName}`);
+      const pageUrl = `${base}/${locale}/${pageName}`;
+      const res = await englishPage.goto(pageUrl);
       assert.equal(res.status(), 200, `/${locale}/${pageName}`);
+      trustPagesChecked++;
+
+      // 1. Language & Direction
+      const htmlLang = await englishPage.locator('html').getAttribute('lang');
+      const htmlDir = await englishPage.locator('html').getAttribute('dir');
+      assert.equal(htmlLang, locale, `html lang on /${locale}/${pageName}`);
+      if (locale === 'ar') {
+        assert.equal(htmlDir, 'rtl', `RTL direction on /${locale}/${pageName}`);
+      } else {
+        assert.equal(htmlDir, 'ltr', `LTR direction on /${locale}/${pageName}`);
+      }
+
+      // 2. Localized content (H1 title)
+      const h1Text = (await englishPage.locator('h1').textContent() || '').trim();
+      assert.ok(h1Text.length > 0, `H1 text exists on /${locale}/${pageName}`);
+
+      // 3. Canonical URL
+      const canonical = await englishPage.locator('link[rel="canonical"]').getAttribute('href');
+      assert.equal(canonical, `https://navorika.com/${locale}/${pageName}`);
+
+      // 4. Alternates
+      const altLinks = await englishPage.locator('link[rel="alternate"][hreflang]').all();
+      assert.ok(altLinks.length >= locales.length + 1, `Alternates count on /${locale}/${pageName}`);
+      const altHreflangs = await Promise.all(altLinks.map((el) => el.getAttribute('hreflang')));
+      for (const loc of ['en', 'x-default', ...locales]) {
+        assert.ok(altHreflangs.includes(loc), `hreflang ${loc} present on /${locale}/${pageName}`);
+      }
+
+      // 5. Footer destinations
+      const footerLinks = await englishPage.locator('footer a').all();
+      const footerHrefs = await Promise.all(footerLinks.map((el) => el.getAttribute('href')));
+      for (const dest of ['privacy', 'terms', 'contact', 'about']) {
+        assert.ok(footerHrefs.some((h) => h === `/${locale}/${dest}`), `Footer link to /${locale}/${dest}`);
+      }
+
+      // 6. Mobile layout at 390px (no horizontal overflow)
+      await englishPage.setViewportSize({ width: 390, height: 844 });
+      const overflow = await englishPage.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+      assert.equal(overflow, false, `No horizontal overflow on /${locale}/${pageName} at 390px`);
+      await englishPage.setViewportSize({ width: 1440, height: 1000 });
+
+      // 7. Regression checks for contact & privacy
+      if (pageName === 'contact') {
+        const bodyText = await englishPage.locator('body').textContent();
+        assert.ok(bodyText.includes('admin@navorika.com'), `admin@navorika.com on /${locale}/contact`);
+        assert.ok(bodyText.includes('privacy@navorika.com'), `privacy@navorika.com on /${locale}/contact`);
+        assert.ok(!bodyText.includes('contact@navorika.com'), `no contact@navorika.com on /${locale}/contact`);
+        assert.ok(!bodyText.includes('support@navorika.com'), `no support@navorika.com on /${locale}/contact`);
+      }
+      if (pageName === 'privacy') {
+        const bodyText = await englishPage.locator('body').textContent();
+        const htmlContent = await englishPage.content();
+        assert.ok(
+          htmlContent.includes('google.com/settings/ads') || htmlContent.includes('aboutads.info'),
+          `Advertising opt-out links on /${locale}/privacy`
+        );
+        assert.ok(
+          bodyText.includes('2026'),
+          `Localized last updated year 2026 on /${locale}/privacy`
+        );
+      }
     }
   }
   const sitemap = await (await context.request.get(`${base}/sitemap.xml`)).text();
-  for (const locale of locales) for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`));
+  for (const locale of locales) {
+    for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`));
+    for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/${pageName}`));
+  }
   if (process.env.I18N_SCREENSHOT_DIR) {
     mkdirSync(process.env.I18N_SCREENSHOT_DIR, { recursive: true });
     for (const locale of ['fr', 'ar']) {
@@ -1213,7 +1310,7 @@ try {
   }
   await englishPage.close();
   assert.deepEqual(errors, [], 'Uncaught browser errors');
-  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, exportsValidated, englishAlternates: slugs.length + 1, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
+  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, exportsValidated, mockedChecks: mockedChecksChecked, trustPagesChecked, englishAlternates: slugs.length + 1, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
 } finally {
   await browser?.close();
   server?.kill('SIGTERM');

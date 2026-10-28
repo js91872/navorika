@@ -65,7 +65,11 @@
     "englishName": "Englisch",
     "mpUnit": "MP",
     "rgbLabel": "RGB",
-    "cmykLabel": "CMYK"
+    "cmykLabel": "CMYK",
+    "about": "Über uns",
+    "disclaimer": "Haftungsausschluss",
+    "methodology": "Methodik",
+    "glossary": "Glossar"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
@@ -4698,8 +4702,8 @@
       },
       "note": "Preflight-Checkliste für CorelDRAW-Dateien basierend auf Ihrer visuellen Prüfung. Da Browser die geschlossene Binärstruktur von CorelDRAW nicht direkt parsen können, stellt dieses Tool die systematische Überprüfung vor Druckbeginn sicher.",
       "textResults": {
-        "readinessRating": "machine",
-        "summaryText": "machine"
+        "readinessRating": "localized",
+        "summaryText": "localized"
       }
     },
     "responsive-srcset-generator": {
@@ -4847,7 +4851,13 @@
     "belowBaseline": "Unter dem Basiswert",
     "equalToBaseline": "Gleich dem Basiswert",
     "perKm": "/km",
-    "perMile": "/mi"
+    "perMile": "/mi",
+    "readyForPrint": "BEREIT FÜR DEN DRUCK",
+    "reviewRecommended": "ÜBERPRÜFUNG EMPFOHLEN",
+    "actionRequired": "HANDLUNG ERFORDERLICH",
+    "cdrSummaryReady": "Alle {passed} geprüften Druckvorstufenkriterien sind erfüllt (Punktzahl {score}/100). Das Dokument ist bereit für die Druckvorstufe oder den PDF/X-Export.",
+    "cdrSummaryReview": "{count} Position(en) erfordern eine Überprüfung (Punktzahl {score}/100). Keine kritischen Fehler bestätigt, aber die Prüfung unsicherer Punkte verhindert Druckfehler.",
+    "cdrSummaryAction": "Kritische Probleme festgestellt ({count} kritische Position(en) fehlen oder fehlerhaft, Punktzahl {score}/100). Nicht freigeben, ohne die markierten Punkte zu beheben."
   },
   "developer": {
     "regex": {
@@ -6819,6 +6829,8 @@
     "errorConversion": "Die Konvertierung ist sicher fehlgeschlagen. Bitte überprüfen Sie die Datei und versuchen Sie es erneut.",
     "errorRateLimit": "Zu viele Konvertierungsanfragen. Bitte warten Sie eine Minute und versuchen Sie es erneut.",
     "errorServer": "Der Konvertierungsserver ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut.",
-    "errorRasterLarge": "Die Bildauflösung ist zu groß (maximal 24 Megapixel)."
+    "errorRasterLarge": "Die Bildauflösung ist zu groß (maximal 24 Megapixel).",
+    "noticeVectorFirstPage": "Der Vektorexport enthält nur die erste Seite.",
+    "noticePreviewBackend": "Vorschau über das verfügbare CDR-Import-Backend generiert."
   }
 }

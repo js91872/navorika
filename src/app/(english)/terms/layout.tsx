@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
+import { publicPageAlternates } from '@/lib/i18n/config';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Terms and conditions governing the use of Navorika calculators, document utilities, and browser-based software tools.',
-  alternates: { canonical: 'https://navorika.com/terms' },
+  alternates: {
+    canonical: 'https://navorika.com/terms',
+    languages: publicPageAlternates('/terms'),
+  },
 };
 
 export default function TermsLayout({ children }: { children: React.ReactNode }) {

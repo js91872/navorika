@@ -65,7 +65,11 @@
     "englishName": "inglese",
     "mpUnit": "MP",
     "rgbLabel": "RGB",
-    "cmykLabel": "CMYK"
+    "cmykLabel": "CMYK",
+    "about": "Chi siamo",
+    "disclaimer": "Disclaimer",
+    "methodology": "Metodologia",
+    "glossary": "Glossario"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
@@ -4698,8 +4702,8 @@
       },
       "note": "Check-list guidata per file CorelDRAW basata sulle verifiche dell'operatore. Poiché l'elaborazione nel browser non può decodificare l'albero binario proprietario di CorelDRAW, lo strumento assicura la revisione metodica dei requisiti chiave prima dell'invio in tipografia.",
       "textResults": {
-        "readinessRating": "machine",
-        "summaryText": "machine"
+        "readinessRating": "localized",
+        "summaryText": "localized"
       }
     },
     "responsive-srcset-generator": {
@@ -4847,7 +4851,13 @@
     "belowBaseline": "Inferiore al valore di riferimento",
     "equalToBaseline": "Pari al valore di riferimento",
     "perKm": "/km",
-    "perMile": "/mi"
+    "perMile": "/mi",
+    "readyForPrint": "PRONTO PER LA STAMPA",
+    "reviewRecommended": "REVISIONE CONSIGLIATA",
+    "actionRequired": "AZIONE RICHIESTA",
+    "cdrSummaryReady": "Tutti i {passed} criteri prestampa verificati sono soddisfatti (punteggio {score}/100). Il documento è pronto per la preparazione alla stampa commerciale o l'esportazione PDF/X.",
+    "cdrSummaryReview": "{count} elemento/i richiedono una revisione (punteggio {score}/100). Nessun blocco critico confermato, ma la verifica degli elementi incerti eviterà difetti di stampa.",
+    "cdrSummaryAction": "Rilevati problemi critici ({count} elemento/i critico/i mancante/i o non conforme/i, punteggio {score}/100). Non inviare alla stampa prima di aver risolto i problemi evidenziati."
   },
   "developer": {
     "regex": {
@@ -6819,6 +6829,8 @@
     "errorConversion": "Conversione non riuscita in sicurezza. Verifica il file e riprova.",
     "errorRateLimit": "Troppe richieste di conversione. Attendi un minuto e riprova.",
     "errorServer": "Il server di conversione è temporaneamente non disponibile. Riprova più tardi.",
-    "errorRasterLarge": "La risoluzione dell'immagine è troppo grande (massimo 24 megapixel)."
+    "errorRasterLarge": "La risoluzione dell'immagine è troppo grande (massimo 24 megapixel).",
+    "noticeVectorFirstPage": "L'esportazione vettoriale contiene solo la prima pagina.",
+    "noticePreviewBackend": "Anteprima generata tramite il backend di importazione CDR disponibile."
   }
 }

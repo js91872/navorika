@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
+import { publicPageAlternates } from '@/lib/i18n/config';
 
 export const metadata: Metadata = {
   title: 'Disclaimer',
   description: 'Legal and calculation disclaimers for Navorika financial, health, construction, and document utility tools.',
-  alternates: { canonical: 'https://navorika.com/disclaimer' },
+  alternates: {
+    canonical: 'https://navorika.com/disclaimer',
+    languages: publicPageAlternates('/disclaimer'),
+  },
 };
 
 export default function DisclaimerLayout({ children }: { children: React.ReactNode }) {

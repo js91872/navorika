@@ -319,6 +319,14 @@ test('native PPI and ramp status adapters cover mismatch, flat, vertical and nul
     const paceKm = calculatorTextFormatters('running-pace-calculator', {}, d, locale).pacePerKm('4:59 /km');
     assert.equal(paceKm, `4:59 ${d.calculatorStates.perKm}`);
 
+    const cdrFormatters = calculatorTextFormatters('cdr-print-readiness-checker', {}, d, locale);
+    assert.equal(cdrFormatters.readinessRating('READY FOR PRINT'), d.calculatorStates.readyForPrint);
+    assert.equal(cdrFormatters.readinessRating('REVIEW RECOMMENDED'), d.calculatorStates.reviewRecommended);
+    assert.equal(cdrFormatters.readinessRating('ACTION REQUIRED'), d.calculatorStates.actionRequired);
+    assert.ok(cdrFormatters.summaryText('IGNORED').includes('100'));
+    assert.ok(d.corelDraw.noticeVectorFirstPage.length > 0);
+    assert.ok(d.corelDraw.noticePreviewBackend.length > 0);
+
     assert.ok(calculateLocalizedValues('rental-property-cash-flow-calculator', { rent: 2500, income: 100, vacancy: 5, tax: 300, insurance: 150, maintenance: 200, management: 200, hoa: 0, utilities: 0, other: 0, debt: 1200 }));
     assert.equal(calculateLocalizedValues('rental-yield-calculator', { value: 0, monthlyRent: 2500, annualRent: 0, expenses: 8000 }), null);
     assert.equal(calculateLocalizedValues('short-term-rental-break-even-calculator', { nightlyRate: 180, availableNights: 0, occupancy: 65, variableCost: 35, fixedCosts: 2200, platformFee: 3 }), null);

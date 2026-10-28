@@ -41,17 +41,24 @@ export default async function LocalizedLayout({ children, params }: {
           <div className="mx-auto max-w-6xl">
             <p>{d.ui.local}</p>
             <nav className="mt-4 flex flex-wrap gap-5" aria-label={d.ui.tools}>
+              <Link href={`/${locale}/about`}>{d.ui.about}</Link>
+              <Link href={`/${locale}/contact`}>{d.ui.contact}</Link>
               <Link href={`/${locale}/privacy`}>{d.ui.privacy}</Link>
               <Link href={`/${locale}/terms`}>{d.ui.terms}</Link>
-              <Link href={`/${locale}/contact`}>{d.ui.contact}</Link>
-              <Link href={`/${locale}/about`}>{locale === 'fr' ? 'À propos' : locale === 'es' ? 'Acerca de' : locale === 'it' ? 'Chi siamo' : locale === 'pt' ? 'Sobre' : locale === 'de' ? 'Über uns' : locale === 'ru' ? 'О нас' : 'حول الموقع'}</Link>
+              <Link href={`/${locale}/disclaimer`}>{d.ui.disclaimer}</Link>
+              <Link href={`/${locale}/methodology`}>{d.ui.methodology}</Link>
+              <Link href={`/${locale}/glossary`}>{d.ui.glossary}</Link>
             </nav>
             <p className="mt-4">{d.ui.englishNotice}</p>
             <nav className="mt-3 flex flex-wrap gap-5" aria-label={d.ui.englishNotice}>
               <Link href="/tools" hrefLang="en">{d.ui.allEnglish}</Link>
+              <Link href="/about" hrefLang="en">{d.ui.about} ({d.ui.englishName})</Link>
+              <Link href="/contact" hrefLang="en">{d.ui.contact} ({d.ui.englishName})</Link>
               <Link href="/privacy" hrefLang="en">{d.ui.privacy} ({d.ui.englishName})</Link>
               <Link href="/terms" hrefLang="en">{d.ui.terms} ({d.ui.englishName})</Link>
-              <Link href="/contact" hrefLang="en">{d.ui.contact} ({d.ui.englishName})</Link>
+              <Link href="/disclaimer" hrefLang="en">{d.ui.disclaimer} ({d.ui.englishName})</Link>
+              <Link href="/methodology" hrefLang="en">{d.ui.methodology} ({d.ui.englishName})</Link>
+              <Link href="/glossary" hrefLang="en">{d.ui.glossary} ({d.ui.englishName})</Link>
             </nav>
           </div>
         </footer>

@@ -65,7 +65,11 @@
     "englishName": "English",
     "mpUnit": "MP",
     "rgbLabel": "RGB",
-    "cmykLabel": "CMYK"
+    "cmykLabel": "CMYK",
+    "about": "About",
+    "disclaimer": "Disclaimer",
+    "methodology": "Methodology",
+    "glossary": "Glossary"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
@@ -4698,8 +4702,8 @@
       },
       "note": "Guided preflight checklist for CorelDRAW files based on user-verified preparation conditions. Browser inspection cannot reliably decode proprietary CorelDRAW binary document trees; this tool ensures critical print requirements (bleed, CMYK, curves, DPI, overprint) are systematically reviewed before sending files to a commercial printer.",
       "textResults": {
-        "readinessRating": "machine",
-        "summaryText": "machine"
+        "readinessRating": "localized",
+        "summaryText": "localized"
       }
     },
     "responsive-srcset-generator": {
@@ -4847,7 +4851,13 @@
     "belowBaseline": "Below baseline",
     "equalToBaseline": "Equal to baseline",
     "perKm": "/km",
-    "perMile": "/mi"
+    "perMile": "/mi",
+    "readyForPrint": "READY FOR PRINT",
+    "reviewRecommended": "REVIEW RECOMMENDED",
+    "actionRequired": "ACTION REQUIRED",
+    "cdrSummaryReady": "All {passed} verified preflight criteria satisfied ({score}/100 score). The document is ready for commercial print preparation or PDF/X export.",
+    "cdrSummaryReview": "{count} item(s) require review ({score}/100 score). No critical showstoppers confirmed, but verifying uncertain items will prevent print defects.",
+    "cdrSummaryAction": "Critical issues detected ({count} critical item(s) missing or failed, score {score}/100). Do not release to press without addressing red-flag items."
   },
   "developer": {
     "regex": {
@@ -6819,6 +6829,8 @@
     "errorConversion": "Conversion failed safely. Please verify the file and try again.",
     "errorRateLimit": "Too many conversion requests. Please wait one minute and try again.",
     "errorServer": "The conversion server is temporarily unavailable. Please try again later.",
-    "errorRasterLarge": "Image resolution is too large (maximum 24 megapixels)."
+    "errorRasterLarge": "Image resolution is too large (maximum 24 megapixels).",
+    "noticeVectorFirstPage": "Vector export contains the first page only.",
+    "noticePreviewBackend": "Preview generated through the available CDR import backend."
   }
 }

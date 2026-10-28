@@ -65,7 +65,11 @@
     "englishName": "inglês",
     "mpUnit": "MP",
     "rgbLabel": "RGB",
-    "cmykLabel": "CMYK"
+    "cmykLabel": "CMYK",
+    "about": "Sobre",
+    "disclaimer": "Aviso legal",
+    "methodology": "Metodologia",
+    "glossary": "Glossário"
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
@@ -4698,8 +4702,8 @@
       },
       "note": "Lista de verificação para arquivos CorelDRAW baseada na conferência manual do usuário. Como a inspeção no navegador não pode ler a estrutura proprietária do CorelDRAW, esta ferramenta assegura que os parâmetros cruciais sejam validados antes do envio à gráfica.",
       "textResults": {
-        "readinessRating": "machine",
-        "summaryText": "machine"
+        "readinessRating": "localized",
+        "summaryText": "localized"
       }
     },
     "responsive-srcset-generator": {
@@ -4847,7 +4851,13 @@
     "belowBaseline": "Abaixo da linha de base",
     "equalToBaseline": "Igual à linha de base",
     "perKm": "/km",
-    "perMile": "/mi"
+    "perMile": "/mi",
+    "readyForPrint": "PRONTO PARA IMPRESSÃO",
+    "reviewRecommended": "REVISÃO RECOMENDADA",
+    "actionRequired": "AÇÃO NECESSÁRIA",
+    "cdrSummaryReady": "Todos os {passed} critérios de pré-impressão verificados foram atendidos (pontuação {score}/100). O documento está pronto para a preparação de impressão comercial ou exportação em PDF/X.",
+    "cdrSummaryReview": "{count} item(ns) requerem revisão (pontuação {score}/100). Nenhum impedimento crítico confirmado, mas a verificação de itens incertos evitará defeitos de impressão.",
+    "cdrSummaryAction": "Problemas críticos detectados ({count} item(ns) crítico(s) ausente(s) ou com falha, pontuação {score}/100). Não envie para a gráfica antes de corrigir os pontos de alerta."
   },
   "developer": {
     "regex": {
@@ -6819,6 +6829,8 @@
     "errorConversion": "A conversão falhou com segurança. Verifique o ficheiro e tente novamente.",
     "errorRateLimit": "Demasiados pedidos de conversão. Aguarde um minuto e tente novamente.",
     "errorServer": "O servidor de conversão está temporariamente indisponível. Tente novamente mais tarde.",
-    "errorRasterLarge": "A resolução da imagem é demasiado grande (máximo 24 megapíxeis)."
+    "errorRasterLarge": "A resolução da imagem é demasiado grande (máximo 24 megapíxeis).",
+    "noticeVectorFirstPage": "A exportação vetorial contém apenas a primeira página.",
+    "noticePreviewBackend": "Pré-visualização gerada através do backend de importação de CDR disponível."
   }
 }

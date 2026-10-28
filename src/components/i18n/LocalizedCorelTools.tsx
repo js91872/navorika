@@ -756,7 +756,7 @@ function LocalizedCorelServerTool({
   const [capabilities, setCapabilities] = useState<CorelCapabilities | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [result, setResult] = useState<{ url: string; name: string; note: string } | null>(null);
+  const [result, setResult] = useState<{ url: string; name: string; noticeCode?: string } | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -818,10 +818,17 @@ function LocalizedCorelServerTool({
       const blob = await response.blob();
       const disposition = response.headers.get('content-disposition') ?? '';
       const name = disposition.match(/filename="([^"]+)"/)?.[1] ?? `coreldraw-ready.${output}`;
+      const noticeCodeHeader = response.headers.get('x-conversion-notice-code') ?? '';
+      const legacyNote = response.headers.get('x-conversion-note') ?? '';
+      let noticeCode = noticeCodeHeader;
+      if (!noticeCode && legacyNote) {
+        if (legacyNote.includes('first page only')) noticeCode = 'VECTOR_FIRST_PAGE_ONLY';
+        else if (legacyNote.includes('available CDR import backend')) noticeCode = 'PREVIEW_BACKEND_GENERATED';
+      }
       setResult({
         url: URL.createObjectURL(blob),
         name,
-        note: response.headers.get('x-conversion-note') ?? '',
+        noticeCode,
       });
     } catch (cause) {
       const code = cause instanceof Error ? cause.message : '';
@@ -934,8 +941,11 @@ function LocalizedCorelServerTool({
           <p className="font-bold text-sm text-[var(--foreground)]">
             {ui.ready}: <span className="font-mono text-emerald-600 dark:text-emerald-400">{result.name}</span>
           </p>
-          {result.note && (
-            <p className="text-xs text-amber-800 dark:text-amber-200 leading-relaxed">{result.note}</p>
+          {result.noticeCode === 'VECTOR_FIRST_PAGE_ONLY' && (
+            <p className="text-xs text-amber-800 dark:text-amber-200 leading-relaxed">{ui.noticeVectorFirstPage}</p>
+          )}
+          {result.noticeCode === 'PREVIEW_BACKEND_GENERATED' && (
+            <p className="text-xs text-amber-800 dark:text-amber-200 leading-relaxed">{ui.noticePreviewBackend}</p>
           )}
           {config.viewer && output === 'pdf' && (
             <iframe

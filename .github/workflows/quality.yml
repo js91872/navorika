@@ -48,6 +48,9 @@ jobs:
       - name: Check deployment safety and rollback
         run: npm run test:deploy
 
+      - name: Run complete unit test suite
+        run: npm test
+
       - name: Build production application
         run: npm run build
 

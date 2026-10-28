@@ -1,4 +1,4 @@
-import { locales, localizedPath, translatedTools, languageAlternates, isTranslatedTool } from '@/lib/i18n/config';
+import { locales, localizedPath, translatedTools, languageAlternates, isTranslatedTool, publicPageAlternates } from '@/lib/i18n/config';
 import type { MetadataRoute } from 'next';
 import { categories, tools } from '@/data/registry';
 import { getFinanceSuiteUrls } from '@/lib/seo/financeSuite';
@@ -7,6 +7,7 @@ import { guidesMetadata } from '@/lib/guidesMetadata';
 import { toolkits } from '@/data/taxonomy';
 
 const baseUrl = 'https://navorika.com';
+const trustSlugs = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary'] as const;
 const financeSuiteRoots = new Set([
   'cashflow-budget-architect',
   'investment-return-profiler',
@@ -75,15 +76,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const englishPages = [...staticPages, ...toolPages, ...financeSuitePages, ...categoryPages, ...toolkitPages, ...guidePages]
     .map((page) => {
-      const slug = page.url.startsWith(`${baseUrl}/tools/`) ? page.url.slice(`${baseUrl}/tools/`.length) : '';
-      if (page.url === baseUrl || isTranslatedTool(slug)) {
-        return { ...page, alternates: { languages: languageAlternates(isTranslatedTool(slug) ? slug : undefined) } };
+      const toolSlug = page.url.startsWith(`${baseUrl}/tools/`) ? page.url.slice(`${baseUrl}/tools/`.length) : '';
+      const path = page.url.replace(baseUrl, '') || '/';
+      const trustSlug = trustSlugs.find((s) => path === `/${s}`);
+      if (page.url === baseUrl || isTranslatedTool(toolSlug)) {
+        return { ...page, alternates: { languages: languageAlternates(isTranslatedTool(toolSlug) ? toolSlug : undefined) } };
+      }
+      if (trustSlug) {
+        return { ...page, alternates: { languages: publicPageAlternates(`/${trustSlug}`) } };
       }
       return page;
     });
   const localizedPages = locales.flatMap((locale) => [
     { url: `${baseUrl}${localizedPath(locale)}`, alternates: { languages: languageAlternates() } },
     ...translatedTools.map((slug) => ({ url: `${baseUrl}${localizedPath(locale, slug)}`, alternates: { languages: languageAlternates(slug) } })),
+    ...trustSlugs.map((slug) => ({
+      url: `${baseUrl}/${locale}/${slug}`,
+      alternates: { languages: publicPageAlternates(`/${slug}`) },
+    })),
   ]);
   return [...englishPages, ...localizedPages];
 }

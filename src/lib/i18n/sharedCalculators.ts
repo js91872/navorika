@@ -1,4 +1,5 @@
 import { businessCalculatorConfigs, type ValueMap } from '@/lib/calculations/businessConfigs';
+import { calculateCdrPrintReadiness } from '@/lib/calculations/cdrPrintReadiness';
 
 import type { LocalizedCalculatorSlug } from './calculatorRegistry';
 import type { Dictionary } from './dictionaries';
@@ -150,6 +151,40 @@ export function calculatorTextFormatters(slug: LocalizedCalculatorSlug, values: 
   if (slug === 'running-pace-calculator') return {
     pacePerKm: (val) => `${String(val).split(' ')[0]} ${d.calculatorStates.perKm}`,
     pacePerMile: (val) => `${String(val).split(' ')[0]} ${d.calculatorStates.perMile}`,
+  };
+  if (slug === 'cdr-print-readiness-checker') return {
+    readinessRating: (value) => {
+      const rating = String(value);
+      if (rating === 'READY FOR PRINT') return d.calculatorStates.readyForPrint;
+      if (rating === 'REVIEW RECOMMENDED') return d.calculatorStates.reviewRecommended;
+      if (rating === 'ACTION REQUIRED') return d.calculatorStates.actionRequired;
+      return rating;
+    },
+    summaryText: () => {
+      const res = calculateCdrPrintReadiness({
+        documentSize: String(values.documentSize || 'confirmed'),
+        bleed: String(values.bleed || 'confirmed'),
+        colorMode: String(values.colorMode || 'confirmed'),
+        fonts: String(values.fonts || 'confirmed'),
+        imageResolution: String(values.imageResolution || 'confirmed'),
+        transparency: String(values.transparency || 'confirmed'),
+        overprint: String(values.overprint || 'confirmed'),
+        exportFormat: String(values.exportFormat || 'confirmed'),
+      });
+      if (res.readinessRating === 'READY FOR PRINT') {
+        return d.calculatorStates.cdrSummaryReady
+          .replace('{passed}', String(res.passedCount))
+          .replace('{score}', String(res.score));
+      } else if (res.readinessRating === 'REVIEW RECOMMENDED') {
+        return d.calculatorStates.cdrSummaryReview
+          .replace('{count}', String(res.reviewCount))
+          .replace('{score}', String(res.score));
+      } else {
+        return d.calculatorStates.cdrSummaryAction
+          .replace('{count}', String(res.criticalIssues.length))
+          .replace('{score}', String(res.score));
+      }
+    },
   };
   return {};
 }
