@@ -105,7 +105,7 @@ function formatPointText(text: string) {
   if (text.includes('https://www.google.com/settings/ads') || text.includes('www.aboutads.info/choices/')) {
     const parts = text.split(/(https:\/\/www\.google\.com\/settings\/ads|www\.aboutads\.info\/choices\/)/g);
     return (
-      <span>
+      <span className="break-words">
         {parts.map((part, i) => {
           if (part === 'https://www.google.com/settings/ads') {
             return (
@@ -114,7 +114,7 @@ function formatPointText(text: string) {
                 href="https://www.google.com/settings/ads"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-600 dark:text-indigo-400 hover:underline inline-block mx-0.5"
+                className="text-indigo-600 dark:text-indigo-400 hover:underline break-all mx-0.5"
                 dir="ltr"
               >
                 https://www.google.com/settings/ads
@@ -128,7 +128,7 @@ function formatPointText(text: string) {
                 href="https://www.aboutads.info/choices/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-600 dark:text-indigo-400 hover:underline inline-block mx-0.5"
+                className="text-indigo-600 dark:text-indigo-400 hover:underline break-all mx-0.5"
                 dir="ltr"
               >
                 www.aboutads.info/choices/
@@ -140,14 +140,14 @@ function formatPointText(text: string) {
       </span>
     );
   }
-  return <span>{text}</span>;
+  return <span className="break-words">{text}</span>;
 }
 
 export function LocalizedTrustPage({ locale, content, homeLabel }: LocalizedTrustPageProps) {
   const isRtl = languageDirection(locale) === 'rtl';
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 break-words overflow-hidden">
       {/* Back Link */}
       <div className="mb-8">
         <Link
@@ -425,7 +425,7 @@ export function LocalizedTrustPage({ locale, content, homeLabel }: LocalizedTrus
           {content.sections.map((section, idx) => (
             <section
               key={idx}
-              className="p-6 sm:p-7 rounded-2xl bg-[var(--card)] border border-[var(--border)] shadow-sm"
+              className="p-4 sm:p-7 rounded-2xl bg-[var(--card)] border border-[var(--border)] shadow-sm break-words"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                 <div className="flex items-center gap-3">

@@ -1225,75 +1225,103 @@ try {
   }
   const trustSlugs = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary'];
   let trustPagesChecked = 0;
+
+  async function checkTrustPage(pageName, targetLocale) {
+    const isEnglish = targetLocale === 'en';
+    const pagePath = isEnglish ? `/${pageName}` : `/${targetLocale}/${pageName}`;
+    const pageUrl = `${base}${pagePath}`;
+    const res = await englishPage.goto(pageUrl);
+    assert.equal(res.status(), 200, pagePath);
+    trustPagesChecked++;
+
+    // 1. Language & Direction
+    const htmlLang = await englishPage.locator('html').getAttribute('lang');
+    const htmlDir = await englishPage.locator('html').getAttribute('dir');
+    assert.equal(htmlLang, targetLocale, `html lang on ${pagePath}`);
+    if (targetLocale === 'ar') {
+      assert.equal(htmlDir, 'rtl', `RTL direction on ${pagePath}`);
+    } else {
+      assert.ok(!htmlDir || htmlDir === 'ltr', `LTR direction on ${pagePath}`);
+    }
+
+    // 2. Localized content (H1 title)
+    const h1Text = (await englishPage.locator('h1').textContent() || '').trim();
+    assert.ok(h1Text.length > 0, `H1 text exists on ${pagePath}`);
+
+    // 3. Canonical URL
+    const expectedCanonical = `https://navorika.com${pagePath}`;
+    const canonical = await englishPage.locator('link[rel="canonical"]').getAttribute('href');
+    assert.equal(canonical, expectedCanonical, `Canonical URL on ${pagePath}`);
+
+    // 4. Exact reciprocal alternates across English and all seven translated languages
+    const altLinks = await englishPage.locator('link[rel="alternate"][hreflang]').all();
+    assert.ok(altLinks.length >= locales.length + 1, `Alternates count on ${pagePath}`);
+    const altEntries = await Promise.all(altLinks.map(async (el) => [
+      await el.getAttribute('hreflang'),
+      await el.getAttribute('href'),
+    ]));
+    const altMap = Object.fromEntries(altEntries);
+
+    assert.equal(altMap['en'], `https://navorika.com/${pageName}`, `Exact hreflang en alternate on ${pagePath}`);
+    assert.equal(altMap['x-default'], `https://navorika.com/${pageName}`, `Exact hreflang x-default alternate on ${pagePath}`);
+    for (const loc of locales) {
+      assert.equal(
+        altMap[loc],
+        `https://navorika.com/${loc}/${pageName}`,
+        `Exact hreflang ${loc} alternate on ${pagePath}`
+      );
+    }
+
+    // 5. Footer destinations
+    const footerLinks = await englishPage.locator('footer a').all();
+    const footerHrefs = await Promise.all(footerLinks.map((el) => el.getAttribute('href')));
+    const expectedFooterDest = isEnglish
+      ? ['/privacy', '/terms', '/contact', '/about']
+      : [`/${targetLocale}/privacy`, `/${targetLocale}/terms`, `/${targetLocale}/contact`, `/${targetLocale}/about`];
+    for (const dest of expectedFooterDest) {
+      assert.ok(footerHrefs.some((h) => h === dest), `Footer link to ${dest} on ${pagePath}`);
+    }
+
+    // 6. Mobile layout at 390px (no horizontal overflow)
+    await englishPage.setViewportSize({ width: 390, height: 844 });
+    const overflow = await englishPage.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+    assert.equal(overflow, false, `No horizontal overflow on ${pagePath} at 390px`);
+    await englishPage.setViewportSize({ width: 1440, height: 1000 });
+
+    // 7. Regression checks for contact & privacy
+    if (pageName === 'contact') {
+      const bodyText = await englishPage.locator('body').textContent();
+      assert.ok(bodyText.includes('admin@navorika.com'), `admin@navorika.com on ${pagePath}`);
+      assert.ok(bodyText.includes('privacy@navorika.com'), `privacy@navorika.com on ${pagePath}`);
+      assert.ok(!bodyText.includes('contact@navorika.com'), `no contact@navorika.com on ${pagePath}`);
+      assert.ok(!bodyText.includes('support@navorika.com'), `no support@navorika.com on ${pagePath}`);
+    }
+    if (pageName === 'privacy') {
+      const bodyText = await englishPage.locator('body').textContent();
+      const htmlContent = await englishPage.content();
+      assert.ok(
+        htmlContent.includes('google.com/settings/ads') || htmlContent.includes('aboutads.info'),
+        `Advertising opt-out links on ${pagePath}`
+      );
+      assert.ok(
+        bodyText.includes('2026'),
+        `Localized last updated year 2026 on ${pagePath}`
+      );
+    }
+  }
+
   for (const pageName of trustSlugs) {
+    // Check English trust page
+    await checkTrustPage(pageName, 'en');
+
+    // Check all 7 localized trust pages
     for (const locale of locales) {
-      const pageUrl = `${base}/${locale}/${pageName}`;
-      const res = await englishPage.goto(pageUrl);
-      assert.equal(res.status(), 200, `/${locale}/${pageName}`);
-      trustPagesChecked++;
-
-      // 1. Language & Direction
-      const htmlLang = await englishPage.locator('html').getAttribute('lang');
-      const htmlDir = await englishPage.locator('html').getAttribute('dir');
-      assert.equal(htmlLang, locale, `html lang on /${locale}/${pageName}`);
-      if (locale === 'ar') {
-        assert.equal(htmlDir, 'rtl', `RTL direction on /${locale}/${pageName}`);
-      } else {
-        assert.equal(htmlDir, 'ltr', `LTR direction on /${locale}/${pageName}`);
-      }
-
-      // 2. Localized content (H1 title)
-      const h1Text = (await englishPage.locator('h1').textContent() || '').trim();
-      assert.ok(h1Text.length > 0, `H1 text exists on /${locale}/${pageName}`);
-
-      // 3. Canonical URL
-      const canonical = await englishPage.locator('link[rel="canonical"]').getAttribute('href');
-      assert.equal(canonical, `https://navorika.com/${locale}/${pageName}`);
-
-      // 4. Alternates
-      const altLinks = await englishPage.locator('link[rel="alternate"][hreflang]').all();
-      assert.ok(altLinks.length >= locales.length + 1, `Alternates count on /${locale}/${pageName}`);
-      const altHreflangs = await Promise.all(altLinks.map((el) => el.getAttribute('hreflang')));
-      for (const loc of ['en', 'x-default', ...locales]) {
-        assert.ok(altHreflangs.includes(loc), `hreflang ${loc} present on /${locale}/${pageName}`);
-      }
-
-      // 5. Footer destinations
-      const footerLinks = await englishPage.locator('footer a').all();
-      const footerHrefs = await Promise.all(footerLinks.map((el) => el.getAttribute('href')));
-      for (const dest of ['privacy', 'terms', 'contact', 'about']) {
-        assert.ok(footerHrefs.some((h) => h === `/${locale}/${dest}`), `Footer link to /${locale}/${dest}`);
-      }
-
-      // 6. Mobile layout at 390px (no horizontal overflow)
-      await englishPage.setViewportSize({ width: 390, height: 844 });
-      const overflow = await englishPage.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
-      assert.equal(overflow, false, `No horizontal overflow on /${locale}/${pageName} at 390px`);
-      await englishPage.setViewportSize({ width: 1440, height: 1000 });
-
-      // 7. Regression checks for contact & privacy
-      if (pageName === 'contact') {
-        const bodyText = await englishPage.locator('body').textContent();
-        assert.ok(bodyText.includes('admin@navorika.com'), `admin@navorika.com on /${locale}/contact`);
-        assert.ok(bodyText.includes('privacy@navorika.com'), `privacy@navorika.com on /${locale}/contact`);
-        assert.ok(!bodyText.includes('contact@navorika.com'), `no contact@navorika.com on /${locale}/contact`);
-        assert.ok(!bodyText.includes('support@navorika.com'), `no support@navorika.com on /${locale}/contact`);
-      }
-      if (pageName === 'privacy') {
-        const bodyText = await englishPage.locator('body').textContent();
-        const htmlContent = await englishPage.content();
-        assert.ok(
-          htmlContent.includes('google.com/settings/ads') || htmlContent.includes('aboutads.info'),
-          `Advertising opt-out links on /${locale}/privacy`
-        );
-        assert.ok(
-          bodyText.includes('2026'),
-          `Localized last updated year 2026 on /${locale}/privacy`
-        );
-      }
+      await checkTrustPage(pageName, locale);
     }
   }
   const sitemap = await (await context.request.get(`${base}/sitemap.xml`)).text();
+  for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/tools/${slug}`));
+  for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${pageName}`));
   for (const locale of locales) {
     for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`));
     for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/${pageName}`));

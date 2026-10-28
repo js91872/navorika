@@ -114,7 +114,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
+                className="p-4 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] break-words"
               >
                 <div className="mb-3">{principle.icon}</div>
                 <h3 className="text-lg font-bold mb-2">{principle.title}</h3>
