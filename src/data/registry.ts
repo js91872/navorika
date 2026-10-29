@@ -1823,6 +1823,24 @@ export const tools: RegisteredTool[] = ([
     heroDescription: 'Compare encoded byte sizes, code points, and UTF-16 code units across UTF-8 and UTF-16 string storage.'
   },
   {
+    slug: 'dwg-to-3d-pdf-converter',
+    title: 'DWG to 3D PDF Converter',
+    description: 'Convert supported 3D mesh drawings in DWG or DXF format to interactive 3D PDF documents.',
+    category: 'developer-tools',
+    keywords: [
+      'dwg to 3d pdf',
+      'dwg to 3d pdf converter',
+      'convert dwg to 3d pdf',
+      'dwg to 3d pdf converter online',
+      'cad to 3d pdf converter',
+      '3d pdf from dwg',
+      'dxf to 3d pdf',
+      '3d pdf converter online'
+    ],
+    heroTitle: 'DWG to 3D PDF Converter',
+    heroDescription: 'Turn compatible DWG or DXF 3D mesh drawings into interactive 3D PDFs. Native CAD solids and flat 2D drawings are not supported.'
+  },
+  {
     slug: 'step-to-3d-pdf-converter',
     title: 'STEP to 3D PDF Converter',
     description: 'Convert STEP and STP CAD files to 3D PDF online with interactive embedded PRC geometry.',

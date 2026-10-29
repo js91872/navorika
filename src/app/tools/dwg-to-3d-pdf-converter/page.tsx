@@ -1,0 +1,36 @@
+import type { Metadata } from 'next';
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage';
+import DwgTo3dPdfTool from '@/components/tools/cad/DwgTo3dPdfTool';
+
+export const metadata: Metadata = {
+  title: 'DWG to 3D PDF Converter Online | Interactive CAD PDF | Navorika',
+  description: 'Convert supported DWG and DXF 3D mesh drawings into interactive 3D PDFs. Learn how DWG to 3D PDF conversion works, formats supported, and troubleshooting.',
+  alternates: { canonical: 'https://navorika.com/tools/dwg-to-3d-pdf-converter' },
+};
+
+const faq = [
+  ['Can I convert a DWG file to an interactive 3D PDF?', 'Yes, if the DWG contains compatible 3D geometry that can be exported as a mesh. A 2D drawing cannot automatically become a 3D model.'],
+  ['Is a normal DWG to PDF conversion the same as a 3D PDF?', 'No. Regular PDF plotting creates a flat page; a true 3D PDF contains embedded geometry that compatible viewers can rotate and zoom.'],
+  ['Why does my DWG file not convert?', 'The drawing may contain unsupported native ACIS solids, unsupported objects, only 2D linework, or a corrupt model. Export mesh faces or a STEP model from your CAD application and retry.'],
+  ['What software opens a 3D PDF?', 'A compatible desktop PDF application with support for embedded PRC or U3D geometry. Standard browser viewers usually display only a preview.'],
+  ['Are CAD drawing dimensions preserved?', 'This conversion focuses on 3D geometry, not editable DWG layers, associative dimensions or original CAD editing features. Always verify orientation, scale and dimensions against the source.'],
+  ['Can I turn a 2D DWG floor plan into a 3D PDF?', 'Not automatically. A 3D CAD model must be created before exporting an interactive 3D PDF.'],
+];
+export default function Page() {
+  return <ExpansionToolPage category="developer-tools" eyebrow="CAD & 3D Engineering" title="DWG to 3D PDF Converter – Convert CAD Drawings Online" description="Upload supported DWG or DXF 3D meshes and generate an interactive PDF with embedded 3D geometry.">
+    <DwgTo3dPdfTool />
+    <article className="mx-auto mt-10 max-w-4xl space-y-8 text-base leading-8 text-slate-700 dark:text-slate-200">
+      <section><h2 className="text-2xl font-bold">Convert DWG to 3D PDF online</h2>
+      <p>Need to share a CAD model with a client or colleague who does not have AutoCAD? A 3D PDF can carry interactive model geometry inside a portable document. Upload a compatible three-dimensional DWG or DXF drawing, start conversion, and download the PDF. Unlike an ordinary DWG to PDF plot, the resulting file is intended for orbiting, zooming and examining a 3D model in supported PDF software.</p>
+      <p>Compatibility matters: DWG is a drawing container that may hold only 2D linework, 3D surfaces, triangulated meshes, or proprietary solid objects. This converter targets explicit mesh geometry. If your source is an AutoCAD solid, export its tessellated mesh or a STEP file first. Converting 2D DWG lines into a solid model requires modelling work, not merely a file extension change.</p></section>
+      <section><h2 className="text-2xl font-bold">How to convert DWG to 3D PDF in four steps</h2>
+      <ol className="list-decimal pl-6"><li>Open your drawing in CAD software and verify that it contains a three-dimensional mesh with visible faces.</li><li>Choose your DWG or DXF file in the converter above (20 MB maximum).</li><li>Select Convert to 3D PDF and check any compatibility warnings. The conversion engine generates embedded model geometry, rather than a screenshot.</li><li>Download the PDF and inspect it in a compatible desktop 3D PDF viewer. Compare the model with the original CAD drawing before sharing.</li></ol></section>
+      <section><h2 className="text-2xl font-bold">DWG to PDF versus DWG to 3D PDF</h2><p>A traditional DWG to PDF converter prints drawing sheets, annotations, line weights and dimensions to a static document. This is ideal for construction plans, tender drawings and printable technical documentation. A DWG to 3D PDF converter exports the model itself, so reviewers can change the viewing angle without the original CAD file. This is useful for communicating assembly shape, design intent and spatial relationships. A 3D PDF should not be treated as a replacement for an editable CAD model or certified drawing.</p></section>
+      <section><h2 className="text-2xl font-bold">Supported geometry and important limitations</h2><p>The initial engine supports mesh-based 3DFACE, MESH and polyface geometry converted through a DXF intermediate. Standard 2D drawings and native ACIS solids are not supported. Nested blocks, complex xrefs, textures, exact B-rep surfaces, CAD constraints, editable dimensions, materials and layer metadata may not survive conversion. Uploaded files should be checked for unusual coordinate values, corrupted geometry and external references. For STEP or STP solid models, use our <a className="text-indigo-600 underline" href="/tools/step-to-3d-pdf-converter">STEP to 3D PDF converter</a>.</p></section>
+      <section><h2 className="text-2xl font-bold">Why use an interactive PDF for CAD sharing?</h2><p>An interactive 3D PDF helps engineers, manufacturers, architects and non-CAD stakeholders inspect geometry without sending the full original CAD project. It can support design reviews, customer demonstrations, technical handovers and service discussions. However, not every PDF viewer implements the required 3D capabilities; web browser viewers frequently do not. Open the completed file in compatible desktop software and enable trusted 3D content when appropriate.</p></section>
+      <section><h2 className="text-2xl font-bold">Troubleshooting DWG to 3D PDF conversion</h2><h3 className="text-lg font-semibold">My drawing looks flat</h3><p>Check the model from an isometric perspective. If everything lies in a single plane, you have 2D geometry and need a 3D model first.</p><h3 className="text-lg font-semibold">My DWG uses 3D solids</h3><p>Native AutoCAD solids are different from triangulated meshes. Export a 3D mesh with visible faces and retry, or export to STEP for a solid-model workflow.</p><h3 className="text-lg font-semibold">The PDF opens but does not rotate</h3><p>Try a compatible desktop PDF viewer. Many built-in browser PDF viewers do not support interactive PRC geometry.</p><h3 className="text-lg font-semibold">The model is missing components</h3><p>External references, invisible layers, blocks, and unsupported geometry can cause omissions. Consolidate the assembly and compare the exported result against the original drawing.</p></section>
+      <section><h2 className="text-2xl font-bold">DWG to 3D PDF frequently asked questions</h2><div className="space-y-4">{faq.map(([q,a])=><div key={q}><h3 className="font-bold">{q}</h3><p>{a}</p></div>)}</div></section>
+      <section><h2 className="text-2xl font-bold">Related CAD conversion tools</h2><p>Need a different format? Convert mechanical STEP files using the <a className="text-indigo-600 underline" href="/tools/step-to-3d-pdf-converter">STEP to 3D PDF tool</a>. For printed PDF pages and other document workflows, browse Navorika’s <a className="text-indigo-600 underline" href="/tools">online tools directory</a>.</p></section>
+    </article>
+  </ExpansionToolPage>;
+}
