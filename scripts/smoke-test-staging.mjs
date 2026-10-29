@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { createCanvas } from '@napi-rs/canvas';
 import sharp from 'sharp';
 import { chromium } from 'playwright';
-import { russianMd, arabicMd } from './generate-pdf-samples.mjs';
+import { russianMd, arabicMd } from './pdf-sample-fixtures.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
