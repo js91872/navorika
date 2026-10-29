@@ -7,12 +7,16 @@ interface LogoProps {
   variant?: 'default' | 'light' | 'dark';
   showTagline?: boolean;
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  href?: string;
+  ariaLabel?: string;
 }
 
 export default function Logo({
   variant = 'default',
   showTagline = false,
   size = 'md',
+  href = '/',
+  ariaLabel = 'Navorika home',
 }: LogoProps) {
   const rawId = useId();
   const uid = rawId.replace(/:/g, '');
@@ -39,9 +43,9 @@ export default function Logo({
 
   return (
     <Link
-      href="/"
+      href={href}
       className="group flex items-center gap-3"
-      aria-label="Navorika home"
+      aria-label={ariaLabel}
     >
       <svg
         width={iconSizeNum}
