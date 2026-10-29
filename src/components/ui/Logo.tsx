@@ -6,6 +6,7 @@ import Link from 'next/link';
 interface LogoProps {
   variant?: 'default' | 'light' | 'dark';
   showTagline?: boolean;
+  tagline?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   href?: string;
   ariaLabel?: string;
@@ -14,6 +15,7 @@ interface LogoProps {
 export default function Logo({
   variant = 'default',
   showTagline = false,
+  tagline = 'Free Tools · Privacy-First',
   size = 'md',
   href = '/',
   ariaLabel = 'Navorika home',
@@ -148,7 +150,7 @@ export default function Logo({
 
         {showTagline && (
           <span className="text-[10px] font-bold text-[var(--muted-foreground)] tracking-[0.15em] uppercase leading-none">
-            Free Tools · Privacy-First
+            {tagline}
           </span>
         )}
       </div>

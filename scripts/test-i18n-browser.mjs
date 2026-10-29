@@ -138,6 +138,7 @@ try {
     await visit(`/${locale}`);
     await page.locator('input[type="search"]').fill(d.tools['rgb-cmyk-image-checker'].title);
     assert.equal(await page.locator('main h2').count(), 1);
+    assert.equal(await page.getByRole('status').textContent(), `${new Intl.NumberFormat(locale).format(1)} ${d.ui.toolsFound}`);
     await page.locator('input[type="search"]').fill('zzzz-not-a-tool');
     assert.equal(await page.getByRole('status').textContent(), d.ui.noResults);
 

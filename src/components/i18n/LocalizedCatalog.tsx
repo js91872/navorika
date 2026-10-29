@@ -19,6 +19,7 @@ import {
 import { localizedPath, translatedTools, type Locale } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import { tools } from '@/data/registry';
+import { getToolIcon } from '@/lib/toolIcons';
 
 const toolCategoryMap = new Map(tools.map((t) => [t.slug, t.category]));
 
@@ -69,6 +70,16 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
     setActiveCategory('all');
   };
 
+  const formattedCount = useMemo(() => {
+    return new Intl.NumberFormat(locale).format(matches.length);
+  }, [locale, matches.length]);
+
+  const totalCount = useMemo(() => {
+    return new Intl.NumberFormat(locale).format(translatedTools.length);
+  }, [locale]);
+
+  const announcement = `${formattedCount} ${d.ui.toolsFound}`;
+
   return (
     <section id="tools" className="mt-8 scroll-mt-24">
       {/* Search Header */}
@@ -92,7 +103,7 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
             <button
               type="button"
               onClick={() => setQuery('')}
-              className="absolute inset-y-0 end-0 flex items-center pe-3.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition"
+              className="absolute inset-y-0 end-0 flex items-center pe-3.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded-full"
               aria-label={d.ui.clearSearch}
             >
               <X className="h-5 w-5" />
@@ -101,12 +112,15 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
         </div>
         <div className="mt-2.5 flex items-center justify-between px-1 text-xs text-[var(--muted-foreground)]">
           <span>
-            {matches.length} {d.ui.toolsFound}
+            {query.trim() || activeCategory !== 'all'
+              ? announcement
+              : `${totalCount} ${d.ui.toolsFound}`}
           </span>
           {(query || activeCategory !== 'all') && (
             <button
+              type="button"
               onClick={resetFilters}
-              className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:underline"
+              className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded"
             >
               <RotateCcw className="h-3 w-3" />
               <span>{d.ui.reset}</span>
@@ -126,8 +140,10 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
           return (
             <button
               key={cat.id}
+              type="button"
               onClick={() => setActiveCategory(cat.id)}
-              className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 ${
+              aria-pressed={isActive}
+              className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 ${
                 isActive
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-[1.02]'
                   : 'bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:border-indigo-500/40'
@@ -140,7 +156,7 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
                   isActive ? 'bg-white/20 text-white' : 'bg-[var(--muted)] text-[var(--muted-foreground)]'
                 }`}
               >
-                {count}
+                {new Intl.NumberFormat(locale).format(count)}
               </span>
             </button>
           );
@@ -165,7 +181,13 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
                   className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-xl sm:p-6"
                 >
                   <div>
-                    <div className="mb-3 flex items-center justify-between gap-2">
+                    <div className="mb-4 flex items-start justify-between gap-3">
+                      <span
+                        className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-indigo-500/10 text-2xl"
+                        aria-hidden="true"
+                      >
+                        {getToolIcon(slug) || '🔧'}
+                      </span>
                       <span
                         className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${catConfig.color}`}
                       >
@@ -189,7 +211,9 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
               );
             })}
           </div>
-          <p role="status" className="sr-only" />
+          <p role="status" aria-live="polite" className="sr-only">
+            {announcement}
+          </p>
         </>
       ) : (
         /* Empty State */
@@ -197,15 +221,16 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
           <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
             <Search className="h-6 w-6 opacity-75" />
           </div>
-          <p role="status" className="text-base font-semibold text-[var(--foreground)]">
+          <p role="status" aria-live="polite" className="text-base font-semibold text-[var(--foreground)]">
             {d.ui.noResults}
           </p>
           <p className="mt-1 text-sm text-[var(--muted-foreground)]">
             {d.ui.searchPlaceholder}
           </p>
           <button
+            type="button"
             onClick={resetFilters}
-            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700"
+            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
           >
             <RotateCcw className="h-4 w-4" />
             <span>{d.ui.reset}</span>

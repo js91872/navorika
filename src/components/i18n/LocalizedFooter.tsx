@@ -18,7 +18,13 @@ export default function LocalizedFooter({ locale, dictionary: d }: LocalizedFoot
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand & Mission Column */}
           <div className="col-span-1 md:col-span-2">
-            <Logo href={`/${locale}`} showTagline={true} size="lg" />
+            <Logo
+              href={`/${locale}`}
+              ariaLabel={d.ui.brandHome}
+              tagline={d.ui.brandTagline}
+              showTagline={true}
+              size="lg"
+            />
             <p className="mt-4 text-sm text-[var(--muted-foreground)] max-w-sm leading-relaxed">
               {d.ui.local}
             </p>
