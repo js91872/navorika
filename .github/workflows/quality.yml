@@ -15,7 +15,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - name: Check out repository
@@ -56,6 +56,9 @@ jobs:
 
       - name: Install Chromium for multilingual browser checks
         run: npx playwright install --with-deps chromium
+
+      - name: Run staging smoke tests
+        run: npm run test:smoke
 
       - name: Test translated production pages and tools
         run: npm run test:i18n:browser

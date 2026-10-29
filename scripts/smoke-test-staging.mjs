@@ -1,7 +1,17 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, unlinkSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createCanvas } from '@napi-rs/canvas';
+import sharp from 'sharp';
 import { chromium } from 'playwright';
+import { russianMd, arabicMd } from './generate-pdf-samples.mjs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectRoot = path.resolve(__dirname, '..');
+const publicDir = path.resolve(projectRoot, 'public/samples');
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3119';
 const locales = ['fr', 'it', 'pt', 'es', 'de', 'ru', 'ar'];
@@ -13,6 +23,54 @@ let server, browser;
 let serverOutput = '';
 const errors = [];
 let checksPassed = 0;
+
+function cleanOldScreenshots(dir, prefix) {
+  if (!dir || !existsSync(dir)) return;
+  for (const file of readdirSync(dir)) {
+    if (file.startsWith(`${prefix}-page-`) && file.endsWith('.png')) {
+      try {
+        unlinkSync(path.join(dir, file));
+      } catch {
+        // ignore removal error
+      }
+    }
+  }
+}
+
+let isCleaningUp = false;
+async function cleanup() {
+  if (isCleaningUp) return;
+  isCleaningUp = true;
+  try {
+    await browser?.close();
+  } catch {
+    // ignore browser close error
+  }
+  if (server && !server.killed) {
+    try {
+      server.kill('SIGTERM');
+      setTimeout(() => {
+        try {
+          if (!server.killed) server.kill('SIGKILL');
+        } catch {
+          // ignore kill error
+        }
+      }, 2000).unref();
+    } catch {
+      // ignore server kill error
+    }
+  }
+}
+
+process.on('SIGINT', async () => {
+  await cleanup();
+  process.exit(130);
+});
+
+process.on('SIGTERM', async () => {
+  await cleanup();
+  process.exit(143);
+});
 
 try {
   if (!process.env.I18N_BASE_URL) {
@@ -142,9 +200,80 @@ try {
   }
 
   // -------------------------------------------------------------------------
-  // 3. Corel conversion notices (Mocked & Localized UI)
+  // 2b. Browser-generated Markdown-to-PDF downloads (Arabic & Russian)
   // -------------------------------------------------------------------------
-  console.log('3. Checking Corel conversion notices & status strings...');
+  console.log('2b. Checking browser-generated Markdown-to-PDF exports in Arabic and Russian...');
+  const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
+
+  for (const [targetLocale, sampleMd, prefix] of [
+    ['ar', arabicMd, 'browser-arabic'],
+    ['ru', russianMd, 'browser-russian'],
+  ]) {
+    cleanOldScreenshots(publicDir, prefix);
+    await page.goto(`${base}/${targetLocale}/tools/markdown-to-pdf`, { waitUntil: 'domcontentloaded' });
+    await page.locator('[data-hydrated="true"]').waitFor({ state: 'attached', timeout: 20000 });
+
+    const textarea = page.locator('#markdown-text-area');
+    await textarea.waitFor({ state: 'visible', timeout: 15000 });
+    await textarea.fill(sampleMd);
+
+    const convertBtn = page.getByRole('button', {
+      name: dictionaries[targetLocale].pdfTools.converters.convertAction,
+      exact: true,
+    });
+    await convertBtn.click();
+
+    const downloadLink = page.locator('a[download]');
+    await downloadLink.waitFor({ state: 'visible', timeout: 30000 });
+
+    const href = await downloadLink.getAttribute('href');
+    assert.ok(href && href.startsWith('blob:'), `Valid blob download URL for ${targetLocale}`);
+
+    const pdfBase64 = await page.evaluate(async (url) => {
+      const resp = await fetch(url);
+      const buf = await resp.arrayBuffer();
+      let binary = '';
+      const bytes = new Uint8Array(buf);
+      for (let i = 0; i < bytes.byteLength; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      return btoa(binary);
+    }, href);
+
+    const pdfBuffer = Buffer.from(pdfBase64, 'base64');
+    assert.ok(pdfBuffer.length > 50000, `Downloaded PDF size for ${targetLocale} (${pdfBuffer.length} bytes)`);
+
+    const browserPdfPath = path.join(publicDir, `${prefix}.pdf`);
+    writeFileSync(browserPdfPath, pdfBuffer);
+
+    const doc = await pdfjs.getDocument({ data: new Uint8Array(pdfBuffer) }).promise;
+    assert.ok(doc.numPages >= 2, `${prefix} has >= 2 pages (got ${doc.numPages})`);
+
+    for (let pNum = 1; pNum <= doc.numPages; pNum++) {
+      const pdfPage = await doc.getPage(pNum);
+      const viewport = pdfPage.getViewport({ scale: 2.0 });
+      const c = createCanvas(viewport.width, viewport.height);
+      const cx = c.getContext('2d');
+      await pdfPage.render({ canvasContext: cx, viewport }).promise;
+      const pngBuf = c.toBuffer('image/png');
+      writeFileSync(path.join(publicDir, `${prefix}-page-${pNum}.png`), pngBuf);
+
+      const img = sharp(pngBuf);
+      const { data } = await img.raw().toBuffer({ resolveWithObject: true });
+      let dark = 0;
+      for (let i = 0; i < data.length; i += 4) {
+        if (data[i] < 100 && data[i + 1] < 100 && data[i + 2] < 100) dark++;
+      }
+      assert.ok(dark > 500, `Legible text ink on ${prefix} page ${pNum}`);
+    }
+    console.log(`[${prefix}] Browser export verified: ${doc.numPages} pages rendered to public/samples/${prefix}-page-*.png`);
+    checksPassed += 2;
+  }
+
+  // -------------------------------------------------------------------------
+  // 3. Corel conversion notices (Mocked backend fixture & localized UI strings)
+  // -------------------------------------------------------------------------
+  console.log('3. Checking Corel conversion notices (mocked backend fixture) & status strings...');
   await page.route('**/api/coreldraw/convert', (route) => {
     route.fulfill({
       status: 200,
@@ -246,6 +375,5 @@ try {
   assert.deepEqual(errors, [], 'No uncaught browser exceptions');
   console.log(`\nAll staging smoke tests passed cleanly! (${checksPassed} assertions verified)`);
 } finally {
-  await browser?.close();
-  server?.kill('SIGTERM');
+  await cleanup();
 }

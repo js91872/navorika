@@ -1,12 +1,45 @@
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readdirSync, unlinkSync, existsSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { createCanvas } from '@napi-rs/canvas';
 import sharp from 'sharp';
-import { convertMarkdownToPdf } from '../src/lib/pdf/markdownToPdf.js';
+import { convertMarkdownToPdf } from '../src/lib/pdf/markdownToPdf.ts';
 
-const artifactDir = process.env.ARTIFACT_DIR || '/home/jaspal/.gemini/antigravity-cli/brain/f769bac1-9b1d-4769-8db9-746a3b1b6d5e/samples';
-const publicDir = 'public/samples';
-mkdirSync(artifactDir, { recursive: true });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectRoot = path.resolve(__dirname, '..');
+
+// Primary output directory inside the repository (public/samples)
+const publicDir = path.resolve(projectRoot, 'public/samples');
 mkdirSync(publicDir, { recursive: true });
+
+// Optional artifact directory support
+const artifactDir = process.env.ARTIFACT_DIR ? path.resolve(process.env.ARTIFACT_DIR) : null;
+if (artifactDir) {
+  mkdirSync(artifactDir, { recursive: true });
+}
+
+function cleanOldScreenshots(dir, prefix) {
+  if (!dir || !existsSync(dir)) return;
+  for (const file of readdirSync(dir)) {
+    if (file.startsWith(`${prefix}-page-`) && file.endsWith('.png')) {
+      try {
+        unlinkSync(path.join(dir, file));
+      } catch {
+        // ignore removal error
+      }
+    }
+  }
+}
+
+function savePdf(pdfBytes, filename) {
+  const publicPdfPath = path.join(publicDir, filename);
+  writeFileSync(publicPdfPath, pdfBytes);
+  if (artifactDir) {
+    writeFileSync(path.join(artifactDir, filename), pdfBytes);
+  }
+  return publicPdfPath;
+}
 
 const nodeCanvasCreator = (w, h) => {
   const canvas = createCanvas(w, h);
@@ -18,7 +51,7 @@ const nodeCanvasCreator = (w, h) => {
   };
 };
 
-const russianMd = `# Руководство по инженерным расчетам и спецификациям Navorika
+export const russianMd = `# Руководство по инженерным расчетам и спецификациям Navorika
 
 ## 1. Введение в архитектуру платформы
 Платформа Navorika предоставляет набор автономных вычислительных инструментов для инженерных, полиграфических и веб-разработок. Архитектура ориентирована на максимальную конфиденциальность: все критические вычисления выполняются локально в пользовательской среде без передачи исходных данных на сторонние серверы.
@@ -52,7 +85,7 @@ const russianMd = `# Руководство по инженерным расче
 Регулярное использование автоматизированных инструментов предпечатной подготовки Navorika позволяет минимизировать технический брак, сократить издержки на производство и повысить общее качество полиграфической продукции.
 `;
 
-const arabicMd = `# دليل الحسابات الهندسية ومواصفات الطباعة من نافوريكا
+export const arabicMd = `# دليل الحسابات الهندسية ومواصفات الطباعة من نافوريكا
 
 ## ١. مقدمة في معمارية المنصة الرقمية
 توفر منصة نافوريكا مجموعة متكاملة من الأدوات التقنية المتطورة لإجراء الحسابات الهندسية والتحضير للطباعة الرقمية والأوفست بدقة فائقة. تعتمد معمارية المنصة مبدأ الخصوصية أولاً، حيث تُجرى كافة المعالجات والتحليلات محلياً داخل بيئة المتصفح دون نقل بيانات المستخدمين الحساسة إلى خوادم وسيطة.
@@ -87,8 +120,14 @@ const arabicMd = `# دليل الحسابات الهندسية ومواصفات 
 `;
 
 async function renderPdfToScreenshots(pdfBytes, prefix) {
+  // Clean old screenshots before rendering to remove stale pages if pagination changes
+  cleanOldScreenshots(publicDir, prefix);
+  if (artifactDir) {
+    cleanOldScreenshots(artifactDir, prefix);
+  }
+
   const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
-  const doc = await pdfjs.getDocument({ data: pdfBytes }).promise;
+  const doc = await pdfjs.getDocument({ data: pdfBytes.slice(0) }).promise;
   console.log(`[${prefix}] Generated PDF with ${doc.numPages} page(s).`);
 
   const pagesInfo = [];
@@ -104,8 +143,15 @@ async function renderPdfToScreenshots(pdfBytes, prefix) {
     }).promise;
 
     const pngBuffer = canvas.toBuffer('image/png');
-    writeFileSync(`${artifactDir}/${prefix}-page-${pageNum}.png`, pngBuffer);
-    writeFileSync(`${publicDir}/${prefix}-page-${pageNum}.png`, pngBuffer);
+    const pngFilename = `${prefix}-page-${pageNum}.png`;
+    const publicPngPath = path.join(publicDir, pngFilename);
+    writeFileSync(publicPngPath, pngBuffer);
+
+    let artifactPngPath = null;
+    if (artifactDir) {
+      artifactPngPath = path.join(artifactDir, pngFilename);
+      writeFileSync(artifactPngPath, pngBuffer);
+    }
 
     // Analyze rendered pixels
     const img = sharp(pngBuffer);
@@ -132,7 +178,8 @@ async function renderPdfToScreenshots(pdfBytes, prefix) {
       pageNum,
       width: meta.width,
       height: meta.height,
-      pngPath: outPngPath,
+      pngPath: publicPngPath,
+      artifactPngPath,
       darkPixels,
       leftHalfDark,
       rightHalfDark,
@@ -149,9 +196,8 @@ async function main() {
     title: 'Руководство по инженерным расчетам Navorika',
     author: 'Navorika Engineering',
   }, nodeCanvasCreator);
-  const ruPdfPath = `${artifactDir}/sample-russian.pdf`;
-  writeFileSync(ruPdfPath, ruPdfBytes);
-  writeFileSync(`${publicDir}/sample-russian.pdf`, ruPdfBytes);
+  const ruByteLength = ruPdfBytes.byteLength;
+  const ruPdfPath = savePdf(ruPdfBytes, 'sample-russian.pdf');
   const ruAnalysis = await renderPdfToScreenshots(ruPdfBytes, 'russian');
 
   console.log('--- Generating Arabic Markdown-to-PDF sample ---');
@@ -159,17 +205,18 @@ async function main() {
     title: 'دليل الحسابات الهندسية من نافوريكا',
     author: 'نافوريكا للحلول الهندسية',
   }, nodeCanvasCreator);
-  const arPdfPath = `${artifactDir}/sample-arabic.pdf`;
-  writeFileSync(arPdfPath, arPdfBytes);
-  writeFileSync(`${publicDir}/sample-arabic.pdf`, arPdfBytes);
+  const arByteLength = arPdfBytes.byteLength;
+  const arPdfPath = savePdf(arPdfBytes, 'sample-arabic.pdf');
   const arAnalysis = await renderPdfToScreenshots(arPdfBytes, 'arabic');
 
   console.log('\n--- Summary of PDF Sample Generation ---');
-  console.log('Russian PDF:', ruPdfPath, `(${ruPdfBytes.length} bytes, ${ruAnalysis.numPages} pages)`);
-  console.log('Arabic PDF:', arPdfPath, `(${arPdfBytes.length} bytes, ${arAnalysis.numPages} pages)`);
+  console.log('Russian PDF:', ruPdfPath, `(${ruByteLength} bytes, ${ruAnalysis.numPages} pages)`);
+  console.log('Arabic PDF:', arPdfPath, `(${arByteLength} bytes, ${arAnalysis.numPages} pages)`);
 }
 
-main().catch((err) => {
-  console.error('Fatal error generating PDF samples:', err);
-  process.exit(1);
-});
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch((err) => {
+    console.error('Fatal error generating PDF samples:', err);
+    process.exit(1);
+  });
+}
