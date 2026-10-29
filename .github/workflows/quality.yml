@@ -15,7 +15,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - name: Check out repository
@@ -39,17 +39,26 @@ jobs:
       - name: Prevent new lint debt
         run: npm run lint:baseline
 
+      - name: Audit full multilingual coverage and shared localization support
+        run: npm run test:i18n:audit
+
       - name: Verify multilingual routing, dictionaries and calculations
         run: npm run test:i18n
 
       - name: Check deployment safety and rollback
         run: npm run test:deploy
 
+      - name: Run complete unit test suite
+        run: npm test
+
       - name: Build production application
         run: npm run build
 
       - name: Install Chromium for multilingual browser checks
         run: npx playwright install --with-deps chromium
+
+      - name: Run staging smoke tests
+        run: npm run test:smoke
 
       - name: Test translated production pages and tools
         run: npm run test:i18n:browser

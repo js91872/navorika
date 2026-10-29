@@ -195,7 +195,7 @@ export default function PsdToHtmlTool() {
         recommendedBreakpoint: 'HTML Email (600px fixed-width table container)',
         notes: [
           'Preflight confirmed: 600px artboard optimized for desktop and mobile email clients.',
-          'Layout target: Nested table architecture with inline CSS styles.',
+          'Architecture target: Nested table architecture with inline CSS styles.',
           'Client compatibility: Microsoft Outlook, Apple Mail, and Gmail compliant.',
         ],
       });
@@ -265,7 +265,7 @@ export default function PsdToHtmlTool() {
             Pixel-Perfect Email from Your PSD
           </h1>
           <p style="margin: 0 0 28px 0; font-size: 16px; line-height: 1.6; color: #94a3b8; max-width: 480px; display: inline-block;">
-            Table-based layout engineered for strict email client compatibility across Outlook, Gmail, and Apple Mail.
+            Table-based structure engineered for strict email client compatibility across Outlook, Gmail, and Apple Mail.
           </p>
           <div>
             <!-- Bulletproof Button -->
@@ -905,9 +905,9 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
   const uploadInputId = useId();
 
   return (
-    <div className="space-y-10">
+    <div className="min-w-0 space-y-10">
       {/* 1. PSD Upload & Header Preflight Analysis */}
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border)] pb-5">
           <div className="flex items-center gap-3">
             <div className="grid size-10 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
@@ -1045,8 +1045,8 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
         )}
       </section>
 
-      {/* 2. Target Framework & Layout Scaffolding Controls */}
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
+      {/* 2. Target Framework & Scaffolding Controls */}
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-8">
         <div className="flex items-center gap-3 border-b border-[var(--border)] pb-5">
           <div className="grid size-10 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
             <Sliders className="size-5" />
@@ -1118,7 +1118,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                 <span>Responsive HTML Email</span>
               </div>
               <p className="mt-1 text-xs text-[var(--muted-foreground)]">
-                Nested table layout, inline CSS, Outlook conditionals (MSO), and 600px max-width standard.
+                Nested table structure, inline CSS, Outlook conditionals (MSO), and 600px max-width standard.
               </p>
             </button>
           </div>
@@ -1216,14 +1216,14 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
       </section>
 
       {/* 3. Live Visual Preview */}
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
           <div className="flex items-center gap-3">
             <div className="grid size-10 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
               <Layers className="size-5" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-[var(--foreground)]">Interactive Layout Preview</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)]">Interactive Mockup Preview</h2>
               <p className="text-xs text-[var(--muted-foreground)]">
                 Responsive visual render of the scaffolded DOM components.
               </p>
@@ -1307,7 +1307,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   style={{ color: brandColor, backgroundColor: `${brandColor}15` }}
                   className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3"
                 >
-                  Photoshop Sliced Layout
+                  Photoshop Sliced Mockup
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
                   High-Fidelity Code from Photoshop Mockups
@@ -1315,7 +1315,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                 <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
                   {conversionMode === 'email'
                     ? 'Engineered with nested 600px tables and inline CSS for flawless rendering across Outlook and Gmail.'
-                    : 'Structured with semantic HTML5 tags and flexible CSS layout properties.'}
+                    : 'Structured with semantic HTML5 tags and flexible CSS styling properties.'}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2.5">
                   <span
@@ -1372,7 +1372,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
       </section>
 
       {/* 4. Production Code Generation & Shareable Handoff Brief */}
-      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm sm:p-8">
+      <section className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
           <div className="flex items-center gap-2">
             <FileText className="size-5 text-indigo-600 dark:text-indigo-400" />
@@ -1454,9 +1454,11 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   </button>
                 </div>
               </div>
-              <pre className="max-h-96 overflow-auto rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-emerald-400">
-                <code>{generatedHtml}</code>
-              </pre>
+              <div className="w-full min-w-0 overflow-x-auto">
+                <pre className="max-h-96 rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-emerald-400">
+                  <code>{generatedHtml}</code>
+                </pre>
+              </div>
             </div>
           )}
 
@@ -1483,9 +1485,11 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   </button>
                 </div>
               </div>
-              <pre className="max-h-96 overflow-auto rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-sky-300">
-                <code>{generatedCss}</code>
-              </pre>
+              <div className="w-full min-w-0 overflow-x-auto">
+                <pre className="max-h-96 rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-sky-300">
+                  <code>{generatedCss}</code>
+                </pre>
+              </div>
             </div>
           )}
 
@@ -1513,7 +1517,7 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                     </span>
                   </div>
                   <div className="py-2.5 flex items-start gap-3">
-                    <span className="font-bold text-indigo-600 shrink-0">Layout Math:</span>
+                    <span className="font-bold text-indigo-600 shrink-0">Structure Math:</span>
                     <span className="text-[var(--muted-foreground)]">
                       Map multi-column containers to CSS Flexbox with gap spacing. Test parent and child alignment with our <Link href="/tools/css-flexbox-generator" className="text-indigo-600 underline">CSS Flexbox Generator</Link> or follow our <Link href="/guides/psd-to-html-conversion-guide" className="text-indigo-600 underline">PSD to HTML Conversion Guide</Link>.
                     </span>
@@ -1546,16 +1550,18 @@ ${conversionMode === 'email' ? '- [ ] Tested in Litmus / Email on Acid across Ou
                   </button>
                 </div>
               </div>
-              <pre className="max-h-96 overflow-auto rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-amber-200">
-                <code>{developerBriefMarkdown}</code>
-              </pre>
+              <div className="w-full min-w-0 overflow-x-auto">
+                <pre className="max-h-96 rounded-2xl border border-[var(--border)] bg-slate-950 p-4 text-xs font-mono text-amber-200">
+                  <code>{developerBriefMarkdown}</code>
+                </pre>
+              </div>
             </div>
           )}
         </div>
       </section>
 
       {/* 5. Honest Capability & Workflow Guardrails */}
-      <section className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6 text-xs text-[var(--muted-foreground)]">
+      <section className="min-w-0 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-[var(--muted-foreground)] sm:p-6">
         <div className="flex items-start gap-3">
           <AlertTriangle className="size-5 shrink-0 text-amber-600 dark:text-amber-400 mt-0.5" />
           <div className="space-y-2">

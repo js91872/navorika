@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Check, Copy, RotateCcw, Clock3 } from 'lucide-react';
 import cronstrue from 'cronstrue';
 import { CronExpressionParser } from 'cron-parser';
@@ -25,6 +25,11 @@ export default function CronExpressionHumanizer() {
   const [expression, setExpression] = useState('0 9 * * 1-5');
   const [use24Hour, setUse24Hour] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const result = useMemo(() => {
     const normalized = normalizeCron(expression);
@@ -53,7 +58,7 @@ export default function CronExpressionHumanizer() {
 
     try {
       const interval = CronExpressionParser.parse(normalized, {
-        currentDate: new Date(),
+        currentDate: mounted ? new Date() : new Date('2026-01-01T00:00:00Z'),
       });
 
       const nextRuns: Date[] = [];
@@ -83,7 +88,7 @@ export default function CronExpressionHumanizer() {
         nextRuns: [] as Date[],
       };
     }
-  }, [expression, use24Hour]);
+  }, [expression, use24Hour, mounted]);
 
   const copyExpression = async () => {
     if (!result.valid) return;
@@ -239,13 +244,13 @@ export default function CronExpressionHumanizer() {
                 </code>
               </div>
 
-              <div className="mt-6">
+              <div className="mt-6" suppressHydrationWarning>
                 <div className="flex items-center gap-2 mb-4">
                   <Clock3 className="h-5 w-5 text-indigo-500" />
                   <h3 className="font-bold">Next 5 runs</h3>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2" suppressHydrationWarning>
                   {result.nextRuns.map((date, index) => (
                     <div
                       key={`${date.toISOString()}-${index}`}
@@ -255,8 +260,8 @@ export default function CronExpressionHumanizer() {
                         #{index + 1}
                       </span>
 
-                      <span className="text-sm font-semibold text-right">
-                        {date.toLocaleString()}
+                      <span className="text-sm font-semibold text-right" suppressHydrationWarning>
+                        {mounted ? date.toLocaleString() : date.toISOString()}
                       </span>
                     </div>
                   ))}

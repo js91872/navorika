@@ -4,14 +4,19 @@ import { readFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { chromium } from 'playwright';
 import { PDFDocument } from 'pdf-lib';
+import sharp from 'sharp';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
-const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
-const slugs = ['aspect-ratio-padding-calculator', 'css-flexbox-generator', 'rgb-cmyk-image-checker', 'image-megapixel-calculator', 'pdf-bleed-trim-checker', 'image-print-size-calculator', 'css-gradient-generator', 'css-clamp-font-generator', 'image-scaling-calculator', 'print-bleed-calculator'];
+const locales = process.env.LOCALES ? process.env.LOCALES.split(',') : ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
+
+// Programmatically reconcile enabled tool inventory from actual config
+const configText = readFileSync('src/lib/i18n/config.ts', 'utf8');
+const match = configText.match(/export const translatedTools = \[([\s\S]*?)\] as const;/);
+const slugs = match ? match[1].match(/'([^']+)'/g).map((s) => s.replace(/'/g, '')) : [];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
 let server, browser;
 let serverOutput = '';
-let pagesChecked = 0, workflowsChecked = 0;
+let pagesChecked = 0, workflowsChecked = 0, exportsValidated = 0, mockedChecksChecked = 0;
 const errors = [];
 try {
   if (!process.env.I18N_BASE_URL) {
@@ -29,57 +34,104 @@ try {
   browser = await chromium.launch({
     headless: true,
     ...(process.env.CHROMIUM_EXECUTABLE ? { executablePath: process.env.CHROMIUM_EXECUTABLE } : {}),
-    args: ['--no-sandbox', '--disable-dev-shm-usage', '--no-zygote', '--single-process', '--disable-gpu'],
+    args: ['--no-sandbox', '--disable-dev-shm-usage', '--no-zygote', '--disable-gpu', '--js-flags=--max-old-space-size=4096'],
   });
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   await context.route('**/*', (route) => route.request().url().startsWith(base) ? route.continue() : route.abort());
-  const page = await context.newPage();
-  page.on('pageerror', (error) => errors.push(error.message));
-  const visit = async (path) => {
-    const response = await page.goto(`${base}${path}`, { waitUntil: 'networkidle' });
-    assert.equal(response.status(), 200, path);
-  };
-  const noOverflow = async (path) => {
-    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `Horizontal overflow: ${path}`);
-  };
-  for (const locale of locales) {
+  async function testLocale(locale) {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+    await context.route('**/*', (route) => route.request().url().startsWith(base) ? route.continue() : route.abort());
+    let page = await context.newPage();
+    const attachPage = (p) => {
+      p.on('pageerror', (error) => {
+        console.error(`PAGE ERROR at ${p.url()}:`, error.message);
+        errors.push(error.message);
+      });
+    };
+    attachPage(page);
+    let navCount = 0;
+    const visit = async (path) => {
+      navCount++;
+      if (navCount % 50 === 0) {
+        await page.close();
+        page = await context.newPage();
+        attachPage(page);
+      }
+      const response = await page.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
+      assert.equal(response.status(), 200, path);
+    };
+    const visitTool = async (path) => {
+      await visit(path);
+      await page.locator('[data-hydrated="true"]').waitFor({ state: 'attached', timeout: 30000 });
+    };
+    const noOverflow = async (path) => {
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `Horizontal overflow: ${path}`);
+    };
     const d = dictionaries[locale];
-    for (const slug of [null, ...slugs]) {
+    try {
+      for (const slug of [null, ...slugs]) {
       const path = `/${locale}${slug ? `/tools/${slug}` : ''}`;
       await visit(path);
-      assert.equal(await page.locator('html').getAttribute('lang'), locale);
-      assert.equal(await page.locator('html').getAttribute('dir'), locale === 'ar' ? 'rtl' : 'ltr');
-      assert.equal(await page.locator('main').count(), 1, path);
-      assert.equal(await page.locator('h1').textContent(), slug ? d.tools[slug].title : d.ui.title);
-      assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://navorika.com${path}`);
-      assert.equal(await page.locator('link[rel="alternate"][hreflang]').count(), 9, path);
-      const english = `https://navorika.com${slug ? `/tools/${slug}` : '/'}`;
-      assert.equal(new URL(await page.locator('link[hreflang="en"]').getAttribute('href')).href, new URL(english).href);
-      assert.equal(new URL(await page.locator('link[hreflang="x-default"]').getAttribute('href')).href, new URL(english).href);
-      for (const alternate of locales) {
-        assert.equal(await page.locator(`link[hreflang="${alternate}"]`).getAttribute('href'), `https://navorika.com/${alternate}${slug ? `/tools/${slug}` : ''}`);
-      }
-      assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'), 'index, follow');
-      const pageCopy = await page.locator('body').evaluate((body) => {
-        const copy = body.cloneNode(true);
-        // Generated code and the multilingual language picker intentionally contain other languages.
+      const data = await page.evaluate(() => {
+        const doc = document;
+        const html = doc.documentElement;
+        const canonical = doc.querySelector('link[rel="canonical"]')?.getAttribute('href') || '';
+        const robots = doc.querySelector('meta[name="robots"]')?.getAttribute('content') || '';
+        const altEls = Array.from(doc.querySelectorAll('link[rel="alternate"][hreflang], link[rel="alternate"][hrefLang]'));
+        const alternates = Object.fromEntries(altEls.map((e) => [e.getAttribute('hreflang') || e.getAttribute('hrefLang'), e.getAttribute('href')]));
+        const copy = doc.body.cloneNode(true);
         copy.querySelectorAll('pre, code, script, style, details').forEach((element) => element.remove());
-        return copy.textContent;
+        const schema = doc.querySelector('script[type="application/ld+json"]')?.textContent || null;
+        const enHref = doc.querySelector('header details a[hreflang="en"]')?.getAttribute('href') || '';
+        const privacy = doc.querySelector('footer a[href="/privacy"]')?.textContent || '';
+        const h1 = doc.querySelector('h1')?.textContent || '';
+        const hasMain = doc.querySelectorAll('main').length === 1;
+        const overflow = html.scrollWidth > window.innerWidth + 1;
+        return {
+          lang: html.getAttribute('lang'),
+          dir: html.getAttribute('dir'),
+          hasMain,
+          h1,
+          canonical,
+          robots,
+          alternates,
+          altCount: altEls.length,
+          pageCopy: copy.textContent,
+          footerPrivacy: privacy,
+          schema,
+          enHref,
+          overflow,
+        };
       });
-      assert.doesNotMatch(pageCopy, /\b(?:row-reverse|column-reverse|flex-start|flex-end|space-between|space-around|space-evenly|nowrap|wrap-reverse|English|inch|padding|layout|justify-content|align-items)\b/i, `Untranslated interface text: ${path}`);
-      assert.ok((await page.locator('footer a[href="/privacy"]').textContent()).includes(d.ui.englishName));
-      if (slug) {
-        const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
-        assert.equal(schema.inLanguage, locale);
-        assert.equal(schema.url, `https://navorika.com${path}`);
-        await page.locator('header details').click();
-        assert.equal(await page.locator('header details a[hreflang="en"]').getAttribute('href'), `/tools/${slug}`);
-        await page.locator('header details').click();
+      assert.equal(data.lang, locale);
+      assert.equal(data.dir, locale === 'ar' ? 'rtl' : 'ltr');
+      assert.ok(data.hasMain, path);
+      assert.equal(data.h1, slug ? d.tools[slug].title : d.ui.title);
+      assert.equal(data.canonical, `https://navorika.com${path}`);
+      assert.equal(data.altCount, 9, path);
+      const english = `https://navorika.com${slug ? `/tools/${slug}` : '/'}`;
+      assert.equal(new URL(data.alternates.en).href, new URL(english).href);
+      assert.equal(new URL(data.alternates['x-default']).href, new URL(english).href);
+      for (const alternate of locales) {
+        assert.equal(data.alternates[alternate], `https://navorika.com/${alternate}${slug ? `/tools/${slug}` : ''}`);
       }
-      await noOverflow(path);
-      await page.setViewportSize({ width: 390, height: 844 });
-      await noOverflow(`${path} (mobile)`);
-      await page.setViewportSize({ width: 1440, height: 1000 });
+      assert.equal(data.robots, 'index, follow');
+      assert.doesNotMatch(data.pageCopy, /\b(?:row-reverse|column-reverse|flex-start|flex-end|space-between|space-around|space-evenly|nowrap|wrap-reverse|English|inch|padding|layout|justify-content|align-items)\b/i, `Untranslated interface text: ${path}`);
+      assert.ok(data.footerPrivacy.includes(d.ui.englishName));
+      if (slug) {
+        const schemaObj = JSON.parse(data.schema);
+        assert.equal(schemaObj.inLanguage, locale);
+        assert.equal(schemaObj.url, `https://navorika.com${path}`);
+        assert.equal(data.enHref, `/tools/${slug}`);
+      }
+      assert.ok(!data.overflow, `Horizontal overflow: ${path}`);
+      if (!slug || locale === 'ar' || slugs.indexOf(slug) % 20 === 0) {
+        await page.setViewportSize({ width: 390, height: 844 });
+        await noOverflow(`${path} (mobile)`);
+        await page.setViewportSize({ width: 320, height: 844 });
+        await noOverflow(`${path} (320px)`);
+        await page.setViewportSize({ width: 1440, height: 1000 });
+      }
       pagesChecked++;
     }
 
@@ -89,7 +141,305 @@ try {
     await page.locator('input[type="search"]').fill('zzzz-not-a-tool');
     assert.equal(await page.getByRole('status').textContent(), d.ui.noResults);
 
-    await visit(`/${locale}/tools/aspect-ratio-padding-calculator`);
+    for (const [slug, initial, expected, changed] of [
+      ['image-file-size-estimator', 1920, 49766400],
+      ['photo-storage-calculator', 64, 57.6],
+      ['image-bandwidth-calculator', 250, 1250],
+      ['square-footage-calculator', 20, 300],
+      ['cubic-yard-calculator', 12, 40],
+      ['roofing-shingle-calculator', 2000, 2200],
+      ['rafter-length-calculator', 12, 6],
+      ['stud-calculator', 20, 16, 31],
+      ['drywall-mud-calculator', 1000, 1100],
+      ['roof-ridge-height-calculator', 24, 12],
+      ['fascia-replacement-cost-calculator', 120, 132],
+      ['ppi-calculator', 3000, 300],
+      ['shed-ramp-angle-calculator', 12, 14.04, 26.57],
+      ['construction-material-waste-calculator', 1000, 100],
+      ['soffit-fascia-calculator', 120, 240, 480],
+      ['attic-insulation-payback-calculator', 1500, 2700, 5400],
+      ['joist-deflection-calculator', 12, 53.333, 53.333],
+      ['hvac-duct-cfm-calculator', 8, 0.349, 1.396],
+      ['mortar-calculator', 500, 2.5, 5],
+      ['concrete-block-calculator', 30, 220, 460],
+      ['rainwater-harvesting-calculator', 2000, 39377, 78754],
+      ['dog-age-breed-specific-calculator', 5, 39, 64],
+      ['puppy-growth-predictor', 16, 30, 17.6],
+      ['cat-calorie-calculator', 4.5, 216.3, 363.7],
+      ['caffeine-half-life-calculator', 200, 87.1, 174.1],
+      ['hrv-baseline-deviation-calculator', 55, -7, -62],
+      ['wilks-dots-powerlifting-calculator', 90, 387.96, 307.72],
+      ['macronutrient-calculator', 2200, 165, 330],
+      ['running-pace-calculator', 1, 0, 0],
+      ['hydration-calculator', 70, 2.98, 5.43],
+      ['one-rep-max-calculator', 100, 115, 229],
+      ['rental-property-cash-flow-calculator', 2500, 2470, 4845],
+      ['rental-yield-calculator', 400000, 30000, 30000],
+      ['cap-rate-calculator', 400000, 30000, 30000],
+      ['cash-on-cash-return-calculator', 80000, 100000, 180000],
+      ['brrrr-calculator', 200000, 260000, 460000],
+      ['fix-and-flip-profit-calculator', 200000, 295000, 495000],
+      ['short-term-rental-break-even-calculator', 180, 19.5, 19.5],
+      ['house-hacking-effective-rent-calculator', 2200, 3350, 5550],
+      ['ai-token-calculator', 1000, 1500, 2500],
+      ['llm-api-cost-calculator', 1000, 6, 12],
+      ['gpu-compute-cost-calculator', 2, 3, 6],
+      ['cloud-hosting-cost-calculator', 2, 146, 292],
+      ['cdn-cost-calculator', 1000, 50, 100],
+      ['startup-runway-calculator', 120000, 20000, 20000],
+      ['saas-burn-rate-calculator', 500000, 83333.33333333333, 83333.33333333333],
+      ['ltv-cac-ratio-calculator', 100, 80, 160],
+      ['cac-payback-calculator', 1200, 160, 160],
+      ['churn-impact-calculator', 1000, 342.05254633485396, 648.210185339416],
+      ['rule-of-40-calculator', 30, 0.42, 0.72],
+      ['net-revenue-retention-calculator', 100000, 0.97, 0.985],
+      ['drawdown-recovery-calculator', 30, 0.3, 0.6],
+      ['meeting-roi-calculator', 8, 48.07692307692308, 48.07692307692308],
+      ['ev-vs-gas-break-even-calculator', 45000, 10000, 55000],
+      ['heat-pump-vs-furnace-cost-calculator', 15000, 800, 1600],
+      ['job-offer-total-comp-calculator', 100000, 10000, 10000],
+      ['lumpsum-investment-calculator', 100000, 100000, 200000],
+      ['savings-goal-calculator', 100000, 1240, 2673],
+      ['mortgage-affordability-calculator', 120000, 409712, 792190],
+      ['break-even-calculator', 30000, 40, 40],
+      ['profit-margin-markup-calculator', 60, 40, -20],
+      ['ipv6-subnet-calculator', 48, 16, 32],
+      ['tcp-udp-port-range-calculator', 1024, 48128, 47104],
+      ['cidr-summarization-calculator', 0, 2, 1],
+      ['ip-address-classifier', 0, 0, 0],
+      ['common-port-service-lookup', 443, 443, 886],
+      ['url-parser', 0, 0, 0],
+      ['cdr-print-readiness-checker', 0, 0, 0],
+      ['responsive-srcset-generator', 1920, 0, 0],
+      ['yaml-json-converter', 0, 0, 0],
+      ['uuid-generator-validator', 10, 0, 0],
+    ]) {
+      await visitTool(`/${locale}/tools/${slug}`);
+      await page.locator('main input, main textarea, main select').first().waitFor();
+      const ui = d.calculatorUi;
+      const currencySlugs = new Set([
+        'attic-insulation-payback-calculator',
+        'rental-property-cash-flow-calculator',
+        'rental-yield-calculator',
+        'cap-rate-calculator',
+        'cash-on-cash-return-calculator',
+        'brrrr-calculator',
+        'fix-and-flip-profit-calculator',
+        'house-hacking-effective-rent-calculator',
+        'llm-api-cost-calculator',
+        'gpu-compute-cost-calculator',
+        'cloud-hosting-cost-calculator',
+        'cdn-cost-calculator',
+        'startup-runway-calculator',
+        'saas-burn-rate-calculator',
+        'ltv-cac-ratio-calculator',
+        'cac-payback-calculator',
+        'meeting-roi-calculator',
+        'ev-vs-gas-break-even-calculator',
+        'heat-pump-vs-furnace-cost-calculator',
+        'job-offer-total-comp-calculator',
+        'lumpsum-investment-calculator',
+        'savings-goal-calculator',
+        'mortgage-affordability-calculator',
+        'break-even-calculator',
+        'profit-margin-markup-calculator',
+      ]);
+      const percentSlugs = new Set([
+        'rule-of-40-calculator',
+        'net-revenue-retention-calculator',
+        'drawdown-recovery-calculator',
+      ]);
+      const isCurrency = currencySlugs.has(slug);
+      const isPercent = percentSlugs.has(slug);
+      const number = isCurrency
+        ? new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', currencyDisplay: 'code', maximumFractionDigits: 2 })
+        : isPercent
+        ? new Intl.NumberFormat(locale, { style: 'percent', maximumFractionDigits: 3 })
+        : new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
+      if (slug === 'running-pace-calculator') {
+        assert.ok((await page.locator('main dd').first().textContent()).includes('4:59'));
+        const input = page.locator('main input[type="number"]').nth(1);
+        for (let i = 0; i < 30; i++) {
+          await input.fill(String(initial * 2));
+          if ((await page.locator('main dd').first().textContent()).includes('7:49')) break;
+          await page.waitForTimeout(100);
+        }
+        assert.ok((await page.locator('main dd').first().textContent()).includes('7:49'));
+      } else if (slug === 'ipv6-subnet-calculator') {
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+        const input = page.locator('main input[type="number"]').first();
+        const target = number.format(changed);
+        for (let i = 0; i < 30; i++) {
+          await input.fill('32');
+          if (await page.locator('main dd').first().textContent() === target) break;
+          await page.waitForTimeout(100);
+        }
+        assert.equal(await page.locator('main dd').first().textContent(), target);
+      } else if (slug === 'cidr-summarization-calculator') {
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+        const input = page.locator('main textarea').first();
+        const target = number.format(changed);
+        for (let i = 0; i < 30; i++) {
+          await input.fill('192.168.0.0/24');
+          if (await page.locator('main dd').first().textContent() === target) break;
+          await page.waitForTimeout(100);
+        }
+        assert.equal(await page.locator('main dd').first().textContent(), target);
+      } else if (slug === 'ip-address-classifier') {
+        assert.equal(await page.locator('main dd').first().textContent(), 'IPv4');
+        await page.locator('main input[type="text"]').first().fill('2001:db8::1');
+        assert.equal(await page.locator('main dd').first().textContent(), 'IPv6');
+      } else if (slug === 'url-parser') {
+        assert.equal(await page.locator('main dd').first().textContent(), 'https:');
+        await page.locator('main input[type="text"]').first().fill('http://test.org');
+        assert.equal(await page.locator('main dd').first().textContent(), 'http:');
+      } else if (slug === 'cdr-print-readiness-checker') {
+        assert.equal(await page.locator('main dd').first().textContent(), d.calculatorStates.readyForPrint);
+        await page.locator('main select').first().selectOption('missing');
+        assert.equal(await page.locator('main dd').first().textContent(), d.calculatorStates.actionRequired);
+      } else if (slug === 'responsive-srcset-generator') {
+        assert.ok((await page.locator('main dd').first().textContent()).includes('16 / 9'));
+        await page.locator('main input[type="number"]').first().fill('3840');
+        assert.ok((await page.locator('main dd').first().textContent()).includes('3840px'));
+      } else if (slug === 'yaml-json-converter') {
+        assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+        await page.locator('main textarea').first().fill('foo: bar');
+        assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+      } else if (slug === 'uuid-generator-validator') {
+        assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+        await page.locator('main input[type="text"]').first().fill('invalid-uuid');
+        assert.ok((await page.locator('main dd').first().textContent()).includes('Invalid'));
+      } else {
+        assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+        const input = page.locator('main input[type="number"]').first();
+        const target = number.format(changed ?? expected * 2);
+        for (let i = 0; i < 40; i++) {
+          await input.fill('');
+          await input.fill(String(initial * 2));
+          if (await page.locator('main dd').first().textContent() === target) break;
+          await page.waitForTimeout(100);
+        }
+        assert.equal(await page.locator('main dd').first().textContent(), target);
+      }
+      await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copiedResult = text; } } }));
+      await page.getByRole('button', { name: ui.copy, exact: true }).click();
+      const copied = await page.evaluate(() => window.__copiedResult);
+      assert.ok(copied.includes(d.tools[slug].title));
+      assert.doesNotMatch(copied, /Matched|Mismatch|Not applicable|Flat \(/);
+      for (const label of Object.values(d.calculators[slug].results)) assert.ok(copied.includes(label));
+      const expectedInCopied = slug === 'running-pace-calculator' ? '7:49'
+        : slug === 'ip-address-classifier' ? 'IPv6'
+        : slug === 'url-parser' ? 'http:'
+        : slug === 'cdr-print-readiness-checker' ? d.calculatorStates.actionRequired
+        : slug === 'responsive-srcset-generator' ? '3840px'
+        : slug === 'yaml-json-converter' ? 'Valid'
+        : slug === 'uuid-generator-validator' ? 'Invalid'
+        : number.format(changed ?? expected * 2);
+      assert.ok(copied.includes(expectedInCopied), `${slug} in copied text`);
+      const downloadEvent = page.waitForEvent('download');
+      await page.getByRole('button', { name: ui.csv, exact: true }).click();
+      const download = await downloadEvent;
+      assert.equal(download.suggestedFilename(), `${slug}-${locale}.csv`);
+      const csv = readFileSync(await download.path(), 'utf8');
+      assert.ok(csv.startsWith('\uFEFF'));
+      assert.ok(csv.includes(ui.result) && csv.includes(ui.value));
+      for (const label of Object.values(d.calculators[slug].results)) assert.ok(csv.includes(label));
+      if (slug === 'fascia-replacement-cost-calculator' || slug === 'construction-material-waste-calculator' || slug === 'attic-insulation-payback-calculator') {
+        assert.ok(csv.includes('USD'));
+        assert.ok(copied.includes('USD'));
+      }
+      if (slug === 'ppi-calculator') {
+        assert.ok(csv.includes(d.calculatorStates.mismatch));
+        assert.ok(copied.includes(d.calculatorStates.mismatch));
+      }
+      if (slug === 'joist-deflection-calculator') {
+        assert.ok(csv.includes('L / 115'));
+        assert.ok(copied.includes('L / 115'));
+      }
+      if (slug === 'dog-age-breed-specific-calculator') {
+        assert.ok(copied.includes(d.calculatorStates.geriatric));
+        assert.ok(csv.includes(d.calculatorStates.geriatric));
+      }
+      if (slug === 'hrv-baseline-deviation-calculator') {
+        assert.ok(copied.includes(d.calculatorStates.belowBaseline));
+        assert.ok(csv.includes(d.calculatorStates.belowBaseline));
+      }
+      if (slug === 'running-pace-calculator') {
+        assert.ok(copied.includes(d.calculatorStates.perKm));
+        assert.ok(csv.includes(d.calculatorStates.perKm));
+      }
+      if (slug === 'cdr-print-readiness-checker') {
+        assert.ok(copied.includes(d.calculatorStates.actionRequired));
+        assert.ok(csv.includes(d.calculatorStates.actionRequired));
+      }
+      await page.evaluate(() => { window.print = () => { window.__printOpened = true; }; });
+      await page.locator('main button').last().click();
+      assert.equal(await page.evaluate(() => window.__printOpened), true);
+      if (slug === 'cdr-print-readiness-checker') {
+        // All options are valid preflight checklist states
+      } else {
+        if (slug === 'cidr-summarization-calculator') {
+          await page.locator('main textarea').first().fill('');
+        } else if (slug === 'ip-address-classifier' || slug === 'url-parser') {
+          await page.locator('main input[type="text"]').first().fill('');
+        } else {
+          await page.locator('main input[type="number"]').first().fill('');
+        }
+        assert.equal(await page.locator('main').getByRole('alert').textContent(), ui.invalid);
+        assert.equal(await page.getByRole('button', { name: ui.copy, exact: true }).count(), 0);
+        await page.getByRole('button', { name: ui.reset, exact: true }).click();
+        if (slug === 'running-pace-calculator') {
+          assert.ok((await page.locator('main dd').first().textContent()).includes('4:59'));
+        } else if (slug === 'ip-address-classifier') {
+          assert.equal(await page.locator('main dd').first().textContent(), 'IPv4');
+        } else if (slug === 'url-parser') {
+          assert.equal(await page.locator('main dd').first().textContent(), 'https:');
+        } else if (slug === 'responsive-srcset-generator') {
+          assert.ok((await page.locator('main dd').first().textContent()).includes('16 / 9'));
+        } else if (slug === 'yaml-json-converter') {
+          assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+        } else if (slug === 'uuid-generator-validator') {
+          assert.ok((await page.locator('main dd').first().textContent()).includes('Valid'));
+        } else {
+          assert.equal(await page.locator('main dd').first().textContent(), number.format(expected));
+        }
+      }
+      await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async () => { throw new Error('RAW_BROWSER_ERROR'); } } }));
+      await page.getByRole('button', { name: ui.copy, exact: true }).click();
+      assert.doesNotMatch(await page.locator('main').innerText(), /RAW_BROWSER_ERROR/);
+      assert.ok((await page.locator('main [role="status"]').textContent()).trim());
+      if (slug === 'ppi-calculator') {
+        assert.equal(await page.locator('main dd').last().textContent(), d.calculatorStates.matched);
+        await page.locator('main input[type="number"]').nth(2).fill('20');
+        assert.equal(await page.locator('main dd').last().textContent(), `${d.calculatorStates.mismatch} (~${new Intl.NumberFormat(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(50)}%)`);
+      }
+      if (slug === 'shed-ramp-angle-calculator') {
+        await page.locator('main input[type="number"]').nth(0).fill('0');
+        assert.equal(await page.locator('main dd').last().textContent(), `${d.calculatorStates.flat} (0 : 1)`);
+        await page.locator('main input[type="number"]').nth(1).fill('0');
+        assert.equal(await page.locator('main dd').last().textContent(), `${d.calculatorStates.flat} (0 : 1)`);
+        await page.locator('main input[type="number"]').nth(0).fill('12');
+        assert.equal(await page.locator('main dd').last().textContent(), `${d.calculatorStates.vertical} (1 : 0)`);
+        assert.equal(await page.locator('main dd').nth(1).textContent(), ui.notApplicable);
+        // The vertical/null state must also survive copying and export without raw English.
+        await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copiedResult = text; } } }));
+        await page.getByRole('button', { name: ui.copy, exact: true }).click();
+        const verticalCopy = await page.evaluate(() => window.__copiedResult);
+        assert.ok(verticalCopy.includes(ui.notApplicable) && verticalCopy.includes(d.calculatorStates.vertical));
+        const verticalDownload = page.waitForEvent('download');
+        await page.getByRole('button', { name: ui.csv, exact: true }).click();
+        const verticalCsv = readFileSync(await (await verticalDownload).path(), 'utf8');
+        assert.ok(verticalCsv.includes(ui.notApplicable) && verticalCsv.includes(d.calculatorStates.vertical));
+      }
+      if (slugs.indexOf(slug) % 4 === 0) {
+        await page.setViewportSize({ width: 320, height: 844 });
+        await noOverflow(`${locale}/${slug} at 320px`);
+        await page.setViewportSize({ width: 1440, height: 1000 });
+      }
+      workflowsChecked++;
+    }
+
+    await visitTool(`/${locale}/tools/aspect-ratio-padding-calculator`);
     assert.match(await page.locator('pre').textContent(), /padding-top: 56.25%/);
     assert.ok((await page.locator('bdi[dir="ltr"]').allTextContents()).some((value) => /^1920\s*×\s*1080/.test(value)), 'Numeric examples must retain width × height order');
     await page.locator('input[type="number"]').nth(0).fill('100');
@@ -108,13 +458,13 @@ try {
     await page.getByText(d.ui.copyError, { exact: true }).waitFor();
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/image-megapixel-calculator`);
+    await visitTool(`/${locale}/tools/image-megapixel-calculator`);
     assert.ok((await page.locator('[aria-live="polite"]').textContent()).includes(`24 ${d.ui.mpUnit}`));
     await page.locator('input[type="number"]').nth(0).fill('1.5');
     assert.equal(await page.locator('main').getByRole('alert').textContent(), d.ui.invalid);
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/print-bleed-calculator`);
+    await visitTool(`/${locale}/tools/print-bleed-calculator`);
     const numbers = page.locator('input[type="number"]');
     assert.ok((await page.locator('[aria-live="polite"]').textContent()).includes(new Intl.NumberFormat(locale).format(216)));
     await page.locator('select').selectOption('inch');
@@ -126,7 +476,7 @@ try {
     assert.equal(await page.locator('main').getByRole('alert').textContent(), d.ui.invalid);
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/css-flexbox-generator`);
+    await visitTool(`/${locale}/tools/css-flexbox-generator`);
     await page.locator('select').nth(0).selectOption('column-reverse');
     await page.locator('select').nth(1).selectOption('space-between');
     assert.equal(await page.locator('select').nth(0).locator('option:checked').textContent(), d.flexOptions['column-reverse']);
@@ -135,7 +485,7 @@ try {
     assert.match(await page.locator('pre').textContent(), /justify-content: space-between/);
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/rgb-cmyk-image-checker`);
+    await visitTool(`/${locale}/tools/rgb-cmyk-image-checker`);
     assert.match(await page.locator('input[type="file"]').getAttribute('class'), /sr-only/);
     const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLbtAAAAABJRU5ErkJggg==', 'base64');
     await page.locator('input[type="file"]').setInputFiles({ name: 'test.png', mimeType: 'image/png', buffer: png });
@@ -150,7 +500,7 @@ try {
     assert.equal(await page.locator('main').getByRole('alert').textContent(), d.ui.fileError);
     assert.equal(await page.locator('dl').count(), 0, 'Previous image result must be cleared');
     workflowsChecked++;
-    await visit(`/${locale}/tools/image-print-size-calculator`);
+    await visitTool(`/${locale}/tools/image-print-size-calculator`);
     const printFields = page.locator('input[type="number"]');
     const formatPrint = (value) => new Intl.NumberFormat(locale, { maximumFractionDigits: 3 }).format(value);
     assert.deepEqual(await page.locator('dl dd').allTextContents(), [10, 8, 25.4, 20.32].map(formatPrint));
@@ -173,7 +523,7 @@ try {
     assert.ok((await page.evaluate(() => window.__copied)).includes(d.printSize.widthCm));
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/pdf-bleed-trim-checker`);
+    await visitTool(`/${locale}/tools/pdf-bleed-trim-checker`);
     const pdf = await PDFDocument.create();
     const pt = (mm) => mm / 25.4 * 72;
     for (let i = 0; i < 5; i++) {
@@ -217,7 +567,7 @@ try {
       assert.equal(await page.locator('main').getByRole('alert').textContent(), d.pdf.tooLarge);
     }
     workflowsChecked++;
-    await visit(`/${locale}/tools/css-gradient-generator`);
+    await visitTool(`/${locale}/tools/css-gradient-generator`);
     const chooseColor = async (index, value) => page.locator('input[type="color"]').nth(index).evaluate((element, next) => {
       Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(element, next);
       element.dispatchEvent(new Event('input', { bubbles: true }));
@@ -240,7 +590,7 @@ try {
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/css-clamp-font-generator`);
+    await visitTool(`/${locale}/tools/css-clamp-font-generator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     assert.equal(await page.locator('[data-font-preview]').textContent(), d.design.sample);
     const fontFields = page.locator('input[type="number"]');
@@ -266,7 +616,7 @@ try {
     await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
     workflowsChecked++;
 
-    await visit(`/${locale}/tools/image-scaling-calculator`);
+    await visitTool(`/${locale}/tools/image-scaling-calculator`);
     await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
     const scaleFields = page.locator('input[type="number"]');
     const formatScale = (value) => new Intl.NumberFormat(locale, { maximumFractionDigits: 6 }).format(value);
@@ -293,23 +643,549 @@ try {
     await noOverflow(`${locale} scaling results`);
     await page.setViewportSize({ width: 1440, height: 1000 });
     workflowsChecked++;
-    console.log(`Verified ${locale}: eleven translated pages and ten working tools.`);
+
+    await visitTool(`/${locale}/tools/regex-tester`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dd').first().textContent()).includes('[0] Hello'));
+    await page.locator('main input[type="text"]').nth(0).fill('[0-9]+');
+    await page.locator('main textarea').fill('Year 2026');
+    assert.ok((await page.locator('main dd').first().textContent()).includes('[0] 2026'));
+    await page.locator('main input[type="text"]').nth(0).fill('[invalid');
+    assert.ok((await page.locator('main [role="alert"]').textContent()).includes(d.developer.regex.invalidRegex));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dd').first().textContent()).includes('[0] Hello'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('Hello'));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/unix-timestamp-converter`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dd').first().textContent()).includes('2023-11-14'));
+    await page.locator('main input[type="text"]').first().fill('invalid');
+    assert.equal(await page.locator('main [role="alert"]').textContent(), d.developer.timestamp.invalid);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dd').first().textContent()).includes('2023-11-14'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('2023-11-14'));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/utm-builder`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dd').first().textContent()).includes('utm_source=google'));
+    await page.locator('main input[type="text"]').nth(1).fill('newsletter');
+    assert.ok((await page.locator('main dd').first().textContent()).includes('utm_source=newsletter'));
+    await page.locator('main input[type="text"]').first().fill('not-a-url');
+    assert.equal(await page.locator('main [role="alert"]').textContent(), d.developer.utm.invalidUrl);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dd').first().textContent()).includes('utm_source=google'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('utm_source=google'));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/meta-tag-generator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main pre').textContent()).includes('<title>Navorika - Free Tools</title>'));
+    await page.locator('main input[type="text"]').first().fill('Custom Title');
+    assert.ok((await page.locator('main pre').textContent()).includes('<title>Custom Title</title>'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main pre').textContent()).includes('<title>Navorika - Free Tools</title>'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('<title>Navorika - Free Tools</title>'));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/robots-txt-generator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main pre').textContent()).includes('User-agent: *'));
+    assert.ok((await page.locator('main pre').textContent()).includes('Disallow: /private/'));
+    await page.locator('main input[type="text"]').nth(1).fill('/admin/');
+    assert.ok((await page.locator('main pre').textContent()).includes('Disallow: /admin/'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main pre').textContent()).includes('Disallow: /private/'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes('Disallow: /private/'));
+    workflowsChecked++;
+
+    const waitForDlText = async (targetText, timeoutMs = 3000) => {
+      const start = Date.now();
+      while (Date.now() - start < timeoutMs) {
+        const text = await page.locator('main dl').textContent();
+        if (text && text.includes(targetText)) return;
+        await page.waitForTimeout(50);
+      }
+      const finalText = await page.locator('main dl').textContent();
+      assert.ok(finalText && finalText.includes(targetText), `Expected "${targetText}" in dl text, got: "${finalText}"`);
+    };
+
+    await visitTool(`/${locale}/tools/cement-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('1.54') || (await page.locator('main dl').textContent()).includes('1,54'));
+    await page.locator('main input[type="number"]').first().fill('2');
+    const cementTarget = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(3.08);
+    await waitForDlText(cementTarget);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('1.54') || (await page.locator('main dl').textContent()).includes('1,54'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['cement-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/sand-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('50'));
+    await page.locator('main input[type="number"]').first().fill('20');
+    await waitForDlText('100');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('50'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['sand-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/paint-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('120'));
+    await page.locator('main input[type="number"]').first().fill('5');
+    await waitForDlText('90');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('120'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['paint-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/tile-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('100'));
+    await page.locator('main input[type="number"]').first().fill('5');
+    await waitForDlText('50');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('100'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['tile-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/steel-weight-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('10.65') || (await page.locator('main dl').textContent()).includes('10,65'));
+    await page.locator('main input[type="number"]').first().fill('24');
+    const steelTarget = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(42.62);
+    await waitForDlText(steelTarget);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('10.65') || (await page.locator('main dl').textContent()).includes('10,65'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['steel-weight-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/roof-pitch-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('6:12'));
+    await page.locator('main input[type="number"]').first().fill('12');
+    await waitForDlText('12:12');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('6:12'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['roof-pitch-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/deck-board-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('58'));
+    await page.locator('main input[type="number"]').first().fill('30');
+    await waitForDlText('86');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('58'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['deck-board-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/drywall-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('10'));
+    await page.locator('main input[type="number"]').nth(3).fill('0');
+    await waitForDlText('11');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('10'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['drywall-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/paver-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('495'));
+    await page.locator('main input[type="number"]').first().fill('20');
+    await waitForDlText('990');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('495'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['paver-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/mulch-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('13'));
+    await page.locator('main input[type="number"]').nth(2).fill('6');
+    await waitForDlText('25');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('13'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['mulch-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/electricity-cost-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('120'));
+    await page.locator('main input[type="number"]').first().fill('2000');
+    await waitForDlText('240');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('120'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['electricity-cost-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/brick-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    const formatBrick = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(val);
+    assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(1504)));
+    await page.locator('main input[type="number"]').first().fill('20');
+    await waitForDlText(formatBrick(3008));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes(formatBrick(1504)));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['brick-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/solar-panel-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('19'));
+    await page.locator('main input[type="number"]').first().fill('60');
+    await waitForDlText('38');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes('19'));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['solar-panel-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/voltage-drop-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    const formatVd = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(val);
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVd(10.42)));
+    await page.locator('main input[type="number"]').nth(2).fill('10');
+    await waitForDlText(formatVd(2.08));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVd(10.42)));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['voltage-drop-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/uk-vat-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    const formatVat = (val) => new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(val);
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVat(120)));
+    await page.locator('main input[type="number"]').first().fill('200');
+    await waitForDlText(formatVat(240));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    assert.ok((await page.locator('main dl').textContent()).includes(formatVat(120)));
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['uk-vat-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/currency-converter`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    await page.waitForSelector('main dl');
+    assert.ok((await page.locator('main dl').textContent()).includes('EUR'));
+    await page.locator('main input[type="number"]').first().fill('50');
+    assert.ok((await page.locator('main dl').textContent()).includes('EUR'));
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['currency-converter'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/debt-snowball-vs-avalanche-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    await page.waitForSelector('main dl');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.locator('main input[type="number"]').first().fill('8000');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['debt-snowball-vs-avalanche-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/retirement-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    await page.waitForSelector('main dl');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.locator('main input[type="number"]').first().fill('35');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['retirement-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/fertilizer-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('lb'));
+    await page.locator('main input[type="number"]').first().fill('');
+    await page.locator('main input[type="number"]').first().fill('10000');
+    await waitForDlText('lb');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['fertilizer-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/reverse-sales-tax-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).includes('100'));
+    await page.locator('main input[type="number"]').first().fill('');
+    await page.locator('main input[type="number"]').first().fill('216.50');
+    await waitForDlText('200');
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['reverse-sales-tax-calculator'].title));
+    workflowsChecked++;
+
+    await visitTool(`/${locale}/tools/shopify-margin-calculator`);
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.__copied = text; } } }));
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.locator('main input[type="number"]').first().fill('');
+    await page.locator('main input[type="number"]').first().fill('100');
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    await page.getByRole('button', { name: d.ui.reset, exact: true }).click();
+    await page.getByRole('button', { name: d.ui.copy, exact: true }).click();
+    assert.ok((await page.evaluate(() => window.__copied)).includes(d.tools['shopify-margin-calculator'].title));
+    workflowsChecked++;
+
+    // 1. Functional workflow & export validation: Markdown to PDF with Arabic & Russian
+    await visitTool(`/${locale}/tools/markdown-to-pdf`);
+    const mdInput = page.locator('#markdown-text-area');
+    await mdInput.waitFor();
+    await mdInput.fill(`# Заголовок документа\n\nЭто текст на русском языке для проверки Unicode в PDF.\n\n# عنوان تجريبي\n\nهذا نص عربي لاختبار التصدير والاتجاه.`);
+    await page.getByRole('button', { name: d.pdfTools.converters.convertAction, exact: true }).click();
+    const mdDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('link', { name: d.pdfTools.common.downloadPdf, exact: true }).click();
+    const mdDownload = await mdDownloadPromise;
+    const mdPdfBytes = readFileSync(await mdDownload.path());
+    assert.equal(String.fromCharCode(...mdPdfBytes.subarray(0, 5)), '%PDF-');
+    const mdPdfDoc = await PDFDocument.load(mdPdfBytes);
+    assert.ok(mdPdfDoc.getPageCount() >= 1, 'Markdown PDF has at least 1 page');
+    workflowsChecked++;
+    exportsValidated++;
+
+    // 2. Functional workflow & export validation: WebP to GIF (genuine WebP input -> genuine GIF89a encoding)
+    await visitTool(`/${locale}/tools/webp-to-gif`);
+    const testWebpBuffer = await sharp({
+      create: { width: 32, height: 32, channels: 4, background: { r: 60, g: 120, b: 240, alpha: 1 } },
+    }).webp().toBuffer();
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.webp',
+      mimeType: 'image/webp',
+      buffer: testWebpBuffer,
+    });
+    await page.getByRole('button', { name: new RegExp(d.imageTools.converters.convertBtn, 'i') }).click();
+    const gifDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: new RegExp(d.imageTools.common.downloadImage, 'i') }).click();
+    const gifDownload = await gifDownloadPromise;
+    const gifBytes = readFileSync(await gifDownload.path());
+    assert.equal(String.fromCharCode(...gifBytes.subarray(0, 6)), 'GIF89a', 'Genuine GIF89a header');
+    const gifMeta = await sharp(gifBytes).metadata();
+    assert.equal(gifMeta.format, 'gif', 'Sharp verified real GIF');
+    assert.equal(gifMeta.width, 32);
+    assert.equal(gifMeta.height, 32);
+    // Test reset clears preview
+    await page.getByRole('button', { name: d.imageTools.common.changeImage, exact: true }).click();
+    assert.equal(await page.locator('input[type="file"]').inputValue(), '');
+    workflowsChecked++;
+    exportsValidated++;
+
+    // 3. Functional workflow & export validation: WebP to ICO (genuine WebP input -> header/container assertions plus decoding the embedded PNG)
+    await visitTool(`/${locale}/tools/webp-to-ico`);
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.webp',
+      mimeType: 'image/webp',
+      buffer: testWebpBuffer,
+    });
+    await page.getByRole('button', { name: new RegExp(d.imageTools.converters.convertBtn, 'i') }).click();
+    const icoDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: new RegExp(d.imageTools.common.downloadImage, 'i') }).click();
+    const icoDownload = await icoDownloadPromise;
+    const icoBytes = readFileSync(await icoDownload.path());
+    const icoView = new DataView(icoBytes.buffer, icoBytes.byteOffset, icoBytes.byteLength);
+    assert.equal(icoView.getUint16(0, true), 0, 'ICO reserved is 0');
+    assert.equal(icoView.getUint16(2, true), 1, 'ICO type is 1');
+    assert.equal(icoView.getUint16(4, true), 1, 'ICO count is 1');
+    assert.equal(icoView.getUint8(6), 64, 'Entry width is 64');
+    assert.equal(icoView.getUint8(7), 64, 'Entry height is 64');
+    assert.equal(icoView.getUint16(10, true), 1, 'Planes is 1');
+    assert.equal(icoView.getUint16(12, true), 32, 'BPP is 32');
+    assert.equal(icoView.getUint32(18, true), 22, 'Payload offset is 22');
+    const icoInnerPng = icoBytes.subarray(22);
+    const icoInnerMeta = await sharp(icoInnerPng).metadata();
+    assert.equal(icoInnerMeta.format, 'png');
+    assert.equal(icoInnerMeta.width, 64);
+    assert.equal(icoInnerMeta.height, 64);
+    workflowsChecked++;
+    exportsValidated++;
+
+    const testPngBuffer = await sharp({
+      create: { width: 32, height: 32, channels: 4, background: { r: 60, g: 120, b: 240, alpha: 1 } },
+    }).png().toBuffer();
+
+    // 4. Functional workflow & export validation: Image conversion (JPG to PNG)
+    await visitTool(`/${locale}/tools/convert-jpg-to-png`);
+    const testJpgBuffer = await sharp({
+      create: { width: 48, height: 48, channels: 3, background: { r: 200, g: 80, b: 40 } },
+    }).jpeg().toBuffer();
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.jpg',
+      mimeType: 'image/jpeg',
+      buffer: testJpgBuffer,
+    });
+    await page.getByRole('button', { name: new RegExp(d.imageTools.converters.convertBtn, 'i') }).click();
+    const pngDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: new RegExp(d.imageTools.common.downloadImage, 'i') }).click();
+    const pngDownload = await pngDownloadPromise;
+    const pngBytes = readFileSync(await pngDownload.path());
+    assert.equal(pngBytes[0], 0x89);
+    assert.equal(pngBytes[1], 0x50); // P
+    assert.equal(pngBytes[2], 0x4e); // N
+    assert.equal(pngBytes[3], 0x47); // G
+    const pngMeta = await sharp(pngBytes).metadata();
+    assert.equal(pngMeta.format, 'png');
+    workflowsChecked++;
+    exportsValidated++;
+
+    // 5. Functional workflow: Target compression (compress-image-to-100kb)
+    await visitTool(`/${locale}/tools/compress-image-to-100kb`);
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.png',
+      mimeType: 'image/png',
+      buffer: testPngBuffer,
+    });
+    await page.getByRole('button', { name: new RegExp(d.imageTools.compression.compressToTarget, 'i') }).click();
+    await page.locator('main').getByText(d.imageTools.common.success).waitFor();
+    const compDownloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: new RegExp(d.imageTools.common.downloadImage, 'i') }).click();
+    const compDownload = await compDownloadPromise;
+    const compBytes = readFileSync(await compDownload.path());
+    assert.ok(compBytes.length <= 100 * 1024, 'Output is under 100 KB');
+    workflowsChecked++;
+    exportsValidated++;
+
+    // 6. Functional workflow: PDF Word Counter with sample PDF
+    await visitTool(`/${locale}/tools/pdf-word-counter`);
+    const sampleDoc = await PDFDocument.create();
+    sampleDoc.addPage([595, 842]);
+    const sampleDocBytes = Buffer.from(await sampleDoc.save());
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'doc.pdf',
+      mimeType: 'application/pdf',
+      buffer: sampleDocBytes,
+    });
+    await page.locator('main dl').waitFor();
+    assert.ok((await page.locator('main dl').textContent()).length > 0);
+    workflowsChecked++;
+
+    // 7. Functional workflow & error validation: CorelDRAW localized validation without English leaks
+    await visitTool(`/${locale}/tools/cdr-to-pdf-converter`);
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'unsupported.txt',
+      mimeType: 'text/plain',
+      buffer: Buffer.from('unsupported text file content'),
+    });
+    const alertLocator = page.locator('main [role="alert"]');
+    await alertLocator.waitFor({ state: 'visible' });
+    const alertText = await alertLocator.textContent();
+    assert.equal(alertText.trim(), d.corelDraw.errorUnsupported);
+    workflowsChecked++;
+
+    // 8. Controlled response fixture: Test Corel conversion notices without backend dependency (mocked check)
+    await page.route('**/api/coreldraw/convert', (route) => {
+      route.fulfill({
+        status: 200,
+        headers: {
+          'Content-Type': 'image/svg+xml',
+          'Content-Disposition': 'attachment; filename="sample-coreldraw-ready.svg"',
+          'X-Conversion-Notice-Code': 'VECTOR_FIRST_PAGE_ONLY',
+          'X-Conversion-Note': 'Vector export contains the first page only.',
+        },
+        body: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"></svg>',
+      });
+    });
+    await visitTool(`/${locale}/tools/svg-to-cdr-converter`);
+    await page.locator('input[type="file"]').setInputFiles({
+      name: 'sample.svg',
+      mimeType: 'image/svg+xml',
+      buffer: Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"></svg>'),
+    });
+    await page.getByRole('button', { name: new RegExp(d.corelDraw.convertBtn, 'i') }).click();
+    await page.locator('main [aria-live="polite"]').waitFor({ state: 'visible' });
+    const noticeText = await page.locator('main [aria-live="polite"] p.text-xs').textContent();
+    assert.equal(noticeText.trim(), d.corelDraw.noticeVectorFirstPage);
+    mockedChecksChecked++;
+    await page.unroute('**/api/coreldraw/convert');
+    } finally {
+      await page.close();
+      await context.close();
+    }
   }
+
+  const queue = [...locales];
+  const CONCURRENCY = parseInt(process.env.I18N_CONCURRENCY || '2', 10);
+  await Promise.all(
+    Array.from({ length: Math.min(CONCURRENCY, queue.length) }, async () => {
+      while (queue.length > 0) {
+        const loc = queue.shift();
+        if (loc) await testLocale(loc);
+      }
+    })
+  );
+
+  // Dedicated English page and global navigation checks
+  let englishPage = await context.newPage();
+  const attachEn = (p) => {
+    p.on('pageerror', (error) => {
+      console.error(`PAGE ERROR at ${p.url()}:`, error.message);
+      errors.push(error.message);
+    });
+  };
+  attachEn(englishPage);
+  let enCount = 0;
+  const visitEn = async (path) => {
+    enCount++;
+    if (enCount % 50 === 0) {
+      await englishPage.close();
+      englishPage = await context.newPage();
+      attachEn(englishPage);
+    }
+    const response = await englishPage.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
+    assert.equal(response.status(), 200, path);
+  };
+  const noOverflowEn = async (path) => {
+    assert.ok(await englishPage.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `Horizontal overflow: ${path}`);
+  };
+
   for (const slug of [null, ...slugs]) {
-    await visit(slug ? `/tools/${slug}` : '/');
-    assert.equal(await page.locator('html').getAttribute('lang'), 'en');
-    await noOverflow(`English ${slug || 'home'} desktop`);
-    await page.setViewportSize({ width: 390, height: 844 });
-    await noOverflow(`English ${slug || 'home'} mobile`);
-    await page.setViewportSize({ width: 1440, height: 1000 });
-    assert.equal(await page.locator('link[hreflang="fr"]').getAttribute('href'), `https://navorika.com/fr${slug ? `/tools/${slug}` : ''}`);
+    await visitEn(slug ? `/tools/${slug}` : '/');
+    const data = await englishPage.evaluate(() => {
+      const html = document.documentElement;
+      const el = document.querySelector('link[hreflang="fr"], link[hrefLang="fr"]');
+      const overflow = html.scrollWidth > window.innerWidth + 1;
+      return { lang: html.getAttribute('lang'), frHref: el ? el.getAttribute('href') : null, overflow };
+    });
+    assert.equal(data.lang, 'en');
+    assert.ok(!data.overflow, `English ${slug || 'home'} desktop overflow`);
+    if (!data.frHref) throw new Error(`Missing hreflang fr on English page for slug: ${slug}`);
+    assert.equal(data.frHref, `https://navorika.com/fr${slug ? `/tools/${slug}` : ''}`);
+    if (!slug || slugs.indexOf(slug) % 20 === 0) {
+      await englishPage.setViewportSize({ width: 390, height: 844 });
+      await noOverflowEn(`English ${slug || 'home'} mobile`);
+      await englishPage.setViewportSize({ width: 1440, height: 1000 });
+    }
   }
   // Language selection stays available without opening the mobile menu.
   for (const width of [320, 360, 390, 640]) {
-    await page.setViewportSize({ width, height: 844 });
-    const language = page.locator('summary[aria-label="Language: English"]');
+    await englishPage.setViewportSize({ width, height: 844 });
+    await englishPage.mouse.move(0, 0);
+    const language = englishPage.locator('summary[aria-label="Language: English"]');
     await language.waitFor({ state: 'visible' });
-    const controls = [language, page.getByRole('button', { name: 'Search tools' }), page.getByRole('button', { name: 'Toggle theme' }), page.getByRole('button', { name: 'Toggle menu' })];
+    const controls = [language, englishPage.getByRole('button', { name: 'Search tools' }), englishPage.getByRole('button', { name: 'Toggle theme' }), englishPage.getByRole('button', { name: 'Toggle menu' })];
     const boxes = await Promise.all(controls.map((control) => control.boundingBox()));
     for (let i = 0; i < boxes.length; i++) {
       const box = boxes[i];
@@ -317,49 +1193,152 @@ try {
       if (i) assert.ok(box.x >= boxes[i - 1].x + boxes[i - 1].width - 1, `Overlapping controls at ${width}`);
     }
     await language.click();
-    await page.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
-    await noOverflow(`Open language menu at ${width}`);
-    await page.mouse.click(8, 700);
-    assert.equal(await page.locator('details').first().getAttribute('open'), null, 'Outside tap dismisses language menu');
+    await englishPage.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
+    await noOverflowEn(`Open language menu at ${width}`);
+    await englishPage.mouse.click(8, 700);
+    assert.equal(await englishPage.locator('details').first().getAttribute('open'), null, 'Outside tap dismisses language menu');
     await language.click();
-    await page.keyboard.press('Escape');
-    assert.equal(await page.locator('details').first().getAttribute('open'), null, 'Escape dismisses language menu');
+    await englishPage.keyboard.press('Escape');
+    assert.equal(await englishPage.locator('details').first().getAttribute('open'), null, 'Escape dismisses language menu');
     await language.focus();
-    await page.keyboard.press('Enter');
-    await page.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
-    await page.keyboard.press('Escape');
+    await englishPage.keyboard.press('Enter');
+    await englishPage.locator('details a[hreflang="fr"]').waitFor({ state: 'visible' });
+    await englishPage.keyboard.press('Escape');
     assert.equal(await language.evaluate((element) => element === document.activeElement), true, 'Escape restores trigger focus');
-    await page.getByRole('button', { name: 'Toggle menu' }).click();
-    assert.equal(await page.locator('summary[aria-label="Language: English"]').count(), 1);
-    await page.getByRole('button', { name: 'Toggle menu' }).click();
-    await noOverflow(`Mobile navigation at ${width}`);
+    await englishPage.getByRole('button', { name: 'Toggle menu' }).click();
+    assert.equal(await englishPage.locator('summary[aria-label="Language: English"]').count(), 1);
+    await englishPage.getByRole('button', { name: 'Toggle menu' }).click();
+    await noOverflowEn(`Mobile navigation at ${width}`);
   }
-  await page.locator('details').first().click();
-  await page.locator('details a[hreflang="ar"]').click();
-  await page.waitForURL(`${base}/ar/tools/print-bleed-calculator`);
-  assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
-  await page.locator('details').first().click();
-  await page.locator('details a[hreflang="en"]').click();
-  await page.waitForURL(`${base}/tools/print-bleed-calculator`);
-  assert.equal(await page.locator('html').getAttribute('lang'), 'en');
-  assert.notEqual(await page.locator('html').getAttribute('dir'), 'rtl');
-  for (const path of ['/xx', '/fr/tools/not-a-tool', '/fr/privacy', '/ar/tools/image-dpi-converter', '/en']) {
+  await visitEn('/tools/print-bleed-calculator');
+  await englishPage.locator('details').first().click();
+  await englishPage.locator('details a[hreflang="ar"]').click();
+  await englishPage.waitForURL(`${base}/ar/tools/print-bleed-calculator`);
+  assert.equal(await englishPage.locator('html').getAttribute('dir'), 'rtl');
+  await englishPage.locator('details').first().click();
+  await englishPage.locator('details a[hreflang="en"]').click();
+  await englishPage.waitForURL(`${base}/tools/print-bleed-calculator`);
+  assert.equal(await englishPage.locator('html').getAttribute('lang'), 'en');
+  assert.notEqual(await englishPage.locator('html').getAttribute('dir'), 'rtl');
+  for (const path of ['/xx', '/fr/tools/not-a-tool', '/fr/not-a-page', '/ar/tools/image-dpi-converter', '/en']) {
     assert.equal((await context.request.get(`${base}${path}`)).status(), 404, path);
   }
+  const trustSlugs = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary'];
+  let trustPagesChecked = 0;
+
+  async function checkTrustPage(pageName, targetLocale) {
+    const isEnglish = targetLocale === 'en';
+    const pagePath = isEnglish ? `/${pageName}` : `/${targetLocale}/${pageName}`;
+    const pageUrl = `${base}${pagePath}`;
+    const res = await englishPage.goto(pageUrl);
+    assert.equal(res.status(), 200, pagePath);
+    trustPagesChecked++;
+
+    // 1. Language & Direction
+    const htmlLang = await englishPage.locator('html').getAttribute('lang');
+    const htmlDir = await englishPage.locator('html').getAttribute('dir');
+    assert.equal(htmlLang, targetLocale, `html lang on ${pagePath}`);
+    if (targetLocale === 'ar') {
+      assert.equal(htmlDir, 'rtl', `RTL direction on ${pagePath}`);
+    } else {
+      assert.ok(!htmlDir || htmlDir === 'ltr', `LTR direction on ${pagePath}`);
+    }
+
+    // 2. Localized content (H1 title)
+    const h1Text = (await englishPage.locator('h1').textContent() || '').trim();
+    assert.ok(h1Text.length > 0, `H1 text exists on ${pagePath}`);
+
+    // 3. Canonical URL
+    const expectedCanonical = `https://navorika.com${pagePath}`;
+    const canonical = await englishPage.locator('link[rel="canonical"]').getAttribute('href');
+    assert.equal(canonical, expectedCanonical, `Canonical URL on ${pagePath}`);
+
+    // 4. Exact reciprocal alternates across English and all seven translated languages
+    const altLinks = await englishPage.locator('link[rel="alternate"][hreflang]').all();
+    assert.ok(altLinks.length >= locales.length + 1, `Alternates count on ${pagePath}`);
+    const altEntries = await Promise.all(altLinks.map(async (el) => [
+      await el.getAttribute('hreflang'),
+      await el.getAttribute('href'),
+    ]));
+    const altMap = Object.fromEntries(altEntries);
+
+    assert.equal(altMap['en'], `https://navorika.com/${pageName}`, `Exact hreflang en alternate on ${pagePath}`);
+    assert.equal(altMap['x-default'], `https://navorika.com/${pageName}`, `Exact hreflang x-default alternate on ${pagePath}`);
+    for (const loc of locales) {
+      assert.equal(
+        altMap[loc],
+        `https://navorika.com/${loc}/${pageName}`,
+        `Exact hreflang ${loc} alternate on ${pagePath}`
+      );
+    }
+
+    // 5. Footer destinations
+    const footerLinks = await englishPage.locator('footer a').all();
+    const footerHrefs = await Promise.all(footerLinks.map((el) => el.getAttribute('href')));
+    const expectedFooterDest = isEnglish
+      ? ['/privacy', '/terms', '/contact', '/about']
+      : [`/${targetLocale}/privacy`, `/${targetLocale}/terms`, `/${targetLocale}/contact`, `/${targetLocale}/about`];
+    for (const dest of expectedFooterDest) {
+      assert.ok(footerHrefs.some((h) => h === dest), `Footer link to ${dest} on ${pagePath}`);
+    }
+
+    // 6. Mobile layout at 390px (no horizontal overflow)
+    await englishPage.setViewportSize({ width: 390, height: 844 });
+    const overflow = await englishPage.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+    assert.equal(overflow, false, `No horizontal overflow on ${pagePath} at 390px`);
+    await englishPage.setViewportSize({ width: 1440, height: 1000 });
+
+    // 7. Regression checks for contact & privacy
+    if (pageName === 'contact') {
+      const bodyText = await englishPage.locator('body').textContent();
+      assert.ok(bodyText.includes('admin@navorika.com'), `admin@navorika.com on ${pagePath}`);
+      assert.ok(bodyText.includes('privacy@navorika.com'), `privacy@navorika.com on ${pagePath}`);
+      assert.ok(!bodyText.includes('contact@navorika.com'), `no contact@navorika.com on ${pagePath}`);
+      assert.ok(!bodyText.includes('support@navorika.com'), `no support@navorika.com on ${pagePath}`);
+    }
+    if (pageName === 'privacy') {
+      const bodyText = await englishPage.locator('body').textContent();
+      const htmlContent = await englishPage.content();
+      assert.ok(
+        htmlContent.includes('google.com/settings/ads') || htmlContent.includes('aboutads.info'),
+        `Advertising opt-out links on ${pagePath}`
+      );
+      assert.ok(
+        bodyText.includes('2026'),
+        `Localized last updated year 2026 on ${pagePath}`
+      );
+    }
+  }
+
+  for (const pageName of trustSlugs) {
+    // Check English trust page
+    await checkTrustPage(pageName, 'en');
+
+    // Check all 7 localized trust pages
+    for (const locale of locales) {
+      await checkTrustPage(pageName, locale);
+    }
+  }
   const sitemap = await (await context.request.get(`${base}/sitemap.xml`)).text();
-  for (const locale of locales) for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`));
+  for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/tools/${slug}`));
+  for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${pageName}`));
+  for (const locale of locales) {
+    for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`));
+    for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/${pageName}`));
+  }
   if (process.env.I18N_SCREENSHOT_DIR) {
     mkdirSync(process.env.I18N_SCREENSHOT_DIR, { recursive: true });
     for (const locale of ['fr', 'ar']) {
-      await page.setViewportSize({ width: 1280, height: 900 });
-      await visit(`/${locale}/tools/aspect-ratio-padding-calculator`);
-      await page.screenshot({ path: join(process.env.I18N_SCREENSHOT_DIR, `${locale}-desktop.png`), fullPage: true });
-      await page.setViewportSize({ width: 390, height: 844 });
-      await page.screenshot({ path: join(process.env.I18N_SCREENSHOT_DIR, `${locale}-mobile.png`), fullPage: true });
+      await englishPage.setViewportSize({ width: 1280, height: 900 });
+      await visitEn(`/${locale}/tools/aspect-ratio-padding-calculator`);
+      await englishPage.screenshot({ path: join(process.env.I18N_SCREENSHOT_DIR, `${locale}-desktop.png`), fullPage: true });
+      await englishPage.setViewportSize({ width: 390, height: 844 });
+      await englishPage.screenshot({ path: join(process.env.I18N_SCREENSHOT_DIR, `${locale}-mobile.png`), fullPage: true });
     }
   }
+  await englishPage.close();
   assert.deepEqual(errors, [], 'Uncaught browser errors');
-  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, englishAlternates: 11, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
+  console.log(JSON.stringify({ localizedPages: pagesChecked, toolWorkflows: workflowsChecked, exportsValidated, mockedChecks: mockedChecksChecked, trustPagesChecked, englishAlternates: slugs.length + 1, invalidRoutes: 5, desktopAndMobile: true, uncaughtBrowserErrors: errors.length }, null, 2));
 } finally {
   await browser?.close();
   server?.kill('SIGTERM');

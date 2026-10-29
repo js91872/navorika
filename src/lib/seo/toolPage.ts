@@ -35,7 +35,7 @@ export function createToolMetadata(tool: ToolPageContent, canonicalOverride?: st
     keywords: tool.longTailKeywords,
     alternates: {
       canonical: canonicalOverride ?? url, // canonical: url
-      ...(isTranslatedTool(tool.slug) && !canonicalOverride ? { languages: languageAlternates(tool.slug) } : {}),
+      ...(isTranslatedTool(tool.slug) ? { languages: languageAlternates(tool.slug) } : {}),
     },
     openGraph: {
       type: 'website',

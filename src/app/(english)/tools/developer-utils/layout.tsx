@@ -1,9 +1,16 @@
-import type { Metadata } from 'next';
+import ToolPageContent from '@/components/seo/ToolPageContent';
+import { developerToolPages } from '@/data/tool-pages/developer';
+import { createToolMetadata } from '@/lib/seo/toolPage';
 
-export const metadata: Metadata = {
-  robots: { index: false, follow: true },
-};
+const tool = developerToolPages['developer-utils'];
 
-export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <>{children}</>;
+export const metadata = createToolMetadata(tool);
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      {children}
+      <ToolPageContent tool={tool} />
+    </>
+  );
 }

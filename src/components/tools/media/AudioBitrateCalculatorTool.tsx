@@ -110,7 +110,7 @@ export default function AudioBitrateCalculatorTool() {
   };
 
   return (
-    <div className="mx-auto max-w-4xl">
+    <div suppressHydrationWarning className="mx-auto max-w-4xl">
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">
         {/* Mode Selector Tabs */}
         <div className="flex rounded-2xl bg-slate-100 p-1.5 dark:bg-slate-800">
@@ -383,8 +383,8 @@ export default function AudioBitrateCalculatorTool() {
                   </p>
                 </div>
                 <div className="sm:text-right">
-                  <p className="text-sm font-semibold text-indigo-100">
-                    {resultA.bitrateMbps} Mbps • {resultA.bitrateBps.toLocaleString()} bits/sec
+                  <p suppressHydrationWarning className="text-sm font-semibold text-indigo-100">
+                    {resultA.bitrateMbps} Mbps • {resultA.bitrateBps.toLocaleString('en-US')} bits/sec
                   </p>
                   <p className="mt-1 text-xs text-indigo-200">
                     {resultA.kibPerSec} KiB/s data transfer rate
@@ -414,14 +414,14 @@ export default function AudioBitrateCalculatorTool() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <div className="rounded-xl bg-white p-4 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
                   <p className="text-[10px] font-bold uppercase text-slate-400">Total Bytes</p>
-                  <p className="mt-1 font-bold text-slate-800 dark:text-slate-200">
-                    {resultA.totalBytes.toLocaleString()} B
+                  <p suppressHydrationWarning className="mt-1 font-bold text-slate-800 dark:text-slate-200">
+                    {resultA.totalBytes.toLocaleString('en-US')} B
                   </p>
                 </div>
                 <div className="rounded-xl bg-white p-4 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
                   <p className="text-[10px] font-bold uppercase text-slate-400">Total Bits</p>
-                  <p className="mt-1 font-bold text-slate-800 dark:text-slate-200">
-                    {resultA.totalBits.toLocaleString()} bits
+                  <p suppressHydrationWarning className="mt-1 font-bold text-slate-800 dark:text-slate-200">
+                    {resultA.totalBits.toLocaleString('en-US')} bits
                   </p>
                 </div>
                 <div className="rounded-xl bg-white p-4 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
@@ -456,8 +456,8 @@ export default function AudioBitrateCalculatorTool() {
                   <p className="text-sm font-semibold text-indigo-100">
                     {resultB.bytesBinary.mib} MiB (Binary)
                   </p>
-                  <p className="mt-1 text-xs text-indigo-200">
-                    {resultB.totalBytes.toLocaleString()} raw bytes
+                  <p suppressHydrationWarning className="mt-1 text-xs text-indigo-200">
+                    {resultB.totalBytes.toLocaleString('en-US')} raw bytes
                   </p>
                 </div>
               </div>

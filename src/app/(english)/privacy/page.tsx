@@ -4,6 +4,46 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Shield, CheckCircle, ArrowLeft, Lock, Eye, Database, Cookie } from 'lucide-react';
 
+function formatPointText(text: string) {
+  if (text.includes('https://www.google.com/settings/ads') || text.includes('www.aboutads.info/choices/')) {
+    const parts = text.split(/(https:\/\/www\.google\.com\/settings\/ads|www\.aboutads\.info\/choices\/)/g);
+    return (
+      <span className="break-words">
+        {parts.map((part, i) => {
+          if (part === 'https://www.google.com/settings/ads') {
+            return (
+              <a
+                key={i}
+                href="https://www.google.com/settings/ads"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-600 dark:text-indigo-400 hover:underline break-all mx-0.5"
+              >
+                https://www.google.com/settings/ads
+              </a>
+            );
+          }
+          if (part === 'www.aboutads.info/choices/') {
+            return (
+              <a
+                key={i}
+                href="https://www.aboutads.info/choices/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-600 dark:text-indigo-400 hover:underline break-all mx-0.5"
+              >
+                www.aboutads.info/choices/
+              </a>
+            );
+          }
+          return <span key={i}>{part}</span>;
+        })}
+      </span>
+    );
+  }
+  return text;
+}
+
 export default function PrivacyPage() {
   const lastUpdated = 'September 27, 2026';
 
@@ -98,23 +138,23 @@ export default function PrivacyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
+              className="p-4 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] break-words overflow-hidden"
             >
               <div className="flex items-start gap-4">
-                <div className="mt-1 p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                <div className="mt-1 p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shrink-0">
                   {section.icon}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <h2 className="text-xl font-bold mb-2">{section.title}</h2>
-                  <p className="text-[var(--muted-foreground)] leading-relaxed">
+                  <p className="text-[var(--muted-foreground)] leading-relaxed break-words">
                     {section.content}
                   </p>
                   {section.list && (
                     <ul className="mt-3 space-y-2">
                       {section.list.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-[var(--muted-foreground)]">
+                        <li key={i} className="flex items-start gap-2 text-sm text-[var(--muted-foreground)] break-words">
                           <CheckCircle className="h-4 w-4 text-emerald-500 mt-0.5 shrink-0" />
-                          <span>{item}</span>
+                          <div className="min-w-0 break-words">{formatPointText(item)}</div>
                         </li>
                       ))}
                     </ul>

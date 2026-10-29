@@ -1,7 +1,9 @@
 'use client';
 import { useState } from 'react';
-import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
-import { toBlobURL } from '@ffmpeg/util';
+import { PDFDocument } from 'pdf-lib';
+import { encodePngToIco } from '@/lib/image/icoEncoder';
+import { encodeCanvasToGif } from '@/lib/image/gifEncoder';
+import { convertMarkdownToPdf } from '@/lib/pdf/markdownToPdf';
 type Mode='avif-to-png'|'svg-to-ico'|'webp-to-gif'|'heic-to-pdf'|'markdown-to-pdf'|'xml-to-csv';
 const config:Record<Mode,{ext:string;accept:string;output:string}>={
 'avif-to-png':{ext:'AVIF',accept:'.avif,image/avif',output:'png'},
@@ -42,47 +44,32 @@ async function renderImage(file:File,mode:Mode):Promise<Blob>{
   else ctx.drawImage(img,0,0);
   const png=await new Promise<Blob>((yes,no)=>c.toBlob(b=>b?yes(b):no(Error('PNG conversion failed.')),'image/png'));
   if(icon){
-   const bytes=new Uint8Array(await png.arrayBuffer()),header=new Uint8Array(22),v=new DataView(header.buffer);
-   v.setUint16(2,1,true);header[6]=64;header[7]=64;v.setUint16(10,1,true);v.setUint16(12,32,true);v.setUint32(14,bytes.length,true);v.setUint32(18,22,true);
-   return new Blob([header,bytes],{type:'image/x-icon'});
-  }
-  if(mode==='heic-to-pdf'){
-   const pdf=await PDFDocument.create(),embedded=await pdf.embedPng(await png.arrayBuffer());
-   const page=pdf.addPage([embedded.width,embedded.height]);page.drawImage(embedded,{x:0,y:0,width:embedded.width,height:embedded.height});
-   return new Blob([new Uint8Array(await pdf.save())],{type:'application/pdf'});
-  }
-  return png;
- }finally{URL.revokeObjectURL(url);}
-}
-async function gif(file:File):Promise<Blob>{
- const {FFmpeg}=await import('@ffmpeg/ffmpeg');const engine=new FFmpeg();
- const base='https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd';
- await engine.load({coreURL:await toBlobURL(base+'/ffmpeg-core.js','text/javascript'),wasmURL:await toBlobURL(base+'/ffmpeg-core.wasm','application/wasm')});
- try{
-  await engine.writeFile('input.webp',new Uint8Array(await file.arrayBuffer()));
-  const result=await engine.exec(['-i','input.webp','-vf','fps=12,scale=480:-1:flags=lanczos','-loop','0','output.gif']);
-  if(result!==0)throw Error('GIF encoding failed or this WebP animation is unsupported.');
-  const bytes=await engine.readFile('output.gif');if(typeof bytes==='string')throw Error('Unexpected GIF output.');
-  return new Blob([new Uint8Array(bytes)],{type:'image/gif'});
- }finally{engine.terminate();}
-}
-async function markdown(input:string):Promise<Blob>{
- const pdf=await PDFDocument.create(),regular=await pdf.embedFont(StandardFonts.Helvetica),bold=await pdf.embedFont(StandardFonts.HelveticaBold);
- let page=pdf.addPage([595,842]),y=790;
- for(const raw of input.split(/\r?\n/)){
-  const heading=/^#{1,5}\s/.test(raw),size=heading?16:11;
-  let remaining=raw.replace(/^#{1,5}\s/,'').replace(/\*\*|__/g,'').replace(/[^\x20-\x7e\u00a0-\u00ff]/g,'?');
-  if(!remaining){y-=10;continue;}
-  while(remaining.length){
-   let part=remaining.slice(0,heading?52:84);
-   if(remaining.length>part.length){const j=part.lastIndexOf(' ');if(j>25)part=part.slice(0,j);}
-   if(y<55){page=pdf.addPage([595,842]);y=790;}
-   page.drawText(part,{x:40,y,size,font:heading?bold:regular,color:rgb(0.1,0.15,0.25)});y-=size*1.6;
-   remaining=remaining.slice(part.length).trimStart();
-  }
+    const bytes=new Uint8Array(await png.arrayBuffer());
+    const icoBytes=encodePngToIco(bytes,{width:64,height:64});
+    return new Blob([icoBytes.buffer as ArrayBuffer],{type:'image/x-icon'});
+   }
+   if(mode==='heic-to-pdf'){
+    const pdf=await PDFDocument.create(),embedded=await pdf.embedPng(await png.arrayBuffer());
+    const page=pdf.addPage([embedded.width,embedded.height]);page.drawImage(embedded,{x:0,y:0,width:embedded.width,height:embedded.height});
+    return new Blob([new Uint8Array(await pdf.save())],{type:'application/pdf'});
+   }
+   return png;
+  }finally{URL.revokeObjectURL(url);}
  }
- return new Blob([new Uint8Array(await pdf.save())],{type:'application/pdf'});
-}
+ async function gif(file:File):Promise<Blob>{
+  const url=URL.createObjectURL(file);
+  try{
+   const img=new Image();img.src=url;await img.decode();
+   const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;
+   const ctx=c.getContext('2d');if(!ctx)throw Error('Canvas unavailable.');
+   ctx.drawImage(img,0,0);
+   return encodeCanvasToGif(c);
+  }finally{URL.revokeObjectURL(url);}
+ }
+ async function markdown(input:string):Promise<Blob>{
+  const bytes=await convertMarkdownToPdf(input);
+  return new Blob([bytes.buffer as ArrayBuffer],{type:'application/pdf'});
+ }
 export default function NewConverter({mode}:{mode:Mode}){
  const info=config[mode];const [file,setFile]=useState<File|null>(null),[text,setText]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const typed=mode==='markdown-to-pdf'||mode==='xml-to-csv';

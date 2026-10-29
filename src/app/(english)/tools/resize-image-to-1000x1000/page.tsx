@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import ResizeImage1000x1000Tool from "@/components/tools/ResizeImage1000x1000Tool";
+import { languageAlternates } from "@/lib/i18n/config";
 
 const title =
   "1000x1000 Image Converter – Resize Image to 1000×1000 Online";
@@ -13,7 +14,8 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: {
-    canonical: "/tools/resize-image-to-1000x1000",
+    canonical: "https://navorika.com/tools/resize-image-to-1000x1000",
+    languages: languageAlternates("resize-image-to-1000x1000"),
   },
   openGraph: {
     title,

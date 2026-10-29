@@ -18,11 +18,40 @@ import {
   type EpochUnit,
 } from '@/lib/time';
 
+const STATIC_EPOCH_SEC = '1774886400';
+const STATIC_EPOCH_OBJ = { seconds: 1774886400, milliseconds: 1774886400000 };
+const STATIC_DATE = '2026-03-30';
+const STATIC_TIME = '12:00:00';
+const pad = (n: number) => String(n).padStart(2, '0');
+
 export default function EpochTimeConverterTool() {
+  const [mounted, setMounted] = useState(false);
   // Live current timestamp ticker
-  const [currentEpoch, setCurrentEpoch] = useState(() => getCurrentEpoch());
+  const [currentEpoch, setCurrentEpoch] = useState(STATIC_EPOCH_OBJ);
   const [tickerPaused, setTickerPaused] = useState(false);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  // Mode Selection: 'epoch-to-date' | 'date-to-epoch'
+  const [activeTab, setActiveTab] = useState<'epoch-to-date' | 'date-to-epoch'>('epoch-to-date');
+
+  // Mode A: Epoch -> Date
+  const [epochInput, setEpochInput] = useState(STATIC_EPOCH_SEC);
+  const [unit, setUnit] = useState<EpochUnit>('auto');
+
+  // Mode B: Date -> Epoch
+  const [dateInput, setDateInput] = useState(STATIC_DATE);
+  const [timeInput, setTimeInput] = useState(STATIC_TIME);
+  const [dateTz, setDateTz] = useState<'local' | 'utc'>('local');
+
+  useEffect(() => {
+    setMounted(true);
+    setCurrentEpoch(getCurrentEpoch());
+    setEpochInput(Math.floor(Date.now() / 1000).toString());
+    const n = new Date();
+    const pad = (v: number) => String(v).padStart(2, '0');
+    setDateInput(`${n.getFullYear()}-${pad(n.getMonth() + 1)}-${pad(n.getDate())}`);
+    setTimeInput(`${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`);
+  }, []);
 
   useEffect(() => {
     if (tickerPaused) return;
@@ -32,26 +61,9 @@ export default function EpochTimeConverterTool() {
     return () => clearInterval(interval);
   }, [tickerPaused]);
 
-  // Mode Selection: 'epoch-to-date' | 'date-to-epoch'
-  const [activeTab, setActiveTab] = useState<'epoch-to-date' | 'date-to-epoch'>('epoch-to-date');
-
-  // Mode A: Epoch -> Date
-  const [epochInput, setEpochInput] = useState(() => Math.floor(Date.now() / 1000).toString());
-  const [unit, setUnit] = useState<EpochUnit>('auto');
-
   const epochResult = useMemo(() => {
     return epochToDate(epochInput, unit);
   }, [epochInput, unit]);
-
-  // Mode B: Date -> Epoch
-  const now = new Date();
-  const pad = (n: number) => String(n).padStart(2, '0');
-  const todayYmd = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-  const nowTime = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-
-  const [dateInput, setDateInput] = useState(todayYmd);
-  const [timeInput, setTimeInput] = useState(nowTime);
-  const [dateTz, setDateTz] = useState<'local' | 'utc'>('local');
 
   const dateResult = useMemo(() => {
     return dateToEpoch({
@@ -82,11 +94,11 @@ export default function EpochTimeConverterTool() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" suppressHydrationWarning>
       {/* Live Current Timestamp Banner */}
-      <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+      <div className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="space-y-1">
+          <div className="min-w-0 space-y-1">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2.5 w-2.5">
                 {!tickerPaused && (
@@ -102,8 +114,8 @@ export default function EpochTimeConverterTool() {
                 Current Unix Timestamp
               </span>
             </div>
-            <div className="flex items-baseline gap-3">
-              <span className="font-mono text-3xl font-black tracking-tight text-[var(--foreground)] sm:text-4xl">
+            <div className="flex flex-wrap items-baseline gap-2 sm:gap-3" suppressHydrationWarning>
+              <span className="font-mono text-2xl font-black tracking-tight text-[var(--foreground)] sm:text-4xl">
                 {currentEpoch.seconds}
               </span>
               <span className="text-xs text-[var(--muted-foreground)] font-mono">
@@ -143,11 +155,11 @@ export default function EpochTimeConverterTool() {
       </div>
 
       {/* Tabs */}
-      <div className="flex rounded-2xl bg-[var(--muted)]/20 p-1.5 border border-[var(--border)] max-w-md">
+      <div className="flex flex-wrap rounded-2xl bg-[var(--muted)]/20 p-1.5 border border-[var(--border)] max-w-md">
         <button
           type="button"
           onClick={() => setActiveTab('epoch-to-date')}
-          className={`flex-1 rounded-xl py-2.5 text-sm font-bold transition ${
+          className={`min-w-0 flex-1 rounded-xl py-2 px-3 text-xs sm:text-sm font-bold transition ${
             activeTab === 'epoch-to-date'
               ? 'bg-[var(--card)] text-[var(--foreground)] shadow-sm'
               : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)]'
@@ -158,7 +170,7 @@ export default function EpochTimeConverterTool() {
         <button
           type="button"
           onClick={() => setActiveTab('date-to-epoch')}
-          className={`flex-1 rounded-xl py-2.5 text-sm font-bold transition ${
+          className={`min-w-0 flex-1 rounded-xl py-2 px-3 text-xs sm:text-sm font-bold transition ${
             activeTab === 'date-to-epoch'
               ? 'bg-[var(--card)] text-[var(--foreground)] shadow-sm'
               : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)]'
@@ -170,8 +182,8 @@ export default function EpochTimeConverterTool() {
 
       {/* Mode A: Epoch -> Date */}
       {activeTab === 'epoch-to-date' && (
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_1.8fr]">
-          <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm space-y-5">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[1.2fr_1.8fr]">
+          <div className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6 shadow-sm space-y-5">
             <h3 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
               <Clock className="size-5 text-indigo-600" />
               Epoch Timestamp Input
@@ -183,6 +195,7 @@ export default function EpochTimeConverterTool() {
               </label>
               <input
                 id="epoch-input"
+                suppressHydrationWarning
                 type="text"
                 value={epochInput}
                 onChange={(e) => setEpochInput(e.target.value)}
@@ -249,7 +262,7 @@ export default function EpochTimeConverterTool() {
           </div>
 
           {/* Results Display */}
-          <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm space-y-4">
+          <div className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6 shadow-sm space-y-4">
             <h3 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
               <Globe className="size-5 text-indigo-600" />
               Converted Date & Time
@@ -287,11 +300,11 @@ export default function EpochTimeConverterTool() {
                     <p className="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
                       Local Browser Time
                     </p>
-                    <p className="text-base font-bold text-[var(--foreground)] mt-1">
-                      {epochResult.localHuman}
+                    <p className="text-base font-bold text-[var(--foreground)] mt-1" suppressHydrationWarning>
+                      {mounted ? epochResult.localHuman : epochResult.utcHuman}
                     </p>
-                    <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                      {epochResult.relative}
+                    <p className="text-xs text-[var(--muted-foreground)] mt-0.5" suppressHydrationWarning>
+                      {mounted ? epochResult.relative : ''}
                     </p>
                   </div>
                   <button
@@ -347,8 +360,8 @@ export default function EpochTimeConverterTool() {
 
       {/* Mode B: Date/Time -> Epoch */}
       {activeTab === 'date-to-epoch' && (
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_1.8fr]">
-          <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm space-y-5">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[1.2fr_1.8fr]">
+          <div className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6 shadow-sm space-y-5">
             <h3 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
               <Calendar className="size-5 text-indigo-600" />
               Calendar Date & Time Input
@@ -360,6 +373,7 @@ export default function EpochTimeConverterTool() {
               </label>
               <input
                 id="date-input"
+                suppressHydrationWarning
                 type="date"
                 value={dateInput}
                 onChange={(e) => setDateInput(e.target.value)}
@@ -373,6 +387,7 @@ export default function EpochTimeConverterTool() {
               </label>
               <input
                 id="time-input"
+                suppressHydrationWarning
                 type="time"
                 step="1"
                 value={timeInput}
@@ -428,7 +443,7 @@ export default function EpochTimeConverterTool() {
           </div>
 
           {/* Results Display */}
-          <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm space-y-4">
+          <div className="min-w-0 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6 shadow-sm space-y-4">
             <h3 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
               <Clock className="size-5 text-indigo-600" />
               Generated Unix Timestamps

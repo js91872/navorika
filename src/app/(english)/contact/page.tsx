@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, Shield, MessageSquare, ArrowLeft, Bug, HelpCircle } from 'lucide-react';
+import { Mail, Shield, ArrowLeft, Bug } from 'lucide-react';
 
 export default function ContactPage() {
   return (
@@ -26,7 +26,7 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {/* General & Support Email */}
-          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">
+          <div className="p-4 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4 break-words">
             <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 w-fit">
               <Mail className="h-6 w-6" />
             </div>
@@ -36,19 +36,19 @@ export default function ContactPage() {
                 For tool help, feedback, calculation questions, bug reports, or general inquiries.
               </p>
             </div>
-            <div>
-              <button
-                type="button"
-                onClick={() => { window.location.href = 'mai' + 'lto:' + 'admin' + '@' + 'navorika.com?subject=Navorika%20Inquiry'; }}
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="mailto:admin@navorika.com?subject=Navorika%20Inquiry"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors text-sm"
               >
                 <Mail className="h-4 w-4" /> Email Support
-              </button>
+              </a>
+              <span className="text-xs text-[var(--muted-foreground)] font-mono break-all">admin@navorika.com</span>
             </div>
           </div>
 
           {/* Privacy Email */}
-          <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">
+          <div className="p-4 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4 break-words">
             <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 w-fit">
               <Shield className="h-6 w-6" />
             </div>
@@ -58,14 +58,14 @@ export default function ContactPage() {
                 For questions regarding data processing, advertising disclosures, or our privacy policy.
               </p>
             </div>
-            <div>
-              <button
-                type="button"
-                onClick={() => { window.location.href = 'mai' + 'lto:' + 'privacy' + '@' + 'navorika.com?subject=Privacy%20Inquiry'; }}
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="mailto:privacy@navorika.com?subject=Privacy%20Inquiry"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[var(--border)] text-[var(--foreground)] font-medium hover:bg-[var(--muted)]/50 transition-colors text-sm"
               >
                 <Shield className="h-4 w-4" /> Email Privacy Team
-              </button>
+              </a>
+              <span className="text-xs text-[var(--muted-foreground)] font-mono break-all">privacy@navorika.com</span>
             </div>
           </div>
         </div>

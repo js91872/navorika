@@ -20,33 +20,39 @@ export interface UuidToolsResult {
   candidateTimestampIso: string;
 }
 
-function getRandomBytes(count: number): Uint8Array {
-  const bytes = new Uint8Array(count);
-  if (typeof globalThis !== 'undefined' && globalThis.crypto?.getRandomValues) {
-    globalThis.crypto.getRandomValues(bytes);
-  } else {
-    for (let i = 0; i < count; i++) {
-      bytes[i] = Math.floor(Math.random() * 256);
-    }
-  }
-  return bytes;
+function createPrng(seed: number) {
+  let s = seed >>> 0;
+  return function nextByte(): number {
+    s = (Math.imul(1664525, s) + 1013904223) >>> 0;
+    return (s >>> 16) & 0xff;
+  };
 }
 
-function generateUuidV4(): string {
-  if (typeof globalThis !== 'undefined' && globalThis.crypto?.randomUUID) {
-    return globalThis.crypto.randomUUID();
+function hashString(str: string): number {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h = Math.imul(h ^ str.charCodeAt(i), 0x01000193);
   }
-  const b = getRandomBytes(16);
+  return h >>> 0;
+}
+
+function generateUuidV4(nextByte: () => number): string {
+  const b = new Uint8Array(16);
+  for (let i = 0; i < 16; i++) {
+    b[i] = nextByte();
+  }
   b[6] = (b[6] & 0x0f) | 0x40; // Version 4
   b[8] = (b[8] & 0x3f) | 0x80; // Variant RFC 4122
   const hex = Array.from(b, (x) => x.toString(16).padStart(2, '0')).join('');
   return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
-function generateUuidV7(): string {
-  const now = Date.now();
-  const timeHex = now.toString(16).padStart(12, '0'); // 48-bit timestamp
-  const b = getRandomBytes(10);
+function generateUuidV7(nextByte: () => number, timestamp: number): string {
+  const timeHex = timestamp.toString(16).padStart(12, '0'); // 48-bit timestamp
+  const b = new Uint8Array(10);
+  for (let i = 0; i < 10; i++) {
+    b[i] = nextByte();
+  }
   // b[0..1] -> 12-bit random + 4-bit version 7
   const randA = ((b[0] << 8) | b[1]) & 0x0fff;
   const verAndRandA = (0x7000 | randA).toString(16).padStart(4, '0');
@@ -70,9 +76,13 @@ export function calculateUuidTools(input: UuidToolsInput): UuidToolsResult {
   const withHyphens = input.includeHyphens !== false && input.includeHyphens !== 'false';
   const layout = String(input.outputStructure ?? 'plain-list').toLowerCase();
 
+  const seed = hashString(`${qty}-${version}-${isUppercase}-${withHyphens}-${layout}`);
+  const nextByte = createPrng(seed);
+  const baseTimestamp = 1700000000000;
+
   const generated: string[] = [];
   for (let i = 0; i < qty; i++) {
-    let id = version === 'v7' ? generateUuidV7() : generateUuidV4();
+    let id = version === 'v7' ? generateUuidV7(nextByte, baseTimestamp + i * 1000) : generateUuidV4(nextByte);
     if (!withHyphens) {
       id = id.replace(/-/g, '');
     }

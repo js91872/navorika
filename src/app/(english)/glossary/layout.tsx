@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
+import { publicPageAlternates } from '@/lib/i18n/config';
 
 export const metadata: Metadata = {
   title: 'Online Tool & Calculator Glossary',
   description: 'Plain-English definitions of common calculator, finance, health, PDF, web, and technology terms used across Navorika tools and guides.',
-  alternates: { canonical: 'https://navorika.com/glossary' },
+  alternates: {
+    canonical: 'https://navorika.com/glossary',
+    languages: publicPageAlternates('/glossary'),
+  },
   openGraph: {
     type: 'website',
     url: 'https://navorika.com/glossary',

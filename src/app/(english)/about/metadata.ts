@@ -1,8 +1,13 @@
+import { publicPageAlternates } from '@/lib/i18n/config';
+
 export const metadata = {
   title: 'About Navorika – Free Online Tools & Calculators',
   description: 'Learn about Navorika’s privacy-first calculators, PDF editors, image converters, and developer utilities. Most tools process locally, with no signup required.',
   keywords: 'about, free online tools, client-side computing, privacy-first tools, no data uploads, free calculators, PDF tools online',
-  alternates: { canonical: 'https://navorika.com/about' },
+  alternates: {
+    canonical: 'https://navorika.com/about',
+    languages: publicPageAlternates('/about'),
+  },
   openGraph: {
     title: 'About Navorika – Free Online Tools & Calculators',
     description: 'Learn about Navorika’s privacy-first tools. Most process data locally, and tools using live external data identify their source.',
