@@ -353,12 +353,31 @@ try {
   }
 
   // -------------------------------------------------------------------------
-  // 5. Arabic RTL at 320px and 390px
+  // 5. Arabic RTL and Responsive Layout at 320px, 390px, and Desktop
   // -------------------------------------------------------------------------
-  console.log('5. Checking Arabic RTL layout at 320px and 390px...');
+  console.log('5. Checking Arabic RTL layout and responsive viewports (light & dark)...');
+  for (const colorScheme of ['light', 'dark']) {
+    await page.emulateMedia({ colorScheme });
+    for (const width of [320, 390, 1280]) {
+      await page.setViewportSize({ width, height: 844 });
+      for (const loc of ['ar', 'de', 'it']) {
+        const path = `/${loc}`;
+        await page.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
+        const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+        assert.equal(overflow, false, `No horizontal overflow on ${path} at ${width}px (${colorScheme})`);
+        if (loc === 'ar') {
+          const dir = await page.locator('html').getAttribute('dir');
+          assert.equal(dir, 'rtl', `html dir=rtl on ${path} at ${width}px`);
+        }
+        checksPassed++;
+      }
+    }
+  }
+
+  // Deep checks for Arabic tool and trust pages
   for (const width of [320, 390]) {
     await page.setViewportSize({ width, height: 844 });
-    for (const path of ['/ar', '/ar/tools/aspect-ratio-padding-calculator', '/ar/privacy', '/ar/about']) {
+    for (const path of ['/ar/tools/aspect-ratio-padding-calculator', '/ar/privacy', '/ar/about']) {
       await page.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
       const dir = await page.locator('html').getAttribute('dir');
       assert.equal(dir, 'rtl', `html dir=rtl on ${path} at ${width}px`);
@@ -370,6 +389,128 @@ try {
       assert.equal(overflow, false, `No horizontal overflow on ${path} at ${width}px`);
       checksPassed++;
     }
+  }
+
+  // -------------------------------------------------------------------------
+  // 6. Navigation states, translated logo labels, result announcements & accessibility
+  // -------------------------------------------------------------------------
+  console.log('6. Checking navigation states, logo labels, result announcements & accessible controls...');
+  await page.emulateMedia({ colorScheme: 'light' });
+
+  for (const loc of ['it', 'de', 'ar']) {
+    const d = dictionaries[loc];
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(`${base}/${loc}`, { waitUntil: 'domcontentloaded' });
+
+    // Logo label and tagline checks
+    const headerLogo = page.locator('header a[aria-label]').first();
+    assert.equal(await headerLogo.getAttribute('aria-label'), d.ui.brandHome, `Header logo aria-label on /${loc}`);
+    checksPassed++;
+
+    const footerLogo = page.locator('footer a[aria-label]').first();
+    assert.equal(await footerLogo.getAttribute('aria-label'), d.ui.brandHome, `Footer logo aria-label on /${loc}`);
+    const footerTagline = page.locator('footer span.uppercase').first();
+    assert.equal((await footerTagline.textContent())?.trim(), d.ui.brandTagline, `Footer logo tagline on /${loc}`);
+    checksPassed += 2;
+
+    // Navigation active states on home page
+    const homeNavLink = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}"]`).first();
+    const toolsNavLink = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}#tools"]`).first();
+    const aboutNavLink = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}/about"]`).first();
+
+    assert.equal(await homeNavLink.getAttribute('aria-current'), 'page', `Home nav aria-current="page" on /${loc}`);
+    assert.match(await homeNavLink.getAttribute('class'), /bg-indigo-500\/10/, `Home nav active class on /${loc}`);
+    assert.equal(await toolsNavLink.getAttribute('aria-current'), null, `Tools nav not aria-current on /${loc}`);
+    assert.doesNotMatch(await toolsNavLink.getAttribute('class'), /bg-indigo-500\/10/, `Tools nav not active on /${loc}`);
+    assert.equal(await aboutNavLink.getAttribute('aria-current'), null, `About nav not aria-current on /${loc}`);
+    assert.doesNotMatch(await aboutNavLink.getAttribute('class'), /bg-indigo-500\/10/, `About nav not active on /${loc}`);
+    checksPassed += 6;
+
+    // About page navigation states
+    await page.goto(`${base}/${loc}/about`, { waitUntil: 'domcontentloaded' });
+    const aboutOnAbout = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}/about"]`).first();
+    const toolsOnAbout = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}#tools"]`).first();
+    const homeOnAbout = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}"]`).first();
+
+    assert.equal(await aboutOnAbout.getAttribute('aria-current'), 'page', `About nav aria-current on /${loc}/about`);
+    assert.match(await aboutOnAbout.getAttribute('class'), /bg-indigo-500\/10/, `About nav active on /${loc}/about`);
+    assert.equal(await toolsOnAbout.getAttribute('aria-current'), null, `Tools nav not aria-current on /${loc}/about`);
+    assert.doesNotMatch(await toolsOnAbout.getAttribute('class'), /bg-indigo-500\/10/, `Tools nav not active on /${loc}/about`);
+    assert.equal(await homeOnAbout.getAttribute('aria-current'), null, `Home nav not aria-current on /${loc}/about`);
+    checksPassed += 5;
+
+    // Tool detail page navigation states
+    await page.goto(`${base}/${loc}/tools/aspect-ratio-padding-calculator`, { waitUntil: 'domcontentloaded' });
+    const toolsOnTool = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}#tools"]`).first();
+    const aboutOnTool = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}/about"]`).first();
+    const homeOnTool = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}"]`).first();
+
+    assert.match(await toolsOnTool.getAttribute('class'), /bg-indigo-500\/10/, `Tools nav active on /${loc}/tools/...`);
+    assert.doesNotMatch(await aboutOnTool.getAttribute('class'), /bg-indigo-500\/10/, `About nav not active on /${loc}/tools/...`);
+    assert.doesNotMatch(await homeOnTool.getAttribute('class'), /bg-indigo-500\/10/, `Home nav not active on /${loc}/tools/...`);
+    checksPassed += 3;
+
+    // Return to home page to test search announcements and category accessibility
+    await page.goto(`${base}/${loc}`, { waitUntil: 'domcontentloaded' });
+
+    // Category filter button accessibility (aria-pressed)
+    const allCatBtn = page.locator('#tools button[aria-pressed]').first();
+    assert.equal(await allCatBtn.getAttribute('aria-pressed'), 'true', `All category button aria-pressed="true" on /${loc}`);
+    const pdfCatBtn = page.locator('#tools button[aria-pressed]').nth(1);
+    assert.equal(await pdfCatBtn.getAttribute('aria-pressed'), 'false', `PDF category button aria-pressed="false" on /${loc}`);
+    checksPassed += 2;
+
+    // Click category filter
+    await pdfCatBtn.click();
+    assert.equal(await pdfCatBtn.getAttribute('aria-pressed'), 'true', `PDF category button pressed after click on /${loc}`);
+    assert.equal(await allCatBtn.getAttribute('aria-pressed'), 'false', `All category button unpressed on /${loc}`);
+    checksPassed += 2;
+
+    // Tool icons on cards
+    const firstCardIcon = page.locator('#tools a[href*="/tools/"] span[aria-hidden="true"]').first();
+    assert.ok(((await firstCardIcon.textContent()) || '').trim().length > 0, `Tool icon rendered on card on /${loc}`);
+    checksPassed++;
+
+    // Reset filter
+    await allCatBtn.click();
+
+    // Search announcements
+    const searchInput = page.locator('input[type="search"]#tool-search');
+    await searchInput.fill(d.tools['rgb-cmyk-image-checker'].title);
+    const expectedAnnounce1 = `${new Intl.NumberFormat(loc).format(1)} ${d.ui.toolsFound}`;
+    assert.equal(await page.getByRole('status').textContent(), expectedAnnounce1, `Search announcement on /${loc}`);
+    checksPassed++;
+
+    await searchInput.fill('zzzz-not-a-tool');
+    assert.equal(await page.getByRole('status').textContent(), d.ui.noResults, `Empty search announcement on /${loc}`);
+    checksPassed++;
+
+    // Mobile menu accessibility states at 390px
+    await page.setViewportSize({ width: 390, height: 844 });
+    const mobileMenuBtn = page.locator('header button[aria-controls="mobile-navigation-menu"]');
+    assert.equal(await mobileMenuBtn.getAttribute('aria-expanded'), 'false', `Mobile menu button aria-expanded="false" on /${loc}`);
+    assert.equal(await mobileMenuBtn.getAttribute('aria-label'), d.ui.menuToggle, `Mobile menu button aria-label on /${loc}`);
+
+    // Open mobile menu
+    await mobileMenuBtn.click();
+    assert.equal(await mobileMenuBtn.getAttribute('aria-expanded'), 'true', `Mobile menu button aria-expanded="true" on /${loc}`);
+    const menuContainer = page.locator('#mobile-navigation-menu');
+    await menuContainer.waitFor({ state: 'visible' });
+    checksPassed += 3;
+
+    // Escape dismissal
+    await page.keyboard.press('Escape');
+    await menuContainer.waitFor({ state: 'hidden' });
+    assert.equal(await mobileMenuBtn.getAttribute('aria-expanded'), 'false', `Mobile menu closed on Escape on /${loc}`);
+    checksPassed += 2;
+
+    // Reopen and outside click dismissal
+    await mobileMenuBtn.click();
+    await menuContainer.waitFor({ state: 'visible' });
+    await page.mouse.click(10, 700);
+    await menuContainer.waitFor({ state: 'hidden' });
+    assert.equal(await mobileMenuBtn.getAttribute('aria-expanded'), 'false', `Mobile menu closed on outside click on /${loc}`);
+    checksPassed += 2;
   }
 
   assert.deepEqual(errors, [], 'No uncaught browser exceptions');
