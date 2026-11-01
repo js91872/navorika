@@ -467,8 +467,12 @@ try {
     checksPassed += 2;
 
     // Tool icons on cards
-    const firstCardIcon = page.locator('#tools a[href*="/tools/"] span[aria-hidden="true"]').first();
-    assert.ok(((await firstCardIcon.textContent()) || '').trim().length > 0, `Tool icon rendered on card on /${loc}`);
+    const firstCard = page.locator('#tools a[href*="/tools/"]').first();
+    const iconGraphic = firstCard.locator('svg, img, [role="img"]').first();
+    const textIcon = firstCard.locator('span[aria-hidden="true"]').first();
+    const hasGraphic = await iconGraphic.count() > 0;
+    const hasTextIcon = await textIcon.count() > 0 && ((await textIcon.textContent()) || '').trim().length > 0;
+    assert.ok(hasGraphic || hasTextIcon, `Tool icon rendered on card on /${loc}`);
     checksPassed++;
 
     // Reset filter
