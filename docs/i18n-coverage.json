@@ -10,24 +10,24 @@
     "de"
   ],
   "summary": {
-    "tools": 325,
+    "tools": 327,
     "publishedTools": 319,
-    "pendingTools": 0,
+    "pendingTools": 2,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 63,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
-    "targetToolTranslations": 2233,
+    "targetToolTranslations": 2247,
     "pendingGuideTranslations": 441,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4216,
-      "visibleAttribute": 367,
-      "semanticCopy": 11535,
-      "reviewLiteral": 46463
+      "jsxText": 4243,
+      "visibleAttribute": 365,
+      "semanticCopy": 11543,
+      "reviewLiteral": 46560
     },
-    "candidateCopyWords": 316499
+    "candidateCopyWords": 316958
   },
   "tools": [
     {
@@ -2869,6 +2869,22 @@
       ]
     },
     {
+      "slug": "exif-metadata-remover",
+      "title": "Bulk EXIF Metadata Remover",
+      "category": "image-tools",
+      "route": "/tools/exif-metadata-remover",
+      "source": "src/app/(english)/tools/exif-metadata-remover/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/exif-metadata-remover/page.tsx"
+      ]
+    },
+    {
       "slug": "extract-audio-from-video",
       "title": "Extract Audio from Video",
       "category": "developer-tools",
@@ -4414,6 +4430,22 @@
         "src/app/(english)/tools/json-schema-validator/page.tsx",
         "src/components/tools/ExpansionToolPage.tsx",
         "src/components/tools/JsonSchemaValidator.tsx"
+      ]
+    },
+    {
+      "slug": "json-to-csv-converter",
+      "title": "Nested JSON to CSV / TSV Converter",
+      "category": "developer-tools",
+      "route": "/tools/json-to-csv-converter",
+      "source": "src/app/(english)/tools/json-to-csv-converter/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/json-to-csv-converter/page.tsx"
       ]
     },
     {
@@ -10028,6 +10060,12 @@
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
+      "source": "src/app/(english)/tools/exif-metadata-remover/page.tsx",
+      "routeTemplate": "/tools/exif-metadata-remover",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
       "source": "src/app/(english)/tools/extract-audio-from-video/page.tsx",
       "routeTemplate": "/tools/extract-audio-from-video",
       "status": "published",
@@ -10391,6 +10429,12 @@
       "source": "src/app/(english)/tools/json-schema-validator/page.tsx",
       "routeTemplate": "/tools/json-schema-validator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/json-to-csv-converter/page.tsx",
+      "routeTemplate": "/tools/json-to-csv-converter",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
