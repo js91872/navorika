@@ -49,6 +49,19 @@ export default function AboutPage() {
           </section>
 
           <section className="space-y-4">
+            <h2 className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">Everyday problems our tools help solve</h2>
+            <p>
+              Some of the most visited tools on Navorika solve very specific problems. For example, you might need to <Link href="/tools/step-to-3d-pdf-converter" className="text-[#e5322d] font-semibold hover:underline">convert a STEP file to a 3D PDF</Link> so someone can review a model, or <Link href="/tools/cdr-viewer" className="text-[#e5322d] font-semibold hover:underline">open a CDR file online without CorelDRAW</Link> just to see what it contains.
+            </p>
+            <p>
+              People also come here to <Link href="/tools/pdf-to-cdr-converter" className="text-[#e5322d] font-semibold hover:underline">convert a PDF to a CDR file</Link>, <Link href="/tools/jpg-to-cdr-converter" className="text-[#e5322d] font-semibold hover:underline">prepare a JPG for CorelDRAW</Link>, or <Link href="/tools/rgb-cmyk-image-checker" className="text-[#e5322d] font-semibold hover:underline">check whether an image uses RGB or CMYK colors</Link> before printing. A <Link href="/tools/pdf-bleed-trim-checker" className="text-[#e5322d] font-semibold hover:underline">PDF bleed and trim check</Link> can help spot print-layout issues before sending a document to a printer.
+            </p>
+            <p>
+              These are not complicated-sounding features for the sake of it. They are the real tasks people want to finish, often without buying specialist software or learning a new program.
+            </p>
+          </section>
+
+          <section className="space-y-4">
             <h2 className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">How we approach accuracy</h2>
             <p>
               A neat-looking answer is no good if the calculation is wrong. We use documented formulas and established methods where appropriate, and we run automated checks on calculations and other tool behavior.
@@ -69,9 +82,9 @@ export default function AboutPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">Still a work in progress</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">How we keep Navorika useful</h2>
             <p>
-              Navorika is an evolving project. We review tools, improve instructions, fix problems, and revisit pages that could be clearer. We know there is always something we can make better.
+              Maintaining Navorika matters as much as adding new tools. We check existing features, update instructions, review calculations and fix issues when we find them. The goal is to keep tools dependable and easy to use as browsers, file formats and everyday needs change.
             </p>
             <p>
               If you find a confusing result, a broken tool, or a task we have not covered, please <Link href="/contact" className="text-[#e5322d] font-semibold hover:underline">tell us</Link>. Useful feedback helps shape what we work on next.
