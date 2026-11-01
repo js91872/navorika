@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Mail } from 'lucide-react';
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 const email = 'admin@navorika.com';
 const privacyEmail = 'privacy@navorika.com';
 
-function EmailLink({ subject, children }: { subject: string; children: React.ReactNode }) {
+function EmailLink({ subject, children }: { subject: string; children: ReactNode }) {
   return (
     <a
       href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}
