@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Sun, Moon, Home, Wrench, Info, Mail } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import Logo from '@/components/ui/Logo';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
@@ -18,20 +18,11 @@ interface LocalizedNavbarProps {
 
 export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [currentHash, setCurrentHash] = useState('');
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     const updateHash = () => {
@@ -67,16 +58,16 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
   }, [isOpen]);
 
   const navLinks = [
-    { id: 'home', href: `/${locale}`, label: d.ui.home, icon: <Home className="h-4 w-4 shrink-0" /> },
-    { id: 'tools', href: `/${locale}#tools`, label: d.ui.tools, icon: <Wrench className="h-4 w-4 shrink-0" /> },
-    { id: 'about', href: `/${locale}/about`, label: d.ui.about, icon: <Info className="h-4 w-4 shrink-0" /> },
-    { id: 'contact', href: `/${locale}/contact`, label: d.ui.contact, icon: <Mail className="h-4 w-4 shrink-0" /> },
+    { id: 'home', href: `/${locale}`, label: d.ui.home },
+    { id: 'tools', href: `/${locale}#tools`, label: d.ui.tools },
+    { id: 'about', href: `/${locale}/about`, label: d.ui.about },
+    { id: 'contact', href: `/${locale}/contact`, label: d.ui.contact },
   ];
 
   const mobileLinks = [
     ...navLinks,
-    { id: 'privacy', href: `/${locale}/privacy`, label: d.ui.privacy, icon: <Info className="h-4 w-4 shrink-0" /> },
-    { id: 'terms', href: `/${locale}/terms`, label: d.ui.terms, icon: <Info className="h-4 w-4 shrink-0" /> },
+    { id: 'privacy', href: `/${locale}/privacy`, label: d.ui.privacy },
+    { id: 'terms', href: `/${locale}/terms`, label: d.ui.terms },
   ];
 
   const getNavState = (id: string) => {
@@ -113,21 +104,17 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
   return (
     <header
       ref={headerRef}
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[var(--background)]/95 backdrop-blur-sm border-b border-[var(--border)] shadow-sm'
-          : 'bg-[var(--background)]/80 backdrop-blur-sm border-b border-[var(--border)]'
-      }`}
+      className="sticky top-0 z-50 bg-white dark:bg-[#18181b] border-b border-[#e5e5e8] dark:border-[#27272a] shadow-xs transition-colors duration-200"
     >
-      <div className="max-w-7xl mx-auto px-2 min-[360px]:px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Brand Logo linking to localized homepage with translated accessible label */}
           <div className={`shrink-0 ${styles.brand}`}>
             <Logo href={`/${locale}`} ariaLabel={d.ui.brandHome} size="md" />
           </div>
 
           {/* Desktop Navigation */}
-          <nav aria-label={d.ui.navigation} className="hidden xl:flex items-center gap-1">
+          <nav aria-label={d.ui.navigation} className="hidden lg:flex items-center gap-6 text-sm font-semibold">
             {navLinks.map((link) => {
               const { active, ariaCurrent } = getNavState(link.id);
               return (
@@ -139,41 +126,38 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
                     if (link.id === 'tools') setCurrentHash('#tools');
                     if (link.id === 'home') setCurrentHash('');
                   }}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                  className={`transition-colors duration-150 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d] ${
                     active
-                      ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-500/10'
-                      : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]/50'
+                      ? 'text-[#e5322d] font-bold'
+                      : 'text-[#52525b] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ef4444]'
                   }`}
                 >
-                  <span className="flex items-center gap-1.5">
-                    {link.icon}
-                    {link.label}
-                  </span>
+                  {link.label}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Right side controls: Language switcher outside menu, Theme toggle, Hamburger menu */}
-          <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+          {/* Right side controls: Language switcher, Theme toggle, Hamburger menu */}
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <LanguageSwitcher locale={locale} label={d.ui.language} />
 
             <button
               type="button"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="grid min-h-11 min-w-11 place-items-center rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+              className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label={d.ui.themeToggle}
               title={d.ui.themeToggle}
             >
-              <Sun className="hidden h-5 w-5 dark:block" aria-hidden="true" />
-              <Moon className="h-5 w-5 dark:hidden" aria-hidden="true" />
+              <Sun className="hidden h-4 w-4 dark:block" aria-hidden="true" />
+              <Moon className="h-4 w-4 dark:hidden" aria-hidden="true" />
             </button>
 
             <button
               ref={menuButtonRef}
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="grid min-h-11 min-w-11 place-items-center rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 xl:hidden"
+              className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label={d.ui.menuToggle}
               title={d.ui.menuToggle}
               aria-expanded={isOpen}
@@ -189,9 +173,9 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
       {isOpen && (
         <div
           id="mobile-navigation-menu"
-          className="xl:hidden bg-[var(--background)] border-b border-[var(--border)] shadow-lg animate-in slide-in-from-top-2 duration-200"
+          className="lg:hidden bg-white dark:bg-[#18181b] border-t border-[#e5e5e8] dark:border-[#27272a] shadow-md animate-in slide-in-from-top-1 duration-150"
         >
-          <nav aria-label={d.ui.navigation} className="px-4 py-4 space-y-1">
+          <nav aria-label={d.ui.navigation} className="px-4 py-3 space-y-1">
             {mobileLinks.map((link) => {
               const { active, ariaCurrent } = getNavState(link.id);
               return (
@@ -204,14 +188,13 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
                     if (link.id === 'home') setCurrentHash('');
                     setIsOpen(false);
                   }}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                  className={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d] ${
                     active
-                      ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold'
-                      : 'text-[var(--muted-foreground)] hover:bg-[var(--muted)]/50 hover:text-[var(--foreground)] font-medium'
+                      ? 'bg-[#fff1f1] dark:bg-[#e5322d]/15 text-[#e5322d] font-bold'
+                      : 'text-[#52525b] dark:text-[#a1a1aa] hover:bg-[#f7f7f8] dark:hover:bg-[#202023] hover:text-[#18181b] dark:hover:text-white'
                   }`}
                 >
-                  {link.icon}
-                  <span>{link.label}</span>
+                  {link.label}
                 </Link>
               );
             })}

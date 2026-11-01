@@ -33,16 +33,16 @@ export default function LanguageSwitcher({ locale, slug, label = 'Language' }: {
   const currentTool = slug ?? (isTranslatedTool(segment) ? segment : undefined);
   return (
     <details ref={menuRef} className="relative">
-      <summary aria-label={`${label}: ${languageNames[locale]}`} className="flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center rounded-full text-sm text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)] sm:rounded-xl sm:border sm:border-[var(--border)] sm:px-3 sm:py-2 [&::-webkit-details-marker]:hidden">
-        <Languages className="h-5 w-5 sm:hidden" aria-hidden="true" />
-        <span className="hidden sm:inline">{label}: <span lang={locale}>{languageNames[locale]}</span></span>
+      <summary aria-label={`${label}: ${languageNames[locale]}`} className="flex min-h-10 min-w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-[#f7f7f8] dark:bg-[#202023] px-2.5 py-1.5 text-xs font-semibold text-[#52525b] dark:text-[#a1a1aa] hover:border-[#e5322d] hover:text-[#e5322d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d] [&::-webkit-details-marker]:hidden">
+        <Languages className="h-4 w-4 sm:mr-1.5" aria-hidden="true" />
+        <span className="hidden sm:inline">{languageNames[locale]}</span>
       </summary>
-      <nav aria-label={label} className="absolute end-0 z-[60] mt-2 grid min-w-44 gap-1 rounded-xl border border-[var(--border)] bg-[var(--background)] p-2 shadow-xl">
+      <nav aria-label={label} className="absolute end-0 z-[60] mt-1.5 grid min-w-44 gap-1 rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-1.5 shadow-xl">
         {(['en', ...locales] as const).map((language) => (
           <Link key={language} href={localizedPath(language, currentTool)} hrefLang={language} lang={language}
             aria-current={locale === language ? 'page' : undefined}
             onClick={() => { if (menuRef.current) menuRef.current.open = false; }}
-            className={`rounded-lg px-3 py-2 text-sm hover:bg-[var(--muted)] ${locale === language ? 'font-bold text-indigo-600 dark:text-indigo-400' : ''}`}>
+            className={`rounded-lg px-3 py-2 text-xs font-medium hover:bg-[#f7f7f8] dark:hover:bg-[#202023] transition-colors ${locale === language ? 'font-bold text-[#e5322d] bg-[#fff1f1] dark:bg-[#e5322d]/10' : 'text-[#52525b] dark:text-[#a1a1aa]'}`}>
             {languageNames[language]}
           </Link>
         ))}

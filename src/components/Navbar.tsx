@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Sun, Moon, Home, Layers, Wrench, BookOpen, Info, Mail, Search } from 'lucide-react';
+import { Menu, X, Sun, Moon, Search } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import Logo from '@/components/ui/Logo';
 import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
@@ -15,84 +15,79 @@ interface NavbarProps {
 
 export default function Navbar({ onSearchClick }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navLinks = [
-    { href: '/', label: 'Home', icon: <Home className="h-4 w-4" /> },
-    { href: '/categories', label: 'Categories', icon: <Layers className="h-4 w-4" /> },
-    { href: '/tools', label: 'Tools', icon: <Wrench className="h-4 w-4" /> },
-    { href: '/guides', label: 'Guides', icon: <BookOpen className="h-4 w-4" /> },
-    { href: '/about', label: 'About', icon: <Info className="h-4 w-4" /> },
-    { href: '/contact', label: 'Contact', icon: <Mail className="h-4 w-4" /> },
+    { href: '/tools', label: 'All Tools' },
+    { href: '/categories', label: 'Categories' },
+    { href: '/guides', label: 'Guides' },
+    { href: '/about', label: 'About' },
+    { href: '/contact', label: 'Contact' },
   ];
 
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? 'bg-[var(--background)]/95 backdrop-blur-sm border-b border-[var(--border)]' : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-2 min-[360px]:px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Preserve the full brand alongside the four mobile controls. */}
-          <div className={`shrink-0 ${styles.brand}`}><Logo size="md" /></div>
+    <header className="sticky top-0 z-50 bg-white dark:bg-[#18181b] border-b border-[#e5e5e8] dark:border-[#27272a] shadow-xs transition-colors duration-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18">
+          {/* Preserve existing Navorika logo */}
+          <div className={`shrink-0 ${styles.brand}`}>
+            <Logo size="md" />
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-1">
+          <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-6 text-sm font-semibold">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`transition-colors duration-150 py-1 ${
                   isActive(link.href)
-                    ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-500/10'
-                    : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]/50'
+                    ? 'text-[#e5322d] font-bold'
+                    : 'text-[#52525b] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ef4444]'
                 }`}
               >
-                <span className="flex items-center gap-1.5">
-                  {link.icon}
-                  {link.label}
-                </span>
+                {link.label}
               </Link>
             ))}
-          </div>
+          </nav>
 
-          {/* Right side */}
-          <div className="flex shrink-0 items-center gap-0 sm:gap-2">
-            <LanguageSwitcher locale="en" />
+          {/* Right side controls: Search, Theme, Language, Mobile Menu */}
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <button
+              type="button"
               onClick={onSearchClick}
-              className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-3 hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-[#f7f7f8] dark:bg-[#202023] px-3 py-1.5 text-xs font-semibold text-[#52525b] dark:text-[#a1a1aa] hover:border-[#e5322d] hover:text-[#e5322d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label="Search tools"
             >
-              <Search className="h-5 w-5" />
-              <span className="hidden text-sm font-semibold lg:inline">Search</span>
-              <kbd className="hidden rounded bg-[var(--muted)] px-1.5 py-0.5 text-[10px] xl:inline">⌘/Ctrl K</kbd>
+              <Search className="h-4 w-4" />
+              <span className="hidden sm:inline">Search</span>
+              <kbd className="hidden rounded bg-white dark:bg-[#18181b] px-1.5 py-0.5 text-[10px] font-mono border border-[#e4e4e8] dark:border-[#27272a] sm:inline">⌘K</kbd>
             </button>
 
+            <LanguageSwitcher locale="en" />
+
             <button
+              type="button"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="grid min-h-11 min-w-11 place-items-center rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:scale-110"
+              className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label="Toggle theme"
             >
-              <Sun className="hidden h-5 w-5 dark:block" aria-hidden="true" />
-              <Moon className="h-5 w-5 dark:hidden" aria-hidden="true" />
+              <Sun className="hidden h-4 w-4 dark:block" aria-hidden="true" />
+              <Moon className="h-4 w-4 dark:hidden" aria-hidden="true" />
             </button>
 
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="grid min-h-11 min-w-11 place-items-center rounded-full hover:bg-[var(--muted)] transition-all duration-300 text-[var(--muted-foreground)] hover:text-[var(--foreground)] xl:hidden"
+              className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label="Toggle menu"
+              aria-expanded={isOpen}
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -102,26 +97,25 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="xl:hidden bg-[var(--background)] border-b border-[var(--border)] shadow-lg">
-          <div className="px-4 py-4 space-y-2">
+        <div className="lg:hidden bg-white dark:bg-[#18181b] border-t border-[#e5e5e8] dark:border-[#27272a] shadow-md animate-in slide-in-from-top-1 duration-150">
+          <nav aria-label="Mobile navigation" className="px-4 py-3 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                className={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
                   isActive(link.href)
-                    ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400'
-                    : 'text-[var(--muted-foreground)] hover:bg-[var(--muted)]/50 hover:text-[var(--foreground)]'
+                    ? 'bg-[#fff1f1] dark:bg-[#e5322d]/15 text-[#e5322d] font-bold'
+                    : 'text-[#52525b] dark:text-[#a1a1aa] hover:bg-[#f7f7f8] dark:hover:bg-[#202023] hover:text-[#18181b] dark:hover:text-white'
                 }`}
               >
-                {link.icon}
-                <span className="font-medium">{link.label}</span>
+                {link.label}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
