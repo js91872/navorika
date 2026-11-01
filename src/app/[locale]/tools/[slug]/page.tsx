@@ -121,7 +121,7 @@ export default async function LocalizedToolPage({ params }: Props) {
               <Link
                 key={item}
                 href={localizedPath(locale, item)}
-                className="rounded-xl border border-[var(--border)] bg-[var(--card)] px-3.5 py-2 text-xs sm:text-sm font-medium hover:border-indigo-500/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all shadow-sm"
+                className="rounded-xl border border-[var(--border)] bg-[var(--card)] px-3.5 py-2 text-xs sm:text-sm font-medium hover:border-[#e5322d]/40 hover:text-[#e5322d] dark:hover:text-[#ff6b68] transition-all shadow-xs"
               >
                 {d.tools[item].title}
               </Link>
