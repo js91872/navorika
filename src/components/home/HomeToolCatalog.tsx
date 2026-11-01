@@ -109,8 +109,8 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
     if (query.trim() || selectedCategory !== 'all') {
       return filteredTools;
     }
-    // On default view, display the first 24 catalogue entries; do not claim usage ranking
-    return filteredTools.slice(0, 24);
+    // On default view, display 12 tools ranked by the dated GA4 organic-search snapshot supplied to the homepage
+    return filteredTools.slice(0, 12);
   }, [filteredTools, query, selectedCategory]);
 
   return (
@@ -182,10 +182,10 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
       <div id="tools" className="flex items-center justify-between gap-4 mb-5 pt-2 scroll-mt-24">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">
-            {query.trim() || selectedCategory !== 'all' ? 'Matching Tools' : 'Featured Tools'}
+            {query.trim() || selectedCategory !== 'all' ? 'Matching Tools' : 'Popular Tools'}
           </h2>
           <p className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">
-            {filteredTools.length} {filteredTools.length === 1 ? 'tool' : 'tools'} available
+            {query.trim() || selectedCategory !== 'all' ? `${filteredTools.length} ${filteredTools.length === 1 ? 'tool' : 'tools'} available` : 'Based on organic page views, Oct 4–31, 2026'}
           </p>
         </div>
         <Link
@@ -242,8 +242,8 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
         </div>
       )}
 
-      {/* When browsing default 24 tools, show button to see more */}
-      {!query.trim() && selectedCategory === 'all' && filteredTools.length > 24 && (
+      {/* When browsing default popular tools, show button to see more */}
+      {!query.trim() && selectedCategory === 'all' && filteredTools.length > 12 && (
         <div className="text-center mt-8">
           <Link
             href="/tools"
