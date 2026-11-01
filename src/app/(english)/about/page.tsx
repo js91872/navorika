@@ -1,214 +1,94 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import {
-  Shield,
-  Zap,
-  Lock,
-  ArrowRight,
-  Cpu,
-  Layers,
-  Calculator,
-  FileText,
-  ImageIcon,
-  Code2,
-  AlertCircle,
-} from 'lucide-react';
-import { tools } from '@/data/registry';
-import { toolsUnderReview } from '@/lib/seo/toolReview';
+import { ArrowRight } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'About Navorika | Why We Built These Tools',
+  description: 'The story behind Navorika, an independent website making everyday calculations, file conversions, and practical tasks easier.',
+};
 
 export default function AboutPage() {
-  const activeToolCount = tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length;
-
-  const toolCategories = [
-    {
-      icon: <Calculator className="h-5 w-5 text-[#e5322d]" />,
-      title: 'Money & Planning Calculators',
-      description: 'Calculators for loans, savings, investing, taxes, mortgages, budgets, business numbers, and property planning.',
-    },
-    {
-      icon: <Layers className="h-5 w-5 text-[#e5322d]" />,
-      title: 'Construction & Home Project Calculators',
-      description: 'Estimate concrete, bricks, flooring, roofing, stairs, materials, project costs, and other common construction quantities.',
-    },
-    {
-      icon: <FileText className="h-5 w-5 text-[#e5322d]" />,
-      title: 'Document & PDF Utilities',
-      description: 'Merge, split, reorder, compress, sign, convert, and extract text from PDF files using simple online tools.',
-    },
-    {
-      icon: <ImageIcon className="h-5 w-5 text-[#e5322d]" />,
-      title: 'Image & Media Tools',
-      description: 'Convert, resize, compress, crop, inspect, and prepare common image formats such as JPG, PNG, WebP, HEIC, and SVG.',
-    },
-    {
-      icon: <Code2 className="h-5 w-5 text-[#e5322d]" />,
-      title: 'Developer & Web Tools',
-      description: 'Tools for JSON, YAML, Base64, JWT, cron schedules, code formatting, networking, timestamps, and common web-development tasks.',
-    },
-  ];
-
-  const corePrinciples = [
-    {
-      icon: <Lock className="h-6 w-6 text-[#e5322d]" />,
-      title: 'Your Files Usually Stay on Your Device',
-      description: 'Most Navorika tools run directly in your browser, so the files and values you enter stay on your device instead of being uploaded to our servers.',
-    },
-    {
-      icon: <Shield className="h-6 w-6 text-[#e5322d]" />,
-      title: 'Clear About How Each Tool Works',
-      description: 'If a tool needs live data or server processing, the page explains that clearly. We never make vague privacy claims when a tool requires a server.',
-    },
-    {
-      icon: <Zap className="h-6 w-6 text-[#e5322d]" />,
-      title: 'No Account Required',
-      description: 'Open a tool and use it immediately. Navorika does not require an account, email sign-up, subscription, or software installation.',
-    },
-    {
-      icon: <Cpu className="h-6 w-6 text-[#e5322d]" />,
-      title: 'Calculations Are Verified',
-      description: 'Calculator formulas are based on standard, documented methods and verified with automated tests covering normal values, edge cases, and boundary limits.',
-    },
-  ];
-
   return (
-    <main className="min-h-screen bg-[#f7f7f8] dark:bg-[#121214] text-[#18181b] dark:text-[#f4f4f5] pt-24 pb-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <section className="text-center mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff1f1] dark:bg-[#e5322d]/10 border border-[#fecaca] dark:border-[#e5322d]/20 text-[#e5322d] text-xs font-semibold mb-4">
-            About Navorika
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-[#18181b] dark:text-white tracking-tight leading-tight mb-4">
-            Free Online Calculators &amp; Tools
+    <main className="min-h-screen bg-[#f7f7f8] dark:bg-[#121214] text-[#18181b] dark:text-[#f4f4f5] pt-20 pb-20">
+      <article className="mx-auto max-w-3xl px-5 sm:px-8">
+        <header className="border-b border-[#e4e4e8] dark:border-[#303036] pb-10 mb-10">
+          <p className="text-sm font-semibold tracking-wide text-[#e5322d] mb-4">About Navorika</p>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">
+            A useful tool should make your job easier. Not give you another job.
           </h1>
-          <p className="text-base sm:text-lg text-[#5b5b63] dark:text-[#a1a1aa] max-w-2xl mx-auto leading-relaxed">
-            Navorika is an independent utility website providing over {activeToolCount} free calculators and tools for PDF, images, money, health, construction, everyday tasks, and web development. Most tools run directly in your browser.
+          <p className="text-lg sm:text-xl leading-relaxed text-[#52525b] dark:text-[#b4b4bd]">
+            That simple idea is behind Navorika, an independent collection of free online tools for the small tasks that come up in everyday life and work.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/tools"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#e5322d] hover:bg-[#c71f1e] text-white font-semibold text-sm transition-colors shadow-xs"
-            >
-              Browse Free Tools <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/methodology"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] text-[#18181b] dark:text-white hover:border-[#e5322d]/40 font-semibold text-sm transition-colors shadow-xs"
-            >
-              How Our Calculators Work
-            </Link>
-          </div>
-        </section>
+        </header>
 
-        {/* Philosophy */}
-        <section className="mb-14">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white mb-5">What You Can Expect</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {corePrinciples.map((principle, index) => (
-              <motion.div
-                key={principle.title}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] shadow-xs break-words"
-              >
-                <div className="mb-3">{principle.icon}</div>
-                <h3 className="text-base font-bold text-[#18181b] dark:text-white mb-1.5">{principle.title}</h3>
-                <p className="text-sm text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed">
-                  {principle.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Tool Categories */}
-        <section className="mb-14">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white mb-5">What You Can Do on Navorika</h2>
-          <div className="space-y-3">
-            {toolCategories.map((cat) => (
-              <div
-                key={cat.title}
-                className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] shadow-xs flex items-start gap-3.5"
-              >
-                <div className="grid size-10 place-items-center rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 shrink-0 mt-0.5">
-                  {cat.icon}
-                </div>
-                <div>
-                  <h3 className="font-bold text-sm sm:text-base text-[#18181b] dark:text-white">{cat.title}</h3>
-                  <p className="text-xs sm:text-sm text-[#5b5b63] dark:text-[#a1a1aa] mt-1 leading-relaxed">
-                    {cat.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* How Tools are Developed and Tested */}
-        <section className="mb-14 p-6 sm:p-7 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] shadow-xs">
-          <h2 className="text-xl font-bold text-[#18181b] dark:text-white mb-3">How We Build and Check Our Tools</h2>
-          <div className="space-y-3 text-sm text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed">
+        <div className="space-y-10 text-base sm:text-[17px] leading-8 text-[#3f3f46] dark:text-[#d4d4d8]">
+          <section className="space-y-4">
+            <h2 className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">Why Navorika exists</h2>
             <p>
-              We build calculators from documented formulas, official regulations where applicable, and standard industry methods. For example, loan tools use standard compound amortization formulas, tax tools use published statutory rates, and construction tools use recognized material and measurement formulas.
+              Sometimes you need to work out a percentage, estimate materials for a home project, resize an image, or convert a document. You probably do not want to install software, create an account, or spend ten minutes learning how to do a two-minute task.
             </p>
             <p>
-              Automated tests verify calculator results against normal scenarios, zero-value conditions, boundary limits, and unexpected inputs. We review and update tools whenever underlying formulas or standards change.
+              Navorika brings those everyday jobs into one place. The aim is to help you find the right tool, understand what to enter, and get a result you can actually use.
             </p>
             <p>
-              For complete details on formulas, sources, and testing, see our{' '}
-              <Link href="/methodology" className="text-[#e5322d] hover:text-[#c71f1e] dark:text-[#ff6b68] font-semibold hover:underline">
-                Methodology &amp; Standards
-              </Link>{' '}
-              guide.
+              We are building the kind of website we would want to find ourselves: straightforward, practical, and respectful of your time.
             </p>
-          </div>
-        </section>
+          </section>
 
-        {/* Technical Limitations */}
-        <section className="mb-14 p-6 sm:p-7 rounded-xl border border-amber-500/25 bg-amber-500/5 dark:bg-amber-500/10 shadow-xs">
-          <div className="flex items-center gap-3 mb-2.5">
-            <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 shrink-0" />
-            <h2 className="text-lg font-bold text-[#18181b] dark:text-white">What to Know Before You Use a Result</h2>
-          </div>
-          <div className="space-y-2.5 text-sm text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed">
+          <section className="space-y-4">
+            <h2 className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">What you will find here</h2>
             <p>
-              Browser-based tools operate within standard browser memory limits. Very large PDF files or high-resolution images can require substantial RAM and may process slower on mobile devices.
+              There are calculators for money, measurements, construction, and daily planning; utilities for PDFs and images; and tools for people working with websites, data, and code. Some are simple enough to use in seconds. Others include examples and guides for tasks that need a little more explanation.
             </p>
             <p>
-              Calculators provide practical estimates for everyday planning. For formal legal, tax, medical, structural, or financial commitments, always consult a qualified professional. Read our{' '}
-              <Link href="/disclaimer" className="text-[#e5322d] hover:text-[#c71f1e] dark:text-[#ff6b68] font-semibold hover:underline">
-                Disclaimer
-              </Link>{' '}
-              for full terms.
+              We keep adding and improving tools, but a longer list is not the goal. A tool earns its place here by being useful, understandable, and dependable.
             </p>
-          </div>
-        </section>
+            <p>
+              You can <Link href="/tools" className="text-[#e5322d] font-semibold hover:underline">browse the tools</Link> or read our <Link href="/guides" className="text-[#e5322d] font-semibold hover:underline">practical guides</Link> when you need more help.
+            </p>
+          </section>
 
-        {/* Quick Links */}
-        <section className="p-6 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] shadow-xs text-center text-sm text-[#5b5b63] dark:text-[#a1a1aa] space-y-2.5">
-          <p className="font-semibold text-xs text-[#18181b] dark:text-white uppercase tracking-wider">Policies and Helpful Information</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs">
-            <Link href="/methodology" className="text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ff6b68] transition-colors">
-              How Calculators Work
-            </Link>
-            <Link href="/disclaimer" className="text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ff6b68] transition-colors">
-              Legal Disclaimer
-            </Link>
-            <Link href="/privacy" className="text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ff6b68] transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ff6b68] transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="/contact" className="text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ff6b68] transition-colors">
-              Contact Us
-            </Link>
-          </div>
-        </section>
-      </div>
+          <section className="space-y-4">
+            <h2 className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">How we approach accuracy</h2>
+            <p>
+              A neat-looking answer is no good if the calculation is wrong. We use documented formulas and established methods where appropriate, and we run automated checks on calculations and other tool behavior.
+            </p>
+            <p>
+              That does not mean every result is suitable for every situation. Estimates depend on the information you enter, and rules or rates can change. We try to explain assumptions and limitations where they matter. Our <Link href="/methodology" className="text-[#e5322d] font-semibold hover:underline">methodology page</Link> gives more detail about sources and checks.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">Privacy should be straightforward, too</h2>
+            <p>
+              Many Navorika tools do their work directly in your browser. For those tools, your files or entries do not need to be sent to our server for processing. Some features may work differently, particularly when live information or external processing is involved. We aim to make those differences clear rather than promise that every tool works the same way.
+            </p>
+            <p>
+              You can read the details in our <Link href="/privacy" className="text-[#e5322d] font-semibold hover:underline">privacy policy</Link>.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">Still a work in progress</h2>
+            <p>
+              Navorika is an evolving project. We review tools, improve instructions, fix problems, and revisit pages that could be clearer. We know there is always something we can make better.
+            </p>
+            <p>
+              If you find a confusing result, a broken tool, or a task we have not covered, please <Link href="/contact" className="text-[#e5322d] font-semibold hover:underline">tell us</Link>. Useful feedback helps shape what we work on next.
+            </p>
+          </section>
+        </div>
+
+        <footer className="mt-12 pt-8 border-t border-[#e4e4e8] dark:border-[#303036]">
+          <p className="text-lg font-semibold mb-5">Thanks for visiting. We hope Navorika saves you a little time today.</p>
+          <Link href="/tools" className="inline-flex items-center gap-2 rounded-lg bg-[#e5322d] hover:bg-[#c71f1e] px-5 py-3 text-white text-sm font-semibold transition-colors">
+            Find a tool <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+          <p className="mt-6 text-xs text-[#71717a] dark:text-[#a1a1aa]">
+            For important financial, medical, legal, or structural decisions, use professional advice alongside any online estimate. See our <Link href="/disclaimer" className="underline hover:text-[#e5322d]">disclaimer</Link>.
+          </p>
+        </footer>
+      </article>
     </main>
   );
 }
