@@ -83,3 +83,14 @@
     color: var(--primary-hover);
   }
 }
+
+/* Mobile V2: keep backgrounds and text in the same theme, even when a
+   component inherits older dark utility classes from another template. */
+@media (max-width: 639px) {
+  html:not(.dark) body { background: #f7f7f8; color: #18181b; }
+  html.dark body { background: #111113; color: #f4f4f5; }
+  html:not(.dark) main h1,
+  html:not(.dark) main h2 { color: #18181b; }
+  html.dark main h1,
+  html.dark main h2 { color: #f4f4f5; }
+}
