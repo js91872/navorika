@@ -34,15 +34,15 @@ export default function ToolPageContent({ tool }: { tool: ToolContent }) {
 
       {useWithTools.length > 0 && (
         <section aria-labelledby={`${tool.slug}-workflow-title`}>
-          <p className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Suggested next steps</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-[#e5322d] dark:text-[#ff6b68]">Suggested next steps</p>
           <h2 id={`${tool.slug}-workflow-title`} className="mt-1 text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">Continue this workflow</h2>
           <p className="mt-1.5 text-xs sm:text-sm leading-relaxed">Use these before or after this tool to finish the same task.</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {useWithTools.map((item) => (
-              <Link key={item.slug} href={`/tools/${item.slug}`} className="group flex min-h-14 items-center gap-3.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3.5 transition-all hover:border-emerald-500/50 hover:shadow-xs">
-                <span className="grid size-10 place-items-center rounded-lg bg-emerald-500/10 text-xl" aria-hidden="true">{getToolIcon(item.slug)}</span>
-                <span className="font-semibold text-sm text-[#18181b] dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">{item.label}</span>
-                <ArrowUpRight className="ml-auto size-4 text-emerald-600 shrink-0" aria-hidden="true" />
+              <Link key={item.slug} href={`/tools/${item.slug}`} className="group flex min-h-14 items-center gap-3.5 rounded-xl border border-[#e5322d]/20 bg-[#fff1f1] dark:bg-[#e5322d]/10 p-3.5 transition-all hover:border-[#e5322d]/50 hover:shadow-xs">
+                <span className="grid size-10 place-items-center rounded-lg bg-[#e5322d]/10 text-xl" aria-hidden="true">{getToolIcon(item.slug)}</span>
+                <span className="font-semibold text-sm text-[#18181b] dark:text-white group-hover:text-[#e5322d] dark:group-hover:text-[#ff6b68] transition-colors">{item.label}</span>
+                <ArrowUpRight className="ml-auto size-4 text-[#e5322d] shrink-0" aria-hidden="true" />
               </Link>
             ))}
           </div>
