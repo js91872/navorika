@@ -1,17 +1,17 @@
 .brand a { gap: 6px; }
 .brand svg { width: 28px; height: 28px; }
-.brand span { font-size: 24px; }
+.brand span { font-size: 19px; }
 
 @media (max-width: 359px) {
   .brand a { gap: 4px; }
   .brand svg { width: 24px; height: 24px; }
-  .brand span { font-size: 22px; }
+  .brand span { font-size: 17px; }
 }
 
 @media (min-width: 390px) {
   .brand a { gap: 8px; }
-  .brand svg { width: 36px; height: 36px; }
-  .brand span { font-size: 26px; }
+  .brand svg { width: 28px; height: 28px; }
+  .brand span { font-size: 20px; }
 }
 
 @media (min-width: 640px) {
