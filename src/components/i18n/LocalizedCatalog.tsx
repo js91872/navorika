@@ -10,7 +10,7 @@ import {
   Calculator,
   HeartPulse,
   Code2,
-  Wrench,
+  Hammer,
   Globe,
   Sparkles,
   ArrowRight,
@@ -24,14 +24,14 @@ import { getToolIcon } from '@/lib/toolIcons';
 const toolCategoryMap = new Map(tools.map((t) => [t.slug, t.category]));
 
 const CATEGORY_CONFIG = [
-  { id: 'all', key: 'catAll', icon: Sparkles, color: 'text-indigo-600 dark:text-indigo-400 bg-indigo-500/10' },
-  { id: 'pdf-tools', key: 'catPdf', icon: FileText, color: 'text-blue-600 dark:text-blue-400 bg-blue-500/10' },
-  { id: 'image-tools', key: 'catImage', icon: ImageIcon, color: 'text-purple-600 dark:text-purple-400 bg-purple-500/10' },
-  { id: 'finance-calculators', key: 'catFinance', icon: Calculator, color: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10' },
-  { id: 'health-calculators', key: 'catHealth', icon: HeartPulse, color: 'text-rose-600 dark:text-rose-400 bg-rose-500/10' },
-  { id: 'developer-tools', key: 'catDeveloper', icon: Code2, color: 'text-amber-600 dark:text-amber-400 bg-amber-500/10' },
-  { id: 'construction-calculators', key: 'catConstruction', icon: Wrench, color: 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/10' },
-  { id: 'everyday-calculators', key: 'catEveryday', icon: Globe, color: 'text-sky-600 dark:text-sky-400 bg-sky-500/10' },
+  { id: 'all', key: 'catAll', icon: Sparkles },
+  { id: 'pdf-tools', key: 'catPdf', icon: FileText },
+  { id: 'image-tools', key: 'catImage', icon: ImageIcon },
+  { id: 'finance-calculators', key: 'catFinance', icon: Calculator },
+  { id: 'health-calculators', key: 'catHealth', icon: HeartPulse },
+  { id: 'developer-tools', key: 'catDeveloper', icon: Code2 },
+  { id: 'construction-calculators', key: 'catConstruction', icon: Hammer },
+  { id: 'everyday-calculators', key: 'catEveryday', icon: Globe },
 ] as const;
 
 export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Locale; dictionary: Dictionary }) {
@@ -81,14 +81,14 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
   const announcement = `${formattedCount} ${d.ui.toolsFound}`;
 
   return (
-    <section id="tools" className="mt-8 scroll-mt-24">
+    <section id="tools" className="mt-6 scroll-mt-24">
       {/* Search Header */}
       <div className="max-w-2xl mx-auto mb-8">
-        <label htmlFor="tool-search" className="mb-2 block text-sm font-semibold text-[var(--foreground)]">
+        <label htmlFor="tool-search" className="mb-2 block text-sm font-semibold text-[#18181b] dark:text-white">
           {d.ui.search}
         </label>
-        <div className="relative flex items-center">
-          <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-4 text-[var(--muted-foreground)]">
+        <div className="relative flex items-center bg-white dark:bg-[#18181b] border border-[#d6d6dc] dark:border-[#27272a] rounded-lg shadow-xs focus-within:border-[#e5322d] focus-within:ring-2 focus-within:ring-[#e5322d]/20 transition-all">
+          <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-4 text-[#5b5b63] dark:text-[#a1a1aa]">
             <Search className="h-5 w-5" aria-hidden="true" />
           </div>
           <input
@@ -97,20 +97,20 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={d.ui.searchPlaceholder}
-            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--card)] py-3.5 ps-11 pe-11 text-base shadow-sm transition placeholder:text-[var(--muted-foreground)] focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+            className="w-full bg-transparent py-3.5 ps-11 pe-11 text-sm sm:text-base text-[#18181b] dark:text-white outline-none placeholder:text-[#5b5b63] dark:placeholder:text-[#a1a1aa]"
           />
           {query.length > 0 && (
             <button
               type="button"
               onClick={() => setQuery('')}
-              className="absolute inset-y-0 end-0 flex items-center pe-3.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded-full"
+              className="absolute inset-y-0 end-0 flex items-center pe-3.5 text-[#5b5b63] hover:text-[#18181b] dark:hover:text-white transition rounded-full"
               aria-label={d.ui.clearSearch}
             >
               <X className="h-5 w-5" />
             </button>
           )}
         </div>
-        <div className="mt-2.5 flex items-center justify-between px-1 text-xs text-[var(--muted-foreground)]">
+        <div className="mt-2.5 flex items-center justify-between px-1 text-xs text-[#5b5b63] dark:text-[#a1a1aa]">
           <span>
             {query.trim() || activeCategory !== 'all'
               ? announcement
@@ -120,7 +120,7 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
             <button
               type="button"
               onClick={resetFilters}
-              className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded"
+              className="inline-flex items-center gap-1 text-[#e5322d] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d] rounded"
             >
               <RotateCcw className="h-3 w-3" />
               <span>{d.ui.reset}</span>
@@ -130,7 +130,7 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
       </div>
 
       {/* Category Filter Tabs */}
-      <div className="mb-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+      <div className="mb-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" aria-label="Filter tools by category">
         {CATEGORY_CONFIG.map((cat) => {
           const Icon = cat.icon;
           const isActive = activeCategory === cat.id;
@@ -143,17 +143,17 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
               type="button"
               onClick={() => setActiveCategory(cat.id)}
               aria-pressed={isActive}
-              className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 ${
+              className={`inline-flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
                 isActive
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-[1.02]'
-                  : 'bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:border-indigo-500/40'
+                  ? 'bg-[#e5322d] border border-[#e5322d] text-white shadow-xs'
+                  : 'bg-white dark:bg-[#18181b] border border-[#dddde2] dark:border-[#27272a] text-[#3d4655] dark:text-[#a1a1aa] hover:border-[#e5322d]'
               }`}
             >
               <Icon className="h-3.5 w-3.5 shrink-0" />
               <span>{label}</span>
               <span
                 className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
-                  isActive ? 'bg-white/20 text-white' : 'bg-[var(--muted)] text-[var(--muted-foreground)]'
+                  isActive ? 'bg-white/20 text-white' : 'bg-[#f0f0f2] dark:bg-[#27272a] text-[#5b5b63] dark:text-[#a1a1aa]'
                 }`}
               >
                 {new Intl.NumberFormat(locale).format(count)}
@@ -166,46 +166,38 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
       {/* Tool Cards Grid */}
       {matches.length > 0 ? (
         <>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {matches.map((slug) => {
               const tool = d.tools[slug];
               const catSlug = toolCategoryMap.get(slug) || 'everyday-calculators';
               const catConfig = CATEGORY_CONFIG.find((c) => c.id === catSlug) || CATEGORY_CONFIG[7];
               const CatIcon = catConfig.icon;
-              const catLabel = d.ui[catConfig.key as keyof typeof d.ui] as string;
 
               return (
                 <Link
                   key={slug}
                   href={localizedPath(locale, slug)}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-xl sm:p-6"
+                  className="group relative flex flex-col justify-between rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5 transition-all duration-150 hover:border-[#e5322d] hover:shadow-md min-h-[145px]"
                 >
                   <div>
-                    <div className="mb-4 flex items-start justify-between gap-3">
+                    <div className="mb-3 flex items-start justify-between gap-2">
                       <span
-                        className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-indigo-500/10 text-2xl"
+                        className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 text-xl text-[#e5322d]"
                         aria-hidden="true"
                       >
-                        {getToolIcon(slug) || '🔧'}
+                        <CatIcon className="h-5 w-5" />
                       </span>
-                      <span
-                        className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${catConfig.color}`}
-                      >
-                        <CatIcon className="h-3.5 w-3.5 shrink-0" />
-                        <span>{catLabel}</span>
+                      <span className="text-[#5b5b63] dark:text-[#a1a1aa] group-hover:text-[#e5322d] group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-all">
+                        →
                       </span>
                     </div>
-                    <h2 className="text-lg font-bold text-[var(--foreground)] transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400 [overflow-wrap:anywhere]">
+                    {/* Exactly one h2 per tool card - tested by test:i18n:browser */}
+                    <h2 className="text-[17px] font-semibold text-[#18181b] dark:text-white transition-colors group-hover:text-[#e5322d] [overflow-wrap:anywhere] line-clamp-1">
                       {tool.title}
                     </h2>
-                    <p className="mt-2.5 text-sm leading-relaxed text-[var(--muted-foreground)] line-clamp-3 [overflow-wrap:anywhere]">
+                    <p className="mt-1.5 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa] line-clamp-2 [overflow-wrap:anywhere]">
                       {tool.description}
                     </p>
-                  </div>
-
-                  <div className="mt-5 flex items-center justify-between border-t border-[var(--border)]/60 pt-3 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-                    <span>{d.ui.exploreCategory}</span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
                   </div>
                 </Link>
               );
@@ -217,20 +209,20 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
         </>
       ) : (
         /* Empty State */
-        <div className="my-10 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-12 text-center shadow-sm">
-          <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
-            <Search className="h-6 w-6 opacity-75" />
+        <div className="my-8 rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-10 text-center shadow-xs">
+          <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-xl bg-[#fff1f1] dark:bg-[#e5322d]/10 text-[#e5322d]">
+            <Search className="h-6 w-6" />
           </div>
-          <p role="status" aria-live="polite" className="text-base font-semibold text-[var(--foreground)]">
+          <p role="status" aria-live="polite" className="text-base font-semibold text-[#18181b] dark:text-white">
             {d.ui.noResults}
           </p>
-          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
+          <p className="mt-1 text-sm text-[#5b5b63] dark:text-[#a1a1aa]">
             {d.ui.searchPlaceholder}
           </p>
           <button
             type="button"
             onClick={resetFilters}
-            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+            className="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#e5322d] hover:bg-[#c71f1e] px-5 py-2.5 text-sm font-semibold text-white shadow-xs transition cursor-pointer"
           >
             <RotateCcw className="h-4 w-4" />
             <span>{d.ui.reset}</span>

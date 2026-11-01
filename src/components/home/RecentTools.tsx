@@ -2,11 +2,10 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Clock3 } from 'lucide-react';
+import { Clock3, ArrowRight } from 'lucide-react';
 import { tools } from '@/data/registry';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 import { parseRecentTools, RECENT_TOOLS_EVENT, RECENT_TOOLS_STORAGE_KEY, type RecentToolEntry } from '@/lib/recentTools';
-import { getToolIcon } from '@/lib/toolIcons';
 
 const validSlugs = new Set(tools.map((tool) => tool.slug));
 
@@ -37,8 +36,28 @@ export default function RecentTools() {
   });
   if (!recent.length) return null;
 
-  return <section className="mx-auto max-w-6xl px-4 py-10" aria-labelledby="recent-tools-title">
-    <div className="flex items-center gap-3"><Clock3 className="size-5 text-indigo-600" aria-hidden="true" /><h2 id="recent-tools-title" className="text-2xl font-black">Recent tools</h2></div>
-    <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{recent.map((tool) => <Link key={tool.slug} href={`/tools/${tool.slug}`} className="flex min-h-16 items-center gap-3 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 transition hover:border-indigo-500/50"><span className="text-2xl" aria-hidden="true">{getToolIcon(tool.slug) || '🔧'}</span><span className="font-semibold">{tool.title}</span></Link>)}</div>
-  </section>;
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-8" aria-labelledby="recent-tools-title">
+      <div className="flex items-center gap-2 mb-4">
+        <Clock3 className="size-5 text-[#e5322d]" aria-hidden="true" />
+        <h2 id="recent-tools-title" className="text-xl font-bold tracking-tight text-[#18181b] dark:text-white">
+          Recently Used Tools
+        </h2>
+      </div>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {recent.map((tool) => (
+          <Link
+            key={tool.slug}
+            href={`/tools/${tool.slug}`}
+            className="group flex min-h-14 items-center justify-between gap-3 rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-3.5 transition-all hover:border-[#e5322d] hover:shadow-xs"
+          >
+            <span className="font-semibold text-sm text-[#18181b] dark:text-white line-clamp-1 group-hover:text-[#e5322d] transition-colors">
+              {tool.title}
+            </span>
+            <ArrowRight className="size-4 text-[#5b5b63] dark:text-[#a1a1aa] group-hover:text-[#e5322d] shrink-0 transition-colors" />
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
 }

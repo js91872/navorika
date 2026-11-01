@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { forwardRef } from 'react';
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'subtle' | 'dark';
+  variant?: 'default' | 'subtle' | 'dark' | 'glass' | 'gradient';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   hoverable?: boolean;
 }
@@ -15,6 +15,8 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       default: 'bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a]',
       subtle: 'bg-[#f7f7f8] dark:bg-[#202023] border border-[#e4e4e8] dark:border-[#27272a]',
       dark: 'bg-[#18181b] text-white border border-[#27272a]',
+      glass: 'bg-white/95 dark:bg-[#18181b]/95 backdrop-blur-md border border-[#e4e4e8] dark:border-[#27272a]',
+      gradient: 'bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a]',
     };
 
     const paddings = {
