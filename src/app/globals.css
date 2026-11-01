@@ -62,3 +62,24 @@
     background: rgba(255, 255, 255, 0.15);
   }
 }
+
+/* V2 link palette: normalize legacy blue/indigo link utilities without
+   changing semantic status colors, charts, buttons or non-link elements. */
+@layer utilities {
+  a:is(
+    [class*="text-blue-"],
+    [class*="text-indigo-"],
+    [class*="text-sky-"],
+    [class*="text-cyan-"]
+  ) {
+    color: var(--primary);
+  }
+  a:is(
+    [class*="text-blue-"],
+    [class*="text-indigo-"],
+    [class*="text-sky-"],
+    [class*="text-cyan-"]
+  ):hover {
+    color: var(--primary-hover);
+  }
+}
