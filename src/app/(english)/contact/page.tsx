@@ -1,115 +1,83 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Mail, Shield, ArrowLeft, Bug } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Mail } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Contact Navorika | Suggest a Tool, Get Help or Work With Us',
+  description: 'Get help with a Navorika tool, suggest a new calculator or converter, or contact us about advertising, partnerships and collaborations.',
+};
+
+const email = 'admin@navorika.com';
+const privacyEmail = 'privacy@navorika.com';
+
+function EmailLink({ subject, children }: { subject: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}
+      className="inline-flex items-center gap-2 rounded-lg bg-[#e5322d] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c71f1e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+    >
+      <Mail className="h-4 w-4" aria-hidden="true" />
+      {children}
+    </a>
+  );
+}
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8"
-        >
-          <ArrowLeft className="h-4 w-4" /> Back to Home
+    <main className="min-h-screen bg-[#f7f7f8] dark:bg-[#121214] text-[#18181b] dark:text-[#f4f4f5] pt-20 pb-20">
+      <div className="mx-auto max-w-3xl px-5 sm:px-8">
+        <Link href="/" className="mb-8 inline-flex items-center gap-2 text-sm text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d]">
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to home
         </Link>
 
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-4">
-            Get in Touch
-          </div>
-          <h1 className="text-4xl font-black tracking-tight mb-4">Contact Navorika</h1>
-          <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Need help with a calculator or file tool, found a wrong result, or have an idea for a new tool? Send us an email.
+        <header className="mb-10 border-b border-[#e4e4e8] dark:border-[#303036] pb-9">
+          <p className="mb-3 text-sm font-semibold text-[#e5322d]">Contact Navorika</p>
+          <h1 className="mb-5 text-4xl sm:text-5xl font-bold tracking-tight">Have an idea? We'd love to hear it.</h1>
+          <p className="text-lg leading-8 text-[#52525b] dark:text-[#b4b4bd]">
+            Whether you're trying to solve a problem with one of our tools, have an idea for something new, or want to work together, you can reach us by email. We read suggestions because they help us decide what to build and improve.
           </p>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {/* General & Support Email */}
-          <div className="p-4 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4 break-words">
-            <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 w-fit">
-              <Mail className="h-6 w-6" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold">General Help &amp; Feedback</h2>
-              <p className="text-sm text-[var(--muted-foreground)] mt-1">
-                For tool help, feedback, calculation questions, bug reports, or general inquiries.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href="mailto:admin@navorika.com?subject=Navorika%20Inquiry"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors text-sm"
-              >
-                <Mail className="h-4 w-4" /> Email Support
-              </a>
-              <span className="text-xs text-[var(--muted-foreground)] font-mono break-all">admin@navorika.com</span>
-            </div>
-          </div>
+        <div className="space-y-10 text-[#3f3f46] dark:text-[#d4d4d8]">
+          <section className="rounded-xl border border-[#e4e4e8] dark:border-[#303036] bg-white dark:bg-[#18181b] p-6 sm:p-8">
+            <h2 className="mb-3 text-2xl font-bold text-[#18181b] dark:text-white">Suggest a tool you'd like to see</h2>
+            <p className="mb-4 leading-7">
+              Is there a calculator you keep searching for, a file format that's difficult to work with, or a repetitive task that should be simpler? Tell us what you're trying to do. A short description is enough; you don't need to write a technical specification.
+            </p>
+            <p className="mb-5 text-sm leading-6 text-[#5b5b63] dark:text-[#a1a1aa]">
+              It helps to include the problem, the result you need, and an example of when you'd use it. We consider requests as we plan new tools, though we can't promise to build every suggestion.
+            </p>
+            <EmailLink subject="Navorika - New Tool Suggestion">Suggest a tool <ArrowRight className="h-4 w-4" aria-hidden="true" /></EmailLink>
+          </section>
 
-          {/* Privacy Email */}
-          <div className="p-4 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4 break-words">
-            <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 w-fit">
-              <Shield className="h-6 w-6" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold">Privacy &amp; Data Inquiries</h2>
-              <p className="text-sm text-[var(--muted-foreground)] mt-1">
-                For questions regarding data processing, advertising disclosures, or our privacy policy.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href="mailto:privacy@navorika.com?subject=Privacy%20Inquiry"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[var(--border)] text-[var(--foreground)] font-medium hover:bg-[var(--muted)]/50 transition-colors text-sm"
-              >
-                <Shield className="h-4 w-4" /> Email Privacy Team
-              </a>
-              <span className="text-xs text-[var(--muted-foreground)] font-mono break-all">privacy@navorika.com</span>
-            </div>
-          </div>
-        </div>
+          <section className="space-y-4">
+            <h2 className="text-2xl font-bold text-[#18181b] dark:text-white">Business partnerships and collaborations</h2>
+            <p className="leading-7">
+              We're open to relevant partnerships with businesses, publishers, agencies and creators. That includes advertising, sponsorships, paid promotions, marketing and sales partnerships, and other collaborations that could be useful to Navorika's visitors.
+            </p>
+            <p className="leading-7">
+              Please share what you have in mind, who it is for, and any useful details about your proposal. We'll review whether it fits the site and its audience. Commercial arrangements do not guarantee favorable reviews or influence calculator results.
+            </p>
+            <EmailLink subject="Navorika - Business Partnership Enquiry">Discuss a partnership</EmailLink>
+          </section>
 
-        {/* Bug reporting guide */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)] space-y-4 mb-8">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
-              <Bug className="h-5 w-5" />
-            </div>
-            <h2 className="text-xl font-bold">Report a Wrong Result or Tool Problem</h2>
-          </div>
-          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-            If a calculator result, file conversion, or page is not working as expected, these details help us check the problem:
-          </p>
-          <ul className="space-y-2 text-sm text-[var(--muted-foreground)]">
-            <li className="flex items-start gap-2">
-              <span className="text-indigo-500 font-bold">•</span>
-              <span><strong>Tool URL:</strong> The exact page where the issue occurred (e.g., /tools/roof-pitch-calculator).</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-indigo-500 font-bold">•</span>
-              <span><strong>What You Entered:</strong> The specific numerical values, file types, or options selected.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-indigo-500 font-bold">•</span>
-              <span><strong>What You Expected:</strong> What result you expected based on reference standards vs. what was displayed.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-indigo-500 font-bold">•</span>
-              <span><strong>Browser & Device:</strong> Your web browser (Chrome, Firefox, Safari, Edge) and device type (Desktop, Mobile).</span>
-            </li>
-          </ul>
-        </div>
+          <section className="space-y-4">
+            <h2 className="text-2xl font-bold text-[#18181b] dark:text-white">Found a problem with a tool?</h2>
+            <p className="leading-7">
+              If something isn't working or a result doesn't look right, please send the tool's page link, what you tried, what happened, and what you expected. Your browser and device can also help us investigate.
+            </p>
+            <p className="leading-7">
+              Please don't email confidential documents, passwords, private financial details or sensitive personal information. A description or a sample using made-up data is usually enough.
+            </p>
+            <EmailLink subject="Navorika - Tool Help or Bug Report">Report an issue</EmailLink>
+          </section>
 
-        {/* Operational Note */}
-        <div className="p-6 rounded-2xl bg-[var(--muted)]/30 border border-[var(--border)] text-center text-xs text-[var(--muted-foreground)]">
-          <p>
-            Navorika is an independent online tool website. Email is our main support channel. To learn how calculator formulas and testing are handled, see{' '}
-            <Link href="/methodology" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
-              How Our Calculators Work
-            </Link>
-            .
-          </p>
+          <section className="border-t border-[#e4e4e8] dark:border-[#303036] pt-8 space-y-3">
+            <h2 className="text-2xl font-bold text-[#18181b] dark:text-white">Other questions</h2>
+            <p className="leading-7">For general enquiries, write to <a className="font-semibold text-[#e5322d] hover:underline" href={`mailto:${email}`}>{email}</a>.</p>
+            <p className="leading-7">For privacy or data questions, write to <a className="font-semibold text-[#e5322d] hover:underline" href={`mailto:${privacyEmail}`}>{privacyEmail}</a> or read our <Link href="/privacy" className="font-semibold text-[#e5322d] hover:underline">privacy policy</Link>.</p>
+            <p className="text-sm leading-6 text-[#5b5b63] dark:text-[#a1a1aa]">Email is our main contact channel. We don't promise an immediate reply, but clear, specific messages help us respond more usefully.</p>
+          </section>
         </div>
       </div>
     </main>
