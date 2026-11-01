@@ -117,7 +117,7 @@ try {
   const menuButton = page.getByRole('button', { name: 'Toggle menu' });
   await menuButton.waitFor({ state: 'visible' });
   await menuButton.click();
-  const mobileAboutLink = page.locator('.xl\\:hidden a[href="/about"]').first();
+  const mobileAboutLink = page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link', { name: 'About', exact: true });
   await mobileAboutLink.waitFor({ state: 'visible' });
   checksPassed++;
 
@@ -419,11 +419,11 @@ try {
     const aboutNavLink = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}/about"]`).first();
 
     assert.equal(await homeNavLink.getAttribute('aria-current'), 'page', `Home nav aria-current="page" on /${loc}`);
-    assert.match(await homeNavLink.getAttribute('class'), /bg-indigo-500\/10/, `Home nav active class on /${loc}`);
+    assert.match(await homeNavLink.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Home nav active class on /${loc}`);
     assert.equal(await toolsNavLink.getAttribute('aria-current'), null, `Tools nav not aria-current on /${loc}`);
-    assert.doesNotMatch(await toolsNavLink.getAttribute('class'), /bg-indigo-500\/10/, `Tools nav not active on /${loc}`);
+    assert.doesNotMatch(await toolsNavLink.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Tools nav not active on /${loc}`);
     assert.equal(await aboutNavLink.getAttribute('aria-current'), null, `About nav not aria-current on /${loc}`);
-    assert.doesNotMatch(await aboutNavLink.getAttribute('class'), /bg-indigo-500\/10/, `About nav not active on /${loc}`);
+    assert.doesNotMatch(await aboutNavLink.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `About nav not active on /${loc}`);
     checksPassed += 6;
 
     // About page navigation states
@@ -433,9 +433,9 @@ try {
     const homeOnAbout = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}"]`).first();
 
     assert.equal(await aboutOnAbout.getAttribute('aria-current'), 'page', `About nav aria-current on /${loc}/about`);
-    assert.match(await aboutOnAbout.getAttribute('class'), /bg-indigo-500\/10/, `About nav active on /${loc}/about`);
+    assert.match(await aboutOnAbout.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `About nav active on /${loc}/about`);
     assert.equal(await toolsOnAbout.getAttribute('aria-current'), null, `Tools nav not aria-current on /${loc}/about`);
-    assert.doesNotMatch(await toolsOnAbout.getAttribute('class'), /bg-indigo-500\/10/, `Tools nav not active on /${loc}/about`);
+    assert.doesNotMatch(await toolsOnAbout.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Tools nav not active on /${loc}/about`);
     assert.equal(await homeOnAbout.getAttribute('aria-current'), null, `Home nav not aria-current on /${loc}/about`);
     checksPassed += 5;
 
@@ -445,9 +445,9 @@ try {
     const aboutOnTool = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}/about"]`).first();
     const homeOnTool = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}"]`).first();
 
-    assert.match(await toolsOnTool.getAttribute('class'), /bg-indigo-500\/10/, `Tools nav active on /${loc}/tools/...`);
-    assert.doesNotMatch(await aboutOnTool.getAttribute('class'), /bg-indigo-500\/10/, `About nav not active on /${loc}/tools/...`);
-    assert.doesNotMatch(await homeOnTool.getAttribute('class'), /bg-indigo-500\/10/, `Home nav not active on /${loc}/tools/...`);
+    assert.match(await toolsOnTool.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Tools nav active on /${loc}/tools/...`);
+    assert.doesNotMatch(await aboutOnTool.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `About nav not active on /${loc}/tools/...`);
+    assert.doesNotMatch(await homeOnTool.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Home nav not active on /${loc}/tools/...`);
     checksPassed += 3;
 
     // Return to home page to test search announcements and category accessibility
@@ -467,8 +467,12 @@ try {
     checksPassed += 2;
 
     // Tool icons on cards
-    const firstCardIcon = page.locator('#tools a[href*="/tools/"] span[aria-hidden="true"]').first();
-    assert.ok(((await firstCardIcon.textContent()) || '').trim().length > 0, `Tool icon rendered on card on /${loc}`);
+    const firstCard = page.locator('#tools a[href*="/tools/"]').first();
+    const iconGraphic = firstCard.locator('svg, img, [role="img"]').first();
+    const textIcon = firstCard.locator('span[aria-hidden="true"]').first();
+    const hasGraphic = await iconGraphic.count() > 0;
+    const hasTextIcon = await textIcon.count() > 0 && ((await textIcon.textContent()) || '').trim().length > 0;
+    assert.ok(hasGraphic || hasTextIcon, `Tool icon rendered on card on /${loc}`);
     checksPassed++;
 
     // Reset filter

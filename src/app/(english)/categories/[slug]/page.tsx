@@ -101,45 +101,85 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <main className="min-h-screen pb-20 pt-16">
+    <div className="min-h-screen pb-20 pt-8 text-[#18181b] dark:text-[#f4f4f5]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replaceAll('<', '\\u003c') }} />
-      <header className="mx-auto max-w-5xl">
-        <p className="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Free online tools</p>
-        <h1 className="mt-3 text-balance text-4xl font-black tracking-tight sm:text-5xl">{category.name}</h1>
-        <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--muted-foreground)]">{categoryIntros[slug] ?? category.description}</p>
-        <p className="mt-3 text-sm font-semibold text-[var(--muted-foreground)]">{categoryTools.length} free tools in {categoryClusters.length} groups</p>
+      <header className="mx-auto max-w-5xl mb-10">
+        <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-xs font-semibold text-[#5b5b63] dark:text-[#a1a1aa]">
+          <Link href="/" className="hover:text-[#e5322d]">Home</Link>
+          <span>/</span>
+          <Link href="/categories" className="hover:text-[#e5322d]">Categories</Link>
+          <span>/</span>
+          <span className="text-[#18181b] dark:text-white">{category.name}</span>
+        </nav>
+        <p className="text-xs font-bold uppercase tracking-wider text-[#e5322d]">Free online tools</p>
+        <h1 className="mt-2 text-balance text-3xl sm:text-5xl font-black tracking-tight text-[#18181b] dark:text-white">{category.name}</h1>
+        <p className="mt-4 max-w-3xl text-base sm:text-lg leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">{categoryIntros[slug] ?? category.description}</p>
+        <p className="mt-2 text-xs font-semibold text-[#5b5b63] dark:text-[#a1a1aa]">{categoryTools.length} free tools in {categoryClusters.length} groups</p>
       </header>
 
-      {categoryToolkits.length > 0 && <section className="mx-auto mt-12 max-w-5xl" aria-labelledby="category-toolkits">
-        <div className="flex items-center gap-3"><Layers3 className="size-6 text-indigo-600" /><h2 id="category-toolkits" className="text-2xl font-black">Start with a common task</h2></div>
-        <p className="mt-2 text-[var(--muted-foreground)]">These collections group tools that are useful for the same job.</p>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
-          {categoryToolkits.map((toolkit) => <Link key={toolkit.slug} href={`/toolkits/${toolkit.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg">
-            <h3 className="text-lg font-bold group-hover:text-indigo-600">{toolkit.name}</h3>
-            <p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">{toolkit.description}</p>
-            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600">Browse {toolkit.name} <ArrowRight className="size-4" /></span>
-          </Link>)}
-        </div>
-      </section>}
+      {categoryToolkits.length > 0 && (
+        <section className="mx-auto mt-10 max-w-5xl" aria-labelledby="category-toolkits">
+          <div className="flex items-center gap-2.5 mb-2">
+            <Layers3 className="size-5 text-[#e5322d]" />
+            <h2 id="category-toolkits" className="text-xl sm:text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">Start with a common task</h2>
+          </div>
+          <p className="text-sm text-[#5b5b63] dark:text-[#a1a1aa] mb-4">These collections group tools that are useful for the same job.</p>
+          <div className="grid gap-4 md:grid-cols-2">
+            {categoryToolkits.map((toolkit) => (
+              <Link key={toolkit.slug} href={`/toolkits/${toolkit.slug}`} className="group rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5 transition hover:border-[#e5322d] hover:shadow-xs">
+                <h3 className="text-base font-bold text-[#18181b] dark:text-white group-hover:text-[#e5322d] transition-colors">{toolkit.name}</h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">{toolkit.description}</p>
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#e5322d]">Browse {toolkit.name} <ArrowRight className="size-3.5" /></span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
-      <section className="mx-auto mt-14 max-w-5xl" aria-labelledby="category-clusters">
-        <h2 id="category-clusters" className="text-3xl font-black">Browse tools</h2>
-        <div className="mt-7 space-y-10">
-          {categoryClusters.map((cluster) => <section key={cluster.id} id={cluster.id} className="scroll-mt-24">
-            <div className="max-w-3xl"><h3 className="text-2xl font-bold">{cluster.name}</h3><p className="mt-2 leading-7 text-[var(--muted-foreground)]">{cluster.description}</p></div>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {cluster.tools.map((tool) => <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg">
-                <div className="flex items-start gap-3"><span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-500/10 text-2xl" aria-hidden="true">{getToolIcon(tool.slug) || '🔧'}</span><div><h4 className="font-bold group-hover:text-indigo-600">{tool.title}</h4><p className="mt-1 line-clamp-3 text-sm leading-6 text-[var(--muted-foreground)]">{tool.description}</p></div></div>
-              </Link>)}
-            </div>
-          </section>)}
+      <section className="mx-auto mt-12 max-w-5xl" aria-labelledby="category-clusters">
+        <h2 id="category-clusters" className="text-2xl sm:text-3xl font-black text-[#18181b] dark:text-white mb-6">Browse tools</h2>
+        <div className="space-y-10">
+          {categoryClusters.map((cluster) => (
+            <section key={cluster.id} id={cluster.id} className="scroll-mt-24">
+              <div className="max-w-3xl mb-4">
+                <h3 className="text-xl font-bold text-[#18181b] dark:text-white">{cluster.name}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">{cluster.description}</p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {cluster.tools.map((tool) => (
+                  <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5 transition hover:border-[#e5322d] hover:shadow-md flex flex-col justify-between min-h-[140px]">
+                    <div>
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 text-xl text-[#e5322d]" aria-hidden="true">{getToolIcon(tool.slug) || '🔧'}</span>
+                        <span className="text-[#5b5b63] dark:text-[#a1a1aa] group-hover:text-[#e5322d] group-hover:translate-x-0.5 transition-all">→</span>
+                      </div>
+                      <h4 className="font-semibold text-base text-[#18181b] dark:text-white group-hover:text-[#e5322d] transition-colors line-clamp-1">{tool.title}</h4>
+                      <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">{tool.description}</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
       </section>
 
-      {relatedGuides.length > 0 && <section className="mx-auto mt-16 max-w-5xl border-t border-[var(--border)] pt-12" aria-labelledby="category-guides">
-        <div className="flex items-center gap-3"><BookOpen className="size-6 text-violet-600" /><h2 id="category-guides" className="text-2xl font-black">Useful guides</h2></div>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{relatedGuides.map((guide) => <Link key={guide.slug} href={`/guides/${guide.slug}`} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:border-violet-500/40 hover:shadow-lg"><h3 className="font-bold leading-6">{guide.title}</h3><p className="mt-3 text-sm text-[var(--muted-foreground)]">{guide.readTime}</p></Link>)}</div>
-      </section>}
-    </main>
+      {relatedGuides.length > 0 && (
+        <section className="mx-auto mt-14 max-w-5xl border-t border-[#e4e4e8] dark:border-[#27272a] pt-10" aria-labelledby="category-guides">
+          <div className="flex items-center gap-2.5 mb-4">
+            <BookOpen className="size-5 text-[#e5322d]" />
+            <h2 id="category-guides" className="text-xl sm:text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">Useful guides</h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {relatedGuides.map((guide) => (
+              <Link key={guide.slug} href={`/guides/${guide.slug}`} className="group rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-4 transition hover:border-[#e5322d] hover:shadow-xs">
+                <h3 className="font-semibold text-sm leading-snug text-[#18181b] dark:text-white group-hover:text-[#e5322d] transition-colors">{guide.title}</h3>
+                <p className="mt-2 text-xs text-[#5b5b63] dark:text-[#a1a1aa]">{guide.readTime}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
   );
 }

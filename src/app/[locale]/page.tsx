@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { Shield, Zap, Lock, Sparkles, Users } from 'lucide-react';
 import LocalizedCatalog from '@/components/i18n/LocalizedCatalog';
 import { getDictionary } from '@/lib/i18n/dictionaries';
-import { isLocale, languageAlternates } from '@/lib/i18n/config';
+import { isLocale, languageAlternates, translatedTools } from '@/lib/i18n/config';
 
 export async function generateMetadata({
   params,
@@ -35,76 +35,60 @@ export default async function LanguageHome({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const d = await getDictionary(locale);
+  const toolCountFormatted = new Intl.NumberFormat(locale).format(translatedTools.length);
 
   return (
-    <div className="relative">
-      {/* Background Decorative Glow */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 end-0 w-[500px] h-[300px] bg-cyan-500/5 rounded-full blur-3xl" />
-      </div>
-
+    <div className="pb-16 text-[#18181b] dark:text-[#f4f4f5] max-w-full overflow-hidden">
       {/* Hero Section */}
-      <section className="relative z-10 pt-4 pb-8 sm:pt-8 sm:pb-12 text-center">
-        <div className="max-w-4xl mx-auto">
-          {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-500/15 via-purple-500/15 to-pink-500/15 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-            </span>
-            <span>{d.ui.freePill}</span>
+      <section className="pt-6 pb-6 sm:pt-12 sm:pb-8 text-center max-w-4xl mx-auto px-4 overflow-hidden">
+        {/* Main H1 Title - Must match d.ui.title exactly for test assertion */}
+        <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4 text-[#18181b] dark:text-white [overflow-wrap:anywhere]">
+          {d.ui.title}
+        </h1>
+
+        {/* Description */}
+        <p className="text-base sm:text-lg text-[#5b5b63] dark:text-[#a1a1aa] max-w-2xl mx-auto leading-relaxed mb-6 [overflow-wrap:anywhere]">
+          {d.ui.intro}
+        </p>
+
+        {/* Privacy Trust Banner */}
+        <div className="max-w-2xl mx-auto mb-8 rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3.5 text-xs sm:text-sm leading-relaxed text-[#18181b] dark:text-[#f4f4f5] flex items-center gap-3 text-start">
+          <Shield className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+          <span className="[overflow-wrap:anywhere]">{d.ui.local}</span>
+        </div>
+
+        {/* 4 Stats Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mb-10">
+          <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs min-w-0 [overflow-wrap:anywhere]">
+            <div className="flex justify-center mb-1 text-[#e5322d]">
+              <Sparkles className="h-5 w-5" />
+            </div>
+            <div className="text-xl sm:text-2xl font-black text-[#18181b] dark:text-white">{toolCountFormatted}</div>
+            <div className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">{d.ui.statFreeTools}</div>
           </div>
 
-          {/* Main H1 Title - Must match d.ui.title exactly for test assertion */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] mb-5 [overflow-wrap:anywhere]">
-            {d.ui.title}
-          </h1>
-
-          {/* Description */}
-          <p className="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-6 [overflow-wrap:anywhere]">
-            {d.ui.intro}
-          </p>
-
-          {/* Privacy Trust Banner */}
-          <div className="max-w-2xl mx-auto mb-8 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-xs sm:text-sm leading-relaxed text-[var(--foreground)] flex items-center gap-3 text-start">
-            <Shield className="h-5 w-5 text-emerald-500 shrink-0" />
-            <span>{d.ui.local}</span>
+          <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs min-w-0 [overflow-wrap:anywhere]">
+            <div className="flex justify-center mb-1 text-[#e5322d]">
+              <Zap className="h-5 w-5" />
+            </div>
+            <div className="text-xl sm:text-2xl font-black text-[#18181b] dark:text-white">{d.ui.statMost}</div>
+            <div className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">{d.ui.statProcessLocal}</div>
           </div>
 
-          {/* 4 Stats Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto">
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center shadow-sm">
-              <div className="flex justify-center mb-1.5 text-amber-500">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <div className="text-xl sm:text-2xl font-black">319</div>
-              <div className="text-xs text-[var(--muted-foreground)]">{d.ui.statFreeTools}</div>
+          <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs min-w-0 [overflow-wrap:anywhere]">
+            <div className="flex justify-center mb-1 text-emerald-600 dark:text-emerald-400">
+              <Shield className="h-5 w-5" />
             </div>
+            <div className="text-xl sm:text-2xl font-black text-[#18181b] dark:text-white">{d.ui.statClear}</div>
+            <div className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">{d.ui.statClearSources}</div>
+          </div>
 
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center shadow-sm">
-              <div className="flex justify-center mb-1.5 text-indigo-500">
-                <Zap className="h-5 w-5" />
-              </div>
-              <div className="text-xl sm:text-2xl font-black">{d.ui.statMost}</div>
-              <div className="text-xs text-[var(--muted-foreground)]">{d.ui.statProcessLocal}</div>
+          <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs min-w-0 [overflow-wrap:anywhere]">
+            <div className="flex justify-center mb-1 text-[#e5322d]">
+              <Lock className="h-5 w-5" />
             </div>
-
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center shadow-sm">
-              <div className="flex justify-center mb-1.5 text-emerald-500">
-                <Shield className="h-5 w-5" />
-              </div>
-              <div className="text-xl sm:text-2xl font-black">{d.ui.statClear}</div>
-              <div className="text-xs text-[var(--muted-foreground)]">{d.ui.statClearSources}</div>
-            </div>
-
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center shadow-sm">
-              <div className="flex justify-center mb-1.5 text-purple-500">
-                <Lock className="h-5 w-5" />
-              </div>
-              <div className="text-xl sm:text-2xl font-black">{d.ui.statZero}</div>
-              <div className="text-xs text-[var(--muted-foreground)]">{d.ui.statNoSignup}</div>
-            </div>
+            <div className="text-xl sm:text-2xl font-black text-[#18181b] dark:text-white">{d.ui.statZero}</div>
+            <div className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">{d.ui.statNoSignup}</div>
           </div>
         </div>
       </section>
@@ -112,54 +96,54 @@ export default async function LanguageHome({
       {/* Localized Tools Directory & Search */}
       <LocalizedCatalog locale={locale} dictionary={d} />
 
-      {/* Feature Highlights ("Why Choose Navorika?") */}
-      <section className="mt-16 sm:mt-24 pt-12 border-t border-[var(--border)]">
-        <div className="text-center mb-10">
-          <div role="heading" aria-level={2} className="text-2xl sm:text-3xl font-bold">
+      {/* Feature Highlights ("Why Choose Navorika?") - Using div role="heading" to preserve test expectations */}
+      <section className="mt-14 pt-10 border-t border-[#e4e4e8] dark:border-[#27272a]">
+        <div className="text-center mb-8">
+          <div role="heading" aria-level={2} className="text-2xl sm:text-3xl font-bold tracking-tight text-[#18181b] dark:text-white">
             {d.ui.whyChoose}
           </div>
-          <p className="text-[var(--muted-foreground)] text-sm mt-2 max-w-xl mx-auto">
+          <p className="text-[#5b5b63] dark:text-[#a1a1aa] text-sm mt-1.5 max-w-xl mx-auto">
             {d.ui.whyChooseSubtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center transition hover:border-indigo-500/40">
-            <div className="w-12 h-12 mx-auto rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-3">
-              <Shield className="h-6 w-6" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center hover:border-[#e5322d] transition-colors">
+            <div className="w-10 h-10 mx-auto rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3">
+              <Shield className="h-5 w-5" />
             </div>
-            <p className="font-bold text-base mb-1.5">{d.ui.featurePrivacyTitle}</p>
-            <p className="text-xs leading-relaxed text-[var(--muted-foreground)]">
+            <p className="font-semibold text-base mb-1 text-[#18181b] dark:text-white">{d.ui.featurePrivacyTitle}</p>
+            <p className="text-xs leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
               {d.ui.featurePrivacyDesc}
             </p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center transition hover:border-indigo-500/40">
-            <div className="w-12 h-12 mx-auto rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center mb-3">
-              <Zap className="h-6 w-6" />
+          <div className="p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center hover:border-[#e5322d] transition-colors">
+            <div className="w-10 h-10 mx-auto rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 text-[#e5322d] flex items-center justify-center mb-3">
+              <Zap className="h-5 w-5" />
             </div>
-            <p className="font-bold text-base mb-1.5">{d.ui.featureSpeedTitle}</p>
-            <p className="text-xs leading-relaxed text-[var(--muted-foreground)]">
+            <p className="font-semibold text-base mb-1 text-[#18181b] dark:text-white">{d.ui.featureSpeedTitle}</p>
+            <p className="text-xs leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
               {d.ui.featureSpeedDesc}
             </p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center transition hover:border-indigo-500/40">
-            <div className="w-12 h-12 mx-auto rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-3">
-              <Sparkles className="h-6 w-6" />
+          <div className="p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center hover:border-[#e5322d] transition-colors">
+            <div className="w-10 h-10 mx-auto rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3">
+              <Sparkles className="h-5 w-5" />
             </div>
-            <p className="font-bold text-base mb-1.5">{d.ui.featureFreeTitle}</p>
-            <p className="text-xs leading-relaxed text-[var(--muted-foreground)]">
+            <p className="font-semibold text-base mb-1 text-[#18181b] dark:text-white">{d.ui.featureFreeTitle}</p>
+            <p className="text-xs leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
               {d.ui.featureFreeDesc}
             </p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] text-center transition hover:border-indigo-500/40">
-            <div className="w-12 h-12 mx-auto rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center mb-3">
-              <Users className="h-6 w-6" />
+          <div className="p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center hover:border-[#e5322d] transition-colors">
+            <div className="w-10 h-10 mx-auto rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 text-[#e5322d] flex items-center justify-center mb-3">
+              <Users className="h-5 w-5" />
             </div>
-            <p className="font-bold text-base mb-1.5">{d.ui.featureNoSignupTitle}</p>
-            <p className="text-xs leading-relaxed text-[var(--muted-foreground)]">
+            <p className="font-semibold text-base mb-1 text-[#18181b] dark:text-white">{d.ui.featureNoSignupTitle}</p>
+            <p className="text-xs leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
               {d.ui.featureNoSignupDesc}
             </p>
           </div>

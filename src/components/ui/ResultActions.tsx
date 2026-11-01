@@ -58,7 +58,7 @@ export default function ResultActions({ actions, className = '', messages }: { a
       {actions.map((action, index) => {
         const Icon = action.kind === 'copy' ? ClipboardCopy : action.kind === 'download' ? Download : Printer;
         const label = action.kind === 'print' ? action.label ?? copy.print : action.label;
-        return <button key={`${action.kind}-${label}`} type="button" disabled={busyIndex !== null} onClick={() => void run(action, index)} aria-label={label} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-bold text-[var(--foreground)] hover:border-indigo-500 disabled:opacity-50"><Icon className="size-4" aria-hidden="true" />{busyIndex === index ? copy.working : label}</button>;
+        return <button key={`${action.kind}-${label}`} type="button" disabled={busyIndex !== null} onClick={() => void run(action, index)} aria-label={label} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] hover:border-[#e5322d] hover:text-[#e5322d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d] transition-colors disabled:opacity-50 cursor-pointer"><Icon className="size-4" aria-hidden="true" />{busyIndex === index ? copy.working : label}</button>;
       })}
     </div>
     <p className="sr-only" role="status" aria-live="polite">{message}</p>

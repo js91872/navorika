@@ -111,19 +111,98 @@ export default function CompressPdfPage() {
 
   const reduction = file && resultSize ? Math.round((1 - resultSize / file.size) * 100) : 0;
 
-  return <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
-    <Link href="/categories/pdf-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8"><ArrowLeft className="h-4 w-4" /> Back to PDF Tools</Link>
-    <div className="text-center mb-10"><div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20"><ShieldCheck className="h-4 w-4" /> Local Processing Only</div><h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">Compress PDF Online – Reduce PDF File Size</h1><p className="text-lg text-slate-600 dark:text-slate-400">Reduce the size of scanned or image-heavy PDFs in your browser, then compare the original and compressed file size before downloading.</p></div>
-    <section className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16"><div className="p-8">
-      {!file ? <button type="button" onClick={() => inputRef.current?.click()} disabled={isProcessing} className="w-full border-2 border-dashed border-indigo-300 dark:border-indigo-500/30 rounded-2xl p-12 flex flex-col items-center justify-center text-center hover:bg-indigo-50 dark:hover:bg-indigo-500/5 disabled:opacity-50"><Upload className="h-10 w-10 text-indigo-500 mb-4" /><span className="text-xl font-bold">Choose PDF</span><span className="text-sm text-slate-500 mt-2">Best suited to scanned or image-heavy PDFs</span></button> : <>
-        <div className="flex items-center gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60"><FileText className="h-7 w-7 text-indigo-500" /><div className="flex-1 min-w-0"><p className="font-bold truncate">{file.name}</p><p className="text-xs text-slate-500">{pageCount} pages - {formatBytes(file.size)}</p></div><button type="button" onClick={() => { setFile(null); setPageCount(0); clearResult(); }} aria-label="Remove PDF" className="p-2"><X className="h-5 w-5" /></button></div>
-        <div className="mt-6"><p className="text-sm font-bold mb-2">Compression setting</p><div className="grid sm:grid-cols-3 gap-3">{(Object.keys(settings) as CompressionLevel[]).map(option => <button type="button" key={option} onClick={() => { setLevel(option); clearResult(); }} className={`p-3 rounded-xl border-2 font-semibold ${level === option ? 'border-indigo-500 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400' : 'border-slate-200 dark:border-slate-700'}`}>{settings[option].label}</button>)}</div></div>
-        <div className="mt-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 flex items-start gap-3"><AlertTriangle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" /><p className="text-sm text-amber-800 dark:text-amber-300">This is lossy raster compression. It removes selectable text, links, forms, annotations, vector editability, layers, and digital signatures. Keep the original.</p></div>
-        <button type="button" onClick={compress} disabled={isProcessing} className="mt-6 w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 disabled:opacity-50">{isProcessing ? <><Loader2 className="h-5 w-5 animate-spin" /> Compressing {pageCount} pages...</> : 'Compress PDF'}</button>
-        {resultUrl && <div className={`mt-6 p-4 rounded-xl border ${reduction > 0 ? 'bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800' : 'bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800'}`}><p className="font-bold">Original: {formatBytes(file.size)} - Output: {formatBytes(resultSize)}</p><p className="text-sm mt-1">{reduction > 0 ? `${reduction}% smaller` : `${Math.abs(reduction)}% larger. This source does not benefit from the selected raster setting.`}</p><a href={resultUrl} download={`compressed_${file.name}`} className="mt-4 w-full py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-xl flex items-center justify-center gap-2"><Download className="h-5 w-5" /> Download Result</a></div>}
-      </>}
-      <input ref={inputRef} type="file" accept="application/pdf" className="hidden" onChange={event => void selectFile(event.target.files?.[0])} />
-      {error && <p role="alert" className="mt-4 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
-    </div></section>
-  </main>;
+  return (
+    <div className="pb-16 pt-8 text-[#18181b] dark:text-[#f4f4f5]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link href="/categories/pdf-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ff6b68] transition mb-6">
+          <ArrowLeft className="h-4 w-4" /> Back to PDF Tools
+        </Link>
+        <div className="mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-3 border border-emerald-500/20">
+            <ShieldCheck className="h-3.5 w-3.5" /> Runs in your browser — files stay on your device
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-black text-[#18181b] dark:text-white tracking-tight mb-2">Compress PDF Online</h1>
+          <p className="text-base text-[#5b5b63] dark:text-[#a1a1aa] max-w-2xl leading-relaxed">Reduce the size of scanned or image-heavy PDFs in your browser, then compare file sizes before downloading.</p>
+        </div>
+
+        <section className="bg-white dark:bg-[#18181b] rounded-xl border border-[#e4e4e8] dark:border-[#27272a] shadow-xs overflow-hidden mb-12">
+          <div className="p-6 sm:p-8">
+            {!file ? (
+              <button
+                type="button"
+                onClick={() => inputRef.current?.click()}
+                disabled={isProcessing}
+                className="w-full border-2 border-dashed border-[#e4e4e8] dark:border-[#27272a] hover:border-[#e5322d] dark:hover:border-[#e5322d] rounded-xl p-10 flex flex-col items-center justify-center text-center hover:bg-[#fff1f1]/30 dark:hover:bg-[#e5322d]/5 transition-colors disabled:opacity-50"
+              >
+                <div className="grid size-12 place-items-center rounded-xl bg-[#fff1f1] dark:bg-[#e5322d]/10 text-[#e5322d] mb-3">
+                  <Upload className="h-6 w-6" />
+                </div>
+                <span className="text-base font-bold text-[#18181b] dark:text-white">Choose PDF File</span>
+                <span className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-1">Best suited to scanned or image-heavy PDFs</span>
+              </button>
+            ) : (
+              <>
+                <div className="flex items-center gap-3 p-3.5 rounded-xl bg-[#f7f7f8] dark:bg-[#202023] border border-[#e4e4e8] dark:border-[#27272a]">
+                  <FileText className="h-6 w-6 text-[#e5322d] shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-sm truncate text-[#18181b] dark:text-white">{file.name}</p>
+                    <p className="text-xs text-[#5b5b63] dark:text-[#a1a1aa]">{pageCount} pages · {formatBytes(file.size)}</p>
+                  </div>
+                  <button type="button" onClick={() => { setFile(null); setPageCount(0); clearResult(); }} aria-label="Remove PDF" className="p-1.5 text-[#5b5b63] hover:text-[#e5322d] transition-colors rounded-lg">
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+
+                <div className="mt-5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#5b5b63] dark:text-[#a1a1aa] mb-2">Compression level</p>
+                  <div className="grid sm:grid-cols-3 gap-2.5">
+                    {(Object.keys(settings) as CompressionLevel[]).map(option => (
+                      <button
+                        type="button"
+                        key={option}
+                        onClick={() => { setLevel(option); clearResult(); }}
+                        className={`p-3 rounded-xl border text-sm font-semibold transition-all ${level === option ? 'border-[#e5322d] bg-[#fff1f1] dark:bg-[#e5322d]/15 text-[#e5322d]' : 'border-[#e4e4e8] dark:border-[#27272a] text-[#18181b] dark:text-white hover:border-[#e5322d]/40'}`}
+                      >
+                        {settings[option].label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-5 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-start gap-2.5">
+                  <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                  <p className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed">Lossy raster compression rasterizes pages to shrink file size. Text becomes part of images and forms/signatures are flattened. Always keep your original.</p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={compress}
+                  disabled={isProcessing}
+                  className="mt-5 w-full py-3 bg-[#e5322d] hover:bg-[#c71f1e] text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-50 shadow-xs"
+                >
+                  {isProcessing ? <><Loader2 className="h-4 w-4 animate-spin" /> Compressing {pageCount} pages...</> : 'Compress PDF'}
+                </button>
+
+                {resultUrl && (
+                  <div className={`mt-5 p-4 rounded-xl border ${reduction > 0 ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-amber-500/10 border-amber-500/20'}`}>
+                    <p className="font-bold text-sm text-[#18181b] dark:text-white">Original: {formatBytes(file.size)} → Output: {formatBytes(resultSize)}</p>
+                    <p className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-1">{reduction > 0 ? `${reduction}% smaller` : `${Math.abs(reduction)}% larger. This document does not benefit from raster compression.`}</p>
+                    <a
+                      href={resultUrl}
+                      download={`compressed_${file.name}`}
+                      className="mt-3.5 w-full py-2.5 bg-[#18181b] hover:bg-black dark:bg-white dark:hover:bg-slate-100 text-white dark:text-[#18181b] font-semibold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 transition-colors shadow-xs"
+                    >
+                      <Download className="h-4 w-4" /> Download Compressed PDF
+                    </a>
+                  </div>
+                )}
+              </>
+            )}
+            <input ref={inputRef} type="file" accept="application/pdf" className="hidden" onChange={event => void selectFile(event.target.files?.[0])} />
+            {error && <p role="alert" className="mt-3 text-xs font-medium text-[#e5322d]">{error}</p>}
+          </div>
+        </section>
+      </div>
+    </div>
+  );
 }
