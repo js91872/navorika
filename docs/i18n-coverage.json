@@ -15,19 +15,19 @@
     "pendingTools": 2,
     "underReviewTools": 6,
     "sharedCalculators": 75,
-    "guides": 63,
+    "guides": 66,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
     "targetToolTranslations": 2247,
-    "pendingGuideTranslations": 441,
+    "pendingGuideTranslations": 462,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4259,
-      "visibleAttribute": 375,
-      "semanticCopy": 11527,
-      "reviewLiteral": 46614
+      "jsxText": 4329,
+      "visibleAttribute": 379,
+      "semanticCopy": 11700,
+      "reviewLiteral": 47190
     },
-    "candidateCopyWords": 316958
+    "candidateCopyWords": 332090
   },
   "tools": [
     {
@@ -8539,6 +8539,30 @@
     }
   ],
   "guides": [
+    {
+      "slug": "how-to-clear-icloud-storage",
+      "title": "How to Clear iCloud Storage Safely: Step-by-Step Guide",
+      "category": "Everyday",
+      "route": "/guides/how-to-clear-icloud-storage",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "why-is-my-icloud-storage-full",
+      "title": "Why Is My iCloud Storage Full? 7 Hidden Culprits & How to Fix It",
+      "category": "Everyday",
+      "route": "/guides/why-is-my-icloud-storage-full",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-delete-icloud-backup-safely",
+      "title": "How to Delete iCloud Backup Safely: What Happens & What You Keep",
+      "category": "Everyday",
+      "route": "/guides/how-to-delete-icloud-backup-safely",
+      "status": "pending",
+      "translatedLocales": []
+    },
     {
       "slug": "is-claude-better-than-chatgpt",
       "title": "Is Claude Better Than ChatGPT? An Honest Comparison",
