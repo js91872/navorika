@@ -75,7 +75,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
             <button
               type="button"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="hidden sm:grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label="Toggle theme"
             >
               <Sun className="hidden h-4 w-4 dark:block" aria-hidden="true" />
@@ -113,6 +113,9 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
                 {link.label}
               </Link>
             ))}
+            <button type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="sm:hidden flex w-full items-center gap-3 px-3 py-3 rounded-lg text-sm font-semibold text-[#52525b] dark:text-[#a1a1aa] hover:bg-[#f7f7f8] dark:hover:bg-[#202023]" aria-label="Toggle color theme">
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />} Toggle theme
+            </button>
           </nav>
         </div>
       )}
