@@ -21,10 +21,30 @@ export default function HomePage() {
   const totalTools = activeTools.length;
   const displayCount = `${totalTools}`;
 
+  // Initial popularity order: GA4 organic page views, Oct 4–31, 2026.
+  // This is a dated editorial snapshot, not a live GA4 integration or usage-event ranking.
+  const popularSlugs = [
+    'step-to-3d-pdf-converter',
+    'pdf-to-cdr-converter',
+    'rgb-cmyk-image-checker',
+    'jpg-to-cdr-converter',
+    'cdr-viewer',
+    'png-to-cdr-converter',
+    'pdf-bleed-trim-checker',
+    'cdr-version-converter',
+    'coreldraw-tools',
+    'word-to-cdr-converter',
+    'cdr-to-pdf-converter',
+    'svg-to-cdr-converter',
+  ];
+  const popularityRank = new Map(popularSlugs.map((slug, index) => [slug, index]));
   const catalogTools: CatalogTool[] = activeTools.map((tool) => ({
     ...tool,
     displayDescription: toolDescriptions[tool.slug] || tool.description,
-  }));
+  })).sort((a, b) =>
+    (popularityRank.get(a.slug) ?? Number.MAX_SAFE_INTEGER) -
+    (popularityRank.get(b.slug) ?? Number.MAX_SAFE_INTEGER)
+  );
 
   const helpfulGuides = [
     {
