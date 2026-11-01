@@ -81,7 +81,7 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
   const announcement = `${formattedCount} ${d.ui.toolsFound}`;
 
   return (
-    <section id="tools" className="mt-6 scroll-mt-24">
+    <section id="tools" className="mt-6 scroll-mt-24 max-w-full overflow-hidden">
       {/* Search Header */}
       <div className="max-w-2xl mx-auto mb-8">
         <label htmlFor="tool-search" className="mb-2 block text-sm font-semibold text-[#18181b] dark:text-white">
@@ -130,7 +130,7 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
       </div>
 
       {/* Category Filter Tabs */}
-      <div className="mb-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" aria-label="Filter tools by category">
+      <div className="mb-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none max-w-full" aria-label="Filter tools by category">
         {CATEGORY_CONFIG.map((cat) => {
           const Icon = cat.icon;
           const isActive = activeCategory === cat.id;

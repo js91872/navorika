@@ -33,7 +33,7 @@ export default function LanguageSwitcher({ locale, slug, label = 'Language' }: {
   const currentTool = slug ?? (isTranslatedTool(segment) ? segment : undefined);
   return (
     <details ref={menuRef} className="relative">
-      <summary aria-label={`${label}: ${languageNames[locale]}`} className="flex min-h-10 min-w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-[#f7f7f8] dark:bg-[#202023] px-2.5 py-1.5 text-xs font-semibold text-[#52525b] dark:text-[#a1a1aa] hover:border-[#e5322d] hover:text-[#e5322d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d] [&::-webkit-details-marker]:hidden">
+      <summary aria-label={`${label}: ${languageNames[locale]}`} className="flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-[#f7f7f8] dark:bg-[#202023] px-2.5 py-1.5 text-xs font-semibold text-[#52525b] dark:text-[#a1a1aa] hover:border-[#e5322d] hover:text-[#e5322d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d] [&::-webkit-details-marker]:hidden">
         <Languages className="h-4 w-4 sm:mr-1.5" aria-hidden="true" />
         <span className="hidden sm:inline">{languageNames[locale]}</span>
       </summary>

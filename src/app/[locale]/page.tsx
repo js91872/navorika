@@ -38,9 +38,9 @@ export default async function LanguageHome({
   const toolCountFormatted = new Intl.NumberFormat(locale).format(translatedTools.length);
 
   return (
-    <div className="pb-16 text-[#18181b] dark:text-[#f4f4f5]">
+    <div className="pb-16 text-[#18181b] dark:text-[#f4f4f5] max-w-full overflow-hidden">
       {/* Hero Section */}
-      <section className="pt-6 pb-6 sm:pt-12 sm:pb-8 text-center max-w-4xl mx-auto px-4">
+      <section className="pt-6 pb-6 sm:pt-12 sm:pb-8 text-center max-w-4xl mx-auto px-4 overflow-hidden">
         {/* Main H1 Title - Must match d.ui.title exactly for test assertion */}
         <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4 text-[#18181b] dark:text-white [overflow-wrap:anywhere]">
           {d.ui.title}
@@ -54,12 +54,12 @@ export default async function LanguageHome({
         {/* Privacy Trust Banner */}
         <div className="max-w-2xl mx-auto mb-8 rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3.5 text-xs sm:text-sm leading-relaxed text-[#18181b] dark:text-[#f4f4f5] flex items-center gap-3 text-start">
           <Shield className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-          <span>{d.ui.local}</span>
+          <span className="[overflow-wrap:anywhere]">{d.ui.local}</span>
         </div>
 
         {/* 4 Stats Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mb-10">
-          <div className="p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs">
+          <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs min-w-0 [overflow-wrap:anywhere]">
             <div className="flex justify-center mb-1 text-[#e5322d]">
               <Sparkles className="h-5 w-5" />
             </div>
@@ -67,7 +67,7 @@ export default async function LanguageHome({
             <div className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">{d.ui.statFreeTools}</div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs">
+          <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs min-w-0 [overflow-wrap:anywhere]">
             <div className="flex justify-center mb-1 text-[#e5322d]">
               <Zap className="h-5 w-5" />
             </div>
@@ -75,7 +75,7 @@ export default async function LanguageHome({
             <div className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">{d.ui.statProcessLocal}</div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs">
+          <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs min-w-0 [overflow-wrap:anywhere]">
             <div className="flex justify-center mb-1 text-emerald-600 dark:text-emerald-400">
               <Shield className="h-5 w-5" />
             </div>
@@ -83,7 +83,7 @@ export default async function LanguageHome({
             <div className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">{d.ui.statClearSources}</div>
           </div>
 
-          <div className="p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs">
+          <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs min-w-0 [overflow-wrap:anywhere]">
             <div className="flex justify-center mb-1 text-[#e5322d]">
               <Lock className="h-5 w-5" />
             </div>

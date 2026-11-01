@@ -106,7 +106,7 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
       ref={headerRef}
       className="sticky top-0 z-50 bg-white dark:bg-[#18181b] border-b border-[#e5e5e8] dark:border-[#27272a] shadow-xs transition-colors duration-200"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 min-[360px]:px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Brand Logo linking to localized homepage with translated accessible label */}
           <div className={`shrink-0 ${styles.brand}`}>
@@ -139,13 +139,13 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
           </nav>
 
           {/* Right side controls: Language switcher, Theme toggle, Hamburger menu */}
-          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+          <div className="flex shrink-0 items-center gap-0 sm:gap-2">
             <LanguageSwitcher locale={locale} label={d.ui.language} />
 
             <button
               type="button"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label={d.ui.themeToggle}
               title={d.ui.themeToggle}
             >
@@ -157,7 +157,7 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
               ref={menuButtonRef}
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label={d.ui.menuToggle}
               title={d.ui.menuToggle}
               aria-expanded={isOpen}

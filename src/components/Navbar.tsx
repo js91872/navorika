@@ -33,7 +33,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-[#18181b] border-b border-[#e5e5e8] dark:border-[#27272a] shadow-xs transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 min-[360px]:px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Preserve existing Navorika logo */}
           <div className={`shrink-0 ${styles.brand}`}>
@@ -57,12 +57,14 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
             ))}
           </nav>
 
-          {/* Right side controls: Search, Theme, Language, Mobile Menu */}
-          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+          {/* Right side controls in exact order: Language, Search, Theme, Mobile Menu */}
+          <div className="flex shrink-0 items-center gap-0 sm:gap-2">
+            <LanguageSwitcher locale="en" />
+
             <button
               type="button"
               onClick={onSearchClick}
-              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-[#f7f7f8] dark:bg-[#202023] px-3 py-1.5 text-xs font-semibold text-[#52525b] dark:text-[#a1a1aa] hover:border-[#e5322d] hover:text-[#e5322d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="grid min-h-11 min-w-11 sm:inline-flex sm:min-w-0 sm:px-3 sm:py-1.5 place-items-center sm:items-center sm:justify-center sm:gap-2 rounded-lg border border-transparent sm:border-[#e4e4e8] dark:sm:border-[#27272a] sm:bg-[#f7f7f8] dark:sm:bg-[#202023] text-xs font-semibold text-[#52525b] dark:text-[#a1a1aa] hover:border-[#e5322d] hover:text-[#e5322d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label="Search tools"
             >
               <Search className="h-4 w-4" />
@@ -70,12 +72,10 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
               <kbd className="hidden rounded bg-white dark:bg-[#18181b] px-1.5 py-0.5 text-[10px] font-mono border border-[#e4e4e8] dark:border-[#27272a] sm:inline">⌘K</kbd>
             </button>
 
-            <LanguageSwitcher locale="en" />
-
             <button
               type="button"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label="Toggle theme"
             >
               <Sun className="hidden h-4 w-4 dark:block" aria-hidden="true" />
@@ -85,7 +85,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="grid min-h-10 min-w-10 place-items-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
