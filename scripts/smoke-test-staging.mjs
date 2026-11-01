@@ -117,7 +117,7 @@ try {
   const menuButton = page.getByRole('button', { name: 'Toggle menu' });
   await menuButton.waitFor({ state: 'visible' });
   await menuButton.click();
-  const mobileAboutLink = page.locator('.xl\\:hidden a[href="/about"]').first();
+  const mobileAboutLink = page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link', { name: 'About', exact: true });
   await mobileAboutLink.waitFor({ state: 'visible' });
   checksPassed++;
 
