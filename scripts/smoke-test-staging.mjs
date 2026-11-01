@@ -419,11 +419,11 @@ try {
     const aboutNavLink = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}/about"]`).first();
 
     assert.equal(await homeNavLink.getAttribute('aria-current'), 'page', `Home nav aria-current="page" on /${loc}`);
-    assert.match(await homeNavLink.getAttribute('class'), /bg-indigo-500\/10/, `Home nav active class on /${loc}`);
+    assert.match(await homeNavLink.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Home nav active class on /${loc}`);
     assert.equal(await toolsNavLink.getAttribute('aria-current'), null, `Tools nav not aria-current on /${loc}`);
-    assert.doesNotMatch(await toolsNavLink.getAttribute('class'), /bg-indigo-500\/10/, `Tools nav not active on /${loc}`);
+    assert.doesNotMatch(await toolsNavLink.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Tools nav not active on /${loc}`);
     assert.equal(await aboutNavLink.getAttribute('aria-current'), null, `About nav not aria-current on /${loc}`);
-    assert.doesNotMatch(await aboutNavLink.getAttribute('class'), /bg-indigo-500\/10/, `About nav not active on /${loc}`);
+    assert.doesNotMatch(await aboutNavLink.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `About nav not active on /${loc}`);
     checksPassed += 6;
 
     // About page navigation states
@@ -433,9 +433,9 @@ try {
     const homeOnAbout = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}"]`).first();
 
     assert.equal(await aboutOnAbout.getAttribute('aria-current'), 'page', `About nav aria-current on /${loc}/about`);
-    assert.match(await aboutOnAbout.getAttribute('class'), /bg-indigo-500\/10/, `About nav active on /${loc}/about`);
+    assert.match(await aboutOnAbout.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `About nav active on /${loc}/about`);
     assert.equal(await toolsOnAbout.getAttribute('aria-current'), null, `Tools nav not aria-current on /${loc}/about`);
-    assert.doesNotMatch(await toolsOnAbout.getAttribute('class'), /bg-indigo-500\/10/, `Tools nav not active on /${loc}/about`);
+    assert.doesNotMatch(await toolsOnAbout.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Tools nav not active on /${loc}/about`);
     assert.equal(await homeOnAbout.getAttribute('aria-current'), null, `Home nav not aria-current on /${loc}/about`);
     checksPassed += 5;
 
@@ -445,9 +445,9 @@ try {
     const aboutOnTool = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}/about"]`).first();
     const homeOnTool = page.locator(`header nav[aria-label="${d.ui.navigation}"] a[href="/${loc}"]`).first();
 
-    assert.match(await toolsOnTool.getAttribute('class'), /bg-indigo-500\/10/, `Tools nav active on /${loc}/tools/...`);
-    assert.doesNotMatch(await aboutOnTool.getAttribute('class'), /bg-indigo-500\/10/, `About nav not active on /${loc}/tools/...`);
-    assert.doesNotMatch(await homeOnTool.getAttribute('class'), /bg-indigo-500\/10/, `Home nav not active on /${loc}/tools/...`);
+    assert.match(await toolsOnTool.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Tools nav active on /${loc}/tools/...`);
+    assert.doesNotMatch(await aboutOnTool.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `About nav not active on /${loc}/tools/...`);
+    assert.doesNotMatch(await homeOnTool.getAttribute('class'), /text-\[#e5322d\]\s+font-bold/, `Home nav not active on /${loc}/tools/...`);
     checksPassed += 3;
 
     // Return to home page to test search announcements and category accessibility
