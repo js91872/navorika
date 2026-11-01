@@ -104,12 +104,12 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
     setSelectedCategory('all');
   };
 
-  // Show a prominent set of popular tools when not actively searching
+  // Show a curated first-page selection until reliable tool usage rankings are available
   const displayedTools = useMemo(() => {
     if (query.trim() || selectedCategory !== 'all') {
       return filteredTools;
     }
-    // On default view, display top 24 popular tools
+    // On default view, display the first 24 catalogue entries; do not claim usage ranking
     return filteredTools.slice(0, 24);
   }, [filteredTools, query, selectedCategory]);
 
@@ -182,7 +182,7 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
       <div id="tools" className="flex items-center justify-between gap-4 mb-5 pt-2 scroll-mt-24">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">
-            {query.trim() || selectedCategory !== 'all' ? 'Matching Tools' : 'Popular Tools'}
+            {query.trim() || selectedCategory !== 'all' ? 'Matching Tools' : 'Featured Tools'}
           </h2>
           <p className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">
             {filteredTools.length} {filteredTools.length === 1 ? 'tool' : 'tools'} available
