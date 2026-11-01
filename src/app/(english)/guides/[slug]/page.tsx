@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight, BookOpen, Calendar, Clock, ListOrdered, RefreshCw, ShieldCheck, User } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Clock, ListOrdered, RefreshCw, ShieldCheck, User } from 'lucide-react';
 import { tools, type RegisteredTool } from '@/data/registry';
 import { getGuideContent } from '@/lib/guideContent';
 import { getGuideTools } from '@/lib/guideTools';
@@ -12,6 +12,9 @@ import { guideRelations } from '@/lib/guideRelations';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 import { getToolIcon } from '@/lib/toolIcons';
 import katex from 'katex';
+import ICloudStoragePlanner from '@/components/guides/ICloudStoragePlanner';
+import ICloudDiagnosticWizard from '@/components/guides/ICloudDiagnosticWizard';
+import ICloudBackupSafetyChecklist from '@/components/guides/ICloudBackupSafetyChecklist';
 
 const baseUrl = 'https://navorika.com';
 type Props = { params: Promise<{ slug: string }> };
@@ -402,6 +405,43 @@ const printBleedGuideImages: Record<string, {
   },
 };
 
+const icloudGuideImages: Record<string, {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+}> = {
+  'The 3-minute emergency triage: How to stop "iCloud Storage Full" alerts right now': {
+    src: '/images/guides/icloud-storage-breakdown-bar.svg',
+    alt: 'iCloud storage breakdown bar showing distribution across Photos, Backups, Messages, and iCloud Drive',
+    caption: 'Typical iCloud storage breakdown: photos, device backups, and message attachments consume the largest share of cloud quota.',
+    width: 800,
+    height: 420,
+  },
+  'How to clear iCloud storage without losing photos: Three verified workflows': {
+    src: '/images/guides/icloud-photo-cleanup-safe-paths.svg',
+    alt: 'Safe workflows for offloading and protecting iPhone photos before clearing iCloud storage space',
+    caption: 'Three lossless paths: export original masters to an external drive, enable Optimize iPhone Storage, or mirror to a secondary cloud.',
+    width: 800,
+    height: 440,
+  },
+  'Quick diagnostic answer: Why iCloud storage stays full even after deleting files': {
+    src: '/images/guides/icloud-storage-cleanup-flowchart.svg',
+    alt: 'iCloud storage cleanup and troubleshooting decision tree flowchart',
+    caption: 'Troubleshooting decision tree: follow your device symptom to resolve ghost storage and failed sync alerts.',
+    width: 800,
+    height: 520,
+  },
+  'System architecture: Live synchronized data versus point-in-time device snapshots': {
+    src: '/images/guides/icloud-sync-vs-backup-diagram.svg',
+    alt: 'Diagram contrasting live two-way synchronization services against static point-in-time device backup snapshots',
+    caption: 'Architecture comparison: live synchronized databases (photos, contacts) operate independently from point-in-time device backups.',
+    width: 800,
+    height: 460,
+  },
+};
+
 export default async function GuidePage({ params }: Props) {
   const slug = (await params).slug;
   const guide = getGuideMetadata(slug);
@@ -561,11 +601,23 @@ export default async function GuidePage({ params }: Props) {
                 const sectionImage =
                   slug === 'print-bleed-trim-safe-area-guide'
                     ? printBleedGuideImages[section.title]
-                    : undefined;
+                    : icloudGuideImages[section.title];
 
                 const showCuttingToleranceDiagram =
                   slug === 'print-bleed-trim-safe-area-guide' &&
                   section.title === 'The hierarchy of print geometry: Bleed, Trim, and Safe Area';
+
+                const isStoragePlannerSection =
+                  slug === 'how-to-clear-icloud-storage' &&
+                  section.title.startsWith('Interactive iCloud storage cleanup planner');
+
+                const isDiagnosticWizardSection =
+                  slug === 'why-is-my-icloud-storage-full' &&
+                  section.title.startsWith('Interactive iCloud storage full diagnostic wizard');
+
+                const isSafetyChecklistSection =
+                  slug === 'how-to-delete-icloud-backup-safely' &&
+                  section.title.startsWith('Interactive pre-deletion safety checklist');
 
                 const sectionAnchor = slugifyHeading(section.title);
 
@@ -577,6 +629,10 @@ export default async function GuidePage({ params }: Props) {
                     </div>
 
                     {renderContentBlock(section.content)}
+
+                    {isStoragePlannerSection && <ICloudStoragePlanner />}
+                    {isDiagnosticWizardSection && <ICloudDiagnosticWizard />}
+                    {isSafetyChecklistSection && <ICloudBackupSafetyChecklist />}
 
                     {sectionImage && (
                       <figure className="not-prose my-8 overflow-hidden rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] shadow-xs">
