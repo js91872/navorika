@@ -116,7 +116,7 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
   return (
     <div className="w-full">
       {/* Search Bar matching approved preview */}
-      <div className="max-w-2xl mx-auto mb-8">
+      <div className="max-w-2xl mx-auto mb-5 sm:mb-8">
         <form
           role="search"
           onSubmit={(e) => {
@@ -157,7 +157,7 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
       </div>
 
       {/* Filter Pills matching approved preview */}
-      <div className="flex gap-2 overflow-x-auto pb-4 mb-4 scrollbar-none" aria-label="Filter tools by category">
+      <div className="flex gap-2 overflow-x-auto overscroll-x-contain pb-3 mb-4 snap-x snap-proximity [scrollbar-width:thin] [-webkit-overflow-scrolling:touch]" aria-label="Filter tools by category">
         {CATEGORIES.map((cat) => {
           const isActive = selectedCategory === cat.id;
           return (
@@ -166,7 +166,7 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
               type="button"
               onClick={() => setSelectedCategory(cat.id)}
               aria-pressed={isActive}
-              className={`shrink-0 border rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              className={`shrink-0 snap-start border rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                 isActive
                   ? 'bg-[#e5322d] border-[#e5322d] text-white shadow-xs'
                   : 'bg-white dark:bg-[#18181b] border-[#dddde2] dark:border-[#27272a] text-[#3d4655] dark:text-[#a1a1aa] hover:border-[#e5322d]'
@@ -179,7 +179,7 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
       </div>
 
       {/* Section Header */}
-      <div id="tools" className="flex items-center justify-between gap-4 mb-5 pt-2 scroll-mt-24">
+      <div id="tools" className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2 mb-4 pt-2 scroll-mt-24 text-left">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">
             {query.trim() || selectedCategory !== 'all' ? 'Matching Tools' : 'Popular Tools'}
@@ -190,7 +190,7 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
         </div>
         <Link
           href="/tools"
-          className="inline-flex items-center gap-1 text-sm font-semibold text-[#e5322d] hover:underline"
+          className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-[#e5322d] hover:underline"
         >
           View all tools →
         </Link>
@@ -198,24 +198,24 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
 
       {/* Tool Cards Grid */}
       {displayedTools.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
           {displayedTools.map((tool) => (
             <Link
               key={tool.slug}
               href={`/tools/${tool.slug}`}
-              className="group flex flex-col justify-between bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] rounded-xl p-5 min-h-[145px] hover:border-[#e5322d] hover:shadow-md transition-all duration-150"
+              className="group flex flex-col justify-between bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] rounded-xl p-3.5 sm:p-5 min-h-0 sm:min-h-[145px] hover:border-[#e5322d] hover:shadow-md transition-all duration-150 text-left"
             >
               <div>
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
                   <span className="shrink-0">{getToolSymbol(tool.slug, tool.category)}</span>
                   <span className="text-[#5b5b63] dark:text-[#a1a1aa] group-hover:text-[#e5322d] group-hover:translate-x-0.5 transition-all">
                     →
                   </span>
                 </div>
-                <h3 className="text-[17px] font-semibold text-[#18181b] dark:text-white group-hover:text-[#e5322d] transition-colors leading-snug line-clamp-1">
+                <h3 className="text-[15px] sm:text-[17px] font-semibold text-[#18181b] dark:text-white group-hover:text-[#e5322d] transition-colors leading-snug line-clamp-2 sm:line-clamp-1">
                   {tool.title}
                 </h3>
-                <p className="mt-1.5 text-sm text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed line-clamp-2">
+                <p className="mt-1 text-xs sm:text-sm text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed line-clamp-2">
                   {tool.displayDescription || tool.description}
                 </p>
               </div>

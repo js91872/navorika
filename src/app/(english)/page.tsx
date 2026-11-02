@@ -86,11 +86,11 @@ export default function HomePage() {
   return (
     <div className="pb-16 text-[#18181b] dark:text-[#f4f4f5]">
       {/* Hero Section matching approved visual direction */}
-      <section className="text-center pt-8 pb-6 sm:pt-14 sm:pb-8 max-w-4xl mx-auto px-4">
-        <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-3 text-[#18181b] dark:text-white">
+      <section className="text-center pt-7 pb-5 sm:pt-14 sm:pb-8 max-w-4xl mx-auto px-4">
+        <h1 className="text-[clamp(1.7rem,7vw,2.25rem)] sm:text-5xl font-black tracking-tight leading-tight mb-3 text-[#18181b] dark:text-white">
           Free Online Tools for Everyday Work
         </h1>
-        <p className="text-base sm:text-lg text-[#5b5b63] dark:text-[#a1a1aa] max-w-2xl mx-auto mb-8 leading-relaxed">
+        <p className="text-base sm:text-lg text-[#5b5b63] dark:text-[#a1a1aa] max-w-2xl mx-auto mb-5 sm:mb-8 leading-relaxed">
           Convert files, calculate costs, check measurements and get things done — quickly and easily.
         </p>
 
@@ -103,7 +103,7 @@ export default function HomePage() {
       {/* Helpful Guides Section matching approved preview */}
       <section className="max-w-6xl mx-auto px-4 mt-12 mb-14" aria-labelledby="helpful-guides-heading">
         <div className="bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] rounded-xl p-6 sm:p-8 shadow-xs">
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
             <div className="flex items-center gap-2.5">
               <BookOpen className="h-5 w-5 text-[#e5322d]" aria-hidden="true" />
               <h2 id="helpful-guides-heading" className="text-xl sm:text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">
@@ -169,7 +169,7 @@ export default function HomePage() {
 
       {/* Tools by Category Grid */}
       <section className="max-w-6xl mx-auto px-4 mb-14" aria-labelledby="categories-heading">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
           <div>
             <h2 id="categories-heading" className="text-xl sm:text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">
               Browse by Category
