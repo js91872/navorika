@@ -33,16 +33,6 @@ export const guideSources: Record<string, GuideSource[]> = {
     { name: 'Apple Support — If the internal speakers on your Mac are not working', url: 'https://support.apple.com/en-us/102411' },
   ],
 
-  'is-claude-better-than-chatgpt': [
-    { name: 'Anthropic — Claude pricing', url: 'https://claude.com/pricing' },
-    { name: 'OpenAI — ChatGPT pricing', url: 'https://chatgpt.com/pricing' },
-    { name: 'Anthropic — Claude documentation', url: 'https://support.claude.com/' },
-    { name: 'OpenAI — Help Center', url: 'https://help.openai.com/' },
-  ],
-  'how-to-clean-macbook-speakers': [
-    { name: 'Apple Support — How to clean your Apple products', url: 'https://support.apple.com/en-us/103258' },
-    { name: 'Apple Support — If the internal speakers on your Mac are not working', url: 'https://support.apple.com/en-us/102411' },
-  ],
   'how-to-back-out-sales-tax-us': [
     { name: 'CDTFA — Basic Sales and Use Tax training (tax-inclusive calculation method)', url: 'https://www.cdtfa.ca.gov/seminar/BSUTS.pdf' },
     { name: 'CDTFA — Applying Tax to Your Sales and Purchases (California-specific guidance)', url: 'https://www.cdtfa.ca.gov/taxes-and-fees/applying-tax-sales-purchases-faq.htm' },
