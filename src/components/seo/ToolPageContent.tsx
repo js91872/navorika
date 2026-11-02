@@ -116,7 +116,7 @@ export default function ToolPageContent({ tool }: { tool: ToolContent }) {
         </section>
       )}
 
-      <section>
+      {tool.faqs.length > 0 && <section>
         <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white mb-3">Frequently asked questions</h2>
         <div className="divide-y divide-[#e4e4e8] dark:divide-[#27272a] rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] px-5 shadow-xs">
           {tool.faqs.map(({ question, answer }) => (
@@ -126,7 +126,7 @@ export default function ToolPageContent({ tool }: { tool: ToolContent }) {
             </details>
           ))}
         </div>
-      </section>
+      </section>}
 
       {relatedTools.length > 0 && (
         <section>
