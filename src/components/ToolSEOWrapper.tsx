@@ -2,12 +2,12 @@
 
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import { BookOpen, Lightbulb, CheckCircle, AlertCircle, Grid3x3 } from 'lucide-react';
+import { Grid3x3 } from 'lucide-react';
+import { getRelatedTools } from '@/data/taxonomy';
 import { tools } from '@/data/registry';
 import { getToolIcon } from '@/lib/toolIcons';
 import { toolFAQs } from '@/data/faqs';
 import FAQ from '@/components/ui/FAQ';
-import { toolsUnderReview } from '@/lib/seo/toolReview';
 
 interface ToolSEOWrapperProps {
   slug: string;
@@ -25,24 +25,8 @@ export default function ToolSEOWrapper({ slug, children }: ToolSEOWrapperProps) 
 
   const categoryName = tool.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   
-  const relatedTools = tools
-    .filter(t => t.category === tool.category && t.slug !== tool.slug && !toolsUnderReview.has(t.slug))
-    .slice(0, 6);
+  const relatedTools = getRelatedTools(slug, 6);
 
-  const content = {
-    advantages: [
-      'Free with no hidden fees or subscriptions',
-      'Processes directly in your browser — your files stay on your device',
-      'No account, signup, or software installation needed',
-      'Accurate calculations and immediate results',
-      'Works across desktop, tablet, and mobile devices',
-    ],
-    limitations: [
-      'Requires a modern web browser with JavaScript enabled',
-      'Browser memory limits apply to very large files',
-      'Results are based directly on the numbers and inputs provided',
-    ],
-  };
 
   return (
     <>
@@ -69,62 +53,9 @@ export default function ToolSEOWrapper({ slug, children }: ToolSEOWrapperProps) 
             {children}
           </div>
 
-          {/* SEO Content */}
-          <div className="border-t border-[#e4e4e8] dark:border-[#27272a] pt-10 mt-8 space-y-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">About This Tool</h2>
-
-            <div className="p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] shadow-xs">
-              <h3 className="text-base font-bold text-[#18181b] dark:text-white mb-2 flex items-center gap-2">
-                <BookOpen className="h-4 w-4 text-[#e5322d]" />
-                What is this tool?
-              </h3>
-              <p className="text-sm text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed">
-                {tool.title} is a free online {categoryName.toLowerCase()} tool to help you complete tasks
-                quickly. Where technically possible, processing runs locally on your device without transmitting data.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] shadow-xs">
-              <h3 className="text-base font-bold text-[#18181b] dark:text-white mb-2 flex items-center gap-2">
-                <Lightbulb className="h-4 w-4 text-amber-500" />
-                How it works
-              </h3>
-              <p className="text-sm text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed">
-                This tool applies verified formulas and standard file algorithms. Browser-based calculations
-                run entirely within your browser session so you get immediate results without waiting.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] shadow-xs">
-              <h3 className="text-base font-bold text-[#18181b] dark:text-white mb-2.5 flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-emerald-600" />
-                Advantages
-              </h3>
-              <ul className="space-y-1.5 text-xs sm:text-sm text-[#5b5b63] dark:text-[#a1a1aa]">
-                {content.advantages.map((advantage, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <CheckCircle className="h-3.5 w-3.5 text-emerald-600 mt-1 shrink-0" />
-                    <span>{advantage}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="p-5 rounded-xl border border-amber-500/25 bg-amber-500/5">
-              <h3 className="text-base font-bold text-[#18181b] dark:text-white mb-2.5 flex items-center gap-2">
-                <AlertCircle className="h-4 w-4 text-amber-600" />
-                Limitations
-              </h3>
-              <ul className="space-y-1.5 text-xs sm:text-sm text-[#5b5b63] dark:text-[#a1a1aa]">
-                {content.limitations.map((limitation, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <AlertCircle className="h-3.5 w-3.5 text-amber-600 mt-1 shrink-0" />
-                    <span>{limitation}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+          {/* Support content is shown only when the tool has specific FAQs or relevant links.
+              Do not introduce generic claims about file handling or verified algorithms. */}
+          {(faqs.length > 0 || relatedTools.length > 0) && <div className="border-t border-[#e4e4e8] dark:border-[#27272a] pt-10 mt-8 space-y-6">
             {faqs.length > 0 && <FAQ items={faqs} />}
 
             {relatedTools.length > 0 && (
@@ -147,7 +78,7 @@ export default function ToolSEOWrapper({ slug, children }: ToolSEOWrapperProps) 
                 </div>
               </div>
             )}
-          </div>
+          </div>}
         </div>
       </div>
     </>
