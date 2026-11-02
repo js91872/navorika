@@ -44,8 +44,8 @@ const CLEANUP_ACTIONS: CleanupAction[] = [
     label: 'Export 4K/60fps and slow-mo videos to external drive or Mac',
     category: 'photos',
     defaultSavingsGB: 12.0,
-    risk: 'safe',
-    riskLabel: 'Safe with verified copy',
+    risk: 'destructive',
+    riskLabel: 'Delete only after verifying independent copies',
     explanation: 'One hour of 4K video consumes 20–24 GB. Moving video archives to an external SSD frees massive space.',
     steps: 'Connect iPhone/Mac to external drive > Export Unmodified Originals > Delete from Photos library.',
   },
@@ -54,9 +54,9 @@ const CLEANUP_ACTIONS: CleanupAction[] = [
     label: 'Delete obsolete backup from traded-in or older device',
     category: 'backups',
     defaultSavingsGB: 6.5,
-    risk: 'safe',
-    riskLabel: 'Zero risk to current phone',
-    explanation: 'Old iPhones remain stored as static snapshots in iCloud even years after you upgrade to a new model.',
+    risk: 'destructive',
+    riskLabel: 'Removes a recovery option — verify first',
+    explanation: 'An older device backup may still be your only recovery copy. Verify you no longer need it before deleting.',
     steps: 'Settings > [Your Name] > iCloud > Manage Storage > Backups > Select old device > Delete & Turn Off.',
   },
   {
@@ -74,8 +74,8 @@ const CLEANUP_ACTIONS: CleanupAction[] = [
     label: 'Exclude third-party video and design caches from backup snapshot',
     category: 'backups',
     defaultSavingsGB: 2.5,
-    risk: 'safe',
-    riskLabel: 'Safe',
+    risk: 'caution',
+    riskLabel: 'May remove app data from future backups',
     explanation: 'Apps like CapCut, Lightroom, or streaming offline files often get needlessly included in your phone backup.',
     steps: 'Settings > [Your Name] > iCloud > Manage Storage > Backups > This iPhone > Toggle off non-essential apps.',
   },
@@ -115,18 +115,14 @@ export default function ICloudStoragePlanner() {
 
   const estimatedSavings = useMemo(() => {
     let savings = 0;
+    const remaining: Record<CleanupAction['category'], number> = { photos: photosGB, backups: backupsGB, messages: messagesGB, drive: driveGB };
     for (const action of CLEANUP_ACTIONS) {
       if (activeActions[action.id]) {
-        // Cap savings so they don't exceed the actual category size
-        if (action.category === 'photos') {
-          savings += Math.min(action.defaultSavingsGB, photosGB);
-        } else if (action.category === 'backups') {
-          savings += Math.min(action.defaultSavingsGB, backupsGB);
-        } else if (action.category === 'messages') {
-          savings += Math.min(action.defaultSavingsGB, messagesGB);
-        } else if (action.category === 'drive') {
-          savings += Math.min(action.defaultSavingsGB, driveGB);
-        }
+        // Deduct each scenario from the remaining category balance to avoid double counting.
+        const category = action.category;
+        const amount = Math.min(action.defaultSavingsGB, remaining[category]);
+        savings += amount;
+        remaining[category] -= amount;
       }
     }
     return Math.min(savings, totalUsedBefore);
@@ -191,8 +187,8 @@ export default function ICloudStoragePlanner() {
       `--- Navorika iCloud Storage Cleanup Plan ---`,
       `Current Plan: ${tier.name} (${tier.capacityGB} GB)`,
       `Starting Usage: ${totalUsedBefore.toFixed(1)} GB (${percentBefore.toFixed(0)}%)`,
-      `Projected Space Reclaimed: ${estimatedSavings.toFixed(1)} GB`,
-      `Projected Post-Cleanup Usage: ${totalUsedAfter.toFixed(1)} GB (${percentAfter.toFixed(0)}%)`,
+      `Hypothetical Space Reclaimed (not guaranteed): ${estimatedSavings.toFixed(1)} GB`,
+      `Hypothetical Post-Cleanup Usage: ${totalUsedAfter.toFixed(1)} GB (${percentAfter.toFixed(0)}%)`,
       ``,
       `Selected Action Steps:`,
       ...CLEANUP_ACTIONS.filter((a) => activeActions[a.id]).map(
@@ -222,7 +218,7 @@ export default function ICloudStoragePlanner() {
             iCloud Storage Cleanup Planner & Estimate Simulator
           </h3>
           <p className="mt-1 text-sm text-[#5b5b63] dark:text-[#a1a1aa]">
-            Simulate realistic before-and-after storage results across your Apple devices. 100% private and runs locally in your browser.
+            Explore hypothetical before-and-after storage scenarios. Actual savings depend on what is stored and what you choose to remove. 100% private and runs locally in your browser.
           </p>
         </div>
         <div className="flex flex-wrap gap-2 text-xs font-semibold">
