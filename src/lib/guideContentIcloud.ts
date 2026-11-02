@@ -11,11 +11,11 @@ export const icloudGuideContent: Record<string, GuideContent> = {
 
 First, open the **Photos** app on your iPhone, select the **Albums** tab, scroll to the bottom under **Utilities**, and tap **Recently Deleted**. Unlock the album with Face ID or your passcode, tap **Select** in the top-right corner, and tap **Delete All** in the bottom-left corner. Many users delete hundreds of photos from their main camera roll but do not realize that iOS holds those files in full resolution for 30 days. Until you manually purge this quarantine folder, those deleted photos consume 100% of their original iCloud storage allocation. Emptying this folder immediately releases gigabytes back to your account.
 
-Second, navigate to **Settings > [Your Apple Account Name] > iCloud > Manage Account Storage > Backups**. Inspect the list of devices displayed. If you see an older iPhone model (such as an iPhone 11 or iPhone 12) or an iPad you no longer own, tap that device, tap **Delete & Turn Off Backup**, and confirm. Old device backups are static historical snapshots; deleting them reclaims between 4 GB and 15 GB instantly with absolutely zero risk to your current active smartphone.
+Second, navigate to **Settings > [Your Apple Account Name] > iCloud > Manage Account Storage > Backups**. Inspect the list of devices displayed. If you see an older iPhone model (such as an iPhone 11 or iPhone 12) or an iPad you no longer own, tap that device, tap **Delete & Turn Off Backup**, and confirm. Old device backups are static historical snapshots; deleting them reclaims between 4 GB and 15 GB instantly only after confirming that you no longer need that backup for recovery.
 
 Third, return to **Settings > [Your Apple Account Name] > iCloud > Manage Account Storage > Messages**. Tap **Top Conversations** or **Large Attachments**. Scroll through and delete the top 5 to 10 video clips or screen recordings shared in text threads. Videos received in group chats are a prime culprit for silent storage consumption.
 
-Executing these three steps takes less than 180 seconds, requires no computer, and typically reclaims between 5 GB and 20 GB of cloud space immediately. Once completed, your device will clear its emergency status and resume automated background operations.`,
+The amount of space you can recover varies widely. Review each item and verify independent copies before permanent deletion; iCloud storage reporting and syncing may take time to update.`,
       },
       {
         title: 'The golden rule of Apple storage: iCloud synchronization versus device storage',
@@ -37,7 +37,7 @@ To free up iCloud storage safely without wiping photos from your physical phone,
       },
       {
         title: 'How to clear iCloud storage without losing photos: Three verified workflows',
-        content: `Photos and 4K videos account for roughly 60% to 80% of all iCloud storage consumed worldwide. If your cloud storage is full because of your camera roll, you have three verified, lossless paths to reclaim massive space while preserving every image.
+        content: `Photos and videos can occupy a large share of an individual iCloud account, especially when it contains long videos or high-resolution images. If your cloud storage is full because of your camera roll, you have three verified, lossless paths to reclaim massive space while preserving every image.
 
 ### Workflow A: Export original master copies to an external drive or computer
 This is the gold-standard workflow for readers who want to eliminate their monthly iCloud subscription costs permanently while keeping full-resolution master files safe.
@@ -51,7 +51,7 @@ This is the gold-standard workflow for readers who want to eliminate their month
 ### Workflow B: Enable "Optimize iPhone Storage" to resolve local phone bottlenecks
 If your iCloud account has plenty of room (for instance, on a 50 GB or 200 GB plan) but your physical iPhone is running out of local gigabytes, you do not need to delete photos at all. 
 
-Navigate to **Settings > [Your Name] > iCloud > Photos** and select **Optimize iPhone Storage** instead of **Download and Keep Originals**. When this setting is enabled, iOS automatically monitors your phone's remaining flash memory. When local space runs low, iOS replaces local high-resolution 15 MB photo files and multi-gigabyte 4K video clips with tiny, high-efficiency screen-resolution previews. The pristine, full-resolution master files remain safely preserved in your iCloud storage. The moment you tap on an older photo or tap edit, your iPhone seamlessly streams down the original file in milliseconds. This single toggle typically shrinks local photo storage by 70% to 85% without sacrificing image quality or deleting a single memory.
+Navigate to **Settings > [Your Name] > iCloud > Photos** and select **Optimize iPhone Storage** instead of **Download and Keep Originals**. When this setting is enabled, iOS automatically monitors your phone's remaining flash memory. When local space runs low, iOS replaces local high-resolution 15 MB photo files and multi-gigabyte 4K video clips with tiny, high-efficiency screen-resolution previews. The pristine, full-resolution master files remain safely preserved in your iCloud storage. The moment you tap on an older photo or tap edit, your iPhone seamlessly streams down the original file in milliseconds. This setting may reduce local device storage usage over time, but it does not free iCloud storage and the amount saved varies.
 
 ### Workflow C: Migrate your photo library to Google Photos or Microsoft OneDrive
 If you prefer cloud convenience but want to avoid Apple's rigid storage limits or want multi-platform access, you can mirror your library to a secondary provider before turning off iCloud Photos.
@@ -555,7 +555,7 @@ By systematically identifying the specific technical mechanism responsible for y
         content: `Let us answer the single most urgent question immediately and unequivocally: **Deleting an iCloud backup will NOT delete the data currently stored on your physical iPhone.**
 
 When you delete an iCloud backup, here is exactly what happens:
-- Your **Photos and Videos** remain 100% safe on your phone (and in iCloud Photos if sync is turned on).
+- Your **Photos and Videos** remain not necessarily recoverable from that deleted backup on your phone (and in iCloud Photos if sync is turned on).
 - Your **Contacts, Calendars, Notes, and Reminders** remain completely intact.
 - Your **Text Messages and iMessage conversations** stay on your phone.
 - Your **Installed Apps, Music, and Downloads** do not disappear.
