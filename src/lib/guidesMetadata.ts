@@ -40,7 +40,7 @@ const guideDefinitions: GuideDefinition[] = [
   {
     slug: 'how-to-clear-icloud-storage',
     title: 'How to Clear iCloud Storage Safely: Step-by-Step Guide',
-    description: 'Learn how to clear iCloud storage without losing photos. Step-by-step instructions for iPhone, iPad, and Mac to free up 5 GB to 50 GB+ easily.',
+    description: 'Learn how to clear iCloud storage without losing photos. Step-by-step instructions for iPhone, iPad, and Mac to review storage categories and plan safer cleanup steps.',
     category: 'Everyday',
     publishedDate: 'November 2026',
     readTime: '18 min read',
@@ -59,7 +59,7 @@ const guideDefinitions: GuideDefinition[] = [
     ],
     featuredImage: {
       src: '/images/guides/how-to-clear-icloud-storage.svg',
-      alt: 'iPhone and Mac iCloud settings showing storage used by Photos, Backups, Messages, and iCloud Drive with cleanup steps',
+      alt: 'Illustrated iCloud storage categories and cleanup workflow',
       caption: 'Clear iCloud storage systematically across iPhone, iPad, and Mac without deleting your original photos.',
     },
   },
@@ -108,7 +108,7 @@ const guideDefinitions: GuideDefinition[] = [
     featuredImage: {
       src: '/images/guides/how-to-delete-icloud-backup-safely.svg',
       alt: 'Comparison diagram showing data preserved when deleting an iCloud backup versus what is removed from cloud snapshots',
-      caption: 'Deleting an iCloud backup removes only the disaster recovery snapshot; your physical phone data and photos remain 100% safe.',
+      caption: 'Deleting an iCloud backup removes a recovery copy; check which information is separately synchronized before proceeding.',
     },
   },
   { slug: 'is-claude-better-than-chatgpt', title: 'Is Claude Better Than ChatGPT? An Honest Comparison', description: 'Is Claude better than ChatGPT for writing, coding, school or research? Compare strengths, pricing, features and how to choose the right AI.', category: 'Developer', publishedDate: 'October 2026', readTime: '17 min read', author: 'Navorika Team', keywords: ['is claude better than chatgpt', 'why is claude better than chatgpt', 'is claude ai better than chatgpt', 'is claude better than chatgpt for coding', 'is claude better than chatgpt for school'] },
