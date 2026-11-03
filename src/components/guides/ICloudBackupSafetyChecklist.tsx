@@ -154,16 +154,12 @@ export default function ICloudBackupSafetyChecklist() {
           </div>
           <span
             className={`rounded-full px-3 py-1 text-xs font-bold uppercase ${
-              scenario.riskRating === 'zero'
-                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300'
-                : scenario.riskRating === 'low'
+              scenario.riskRating === 'low'
                 ? 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300'
                 : 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'
             }`}
           >
-            {scenario.riskRating === 'zero'
-              ? 'Safe to Delete'
-              : scenario.riskRating === 'low'
+            {scenario.riskRating === 'low'
               ? 'Locally Protected'
               : 'Caution Advised'}
           </span>
@@ -274,7 +270,7 @@ export default function ICloudBackupSafetyChecklist() {
           <div className="flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-400">
             <ShieldCheck className="h-5 w-5" />
             <span>
-              All safety verifications completed. You can safely proceed to delete the backup in Settings &gt; Apple Account &gt; iCloud &gt; Manage Storage &gt; Backups.
+              Checklist completed. Deleting a backup is irreversible and may remove your only recovery copy. Confirm the correct device and a verified alternative backup before proceeding.
             </span>
           </div>
         ) : (
