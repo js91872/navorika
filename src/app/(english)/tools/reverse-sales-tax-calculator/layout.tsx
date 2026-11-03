@@ -4,5 +4,5 @@ import { createToolMetadata } from '@/lib/seo/toolPage';
 const tool = financeToolPages['reverse-sales-tax-calculator'];
 export const metadata = createToolMetadata(tool);
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <>{children}<ToolPageContent tool={tool} /></>;
+  return <>{children}<ToolPageContent tool={tool} supplementalOnly /></>;
 }
