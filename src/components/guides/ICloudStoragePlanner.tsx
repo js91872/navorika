@@ -100,9 +100,9 @@ export default function ICloudStoragePlanner() {
   const [copied, setCopied] = useState<boolean>(false);
 
   const [activeActions, setActiveActions] = useState<Record<string, boolean>>({
-    'empty-recently-deleted': true,
-    'delete-old-backup': true,
-    'prune-messages-attachments': true,
+    'empty-recently-deleted': false,
+    'delete-old-backup': false,
+    'prune-messages-attachments': false,
     'disable-heavy-app-backups': false,
     'offload-4k-videos': false,
     'clean-icloud-drive-downloads': false,
@@ -144,12 +144,12 @@ export default function ICloudStoragePlanner() {
       setMessagesGB(0.4);
       setDriveGB(0.2);
       setActiveActions({
-        'empty-recently-deleted': true,
-        'delete-old-backup': true,
-        'prune-messages-attachments': true,
-        'disable-heavy-app-backups': true,
+        'empty-recently-deleted': false,
+        'delete-old-backup': false,
+        'prune-messages-attachments': false,
+        'disable-heavy-app-backups': false,
         'offload-4k-videos': false,
-        'clean-icloud-drive-downloads': true,
+        'clean-icloud-drive-downloads': false,
       });
     } else if (preset === 'average') {
       setSelectedTierId('50gb');
@@ -158,9 +158,9 @@ export default function ICloudStoragePlanner() {
       setMessagesGB(5.5);
       setDriveGB(2.5);
       setActiveActions({
-        'empty-recently-deleted': true,
-        'delete-old-backup': true,
-        'prune-messages-attachments': true,
+        'empty-recently-deleted': false,
+        'delete-old-backup': false,
+        'prune-messages-attachments': false,
         'disable-heavy-app-backups': false,
         'offload-4k-videos': false,
         'clean-icloud-drive-downloads': false,
@@ -172,12 +172,12 @@ export default function ICloudStoragePlanner() {
       setMessagesGB(22);
       setDriveGB(15);
       setActiveActions({
-        'empty-recently-deleted': true,
-        'offload-4k-videos': true,
-        'delete-old-backup': true,
-        'prune-messages-attachments': true,
-        'disable-heavy-app-backups': true,
-        'clean-icloud-drive-downloads': true,
+        'empty-recently-deleted': false,
+        'offload-4k-videos': false,
+        'delete-old-backup': false,
+        'prune-messages-attachments': false,
+        'disable-heavy-app-backups': false,
+        'clean-icloud-drive-downloads': false,
       });
     }
   };
