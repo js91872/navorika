@@ -26,6 +26,9 @@ for (const dir of dirs) {
     flags.push('Check rendered page for unique methodology/examples');
   }
   if (/ToolSEOWrapper/.test(page + layout)) flags.push('Legacy wrapper: check unique editorial content');
+  if (/ToolPageContent/.test(layout) && /(?:Article|Guide)\s*\/>/.test(page) && !/supplementalOnly/.test(layout)) {
+    flags.push('Possible overlapping full guide and shared editorial sections');
+  }
   if (/browser.local|entirely in your browser|never uploaded|not sent to|stay on your device/i.test(page + layout)) {
     flags.push('Verify privacy claim against actual processing');
   }
