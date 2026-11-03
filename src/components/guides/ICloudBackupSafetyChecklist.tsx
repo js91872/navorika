@@ -7,7 +7,7 @@ interface Scenario {
   id: string;
   title: string;
   targetDevice: string;
-  riskRating: 'zero' | 'low' | 'moderate';
+  riskRating: 'low' | 'moderate';
   summary: string;
   dataLost: string[];
   dataSafe: string[];
@@ -19,9 +19,9 @@ const SCENARIOS: Scenario[] = [
     id: 'old-device',
     title: 'Deleting backup of an old / traded-in iPhone or iPad',
     targetDevice: 'A previously owned device you no longer carry',
-    riskRating: 'zero',
+    riskRating: 'moderate', 
     summary:
-      'Zero risk to your current phone. Deleting the backup of a retired device immediately reclaims 3–15 GB of iCloud storage with no impact on your current photos, messages, or files.',
+      'Deleting an old device backup may free storage, but it permanently removes that recovery point. Confirm that no unique data remains only in that backup and that you have a usable alternative before deleting.',
     dataLost: [
       'The historical settings snapshot of that old device',
       'The ability to clone that exact old phone to a new device in the future',
@@ -33,7 +33,7 @@ const SCENARIOS: Scenario[] = [
       'All App Store purchases and account credentials',
     ],
     recommendation:
-      'Delete immediately. There is rarely any reason to pay Apple to preserve an old device backup once your current device has been functioning normally for more than two weeks.',
+      'Do not delete until you have checked the backup date, device identity, and whether it contains information you might still need to restore.',
   },
   {
     id: 'active-device-cloud-only',
@@ -64,7 +64,7 @@ const SCENARIOS: Scenario[] = [
     targetDevice: 'Your primary iPhone, safely mirrored to computer',
     riskRating: 'low',
     summary:
-      'The smartest strategy for avoiding monthly iCloud subscription fees. Your entire phone snapshot is stored free of charge on your computer’s hard drive, allowing you to delete the cloud backup safely.',
+      'A verified encrypted computer backup provides an alternative recovery method, but it can become outdated or unavailable if the computer fails. Keep another protected copy and understand that cloud backup protection will be lost.',
     dataLost: [
       'Automated nightly cloud backups over Wi-Fi (you must plug into computer periodically to back up manually)',
     ],
@@ -75,7 +75,7 @@ const SCENARIOS: Scenario[] = [
       'Health data and saved passwords (safely included in encrypted local backup)',
     ],
     recommendation:
-      'Proceed with deletion. Set a calendar reminder once every month to plug your phone into your computer for an updated local backup.',
+      'Consider keeping iCloud Backup enabled. If you choose to delete it, first verify that the encrypted computer backup can be located and restored, and establish a regular backup schedule.',
   },
 ];
 
@@ -130,9 +130,7 @@ export default function ICloudBackupSafetyChecklist() {
                 }`}
               >
                 <div className="text-xs uppercase font-extrabold tracking-wider text-[#e5322d] dark:text-[#ff6b68]">
-                  {s.riskRating === 'zero'
-                    ? 'Zero Risk'
-                    : s.riskRating === 'low'
+                  {s.riskRating === 'low'
                     ? 'Low Risk'
                     : 'Moderate Risk'}
                 </div>
@@ -179,7 +177,7 @@ export default function ICloudBackupSafetyChecklist() {
           {/* What is safe */}
           <div className="rounded-xl border border-emerald-200 dark:border-emerald-950/80 bg-white dark:bg-[#18181b] p-4">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-              <Check className="h-4 w-4" /> What Remains 100% Safe (NOT Deleted)
+              <Check className="h-4 w-4" /> What Is Not Directly Removed by This Action
             </div>
             <ul className="mt-3 space-y-2 text-xs text-[#5b5b63] dark:text-[#a1a1aa]">
               {scenario.dataSafe.map((item, idx) => (
