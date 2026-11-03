@@ -13,6 +13,8 @@ import { macBatteryGuideContent } from './guideContentMacBattery';
 import { websiteAuditGuideContent } from './guideContentWebsiteAudit';
 import { fertilizerGuideContent } from './fertilizerGuideContent';
 
+import { icloudGuideContent } from './guideContentIcloud';
+
 export interface GuideSection {
   title: string;
   content: string;
@@ -824,7 +826,7 @@ export const guideContent: Record<string, GuideContent> = {
 };
 
 export function getGuideContent(slug: string): GuideContent | null {
-  const content = macSpeakerGuideContent[slug] || usSalesTaxGuideContent[slug] || fertilizerGuideContent[slug] || macEverydayGuideContent[slug] || websiteAuditGuideContent[slug] || iphoneImagePdfGuideContent[slug] || macBatteryGuideContent[slug] || macVideoGuideContent[slug] || macRamGuideContent[slug] || screenshotPdfGuideContent[slug] || gscGuideContent[slug] || guideContent[slug] || additionalGuideContent[slug];
+  const content = icloudGuideContent[slug] || macSpeakerGuideContent[slug] || usSalesTaxGuideContent[slug] || fertilizerGuideContent[slug] || macEverydayGuideContent[slug] || websiteAuditGuideContent[slug] || iphoneImagePdfGuideContent[slug] || macBatteryGuideContent[slug] || macVideoGuideContent[slug] || macRamGuideContent[slug] || screenshotPdfGuideContent[slug] || gscGuideContent[slug] || guideContent[slug] || additionalGuideContent[slug];
   if (!content) return null;
   const enhancement = guideContentEnhancements[slug];
   return enhancement ? {

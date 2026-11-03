@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Keep Tailwind dark: utilities in sync with next-themes class mode. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   /* Light theme (approved iLovePDF-inspired clean utility palette) */
   :root {

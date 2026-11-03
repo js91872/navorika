@@ -28,6 +28,7 @@ export interface Toolkit {
 }
 
 export const clusters: ToolCluster[] = [
+  { id: 'icloud-storage-planning', name: 'Cloud Storage Planning', description: 'Explore iCloud storage usage and plan cleanup scenarios without accessing private account data.', category: 'everyday-calculators', toolSlugs: ['icloud-storage-calculator'] },
   { id: 'ai-video-prompts', name: 'AI Video Prompt Tools', description: 'Plan video scenes and generate structured prompts for AI video workflows.', category: 'developer-tools', toolSlugs: ['ai-video-prompt-generator'] },
   { id: 'speaker-audio', name: 'Speaker Audio Tools', description: 'Test phone speakers and explore audio troubleshooting with browser-based sounds.', category: 'everyday-calculators', toolSlugs: ['speaker-dust-cleaning-sound'] },
   { id: 'pdf-organize', name: 'Organize PDF Pages', description: 'Combine, separate, reorder, rotate, and extract pages in document workflows.', category: 'pdf-tools', toolSlugs: ['merge-pdf', 'split-pdf', 'reorder-pdf', 'rotate-pdf', 'delete-pdf-pages', 'extract-pdf-pages', 'interleave-pdf'] },

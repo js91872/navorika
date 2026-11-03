@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Why Is My iCloud Storage Full? Diagnosis &amp; Root Causes</title>
+  <desc id="desc">Diagnostic guide illustration highlighting Recently Deleted albums, sync lag, old backups, and hidden app caches causing iCloud storage alerts.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fdf2f2"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1080" cy="100" r="190" fill="#fee2e2" opacity="0.45"/>
+  <circle cx="100" cy="530" r="170" fill="#fecaca" opacity="0.3"/>
+
+  <!-- Eyebrow Badge -->
+  <rect x="80" y="48" width="195" height="34" rx="17" fill="#fff1f1" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="177" y="70" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="700" fill="#e5322d" text-anchor="middle" letter-spacing="1">TROUBLESHOOTING GUIDE</text>
+
+  <!-- Title & Subtitle -->
+  <text x="80" y="128" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="44" font-weight="900" fill="#18181b" letter-spacing="-1">Why Is My iCloud Storage Full?</text>
+  <text x="80" y="168" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="500" fill="#5b5b63">Diagnose Ghost Storage, 30-Day Photo Holds, Sync Lag &amp; Hidden Backups</text>
+
+  <!-- Central Diagnostic Card Panel -->
+  <g filter="url(#cardShadow)">
+    <rect x="80" y="205" width="1040" height="370" rx="20" fill="#ffffff" stroke="#e4e4e8" stroke-width="1.5"/>
+  </g>
+
+  <!-- Alert Banner inside card -->
+  <rect x="110" y="235" width="980" height="58" rx="12" fill="#fff1f1" stroke="#fecaca" stroke-width="1.2"/>
+  <circle cx="145" cy="264" r="16" fill="#e5322d"/>
+  <!-- Exclamation icon inside circle -->
+  <text x="145" y="271" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle">!</text>
+  <text x="180" y="258" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="800" fill="#991b1b">System Alert: &quot;iCloud Storage Almost Full&quot;</text>
+  <text x="180" y="278" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="500" fill="#b91c1c">Your device cannot back up or save new photos until storage is cleared or upgraded.</text>
+
+  <!-- 4 Diagnostic Mystery Columns -->
+  <!-- Mystery 1: Recently Deleted Hold -->
+  <g>
+    <rect x="110" y="315" width="225" height="230" rx="14" fill="#fafafa" stroke="#e4e4e8" stroke-width="1.2"/>
+    <rect x="126" y="332" width="36" height="36" rx="8" fill="#fee2e2"/>
+    <text x="144" y="356" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="18" font-weight="900" fill="#e5322d" text-anchor="middle">1</text>
+    <text x="126" y="392" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="15" font-weight="800" fill="#18181b">The 30-Day Hold</text>
+    <text x="126" y="415" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="700" fill="#e5322d">Deleted photos still count!</text>
+    <text x="126" y="440" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="500" fill="#5b5b63" width="190">Photos remain in &quot;Recently Deleted&quot; for 30 days, using 100% of their storage space until manually purged.</text>
+  </g>
+
+  <!-- Mystery 2: Server Sync Lag -->
+  <g>
+    <rect x="360" y="315" width="225" height="230" rx="14" fill="#fafafa" stroke="#e4e4e8" stroke-width="1.2"/>
+    <rect x="376" y="332" width="36" height="36" rx="8" fill="#fee2e2"/>
+    <text x="394" y="356" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="18" font-weight="900" fill="#e5322d" text-anchor="middle">2</text>
+    <text x="376" y="392" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="15" font-weight="800" fill="#18181b">Server Sync Lag</text>
+    <text x="376" y="415" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="700" fill="#e5322d">CloudKit update queue</text>
+    <text x="376" y="440" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="500" fill="#5b5b63">When you delete thousands of items, Apple servers take 15–60 minutes to calculate and reflect the new quota.</text>
+  </g>
+
+  <!-- Mystery 3: Phantom Old Backups -->
+  <g>
+    <rect x="610" y="315" width="225" height="230" rx="14" fill="#fafafa" stroke="#e4e4e8" stroke-width="1.2"/>
+    <rect x="626" y="332" width="36" height="36" rx="8" fill="#fee2e2"/>
+    <text x="644" y="356" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="18" font-weight="900" fill="#e5322d" text-anchor="middle">3</text>
+    <text x="626" y="392" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="15" font-weight="800" fill="#18181b">Ghost Backups</text>
+    <text x="626" y="415" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="700" fill="#e5322d">Previous devices stay saved</text>
+    <text x="626" y="440" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="500" fill="#5b5b63">Old iPhones or broken iPads stay stored as static 5–15 GB backup snapshots even after you upgrade.</text>
+  </g>
+
+  <!-- Mystery 4: Hidden iMessage Media -->
+  <g>
+    <rect x="860" y="315" width="230" height="230" rx="14" fill="#fafafa" stroke="#e4e4e8" stroke-width="1.2"/>
+    <rect x="876" y="332" width="36" height="36" rx="8" fill="#fee2e2"/>
+    <text x="894" y="356" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="18" font-weight="900" fill="#e5322d" text-anchor="middle">4</text>
+    <text x="876" y="392" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="15" font-weight="800" fill="#18181b">Message Bloat</text>
+    <text x="876" y="415" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="700" fill="#e5322d">Videos in text threads</text>
+    <text x="876" y="440" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="500" fill="#5b5b63">iMessage automatically uploads large video clips, memes, and audio messages without showing up in Photos.</text>
+  </g>
+
+  <!-- Footer text -->
+  <text x="600" y="605" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#a1a1aa" text-anchor="middle">NAVORIKA TECH GUIDES • VERIFIED ON IOS 18 &amp; ICLOUD.COM</text>
+</svg>

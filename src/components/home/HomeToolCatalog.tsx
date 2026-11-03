@@ -185,7 +185,7 @@ export default function HomeToolCatalog({ tools }: { tools: CatalogTool[] }) {
             {query.trim() || selectedCategory !== 'all' ? 'Matching Tools' : 'Popular Tools'}
           </h2>
           <p className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-0.5">
-            {query.trim() || selectedCategory !== 'all' ? `${filteredTools.length} ${filteredTools.length === 1 ? 'tool' : 'tools'} available` : 'Based on organic page views, Oct 4–31, 2026'}
+            {query.trim() || selectedCategory !== 'all' ? `${filteredTools.length} ${filteredTools.length === 1 ? 'tool' : 'tools'} available` : ''}
           </p>
         </div>
         <Link

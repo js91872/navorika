@@ -37,6 +37,81 @@ const categoryImages: Record<GuideCategory, { src: string; caption: string }> = 
 };
 
 const guideDefinitions: GuideDefinition[] = [
+  {
+    slug: 'how-to-clear-icloud-storage',
+    title: 'How to Clear iCloud Storage Safely: Step-by-Step Guide',
+    description: 'Learn how to clear iCloud storage without losing photos. Step-by-step instructions for iPhone, iPad, and Mac to review storage categories and plan safer cleanup steps.',
+    category: 'Everyday',
+    publishedDate: 'November 2026',
+    readTime: '18 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'how to clear icloud storage',
+      'how do you free up icloud storage',
+      'how to clear icloud storage from iphone',
+      'how to clear icloud storage iphone',
+      'how to free up icloud storage on iphone',
+      'free up icloud storage',
+      'how to clear icloud storage on macbook air',
+      'how to clear icloud storage without losing photos',
+      'clear icloud storage without losing photos',
+      'clean up icloud storage',
+    ],
+    featuredImage: {
+      src: '/images/guides/how-to-clear-icloud-storage.svg',
+      alt: 'Illustrated iCloud storage categories and cleanup workflow',
+      caption: 'Clear iCloud storage systematically across iPhone, iPad, and Mac without deleting your original photos.',
+    },
+  },
+  {
+    slug: 'why-is-my-icloud-storage-full',
+    title: 'Why Is My iCloud Storage Full? 7 Hidden Culprits & How to Fix It',
+    description: 'Discover why your iCloud storage is full even after deleting photos. Step-by-step diagnostic guide to fix ghost backups, Recently Deleted holds, and sync lag.',
+    category: 'Everyday',
+    publishedDate: 'November 2026',
+    readTime: '15 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'icloud storage full',
+      'why is my icloud storage full',
+      'icloud storage full what to do',
+      'how to fix icloud storage full',
+      'why is my icloud storage full after deleting photos',
+      'icloud storage full but i have no photos',
+      'why does my icloud say full',
+      'iphone storage full vs icloud storage full',
+    ],
+    featuredImage: {
+      src: '/images/guides/why-is-my-icloud-storage-full.svg',
+      alt: 'iCloud storage full warning alert banner with diagnostic cards showing Recently Deleted, sync lag, and ghost backups',
+      caption: 'Diagnose why your iCloud storage meter stays full and resolve ghost data holding your cloud quota hostage.',
+    },
+  },
+  {
+    slug: 'how-to-delete-icloud-backup-safely',
+    title: 'How to Delete iCloud Backup Safely: What Happens & What You Keep',
+    description: 'Learn how to delete iCloud backup safely without losing photos or phone data. Step-by-step instructions for iPhone, iPad, and Mac with local backup options.',
+    category: 'Everyday',
+    publishedDate: 'November 2026',
+    readTime: '15 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'how to delete icloud backup',
+      'delete icloud backup',
+      'if i delete icloud backup will i lose everything',
+      'what happens when i delete icloud backup',
+      'does deleting icloud backup delete photos',
+      'how to delete old icloud backups',
+      'turn off and delete icloud backup',
+      'how to delete icloud backup on mac',
+    ],
+    featuredImage: {
+      src: '/images/guides/how-to-delete-icloud-backup-safely.svg',
+      alt: 'Comparison diagram showing data preserved when deleting an iCloud backup versus what is removed from cloud snapshots',
+      caption: 'Deleting an iCloud backup removes a recovery copy; check which information is separately synchronized before proceeding.',
+    },
+  },
+
   { slug: 'is-claude-better-than-chatgpt', title: 'Is Claude Better Than ChatGPT? An Honest Comparison', description: 'Is Claude better than ChatGPT for writing, coding, school or research? Compare strengths, pricing, features and how to choose the right AI.', category: 'Developer', publishedDate: 'October 2026', readTime: '17 min read', author: 'Navorika Team', keywords: ['is claude better than chatgpt', 'why is claude better than chatgpt', 'is claude ai better than chatgpt', 'is claude better than chatgpt for coding', 'is claude better than chatgpt for school'] },
   { slug: 'how-to-clean-macbook-speakers', title: 'How to Clean MacBook Speakers Safely (MacBook Air & Pro)', description: 'Learn how to clean MacBook Air and Pro speaker grilles safely, avoid damaging openings, and troubleshoot muffled or crackling audio.', category: 'Everyday', publishedDate: 'October 2026', readTime: '10 min read', author: 'Navorika Team', featuredImage: { src: '/images/guides/how-to-clean-macbook-speakers.webp', alt: 'MacBook speaker grille being gently cleaned with a soft brush, with a microfiber cloth nearby', caption: 'MacBook speaker grille and gentle cleaning tools. Keep liquids and cleaning tools out of the openings.' }, keywords: ['how to clean macbook speakers','how to clean macbook speaker','how to clean macbook speaker grill','clean macbook pro speakers','clean macbook air speakers','macbook speakers muffled','macbook speaker cleaning sound'] },
 
@@ -665,8 +740,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    datePublished: ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-01' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    dateModified: ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-02' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,
