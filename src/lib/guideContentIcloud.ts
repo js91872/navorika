@@ -149,7 +149,7 @@ If you have upgraded your phone two or three times over the past five years, you
 5. Review the backup details, then tap **Delete & Turn Off Backup** at the bottom of the screen.
 6. Confirm the deletion. The entire multi-gigabyte snapshot is instantly eradicated from Apple\'s servers, returning that storage immediately to your account pool.
 
-Deleting the backup of an old or retired device carries zero risk. It does not affect your current phone, does not alter your photo library, and does not touch your contacts or notes. It is purely dead weight that should be removed.`,
+Deleting an old device backup does not directly erase your current device, but it permanently removes that backup as a recovery option. Check whether it contains unique data and verify another usable backup before deleting.`,
       },
       {
         title: 'Interactive iCloud storage cleanup planner and before-and-after simulator',
@@ -252,7 +252,7 @@ By following this structured hierarchy—starting with zero-risk items like obso
       {
         question: 'How do I clear iCloud storage without deleting everything from my phone?',
         answer:
-          'To clear cloud storage while keeping your files on your iPhone, turn on "Optimize iPhone Storage" in Settings > [Your Name] > iCloud > Photos. Alternatively, back up your photos to a computer or external SSD, disable iCloud Photos sync on your device, and then delete the cloud copies via iCloud.com. Additionally, you can delete old device backups from previous phones in Settings > iCloud > Manage Storage > Backups; this frees gigabytes of cloud storage with zero impact on your physical iPhone.',
+          'Optimize iPhone Storage reduces storage used on the device, not your iCloud quota. To reduce iCloud usage, first export and verify independent copies of any photos you intend to remove, then carefully review synced photo deletion and obsolete device backups. Deleting a backup removes a recovery option; check for unique data before proceeding.',
       },
       {
         question: 'Why is my iCloud storage still full after deleting thousands of photos?',
@@ -262,7 +262,7 @@ By following this structured hierarchy—starting with zero-risk items like obso
       {
         question: 'If I delete an iCloud backup, will I lose everything on my iPhone?',
         answer:
-          'No. Deleting an iCloud backup does not delete any apps, photos, contacts, text messages, or files currently stored on your physical phone. An iCloud backup is simply a compressed point-in-time recovery image stored on Apple servers to help you restore a replacement device if your phone is lost or damaged. If your phone is safely in your hand, deleting an old backup carries zero danger to your day-to-day data.',
+          'No. Deleting an iCloud backup does not delete any apps, photos, contacts, text messages, or files currently stored on your physical phone. An iCloud backup is simply a compressed point-in-time recovery image stored on Apple servers to help you restore a replacement device if your phone is lost or damaged. Deleting a backup does not directly erase the phone, but it permanently removes a recovery copy that may contain otherwise unavailable data.',
       },
       {
         question: 'How can I clear iCloud storage on a MacBook Air without losing local files?',
@@ -555,7 +555,7 @@ By systematically identifying the specific technical mechanism responsible for y
         content: `Let us answer the single most urgent question immediately and unequivocally: **Deleting an iCloud backup will NOT delete the data currently stored on your physical iPhone.**
 
 When you delete an iCloud backup, here is exactly what happens:
-- Your **Photos and Videos** remain not necessarily recoverable from that deleted backup on your phone (and in iCloud Photos if sync is turned on).
+- Your **Photos and Videos** currently on the device are not directly erased by deleting the backup. However, photos stored only in that backup may become unrecoverable; iCloud Photos is separate when enabled.
 - Your **Contacts, Calendars, Notes, and Reminders** remain completely intact.
 - Your **Text Messages and iMessage conversations** stay on your phone.
 - Your **Installed Apps, Music, and Downloads** do not disappear.
@@ -587,10 +587,10 @@ An iCloud Backup contains only the local device configuration and app state that
 
 | Data Type | Where It Lives | Inside iCloud Backup? | Affected by Deleting Backup? |
 | :--- | :--- | :--- | :--- |
-| **iCloud Photos** | Live Cloud Database | **No** (Synced independently) | **Zero effect** (100% Safe) |
-| **Contacts & Notes** | Live Cloud Database | **No** (Synced independently) | **Zero effect** (100% Safe) |
-| **iCloud Drive Files** | Live Cloud Database | **No** (Synced independently) | **Zero effect** (100% Safe) |
-| **Physical Phone Data** | Local Flash Memory | **No** (Lives on device hardware) | **Zero effect** (100% Safe) |
+| **iCloud Photos** | Live Cloud Database | **No** (Synced independently) | **Not directly deleted; verify sync and recovery status** |
+| **Contacts & Notes** | Live Cloud Database | **No** (Synced independently) | **Not directly deleted; verify sync and recovery status** |
+| **iCloud Drive Files** | Live Cloud Database | **No** (Synced independently) | **Not directly deleted; verify sync and recovery status** |
+| **Physical Phone Data** | Local Flash Memory | **No** (Lives on device hardware) | **Not directly deleted; verify sync and recovery status** |
 | **Home Screen Layout** | Inside Backup Snapshot | **Yes** | **Deleted from cloud recovery** |
 | **Saved Wi-Fi Passwords**| Inside Backup Snapshot | **Yes** | **Deleted from cloud recovery** |
 | **Local App Caches** | Inside Backup Snapshot | **Yes** | **Deleted from cloud recovery** |
