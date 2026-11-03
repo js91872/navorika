@@ -4,6 +4,24 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-clear-icloud-storage': [
+    { name: 'Apple Support — Manage your iCloud storage', url: 'https://support.apple.com/en-us/108051' },
+    { name: 'Apple Support — Delete photos on your iPhone or iPad', url: 'https://support.apple.com/en-us/104967' },
+    { name: 'Apple Support — Archive or make copies of the information you store in iCloud', url: 'https://support.apple.com/en-us/108306' },
+    { name: 'Apple Support — Manage photos in iCloud on Mac', url: 'https://support.apple.com/guide/photos/use-icloud-photos-pht435d6885/mac' },
+  ],
+  'why-is-my-icloud-storage-full': [
+    { name: 'Apple Support — Manage your iCloud storage', url: 'https://support.apple.com/en-us/108051' },
+    { name: 'Apple Support — Delete photos on your iPhone or iPad', url: 'https://support.apple.com/en-us/104967' },
+    { name: 'Apple Support — What does iCloud back up?', url: 'https://support.apple.com/en-us/108770' },
+    { name: 'Apple Support — Share iCloud+ with your family', url: 'https://support.apple.com/en-us/108773' },
+  ],
+  'how-to-delete-icloud-backup-safely': [
+    { name: 'Apple Support — Back up your iPhone, iPad, or iPod touch', url: 'https://support.apple.com/en-us/108796' },
+    { name: 'Apple Support — What does iCloud back up?', url: 'https://support.apple.com/en-us/108770' },
+    { name: 'Apple Support — Manage your iCloud storage', url: 'https://support.apple.com/en-us/108051' },
+    { name: 'Apple Support — How to back up your iPhone with your Mac (Finder)', url: 'https://support.apple.com/guide/mac-help/back-up-and-restore-your-device-mchle3936997/mac' },
+  ],
   'is-claude-better-than-chatgpt': [
     { name: 'Anthropic — Claude pricing', url: 'https://claude.com/pricing' },
     { name: 'OpenAI — ChatGPT pricing', url: 'https://chatgpt.com/pricing' },
@@ -14,6 +32,7 @@ export const guideSources: Record<string, GuideSource[]> = {
     { name: 'Apple Support — How to clean your Apple products', url: 'https://support.apple.com/en-us/103258' },
     { name: 'Apple Support — If the internal speakers on your Mac are not working', url: 'https://support.apple.com/en-us/102411' },
   ],
+
   'how-to-back-out-sales-tax-us': [
     { name: 'CDTFA — Basic Sales and Use Tax training (tax-inclusive calculation method)', url: 'https://www.cdtfa.ca.gov/seminar/BSUTS.pdf' },
     { name: 'CDTFA — Applying Tax to Your Sales and Purchases (California-specific guidance)', url: 'https://www.cdtfa.ca.gov/taxes-and-fees/applying-tax-sales-purchases-faq.htm' },
