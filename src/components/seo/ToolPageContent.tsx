@@ -9,7 +9,7 @@ import { toolsUnderReview } from '@/lib/seo/toolReview';
 import { toolUx } from '@/data/toolUx';
 import { buildWorkflowItems } from '@/lib/toolWorkflow';
 
-export default function ToolPageContent({ tool }: { tool: ToolContent }) {
+export default function ToolPageContent({ tool, supplementalOnly = false }: { tool: ToolContent; supplementalOnly?: boolean }) {
   const displayName = tool.name.split(' – ')[0].split(':')[0];
   const guides = tool.relatedGuides.flatMap((slug) => {
     const guide = guidesMetadata.find((item) => item.slug === slug);
@@ -49,6 +49,7 @@ export default function ToolPageContent({ tool }: { tool: ToolContent }) {
         </section>
       )}
 
+      {!supplementalOnly && <>
       <section>
         <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">What is {displayName}?</h2>
         <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
@@ -97,6 +98,8 @@ export default function ToolPageContent({ tool }: { tool: ToolContent }) {
           {tool.limitations.map((item) => <li key={item}>{item}</li>)}
         </ul>
       </section>
+
+      </>}
 
       {(cluster || toolkits.length > 0) && (
         <section>
