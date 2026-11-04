@@ -774,6 +774,53 @@ export const seoContent: Record<string, SEOContent> = {
     operatingSystem: 'All',
     browserRequirements: 'Modern browser with JavaScript enabled'
   },
+  'compare-pdf': {
+    metaTitle: 'Compare PDF Files Online Free – Side by Side Diff Tool | Navorika',
+    metaDescription: 'Compare two PDF files online for free. Detect text additions, removals, and visual differences side by side without uploading your documents to a server.',
+    intro: 'Compare PDF Files Online Free is a client-side comparison tool that lets you compare two PDF files side by side. Highlight word-level additions and deletions, detect inserted and removed pages, and inspect visual pixel differences without sending your documents to an external server.',
+    howItWorks: 'The PDF comparison tool parses the text and visual content of both documents locally using browser memory. It generates a word-level diff, computes similarity metrics, renders visual overlays with adjustable sensitivity, and identifies changed pages directly on your device.',
+    benefits: [
+      'Compare two PDF documents privately without server uploads',
+      'Inspect word-level additions, deletions, and replacements with clear redline highlighting',
+      'View side-by-side and inline document diffs',
+      'Visual pixel diffing with sensitivity controls and heatmap overlays',
+      'Supports differing page counts and identifies inserted or removed pages',
+      'Jump directly to modified pages with next-change navigation',
+      'Download audit comparison reports as plain text or structured JSON data'
+    ],
+    useCases: [
+      'Redlining contracts and legal agreements between revisions',
+      'Verifying technical documentation and specification changes',
+      'Auditing pre-press publication proofs for unintended text shifts',
+      'Comparing academic manuscripts, student essays, and dissertation drafts',
+      'Checking invoices, quotes, and financial estimates against baseline versions'
+    ],
+    stepByStep: [
+      'Step 1: Upload or drag your Original (baseline) PDF into the first dropzone',
+      'Step 2: Upload your Revised (comparison) PDF into the second dropzone, or click Load Sample PDFs',
+      'Step 3: Review overall document similarity, words added, words removed, and changed page counts',
+      'Step 4: Switch between Visual Comparison and Text Diff views',
+      'Step 5: Navigate between modified pages and download the comparison report'
+    ],
+    tips: [
+      'Use text-based PDFs for exact word-by-word diffing and redline highlights',
+      'For scanned or image-heavy documents, use the Visual Comparison mode with heatmap overlay',
+      'Adjust the sensitivity slider to filter out minor font-rendering anti-aliasing variations',
+      'Export the TXT report for a clear record of clause revisions in contracts'
+    ],
+    relatedTools: ['pdf-word-counter', 'extract-pdf-text', 'pdf-page-size-checker', 'merge-pdf'],
+    faq: [
+      { 'question': 'How do I compare two PDF files online?', 'answer': 'Upload your baseline document in the Original box and your new version in the Revised box. The tool extracts text, aligns words, renders pages, and highlights both text and visual differences.' },
+      { 'question': 'Is my document uploaded to a remote server?', 'answer': 'No. File processing and comparison run entirely inside your browser using client-side JavaScript. No document content is ever sent across the network.' },
+      { 'question': 'Can it compare PDFs with different numbers of pages?', 'answer': 'Yes. Extra pages in the revised document are labeled as Added Pages, and missing pages are labeled as Removed Pages with full word breakdown.' },
+      { 'question': 'Does this tool work with scanned PDF files?', 'answer': 'Visual pixel comparison works with scanned documents to highlight shifted or altered imagery. Word-level text diffing requires an embedded digital text layer and cannot extract text from image-only scans without OCR.' },
+      { 'question': 'Can I download a comparison report?', 'answer': 'Yes. You can download a structured plain-text (.txt) audit report, export machine-readable JSON data, or print the report.' }
+    ],
+    schemaType: 'WebApplication',
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'All',
+    browserRequirements: 'Modern browser with JavaScript enabled'
+  },
   'fd-calculator': {
     metaTitle: 'Fd Calculator - Free Online Fd Calculator | Navorika',
     metaDescription: 'Use our free Fd Calculator to get accurate results instantly. Fast, private, and no signup required.',

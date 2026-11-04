@@ -29,6 +29,7 @@ export const guideTools: Record<string, string[]> = {
   'bmr-tdee-guide': ['bmr-calculator', 'tdee-calculator', 'calorie-calculator'],
   'pdf-compression-guide': ['compress-pdf', 'merge-pdf', 'split-pdf'],
   'how-to-merge-pdf-files': ['merge-pdf', 'split-pdf', 'reorder-pdf'],
+  'how-to-compare-pdf-files': ['compare-pdf', 'pdf-word-counter', 'extract-pdf-text', 'merge-pdf', 'split-pdf'],
   'image-compression-guide': ['compress-image', 'resize-image', 'image-converter'],
   'how-to-resize-images': ['resize-image', 'crop-image', 'rotate-image'],
   'gst-calculation-guide': ['gst-calculator', 'tax-calculator'],

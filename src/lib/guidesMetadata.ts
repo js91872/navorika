@@ -230,6 +230,26 @@ const guideDefinitions: GuideDefinition[] = [
     author: 'Navorika Team'
   },
   {
+    slug: 'how-to-compare-pdf-files',
+    title: 'How to Compare PDF Files for Differences: Complete Guide',
+    description: 'Learn how to compare PDF files online and side by side. Compare text, visual changes, page differences, and scan limitations without uploading files.',
+    category: 'PDF',
+    publishedDate: 'November 2026',
+    readTime: '9 min read',
+    author: 'Navorika Team',
+    keywords: [
+      'compare pdf files',
+      'compare pdf documents',
+      'compare pdf',
+      'how to compare pdf documents',
+      'file compare pdf',
+      'compare pdf tool',
+      'compare pdf file online',
+      'compare pdf side by side',
+      'compare pdf files for differences'
+    ]
+  },
+  {
     slug: 'image-compression-guide',
     title: 'Image Compression Guide: Optimize Images for Web',
     description: 'Learn how to compress images for faster loading times. Understand lossy vs lossless compression and best practices.',
@@ -740,8 +760,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-01' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-02' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    datePublished: guide.slug === 'how-to-compare-pdf-files' ? '2026-11-04' : ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-01' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    dateModified: guide.slug === 'how-to-compare-pdf-files' ? '2026-11-04' : ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-02' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,
