@@ -4,6 +4,15 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-convert-pdf-to-jpg': [
+    {name:'Mozilla PDF.js — Examples: rendering PDF pages to canvas',url:'https://mozilla.github.io/pdf.js/examples/index.html'},
+    {name:'MDN — HTMLCanvasElement.toBlob',url:'https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob'},
+    pdfSpecification,
+  ],
+  'jpeg-vs-jpg': [
+    webImageFormats,
+    {name:'MDN — HTMLCanvasElement.toBlob',url:'https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob'},
+  ],
   'how-to-clear-icloud-storage': [
     { name: 'Apple Support — Manage your iCloud storage', url: 'https://support.apple.com/en-us/108051' },
     { name: 'Apple Support — Delete photos on your iPhone or iPad', url: 'https://support.apple.com/en-us/104967' },
