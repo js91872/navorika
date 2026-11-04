@@ -4,6 +4,18 @@ const privacy = 'Processing happens locally in your browser. Navorika does not u
 const limits = ['Password-protected, damaged, or unusually complex PDFs may not load.', 'Keep a backup of the original document and verify the downloaded file before relying on it.'];
 
 export const pdfToolPages: Record<string, ToolPageContent> = {
+  'pdf-to-jpg-all-pages': {
+    slug:'pdf-to-jpg-all-pages',name:'PDF to JPG – All Pages and ZIP Download',category:'PDF Tools',applicationCategory:'DesignApplication',
+    description:'Convert multiple PDF pages to individual JPEG images and save all JPGs together in one ZIP file locally.',
+    longTailKeywords:['pdf to jpg all pages','convert pdf to jpg multiple pages','pdf to jpg zip','batch pdf to jpg','pdf to jpg each page'],
+    intro:['Use this batch converter to render every page of a PDF into numbered JPG files packaged as a ZIP.',privacy],
+    steps:['Choose a readable PDF of up to 40 pages and 40 MB.','Select rendering scale and JPEG quality.','Convert and unzip the downloaded JPG collection.'],
+    interpretation:['Every page becomes an independent JPEG.','Higher rendering scales increase pixels and memory use, while quality changes JPEG compression.'],
+    limitations:[...limits,'Up to 40 pages and 40 MB; the tool also limits output pixel area.','JPG cannot preserve vector text, transparency, selectable text, signatures, or hyperlinks.','Large files may consume substantial memory on phones.'],
+    faqs:[{question:'Does this create one JPG?',answer:'No. It creates one JPG per PDF page and packages all images in a ZIP.'},{question:'Are PDFs uploaded?',answer:'No. Rendering and ZIP creation happen in your browser.'},{question:'Can I choose only one page?',answer:'Use the separate PDF to JPG converter for one selected page.'}],
+    relatedTools:[{slug:'pdf-to-jpg',name:'PDF to JPG Single Page'},{slug:'pdf-to-image',name:'PDF to PNG or JPG'},{slug:'split-pdf',name:'Split PDF'}],
+    relatedGuides:['how-to-convert-pdf-to-jpg'],
+  },
   'compress-pdf': {
     slug: 'compress-pdf', name: 'Compress PDF Online – Reduce PDF File Size Free', category: 'PDF Tools', applicationCategory: 'UtilitiesApplication', description: 'Compress PDF files online by reducing image-heavy page data in your browser. Compare the original and compressed PDF size before downloading.',
     longTailKeywords: ['compress pdf', 'compress pdf online', 'reduce pdf file size', 'pdf compressor', 'compress pdf free', 'make pdf smaller', 'compress scanned pdf', 'reduce image heavy pdf file size', 'compress pdf without upload'],
