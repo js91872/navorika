@@ -96,6 +96,8 @@ test('moving English routes into a route group preserves every existing public p
   const newRoutes = allRoutes.filter((route) => !paths.includes(route)).sort();
   // Explicitly approved public pages added after the original route contract.
   assert.deepEqual(newRoutes, [
+    'tools/jpeg-to-jpg/page.tsx',
+    'tools/pdf-to-jpg-all-pages/page.tsx',
     'guides/can-chatgpt-make-videos/page.tsx',
     'guides/how-does-a-3d-printer-work/page.tsx',
     'guides/how-to-clean-phone-speaker/page.tsx',
