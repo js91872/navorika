@@ -251,4 +251,79 @@ export const pdfToolPages: Record<string, ToolPageContent> = {
     relatedTools: [{ slug: 'extract-pdf-text', name: 'Extract PDF Text' }, { slug: 'pdf-page-size-checker', name: 'PDF Page Size Checker' }, { slug: 'split-pdf', name: 'Split PDF' }, { slug: 'compress-pdf', name: 'Compress PDF' }],
     relatedGuides: ['pdf-security-guide'],
   },
+  'compare-pdf': {
+    slug: 'compare-pdf',
+    name: 'Compare PDF Files Online Free – Side-by-Side Document Diff',
+    category: 'PDF Tools',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Compare two PDF files online for text and visual differences. Inspect word additions, removals, and changed pages side by side privately in your browser.',
+    longTailKeywords: [
+      'compare pdf files',
+      'compare pdf documents',
+      'compare pdf',
+      'how to compare pdf documents',
+      'file compare pdf',
+      'compare pdf tool',
+      'compare pdf file online',
+      'compare pdf side by side',
+      'compare pdf files for differences',
+    ],
+    intro: [
+      'Compare PDF Files Online Free is a client-side comparison utility that lets you inspect differences between two PDF versions without uploading files to an external server. Detect word-level additions, deletions, replacements, and visual layout shifts directly in your browser.',
+      privacy,
+      'Whether you are redlining contracts, verifying legal revisions, checking proof prints, or auditing academic drafts, this tool highlights exact changes across pages with inline text diffing, dual-column side-by-side comparison, and visual pixel heatmap overlays.',
+    ],
+    steps: [
+      'Upload the Original (baseline) PDF and Revised (comparison) PDF using the local file dropzones or click Load Sample PDFs to test.',
+      'Review the Comparison Summary showing overall text similarity percentage, words added, words removed, and page status counts.',
+      'Toggle between Visual Comparison (side-by-side, difference heatmap, or curtain slider) and Text Diff (inline redline or dual-column view).',
+      'Use the Next Change and Prev Change controls to navigate directly between modified, added, or removed pages.',
+      'Download a comprehensive TXT comparison report, export structured JSON audit data, or print the side-by-side report.',
+    ],
+    interpretation: [
+      'Text similarity percentage measures the proportion of unchanged words relative to total document vocabulary. A 100% score indicates identical wording.',
+      'Inline text redline highlights added words in green and removed words in red with strikethrough, allowing rapid review of modified clauses.',
+      'Visual pixel comparison renders each page to canvas and highlights shifted elements, modified margins, font substitutions, or graphic replacements with an adjustable sensitivity slider.',
+      'Differing page counts are clearly labeled with inserted or removed page indicators, ensuring added or deleted sections are instantly visible.',
+    ],
+    limitations: [
+      ...limits,
+      'Scanned image-only PDFs lack an extractable digital text layer; visual comparison highlights pixel differences, while word-level comparison requires OCR.',
+      'Complex multi-column formatting or rotated text streams may display extracted text in internal stream sequence rather than visual column order.',
+      'Very large documents with hundreds of pages and high-resolution visual scales can require significant browser memory.',
+    ],
+    faqs: [
+      {
+        question: 'How do I compare two PDF files online for differences?',
+        answer: 'Upload your baseline PDF in the Original box and your updated version in the Revised box. The tool parses both documents locally, highlights word-level additions and deletions, and offers visual pixel comparison with side-by-side, overlay, and swipe views.',
+      },
+      {
+        question: 'Are my PDF files uploaded or saved on a remote server?',
+        answer: 'No. Navorika performs 100% client-side document processing in your browser memory. No PDF pages, extracted text, or filenames are uploaded, logged, or transmitted over the network.',
+      },
+      {
+        question: 'Can this tool compare scanned PDF documents?',
+        answer: 'Yes, for visual comparison. If a PDF contains image-only scans without an embedded digital text layer, the visual comparison engine renders and highlights shifted pixels. However, word-level text diffing requires OCR, which is not bundled locally in this privacy-first client engine.',
+      },
+      {
+        question: 'How does the visual comparison sensitivity slider work?',
+        answer: 'The sensitivity slider adjusts the RGB color distance threshold used to detect changed pixels. Lower thresholds detect subtle anti-aliasing and font smoothing changes, while higher thresholds focus strictly on major shape, text, or layout changes.',
+      },
+      {
+        question: 'What happens if the two PDFs have different numbers of pages?',
+        answer: 'The tool compares all pages up to the maximum page count. Extra pages in the revised document are labeled as Added Pages (with 100% inserted words), while missing pages are labeled as Removed Pages (with 100% deleted words).',
+      },
+      {
+        question: 'Can I download an audit comparison report?',
+        answer: 'Yes. You can download a structured plain-text (.txt) audit report, export machine-readable JSON data, copy the summary to your clipboard, or print the comparison report directly from your browser.',
+      },
+    ],
+    relatedTools: [
+      { slug: 'pdf-word-counter', name: 'PDF Word Counter' },
+      { slug: 'extract-pdf-text', name: 'Extract PDF Text' },
+      { slug: 'pdf-page-size-checker', name: 'PDF Page Size Checker' },
+      { slug: 'merge-pdf', name: 'Merge PDF' },
+    ],
+    relatedGuides: ['pdf-security-guide', 'how-to-merge-pdf-files'],
+  },
 };

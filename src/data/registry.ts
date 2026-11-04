@@ -2167,6 +2167,25 @@ export const tools: RegisteredTool[] = ([
     heroDescription: 'Check PDF page dimensions, orientation and common paper sizes such as A4, A3, Letter and Legal.'
   },
   {
+    slug: 'compare-pdf',
+    title: 'Compare PDF Files Online Free',
+    description: 'Compare two PDF files online for word-level and visual differences side by side. Inspect added, removed, and modified pages locally without uploading files.',
+    category: 'pdf-tools',
+    keywords: [
+      'compare pdf files',
+      'compare pdf documents',
+      'compare pdf',
+      'how to compare pdf documents',
+      'file compare pdf',
+      'compare pdf tool',
+      'compare pdf file online',
+      'compare pdf side by side',
+      'compare pdf files for differences'
+    ],
+    heroTitle: 'Compare PDF Files Online Free',
+    heroDescription: 'Compare two PDF files online for word-level and visual differences side by side without uploading files to a server.'
+  },
+  {
     slug: 'battery-charge-time-calculator',
     title: 'Battery Charge Time Calculator',
     description: 'Calculate how long it takes to charge a battery from its capacity, charger current and charging efficiency.',

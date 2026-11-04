@@ -33,7 +33,7 @@ export const clusters: ToolCluster[] = [
   { id: 'speaker-audio', name: 'Speaker Audio Tools', description: 'Test phone speakers and explore audio troubleshooting with browser-based sounds.', category: 'everyday-calculators', toolSlugs: ['speaker-dust-cleaning-sound'] },
   { id: 'pdf-organize', name: 'Organize PDF Pages', description: 'Combine, separate, reorder, rotate, and extract pages in document workflows.', category: 'pdf-tools', toolSlugs: ['merge-pdf', 'split-pdf', 'reorder-pdf', 'rotate-pdf', 'delete-pdf-pages', 'extract-pdf-pages', 'interleave-pdf'] },
   { id: 'pdf-convert', name: 'PDF Conversion', description: 'Move content between PDF, image, and text formats.', category: 'pdf-tools', toolSlugs: ['jpg-to-pdf', 'webp-to-pdf', 'pdf-to-image', 'pdf-to-jpg', 'extract-pdf-text', 'pdf-word-counter', 'heic-to-pdf', 'markdown-to-pdf'] },
-  { id: 'pdf-edit', name: 'Edit and Prepare PDFs', description: 'Prepare page appearance, metadata, numbering, and reusable document output.', category: 'pdf-tools', toolSlugs: ['add-image-to-pdf', 'add-page-numbers', 'add-watermark', 'compress-pdf', 'crop-pdf', 'flatten-pdf', 'pdf-metadata-editor', 'pdf-bleed-trim-checker', 'pdf-page-size-checker'] },
+  { id: 'pdf-edit', name: 'Edit and Prepare PDFs', description: 'Prepare page appearance, metadata, numbering, and reusable document output.', category: 'pdf-tools', toolSlugs: ['add-image-to-pdf', 'add-page-numbers', 'add-watermark', 'compress-pdf', 'crop-pdf', 'flatten-pdf', 'pdf-metadata-editor', 'pdf-bleed-trim-checker', 'pdf-page-size-checker', 'compare-pdf'] },
   { id: 'pdf-security', name: 'PDF Signing and Security', description: 'Sign documents and manage document access where browser support is validated.', category: 'pdf-tools', toolSlugs: ['sign-pdf', 'protect-pdf', 'unlock-pdf'] },
 
   { id: 'image-convert', name: 'Image Format Conversion', description: 'Convert individual images or batches between common web and document formats.', category: 'image-tools', toolSlugs: ['batch-image-converter', 'convert-jpg-to-png', 'convert-jpg-to-webp', 'convert-png-to-jpg', 'convert-png-to-webp', 'convert-webp-to-jpg', 'heic-to-jpg', 'heic-to-png', 'image-converter', 'image-to-pdf', 'jpg-to-dxf', 'png-to-svg', 'svg-to-png', 'webp-to-png', 'jfif-to-png', 'webp-to-ico', 'avif-to-png', 'webp-to-gif', 'svg-to-ico'] },
@@ -174,8 +174,8 @@ export const toolkits: Toolkit[] = [
     categorySlugs: ['pdf-tools'],
     groups: [
       { name: 'Organize pages', description: 'Combine documents and put the required pages in the right order.', toolSlugs: ['merge-pdf', 'split-pdf', 'rotate-pdf', 'delete-pdf-pages', 'extract-pdf-pages', 'interleave-pdf'] },
-      { name: 'Prepare documents', description: 'Add visible details, edit metadata, flatten supported fields, and sign output.', toolSlugs: ['add-page-numbers', 'add-watermark', 'crop-pdf', 'pdf-metadata-editor', 'flatten-pdf', 'sign-pdf', 'pdf-word-counter'] },
-    ], guideSlugs: ['how-to-merge-pdf-files', 'pdf-security-guide'],
+      { name: 'Prepare documents', description: 'Add visible details, edit metadata, flatten supported fields, and sign output.', toolSlugs: ['add-page-numbers', 'add-watermark', 'crop-pdf', 'pdf-metadata-editor', 'flatten-pdf', 'sign-pdf', 'pdf-word-counter', 'compare-pdf'] },
+    ], guideSlugs: ['how-to-merge-pdf-files', 'pdf-security-guide', 'how-to-compare-pdf-files'],
   },
   {
     slug: 'fitness-and-body-calculators', name: 'Fitness and Body Calculators', seoTitle: 'Free Fitness and Body Calculators',
@@ -209,6 +209,7 @@ export const complementaryTools: Record<string, string[]> = {
   'xml-to-word-converter': ['word-to-xml-converter', 'markup-formatter', 'json-formatter'],
   'word-to-xml-converter': ['xml-to-word-converter', 'markup-formatter', 'extract-pdf-text'],
   'pdf-word-counter': ['extract-pdf-text', 'pdf-page-size-checker', 'split-pdf'],
+  'compare-pdf': ['pdf-word-counter', 'extract-pdf-text', 'pdf-page-size-checker', 'merge-pdf'],
   'concrete-calculator': ['cement-calculator', 'rebar-calculator', 'sand-calculator', 'gravel-calculator'],
   'cement-calculator': ['concrete-calculator', 'sand-calculator', 'gravel-calculator'],
   'flooring-calculator': ['tile-calculator', 'paint-calculator'],

@@ -131,6 +131,11 @@ export const guideSources: Record<string, GuideSource[]> = {
   'bmr-tdee-guide': [{ name: 'NIDDK — Body Weight Planner', url: 'https://www.niddk.nih.gov/bwp' }],
   'pdf-compression-guide': [pdfSpecification],
   'how-to-merge-pdf-files': [pdfSpecification],
+  'how-to-compare-pdf-files': [
+    pdfSpecification,
+    { name: 'Adobe Acrobat — Compare two versions of a PDF file', url: 'https://helpx.adobe.com/acrobat/using/compare-pdf-files.html' },
+    { name: 'PDF Association — PDF Text and Imaging Architecture', url: 'https://pdfa.org/' },
+  ],
   'image-compression-guide': [webImageFormats],
   'how-to-resize-images': [webImageFormats],
   'gst-calculation-guide': [{ name: 'Central Board of Indirect Taxes and Customs — GST', url: 'https://cbic-gst.gov.in/' }],
