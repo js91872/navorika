@@ -14,6 +14,7 @@ import { websiteAuditGuideContent } from './guideContentWebsiteAudit';
 import { fertilizerGuideContent } from './fertilizerGuideContent';
 
 import { icloudGuideContent } from './guideContentIcloud';
+import { pdfJpgGuideContent } from './guideContentPdfJpg';
 
 export interface GuideSection {
   title: string;
@@ -42,6 +43,7 @@ export interface GuideContent {
 }
 
 export const guideContent: Record<string, GuideContent> = {
+  ...pdfJpgGuideContent,
   ...claudeComparisonGuideContent,
   ...fertilizerGuideContent,
   ...macSpeakerGuideContent,
