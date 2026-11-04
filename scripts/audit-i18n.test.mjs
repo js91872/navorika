@@ -13,8 +13,6 @@ test('full-rollout inventory covers each registered tool, guide and English page
   assert.deepEqual(report.guides.map((row) => row.slug).sort(), guidesMetadata.map((row) => row.slug).sort());
   const contract = JSON.parse(readFileSync('scripts/english-route-contract.json', 'utf8'));
   const approvedNewRoutes = [
-    'tools/jpeg-to-jpg/page.tsx',
-    'tools/pdf-to-jpg-all-pages/page.tsx',
     'guides/can-chatgpt-make-videos/page.tsx',
     'guides/how-does-a-3d-printer-work/page.tsx',
     'guides/how-to-clean-phone-speaker/page.tsx',
@@ -25,8 +23,10 @@ test('full-rollout inventory covers each registered tool, guide and English page
     'tools/compare-pdf/page.tsx',
     'tools/exif-metadata-remover/page.tsx',
     'tools/icloud-storage-calculator/page.tsx',
+    'tools/jpeg-to-jpg/page.tsx',
     'tools/jpg-to-dxf/page.tsx',
     'tools/json-to-csv-converter/page.tsx',
+    'tools/pdf-to-jpg-all-pages/page.tsx',
     'tools/shopify-margin-calculator/page.tsx',
     'tools/speaker-dust-cleaning-sound/page.tsx',
   ];
