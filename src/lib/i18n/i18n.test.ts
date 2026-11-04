@@ -96,8 +96,6 @@ test('moving English routes into a route group preserves every existing public p
   const newRoutes = allRoutes.filter((route) => !paths.includes(route)).sort();
   // Explicitly approved public pages added after the original route contract.
   assert.deepEqual(newRoutes, [
-    'tools/jpeg-to-jpg/page.tsx',
-    'tools/pdf-to-jpg-all-pages/page.tsx',
     'guides/can-chatgpt-make-videos/page.tsx',
     'guides/how-does-a-3d-printer-work/page.tsx',
     'guides/how-to-clean-phone-speaker/page.tsx',
@@ -108,8 +106,10 @@ test('moving English routes into a route group preserves every existing public p
     'tools/compare-pdf/page.tsx',
     'tools/exif-metadata-remover/page.tsx',
     'tools/icloud-storage-calculator/page.tsx',
+    'tools/jpeg-to-jpg/page.tsx',
     'tools/jpg-to-dxf/page.tsx',
     'tools/json-to-csv-converter/page.tsx',
+    'tools/pdf-to-jpg-all-pages/page.tsx',
     'tools/shopify-margin-calculator/page.tsx',
     'tools/speaker-dust-cleaning-sound/page.tsx',
   ]);
