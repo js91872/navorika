@@ -38,6 +38,22 @@ const categoryImages: Record<GuideCategory, { src: string; caption: string }> = 
 
 const guideDefinitions: GuideDefinition[] = [
   {
+    slug: 'how-to-convert-pdf-to-jpg',
+    title: 'How to Convert PDF to JPG: One Page or All Pages',
+    description: 'Convert PDF pages to JPG online, export all pages as a ZIP, and choose the right image resolution and quality without uploading your document.',
+    category: 'PDF', publishedDate: 'November 2026', readTime: '12 min read', author: 'Navorika Team',
+    keywords: ['pdf to jpg', 'pdf to jpg converter', 'convert pdf to jpg', 'pdf to jpeg', 'pdf to jpg all pages', 'save pdf as jpg', 'pdf to jpg online', 'pdf to jpg high resolution'],
+    featuredImage: {src:'/images/guides/how-to-convert-pdf-to-jpg.svg',alt:'Original illustration of a PDF document turning into a JPG page image',caption:'Choose a single page or export each PDF page into a numbered JPG image.'}
+  },
+  {
+    slug: 'jpeg-vs-jpg',
+    title: 'JPEG vs JPG: Difference, Quality and How to Convert',
+    description: 'Are JPG and JPEG the same? Learn how to change JPEG to JPG without quality loss, when re-encoding matters, and why file extensions differ.',
+    category: 'Image', publishedDate: 'November 2026', readTime: '11 min read', author: 'Navorika Team',
+    keywords: ['jpeg to jpg', 'jpeg vs jpg', 'convert jpeg to jpg', 'jpg vs jpeg', 'is jpg the same as jpeg', 'jpeg to jpg without losing quality'],
+    featuredImage: {src:'/images/guides/jpeg-vs-jpg.svg',alt:'Original illustration comparing identical JPEG and JPG pictures',caption:'JPG and JPEG use the same image format; changing the extension need not change the pixels.'}
+  },
+  {
     slug: 'how-to-clear-icloud-storage',
     title: 'How to Clear iCloud Storage Safely: Step-by-Step Guide',
     description: 'Learn how to clear iCloud storage without losing photos. Step-by-step instructions for iPhone, iPad, and Mac to review storage categories and plan safer cleanup steps.',
