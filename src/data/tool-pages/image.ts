@@ -4,6 +4,17 @@ const privacy = 'The image is decoded and processed locally in your browser; it 
 const canvasLimits = ['Very large images can exceed browser memory or maximum canvas dimensions.', 'Browser decoding support varies by image format and device.', 'Canvas export normally removes original EXIF, camera, location, color-profile, and other file metadata.'];
 
 export const imageToolPages: Record<string, ToolPageContent> = {
+  'jpeg-to-jpg': {
+    slug:'jpeg-to-jpg',name:'JPEG to JPG Converter – No Quality Loss',category:'Image Tools',applicationCategory:'DesignApplication',
+    description:'Convert .jpeg to .jpg in your browser by changing only the extension, or optionally re-encode a JPEG with quality settings.',
+    longTailKeywords:['jpeg to jpg','jpeg to jpg converter','convert jpeg to jpg online','jpeg vs jpg','change jpeg extension to jpg'],
+    intro:['JPEG and JPG use the same image format. Select extension-only rename to preserve original image bytes, quality, and metadata.',privacy],
+    steps:['Select a JPEG image.','Choose extension-only rename or an optional JPEG re-encode.','Download the JPG and verify it opens in the target application.'],
+    interpretation:['Extension-only rename preserves every byte of the source file.','Re-encoding writes a new lossy JPEG and may strip camera metadata and ICC profiles.'],
+    limitations:['Renaming does not compress, enlarge, sharpen, or truly convert non-JPEG formats.','Some upload forms check file signatures and dimensions in addition to extensions.','Re-encoding a large photo may consume substantial device memory.'],
+    faqs:[{question:'Is JPG different from JPEG?',answer:'No. Both extensions represent the same JPEG image format.'},{question:'Does changing .jpeg to .jpg lose quality?',answer:'Not when only the extension changes; the file bytes are identical.'},{question:'Will the file size drop?',answer:'Not with rename-only. Re-encoding can change size and quality.'}],
+    relatedTools:[{slug:'compress-jpg',name:'Compress JPG'},{slug:'convert-jpg-to-png',name:'JPG to PNG'},{slug:'image-converter',name:'Image Converter'}],relatedGuides:['jpeg-vs-jpg','image-formats-guide'],
+  },
   'batch-image-converter': {
     slug: 'batch-image-converter', name: 'Batch Image Converter', category: 'Image Tools', applicationCategory: 'DesignApplication', description: 'Convert multiple browser-supported images to JPG, PNG, or WebP locally in one batch.', longTailKeywords: ['batch image converter online', 'convert multiple images to webp', 'batch png jpg converter', 'multiple image format converter'],
     intro: ['Batch Image Converter decodes each selected image with the browser, draws it to a canvas, and downloads a new JPG, PNG, or WebP file.', privacy],
