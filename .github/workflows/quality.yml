@@ -39,6 +39,12 @@ jobs:
       - name: Prevent new lint debt
         run: npm run lint:baseline
 
+      - name: Verify committed multilingual inventory is current
+        run: |
+          npm run i18n:audit:write
+          git diff -- docs/i18n-coverage.json
+          git diff --exit-code -- docs/i18n-coverage.json
+
       - name: Audit full multilingual coverage and shared localization support
         run: npm run test:i18n:audit
 
@@ -58,7 +64,7 @@ jobs:
         run: npm test
 
       - name: Check canonical URLs and processing disclosures
-        run: node --import tsx --test scripts/seo-canonical-routing.test.mjs scripts/seo-trust-disclosures.test.mjs scripts/seo-related-tools.test.mjs
+        run: node --import tsx --test scripts/seo-canonical-routing.test.mjs scripts/seo-trust-disclosures.test.mjs scripts/seo-related-tools.test.mjs scripts/seo-unix-time-accuracy.test.mjs scripts/seo-batch3-7-safeguards.test.mjs scripts/seo-image-quality.test.mjs
 
       - name: Build production application
         run: npm run build

@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Check, Copy, ShieldCheck } from 'lucide-react';
+import { quickUnixTimestamp } from '@/lib/time/quickUnixTimestamp';
 
 type DeveloperKind = 'regex' | 'timestamp' | 'gradient';
 type WebmasterKind = 'utm' | 'meta' | 'robots';
@@ -61,12 +62,7 @@ export function FocusedDeveloperTool({ kind }: { kind: DeveloperKind }) {
       return { matches: [], error: error instanceof Error ? error.message : 'Invalid regular expression.' };
     }
   }, [flags, pattern, testText]);
-  const timestampResult = useMemo(() => {
-    if (!/^-?\d+$/.test(timestamp.trim())) return 'Invalid timestamp';
-    const numeric = Number(timestamp);
-    const date = new Date(timestamp.replace('-', '').length > 10 ? numeric : numeric * 1000);
-    return Number.isNaN(date.getTime()) ? 'Invalid timestamp' : date.toLocaleString();
-  }, [timestamp]);
+  const timestampResult = useMemo(() => quickUnixTimestamp(timestamp), [timestamp]);
   const gradient = `background: linear-gradient(${angle}deg, ${color1}, ${color2});`;
 
   return <ToolShell title={copy.title} description={copy.description}>
@@ -77,7 +73,7 @@ export function FocusedDeveloperTool({ kind }: { kind: DeveloperKind }) {
       </div>
       <section aria-live="polite"><h2 className="text-sm font-bold uppercase text-emerald-600">Match results</h2>{regexResult.error ? <p className="mt-2 rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm font-bold text-red-600">{regexResult.error}</p> : <div className="mt-2 min-h-56 space-y-2 rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm dark:border-slate-800 dark:bg-slate-950">{regexResult.matches.length ? regexResult.matches.map((match, index) => <div key={`${match}-${index}`} className="rounded border border-emerald-500/20 bg-emerald-500/10 px-3 py-2 break-all">[{index}] {match}</div>) : <span className="text-slate-500">No matches found.</span>}</div>}</section>
     </div>}
-    {kind === 'timestamp' && <div className="grid items-center gap-8 md:grid-cols-2"><label className="text-sm font-bold">Unix timestamp (seconds or milliseconds)<input type="number" value={timestamp} onChange={(event) => setTimestamp(event.target.value)} className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-lg dark:border-slate-800 dark:bg-slate-950" /><button type="button" onClick={() => setTimestamp(Math.floor(Date.now() / 1000).toString())} className="mt-3 rounded-lg border border-slate-300 px-4 py-2 text-sm font-bold dark:border-slate-700">Use current time</button></label><section className="rounded-2xl border border-slate-200 bg-slate-50 p-8 text-center dark:border-slate-800 dark:bg-slate-950" aria-live="polite"><h2 className="text-xs font-bold uppercase text-slate-500">Local date and time</h2><p suppressHydrationWarning className="mt-3 text-2xl font-black">{timestampResult}</p></section></div>}
+    {kind === 'timestamp' && <div className="grid items-center gap-8 md:grid-cols-2"><label className="text-sm font-bold">Unix timestamp (seconds or milliseconds)<input type="number" value={timestamp} onChange={(event) => setTimestamp(event.target.value)} className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-lg dark:border-slate-800 dark:bg-slate-950" /><button type="button" onClick={() => setTimestamp(Math.floor(Date.now() / 1000).toString())} className="mt-3 rounded-lg border border-slate-300 px-4 py-2 text-sm font-bold dark:border-slate-700">Use current time</button></label><section className="rounded-2xl border border-slate-200 bg-slate-50 p-8 text-center dark:border-slate-800 dark:bg-slate-950" aria-live="polite"><h2 className="text-xs font-bold uppercase text-slate-500">Local date and time</h2><p suppressHydrationWarning className="mt-3 text-2xl font-black">{timestampResult?.local ?? 'Invalid timestamp'}</p><p className="mt-3 break-all text-xs text-slate-600 dark:text-slate-400">UTC: {timestampResult?.utc ?? '—'} · Interpreted as {timestampResult?.unit ?? 'unknown'}</p></section></div>}
     {kind === 'gradient' && <div className="grid gap-8 md:grid-cols-2"><div className="space-y-6"><div className="grid grid-cols-2 gap-4"><label className="text-sm font-bold">First color<input type="color" value={color1} onChange={(event) => setColor1(event.target.value)} className="mt-2 h-12 w-full" /></label><label className="text-sm font-bold">Second color<input type="color" value={color2} onChange={(event) => setColor2(event.target.value)} className="mt-2 h-12 w-full" /></label></div><label className="block text-sm font-bold">Angle: {angle}°<input type="range" min="0" max="360" value={angle} onChange={(event) => setAngle(Number(event.target.value))} className="mt-2 w-full accent-emerald-600" /></label><textarea readOnly value={gradient} className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm dark:border-slate-800 dark:bg-slate-950" /><CopyButton value={gradient} /></div><div className="min-h-72 rounded-2xl border border-slate-200 shadow-inner dark:border-slate-800" style={{ background: `linear-gradient(${angle}deg, ${color1}, ${color2})` }} /></div>}
   </ToolShell>;
 }

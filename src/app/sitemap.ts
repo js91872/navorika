@@ -29,8 +29,6 @@ const nonCanonicalToolSlugs = new Set([
   'pdf-to-jpg',
   'jpg-to-pdf',
   'webp-to-pdf',
-  'yaml-to-json-converter',
-  'json-to-yaml-converter',
   'epoch-time-converter',
 ]);
 
@@ -95,5 +93,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages: publicPageAlternates(`/${slug}`) },
     })),
   ]);
-  return [...englishPages, ...localizedPages];
+  // Preserve existing public URLs, but emit each only once. The two directional
+  // JSON/YAML converters are self-canonical and should remain discoverable.
+  const uniquePages = new Map<string, MetadataRoute.Sitemap[number]>();
+  for (const page of [...englishPages, ...localizedPages]) uniquePages.set(page.url, page);
+  return [...uniquePages.values()];
 }
