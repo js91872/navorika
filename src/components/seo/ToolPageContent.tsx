@@ -10,7 +10,6 @@ import { toolUx } from '@/data/toolUx';
 import { buildWorkflowItems } from '@/lib/toolWorkflow';
 
 export default function ToolPageContent({ tool, supplementalOnly = false }: { tool: ToolContent; supplementalOnly?: boolean }) {
-  const displayName = tool.name.split(' – ')[0].split(':')[0];
   const guides = tool.relatedGuides.flatMap((slug) => {
     const guide = guidesMetadata.find((item) => item.slug === slug);
     return guide ? [guide] : [];
@@ -51,7 +50,7 @@ export default function ToolPageContent({ tool, supplementalOnly = false }: { to
 
       {!supplementalOnly && <>
       <section>
-        <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">What is {displayName}?</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">About this tool</h2>
         <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
           {tool.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
@@ -59,7 +58,7 @@ export default function ToolPageContent({ tool, supplementalOnly = false }: { to
 
       {tool.formula && (
         <section>
-          <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">How {displayName} works</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">Calculation method and key details</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {tool.formula.map(({ title, body }) => (
               <div key={title} className="rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5 shadow-xs">
@@ -72,7 +71,7 @@ export default function ToolPageContent({ tool, supplementalOnly = false }: { to
       )}
 
       <section>
-        <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">How to use {displayName}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">Steps to use this tool</h2>
         <ol className="mt-4 grid gap-2.5">
           {tool.steps.map((step, index) => (
             <li key={step} className="flex gap-3.5 rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-3.5 text-xs sm:text-sm shadow-xs">
@@ -84,7 +83,7 @@ export default function ToolPageContent({ tool, supplementalOnly = false }: { to
       </section>
 
       <section>
-        <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">What the {displayName} result means</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">Understanding the results</h2>
         <div className="mt-3 space-y-2.5">
           {tool.interpretation.map((item) => (
             <p key={item} className="rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-3.5 text-xs sm:text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa] shadow-xs">{item}</p>
@@ -93,7 +92,7 @@ export default function ToolPageContent({ tool, supplementalOnly = false }: { to
       </section>
 
       <section className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-5">
-        <h2 className="text-base font-bold text-[#18181b] dark:text-white">{displayName} limitations</h2>
+        <h2 className="text-base font-bold text-[#18181b] dark:text-white">Limits and assumptions</h2>
         <ul className="mt-2.5 list-disc space-y-1.5 pl-5 text-xs sm:text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
           {tool.limitations.map((item) => <li key={item}>{item}</li>)}
         </ul>
