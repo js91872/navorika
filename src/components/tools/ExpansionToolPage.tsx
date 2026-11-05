@@ -44,23 +44,23 @@ export default function ExpansionToolPage({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Link
           href={`/categories/${category}`}
-          className="mb-6 inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] transition-colors"
+          className="mb-3 inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] transition-colors"
         >
           <ArrowLeft className="size-4" /> Back to {categoryName}
         </Link>
-        <header className="mb-8 max-w-4xl">
+        <header className="mb-4 max-w-4xl sm:mb-6">
           <p className="text-xs font-bold uppercase tracking-wider text-[#e5322d]">
             {eyebrow}
           </p>
-          <h1 className="mt-2 text-3xl sm:text-5xl font-black tracking-tight text-[#18181b] dark:text-white">
+          <h1 className="mt-1 text-2xl sm:text-4xl font-black tracking-tight text-[#18181b] dark:text-white">
             {title}
           </h1>
-          <p className="mt-3 text-base sm:text-lg leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
+          <p className="mt-2 line-clamp-2 text-sm leading-relaxed sm:line-clamp-none sm:text-base text-[#5b5b63] dark:text-[#a1a1aa]">
             {description}
           </p>
-          {slug && <PrivacyBadges slug={slug} className="mt-4" />}
         </header>
         {children}
+        {slug && <div className="mx-auto mt-5 max-w-5xl" aria-label="Tool privacy information"><PrivacyBadges slug={slug} /></div>}
       </div>
     </div>
   );
