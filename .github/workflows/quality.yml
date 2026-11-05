@@ -57,6 +57,9 @@ jobs:
       - name: Run complete unit test suite
         run: npm test
 
+      - name: Check canonical URLs and processing disclosures
+        run: node --test scripts/seo-canonical-routing.test.mjs scripts/seo-trust-disclosures.test.mjs
+
       - name: Build production application
         run: npm run build
 
