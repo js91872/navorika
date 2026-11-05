@@ -30,10 +30,11 @@ export default function ToolContent({
   stepByStep = [],
   relatedTools = []
 }: ToolContentProps) {
+  const distinctRelatedTools = [...new Set(relatedTools)].filter((toolSlug) => toolSlug !== slug);
   
   // If no SEO content, don't render anything
   const hasContent = intro || howItWorks || stepByStep.length > 0 || benefits.length > 0 || 
-                     useCases.length > 0 || tips.length > 0 || faq.length > 0 || relatedTools.length > 0;
+                     useCases.length > 0 || tips.length > 0 || faq.length > 0 || distinctRelatedTools.length > 0;
   
   if (!hasContent) {
     return null;
@@ -130,12 +131,12 @@ export default function ToolContent({
       )}
 
       {/* Related Tools */}
-      {relatedTools.length > 0 && (
+      {distinctRelatedTools.length > 0 && (
         <section>
           <h2 className="text-2xl font-bold mb-4">Related Tools</h2>
           <div className="flex flex-wrap gap-3">
-            {relatedTools.map((toolSlug) => {
-              const toolTitle = toolSlug.replace('-', ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+            {distinctRelatedTools.map((toolSlug) => {
+              const toolTitle = toolSlug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
               return (
                 <Link
                   key={toolSlug}
