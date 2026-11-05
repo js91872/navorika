@@ -143,7 +143,7 @@ const guideDefinitions: GuideDefinition[] = [
     description: 'Learn what the three numbers on a fertilizer bag mean, how N-P-K percentages are used, and how they change the amount of product needed.',
     category: 'Construction', publishedDate: 'October 2026', readTime: '11 min read', author: 'Navorika Team',
     keywords: ['fertilizer numbers explained', 'what do fertilizer numbers mean', 'N-P-K fertilizer numbers', 'what does 10-10-10 fertilizer mean', 'fertilizer calculator npk', 'fertilizer label numbers'],
-    featuredImage: { src: '/images/guides/fertilizer-calculator-guide.svg', alt: 'A fertilizer label with N-P-K percentages beside a calculator result', caption: 'The three label numbers list nitrogen, phosphate, and potash percentages in order.' },
+    featuredImage: { src: '/images/guides/fertilizer-npk-label-explained.svg', alt: 'A fertilizer label with N-P-K percentages beside a calculator result', caption: 'The three label numbers list nitrogen, phosphate, and potash percentages in order.' },
   },
   {
     slug: 'how-to-calculate-fertilizer-from-a-soil-test',
@@ -151,7 +151,7 @@ const guideDefinitions: GuideDefinition[] = [
     description: 'Use a soil-test nutrient rate and fertilizer label to calculate product weight per 1,000 square feet or acre without guessing an application rate.',
     category: 'Construction', publishedDate: 'October 2026', readTime: '12 min read', author: 'Navorika Team',
     keywords: ['fertilizer calculator based on soil test', 'how to calculate fertilizer from soil test', 'soil test fertilizer rate calculator', 'fertilizer application rate formula', 'fertilizer calculator per acre'],
-    featuredImage: { src: '/images/guides/fertilizer-calculator-guide.svg', alt: 'A fertilizer calculator and bag label used with a soil-test nutrient rate', caption: 'Start with the nutrient rate from the soil-test report, then calculate product weight.' },
+    featuredImage: { src: '/images/guides/fertilizer-soil-test-workflow.svg', alt: 'A fertilizer calculator and bag label used with a soil-test nutrient rate', caption: 'Start with the nutrient rate from the soil-test report, then calculate product weight.' },
   },
   {
     slug: 'how-to-convert-image-to-pdf-on-iphone',
@@ -760,7 +760,7 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   const isNewBatch = newBatchSlugs.has(guide.slug);
   return {
     ...guide,
-    datePublished: guide.slug === 'how-to-compare-pdf-files' ? '2026-11-04' : ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-01' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
+    datePublished: guide.slug === 'how-to-compare-pdf-files' ? '2026-11-04' : ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-01' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : (guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08')) : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
     dateModified: guide.slug === 'how-to-compare-pdf-files' ? '2026-11-04' : ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-02' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
