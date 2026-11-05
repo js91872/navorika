@@ -55,7 +55,7 @@ export default async function LocalizedToolPage({ params }: Props) {
       />
 
       {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[var(--muted-foreground)]">
+      <nav aria-label="Breadcrumb" className="mb-3 sm:mb-5 flex flex-wrap items-center gap-2 text-sm text-[var(--muted-foreground)]">
         <Link href={`/${locale}`} className="hover:text-[var(--foreground)] transition-colors">
           {d.ui.home}
         </Link>
@@ -68,11 +68,11 @@ export default async function LocalizedToolPage({ params }: Props) {
       </nav>
 
       {/* Tool Header */}
-      <div className="mb-8">
-        <h1 className="max-w-4xl text-3xl font-black tracking-tight text-[var(--foreground)] sm:text-4xl [overflow-wrap:anywhere]">
+      <div className="mb-5 sm:mb-7">
+        <h1 className="max-w-4xl text-2xl font-black tracking-tight text-[var(--foreground)] sm:text-4xl [overflow-wrap:anywhere]">
           {tool.title}
         </h1>
-        <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-[var(--muted-foreground)] [overflow-wrap:anywhere]">
+        <p className="mt-2 max-w-3xl text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)] [overflow-wrap:anywhere]">
           <BidiText text={tool.description} />
         </p>
 
