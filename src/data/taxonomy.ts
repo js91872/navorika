@@ -385,12 +385,18 @@ export function getRelatedTools(slug: string, limit = 6, explicit: string[] = []
   const current = tools.find((tool) => tool.slug === slug);
   if (!current) return [];
   const cluster = getClusterForTool(slug);
-  const candidates = [
+  const focused = [...new Set([
     ...explicit,
     ...(complementaryTools[slug] ?? []),
     ...(cluster?.toolSlugs ?? []),
-    ...tools.filter((tool) => tool.category === current.category).map((tool) => tool.slug),
-  ];
+  ])].filter((candidate) =>
+    candidate !== slug && !toolsUnderReview.has(candidate) && tools.some((tool) => tool.slug === candidate)
+  );
+  // Preserve a curated workflow when it has sufficient options. Broad
+  // category fallbacks can otherwise surface unrelated developer utilities.
+  const candidates = focused.length >= 3
+    ? focused
+    : [...focused, ...tools.filter((tool) => tool.category === current.category).map((tool) => tool.slug)];
   return [...new Set(candidates)]
     .filter((candidate) => candidate !== slug && !toolsUnderReview.has(candidate))
     .flatMap((candidate) => {
