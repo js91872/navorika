@@ -95,5 +95,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]);
   // Preserve existing public URLs, but emit each only once. The two directional
   // JSON/YAML converters are self-canonical and should remain discoverable.
-  return [...new Map([...englishPages, ...localizedPages].map(page => [page.url, page])).values()];
+  const uniquePages = new Map<string, MetadataRoute.Sitemap[number]>();
+  for (const page of [...englishPages, ...localizedPages]) uniquePages.set(page.url, page);
+  return [...uniquePages.values()];
 }
