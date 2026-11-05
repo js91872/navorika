@@ -58,9 +58,10 @@ export default function ExpansionToolPage({
           <p className="mt-3 text-base sm:text-lg leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
             {description}
           </p>
-          {slug && <PrivacyBadges slug={slug} className="mt-4" />}
+          
         </header>
-        {children}
+        <div data-tool-interaction>{children}</div>
+        {slug && <div className="mt-6 border-t border-[var(--border)] pt-4" aria-label="Tool capabilities"><PrivacyBadges slug={slug} /></div>}
       </div>
     </div>
   );
