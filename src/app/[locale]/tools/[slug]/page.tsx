@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Shield } from 'lucide-react';
+import { getToolCapabilities } from '@/data/toolUx';
 import LocalizedTools from '@/components/i18n/LocalizedTools';
 import BidiText from '@/components/i18n/BidiText';
 import { getDictionary } from '@/lib/i18n/dictionaries';
@@ -82,13 +83,12 @@ export default async function LocalizedToolPage({ params }: Props) {
       {/* Main Tool Interactive Component */}
       <LocalizedTools key={`${locale}/${slug}`} locale={locale} slug={slug} dictionary={d} />
 
-      <div className="mt-6 max-w-3xl" aria-label="Tool processing information">
-        {/* Privacy Trust Banner */}
-        <div className="my-0 max-w-3xl rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-xs sm:text-sm leading-relaxed text-[var(--foreground)] flex items-center gap-3">
-          <Shield className="h-5 w-5 text-emerald-500 shrink-0" />
+      {getToolCapabilities(slug).processedLocally && (
+        <div className="mt-4 max-w-3xl rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3 text-xs sm:text-sm leading-relaxed text-[var(--foreground)] flex items-center gap-2" aria-label="Tool processing information">
+          <Shield className="h-4 w-4 text-emerald-600 shrink-0" aria-hidden="true" />
           <span>{d.ui.local}</span>
         </div>
-      </div>
+      )}
 
       {/* Educational & Usage Details */}
       <div className="mt-12 grid gap-6 md:grid-cols-2">
