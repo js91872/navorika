@@ -207,6 +207,9 @@ export default function TargetCompressionTool({
             if (f) handleFileSelect(f);
           }}
           onClick={() => fileInputRef.current?.click()}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInputRef.current?.click(); } }}
+          role="button"
+          tabIndex={0}
           className="group relative cursor-pointer rounded-2xl border-2 border-dashed border-[var(--border)] p-10 text-center transition-colors hover:border-indigo-500 hover:bg-indigo-50/20 dark:hover:bg-indigo-950/20"
         >
           <input
@@ -297,7 +300,7 @@ export default function TargetCompressionTool({
                       name="pngMode"
                       value="preserve-png"
                       checked={pngMode === 'preserve-png'}
-                      onChange={() => setPngMode('preserve-png')}
+                      onChange={() => { setPngMode('preserve-png'); setResult(null); }}
                       className="sr-only"
                     />
                     <div className="font-bold">A. Preserve PNG Format</div>
@@ -318,7 +321,7 @@ export default function TargetCompressionTool({
                       name="pngMode"
                       value="format-shift"
                       checked={pngMode === 'format-shift'}
-                      onChange={() => setPngMode('format-shift')}
+                      onChange={() => { setPngMode('format-shift'); setResult(null); }}
                       className="sr-only"
                     />
                     <div className="font-bold">B. Smaller File (WebP / JPG)</div>
@@ -333,7 +336,7 @@ export default function TargetCompressionTool({
                     <span className="text-[var(--muted-foreground)]">Convert PNG to:</span>
                     <select
                       value={pngShiftFormat}
-                      onChange={(e) => setPngShiftFormat(e.target.value as 'image/webp' | 'image/jpeg')}
+                      onChange={(e) => { setPngShiftFormat(e.target.value as 'image/webp' | 'image/jpeg'); setResult(null); }}
                       className="rounded-lg border border-[var(--border)] bg-[var(--card)] px-2.5 py-1 text-xs font-medium"
                     >
                       <option value="image/webp">WebP (Preserves transparency)</option>
@@ -353,7 +356,7 @@ export default function TargetCompressionTool({
                     <button
                       key={fmt}
                       type="button"
-                      onClick={() => setOutputFormat(fmt)}
+                      onClick={() => { setOutputFormat(fmt); setResult(null); }}
                       className={`px-3 py-1 rounded-md font-semibold transition-colors ${
                         outputFormat === fmt
                           ? 'bg-indigo-600 text-white'
@@ -386,7 +389,7 @@ export default function TargetCompressionTool({
                 id="preserve-dims"
                 type="checkbox"
                 checked={preserveDims}
-                onChange={(e) => setPreserveDims(e.target.checked)}
+                onChange={(e) => { setPreserveDims(e.target.checked); setResult(null); }}
                 className="size-4 rounded border-[var(--border)] text-indigo-600 focus:ring-indigo-500"
               />
             </div>
