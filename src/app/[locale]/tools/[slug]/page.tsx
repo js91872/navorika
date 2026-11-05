@@ -76,15 +76,19 @@ export default async function LocalizedToolPage({ params }: Props) {
           <BidiText text={tool.description} />
         </p>
 
-        {/* Privacy Trust Banner */}
-        <div className="my-6 max-w-3xl rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-xs sm:text-sm leading-relaxed text-[var(--foreground)] flex items-center gap-3">
-          <Shield className="h-5 w-5 text-emerald-500 shrink-0" />
-          <span>{d.ui.local}</span>
-        </div>
+
       </div>
 
       {/* Main Tool Interactive Component */}
       <LocalizedTools key={`${locale}/${slug}`} locale={locale} slug={slug} dictionary={d} />
+
+      <div className="mt-6 max-w-3xl" aria-label="Tool processing information">
+        {/* Privacy Trust Banner */}
+        <div className="my-0 max-w-3xl rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-xs sm:text-sm leading-relaxed text-[var(--foreground)] flex items-center gap-3">
+          <Shield className="h-5 w-5 text-emerald-500 shrink-0" />
+          <span>{d.ui.local}</span>
+        </div>
+      </div>
 
       {/* Educational & Usage Details */}
       <div className="mt-12 grid gap-6 md:grid-cols-2">
