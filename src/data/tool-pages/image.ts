@@ -909,7 +909,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'Download your optimized 20 KB image immediately.',
     ],
     interpretation: [
-      'A 20 KB limit is used by some application forms and signature-upload fields. Always check the specific portal's stated byte limit, dimensions, and file-format requirements.',
+      'A 20 KB limit is used by some application forms and signature-upload fields. Always check the specific portal byte limit, dimensions, and file-format requirements.',
       'When an image is multiple megabytes, reaching 20 KB requires both lossy encoding and proportional dimensional scaling.',
     ],
     limitations: [
@@ -950,7 +950,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'Choose a JPG, PNG, or WebP portrait or ID scan.',
       'Review the 50 KB target preset and click Compress.',
       'Our binary search engine determines the optimal compression quality under 50 KB.',
-      'Download the result after verifying the achieved size, dimensions, and clarity against the destination form's requirements.',
+      'Download the result after verifying the achieved size, dimensions, and clarity against the destination form requirements.',
     ],
     interpretation: [
       'File-size rules vary by portal and country. A 50 KB target helps only when the specific application permits that size and the resulting pixel dimensions.',
@@ -998,7 +998,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     ],
     interpretation: [
       'A 100 KB file budget can be useful for thumbnails and upload forms, but its effect on visual detail depends on dimensions, format, and image complexity.',
-      'Smaller files generally transfer faster, but actual loading depends on the user's connection, page design, and other assets.',
+      'Smaller files generally transfer faster, but actual loading depends on the network connection, page design, and other assets.',
     ],
     limitations: [
       'PNG images with high color variance may require dimensional downscaling or WebP conversion to reach 100 KB.',
