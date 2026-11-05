@@ -6,9 +6,11 @@ const src = readFileSync('src/components/tools/image/TargetCompressionTool.tsx',
 const imageDocs = readFileSync('src/data/tool-pages/image.ts', 'utf8');
 
 test('changing compression settings cannot leave an old result falsely marked compliant', () => {
-  for (const setting of ['setPngMode', 'setPngShiftFormat', 'setOutputFormat', 'setPreserveDims']) {
-    assert.match(src, new RegExp(setting + '\\\\([^;]+; setResult\\\\\\(null\\\\\\);'), setting);
-  }
+  assert.ok(src.includes("setPngMode('preserve-png'); setResult(null);"));
+  assert.ok(src.includes("setPngMode('format-shift'); setResult(null);"));
+  assert.ok(src.includes("setPngShiftFormat(e.target.value as 'image/webp' | 'image/jpeg'); setResult(null);"));
+  assert.ok(src.includes("setOutputFormat(fmt); setResult(null);"));
+  assert.ok(src.includes("setPreserveDims(e.target.checked); setResult(null);"));
   assert.match(src, /result\.targetMet/);
 });
 
