@@ -509,7 +509,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
       },
       {
         question: 'Which time zone is used for upcoming run times?',
-        answer: 'The browser device’s local time zone.',
+        answer: 'The page displays both the device’s local time and the corresponding UTC date in ISO 8601 format.',
       },
       {
         question: 'Does Navorika execute the cron job?',
@@ -683,7 +683,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
   },
   'unix-timestamp-converter': {
     slug: 'unix-timestamp-converter', name: 'Unix Timestamp Converter', category: 'Developer Tools', applicationCategory: 'DeveloperApplication', description: 'Convert Unix seconds or milliseconds to a date in the browser’s local time zone.', longTailKeywords: ['unix timestamp converter', 'epoch time to date', 'timestamp seconds milliseconds converter', 'unix time local date'],
-    intro: ['This converter interprets inputs up to ten digits as seconds and longer inputs as milliseconds, then displays the result in the browser locale and time zone.', local], steps: ['Enter an integer Unix timestamp in seconds or milliseconds.', 'Review the converted local date and time.', 'Use the current-time button when you need a fresh seconds value.'], interpretation: ['Displayed formatting and time zone come from the current browser device.', 'The conversion does not change the underlying instant represented by the timestamp.'], limitations: ['The digit-length heuristic can misclassify unusual historical or far-future values.', 'Device time-zone and locale settings determine the display.'], faqs: [{ question: 'Are milliseconds supported?', answer: 'Yes. Inputs longer than ten digits are treated as milliseconds.' }, { question: 'Which time zone is used?', answer: 'The browser device’s local time zone.' }, { question: 'Is the timestamp uploaded?', answer: 'No.' }], relatedTools: [{ slug: 'developer-utils', name: 'Developer Utilities Hub' }, { slug: 'regex-tester', name: 'Regex Tester' }, { slug: 'css-gradient-generator', name: 'CSS Gradient Generator' }], relatedGuides: [],
+    intro: ['This quick converter interprets values of up to 12 digits as seconds and 13-digit values as milliseconds. It shows local time and ISO 8601 UTC. For ambiguous timestamps, use the advanced epoch converter with explicit units.', local], steps: ['Enter an integer Unix timestamp in seconds or milliseconds.', 'Review the converted local date and time.', 'Use the current-time button when you need a fresh seconds value.'], interpretation: ['Displayed formatting and time zone come from the current browser device.', 'The conversion does not change the underlying instant represented by the timestamp.'], limitations: ['Automatic unit detection cannot resolve ambiguous timestamps. Use the advanced epoch converter if you know whether the value is seconds or milliseconds.', 'Device time-zone and locale settings determine the display.'], faqs: [{ question: 'Are milliseconds supported?', answer: 'Yes. Values containing at least 13 digits, ignoring a negative sign, are interpreted as milliseconds. Use the advanced converter for unusual values.' }, { question: 'Which time zone is used?', answer: 'The browser device’s local time zone.' }, { question: 'Is the timestamp uploaded?', answer: 'No.' }], relatedTools: [{ slug: 'epoch-time-converter', name: 'Advanced Epoch Time Converter' }, { slug: 'cron-next-run-calculator', name: 'Cron Next Run Calculator' }, { slug: 'developer-utils', name: 'Developer Utilities Hub' }], relatedGuides: [],
   },
   'css-gradient-generator': {
     slug: 'css-gradient-generator', name: 'CSS Gradient Generator', category: 'Developer Tools', applicationCategory: 'DeveloperApplication', description: 'Build and preview a two-color CSS linear gradient with a selectable angle.', longTailKeywords: ['css gradient generator', 'linear gradient css generator', 'two color gradient maker', 'css background gradient'],
@@ -1771,22 +1771,22 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     ],
     interpretation: [
       'UUID v4 provides 122 bits of cryptographic entropy, making collisions virtually impossible.',
-      'UUID v7 packs a 48-bit millisecond timestamp in the high bits, preventing index fragmentation in B-tree database indexes.',
+      'UUID v7 includes a 48-bit millisecond timestamp in the leading bits; this generally improves insertion locality in time-ordered database indexes compared with random v4 IDs.',
     ],
     limitations: [
       'UUID generation relies on the client system entropy pool via the Web Crypto API.',
-      'Timestamp extraction is applicable only to time-based UUID standards (v1, v6, v7).',
+      'This tool extracts creation time from UUID v7; other versions do not expose a supported timestamp in this interface.',
     ],
     faqs: [
-      { question: 'Why choose UUID v7 over UUID v4?', answer: 'UUID v7 identifiers are monotonically ordered by creation timestamp, which drastically improves database indexing performance and clustering compared to random UUID v4.' },
+      { question: 'Why choose UUID v7 over UUID v4?', answer: 'UUID v7 groups IDs by creation millisecond, which can improve database index locality. Identifiers generated within the same millisecond are not necessarily strictly monotonic.' },
       { question: 'Are generated UUIDs cryptographically secure?', answer: 'Yes. All random bits are produced by the browser Web Crypto API (crypto.getRandomValues).' },
       { question: 'Can I generate UUIDs without hyphens?', answer: 'Yes. Select compact formatting to emit 32-character hexadecimal strings without dashes.' },
     ],
     relatedTools: [
-      { slug: 'mac-address-generator', name: 'MAC Address Generator' },
-      { slug: 'base64-encoder', name: 'Base64 Encoder & Decoder' },
-      { slug: 'url-encoder-decoder', name: 'URL Encoder & Decoder' },
+      { slug: 'uuid-generator', name: 'Bulk UUID Generator' },
       { slug: 'unix-timestamp-converter', name: 'Unix Timestamp Converter' },
+      { slug: 'ulid-generator', name: 'ULID Generator' },
+      { slug: 'base64-encoder', name: 'Base64 Encoder & Decoder' },
     ],
     relatedGuides: [],
   },
