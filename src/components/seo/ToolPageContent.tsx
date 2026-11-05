@@ -10,7 +10,7 @@ import { toolUx } from '@/data/toolUx';
 import { buildWorkflowItems } from '@/lib/toolWorkflow';
 
 export default function ToolPageContent({ tool, supplementalOnly = false }: { tool: ToolContent; supplementalOnly?: boolean }) {
-  const guides = tool.relatedGuides.flatMap((slug) => {
+  const guides = [...new Set(tool.relatedGuides)].flatMap((slug) => {
     const guide = guidesMetadata.find((item) => item.slug === slug);
     return guide ? [guide] : [];
   });
@@ -24,7 +24,7 @@ export default function ToolPageContent({ tool, supplementalOnly = false }: { to
   );
   const workflowSlugs = new Set(useWithTools.map(({ slug }) => slug));
   const relatedTools = getRelatedTools(tool.slug, 10, tool.relatedTools.map(({ slug }) => slug))
-    .filter(({ slug }) => !workflowSlugs.has(slug))
+    .filter(({ slug }) => slug !== tool.slug && !workflowSlugs.has(slug) && !toolsUnderReview.has(slug))
     .slice(0, 6);
 
   return (
