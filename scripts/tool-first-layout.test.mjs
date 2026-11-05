@@ -40,7 +40,7 @@ test('localized CorelDRAW input and conversion come before notices in all three 
   for (const [i, part] of parts.entries()) {
     before(part, '<LocalizedDropzone', i === 2 ? '<span>{ui.privacyNotice}</span>' : '<span>{ui.localPrivacyNotice}</span>', 'localized CorelDRAW ' + i);
   }
-  before(parts[2], '{ui.convertBtn}', '{ui.nativeNoticeTitle}', 'localized native CDR disclosure');
+  before(parts[2], 'ui.convertBtn', '{ui.nativeNoticeTitle}', 'localized native CDR disclosure');
 });
 
 test('STEP 3D PDF and media tools show upload and primary action before long privacy notices', () => {
