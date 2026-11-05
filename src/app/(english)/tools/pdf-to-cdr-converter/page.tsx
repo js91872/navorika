@@ -12,7 +12,9 @@ export default function Page() {
       title="PDF to CDR Converter"
       description="Convert PDF to CDR by preparing a CorelDRAW-ready PDF, SVG or EPS file. Import the result into CorelDRAW, check text and vector artwork, then use Save As to create a native CDR file."
     >
-      {/* Above-the-fold workflow helper bar */}
+      <CorelServerTool config={corelServerConfigs.pdf} />
+
+      {/* Related CorelDRAW tools and guide */}
       <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 text-xs text-[var(--muted-foreground)] shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 font-medium text-[var(--foreground)]">
@@ -54,9 +56,8 @@ export default function Page() {
         </div>
       </div>
 
-      <CorelServerTool config={corelServerConfigs.pdf} />
 
-      {/* Compact Above-the-Fold Workflow Strip */}
+      {/* Compact Workflow Strip */}
       <div className="mx-auto mt-6 max-w-5xl rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 text-center text-xs text-[var(--muted-foreground)]">
         <div className="flex flex-wrap items-center justify-center gap-1.5 font-medium text-[var(--foreground)] sm:gap-2">
           <span>PDF</span>
