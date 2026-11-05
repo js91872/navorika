@@ -1,11 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
-import sitemap from '../src/app/sitemap.ts';
+import sitemapModule from '../src/app/sitemap.ts';
 import { tools } from '../src/data/registry.ts';
 import { guidesMetadata } from '../src/lib/guidesMetadata.ts';
 
 const snapshot = JSON.parse(readFileSync('docs/seo-tool-route-baseline.json', 'utf8'));
+// tsx may expose a CommonJS-wrapped default for Next.js route metadata modules.
+const sitemap = typeof sitemapModule === 'function' ? sitemapModule : sitemapModule.default;
 const urls = sitemap().map((entry) => entry.url);
 const BASE = 'https://navorika.com';
 
