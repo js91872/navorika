@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import test from 'node:test';
 
 const read = path => readFileSync(new URL('../'+path,import.meta.url),'utf8');
@@ -26,6 +26,20 @@ test('fertilizer guide heroes are distinct and their assets are committed', () =
   });
   assert.equal(new Set(sources).size,3);
   for (const file of sources) assert.ok(read('public'+file).includes('<svg'));
+});
+
+test('every published guide has a unique local featured image', () => {
+  const metadata = read('src/lib/guidesMetadata.ts');
+  const positions = [...metadata.matchAll(/\bslug: '([^']+)'/g)];
+  assert.equal(positions.length, 67);
+  const imagePaths = positions.map((entry, index) => {
+    const section = metadata.slice(entry.index, positions[index + 1]?.index ?? metadata.length);
+    const image = section.match(/featuredImage:\s*\{\s*src:\s*['"]([^'"]+)['"]/);
+    assert.ok(image, `Missing feature image for ${entry[1]}`);
+    assert.ok(existsSync(new URL('../public' + image[1], import.meta.url)), `Missing image asset: ${image[1]}`);
+    return image[1];
+  });
+  assert.equal(new Set(imagePaths).size, imagePaths.length, 'Guide hero images must not repeat');
 });
 
 test('guide publication date does not exceed modified date for website audit', () => {
