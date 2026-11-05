@@ -89,7 +89,7 @@ export default function PrivacyPage() {
     {
       icon: <Cookie className="h-6 w-6 text-indigo-500" />,
       title: 'Advertising and Cookies',
-      content: 'Navorika may use Google AdSense to support our free tools once advertising is approved and enabled. Advertising cookies and personalization depend on the applicable consent choices and whether ads are currently being served:',
+      content: 'We may use advertising services such as Google AdSense. Advertising cookies and personalization depend on whether ads are enabled, your consent choices, and applicable law:',
       list: [
         'Google AdSense: If ads are enabled, Google and other advertising vendors may use cookies or similar technologies subject to applicable consent requirements',
         'Personalized Advertising: If enabled and permitted by your choices and applicable law, ads may be tailored based on activity on this or other websites',
