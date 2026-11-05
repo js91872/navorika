@@ -89,10 +89,10 @@ export default function PrivacyPage() {
     {
       icon: <Cookie className="h-6 w-6 text-indigo-500" />,
       title: 'Advertising and Cookies',
-      content: 'Navorika partners with third-party advertising networks to support our free tools:',
+      content: 'We may use advertising services such as Google AdSense. Advertising cookies and personalization depend on whether ads are enabled, your consent choices, and applicable law:',
       list: [
-        'Google AdSense: Third-party vendors, including Google, use cookies to serve ads based on a user’s prior visits to this website or other websites on the Internet',
-        'Personalized Advertising: Google’s use of advertising cookies enables it and its partners to serve ads to users based on their visits to our site and/or other sites across the web',
+        'Google AdSense: If ads are enabled, Google and other advertising vendors may use cookies or similar technologies subject to applicable consent requirements',
+        'Personalized Advertising: If enabled and permitted by your choices and applicable law, ads may be tailored based on activity on this or other websites',
         'Opt-Out Choices: You may opt out of personalized advertising by visiting Google Ads Settings (https://www.google.com/settings/ads) or through third-party opt-out services such as www.aboutads.info/choices/',
         'Analytics: Aggregated, anonymized traffic analytics help us understand site usage and improve tool performance without identifying individual users',
         'Local Storage: Browser localStorage is used strictly to remember your preferences (such as light or dark display mode) and does not contain personal identifying information',

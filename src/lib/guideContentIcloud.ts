@@ -208,10 +208,10 @@ Maintaining Apple\'s free 5 GB tier is entirely feasible if you adopt a hybrid d
 2. **Back up your iPhone locally to a computer**: Instead of backing up your phone to iCloud, plug your iPhone into a Mac (using Finder) or a Windows PC (using Apple Devices or iTunes) once every two to four weeks. Local computer backups are 100% free, completely private, and restore significantly faster than cloud backups over Wi-Fi.
 3. **Use iCloud purely for lightweight sync**: Allow iCloud to sync lightweight databases: Contacts, Calendars, Notes, Reminders, Passwords/Keychain, and Safari Bookmarks. These core databases typically consume less than 1.5 GB combined across an entire lifetime of use.
 
-If you follow this hybrid discipline, you will never need to pay Apple a single dollar for cloud storage.
+These habits may help you stay within the free tier, depending on your backup and syncing needs. If you exceed 5 GB, you may need additional storage or another reliable backup arrangement.
 
 ### When paying for iCloud+ ($0.99/month for 50 GB) is justified
-For the vast majority of non-technical users, Apple\'s entry-level **50 GB iCloud+ plan** for **$0.99 per month** ($11.88 per year) represents extraordinary practical value.
+For people who value automatic cloud backups, Apple\'s entry-level **50 GB iCloud+ plan** for **$0.99 per month** ($11.88 per year) represents extraordinary practical value.
 - At $0.99/month, you gain enough headroom to back up a standard iPhone camera roll, maintain daily automated cloud backups, sync all iMessage threads, and protect your device against theft, loss, or liquid damage.
 - You also unlock premium iCloud+ privacy features: **iCloud Private Relay** (which encrypts Safari web browsing traffic similar to a VPN), **Hide My Email** (which generates unique, random email addresses to shield your personal inbox from spam), and custom email domain support.
 - If you find yourself spending more than 20 minutes every month manually pruning files, deleting text attachments, and stressing over failed backup notifications, spending $0.99 per month is the most cost-effective convenience trade-off in consumer technology.
@@ -519,7 +519,7 @@ By systematically identifying the specific technical mechanism responsible for y
       {
         question: 'Can I clear iCloud storage full without buying more storage?',
         answer:
-          'Yes. You can easily stay on the free 5 GB plan by emptying the Recently Deleted album, deleting obsolete backups from old iPhones, cleaning large video attachments in Messages, and disabling cloud backup for bloated individual apps. You can also back up your iPhone for free to a Mac or Windows PC using Finder or the Apple Devices app.',
+          'Possibly, depending on your actual storage needs. You may be able to stay on the free 5 GB plan by emptying the Recently Deleted album, deleting obsolete backups from old iPhones, cleaning large video attachments in Messages, and disabling cloud backup for bloated individual apps. You can also back up your iPhone for free to a Mac or Windows PC using Finder or the Apple Devices app.',
       },
       {
         question: 'Why is my iCloud backup so large?',

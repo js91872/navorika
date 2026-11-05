@@ -1397,10 +1397,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Advertising and Cookies",
-        "content": "Navorika partners with third-party advertising networks to support our free tools:",
+        "content": "We may use advertising services such as Google AdSense.",
         "points": [
-          "Google AdSense: Third-party vendors, including Google, use cookies to serve ads based on a user’s prior visits to this website or other websites on the Internet",
-          "Personalized Advertising: Google’s use of advertising cookies enables it and its partners to serve ads to users based on their visits to our site and/or other sites across the web",
+          "If advertising is enabled, third-party vendors such as Google may use cookies or similar technologies, subject to applicable consent requirements.",
+          "If personalized advertising is enabled and permitted, ads may be tailored to your activity and consent choices.",
           "Opt-Out Choices: You may opt out of personalized advertising by visiting Google Ads Settings (https://www.google.com/settings/ads) or through third-party opt-out services such as www.aboutads.info/choices/",
           "Analytics: Aggregated, anonymized traffic analytics help us understand site usage and improve tool performance without identifying individual users",
           "Local Storage: Browser localStorage is used strictly to remember your preferences (such as light or dark display mode) and does not contain personal identifying information"
@@ -1467,10 +1467,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Publicité, témoins (cookies) et stockage local",
-        "content": "Navorika collabore avec des régies publicitaires partenaires pour maintenir la gratuité de l'ensemble de ses outils :",
+        "content": "Nous pouvons utiliser des services publicitaires tels que Google AdSense.",
         "points": [
-          "Google AdSense : des fournisseurs tiers, dont Google, emploient des cookies pour diffuser des annonces publicitaires adaptées selon les visites antérieures des internautes sur ce site ou d'autres sites web",
-          "Publicité personnalisée : l'utilisation de témoins publicitaires permet à Google et à ses partenaires de proposer des annonces ciblées selon la navigation effectuée sur notre plateforme et sur le réseau internet",
+          "Si la publicité est activée, des fournisseurs tiers comme Google peuvent utiliser des cookies ou technologies similaires, sous réserve des règles de consentement applicables.",
+          "Si la publicité personnalisée est activée et autorisée, les annonces peuvent dépendre de votre activité et de vos choix de consentement.",
           "Options de désactivation (Opt-Out) : vous pouvez désactiver les annonces personnalisées dans les paramètres Google Ads (https://www.google.com/settings/ads) ou par le biais de plateformes d'exclusion sectorielles telles que www.aboutads.info/choices/",
           "Outils d'analyse d'audience : des statistiques globales et anonymisées nous aident à appréhender la fréquentation globale et à perfectionner la fiabilité technique, sans identifier d'utilisateurs particuliers",
           "Stockage local (LocalStorage) : le stockage local de votre navigateur sert exclusivement à conserver vos préférences d'interface (mode clair ou sombre) et ne contient aucune information personnelle nominative"
@@ -1537,10 +1537,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Pubblicità, cookie e memorizzazione locale",
-        "content": "Navorika collabora con circuiti pubblicitari terzi per sostenere la gratuità e l'accessibilità dei propri strumenti:",
+        "content": "Potremmo utilizzare servizi pubblicitari come Google AdSense.",
         "points": [
-          "Google AdSense: fornitori terzi, tra cui Google, utilizzano cookie per pubblicare annunci basati sulle precedenti visite dell'utente su questo o su altri siti web",
-          "Pubblicità personalizzata: l'uso dei cookie pubblicitari consente a Google e ai suoi partner di mostrare annunci pertinenti in base alla navigazione sui nostri contenuti e sul web",
+          "Se la pubblicità è attiva, fornitori terzi come Google possono utilizzare cookie o tecnologie simili, nel rispetto dei requisiti di consenso applicabili.",
+          "Se la pubblicità personalizzata è attiva e consentita, gli annunci possono dipendere dalle tue attività e preferenze di consenso.",
           "Disattivazione (Opt-Out): puoi disattivare la personalizzazione degli annunci visitando le Impostazioni annunci di Google (https://www.google.com/settings/ads) o mediante portali di settore come www.aboutads.info/choices/",
           "Dati statistici (Analytics): utilizziamo metriche aggregate e anonime per monitorare l'efficienza della piattaforma e il carico dei server senza identificare i singoli utenti",
           "Archiviazione locale (LocalStorage): la memoria localStorage del browser viene impiegata esclusivamente per memorizzare le preferenze dell'interfaccia (come il tema chiaro o scuro) e non contiene dati identificativi"
@@ -1607,10 +1607,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Publicidade, cookies e armazenamento local",
-        "content": "A Navorika colabora com redes de publicidade de terceiros para garantir a gratuitidade de todas as ferramentas:",
+        "content": "Podemos utilizar serviços de publicidade como o Google AdSense.",
         "points": [
-          "Google AdSense: fornecedores terceiros, incluindo a Google, utilizam cookies para veicular anúncios com base nas visitas anteriores do utilizador a este ou a outros websites",
-          "Publicidade personalizada: a utilização de cookies de publicidade permite à Google e aos seus parceiros apresentar anúncios direcionados com base na navegação no nosso site e noutros sítios da web",
+          "Se a publicidade estiver ativa, fornecedores terceiros como a Google podem utilizar cookies ou tecnologias semelhantes, sujeitos aos requisitos de consentimento aplicáveis.",
+          "Se a publicidade personalizada estiver ativa e for permitida, os anúncios podem depender da sua atividade e das suas escolhas de consentimento.",
           "Opções de desativação (Opt-Out): pode desativar anúncios personalizados acedendo às Definições de Anúncios Google (https://www.google.com/settings/ads) ou através de serviços setoriais como www.aboutads.info/choices/",
           "Análise estatística (Analytics): métricas de tráfego agregadas e anónimas ajudam-nos a compreender a utilização da plataforma e a otimizar a velocidade dos utilitários sem identificar utilizadores individuais",
           "Armazenamento local (LocalStorage): o recurso localStorage do navegador é empregue unicamente para memorizar as suas preferências visuais (como o modo claro ou escuro), não contendo quaisquer dados pessoais"
@@ -1677,10 +1677,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Publicidad, cookies y almacenamiento local",
-        "content": "Navorika colabora con redes publicitarias de terceros para mantener el acceso gratuito a todas sus herramientas:",
+        "content": "Podemos utilizar servicios publicitarios como Google AdSense.",
         "points": [
-          "Google AdSense: proveedores externos, incluido Google, utilizan cookies para mostrar anuncios basados en las visitas previas del usuario a este u otros sitios web",
-          "Publicidad personalizada: el uso de cookies publicitarias permite a Google y a sus socios presentar anuncios orientados en función de la navegación en nuestro sitio y en internet",
+          "Si se habilita la publicidad, terceros como Google pueden utilizar cookies o tecnologías similares, de acuerdo con los requisitos de consentimiento aplicables.",
+          "Si la publicidad personalizada está habilitada y permitida, los anuncios pueden ajustarse a tu actividad y tus preferencias de consentimiento.",
           "Opciones de exclusión (Opt-Out): puede inhabilitar la publicidad personalizada en la Configuración de anuncios de Google (https://www.google.com/settings/ads) o a través de servicios sectoriales como www.aboutads.info/choices/",
           "Analítica y métricas de uso: recopilamos estadísticas de tráfico anónimas y agregadas que nos permiten supervisar el rendimiento técnico sin identificar a usuarios particulares",
           "Almacenamiento local (LocalStorage): la memoria localStorage del navegador se usa únicamente para recordar preferencias de interfaz (como el tema claro u oscuro) y no almacena información de identificación personal"
@@ -1747,10 +1747,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Werbung, Cookies und lokaler Speicher",
-        "content": "Navorika kooperiert mit externen Werbenetzwerken, um die kostenlose Bereitstellung aller Werkzeuge zu finanzieren:",
+        "content": "Wir können Werbedienste wie Google AdSense verwenden.",
         "points": [
-          "Google AdSense: Drittanbieter einschließlich Google verwenden Cookies zur Schaltung von Anzeigen auf Grundlage vorheriger Besuche auf dieser oder anderen Websites",
-          "Personalisierte Werbung: Durch den Einsatz von Werbe-Cookies können Google und seine Partner zielgerichtete Werbeanzeigen anhand des Surfverhaltens auf unseren und anderen Internetseiten einblenden",
+          "Wenn Werbung aktiviert ist, können Drittanbieter wie Google Cookies oder ähnliche Technologien nutzen, soweit die geltenden Einwilligungsregeln dies erlauben.",
+          "Wenn personalisierte Werbung aktiviert und zulässig ist, können Anzeigen auf Grundlage Ihrer Aktivitäten und Einwilligungsentscheidungen angepasst werden.",
           "Opt-Out-Möglichkeiten: Sie können personalisierte Werbung in den Google-Anzeigeneinstellungen (https://www.google.com/settings/ads) oder über branchenweite Deaktivierungsdienste wie www.aboutads.info/choices/ abschalten",
           "Reichweitenanalyse: Aggregierte, anonymisierte Verkehrsdaten helfen uns, die Auslastung der Plattform zu analysieren und die Werkzeuge zu verbessern, ohne Rückschlüsse auf Einzelpersonen zu ziehen",
           "Lokaler Speicher (LocalStorage): Der Browserspeicher localStorage wird ausschließlich zur Speicherung Ihrer Oberflächenpräferenzen (helles oder dunkles Design) genutzt und enthält keine personenidentifizierbaren Daten"
@@ -1817,10 +1817,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Реклама, файлы cookie и локальное хранилище",
-        "content": "Navorika сотрудничает со сторонними рекламными сетями для поддержания бесплатного доступа ко всем онлайн-сервисам:",
+        "content": "Мы можем использовать рекламные сервисы, например Google AdSense.",
         "points": [
-          "Google AdSense: сторонние поставщики, включая Google, используют файлы cookie для показа объявлений с учетом предыдущих посещений этого или других сайтов в сети",
-          "Персонализированная реклама: рекламные файлы cookie позволяют Google и партнерам показывать релевантные объявления на основе истории переходов на нашем ресурсе и в интернете",
+          "Если реклама включена, сторонние поставщики, включая Google, могут использовать файлы cookie или аналогичные технологии с соблюдением применимых требований к согласию.",
+          "Если персонализированная реклама включена и разрешена, объявления могут подбираться с учетом действий пользователя и его выбора относительно согласия.",
           "Отказ от персонализации (Opt-Out): вы можете отключить персонализированный показ рекламы в настройках рекламных предпочтений Google (https://www.google.com/settings/ads) или через сервис www.aboutads.info/choices/",
           "Веб-аналитика: агрегированные и обезличенные данные о посещаемости помогают нам отслеживать техническую стабильность и нагрузку без идентификации конкретных пользователей",
           "Локальное хранилище (LocalStorage): хранилище localStorage в браузере используется исключительно для запоминания параметров интерфейса (светлая или темная тема) и не содержит персональных идентификаторов"
@@ -1887,10 +1887,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "الإعلانات، ملفات تعريف الارتباط والتخزين المحلي",
-        "content": "شراكتنا مع شبكات إعلانية موثوقة تتيح لنا تقديم جميع أدوات الموقع مجاناً لجميع المستخدمين:",
+        "content": "قد نستخدم خدمات إعلانية مثل Google AdSense.",
         "points": [
-          "Google AdSense: يستخدم موردو الجهات الخارجية، بما في ذلك Google، ملفات تعريف الارتباط لعرض الإعلانات بناءً على زيارات المستخدم السابقة لهذا الموقع أو لمواقع أخرى على الإنترنت",
-          "الإعلانات المخصصة: يتيح استخدام ملفات تعريف الارتباط الإعلانية لشركة Google وشركائها تقديم إعلانات ملائمة للمستخدمين بناءً على تصفحهم لموقعنا ومواقع أخرى عبر الويب",
+          "إذا فُعّلت الإعلانات، فقد يستخدم مزودون خارجيون مثل Google ملفات تعريف الارتباط أو تقنيات مشابهة وفقاً لمتطلبات الموافقة المعمول بها.",
+          "إذا فُعّلت الإعلانات المخصصة وكانت مسموحة، فقد تُخصّص الإعلانات بناءً على نشاطك وخيارات موافقتك.",
           "خيارات إلغاء الاشتراك (Opt-Out): يمكنك إلغاء الاشتراك في الإعلانات المخصصة عبر زيارة إعدادات إعلانات Google (https://www.google.com/settings/ads) أو عبر خدمات مثل www.aboutads.info/choices/",
           "تحليلات الاستخدام: تساعدنا الإحصائيات المجمعة ومجهولة المصدر في فهم أداء الموقع وتحسين سرعة الأدوات دون تحديد هوية أي مستخدم",
           "التخزين المحلي (LocalStorage): يُستخدم التخزين المحلي في المتصفح حصرياً لتذكر تفضيلات العرض (مثل الوضع الداكن أو الفاتح) ولا يحتوي على أي بيانات تعريف شخصية"
