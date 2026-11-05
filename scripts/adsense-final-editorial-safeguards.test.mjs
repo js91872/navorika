@@ -35,6 +35,6 @@ test('guide publication date does not exceed modified date for website audit', (
 
 test('preapproval privacy language does not claim an active ad partnership', () => {
   const privacy=read('src/app/(english)/privacy/page.tsx');
-  assert.match(privacy,/may use Google AdSense/);
+  assert.match(privacy,/We may use advertising services such as Google AdSense\./);
   assert.doesNotMatch(privacy,/partners with third-party advertising networks/);
 });
