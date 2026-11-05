@@ -600,14 +600,8 @@ export default function ComparePdfTool() {
 
   return (
     <div className="space-y-8">
-      {/* Privacy Notice Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-xl border border-emerald-500/30 bg-emerald-50/60 p-4 dark:border-emerald-500/20 dark:bg-emerald-950/20">
-        <div className="flex items-center gap-3">
-          <ShieldCheck className="size-5 shrink-0 text-emerald-600 dark:text-emerald-400" />
-          <p className="text-sm font-medium text-emerald-900 dark:text-emerald-200">
-            <strong>100% Client-Side Privacy:</strong> Both PDF files are parsed and compared entirely in your browser. No document pages or text are uploaded or transmitted to any server.
-          </p>
-        </div>
+      {/* Optional demo action remains available before uploading, without a large notice. */}
+      <div className="flex justify-end">
         {!origDoc && !revDoc && (
           <button
             type="button"
@@ -1397,6 +1391,12 @@ export default function ComparePdfTool() {
           )}
         </div>
       )}
+      <div className="mt-8 flex items-start gap-3 rounded-xl border border-emerald-500/30 bg-emerald-50/60 p-4 dark:border-emerald-500/20 dark:bg-emerald-950/20" aria-label="PDF comparison privacy information">
+        <ShieldCheck className="size-5 shrink-0 text-emerald-600 dark:text-emerald-400" />
+        <p className="text-sm font-medium text-emerald-900 dark:text-emerald-200">
+          <strong>Client-side privacy:</strong> Both PDF files are parsed and compared entirely in your browser. No document pages or text are uploaded to Navorika.
+        </p>
+      </div>
     </div>
   );
 }

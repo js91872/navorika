@@ -55,7 +55,7 @@ export default async function LocalizedToolPage({ params }: Props) {
       />
 
       {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[var(--muted-foreground)]">
+      <nav aria-label="Breadcrumb" className="mb-3 sm:mb-5 flex flex-wrap items-center gap-2 text-sm text-[var(--muted-foreground)]">
         <Link href={`/${locale}`} className="hover:text-[var(--foreground)] transition-colors">
           {d.ui.home}
         </Link>
@@ -68,23 +68,27 @@ export default async function LocalizedToolPage({ params }: Props) {
       </nav>
 
       {/* Tool Header */}
-      <div className="mb-8">
-        <h1 className="max-w-4xl text-3xl font-black tracking-tight text-[var(--foreground)] sm:text-4xl [overflow-wrap:anywhere]">
+      <div className="mb-5 sm:mb-7">
+        <h1 className="max-w-4xl text-2xl font-black tracking-tight text-[var(--foreground)] sm:text-4xl [overflow-wrap:anywhere]">
           {tool.title}
         </h1>
-        <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-[var(--muted-foreground)] [overflow-wrap:anywhere]">
+        <p className="mt-2 max-w-3xl text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)] [overflow-wrap:anywhere]">
           <BidiText text={tool.description} />
         </p>
 
-        {/* Privacy Trust Banner */}
-        <div className="my-6 max-w-3xl rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-xs sm:text-sm leading-relaxed text-[var(--foreground)] flex items-center gap-3">
-          <Shield className="h-5 w-5 text-emerald-500 shrink-0" />
-          <span>{d.ui.local}</span>
-        </div>
+
       </div>
 
       {/* Main Tool Interactive Component */}
       <LocalizedTools key={`${locale}/${slug}`} locale={locale} slug={slug} dictionary={d} />
+
+      <div className="mt-6 max-w-3xl" aria-label="Tool processing information">
+        {/* Privacy Trust Banner */}
+        <div className="my-0 max-w-3xl rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-xs sm:text-sm leading-relaxed text-[var(--foreground)] flex items-center gap-3">
+          <Shield className="h-5 w-5 text-emerald-500 shrink-0" />
+          <span>{d.ui.local}</span>
+        </div>
+      </div>
 
       {/* Educational & Usage Details */}
       <div className="mt-12 grid gap-6 md:grid-cols-2">

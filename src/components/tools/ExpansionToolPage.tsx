@@ -40,27 +40,28 @@ export default function ExpansionToolPage({
       : 'Construction Calculators';
 
   return (
-    <div className="pb-20 pt-8 sm:pt-10 text-[#18181b] dark:text-[#f4f4f5]">
+    <div className="pb-20 pt-4 sm:pt-8 text-[#18181b] dark:text-[#f4f4f5]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Link
           href={`/categories/${category}`}
-          className="mb-6 inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] transition-colors"
+          className="mb-3 sm:mb-5 inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] transition-colors"
         >
           <ArrowLeft className="size-4" /> Back to {categoryName}
         </Link>
-        <header className="mb-8 max-w-4xl">
+        <header className="mb-5 sm:mb-7 max-w-4xl">
           <p className="text-xs font-bold uppercase tracking-wider text-[#e5322d]">
             {eyebrow}
           </p>
-          <h1 className="mt-2 text-3xl sm:text-5xl font-black tracking-tight text-[#18181b] dark:text-white">
+          <h1 className="mt-1.5 text-2xl sm:text-4xl font-black tracking-tight text-[#18181b] dark:text-white">
             {title}
           </h1>
-          <p className="mt-3 text-base sm:text-lg leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
+          <p className="mt-2 text-sm sm:text-base leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
             {description}
           </p>
-          {slug && <PrivacyBadges slug={slug} className="mt-4" />}
+          
         </header>
-        {children}
+        <div data-tool-interaction>{children}</div>
+        {slug && <div className="mt-6 border-t border-[var(--border)] pt-4" aria-label="Tool capabilities"><PrivacyBadges slug={slug} /></div>}
       </div>
     </div>
   );
