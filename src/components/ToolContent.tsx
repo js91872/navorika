@@ -18,7 +18,6 @@ interface ToolContentProps {
 }
 
 export default function ToolContent({
-  title,
   slug,
   category,
   description,
