@@ -18,6 +18,7 @@ test('shared English tool wrapper places UI before capability badges', () => {
 test('localized tool pages place interactive controls ahead of generic trust banner', () => {
   const s = read('src/app/[locale]/tools/[slug]/page.tsx');
   before(s, '<LocalizedTools ', '<span>{d.ui.local}</span>', 'localized tool page');
+  assert.match(s, /getToolCapabilities\(slug\)\.processedLocally/, 'Only verified local tools receive a local-processing claim');
 });
 
 test('CorelDRAW tools render file selection and actions ahead of longer notices', () => {
