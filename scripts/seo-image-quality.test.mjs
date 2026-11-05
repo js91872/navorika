@@ -7,8 +7,7 @@ const imageDocs = readFileSync('src/data/tool-pages/image.ts', 'utf8');
 
 test('changing compression settings cannot leave an old result falsely marked compliant', () => {
   for (const setting of ['setPngMode', 'setPngShiftFormat', 'setOutputFormat', 'setPreserveDims']) {
-    const section = src.slice(src.indexOf(setting + '('), src.indexOf(setting + '(') + 180);
-    assert.match(section, /setResult\(null\)/, setting);
+    assert.match(src, new RegExp(setting + '\\\\([^;]+; setResult\\\\\\(null\\\\\\);'), setting);
   }
   assert.match(src, /result\.targetMet/);
 });
