@@ -225,6 +225,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Review the plate combination required on each side.',
       'If the exact target cannot be reached with the available plate sizes, review the closest lower balanced load.',
     ],
+    examples: [
+      { title: 'Load a 60 kg barbell', input: 'Target total 60 kg, bar 20 kg, with standard 20 kg plates available.', result: '40 kg remains for plates, or 20 kg per side. Put one 20 kg plate on each side of the bar.', note: 'Confirm the bar and plate markings and use suitable collars before lifting.' },
+    ],
     interpretation: [
       'The displayed plate count is per side, so the same combination should be loaded on both ends of the bar.',
       'Total weight includes the bar itself plus all plates on both sides.',
@@ -254,7 +257,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       },
     ],
     relatedTools: [
-      { slug: 'fuel-cost-split-calculator', name: 'Fuel Cost & Passenger Split Calculator' },
+      { slug: 'one-rep-max-calculator', name: 'One-Rep Max Calculator' },
     ],
     relatedGuides: [],
   },
@@ -302,6 +305,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Optionally mark the journey as a round trip and add tolls, parking, or other costs.',
       'Review fuel required, total trip cost, and each person’s share.',
     ],
+    examples: [
+      { title: 'Split a weekend road trip', input: 'One-way distance 150 km, round trip enabled, efficiency 15 km/L, fuel price 1.50 per litre, 4 passengers, and 12 in total tolls.', result: 'Round-trip distance is 300 km. Estimated fuel use is 20 litres, fuel expense is 30, and total shared expense is 42. Each of four passengers pays 10.50 in the same currency.', note: 'The example assumes all four passengers share costs equally and excludes parking or other unentered expenses.' },
+    ],
     interpretation: [
       'Fuel cost is based on the entered efficiency and assumes the vehicle achieves that average throughout the trip.',
       'Optional toll, parking, and other costs are added to the fuel expense before the total is divided equally between passengers.',
@@ -340,7 +346,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
           'No. The calculation runs locally in your browser.',
       },
     ],
-    relatedTools: [],
+    relatedTools: [{ slug: 'tire-size-calculator', name: 'Tire Size Calculator' }],
     relatedGuides: [],
   },
   'one-rep-max-calculator': {
