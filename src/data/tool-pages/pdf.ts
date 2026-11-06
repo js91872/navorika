@@ -4,6 +4,18 @@ const privacy = 'Processing happens locally in your browser. Navorika does not u
 const limits = ['Password-protected, damaged, or unusually complex PDFs may not load.', 'Keep a backup of the original document and verify the downloaded file before relying on it.'];
 
 export const pdfToolPages: Record<string, ToolPageContent> = {
+  'pdf-to-jpg-all-pages': {
+    slug:'pdf-to-jpg-all-pages',name:'PDF to JPG – All Pages and ZIP Download',category:'PDF Tools',applicationCategory:'DesignApplication',
+    description:'Convert multiple PDF pages to individual JPEG images and save all JPGs together in one ZIP file locally.',
+    longTailKeywords:['pdf to jpg all pages','convert pdf to jpg multiple pages','pdf to jpg zip','batch pdf to jpg','pdf to jpg each page'],
+    intro:['Use this batch converter to render every page of a PDF into numbered JPG files packaged as a ZIP.',privacy],
+    steps:['Choose a readable PDF of up to 40 pages and 40 MB.','Select rendering scale and JPEG quality.','Convert and unzip the downloaded JPG collection.'],
+    interpretation:['Every page becomes an independent JPEG.','Higher rendering scales increase pixels and memory use, while quality changes JPEG compression.'],
+    limitations:[...limits,'Up to 40 pages and 40 MB; the tool also limits output pixel area.','JPG cannot preserve vector text, transparency, selectable text, signatures, or hyperlinks.','Large files may consume substantial memory on phones.'],
+    faqs:[{question:'Does this create one JPG?',answer:'No. It creates one JPG per PDF page and packages all images in a ZIP.'},{question:'Are PDFs uploaded?',answer:'No. Rendering and ZIP creation happen in your browser.'},{question:'Can I choose only one page?',answer:'Use the separate PDF to JPG converter for one selected page.'}],
+    relatedTools:[{slug:'pdf-to-jpg',name:'PDF to JPG Single Page'},{slug:'pdf-to-image',name:'PDF to PNG or JPG'},{slug:'split-pdf',name:'Split PDF'}],
+    relatedGuides:['how-to-convert-pdf-to-jpg'],
+  },
   'compress-pdf': {
     slug: 'compress-pdf', name: 'Compress PDF Online – Reduce PDF File Size Free', category: 'PDF Tools', applicationCategory: 'UtilitiesApplication', description: 'Compress PDF files online by reducing image-heavy page data in your browser. Compare the original and compressed PDF size before downloading.',
     longTailKeywords: ['compress pdf', 'compress pdf online', 'reduce pdf file size', 'pdf compressor', 'compress pdf free', 'make pdf smaller', 'compress scanned pdf', 'reduce image heavy pdf file size', 'compress pdf without upload'],
@@ -31,8 +43,8 @@ export const pdfToolPages: Record<string, ToolPageContent> = {
     steps: ['Select a valid PDF and target page.', 'Choose the rendering resolution and JPG quality.', 'Render, inspect the preview, and download the JPG.'],
     interpretation: ['Rendering scale controls pixel dimensions, while JPG quality controls lossy image encoding; they affect different aspects of output.', 'The white background ensures transparent PDF regions do not become black when encoded to JPG.'],
     limitations: [...limits, 'Only one page is downloaded per operation.', 'JPEG does not preserve transparency and can introduce compression artifacts around small text and line art.', 'Converting to JPG removes selectable text, links, forms, annotations, and vector editability.'],
-    faqs: [{ question: 'Does this really produce a JPG?', answer: 'Yes. The selected PDF page is rendered to a canvas and encoded with the image/jpeg MIME type.' }, { question: 'Which quality should I choose?', answer: '92% is a balanced default; 80% is smaller, while 100% reduces encoding loss but can be much larger.' }, { question: 'Can it convert all pages together?', answer: 'No. This tool intentionally handles one selected page at a time.' }, { question: 'Are documents uploaded?', answer: 'No.' }],
-    relatedTools: [{ slug: 'extract-pdf-pages', name: 'Extract PDF Pages' }, { slug: 'compress-jpg', name: 'Compress JPG' }, { slug: 'crop-image', name: 'Crop Image' }, { slug: 'resize-image', name: 'Resize Image' }], relatedGuides: ['pdf-security-guide'],
+    faqs: [{ question: 'Does this really produce a JPG?', answer: 'Yes. The selected PDF page is rendered to a canvas and encoded with the image/jpeg MIME type.' }, { question: 'Which quality should I choose?', answer: '92% is a balanced default; 80% is smaller, while 100% reduces encoding loss but can be much larger.' }, { question: 'Can it convert all pages together?', answer: 'This page exports one selected page. Use PDF to JPG – All Pages for a ZIP of every page.' }, { question: 'Are documents uploaded?', answer: 'No.' }],
+    relatedTools: [{ slug: 'pdf-to-jpg-all-pages', name: 'PDF to JPG – All Pages' }, { slug: 'extract-pdf-pages', name: 'Extract PDF Pages' }, { slug: 'compress-jpg', name: 'Compress JPG' }, { slug: 'crop-image', name: 'Crop Image' }], relatedGuides: ['how-to-convert-pdf-to-jpg', 'pdf-security-guide'],
   },
   'add-image-to-pdf': {
     slug: 'add-image-to-pdf', name: 'Add Image to PDF Online – Insert JPG, PNG or WebP', category: 'PDF Tools', applicationCategory: 'DesignApplication', description: 'Add a JPG, PNG or WebP image to a selected PDF page online. Choose the page, image size and position, then download the updated PDF.',

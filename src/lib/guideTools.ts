@@ -1,5 +1,7 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'how-to-convert-pdf-to-jpg': ['pdf-to-jpg', 'pdf-to-jpg-all-pages', 'pdf-to-image', 'compress-jpg'],
+  'jpeg-vs-jpg': ['jpeg-to-jpg', 'compress-jpg', 'convert-jpg-to-png', 'image-converter'],
   'how-to-clear-icloud-storage': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image', 'image-scaling-calculator'],
   'why-is-my-icloud-storage-full': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image', 'extract-audio-from-video'],
   'how-to-delete-icloud-backup-safely': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image'],
