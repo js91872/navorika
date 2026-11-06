@@ -377,6 +377,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Select your preferred prediction equation (Consensus Average, Epley, or Brzycki).',
       'Review your estimated 1RM and percentage load breakdown for programming training cycles.',
     ],
+    examples: [
+      { title: 'Estimate a bench-press maximum', input: 'Lift 60 kg for 5 repetitions with consistent technique.', result: 'Epley predicts 70 kg (60 × (1 + 5/30)). Brzycki predicts 67.5 kg (60 × 36/32). The arithmetic mean of these two estimates is 68.75 kg.', note: 'These are formula estimates, not a verified maximum. The displayed result depends on the selected equation and tool rounding.' },
+    ],
     interpretation: [
       'Estimates are most accurate between 2 and 10 repetitions; as repetitions exceed 10, muscular endurance skews the neuromuscular maximum estimate.',
       'Use 1RM percentages to program periodized training blocks (e.g. 70–80% for hypertrophy, 85–95% for maximal strength).',
@@ -387,7 +390,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
     ],
     faqs: [
       { question: 'Why estimate 1RM instead of testing true 1RM?', answer: 'Testing true 1RM lifts poses significant joint strain and injury risk. Submaximal estimation offers a safer benchmark for tracking strength progression.' },
-      { question: 'Which formula is most accurate?', answer: 'The consensus average of Epley and Brzycki is widely recognized as the most balanced predictor across bench press, squat, and deadlift.' },
+      { question: 'Why do Epley and Brzycki give different results?', answer: 'They use different mathematical relationships between repetitions and estimated maximum strength. Neither formula can account for every lifter or exercise, so treat the difference as a useful uncertainty range.' },
       { question: 'Is my workout data uploaded?', answer: 'No. All calculations run strictly in your web browser.' },
     ],
     relatedTools: [
@@ -430,6 +433,10 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Enter monthly visits, monthly revenue, or preferably monthly profit when known.',
       'Review the estimated low-to-high website value range and the assumptions shown beneath it.',
       'For a sale or acquisition decision, replace estimates with verified analytics and financial records.'
+    ],
+    examples: [
+      { title: 'Profit-based website valuation scenario', input: 'Verified average monthly profit of $1,000; illustrative unadjusted multiple range of 24–40 times monthly profit.', result: 'The base scenario spans $24,000–$40,000 before any modest technical-score adjustment.', note: 'This is an illustrative starting range, not a sale-price prediction. The live tool may adjust the range using its technical score; verify revenue quality, expenses and transfer risks.' },
+      { title: 'Traffic-only scenario with explicit assumptions', input: '50,000 monthly visits; assumed $12 revenue per 1,000 visits and 65% normalized profit margin.', result: 'Assumed monthly revenue is $600 and normalized monthly profit is $390. An unadjusted 24–40× multiple produces $9,360–$15,600.', note: 'Neither revenue nor profit is measured from a URL; replace these assumptions with real analytics and financial records.' },
     ],
     interpretation: [
       'The technical score describes observable website implementation signals; it is not a traffic, authority, or business-quality score.',
