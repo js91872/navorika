@@ -15,7 +15,17 @@ export function GET() {
     })].join('\n');
   });
   const toolkitLines = toolkits.map((toolkit) => `- ${toolkit.name} — ${toolkit.description} URL: ${baseUrl}/toolkits/${toolkit.slug}`);
-  const guideLines = guidesMetadata.map((guide) => `- ${guide.title} — ${guide.description} URL: ${baseUrl}/guides/${guide.slug}`);
+  const standaloneGuideLines = [
+    `- How Does a 3D Printer Work? Step-by-Step Beginner’s Guide — Learn how a 3D printer turns a digital model into a physical object. URL: ${baseUrl}/guides/how-does-a-3d-printer-work`,
+    `- How to Convert JPG to DXF Free: A Practical AutoCAD and CNC Guide — Learn how to convert JPG to DXF for free, trace raster images into vector CAD outlines, and check scale in AutoCAD. URL: ${baseUrl}/guides/how-to-convert-jpg-to-dxf`,
+    `- Can ChatGPT Make Videos? How to Create AI Videos Step by Step — Practical workflow for making AI videos with ChatGPT-assisted scripts and prompts. URL: ${baseUrl}/guides/can-chatgpt-make-videos`,
+    `- How to Clean a Phone Speaker Safely: Dust, Water and Muffled Sound — Step-by-step phone speaker cleaning guide for iPhone and Android. URL: ${baseUrl}/guides/how-to-clean-phone-speaker`,
+    `- How to Calculate Shopify Profit Margin — Detailed guide to Shopify fees, product pricing, ads, returns and break-even calculations. URL: ${baseUrl}/guides/shopify-profit-margin-calculator`,
+  ];
+  const guideLines = [
+    ...guidesMetadata.map((guide) => `- ${guide.title} — ${guide.description} URL: ${baseUrl}/guides/${guide.slug}`),
+    ...standaloneGuideLines,
+  ];
   const body = [
     '# Navorika',
     '',

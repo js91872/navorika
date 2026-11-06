@@ -36,7 +36,7 @@ export default function SitemapPage() {
   const allGuides = guidesMetadata.map((guide) => ({ href: `/guides/${guide.slug}`, label: guide.title }));
 
   return (
-    <main className="min-h-screen bg-[#f7f7f8] dark:bg-[#121214] text-[#18181b] dark:text-[#f4f4f5] pt-24 pb-16">
+    <div className="min-h-screen bg-[#f7f7f8] dark:bg-[#121214] text-[#18181b] dark:text-[#f4f4f5] pt-24 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Link */}
         <Link
@@ -173,6 +173,6 @@ export default function SitemapPage() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

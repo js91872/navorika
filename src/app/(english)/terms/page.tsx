@@ -52,7 +52,7 @@ export default function TermsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -122,6 +122,6 @@ export default function TermsPage() {
           </p>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

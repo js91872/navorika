@@ -1,6 +1,9 @@
 // Comprehensive icon mapping for all tools
 export const toolIcons: Record<string, string> = {
   // ====== OCTOBER 2026 REGISTRY COVERAGE: 48 NEW TOOL ICONS ======
+  'icloud-storage-calculator': '☁️',
+  'json-to-csv-converter': '🔄',
+  'exif-metadata-remover': '🛡️',
   'ai-video-prompt-generator': '🎬',
   'jpg-to-dxf': '📐',
   'speaker-dust-cleaning-sound': '🔊',
