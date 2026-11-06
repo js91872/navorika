@@ -8,6 +8,21 @@ import { getDictionary } from '@/lib/i18n/dictionaries';
 import { isLocale, isTranslatedTool, languageAlternates, localizedPath, translatedTools } from '@/lib/i18n/config';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
+
+/** Keep related links focused instead of serializing the full translated tool catalog on every page. */
+function relatedToolSlugs(slug: string): (typeof translatedTools)[number][] {
+  const words = new Set(slug.split('-').filter((word) => word.length > 3 && !['calculator', 'converter', 'generator', 'image', 'tool', 'tools'].includes(word)));
+  const candidates = translatedTools.filter((item) => item !== slug);
+  return candidates
+    .map((item, index) => ({
+      item,
+      index,
+      score: item.split('-').reduce((score, word) => score + (words.has(word) ? 1 : 0), 0),
+    }))
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, 8)
+    .map(({ item }) => item);
+}
 export const dynamicParams = false;
 export function generateStaticParams() {
   return translatedTools.map((slug) => ({ slug }));
@@ -119,8 +134,7 @@ export default async function LocalizedToolPage({ params }: Props) {
       <section className="mt-10">
         <h2 className="text-xl font-bold mb-4">{d.ui.related}</h2>
         <div className="flex flex-wrap gap-2.5">
-          {translatedTools
-            .filter((item) => item !== slug)
+          {relatedToolSlugs(slug)
             .map((item) => (
               <Link
                 key={item}
