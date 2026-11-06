@@ -82,6 +82,23 @@ export default function ToolPageContent({ tool, supplementalOnly = false }: { to
         </ol>
       </section>
 
+      {tool.examples && tool.examples.length > 0 && (
+        <section aria-labelledby={`${tool.slug}-examples`}>
+          <h2 id={`${tool.slug}-examples`} className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">Worked examples</h2>
+          <p className="mt-2 text-sm leading-relaxed">Use these sample inputs to understand what the calculation means. Replace them with your own values in the tool above.</p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {tool.examples.map((example) => (
+              <div key={example.title} className="rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5">
+                <h3 className="font-bold text-sm text-[#18181b] dark:text-white">{example.title}</h3>
+                <p className="mt-2 text-sm"><strong className="text-[#18181b] dark:text-white">Inputs:</strong> {example.input}</p>
+                <p className="mt-2 text-sm"><strong className="text-[#18181b] dark:text-white">Result:</strong> {example.result}</p>
+                {example.note && <p className="mt-2 text-xs leading-relaxed">{example.note}</p>}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section>
         <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">Understanding the results</h2>
         <div className="mt-3 space-y-2.5">
