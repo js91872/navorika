@@ -104,7 +104,7 @@ export const toolkits: Toolkit[] = [
       { name: 'Concrete and masonry', description: 'Estimate core mix, reinforcement, masonry, and post-hole quantities before ordering.', toolSlugs: ['concrete-calculator', 'cement-calculator', 'rebar-calculator', 'brick-calculator', 'sand-calculator', 'gravel-calculator', 'post-hole-concrete-calculator'] },
       { name: 'Site and project costs', description: 'Translate site dimensions into earthwork, paving, debris, and early building-cost estimates.', toolSlugs: ['excavation-calculator', 'asphalt-calculator', 'paver-calculator', 'dumpster-weight-calculator', 'construction-cost-calculator', 'house-construction-cost-calculator', 'joist-deflection-calculator', 'hvac-duct-cfm-calculator'] },
       { name: 'Professional estimates', description: 'Turn itemized material, labor, equipment, markup, and tax inputs into contractor-ready estimates.', toolSlugs: ['construction-estimate-builder', 'contractor-estimate-generator', 'construction-material-waste-calculator'] },
-    ], guideSlugs: [],
+    ], guideSlugs: ['construction-estimate-quote-guide', 'house-construction-cost-guide', 'brick-calculation-guide', 'asphalt-calculation-guide', 'gravel-calculation-guide'],
   },
   {
     slug: 'home-improvement-calculators', name: 'Home Improvement Calculators', seoTitle: 'Free Home Improvement Calculators',
@@ -115,7 +115,7 @@ export const toolkits: Toolkit[] = [
       { name: 'Rooms and surfaces', description: 'Plan coverage and material allowances for floors, walls, drywall, and wallpaper.', toolSlugs: ['square-footage-calculator', 'flooring-calculator', 'tile-calculator', 'paint-calculator', 'drywall-calculator', 'drywall-mud-calculator', 'wallpaper-calculator'] },
       { name: 'Roofing and outdoor projects', description: 'Estimate roof geometry and materials for decks, fences, pavers, and landscaping.', toolSlugs: ['12-foot-gambrel-roof-truss-calculator', 'roof-area-calculator', 'roof-pitch-calculator', 'roof-ridge-height-calculator', 'rafter-length-calculator', 'roofing-shingle-calculator', 'soffit-fascia-calculator', 'fascia-replacement-cost-calculator', 'deck-board-calculator', 'fence-calculator', 'paver-calculator', 'polymeric-sand-calculator', 'fertilizer-calculator', 'mulch-calculator', 'topsoil-calculator', 'shed-ramp-angle-calculator'] },
       { name: 'Home utilities', description: 'Estimate practical electrical, solar, and water-storage requirements.', toolSlugs: ['wire-size-calculator', 'voltage-drop-calculator', 'solar-panel-calculator', 'water-tank-calculator', 'heat-pump-vs-furnace-cost-calculator', 'attic-insulation-payback-calculator'] },
-    ], guideSlugs: [],
+    ], guideSlugs: ['how-to-calculate-roof-area', 'flooring-calculation-guide', 'water-tank-size-capacity-guide', 'how-to-calculate-fertilizer-for-a-lawn', 'fertilizer-npk-numbers-explained'],
   },
   {
     slug: 'investment-planning-calculators', name: 'Investment Planning Calculators', seoTitle: 'Free Investment Planning Calculators',

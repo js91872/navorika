@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#f7f7f8] dark:bg-[#121214] text-[#18181b] dark:text-[#f4f4f5] pt-20 pb-20">
+    <div className="min-h-screen bg-[#f7f7f8] dark:bg-[#121214] text-[#18181b] dark:text-[#f4f4f5] pt-20 pb-20">
       <article className="mx-auto max-w-3xl px-5 sm:px-8">
         <header className="border-b border-[#e4e4e8] dark:border-[#303036] pb-10 mb-10">
           <p className="text-sm font-semibold tracking-wide text-[#e5322d] mb-4">About Navorika</p>
@@ -102,6 +102,6 @@ export default function AboutPage() {
           </p>
         </footer>
       </article>
-    </main>
+    </div>
   );
 }

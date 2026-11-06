@@ -7,5 +7,10 @@ const tool = constructionToolPages['12-foot-gambrel-roof-truss-calculator'];
 export const metadata = createToolMetadata(tool);
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}<ToolPageContent tool={tool} /></>;
+  return (
+    <>
+      {children}
+      <ToolPageContent tool={tool} supplementalOnly />
+    </>
+  );
 }
