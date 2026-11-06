@@ -93,12 +93,16 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
     intro: ['Unit Price Calculator makes differently sized packages easier to compare by converting both offers to the same price-per-unit basis.', local],
     formula: [{ title: 'Unit price', body: 'Unit price = total product price ÷ quantity.' }],
     steps: ['Enter price and quantity for Option A.', 'Enter price and quantity for Option B.', 'Choose a currency and enter the unit label.', 'Compare unit prices and percentage difference.'],
-    interpretation: ['The option with the lower price per identical unit generally offers better value when quality and other product characteristics are comparable.'],
+    examples: [
+      { title: 'Compare two rice packs', input: 'Option A: 2 kg for 7.20; Option B: 5 kg for 16.50, both in the same currency.', result: 'Option A costs 3.60 per kg. Option B costs 3.30 per kg, saving 0.30 per kg (about 8.33% relative to Option A).', note: 'Compare identical units and include any relevant delivery charges or discounts before purchasing.' },
+    ],
+    interpretation: ['The option with the lower price per identical unit generally offers better value when quality and other product characteristics are comparable.', 'A larger pack can have a lower unit price but still cost more overall or lead to waste if you cannot use it before expiry.'],
     limitations: ['Only compare equivalent units and comparable products.', 'Discounts, taxes, shipping, loyalty rewards, expiry, and quality differences are not automatically included.'],
     faqs: [
       { question: 'What is unit price?', answer: 'Unit price is the total price divided by the amount or number of units.' },
       { question: 'Can I compare different package sizes?', answer: 'Yes, provided both quantities use the same unit.' },
       { question: 'Can I use kilograms, litres, pieces, or metres?', answer: 'Yes. The unit label is editable.' },
+      { question: 'How much cheaper is the larger pack per unit?', answer: 'Divide each price by its quantity, subtract the lower unit price from the higher one, and divide that difference by the higher unit price to express the saving as a percentage.' },
     ],
     relatedTools: [{ slug: 'fuel-cost-split-calculator', name: 'Fuel Cost & Passenger Split Calculator' }],
     relatedGuides: [],
@@ -142,6 +146,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Optionally estimate the percentage displaced by substrate, rocks, wood, or equipment.',
       'Review estimated litres, US gallons, UK gallons, and cubic feet.',
     ],
+    examples: [
+      { title: 'Rectangular 60 × 30 × 40 cm tank', input: 'Internal dimensions 60 × 30 × 40 cm; fill level 90%; estimated displacement 10%.', result: 'Gross volume is 72 litres. Filled volume is 64.8 litres; after 10% displacement, estimated water volume is 58.32 litres (about 15.4 US gallons).', note: 'Measure inside the tank and treat the displacement setting as an approximation, not a measured water quantity.' },
+    ],
     interpretation: [
       'Gross capacity represents the mathematical internal volume based on the entered dimensions.',
       'Actual water volume is usually lower because aquariums are not filled to the rim and objects inside the tank occupy space.',
@@ -168,6 +175,10 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       {
         question: 'Can I calculate a cylindrical aquarium?',
         answer: 'Yes. Choose Cylindrical and enter its diameter and height.',
+      },
+      {
+        question: 'Should I use outside or inside tank dimensions?',
+        answer: 'Use internal dimensions for a closer estimate of water capacity. Outside measurements include glass or acrylic thickness and can overstate the usable volume.',
       },
     ],
     relatedTools: [
