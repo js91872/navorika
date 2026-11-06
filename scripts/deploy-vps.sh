@@ -26,7 +26,41 @@ git merge-base --is-ancestor HEAD "$TARGET" || {
   exit 1
 }
 PREVIOUS=$(git rev-parse HEAD)
+# Prune only completed, marked backups. Never remove the active release.
+prune_backups() {
+  [[ -d "$BACKUP_ROOT" ]] || return 0
+  local -a releases=()
+  local candidate
+  mapfile -t releases < <(
+    find "$BACKUP_ROOT" -mindepth 1 -maxdepth 1 -type d -name 'release.*' -printf '%T@ %p\n' |
+      sort -nr | cut -d' ' -f2-
+  )
+  for candidate in "${releases[@]:2}"; do
+    if [[ -f "$candidate/previous-commit" && -d "$candidate/.next" ]]; then
+      echo "Pruning old rollback backup: $candidate"
+      rm -rf -- "$candidate"
+    else
+      echo "Skipping unverified backup: $candidate"
+    fi
+  done
+}
+prune_backups
+# Fail before allocating another multi-gigabyte build workspace.
+MIN_FREE_GB=${NAVORIKA_MIN_FREE_GB:-15}
+[[ "$MIN_FREE_GB" =~ ^[0-9]+$ ]] || { echo "STOP: NAVORIKA_MIN_FREE_GB must be an integer."; exit 1; }
+FREE_KB=$(df -Pk "$APP" | awk 'NR==2 {print $4}')
+if (( FREE_KB < MIN_FREE_GB * 1024 * 1024 )); then
+  echo "STOP: Only $((FREE_KB / 1024 / 1024)) GiB available; require at least ${MIN_FREE_GB} GiB."
+  echo "Review disk usage and stale navorika-release.* directories before retrying."
+  exit 1
+fi
 STAGE=$(mktemp -d "$(dirname "$APP")/navorika-release.XXXXXX")
+cleanup_stage() {
+  # Always remove this invocation's temporary worktree, including failed builds.
+  git -C "$APP" worktree remove --force "$STAGE" 2>/dev/null || true
+  if [[ -d "$STAGE" ]]; then rm -rf -- "$STAGE"; fi
+}
+trap cleanup_stage EXIT
 git worktree add --detach "$STAGE" "$TARGET"
 for ENVFILE in .env .env.local .env.production .env.production.local; do
   if [ -f "$APP/$ENVFILE" ]; then
@@ -79,24 +113,8 @@ done
 trap - ERR
 pm2 save
 echo "DEPLOYED. Previous release backup: $BACKUP"
-# Retain two most recent complete release backups, including the just-created rollback.
-# Only run after successful startup, smoke tests and PM2 save.
-mapfile -t OLD_RELEASES < <(
-  find "$BACKUP_ROOT" -mindepth 1 -maxdepth 1 -type d -name 'release.*' -printf '%T@ %p\\n' |
-    sort -nr | cut -d' ' -f2-
-)
-if (( ${#OLD_RELEASES[@]} > 2 )); then
-  for OLD_RELEASE in "${OLD_RELEASES[@]:2}"; do
-    case "$OLD_RELEASE" in
-      "$BACKUP_ROOT"/release.*)
-        if [[ "$OLD_RELEASE" != "$BACKUP" && -f "$OLD_RELEASE/previous-commit" && -d "$OLD_RELEASE/.next" ]]; then
-          echo "Removing surplus successful-release backup: $OLD_RELEASE"
-          rm -rf -- "$OLD_RELEASE" || echo "WARNING: Could not remove $OLD_RELEASE"
-        fi
-        ;;
-    esac
-  done
-fi
+# Keep the two newest rollback backups after the release is healthy.
+prune_backups
 echo "Public checks:"
 for PAGE in /fr /ar/tools/rgb-cmyk-image-checker /fr/tools/pdf-bleed-trim-checker /ar/tools/image-print-size-calculator /sitemap.xml; do
   curl --silent --show-error --max-time 20 -o /dev/null \
