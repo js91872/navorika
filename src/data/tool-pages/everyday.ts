@@ -18,6 +18,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { title: 'Speed difference', body: 'Estimated actual speed = indicated speed × new tire diameter ÷ original tire diameter.' },
     ],
     steps: ['Enter the original tire width, aspect ratio and rim diameter.', 'Enter the proposed replacement tire size.', 'Enter an indicated speed for the speedometer comparison.', 'Review diameter, circumference, revolutions, clearance and estimated actual speed.'],
+    examples: [
+      { title: 'Compare 205/55R16 with 215/55R16', input: 'Original 205/55R16; replacement 215/55R16; indicated speed 100 km/h.', result: 'Nominal diameters are 631.9 mm and 642.9 mm. Diameter increases by 11 mm (about 1.74%), ride height by 5.5 mm, and estimated actual speed becomes 101.74 km/h.', note: 'This is a geometric comparison, not a tire-fitment approval.' },
+    ],
     interpretation: ['A larger overall diameter travels farther per wheel revolution, while a smaller diameter travels less distance per revolution.', 'Clearance change represents half of the overall diameter difference.'],
     limitations: ['This calculator compares nominal tire dimensions only and does not establish safe vehicle fitment.', 'Actual mounted dimensions vary by tire model, wheel width, pressure, load and manufacturer tolerances.', 'Verify wheel width, offset, load rating, speed rating and vehicle manufacturer requirements.'],
     faqs: [
@@ -41,6 +44,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { title: 'Billable comparison', body: 'The calculator displays the greater of entered actual weight and calculated dimensional weight.' },
     ],
     steps: ['Choose metric or imperial measurements.', 'Enter package length, width and height.', 'Enter actual package weight.', 'Enter the dimensional divisor required by the relevant carrier and service.', 'Compare actual, dimensional and estimated billable weight.'],
+    examples: [
+      { title: 'Lightweight parcel', input: '40 × 30 × 20 cm, actual weight 3 kg, illustrative divisor 5,000 cm³/kg.', result: 'Volume is 24,000 cm³; dimensional weight is 4.8 kg, which exceeds the actual weight of 3 kg.', note: 'A carrier may apply its own divisor, rounding and billing rules; 4.8 kg is not a guaranteed billed weight.' },
+    ],
     interpretation: ['Large lightweight packages can have dimensional weight greater than their scale weight.', 'The divisor materially affects the result and should be obtained from the carrier for the specific service.'],
     limitations: ['Carrier formulas, divisors, rounding rules and oversize policies vary.', 'This calculator does not quote shipping charges or guarantee the weight a carrier will bill.', 'Use the current rules published by the relevant carrier.'],
     faqs: [
@@ -64,6 +70,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { title: 'Cost', body: 'Electricity cost = energy in kWh × electricity rate per kWh.' },
     ],
     steps: ['Enter appliance wattage.', 'Enter average hours used per day.', 'Enter the number of days and electricity tariff per kWh.', 'Review energy use and estimated daily, monthly, yearly, and selected-period cost.'],
+    examples: [
+      { title: 'Daily fan running cost', input: '75 W appliance, 8 hours per day, electricity rate 0.20 per kWh in your chosen currency.', result: '0.6 kWh per day; 18 kWh over 30 days; estimated 30-day energy cost 3.60 in the same currency.', note: 'This example excludes fixed charges, taxes and tiered electricity rates.' },
+    ],
     interpretation: ['The selected-period result represents usage charges based only on the entered energy rate.', 'Daily, 30-day, and annual estimates assume the same daily usage pattern continues.'],
     limitations: ['Actual bills may include taxes, fixed fees, slab tariffs, demand charges, minimum charges, or time-of-use pricing.', 'Rated appliance wattage may differ from real operating consumption.'],
     faqs: [
