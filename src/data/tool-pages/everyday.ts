@@ -80,7 +80,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { question: 'Does this calculate my complete electricity bill?', answer: 'No. It estimates usage cost from the entered per-kWh rate.' },
       { question: 'Can I calculate yearly appliance cost?', answer: 'Yes. The calculator displays a 365-day estimate.' },
     ],
-    relatedTools: [{ slug: 'fuel-cost-split-calculator', name: 'Fuel Cost & Passenger Split Calculator' }],
+    relatedTools: [{ slug: 'unit-price-calculator', name: 'Unit Price Calculator' }],
     relatedGuides: ['electricity-cost-calculation-guide'],
   },
   'unit-price-calculator': {
@@ -96,7 +96,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
     examples: [
       { title: 'Compare two rice packs', input: 'Option A: 2 kg for 7.20; Option B: 5 kg for 16.50, both in the same currency.', result: 'Option A costs 3.60 per kg. Option B costs 3.30 per kg, saving 0.30 per kg (about 8.33% relative to Option A).', note: 'Compare identical units and include any relevant delivery charges or discounts before purchasing.' },
     ],
-    interpretation: ['The option with the lower price per identical unit generally offers better value when quality and other product characteristics are comparable.', 'A larger pack can have a lower unit price but still cost more overall or lead to waste if you cannot use it before expiry.'],
+    interpretation: ['The option with the lower price per identical unit generally offers better value when quality and other product characteristics are comparable.', 'A larger pack can have a lower unit price but still cost more overall or lead to waste if you cannot use it before expiry.', 'When comparing appliances, unit purchase price is only one part of the decision: use the electricity cost calculator to estimate ongoing running costs separately.'],
     limitations: ['Only compare equivalent units and comparable products.', 'Discounts, taxes, shipping, loyalty rewards, expiry, and quality differences are not automatically included.'],
     faqs: [
       { question: 'What is unit price?', answer: 'Unit price is the total price divided by the amount or number of units.' },
@@ -104,7 +104,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { question: 'Can I use kilograms, litres, pieces, or metres?', answer: 'Yes. The unit label is editable.' },
       { question: 'How much cheaper is the larger pack per unit?', answer: 'Divide each price by its quantity, subtract the lower unit price from the higher one, and divide that difference by the higher unit price to express the saving as a percentage.' },
     ],
-    relatedTools: [{ slug: 'fuel-cost-split-calculator', name: 'Fuel Cost & Passenger Split Calculator' }],
+    relatedTools: [{ slug: 'electricity-cost-calculator', name: 'Electricity Cost Calculator' }, { slug: 'dimensional-weight-calculator', name: 'Dimensional Weight Calculator' }],
     relatedGuides: [],
   },
   'aquarium-volume-calculator': {
