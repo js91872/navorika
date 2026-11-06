@@ -79,6 +79,24 @@ done
 trap - ERR
 pm2 save
 echo "DEPLOYED. Previous release backup: $BACKUP"
+# Retain two most recent complete release backups, including the just-created rollback.
+# Only run after successful startup, smoke tests and PM2 save.
+mapfile -t OLD_RELEASES < <(
+  find "$BACKUP_ROOT" -mindepth 1 -maxdepth 1 -type d -name 'release.*' -printf '%T@ %p\\n' |
+    sort -nr | cut -d' ' -f2-
+)
+if (( ${#OLD_RELEASES[@]} > 2 )); then
+  for OLD_RELEASE in "${OLD_RELEASES[@]:2}"; do
+    case "$OLD_RELEASE" in
+      "$BACKUP_ROOT"/release.*)
+        if [[ "$OLD_RELEASE" != "$BACKUP" && -f "$OLD_RELEASE/previous-commit" && -d "$OLD_RELEASE/.next" ]]; then
+          echo "Removing surplus successful-release backup: $OLD_RELEASE"
+          rm -rf -- "$OLD_RELEASE" || echo "WARNING: Could not remove $OLD_RELEASE"
+        fi
+        ;;
+    esac
+  done
+fi
 echo "Public checks:"
 for PAGE in /fr /ar/tools/rgb-cmyk-image-checker /fr/tools/pdf-bleed-trim-checker /ar/tools/image-print-size-calculator /sitemap.xml; do
   curl --silent --show-error --max-time 20 -o /dev/null \
