@@ -17,6 +17,7 @@ export interface ToolPageContent {
   formula?: { title: string; body: string }[];
   steps: string[];
   interpretation: string[];
+  examples?: { title: string; input: string; result: string; note?: string }[];
   limitations: string[];
   faqs: { question: string; answer: string }[];
   relatedTools: { slug: string; name: string }[];
