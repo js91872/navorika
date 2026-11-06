@@ -82,7 +82,7 @@ echo "DEPLOYED. Previous release backup: $BACKUP"
 # Retain two most recent complete release backups, including the just-created rollback.
 # Only run after successful startup, smoke tests and PM2 save.
 mapfile -t OLD_RELEASES < <(
-  find "$BACKUP_ROOT" -mindepth 1 -maxdepth 1 -type d -name 'release.*' -printf '%T@ %p\\n' |
+  find "$BACKUP_ROOT" -mindepth 1 -maxdepth 1 -type d -name 'release.*' -printf '%T@ %p\n' |
     sort -nr | cut -d' ' -f2-
 )
 if (( ${#OLD_RELEASES[@]} > 2 )); then

@@ -11,9 +11,11 @@ import type { Locale } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import styles from '@/components/Navbar.module.css';
 
+type NavbarUi = Pick<Dictionary['ui'], 'home' | 'tools' | 'about' | 'contact' | 'privacy' | 'terms' | 'brandHome' | 'navigation' | 'language' | 'themeToggle' | 'menuToggle'>;
+
 interface LocalizedNavbarProps {
   locale: Locale;
-  dictionary: Dictionary;
+  dictionary: { ui: NavbarUi };
 }
 
 export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavbarProps) {
