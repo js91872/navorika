@@ -229,7 +229,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { title: 'Load a 60 kg barbell', input: 'Target total 60 kg, bar 20 kg, with standard 20 kg plates available.', result: '40 kg remains for plates, or 20 kg per side. Put one 20 kg plate on each side of the bar.', note: 'Confirm the bar and plate markings and use suitable collars before lifting.' },
     ],
     interpretation: [
-      'The displayed plate count is per side, so the same combination should be loaded on both ends of the bar.'
+      'The displayed plate count is per side, so the same combination should be loaded on both ends of the bar.',
       'Total weight includes the bar itself plus all plates on both sides.',
     ],
     limitations: [
@@ -309,7 +309,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { title: 'Split a weekend road trip', input: 'One-way distance 150 km, round trip enabled, efficiency 15 km/L, fuel price 1.50 per litre, 4 passengers, and 12 in total tolls.', result: 'Round-trip distance is 300 km. Estimated fuel use is 20 litres, fuel expense is 30, and total shared expense is 42. Each of four passengers pays 10.50 in the same currency.', note: 'The example assumes all four passengers share costs equally and excludes parking or other unentered expenses.' },
     ],
     interpretation: [
-      'Fuel cost is based on the entered efficiency and assumes the vehicle achieves that average throughout the trip.'
+      'Fuel cost is based on the entered efficiency and assumes the vehicle achieves that average throughout the trip.',
       'Optional toll, parking, and other costs are added to the fuel expense before the total is divided equally between passengers.',
       'Selecting round trip doubles the entered one-way distance.',
     ],
