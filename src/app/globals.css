@@ -92,10 +92,6 @@
 @media (max-width: 639px) {
   html:not(.dark) body { background: #f7f7f8; color: #18181b; }
   html.dark body { background: #111113; color: #f4f4f5; }
-  html:not(.dark) main h1,
-  html:not(.dark) main h2 { color: #18181b; }
-  html.dark main h1,
-  html.dark main h2 { color: #f4f4f5; }
 }
 
 
@@ -136,27 +132,27 @@
    Apply only to actionable controls in main content; never recolor semantic
    result/status panels, danger buttons, or neutral secondary controls. */
 @layer utilities {
-  main :is(button, label):is(
+  main button:is(
     [class*="bg-blue-"], [class*="bg-indigo-"], [class*="bg-violet-"],
     [class*="bg-purple-"], [class*="bg-sky-"], [class*="bg-cyan-"]
   ):not([data-keep-action-color]) {
     background-color: var(--primary);
     color: #fff;
   }
-  main :is(button, label):is(
+  main button:is(
     [class*="bg-blue-"], [class*="bg-indigo-"], [class*="bg-violet-"],
     [class*="bg-purple-"], [class*="bg-sky-"], [class*="bg-cyan-"]
   ):not([data-keep-action-color]):is(:hover, :focus-within) {
     background-color: var(--primary-hover);
   }
-  main :is(button, label):is(
+  main button:is(
     [class*="bg-blue-"], [class*="bg-indigo-"], [class*="bg-violet-"],
     [class*="bg-purple-"], [class*="bg-sky-"], [class*="bg-cyan-"]
   ):focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 3px;
   }
-  main :is(button, label):disabled {
+  main button:disabled {
     cursor: not-allowed;
   }
 }
