@@ -143,7 +143,7 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
               type="button"
               onClick={() => setActiveCategory(cat.id)}
               aria-pressed={isActive}
-              className={`inline-flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
+              className={`inline-flex shrink-0 items-center gap-2 min-h-11 rounded-lg px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
                 isActive
                   ? 'bg-[#e5322d] border border-[#e5322d] text-white shadow-xs'
                   : 'bg-white dark:bg-[#18181b] border border-[#dddde2] dark:border-[#27272a] text-[#3d4655] dark:text-[#a1a1aa] hover:border-[#e5322d]'
@@ -169,15 +169,13 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {matches.map((slug) => {
               const tool = d.tools[slug];
-              const catSlug = toolCategoryMap.get(slug) || 'everyday-calculators';
-              const catConfig = CATEGORY_CONFIG.find((c) => c.id === catSlug) || CATEGORY_CONFIG[7];
-              const CatIcon = catConfig.icon;
+              const toolIcon = getToolIcon(slug);
 
               return (
                 <Link
                   key={slug}
                   href={localizedPath(locale, slug)}
-                  className="group relative flex flex-col justify-between rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5 transition-all duration-150 hover:border-[#e5322d] hover:shadow-md min-h-[145px]"
+                  className="group relative flex flex-col justify-between rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5 transition-all duration-150 hover:border-[#e5322d] hover:shadow-md min-h-[158px]"
                 >
                   <div>
                     <div className="mb-3 flex items-start justify-between gap-2">
@@ -185,14 +183,14 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
                         className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 text-xl text-[#e5322d]"
                         aria-hidden="true"
                       >
-                        <CatIcon className="h-5 w-5" />
+                        <span className="text-xl leading-none">{toolIcon}</span>
                       </span>
                       <span className="text-[#5b5b63] dark:text-[#a1a1aa] group-hover:text-[#e5322d] group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-all">
                         →
                       </span>
                     </div>
                     {/* Exactly one h2 per tool card - tested by test:i18n:browser */}
-                    <h2 className="text-[17px] font-semibold text-[#18181b] dark:text-white transition-colors group-hover:text-[#e5322d] [overflow-wrap:anywhere] line-clamp-1">
+                    <h2 className="text-[17px] font-semibold text-[#18181b] dark:text-white transition-colors group-hover:text-[#e5322d] [overflow-wrap:anywhere] line-clamp-2">
                       {tool.title}
                     </h2>
                     <p className="mt-1.5 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa] line-clamp-2 [overflow-wrap:anywhere]">
