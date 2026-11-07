@@ -40,22 +40,22 @@ export default function ExpansionToolPage({
       : 'Construction Calculators';
 
   return (
-    <div className="pb-20 pt-4 sm:pt-8 text-[#18181b] dark:text-[#f4f4f5]">
+    <div className="pb-20 pt-4 sm:pt-8 text-[var(--foreground)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Link
           href={`/categories/${category}`}
-          className="mb-3 sm:mb-5 inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] transition-colors"
+          className="mb-3 sm:mb-5 inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[var(--muted-foreground)] hover:text-[var(--primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] transition-colors"
         >
           <ArrowLeft className="size-4" /> Back to {categoryName}
         </Link>
         <header className="mb-5 sm:mb-7 max-w-4xl">
-          <p className="text-xs font-bold uppercase tracking-wider text-[#e5322d]">
+          <p className="text-xs font-bold uppercase tracking-wider text-[var(--primary)]">
             {eyebrow}
           </p>
-          <h1 className="mt-1.5 text-2xl sm:text-4xl font-black tracking-tight text-[#18181b] dark:text-white">
+          <h1 className="mt-1.5 text-2xl sm:text-4xl font-black tracking-tight text-[var(--foreground)]">
             {title}
           </h1>
-          <p className="mt-2 text-sm sm:text-base leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
+          <p className="mt-2 text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)]">
             {description}
           </p>
           
