@@ -238,6 +238,17 @@ const guideDefinitions: GuideDefinition[] = [
     author: 'Navorika Team'
   },
   {
+    slug: 'how-to-calculate-square-feet',
+    title: 'How to Calculate Square Feet: Rooms, Inches, Floors & Irregular Shapes',
+    description: 'Learn how to calculate square feet with feet and inches, L-shaped rooms, circles, flooring, tile and price per square foot. Worked examples and free sq ft calculator.',
+    featuredImage: { src: '/images/guides/how-to-calculate-square-feet.svg', alt: 'Floor plan diagram showing a rectangular room, a circular patio and their square footage formulas', caption: 'Measure each shape separately and add nonoverlapping areas to calculate total square footage.' },
+    category: 'Construction',
+    publishedDate: 'November 2026',
+    readTime: '12 min read',
+    author: 'Navorika Team',
+    keywords: ['how to calculate square feet', 'how is sqft calculated', 'square footage formula', 'sq ft calculator with inches', 'how to calculate square footage of a room', 'sq ft calculator flooring', 'square feet to acres', 'price per square foot calculator'],
+  },
+  {
     slug: 'how-to-compare-pdf-files',
     title: 'How to Compare PDF Files for Differences: Complete Guide',
     description: 'Learn how to compare PDF files online and side by side. Compare text, visual changes, page differences, and scan limitations without uploading files.',

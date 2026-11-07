@@ -26,8 +26,11 @@ export default function BusinessCalculatorTool({ slug }: { slug: string }) {
   const defaults = useMemo(() => Object.fromEntries(config.fields.map((item) => [item.key, item.defaultValue])) as ValueMap, [config]);
   const [values, setValues] = useState<ValueMap>(defaults);
   const [scenarioLabel, setScenarioLabel] = useState('Custom model or provider');
-  const result = useMemo(() => config.calculate(values), [config, values]);
-  const resultRows = config.results.map((item) => [item.label, display(Reflect.get(result, item.key), item.format)] as const);
+  const result = useMemo(() => {
+    try { return { data: config.calculate(values), error: null as string | null }; }
+    catch (error) { return { data: null, error: error instanceof Error ? error.message : 'Check your input values.' }; }
+  }, [config, values]);
+  const resultRows = config.results.map((item) => [item.label, display(result.data ? Reflect.get(result.data, item.key) : null, item.format)] as const);
   const summary = `${slug === 'brrrr-calculator' ? 'BRRRR estimate' : 'Estimated results'}\n${resultRows.map(([label, value]) => `${label}: ${value}`).join('\n')}`;
   const actions = (toolUx[slug]?.resultActions ?? []).reduce<ResultAction[]>((items, kind) => {
     if (kind === 'copy-summary') items.push({ kind: 'copy', label: 'Copy summary', getContent: () => summary });
@@ -91,7 +94,8 @@ export default function BusinessCalculatorTool({ slug }: { slug: string }) {
     </section>
     <aside className="min-w-0 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-5 sm:p-7">
       <h2 className="break-words text-xl font-bold">{slug === 'llm-api-cost-calculator' ? `${scenarioLabel || 'Custom scenario'} estimate` : 'Estimated results'}</h2>
-      <dl className="mt-5 grid gap-3">{config.results.map((item) => <div key={item.key} className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4"><dt className="text-sm text-[var(--muted-foreground)]">{item.label}</dt><dd className="mt-1 break-words text-xl font-black whitespace-pre-wrap">{display(Reflect.get(result, item.key), item.format)}</dd></div>)}</dl>
+      {result.error && <p role="status" className="mt-4 rounded-xl border border-amber-500/30 p-3 text-sm">{result.error} Your inputs are preserved; enter valid values to continue.</p>}
+      <dl className="mt-5 grid gap-3">{config.results.map((item) => <div key={item.key} className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4"><dt className="text-sm text-[var(--muted-foreground)]">{item.label}</dt><dd className="mt-1 break-words text-xl font-black whitespace-pre-wrap">{display(result.data ? Reflect.get(result.data, item.key) : null, item.format)}</dd></div>)}</dl>
       <ResultActions actions={actions} className="mt-5" />
       <div className="mt-5 flex gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/10 p-4 text-sm leading-6"><Info className="mt-0.5 size-5 shrink-0"/><p>{config.note}</p></div>
     </aside>

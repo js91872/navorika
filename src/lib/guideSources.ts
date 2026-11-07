@@ -4,6 +4,11 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-calculate-square-feet': [
+    { name: 'NIST — SI Units: Area conversions', url: 'https://www.nist.gov/pml/owm/metric-si/si-units' },
+    { name: 'NIST — Handbook 44: Units of measurement', url: 'https://www.nist.gov/pml/owm/nist-handbook-44-current-edition' },
+    { name: 'US Census Bureau — Geographic areas and land measurement', url: 'https://www.census.gov/geographies/reference-files/2010/geo/2010-area.html' },
+  ],
   'how-to-clear-icloud-storage': [
     { name: 'Apple Support — Manage your iCloud storage', url: 'https://support.apple.com/en-us/108051' },
     { name: 'Apple Support — Delete photos on your iPhone or iPad', url: 'https://support.apple.com/en-us/104967' },
