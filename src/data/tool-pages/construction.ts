@@ -1049,7 +1049,7 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
   'square-footage-calculator': {
     slug: 'square-footage-calculator',
     ...expansionPage({
-      name: 'Sq Ft Calculator – Square Feet Calculator for Rooms & Floors',
+      name: 'Free Sq Ft Calculator (Square Feet Calculator)',
       description: 'Free sq ft calculator: calculate square feet for rooms, floors, walls, circles and irregular spaces using feet, inches or meters. Add areas, convert units and estimate cost.',
       keywords: ['sq ft calculator', 'square feet calculator', 'square footage calculator', 'square foot calculator', 'sqft calculator', 'sq ft calculator online', 'sq ft calculator room', 'how is sqft calculated', 'sq ft calculator with inches', 'inch to sq ft calculator', 'square foot calculator acre', 'sq ft calculator circle', 'price by square foot calculator', 'sq ft calculator flooring', 'sq ft calculator tile'],
       intro: 'Use this free square feet calculator to measure a room, floor, wall, patio or other space. Enter dimensions in feet, inches, meters or centimeters, select the shape, and see the area in square feet instantly. Add several sections to calculate the total square footage of an L-shaped room or multiple rooms.',

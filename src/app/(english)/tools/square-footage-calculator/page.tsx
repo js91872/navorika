@@ -6,7 +6,7 @@ export default function Page() {
     <ExpansionToolPage
       category="construction-calculators"
       eyebrow="Free Online Area Calculator"
-      title="Square Feet Calculator (Sq Ft Calculator)"
+      title="Free Sq Ft Calculator (Square Feet Calculator)"
       description="Calculate square footage for rooms, floors, walls and irregular spaces. Measure in feet, inches, meters or centimeters, add multiple areas, and estimate material cost."
       slug="square-footage-calculator"
     >

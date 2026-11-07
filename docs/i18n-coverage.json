@@ -27,7 +27,7 @@
       "semanticCopy": 12103,
       "reviewLiteral": 48146
     },
-    "candidateCopyWords": 356629
+    "candidateCopyWords": 356662
   },
   "tools": [
     {
@@ -8729,7 +8729,7 @@
     },
     {
       "slug": "how-to-calculate-square-feet",
-      "title": "How to Calculate Square Feet: Rooms, Inches, Floors & Irregular Shapes",
+      "title": "Sq Ft Calculator: How to Calculate Square Feet for Rooms & Floors",
       "category": "Construction",
       "route": "/guides/how-to-calculate-square-feet",
       "status": "pending",
