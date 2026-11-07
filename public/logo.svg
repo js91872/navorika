@@ -4,35 +4,6 @@
   fill="none"
 >
   <defs>
-    <linearGradient
-      id="navorikaGradient"
-      x1="8"
-      y1="8"
-      x2="58"
-      y2="62"
-      gradientUnits="userSpaceOnUse"
-    >
-      <stop offset="0%" stop-color="#4F46FF"/>
-      <stop offset="28%" stop-color="#7C3AED"/>
-      <stop offset="55%" stop-color="#A855F7"/>
-      <stop offset="78%" stop-color="#D946EF"/>
-      <stop offset="100%" stop-color="#EC4899"/>
-    </linearGradient>
-
-    <linearGradient
-      id="stemGradient"
-      x1="8"
-      y1="14"
-      x2="54"
-      y2="52"
-      gradientUnits="userSpaceOnUse"
-    >
-      <stop offset="0%" stop-color="#4338CA"/>
-      <stop offset="42%" stop-color="#7C3AED"/>
-      <stop offset="75%" stop-color="#C026D3"/>
-      <stop offset="100%" stop-color="#DB2777"/>
-    </linearGradient>
-
     <mask id="cut">
       <rect x="0" y="0" width="64" height="64" fill="white"/>
       <path
@@ -48,18 +19,18 @@
     <g mask="url(#cut)">
       <path
         d="M10 20L25 35V50C25 56.1 21.1 60 16 60C10.9 60 8 56.1 8 51V22C8 20.9 8.9 20 10 20Z"
-        fill="url(#stemGradient)"
+        fill="#e5322d"
       />
 
       <path
         d="M47 4C52 4 56 8 56 13V46L41 30V13C41 8 43 4 47 4Z"
-        fill="url(#stemGradient)"
+        fill="#e5322d"
       />
     </g>
 
     <path
       d="M15 11L49 53"
-      stroke="url(#navorikaGradient)"
+      stroke="#e5322d"
       stroke-width="13"
       stroke-linecap="round"
     />
