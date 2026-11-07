@@ -1,5 +1,6 @@
 'use client';
 
+import { useId } from 'react';
 import Link from 'next/link';
 
 interface LogoProps {
@@ -19,7 +20,7 @@ export default function Logo({
   href = '/',
   ariaLabel = 'Navorika home',
 }: LogoProps) {
-  const maskId = 'navorika-logo-cut';
+  const maskId = `navorika-logo-cut-${useId().replace(/:/g, '')}`;
 
   const iconSize = {
     sm: 28,
