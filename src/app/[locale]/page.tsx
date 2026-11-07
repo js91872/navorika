@@ -52,13 +52,20 @@ export default async function LanguageHome({
         </p>
 
         {/* Privacy Trust Banner */}
-        <div className="max-w-2xl mx-auto mb-8 rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3.5 text-xs sm:text-sm leading-relaxed text-[#18181b] dark:text-[#f4f4f5] flex items-center gap-3 text-start">
+        <div className="max-w-2xl mx-auto mb-2 rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3.5 text-xs sm:text-sm leading-relaxed text-[#18181b] dark:text-[#f4f4f5] flex items-center gap-3 text-start">
           <Shield className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
           <span className="[overflow-wrap:anywhere]">{d.ui.local}</span>
         </div>
 
+      </section>
+
+      {/* Localized Tools Directory & Search */}
+      <LocalizedCatalog locale={locale} dictionary={d} />
+
+      {/* Supporting statistics follow the tool search and directory. */}
+      <section aria-label="Navorika at a glance" className="mx-auto mt-10 max-w-4xl px-4">
         {/* 4 Stats Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mb-0">
           <div className="p-3 sm:p-4 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] text-center shadow-xs min-w-0 [overflow-wrap:anywhere]">
             <div className="flex justify-center mb-1 text-[#e5322d]">
               <Sparkles className="h-5 w-5" />
@@ -92,9 +99,6 @@ export default async function LanguageHome({
           </div>
         </div>
       </section>
-
-      {/* Localized Tools Directory & Search */}
-      <LocalizedCatalog locale={locale} dictionary={d} />
 
       {/* Feature Highlights ("Why Choose Navorika?") - Using div role="heading" to preserve test expectations */}
       <section className="mt-14 pt-10 border-t border-[#e4e4e8] dark:border-[#27272a]">
