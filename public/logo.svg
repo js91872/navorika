@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" role="img" aria-label="Navorika">
-  <defs>
-    <linearGradient id="fold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#c71f1e"/>
-      <stop offset="1" stop-color="#e5322d"/>
-    </linearGradient>
-  </defs>
-  <g transform="translate(0 3) scale(.83)">
-    <path fill="#e5322d" d="M12 68 30 17Q33 9 41 9H48Q53 9 57 14L82 43 88 23Q90 17 97 15L116 9Q121 7 119 14L102 69Q100 77 93 77H81Q75 77 71 71L49 41 43 59Q42 64 36 66L17 73Q10 75 12 68Z"/>
-    <path fill="#c71f1e" d="M30 27Q34 24 39 28L49 41 43 59Q42 64 36 66L17 73Z" opacity=".65"/>
-    <path fill="#b91c1c" d="M49 41 71 71Q75 77 81 77H93Q97 77 100 72 94 75 89 71L49 30Z" opacity=".50"/>
-    <path fill="#b91c1c" d="M82 43 88 23Q90 17 97 15L116 9 102 54Q99 59 95 59Q91 59 88 55Z" opacity=".34"/>
-  </g>
-  <text x="109" y="54" font-family="Inter,Arial,sans-serif" font-size="45" font-weight="800" letter-spacing="-1.8" fill="#111111">avorika</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" role="img" aria-label="Navorika"><text x="3" y="59" font-family="Arial,Helvetica,sans-serif" font-size="69" font-weight="900" font-style="italic" letter-spacing="-9" fill="#e5322d">N</text><text x="76" y="54" font-family="Arial,Helvetica,sans-serif" font-size="45" font-weight="800" letter-spacing="-1.8" fill="#18181b">avorika</text></svg>
