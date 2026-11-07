@@ -48,8 +48,8 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
                 href={link.href}
                 className={`transition-colors duration-150 py-1 ${
                   isActive(link.href)
-                    ? 'text-[#e5322d] font-bold'
-                    : 'text-[#52525b] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ef4444]'
+                    ? 'text-[var(--primary)] font-bold'
+                    : 'text-[#52525b] dark:text-[#a1a1aa] hover:text-[var(--primary)] dark:hover:text-[#ef4444]'
                 }`}
               >
                 {link.label}
@@ -64,7 +64,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
             <button
               type="button"
               onClick={onSearchClick}
-              className="grid min-h-11 min-w-11 sm:inline-flex sm:min-w-0 sm:px-3 sm:py-1.5 place-items-center sm:items-center sm:justify-center sm:gap-2 rounded-lg border border-transparent sm:border-[#e4e4e8] dark:sm:border-[#27272a] sm:bg-[#f7f7f8] dark:sm:bg-[#202023] text-xs font-semibold text-[#52525b] dark:text-[#a1a1aa] hover:border-[#e5322d] hover:text-[#e5322d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="grid min-h-11 min-w-11 sm:inline-flex sm:min-w-0 sm:px-3 sm:py-1.5 place-items-center sm:items-center sm:justify-center sm:gap-2 rounded-lg border border-transparent sm:border-[#e4e4e8] dark:sm:border-[#27272a] sm:bg-[#f7f7f8] dark:sm:bg-[#202023] text-xs font-semibold text-[#52525b] dark:text-[#a1a1aa] hover:border-[#e5322d] hover:text-[var(--primary)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
               aria-label="Search tools"
             >
               <Search className="h-4 w-4" />
@@ -75,7 +75,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
             <button
               type="button"
               onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
               aria-label="Toggle theme"
             >
               <Sun className="hidden h-4 w-4 dark:block" aria-hidden="true" />
@@ -85,7 +85,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -106,7 +106,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
                 onClick={() => setIsOpen(false)}
                 className={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
                   isActive(link.href)
-                    ? 'bg-[#fff1f1] dark:bg-[#e5322d]/15 text-[#e5322d] font-bold'
+                    ? 'bg-[var(--primary-light)] dark:bg-[#e5322d]/15 text-[var(--primary)] font-bold'
                     : 'text-[#52525b] dark:text-[#a1a1aa] hover:bg-[#f7f7f8] dark:hover:bg-[#202023] hover:text-[#18181b] dark:hover:text-white'
                 }`}
               >
