@@ -13,6 +13,7 @@ import { macBatteryGuideContent } from './guideContentMacBattery';
 import { websiteAuditGuideContent } from './guideContentWebsiteAudit';
 import { fertilizerGuideContent } from './fertilizerGuideContent';
 
+import { squareFeetGuideContent } from './guideContentSquareFeet';
 import { icloudGuideContent } from './guideContentIcloud';
 
 export interface GuideSection {
@@ -44,6 +45,7 @@ export interface GuideContent {
 export const guideContent: Record<string, GuideContent> = {
   ...claudeComparisonGuideContent,
   ...fertilizerGuideContent,
+  ...squareFeetGuideContent,
   ...macSpeakerGuideContent,
   'how-to-compare-pdf-files': {
     intro: "Document verification has become one of the most critical operational tasks across modern legal, commercial, publishing, and engineering workflows. Whether reviewing draft revisions of a non-disclosure agreement, auditing commercial lease amendments, approving pre-press marketing proofs, or validating software technical specifications, professionals frequently need to compare PDF files to identify exactly what has changed between successive versions. However, because the Portable Document Format (PDF) was architected in 1993 primarily as a fixed-layout presentation and digital printing language rather than an editable word-processing stream, comparing two PDF documents presents unique technical challenges. Unlike plain-text files or Microsoft Word documents where paragraphs and sentences exist as structured, linear semantic objects, a PDF file represents a canvas of coordinate-positioned glyphs, vector draw instructions, and embedded raster images. Two documents that appear virtually identical on a computer monitor may contain vastly different underlying font encodings or fragmented text streams, while documents that share identical wording may exhibit subtle yet catastrophic visual layout shifts in margins, bleed areas, or signature lines. This comprehensive guide provides an exhaustive technical and practical breakdown of how to compare PDF documents accurately and privately. We analyze the underlying mechanics of text stream extraction versus canvas-level visual rasterization, explain how word-level redline diff algorithms operate, detail methods for adjusting visual sensitivity thresholds, model how non-symmetric page counts (inserted and removed pages) are resolved, assess the honest technical boundaries of scanned image-only files that require optical character recognition (OCR), and provide an actionable, step-by-step protocol for auditing document revisions directly in your web browser using Navorika's privacy-first [Compare PDF Files Online Free](/tools/compare-pdf) utility.",
