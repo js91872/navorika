@@ -1,16 +1,16 @@
 import ExpansionToolPage from '@/components/tools/ExpansionToolPage';
-import BusinessCalculatorTool from '@/components/tools/BusinessCalculatorTool';
+import SquareFeetCalculator from '@/components/tools/SquareFeetCalculator';
 
 export default function Page() {
   return (
     <ExpansionToolPage
       category="construction-calculators"
-      eyebrow="Calculate Area in Square Feet"
-      title="Square Footage Calculator"
-      description="Calculate square footage from length and width, then see square yards and square meters."
+      eyebrow="Free Online Area Calculator"
+      title="Square Feet Calculator (Sq Ft Calculator)"
+      description="Calculate square footage for rooms, floors, walls and irregular spaces. Measure in feet, inches, meters or centimeters, add multiple areas, and estimate material cost."
       slug="square-footage-calculator"
     >
-      <BusinessCalculatorTool slug="square-footage-calculator" />
+      <SquareFeetCalculator />
     </ExpansionToolPage>
   );
 }
