@@ -1,5 +1,6 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'how-to-calculate-square-feet': ['square-footage-calculator', 'flooring-calculator', 'tile-calculator', 'paint-calculator', 'land-area-converter'],
   'how-to-clear-icloud-storage': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image', 'image-scaling-calculator'],
   'why-is-my-icloud-storage-full': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image', 'extract-audio-from-video'],
   'how-to-delete-icloud-backup-safely': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image'],
