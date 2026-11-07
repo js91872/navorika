@@ -15,19 +15,19 @@
     "pendingTools": 4,
     "underReviewTools": 6,
     "sharedCalculators": 75,
-    "guides": 67,
+    "guides": 68,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
     "targetToolTranslations": 2261,
-    "pendingGuideTranslations": 469,
+    "pendingGuideTranslations": 476,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4408,
-      "visibleAttribute": 393,
-      "semanticCopy": 12046,
-      "reviewLiteral": 47960
+      "jsxText": 4446,
+      "visibleAttribute": 394,
+      "semanticCopy": 12103,
+      "reviewLiteral": 48146
     },
-    "candidateCopyWords": 354285
+    "candidateCopyWords": 356629
   },
   "tools": [
     {
@@ -6975,8 +6975,8 @@
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
         "src/app/(english)/tools/square-footage-calculator/page.tsx",
-        "src/components/tools/BusinessCalculatorTool.tsx",
-        "src/components/tools/ExpansionToolPage.tsx"
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/SquareFeetCalculator.tsx"
       ]
     },
     {
@@ -8724,6 +8724,14 @@
       "title": "How to Merge PDF Files: Complete Guide",
       "category": "PDF",
       "route": "/guides/how-to-merge-pdf-files",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-calculate-square-feet",
+      "title": "How to Calculate Square Feet: Rooms, Inches, Floors & Irregular Shapes",
+      "category": "Construction",
+      "route": "/guides/how-to-calculate-square-feet",
       "status": "pending",
       "translatedLocales": []
     },
