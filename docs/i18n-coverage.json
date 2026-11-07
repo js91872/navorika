@@ -23,11 +23,11 @@
     "pendingTrustTranslations": 0,
     "candidateCounts": {
       "jsxText": 4446,
-      "visibleAttribute": 394,
+      "visibleAttribute": 395,
       "semanticCopy": 12103,
-      "reviewLiteral": 48146
+      "reviewLiteral": 48147
     },
-    "candidateCopyWords": 356662
+    "candidateCopyWords": 356666
   },
   "tools": [
     {
