@@ -169,9 +169,6 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {matches.map((slug) => {
               const tool = d.tools[slug];
-              const catSlug = toolCategoryMap.get(slug) || 'everyday-calculators';
-              const catConfig = CATEGORY_CONFIG.find((c) => c.id === catSlug) || CATEGORY_CONFIG[7];
-              const CatIcon = catConfig.icon;
               const toolIcon = getToolIcon(slug);
 
               return (
@@ -186,7 +183,7 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
                         className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 text-xl text-[#e5322d]"
                         aria-hidden="true"
                       >
-                        <span className="text-xl leading-none" role="img" aria-label={`${tool.title} icon`}>{toolIcon}</span>
+                        <span className="text-xl leading-none">{toolIcon}</span>
                       </span>
                       <span className="text-[#5b5b63] dark:text-[#a1a1aa] group-hover:text-[#e5322d] group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-all">
                         →
