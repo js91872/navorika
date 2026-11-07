@@ -20,7 +20,7 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
   const [isOpen, setIsOpen] = useState(false);
   const [currentHash, setCurrentHash] = useState('');
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -126,10 +126,10 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
                     if (link.id === 'tools') setCurrentHash('#tools');
                     if (link.id === 'home') setCurrentHash('');
                   }}
-                  className={`transition-colors duration-150 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d] ${
+                  className={`transition-colors duration-150 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] ${
                     active
-                      ? 'text-[#e5322d] font-bold'
-                      : 'text-[#52525b] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ef4444]'
+                      ? 'text-[var(--primary)] font-bold'
+                      : 'text-[#52525b] dark:text-[#a1a1aa] hover:text-[var(--primary)] dark:hover:text-[#ef4444]'
                   }`}
                 >
                   {link.label}
@@ -144,8 +144,8 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
 
             <button
               type="button"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-transparent hover:border-[#e4e4e8] dark:hover:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
               aria-label={d.ui.themeToggle}
               title={d.ui.themeToggle}
             >
@@ -157,7 +157,7 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
               ref={menuButtonRef}
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d]"
+              className="grid min-h-11 min-w-11 place-items-center rounded-lg border border-[#e4e4e8] dark:border-[#27272a] text-[#52525b] dark:text-[#a1a1aa] hover:text-[#18181b] dark:hover:text-white lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
               aria-label={d.ui.menuToggle}
               title={d.ui.menuToggle}
               aria-expanded={isOpen}
@@ -188,9 +188,9 @@ export default function LocalizedNavbar({ locale, dictionary: d }: LocalizedNavb
                     if (link.id === 'home') setCurrentHash('');
                     setIsOpen(false);
                   }}
-                  className={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e5322d] ${
+                  className={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] ${
                     active
-                      ? 'bg-[#fff1f1] dark:bg-[#e5322d]/15 text-[#e5322d] font-bold'
+                      ? 'bg-[var(--primary-light)] dark:bg-[#e5322d]/15 text-[var(--primary)] font-bold'
                       : 'text-[#52525b] dark:text-[#a1a1aa] hover:bg-[#f7f7f8] dark:hover:bg-[#202023] hover:text-[#18181b] dark:hover:text-white'
                   }`}
                 >
