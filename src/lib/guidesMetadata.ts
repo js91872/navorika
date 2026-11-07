@@ -239,8 +239,8 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'how-to-calculate-square-feet',
-    title: 'How to Calculate Square Feet: Rooms, Inches, Floors & Irregular Shapes',
-    description: 'Learn how to calculate square feet with feet and inches, L-shaped rooms, circles, flooring, tile and price per square foot. Worked examples and free sq ft calculator.',
+    title: 'Sq Ft Calculator: How to Calculate Square Feet for Rooms & Floors',
+    description: 'Use a free sq ft calculator and learn how to calculate square feet for rooms, floors, inches, L-shaped spaces, flooring and tile with formulas and examples.',
     featuredImage: { src: '/images/guides/how-to-calculate-square-feet.svg', alt: 'Floor plan diagram showing a rectangular room, a circular patio and their square footage formulas', caption: 'Measure each shape separately and add nonoverlapping areas to calculate total square footage.' },
     category: 'Construction',
     publishedDate: 'November 2026',
