@@ -1,50 +1,15 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 300 80"
-  fill="none"
->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" role="img" aria-label="Navorika">
   <defs>
-    <mask id="cut">
-      <rect x="0" y="0" width="64" height="64" fill="white"/>
-      <path
-        d="M14 11L50 53"
-        stroke="black"
-        stroke-width="16"
-        stroke-linecap="round"
-      />
-    </mask>
+    <linearGradient id="fold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c71f1e"/>
+      <stop offset="1" stop-color="#e5322d"/>
+    </linearGradient>
   </defs>
-
-  <g transform="translate(8 8)">
-    <g mask="url(#cut)">
-      <path
-        d="M10 20L25 35V50C25 56.1 21.1 60 16 60C10.9 60 8 56.1 8 51V22C8 20.9 8.9 20 10 20Z"
-        fill="#e5322d"
-      />
-
-      <path
-        d="M47 4C52 4 56 8 56 13V46L41 30V13C41 8 43 4 47 4Z"
-        fill="#e5322d"
-      />
-    </g>
-
-    <path
-      d="M15 11L49 53"
-      stroke="#e5322d"
-      stroke-width="13"
-      stroke-linecap="round"
-    />
+  <g transform="translate(0 3) scale(.83)">
+    <path fill="#e5322d" d="M12 68 30 17Q33 9 41 9H48Q53 9 57 14L82 43 88 23Q90 17 97 15L116 9Q121 7 119 14L102 69Q100 77 93 77H81Q75 77 71 71L49 41 43 59Q42 64 36 66L17 73Q10 75 12 68Z"/>
+    <path fill="#c71f1e" d="M30 27Q34 24 39 28L49 41 43 59Q42 64 36 66L17 73Z" opacity=".65"/>
+    <path fill="#b91c1c" d="M49 41 71 71Q75 77 81 77H93Q97 77 100 72 94 75 89 71L49 30Z" opacity=".50"/>
+    <path fill="#b91c1c" d="M82 43 88 23Q90 17 97 15L116 9 102 54Q99 59 95 59Q91 59 88 55Z" opacity=".34"/>
   </g>
-
-  <text
-    x="86"
-    y="53"
-    font-family="Inter, Arial, sans-serif"
-    font-size="38"
-    font-weight="800"
-    fill="#111111"
-    letter-spacing="-1"
-  >
-    Navorika
-  </text>
+  <text x="109" y="54" font-family="Inter,Arial,sans-serif" font-size="45" font-weight="800" letter-spacing="-1.8" fill="#111111">avorika</text>
 </svg>
