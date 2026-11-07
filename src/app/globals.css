@@ -97,3 +97,37 @@
   html.dark main h1,
   html.dark main h2 { color: #f4f4f5; }
 }
+
+
+/* Shared tool interaction styling: consistent controls in light and dark mode.
+   Scope to tool pages; leave status messages, charts and semantic colors alone. */
+@layer components {
+  [data-tool-interaction] :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+    color: var(--foreground);
+    background-color: var(--card);
+    border-color: var(--border);
+    accent-color: var(--primary);
+  }
+
+  [data-tool-interaction] :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea):focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  [data-tool-interaction] :is(button, a):focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+
+  [data-tool-interaction] button:not(:disabled) {
+    transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  [data-tool-interaction] :is(button, input, select, textarea):disabled {
+    cursor: not-allowed;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-tool-interaction] button { transition: none; }
+}
