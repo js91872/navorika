@@ -13,8 +13,8 @@ interface LogoProps {
 }
 
 /**
- * Navorika identity: pink-gradient ribbon N + charcoal "avorika" wordmark.
- * The logo has no separator or tagline; the favicon is a solid-red N.
+ * Navorika identity: bright-red ribbon N with subtle fold depth + black "avorika" wordmark.
+ * The logo has no separator or tagline; the favicon uses the same red N symbol.
  */
 export default function Logo({
   size = 'md',
