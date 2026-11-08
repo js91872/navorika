@@ -1,17 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 114" role="img" aria-label="Navorika N">
-  <g transform="translate(1 5)"><defs>
-    <linearGradient id="redRibbon" x1="5" y1="12" x2="111" y2="96" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ff3434"/>
-      <stop offset=".52" stop-color="#ff1119"/>
-      <stop offset="1" stop-color="#ec000b"/>
-    </linearGradient>
-    <linearGradient id="redFold" x1="82" y1="13" x2="102" y2="89" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#e9000b"/>
-      <stop offset="1" stop-color="#9c000b"/>
-    </linearGradient>
-  </defs>
-  <path d="M10 96V29C10 15 20 8 33 8c10 0 16 4 23 12l44 51V8h13v68c0 14-8 22-21 22-8 0-15-4-22-12L31 40v44c0 8-5 12-13 12H10Z" fill="url(#redFold)"/>
-  <path d="M10 29C10 15 20 8 33 8c10 0 16 4 23 12l44 51c4 5 9 7 13 6v13c-6 8-13 10-21 8-8-1-15-5-22-13L31 40c-7-8-14-9-21-5v-6Z" fill="url(#redRibbon)"/>
-  <path d="M10 35c7-4 14-3 21 5l4 5c-9-7-17-7-25-3v-7Z" fill="#b7000b" opacity=".7"/>
+  <g transform="translate(1 5)">
+    <path d="M10 96V29C10 15 20 8 33 8c10 0 16 4 23 12l44 51V8h13v68c0 14-8 22-21 22-8 0-15-4-22-12L31 40v44c0 8-5 12-13 12H10Z" fill="#e5322d"/>
+    <path d="M10 29C10 15 20 8 33 8c10 0 16 4 23 12l44 51c4 5 9 7 13 6v13c-6 8-13 10-21 8-8-1-15-5-22-13L31 40c-7-8-14-9-21-5v-6Z" fill="#e5322d"/>
   </g>
 </svg>
