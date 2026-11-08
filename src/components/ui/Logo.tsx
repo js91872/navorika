@@ -38,7 +38,7 @@ export default function Logo({
         height={dimensions.height}
         unoptimized
         priority
-        className="block h-auto max-w-full"
+        className={size === 'md' ? 'block h-auto max-w-full w-[120px] min-[360px]:w-[145px] min-[390px]:w-[170px] sm:w-[190px]' : 'block h-auto max-w-full'}
       />
     </Link>
   );
