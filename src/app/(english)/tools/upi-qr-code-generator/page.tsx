@@ -53,6 +53,36 @@ export default function Page() {
         </section>
         <p>Need a more detailed walkthrough? Read our <Link className="font-semibold text-[var(--primary)] underline" href="/guides/how-to-generate-upi-qr-code">guide to generating and using UPI QR codes</Link>.</p>
       </article>
+      <section className="mt-12 border-t border-[var(--border)] pt-8" aria-labelledby="related-upi-tools">
+        <h2 id="related-upi-tools" className="mb-4 text-2xl font-bold">Related tools</h2>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/tools/qr-code-generator" className="rounded-2xl border border-[var(--border)] p-5 transition-colors hover:border-[var(--primary)]">
+            <h3 className="text-lg font-semibold">QR Code Generator</h3>
+            <p className="mt-2 text-sm text-[var(--muted-foreground)]">Create or scan general-purpose QR codes for links and text.</p>
+            <span className="mt-3 inline-block text-sm font-semibold text-[var(--primary)]">Open tool →</span>
+          </Link>
+          <Link href="/tools/gst-calculator" className="rounded-2xl border border-[var(--border)] p-5 transition-colors hover:border-[var(--primary)]">
+            <h3 className="text-lg font-semibold">GST Calculator</h3>
+            <p className="mt-2 text-sm text-[var(--muted-foreground)]">Calculate GST on invoices before collecting a UPI payment.</p>
+            <span className="mt-3 inline-block text-sm font-semibold text-[var(--primary)]">Open tool →</span>
+          </Link>
+        </div>
+      </section>
+      <section className="mt-10" aria-labelledby="related-upi-guides">
+        <h2 id="related-upi-guides" className="mb-4 text-2xl font-bold">Related guides</h2>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/guides/qr-code-guide" className="rounded-2xl border border-[var(--border)] p-5 transition-colors hover:border-[var(--primary)]">
+            <h3 className="text-lg font-semibold">How QR Codes Work</h3>
+            <p className="mt-2 text-sm text-[var(--muted-foreground)]">Understand QR code scanning, sharing, and common uses.</p>
+            <span className="mt-3 inline-block text-sm font-semibold text-[var(--primary)]">Read guide →</span>
+          </Link>
+          <Link href="/guides/gst-calculation-guide" className="rounded-2xl border border-[var(--border)] p-5 transition-colors hover:border-[var(--primary)]">
+            <h3 className="text-lg font-semibold">GST Calculation Guide</h3>
+            <p className="mt-2 text-sm text-[var(--muted-foreground)]">Learn how to calculate GST for a customer invoice.</p>
+            <span className="mt-3 inline-block text-sm font-semibold text-[var(--primary)]">Read guide →</span>
+          </Link>
+        </div>
+      </section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
