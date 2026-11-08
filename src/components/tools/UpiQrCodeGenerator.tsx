@@ -47,6 +47,7 @@ export default function UpiQrCodeGenerator() {
   const [qr, setQr] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [photoError, setPhotoError] = useState('');
 
   const validUpi = /^[a-zA-Z0-9._-]{2,}@[a-zA-Z0-9.-]{2,}$/.test(upi.trim());
   const validAmount = !amount.trim() || (/^\d+(?:\.\d{1,2})?$/.test(amount.trim()) && Number(amount) > 0 && Number(amount) <= 10000000);
@@ -72,10 +73,10 @@ export default function UpiQrCodeGenerator() {
   }, [uri]);
 
   async function onPhoto(file?: File) {
-    setError('');
+    setPhotoError('');
     if (!file) { setPhoto(null); return; }
     if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type) || file.size > 5 * 1024 * 1024) {
-      setError('Choose a PNG, JPEG or WebP image under 5 MB.');
+      setPhotoError('Choose a PNG, JPEG or WebP image under 5 MB.');
       return;
     }
     const reader = new FileReader();
@@ -94,7 +95,10 @@ export default function UpiQrCodeGenerator() {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, w, canvas.height);
     ctx.fillStyle = color;
-    ctx.fillRect(0, 0, w, 22);
+    const borderWidth = 20;
+    ctx.fillRect(0, 0, w, borderWidth);
+    ctx.fillRect(0, 0, borderWidth, canvas.height);
+    ctx.fillRect(w - borderWidth, 0, borderWidth, canvas.height);
     ctx.fillStyle = '#202020';
     ctx.textAlign = 'center';
     ctx.font = 'bold 58px Arial, sans-serif';
@@ -129,7 +133,11 @@ export default function UpiQrCodeGenerator() {
       ctx.fillText(note.trim().slice(0, 48), w / 2, y);
     }
     ctx.fillStyle = color;
-    ctx.fillRect(0, canvas.height - 20, w, 20);
+    ctx.fillRect(0, canvas.height - borderWidth, w, borderWidth);
+    ctx.fillStyle = '#666666';
+    ctx.font = '20px Arial, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText('Created with Navorika.com', w - 40, canvas.height - 42);
     return canvas;
   }
 
@@ -181,6 +189,7 @@ export default function UpiQrCodeGenerator() {
         <label className="block text-sm font-medium">Photo or business logo (optional)
           <input className={inputClass} type="file" accept="image/png,image/jpeg,image/webp" onChange={e => void onPhoto(e.target.files?.[0])} />
         </label>
+        {photoError && <p role="alert" className="text-sm text-red-600">{photoError}</p>}
         {photo && <button type="button" onClick={() => setPhoto(null)} className="text-sm font-semibold text-red-600">Remove photo/logo</button>}
         <fieldset>
           <legend className="mb-2 text-sm font-medium">Poster color</legend>
@@ -191,7 +200,7 @@ export default function UpiQrCodeGenerator() {
         <p className="text-xs text-[var(--muted-foreground)]">Your details and image are processed in your browser. The mobile number appears on the poster but is not part of the UPI payment URI.</p>
       </section>
       <section className="space-y-4">
-        <div className="rounded-2xl border border-[var(--border)] bg-white p-5 text-center text-[#202020]" style={{ borderTop: `10px solid ${color}` }}>
+        <div className="rounded-2xl border border-[var(--border)] bg-white p-5 text-center text-[#202020]" style={{ border: `10px solid ${color}` }}>
           {canGenerate && qr ? (
             <>
               <h2 className="break-words text-2xl font-extrabold">{name.trim()}</h2>
@@ -202,6 +211,7 @@ export default function UpiQrCodeGenerator() {
               {amount && validAmount && <p className="mt-2 font-bold">INR {Number(amount).toFixed(2)}</p>}
               {mobile && validMobile && <p className="mt-1 text-sm">Mobile: {mobile}</p>}
               {note && <p className="mt-1 break-words text-sm">{note}</p>}
+              <p className="mt-8 text-right text-xs text-slate-500">Created with Navorika.com</p>
             </>
           ) : <p className="py-24 text-slate-600">Enter a name and valid UPI ID to preview your poster.</p>}
         </div>
