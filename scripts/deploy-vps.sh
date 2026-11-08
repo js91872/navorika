@@ -1,122 +1,118 @@
 #!/usr/bin/env bash
-# Build a reviewed release separately, then swap with rollback on startup failure.
+# Build away from the live directory. Switch only after a complete build and keep rollback.
 set -Eeuo pipefail
+
 APP=${NAVORIKA_APP_DIR:-/var/www/navorika}
 BACKUP_ROOT=${NAVORIKA_BACKUP_ROOT:-/var/backups/navorika}
-TARGET=${1:?Pass the full reviewed release commit SHA}
-if [[ ! "$TARGET" =~ ^[0-9a-f]{40}$ ]]; then
-  echo "STOP: Expected a full release commit SHA."
-  exit 1
-fi
-cd "$APP"
+PORT=${NAVORIKA_PORT:-3100}
+TARGET=${1:?Usage: bash scripts/deploy-vps.sh <full-40-character-reviewed-commit-sha>}
+[[ "$TARGET" =~ ^[0-9a-f]{40}$ ]] || { echo "STOP: Supply the full reviewed commit SHA."; exit 1; }
+[[ "$PORT" =~ ^[0-9]+$ ]] || { echo "STOP: Invalid port."; exit 1; }
 
-if [ -n "$(git status --porcelain)" ]; then
-  git status --short
-  echo "STOP: Local changes need review. Nothing was deployed."
-  exit 1
-fi
-[ "$(git branch --show-current)" = main ] || {
-  echo "STOP: Expected the main branch. Nothing was deployed."
-  exit 1
-}
+cd "$APP"
+[[ "$(git branch --show-current)" == main ]] || { echo "STOP: Main branch required."; exit 1; }
+[[ -z "$(git status --porcelain)" ]] || { echo "STOP: Working tree is not clean."; git status --short; exit 1; }
 pm2 describe navorika >/dev/null
+PID=$(pm2 pid navorika)
+[[ "$PID" =~ ^[0-9]+$ && "$PID" -gt 0 ]] || { echo "STOP: Navorika is not running."; exit 1; }
+[[ "$(readlink -f "/proc/$PID/cwd")" == "$(realpath "$APP")" ]] || {
+  echo "STOP: PM2 is not running from $APP. Do not switch an unknown release."; exit 1;
+}
+curl -fsS --max-time 15 "http://127.0.0.1:$PORT/" -o /dev/null || {
+  echo "STOP: Existing site is unhealthy. Restore it before deploying."; exit 1;
+}
+
 git fetch origin main
+git cat-file -e "$TARGET^{commit}"
+git merge-base --is-ancestor "$TARGET" origin/main || {
+  echo "STOP: Target commit is not on origin/main."; exit 1;
+}
 git merge-base --is-ancestor HEAD "$TARGET" || {
-  echo "STOP: VPS commits differ from this reviewed release."
-  exit 1
+  echo "STOP: Target does not descend from current main."; exit 1;
 }
 PREVIOUS=$(git rev-parse HEAD)
-# Prune only completed, marked backups. Never remove the active release.
-prune_backups() {
-  [[ -d "$BACKUP_ROOT" ]] || return 0
-  local -a releases=()
-  local candidate
-  mapfile -t releases < <(
-    find "$BACKUP_ROOT" -mindepth 1 -maxdepth 1 -type d -name 'release.*' -printf '%T@ %p\n' |
-      sort -nr | cut -d' ' -f2-
-  )
-  for candidate in "${releases[@]:2}"; do
-    if [[ -f "$candidate/previous-commit" && -d "$candidate/.next" ]]; then
-      echo "Pruning old rollback backup: $candidate"
-      rm -rf -- "$candidate"
-    else
-      echo "Skipping unverified backup: $candidate"
-    fi
-  done
-}
-prune_backups
-# Fail before allocating another multi-gigabyte build workspace.
-MIN_FREE_GB=${NAVORIKA_MIN_FREE_GB:-15}
-[[ "$MIN_FREE_GB" =~ ^[0-9]+$ ]] || { echo "STOP: NAVORIKA_MIN_FREE_GB must be an integer."; exit 1; }
-FREE_KB=$(df -Pk "$APP" | awk 'NR==2 {print $4}')
-if (( FREE_KB < MIN_FREE_GB * 1024 * 1024 )); then
-  echo "STOP: Only $((FREE_KB / 1024 / 1024)) GiB available; require at least ${MIN_FREE_GB} GiB."
-  echo "Review disk usage and stale navorika-release.* directories before retrying."
-  exit 1
+if [[ "$PREVIOUS" == "$TARGET" ]]; then
+  echo "Already at target commit; no deployment required."
+  exit 0
 fi
-STAGE=$(mktemp -d "$(dirname "$APP")/navorika-release.XXXXXX")
-cleanup_stage() {
-  # Always remove this invocation's temporary worktree, including failed builds.
-  git -C "$APP" worktree remove --force "$STAGE" 2>/dev/null || true
-  if [[ -d "$STAGE" ]]; then rm -rf -- "$STAGE"; fi
+
+MIN_FREE_GB=${NAVORIKA_MIN_FREE_GB:-15}
+[[ "$MIN_FREE_GB" =~ ^[0-9]+$ ]] || { echo "STOP: Invalid minimum free space."; exit 1; }
+FREE_KB=$(df -Pk "$APP" | awk 'NR==2 {print $4}')
+(( FREE_KB >= MIN_FREE_GB * 1024 * 1024 )) || {
+  echo "STOP: Insufficient disk space for a separate build (need ${MIN_FREE_GB} GiB)."; exit 1;
 }
-trap cleanup_stage EXIT
-git worktree add --detach "$STAGE" "$TARGET"
-for ENVFILE in .env .env.local .env.production .env.production.local; do
-  if [ -f "$APP/$ENVFILE" ]; then
-    install -m 600 "$APP/$ENVFILE" "$STAGE/$ENVFILE"
+
+STAGE=$(mktemp -d "$(dirname "$APP")/navorika-stage.XXXXXX")
+BACKUP=""
+SWITCH_STARTED=0
+HEALTHY=0
+
+rollback() {
+  local status=$?
+  trap - ERR INT TERM EXIT
+  set +e
+  if (( SWITCH_STARTED && ! HEALTHY )); then
+    echo "Deployment failed after switch; restoring previous build."
+    pm2 stop navorika
+    for item in .next node_modules; do
+      if [[ -e "$BACKUP/$item" ]]; then
+        [[ -e "$APP/$item" ]] && mv "$APP/$item" "$STAGE/failed-${item#.}"
+        mv "$BACKUP/$item" "$APP/$item"
+      fi
+    done
+    git reset --hard "$PREVIOUS"
+    pm2 restart navorika --update-env
+    curl -fsS --retry 5 --retry-connrefused --retry-delay 2 --max-time 15 \
+      "http://127.0.0.1:$PORT/" -o /dev/null || echo "ALERT: Rollback needs manual attention."
+    echo "Rollback backup directory: $BACKUP"
   fi
+  git -C "$APP" worktree remove --force "$STAGE" 2>/dev/null || true
+  [[ ! -d "$STAGE" ]] || rm -rf -- "$STAGE"
+  exit "$status"
+}
+trap rollback ERR INT TERM
+trap 'if (( ! HEALTHY )); then rollback; else git -C "$APP" worktree remove --force "$STAGE" 2>/dev/null || true; [[ ! -d "$STAGE" ]] || rm -rf -- "$STAGE"; fi' EXIT
+
+git worktree add --detach "$STAGE" "$TARGET"
+for envfile in .env .env.local .env.production .env.production.local; do
+  [[ ! -f "$APP/$envfile" ]] || install -m 600 "$APP/$envfile" "$STAGE/$envfile"
 done
 
+echo "Building target $TARGET in isolated staging; live site remains online."
 (
   cd "$STAGE"
   npm ci --include=dev --no-audit --no-fund
   npm run validate:architecture
   npm run test:i18n
   NEXT_TELEMETRY_DISABLED=1 NODE_OPTIONS=--max-old-space-size=2048 npm run build
+  test -s .next/BUILD_ID
+  test -f node_modules/next/dist/bin/next
 )
+# Recheck live service before starting the brief switch.
+curl -fsS --max-time 15 "http://127.0.0.1:$PORT/" -o /dev/null
 
 mkdir -p "$BACKUP_ROOT"
 BACKUP=$(mktemp -d "$BACKUP_ROOT/release.XXXXXX")
 printf '%s\n' "$PREVIOUS" > "$BACKUP/previous-commit"
-rollback() {
-  trap - ERR
-  set +e
-  echo "Deployment failed; restoring the previous release."
-  pm2 stop navorika
-  for ITEM in .next node_modules; do
-    if [ -d "$BACKUP/$ITEM" ]; then
-      if [ -e "$APP/$ITEM" ]; then
-        mv "$APP/$ITEM" "$BACKUP/failed-${ITEM#.}"
-      fi
-      mv "$BACKUP/$ITEM" "$APP/$ITEM"
-    fi
-  done
-  git -C "$APP" switch --detach "$PREVIOUS"
-  pm2 restart navorika --update-env
-  echo "Rollback attempted. Check PM2. Backup: $BACKUP"
-  exit 1
-}
-trap rollback ERR
-pm2 stop navorika
-git merge --ff-only "$TARGET"
-if [ -d .next ]; then mv .next "$BACKUP/.next"; fi
-if [ -d node_modules ]; then mv node_modules "$BACKUP/node_modules"; fi
-mv "$STAGE/.next" "$APP/.next"
-mv "$STAGE/node_modules" "$APP/node_modules"
-pm2 restart navorika --update-env
 
-for PAGE in / /tools/rgb-cmyk-image-checker /fr /it /pt /es /ar /ru /de /fr/tools/pdf-bleed-trim-checker /ar/tools/image-print-size-calculator /fr/tools/css-gradient-generator /ar/tools/css-clamp-font-generator /de/tools/image-scaling-calculator; do
-  curl --fail --silent --show-error --retry 5 --retry-connrefused --retry-delay 2 --max-time 20 \
-    -o /dev/null -w "$PAGE: HTTP %{http_code}\n" "http://127.0.0.1:3000$PAGE"
+# Stop only after staging has built successfully. Restore old files on any failure.
+SWITCH_STARTED=1
+pm2 stop navorika
+for item in .next node_modules; do
+  [[ ! -e "$APP/$item" ]] || mv "$APP/$item" "$BACKUP/$item"
+  mv "$STAGE/$item" "$APP/$item"
 done
-trap - ERR
+git merge --ff-only "$TARGET"
+pm2 restart navorika --update-env
+PID=$(pm2 pid navorika)
+[[ "$PID" =~ ^[0-9]+$ && "$PID" -gt 0 ]]
+[[ "$(readlink -f "/proc/$PID/cwd")" == "$(realpath "$APP")" ]]
+for page in / /tools/upi-qr-code-generator /fr /sitemap.xml; do
+  curl -fsS --retry 5 --retry-connrefused --retry-delay 2 --max-time 20 \
+    "http://127.0.0.1:$PORT$page" -o /dev/null
+done
+HEALTHY=1
 pm2 save
-echo "DEPLOYED. Previous release backup: $BACKUP"
-# Keep the two newest rollback backups after the release is healthy.
-prune_backups
-echo "Public checks:"
-for PAGE in /fr /ar/tools/rgb-cmyk-image-checker /fr/tools/pdf-bleed-trim-checker /ar/tools/image-print-size-calculator /sitemap.xml; do
-  curl --silent --show-error --max-time 20 -o /dev/null \
-    -w "$PAGE: HTTP %{http_code}\n" "https://navorika.com$PAGE"
-done
+echo "DEPLOYED $TARGET on port $PORT. Previous build retained: $BACKUP"
+echo "No automatic deletion of earlier backups."
