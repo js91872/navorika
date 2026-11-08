@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" role="img" aria-label="Navorika">
-  <g transform="translate(0 3) scale(.83)">
-    <path fill="#e5322d" d="M12 68 30 17Q33 9 41 9H48Q53 9 57 14L82 43 88 23Q90 17 97 15L116 9Q121 7 119 14L102 69Q100 77 93 77H81Q75 77 71 71L49 41 43 59Q42 64 36 66L17 73Q10 75 12 68Z"/>
+  <defs><linearGradient id="navorikaPink" x1="0" y1="0" x2="125" y2="90" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ff87c1"/><stop offset="55%" stop-color="#ed4f9e"/><stop offset="100%" stop-color="#c52e83"/></linearGradient></defs><g transform="translate(0 3) scale(.83)">
+    <path fill="url(#navorikaPink)" d="M12 68 30 17Q33 9 41 9H48Q53 9 57 14L82 43 88 23Q90 17 97 15L116 9Q121 7 119 14L102 69Q100 77 93 77H81Q75 77 71 71L49 41 43 59Q42 64 36 66L17 73Q10 75 12 68Z"/>
   </g>
   <text x="109" y="54" font-family="Inter,Arial,sans-serif" font-size="45" font-weight="800" letter-spacing="-1.8" fill="#111111">avorika</text>
 </svg>

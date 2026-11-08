@@ -409,8 +409,7 @@ try {
 
     const footerLogo = page.locator('footer a[aria-label]').first();
     assert.equal(await footerLogo.getAttribute('aria-label'), d.ui.brandHome, `Footer logo aria-label on /${loc}`);
-    const footerTagline = page.locator('footer span.uppercase').first();
-    assert.equal((await footerTagline.textContent())?.trim(), d.ui.brandTagline, `Footer logo tagline on /${loc}`);
+    assert.equal(await footerLogo.locator('span.uppercase').count(), 0, `Footer logo has no tagline on /${loc}`);
     checksPassed += 2;
 
     // Navigation active states on home page
