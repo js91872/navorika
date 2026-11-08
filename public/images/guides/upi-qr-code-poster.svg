@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="UPI payment QR poster illustration">
+<rect width="1200" height="630" fill="#f7f8fa"/>
+<rect x="85" y="80" width="1030" height="470" rx="34" fill="#fff" stroke="#e4e5e7" stroke-width="3"/>
+<rect x="85" y="80" width="1030" height="22" rx="8" fill="#e5322d"/>
+<text x="150" y="203" font-family="Arial,sans-serif" font-size="58" font-weight="800" fill="#202020">Create a UPI</text>
+<text x="150" y="277" font-family="Arial,sans-serif" font-size="58" font-weight="800" fill="#202020">payment QR</text>
+<text x="150" y="342" font-family="Arial,sans-serif" font-size="29" fill="#5a606a">Add your name, optional amount</text>
+<text x="150" y="383" font-family="Arial,sans-serif" font-size="29" fill="#5a606a">and business logo.</text>
+<text x="150" y="460" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#e5322d">Download PNG or PDF</text>
+<rect x="727" y="135" width="290" height="350" rx="16" fill="#fff" stroke="#e5322d" stroke-width="9"/>
+<text x="872" y="190" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="bold" fill="#202020">Your Business</text>
+<g fill="#202020" transform="translate(771 216)">
+<path d="M0 0h68v68H0z M138 0h68v68h-68z M0 138h68v68H0z" />
+<path d="M12 12h44v44H12z M150 12h44v44h-44z M12 150h44v44H12z" fill="#fff"/>
+<path d="M22 22h24v24H22z M160 22h24v24h-24z M22 160h24v24H22z"/>
+<path d="M80 0h14v28H80z M108 0h14v14h-14z M80 42h42v14H80z M80 76h14v14H80z M108 76h14v28h-14z M138 82h14v14h-14z M164 82h42v14h-42z M0 84h14v42H0z M28 84h42v14H28z M42 112h14v14H42z M80 118h42v14H80z M138 118h14v28h-14z M166 118h40v14h-40z M82 148h14v58H82z M110 148h14v14h-14z M138 166h68v14h-68z M138 194h14v12h-14z M180 194h26v12h-26z"/>
+</g>
+<text x="872" y="463" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#202020">Scan to pay</text>
+</svg>
