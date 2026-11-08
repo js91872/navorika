@@ -249,6 +249,17 @@ const guideDefinitions: GuideDefinition[] = [
     keywords: ['how to calculate square feet', 'how is sqft calculated', 'square footage formula', 'sq ft calculator with inches', 'how to calculate square footage of a room', 'sq ft calculator flooring', 'square feet to acres', 'price per square foot calculator'],
   },
   {
+    slug: 'how-to-generate-upi-qr-code',
+    title: 'How to Generate a UPI QR Code for Free (With or Without Amount)',
+    description: 'Create a free UPI payment QR code with your business name, optional amount and photo, and download a printable PNG or PDF poster. Includes safety and troubleshooting tips.',
+    featuredImage: { src: '/images/guides/upi-qr-code-poster.svg', alt: 'Illustration of a red UPI payment poster with a black and white QR code', caption: 'Generate a UPI QR payment poster with your name, optional photo, and payment details.' },
+    category: 'Finance',
+    publishedDate: 'November 2026',
+    readTime: '10 min read',
+    author: 'Navorika Team',
+    keywords: ['upi qr code generator', 'how to generate upi qr code', 'upi qr code with amount', 'upi qr code without amount', 'upi qr code for business', 'upi qr code pdf download', 'printable upi qr code poster']
+  },
+  {
     slug: 'how-to-compare-pdf-files',
     title: 'How to Compare PDF Files for Differences: Complete Guide',
     description: 'Learn how to compare PDF files online and side by side. Compare text, visual changes, page differences, and scan limitations without uploading files.',

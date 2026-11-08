@@ -1,3 +1,4 @@
+import { upiGuideContent } from './guideContentUpi';
 import { macSpeakerGuideContent } from './guideContentMacSpeaker';
 import { claudeComparisonGuideContent } from './guideContentClaude';
 import { usSalesTaxGuideContent } from './guideContentUsSalesTax';
@@ -43,6 +44,7 @@ export interface GuideContent {
 }
 
 export const guideContent: Record<string, GuideContent> = {
+  ...upiGuideContent,
   ...claudeComparisonGuideContent,
   ...fertilizerGuideContent,
   ...squareFeetGuideContent,
