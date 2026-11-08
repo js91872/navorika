@@ -19,7 +19,6 @@ test('full-rollout inventory covers each registered tool, guide and English page
     'guides/how-to-convert-jpg-to-dxf/page.tsx',
     'guides/is-claude-better-than-chatgpt/page.tsx',
     'guides/shopify-profit-margin-calculator/page.tsx',
-    'guides/how-to-generate-upi-qr-code/page.tsx',
     'tools/ai-video-prompt-generator/page.tsx',
     'tools/compare-pdf/page.tsx',
     'tools/exif-metadata-remover/page.tsx',
