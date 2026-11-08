@@ -1,19 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 120" role="img" aria-label="Navorika">
-  <g transform="translate(3 9)"><defs>
-    <linearGradient id="redRibbon" x1="5" y1="12" x2="111" y2="96" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ff3434"/>
-      <stop offset=".52" stop-color="#ff1119"/>
-      <stop offset="1" stop-color="#ec000b"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 190" role="img" aria-label="Navorika">
+  <defs>
+    <linearGradient id="nRed" x1="10" y1="0" x2="185" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff0808"/>
+      <stop offset=".6" stop-color="#ff0000"/>
+      <stop offset="1" stop-color="#d60000"/>
     </linearGradient>
-    <linearGradient id="redFold" x1="82" y1="13" x2="102" y2="89" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#e9000b"/>
-      <stop offset="1" stop-color="#9c000b"/>
+    <linearGradient id="nFold" x1="110" y1="40" x2="175" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff0000"/>
+      <stop offset=".65" stop-color="#c60000"/>
+      <stop offset="1" stop-color="#730000"/>
     </linearGradient>
   </defs>
-  <path d="M10 96V29C10 15 20 8 33 8c10 0 16 4 23 12l44 51V8h13v68c0 14-8 22-21 22-8 0-15-4-22-12L31 40v44c0 8-5 12-13 12H10Z" fill="url(#redFold)"/>
-  <path d="M10 29C10 15 20 8 33 8c10 0 16 4 23 12l44 51c4 5 9 7 13 6v13c-6 8-13 10-21 8-8-1-15-5-22-13L31 40c-7-8-14-9-21-5v-6Z" fill="url(#redRibbon)"/>
-  <path d="M10 35c7-4 14-3 21 5l4 5c-9-7-17-7-25-3v-7Z" fill="#b7000b" opacity=".7"/>
+  <g transform="translate(0 5)">
+    <path d="M10 170 43 29C48 11 61 5 78 5c15 0 25 7 35 20l49 68 17-68c3-13 13-20 27-20h22l-32 139c-4 20-18 31-37 31-14 0-24-7-35-21L76 89 59 148c-4 15-14 22-29 22Z" fill="url(#nFold)"/>
+    <path d="M10 170 43 29C48 11 61 5 78 5c15 0 25 7 35 20l65 89c12 17 22 19 32 12l-4 19c-4 20-18 30-37 30-14 0-24-7-35-21L76 89 59 148c-4 15-14 22-29 22Z" fill="url(#nRed)"/>
+    <path d="M40 52c14-11 27-9 36 3l10 14c-15-11-28-12-46-2Z" fill="#a80000" opacity=".7"/>
   </g>
-  <path d="M142 24v72" stroke="#888888" stroke-width="1.8"/>
-  <text x="164" y="85" fill="#202020" font-family="Inter,Arial,Helvetica,sans-serif" font-weight="800" font-size="75" letter-spacing="-3">Navorika</text>
+  <text x="224" y="148" fill="#080808" font-family="Arial,Helvetica,sans-serif" font-size="132" font-weight="800" letter-spacing="-5">avorika</text>
+
 </svg>

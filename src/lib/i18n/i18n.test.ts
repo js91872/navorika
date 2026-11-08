@@ -110,6 +110,7 @@ test('moving English routes into a route group preserves every existing public p
     'tools/json-to-csv-converter/page.tsx',
     'tools/shopify-margin-calculator/page.tsx',
     'tools/speaker-dust-cleaning-sound/page.tsx',
+    'tools/upi-qr-code-generator/page.tsx',
   ]);
   assert.equal(new Set(allRoutes).size, allRoutes.length);
 });
