@@ -71,6 +71,11 @@ export default function Page() {
       <section className="mt-10" aria-labelledby="related-upi-guides">
         <h2 id="related-upi-guides" className="mb-4 text-2xl font-bold">Related guides</h2>
         <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/guides/how-to-generate-upi-qr-code" className="rounded-2xl border border-[var(--border)] p-5 transition-colors hover:border-[var(--primary)] sm:col-span-2">
+            <h3 className="text-lg font-semibold">How to Generate a UPI QR Code for Free (With or Without Amount)</h3>
+            <p className="mt-2 text-sm text-[var(--muted-foreground)]">Step-by-step instructions for creating a UPI payment QR code, adding a business logo, and downloading a printable poster.</p>
+            <span className="mt-3 inline-block text-sm font-semibold text-[var(--primary)]">Read guide →</span>
+          </Link>
           <Link href="/guides/qr-code-guide" className="rounded-2xl border border-[var(--border)] p-5 transition-colors hover:border-[var(--primary)]">
             <h3 className="text-lg font-semibold">How QR Codes Work</h3>
             <p className="mt-2 text-sm text-[var(--muted-foreground)]">Understand QR code scanning, sharing, and common uses.</p>
