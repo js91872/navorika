@@ -4,6 +4,10 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-generate-upi-qr-code': [
+    { name: 'NPCI — UPI Product Overview', url: 'https://www.npci.org.in/what-we-do/upi/product-overview' },
+    { name: 'Reserve Bank of India — Be(A)ware: financial fraud awareness', url: 'https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx?UrlPage=&ID=1154' }
+  ],
   'how-to-calculate-square-feet': [
     { name: 'NIST — SI Units: Area conversions', url: 'https://www.nist.gov/pml/owm/metric-si/si-units' },
     { name: 'NIST — Handbook 44: Units of measurement', url: 'https://www.nist.gov/pml/owm/nist-handbook-44-current-edition' },
