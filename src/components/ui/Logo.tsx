@@ -13,8 +13,8 @@ interface LogoProps {
 }
 
 /**
- * Approved Navorika identity: bright-red ribbon N + charcoal wordmark.
- * Keep the header logo and favicon in sync with public/logo.svg and public/favicon.svg.
+ * Navorika identity: pink-gradient ribbon N + charcoal "avorika" wordmark.
+ * The logo has no separator or tagline; the favicon is a solid-red N.
  */
 export default function Logo({
   size = 'md',
@@ -22,10 +22,10 @@ export default function Logo({
   ariaLabel = 'Navorika home',
 }: LogoProps) {
   const dimensions = {
-    sm: { width: 150, height: 32 },
-    md: { width: 190, height: 40 },
-    lg: { width: 228, height: 48 },
-    xl: { width: 285, height: 60 },
+    sm: { width: 150, height: 36 },
+    md: { width: 190, height: 46 },
+    lg: { width: 228, height: 55 },
+    xl: { width: 285, height: 68 },
   }[size];
 
   return (
