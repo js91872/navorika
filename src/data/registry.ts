@@ -1091,6 +1091,15 @@ export const tools: RegisteredTool[] = ([
     keywords: ['markup-formatter', 'markup', 'formatter']
   },
   {
+    slug: 'upi-qr-code-generator',
+    title: 'Free UPI QR Code Generator',
+    description: 'Generate a printable UPI payment QR code with name, optional photo, amount, note, and five poster colors. Download PNG or PDF locally.',
+    category: 'finance-calculators',
+    keywords: ['upi qr code generator', 'free upi qr code generator', 'upi qr code with amount', 'upi qr code for shop', 'upi payment qr code poster', 'upi qr code pdf download'],
+    heroTitle: 'Free UPI QR Code Generator and Payment Poster',
+    heroDescription: 'Create a UPI QR payment poster with optional amount, photo, and five colors. Download PNG or PDF without uploading your details.'
+  },
+  {
     slug: 'qr-code-generator',
     title: 'QR Code Generator',
     description: 'Generate colored QR codes or decode a QR code from an uploaded image locally.',
