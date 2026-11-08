@@ -1,4 +1,5 @@
 export const guideRelations: Record<string, string[]> = {
+  'how-to-generate-upi-qr-code': ['qr-code-guide', 'gst-calculation-guide'],
   'how-to-clear-icloud-storage': ['why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely', 'how-to-speed-up-macbook'],
   'why-is-my-icloud-storage-full': ['how-to-clear-icloud-storage', 'how-to-delete-icloud-backup-safely', 'how-to-speed-up-macbook'],
   'how-to-delete-icloud-backup-safely': ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-speed-up-macbook'],
