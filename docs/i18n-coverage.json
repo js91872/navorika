@@ -22,12 +22,12 @@
     "pendingGuideTranslations": 483,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4464,
+      "jsxText": 4501,
       "visibleAttribute": 402,
-      "semanticCopy": 12149,
-      "reviewLiteral": 48271
+      "semanticCopy": 12161,
+      "reviewLiteral": 48338
     },
-    "candidateCopyWords": 358652
+    "candidateCopyWords": 359418
   },
   "tools": [
     {
