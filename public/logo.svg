@@ -1,6 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" role="img" aria-label="Navorika">
-  <defs><linearGradient id="navorikaPink" x1="0" y1="0" x2="125" y2="90" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ff87c1"/><stop offset="55%" stop-color="#ed4f9e"/><stop offset="100%" stop-color="#c52e83"/></linearGradient></defs><g transform="translate(0 3) scale(.83)">
-    <path fill="url(#navorikaPink)" d="M12 68 30 17Q33 9 41 9H48Q53 9 57 14L82 43 88 23Q90 17 97 15L116 9Q121 7 119 14L102 69Q100 77 93 77H81Q75 77 71 71L49 41 43 59Q42 64 36 66L17 73Q10 75 12 68Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 120" role="img" aria-label="Navorika">
+  <g transform="translate(3 9)"><defs>
+    <linearGradient id="redRibbon" x1="5" y1="12" x2="111" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff3434"/>
+      <stop offset=".52" stop-color="#ff1119"/>
+      <stop offset="1" stop-color="#ec000b"/>
+    </linearGradient>
+    <linearGradient id="redFold" x1="82" y1="13" x2="102" y2="89" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e9000b"/>
+      <stop offset="1" stop-color="#9c000b"/>
+    </linearGradient>
+  </defs>
+  <path d="M10 96V29C10 15 20 8 33 8c10 0 16 4 23 12l44 51V8h13v68c0 14-8 22-21 22-8 0-15-4-22-12L31 40v44c0 8-5 12-13 12H10Z" fill="url(#redFold)"/>
+  <path d="M10 29C10 15 20 8 33 8c10 0 16 4 23 12l44 51c4 5 9 7 13 6v13c-6 8-13 10-21 8-8-1-15-5-22-13L31 40c-7-8-14-9-21-5v-6Z" fill="url(#redRibbon)"/>
+  <path d="M10 35c7-4 14-3 21 5l4 5c-9-7-17-7-25-3v-7Z" fill="#b7000b" opacity=".7"/>
   </g>
-  <text x="109" y="54" font-family="Inter,Arial,sans-serif" font-size="45" font-weight="800" letter-spacing="-1.8" fill="#111111">avorika</text>
+  <path d="M142 24v72" stroke="#888888" stroke-width="1.8"/>
+  <text x="164" y="85" fill="#202020" font-family="Inter,Arial,Helvetica,sans-serif" font-weight="800" font-size="75" letter-spacing="-3">Navorika</text>
 </svg>
