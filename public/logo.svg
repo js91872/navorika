@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 190" role="img" aria-label="Navorika">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 190" role="img" aria-label="Navorika">
   <defs>
     <linearGradient id="nRed" x1="10" y1="0" x2="185" y2="175" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#ff0808"/>
@@ -16,6 +16,6 @@
     <path d="M10 170 43 29C48 11 61 5 78 5c15 0 25 7 35 20l65 89c12 17 22 19 32 12l-4 19c-4 20-18 30-37 30-14 0-24-7-35-21L76 89 59 148c-4 15-14 22-29 22Z" fill="url(#nRed)"/>
     <path d="M40 52c14-11 27-9 36 3l10 14c-15-11-28-12-46-2Z" fill="#a80000" opacity=".7"/>
   </g>
-  <text x="224" y="148" fill="#080808" font-family="Arial,Helvetica,sans-serif" font-size="153" font-weight="800" letter-spacing="-7">avorika</text>
-  <circle cx="520" cy="28" r="10" fill="#ff0000" opacity="0"/>
+  <text x="224" y="148" fill="#080808" font-family="Arial,Helvetica,sans-serif" font-size="132" font-weight="800" letter-spacing="-5">avorika</text>
+
 </svg>
