@@ -1144,7 +1144,7 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
   'drywall-mud-calculator': {
     slug: 'drywall-mud-calculator',
     ...expansionPage({
-      name: 'Drywall Mud and Tape Calculator – Joint Compound Estimate',
+      name: 'Drywall Mud Calculator – Joint Compound Estimate',
       description: 'Estimate drywall joint compound from wall area and product coverage, with planning guidance for drywall mud and tape quantities.',
       keywords: ['drywall mud and tape calculator', 'drywall mud and tape estimate', 'estimate drywall mud', 'mud and tape calculator', 'drywall mud calculator', 'joint compound calculator', 'how much drywall mud do i need', 'drywall compound calculator', 'sheetrock mud calculator', 'drywall joint compound coverage calculator'],
       intro: 'Estimate drywall mud from the area being finished and the manufacturer coverage for your compound. For tape-length and sheet estimates, use the related Drywall Calculator; area alone cannot determine joint length reliably.',
