@@ -139,7 +139,7 @@ try {
     const searchInput = page.locator('input[type="search"]');
     await page.locator('input[type="search"][data-hydrated="true"]').waitFor({ state: 'attached', timeout: 30000 });
     await searchInput.fill(d.tools['rgb-cmyk-image-checker'].title);
-    await page.waitForFunction(() => document.querySelectorAll('main h2').length === 1, { timeout: 10000 });
+    await page.waitForFunction(() => document.querySelectorAll('main h2').length === 1, null, { timeout: 10000 });
     assert.equal(await page.locator('main h2').count(), 1);
     assert.equal(await page.getByRole('status').textContent(), `${new Intl.NumberFormat(locale).format(1)} ${d.ui.toolsFound}`);
     await searchInput.fill('zzzz-not-a-tool');
