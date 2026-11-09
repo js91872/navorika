@@ -173,7 +173,7 @@ export default function PrivacyPage() {
     {
       icon: <Mail className="h-6 w-6 text-indigo-500" />,
       title: 'Policy Changes and Contact',
-      content: 'We may revise this policy as our tools, providers and legal obligations change. The date at the top indicates the latest revision. For privacy questions, requests or concerns, use the Navorika contact page. We do not claim a registered company address or dedicated privacy email that has not been established.',
+      content: 'We may revise this policy as our tools, providers and legal obligations change. The date at the top indicates the latest revision. For privacy questions, requests or concerns, use the Navorika contact page. For privacy inquiries, use our contact page. This public policy does not display the website operator’s personal name, residential address or location.',
     },
   ];
 
