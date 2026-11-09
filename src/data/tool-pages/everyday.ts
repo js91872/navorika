@@ -4,6 +4,23 @@ const local =
   'Inputs are processed locally in your browser and are not sent to Navorika.';
 
 export const everydayToolPages: Record<string, ToolPageContent> = {
+  'fps-calculator': {
+    slug: 'fps-calculator',
+    name: 'FPS Calculator – Frames Per Second to Milliseconds',
+    category: 'Everyday Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Free FPS calculator for games and video. Convert frames per second to milliseconds, estimate frame counts and compare FPS with display refresh rate.',
+    longTailKeywords: ['fps calculator', 'fps calculator for games', 'fps to ms calculator', 'frames per second calculator', 'how many fps calculator', 'fps to milliseconds', 'fps examples'],
+    intro: ['Enter a measured or assumed frame rate to calculate average frame time, estimate frames in a clip and compare the result with a monitor refresh rate.', 'Calculations run locally in your browser. This tool does not benchmark your GPU or predict game FPS.'],
+    formula: [{ title: 'FPS to milliseconds', body: 'Average frame time in milliseconds = 1000 ÷ frames per second.' }, { title: 'Frame count', body: 'Estimated number of frames = FPS × duration in seconds.' }, { title: 'FPS to Hz comparison', body: 'FPS ÷ display refresh rate in Hz is a numerical ratio, not a measure of smoothness.' }],
+    steps: ['Enter your measured or expected FPS.', 'Enter your display refresh rate in Hz.', 'Optionally change the clip duration in seconds.', 'Read average frame time, estimated frame count and FPS-to-Hz ratio.'],
+    examples: [{ title: '60 FPS gaming example', input: '60 FPS, 144 Hz display, 10-second duration.', result: 'Average frame time is 16.67 ms, 600 frames over 10 seconds, and FPS-to-Hz ratio is approximately 0.417.', note: 'These are mathematical values, not measured gameplay results.' }, { title: '144 FPS example', input: '144 FPS.', result: 'Average frame time is approximately 6.94 milliseconds.', note: 'Individual frames may take longer or shorter than the average.' }],
+    interpretation: ['Lower milliseconds per frame correspond to higher average FPS.', 'Refresh rate and game frame rate are distinct; neither alone determines smoothness or latency.'],
+    limitations: ['Does not detect or benchmark live game FPS.', 'Does not predict performance from hardware specifications.', 'Assumes constant frame rate for the frame-count estimate.', 'FPS here means frames per second, not feet per second.'],
+    faqs: [{ question: 'How do I convert FPS to milliseconds?', answer: 'Divide 1,000 by FPS. At 60 FPS the average frame interval is about 16.67 ms.' }, { question: 'Does a 144 Hz monitor mean 144 FPS?', answer: 'No. Display refresh rate and game rendering frame rate are different.' }, { question: 'Can this calculator tell how much FPS my PC will get?', answer: 'No. Measure FPS in the game using an FPS counter and enter that value here.' }, { question: 'How many frames are in 10 seconds at 60 FPS?', answer: '600 frames, assuming a constant 60 FPS.' }],
+    relatedTools: [],
+    relatedGuides: [{ slug: 'fps-calculator-guide', title: 'FPS Calculator Guide: FPS to MS and Refresh Rate' }],
+  },
   'tire-size-calculator': {
     slug: 'tire-size-calculator',
     name: 'Tire Size Calculator',
