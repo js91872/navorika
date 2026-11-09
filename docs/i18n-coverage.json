@@ -10,24 +10,24 @@
     "de"
   ],
   "summary": {
-    "tools": 330,
+    "tools": 331,
     "publishedTools": 319,
-    "pendingTools": 5,
+    "pendingTools": 6,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 69,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
-    "targetToolTranslations": 2268,
+    "targetToolTranslations": 2275,
     "pendingGuideTranslations": 483,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4501,
-      "visibleAttribute": 402,
-      "semanticCopy": 12161,
-      "reviewLiteral": 48338
+      "jsxText": 4508,
+      "visibleAttribute": 403,
+      "semanticCopy": 12179,
+      "reviewLiteral": 48432
     },
-    "candidateCopyWords": 359418
+    "candidateCopyWords": 359681
   },
   "tools": [
     {
@@ -1465,6 +1465,24 @@
       "sources": [
         "src/app/(english)/tools/cloud-hosting-cost-calculator/page.tsx",
         "src/components/tools/BusinessCalculatorTool.tsx",
+        "src/components/tools/ExpansionToolPage.tsx"
+      ]
+    },
+    {
+      "slug": "cmyk-color-converter",
+      "title": "CMYK Color Converter",
+      "category": "image-tools",
+      "route": "/tools/cmyk-color-converter",
+      "source": "src/app/(english)/tools/cmyk-color-converter/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/cmyk-color-converter/page.tsx",
+        "src/components/tools/CmykColorConverter.tsx",
         "src/components/tools/ExpansionToolPage.tsx"
       ]
     },
@@ -9837,6 +9855,12 @@
       "source": "src/app/(english)/tools/cloud-hosting-cost-calculator/page.tsx",
       "routeTemplate": "/tools/cloud-hosting-cost-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/cmyk-color-converter/page.tsx",
+      "routeTemplate": "/tools/cmyk-color-converter",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
