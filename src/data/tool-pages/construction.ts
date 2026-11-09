@@ -1144,18 +1144,20 @@ export const constructionToolPages: Record<string, ToolPageContent> = {
   'drywall-mud-calculator': {
     slug: 'drywall-mud-calculator',
     ...expansionPage({
-      name: 'Drywall Mud Calculator – Joint Compound Quantity',
-      description: 'Estimate drywall joint compound containers from drywall area, product coverage and an extra allowance.',
-      keywords: ['drywall mud calculator', 'joint compound calculator', 'how much drywall mud do i need', 'drywall compound calculator', 'sheetrock mud calculator', 'drywall joint compound coverage calculator'],
-      intro: 'Enter total drywall area and the manufacturer coverage for your joint-compound bucket or box to estimate how many containers to buy.',
+      name: 'Drywall Mud and Tape Calculator – Joint Compound Estimate',
+      description: 'Estimate drywall joint compound from wall area and product coverage, with planning guidance for drywall mud and tape quantities.',
+      keywords: ['drywall mud and tape calculator', 'drywall mud and tape estimate', 'estimate drywall mud', 'mud and tape calculator', 'drywall mud calculator', 'joint compound calculator', 'how much drywall mud do i need', 'drywall compound calculator', 'sheetrock mud calculator', 'drywall joint compound coverage calculator'],
+      intro: 'Estimate drywall mud from the area being finished and the manufacturer coverage for your compound. For tape-length and sheet estimates, use the related Drywall Calculator; area alone cannot determine joint length reliably.',
       formula: 'Adjusted area = drywall area × (1 + allowance%); containers = adjusted area ÷ product coverage, rounded up.',
       interpretation: 'Use the coverage printed by the compound manufacturer because premixed and setting-type products can have different practical coverage.',
-      limitations: ['Coverage varies with number of coats, tape, bead, texture, workmanship and product.', 'This calculator does not estimate tape, corner bead or drywall sheets.', 'Use product-specific coverage whenever available.'],
+      limitations: ['Coverage varies with number of coats, tape, bead, texture, workmanship and product.', 'This calculator estimates compound only: it does not calculate tape length, corner bead or drywall sheets. Use the related Drywall Calculator for a broader material estimate.', 'Use product-specific coverage whenever available.'],
       relatedTools: [{slug:'drywall-calculator',name:'Drywall Calculator'},{slug:'construction-material-waste-calculator',name:'Construction Material Waste Calculator'},{slug:'paint-calculator',name:'Paint Calculator'}],
       faq: [
         {question:'How much drywall mud do I need?',answer:'Divide your adjusted drywall area by the coverage stated for the compound container, then round up to a whole container.'},
         {question:'Why does drywall mud coverage vary?',answer:'Joint count, number of coats, bead, texture, product consistency and installer technique all affect usage.'},
-        {question:'Does this calculate drywall sheets too?',answer:'No. Use the separate Drywall Calculator for sheet quantity.'}
+        {question:'Does this calculate drywall sheets too?',answer:'No. Use the separate Drywall Calculator for sheet quantity.'},
+        {question:'How do I estimate drywall tape?',answer:'Measure the actual length of board joints and inside corners, then add an allowance for overlaps and waste. Wall area alone does not determine tape length.'},
+        {question:'Can I estimate mud and tape together?',answer:'Use this calculator for compound quantity and the related Drywall Calculator for a broader materials estimate. Check actual joint layout for tape requirements.'}
       ],
     }),
   },
