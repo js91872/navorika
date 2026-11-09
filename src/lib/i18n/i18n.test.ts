@@ -104,6 +104,7 @@ test('moving English routes into a route group preserves every existing public p
     'guides/shopify-profit-margin-calculator/page.tsx',
     'tools/ai-video-prompt-generator/page.tsx',
     'tools/compare-pdf/page.tsx',
+    'tools/cmyk-color-converter/page.tsx',
     'tools/exif-metadata-remover/page.tsx',
     'tools/icloud-storage-calculator/page.tsx',
     'tools/jpg-to-dxf/page.tsx',
