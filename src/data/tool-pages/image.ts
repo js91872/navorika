@@ -4,6 +4,19 @@ const privacy = 'The image is decoded and processed locally in your browser; it 
 const canvasLimits = ['Very large images can exceed browser memory or maximum canvas dimensions.', 'Browser decoding support varies by image format and device.', 'Canvas export normally removes original EXIF, camera, location, color-profile, and other file metadata.'];
 
 export const imageToolPages: Record<string, ToolPageContent> = {
+  'cmyk-color-converter': {
+    slug:'cmyk-color-converter',name:'CMYK Color Converter – CMYK to HEX and RGB',description:'Free CMYK color converter: enter cyan, magenta, yellow and black percentages to estimate RGB and HEX, or convert HEX to approximate CMYK.',category:'Image Tools',applicationCategory:'DesignApplication',
+    longTailKeywords:['cmyk to hex','cmyk to rgb','hex to cmyk','cmyk color converter','cmyk color wheel','cmyk for print'],
+    intro:['Convert four CMYK channel percentages to approximate screen RGB and HEX values. Enter a six-digit HEX value to estimate CMYK percentages.','This is an arithmetic approximation rather than a color-managed print proof. Print output depends on the ICC profile, ink, paper and press. All calculations stay in your browser.'],
+    formula:[{title:'Approximate CMYK to RGB',body:'For each channel, RGB = round(255 × (1 − C/M/Y ÷ 100) × (1 − K ÷ 100)).'},{title:'RGB to CMYK',body:'K = 1 − max(R,G,B)/255. For K below 1, C = (1 − R/255 − K)/(1 − K), similarly for M and Y.'}],
+    steps:['Adjust cyan, magenta, yellow and black percentages from 0 to 100.','Read the calculated RGB and HEX values and preview.','Alternatively enter a six-digit HEX code and choose Convert.','Copy the results for use in digital design; check a printer-approved profile for physical printing.'],
+    examples:[{title:'Pure cyan',input:'C=100%, M=0%, Y=0%, K=0%',result:'Approximate RGB 0,255,255 and HEX #00FFFF.'},{title:'Pure black',input:'C=0%, M=0%, Y=0%, K=100%',result:'RGB 0,0,0 and HEX #000000.'}],
+    interpretation:['The live swatch represents an RGB screen preview, not a calibrated proof of ink output.','The same RGB color can correspond to different CMYK separations under different ICC profiles.'],
+    limitations:['Not ICC color-managed; do not use for press-ready separations.','Cannot guarantee exact Pantone spot-color matches.','Printed color depends on substrate, ink, press and profile.','Rounding can make reverse conversions differ slightly.'],
+    faqs:[{question:'Can CMYK be converted to HEX?',answer:'Yes, mathematically. Enter CMYK percentages to estimate RGB and HEX for screen display; this is not a color-managed printing conversion.'},{question:'Can I convert HEX to CMYK?',answer:'Yes. Enter a six-digit HEX code to calculate approximate CMYK percentages.'},{question:'Does CMYK to Pantone have an exact formula?',answer:'No. Pantone spot colors require an appropriate licensed reference and physical or color-managed matching; this tool does not claim exact Pantone matches.'},{question:'Why does my printed color differ?',answer:'Paper, ink, press settings, ICC profiles and screen calibration all influence the final appearance.'}],
+    relatedTools:[{slug:'rgb-cmyk-image-checker',name:'RGB or CMYK Image Checker'},{slug:'image-print-size-calculator',name:'Print Size Calculator'}],
+    relatedGuides:['rgb-vs-cmyk-for-printing'],
+  },
   'batch-image-converter': {
     slug: 'batch-image-converter', name: 'Batch Image Converter', category: 'Image Tools', applicationCategory: 'DesignApplication', description: 'Convert multiple browser-supported images to JPG, PNG, or WebP locally in one batch.', longTailKeywords: ['batch image converter online', 'convert multiple images to webp', 'batch png jpg converter', 'multiple image format converter'],
     intro: ['Batch Image Converter decodes each selected image with the browser, draws it to a canvas, and downloads a new JPG, PNG, or WebP file.', privacy],
