@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Shield, CheckCircle, ArrowLeft, Lock, Eye, Database, Cookie } from 'lucide-react';
+import { Shield, CheckCircle, ArrowLeft, Lock, Eye, Database, Cookie, Globe, UserRound, Clock, Mail, Server, FileText } from 'lucide-react';
 
 function formatPointText(text: string) {
   if (text.includes('https://www.google.com/settings/ads') || text.includes('www.aboutads.info/choices/')) {
@@ -45,7 +45,7 @@ function formatPointText(text: string) {
 }
 
 export default function PrivacyPage() {
-  const lastUpdated = 'September 27, 2026';
+  const lastUpdated = 'November 9, 2026';
 
   const sections = [
     {
@@ -94,9 +94,86 @@ export default function PrivacyPage() {
         'Google AdSense: If ads are enabled, Google and other advertising vendors may use cookies or similar technologies subject to applicable consent requirements',
         'Personalized Advertising: If enabled and permitted by your choices and applicable law, ads may be tailored based on activity on this or other websites',
         'Opt-Out Choices: You may opt out of personalized advertising by visiting Google Ads Settings (https://www.google.com/settings/ads) or through third-party opt-out services such as www.aboutads.info/choices/',
-        'Analytics: Aggregated, anonymized traffic analytics help us understand site usage and improve tool performance without identifying individual users',
-        'Local Storage: Browser localStorage is used strictly to remember your preferences (such as light or dark display mode) and does not contain personal identifying information',
+        'Analytics: Analytics services, where enabled, may collect usage events and technical identifiers. Reports may be aggregated, but this does not mean every underlying event is anonymous',
+        'Local Storage: Browser storage may remember interface preferences and tool settings. You can clear stored data through your browser controls',
       ],
+    },
+    {
+      icon: <FileText className="h-6 w-6 text-indigo-500" />,
+      title: 'Information We Collect',
+      content: 'You can use most tools without creating an account. Depending on how you use Navorika, information may include:',
+      list: [
+        'Values or files you choose to process; browser-local tool inputs are not sent to our servers for processing',
+        'Files sent to explicitly identified server-based conversion tools, solely to perform the requested operation',
+        'Technical request information, such as IP address, browser type, approximate location derived from IP address, requested pages and diagnostic information, that hosting, security or analytics providers may process',
+        'Information you voluntarily provide when contacting us, such as your email address and message',
+        'Preferences stored in your browser and analytics or advertising identifiers where those services are enabled',
+      ],
+    },
+    {
+      icon: <Server className="h-6 w-6 text-indigo-500" />,
+      title: 'Why We Process Information',
+      content: 'We process information only for relevant website and service purposes, subject to applicable law:',
+      list: [
+        'To provide requested tools and deliver converted or calculated results',
+        'To operate, protect, troubleshoot and improve the website',
+        'To respond to support requests and other direct correspondence',
+        'To understand website usage through analytics, where enabled',
+        'To show advertising if introduced, subject to consent and other applicable requirements',
+        'Where GDPR or UK GDPR applies, the relevant legal basis may be consent, legitimate interests, contractual necessity or a legal obligation, depending on the processing activity',
+      ],
+    },
+    {
+      icon: <Clock className="h-6 w-6 text-indigo-500" />,
+      title: 'Storage and Retention',
+      content: 'Retention depends on the kind of information and the tool involved. We do not promise a universal deletion time for every system or third-party provider.',
+      list: [
+        'Browser-local inputs are processed on your device; browser memory, downloads and browser storage remain subject to your device and browser settings',
+        'Server-based conversions use isolated temporary workspaces intended to be cleared after processing. Technical failures or operational backups may require separate handling',
+        'Contact messages may be retained for as long as reasonably necessary to respond and maintain relevant records',
+        'Hosting, security and analytics providers may retain technical data according to their own settings and policies',
+        'We review retention practices and remove information when it is no longer needed, subject to applicable legal and security obligations',
+      ],
+    },
+    {
+      icon: <Globe className="h-6 w-6 text-indigo-500" />,
+      title: 'Third-Party Services and International Processing',
+      content: 'Some services needed to run Navorika are provided by third parties. These providers may process technical data in countries outside your own, subject to applicable legal safeguards.',
+      list: [
+        'Hosting and infrastructure providers may receive network requests and technical logs to deliver and secure the site',
+        'Google Analytics 4, where enabled, may process page views, device information and related analytics data under Google’s policies',
+        'External data providers are used only where a tool explains that live information is required',
+        'Google AdSense or other advertising providers may process information if advertising is enabled in the future',
+        'We do not sell uploaded file contents. Third-party services have their own privacy notices and controls',
+      ],
+    },
+    {
+      icon: <UserRound className="h-6 w-6 text-indigo-500" />,
+      title: 'Your Privacy Rights',
+      content: 'Depending on where you live and the laws that apply, you may have rights regarding personal information we hold or process.',
+      list: [
+        'Request access to, correction of or deletion of eligible personal information',
+        'Request restriction of processing, object to certain processing or request data portability where applicable',
+        'Withdraw consent where processing relies on consent; withdrawal does not affect earlier lawful processing',
+        'California and other US state residents may have additional rights to know, delete, correct or opt out of certain data uses',
+        'Contact us through our contact page to make a privacy request. We may need to verify your request and will respond within applicable legal time limits',
+        'You may also contact the relevant data protection authority if you believe your rights have been infringed',
+      ],
+    },
+    {
+      icon: <Lock className="h-6 w-6 text-indigo-500" />,
+      title: 'Security',
+      content: 'We use reasonable technical and organizational measures to protect the website and information processed through it. Browser-local processing reduces the need to transfer file contents to our servers. However, no online service, device or transmission method can guarantee absolute security.',
+    },
+    {
+      icon: <Eye className="h-6 w-6 text-indigo-500" />,
+      title: 'Children’s Privacy',
+      content: 'Navorika is intended for a general audience and is not designed to collect personal information from children. If you believe a child has provided personal information to us, please contact us so we can review the request.',
+    },
+    {
+      icon: <Mail className="h-6 w-6 text-indigo-500" />,
+      title: 'Policy Changes and Contact',
+      content: 'We may revise this policy as our tools, providers and legal obligations change. The date at the top indicates the latest revision. For privacy questions, requests or concerns, use the Navorika contact page. For privacy inquiries, use our contact page. This public policy does not display the website operator’s personal name, residential address or location.',
     },
   ];
 
