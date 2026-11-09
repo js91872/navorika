@@ -22,6 +22,7 @@ test('full-rollout inventory covers each registered tool, guide and English page
     'tools/ai-video-prompt-generator/page.tsx',
     'tools/compare-pdf/page.tsx',
     'tools/cmyk-color-converter/page.tsx',
+    'tools/fps-calculator/page.tsx',
     'tools/exif-metadata-remover/page.tsx',
     'tools/icloud-storage-calculator/page.tsx',
     'tools/jpg-to-dxf/page.tsx',

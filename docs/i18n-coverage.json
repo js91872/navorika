@@ -10,24 +10,24 @@
     "de"
   ],
   "summary": {
-    "tools": 331,
+    "tools": 332,
     "publishedTools": 319,
-    "pendingTools": 6,
+    "pendingTools": 7,
     "underReviewTools": 6,
     "sharedCalculators": 75,
-    "guides": 69,
+    "guides": 70,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
-    "targetToolTranslations": 2275,
-    "pendingGuideTranslations": 483,
+    "targetToolTranslations": 2282,
+    "pendingGuideTranslations": 490,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4508,
-      "visibleAttribute": 403,
-      "semanticCopy": 12183,
-      "reviewLiteral": 48436
+      "jsxText": 4514,
+      "visibleAttribute": 404,
+      "semanticCopy": 12238,
+      "reviewLiteral": 48556
     },
-    "candidateCopyWords": 359759
+    "candidateCopyWords": 360938
   },
   "tools": [
     {
@@ -3182,6 +3182,24 @@
       "definitionSource": null,
       "sources": [
         "src/app/(english)/tools/flooring-calculator/page.tsx"
+      ]
+    },
+    {
+      "slug": "fps-calculator",
+      "title": "FPS Calculator – Frames Per Second to MS",
+      "category": "everyday-calculators",
+      "route": "/tools/fps-calculator",
+      "source": "src/app/(english)/tools/fps-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/fps-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/FpsCalculator.tsx"
       ]
     },
     {
@@ -8614,6 +8632,14 @@
   ],
   "guides": [
     {
+      "slug": "fps-calculator-guide",
+      "title": "FPS Calculator Guide: FPS to MS, Gaming Frame Rate and Hz",
+      "category": "Everyday",
+      "route": "/guides/fps-calculator-guide",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
       "slug": "how-to-clear-icloud-storage",
       "title": "How to Clear iCloud Storage Safely: Step-by-Step Guide",
       "category": "Everyday",
@@ -10257,6 +10283,12 @@
       "source": "src/app/(english)/tools/flooring-calculator/page.tsx",
       "routeTemplate": "/tools/flooring-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/fps-calculator/page.tsx",
+      "routeTemplate": "/tools/fps-calculator",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

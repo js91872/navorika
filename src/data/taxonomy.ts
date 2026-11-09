@@ -29,6 +29,7 @@ export interface Toolkit {
 
 export const clusters: ToolCluster[] = [
   { id: 'cmyk-color-values', name: 'CMYK Color Values', description: 'Calculate approximate CMYK, RGB and HEX values for digital previews and printing education.', category: 'image-tools', toolSlugs: ['cmyk-color-converter'] },
+  { id: 'gaming-frame-rate', name: 'Gaming Frame Rate and Video Timing', description: 'Convert frames per second into frame times and estimate video frame counts.', category: 'everyday-calculators', toolSlugs: ['fps-calculator'] },
   { id: 'upi-payment-qr', name: 'UPI Payment QR Posters', description: 'Create printable UPI payment QR posters locally with optional amounts and business branding.', category: 'finance-calculators', toolSlugs: ['upi-qr-code-generator'] },
   { id: 'icloud-storage-planning', name: 'Cloud Storage Planning', description: 'Explore iCloud storage usage and plan cleanup scenarios without accessing private account data.', category: 'everyday-calculators', toolSlugs: ['icloud-storage-calculator'] },
   { id: 'ai-video-prompts', name: 'AI Video Prompt Tools', description: 'Plan video scenes and generate structured prompts for AI video workflows.', category: 'developer-tools', toolSlugs: ['ai-video-prompt-generator'] },

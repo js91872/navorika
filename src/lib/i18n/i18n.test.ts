@@ -106,6 +106,7 @@ test('moving English routes into a route group preserves every existing public p
     'tools/cmyk-color-converter/page.tsx',
     'tools/compare-pdf/page.tsx',
     'tools/exif-metadata-remover/page.tsx',
+    'tools/fps-calculator/page.tsx',
     'tools/icloud-storage-calculator/page.tsx',
     'tools/jpg-to-dxf/page.tsx',
     'tools/json-to-csv-converter/page.tsx',

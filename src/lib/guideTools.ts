@@ -1,5 +1,6 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'fps-calculator-guide': ['fps-calculator'],
   'how-to-generate-upi-qr-code': ['upi-qr-code-generator', 'qr-code-generator'],
   'how-to-calculate-square-feet': ['square-footage-calculator', 'flooring-calculator', 'tile-calculator', 'paint-calculator', 'land-area-converter'],
   'how-to-clear-icloud-storage': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image', 'image-scaling-calculator'],

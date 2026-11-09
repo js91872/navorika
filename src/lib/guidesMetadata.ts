@@ -37,6 +37,7 @@ const categoryImages: Record<GuideCategory, { src: string; caption: string }> = 
 };
 
 const guideDefinitions: GuideDefinition[] = [
+  { slug: 'fps-calculator-guide', title: 'FPS Calculator Guide: FPS to MS, Gaming Frame Rate and Hz', description: 'Learn how to convert FPS to milliseconds, calculate frame counts and understand gaming FPS versus monitor refresh rate.', category: 'Everyday', publishedDate: 'November 2026', readTime: '9 min read', author: 'Navorika Team', keywords: ['fps calculator', 'fps calculator for games', 'fps to ms calculator', 'how many fps', 'frames per second calculator', 'fps to milliseconds'], featuredImage: { src: '/images/guides/fps-calculator-guide.svg', alt: 'Timeline comparing 30, 60 and 120 FPS and their frame durations in milliseconds', caption: 'Compare the time between frames at common gaming and video frame rates.' } },
   {
     slug: 'how-to-clear-icloud-storage',
     title: 'How to Clear iCloud Storage Safely: Step-by-Step Guide',
