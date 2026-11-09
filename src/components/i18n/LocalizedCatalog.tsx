@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Search,
@@ -36,6 +36,8 @@ const CATEGORY_CONFIG = [
 
 export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Locale; dictionary: Dictionary }) {
   const [query, setQuery] = useState('');
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
   // Compute tool counts per category for the filter tabs
@@ -93,6 +95,7 @@ export default function LocalizedCatalog({ locale, dictionary: d }: { locale: Lo
           </div>
           <input
             id="tool-search"
+            data-hydrated={hydrated ? 'true' : 'false'}
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
