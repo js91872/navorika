@@ -4,6 +4,11 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'fps-calculator-guide': [
+    { name: 'MDN — requestAnimationFrame and display refresh rates', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame' },
+    { name: 'MDN — VideoFrame API', url: 'https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame' },
+    { name: 'W3C — Media Timed Events', url: 'https://www.w3.org/TR/media-timed-events/' },
+  ],
   'how-to-generate-upi-qr-code': [
     { name: 'NPCI — UPI Product Overview', url: 'https://www.npci.org.in/what-we-do/upi/product-overview' },
     { name: 'Reserve Bank of India — Be(A)ware: financial fraud awareness', url: 'https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx?UrlPage=&ID=1154' }
