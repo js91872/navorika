@@ -103,6 +103,7 @@ test('moving English routes into a route group preserves every existing public p
     'guides/is-claude-better-than-chatgpt/page.tsx',
     'guides/shopify-profit-margin-calculator/page.tsx',
     'tools/ai-video-prompt-generator/page.tsx',
+    'tools/cmyk-color-converter/page.tsx',
     'tools/compare-pdf/page.tsx',
     'tools/exif-metadata-remover/page.tsx',
     'tools/fps-calculator/page.tsx',
