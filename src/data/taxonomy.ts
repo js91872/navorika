@@ -28,6 +28,7 @@ export interface Toolkit {
 }
 
 export const clusters: ToolCluster[] = [
+  { id: 'generation-by-birth-year', name: 'Generations by Birth Year', description: 'Identify demographic generations by birth year and create a shareable generation pass.', category: 'everyday-calculators', toolSlugs: ['what-generation-am-i'] },
   { id: '3d-printing-planning', name: '3D Printing Planning', description: 'Estimate FDM printing material, time and costs before starting a job.', category: 'everyday-calculators', toolSlugs: ['3d-printing-cost-calculator', '3d-printer-filament-calculator', '3d-print-time-calculator'] },
   { id: 'cmyk-color-values', name: 'CMYK Color Values', description: 'Calculate approximate CMYK, RGB and HEX values for digital previews and printing education.', category: 'image-tools', toolSlugs: ['cmyk-color-converter'] },
   { id: 'gaming-frame-rate', name: 'Gaming Frame Rate and Video Timing', description: 'Convert frames per second into frame times and estimate video frame counts.', category: 'everyday-calculators', toolSlugs: ['fps-calculator'] },
