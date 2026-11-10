@@ -15,19 +15,19 @@
     "pendingTools": 8,
     "underReviewTools": 6,
     "sharedCalculators": 75,
-    "guides": 70,
+    "guides": 73,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
     "targetToolTranslations": 2289,
-    "pendingGuideTranslations": 490,
+    "pendingGuideTranslations": 511,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4555,
+      "jsxText": 4562,
       "visibleAttribute": 408,
-      "semanticCopy": 12242,
-      "reviewLiteral": 48764
+      "semanticCopy": 12402,
+      "reviewLiteral": 48879
     },
-    "candidateCopyWords": 361483
+    "candidateCopyWords": 364188
   },
   "tools": [
     {
@@ -8649,6 +8649,30 @@
     }
   ],
   "guides": [
+    {
+      "slug": "how-to-generate-barcodes-in-excel",
+      "title": "How to Generate Barcodes in Excel (Free CSV Method)",
+      "category": "Developer",
+      "route": "/guides/how-to-generate-barcodes-in-excel",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "code-128-vs-code-39",
+      "title": "Code 128 vs Code 39: Differences, Examples and When to Use Each",
+      "category": "Developer",
+      "route": "/guides/code-128-vs-code-39",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "upc-vs-ean-barcode",
+      "title": "UPC vs EAN Barcodes: UPC-A, EAN-13 and Check Digits Explained",
+      "category": "Developer",
+      "route": "/guides/upc-vs-ean-barcode",
+      "status": "pending",
+      "translatedLocales": []
+    },
     {
       "slug": "fps-calculator-guide",
       "title": "FPS Calculator Guide: FPS to MS, Gaming Frame Rate and Hz",
