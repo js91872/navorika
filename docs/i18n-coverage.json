@@ -10,24 +10,24 @@
     "de"
   ],
   "summary": {
-    "tools": 332,
+    "tools": 333,
     "publishedTools": 319,
-    "pendingTools": 7,
+    "pendingTools": 8,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 70,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
-    "targetToolTranslations": 2282,
+    "targetToolTranslations": 2289,
     "pendingGuideTranslations": 490,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4514,
-      "visibleAttribute": 404,
-      "semanticCopy": 12238,
-      "reviewLiteral": 48556
+      "jsxText": 4555,
+      "visibleAttribute": 408,
+      "semanticCopy": 12242,
+      "reviewLiteral": 48764
     },
-    "candidateCopyWords": 360938
+    "candidateCopyWords": 361483
   },
   "tools": [
     {
@@ -469,6 +469,24 @@
       "definitionSource": null,
       "sources": [
         "src/app/(english)/tools/barbell-plate-calculator/page.tsx"
+      ]
+    },
+    {
+      "slug": "barcode-generator",
+      "title": "Free Barcode Generator — Code 128, UPC, EAN & Bulk CSV",
+      "category": "developer-tools",
+      "route": "/tools/barcode-generator",
+      "source": "src/app/(english)/tools/barcode-generator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/barcode-generator/page.tsx",
+        "src/components/tools/BarcodeStudio.tsx",
+        "src/components/tools/ExpansionToolPage.tsx"
       ]
     },
     {
@@ -9647,6 +9665,12 @@
       "source": "src/app/(english)/tools/barbell-plate-calculator/page.tsx",
       "routeTemplate": "/tools/barbell-plate-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/barcode-generator/page.tsx",
+      "routeTemplate": "/tools/barcode-generator",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
