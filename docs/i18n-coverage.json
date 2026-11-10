@@ -10,24 +10,24 @@
     "de"
   ],
   "summary": {
-    "tools": 333,
+    "tools": 336,
     "publishedTools": 319,
-    "pendingTools": 8,
+    "pendingTools": 11,
     "underReviewTools": 6,
     "sharedCalculators": 75,
-    "guides": 73,
+    "guides": 76,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
-    "targetToolTranslations": 2289,
-    "pendingGuideTranslations": 511,
+    "targetToolTranslations": 2310,
+    "pendingGuideTranslations": 532,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4562,
-      "visibleAttribute": 408,
-      "semanticCopy": 12408,
-      "reviewLiteral": 48882
+      "jsxText": 4609,
+      "visibleAttribute": 411,
+      "semanticCopy": 12523,
+      "reviewLiteral": 49174
     },
-    "candidateCopyWords": 364233
+    "candidateCopyWords": 366426
   },
   "tools": [
     {
@@ -57,6 +57,60 @@
         "src/components/tools/ExpansionToolPage.tsx",
         "src/components/tools/GambrelRoofCalculator.tsx",
         "src/components/tools/GambrelRoofGuide.tsx"
+      ]
+    },
+    {
+      "slug": "3d-print-time-calculator",
+      "title": "3D Print Time Calculator",
+      "category": "everyday-calculators",
+      "route": "/tools/3d-print-time-calculator",
+      "source": "src/app/(english)/tools/3d-print-time-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/3d-print-time-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/ThreeDPrintTimeCalculator.tsx"
+      ]
+    },
+    {
+      "slug": "3d-printer-filament-calculator",
+      "title": "3D Printer Filament Calculator",
+      "category": "everyday-calculators",
+      "route": "/tools/3d-printer-filament-calculator",
+      "source": "src/app/(english)/tools/3d-printer-filament-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/3d-printer-filament-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/ThreeDPrintFilamentCalculator.tsx"
+      ]
+    },
+    {
+      "slug": "3d-printing-cost-calculator",
+      "title": "3D Printing Cost Calculator",
+      "category": "everyday-calculators",
+      "route": "/tools/3d-printing-cost-calculator",
+      "source": "src/app/(english)/tools/3d-printing-cost-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/3d-printing-cost-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/ThreeDPrintingCostCalculator.tsx"
       ]
     },
     {
@@ -8650,6 +8704,30 @@
   ],
   "guides": [
     {
+      "slug": "3d-printing-for-beginners",
+      "title": "3D Printing for Beginners: First Prints, Materials and Costs",
+      "category": "Everyday",
+      "route": "/guides/3d-printing-for-beginners",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-much-does-3d-printing-cost",
+      "title": "How Much Does 3D Printing Cost? Filament, Electricity and Pricing",
+      "category": "Everyday",
+      "route": "/guides/how-much-does-3d-printing-cost",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-long-do-3d-prints-take",
+      "title": "How Long Do 3D Prints Take? Speed, Infill and Print Time",
+      "category": "Everyday",
+      "route": "/guides/how-long-do-3d-prints-take",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
       "slug": "how-to-generate-barcodes-in-excel",
       "title": "How to Generate Barcodes in Excel (Free CSV Method)",
       "category": "Developer",
@@ -9593,6 +9671,24 @@
       "source": "src/app/(english)/tools/12-foot-gambrel-roof-truss-calculator/page.tsx",
       "routeTemplate": "/tools/12-foot-gambrel-roof-truss-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/3d-print-time-calculator/page.tsx",
+      "routeTemplate": "/tools/3d-print-time-calculator",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/3d-printer-filament-calculator/page.tsx",
+      "routeTemplate": "/tools/3d-printer-filament-calculator",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/3d-printing-cost-calculator/page.tsx",
+      "routeTemplate": "/tools/3d-printing-cost-calculator",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
