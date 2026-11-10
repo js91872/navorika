@@ -3,12 +3,20 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 export const cadToolPages: Record<string, ToolPageContent> = {
   'step-to-3d-pdf-converter': {
     slug: 'step-to-3d-pdf-converter',
-    name: 'STEP to 3D PDF Converter – Free Online STEP/STP Tool',
+    name: 'Convert STEP to 3D PDF Online Free | STP Converter',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
     description:
-      'Convert STEP and STP CAD files to interactive 3D PDFs online for free—no CAD software needed. Open in Adobe Acrobat Reader desktop for 3D model inspection.',
+      'Convert STEP or STP files to interactive 3D PDF online for free. Embedded PRC geometry, 25 MB limit, temporary server processing. No CAD software required.',
     longTailKeywords: [
+      'step to pdf',
+      'stp to pdf',
+      'convert step to pdf online',
+      'convert stp to pdf online',
+      'step file to pdf',
+      'stp file to pdf',
+      'interactive prc 3d pdf',
+      'step cad to pdf',
       'step to 3d pdf',
       'step to 3d pdf converter',
       'step to 3d pdf converter online',
@@ -26,7 +34,7 @@ export const cadToolPages: Record<string, ToolPageContent> = {
     intro: [
       'Transform 3D engineering models from standardized STEP and STP formats into shareable PDF documents containing embedded interactive 3D geometry. Navorika provides a free online STEP to 3D PDF converter designed for engineers, machinists, designers, and project stakeholders who need to share interactive 3D CAD data without requiring recipients to install specialized CAD software or purchase proprietary licenses.',
       'A critical distinction exists between generating an ordinary static PDF and creating a genuine interactive 3D PDF. While basic converters flatten 3D models into a single 2D raster snapshot or isometric line drawing, this tool embeds complete 3D PRC (Product Representation Compact) mesh data directly into the PDF container. Recipients using a compatible desktop PDF viewer can freely orbit, pan, zoom, and evaluate part geometry from any angle.',
-      'Your uploaded STEP or STP file is processed in an isolated temporary workspace on our server and deleted automatically after the conversion job completes. No CAD files are permanently stored, retained, or shared.',
+      'Privacy and file handling: STEP and STP files are uploaded to an isolated temporary server workspace for conversion, not converted entirely in your browser. Temporary files are removed after the conversion job finishes. The maximum upload size is 25 MB.',
     ],
     formula: [
       {
@@ -65,6 +73,14 @@ export const cadToolPages: Record<string, ToolPageContent> = {
       'File Size: Uploads are bounded at 25 MB to maintain responsive server processing.',
     ],
     faqs: [
+      {
+        question: 'Can I convert STEP or STP to an ordinary 2D PDF drawing?',
+        answer: 'This converter is designed to create interactive 3D PDFs, not dimensioned 2D drawing sheets. For a flat engineering drawing, first generate and export the required orthographic views in CAD software.',
+      },
+      {
+        question: 'Does STEP to PDF conversion happen locally in my browser?',
+        answer: 'No. The STEP or STP file is uploaded to an isolated temporary server workspace for conversion. The temporary files are removed when the conversion job finishes. The maximum supported upload is 25 MB.',
+      },
       {
         question: 'How do I convert a STEP file to a 3D PDF?',
         answer:
