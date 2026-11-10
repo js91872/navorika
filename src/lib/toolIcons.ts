@@ -1,5 +1,10 @@
 // Comprehensive icon mapping for all tools
 export const toolIcons: Record<string, string> = {
+  // Distinct visual identities for 3D printing and frame-rate tools.
+  '3d-printing-cost-calculator': '💰',
+  '3d-printer-filament-calculator': '🧵',
+  '3d-print-time-calculator': '⏱️',
+  'fps-calculator': '🎮',
   // ====== OCTOBER 2026 REGISTRY COVERAGE: 48 NEW TOOL ICONS ======
   'icloud-storage-calculator': '☁️',
   'json-to-csv-converter': '🔄',
