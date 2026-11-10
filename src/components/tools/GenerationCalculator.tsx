@@ -34,7 +34,7 @@ function drawCard(canvas: HTMLCanvasElement, year: number, gen: Generation, name
   c.fillStyle='#d9c8ed'; c.font='23px Arial, sans-serif'; c.fillText('navorika.com/tools/what-generation-am-i',80,682);
 }
 export default function GenerationCalculator() {
-  const [year,setYear]=useState('1998'); const [name,setName]=useState(''); const [status,setStatus]=useState('');
+  const [year,setYear]=useState('1998'); const [name,setName]=useState(''); const [status,setStatus]=useState(''); const [generated,setGenerated]=useState(false);
   const n=Number(year); const valid=/^\d{4}$/.test(year)&&n>=1900&&n<=new Date().getFullYear();
   const gen=useMemo(()=>valid?classify(n):null,[n,valid]);
   function makeCanvas(){if(!gen)return null;const c=document.createElement('canvas');drawCard(c,n,gen,name);return c;}
@@ -43,10 +43,11 @@ export default function GenerationCalculator() {
   function printPdf(){const c=makeCanvas();if(!c)return;const w=window.open('','_blank');if(!w){setStatus('Allow pop-ups to save as PDF, or download the JPG.');return;}const src=c.toDataURL('image/png');w.document.write('<!doctype html><html><head><title>Generation Pass</title><style>@page{size:landscape;margin:10mm}body{margin:0;display:grid;place-items:center;min-height:95vh}img{width:100%;max-width:1000px}@media print{img{max-width:100%}}</style></head><body><img alt="Generation pass" src="'+src+'"><script>window.onload=function(){window.print()}<\/script></body></html>');w.document.close();}
   return <div className="space-y-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6">
     <div className="grid gap-4 sm:grid-cols-2">
-      <label className="block text-sm font-semibold">Birth year<input type="number" min="1900" max={new Date().getFullYear()} value={year} onChange={e=>setYear(e.target.value)} className="mt-2 w-full rounded-lg border border-[var(--border)] bg-[var(--background)] p-3 text-base" /></label>
-      <label className="block text-sm font-semibold">Name on pass (optional)<input maxLength={32} value={name} onChange={e=>setName(e.target.value)} placeholder="Your name" className="mt-2 w-full rounded-lg border border-[var(--border)] bg-[var(--background)] p-3 text-base" /></label>
+      <label className="block text-sm font-semibold">Birth year<input type="number" min="1900" max={new Date().getFullYear()} value={year} onChange={e=>{setYear(e.target.value);setGenerated(false);}} className="mt-2 w-full rounded-lg border border-[var(--border)] bg-[var(--background)] p-3 text-base" /></label>
+      <label className="block text-sm font-semibold">Name on pass (optional)<input maxLength={32} value={name} onChange={e=>{setName(e.target.value);setGenerated(false);}} placeholder="Your name" className="mt-2 w-full rounded-lg border border-[var(--border)] bg-[var(--background)] p-3 text-base" /></label>
     </div>
-    {!gen?<p role="alert">Enter a valid four-digit birth year between 1900 and the current year.</p>:<>
+    <button type="button" disabled={!gen} onClick={()=>{setGenerated(true);setStatus('');}} className="rounded-lg bg-[#542384] px-6 py-3 font-semibold text-white disabled:opacity-50">Generate my pass</button>
+    {!gen?<p role="alert">Enter a valid four-digit birth year between 1900 and the current year.</p>:generated?<>
       <div className="overflow-hidden rounded-2xl border-2 border-[#d9b76c] bg-gradient-to-br from-[#251044] via-[#4c247a] to-[#180b35] p-6 text-white shadow-xl sm:p-9" aria-label={'Generation pass: '+gen.name}>
         <div className="flex justify-between gap-3 text-[#f4d58c]"><span className="font-bold tracking-[.18em]">NAVORIKA</span><span className="text-xs tracking-wider">GENERATION PASS</span></div>
         <div className="py-10"><p className="text-4xl font-black tracking-wide sm:text-6xl">{gen.short}</p><p className="mt-3 text-lg">{gen.name}</p></div>
@@ -54,10 +55,19 @@ export default function GenerationCalculator() {
         {name.trim()&&<p className="mt-5 font-semibold">{name.trim()}</p>}
         <p className="mt-5 text-xs text-[#e6d4f6]">navorika.com/tools/what-generation-am-i</p>
       </div>
+      <section aria-labelledby="generation-chart-heading" className="overflow-hidden rounded-2xl border border-[#d9b76c]/70 shadow-sm">
+        <div className="bg-gradient-to-r from-[#251044] to-[#542384] px-5 py-4 text-white"><h3 id="generation-chart-heading" className="text-xl font-bold text-[#f4d58c]">Generation Chart by Birth Year</h3><p className="mt-1 text-sm text-[#eee0ff]">Find your generation and compare birth-year ranges</p></div>
+        <div className="overflow-x-auto"><table className="w-full border-collapse text-left text-sm"><thead><tr className="bg-[#f4d58c] text-[#251044]"><th scope="col" className="px-4 py-3 font-bold">Generation</th><th scope="col" className="px-4 py-3 font-bold">Birth years</th></tr></thead><tbody>
+          {([['Greatest Generation','Before 1928'],['Silent Generation','1928–1945'],['Baby Boomers','1946–1964'],['Generation X (Gen X)','1965–1980'],['Millennials (Gen Y)','1981–1996'],['Generation Z (Gen Z)','1997–2012'],['Generation Alpha','2013–2024*'],['Generation Beta','2025 onward*']] as const).map(([label,years],i)=>{
+            const selected=(i===0?n<1928:i===1?n>=1928&&n<=1945:i===2?n>=1946&&n<=1964:i===3?n>=1965&&n<=1980:i===4?n>=1981&&n<=1996:i===5?n>=1997&&n<=2012:i===6?n>=2013&&n<=2024:n>=2025);
+            return <tr key={label} className={selected?'bg-[#eee3ff] text-[#251044] font-bold':i%2===0?'bg-[var(--card)]':'bg-[var(--background)]'}><td className="border-t border-[var(--border)] px-4 py-3">{label}{selected&&<span className="ml-2 inline-block rounded-full bg-[#542384] px-2 py-0.5 text-xs text-white">You</span>}</td><td className="border-t border-[var(--border)] px-4 py-3">{years}</td></tr>;
+          })}</tbody></table></div>
+        <p className="px-4 py-3 text-xs text-[var(--muted-foreground)]">*Alpha and Beta ranges are illustrative and not universally agreed. Generation boundaries are approximate, not official identity classifications.</p>
+      </section>
       <div><h3 className="text-xl font-bold">You belong to {gen.name}</h3><p className="mt-2">{gen.description}</p><p className="mt-2 text-sm">You turn {new Date().getFullYear()-n} in {new Date().getFullYear()} (your exact age depends on your birthday).</p>{gen.note&&<p className="mt-2 text-sm text-[var(--muted-foreground)]">{gen.note}</p>}</div>
       <div className="flex flex-wrap gap-3"><button type="button" onClick={downloadJpg} className="rounded-lg bg-[#542384] px-5 py-3 font-semibold text-white">Download JPG</button><button type="button" onClick={printPdf} className="rounded-lg border border-[var(--border)] px-5 py-3 font-semibold">Save as PDF</button><button type="button" onClick={share} className="rounded-lg border border-[var(--border)] px-5 py-3 font-semibold">Share pass</button></div>
       {status&&<p role="status" className="text-sm">{status}</p>}
       <p className="text-xs text-[var(--muted-foreground)]">Your birth year and optional name stay in your browser. This is a fun, shareable informational card, not an official identity document. Generation dates are approximate.</p>
-    </>}
+    </>:null}
   </div>;
 }
