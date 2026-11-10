@@ -1,5 +1,8 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'how-to-generate-barcodes-in-excel': ['barcode-generator', 'csv-to-json-converter'],
+  'code-128-vs-code-39': ['barcode-generator', 'qr-code-generator'],
+  'upc-vs-ean-barcode': ['barcode-generator'],
   'fps-calculator-guide': ['fps-calculator'],
   'how-to-generate-upi-qr-code': ['upi-qr-code-generator', 'qr-code-generator'],
   'how-to-calculate-square-feet': ['square-footage-calculator', 'flooring-calculator', 'tile-calculator', 'paint-calculator', 'land-area-converter'],
