@@ -1,0 +1,28 @@
+import Link from 'next/link';
+import ExpansionToolPage from '@/components/tools/ExpansionToolPage';
+import BarcodeStudio from '@/components/tools/BarcodeStudio';
+
+export const metadata = {
+ title: 'Free Barcode Generator Online | Code 128, UPC, EAN & Bulk CSV | Navorika',
+ description: 'Create Code 128, Code 39, EAN-13 and UPC-A barcodes free. Export PNG or SVG and generate up to 1,000 barcodes from CSV locally in your browser.',
+};
+const faqs = [
+ {q:'Is the barcode generator really free?',a:'Yes. Create individual barcodes and generate up to 1,000 barcodes in a single CSV batch without an account or payment.'},
+ {q:'Can I create barcodes from Excel?',a:'Yes. Save the barcode column from Excel as a CSV file, upload it, and download a ZIP containing SVG barcodes and a validation report.'},
+ {q:'What barcode types are supported?',a:'Code 128, Code 39, EAN-13 and UPC-A. EAN-13 and UPC-A automatically calculate a missing final check digit and validate a supplied one.'},
+ {q:'Does this create official UPC or EAN product numbers?',a:'No. This tool renders barcode images for numbers you supply. Official retail identifiers (GTINs) must be obtained through the appropriate GS1 organization or another authorized source.'},
+ {q:'Are my files uploaded?',a:'No. Barcode generation and CSV parsing happen in your browser. Avoid sharing exported files containing sensitive inventory information.'},
+];
+export default function BarcodeGeneratorPage(){
+ return <ExpansionToolPage category="developer-tools" eyebrow="Free online barcode generator" title="Free Barcode Generator — Code 128, UPC, EAN & Bulk CSV" description="Create printable barcodes in seconds. Preview, download PNG or SVG, and generate bulk barcode files from CSV without registration." slug="barcode-generator">
+ <BarcodeStudio/>
+ <article className="mx-auto mt-12 max-w-4xl space-y-7 border-t border-[var(--border)] pt-8 leading-relaxed">
+ <section><h2 className="mb-3 text-2xl font-bold">Generate a barcode online for free</h2><p>Use this free barcode generator to create a scannable linear barcode for a product label, shelf location, inventory record or internal asset tag. Enter a value, select a format, check the live preview and download a high-quality SVG or PNG image. The SVG format is ideal for resizing without losing sharp edges; PNG is convenient for documents and ordinary printing.</p></section>
+ <section><h2 className="mb-3 text-2xl font-bold">How to generate barcodes from Excel or CSV</h2><ol className="list-decimal space-y-2 pl-6"><li>In Excel, place the barcode values in the first column, one per row. Keep leading zeros by formatting cells as text.</li><li>Save the worksheet as CSV UTF-8. Use a header such as barcode or SKU if you want.</li><li>Choose the appropriate barcode format above, then upload the CSV or paste values.</li><li>Click Generate & download ZIP. Each valid row becomes a separate SVG, and results.csv identifies rejected rows.</li><li>Open a sample exported barcode and test it with your actual scanner before printing an entire batch.</li></ol></section>
+ <section><h2 className="mb-3 text-2xl font-bold">Code 128 vs Code 39 vs EAN-13 vs UPC-A</h2><p><strong>Code 128</strong> supports compact alphanumeric internal labels and encodes printable ASCII characters. <strong>Code 39</strong> is common for simple industrial identifiers and accepts uppercase letters, digits and a limited punctuation set. <strong>EAN-13</strong> and <strong>UPC-A</strong> are numeric retail formats with check digits. Choose the barcode standard required by your scanner, marketplace or trading partner, rather than assuming the formats are interchangeable.</p><p className="mt-3">A valid-looking barcode is not necessarily a valid registered product identifier. This tool does not allocate UPC, EAN or GTIN numbers. If your products need retail registration, obtain identifiers from <a className="text-[var(--primary)] underline" href="https://www.gs1.org/standards/id-keys/gtin">GS1</a> before creating labels.</p></section>
+ <section><h2 className="mb-3 text-2xl font-bold">Printing and scanning tips</h2><p>Use dark bars on a white background, leave the blank quiet zones at the sides intact, and avoid stretching the image horizontally or vertically. Print at sufficient resolution for your scanner and label size. For commercial production, verify symbol dimensions, print contrast, barcode data and scanner compatibility using appropriate verification equipment. An on-screen preview is not a formal barcode-quality certification.</p></section>
+ <section><h2 className="mb-3 text-2xl font-bold">Frequently asked questions</h2><div className="space-y-5">{faqs.map(({q,a})=><div key={q}><h3 className="font-semibold">{q}</h3><p>{a}</p></div>)}</div></section>
+ <section><h2 className="mb-3 text-2xl font-bold">Related tools</h2><p>Need a two-dimensional code for links or text? Try the <Link className="text-[var(--primary)] underline" href="/tools/qr-code-generator">QR Code Generator</Link>. For payment posters in India, see the <Link className="text-[var(--primary)] underline" href="/tools/upi-qr-code-generator">UPI QR Code Generator</Link>.</p></section>
+ </article>
+ </ExpansionToolPage>;
+}
