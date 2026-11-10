@@ -4,6 +4,19 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-generate-barcodes-in-excel': [
+    { name: 'Microsoft Support — Keep leading zeros in Excel', url: 'https://support.microsoft.com/en-us/office/keeping-leading-zeros-and-large-numbers-1bf7b935-36e1-4985-842f-5dfa51f85fe7' },
+    { name: 'Microsoft Support — Import or export text and CSV files', url: 'https://support.microsoft.com/en-us/office/import-or-export-text-txt-or-csv-files-5250ac4c-663c-47ce-937b-339e391393ba' },
+    { name: 'GS1 — Global Trade Item Number (GTIN)', url: 'https://www.gs1.org/standards/id-keys/gtin' },
+  ],
+  'code-128-vs-code-39': [
+    { name: 'GS1 — Barcode standards', url: 'https://www.gs1.org/standards/barcodes' },
+    { name: 'GS1 — GS1-128 barcode', url: 'https://www.gs1.org/standards/barcodes/1d' },
+  ],
+  'upc-vs-ean-barcode': [
+    { name: 'GS1 — Global Trade Item Number (GTIN)', url: 'https://www.gs1.org/standards/id-keys/gtin' },
+    { name: 'GS1 — Barcode standards', url: 'https://www.gs1.org/standards/barcodes' },
+  ],
   'fps-calculator-guide': [
     { name: 'MDN — requestAnimationFrame and display refresh rates', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame' },
     { name: 'MDN — VideoFrame API', url: 'https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame' },
