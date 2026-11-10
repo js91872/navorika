@@ -1,3 +1,4 @@
+import { barcodeGuideContent } from './guideContentBarcode';
 import { fpsGuideContent } from './guideContentFps';
 import { upiGuideContent } from './guideContentUpi';
 import { macSpeakerGuideContent } from './guideContentMacSpeaker';
@@ -45,6 +46,7 @@ export interface GuideContent {
 }
 
 export const guideContent: Record<string, GuideContent> = {
+  ...barcodeGuideContent,
   ...fpsGuideContent,
   ...upiGuideContent,
   ...claudeComparisonGuideContent,
