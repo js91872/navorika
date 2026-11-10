@@ -20,6 +20,7 @@ test('full-rollout inventory covers each registered tool, guide and English page
     'guides/is-claude-better-than-chatgpt/page.tsx',
     'guides/shopify-profit-margin-calculator/page.tsx',
     'tools/ai-video-prompt-generator/page.tsx',
+    'tools/barcode-generator/page.tsx',
     'tools/compare-pdf/page.tsx',
     'tools/cmyk-color-converter/page.tsx',
     'tools/fps-calculator/page.tsx',
