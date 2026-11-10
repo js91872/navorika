@@ -8,8 +8,12 @@ export default function Page() {
       category="developer-tools"
       eyebrow="CAD & 3D Engineering"
       title="STEP to 3D PDF Converter"
-      description="Convert STEP and STP CAD files to 3D PDF online with interactive PRC geometry."
+      description="Convert STEP or STP CAD files to interactive 3D PDF online for free. Rotate and inspect models in a compatible desktop PDF viewer."
     >
+      <div className="mx-auto mb-4 max-w-4xl rounded-xl border border-[var(--border)] bg-[var(--card)] p-3 text-sm text-[var(--foreground)]">
+        <p className="font-semibold">Free STEP / STP to interactive 3D PDF · Up to 25 MB · No signup</p>
+        <p className="mt-1 text-[var(--muted-foreground)]">Your CAD file is uploaded for conversion in an isolated temporary server workspace and removed after processing. The result contains interactive PRC geometry for compatible desktop PDF viewers; this tool does not create dimensioned 2D drawing sheets.</p>
+      </div>
       <StepTo3dPdfTool />
 
       {/* Compact Above-the-Fold Workflow Strip */}
