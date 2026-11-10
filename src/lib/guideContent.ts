@@ -45,6 +45,7 @@ export interface GuideContent {
 }
 
 export const guideContent: Record<string, GuideContent> = {
+  ...threeDPrintingGuideContent,
   ...fpsGuideContent,
   ...upiGuideContent,
   ...claudeComparisonGuideContent,
