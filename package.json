@@ -29,6 +29,7 @@
     "test:smoke": "node scripts/smoke-test-staging.mjs",
     "samples:pdf": "node --import tsx scripts/generate-pdf-samples.mjs",
     "test:deploy": "bash -n scripts/deploy-vps.sh && python3 scripts/test-deploy-vps.py",
+    "prepare:tool-pr": "npm run i18n:audit:write && npm run validate:architecture && npm run typecheck && npm run lint:baseline && npm run test:i18n:audit && npm run test:i18n",
     "i18n:audit": "node --import tsx scripts/audit-i18n.mjs --check",
     "i18n:audit:write": "node --import tsx scripts/audit-i18n.mjs --write",
     "i18n:complete": "node --import tsx scripts/audit-i18n.mjs --check --require-complete",

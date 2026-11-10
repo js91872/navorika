@@ -43,7 +43,10 @@ jobs:
         run: |
           npm run i18n:audit:write
           git diff -- docs/i18n-coverage.json
-          git diff --exit-code -- docs/i18n-coverage.json
+          if ! git diff --exit-code -- docs/i18n-coverage.json; then
+            echo "::error title=Stale generated i18n inventory::Run npm run prepare:tool-pr and commit docs/i18n-coverage.json before pushing the PR."
+            exit 1
+          fi
 
       - name: Audit full multilingual coverage and shared localization support
         run: npm run test:i18n:audit
