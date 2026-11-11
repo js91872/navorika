@@ -17,6 +17,17 @@ export async function checkEmailConverters(page, base) {
     return {name:download.suggestedFilename(),bytes:Buffer.concat(chunks)};
   }
   try {
+    // The homepage has its own card renderer: exercise it, not only /tools.
+    await page.goto(`${base}/`,{waitUntil:'networkidle'});
+    await page.getByRole('searchbox',{name:'Search tools',exact:true}).fill('eml');
+    const expectedIcons=[['pdf','📨'],['msg','📬'],['html','🌐'],['excel','📊'],['word','📝']];
+    for(const [format,icon] of expectedIcons) {
+      const card=page.locator(`a.group[href="/tools/eml-to-${format}"]`);
+      await card.waitFor({state:'visible'});
+      assert.equal(await card.locator('span[aria-hidden="true"]').textContent(),icon,`Homepage EML ${format} icon`);
+      assert.equal(await card.locator('svg.lucide-arrow-left-right').count(),0);
+      checks++;
+    }
     for (const [format,label,extension] of [['pdf','PDF','pdf'],['msg','MSG','msg'],['html','HTML','html'],['excel','Excel','xlsx'],['word','Word','docx']]) {
       await page.setViewportSize({width:390,height:844});
       const response=await page.goto(`${base}/tools/eml-to-${format}`,{waitUntil:'networkidle'});assert.equal(response.status(),200);
