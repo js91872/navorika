@@ -28,19 +28,19 @@ process.stdin.on("end", () => {
   const app = JSON.parse(data).find(item => item.name === "navorika");
   if (!app) process.exit(1);
   const args = app.pm2_env?.args ?? [];
-  const tokens = Array.isArray(args) ? args.map(String) : String(args).split(/\\s+/);
+  const tokens = Array.isArray(args) ? args.map(String) : String(args).split(/\s+/);
   const index = tokens.findIndex(token => token === "-p" || token === "--port");
   const port = index >= 0 ? tokens[index + 1] : null;
-  if (!port || !/^\\d+$/.test(port) || +port < 1 || +port > 65535) process.exit(1);
+  if (!port || !/^\d+$/.test(port) || +port < 1 || +port > 65535) process.exit(1);
   process.stdout.write(port);
 });
 ') || { echo "STOP: Cannot determine Navorika port from PM2 arguments."; exit 1; }
 # The current VPS Nginx site routes Navorika through a proxy_pass directive.
 # Refuse deployment when it targets a different port; do not silently alter Nginx.
 NGINX_PORT=$(nginx -T 2>/dev/null | awk '
-/server_name navorika\\.com www\\.navorika\\.com;/ { in_site=1; next }
-in_site && /proxy_pass http:\\/\\/127\\.0\\.0\\.1:[0-9]+/ {
-  line=$0; sub(/^.*127\\.0\\.0\\.1:/, "", line); sub(/[^0-9].*$/, "", line);
+/server_name navorika\.com www\.navorika\.com;/ { in_site=1; next }
+in_site && /proxy_pass http:\/\/127\.0\.0\.1:[0-9]+/ {
+  line=$0; sub(/^.*127\.0\.0\.1:/, "", line); sub(/[^0-9].*$/, "", line);
   print line; exit
 }
 in_site && /^[[:space:]]*}/ { in_site=0 }
