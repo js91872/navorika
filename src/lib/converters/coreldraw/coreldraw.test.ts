@@ -76,6 +76,20 @@ test('converts DOCX to a genuine PDF when LibreOffice is available', async (cont
   await withCorelJob(async (directory) => { const input = join(directory,'fixture.docx'); await writeFile(input,new Uint8Array(await blob.arrayBuffer())); const result = await convertCorelFile({ kind:'word-to-corel',inputPath:input,inputFormat:'docx',output:'pdf',originalName:'fixture.docx',directory }); const bytes = await import('node:fs/promises').then(({readFile}) => readFile(result.path)); assert.equal(bytes.subarray(0,5).toString('ascii'),'%PDF-'); });
 });
 
+test('writes a validated native CDR only when the experimental writer is enabled', async (context) => {
+  const capabilities = await getCorelCapabilities();
+  if (!capabilities.cdrWrite) { context.skip('UniConvertor CDR writer is not installed and explicitly enabled'); return; }
+  const pdf = await PDFDocument.create(); pdf.addPage([200,100]);
+  await withCorelJob(async (directory) => {
+    const input = join(directory,'native-output-fixture.pdf'); await writeFile(input,await pdf.save());
+    const result = await convertCorelFile({kind:'pdf-to-corel',inputPath:input,inputFormat:'pdf',output:'cdr',originalName:'fixture.pdf',directory});
+    const bytes = await import('node:fs/promises').then(({readFile}) => readFile(result.path));
+    assert.equal(result.mime,'application/vnd.corel-draw');
+    assert.match(result.fileName,/\.cdr$/);
+    assert.doesNotThrow(() => detectCdrVersion(bytes));
+  });
+});
+
 test('capability endpoint is explicitly nonindexable', async () => {
   const { GET } = await import('../../../app/api/coreldraw/capabilities/route'); const response = await GET(); assert.equal(response.headers.get('x-robots-tag'),'noindex, nofollow, noarchive');
 });
