@@ -16,7 +16,7 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   metadataBase: new URL('https://navorika.com'),
   title: { default: 'Navorika', template: '%s | Navorika' },
-  icons: { icon: '/favicon.svg' },
+  icons: { icon: '/favicon.svg?v=red-n-20261111' },
   robots: { index: true, follow: true },
 };
 
