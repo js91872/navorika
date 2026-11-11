@@ -38,7 +38,16 @@ class DeploymentTests(unittest.TestCase):
         self.bin = self.root / 'bin'
         self.bin.mkdir()
         self.log = self.root / 'services.log'
-        self.stub('pm2', 'printf "%s\\n" "$*" >> "$TEST_SERVICE_LOG"\n')
+        self.stub('pm2', '''
+if [ "${1:-}" = jlist ]; then
+  printf '%s\\n' '[{"name":"navorika","pm2_env":{"args":["start","-p","3100"]}}]'
+else
+  printf "%s\\n" "$*" >> "$TEST_SERVICE_LOG"
+fi
+''')
+        self.stub('nginx', '''
+printf '%s\\n' 'server_name navorika.com www.navorika.com;' '    proxy_pass http://127.0.0.1:3100;'
+''')
         self.stub('curl', 'if [ "$TEST_FAILURE" = health ]; then exit 22; fi\nprintf "HTTP 200\\n"\n')
         self.stub('npm', '''
 if [ "$1" = ci ]; then
