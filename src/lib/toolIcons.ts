@@ -1,5 +1,10 @@
 // Comprehensive icon mapping for all tools
 export const toolIcons: Record<string, string> = {
+  'eml-to-pdf': '📨',
+  'eml-to-msg': '📬',
+  'eml-to-html': '🌐',
+  'eml-to-excel': '📊',
+  'eml-to-word': '📝',
   // Distinct visual identities for 3D printing and frame-rate tools.
   '3d-printing-cost-calculator': '💰',
   '3d-printer-filament-calculator': '🧵',

@@ -1,5 +1,10 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'how-to-convert-eml-to-word': ['eml-to-word', 'eml-to-pdf'],
+  'how-to-convert-eml-to-excel': ['eml-to-excel', 'eml-to-pdf'],
+  'how-to-convert-eml-to-html': ['eml-to-html', 'eml-to-pdf'],
+  'how-to-convert-eml-to-msg': ['eml-to-msg', 'eml-to-pdf'],
+  'how-to-convert-eml-to-pdf': ['eml-to-pdf', 'eml-to-word'],
   'how-to-generate-barcodes-in-excel': ['barcode-generator', 'csv-to-json-converter'],
   'code-128-vs-code-39': ['barcode-generator', 'qr-code-generator'],
   'upc-vs-ean-barcode': ['barcode-generator'],

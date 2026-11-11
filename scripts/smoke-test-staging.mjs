@@ -1,3 +1,4 @@
+import { checkEmailConverters } from './email-converter-browser.mjs';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { readFileSync, writeFileSync, existsSync, readdirSync, unlinkSync } from 'node:fs';
@@ -515,6 +516,9 @@ try {
     assert.equal(await mobileMenuBtn.getAttribute('aria-expanded'), 'false', `Mobile menu closed on outside click on /${loc}`);
     checksPassed += 2;
   }
+
+  console.log('Checking EML converters, real downloads and supporting guides...');
+  checksPassed += await checkEmailConverters(page, base);
 
   assert.deepEqual(errors, [], 'No uncaught browser exceptions');
   console.log(`\nAll staging smoke tests passed cleanly! (${checksPassed} assertions verified)`);

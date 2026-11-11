@@ -4,6 +4,11 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-convert-eml-to-word': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}],
+  'how-to-convert-eml-to-excel': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}, {"name": "Microsoft — Excel specifications and limits", "url": "https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3"}],
+  'how-to-convert-eml-to-html': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}],
+  'how-to-convert-eml-to-msg': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}, {"name": "Microsoft — MSG File Format", "url": "https://learn.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxmsg/1a69e000-f391-4c03-9d43-32d5f554bca7"}],
+  'how-to-convert-eml-to-pdf': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}],
   '3d-printing-for-beginners': [{ name: 'Prusa Knowledge Base — First print', url: 'https://help.prusa3d.com/article/first-print-with-prusaslicer_1753' }],
   'how-much-does-3d-printing-cost': [{ name: 'U.S. Department of Energy — Estimating appliance energy use', url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use' }],
   'how-long-do-3d-prints-take': [{ name: 'Prusa Knowledge Base — PrusaSlicer', url: 'https://help.prusa3d.com/category/prusaslicer_204' }],
