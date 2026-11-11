@@ -34,6 +34,7 @@ test('full-rollout inventory covers each registered tool, guide and English page
     'tools/shopify-margin-calculator/page.tsx',
     'tools/speaker-dust-cleaning-sound/page.tsx',
     'tools/upi-qr-code-generator/page.tsx',
+    'tools/what-generation-am-i/page.tsx',
   ];
   assert.deepEqual(report.pageTemplates.map((row) => row.source.replace('src/app/(english)/', '')).sort(), [...contract, ...approvedNewRoutes].sort());
   for (const row of report.tools) assert.ok(row.routeExists && existsSync(row.source), row.slug);
