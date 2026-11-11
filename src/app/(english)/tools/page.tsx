@@ -1,3 +1,4 @@
+import PageHelp from '@/components/seo/PageHelp';
 import ToolDirectory, { type ToolDirectoryItem } from '@/components/tools/ToolDirectory';
 import { categories, tools } from '@/data/registry';
 import { toolSearchIndex } from '@/data/toolSearchIndex';
@@ -31,6 +32,7 @@ export default function AllToolsPage() {
           </div>
         </div>
       </section>
+    <PageHelp path="/tools" />
     </>
   );
 }

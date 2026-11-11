@@ -1,3 +1,4 @@
+import PageHelp from '@/components/seo/PageHelp';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -188,6 +189,7 @@ export default function GuidesPage() {
           ))}
         </div>
       </div>
+    <PageHelp path="/guides" />
     </div>
   );
 }

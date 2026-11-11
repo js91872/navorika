@@ -1,0 +1,213 @@
+{
+  "source": "User-provided Ubersuggest low word count export, received 2026-11-11",
+  "pages": [
+    {
+      "path": "/categories",
+      "reportedWords": 108
+    },
+    {
+      "path": "/categories/everyday-calculators",
+      "reportedWords": 162
+    },
+    {
+      "path": "/categories/finance-calculators",
+      "reportedWords": 184
+    },
+    {
+      "path": "/categories/health-calculators",
+      "reportedWords": 151
+    },
+    {
+      "path": "/categories/image-tools",
+      "reportedWords": 182
+    },
+    {
+      "path": "/categories/pdf-tools",
+      "reportedWords": 138
+    },
+    {
+      "path": "/fr/tools/jwt-decoder",
+      "reportedWords": 196
+    },
+    {
+      "path": "/fr/tools/webp-to-pdf",
+      "reportedWords": 195
+    },
+    {
+      "path": "/guides",
+      "reportedWords": 101
+    },
+    {
+      "path": "/it/tools/extract-pdf-pages",
+      "reportedWords": 199
+    },
+    {
+      "path": "/it/tools/extract-pdf-text",
+      "reportedWords": 188
+    },
+    {
+      "path": "/it/tools/flatten-pdf",
+      "reportedWords": 197
+    },
+    {
+      "path": "/it/tools/heic-to-pdf",
+      "reportedWords": 191
+    },
+    {
+      "path": "/it/tools/image-to-pdf",
+      "reportedWords": 190
+    },
+    {
+      "path": "/it/tools/jpg-to-pdf",
+      "reportedWords": 187
+    },
+    {
+      "path": "/it/tools/pdf-page-size-checker",
+      "reportedWords": 194
+    },
+    {
+      "path": "/it/tools/pdf-word-counter",
+      "reportedWords": 199
+    },
+    {
+      "path": "/it/tools/unix-timestamp-converter",
+      "reportedWords": 193
+    },
+    {
+      "path": "/it/tools/webp-to-pdf",
+      "reportedWords": 189
+    },
+    {
+      "path": "/paper-sizes/a3",
+      "reportedWords": 188
+    },
+    {
+      "path": "/paper-sizes/a4",
+      "reportedWords": 197
+    },
+    {
+      "path": "/toolkits",
+      "reportedWords": 156
+    },
+    {
+      "path": "/toolkits/image-optimization-tools",
+      "reportedWords": 192
+    },
+    {
+      "path": "/toolkits/loan-and-budget-calculators",
+      "reportedWords": 197
+    },
+    {
+      "path": "/toolkits/pdf-document-workflows",
+      "reportedWords": 191
+    },
+    {
+      "path": "/tools",
+      "reportedWords": 170
+    },
+    {
+      "path": "/tools/avif-to-png",
+      "reportedWords": 133
+    },
+    {
+      "path": "/tools/cashflow-budget-architect/budget-planner",
+      "reportedWords": 164
+    },
+    {
+      "path": "/tools/cashflow-budget-architect/credit-card-payoff",
+      "reportedWords": 165
+    },
+    {
+      "path": "/tools/cashflow-budget-architect/emergency-fund-calculator",
+      "reportedWords": 162
+    },
+    {
+      "path": "/tools/exif-metadata-remover",
+      "reportedWords": 177
+    },
+    {
+      "path": "/tools/heic-to-pdf",
+      "reportedWords": 132
+    },
+    {
+      "path": "/tools/investment-return-profiler/cagr-calculator",
+      "reportedWords": 147
+    },
+    {
+      "path": "/tools/investment-return-profiler/roi-calculator",
+      "reportedWords": 145
+    },
+    {
+      "path": "/tools/investment-return-profiler/stock-average-calculator",
+      "reportedWords": 154
+    },
+    {
+      "path": "/tools/investment-return-profiler/swp-calculator",
+      "reportedWords": 151
+    },
+    {
+      "path": "/tools/jfif-to-png",
+      "reportedWords": 165
+    },
+    {
+      "path": "/tools/loan-amortization-suite/car-loan-emi",
+      "reportedWords": 157
+    },
+    {
+      "path": "/tools/loan-amortization-suite/home-loan-emi",
+      "reportedWords": 159
+    },
+    {
+      "path": "/tools/loan-amortization-suite/personal-loan-emi",
+      "reportedWords": 157
+    },
+    {
+      "path": "/tools/loan-amortization-suite/prepayment-calculator",
+      "reportedWords": 155
+    },
+    {
+      "path": "/tools/markdown-to-pdf",
+      "reportedWords": 154
+    },
+    {
+      "path": "/tools/savings-retirement-hub/gratuity-calculator",
+      "reportedWords": 174
+    },
+    {
+      "path": "/tools/svg-to-ico",
+      "reportedWords": 135
+    },
+    {
+      "path": "/tools/txt-to-image",
+      "reportedWords": 183
+    },
+    {
+      "path": "/tools/wealth-inflation-matrix/compound-interest-calculator",
+      "reportedWords": 146
+    },
+    {
+      "path": "/tools/wealth-inflation-matrix/inflation-calculator",
+      "reportedWords": 152
+    },
+    {
+      "path": "/tools/wealth-inflation-matrix/net-worth-calculator",
+      "reportedWords": 143
+    },
+    {
+      "path": "/tools/wealth-inflation-matrix/salary-calculator",
+      "reportedWords": 152
+    },
+    {
+      "path": "/tools/webp-to-gif",
+      "reportedWords": 152
+    },
+    {
+      "path": "/tools/webp-to-ico",
+      "reportedWords": 167
+    },
+    {
+      "path": "/tools/xml-to-csv",
+      "reportedWords": 150
+    }
+  ]
+}
