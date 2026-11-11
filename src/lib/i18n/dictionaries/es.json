@@ -2933,15 +2933,32 @@
           "label": "Superficie de placas (pies cuadrados)"
         },
         "coveragePerBucket": {
-          "label": "Rendimiento por envase (pies cuadrados)"
+          "label": "Rendimiento por envase (pies cuadrados)",
+          "help": "Utiliza el rendimiento indicado en el producto para todas las capas previstas."
         },
         "wastePercent": {
           "label": "Margen adicional (%)"
+        },
+        "compoundType": {
+          "label": "Presentación del compuesto",
+          "options": {
+            "ready": "Pasta preparada (cubos / cajas)",
+            "setting": "Compuesto en polvo de fraguado rápido (sacos)"
+          }
+        },
+        "tapeFactor": {
+          "label": "Cinta para juntas (pies lineales por pie cuadrado)",
+          "help": "Solo es una estimación: mide juntas y esquinas reales."
+        },
+        "tapeRollFeet": {
+          "label": "Pies por rollo de cinta"
         }
       },
       "results": {
         "adjustedArea": "Superficie con margen (pies cuadrados)",
-        "containers": "Envases a comprar"
+        "containers": "Envases a comprar",
+        "tapeFeet": "Longitud estimada de cinta (pies)",
+        "tapeRolls": "Rollos de cinta necesarios"
       },
       "note": "El rendimiento depende de placas, capas, cantoneras, textura, colocación de cinta y producto. Usa el dato del fabricante.",
       "textResults": {}
