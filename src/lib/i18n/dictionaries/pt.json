@@ -2933,15 +2933,32 @@
           "label": "Área das placas (pés quadrados)"
         },
         "coveragePerBucket": {
-          "label": "Rendimento por recipiente (pés quadrados)"
+          "label": "Rendimento por recipiente (pés quadrados)",
+          "help": "Use o rendimento indicado no produto para todas as demãos."
         },
         "wastePercent": {
           "label": "Margem adicional (%)"
+        },
+        "compoundType": {
+          "label": "Tipo de embalagem da massa",
+          "options": {
+            "ready": "Massa pronta (baldes / caixas)",
+            "setting": "Massa em pó de presa rápida (sacos)"
+          }
+        },
+        "tapeFactor": {
+          "label": "Fita de juntas (pés lineares por pé quadrado)",
+          "help": "Apenas estimativa: meça juntas e cantos reais."
+        },
+        "tapeRollFeet": {
+          "label": "Pés por rolo de fita"
         }
       },
       "results": {
         "adjustedArea": "Área com margem (pés quadrados)",
-        "containers": "Recipientes a comprar"
+        "containers": "Recipientes a comprar",
+        "tapeFeet": "Comprimento estimado de fita (pés)",
+        "tapeRolls": "Rolos de fita necessários"
       },
       "note": "O rendimento depende da disposição das placas, demãos, cantoneiras, textura, aplicação de fita e produto. Use o valor do fabricante.",
       "textResults": {}

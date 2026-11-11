@@ -2933,15 +2933,32 @@
           "label": "Surface des plaques (pieds carrés)"
         },
         "coveragePerBucket": {
-          "label": "Rendement par contenant (pieds carrés)"
+          "label": "Rendement par contenant (pieds carrés)",
+          "help": "Utilisez le rendement indiqué sur le produit pour toutes les couches prévues."
         },
         "wastePercent": {
           "label": "Marge supplémentaire (%)"
+        },
+        "compoundType": {
+          "label": "Type de conditionnement",
+          "options": {
+            "ready": "Enduit prêt à l'emploi (seaux / boîtes)",
+            "setting": "Enduit en poudre à prise rapide (sacs)"
+          }
+        },
+        "tapeFactor": {
+          "label": "Bande à joint (pieds linéaires par pied carré)",
+          "help": "Estimation seulement : mesurez les joints et les angles."
+        },
+        "tapeRollFeet": {
+          "label": "Longueur par rouleau (pieds)"
         }
       },
       "results": {
         "adjustedArea": "Surface avec marge (pieds carrés)",
-        "containers": "Contenants à acheter"
+        "containers": "Contenants à acheter",
+        "tapeFeet": "Longueur estimée de bande (pieds)",
+        "tapeRolls": "Rouleaux de bande à acheter"
       },
       "note": "Le rendement dépend des plaques, couches, cornières, finitions, bandes et produits. Utilisez le rendement indiqué par le fabricant.",
       "textResults": {}
