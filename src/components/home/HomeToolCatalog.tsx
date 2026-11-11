@@ -16,6 +16,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { searchTools } from '@/lib/toolSearch';
+import { getToolIcon } from '@/lib/toolIcons';
 import type { Tool } from '@/data/registry';
 
 export interface CatalogTool extends Tool {
@@ -34,6 +35,10 @@ const CATEGORIES = [
 ] as const;
 
 function getToolSymbol(slug: string, category: string) {
+  // Email converters use the same distinct icons as the directory and related tools.
+  if (slug.startsWith('eml-to-')) {
+    return <span className="text-2xl leading-none" aria-hidden="true">{getToolIcon(slug)}</span>;
+  }
   if (slug.includes('pdf') || category === 'pdf-tools') {
     return <FileText className="h-6 w-6 text-[#e5322d]" aria-hidden="true" />;
   }
