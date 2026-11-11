@@ -1,3 +1,4 @@
+import PageHelp from '@/components/seo/PageHelp';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -180,6 +181,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           </div>
         </section>
       )}
+    <PageHelp path={`/categories/${slug}`} />
     </div>
   );
 }

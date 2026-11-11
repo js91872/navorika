@@ -1,3 +1,4 @@
+import PageHelp from '@/components/seo/PageHelp';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Layers3 } from 'lucide-react';
@@ -64,6 +65,7 @@ export default function ToolkitsPage() {
           </p>
         </div>
       </section>
+    <PageHelp path="/toolkits" />
     </div>
   );
 }

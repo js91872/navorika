@@ -1,3 +1,4 @@
+import PageHelp from '@/components/seo/PageHelp';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Grid3x3, ArrowRight } from 'lucide-react';
@@ -84,6 +85,7 @@ export default function CategoriesPage() {
           </div>
         </section>
       </div>
+    <PageHelp path="/categories" />
     </div>
   );
 }
