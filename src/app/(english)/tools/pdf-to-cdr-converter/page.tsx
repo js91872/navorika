@@ -10,7 +10,7 @@ export default function Page() {
       category="developer-tools"
       eyebrow="Convert PDF for CorelDRAW Online"
       title="PDF to CDR Converter"
-      description="Convert PDF to CDR by preparing a CorelDRAW-ready PDF, SVG or EPS file. Import the result into CorelDRAW, check text and vector artwork, then use Save As to create a native CDR file."
+      description="Prepare a PDF for CorelDRAW. Download a native CDR when the verified server writer is enabled, or use PDF, SVG, or EPS output and save it as CDR in CorelDRAW."
     >
       <CorelServerTool config={corelServerConfigs.pdf} />
 
@@ -62,16 +62,16 @@ export default function Page() {
         <div className="flex flex-wrap items-center justify-center gap-1.5 font-medium text-[var(--foreground)] sm:gap-2">
           <span>PDF</span>
           <span className="text-[var(--muted-foreground)]">→</span>
-          <span>Choose PDF / SVG / EPS</span>
+          <span>Choose an available output</span>
           <span className="text-[var(--muted-foreground)]">→</span>
-          <span>Import into CorelDRAW</span>
+          <span>Open or import in CorelDRAW</span>
           <span className="text-[var(--muted-foreground)]">→</span>
           <span>Inspect Fonts &amp; Vectors</span>
           <span className="text-[var(--muted-foreground)]">→</span>
-          <span>Save As CDR</span>
+          <span>Save as CDR when needed</span>
         </div>
         <p className="mt-2 text-[var(--muted-foreground)]">
-          Navorika does not generate a native CDR file. It creates CorelDRAW-ready PDF, SVG, or EPS output that you can import into CorelDRAW and save as CDR.
+          Native CDR download appears only when the verified server writer is enabled. Otherwise, import the prepared PDF, SVG, or EPS into CorelDRAW and save it as CDR.
         </p>
       </div>
     </ExpansionToolPage>
