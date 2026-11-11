@@ -72,6 +72,9 @@ jobs:
       - name: Build production application
         run: npm run build
 
+      - name: Verify audited page content in production HTML
+        run: node --import tsx scripts/verify-low-word-count-pages.mjs
+
       - name: Install Chromium for multilingual browser checks
         run: npx playwright install --with-deps chromium
 

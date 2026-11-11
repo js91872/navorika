@@ -1,3 +1,4 @@
+import PageHelp from '@/components/seo/PageHelp';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -129,6 +130,8 @@ export default async function LocalizedToolPage({ params }: Props) {
           <BidiText text={tool.answer} />
         </p>
       </section>
+
+      <PageHelp path={`/${locale}/tools/${slug}`} />
 
       {/* Related Tools */}
       <section className="mt-10">

@@ -1,3 +1,4 @@
+import PageHelp from '@/components/seo/PageHelp';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -130,6 +131,7 @@ export default async function ToolkitPage({ params }: Props) {
           </div>
         </section>
       ) : null}
+    <PageHelp path={`/toolkits/${slug}`} />
     </div>
   );
 }
