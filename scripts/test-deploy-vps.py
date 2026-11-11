@@ -49,7 +49,11 @@ fi
 printf '%s\\n' 'server_name navorika.com www.navorika.com;' '    proxy_pass http://127.0.0.1:3100;'
 ''')
         self.stub('curl', '''
-if [ "$TEST_FAILURE" = health ] && grep -q '^restart navorika --update-env
+if [ "$TEST_FAILURE" = health ] && grep -q '^restart navorika --update-env$' "$TEST_SERVICE_LOG"; then
+  exit 22
+fi
+printf "HTTP 200\\n"
+''')
         self.stub('npm', '''
 if [ "$1" = ci ]; then
   mkdir -p node_modules
