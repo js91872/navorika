@@ -19,6 +19,11 @@ export interface ToolCapabilitySnapshot {
 }
 
 export const toolUx: Record<string, ToolUxConfig> = {
+  'eml-to-word': { processingMode: 'local', noUpload: true, noAccount: true },
+  'eml-to-excel': { processingMode: 'local', noUpload: true, noAccount: true },
+  'eml-to-html': { processingMode: 'local', noUpload: true, noAccount: true },
+  'eml-to-msg': { processingMode: 'local', noUpload: true, noAccount: true },
+  'eml-to-pdf': { processingMode: 'local', noUpload: true, noAccount: true },
   'reverse-sales-tax-calculator': { processingMode: 'local', noUpload: true, noAccount: true },
   'fertilizer-calculator': { processingMode: 'local', noUpload: true, noAccount: true },
   'house-construction-cost-calculator': {

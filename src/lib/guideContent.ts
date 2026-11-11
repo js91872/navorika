@@ -1,3 +1,4 @@
+import { emailGuideContent } from './guideContentEmail';
 import { threeDPrintingGuideContent } from './guideContent3dPrinting';
 import { barcodeGuideContent } from './guideContentBarcode';
 import { fpsGuideContent } from './guideContentFps';
@@ -47,6 +48,7 @@ export interface GuideContent {
 }
 
 export const guideContent: Record<string, GuideContent> = {
+  ...emailGuideContent,
   ...threeDPrintingGuideContent,
   ...barcodeGuideContent,
   ...fpsGuideContent,

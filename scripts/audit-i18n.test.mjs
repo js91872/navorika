@@ -13,6 +13,11 @@ test('full-rollout inventory covers each registered tool, guide and English page
   assert.deepEqual(report.guides.map((row) => row.slug).sort(), guidesMetadata.map((row) => row.slug).sort());
   const contract = JSON.parse(readFileSync('scripts/english-route-contract.json', 'utf8'));
   const approvedNewRoutes = [
+    'tools/eml-to-pdf/page.tsx',
+    'tools/eml-to-msg/page.tsx',
+    'tools/eml-to-html/page.tsx',
+    'tools/eml-to-excel/page.tsx',
+    'tools/eml-to-word/page.tsx',
     'guides/can-chatgpt-make-videos/page.tsx',
     'guides/how-does-a-3d-printer-work/page.tsx',
     'guides/how-to-clean-phone-speaker/page.tsx',

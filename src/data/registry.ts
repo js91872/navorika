@@ -74,6 +74,37 @@ export const categories: Category[] = [
 ];
 
 export const tools: RegisteredTool[] = ([
+  {
+    slug: 'eml-to-pdf', title: 'Free EML to PDF Converter Online',
+    description: 'Create a readable PDF with email headers, message text and attachment names. Western European text is searchable; other scripts may render as images.',
+    category: 'developer-tools',
+    keywords: ['eml to pdf', 'convert eml to pdf', 'eml to pdf online', 'free eml to pdf converter', 'batch eml to pdf']
+  },
+  {
+    slug: 'eml-to-msg', title: 'Free EML to MSG Converter Online',
+    description: 'Create a Unicode Outlook MSG with sender, recipients, date, message text, safe HTML and original attachment files.',
+    category: 'developer-tools',
+    keywords: ['eml to msg', 'convert eml to msg', 'eml to msg online', 'free eml to msg converter', 'batch eml to msg']
+  },
+  {
+    slug: 'eml-to-html', title: 'Free EML to HTML Converter Online',
+    description: 'Save a standalone HTML document with email headers, basic message formatting and an attachment list. Remote content and images are removed.',
+    category: 'developer-tools',
+    keywords: ['eml to html', 'convert eml to html', 'eml to html online', 'free eml to html converter', 'batch eml to html']
+  },
+  {
+    slug: 'eml-to-excel', title: 'Free EML to Excel Converter Online',
+    description: 'Create a genuine XLSX workbook with one email per row, filterable headers, message text and attachment names. No formulas are generated.',
+    category: 'developer-tools',
+    keywords: ['eml to excel', 'convert eml to excel', 'eml to excel online', 'free eml to excel converter', 'batch eml to excel']
+  },
+  {
+    slug: 'eml-to-word', title: 'Free EML to Word Converter Online',
+    description: 'Create an editable DOCX document with email headers, readable message text and attachment names. Original email styling and images are omitted.',
+    category: 'developer-tools',
+    keywords: ['eml to word', 'convert eml to word', 'eml to word online', 'free eml to word converter', 'batch eml to word']
+  },
+
   { slug: 'what-generation-am-i', title: 'What Generation Am I? Generation Calculator', description: 'Find your generation by birth year and create a shareable purple and gold generation pass in JPG or PDF.', category: 'everyday-calculators', keywords: ['what generation am i', 'which generation am i', 'generation calculator', 'generation by birth year', 'generation chart by year', 'generation names and years', 'what generation am i if i was born in 1985', 'what generation am i 1998', 'what generation am i 1999', 'how do i know what generation i am', 'gen z age range', 'millennial birth years', 'gen alpha years', 'gen z vs millennials', 'generation quiz'], heroTitle: 'What Generation Am I?', heroDescription: 'Find your generation by birth year and download a free shareable generation pass.' },
   { slug: '3d-printing-cost-calculator', title: '3D Printing Cost Calculator', description: 'Estimate 3D print costs, filament, electricity, machine time and profit margins.', category: 'everyday-calculators', keywords: ['3d printing cost calculator', '3d printing calculator', '3d printer calculator'], heroTitle: '3D Printing Cost Calculator', heroDescription: 'Estimate 3D print costs, filament, electricity, machine time and profit margins.' },
   { slug: '3d-printer-filament-calculator', title: '3D Printer Filament Calculator', description: 'Calculate 3D printer filament weight and spool cost from filament length, diameter and density.', category: 'everyday-calculators', keywords: ['3d printer filament calculator', '3d printing calculator', '3d printer calculator'], heroTitle: '3D Printer Filament Calculator', heroDescription: 'Calculate 3D printer filament weight and spool cost from filament length, diameter and density.' },
