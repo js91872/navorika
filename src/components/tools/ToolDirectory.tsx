@@ -138,7 +138,7 @@ export default function ToolDirectory({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {filteredTools.map((tool) => (
               <Link
                 key={tool.slug}
@@ -157,10 +157,10 @@ export default function ToolDirectory({
                       →
                     </span>
                   </div>
-                  <h2 className="text-[17px] font-semibold text-[#18181b] dark:text-white transition-colors group-hover:text-[#e5322d] line-clamp-1">
+                  <h2 className="text-[17px] font-semibold text-[#18181b] dark:text-white transition-colors group-hover:text-[#e5322d] line-clamp-2">
                     {tool.title}
                   </h2>
-                  <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
+                  <p className="mt-1.5 line-clamp-3 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
                     {tool.displayDescription}
                   </p>
                 </div>
