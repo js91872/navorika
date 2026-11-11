@@ -13,9 +13,9 @@ import { CORELDRAW_MAX_OUTPUT_BYTES } from '@/lib/converters/coreldraw/formats';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 const kinds = new Set<ServerConversionKind>(['word-to-corel','pdf-to-corel','svg-to-corel','ai-to-corel','eps-to-corel','cdr-viewer','cdr-to-pdf','cdr-to-svg','cdr-to-png','cdr-to-jpg','cdr-to-eps']);
-const outputs = new Set<CorelOutputFormat>(['pdf','svg','eps','png','jpg']);
+const outputs = new Set<CorelOutputFormat>(['pdf','svg','eps','png','jpg','cdr']);
 const rules: Record<ServerConversionKind, { inputs: CorelInputFormat[]; outputs: CorelOutputFormat[] }> = {
-  'word-to-corel': { inputs: ['doc','docx'], outputs: ['pdf','svg','eps'] }, 'pdf-to-corel': { inputs: ['pdf'], outputs: ['pdf','svg','eps'] },
+  'word-to-corel': { inputs: ['doc','docx'], outputs: ['pdf','svg','eps'] }, 'pdf-to-corel': { inputs: ['pdf'], outputs: ['pdf','svg','eps','cdr'] },
   'svg-to-corel': { inputs: ['svg'], outputs: ['svg','pdf','eps'] }, 'ai-to-corel': { inputs: ['ai'], outputs: ['pdf','svg','eps'] }, 'eps-to-corel': { inputs: ['eps'], outputs: ['pdf','svg','eps'] },
   'cdr-viewer': { inputs: ['cdr'], outputs: ['pdf','svg','png'] }, 'cdr-to-pdf': { inputs: ['cdr'], outputs: ['pdf'] }, 'cdr-to-svg': { inputs: ['cdr'], outputs: ['svg'] },
   'cdr-to-png': { inputs: ['cdr'], outputs: ['png'] }, 'cdr-to-jpg': { inputs: ['cdr'], outputs: ['jpg'] }, 'cdr-to-eps': { inputs: ['cdr'], outputs: ['eps'] },
