@@ -37,13 +37,15 @@ process.stdin.on("end", () => {
 ') || { echo "STOP: Cannot determine Navorika port from PM2 arguments."; exit 1; }
 # The current VPS Nginx site routes Navorika through a proxy_pass directive.
 # Refuse deployment when it targets a different port; do not silently alter Nginx.
+# Nginx server blocks can contain nested location blocks before location /.
+# Track braces so closing a nested location does not end the server block.
 NGINX_PORT=$(nginx -T 2>/dev/null | awk '
 /server_name navorika\.com www\.navorika\.com;/ { in_site=1; next }
 in_site && /proxy_pass http:\/\/127\.0\.0\.1:[0-9]+/ {
   line=$0; sub(/^.*127\.0\.0\.1:/, "", line); sub(/[^0-9].*$/, "", line);
   print line; exit
 }
-in_site && /^[[:space:]]*}/ { in_site=0 }
+in_site && /server_name / { in_site=0 }
 ') || true
 if [[ -z "$NGINX_PORT" || "$NGINX_PORT" != "$PM2_PORT" ]]; then
   echo "STOP: Navorika port mismatch: PM2=$PM2_PORT, Nginx=${NGINX_PORT:-unknown}."
