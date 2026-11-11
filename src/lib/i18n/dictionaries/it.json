@@ -2933,15 +2933,32 @@
           "label": "Superficie delle lastre (piedi quadrati)"
         },
         "coveragePerBucket": {
-          "label": "Resa per contenitore (piedi quadrati)"
+          "label": "Resa per contenitore (piedi quadrati)",
+          "help": "Usa la resa indicata sul prodotto per tutte le mani previste."
         },
         "wastePercent": {
           "label": "Margine aggiuntivo (%)"
+        },
+        "compoundType": {
+          "label": "Confezione dello stucco",
+          "options": {
+            "ready": "Stucco pronto (secchi / scatole)",
+            "setting": "Stucco in polvere a presa rapida (sacchi)"
+          }
+        },
+        "tapeFactor": {
+          "label": "Nastro per giunti (piedi lineari per piede quadrato)",
+          "help": "Solo stima: misura giunti e angoli effettivi."
+        },
+        "tapeRollFeet": {
+          "label": "Piedi per rotolo di nastro"
         }
       },
       "results": {
         "adjustedArea": "Superficie con margine (piedi quadrati)",
-        "containers": "Contenitori da acquistare"
+        "containers": "Contenitori da acquistare",
+        "tapeFeet": "Lunghezza stimata del nastro (piedi)",
+        "tapeRolls": "Rotoli di nastro da acquistare"
       },
       "note": "La resa dipende da disposizione delle lastre, mani, paraspigoli, finitura, nastratura e prodotto. Usa il valore del produttore.",
       "textResults": {}
