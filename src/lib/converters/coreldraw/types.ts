@@ -1,5 +1,5 @@
 export type CorelInputFormat = 'pdf' | 'png' | 'jpg' | 'doc' | 'docx' | 'svg' | 'ai' | 'eps' | 'cdr';
-export type CorelOutputFormat = 'pdf' | 'svg' | 'eps' | 'png' | 'jpg';
+export type CorelOutputFormat = 'pdf' | 'svg' | 'eps' | 'png' | 'jpg' | 'cdr';
 
 export interface CorelCapabilities {
   docxToPdf: boolean;
@@ -8,7 +8,7 @@ export interface CorelCapabilities {
   postscriptToPdf: boolean;
   rasterVectorization: boolean;
   cdrRead: boolean;
-  cdrWrite: false;
+  cdrWrite: boolean;
   nativeCdrReason: string;
 }
 
