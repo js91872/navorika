@@ -1,7 +1,7 @@
 import type { ToolPageContent } from '@/lib/seo/toolPage';
 
 const serverPrivacy = 'Server conversions use an isolated temporary directory. Input and output files are deleted automatically when each request finishes.';
-const nativeLimit = 'No verified native CDR writer is configured. The download is a genuine CorelDRAW-ready interchange file, not a renamed or simulated .cdr file.';
+const nativeLimit = 'Native CDR output appears only when a verified writer is enabled for this tool. Otherwise, the download is a genuine CorelDRAW-ready interchange file, never a renamed or simulated .cdr file.';
 const hub = { slug: 'coreldraw-tools', name: 'CorelDRAW Tools & CDR Converters' };
 
 export const corelDrawToolPages: Record<string, ToolPageContent> = {
@@ -108,9 +108,9 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'pdf file to cdr',
     ],
     intro: [
-      'Convert PDF to CDR by preparing the PDF for CorelDRAW import. Upload a PDF, choose a CorelDRAW-ready PDF, SVG or EPS output, import the result into CorelDRAW, check the artwork, and use Save As to create the native CDR file.',
+      'Upload a PDF and choose a native CDR download when the verified writer is enabled. Otherwise, prepare a CorelDRAW-ready PDF, SVG, or EPS, then import it and save as CDR in CorelDRAW.',
       'Editability in CorelDRAW depends directly on whether your source PDF contains native vector paths or scanned bitmap images. Vector PDFs retain scalable curves, fills, and selectable text objects that CorelDRAW can edit directly. In contrast, scanned or raster-based PDFs contain photographic pixels that import as flat bitmap images, which do not automatically become editable vector curves without manual or automated tracing.',
-      'Navorika produces genuine, verified CorelDRAW-ready interchange files: a preserved multipage PDF document, a clean first-page SVG vector file, or an encapsulated PostScript (EPS) file. Navorika does not generate a native CDR file. It creates CorelDRAW-ready PDF, SVG, or EPS output that you can import into CorelDRAW and save as CDR.',
+      'When the verified native writer is enabled, the tool can return a .cdr file directly. Otherwise, it produces genuine interchange files: a preserved multipage PDF, a first-page SVG, or an EPS file. These can be imported into CorelDRAW and saved as CDR.',
       'Uploaded files are processed in an isolated temporary workspace on our server and deleted automatically after the conversion job completes. No files are permanently stored or shared.',
     ],
     formula: [
@@ -121,7 +121,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
     ],
     steps: [
       'Upload a PDF file up to 15 MB.',
-      'Select your output format: choose PDF to preserve all document pages, or choose SVG or EPS for a focused first-page vector interchange.',
+      'Select an available output: choose CDR for direct native output when enabled, PDF to preserve all document pages, or SVG/EPS for first-page vector interchange.',
       'Execute the secure online conversion.',
       'In CorelDRAW, go to File → Import (Ctrl+I) to place your file, inspect fonts, layers, and curves, then choose File → Save As → CDR to save your native project.',
     ],
@@ -150,7 +150,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       {
         question: 'Does this tool create a native CDR file?',
         answer:
-          "No. CDR is CorelDRAW's proprietary document format. Navorika does not generate a native CDR file. It creates CorelDRAW-ready PDF, SVG, or EPS output that you can import into CorelDRAW and save as CDR.",
+          'A direct .cdr download is available when the verified native writer is enabled. If it is unavailable, the tool prepares PDF, SVG, or EPS files for import into CorelDRAW and Save As CDR.',
       },
       {
         question: 'Can CorelDRAW open and edit a PDF file directly?',
