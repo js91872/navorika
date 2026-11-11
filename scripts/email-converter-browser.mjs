@@ -46,7 +46,14 @@ export async function checkEmailConverters(page, base) {
     await page.waitForFunction(()=>document.querySelector('section[aria-label^="EML to"] [role="status"]')?.textContent?.includes('2 emails ready'));
     const batch=await getBytes(()=>page.getByRole('button',{name:'Convert & download ZIP'}).click());
     const zip=await JSZip.loadAsync(batch.bytes);assert.deepEqual(Object.keys(zip.files),['01-same.docx','02-same.docx']);
-    assert.deepEqual(blockedRequests,[],'No email tracking URLs requested');checks+=2;
+    // Exercise the canvas PDF branch for text outside the standard PDF font encoding.
+    await page.goto(`${base}/tools/eml-to-pdf`,{waitUntil:'networkidle'});
+    const international=Buffer.from('From: alex@example.com\r\nSubject: Unicode message\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nСервис — مرحبا — नमस्ते');
+    await page.getByLabel('Choose EML files').setInputFiles({name:'unicode.eml',mimeType:'message/rfc822',buffer:international});
+    await page.waitForFunction(()=>document.querySelector('section[aria-label^="EML to"] [role="status"]')?.textContent?.includes('ready'));
+    const unicodePdf=await getBytes(()=>page.getByRole('button',{name:'Convert & download PDF'}).click());
+    const doc=await PDFDocument.load(unicodePdf.bytes);assert.ok(doc.getPageCount()>0);assert.ok(unicodePdf.bytes.length>1000);
+    assert.deepEqual(blockedRequests,[],'No email tracking URLs requested');checks+=3;
   } finally {page.off('request',trackRequest);}
   return checks;
 }
