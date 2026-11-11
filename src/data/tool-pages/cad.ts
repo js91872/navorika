@@ -3,7 +3,7 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 export const cadToolPages: Record<string, ToolPageContent> = {
   'step-to-3d-pdf-converter': {
     slug: 'step-to-3d-pdf-converter',
-    name: 'Convert STEP to 3D PDF Online Free | STP Converter',
+    name: 'Free STEP to 3D PDF Converter Online (STEP/STP to Interactive 3D PDF)',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
     description:

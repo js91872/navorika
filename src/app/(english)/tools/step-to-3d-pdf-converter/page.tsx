@@ -7,7 +7,7 @@ export default function Page() {
     <ExpansionToolPage
       category="developer-tools"
       eyebrow="CAD & 3D Engineering"
-      title="STEP to 3D PDF Converter"
+      title="Free STEP to 3D PDF Converter Online"
       description="Convert STEP or STP CAD files to interactive 3D PDF online for free. Rotate and inspect models in a compatible desktop PDF viewer."
     >
       <div className="mx-auto mb-4 max-w-4xl rounded-xl border border-[var(--border)] bg-[var(--card)] p-3 text-sm text-[var(--foreground)]">
