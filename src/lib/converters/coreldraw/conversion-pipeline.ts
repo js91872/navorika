@@ -17,7 +17,7 @@ async function officeToPdf(input: string, directory: string) {
   try { await readFile(expected); return expected; } catch { throw new CorelConversionError('LibreOffice did not produce a PDF. The input may be damaged, encrypted, or unsupported.', 422); }
 }
 
-async function pdfToOutput(pdfPath: string, output: CorelOutputFormat, directory: string, quality: number, resolution: number) {
+async function pdfToOutput(pdfPath: string, output: Exclude<CorelOutputFormat, 'cdr'>, directory: string, quality: number, resolution: number) {
   if (output === 'pdf') return pdfPath;
   const base = join(directory, `output-${randomUUID()}`);
   if (output === 'svg') { const binary = await firstAvailable(corelBinaryCandidates.pdftocairo); if (!binary) throw new CorelConversionError('PDF-to-SVG support is unavailable on this server.', 503); const path = `${base}.svg`; await runProcess(binary, ['-svg', '-f', '1', '-l', '1', pdfPath, path], directory); return path; }
@@ -29,7 +29,18 @@ async function pdfToOutput(pdfPath: string, output: CorelOutputFormat, directory
   args.push(pdfPath, prefix); await runProcess(binary, args, directory); return path;
 }
 
-async function pdfToCdr(input: string, directory: string) {\n  const capabilities = await getCorelCapabilities();\n  if (!capabilities.cdrWrite) throw new CorelConversionError('Native CDR export is not enabled on this server. The experimental writer must be installed and verified first.', 503);\n  const binary = await firstAvailable(corelBinaryCandidates.uniconvertor);\n  if (!binary) throw new CorelConversionError('The configured native CDR writer is not installed.', 503);\n  const output = join(directory, `native-${randomUUID()}.cdr`);\n  await runProcess(binary, [input, output], directory);\n  try { detectCdrVersion(await readFile(output)); } catch { throw new CorelConversionError('The conversion backend did not produce a valid CDR container. No download was returned.', 422); }\n  return output;\n}\n\nasync function postscriptToPdf(input: string, directory: string) {
+async function pdfToCdr(input: string, directory: string) {
+  const capabilities = await getCorelCapabilities();
+  if (!capabilities.cdrWrite) throw new CorelConversionError('Native CDR export is not enabled on this server. The experimental writer must be installed and verified first.', 503);
+  const binary = await firstAvailable(corelBinaryCandidates.uniconvertor);
+  if (!binary) throw new CorelConversionError('The configured native CDR writer is not installed.', 503);
+  const output = join(directory, `native-${randomUUID()}.cdr`);
+  await runProcess(binary, [input, output], directory);
+  try { detectCdrVersion(await readFile(output)); } catch { throw new CorelConversionError('The conversion backend did not produce a valid CDR container. No download was returned.', 422); }
+  return output;
+}
+
+async function postscriptToPdf(input: string, directory: string) {
   const head = (await readFile(input)).subarray(0, 8).toString('ascii');
   if (head.startsWith('%PDF-')) return input;
   const binary = await firstAvailable(corelBinaryCandidates.ghostscript); if (!binary) throw new CorelConversionError('Ghostscript is not installed, so AI/EPS preparation is unavailable.', 503);
@@ -53,7 +64,13 @@ export async function convertCorelFile(options: { kind: ServerConversionKind; in
   else if (inputFormat === 'ai' || inputFormat === 'eps') source = await postscriptToPdf(inputPath, directory);
   else if (inputFormat === 'pdf') source = inputPath;
   if (!(inputFormat === 'svg' && output === 'svg')) await assertSafePdf(source);
-  let finalPath: string;\n  if (output === 'cdr') {\n    if (kind !== 'pdf-to-corel' || inputFormat !== 'pdf') throw new CorelConversionError('Native CDR output is currently supported for PDF input only.');\n    finalPath = await pdfToCdr(source, directory);\n  } else {\n    finalPath = inputFormat === 'svg' && output === 'svg' ? source : await pdfToOutput(source, output, directory, options.quality ?? 90, options.resolution ?? 150);\n  }
+  let finalPath: string;
+  if (output === 'cdr') {
+    if (kind !== 'pdf-to-corel' || inputFormat !== 'pdf') throw new CorelConversionError('Native CDR output is currently supported for PDF input only.');
+    finalPath = await pdfToCdr(source, directory);
+  } else {
+    finalPath = inputFormat === 'svg' && output === 'svg' ? source : await pdfToOutput(source, output, directory, options.quality ?? 90, options.resolution ?? 150);
+  }
   const stablePath = join(directory, `${safeOutputStem(originalName)}-coreldraw-ready.${output}`);
   if (finalPath !== stablePath) await copyFile(finalPath, stablePath);
   const noticeCode = output === 'svg' || output === 'eps'
