@@ -2933,15 +2933,32 @@
           "label": "Board area (square feet)"
         },
         "coveragePerBucket": {
-          "label": "Coverage per container (square feet)"
+          "label": "Coverage per container (square feet)",
+          "help": "Use product label coverage for all planned coats. Change it when switching packaging."
         },
         "wastePercent": {
           "label": "Extra allowance (%)"
+        },
+        "compoundType": {
+          "label": "Compound packaging",
+          "options": {
+            "ready": "Ready-mix pails / boxes",
+            "setting": "Setting-type powder bags"
+          }
+        },
+        "tapeFactor": {
+          "label": "Joint tape (linear ft per sq ft)",
+          "help": "Planning shortcut only. Measure actual seams and corners."
+        },
+        "tapeRollFeet": {
+          "label": "Feet per tape roll"
         }
       },
       "results": {
         "adjustedArea": "Area with allowance (square feet)",
-        "containers": "Containers to buy"
+        "containers": "Containers to buy",
+        "tapeFeet": "Tape length estimate (linear ft)",
+        "tapeRolls": "Tape rolls to buy"
       },
       "note": "Coverage depends on board arrangement, coats, corner beads, texture, taping method and product. Use your manufacturer’s coverage figure.",
       "textResults": {}
