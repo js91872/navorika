@@ -2933,15 +2933,32 @@
           "label": "Plattenfläche (Quadratfuß)"
         },
         "coveragePerBucket": {
-          "label": "Ergiebigkeit je Gebinde (Quadratfuß)"
+          "label": "Ergiebigkeit je Gebinde (Quadratfuß)",
+          "help": "Verwenden Sie die Ergiebigkeit laut Etikett für alle vorgesehenen Schichten."
         },
         "wastePercent": {
           "label": "Zusätzlicher Zuschlag (%)"
+        },
+        "compoundType": {
+          "label": "Verpackungsart des Spachtels",
+          "options": {
+            "ready": "Fertigspachtel (Eimer / Kartons)",
+            "setting": "Pulverförmiger Schnellspachtel (Säcke)"
+          }
+        },
+        "tapeFactor": {
+          "label": "Fugenband (laufende Fuß je Quadratfuß)",
+          "help": "Nur eine Schätzung: tatsächliche Fugen und Ecken messen."
+        },
+        "tapeRollFeet": {
+          "label": "Länge je Bandrolle (Fuß)"
         }
       },
       "results": {
         "adjustedArea": "Fläche mit Zuschlag (Quadratfuß)",
-        "containers": "Zu kaufende Gebinde"
+        "containers": "Zu kaufende Gebinde",
+        "tapeFeet": "Geschätzte Bandlänge (Fuß)",
+        "tapeRolls": "Benötigte Bandrollen"
       },
       "note": "Die Ergiebigkeit hängt von Plattenanordnung, Schichten, Eckprofilen, Struktur, Fugenband und Produkt ab. Nutzen Sie die Herstellerangabe.",
       "textResults": {}
