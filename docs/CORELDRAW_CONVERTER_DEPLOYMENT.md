@@ -11,7 +11,11 @@ Navorika detects conversion binaries at runtime. Missing optional binaries disab
 | Poppler (`pdftops`) | First-page PDF to EPS |
 | Ghostscript (`gs`) | PostScript AI/EPS to PDF under `-dSAFER` |
 
-There is no native CDR-writing dependency. `cdrWrite` must remain `false` until a separately licensed and verified provider implements the `CdrWriterProvider` contract.
+The optional native CDR writer is UniConvertor 2.0. It is experimental: upstream says CDR export was newly added and remains under active development. Navorika detects the `uniconvertor` executable but keeps native CDR output disabled by default. Enable it only after licensing review and successful acceptance checks in the intended CorelDRAW versions by setting `COREL_UNICONVERTOR_CDR_WRITE_ENABLED=1`. Do not advertise or serve CDR output solely because the executable is present.
+
+UniConvertor 2.0 is distributed under AGPL-3.0-or-later. Review and satisfy its license obligations before deploying it as a network service. It is not bundled with Navorika.
+
+The code does not bundle or automatically install a native CDR writer. `cdrWrite` remains disabled unless the optional UniConvertor 2.0 executable is installed and the operator explicitly enables it after the checks above.
 
 ## Debian/Ubuntu installation
 
