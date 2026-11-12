@@ -101,6 +101,7 @@ test('moving English routes into a route group preserves every existing public p
     'guides/how-to-clean-phone-speaker/page.tsx',
     'guides/how-to-convert-jpg-to-dxf/page.tsx',
     'guides/is-claude-better-than-chatgpt/page.tsx',
+    'guides/mac-vs-pc/page.tsx',
     'guides/shopify-profit-margin-calculator/page.tsx',
     'tools/3d-print-time-calculator/page.tsx',
     'tools/3d-printer-filament-calculator/page.tsx',
