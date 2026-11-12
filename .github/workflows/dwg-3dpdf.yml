@@ -1,0 +1,62 @@
+name: DWG 3D PDF converter acceptance
+on:
+  pull_request:
+    paths:
+      - 'src/lib/converters/dwg-3dpdf/**'
+      - 'src/app/api/dwg-to-3d-pdf/**'
+      - 'src/app/tools/dwg-to-3d-pdf-converter/**'
+      - 'src/components/tools/cad/DwgTo3dPdfTool.tsx'
+      - 'scripts/test-dwg-3dpdf.py'
+      - 'scripts/test-dwg-3dpdf-http.py'
+      - '.github/workflows/dwg-3dpdf.yml'
+  workflow_dispatch:
+jobs:
+  converter-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y asymptote python3-venv texlive-latex-extra
+          python3 -m venv /tmp/navorika-cad-test-venv
+          /tmp/navorika-cad-test-venv/bin/pip install 'ezdxf>=1.3,<2' 'pypdf>=5,<7'
+          npm ci
+      - name: TypeScript and architecture
+        run: |
+          npm run typecheck
+          npm run validate:architecture
+      - name: PDF geometry acceptance
+        run: |
+          CAD_PDF_ARTIFACT_DIR="$RUNNER_TEMP/cad-pdf-examples" PATH="/tmp/navorika-cad-test-venv/bin:$PATH" python3 scripts/test-dwg-3dpdf.py
+      - name: End-to-end HTTP DXF conversion acceptance
+        env:
+          DWG_PYTHON_PATH: /tmp/navorika-cad-test-venv/bin/python
+          ASY_PATH: /usr/bin/asy
+          PORT: '3117'
+        run: |
+          npm run build
+          npm run start -- -p 3117 > /tmp/navorika-dwg-next.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 60); do
+            if curl --max-time 2 -sf http://127.0.0.1:3117/api/dwg-to-3d-pdf > /dev/null; then break; fi
+            sleep 2
+          done
+          PATH="/tmp/navorika-cad-test-venv/bin:$PATH" python3 scripts/test-dwg-3dpdf-http.py || {
+            cat /tmp/navorika-dwg-next.log
+            exit 1
+          }
+      - name: Upload CAD PDF samples for interactive viewer review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dwg-3dpdf-sample-pdfs
+          path: ${{ runner.temp }}/cad-pdf-examples/*.pdf
+          if-no-files-found: warn
+          retention-days: 14
