@@ -14,6 +14,18 @@ export const metadata: Metadata = {
 
 const standaloneGuides = [
   {
+    slug: 'google-pixel-vs-iphone',
+    category: 'Technology',
+    title: 'Google Pixel vs iPhone: Which Is Better in 2026?',
+    description: 'Compare Pixel and iPhone cameras, AI, battery, privacy, software updates and ownership costs before you buy.',
+    image: '/images/guides/developer-guides.webp',
+    imageAlt: 'Technology guide illustration for comparing Google Pixel and iPhone',
+    publishedDate: 'November 2026',
+    readTime: '15 min read',
+    author: 'Navorika Team',
+  },
+
+  {
     slug: 'how-does-a-3d-printer-work',
     category: 'Developer',
     title: 'How Does a 3D Printer Work? Step-by-Step Beginner’s Guide',
