@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import { languageAlternates } from '@/lib/i18n/config';
-import { tools, categories } from '@/data/registry';
+import { activeTools, categories, TOTAL_ACTIVE_TOOLS } from '@/data/registry';
 import { toolkits } from '@/data/taxonomy';
-import { toolsUnderReview } from '@/lib/seo/toolReview';
 import { toolDescriptions } from '@/lib/toolDescriptions';
 import HomeToolCatalog, { type CatalogTool } from '@/components/home/HomeToolCatalog';
 import RecentTools from '@/components/home/RecentTools';
@@ -17,9 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const activeTools = tools.filter((tool) => !toolsUnderReview.has(tool.slug));
-  const totalTools = activeTools.length;
-  const displayCount = `${totalTools}`;
+  const displayCount = `${TOTAL_ACTIVE_TOOLS}`;
 
   // Initial popularity order: GA4 organic page views, Oct 4–31, 2026.
   // This is a dated editorial snapshot, not a live GA4 integration or usage-event ranking.
