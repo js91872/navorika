@@ -14,6 +14,34 @@ const configText = readFileSync('src/lib/i18n/config.ts', 'utf8');
 const match = configText.match(/export const translatedTools = \[([\s\S]*?)\] as const;/);
 const slugs = match ? match[1].match(/'([^']+)'/g).map((s) => s.replace(/'/g, '')) : [];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
+const hasContent = (value) => typeof value === 'string'
+  ? value.trim().length > 0
+  : Array.isArray(value) && value.some(hasContent);
+const countWords = (value) => typeof value === 'string'
+  ? value.trim().split(/\\s+/).filter(Boolean).length
+  : Array.isArray(value)
+    ? value.reduce((total, item) => total + countWords(item), 0)
+    : value && typeof value === 'object'
+      ? Object.values(value).reduce((total, item) => total + countWords(item), 0)
+      : 0;
+const hasIndexableLocalizedToolCopy = (value) => {
+  if (!value || typeof value !== 'object') return false;
+  const copy = value;
+  const hasAllSections = [copy.about, copy.calculationMethod, copy.steps, copy.understandingResults, copy.limits].every(hasContent);
+  const faqs = Array.isArray(copy.faqs)
+    ? copy.faqs.filter((item) => item && hasContent(item.question) && hasContent(item.answer)).length
+    : 0;
+  const renderedBody = {
+    about: copy.about,
+    calculationMethod: copy.calculationMethod,
+    steps: copy.steps,
+    understandingResults: copy.understandingResults,
+    limits: copy.limits,
+    faqs: copy.faqs,
+  };
+  return hasAllSections && faqs >= 3 && countWords(renderedBody) >= 350;
+};
+
 let server, browser;
 let serverOutput = '';
 let pagesChecked = 0, workflowsChecked = 0, exportsValidated = 0, mockedChecksChecked = 0;
@@ -115,7 +143,8 @@ try {
       for (const alternate of locales) {
         assert.equal(data.alternates[alternate], `https://navorika.com/${alternate}${slug ? `/tools/${slug}` : ''}`);
       }
-      assert.equal(data.robots, 'index, follow');
+      const expectedRobots = slug && !hasIndexableLocalizedToolCopy(d.tools[slug]) ? 'noindex, follow' : 'index, follow';
+      assert.equal(data.robots, expectedRobots);
       assert.doesNotMatch(data.pageCopy, /\b(?:row-reverse|column-reverse|flex-start|flex-end|space-between|space-around|space-evenly|nowrap|wrap-reverse|English|inch|padding|layout|justify-content|align-items)\b/i, `Untranslated interface text: ${path}`);
       assert.ok(data.footerPrivacy.includes(d.ui.englishName));
       if (slug) {
