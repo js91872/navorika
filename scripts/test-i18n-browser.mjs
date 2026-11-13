@@ -18,7 +18,7 @@ const hasContent = (value) => typeof value === 'string'
   ? value.trim().length > 0
   : Array.isArray(value) && value.some(hasContent);
 const countWords = (value) => typeof value === 'string'
-  ? value.trim().split(/\\s+/).filter(Boolean).length
+  ? value.trim().split(/\s+/).filter(Boolean).length
   : Array.isArray(value)
     ? value.reduce((total, item) => total + countWords(item), 0)
     : value && typeof value === 'object'
