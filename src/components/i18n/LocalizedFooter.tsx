@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Logo from '@/components/ui/Logo';
 import type { Locale } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
+import GoogleConsentSettings from '@/components/seo/GoogleConsentSettings';
 
 interface LocalizedFooterProps {
   locale: Locale;
