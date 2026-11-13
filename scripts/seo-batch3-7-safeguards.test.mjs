@@ -8,7 +8,7 @@ import { guidesMetadata } from '../src/lib/guidesMetadata.ts';
 const snapshot = JSON.parse(readFileSync('docs/seo-tool-route-baseline.json', 'utf8'));
 // tsx may expose a CommonJS-wrapped default for Next.js route metadata modules.
 const sitemap = typeof sitemapModule === 'function' ? sitemapModule : sitemapModule.default;
-const urls = sitemap().map((entry) => entry.url);
+const urls = (await sitemap()).map((entry) => entry.url);
 const BASE = 'https://navorika.com';
 
 test('every pre-existing English tool slug still has its original page route', () => {
