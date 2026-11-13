@@ -1364,18 +1364,19 @@ try {
       await checkTrustPage(pageName, locale);
     }
   }
-  const sitemap = await (await context.request.get(`${base}/sitemap.xml`)).text();
+  const sitemapXml = await (await context.request.get(`${base}/sitemap.xml`)).text();
+  const sitemapUrls = new Set(Array.from(sitemapXml.matchAll(/<loc>(.*?)<\/loc>/g), (match) => match[1]));
   for (const slug of slugs) {
     const shouldInclude = !nonSitemapEnglishSlugs.has(slug);
-    assert.equal(sitemap.includes(`https://navorika.com/tools/${slug}`), shouldInclude, `English sitemap canonical status for ${slug}`);
+    assert.equal(sitemapUrls.has(`https://navorika.com/tools/${slug}`), shouldInclude, `English sitemap canonical status for ${slug}`);
   }
-  for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${pageName}`));
+  for (const pageName of trustSlugs) assert.ok(sitemapUrls.has(`https://navorika.com/${pageName}`));
   for (const locale of locales) {
     for (const slug of slugs) {
       const shouldInclude = hasIndexableLocalizedToolCopy(dictionaries[locale].tools?.[slug]);
-      assert.equal(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`), shouldInclude, `Localized sitemap content-depth status for ${locale}/${slug}`);
+      assert.equal(sitemapUrls.has(`https://navorika.com/${locale}/tools/${slug}`), shouldInclude, `Localized sitemap content-depth status for ${locale}/${slug}`);
     }
-    for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/${pageName}`));
+    for (const pageName of trustSlugs) assert.ok(sitemapUrls.has(`https://navorika.com/${locale}/${pageName}`));
   }
   if (process.env.I18N_SCREENSHOT_DIR) {
     mkdirSync(process.env.I18N_SCREENSHOT_DIR, { recursive: true });
