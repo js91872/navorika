@@ -12,6 +12,8 @@ interface GuideDefinition {
   featuredImage?: { src: string; alt: string; caption: string };
 }
 
+const defaultGuideImageSize = { width: 1200, height: 630 } as const;
+
 export interface GuideMetadata extends GuideDefinition {
   datePublished: string;
   dateModified: string;
@@ -858,8 +860,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,
-      width: guide.slug === 'webp-to-png-guide' ? 1536 : 1200,
-      height: guide.slug === 'webp-to-png-guide' ? 857 : 630,
+      width: guide.slug === 'webp-to-png-guide' ? 1536 : defaultGuideImageSize.width,
+      height: guide.slug === 'webp-to-png-guide' ? 857 : defaultGuideImageSize.height,
       alt: guide.featuredImage?.alt ?? `Editorial illustration for ${guide.title}`,
       caption: guide.featuredImage?.caption ?? image.caption,
     },
