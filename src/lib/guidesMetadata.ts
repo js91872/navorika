@@ -18,8 +18,8 @@ export interface GuideMetadata extends GuideDefinition {
   keywords: string[];
   featuredImage: {
     src: string;
-    width: 1200;
-    height: 630;
+    width: number;
+    height: number;
     alt: string;
     caption: string;
   };
@@ -818,7 +818,7 @@ const guideDefinitions: GuideDefinition[] = [
     featuredImage: { src: '/images/guides/how-to-clear-ram-on-mac.webp', alt: 'A Mac laptop with a memory-pressure graph and a RAM chip illustration', caption: 'Use Activity Monitor to understand memory pressure and find apps using RAM.' },
   },
   { slug: 'how-to-back-out-sales-tax-us', title: 'How to Back Out Sales Tax in the US: Receipts & Excel', description: 'Remove sales tax from a US receipt total, check rounding and mixed purchases, and use Excel formulas with a free editable workbook.', category: 'Finance', publishedDate: 'October 2026', readTime: '14 min read', author: 'Navorika Team', keywords: ['how to back out sales tax', 'reverse sales tax formula excel', 'calculate price before tax', 'remove sales tax from total', 'US receipt tax calculator'], featuredImage: { src: '/images/guides/us-reverse-sales-tax.svg', alt: 'US receipt showing 100 dollars before tax, 8 dollars and 25 cents sales tax, and a 108 dollar and 25 cent total', caption: 'An illustrative 8.25% example: USD 100.00 before tax plus USD 8.25 tax equals USD 108.25.' } },
-  { slug: 'webp-to-png-guide', title: 'How to Convert WebP to PNG Online for Free', description: 'Learn how to convert WebP images to PNG, preserve transparency, check image quality, and choose the right format for your next task.', category: 'Image', publishedDate: 'November 2026', readTime: '8 min read', author: 'Navorika Team', keywords: ['webp to png', 'convert webp to png online', 'de webp a png', 'pasar de webp a png', 'webp to png without losing quality'], featuredImage: { src: '/images/guides/image-guides.webp', alt: 'Guide to converting a WebP image to PNG', caption: 'Convert a WebP image to PNG and check transparency, quality, and file size.' } },
+  { slug: 'webp-to-png-guide', title: 'How to Convert WebP to PNG Online for Free', description: 'Learn how to convert WebP images to PNG, preserve transparency, check image quality, and choose the right format for your next task.', category: 'Image', publishedDate: 'November 2026', readTime: '8 min read', author: 'Navorika Team', keywords: ['webp to png', 'convert webp to png online', 'de webp a png', 'pasar de webp a png', 'webp to png without losing quality'], featuredImage: { src: '/images/guides/webp-to-png-guide.webp', alt: 'WebP image being converted to PNG with transparency', caption: 'Convert a WebP image to PNG and check transparency, quality, and file size.' } },
 ]; 
 
 const newBatchSlugs = new Set([
@@ -858,8 +858,8 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,
-      width: 1200,
-      height: 630,
+      width: guide.slug === 'webp-to-png-guide' ? 1536 : 1200,
+      height: guide.slug === 'webp-to-png-guide' ? 857 : 630,
       alt: guide.featuredImage?.alt ?? `Editorial illustration for ${guide.title}`,
       caption: guide.featuredImage?.caption ?? image.caption,
     },
