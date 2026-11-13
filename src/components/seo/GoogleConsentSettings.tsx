@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-const labels: Record<Locale, string> = {
+const labels: Record<Locale | 'en', string> = {
   en: 'Privacy and cookie settings',
   fr: 'Paramètres de confidentialité et des cookies',
   it: 'Impostazioni privacy e cookie',
@@ -24,7 +24,7 @@ const labels: Record<Locale, string> = {
 };
 
 /** Reopens Google's published European consent message for eligible visitors. */
-export default function GoogleConsentSettings({ locale = 'en' }: { locale?: Locale }) {
+export default function GoogleConsentSettings({ locale = 'en' }: { locale?: Locale | 'en' }) {
   const [apiReady, setApiReady] = useState(false);
   const enabled = process.env.NEXT_PUBLIC_ADSENSE_CMP_ENABLED === 'true';
 
