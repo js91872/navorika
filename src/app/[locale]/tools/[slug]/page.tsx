@@ -7,6 +7,7 @@ import LocalizedTools from '@/components/i18n/LocalizedTools';
 import BidiText from '@/components/i18n/BidiText';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 import { isLocale, isTranslatedTool, languageAlternates, localizedPath, translatedTools } from '@/lib/i18n/config';
+import { hasIndexableLocalizedToolCopy, type LocalizedToolCopy } from '@/lib/i18n/contentDepth';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(locale) || !isTranslatedTool(slug)) notFound();
   const d = await getDictionary(locale);
   const tool = d.tools[slug];
+  const indexable = hasIndexableLocalizedToolCopy(tool);
   const url = `https://navorika.com${localizedPath(locale, slug)}`;
   return {
     title: tool.title,
@@ -41,6 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: url, languages: languageAlternates(slug) },
     openGraph: { title: tool.title, description: tool.description, url, siteName: 'Navorika', type: 'website' },
     twitter: { card: 'summary', title: tool.title, description: tool.description },
+    robots: { index: indexable, follow: true },
   };
 }
 
@@ -49,6 +52,8 @@ export default async function LocalizedToolPage({ params }: Props) {
   if (!isLocale(locale) || !isTranslatedTool(slug)) notFound();
   const d = await getDictionary(locale);
   const tool = d.tools[slug];
+  const richTool = tool as typeof tool & LocalizedToolCopy;
+  const indexable = hasIndexableLocalizedToolCopy(tool);
   const url = `https://navorika.com${localizedPath(locale, slug)}`;
   const schema = {
     '@context': 'https://schema.org',
@@ -62,6 +67,11 @@ export default async function LocalizedToolPage({ params }: Props) {
     isAccessibleForFree: true,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
+  const renderCopy = (copy: string | string[]) => (Array.isArray(copy) ? copy : [copy]).map((text, index) => (
+    <p key={`${index}-${text}`} className="leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base">
+      <BidiText text={text} />
+    </p>
+  ));
 
   return (
     <>
@@ -106,30 +116,37 @@ export default async function LocalizedToolPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Educational & Usage Details */}
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
-          <h2 className="text-xl font-bold">{d.ui.how}</h2>
-          <p className="mt-3.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base">
-            <BidiText text={tool.how} />
-          </p>
-        </section>
-        <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
-          <h2 className="text-xl font-bold">{d.ui.limits}</h2>
-          <p className="mt-3.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base">
-            <BidiText text={tool.limits} />
-          </p>
-        </section>
-      </div>
-
-      {/* Frequently Asked Question */}
-      <section className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
-        <h2 className="text-xl font-bold">{d.ui.faq}</h2>
-        <h3 className="mt-4 font-semibold text-base sm:text-lg">{tool.question}</h3>
-        <p className="mt-2.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base">
-          <BidiText text={tool.answer} />
-        </p>
-      </section>
+      {indexable ? (
+        <div className="mt-12 space-y-8">
+          <section><h2 className="text-xl font-bold">{d.ui.aboutTool}</h2><div className="mt-3 space-y-3">{richTool.about && renderCopy(richTool.about)}</div></section>
+          <section><h2 className="text-xl font-bold">{d.ui.calculationMethod}</h2><div className="mt-3 space-y-3">{richTool.calculationMethod && renderCopy(richTool.calculationMethod)}</div></section>
+          <section><h2 className="text-xl font-bold">{d.ui.how}</h2><ol className="mt-3 list-decimal space-y-2 pl-6 text-sm sm:text-base">{richTool.steps?.map((step, index) => <li key={`${index}-${step}`} className="leading-relaxed"><BidiText text={step} /></li>)}</ol></section>
+          <section><h2 className="text-xl font-bold">{d.ui.understandingResults}</h2><div className="mt-3 space-y-3">{richTool.understandingResults && renderCopy(richTool.understandingResults)}</div></section>
+          <section><h2 className="text-xl font-bold">{d.ui.limits}</h2><div className="mt-3 space-y-3">{richTool.limits && renderCopy(richTool.limits)}</div></section>
+          <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+            <h2 className="text-xl font-bold">{d.ui.faq}</h2>
+            <div className="mt-4 space-y-5">{richTool.faqs?.map(({ question, answer }) => <div key={question}><h3 className="font-semibold text-base sm:text-lg">{question}</h3><p className="mt-2.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base"><BidiText text={answer} /></p></div>)}</div>
+          </section>
+        </div>
+      ) : (
+        <>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+              <h2 className="text-xl font-bold">{d.ui.how}</h2>
+              <p className="mt-3.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base"><BidiText text={tool.how} /></p>
+            </section>
+            <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+              <h2 className="text-xl font-bold">{d.ui.limits}</h2>
+              <p className="mt-3.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base"><BidiText text={tool.limits} /></p>
+            </section>
+          </div>
+          <section className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+            <h2 className="text-xl font-bold">{d.ui.faq}</h2>
+            <h3 className="mt-4 font-semibold text-base sm:text-lg">{tool.question}</h3>
+            <p className="mt-2.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base"><BidiText text={tool.answer} /></p>
+          </section>
+        </>
+      )}
 
       <PageHelp path={`/${locale}/tools/${slug}`} />
 

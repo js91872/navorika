@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Logo from '@/components/ui/Logo';
 import SocialLinks from './SocialLinks';
+import GoogleConsentSettings from '@/components/seo/GoogleConsentSettings';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

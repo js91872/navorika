@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import { Shield, Zap, Lock, Sparkles, Users } from 'lucide-react';
 import LocalizedCatalog from '@/components/i18n/LocalizedCatalog';
 import { getDictionary } from '@/lib/i18n/dictionaries';
-import { isLocale, languageAlternates, translatedTools } from '@/lib/i18n/config';
+import { TOTAL_ACTIVE_TOOLS } from '@/data/registry';
+import { isLocale, languageAlternates } from '@/lib/i18n/config';
 
 export async function generateMetadata({
   params,
@@ -35,7 +36,7 @@ export default async function LanguageHome({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const d = await getDictionary(locale);
-  const toolCountFormatted = new Intl.NumberFormat(locale).format(translatedTools.length);
+  const toolCountFormatted = new Intl.NumberFormat(locale).format(TOTAL_ACTIVE_TOOLS);
 
   return (
     <div className="pb-16 text-[#18181b] dark:text-[#f4f4f5] max-w-full overflow-hidden">

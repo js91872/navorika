@@ -5,6 +5,8 @@ import { getFinanceSuiteUrls } from '@/lib/seo/financeSuite';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 import { guidesMetadata } from '@/lib/guidesMetadata';
 import { toolkits } from '@/data/taxonomy';
+import { getDictionary } from '@/lib/i18n/dictionaries';
+import { hasIndexableLocalizedToolCopy } from '@/lib/i18n/contentDepth';
 
 const baseUrl = 'https://navorika.com';
 const trustSlugs = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary'] as const;
@@ -32,7 +34,7 @@ const nonCanonicalToolSlugs = new Set([
   'epoch-time-converter',
 ]);
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     '',
     '/tools',
@@ -89,14 +91,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }
       return page;
     });
-  const localizedPages = locales.flatMap((locale) => [
-    { url: `${baseUrl}${localizedPath(locale)}`, alternates: { languages: languageAlternates() } },
-    ...translatedTools.map((slug) => ({ url: `${baseUrl}${localizedPath(locale, slug)}`, alternates: { languages: languageAlternates(slug) } })),
-    ...trustSlugs.map((slug) => ({
-      url: `${baseUrl}/${locale}/${slug}`,
-      alternates: { languages: publicPageAlternates(`/${slug}`) },
-    })),
-  ]);
+  const localizedPages = (await Promise.all(locales.map(async (locale) => {
+    const dictionary = await getDictionary(locale);
+    return [
+      { url: `${baseUrl}${localizedPath(locale)}`, alternates: { languages: languageAlternates() } },
+      ...translatedTools
+        .filter((slug) => hasIndexableLocalizedToolCopy(dictionary.tools[slug]))
+        .map((slug) => ({ url: `${baseUrl}${localizedPath(locale, slug)}`, alternates: { languages: languageAlternates(slug) } })),
+      ...trustSlugs.map((slug) => ({
+        url: `${baseUrl}/${locale}/${slug}`,
+        alternates: { languages: publicPageAlternates(`/${slug}`) },
+      })),
+    ];
+  }))).flat();
   // Preserve existing public URLs, but emit each only once. The two directional
   // JSON/YAML converters are self-canonical and should remain discoverable.
   const uniquePages = new Map<string, MetadataRoute.Sitemap[number]>();

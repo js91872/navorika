@@ -1,3 +1,5 @@
+import { toolsUnderReview } from '@/lib/seo/toolReview';
+
 export interface Tool {
   slug: string;
   title: string;
@@ -2950,4 +2952,8 @@ export const tools: RegisteredTool[] = ([
   heroTitle: tool.heroTitle?.trim() || tool.title,
   heroDescription: tool.heroDescription?.trim() || tool.description,
 }));
+
+/** Tools available to the public, excluding tools currently held for review. */
+export const activeTools: RegisteredTool[] = tools.filter((tool) => !toolsUnderReview.has(tool.slug));
+export const TOTAL_ACTIVE_TOOLS = activeTools.length;
 

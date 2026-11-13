@@ -73,11 +73,29 @@ export default function ContactPage() {
             <EmailLink subject="Navorika - Tool Help or Bug Report">Report an issue</EmailLink>
           </section>
 
-          <section className="border-t border-[#e4e4e8] dark:border-[#303036] pt-8 space-y-3">
-            <h2 className="text-2xl font-bold text-[#18181b] dark:text-white">Other questions</h2>
-            <p className="leading-7">For general enquiries, write to <a className="font-semibold text-[#e5322d] hover:underline" href={`mailto:${email}`}>{email}</a>.</p>
-            <p className="leading-7">For privacy or data questions, write to <a className="font-semibold text-[#e5322d] hover:underline" href={`mailto:${privacyEmail}`}>{privacyEmail}</a> or read our <Link href="/privacy" className="font-semibold text-[#e5322d] hover:underline">privacy policy</Link>.</p>
-            <p className="text-sm leading-6 text-[#5b5b63] dark:text-[#a1a1aa]">Email is our main contact channel. We don't promise an immediate reply, but clear, specific messages help us respond more usefully.</p>
+          <section aria-labelledby="contact-details">
+            <h2 id="contact-details" className="mb-4 text-2xl font-bold text-[#18181b] dark:text-white">Contact details</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-xl border border-[#e4e4e8] dark:border-[#303036] bg-white dark:bg-[#18181b] p-5">
+                <h3 className="font-bold text-[#18181b] dark:text-white">General Help</h3>
+                <p className="mt-2 text-sm leading-6">For tool questions, bug reports, and suggestions.</p>
+                <a className="mt-3 inline-block font-semibold text-[#e5322d] hover:underline" href={`mailto:${email}`}>{email}</a>
+              </div>
+              <div className="rounded-xl border border-[#e4e4e8] dark:border-[#303036] bg-white dark:bg-[#18181b] p-5">
+                <h3 className="font-bold text-[#18181b] dark:text-white">Privacy Team</h3>
+                <p className="mt-2 text-sm leading-6">For privacy requests and data questions. See our <Link href="/privacy" className="font-semibold text-[#e5322d] hover:underline">privacy policy</Link>.</p>
+                <a className="mt-3 inline-block font-semibold text-[#e5322d] hover:underline" href={`mailto:${privacyEmail}`}>{privacyEmail}</a>
+              </div>
+              <div className="rounded-xl border border-[#e4e4e8] dark:border-[#303036] bg-white dark:bg-[#18181b] p-5">
+                <h3 className="font-bold text-[#18181b] dark:text-white">Publisher &amp; Operating Location</h3>
+                <dl className="mt-2 space-y-2 text-sm leading-6">
+                  <div><dt className="inline font-semibold">Operated by: </dt><dd className="inline">Navorika (Gurinder Singh)</dd></div>
+                  <div><dt className="inline font-semibold">Location: </dt><dd className="inline">Hoshiarpur, Punjab, India</dd></div>
+                  <div><dt className="inline font-semibold">Response window: </dt><dd className="inline">Within 1–2 business days for bug reports, calculation audits, and privacy inquiries.</dd></div>
+                </dl>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-6 text-[#5b5b63] dark:text-[#a1a1aa]">Email is our main contact channel. Please do not send confidential documents, passwords, private financial details, or sensitive personal information.</p>
           </section>
         </div>
       </div>
