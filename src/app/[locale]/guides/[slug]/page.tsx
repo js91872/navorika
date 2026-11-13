@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { languageDirection, languageNames, locales, type Language, isLocale } from '@/lib/i18n/config';
@@ -30,8 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: articleUrl(locale), languages },
     authors: [{ name: 'Navorika Team', url: 'https://navorika.com' }],
     category: copy.category,
-    openGraph: { type: 'article', url: articleUrl(locale), title: copy.title, description: copy.description, siteName: 'Navorika', publishedTime: '2026-11-13', modifiedTime: '2026-11-13', locale },
-    twitter: { card: 'summary', title: copy.title, description: copy.description },
+    openGraph: { type: 'article', url: articleUrl(locale), title: copy.title, description: copy.description, siteName: 'Navorika', publishedTime: '2026-11-13', modifiedTime: '2026-11-13', locale, images: [{ url: 'https://navorika.com/images/guides/webp-to-png-guide.webp', width: 1536, height: 857, alt: copy.title }] },
+    twitter: { card: 'summary_large_image', title: copy.title, description: copy.description, images: ['https://navorika.com/images/guides/webp-to-png-guide.webp'] },
   };
 }
 
@@ -50,7 +51,7 @@ export default async function LocalizedWebpPngGuide({ params }: Props) {
     dateModified: '2026-11-13',
     author: { '@type': 'Organization', name: 'Navorika' },
     mainEntityOfPage: articleUrl(locale),
-    image: 'https://navorika.com/images/guides/image-guides.webp',
+    image: 'https://navorika.com/images/guides/webp-to-png-guide.webp',
   };
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -78,6 +79,9 @@ export default async function LocalizedWebpPngGuide({ params }: Props) {
               {copy.toolLabel}
             </Link>
           </header>
+          <figure className="mb-8 overflow-hidden rounded-xl border border-[#e4e4e8] dark:border-[#27272a]">
+            <Image src="/images/guides/webp-to-png-guide.webp" width={1536} height={857} alt={copy.title} priority className="h-auto w-full" sizes="(max-width: 896px) 100vw, 896px" />
+          </figure>
           <div className="mb-8 rounded-xl border border-[#e4e4e8] bg-white p-5 text-base leading-8 dark:border-[#27272a] dark:bg-[#18181b]">
             <p>{copy.intro}</p>
             <h2 className="mt-6 text-xl font-bold">{copy.stepsTitle}</h2>
