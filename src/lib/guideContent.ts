@@ -20,6 +20,7 @@ import { fertilizerGuideContent } from './fertilizerGuideContent';
 
 import { squareFeetGuideContent } from './guideContentSquareFeet';
 import { icloudGuideContent } from './guideContentIcloud';
+import { webpPngGuideContent } from './i18n/webpPngGuideContent';
 
 export interface GuideSection {
   title: string;
@@ -48,6 +49,7 @@ export interface GuideContent {
 }
 
 export const guideContent: Record<string, GuideContent> = {
+  ...webpPngGuideContent,
   ...emailGuideContent,
   ...threeDPrintingGuideContent,
   ...barcodeGuideContent,

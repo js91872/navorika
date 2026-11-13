@@ -78,11 +78,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const guidePages = guidesMetadata.map(({ slug, dateModified }) => ({ url: `${baseUrl}/guides/${slug}`, lastModified: new Date(dateModified) }));
   const toolkitPages = toolkits.map(({ slug }) => ({ url: `${baseUrl}/toolkits/${slug}` }));
 
+  const localizedGuideLanguages = Object.fromEntries(
+    (['en', ...locales]).map((locale) => [locale, locale === 'en' ? `${baseUrl}/guides/webp-to-png-guide` : `${baseUrl}/${locale}/guides/webp-to-png-guide`]),
+  );
+  localizedGuideLanguages['x-default'] = `${baseUrl}/guides/webp-to-png-guide`;
   const englishPages = [...staticPages, ...toolPages, ...financeSuitePages, ...categoryPages, ...toolkitPages, ...guidePages]
     .map((page) => {
       const toolSlug = page.url.startsWith(`${baseUrl}/tools/`) ? page.url.slice(`${baseUrl}/tools/`.length) : '';
       const path = page.url.replace(baseUrl, '') || '/';
       const trustSlug = trustSlugs.find((s) => path === `/${s}`);
+      if (path === '/guides/webp-to-png-guide') return { ...page, alternates: { languages: localizedGuideLanguages } };
       if (page.url === baseUrl || isTranslatedTool(toolSlug)) {
         return { ...page, alternates: { languages: languageAlternates(isTranslatedTool(toolSlug) ? toolSlug : undefined) } };
       }
@@ -91,6 +96,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }
       return page;
     });
+  const localizedGuidePages = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}/guides/webp-to-png-guide`,
+    lastModified: new Date('2026-11-13'),
+    alternates: { languages: localizedGuideLanguages },
+  }));
   const localizedPages = (await Promise.all(locales.map(async (locale) => {
     const dictionary = await getDictionary(locale);
     return [
@@ -107,6 +117,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Preserve existing public URLs, but emit each only once. The two directional
   // JSON/YAML converters are self-canonical and should remain discoverable.
   const uniquePages = new Map<string, MetadataRoute.Sitemap[number]>();
-  for (const page of [...englishPages, ...localizedPages]) uniquePages.set(page.url, page);
+  for (const page of [...englishPages, ...localizedPages, ...localizedGuidePages]) uniquePages.set(page.url, page);
   return [...uniquePages.values()];
 }

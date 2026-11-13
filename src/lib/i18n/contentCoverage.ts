@@ -1,5 +1,5 @@
 /** Add content only after native copy, runtime states and route checks are complete. */
-export const translatedGuides: readonly string[] = [];
+export const translatedGuides: readonly string[] = ['webp-to-png-guide'];
 export const translatedPublicPages: readonly string[] = [
   '/',
   '/about',
