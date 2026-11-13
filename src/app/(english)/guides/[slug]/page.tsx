@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: url, ...(guide.slug === 'webp-to-png-guide' ? { languages: guideLanguages } : {}) },
     authors: [{ name: guide.author, url: baseUrl }],
     category: guide.category,
-    openGraph: { type: 'article', url, title: guide.title, description: guide.description, siteName: 'Navorika', publishedTime: guide.datePublished, modifiedTime: guide.dateModified, authors: [baseUrl], images: [{ url: guide.featuredImage.src, width: 1200, height: 630, alt: guide.featuredImage.alt }] },
+    openGraph: { type: 'article', url, title: guide.title, description: guide.description, siteName: 'Navorika', publishedTime: guide.datePublished, modifiedTime: guide.dateModified, authors: [baseUrl], images: [{ url: guide.featuredImage.src, width: guide.featuredImage.width, height: guide.featuredImage.height, alt: guide.featuredImage.alt }] },
     twitter: { card: 'summary_large_image', title: guide.title, description: guide.description, images: [{ url: guide.featuredImage.src, alt: guide.featuredImage.alt }] },
   };
 }
@@ -540,7 +540,7 @@ export default async function GuidePage({ params }: Props) {
             <span className="flex items-center gap-2"><Clock className="h-4 w-4" /> {guide.readTime}</span>
           </div>
           <figure className="mt-8 overflow-hidden rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] shadow-xs">
-            <Image src={guide.featuredImage.src} width={1200} height={630} alt={guide.featuredImage.alt} priority className="h-auto w-full" sizes="(max-width: 896px) 100vw, 896px" />
+            <Image src={guide.featuredImage.src} width={guide.featuredImage.width} height={guide.featuredImage.height} alt={guide.featuredImage.alt} priority className="h-auto w-full" sizes="(max-width: 896px) 100vw, 896px" />
             <figcaption className="border-t border-[#e4e4e8] dark:border-[#27272a] px-5 py-3 text-xs sm:text-sm text-[#5b5b63] dark:text-[#a1a1aa]">{guide.featuredImage.caption}</figcaption>
           </figure>
         </header>
