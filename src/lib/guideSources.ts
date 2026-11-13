@@ -4,6 +4,7 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'webp-to-png-guide': [webImageFormats, { name: 'Google Developers — WebP Image Format', url: 'https://developers.google.com/speed/webp' }],
   'how-to-convert-eml-to-word': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}],
   'how-to-convert-eml-to-excel': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}, {"name": "Microsoft — Excel specifications and limits", "url": "https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3"}],
   'how-to-convert-eml-to-html': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}],

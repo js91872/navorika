@@ -1,5 +1,6 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'webp-to-png-guide': ['webp-to-png', 'image-converter', 'convert-webp-to-jpg'],
   'how-to-convert-eml-to-word': ['eml-to-word', 'eml-to-pdf'],
   'how-to-convert-eml-to-excel': ['eml-to-excel', 'eml-to-pdf'],
   'how-to-convert-eml-to-html': ['eml-to-html', 'eml-to-pdf'],

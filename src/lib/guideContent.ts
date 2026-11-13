@@ -20,6 +20,7 @@ import { fertilizerGuideContent } from './fertilizerGuideContent';
 
 import { squareFeetGuideContent } from './guideContentSquareFeet';
 import { icloudGuideContent } from './guideContentIcloud';
+import { webpPngGuideTranslations } from './i18n/webpPngGuideContent';
 
 export interface GuideSection {
   title: string;
@@ -48,6 +49,22 @@ export interface GuideContent {
 }
 
 export const guideContent: Record<string, GuideContent> = {
+  'webp-to-png-guide': {
+    intro: webpPngGuideTranslations.en.intro,
+    sections: webpPngGuideTranslations.en.sections.map((section) => ({ title: section.title, content: section.paragraphs.join('\\n\\n') })),
+    faqs: webpPngGuideTranslations.en.faqs,
+    summary: webpPngGuideTranslations.en.summary,
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: webpPngGuideTranslations.en.title,
+      description: webpPngGuideTranslations.en.description,
+      author: { '@type': 'Organization', name: 'Navorika' },
+      datePublished: '2026-11-13',
+      dateModified: '2026-11-13',
+    },
+  },
+
   ...emailGuideContent,
   ...threeDPrintingGuideContent,
   ...barcodeGuideContent,

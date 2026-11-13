@@ -15,19 +15,19 @@
     "pendingTools": 17,
     "underReviewTools": 6,
     "sharedCalculators": 75,
-    "guides": 81,
+    "guides": 82,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
     "targetToolTranslations": 2352,
     "pendingGuideTranslations": 567,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4765,
-      "visibleAttribute": 425,
-      "semanticCopy": 13146,
-      "reviewLiteral": 50887
+      "jsxText": 4766,
+      "visibleAttribute": 426,
+      "semanticCopy": 13150,
+      "reviewLiteral": 51014
     },
-    "candidateCopyWords": 386731
+    "candidateCopyWords": 386790
   },
   "tools": [
     {
@@ -9458,6 +9458,22 @@
       "route": "/guides/how-to-back-out-sales-tax-us",
       "status": "pending",
       "translatedLocales": []
+    },
+    {
+      "slug": "webp-to-png-guide",
+      "title": "How to Convert WebP to PNG Online for Free",
+      "category": "Image",
+      "route": "/guides/webp-to-png-guide",
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de"
+      ]
     }
   ],
   "trustPages": [

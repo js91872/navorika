@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { languageNames, locales, type Language } from '@/lib/i18n/config';
 import { ArrowLeft, ArrowRight, BookOpen, Calendar, Clock, ListOrdered, RefreshCw, ShieldCheck, User } from 'lucide-react';
 import { tools, type RegisteredTool } from '@/data/registry';
 import { getGuideContent } from '@/lib/guideContent';
@@ -27,14 +28,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const guide = getGuideMetadata((await params).slug);
   if (!guide) return { title: 'Guide Not Found', robots: { index: false, follow: false } };
   const url = `${baseUrl}/guides/${guide.slug}`;
+  const guideLanguages = Object.fromEntries((['en', ...locales] as Language[]).map((language) => [
+    language,
+    language === 'en' ? url : `${baseUrl}/${language}/guides/${guide.slug}`,
+  ]));
+  guideLanguages['x-default'] = url;
   return {
     title: guide.title,
     description: guide.description,
     keywords: guide.keywords,
-    alternates: { canonical: url },
+    alternates: { canonical: url, ...(guide.slug === 'webp-to-png-guide' ? { languages: guideLanguages } : {}) },
     authors: [{ name: guide.author, url: baseUrl }],
     category: guide.category,
-    openGraph: { type: 'article', url, title: guide.title, description: guide.description, siteName: 'Navorika', publishedTime: guide.datePublished, modifiedTime: guide.dateModified, authors: [baseUrl], images: [{ url: guide.featuredImage.src, width: 1200, height: 630, alt: guide.featuredImage.alt }] },
+    openGraph: { type: 'article', url, title: guide.title, description: guide.description, siteName: 'Navorika', publishedTime: guide.datePublished, modifiedTime: guide.dateModified, authors: [baseUrl], images: [{ url: guide.featuredImage.src, width: guide.featuredImage.width, height: guide.featuredImage.height, alt: guide.featuredImage.alt }] },
     twitter: { card: 'summary_large_image', title: guide.title, description: guide.description, images: [{ url: guide.featuredImage.src, alt: guide.featuredImage.alt }] },
   };
 }
@@ -534,7 +540,7 @@ export default async function GuidePage({ params }: Props) {
             <span className="flex items-center gap-2"><Clock className="h-4 w-4" /> {guide.readTime}</span>
           </div>
           <figure className="mt-8 overflow-hidden rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] shadow-xs">
-            <Image src={guide.featuredImage.src} width={1200} height={630} alt={guide.featuredImage.alt} priority className="h-auto w-full" sizes="(max-width: 896px) 100vw, 896px" />
+            <Image src={guide.featuredImage.src} width={guide.featuredImage.width} height={guide.featuredImage.height} alt={guide.featuredImage.alt} priority className="h-auto w-full" sizes="(max-width: 896px) 100vw, 896px" />
             <figcaption className="border-t border-[#e4e4e8] dark:border-[#27272a] px-5 py-3 text-xs sm:text-sm text-[#5b5b63] dark:text-[#a1a1aa]">{guide.featuredImage.caption}</figcaption>
           </figure>
         </header>
@@ -686,6 +692,22 @@ export default async function GuidePage({ params }: Props) {
           </ul>
           <p className="mt-4 text-xs text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed">Sources support the general explanations above. Rules, rates, standards, and professional guidance may change; verify the current source before acting.</p>
         </section>
+
+        {slug === 'webp-to-png-guide' && (
+          <section className="mx-auto mt-12 max-w-5xl border-t border-[#e4e4e8] dark:border-[#27272a] pt-8" aria-labelledby="guide-languages-heading">
+            <h2 id="guide-languages-heading" className="text-xl font-bold text-[#18181b] dark:text-white">Read this guide in another language</h2>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {(['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'] as Language[]).map((language) => (
+                <li key={language}>
+                  <Link href={`/${language}/guides/webp-to-png-guide`} hrefLang={language} lang={language}
+                    className="inline-flex rounded-full border border-[#e4e4e8] dark:border-[#27272a] px-3 py-1.5 text-sm hover:border-[#e5322d]">
+                    {languageNames[language]}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {relatedTools.length > 0 && (
           <section className="mx-auto mt-12 max-w-5xl border-t border-[#e4e4e8] dark:border-[#27272a] pt-10 scroll-mt-24" id="related-tools" aria-labelledby="related-tools-heading">
