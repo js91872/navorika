@@ -19,6 +19,7 @@ test('full-rollout inventory covers each registered tool, guide and English page
     'tools/eml-to-excel/page.tsx',
     'tools/eml-to-word/page.tsx',
     'guides/can-chatgpt-make-videos/page.tsx',
+    'guides/google-pixel-vs-iphone/page.tsx',
     'guides/how-does-a-3d-printer-work/page.tsx',
     'guides/how-to-clean-phone-speaker/page.tsx',
     'guides/how-to-convert-jpg-to-dxf/page.tsx',
