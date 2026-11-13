@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import { Shield, CheckCircle, ArrowLeft, Lock, Eye, Database, Cookie } from 'lucide-react';
 
 function formatPointText(text: string) {
-  if (text.includes('https://www.google.com/settings/ads') || text.includes('www.aboutads.info/choices/')) {
-    const parts = text.split(/(https:\/\/www\.google\.com\/settings\/ads|www\.aboutads\.info\/choices\/)/g);
+  if (text.includes('https://www.google.com/settings/ads') || text.includes('www.aboutads.info/choices/') || text.includes('privacy@navorika.com')) {
+    const parts = text.split(/(https:\/\/www\.google\.com\/settings\/ads|www\.aboutads\.info\/choices\/|privacy@navorika\.com)/g);
     return (
       <span className="break-words">
         {parts.map((part, i) => {
@@ -36,6 +36,9 @@ function formatPointText(text: string) {
               </a>
             );
           }
+          if (part === 'privacy@navorika.com') {
+            return <a key={i} href="mailto:privacy@navorika.com" className="text-indigo-600 dark:text-indigo-400 hover:underline mx-0.5">privacy@navorika.com</a>;
+          }
           return <span key={i}>{part}</span>;
         })}
       </span>
@@ -45,7 +48,7 @@ function formatPointText(text: string) {
 }
 
 export default function PrivacyPage() {
-  const lastUpdated = 'September 27, 2026';
+  const lastUpdated = 'November 13, 2026';
 
   const sections = [
     {
@@ -59,7 +62,7 @@ export default function PrivacyPage() {
       content: 'For tools designated as browser-local processing, your files and inputs are never uploaded to Navorika servers. Where server processing or external data is required, it is explicitly disclosed:',
       list: [
         'Browser-local tools process the file or values on your device',
-        'Some specialized converters, such as STEP to 3D PDF or certain CorelDRAW-related tools, use temporary server processing. Files are handled in isolated temporary folders and removed after the request finishes',
+        'Some specialized converters, including STEP to 3D PDF and CorelDRAW-related tools, use a unique temporary server workspace for each job. The workspace is removed recursively during cleanup after the job succeeds or fails, ordinarily within seconds; it is not persistent file storage',
         'Tools that need current information, such as currency rates, may request data from an external provider identified on the page',
         'Direct correspondence sent via email is processed solely to respond to your inquiry',
       ],
@@ -94,6 +97,8 @@ export default function PrivacyPage() {
         'Google AdSense: If ads are enabled, Google and other advertising vendors may use cookies or similar technologies subject to applicable consent requirements',
         'Personalized Advertising: If enabled and permitted by your choices and applicable law, ads may be tailored based on activity on this or other websites',
         'Opt-Out Choices: You may opt out of personalized advertising by visiting Google Ads Settings (https://www.google.com/settings/ads) or through third-party opt-out services such as www.aboutads.info/choices/',
+        'EEA, UK, and Switzerland: You may have rights under applicable data-protection laws, including access, correction, deletion, restriction, objection, portability, and withdrawal of consent. Navorika does not currently provide an on-site consent-preference centre; contact privacy@navorika.com to exercise a privacy right or ask about consent choices. Personalized Google ads must not be enabled for these regions until a Google-certified CMP integrated with the IAB TCF is operating',
+        'California: Where the CCPA applies, you may request access to, correction or deletion of personal information, and opt out of its sale or sharing where applicable. Submit a request to privacy@navorika.com. A cookie banner alone is not the method for submitting a CCPA sale-or-sharing opt-out request',
         'Analytics: Aggregated, anonymized traffic analytics help us understand site usage and improve tool performance without identifying individual users',
         'Local Storage: Browser localStorage is used strictly to remember your preferences (such as light or dark display mode) and does not contain personal identifying information',
       ],

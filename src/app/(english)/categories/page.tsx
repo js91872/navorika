@@ -2,8 +2,7 @@ import PageHelp from '@/components/seo/PageHelp';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Grid3x3, ArrowRight } from 'lucide-react';
-import { categories, tools } from '@/data/registry';
-import { toolsUnderReview } from '@/lib/seo/toolReview';
+import { activeTools, categories, TOTAL_ACTIVE_TOOLS } from '@/data/registry';
 
 export const metadata: Metadata = {
   title: 'All Tool Categories – Browse Free Online Tools',
@@ -12,8 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default function CategoriesPage() {
-  const activeTools = tools.filter((tool) => !toolsUnderReview.has(tool.slug));
-
   return (
     <div className="pb-16 pt-8 text-[#18181b] dark:text-[#f4f4f5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,7 +25,7 @@ export default function CategoriesPage() {
                 Tool Categories
               </h1>
               <p className="text-[#5b5b63] dark:text-[#a1a1aa] text-sm mt-0.5">
-                {categories.length} categories · {activeTools.length} free online tools
+                {categories.length} categories · {TOTAL_ACTIVE_TOOLS} free online tools
               </p>
             </div>
           </div>

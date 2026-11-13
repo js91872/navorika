@@ -92,6 +92,15 @@ export default function AboutPage() {
           </section>
         </div>
 
+        <section className="mt-12 rounded-2xl border border-[#e4e4e8] dark:border-[#303036] bg-white dark:bg-[#18181b] p-6 sm:p-8" aria-labelledby="publisher-accountability">
+          <h2 id="publisher-accountability" className="text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">Publisher &amp; Editorial Accountability</h2>
+          <dl className="mt-5 grid gap-4 text-sm leading-6 sm:grid-cols-2">
+            <div><dt className="font-semibold text-[#18181b] dark:text-white">Publisher / Founder</dt><dd>Gurinder Singh (Navorika Independent Web Utility Suite)</dd></div>
+            <div><dt className="font-semibold text-[#18181b] dark:text-white">Operating location</dt><dd>Hoshiarpur, Punjab, India</dd></div>
+            <div className="sm:col-span-2"><dt className="font-semibold text-[#18181b] dark:text-white">Editorial &amp; formula review</dt><dd>Methods are documented against relevant standards and sources, including ISO 32000 for PDF tools, ISO 10303-21 for STEP CAD tools, ECB reference rates accessed through Frankfurter for currency tools, and Mifflin–St Jeor for metabolic screening formulas. See the <Link href="/methodology" className="text-[#e5322d] font-semibold hover:underline">calculation methodology</Link>.</dd></div>
+          </dl>
+        </section>
+
         <footer className="mt-12 pt-8 border-t border-[#e4e4e8] dark:border-[#303036]">
           <p className="text-lg font-semibold mb-5">Thanks for visiting. We hope Navorika saves you a little time today.</p>
           <Link href="/tools" className="inline-flex items-center gap-2 rounded-lg bg-[#e5322d] hover:bg-[#c71f1e] px-5 py-3 text-white text-sm font-semibold transition-colors">

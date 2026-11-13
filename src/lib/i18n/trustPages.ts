@@ -110,7 +110,7 @@ export const aboutContent: Record<Locale | 'en', TrustPageContent> = {
     "description": "Learn about Navorika’s privacy-first calculators, PDF editors, image converters, and developer utilities. Most tools process locally, with no signup required.",
     "eyebrow": "About Navorika",
     "heroTitle": "Free Online Calculators & Tools",
-    "heroDescription": "Navorika is an independent website with over 319 free calculators and online tools for files, images, money, health, construction, everyday tasks, and web development. Most tools run directly in your browser.",
+    "heroDescription": "Navorika is an independent website with over {{toolCount}} free calculators and online tools for files, images, money, health, construction, everyday tasks, and web development. Most tools run directly in your browser.",
     "buttons": {
       "primaryText": "Browse Free Tools",
       "primaryHref": "/tools",
@@ -216,7 +216,7 @@ export const aboutContent: Record<Locale | 'en', TrustPageContent> = {
     "description": "Découvrez Navorika, notre architecture orientée traitement local dans le navigateur, nos garanties de confidentialité et nos outils vérifiés.",
     "eyebrow": "À Propos de Navorika",
     "heroTitle": "Calculateurs et Outils en Ligne Gratuits",
-    "heroDescription": "Navorika est une plateforme indépendante regroupant plus de 319 calculateurs gratuits et outils en ligne pour vos fichiers, images, calculs financiers, projets de bâtiment et développement web. La plupart s'exécutent directement dans votre navigateur.",
+    "heroDescription": "Navorika est une plateforme indépendante regroupant plus de {{toolCount}} calculateurs gratuits et outils en ligne pour vos fichiers, images, calculs financiers, projets de bâtiment et développement web. La plupart s'exécutent directement dans votre navigateur.",
     "buttons": {
       "primaryText": "Explorer les Outils Gratuits",
       "primaryHref": "/tools",
@@ -319,10 +319,10 @@ export const aboutContent: Record<Locale | 'en', TrustPageContent> = {
   },
   "it": {
     "title": "Chi Siamo – Navorika Calcolatori e Utilità Online Gratuite",
-    "description": "Scopri Navorika, la nostra architettura di calcolo locale nel browser, le garanzie sulla privacy e gli oltre 319 strumenti verificati.",
+    "description": "Scopri Navorika, la nostra architettura di calcolo locale nel browser, le garanzie sulla privacy e gli oltre {{toolCount}} strumenti verificati.",
     "eyebrow": "Informazioni su Navorika",
     "heroTitle": "Calcolatori e Strumenti Online Gratuiti",
-    "heroDescription": "Navorika è una piattaforma indipendente con oltre 319 calcolatori e utilità gratuite per documenti, immagini, finanza, salute, edilizia, programmazione e calcoli quotidiani. La maggior parte funziona interamente nel tuo browser.",
+    "heroDescription": "Navorika è una piattaforma indipendente con oltre {{toolCount}} calcolatori e utilità gratuite per documenti, immagini, finanza, salute, edilizia, programmazione e calcoli quotidiani. La maggior parte funziona interamente nel tuo browser.",
     "buttons": {
       "primaryText": "Esplora gli Strumenti Gratuiti",
       "primaryHref": "/tools",
@@ -425,10 +425,10 @@ export const aboutContent: Record<Locale | 'en', TrustPageContent> = {
   },
   "pt": {
     "title": "Sobre a Navorika – Calculadoras e Ferramentas Online Gratuitas",
-    "description": "Conheça a Navorika, a nossa arquitetura de processamento local no navegador, garantias de privacidade e mais de 319 ferramentas verificadas.",
+    "description": "Conheça a Navorika, a nossa arquitetura de processamento local no navegador, garantias de privacidade e mais de {{toolCount}} ferramentas verificadas.",
     "eyebrow": "Sobre a Navorika",
     "heroTitle": "Calculadoras e Ferramentas Online Gratuitas",
-    "heroDescription": "A Navorika é uma plataforma independente com mais de 319 calculadoras e ferramentas online gratuitas para ficheiros, imagens, finanças, saúde, construção, desenvolvimento web e tarefas diárias. A maioria executa diretamente no seu navegador.",
+    "heroDescription": "A Navorika é uma plataforma independente com mais de {{toolCount}} calculadoras e ferramentas online gratuitas para ficheiros, imagens, finanças, saúde, construção, desenvolvimento web e tarefas diárias. A maioria executa diretamente no seu navegador.",
     "buttons": {
       "primaryText": "Explorar Ferramentas Gratuitas",
       "primaryHref": "/tools",
@@ -531,10 +531,10 @@ export const aboutContent: Record<Locale | 'en', TrustPageContent> = {
   },
   "es": {
     "title": "Acerca de Navorika – Calculadoras y Herramientas Online Gratuitas",
-    "description": "Conozca Navorika, nuestra arquitectura de cómputo local en el navegador, garantías de privacidad y más de 319 utilidades verificadas.",
+    "description": "Conozca Navorika, nuestra arquitectura de cómputo local en el navegador, garantías de privacidad y más de {{toolCount}} utilidades verificadas.",
     "eyebrow": "Acerca de Navorika",
     "heroTitle": "Calculadoras y Herramientas Online Gratuitas",
-    "heroDescription": "Navorika es una plataforma web independiente con más de 319 calculadoras y herramientas gratuitas para documentos, imágenes, finanzas, salud, construcción, tareas cotidianas y desarrollo web. La gran mayoría se ejecutan directamente en su navegador.",
+    "heroDescription": "Navorika es una plataforma web independiente con más de {{toolCount}} calculadoras y herramientas gratuitas para documentos, imágenes, finanzas, salud, construcción, tareas cotidianas y desarrollo web. La gran mayoría se ejecutan directamente en su navegador.",
     "buttons": {
       "primaryText": "Explorar Herramientas Gratuitas",
       "primaryHref": "/tools",
@@ -637,10 +637,10 @@ export const aboutContent: Record<Locale | 'en', TrustPageContent> = {
   },
   "de": {
     "title": "Über Navorika – Kostenlose Online-Rechner & Werkzeuge",
-    "description": "Erfahren Sie mehr über Navorika, unsere datenschutzorientierte Browser-Architektur und über 319 verifizierte Online-Werkzeuge.",
+    "description": "Erfahren Sie mehr über Navorika, unsere datenschutzorientierte Browser-Architektur und über {{toolCount}} verifizierte Online-Werkzeuge.",
     "eyebrow": "Über Navorika",
     "heroTitle": "Kostenlose Online-Rechner & Werkzeuge",
-    "heroDescription": "Navorika ist eine unabhängige Plattform mit über 319 kostenlosen Rechnern und Online-Tools für Dokumente, Bilder, Finanzen, Gesundheit, Bauvorhaben, Entwicklungsaufgaben und den Alltag. Fast alle Werkzeuge laufen direkt in Ihrem Browser.",
+    "heroDescription": "Navorika ist eine unabhängige Plattform mit über {{toolCount}} kostenlosen Rechnern und Online-Tools für Dokumente, Bilder, Finanzen, Gesundheit, Bauvorhaben, Entwicklungsaufgaben und den Alltag. Fast alle Werkzeuge laufen direkt in Ihrem Browser.",
     "buttons": {
       "primaryText": "Kostenlose Werkzeuge Entdecken",
       "primaryHref": "/tools",
@@ -743,10 +743,10 @@ export const aboutContent: Record<Locale | 'en', TrustPageContent> = {
   },
   "ru": {
     "title": "О проекте Navorika – Бесплатные онлайн-калькуляторы и инструменты",
-    "description": "Узнайте о Navorika, клиентской архитектуре в браузере, стандартах приватности и более чем 319 проверенных веб-инструментах.",
+    "description": "Узнайте о Navorika, клиентской архитектуре в браузере, стандартах приватности и более чем {{toolCount}} проверенных веб-инструментах.",
     "eyebrow": "О сервисе Navorika",
     "heroTitle": "Бесплатные онлайн-калькуляторы и инструменты",
-    "heroDescription": "Navorika — это независимый веб-ресурс, объединяющий более 319 бесплатных калькуляторов и онлайн-инструментов для работы с файлами, графикой, финансами, строительными расчетами, разработкой и повседневными задачами. Почти все операции выполняются прямо в вашем браузере.",
+    "heroDescription": "Navorika — это независимый веб-ресурс, объединяющий более {{toolCount}} бесплатных калькуляторов и онлайн-инструментов для работы с файлами, графикой, финансами, строительными расчетами, разработкой и повседневными задачами. Почти все операции выполняются прямо в вашем браузере.",
     "buttons": {
       "primaryText": "Все бесплатные инструменты",
       "primaryHref": "/tools",
@@ -849,10 +849,10 @@ export const aboutContent: Record<Locale | 'en', TrustPageContent> = {
   },
   "ar": {
     "title": "حول Navorika – آلات حاسبة وأدوات مجانية عبر الإنترنت",
-    "description": "تعرف على منصة Navorika، ومعمارية المعالجة المحلية في المتصفح، وضمانات الخصوصية، وأكثر من 319 أداة وحاسبة موثقة.",
+    "description": "تعرف على منصة Navorika، ومعمارية المعالجة المحلية في المتصفح، وضمانات الخصوصية، وأكثر من {{toolCount}} أداة وحاسبة موثقة.",
     "eyebrow": "حول منصة Navorika",
     "heroTitle": "آلات حاسبة وأدوات مجانية عبر الإنترنت",
-    "heroDescription": "منصة Navorika موقع إلكتروني مستقل يضم أكثر من 319 آلة حاسبة وأداة رقمية مجانية للتعامل مع الملفات، والصور، والحسابات المالية، والمقاولات، ومهام البرمجة والعمل اليومي. تعمل معظم الأدوات مباشرة ومحلياً داخل متصفحك.",
+    "heroDescription": "منصة Navorika موقع إلكتروني مستقل يضم أكثر من {{toolCount}} آلة حاسبة وأداة رقمية مجانية للتعامل مع الملفات، والصور، والحسابات المالية، والمقاولات، ومهام البرمجة والعمل اليومي. تعمل معظم الأدوات مباشرة ومحلياً داخل متصفحك.",
     "buttons": {
       "primaryText": "استعراض الأدوات المجانية",
       "primaryHref": "/tools",

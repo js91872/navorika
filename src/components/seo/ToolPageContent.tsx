@@ -8,6 +8,7 @@ import { tools } from '@/data/registry';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 import { toolUx } from '@/data/toolUx';
 import { buildWorkflowItems } from '@/lib/toolWorkflow';
+import SafeAdSlot from '@/components/seo/SafeAdSlot';
 
 export default function ToolPageContent({ tool, supplementalOnly = false }: { tool: ToolContent; supplementalOnly?: boolean }) {
   const guides = [...new Set(tool.relatedGuides)].flatMap((slug) => {
@@ -47,6 +48,8 @@ export default function ToolPageContent({ tool, supplementalOnly = false }: { to
           </div>
         </section>
       )}
+
+      <SafeAdSlot slotId={process.env.NEXT_PUBLIC_ADSENSE_TOOL_CONTENT_SLOT} />
 
       {!supplementalOnly && <>
       <section>
@@ -146,6 +149,8 @@ export default function ToolPageContent({ tool, supplementalOnly = false }: { to
           ))}
         </div>
       </section>}
+
+      <SafeAdSlot slotId={process.env.NEXT_PUBLIC_ADSENSE_TOOL_RELATED_SLOT} />
 
       {relatedTools.length > 0 && (
         <section>

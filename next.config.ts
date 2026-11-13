@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
   },
 
   staticPageGenerationTimeout: 120,
+  async headers() {
+    return [
+      {
+        source: '/ads.txt',
+        headers: [{ key: 'Content-Type', value: 'text/plain; charset=utf-8' }],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
