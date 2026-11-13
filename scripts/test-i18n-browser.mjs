@@ -41,6 +41,17 @@ const hasIndexableLocalizedToolCopy = (value) => {
   };
   return hasAllSections && faqs >= 3 && countWords(renderedBody) >= 350;
 };
+const sitemapSource = readFileSync('src/app/sitemap.ts', 'utf8');
+const reviewSource = readFileSync('src/lib/seo/toolReview.ts', 'utf8');
+const readSet = (source, declaration) => {
+  const block = source.match(new RegExp(`${declaration} = new Set\\\\(\\\\[([\\\\s\\\\S]*?)\\\\]\\\\);`))?.[1] || '';
+  return new Set(Array.from(block.matchAll(/'([^']+)'/g), (item) => item[1]));
+};
+const nonSitemapEnglishSlugs = new Set([
+  ...readSet(sitemapSource, 'financeSuiteRoots'),
+  ...readSet(sitemapSource, 'nonCanonicalToolSlugs'),
+  ...readSet(reviewSource, 'export const toolsUnderReview'),
+]);
 
 let server, browser;
 let serverOutput = '';
@@ -1354,10 +1365,16 @@ try {
     }
   }
   const sitemap = await (await context.request.get(`${base}/sitemap.xml`)).text();
-  for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/tools/${slug}`));
+  for (const slug of slugs) {
+    const shouldInclude = !nonSitemapEnglishSlugs.has(slug);
+    assert.equal(sitemap.includes(`https://navorika.com/tools/${slug}`), shouldInclude, `English sitemap canonical status for ${slug}`);
+  }
   for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${pageName}`));
   for (const locale of locales) {
-    for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`));
+    for (const slug of slugs) {
+      const shouldInclude = hasIndexableLocalizedToolCopy(dictionaries[locale].tools?.[slug]);
+      assert.equal(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`), shouldInclude, `Localized sitemap content-depth status for ${locale}/${slug}`);
+    }
     for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/${pageName}`));
   }
   if (process.env.I18N_SCREENSHOT_DIR) {
