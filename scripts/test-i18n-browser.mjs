@@ -44,7 +44,7 @@ const hasIndexableLocalizedToolCopy = (value) => {
 const sitemapSource = readFileSync('src/app/sitemap.ts', 'utf8');
 const reviewSource = readFileSync('src/lib/seo/toolReview.ts', 'utf8');
 const readSet = (source, declaration) => {
-  const block = source.match(new RegExp(`${declaration} = new Set\\\\(\\\\[([\\\\s\\\\S]*?)\\\\]\\\\);`))?.[1] || '';
+  const block = source.match(new RegExp(String.raw`${declaration} = new Set\(\[([\s\S]*?)\]\);`))?.[1] || '';
   return new Set(Array.from(block.matchAll(/'([^']+)'/g), (item) => item[1]));
 };
 const nonSitemapEnglishSlugs = new Set([
