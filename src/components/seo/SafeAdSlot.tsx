@@ -1,6 +1,5 @@
 'use client';
 
-import Script from 'next/script';
 import { useEffect } from 'react';
 
 const publisherId = 'ca-pub-9025398782962067';
@@ -13,16 +12,18 @@ declare global {
 
 /** Manual units render only in the two approved editorial positions. */
 export default function SafeAdSlot({ slotId }: { slotId: string | undefined }) {
+  const enabled = process.env.NEXT_PUBLIC_ADSENSE_CMP_ENABLED === 'true';
+
   useEffect(() => {
-    if (!slotId) return;
+    if (!enabled || !slotId) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
       // Ad blockers and unavailable ad scripts should not affect tool use.
     }
-  }, [slotId]);
+  }, [enabled, slotId]);
 
-  if (!slotId) return null;
+  if (!enabled || !slotId) return null;
 
   return (
     <aside className="my-6 py-6" aria-label="Advertisement">
@@ -34,13 +35,6 @@ export default function SafeAdSlot({ slotId }: { slotId: string | undefined }) {
         data-ad-slot={slotId}
         data-ad-format="auto"
         data-full-width-responsive="true"
-      />
-      <Script
-        id="navorika-adsense-manual-units"
-        async
-        strategy="afterInteractive"
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${publisherId}`}
-        crossOrigin="anonymous"
       />
     </aside>
   );
