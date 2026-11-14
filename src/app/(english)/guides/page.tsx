@@ -16,7 +16,7 @@ const standaloneGuides = [
   {
     slug: 'google-pixel-vs-iphone',
     category: 'Technology',
-    title: 'Google Pixel vs iPhone: Which Is Better?'
+    title: 'Google Pixel vs iPhone: Which Is Better?',
     description: 'Compare Pixel and iPhone cameras, AI, battery, privacy, software updates and ownership costs before you buy.',
     image: '/images/guides/google-pixel-vs-iphone.webp',
     imageAlt: 'Google Pixel and iPhone phones side by side on a desk',
