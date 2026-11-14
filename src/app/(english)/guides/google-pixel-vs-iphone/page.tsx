@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const canonical = 'https://navorika.com/guides/google-pixel-vs-iphone';
 export const metadata: Metadata = {
-  title: 'Google Pixel vs iPhone: Which Is Better in 2026?',
+  title: 'Google Pixel vs iPhone: Which Is Better?',
   description: 'Google Pixel vs iPhone compared: cameras, AI, battery, privacy, updates, switching costs and value. Includes a practical buyer checklist.',
   keywords: ['google pixel vs iphone', 'pixel vs iphone', 'google pixel vs iphone 17', 'pixel vs iphone camera', 'google pixel vs iphone which is better'],
   alternates: { canonical },
-  openGraph: { type: 'article', url: canonical, title: 'Google Pixel vs iPhone: Which Should You Buy?', description: 'A practical, source-backed comparison of Pixel and iPhone for everyday buyers.', siteName: 'Navorika' },
+  openGraph: { type: 'article', url: canonical, title: 'Google Pixel vs iPhone: Which Should You Buy?', description: 'A practical, source-backed comparison of Pixel and iPhone for everyday buyers.', siteName: 'Navorika', images: [{ url: '/images/guides/google-pixel-vs-iphone.webp', width: 1200, height: 669, alt: 'Google Pixel and iPhone side by side on a desk' }] },
 };
 const sources = [
   {name: 'Google Pixel 10 specifications and support', url: 'https://support.google.com/pixelphone/answer/7158570'},
@@ -77,16 +78,17 @@ const faqs = [
 ];
 export default function GooglePixelVsIphoneGuide() {
  const schema = {'@context':'https://schema.org','@graph':[
-  {'@type':'Article',headline:'Google Pixel vs iPhone: Which Is Better in 2026?',mainEntityOfPage:canonical,datePublished:'2026-11-12',dateModified:'2026-11-12',author:{'@type':'Organization',name:'Navorika'},publisher:{'@type':'Organization',name:'Navorika'},description:metadata.description},
+  {'@type':'Article',headline:'Google Pixel vs iPhone: Which Is Better?',mainEntityOfPage:canonical,author:{'@type':'Organization',name:'Navorika'},publisher:{'@type':'Organization',name:'Navorika'},description:metadata.description},
   {'@type':'FAQPage',mainEntity:faqs.map(([name,text])=>({'@type':'Question',name,acceptedAnswer:{'@type':'Answer',text}}))}
  ]};
  return <main className="min-h-screen bg-white pb-20 pt-28 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
   <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replaceAll('<','\\u003c')}}/>
   <article className="mx-auto max-w-4xl px-5 sm:px-8">
    <nav aria-label="Breadcrumb" className="mb-5 text-sm text-zinc-500"><Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Google Pixel vs iPhone</nav>
-   <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-red-600">Phone buying guide · Updated November 2026</p>
-   <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">Google Pixel vs iPhone: Which Is Better in 2026?</h1>
+   <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-red-600">Phone buying guide · Updated November 14</p>
+   <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">Google Pixel vs iPhone: Which Is Better?</h1>
    <p className="mt-6 text-lg leading-8 text-zinc-700 dark:text-zinc-300">Google Pixel vs iPhone is not just an Android-versus-iOS question. Your camera habits, apps, existing devices and long-term costs determine the better buy. This independent guide compares the base Pixel 10 and iPhone 17 where model-specific specifications are needed, and explains the wider ecosystem differences without pretending to have conducted hands-on lab tests.</p>
+   <Image src="/images/guides/google-pixel-vs-iphone.webp" width={1200} height={669} priority alt="Google Pixel and iPhone side by side on a desk" className="mt-8 aspect-[1200/669] w-full rounded-2xl object-cover shadow-sm" sizes="(max-width: 896px) 100vw, 896px" />
    <aside className="mt-7 rounded-xl border border-red-200 bg-red-50 p-5 text-sm leading-7 text-zinc-800 dark:border-red-900 dark:bg-zinc-900 dark:text-zinc-200"><strong>At a glance:</strong> Pick Pixel for Android flexibility and a dedicated 5x telephoto lens on Pixel 10. Pick iPhone for Apple ecosystem integration and iOS preferences. Neither wins every category. Confirm current local prices and model features before buying.</aside>
    <nav aria-label="On this page" className="my-8 rounded-xl bg-zinc-50 p-5 dark:bg-zinc-900"><h2 className="font-bold">On this page</h2><ol className="mt-3 grid list-decimal gap-2 pl-5 text-sm sm:grid-cols-2">{sections.map(s=><li key={s.id}><a className="text-red-700 hover:underline dark:text-red-400" href={'#'+s.id}>{s.title}</a></li>)}<li><a href="#faq" className="text-red-700 hover:underline dark:text-red-400">Frequently asked questions</a></li></ol></nav>
    <section aria-labelledby="comparison" className="scroll-mt-24"><h2 id="comparison" className="mb-4 text-2xl font-extrabold">Pixel 10 vs iPhone 17: comparison at a glance</h2><div className="overflow-x-auto"><table className="w-full min-w-[600px] border-collapse text-left text-sm"><thead><tr className="bg-zinc-100 dark:bg-zinc-900"><th className="p-3">Factor</th><th className="p-3">Google Pixel 10</th><th className="p-3">Apple iPhone 17</th></tr></thead><tbody>{factors.map(([factor,pixel,iphone])=><tr key={factor} className="border-b border-zinc-200 dark:border-zinc-800"><th scope="row" className="p-3 font-semibold">{factor}</th><td className="p-3">{pixel}</td><td className="p-3">{iphone}</td></tr>)}</tbody></table></div><p className="mt-3 text-sm text-zinc-500">Manufacturer-reported specifications; regional configurations and feature availability can differ. This is not an independent benchmark.</p></section>
