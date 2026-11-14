@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const canonical = 'https://navorika.com/guides/google-pixel-vs-iphone';
 export const metadata: Metadata = {
-  title: 'Google Pixel vs iPhone: Which Is Better?'
+  title: 'Google Pixel vs iPhone: Which Is Better?',
   description: 'Google Pixel vs iPhone compared: cameras, AI, battery, privacy, updates, switching costs and value. Includes a practical buyer checklist.',
   keywords: ['google pixel vs iphone', 'pixel vs iphone', 'google pixel vs iphone 17', 'pixel vs iphone camera', 'google pixel vs iphone which is better'],
   alternates: { canonical },
