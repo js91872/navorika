@@ -58,8 +58,8 @@ const guideDefinitions: GuideDefinition[] = [
   { slug: 'fps-calculator-guide', title: 'FPS Calculator Guide: FPS to MS, Gaming Frame Rate and Hz', description: 'Learn how to convert FPS to milliseconds, calculate frame counts and understand gaming FPS versus monitor refresh rate.', category: 'Everyday', publishedDate: 'November 2026', readTime: '9 min read', author: 'Navorika Team', keywords: ['fps calculator', 'fps calculator for games', 'fps to ms calculator', 'how many fps', 'frames per second calculator', 'fps to milliseconds'], featuredImage: { src: '/images/guides/fps-calculator-guide.svg', alt: 'Timeline comparing 30, 60 and 120 FPS and their frame durations in milliseconds', caption: 'Compare the time between frames at common gaming and video frame rates.' } },
   {
     slug: 'how-to-clear-icloud-storage',
-    title: 'How to Clear iCloud Storage Safely: Step-by-Step Guide',
-    description: 'Learn how to clear iCloud storage without losing photos. Step-by-step instructions for iPhone, iPad, and Mac to review storage categories and plan safer cleanup steps.',
+    title: 'How to Clear iCloud Storage on iPhone, iPad & Mac Safely',
+    description: 'Clear iCloud storage safely on iPhone, iPad or Mac. Find large backups and files, understand iCloud Photos syncing, and avoid deleting photos you need.',
     category: 'Everyday',
     publishedDate: 'November 2026',
     readTime: '18 min read',
@@ -135,7 +135,7 @@ const guideDefinitions: GuideDefinition[] = [
     category: 'Developer', publishedDate: 'October 2026', readTime: '17 min read', author: 'Navorika Team', keywords: ['is claude better than chatgpt', 'why is claude better than chatgpt', 'is claude ai better than chatgpt', 'is claude better than chatgpt for coding', 'is claude better than chatgpt for school'] },
   { slug: 'how-to-clean-macbook-speakers', title: 'How to Clean MacBook Speakers Safely (MacBook Air & Pro)', description: 'Learn how to clean MacBook Air and Pro speaker grilles safely, avoid damaging openings, and troubleshoot muffled or crackling audio.', category: 'Everyday', publishedDate: 'October 2026', readTime: '10 min read', author: 'Navorika Team', featuredImage: { src: '/images/guides/how-to-clean-macbook-speakers.webp', alt: 'MacBook speaker grille being gently cleaned with a soft brush, with a microfiber cloth nearby', caption: 'MacBook speaker grille and gentle cleaning tools. Keep liquids and cleaning tools out of the openings.' }, keywords: ['how to clean macbook speakers','how to clean macbook speaker','how to clean macbook speaker grill','clean macbook pro speakers','clean macbook air speakers','macbook speakers muffled','macbook speaker cleaning sound'] },
 
-  { slug: 'how-to-copy-and-paste-on-macbook', title: 'How to Copy and Paste on a MacBook: Keyboard, Trackpad, Files and Photos', description: 'Learn how to copy and paste on MacBook Air and Pro with keyboard shortcuts, move files in Finder, paste without formatting and fix clipboard problems.', category: 'Everyday', publishedDate: 'October 2026', readTime: '12 min read', author: 'Navorika Team', featuredImage: { src: '/images/guides/how-to-copy-and-paste-on-macbook.svg', alt: 'MacBook tutorial illustration', caption: 'Step-by-step MacBook help' }, keywords: ['how to copy and paste on macbook','how to cut and paste on a mac computer','how to copy and paste on apple computer','macbook copy paste shortcut','paste without formatting mac','copy and paste with mac trackpad'] },
+  { slug: 'how-to-copy-and-paste-on-macbook', title: 'How to Copy and Paste on MacBook: Shortcuts & Trackpad', description: 'Learn how to copy and paste on MacBook Air and Pro with keyboard shortcuts, move files in Finder, paste without formatting and fix clipboard problems.', category: 'Everyday', publishedDate: 'October 2026', readTime: '12 min read', author: 'Navorika Team', featuredImage: { src: '/images/guides/how-to-copy-and-paste-on-macbook.svg', alt: 'MacBook tutorial illustration', caption: 'Step-by-step MacBook help' }, keywords: ['how to copy and paste on macbook','how to cut and paste on a mac computer','how to copy and paste on apple computer','macbook copy paste shortcut','paste without formatting mac','copy and paste with mac trackpad'] },
   { slug: 'how-to-speed-up-macbook', title: 'How to Speed Up a MacBook: 15 Safe Fixes for a Slow Mac', description: 'MacBook running slow? Try 15 safe ways to speed up MacBook Air or Pro, check Activity Monitor, free storage and troubleshoot slow Safari.', category: 'Everyday', publishedDate: 'October 2026', readTime: '15 min read', author: 'Navorika Team', featuredImage: { src: '/images/guides/how-to-speed-up-macbook.svg', alt: 'MacBook tutorial illustration', caption: 'Step-by-step MacBook help' }, keywords: ['how to speed up macbook','how to speed up mac','how to speed up macbook pro','how to speed up old macbook','how to speed up my macbook air','how to speed up safari on macbook'] },
 
   {
@@ -740,9 +740,9 @@ const guideDefinitions: GuideDefinition[] = [
   },
   {
     slug: 'free-video-editing-software-for-mac',
-    title: 'Best Free Video Editing Software for Mac in 2026',
+    title: 'Best Free Video Editing Software for Mac: Compare Editors',
     description: 'Find genuinely useful free video editing software for Mac, including beginner-friendly options, no-watermark choices and free editors for MacBook Air and Pro.',
-    featuredImage: { src: "/images/guides/editorial-free-video-editing-software-for-mac.svg", alt: "Original Navorika guide visual for Best Free Video Editing Software for Mac in 2026", caption: "Find genuinely useful free video editing software for Mac, including beginner-friendly options, no-watermark choices and free editors for MacBook Air and Pro." },
+    featuredImage: { src: "/images/guides/editorial-free-video-editing-software-for-mac.svg", alt: "Illustration comparing free video editing software for Mac", caption: "Find genuinely useful free video editing software for Mac, including beginner-friendly options, no-watermark choices and free editors for MacBook Air and Pro." },
     category: 'Video',
     publishedDate: 'October 2026',
     readTime: '14 min read',

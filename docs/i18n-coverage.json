@@ -25,9 +25,9 @@
       "jsxText": 4766,
       "visibleAttribute": 426,
       "semanticCopy": 13150,
-      "reviewLiteral": 51014
+      "reviewLiteral": 51018
     },
-    "candidateCopyWords": 386787
+    "candidateCopyWords": 386794
   },
   "tools": [
     {
@@ -8909,7 +8909,7 @@
     },
     {
       "slug": "how-to-clear-icloud-storage",
-      "title": "How to Clear iCloud Storage Safely: Step-by-Step Guide",
+      "title": "How to Clear iCloud Storage on iPhone, iPad & Mac Safely",
       "category": "Everyday",
       "route": "/guides/how-to-clear-icloud-storage",
       "status": "pending",
@@ -8949,7 +8949,7 @@
     },
     {
       "slug": "how-to-copy-and-paste-on-macbook",
-      "title": "How to Copy and Paste on a MacBook: Keyboard, Trackpad, Files and Photos",
+      "title": "How to Copy and Paste on MacBook: Shortcuts & Trackpad",
       "category": "Everyday",
       "route": "/guides/how-to-copy-and-paste-on-macbook",
       "status": "pending",
@@ -9413,7 +9413,7 @@
     },
     {
       "slug": "free-video-editing-software-for-mac",
-      "title": "Best Free Video Editing Software for Mac in 2026",
+      "title": "Best Free Video Editing Software for Mac: Compare Editors",
       "category": "Video",
       "route": "/guides/free-video-editing-software-for-mac",
       "status": "pending",

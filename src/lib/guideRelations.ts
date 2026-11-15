@@ -1,6 +1,6 @@
 export const guideRelations: Record<string, string[]> = {
   'how-to-generate-upi-qr-code': ['qr-code-guide', 'gst-calculation-guide'],
-  'how-to-clear-icloud-storage': ['why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely', 'how-to-speed-up-macbook'],
+  'how-to-clear-icloud-storage': ['why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely', 'how-to-speed-up-macbook', 'how-to-copy-and-paste-on-macbook'],
   'why-is-my-icloud-storage-full': ['how-to-clear-icloud-storage', 'how-to-delete-icloud-backup-safely', 'how-to-speed-up-macbook'],
   'how-to-delete-icloud-backup-safely': ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-speed-up-macbook'],
 
@@ -10,7 +10,7 @@ export const guideRelations: Record<string, string[]> = {
   'how-to-copy-and-paste-on-macbook': ['how-to-speed-up-macbook', 'how-to-show-battery-percentage-on-mac', 'how-to-clear-ram-on-mac'],
   'how-to-speed-up-macbook': ['how-to-copy-and-paste-on-macbook', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac'],
   'video-editing-software-for-mac': ['free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
-  'free-video-editing-software-for-mac': ['video-editing-software-for-mac', 'easy-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'how-to-clear-ram-on-mac'],
+  'free-video-editing-software-for-mac': ['video-editing-software-for-mac', 'easy-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'how-to-clear-ram-on-mac', 'how-to-speed-up-macbook'],
   'professional-video-editing-software-for-mac': ['video-editing-software-for-mac', 'free-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
   'easy-video-editing-software-for-mac': ['video-editing-software-for-mac', 'free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac'],
   'house-construction-cost-guide': ['construction-estimate-quote-guide', 'brick-calculation-guide', 'flooring-calculation-guide'],

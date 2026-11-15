@@ -53,7 +53,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
   },
   'dimensional-weight-calculator': {
     slug: 'dimensional-weight-calculator',
-    name: 'Dimensional Weight Calculator – DIM & Volumetric Shipping Weight',
+    name: 'Dimensional Weight Calculator – Shipping DIM Weight',
     category: 'Everyday Calculators',
     applicationCategory: 'UtilitiesApplication',
     description: 'Calculate dimensional or volumetric shipping weight from package dimensions and a carrier divisor, then compare it with actual weight.',
@@ -422,10 +422,10 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
   },
   'website-worth-calculator': {
     slug: 'website-worth-calculator',
-    name: 'Website Worth Calculator: Check Website Value',
+    name: 'Website Worth Calculator – Estimate Site Value',
     category: 'Everyday Calculators',
     applicationCategory: 'UtilitiesApplication',
-    description: 'Check how much a website may be worth with a transparent website value calculator using URL quality signals, traffic, revenue, profit, and valuation multiples.',
+    description: 'Estimate how much a website may be worth using monthly profit, revenue or traffic. Review URL signals, valuation assumptions and an indicative price range—not a verified appraisal.',
     longTailKeywords: [
       'how much is this website worth',
       'website worth calculator',
