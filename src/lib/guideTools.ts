@@ -19,7 +19,7 @@ export const guideTools: Record<string, string[]> = {
   'how-to-clean-macbook-speakers': ['speaker-dust-cleaning-sound', 'audio-bitrate-calculator'],
   'how-to-copy-and-paste-on-macbook': ['utf8-vs-utf16-byte-calculator', 'pdf-word-counter', 'extract-pdf-text'],
   'how-to-speed-up-macbook': ['photo-storage-calculator', 'image-file-size-estimator', 'compress-image'],
-  'free-website-audit-checklist': ['webmaster-seo-builder', 'meta-tag-generator', 'robots-txt-generator', 'utm-builder'],
+  'free-website-audit-checklist': ['webmaster-seo-builder', 'website-worth-calculator', 'meta-tag-generator', 'robots-txt-generator', 'utm-builder'],
   'how-to-convert-image-to-pdf-on-iphone': ['image-to-pdf', 'jpg-to-pdf', 'heic-to-pdf', 'compress-pdf'],
   'how-to-show-battery-percentage-on-mac': ['battery-charge-time-calculator', 'electricity-cost-calculator'],
   'how-to-save-a-screenshot-as-a-pdf': ['image-to-pdf', 'jpg-to-pdf', 'heic-to-pdf', 'compress-pdf'],
