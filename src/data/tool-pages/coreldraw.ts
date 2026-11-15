@@ -7,10 +7,10 @@ const hub = { slug: 'coreldraw-tools', name: 'CorelDRAW Tools & CDR Converters' 
 export const corelDrawToolPages: Record<string, ToolPageContent> = {
   'coreldraw-tools': {
     slug: 'coreldraw-tools',
-    name: 'Free CorelDRAW Tools & CDR Converters',
+    name: 'Free CorelDRAW Tools: CDR Viewer, PDF & Image Import',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
-    description: 'Free CorelDRAW tools and CDR converters for opening CDR files, converting PDF, PNG, JPG, SVG, AI or EPS for CorelDRAW, exporting CDR to PDF/SVG/PNG/JPG/EPS, and checking CDR versions.' ,
+    description: 'Open supported CDR files, prepare PDF and images for CorelDRAW import, export to common formats, and check file versions. Free tools with clear format limits.' ,
     longTailKeywords: [
       'free coreldraw tools',
       'cdr converter online',
@@ -85,7 +85,7 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'pdf-to-cdr-converter': {
     slug: 'pdf-to-cdr-converter',
-    name: 'PDF to CDR Converter for CorelDRAW (Free)',
+    name: 'PDF to CorelDRAW Converter – Free Import-Ready Files',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
     description:
