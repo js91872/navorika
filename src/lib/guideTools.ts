@@ -30,7 +30,7 @@ export const guideTools: Record<string, string[]> = {
   'fertilizer-npk-numbers-explained': ['fertilizer-calculator', 'land-area-converter', 'square-footage-calculator', 'topsoil-calculator'],
   'how-to-calculate-fertilizer-from-a-soil-test': ['fertilizer-calculator', 'land-area-converter', 'square-footage-calculator'],
   'video-editing-software-for-mac': ['video-to-audio-converter', 'extract-audio-from-video', 'video-to-mp3-converter', 'mp4-to-mp3-converter', 'mov-to-mp3-converter'],
-  'free-video-editing-software-for-mac': ['extract-audio-from-video', 'video-to-audio-converter', 'video-to-mp3-converter', 'mp4-to-mp3-converter'],
+  'free-video-editing-software-for-mac': ['extract-audio-from-video', 'video-to-audio-converter', 'video-to-mp3-converter', 'mp4-to-mp3-converter', 'mov-to-mp3-converter'],
   'professional-video-editing-software-for-mac': ['extract-audio-from-video', 'video-to-audio-converter', 'audio-bitrate-calculator'],
   'easy-video-editing-software-for-mac': ['video-to-mp3-converter', 'mp4-to-mp3-converter', 'mov-to-mp3-converter', 'extract-audio-from-video'],
   'word-to-cdr-formatting-guide': ['word-to-cdr-converter', 'pdf-to-cdr-converter', 'coreldraw-tools'],
