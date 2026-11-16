@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 export default function ObjToSkpConverter() {
   const [obj, setObj] = useState<File | null>(null);
   const [companions, setCompanions] = useState<File[]>([]);
+  const [unitMm, setUnitMm] = useState('1000');
   const [enabled, setEnabled] = useState(false);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState('Checking converter availability…');
@@ -25,6 +26,7 @@ export default function ObjToSkpConverter() {
     try {
       const form = new FormData();
       form.set('obj', obj);
+      form.set('unitMm', unitMm);
       companions.forEach(file => form.append('companions', file));
       const response = await fetch('/api/obj-to-skp', { method: 'POST', body: form, cache: 'no-store' });
       if (!response.ok) {
@@ -63,6 +65,12 @@ export default function ObjToSkpConverter() {
             className="block w-full rounded-lg border border-[var(--border)] p-3 text-sm" />
           <p className="mt-2 text-xs text-[var(--muted-foreground)]">Put the files referenced by mtllib and map_Kd here. Only simple same-directory names are supported. No ZIP files or complex material options.</p>
         </div>
+        <div>
+          <label htmlFor="obj-units" className="mb-2 block text-sm font-semibold">One OBJ coordinate unit equals</label>
+          <select id="obj-units" value={unitMm} onChange={event => setUnitMm(event.target.value)} className="w-full rounded-lg border border-[var(--border)] bg-[var(--background)] p-3 text-sm">
+            <option value="1000">1 metre (default)</option><option value="1">1 millimetre</option><option value="10">1 centimetre</option><option value="25.4">1 inch</option>
+          </select>
+        </div>
         <button type="button" disabled={!enabled || !obj || busy} onClick={() => { void convert(); }}
           className="w-full rounded-xl bg-[#e5322d] px-5 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-40">
           {busy ? 'Converting…' : 'Convert OBJ to SKP'}
@@ -72,7 +80,7 @@ export default function ObjToSkpConverter() {
       <p className="mt-5 border-t border-[var(--border)] pt-4 text-xs leading-6 text-[var(--muted-foreground)]">
         This tool uploads your files to a temporary isolated server directory for conversion, then deletes that directory.
         It does not process CAD files locally in your browser. Output uses the legacy SketchUp file format and may need manual cleanup.
-        Unit assumption: one OBJ unit equals one metre. Do not upload sensitive models.
+        Choose the source coordinate units before conversion. Do not upload sensitive models.
       </p>
     </section>
   );
