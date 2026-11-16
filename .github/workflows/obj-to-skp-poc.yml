@@ -1,0 +1,106 @@
+name: OBJ to SKP isolated PoC
+on:
+  push:
+    branches:
+      - poc/obj-to-skp-openskp-20261116
+    paths:
+      - scripts/poc_obj_to_skp.py
+      - .github/workflows/obj-to-skp-poc.yml
+  pull_request:
+    paths:
+      - scripts/poc_obj_to_skp.py
+      - .github/workflows/obj-to-skp-poc.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  conversion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install isolated proof-of-concept dependency
+        run: python -m pip install 'openskp==1.5.0'
+      - name: Compile Python script
+        run: python -m py_compile scripts/poc_obj_to_skp.py
+      - name: Generate real SKP and inspect it independently
+        run: |
+          mkdir -p /tmp/obj-to-skp-poc
+          cat > /tmp/obj-to-skp-poc/cube.obj <<'OBJ'
+          mtllib cube.mtl
+          v 0 0 0
+          v 1 0 0
+          v 1 1 0
+          v 0 1 0
+          v 0 0 1
+          v 1 0 1
+          v 1 1 1
+          v 0 1 1
+          usemtl Red
+          f 1 4 3 2
+          f 5 6 7 8
+          f 1 2 6 5
+          f 2 3 7 6
+          f 3 4 8 7
+          f 4 1 5 8
+          OBJ
+          cat > /tmp/obj-to-skp-poc/cube.mtl <<'MTL'
+          newmtl Red
+          Kd 0.9 0.1 0.1
+          MTL
+          python scripts/poc_obj_to_skp.py /tmp/obj-to-skp-poc/cube.obj /tmp/obj-to-skp-poc/cube.skp --unit-mm 1000
+          python - <<'PY'
+          from openskp import SkpFile
+          path = '/tmp/obj-to-skp-poc/cube.skp'
+          model = SkpFile.open(path).parse()
+          root_faces = len(model.root.faces)
+          component_faces = sum(len(d.faces) for d in model.definitions.values())
+          face_count = root_faces + component_faces
+          print('OpenSKP independent parse:', 'root faces', root_faces, 'component faces', component_faces, 'total faces', face_count)
+          assert root_faces == 6, f'Expected 6 cube root faces, got {root_faces}'
+          assert len(model.root.vertices) >= 8, 'SKP output missing cube vertices'
+          assert len(model.materials) >= 1, 'SKP output missing diffuse material'
+          PY
+      - name: Generate textured OBJ, convert, and read back UV/materials
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import struct, zlib
+          directory = Path('/tmp/obj-to-skp-poc')
+          directory.mkdir(parents=True, exist_ok=True)
+          def chunk(tag, data):
+              return struct.pack('!I', len(data)) + tag + data + struct.pack('!I', zlib.crc32(tag + data) & 0xffffffff)
+          raw = bytes([0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 255, 255, 255, 0])
+          png = (b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('!2I5B', 2, 2, 8, 2, 0, 0, 0))
+                 + chunk(b'IDAT', zlib.compress(raw)) + chunk(b'IEND', b''))
+          (directory / 'checker.png').write_bytes(png)
+          (directory / 'textured.mtl').write_text('newmtl Checker\nKd 1 1 1\nmap_Kd checker.png\n')
+          (directory / 'textured.obj').write_text(
+              'mtllib textured.mtl\nv 0 0 0\nv 1 0 0\nv 1 1 0\nv 0 1 0\n'
+              'vt 0 0\nvt 1 0\nvt 1 1\nvt 0 1\n'
+              'usemtl Checker\nf 1/1 2/2 3/3 4/4\n')
+          PY
+          python scripts/poc_obj_to_skp.py /tmp/obj-to-skp-poc/textured.obj /tmp/obj-to-skp-poc/textured.skp --unit-mm 1000
+          python - <<'PY'
+          from openskp import SkpFile
+          model = SkpFile.open('/tmp/obj-to-skp-poc/textured.skp').parse()
+          faces = list(model.root.faces.values())
+          print('Textured SKP:', 'faces', len(faces), 'materials', len(model.materials),
+                'positioned_UVs', sum(face.uv_transform is not None for face in faces),
+                'textured_materials', sum(m.texture is not None for m in model.materials))
+          assert len(faces) == 2, 'Textured quad should triangulate into two faces'
+          assert sum(face.uv_transform is not None for face in faces) == 2, 'UV positioning missing'
+          assert any(m.texture is not None for m in model.materials), 'Texture image was not embedded'
+          PY
+      - name: Upload SKP validation artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: obj-to-skp-cube-poc
+          path: |
+            /tmp/obj-to-skp-poc/cube.skp
+            /tmp/obj-to-skp-poc/textured.skp
+          retention-days: 7
