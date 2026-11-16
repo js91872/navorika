@@ -74,14 +74,14 @@ jobs:
           def chunk(tag, data):
               return struct.pack('!I', len(data)) + tag + data + struct.pack('!I', zlib.crc32(tag + data) & 0xffffffff)
           raw = bytes([0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 255, 255, 255, 0])
-          png = (b'\\x89PNG\\r\\n\\x1a\\n' + chunk(b'IHDR', struct.pack('!2I5B', 2, 2, 8, 2, 0, 0, 0))
+          png = (b'\\x89PNG\\r\n\\x1a\n' + chunk(b'IHDR', struct.pack('!2I5B', 2, 2, 8, 2, 0, 0, 0))
                  + chunk(b'IDAT', zlib.compress(raw)) + chunk(b'IEND', b''))
           (directory / 'checker.png').write_bytes(png)
-          (directory / 'textured.mtl').write_text('newmtl Checker\\nKd 1 1 1\\nmap_Kd checker.png\\n')
+          (directory / 'textured.mtl').write_text('newmtl Checker\nKd 1 1 1\nmap_Kd checker.png\n')
           (directory / 'textured.obj').write_text(
-              'mtllib textured.mtl\\nv 0 0 0\\nv 1 0 0\\nv 1 1 0\\nv 0 1 0\\n'
-              'vt 0 0\\nvt 1 0\\nvt 1 1\\nvt 0 1\\n'
-              'usemtl Checker\\nf 1/1 2/2 3/3 4/4\\n')
+              'mtllib textured.mtl\nv 0 0 0\nv 1 0 0\nv 1 1 0\nv 0 1 0\n'
+              'vt 0 0\nvt 1 0\nvt 1 1\nvt 0 1\n'
+              'usemtl Checker\nf 1/1 2/2 3/3 4/4\n')
           PY
           python scripts/poc_obj_to_skp.py /tmp/obj-to-skp-poc/textured.obj /tmp/obj-to-skp-poc/textured.skp --unit-mm 1000
           python - <<'PY'
