@@ -1,6 +1,6 @@
 # OBJ to SKP — private beta deployment gate
 
-This branch is an **unreleased** proof of deployment. It creates a page at `/tools/obj-to-skp-converter` and an isolated POST API at `/api/obj-to-skp` that is **disabled by default** (`OBJ_TO_SKP_ENABLED` unset). The page is noindexed until enabled. It is intentionally not registered in site directories/sitemaps yet.
+This branch is an **unreleased** proof of deployment. It creates a page at `/tools/obj-to-skp-converter` and an isolated POST API at `/api/obj-to-skp` that is **disabled by default** (`OBJ_TO_SKP_ENABLED` unset). The page is noindexed until enabled. It has a registry entry for architecture validation, but the staged tool is explicitly excluded from site directories and sitemaps through toolsUnderReview until rollout.
 
 ## Production prerequisites (do not enable until verified)
 - Validate GitHub Quality workflow, OBJ to SKP beta workflow, and independent desktop SketchUp testing.
