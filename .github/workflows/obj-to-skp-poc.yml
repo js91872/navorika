@@ -1,5 +1,11 @@
 name: OBJ to SKP isolated PoC
 on:
+  push:
+    branches:
+      - poc/obj-to-skp-openskp-20261116
+    paths:
+      - scripts/poc_obj_to_skp.py
+      - .github/workflows/obj-to-skp-poc.yml
   pull_request:
     paths:
       - scripts/poc_obj_to_skp.py
