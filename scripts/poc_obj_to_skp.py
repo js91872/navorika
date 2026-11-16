@@ -120,8 +120,8 @@ def _validated_texture(path: Path) -> Path:
         raise ValueError(f"Texture exceeds 8 MB: {path.name}")
     with path.open("rb") as stream:
         magic = stream.read(8)
-    if not (magic.startswith(b"\\x89PNG\\r\\n\\x1a\\n") or
-            magic.startswith(b"\\xff\\xd8\\xff")):
+    if not (magic.startswith(b"\x89PNG\r\n\x1a\n") or
+            magic.startswith(b"\xff\xd8\xff")):
         raise ValueError(f"Only PNG/JPEG texture images are supported: {path.name}")
     return path
 
