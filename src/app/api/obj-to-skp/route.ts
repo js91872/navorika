@@ -26,7 +26,7 @@ function execute(directory: string, unitMm: string): Promise<void> {
     const child = spawn(python, ['-I', script, join(directory, 'model.obj'), join(directory, 'output.skp'), '--unit-mm', unitMm], {
       cwd: directory,
       stdio: ['ignore', 'ignore', 'pipe'],
-      env: { PATH: '/usr/bin:/bin', HOME: directory, TMPDIR: directory, PYTHONNOUSERSITE: '1' },
+      env: { NODE_ENV: process.env.NODE_ENV, PATH: '/usr/bin:/bin', HOME: directory, TMPDIR: directory, PYTHONNOUSERSITE: '1' },
     });
     let stderr = '';
     let settled = false;
