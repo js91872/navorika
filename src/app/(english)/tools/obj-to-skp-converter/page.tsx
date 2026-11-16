@@ -15,7 +15,7 @@ export default function Page() {
   const questions = [
     ['Does OBJ to SKP create an actual SketchUp file?', 'Yes. The conversion service writes SKP model geometry rather than changing the file extension. Check the result in SketchUp before relying on it.'],
     ['Does the converter preserve textures?', 'Basic MTL diffuse PNG/JPEG textures and explicit OBJ UV mapping are supported. Advanced shaders, PBR materials, transparency maps and some texture options are not.'],
-    ['How should I choose OBJ units?', 'OBJ has no defined scale. This initial version assumes one coordinate unit is one metre. Verify the model dimensions after opening the SKP file.'],
+    ['How should I choose OBJ units?', 'OBJ has no defined scale. Choose metres, centimetres, millimetres or inches before converting. Verify the model dimensions after opening the SKP file.'],
     ['Can I convert architectural meshes?', 'Small, simple OBJ meshes are the intended use. Complex, concave or malformed meshes may require cleanup in a 3D editor first.'],
     ['Are my 3D models private?', 'Files are uploaded to a temporary isolated server workspace, not converted in the browser. The temporary files are deleted when the conversion request finishes.'],
   ];
@@ -37,7 +37,7 @@ export default function Page() {
           <p>Wavefront OBJ represents mesh geometry as vertices, polygon faces and optional texture coordinates. SketchUp SKP is a project file that contains editable surfaces and materials. Converted mesh faces remain faces rather than becoming parametric solid CAD features. When models contain many tiny triangles, editing in SketchUp can be more difficult than working with a simpler model.</p>
         </section>
         <section><h2 className="mb-2 text-xl font-bold text-[var(--foreground)]">Materials, units and known limits</h2>
-          <p>OBJ files do not specify physical measurement units. This beta assumes one OBJ unit equals one metre; models authored in millimetres or inches will be scaled incorrectly. Supported materials include simple MTL colours and PNG/JPEG diffuse textures with UV coordinates. Some textured polygons are triangulated and complex concave polygons can change appearance. The request is limited to a 20 MB OBJ, up to 12 companion files and 30 MB combined.</p>
+          <p>OBJ files do not specify physical measurement units. Choose the source coordinate units (metres, centimetres, millimetres or inches) to set the conversion scale. Supported materials include simple MTL colours and PNG/JPEG diffuse textures with UV coordinates. Some textured polygons are triangulated and complex concave polygons can change appearance. The request is limited to a 20 MB OBJ, up to 12 companion files and 30 MB combined.</p>
         </section>
         <section><h2 className="mb-2 text-xl font-bold text-[var(--foreground)]">Frequently asked questions</h2>
           <div className="space-y-4">{questions.map(([question, answer]) => <div key={question}>
