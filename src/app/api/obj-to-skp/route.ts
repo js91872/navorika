@@ -21,9 +21,9 @@ function safeName(filename: string) {
   return /^[a-zA-Z0-9_.-]{1,120}$/.test(filename) &&
     filename !== '.' && filename !== '..' && basename(filename) === filename;
 }
-function execute(directory: string): Promise<void> {
+function execute(directory: string, unitMm: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    const child = spawn(python, ['-I', script, join(directory, 'model.obj'), join(directory, 'output.skp'), '--unit-mm', '1000'], {
+    const child = spawn(python, ['-I', script, join(directory, 'model.obj'), join(directory, 'output.skp'), '--unit-mm', unitMm], {
       cwd: directory,
       stdio: ['ignore', 'ignore', 'pipe'],
       env: { PATH: '/usr/bin:/bin', HOME: directory, TMPDIR: directory, PYTHONNOUSERSITE: '1' },
@@ -57,6 +57,8 @@ export async function POST(request: Request) {
   let directory: string | undefined;
   try {
     const form = await request.formData();
+    const unitMm = String(form.get('unitMm') || '1000');
+    if (!['1', '10', '25.4', '1000'].includes(unitMm)) return fail('Choose a supported model unit.', 400);
     const obj = form.get('obj');
     if (!(obj instanceof File) || !obj.name.toLowerCase().endsWith('.obj')) return fail('Select one OBJ file.', 400);
     if (obj.size < 1 || obj.size > maxSize) return fail('OBJ must be under 20 MB.', 413);
@@ -79,7 +81,7 @@ export async function POST(request: Request) {
     directory = await mkdtemp(join(tmpdir(), 'navorika-objskp-'));
     await writeFile(join(directory, 'model.obj'), new Uint8Array(await obj.arrayBuffer()));
     for (const upload of uploads) await writeFile(join(directory, upload.name), upload.bytes, { flag: 'wx' });
-    await execute(directory);
+    await execute(directory, unitMm);
     const output = await readFile(join(directory, 'output.skp'));
     if (output.length < 100 || output.length > 60_000_000) return fail('Invalid conversion output.', 500);
     const download = obj.name.replace(/\.obj$/i, '').replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 80) || 'model';
