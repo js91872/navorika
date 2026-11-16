@@ -74,7 +74,7 @@ jobs:
           def chunk(tag, data):
               return struct.pack('!I', len(data)) + tag + data + struct.pack('!I', zlib.crc32(tag + data) & 0xffffffff)
           raw = bytes([0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 255, 255, 255, 0])
-          png = (b'\\x89PNG\\r\n\\x1a\n' + chunk(b'IHDR', struct.pack('!2I5B', 2, 2, 8, 2, 0, 0, 0))
+          png = (b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('!2I5B', 2, 2, 8, 2, 0, 0, 0))
                  + chunk(b'IDAT', zlib.compress(raw)) + chunk(b'IEND', b''))
           (directory / 'checker.png').write_bytes(png)
           (directory / 'textured.mtl').write_text('newmtl Checker\nKd 1 1 1\nmap_Kd checker.png\n')
