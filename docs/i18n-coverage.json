@@ -10,10 +10,10 @@
     "de"
   ],
   "summary": {
-    "tools": 342,
+    "tools": 343,
     "publishedTools": 319,
     "pendingTools": 17,
-    "underReviewTools": 6,
+    "underReviewTools": 7,
     "sharedCalculators": 75,
     "guides": 82,
     "trustPages": 7,
@@ -22,12 +22,12 @@
     "pendingGuideTranslations": 567,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4766,
-      "visibleAttribute": 426,
-      "semanticCopy": 13150,
-      "reviewLiteral": 51018
+      "jsxText": 4790,
+      "visibleAttribute": 428,
+      "semanticCopy": 13155,
+      "reviewLiteral": 51186
     },
-    "candidateCopyWords": 386794
+    "candidateCopyWords": 387180
   },
   "tools": [
     {
@@ -5449,6 +5449,26 @@
         "src/app/(english)/tools/net-revenue-retention-calculator/page.tsx",
         "src/components/tools/BusinessCalculatorTool.tsx",
         "src/components/tools/ExpansionToolPage.tsx"
+      ]
+    },
+    {
+      "slug": "obj-to-skp-converter",
+      "title": "OBJ to SKP Converter",
+      "category": "developer-tools",
+      "route": "/tools/obj-to-skp-converter",
+      "source": "src/app/(english)/tools/obj-to-skp-converter/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "under-review",
+      "translatedLocales": [],
+      "review": [
+        "server-errors-and-processing-disclosure"
+      ],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/obj-to-skp-converter/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/cad/ObjToSkpConverter.tsx"
       ]
     },
     {
@@ -11137,6 +11157,12 @@
       "source": "src/app/(english)/tools/net-revenue-retention-calculator/page.tsx",
       "routeTemplate": "/tools/net-revenue-retention-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/obj-to-skp-converter/page.tsx",
+      "routeTemplate": "/tools/obj-to-skp-converter",
+      "status": "under-review",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
