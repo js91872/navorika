@@ -50,9 +50,13 @@ jobs:
           from openskp import SkpFile
           path = '/tmp/obj-to-skp-poc/cube.skp'
           model = SkpFile.open(path).parse()
-          face_count = sum(len(d.faces) for d in model.definitions.values())
-          print('OpenSKP independent parse:', 'definitions', len(model.definitions), 'faces', face_count)
-          assert face_count >= 6, 'SKP output missing cube geometry'
+          root_faces = len(model.root.faces)
+          component_faces = sum(len(d.faces) for d in model.definitions.values())
+          face_count = root_faces + component_faces
+          print('OpenSKP independent parse:', 'root faces', root_faces, 'component faces', component_faces, 'total faces', face_count)
+          assert root_faces == 6, f'Expected 6 cube root faces, got {root_faces}'
+          assert len(model.root.vertices) >= 8, 'SKP output missing cube vertices'
+          assert len(model.materials) >= 1, 'SKP output missing diffuse material'
           PY
       - name: Upload SKP validation artifact
         if: success()
