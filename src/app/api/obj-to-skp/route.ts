@@ -55,7 +55,7 @@ export async function POST(request: Request) {
   // Reject chunked/unknown-length request bodies until a streaming byte cap is in place.
   // Nginx must separately enforce client_max_body_size 32m before beta enablement.
   const lengthHeader = request.headers.get('content-length');
-  if (!lengthHeader || !/^\\d+$/.test(lengthHeader)) return fail('A Content-Length header is required for CAD uploads.', 411);
+  if (!lengthHeader || !/^\d+$/.test(lengthHeader)) return fail('A Content-Length header is required for CAD uploads.', 411);
   const requestBytes = Number(lengthHeader);
   if (!Number.isSafeInteger(requestBytes) || requestBytes > 32_000_000) return fail('Request exceeds the 32 MB limit.', 413);
   active += 1;
