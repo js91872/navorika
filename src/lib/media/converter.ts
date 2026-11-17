@@ -19,7 +19,7 @@ export async function convertMediaFile(
   const isInputAudio = file.type.startsWith('audio/') || /\.(mp3|m4a|aac|ogg|wav)$/i.test(file.name);
 
   // Attempt fast native Web Audio API conversion if target is WAV and input is standard audio
-  if (isTargetWav && isInputAudio && typeof window !== 'undefined' && (window.AudioContext || (window as unknown as { webkitAudioContext: unknown }).webkitAudioContext)) {
+  if (isTargetWav && isInputAudio && !options.startSeconds && !options.endSeconds && !options.sampleRate && !options.channels && !options.volume && typeof window !== 'undefined' && (window.AudioContext || (window as unknown as { webkitAudioContext: unknown }).webkitAudioContext)) {
     try {
       const nativeResult = await convertAudioFileToWavNative(file, onProgress);
       const filename = generateOutputFilename(file.name, 'wav');
@@ -42,7 +42,8 @@ export async function convertMediaFile(
     outputFormat,
     bitrate,
     onProgress,
-    signal
+    signal,
+    options
   );
 
   const filename = generateOutputFilename(file.name, outputFormat);
