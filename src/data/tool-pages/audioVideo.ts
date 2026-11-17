@@ -151,7 +151,7 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
     category: 'Developer Tools',
     applicationCategory: 'UtilitiesApplication',
     description:
-      'Convert MP4 videos directly to MP3 audio files in your browser. Fast, free, private client-side audio extraction with selectable bitrates up to 320 kbps.',
+      'Extract MP3 audio from MP4 videos locally in your browser. Batch convert clips, trim recordings, select bitrate and download all results as ZIP.',
     longTailKeywords: [
       'mp4 to mp3 converter',
       'convert mp4 to mp3',
@@ -161,31 +161,31 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
       'private mp4 to mp3 converter',
     ],
     intro: [
-      'Transform MP4 video clips, webinars, camera recordings, and presentations into standalone MP3 audio files.',
-      'Engineered specifically for the ISO/IEC 14496-14 (MP4) container format containing AAC or MP3 audio tracks.',
-      'Runs locally on your device without server uploads, file retention policies, or subscription paywalls.',
+      'Extract the audio track from MP4 recordings, webinars, lectures, and camera videos without retaining the video stream in the MP3 output.',
+      'The converter reads an MP4 audio stream, decodes it and encodes MP3; it does not simply rename the MP4 extension or copy video data.',
+      'Process one MP4 or a batch of up to 20 files locally, with optional start/end trimming, sample-rate selection, mono/stereo controls and ZIP export.',
     ],
     steps: [
-      'Choose or drop an MP4 video file from your computer or mobile device.',
-      'Configure the target MP3 encoding bitrate (192 kbps default, or 320 kbps for studio quality).',
-      'Click Convert to MP3 to begin local WebAssembly extraction.',
-      'Save the extracted MP3 audio track directly to your local storage.',
+      'Select one or more MP4 video files, up to 20 per batch and 500 MB per file.',
+      'Select an MP3 bitrate from 96 to 320 kbps; 192 kbps is a practical default for many recordings.',
+      'Optionally enter a trim range, set output sample rate or channels, and adjust audio volume before conversion.',
+      'Download the MP3 audio or collect multiple converted tracks in one ZIP archive.',
     ],
     interpretation: [
       'MP4 files typically store audio in Advanced Audio Coding (AAC) format. Converting to MP3 transcode packets into MPEG-1 Audio Layer III.',
-      'The converted audio maintains original channel synchronization and timing without video overhead.',
+      'MP3 contains audio only. If you choose a trim range, the exported track contains only that portion of the recording.',
       'Resulting files play universally on all portable devices, in-car entertainment systems, and audio editors.',
     ],
     limitations: [
       'Files with corrupted MP4 moov atoms may fail to initialize until repaired.',
-      'Multi-track MP4 files: The converter extracts the primary default audio stream.',
-      'File size bounded at 500 MB for browser stability.',
+      'MP4 files with multiple audio tracks: the converter uses the first available audio stream, which may not be your preferred language.',
+      'Files are limited to 500 MB each. Large batches require browser memory, and MP4 files without an audio stream cannot produce MP3 output.',
     ],
     faqs: [
       {
         question: 'Why convert MP4 to MP3?',
         answer:
-          'Converting MP4 to MP3 strips heavy video frames, reducing file size by up to 90% so you can listen to speeches, podcasts, or music on any audio player.',
+          'MP3 keeps the audio and excludes the video stream. Size savings depend on the video bitrate, duration and chosen MP3 bitrate.',
       },
       {
         question: 'Is it safe to convert confidential MP4 meetings or lectures?',
@@ -195,7 +195,7 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
       {
         question: 'How long does an MP4 to MP3 conversion take?',
         answer:
-          'For typical 5 to 15-minute MP4 videos, conversion usually takes between 5 and 20 seconds depending on your CPU speed.',
+          'Time varies with file size, codec, duration, device performance and browser memory. Longer videos and batches can take several minutes.',
       },
     ],
     relatedTools: [
@@ -523,7 +523,7 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
     category: 'Developer Tools',
     applicationCategory: 'UtilitiesApplication',
     description:
-      'Convert large uncompressed WAV files to compact MP3 audio directly in your browser. Reduce file size by up to 90% with custom bitrate control.',
+      'Batch convert WAV recordings to MP3 in your browser. Choose bitrate, trim audio, adjust channels and sample rate, and download a ZIP without uploading files.',
     longTailKeywords: [
       'wav to mp3 converter',
       'convert wav to mp3',
@@ -533,24 +533,24 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
       'high quality wav to mp3',
     ],
     intro: [
-      'Compress uncompressed 16-bit and 24-bit WAV audio files into lightweight, universally compatible MP3 files.',
-      'Uncompressed WAV files from recording studios, Zoom audio feeds, and musical instruments take up huge amounts of disk space (approx. 10 MB per minute).',
-      'Convert WAV to MP3 locally on your device to shrink file sizes by up to 90% while preserving crisp, professional acoustic clarity.',
+      'Convert one WAV recording or a batch of up to 20 files into MP3 audio. Download a single MP3 or a ZIP containing your converted files.',
+      'WAV often stores uncompressed PCM audio, so recordings can be large. At 44.1 kHz, 16-bit stereo PCM, one minute occupies about 10.6 MB before file overhead.',
+      'Select a bitrate from 96 to 320 kbps, trim a section, choose mono or stereo, and adjust volume before encoding locally with FFmpeg WebAssembly.',
     ],
     steps: [
-      'Select or drop your WAV audio file into the tool.',
-      'Choose your target MP3 bitrate: 128 kbps for speech, 192 kbps for streaming, or 320 kbps for near-lossless music fidelity.',
-      'Click Convert to MP3 to encode the audio using local WebAssembly.',
-      'Download your compressed MP3 file immediately.',
+      'Select one or several WAV files (up to 20) or drag them into the tool.',
+      'Choose MP3 bitrate: 128 kbps for spoken audio, 192 kbps as a balanced default, or 320 kbps for higher-quality lossy audio.',
+      'Optionally enter trim start/end times, select 44.1 or 48 kHz, choose mono/stereo, and adjust volume before converting.',
+      'Download the MP3, or download a ZIP archive when converting multiple WAV files.',
     ],
     interpretation: [
       'WAV audio contains raw uncompressed PCM sample data. MP3 uses psychoacoustic compression to eliminate frequencies inaudible to human ears.',
-      'A 50 MB WAV file typically compresses into a 5 MB MP3 file at 192 kbps without noticeable acoustic degradation.',
-      'The converted MP3 preserves sample rate and stereo balance.',
+      'MP3 size depends mainly on bitrate and duration: one minute at 192 kbps is approximately 1.44 MB, excluding small metadata overhead.',
+      'The output can retain the source channel layout or use your selected mono/stereo and 44.1/48 kHz settings; MP3 remains a lossy format.',
     ],
     limitations: [
-      'Extremely high sample rate files (e.g. 192 kHz) are resampled to standard 44.1 kHz or 48 kHz for MP3 compliance.',
-      'Oversized WAV recordings exceeding 500 MB must be split before browser conversion.',
+      'Not all WAV codecs and unusual sampling formats are supported by the browser-based FFmpeg build. Optional 44.1/48 kHz resampling is available.',
+      'Each WAV must be at most 500 MB; large batches can consume significant device memory and take longer to process.',
       'MP3 encoding is lossy; keep your original WAV file if future studio mastering is required.',
     ],
     faqs: [
@@ -562,12 +562,12 @@ export const audioVideoToolPages: Record<string, ToolPageContent> = {
       {
         question: 'Which bitrate gives the closest quality to the original WAV?',
         answer:
-          '320 kbps is the maximum bitrate supported by the MP3 standard and offers near-transparent fidelity compared to the original WAV.',
+          '320 kbps is the highest available MP3 bitrate here. It reduces compression artifacts but cannot make lossy MP3 identical to the original WAV.',
       },
       {
         question: 'Can I convert 24-bit studio WAV files?',
         answer:
-          'Yes. 16-bit, 24-bit, and 32-bit float WAV files are accurately parsed and encoded.',
+          'Common PCM WAV variants can be converted, including many 16-bit, 24-bit and floating-point files, provided the browser FFmpeg build supports the input codec.',
       },
     ],
     relatedTools: [
