@@ -15,6 +15,16 @@ import json
 import math
 from pathlib import Path
 
+# POSIX resource caps limit untrusted conversion subprocesses independently of
+# Node/PM2. These limits apply before the OpenSKP/numpy imports in convert().
+def _apply_resource_limits():
+    import resource
+    resource.setrlimit(resource.RLIMIT_CPU, (25, 25))
+    resource.setrlimit(resource.RLIMIT_AS, (2 * 1024**3, 2 * 1024**3))
+    resource.setrlimit(resource.RLIMIT_FSIZE, (65 * 1024**2, 65 * 1024**2))
+    resource.setrlimit(resource.RLIMIT_NOFILE, (128, 128))
+
+
 
 def _obj_index(raw: str, count: int, line_number: int, label: str) -> int:
     number = int(raw)
@@ -210,4 +220,5 @@ def main():
 
 
 if __name__ == "__main__":
+    _apply_resource_limits()
     main()
