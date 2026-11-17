@@ -52,13 +52,19 @@ export async function POST(request: Request) {
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
   if (!rateLimit('obj-skp:' + ip, 3, 60_000).success) return fail('Too many conversions. Try again in one minute.', 429);
   if (active >= 1) return fail('Converter busy. Try again shortly.', 503);
-  if (Number(request.headers.get('content-length') || 0) > 32_000_000) return fail('Request exceeds the 32 MB limit.', 413);
+  // Reject chunked/unknown-length request bodies until a streaming byte cap is in place.
+  // Nginx must separately enforce client_max_body_size 32m before beta enablement.
+  const lengthHeader = request.headers.get('content-length');
+  if (!lengthHeader || !/^\\d+$/.test(lengthHeader)) return fail('A Content-Length header is required for CAD uploads.', 411);
+  const requestBytes = Number(lengthHeader);
+  if (!Number.isSafeInteger(requestBytes) || requestBytes > 32_000_000) return fail('Request exceeds the 32 MB limit.', 413);
   active += 1;
   let directory: string | undefined;
   try {
     const form = await request.formData();
     const unitMm = String(form.get('unitMm') || '1000');
     if (!['1', '10', '25.4', '1000'].includes(unitMm)) return fail('Choose a supported model unit.', 400);
+    if (form.getAll('obj').length !== 1) return fail('Provide exactly one OBJ model.', 400);
     const obj = form.get('obj');
     if (!(obj instanceof File) || !obj.name.toLowerCase().endsWith('.obj')) return fail('Select one OBJ file.', 400);
     if (obj.size < 1 || obj.size > maxSize) return fail('OBJ must be under 20 MB.', 413);
