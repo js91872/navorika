@@ -77,6 +77,13 @@ export const categories: Category[] = [
 
 export const tools: RegisteredTool[] = ([
   {
+    slug: 'internet-speed-test',
+    title: 'Internet Speed Test – Check Wi-Fi, Ping and Upload Speed',
+    description: 'Measure download speed, upload speed, latency and jitter. Compare Wi-Fi measurements from two rooms or retest on mobile data.',
+    category: 'developer-tools',
+    keywords: ['internet speed test', 'wifi speed test', 'speed test', '5g speed test', 'ping test'],
+  },
+  {
     slug: 'eml-to-pdf', title: 'Free EML to PDF Converter Online',
     description: 'Create a readable PDF with email headers, message text and attachment names. Western European text is searchable; other scripts may render as images.',
     category: 'developer-tools',

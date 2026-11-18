@@ -10,24 +10,24 @@
     "de"
   ],
   "summary": {
-    "tools": 342,
+    "tools": 343,
     "publishedTools": 319,
-    "pendingTools": 17,
+    "pendingTools": 18,
     "underReviewTools": 6,
     "sharedCalculators": 75,
     "guides": 82,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
-    "targetToolTranslations": 2352,
+    "targetToolTranslations": 2359,
     "pendingGuideTranslations": 567,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4786,
-      "visibleAttribute": 427,
-      "semanticCopy": 13150,
-      "reviewLiteral": 51067
+      "jsxText": 4803,
+      "visibleAttribute": 431,
+      "semanticCopy": 13162,
+      "reviewLiteral": 51235
     },
-    "candidateCopyWords": 386855
+    "candidateCopyWords": 387091
   },
   "tools": [
     {
@@ -4325,6 +4325,24 @@
       "definitionSource": null,
       "sources": [
         "src/app/(english)/tools/interleave-pdf/page.tsx"
+      ]
+    },
+    {
+      "slug": "internet-speed-test",
+      "title": "Internet Speed Test – Check Wi-Fi, Ping and Upload Speed",
+      "category": "developer-tools",
+      "route": "/tools/internet-speed-test",
+      "source": "src/app/(english)/tools/internet-speed-test/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/internet-speed-test/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/network/SpeedTest.tsx"
       ]
     },
     {
@@ -10867,6 +10885,12 @@
       "source": "src/app/(english)/tools/interleave-pdf/page.tsx",
       "routeTemplate": "/tools/interleave-pdf",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/internet-speed-test/page.tsx",
+      "routeTemplate": "/tools/internet-speed-test",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

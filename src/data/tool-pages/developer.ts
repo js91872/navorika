@@ -3,6 +3,38 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const local = 'Input is processed locally in your browser and is not sent to Navorika.';
 
 export const developerToolPages: Record<string, ToolPageContent> = {
+  'internet-speed-test': {
+    slug: 'internet-speed-test',
+    name: 'Internet Speed Test – Check Wi-Fi, Ping and Upload Speed',
+    description: 'Measure download speed, upload speed, latency and jitter. Compare Wi-Fi measurements from two rooms or retest on mobile data.',
+    category: 'Developer Tools',
+    applicationCategory: 'UtilitiesApplication',
+    longTailKeywords: ['internet speed test', 'wifi speed test', 'speed test', '5g speed test', 'check upload speed'],
+    intro: ['Use this speed test to measure the connection between your browser and the selected test server. Run it near your router and again in another room to see how the connection changes.'],
+    steps: [
+      'Choose a server and start with Quick mode. Switch to Full mode for a longer sample if your connection is fast.',
+      'Stop other large downloads and label the first test Near router.',
+      'Move to the room you want to check. Choose Another room, keep the same server and mode, and test again.',
+    ],
+    interpretation: [
+      'Download speed is how quickly your browser receives data. Upload speed matters when sending large files or broadcasting video.',
+      'Idle latency measures the response time to the test server. Loaded latency shows how that response time changes while the connection is busy.',
+      'Jitter is the average change between consecutive idle latency samples. A fast connection can still feel uneven when latency varies.',
+      'If speed drops in another room but improves near the router, try placing the router higher and in the open, then repeat the two tests.',
+    ],
+    limitations: [
+      'Results reflect a single browser, device, route, and test server. Very fast connections can finish a fixed-size transfer too quickly for a stable estimate.',
+      'Loaded latency may be unavailable when a transfer is too short to collect two samples.',
+      'The measurement sends generated test data to the selected server, which receives the IP address required to return traffic. Comparison history is stored in your browser.',
+    ],
+    faqs: [
+      { question: 'How do I test my Wi-Fi speed?', answer: 'Connect to Wi-Fi, pause other transfers, and start the test. Repeat near the router and in the problem room on the same server and mode.' },
+      { question: 'Can I run a 5G speed test?', answer: 'Turn off Wi-Fi on your phone, check that the status bar shows 5G, and run Quick mode to limit data use. The browser measures the active connection.' },
+      { question: 'How much data will the test use?', answer: 'Quick transfers up to 10 MiB and Full transfers up to 80 MiB of test payload across upload and download. Protocol overhead adds a small amount.' },
+    ],
+    relatedTools: [],
+    relatedGuides: [],
+  },
   'merge-xml-files': {
     slug: 'merge-xml-files',
     name: 'Merge XML Files Online – Combine Multiple XML Files',

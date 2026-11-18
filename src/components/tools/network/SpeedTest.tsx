@@ -1,0 +1,211 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import { configuredSpeedServers, measureSpeed, testModes } from '@/lib/network/speedTest';
+import type { Phase, SpeedResult, TestMode } from '@/lib/network/speedTest';
+
+const servers = configuredSpeedServers();
+const labels = ['Near router', 'Another room', 'Ethernet', 'Mobile data', 'Other'];
+const historyKey = 'navorika-speed-test-history-v1';
+const embedCode = '<iframe src="https://navorika.com/embed/internet-speed-test" title="Navorika Internet Speed Test" width="100%" height="650" loading="lazy" style="border:0"></iframe>';
+type Run = SpeedResult & { label: string; server: string; mode: TestMode; time: number };
+const metricNames = {
+  download: ['Download', 'Mbps'], upload: ['Upload', 'Mbps'], latency: ['Idle latency', 'ms'],
+  jitter: ['Jitter', 'ms'], downloadLatency: ['Download latency', 'ms'], uploadLatency: ['Upload latency', 'ms'],
+} as const;
+type Metric = keyof typeof metricNames;
+const metrics = Object.keys(metricNames) as Metric[];
+const format = (value: number | null) => value === null ? '—' : new Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(value);
+const field = 'rounded-lg border border-slate-600 bg-slate-900 px-2 py-2 text-sm text-white';
+const action = 'rounded-lg border border-slate-600 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800';
+
+export default function SpeedTest({ embed = false }: { embed?: boolean }) {
+  const [mode, setMode] = useState<TestMode>('quick');
+  const [label, setLabel] = useState(labels[0]);
+  const [serverIndex, setServerIndex] = useState(0);
+  const [phase, setPhase] = useState<Phase>();
+  const [samples, setSamples] = useState<number[]>([]);
+  const [result, setResult] = useState<Run>();
+  const [history, setHistory] = useState<Run[]>([]);
+  const [compareIndex, setCompareIndex] = useState(0);
+  const [message, setMessage] = useState('');
+  const controller = useRef<AbortController | null>(null);
+  const server = servers[serverIndex];
+  const previous = history[compareIndex + 1];
+  const comparable = Boolean(result && previous && result.server === previous.server && result.mode === previous.mode);
+  const speed = result?.download ?? (phase === 'Downloading' ? samples.at(-1) : undefined) ?? 0;
+  const maxSpeed = Math.max(100, ...samples, speed);
+  const plot = samples.map((sample, index) =>
+    `${(index / Math.max(1, samples.length - 1)) * 200},${38 - sample / maxSpeed * 36}`).join(' ');
+
+  useEffect(() => () => controller.current?.abort(), []);
+
+  function saveHistory(run: Run) {
+    let saved: Run[] = [];
+    try {
+      const data: unknown = JSON.parse(localStorage.getItem(historyKey) ?? '[]');
+      if (Array.isArray(data)) saved = data.filter((item): item is Run =>
+        item && typeof item.time === 'number' && typeof item.server === 'string' &&
+        typeof item.label === 'string' && item.mode in testModes &&
+        metrics.every((key) => item[key] === null || Number.isFinite(item[key])));
+    } catch {
+      // Storage can be disabled or contain data from an interrupted write.
+    }
+    const next = [run, ...(history.length ? history : saved)].slice(0, 8);
+    setHistory(next);
+    setCompareIndex(0);
+    try {
+      localStorage.setItem(historyKey, JSON.stringify(next));
+    } catch {
+      // Comparison still works in the current session.
+    }
+  }
+
+  async function start() {
+    if (!server || controller.current) return;
+    const test = new AbortController();
+    controller.current = test;
+    setMessage('');
+    setResult(undefined);
+    setSamples([]);
+    setPhase('Checking latency');
+    try {
+      const measured = await measureSpeed(server.endpoint, mode, test.signal, (next, speedSample) => {
+        setPhase(next);
+        if (speedSample !== undefined) setSamples((current) => [...current.slice(-79), speedSample]);
+      });
+      if (test.signal.aborted) return;
+      const run = { ...measured, label, mode, server: server.name, time: Date.now() };
+      setResult(run);
+      if (!embed) saveHistory(run);
+    } catch {
+      setMessage(test.signal.aborted ? 'Test stopped.' : 'The measurement server could not complete the test. Try again or choose another server.');
+    } finally {
+      if (controller.current === test) {
+        controller.current = null;
+        setPhase(undefined);
+      }
+    }
+  }
+
+  async function copy(text: string, confirmation: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+      setMessage(confirmation);
+    } catch {
+      setMessage('Clipboard access is unavailable.');
+    }
+  }
+
+  return (
+    <section aria-label="Internet speed test" className="overflow-hidden rounded-2xl border border-slate-700 bg-[radial-gradient(ellipse_at_top,#16354c,#0b1425_55%)] p-4 text-white sm:p-6">
+      <div className="mx-auto max-w-3xl">
+        <div className="relative mx-auto grid h-48 w-56 place-items-center">
+          <svg viewBox="0 0 224 160" className="absolute inset-x-0 top-4 w-full" aria-hidden="true">
+            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="#3f566e" strokeWidth="9" strokeLinecap="round" pathLength="100" />
+            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="#5eead4" strokeWidth="9" strokeLinecap="round" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} />
+          </svg>
+          <div className="relative mt-6 text-center">
+            <div className="text-xs font-semibold text-teal-200">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
+            <div className="mt-1 text-4xl font-black tabular-nums">{speed ? format(speed) : '—'}</div>
+            <div className="text-xs text-slate-300">Mbps</div>
+          </div>
+        </div>
+        {samples.length > 1 && (
+          <svg viewBox="0 0 200 40" className="mx-auto mb-3 h-10 w-48" role="img" aria-label="Download speed during the test">
+            <polyline points={plot} fill="none" stroke="#5eead4" strokeWidth="2" />
+          </svg>
+        )}
+        <div className="flex flex-wrap items-end justify-center gap-3">
+          <label className="grid gap-1 text-xs text-slate-200">
+            Test mode
+            <select className={field} value={mode} disabled={!!phase} onChange={(event) => setMode(event.target.value as TestMode)}>
+              <option value="quick">{testModes.quick.label}</option>
+              <option value="full">{testModes.full.label}</option>
+            </select>
+          </label>
+          {servers.length > 0 && (
+            <label className="grid gap-1 text-xs text-slate-200">
+              Test server
+              <select className={field} value={serverIndex} disabled={!!phase} onChange={(event) => setServerIndex(Number(event.target.value))}>
+                {servers.map(({ name, endpoint }, index) => <option key={endpoint} value={index}>{name}</option>)}
+              </select>
+            </label>
+          )}
+          {!embed && (
+            <label className="grid gap-1 text-xs text-slate-200">
+              Label this run
+              <select className={field} value={label} disabled={!!phase} onChange={(event) => setLabel(event.target.value)}>
+                {labels.map((item) => <option key={item}>{item}</option>)}
+              </select>
+            </label>
+          )}
+          <button type="button" disabled={!server} onClick={phase ? () => controller.current?.abort() : start}
+            className="rounded-lg bg-teal-300 px-6 py-2.5 text-sm font-bold text-slate-950 hover:bg-teal-200 disabled:opacity-50">
+            {phase ? 'Stop test' : result ? 'Test again' : 'Start test'}
+          </button>
+        </div>
+        <p role="status" className="mt-3 text-center text-sm text-slate-200">
+          {message || phase || (!server ? 'Speed test servers are currently unavailable.' : result ? 'Test complete.' : 'The test transfers generated data to the selected server.')}
+        </p>
+        {result && (
+          <>
+            <dl className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
+              {metrics.map((key) => {
+                const [name, unit] = metricNames[key];
+                return <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-3" key={key}>
+                  <dt className="text-xs text-slate-300">{name}</dt>
+                  <dd className="mt-1 font-bold tabular-nums">{format(result[key])} <span className="text-xs font-normal text-slate-300">{unit}</span></dd>
+                </div>;
+              })}
+            </dl>
+            <p className="mt-3 text-sm text-slate-200">{result.server} · {format(result.bytes / 1024 ** 2)} MiB of test data</p>
+            {result.shortSample && <p className="mt-2 text-sm text-amber-200">A transfer finished quickly. Rerun in Full mode if you used Quick, or treat the result as approximate.</p>}
+            {(result.downloadLatency !== null || result.uploadLatency !== null) && (
+              <p className="mt-2 text-sm text-slate-200">
+                {Math.max(result.downloadLatency ?? 0, result.uploadLatency ?? 0) - result.latency >= 100
+                  ? 'Latency rose under load. If calls lag while other devices are busy, pause large downloads or backups and retest.'
+                  : 'Compare idle and loaded latency to see how responsive this connection stays during transfers.'}
+              </p>
+            )}
+            {!embed && previous && (
+              <div className="mt-5 rounded-xl border border-slate-700 p-3">
+                <label className="flex flex-wrap items-center gap-2 text-sm">
+                  Compare with
+                  <select className={field} value={compareIndex} onChange={(event) => setCompareIndex(Number(event.target.value))}>
+                    {history.slice(1).map((run, index) => <option key={index} value={index}>{run.label} · {new Date(run.time).toLocaleString()}</option>)}
+                  </select>
+                </label>
+                <p className="mt-2 text-xs text-slate-200">{result.label} compared with {previous.label}</p>
+                <div className="mt-2 overflow-x-auto">
+                  <table className="w-full text-left text-sm">
+                    <thead><tr><th>Metric</th><th>Current</th><th>Previous</th>{comparable && <th>Change</th>}</tr></thead>
+                    <tbody>{metrics.map((key) => {
+                      const value = result[key];
+                      const before = previous[key];
+                      const delta = value === null || before === null ? null : value - before;
+                      return <tr key={key}><th scope="row" className="py-1 font-normal">{metricNames[key][0]}</th>
+                        <td>{format(value)}</td><td>{format(before)}</td>
+                        {comparable && <td>{delta !== null && delta > 0 ? '+' : ''}{format(delta)}</td>}</tr>;
+                    })}</tbody>
+                  </table>
+                </div>
+                {!comparable && <p className="mt-2 text-sm text-amber-200">Use the same server and mode for a like-for-like comparison.</p>}
+              </div>
+            )}
+            {!embed && <button type="button" className={`${action} mt-4`} onClick={() => copy(
+              ['Navorika Internet Speed Test', result.server, ...metrics.map((key) => `${metricNames[key][0]}: ${format(result[key])} ${metricNames[key][1]}`)].join('\n'),
+              'Result copied.')} >Copy result</button>}
+          </>
+        )}
+        {embed ? <a className="mt-4 block text-center text-xs text-teal-200 underline" href="https://navorika.com/tools/internet-speed-test" target="_blank" rel="nofollow noopener">Powered by Navorika.com</a> : (
+          <details className="mt-5 border-t border-slate-700 pt-3 text-sm text-slate-200">
+            <summary className="cursor-pointer font-semibold">Embed this speed test</summary>
+            <textarea className={`${field} mt-3 block w-full`} aria-label="Iframe embed code" rows={3} readOnly value={embedCode} />
+            <button type="button" className={`${action} mt-2`} onClick={() => copy(embedCode, 'Embed code copied.')}>Copy embed code</button>
+          </details>
+        )}
+      </div>
+    </section>
+  );
+}
