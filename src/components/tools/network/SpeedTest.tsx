@@ -135,7 +135,7 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
           <p role="status" className="mt-3 text-center text-sm text-[var(--muted-foreground)]">
             {message || phase || (!server ? 'Speed test servers are currently unavailable.' : result ? 'Test complete.' : 'The test transfers generated data to the selected server.')}
           </p>
-          <div className="relative mx-auto mt-3 grid h-44 w-72 max-w-full place-items-center overflow-hidden rounded-2xl border border-slate-700 bg-[radial-gradient(ellipse_at_center,#183049,#080f1d_72%)]">
+          <div className="relative mx-auto mt-3 grid h-44 w-72 max-w-full place-items-center bg-[radial-gradient(ellipse_at_center,#22d3ee20,transparent_68%)]">
             <svg viewBox="0 0 224 160" className="absolute inset-0 mx-auto h-full w-full" aria-hidden="true">
               <defs>
                 <linearGradient id={`${gaugeId}-spectrum`} x1="0%" y1="100%" x2="100%" y2="0%">
@@ -148,16 +148,16 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
                 </mask>
               </defs>
               <path d="M 33 151 A 95 95 0 1 1 191 151" fill="none" stroke="#68839e" strokeWidth="2" pathLength="100" strokeDasharray="0.5 3.5" />
-              <path d="M 51 140 A 74 74 0 1 1 173 140" fill="none" stroke="#345570" strokeWidth="1" />
+              <path d="M 51 140 A 74 74 0 1 1 173 140" fill="none" stroke="var(--border)" strokeWidth="1" />
               <g mask={`url(#${gaugeId}-segments)`}>
-                <path d={gaugeArc} fill="none" stroke="#304c63" strokeWidth="12" />
+                <path d={gaugeArc} fill="none" stroke="var(--border)" strokeWidth="12" />
                 <path d={gaugeArc} className="motion-safe:transition-[stroke-dasharray] motion-safe:duration-300" fill="none" stroke={`url(#${gaugeId}-spectrum)`} strokeWidth="12" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} />
               </g>
             </svg>
             <div className="relative mt-5 max-w-[62%] text-center">
-              <div className="text-[10px] font-semibold uppercase tracking-widest text-cyan-200">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
-              <div className="mt-1 font-mono text-3xl font-bold tracking-tight text-white tabular-nums [text-shadow:0_0_14px_#22d3ee80]">{speed ? format(speed) : '—'}</div>
-              <div className="font-mono text-xs tracking-wider text-slate-300">Mbps</div>
+              <div className="text-[10px] font-semibold uppercase tracking-widest text-cyan-800 dark:text-cyan-200">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
+              <div className="mt-1 font-mono text-3xl font-bold tracking-tight text-[var(--foreground)] tabular-nums [text-shadow:0_0_14px_#22d3ee60]">{speed ? format(speed) : '—'}</div>
+              <div className="font-mono text-xs tracking-wider text-[var(--muted-foreground)]">Mbps</div>
             </div>
           </div>
           {samples.length > 1 && (
