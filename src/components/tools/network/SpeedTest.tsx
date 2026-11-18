@@ -133,14 +133,16 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
           <p role="status" className="mt-3 text-center text-sm text-[var(--muted-foreground)]">
             {message || phase || (!server ? 'Speed test servers are currently unavailable.' : result ? 'Test complete.' : 'The test transfers generated data to the selected server.')}
           </p>
-          <div className="relative mx-auto grid h-44 w-52 place-items-center">
-            <svg viewBox="0 0 224 160" className="absolute inset-x-0 top-2 w-full" aria-hidden="true">
-              <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--border)" strokeWidth="9" strokeLinecap="round" pathLength="100" />
-              <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--primary)" strokeWidth="9" strokeLinecap="round" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} />
+          <div className="relative mx-auto grid h-44 w-60 max-w-full place-items-center">
+            <svg viewBox="0 0 224 160" className="absolute inset-x-0 top-0 w-full" aria-hidden="true">
+              <path d="M 33 151 A 95 95 0 1 1 191 151" fill="none" stroke="var(--muted-foreground)" strokeWidth="3" pathLength="100" strokeDasharray="0.7 3.3" opacity="0.48" />
+              <path d="M 51 140 A 74 74 0 1 1 173 140" fill="none" stroke="var(--border)" strokeWidth="1" />
+              <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--border)" strokeWidth="10" strokeLinecap="round" pathLength="100" />
+              <path d="M 42 142 A 85 85 0 1 1 182 142" className="drop-shadow-[0_0_5px_var(--primary-light)] motion-safe:transition-[stroke-dasharray] motion-safe:duration-300" fill="none" stroke="var(--primary)" strokeWidth="10" strokeLinecap="round" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} visibility={speed > 0 ? 'visible' : 'hidden'} />
             </svg>
-            <div className="relative mt-6 text-center">
+            <div className="relative mt-5 max-w-full text-center">
               <div className="text-xs font-semibold text-red-700 dark:text-red-300">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
-              <div className="mt-1 text-4xl font-black tabular-nums">{speed ? format(speed) : '—'}</div>
+              <div className="mt-1 text-4xl font-black tracking-tight tabular-nums">{speed ? format(speed) : '—'}</div>
               <div className="text-xs text-[var(--muted-foreground)]">Mbps</div>
             </div>
           </div>
@@ -148,6 +150,13 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
             <svg viewBox="0 0 200 40" className="mx-auto mb-3 h-10 w-48" role="img" aria-label="Download speed during the test">
               <polyline points={plot} fill="none" stroke="var(--primary)" strokeWidth="2" />
             </svg>
+          )}
+          {!embed && (
+            <details className="mt-2 rounded-xl border border-[var(--border)] bg-[var(--card)] p-3 text-sm text-[var(--muted-foreground)]">
+              <summary className="cursor-pointer font-semibold">Embed this speed test</summary>
+              <textarea className={`${field} mt-3 block w-full`} aria-label="Iframe embed code" rows={3} readOnly value={embedCode} />
+              <button type="button" className={`${action} mt-2`} onClick={() => copy(embedCode, 'Embed code copied.')}>Copy embed code</button>
+            </details>
           )}
         </div>
         <div className="min-w-0 rounded-xl border border-[var(--border)] bg-[var(--card)] p-3">
@@ -207,13 +216,7 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
             </p>
           )}
         </div>
-        {embed ? <a className="mt-4 block text-center text-xs text-red-700 dark:text-red-300 underline" href="https://navorika.com/tools/internet-speed-test" target="_blank" rel="nofollow noopener">Powered by Navorika.com</a> : (
-          <details className="border-t border-[var(--border)] pt-3 text-sm md:col-span-2 text-[var(--muted-foreground)]">
-            <summary className="cursor-pointer font-semibold">Embed this speed test</summary>
-            <textarea className={`${field} mt-3 block w-full`} aria-label="Iframe embed code" rows={3} readOnly value={embedCode} />
-            <button type="button" className={`${action} mt-2`} onClick={() => copy(embedCode, 'Embed code copied.')}>Copy embed code</button>
-          </details>
-        )}
+        {embed && <a className="mt-4 block text-center text-xs text-red-700 dark:text-red-300 underline" href="https://navorika.com/tools/internet-speed-test" target="_blank" rel="nofollow noopener">Powered by Navorika.com</a>}
       </div>
     </section>
   );
