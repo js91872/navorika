@@ -1,4 +1,5 @@
 import { locales, localizedPath, translatedTools, languageAlternates, isTranslatedTool, publicPageAlternates } from '@/lib/i18n/config';
+import { hasPublicSpeedTestServer } from '@/lib/network/speedTest';
 import type { MetadataRoute } from 'next';
 import { categories, tools } from '@/data/registry';
 import { getFinanceSuiteUrls } from '@/lib/seo/financeSuite';
@@ -62,7 +63,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/paper-sizes/us-letter-vs-a4',
   ];
   const staticPages = staticPaths.map((path) => ({ url: `${baseUrl}${path}` }));
+  const speedTestReady = hasPublicSpeedTestServer();
   const toolPages = tools
+    .filter(({ slug }) => slug !== 'internet-speed-test' || speedTestReady)
     .filter(({ slug }) => !financeSuiteRoots.has(slug) && !toolsUnderReview.has(slug) && !nonCanonicalToolSlugs.has(slug))
     .map(({ slug }) => ({ url: `${baseUrl}/tools/${slug}` }));
   const financeSuitePages = getFinanceSuiteUrls()

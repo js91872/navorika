@@ -158,3 +158,7 @@ export function configuredSpeedServers() {
     }
   });
 }
+
+export function hasPublicSpeedTestServer() {
+  return configuredSpeedServers().some(({ endpoint }) => endpoint.startsWith('https://'));
+}

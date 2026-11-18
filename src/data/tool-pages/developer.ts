@@ -5,11 +5,18 @@ const local = 'Input is processed locally in your browser and is not sent to Nav
 export const developerToolPages: Record<string, ToolPageContent> = {
   'internet-speed-test': {
     slug: 'internet-speed-test',
-    name: 'Internet Speed Test – Check Wi-Fi, Ping and Upload Speed',
-    description: 'Measure download speed, upload speed, latency and jitter. Compare Wi-Fi measurements from two rooms or retest on mobile data.',
+    name: 'Internet Speed Test – Check Wi-Fi Speed, Upload & Ping',
+    description: 'Run a free internet speed test for download, upload, ping and jitter. Compare Wi-Fi in two rooms or check the speed of your 5G connection.',
     category: 'Developer Tools',
     applicationCategory: 'UtilitiesApplication',
     longTailKeywords: ['internet speed test', 'wifi speed test', 'speed test', '5g speed test', 'check upload speed'],
+    breadcrumb: { parentName: 'Tools', parentPath: '/tools', label: 'Internet Speed Test' },
+    features: [
+      'Download and upload throughput in Mbps',
+      'Idle latency, loaded latency and jitter',
+      'Quick and Full modes with stated test data limits',
+      'Side-by-side comparison of saved test runs',
+    ],
     intro: ['Use this speed test to measure the connection between your browser and the selected test server. Run it near your router and again in another room to see how the connection changes.'],
     steps: [
       'Choose a server and start with Quick mode. Switch to Full mode for a longer sample if your connection is fast.',
@@ -22,6 +29,12 @@ export const developerToolPages: Record<string, ToolPageContent> = {
       'Jitter is the average change between consecutive idle latency samples. A fast connection can still feel uneven when latency varies.',
       'If speed drops in another room but improves near the router, try placing the router higher and in the open, then repeat the two tests.',
     ],
+    examples: [{
+      title: 'Find a weak Wi-Fi spot',
+      input: 'Run the same test near the router and in the room where calls or videos buffer.',
+      result: 'If the reading drops from 180 Mbps to 35 Mbps and ping rises only in the second room, the Wi-Fi path between that device and router is worth checking.',
+      note: 'Repeat the runs on the same device, server and mode. A single comparison cannot identify the exact cause.',
+    }],
     limitations: [
       'Results reflect a single browser, device, route, and test server. Very fast connections can finish a fixed-size transfer too quickly for a stable estimate.',
       'Loaded latency may be unavailable when a transfer is too short to collect two samples.',
@@ -30,6 +43,7 @@ export const developerToolPages: Record<string, ToolPageContent> = {
     faqs: [
       { question: 'How do I test my Wi-Fi speed?', answer: 'Connect to Wi-Fi, pause other transfers, and start the test. Repeat near the router and in the problem room on the same server and mode.' },
       { question: 'Can I run a 5G speed test?', answer: 'Turn off Wi-Fi on your phone, check that the status bar shows 5G, and run Quick mode to limit data use. The browser measures the active connection.' },
+      { question: 'Why is my Wi-Fi speed lower than my plan speed?', answer: 'Your test measures the route from this device to the selected server. Distance from the router, interference, busy devices and the route to the server can affect the result. Repeat over Ethernet, keeping the server and mode the same, to help isolate the Wi-Fi link.' },
       { question: 'How much data will the test use?', answer: 'Quick transfers up to 10 MiB and Full transfers up to 80 MiB of test payload across upload and download. Protocol overhead adds a small amount.' },
     ],
     relatedTools: [],

@@ -3,10 +3,14 @@ import PrivacyBadges from '@/components/ui/PrivacyBadges';
 import ToolPageContent from '@/components/seo/ToolPageContent';
 import SpeedTest from '@/components/tools/network/SpeedTest';
 import { developerToolPages } from '@/data/tool-pages/developer';
+import { hasPublicSpeedTestServer } from '@/lib/network/speedTest';
 import { createToolMetadata } from '@/lib/seo/toolPage';
 
 const tool = developerToolPages['internet-speed-test'];
-export const metadata = createToolMetadata(tool);
+export const metadata = {
+  ...createToolMetadata(tool),
+  ...(!hasPublicSpeedTestServer() && { robots: { index: false, follow: true, googleBot: { index: false, follow: true } } }),
+};
 
 export default function Page() {
   return (
