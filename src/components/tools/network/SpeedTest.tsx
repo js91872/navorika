@@ -100,23 +100,11 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
   return (
     <section aria-label="Internet speed test" className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[radial-gradient(ellipse_at_top,var(--primary-light),var(--card)_65%)] p-4 text-[var(--foreground)] sm:p-6">
       <div className="mx-auto max-w-3xl">
-        <div className="relative mx-auto grid h-48 w-56 place-items-center">
-          <svg viewBox="0 0 224 160" className="absolute inset-x-0 top-4 w-full" aria-hidden="true">
-            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--border)" strokeWidth="9" strokeLinecap="round" pathLength="100" />
-            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--primary)" strokeWidth="9" strokeLinecap="round" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} />
-          </svg>
-          <div className="relative mt-6 text-center">
-            <div className="text-xs font-semibold text-red-700 dark:text-red-300">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
-            <div className="mt-1 text-4xl font-black tabular-nums">{speed ? format(speed) : '—'}</div>
-            <div className="text-xs text-[var(--muted-foreground)]">Mbps</div>
-          </div>
-        </div>
-        {samples.length > 1 && (
-          <svg viewBox="0 0 200 40" className="mx-auto mb-3 h-10 w-48" role="img" aria-label="Download speed during the test">
-            <polyline points={plot} fill="none" stroke="var(--primary)" strokeWidth="2" />
-          </svg>
-        )}
         <div className="flex flex-wrap items-end justify-center gap-3">
+          <button type="button" disabled={!server} onClick={phase ? () => controller.current?.abort() : start}
+            className="rounded-lg bg-red-700 px-6 py-2.5 text-sm font-bold text-white hover:bg-red-800 disabled:opacity-50">
+            {phase ? 'Stop test' : result ? 'Test again' : 'Start test'}
+          </button>
           <label className="grid gap-1 text-xs text-[var(--muted-foreground)]">
             Test mode
             <select className={field} value={mode} disabled={!!phase} onChange={(event) => setMode(event.target.value as TestMode)}>
@@ -140,14 +128,26 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
               </select>
             </label>
           )}
-          <button type="button" disabled={!server} onClick={phase ? () => controller.current?.abort() : start}
-            className="rounded-lg bg-red-700 px-6 py-2.5 text-sm font-bold text-white hover:bg-red-800 disabled:opacity-50">
-            {phase ? 'Stop test' : result ? 'Test again' : 'Start test'}
-          </button>
         </div>
         <p role="status" className="mt-3 text-center text-sm text-[var(--muted-foreground)]">
           {message || phase || (!server ? 'Speed test servers are currently unavailable.' : result ? 'Test complete.' : 'The test transfers generated data to the selected server.')}
         </p>
+        <div className="relative mx-auto grid h-44 w-52 place-items-center">
+          <svg viewBox="0 0 224 160" className="absolute inset-x-0 top-2 w-full" aria-hidden="true">
+            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--border)" strokeWidth="9" strokeLinecap="round" pathLength="100" />
+            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--primary)" strokeWidth="9" strokeLinecap="round" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} />
+          </svg>
+          <div className="relative mt-6 text-center">
+            <div className="text-xs font-semibold text-red-700 dark:text-red-300">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
+            <div className="mt-1 text-4xl font-black tabular-nums">{speed ? format(speed) : '—'}</div>
+            <div className="text-xs text-[var(--muted-foreground)]">Mbps</div>
+          </div>
+        </div>
+        {samples.length > 1 && (
+          <svg viewBox="0 0 200 40" className="mx-auto mb-3 h-10 w-48" role="img" aria-label="Download speed during the test">
+            <polyline points={plot} fill="none" stroke="var(--primary)" strokeWidth="2" />
+          </svg>
+        )}
         {result && (
           <>
             <dl className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
