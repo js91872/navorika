@@ -14,6 +14,8 @@ export interface ToolPageContent {
     | 'DeveloperApplication'
     | 'DesignApplication';
   intro: string[];
+  features?: string[];
+  breadcrumb?: { parentName: string; parentPath: string; label: string };
   formula?: { title: string; body: string }[];
   steps: string[];
   interpretation: string[];
@@ -70,6 +72,7 @@ export function createToolJsonLd(tool: ToolPageContent) {
         operatingSystem: 'Any',
         browserRequirements: 'JavaScript enabled',
         isAccessibleForFree: true,
+        ...(tool.features?.length ? { featureList: tool.features } : {}),
         offers: {
           '@type': 'Offer',
           price: '0',
@@ -89,13 +92,13 @@ export function createToolJsonLd(tool: ToolPageContent) {
           {
             '@type': 'ListItem',
             position: 2,
-            name: tool.category,
-            item: `${baseUrl}/categories/${categorySlug}`,
+            name: tool.breadcrumb?.parentName ?? tool.category,
+            item: `${baseUrl}${tool.breadcrumb?.parentPath ?? `/categories/${categorySlug}`}`,
           },
           {
             '@type': 'ListItem',
             position: 3,
-            name: tool.name,
+            name: tool.breadcrumb?.label ?? tool.name,
             item: url,
           },
         ],

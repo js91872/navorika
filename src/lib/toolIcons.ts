@@ -185,6 +185,7 @@ export const toolIcons: Record<string, string> = {
   'wilks-dots-powerlifting-calculator': '🏋️',
 
   // ====== DEVELOPER TOOLS ======
+  'internet-speed-test': '📶',
   'cidr-subnet-wildcard-calculator': '🌐',
   'csv-to-json-converter': '📥',
   'json-diff-compare': '🔀',

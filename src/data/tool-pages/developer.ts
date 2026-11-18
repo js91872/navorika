@@ -3,6 +3,59 @@ import type { ToolPageContent } from '@/lib/seo/toolPage';
 const local = 'Input is processed locally in your browser and is not sent to Navorika.';
 
 export const developerToolPages: Record<string, ToolPageContent> = {
+  'internet-speed-test': {
+    slug: 'internet-speed-test',
+    name: 'Internet Speed Test – Check Wi-Fi Speed, Upload & Ping',
+    description: 'Run a free internet speed test for download, upload, ping and jitter. Compare Wi-Fi in two rooms or check the speed of your 5G connection.',
+    category: 'Developer Tools',
+    applicationCategory: 'UtilitiesApplication',
+    longTailKeywords: ['internet speed test', 'wifi speed test', 'speed test', '5g speed test', 'check upload speed'],
+    breadcrumb: { parentName: 'Tools', parentPath: '/tools', label: 'Internet Speed Test' },
+    features: [
+      'Download and upload throughput in Mbps',
+      'Idle latency, loaded latency and jitter',
+      'Quick and Full modes with stated test data limits',
+      'Side-by-side comparison of saved test runs',
+    ],
+    intro: [
+      'Use this free internet speed test to see how fast your device can send and receive data and how quickly it responds. Choose the same test server and mode when you compare rooms, devices or times of day.',
+      'Start with Quick mode on mobile data. On a fast connection, use Full mode for a larger sample if the tool flags a short transfer. Either result describes the path from this browser to the selected server at the time of the test.',
+    ],
+    steps: [
+      'Choose a server and start with Quick mode. Switch to Full mode for a longer sample if your connection is fast.',
+      'Stop other large downloads and label the first test Near router.',
+      'Move to the room you want to check. Choose Another room, keep the same server and mode, and test again.',
+    ],
+    interpretation: [
+      'Download speed is how quickly your browser receives data. Upload speed matters when sending large files or broadcasting video.',
+      'Idle latency measures the response time to the test server. Loaded latency shows how that response time changes while the connection is busy.',
+      'Jitter is the average change between consecutive idle latency samples. A fast connection can still feel uneven when latency varies.',
+      'A low idle ping and much higher ping during upload can explain why a video call stutters while a cloud backup runs. Pause the backup, repeat the test, and check whether loaded ping falls.',
+      'If speed drops in another room but improves near the router, try placing the router higher and in the open, then repeat the two tests.',
+      'To check mobile data, turn off Wi-Fi, confirm the network indicator on your phone and run Quick mode in a fixed location. Repeat in the same spot at a different time, or compare indoors with near a window to see how much the result changes.',
+    ],
+    examples: [{
+      title: 'Find a weak Wi-Fi spot',
+      input: 'Run the same test near the router and in the room where calls or videos buffer.',
+      result: 'If the reading drops from 180 Mbps to 35 Mbps and ping rises only in the second room, the Wi-Fi path between that device and router is worth checking.',
+      note: 'Repeat the runs on the same device, server and mode. A single comparison cannot identify the exact cause.',
+    }],
+    limitations: [
+      'Results reflect a single browser, device, route, and test server. Very fast connections can finish a fixed-size transfer too quickly for a stable estimate.',
+      'Loaded latency may be unavailable when a transfer is too short to collect two samples.',
+      'The measurement sends generated test data to the selected server, which receives the IP address required to return traffic. Comparison history is stored in your browser.',
+    ],
+    faqs: [
+      { question: 'How do I test my Wi-Fi speed?', answer: 'Connect to Wi-Fi, pause other transfers, and start the test. Repeat near the router and in the problem room on the same server and mode.' },
+      { question: 'Can I run a 5G speed test?', answer: 'Turn off Wi-Fi on your phone, check that the status bar shows 5G, and run Quick mode to limit data use. The browser measures the active connection.' },
+      { question: 'Why is my Wi-Fi speed lower than my plan speed?', answer: 'Your test measures the route from this device to the selected server. Distance from the router, interference, busy devices and the route to the server can affect the result. Repeat over Ethernet, keeping the server and mode the same, to help isolate the Wi-Fi link.' },
+      { question: 'What is the difference between Mbps and MB/s?', answer: 'Mbps is megabits per second. MB/s is megabytes per second. Divide Mbps by eight to get the approximate transfer rate in MB/s before overhead. For example, 80 Mbps is about 10 MB/s.' },
+      { question: 'Why do two speed tests show different results?', answer: 'Different test servers, routes, transfer sizes, Wi-Fi conditions and background activity can change the numbers. When troubleshooting, compare repeated runs using the same device, test server and mode.' },
+      { question: 'How much data will the test use?', answer: 'Quick transfers up to 10 MiB and Full transfers up to 80 MiB of test payload across upload and download. Protocol overhead adds a small amount.' },
+    ],
+    relatedTools: [],
+    relatedGuides: [],
+  },
   'merge-xml-files': {
     slug: 'merge-xml-files',
     name: 'Merge XML Files Online – Combine Multiple XML Files',

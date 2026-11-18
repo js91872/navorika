@@ -19,6 +19,7 @@ export interface ToolCapabilitySnapshot {
 }
 
 export const toolUx: Record<string, ToolUxConfig> = {
+  'internet-speed-test': { processingMode: 'server', noAccount: true, resultActions: ['copy-summary'] },
   'eml-to-word': { processingMode: 'local', noUpload: true, noAccount: true },
   'eml-to-excel': { processingMode: 'local', noUpload: true, noAccount: true },
   'eml-to-html': { processingMode: 'local', noUpload: true, noAccount: true },
