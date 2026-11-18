@@ -16,8 +16,8 @@ const metricNames = {
 type Metric = keyof typeof metricNames;
 const metrics = Object.keys(metricNames) as Metric[];
 const format = (value: number | null) => value === null ? '—' : new Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(value);
-const field = 'rounded-lg border border-slate-600 bg-slate-900 px-2 py-2 text-sm text-white';
-const action = 'rounded-lg border border-slate-600 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800';
+const field = 'rounded-lg border border-[var(--border)] bg-[var(--card)] px-2 py-2 text-sm text-[var(--foreground)]';
+const action = 'rounded-lg border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)]';
 
 export default function SpeedTest({ embed = false }: { embed?: boolean }) {
   const [mode, setMode] = useState<TestMode>('quick');
@@ -98,26 +98,26 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
   }
 
   return (
-    <section aria-label="Internet speed test" className="overflow-hidden rounded-2xl border border-slate-700 bg-[radial-gradient(ellipse_at_top,#16354c,#0b1425_55%)] p-4 text-white sm:p-6">
+    <section aria-label="Internet speed test" className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[radial-gradient(ellipse_at_top,var(--primary-light),var(--card)_65%)] p-4 text-[var(--foreground)] sm:p-6">
       <div className="mx-auto max-w-3xl">
         <div className="relative mx-auto grid h-48 w-56 place-items-center">
           <svg viewBox="0 0 224 160" className="absolute inset-x-0 top-4 w-full" aria-hidden="true">
-            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="#3f566e" strokeWidth="9" strokeLinecap="round" pathLength="100" />
-            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="#5eead4" strokeWidth="9" strokeLinecap="round" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} />
+            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--border)" strokeWidth="9" strokeLinecap="round" pathLength="100" />
+            <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--primary)" strokeWidth="9" strokeLinecap="round" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} />
           </svg>
           <div className="relative mt-6 text-center">
-            <div className="text-xs font-semibold text-teal-200">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
+            <div className="text-xs font-semibold text-red-700 dark:text-red-300">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
             <div className="mt-1 text-4xl font-black tabular-nums">{speed ? format(speed) : '—'}</div>
-            <div className="text-xs text-slate-300">Mbps</div>
+            <div className="text-xs text-[var(--muted-foreground)]">Mbps</div>
           </div>
         </div>
         {samples.length > 1 && (
           <svg viewBox="0 0 200 40" className="mx-auto mb-3 h-10 w-48" role="img" aria-label="Download speed during the test">
-            <polyline points={plot} fill="none" stroke="#5eead4" strokeWidth="2" />
+            <polyline points={plot} fill="none" stroke="var(--primary)" strokeWidth="2" />
           </svg>
         )}
         <div className="flex flex-wrap items-end justify-center gap-3">
-          <label className="grid gap-1 text-xs text-slate-200">
+          <label className="grid gap-1 text-xs text-[var(--muted-foreground)]">
             Test mode
             <select className={field} value={mode} disabled={!!phase} onChange={(event) => setMode(event.target.value as TestMode)}>
               <option value="quick">{testModes.quick.label}</option>
@@ -125,7 +125,7 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
             </select>
           </label>
           {servers.length > 0 && (
-            <label className="grid gap-1 text-xs text-slate-200">
+            <label className="grid gap-1 text-xs text-[var(--muted-foreground)]">
               Test server
               <select className={field} value={serverIndex} disabled={!!phase} onChange={(event) => setServerIndex(Number(event.target.value))}>
                 {servers.map(({ name, endpoint }, index) => <option key={endpoint} value={index}>{name}</option>)}
@@ -133,7 +133,7 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
             </label>
           )}
           {!embed && (
-            <label className="grid gap-1 text-xs text-slate-200">
+            <label className="grid gap-1 text-xs text-[var(--muted-foreground)]">
               Label this run
               <select className={field} value={label} disabled={!!phase} onChange={(event) => setLabel(event.target.value)}>
                 {labels.map((item) => <option key={item}>{item}</option>)}
@@ -141,11 +141,11 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
             </label>
           )}
           <button type="button" disabled={!server} onClick={phase ? () => controller.current?.abort() : start}
-            className="rounded-lg bg-teal-300 px-6 py-2.5 text-sm font-bold text-slate-950 hover:bg-teal-200 disabled:opacity-50">
+            className="rounded-lg bg-red-700 px-6 py-2.5 text-sm font-bold text-white hover:bg-red-800 disabled:opacity-50">
             {phase ? 'Stop test' : result ? 'Test again' : 'Start test'}
           </button>
         </div>
-        <p role="status" className="mt-3 text-center text-sm text-slate-200">
+        <p role="status" className="mt-3 text-center text-sm text-[var(--muted-foreground)]">
           {message || phase || (!server ? 'Speed test servers are currently unavailable.' : result ? 'Test complete.' : 'The test transfers generated data to the selected server.')}
         </p>
         {result && (
@@ -153,30 +153,30 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
             <dl className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
               {metrics.map((key) => {
                 const [name, unit] = metricNames[key];
-                return <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-3" key={key}>
-                  <dt className="text-xs text-slate-300">{name}</dt>
-                  <dd className="mt-1 font-bold tabular-nums">{format(result[key])} <span className="text-xs font-normal text-slate-300">{unit}</span></dd>
+                return <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-3" key={key}>
+                  <dt className="text-xs text-[var(--muted-foreground)]">{name}</dt>
+                  <dd className="mt-1 font-bold tabular-nums">{format(result[key])} <span className="text-xs font-normal text-[var(--muted-foreground)]">{unit}</span></dd>
                 </div>;
               })}
             </dl>
-            <p className="mt-3 text-sm text-slate-200">{result.server} · {format(result.bytes / 1024 ** 2)} MiB of test data</p>
-            {result.shortSample && <p className="mt-2 text-sm text-amber-200">A transfer finished quickly. Rerun in Full mode if you used Quick, or treat the result as approximate.</p>}
+            <p className="mt-3 text-sm text-[var(--muted-foreground)]">{result.server} · {format(result.bytes / 1024 ** 2)} MiB of test data</p>
+            {result.shortSample && <p className="mt-2 text-sm text-amber-800 dark:text-amber-300">A transfer finished quickly. Rerun in Full mode if you used Quick, or treat the result as approximate.</p>}
             {(result.downloadLatency !== null || result.uploadLatency !== null) && (
-              <p className="mt-2 text-sm text-slate-200">
+              <p className="mt-2 text-sm text-[var(--muted-foreground)]">
                 {Math.max(result.downloadLatency ?? 0, result.uploadLatency ?? 0) - result.latency >= 100
                   ? 'Latency rose under load. If calls lag while other devices are busy, pause large downloads or backups and retest.'
                   : 'Compare idle and loaded latency to see how responsive this connection stays during transfers.'}
               </p>
             )}
             {!embed && previous && (
-              <div className="mt-5 rounded-xl border border-slate-700 p-3">
+              <div className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--background)] p-3">
                 <label className="flex flex-wrap items-center gap-2 text-sm">
                   Compare with
                   <select className={field} value={compareIndex} onChange={(event) => setCompareIndex(Number(event.target.value))}>
                     {history.slice(1).map((run, index) => <option key={index} value={index}>{run.label} · {new Date(run.time).toLocaleString()}</option>)}
                   </select>
                 </label>
-                <p className="mt-2 text-xs text-slate-200">{result.label} compared with {previous.label}</p>
+                <p className="mt-2 text-xs text-[var(--muted-foreground)]">{result.label} compared with {previous.label}</p>
                 <div className="mt-2 overflow-x-auto">
                   <table className="w-full text-left text-sm">
                     <thead><tr><th>Metric</th><th>Current</th><th>Previous</th>{comparable && <th>Change</th>}</tr></thead>
@@ -190,7 +190,7 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
                     })}</tbody>
                   </table>
                 </div>
-                {!comparable && <p className="mt-2 text-sm text-amber-200">Use the same server and mode for a like-for-like comparison.</p>}
+                {!comparable && <p className="mt-2 text-sm text-amber-800 dark:text-amber-300">Use the same server and mode for a like-for-like comparison.</p>}
               </div>
             )}
             {!embed && <button type="button" className={`${action} mt-4`} onClick={() => copy(
@@ -198,8 +198,8 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
               'Result copied.')} >Copy result</button>}
           </>
         )}
-        {embed ? <a className="mt-4 block text-center text-xs text-teal-200 underline" href="https://navorika.com/tools/internet-speed-test" target="_blank" rel="nofollow noopener">Powered by Navorika.com</a> : (
-          <details className="mt-5 border-t border-slate-700 pt-3 text-sm text-slate-200">
+        {embed ? <a className="mt-4 block text-center text-xs text-red-700 dark:text-red-300 underline" href="https://navorika.com/tools/internet-speed-test" target="_blank" rel="nofollow noopener">Powered by Navorika.com</a> : (
+          <details className="mt-5 border-t border-[var(--border)] pt-3 text-sm text-[var(--muted-foreground)]">
             <summary className="cursor-pointer font-semibold">Embed this speed test</summary>
             <textarea className={`${field} mt-3 block w-full`} aria-label="Iframe embed code" rows={3} readOnly value={embedCode} />
             <button type="button" className={`${action} mt-2`} onClick={() => copy(embedCode, 'Embed code copied.')}>Copy embed code</button>
