@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { configuredSpeedServers, measureSpeed, testModes } from '@/lib/network/speedTest';
 import type { Phase, SpeedResult, TestMode } from '@/lib/network/speedTest';
 
@@ -20,8 +20,6 @@ const field = 'rounded-lg border border-[var(--border)] bg-[var(--card)] px-2 py
 const action = 'rounded-lg border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)]';
 
 export default function SpeedTest({ embed = false }: { embed?: boolean }) {
-  const gaugeId = useId();
-  const gaugeArc = 'M 42 142 A 85 85 0 1 1 182 142';
   const [mode, setMode] = useState<TestMode>('quick');
   const [label, setLabel] = useState(labels[0]);
   const [serverIndex, setServerIndex] = useState(0);
@@ -135,29 +133,17 @@ export default function SpeedTest({ embed = false }: { embed?: boolean }) {
           <p role="status" className="mt-3 text-center text-sm text-[var(--muted-foreground)]">
             {message || phase || (!server ? 'Speed test servers are currently unavailable.' : result ? 'Test complete.' : 'The test transfers generated data to the selected server.')}
           </p>
-          <div className="relative mx-auto mt-3 grid h-44 w-72 max-w-full place-items-center bg-[radial-gradient(ellipse_closest-side_at_center,#081222_45%,#101d35_68%,#19456599_86%,transparent_100%)]">
-            <svg viewBox="0 0 224 160" className="absolute inset-0 mx-auto h-full w-full" aria-hidden="true">
-              <defs>
-                <linearGradient id={`${gaugeId}-spectrum`} x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#67e8f9" />
-                  <stop offset="55%" stopColor="#93c5fd" />
-                  <stop offset="100%" stopColor="#f0abfc" />
-                </linearGradient>
-                <mask id={`${gaugeId}-segments`} maskUnits="userSpaceOnUse" x="0" y="0" width="224" height="160">
-                  <path d={gaugeArc} fill="none" stroke="white" strokeWidth="12" pathLength="100" strokeDasharray="2.1 0.9" />
-                </mask>
-              </defs>
-              <path d="M 33 151 A 95 95 0 1 1 191 151" fill="none" stroke="#6483a0" strokeWidth="2" pathLength="100" strokeDasharray="0.5 3.5" />
-              <path d="M 51 140 A 74 74 0 1 1 173 140" fill="none" stroke="#345570" strokeWidth="1" />
-              <g mask={`url(#${gaugeId}-segments)`}>
-                <path d={gaugeArc} fill="none" stroke="#273d5b" strokeWidth="12" />
-                <path d={gaugeArc} className="motion-safe:transition-[stroke-dasharray] motion-safe:duration-300" fill="none" stroke={`url(#${gaugeId}-spectrum)`} strokeWidth="12" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} />
-              </g>
+          <div className="relative mx-auto grid h-44 w-60 max-w-full place-items-center">
+            <svg viewBox="0 0 224 160" className="absolute inset-x-0 top-0 w-full" aria-hidden="true">
+              <path d="M 33 151 A 95 95 0 1 1 191 151" fill="none" stroke="var(--muted-foreground)" strokeWidth="3" pathLength="100" strokeDasharray="0.7 3.3" opacity="0.48" />
+              <path d="M 51 140 A 74 74 0 1 1 173 140" fill="none" stroke="var(--border)" strokeWidth="1" />
+              <path d="M 42 142 A 85 85 0 1 1 182 142" fill="none" stroke="var(--border)" strokeWidth="10" strokeLinecap="round" pathLength="100" />
+              <path d="M 42 142 A 85 85 0 1 1 182 142" className="drop-shadow-[0_0_5px_var(--primary-light)] motion-safe:transition-[stroke-dasharray] motion-safe:duration-300" fill="none" stroke="var(--primary)" strokeWidth="10" strokeLinecap="round" pathLength="100" strokeDasharray={`${speed / maxSpeed * 100} 100`} visibility={speed > 0 ? 'visible' : 'hidden'} />
             </svg>
-            <div className="relative mt-5 max-w-[62%] text-center">
-              <div className="text-[10px] font-semibold uppercase tracking-widest text-cyan-200">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
-              <div className="mt-1 font-mono text-3xl font-bold tracking-tight text-white tabular-nums [text-shadow:0_0_14px_#67e8f9b3]">{speed ? format(speed) : '—'}</div>
-              <div className="font-mono text-xs tracking-wider text-slate-200">Mbps</div>
+            <div className="relative mt-5 max-w-full text-center">
+              <div className="text-xs font-semibold text-red-700 dark:text-red-300">{phase ?? (result ? 'Download' : 'Internet speed')}</div>
+              <div className="mt-1 text-4xl font-black tracking-tight tabular-nums">{speed ? format(speed) : '—'}</div>
+              <div className="text-xs text-[var(--muted-foreground)]">Mbps</div>
             </div>
           </div>
           {samples.length > 1 && (
