@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 
 export const toolsUnderReview = new Set([
-  'obj-to-skp-converter', // Hide from sitemap/search until staging and release approval.
   'blur-face',
   'bioluminescent-reader',
   'image-dpi-converter',
