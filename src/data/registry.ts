@@ -1875,6 +1875,15 @@ export const tools: RegisteredTool[] = ([
     heroDescription: 'Compare encoded byte sizes, code points, and UTF-16 code units across UTF-8 and UTF-16 string storage.'
   },
   {
+    slug: 'obj-to-skp-converter',
+    title: 'OBJ to SKP Converter',
+    description: 'Convert OBJ meshes and simple textured MTL materials to genuine SketchUp SKP files with an isolated server conversion workflow.',
+    category: 'developer-tools',
+    keywords: ['obj to skp', 'convert obj to skp', 'obj to skp online', 'obj to sketchup converter', 'wavefront obj to skp'],
+    heroTitle: 'OBJ to SKP Converter',
+    heroDescription: 'Convert OBJ geometry and basic textures into SketchUp SKP files after verifying the correct source units.'
+  },
+  {
     slug: 'step-to-3d-pdf-converter',
     title: 'STEP to 3D PDF Converter',
     description: 'Convert STEP and STP CAD files to 3D PDF online with interactive embedded PRC geometry.',

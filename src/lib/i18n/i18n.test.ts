@@ -121,6 +121,7 @@ test('moving English routes into a route group preserves every existing public p
     'tools/icloud-storage-calculator/page.tsx',
     'tools/jpg-to-dxf/page.tsx',
     'tools/json-to-csv-converter/page.tsx',
+    'tools/obj-to-skp-converter/page.tsx',
     'tools/shopify-margin-calculator/page.tsx',
     'tools/speaker-dust-cleaning-sound/page.tsx',
     'tools/upi-qr-code-generator/page.tsx',

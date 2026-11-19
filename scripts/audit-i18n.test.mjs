@@ -37,6 +37,7 @@ test('full-rollout inventory covers each registered tool, guide and English page
     'tools/exif-metadata-remover/page.tsx',
     'tools/icloud-storage-calculator/page.tsx',
     'tools/jpg-to-dxf/page.tsx',
+    'tools/obj-to-skp-converter/page.tsx',
     'tools/json-to-csv-converter/page.tsx',
     'tools/shopify-margin-calculator/page.tsx',
     'tools/speaker-dust-cleaning-sound/page.tsx',
