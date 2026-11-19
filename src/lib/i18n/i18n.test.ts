@@ -36,7 +36,7 @@ test('language alternatives are reciprocal, self-referencing and preserve Englis
   assert.equal(localizedPath('en'), '/');
   for (const slug of [undefined, ...translatedTools]) {
     const alternates = languageAlternates(slug);
-    assert.equal(Object.keys(alternates).length, 9);
+    assert.equal(Object.keys(alternates).length, locales.length + 2);
     assert.equal(alternates.en, `https://navorika.com${localizedPath('en', slug)}`);
     assert.equal(alternates['x-default'], alternates.en);
     for (const locale of locales) assert.equal(alternates[locale], `https://navorika.com${localizedPath(locale, slug)}`);

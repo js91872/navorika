@@ -17,7 +17,7 @@ export type WebpPngGuideCopy = {
   readTime: string;
 };
 
-export const webpPngGuideTranslations: Record<'en' | 'fr' | 'it' | 'pt' | 'es' | 'ar' | 'ru' | 'de', WebpPngGuideCopy> = {
+export const webpPngGuideTranslations: Record<'en' | 'fr' | 'it' | 'pt' | 'es' | 'ar' | 'ru' | 'de' | 'id', WebpPngGuideCopy> = {
   "en": {
     "title": "How to Convert WebP to PNG Online for Free",
     "description": "Learn how to convert WebP images to PNG, what happens to quality and transparency, and how to save a converted image safely in your browser.",
@@ -809,6 +809,80 @@ export const webpPngGuideTranslations: Record<'en' | 'fr' | 'it' | 'pt' | 'es' |
     "publishedDate": "نوفمبر 2026",
     "readTime": "8 دقائق للقراءة",
     "faqTitle": "الأسئلة الشائعة"
+  },
+  "id": {
+    "title": "Cara Mengonversi WebP ke PNG Online Gratis",
+    "description": "Pelajari cara mengubah gambar WebP ke PNG, pengaruhnya terhadap kualitas dan transparansi, serta cara menyimpan gambar hasil konversi secara aman di browser Anda.",
+    "keywords": [
+      "konversi webp ke png",
+      "ubah webp ke png",
+      "convert webp to png online gratis",
+      "webp ke png tanpa kualitas berkurang"
+    ],
+    "intro": "Jika Anda menerima gambar dalam format WebP namun aplikasi, dokumen, atau alur kerja desain memerlukan PNG, Anda dapat mengonversinya dalam beberapa langkah mudah. Hal penting yang perlu dipahami adalah konversi hanya mengubah format berkas; konversi tidak dapat memulihkan detail gambar yang telah hilang saat berkas WebP asli dikompresi. Panduan ini menjelaskan cara mengonversi WebP ke PNG, apa yang diharapkan terkait transparansi dan ukuran berkas, serta cara memeriksa hasilnya sebelum digunakan.",
+    "sections": [
+      {
+        "title": "Mengapa mengonversi WebP ke PNG?",
+        "paragraphs": [
+          "WebP adalah format gambar modern yang dirancang untuk memperkecil ukuran gambar di web. Format ini mendukung kompresi lossy dan lossless, serta dapat menyimpan transparansi. PNG didukung secara luas oleh editor gambar, perangkat lunak perkantoran, alur kerja percetakan, dan aplikasi yang tidak menerima format WebP. Format PNG bersifat lossless saat disimpan, menjadikannya ideal untuk grafis yang memerlukan tepian tajam, teks, atau transparansi.",
+          "Ekspor PNG dapat mempermudah penyisipan gambar ke dalam presentasi, pengeditan di perangkat lunak lama, atau penggunaan sebagai aset logo. Namun, ukuran berkasnya bisa jauh lebih besar. PNG tidak selalu lebih baik untuk setiap gambar: foto sering kali tetap lebih kecil sebagai WebP atau JPEG, sedangkan diagram, tangkapan layar, ikon, dan grafis transparan adalah kasus penggunaan umum untuk PNG."
+        ]
+      },
+      {
+        "title": "Apakah mengonversi WebP ke PNG akan meningkatkan kualitas?",
+        "paragraphs": [
+          "Tidak. Konverter mendekode piksel WebP dan menuliskannya ke dalam berkas PNG. Jika WebP menggunakan kompresi lossy, konversi hanya mempertahankan piksel yang tersisa; konversi tidak dapat merekonstruksi detail kamera asli atau menghilangkan artefak kompresi. Menyimpan piksel tersebut dalam PNG lossless mencegah langkah kompresi lossy tambahan, tetapi tidak dapat membatalkan kompresi sebelumnya.",
+          "Jika Anda masih memiliki foto, ilustrasi, atau berkas desain asli, eksporlah format PNG langsung dari sumber tersebut. Jika WebP adalah satu-satunya salinan yang tersedia, pilih versi dengan kualitas tertinggi sebelum mengonversi. Bandingkan hasil output pada ukuran penggunaan akhir, terutama di sekitar teks kecil, garis tipis, dan tepi yang tajam."
+        ]
+      },
+      {
+        "title": "Apa yang terjadi pada transparansi?",
+        "paragraphs": [
+          "Baik WebP maupun PNG sama-sama dapat menyimpan piksel transparan. Konverter dapat mempertahankan transparansi tersebut jika berkas input memilikinya, tetapi gambar transparan mungkin terlihat memiliki latar belakang putih atau hitam di aplikasi yang tidak mendukung transparansi. Uji PNG di atas latar belakang terang dan gelap jika area transparan sangat penting.",
+          "Jika WebP asli tidak memiliki transparansi, mengonversinya ke PNG tidak akan menghapus latar belakangnya. Penghapusan latar belakang adalah operasi pengeditan gambar terpisah. Jangan hanya mengandalkan ekstensi berkas; buka PNG yang diekspor atau letakkan di atas latar belakang berwarna untuk memverifikasi hasilnya."
+        ]
+      },
+      {
+        "title": "Memeriksa ukuran berkas sebelum digunakan",
+        "paragraphs": [
+          "Berkas PNG sering kali berukuran beberapa kali lebih besar daripada berkas WebP sumber. Hal ini normal karena PNG menggunakan kompresi lossless Deflate daripada algoritma prediktif modern WebP. Jika berkas ditujukan untuk halaman web atau lampiran email dengan batasan ukuran, periksa ukuran akhir berkas.",
+          "Jika berkas PNG terlalu besar untuk kebutuhan Anda, pertimbangkan apakah PNG benar-benar diperlukan. Jika aplikasi tujuan mendukung WebP atau JPEG dan gambar berupa foto, mempertahankan WebP atau mengonversi ke JPEG berkualitas tinggi mungkin merupakan pilihan yang lebih efisien."
+        ]
+      }
+    ],
+    "stepsTitle": "Langkah Mengonversi WebP ke PNG",
+    "steps": [
+      "Buka alat Pengonversi WebP ke PNG di Navorika.",
+      "Pilih atau seret berkas WebP Anda ke area unggah.",
+      "Konverter akan memproses dan mendekode gambar langsung di browser Anda.",
+      "Periksa pratinjau dan unduh berkas PNG yang dihasilkan ke perangkat Anda."
+    ],
+    "conclusion": "Mengonversi WebP ke PNG adalah solusi praktis untuk kompatibilitas aplikasi dan pengeditan grafis. Ingatlah bahwa konversi bersifat mempertahankan piksel saat ini tanpa memulihkan data yang hilang dari kompresi awal.",
+    "summary": "Gunakan pengonversi WebP ke PNG ketika aplikasi memerlukan format PNG, saat Anda membutuhkan kompatibilitas luas, atau saat menginginkan ekspor PNG lossless dari piksel yang ada dalam WebP. Konversi tidak dapat memulihkan detail yang hilang dari sumber lossy, menghapus latar belakang, atau mempertahankan animasi dalam PNG statis. Periksa transparansi, ukuran berkas, dan hasil unduhan sebelum menggunakannya.",
+    "faqs": [
+      {
+        "question": "Apakah konversi WebP ke PNG mengurangi kualitas gambar?",
+        "answer": "Tidak, proses ekspor ke PNG itu sendiri bersifat lossless (tanpa penurunan kualitas). Namun, konversi tidak dapat memulihkan detail yang sudah hilang akibat kompresi lossy WebP sebelumnya. Konverter mempertahankan piksel yang didekode dari sumber."
+      },
+      {
+        "question": "Apakah latar belakang transparan tetap terjaga saat dikonversi?",
+        "answer": "Ya, saluran transparansi (alpha channel) dari WebP akan dipertahankan sepenuhnya dalam berkas PNG keluaran."
+      },
+      {
+        "question": "Mengapa ukuran berkas PNG hasil konversi lebih besar dari WebP?",
+        "answer": "WebP dirancang dengan algoritma kompresi web yang jauh lebih efisien. PNG menyimpan data piksel secara lossless tanpa kompresi prediktif antar-blok, sehingga ukuran berkasnya secara alami lebih besar."
+      },
+      {
+        "question": "Apakah cukup hanya dengan mengubah ekstensi berkas dari .webp ke .png?",
+        "answer": "Tidak. Mengganti nama ekstensi tidak mengubah struktur data biner gambar. Anda harus menggunakan alat konverter untuk membuat berkas PNG yang valid."
+      }
+    ],
+    "languageLabel": "Baca panduan ini dalam bahasa lain",
+    "toolLabel": "Konversi WebP ke PNG",
+    "category": "Gambar",
+    "publishedDate": "November 2026",
+    "readTime": "8 menit membaca",
+    "faqTitle": "Pertanyaan Umum"
   }
 };
 

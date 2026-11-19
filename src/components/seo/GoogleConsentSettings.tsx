@@ -21,6 +21,7 @@ const labels: Record<Locale | 'en', string> = {
   pt: 'Configurações de privacidade e cookies',
   es: 'Configuración de privacidad y cookies',
   ar: 'إعدادات الخصوصية وملفات تعريف الارتباط',
+  id: 'Pengaturan privasi dan cookie',
 };
 
 /** Reopens Google's published European consent message for eligible visitors. */
