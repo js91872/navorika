@@ -12,6 +12,7 @@ export const resultActionMessages: Record<Language, ActionMessages> = {
   ar: { group: 'إجراءات النتيجة', working: 'جارٍ التنفيذ…', copied: 'تم نسخ النتيجة.', printOpened: 'تم فتح نافذة الطباعة.', noResult: 'لا توجد نتيجة متاحة بعد.', downloadReady: 'التنزيل جاهز.', failed: 'تعذر تنفيذ الإجراء. أعد المحاولة أو انسخ النتيجة يدويًا.', print: 'طباعة / حفظ PDF' },
   ru: { group: 'Действия с результатом', working: 'Обработка…', copied: 'Результат скопирован.', printOpened: 'Окно печати открыто.', noResult: 'Результат пока недоступен.', downloadReady: 'Загрузка готова.', failed: 'Не удалось выполнить действие. Повторите попытку или скопируйте результат вручную.', print: 'Печать / Сохранить PDF' },
   de: { group: 'Ergebnisaktionen', working: 'Wird verarbeitet…', copied: 'Ergebnis kopiert.', printOpened: 'Druckdialog geöffnet.', noResult: 'Es ist noch kein Ergebnis verfügbar.', downloadReady: 'Download bereit.', failed: 'Die Aktion ist fehlgeschlagen. Versuchen Sie es erneut oder kopieren Sie das Ergebnis manuell.', print: 'Drucken / Als PDF speichern' },
+  id: { group: 'Aksi hasil', working: 'Memproses…', copied: 'Hasil disalin.', printOpened: 'Jendela cetak dibuka.', noResult: 'Belum ada hasil yang dapat digunakan.', downloadReady: 'Unduhan siap.', failed: 'Tindakan hasil gagal. Coba lagi atau salin hasil secara manual.', print: 'Cetak / Simpan PDF' },
 };
 
 /** Localized interfaces never expose raw browser/provider errors to visitors. */

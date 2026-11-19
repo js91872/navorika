@@ -10,6 +10,7 @@ const loaders = {
   ar: () => import('./dictionaries/ar.json'),
   ru: () => import('./dictionaries/ru.json'),
   de: () => import('./dictionaries/de.json'),
+  id: () => import('./dictionaries/id.json'),
 };
 export async function getDictionary(locale: Locale): Promise<Dictionary> {
   const dictionary = (await loaders[locale]()).default;

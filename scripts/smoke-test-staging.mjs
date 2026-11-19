@@ -15,7 +15,7 @@ const projectRoot = path.resolve(__dirname, '..');
 const publicDir = path.resolve(projectRoot, 'public/samples');
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3119';
-const locales = ['fr', 'it', 'pt', 'es', 'de', 'ru', 'ar'];
+const locales = ['fr', 'it', 'pt', 'es', 'de', 'ru', 'ar', 'id'];
 const dictionaries = Object.fromEntries(
   ['en', ...locales].map((loc) => [loc, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${loc}.json`, 'utf8'))])
 );

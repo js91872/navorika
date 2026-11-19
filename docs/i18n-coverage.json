@@ -7,7 +7,8 @@
     "es",
     "ar",
     "ru",
-    "de"
+    "de",
+    "id"
   ],
   "summary": {
     "tools": 343,
@@ -17,15 +18,15 @@
     "sharedCalculators": 75,
     "guides": 82,
     "trustPages": 7,
-    "publishedToolTranslations": 2233,
-    "targetToolTranslations": 2352,
-    "pendingGuideTranslations": 567,
+    "publishedToolTranslations": 2552,
+    "targetToolTranslations": 2688,
+    "pendingGuideTranslations": 648,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
       "jsxText": 4810,
       "visibleAttribute": 429,
       "semanticCopy": 13155,
-      "reviewLiteral": 51238
+      "reviewLiteral": 51263
     },
     "candidateCopyWords": 387241
   },
@@ -46,7 +47,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -129,7 +131,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -153,7 +156,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -177,7 +181,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -201,7 +206,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -230,7 +236,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -256,7 +263,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -281,7 +289,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -308,7 +317,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -332,7 +342,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -356,7 +367,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -382,7 +394,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -410,7 +423,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -438,7 +452,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -466,7 +481,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -492,7 +508,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -517,7 +534,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -559,7 +577,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -583,7 +602,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -609,7 +629,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -633,7 +654,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -657,7 +679,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -700,7 +723,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -741,7 +765,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -767,7 +792,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -793,7 +819,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -819,7 +846,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -845,7 +873,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -873,7 +902,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -899,7 +929,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -927,7 +958,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -955,7 +987,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -983,7 +1016,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1009,7 +1043,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1035,7 +1070,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1063,7 +1099,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1091,7 +1128,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1117,7 +1155,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1145,7 +1184,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -1171,7 +1211,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -1197,7 +1238,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1226,7 +1268,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1255,7 +1298,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1284,7 +1328,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1313,7 +1358,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1342,7 +1388,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1370,7 +1417,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1399,7 +1447,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1427,7 +1476,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1451,7 +1501,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1479,7 +1530,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1504,7 +1556,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -1530,7 +1583,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -1574,7 +1628,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1598,7 +1653,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -1642,7 +1698,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1666,7 +1723,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1692,7 +1750,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1718,7 +1777,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1744,7 +1804,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1770,7 +1831,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1794,7 +1856,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1820,7 +1883,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1844,7 +1908,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1869,7 +1934,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1895,7 +1961,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1919,7 +1986,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1947,7 +2015,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1973,7 +2042,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1999,7 +2069,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2026,7 +2097,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2054,7 +2126,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2081,7 +2154,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2106,7 +2180,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2131,7 +2206,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2156,7 +2232,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2180,7 +2257,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2204,7 +2282,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -2232,7 +2311,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2258,7 +2338,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2282,7 +2363,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2308,7 +2390,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2332,7 +2415,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2356,7 +2440,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2380,7 +2465,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2406,7 +2492,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2431,7 +2518,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2457,7 +2545,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2483,7 +2572,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2511,7 +2601,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2537,7 +2628,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2565,7 +2657,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2593,7 +2686,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2617,7 +2711,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2643,7 +2738,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2667,7 +2763,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2693,7 +2790,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2721,7 +2819,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2749,7 +2848,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2777,7 +2877,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2805,7 +2906,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2832,7 +2934,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2859,7 +2962,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2973,7 +3077,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2999,7 +3104,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -3028,7 +3134,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3056,7 +3163,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3098,7 +3206,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -3126,7 +3235,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3150,7 +3260,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3174,7 +3285,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3202,7 +3314,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3228,7 +3341,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3256,7 +3370,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3284,7 +3399,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3312,7 +3428,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3336,7 +3453,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3380,7 +3498,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3404,7 +3523,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3430,7 +3550,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3456,7 +3577,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -3482,7 +3604,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3508,7 +3631,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3534,7 +3658,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3560,7 +3685,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3587,7 +3713,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -3613,7 +3740,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3638,7 +3766,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3664,7 +3793,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3689,7 +3819,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3715,7 +3846,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3743,7 +3875,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3771,7 +3904,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3797,7 +3931,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3824,7 +3959,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3849,7 +3985,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3874,7 +4011,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3900,7 +4038,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3928,7 +4067,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3974,7 +4114,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3998,7 +4139,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4022,7 +4164,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4048,7 +4191,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4074,7 +4218,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4098,7 +4243,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4140,7 +4286,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4166,7 +4313,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4192,7 +4340,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4216,7 +4365,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4242,7 +4392,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4268,7 +4419,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4294,7 +4446,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4319,7 +4472,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4343,7 +4497,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4369,7 +4524,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4395,7 +4551,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4421,7 +4578,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4447,7 +4605,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4473,7 +4632,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4501,7 +4661,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4529,7 +4690,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -4557,7 +4719,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4581,7 +4744,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4606,7 +4770,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4632,7 +4797,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4656,7 +4822,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4698,7 +4865,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4723,7 +4891,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4749,7 +4918,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4775,7 +4945,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4799,7 +4970,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4826,7 +4998,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4852,7 +5025,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4878,7 +5052,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4904,7 +5079,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4930,7 +5106,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4956,7 +5133,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4984,7 +5162,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5012,7 +5191,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5040,7 +5220,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5066,7 +5247,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5094,7 +5276,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5120,7 +5303,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5144,7 +5328,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5172,7 +5357,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5196,7 +5382,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5220,7 +5407,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5246,7 +5434,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5271,7 +5460,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5299,7 +5489,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5327,7 +5518,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5355,7 +5547,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5383,7 +5576,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5411,7 +5605,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5439,7 +5634,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5487,7 +5683,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -5513,7 +5710,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5540,7 +5738,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5568,7 +5767,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5596,7 +5796,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5622,7 +5823,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5646,7 +5848,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5672,7 +5875,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5701,7 +5905,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5726,7 +5931,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5751,7 +5957,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5777,7 +5984,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5801,7 +6009,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5825,7 +6034,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -5851,7 +6061,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5896,7 +6107,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5924,7 +6136,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5952,7 +6165,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5978,7 +6192,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -6004,7 +6219,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -6030,7 +6246,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6075,7 +6292,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6101,7 +6319,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6129,7 +6348,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6153,7 +6373,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6181,7 +6402,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6209,7 +6431,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6235,7 +6458,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6260,7 +6484,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6288,7 +6513,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6316,7 +6542,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6340,7 +6567,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6364,7 +6592,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6389,7 +6618,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -6415,7 +6645,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6441,7 +6672,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6470,7 +6702,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6496,7 +6729,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6521,7 +6755,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6547,7 +6782,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6575,7 +6811,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6603,7 +6840,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6631,7 +6869,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6655,7 +6894,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6679,7 +6919,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6707,7 +6948,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6733,7 +6975,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6761,7 +7004,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6789,7 +7033,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6817,7 +7062,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6845,7 +7091,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6871,7 +7118,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6898,7 +7146,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6924,7 +7173,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6952,7 +7202,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6980,7 +7231,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7008,7 +7260,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7032,7 +7285,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7058,7 +7312,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7082,7 +7337,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7110,7 +7366,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7136,7 +7393,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7161,7 +7419,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7185,7 +7444,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7213,7 +7473,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7241,7 +7502,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7269,7 +7531,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7297,7 +7560,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -7325,7 +7589,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7353,7 +7618,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7379,7 +7645,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -7408,7 +7675,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7434,7 +7702,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7459,7 +7728,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7485,7 +7755,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7511,7 +7782,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -7537,7 +7809,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7563,7 +7836,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7591,7 +7865,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7615,7 +7890,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7641,7 +7917,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7669,7 +7946,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7695,7 +7973,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7721,7 +8000,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7747,7 +8027,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7773,7 +8054,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7797,7 +8079,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7859,7 +8142,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7883,7 +8167,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7909,7 +8194,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -7935,7 +8221,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7961,7 +8248,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7986,7 +8274,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8010,7 +8299,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -8036,7 +8326,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8062,7 +8353,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8090,7 +8382,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8118,7 +8411,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8144,7 +8438,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8170,7 +8465,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8196,7 +8492,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8222,7 +8519,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8248,7 +8546,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8274,7 +8573,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8300,7 +8600,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8324,7 +8625,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8352,7 +8654,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8378,7 +8681,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8402,7 +8706,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8430,7 +8735,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8456,7 +8762,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8482,7 +8789,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8508,7 +8816,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8533,7 +8842,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8558,7 +8868,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8604,7 +8915,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8632,7 +8944,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8658,7 +8971,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8687,7 +9001,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8714,7 +9029,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8740,7 +9056,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8767,7 +9084,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -8793,7 +9111,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8819,7 +9138,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -9492,7 +9812,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     }
   ],
@@ -9510,7 +9831,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9526,7 +9848,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9542,7 +9865,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9558,7 +9882,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9574,7 +9899,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9590,7 +9916,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9606,7 +9933,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     }
   ],

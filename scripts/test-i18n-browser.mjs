@@ -7,7 +7,7 @@ import { PDFDocument } from 'pdf-lib';
 import sharp from 'sharp';
 
 const base = process.env.I18N_BASE_URL || 'http://127.0.0.1:3117';
-const locales = process.env.LOCALES ? process.env.LOCALES.split(',') : ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'];
+const locales = process.env.LOCALES ? process.env.LOCALES.split(',') : ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de', 'id'];
 
 // Programmatically reconcile enabled tool inventory from actual config
 const configText = readFileSync('src/lib/i18n/config.ts', 'utf8');
@@ -147,7 +147,7 @@ try {
       assert.ok(data.hasMain, path);
       assert.equal(data.h1, slug ? d.tools[slug].title : d.ui.title);
       assert.equal(data.canonical, `https://navorika.com${path}`);
-      assert.equal(data.altCount, 9, path);
+      assert.equal(data.altCount, locales.length + 2, path);
       const english = `https://navorika.com${slug ? `/tools/${slug}` : '/'}`;
       assert.equal(new URL(data.alternates.en).href, new URL(english).href);
       assert.equal(new URL(data.alternates['x-default']).href, new URL(english).href);
