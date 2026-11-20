@@ -7,7 +7,8 @@ This branch is an **unreleased** proof of deployment. It creates a page at `/too
 - Install Python 3.11+ into a dedicated venv: `python3 -m venv /opt/navorika-obj-skp-venv && /opt/navorika-obj-skp-venv/bin/pip install openskp==1.5.0`.
 - Ensure production deploy includes `scripts/obj-to-skp-server.py`.
 - Stage `OBJ_TO_SKP_PYTHON=/opt/navorika-obj-skp-venv/bin/python`, `OBJ_TO_SKP_ENABLED=true` **only after** verifying input/output end-to-end. A Next.js rebuild is needed for page metadata indexability.
-- Limit Nginx request body size to 32 MB and enforce server CPU/memory limits for untrusted CAD content.
+- Limit Nginx request body size to 32 MB. Before setting OBJ_TO_SKP_ENABLED=true, create a dedicated non-root system user and set OBJ_TO_SKP_WORKER_UID and OBJ_TO_SKP_WORKER_GID to that account's numeric IDs. The API now fails closed without both variables and runs the Python child with those IDs. Do not use root (UID/GID 0).
+- Enforce server CPU/memory limits for untrusted CAD content and review the worker's filesystem access. Running as a separate user is privilege reduction, not a complete filesystem sandbox.
 - Deploy on a staging instance first. Production is not changed by this PR.
 
 ## Current restrictions
@@ -17,6 +18,7 @@ This branch is an **unreleased** proof of deployment. It creates a page at `/too
 - Native legacy SKP output; textures/UVs supported for simple convex polygons; no advanced PBR/complex meshes.
 - Temporary server-side processing (not private browser-only processing); per-request temporary folders deleted on completion.
 - Child process is bounded to 30 seconds, one concurrent per app instance, and rate limited. Python now applies Linux POSIX RLIMIT_CPU=25s, RLIMIT_AS=2 GiB, RLIMIT_FSIZE=65 MiB and RLIMIT_NOFILE=128. Uploads require Content-Length and reject more than 32,000,000 bytes. Enforce Nginx client_max_body_size 32m as a separate defense. For a public rollout, consider OS sandboxing (unprivileged user, filesystem isolation), abuse protection and observability.
+- After deploying the hardening change, verify GET /api/obj-to-skp is disabled until all three environment variables are configured; then verify with ps that an active Python subprocess has the dedicated worker UID. Never set an untrusted upload worker to root.
 - A readback by OpenSKP does not substitute for independent SketchUp desktop testing.
 
 ## Beta verification
