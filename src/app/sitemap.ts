@@ -9,6 +9,8 @@ import { getDictionary } from '@/lib/i18n/dictionaries';
 import { hasIndexableLocalizedToolCopy } from '@/lib/i18n/contentDepth';
 
 const baseUrl = 'https://navorika.com';
+// OBJ to SKP is visible in site search before public indexing is approved.
+const temporarilyNonIndexableTools = new Set(['obj-to-skp-converter']);
 const trustSlugs = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary'] as const;
 const financeSuiteRoots = new Set([
   'cashflow-budget-architect',
@@ -63,7 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   const staticPages = staticPaths.map((path) => ({ url: `${baseUrl}${path}` }));
   const toolPages = tools
-    .filter(({ slug }) => !financeSuiteRoots.has(slug) && !toolsUnderReview.has(slug) && !nonCanonicalToolSlugs.has(slug))
+    .filter(({ slug }) => !financeSuiteRoots.has(slug) && !toolsUnderReview.has(slug) && !nonCanonicalToolSlugs.has(slug) && !temporarilyNonIndexableTools.has(slug))
     .map(({ slug }) => ({ url: `${baseUrl}/tools/${slug}` }));
   const financeSuitePages = getFinanceSuiteUrls()
     .filter(
