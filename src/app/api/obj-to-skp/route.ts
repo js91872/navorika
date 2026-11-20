@@ -103,10 +103,16 @@ export async function POST(request: Request) {
     }
     directory = await mkdtemp(join(tmpdir(), 'navorika-objskp-'));
     // mkdtemp creates mode 0700; delegate only this disposable workspace.
-    // Files remain readable by the worker, and no other host files are writable through it.
+    // Uploaded files are chowned below so worker access is independent of root's umask.
     await chown(directory, worker.uid, worker.gid);
-    await writeFile(join(directory, 'model.obj'), new Uint8Array(await obj.arrayBuffer()));
-    for (const upload of uploads) await writeFile(join(directory, upload.name), upload.bytes, { flag: 'wx' });
+    const objPath = join(directory, 'model.obj');
+    await writeFile(objPath, new Uint8Array(await obj.arrayBuffer()));
+    await chown(objPath, worker.uid, worker.gid);
+    for (const upload of uploads) {
+      const uploadPath = join(directory, upload.name);
+      await writeFile(uploadPath, upload.bytes, { flag: 'wx' });
+      await chown(uploadPath, worker.uid, worker.gid);
+    }
     await execute(directory, unitMm, worker);
     const output = await readFile(join(directory, 'output.skp'));
     if (output.length < 100 || output.length > 60_000_000) return fail('Invalid conversion output.', 500);
