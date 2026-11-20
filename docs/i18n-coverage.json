@@ -18,7 +18,7 @@
     "guides": 82,
     "trustPages": 7,
     "publishedToolTranslations": 2233,
-    "targetToolTranslations": 2352,
+    "targetToolTranslations": 2359,
     "pendingGuideTranslations": 567,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
@@ -11162,7 +11162,7 @@
     {
       "source": "src/app/(english)/tools/obj-to-skp-converter/page.tsx",
       "routeTemplate": "/tools/obj-to-skp-converter",
-      "status": "under-review",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
