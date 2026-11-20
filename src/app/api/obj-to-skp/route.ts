@@ -1,4 +1,4 @@
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { chown, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, basename } from 'node:path';
 import { spawn } from 'node:child_process';
@@ -7,7 +7,20 @@ import { rateLimit } from '@/lib/rateLimit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-const enabled = () => process.env.OBJ_TO_SKP_ENABLED === 'true';
+// Fail closed unless the converter has a dedicated, non-root POSIX worker account.
+function workerIdentity(): { uid: number; gid: number } | null {
+  const rawUid = process.env.OBJ_TO_SKP_WORKER_UID;
+  const rawGid = process.env.OBJ_TO_SKP_WORKER_GID;
+  if (!rawUid || !rawGid || !/^\d+$/.test(rawUid) || !/^\d+$/.test(rawGid)) return null;
+  const uid = Number(rawUid);
+  const gid = Number(rawGid);
+  if (!Number.isSafeInteger(uid) || !Number.isSafeInteger(gid) || uid < 1 || gid < 1) return null;
+  // The parent is currently root-owned under PM2; never spawn another root worker.
+  // A non-root parent cannot chown the upload directory or switch to arbitrary accounts.
+  if (typeof process.getuid !== 'function' || process.getuid() !== 0) return null;
+  return { uid, gid };
+}
+const enabled = () => process.env.OBJ_TO_SKP_ENABLED === 'true' && workerIdentity() !== null;
 const maxSize = 20_000_000;
 const script = join(process.cwd(), 'scripts', 'obj-to-skp-server.py');
 const python = process.env.OBJ_TO_SKP_PYTHON || '/opt/navorika-obj-skp-venv/bin/python';
@@ -21,10 +34,12 @@ function safeName(filename: string) {
   return /^[a-zA-Z0-9_.-]{1,120}$/.test(filename) &&
     filename !== '.' && filename !== '..' && basename(filename) === filename;
 }
-function execute(directory: string, unitMm: string): Promise<void> {
+function execute(directory: string, unitMm: string, worker: { uid: number; gid: number }): Promise<void> {
   return new Promise((resolve, reject) => {
     const child = spawn(python, ['-I', script, join(directory, 'model.obj'), join(directory, 'output.skp'), '--unit-mm', unitMm], {
       cwd: directory,
+      uid: worker.uid,
+      gid: worker.gid,
       stdio: ['ignore', 'ignore', 'pipe'],
       env: { NODE_ENV: process.env.NODE_ENV, PATH: '/usr/bin:/bin', HOME: directory, TMPDIR: directory, PYTHONNOUSERSITE: '1' },
     });
@@ -49,6 +64,8 @@ export function GET() {
 
 export async function POST(request: Request) {
   if (!enabled()) return fail('OBJ to SKP is not yet enabled on this server.', 503);
+  const worker = workerIdentity();
+  if (!worker) return fail('Conversion worker is not configured.', 503);
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
   if (!rateLimit('obj-skp:' + ip, 3, 60_000).success) return fail('Too many conversions. Try again in one minute.', 429);
   if (active >= 1) return fail('Converter busy. Try again shortly.', 503);
@@ -85,9 +102,12 @@ export async function POST(request: Request) {
       uploads.push({ name, bytes: new Uint8Array(await value.arrayBuffer()) });
     }
     directory = await mkdtemp(join(tmpdir(), 'navorika-objskp-'));
+    // mkdtemp creates mode 0700; delegate only this disposable workspace.
+    // Files remain readable by the worker, and no other host files are writable through it.
+    await chown(directory, worker.uid, worker.gid);
     await writeFile(join(directory, 'model.obj'), new Uint8Array(await obj.arrayBuffer()));
     for (const upload of uploads) await writeFile(join(directory, upload.name), upload.bytes, { flag: 'wx' });
-    await execute(directory, unitMm);
+    await execute(directory, unitMm, worker);
     const output = await readFile(join(directory, 'output.skp'));
     if (output.length < 100 || output.length > 60_000_000) return fail('Invalid conversion output.', 500);
     const download = obj.name.replace(/\.obj$/i, '').replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 80) || 'model';
