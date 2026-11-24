@@ -294,6 +294,7 @@ async function renderCanvasMarkdownPdf(
 
     const rtl = isRtlText(textToDraw);
     const lineHeight = Math.round(fontSize * 1.55);
+    const maxLineWidth = isBullet ? CONTENT_WIDTH - 28 : CONTENT_WIDTH;
 
     ctx.font = `${fontWeight} ${fontSize}px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Arabic", Arial, sans-serif`;
     ctx.fillStyle = isHeading ? '#0f172a' : '#1e293b';
@@ -308,7 +309,7 @@ async function renderCanvasMarkdownPdf(
       const testLine = currentLine ? `${currentLine} ${word}` : word;
       const metrics = ctx.measureText(testLine);
 
-      if (metrics.width > CONTENT_WIDTH && currentLine) {
+      if (metrics.width > maxLineWidth && currentLine) {
         if (currentY + lineHeight > MAX_Y) {
           await flushPage();
           ctx.font = `${fontWeight} ${fontSize}px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Arabic", Arial, sans-serif`;
@@ -317,11 +318,14 @@ async function renderCanvasMarkdownPdf(
           ctx.textAlign = rtl ? 'right' : 'left';
         }
 
-        const drawX = rtl ? PAGE_WIDTH - MARGIN_X : MARGIN_X + (isBullet ? 28 : 0);
+        const drawX = rtl
+          ? PAGE_WIDTH - MARGIN_X - (isBullet ? 28 : 0)
+          : MARGIN_X + (isBullet ? 28 : 0);
         ctx.fillText(currentLine, drawX, currentY);
 
-        if (isBullet && !rtl) {
-          ctx.fillText('•', MARGIN_X, currentY);
+        if (isBullet) {
+          const bulletX = rtl ? PAGE_WIDTH - MARGIN_X : MARGIN_X;
+          ctx.fillText('•', bulletX, currentY);
           isBullet = false;
         }
 
@@ -341,19 +345,24 @@ async function renderCanvasMarkdownPdf(
         ctx.textAlign = rtl ? 'right' : 'left';
       }
 
-      const drawX = rtl ? PAGE_WIDTH - MARGIN_X : MARGIN_X + (isBullet ? 28 : 0);
+      const drawX = rtl
+        ? PAGE_WIDTH - MARGIN_X - (isBullet ? 28 : 0)
+        : MARGIN_X + (isBullet ? 28 : 0);
       ctx.fillText(currentLine, drawX, currentY);
 
-      if (isBullet && !rtl) {
-        ctx.fillText('•', MARGIN_X, currentY);
+      if (isBullet) {
+        const bulletX = rtl ? PAGE_WIDTH - MARGIN_X : MARGIN_X;
+        ctx.fillText('•', bulletX, currentY);
       }
 
       currentY += lineHeight + (isHeading ? 14 : 8);
     }
   }
 
-  const finalBytes = await currentCanvasInfo.toPngBytes();
-  pagesPngBytes.push(finalBytes);
+  if (currentY > MARGIN_Y || pagesPngBytes.length === 0) {
+    const finalBytes = await currentCanvasInfo.toPngBytes();
+    pagesPngBytes.push(finalBytes);
+  }
 
   for (const pagePng of pagesPngBytes) {
     const embeddedImg = await pdfDoc.embedPng(pagePng);

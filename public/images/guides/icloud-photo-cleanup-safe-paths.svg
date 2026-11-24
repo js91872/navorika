@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" role="img" aria-labelledby="photoSafeTitle photoSafeDesc">
+  <title id="photoSafeTitle">Safe Workflows to Clear iCloud Photos Without Losing Pictures</title>
+  <desc id="photoSafeDesc">Three verified methods for offloading and protecting iPhone photos before clearing iCloud storage space.</desc>
+  <defs>
+    <filter id="pShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000000" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="440" fill="#f8fafc" rx="16"/>
+
+  <text x="50" y="44" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    How to Clear iCloud Storage Without Losing Your Photos
+  </text>
+  <text x="50" y="68" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="500" fill="#64748b">
+    3 verified, lossless workflows to reclaim gigabytes while keeping every precious memory safe
+  </text>
+
+  <!-- 3 Workflow Columns -->
+  <!-- Method 1: Export Originals to External Storage -->
+  <g filter="url(#pShadow)">
+    <rect x="50" y="95" width="220" height="300" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+  </g>
+  <rect x="50" y="95" width="220" height="6" rx="3" fill="#10b981"/>
+  <rect x="70" y="115" width="28" height="28" rx="8" fill="#d1fae5"/>
+  <text x="84" y="134" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="14" font-weight="900" fill="#059669" text-anchor="middle">A</text>
+  <text x="110" y="134" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14" font-weight="800" fill="#065f46">External Hard Drive</text>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569">
+    <text x="70" y="165" font-weight="700" fill="#0f172a">Best For:</text>
+    <text x="70" y="185">Permanent offline photo archive with zero ongoing subscription costs.</text>
+
+    <text x="70" y="220" font-weight="700" fill="#0f172a">Action Steps:</text>
+    <text x="70" y="240">1. Plug external SSD into Mac/PC</text>
+    <text x="70" y="260">2. Open Photos > Export Originals</text>
+    <text x="70" y="280">3. Verify files on hard drive</text>
+    <text x="70" y="300">4. Delete from iCloud Photos</text>
+    <text x="70" y="320">5. Purge Recently Deleted</text>
+
+    <rect x="70" y="340" width="180" height="35" rx="6" fill="#ecfdf5"/>
+    <text x="80" y="362" font-weight="700" fill="#047857">Result: 100% Free Cloud Space</text>
+  </g>
+
+  <!-- Method 2: Optimize iPhone Storage Setting -->
+  <g filter="url(#pShadow)">
+    <rect x="290" y="95" width="220" height="300" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+  </g>
+  <rect x="290" y="95" width="220" height="6" rx="3" fill="#3b82f6"/>
+  <rect x="310" y="115" width="28" height="28" rx="8" fill="#dbeafe"/>
+  <text x="324" y="134" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="14" font-weight="900" fill="#2563eb" text-anchor="middle">B</text>
+  <text x="350" y="134" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14" font-weight="800" fill="#1e40af">Optimize iPhone Storage</text>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569">
+    <text x="310" y="165" font-weight="700" fill="#0f172a">Best For:</text>
+    <text x="310" y="185">Freeing local phone space while keeping all pictures in iCloud.</text>
+
+    <text x="310" y="220" font-weight="700" fill="#0f172a">Action Steps:</text>
+    <text x="310" y="240">1. Settings > [Name] > iCloud</text>
+    <text x="310" y="260">2. Tap Photos</text>
+    <text x="310" y="280">3. Check &quot;Optimize iPhone Storage&quot;</text>
+    <text x="310" y="300">4. iOS replaces heavy files with</text>
+    <text x="310" y="320">   space-saving thumbnails</text>
+
+    <rect x="310" y="340" width="180" height="35" rx="6" fill="#eff6ff"/>
+    <text x="320" y="362" font-weight="700" fill="#1d4ed8">Result: Saves 80% Phone Storage</text>
+  </g>
+
+  <!-- Method 3: Cloud Mirror (Google Photos / OneDrive) -->
+  <g filter="url(#pShadow)">
+    <rect x="530" y="95" width="220" height="300" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+  </g>
+  <rect x="530" y="95" width="220" height="6" rx="3" fill="#e5322d"/>
+  <rect x="550" y="115" width="28" height="28" rx="8" fill="#fee2e2"/>
+  <text x="564" y="134" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="14" font-weight="900" fill="#e5322d" text-anchor="middle">C</text>
+  <text x="590" y="134" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14" font-weight="800" fill="#991b1b">Secondary Cloud Mirror</text>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569">
+    <text x="550" y="165" font-weight="700" fill="#0f172a">Best For:</text>
+    <text x="550" y="185">Switching cloud ecosystem without buying an external hard drive.</text>
+
+    <text x="550" y="220" font-weight="700" fill="#0f172a">Action Steps:</text>
+    <text x="550" y="240">1. Install Google Photos / OneDrive</text>
+    <text x="550" y="260">2. Wait for 100% backup complete</text>
+    <text x="550" y="280">3. Disable iCloud Photos on device</text>
+    <text x="550" y="300">4. Select &quot;Download Originals&quot;</text>
+    <text x="550" y="320">5. Delete from iCloud.com</text>
+
+    <rect x="550" y="340" width="180" height="35" rx="6" fill="#fff1f1"/>
+    <text x="560" y="362" font-weight="700" fill="#b91c1c">Result: Multi-Cloud Redundancy</text>
+  </g>
+</svg>

@@ -1,14 +1,33 @@
+import PageHelp from '@/components/seo/PageHelp';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { Shield } from 'lucide-react';
 import LocalizedTools from '@/components/i18n/LocalizedTools';
 import BidiText from '@/components/i18n/BidiText';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 import { isLocale, isTranslatedTool, languageAlternates, localizedPath, translatedTools } from '@/lib/i18n/config';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
+
+/** Keep related links focused instead of serializing the full translated tool catalog on every page. */
+function relatedToolSlugs(slug: string): (typeof translatedTools)[number][] {
+  const words = new Set(slug.split('-').filter((word) => word.length > 3 && !['calculator', 'converter', 'generator', 'image', 'tool', 'tools'].includes(word)));
+  const candidates = translatedTools.filter((item) => item !== slug);
+  return candidates
+    .map((item, index) => ({
+      item,
+      index,
+      score: item.split('-').reduce((score, word) => score + (words.has(word) ? 1 : 0), 0),
+    }))
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, 8)
+    .map(({ item }) => item);
+}
 export const dynamicParams = false;
-export function generateStaticParams() { return translatedTools.map((slug) => ({ slug })); }
+export function generateStaticParams() {
+  return translatedTools.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -17,7 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tool = d.tools[slug];
   const url = `https://navorika.com${localizedPath(locale, slug)}`;
   return {
-    title: tool.title, description: tool.description,
+    title: tool.title,
+    description: tool.description,
     alternates: { canonical: url, languages: languageAlternates(slug) },
     openGraph: { title: tool.title, description: tool.description, url, siteName: 'Navorika', type: 'website' },
     twitter: { card: 'summary', title: tool.title, description: tool.description },
@@ -31,40 +51,104 @@ export default async function LocalizedToolPage({ params }: Props) {
   const tool = d.tools[slug];
   const url = `https://navorika.com${localizedPath(locale, slug)}`;
   const schema = {
-    '@context': 'https://schema.org', '@type': 'WebApplication',
-    name: tool.title, description: tool.description, url, inLanguage: locale,
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: tool.title,
+    description: tool.description,
+    url,
+    inLanguage: locale,
     applicationCategory: slug.startsWith('css-') ? 'DeveloperApplication' : 'UtilitiesApplication',
-    operatingSystem: 'Any', isAccessibleForFree: true,
+    operatingSystem: 'Any',
+    isAccessibleForFree: true,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
-  return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
-    <div className="mb-7 flex flex-wrap items-center justify-between gap-4">
-      <Link href={`/${locale}`} className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">{d.ui.home} / {d.ui.tools}</Link>
-    </div>
-    <h1 className="max-w-4xl [overflow-wrap:anywhere] text-3xl font-extrabold leading-tight text-indigo-600 sm:text-4xl dark:text-indigo-400">{tool.title}</h1>
-    <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--muted-foreground)]"><BidiText text={tool.description} /></p>
-    <p className="my-7 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-sm leading-7">{d.ui.local}</p>
-    <LocalizedTools key={`${locale}/${slug}`} locale={locale} slug={slug} dictionary={d} />
-    <div className="mt-10 grid gap-7 md:grid-cols-2">
-      <section className="rounded-2xl border border-[var(--border)] p-6">
-        <h2 className="text-xl font-bold">{d.ui.how}</h2>
-        <p className="mt-4 leading-8 text-[var(--muted-foreground)]"><BidiText text={tool.how} /></p>
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
+      />
+
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="mb-3 sm:mb-5 flex flex-wrap items-center gap-2 text-sm text-[var(--muted-foreground)]">
+        <Link href={`/${locale}`} className="hover:text-[var(--foreground)] transition-colors">
+          {d.ui.home}
+        </Link>
+        <span className="text-[var(--muted-foreground)]">/</span>
+        <Link href={`/${locale}#tools`} className="hover:text-[var(--foreground)] transition-colors">
+          {d.ui.tools}
+        </Link>
+        <span className="text-[var(--muted-foreground)]">/</span>
+        <span className="font-medium text-[var(--foreground)] [overflow-wrap:anywhere]">{tool.title}</span>
+      </nav>
+
+      {/* Tool Header */}
+      <div className="mb-5 sm:mb-7">
+        <h1 className="max-w-4xl text-2xl font-black tracking-tight text-[var(--foreground)] sm:text-4xl [overflow-wrap:anywhere]">
+          {tool.title}
+        </h1>
+        <p className="mt-2 max-w-3xl text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)] [overflow-wrap:anywhere]">
+          <BidiText text={tool.description} />
+        </p>
+
+
+      </div>
+
+      {/* Main Tool Interactive Component */}
+      <LocalizedTools key={`${locale}/${slug}`} locale={locale} slug={slug} dictionary={d} />
+
+      <div className="mt-6 max-w-3xl" aria-label="Tool processing information">
+        {/* Privacy Trust Banner */}
+        <div className="my-0 max-w-3xl rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-xs sm:text-sm leading-relaxed text-[var(--foreground)] flex items-center gap-3">
+          <Shield className="h-5 w-5 text-emerald-500 shrink-0" />
+          <span>{d.ui.local}</span>
+        </div>
+      </div>
+
+      {/* Educational & Usage Details */}
+      <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+          <h2 className="text-xl font-bold">{d.ui.how}</h2>
+          <p className="mt-3.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base">
+            <BidiText text={tool.how} />
+          </p>
+        </section>
+        <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+          <h2 className="text-xl font-bold">{d.ui.limits}</h2>
+          <p className="mt-3.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base">
+            <BidiText text={tool.limits} />
+          </p>
+        </section>
+      </div>
+
+      {/* Frequently Asked Question */}
+      <section className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+        <h2 className="text-xl font-bold">{d.ui.faq}</h2>
+        <h3 className="mt-4 font-semibold text-base sm:text-lg">{tool.question}</h3>
+        <p className="mt-2.5 leading-relaxed text-[var(--muted-foreground)] text-sm sm:text-base">
+          <BidiText text={tool.answer} />
+        </p>
       </section>
-      <section className="rounded-2xl border border-[var(--border)] p-6">
-        <h2 className="text-xl font-bold">{d.ui.limits}</h2>
-        <p className="mt-4 leading-8 text-[var(--muted-foreground)]"><BidiText text={tool.limits} /></p>
+
+      <PageHelp path={`/${locale}/tools/${slug}`} />
+
+      {/* Related Tools */}
+      <section className="mt-10">
+        <h2 className="text-xl font-bold mb-4">{d.ui.related}</h2>
+        <div className="flex flex-wrap gap-2.5">
+          {relatedToolSlugs(slug)
+            .map((item) => (
+              <Link
+                key={item}
+                href={localizedPath(locale, item)}
+                className="rounded-xl border border-[var(--border)] bg-[var(--card)] px-3.5 py-2 text-xs sm:text-sm font-medium hover:border-[#e5322d]/40 hover:text-[#e5322d] dark:hover:text-[#ff6b68] transition-all shadow-xs"
+              >
+                {d.tools[item].title}
+              </Link>
+            ))}
+        </div>
       </section>
-    </div>
-    <section className="mt-10 rounded-2xl border border-[var(--border)] p-6">
-      <h2 className="text-xl font-bold">{d.ui.faq}</h2>
-      <h3 className="mt-4 font-semibold">{tool.question}</h3>
-      <p className="mt-3 leading-8 text-[var(--muted-foreground)]"><BidiText text={tool.answer} /></p>
-    </section>
-    <section className="mt-10">
-      <h2 className="text-xl font-bold">{d.ui.related}</h2>
-      <div className="mt-4 flex flex-wrap gap-3">{translatedTools.filter((item) => item !== slug).map((item) =>
-        <Link key={item} href={localizedPath(locale, item)} className="rounded-xl border border-[var(--border)] px-4 py-3 text-sm hover:border-indigo-500">{d.tools[item].title}</Link>)}</div>
-    </section>
-  </>;
+    </>
+  );
 }
