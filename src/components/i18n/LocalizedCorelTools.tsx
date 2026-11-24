@@ -410,11 +410,6 @@ function LocalizedCdrVersionChecker({
 
   return (
     <section className="mx-auto max-w-4xl min-w-0 space-y-5 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-5 md:p-8 shadow-sm">
-      <div className="flex items-center gap-2 rounded-xl bg-emerald-500/10 p-3.5 text-xs md:text-sm text-emerald-800 dark:text-emerald-300">
-        <LockKeyhole className="size-4 shrink-0" />
-        <span>{ui.localPrivacyNotice}</span>
-      </div>
-
       <LocalizedDropzone
         accept=".cdr,application/vnd.corel-draw"
         file={file}
@@ -460,6 +455,12 @@ function LocalizedCdrVersionChecker({
 
       <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm leading-relaxed text-amber-900 dark:text-amber-200">
         {ui.versionNotice}
+      </div>
+      <div className="space-y-3 border-t border-[var(--border)] pt-4" aria-label="Tool processing information">
+      <div className="flex items-center gap-2 rounded-xl bg-emerald-500/10 p-3.5 text-xs md:text-sm text-emerald-800 dark:text-emerald-300">
+        <LockKeyhole className="size-4 shrink-0" />
+        <span>{ui.localPrivacyNotice}</span>
+      </div>
       </div>
     </section>
   );
@@ -578,11 +579,6 @@ function LocalizedRasterToCorelTool({
 
   return (
     <section className="mx-auto max-w-4xl min-w-0 space-y-6 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-5 md:p-8 shadow-sm">
-      <div className="flex items-center gap-2 rounded-xl bg-emerald-500/10 p-3.5 text-xs md:text-sm text-emerald-800 dark:text-emerald-300">
-        <LockKeyhole className="size-4 shrink-0" />
-        <span>{ui.localPrivacyNotice}</span>
-      </div>
-
       <LocalizedDropzone
         accept={format === 'jpg' ? '.jpg,.jpeg,image/jpeg' : '.png,image/png'}
         file={file}
@@ -736,6 +732,12 @@ function LocalizedRasterToCorelTool({
           <span>{busy ? ui.converting : ui.convertBtn}</span>
         </button>
       )}
+      <div className="space-y-3 border-t border-[var(--border)] pt-4" aria-label="Tool processing information">
+      <div className="flex items-center gap-2 rounded-xl bg-emerald-500/10 p-3.5 text-xs md:text-sm text-emerald-800 dark:text-emerald-300">
+        <LockKeyhole className="size-4 shrink-0" />
+        <span>{ui.localPrivacyNotice}</span>
+      </div>
+      </div>
     </section>
   );
 }
@@ -854,21 +856,6 @@ function LocalizedCorelServerTool({
 
   return (
     <section className="mx-auto max-w-4xl min-w-0 space-y-6 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-5 md:p-8 shadow-sm">
-      <div className="flex items-center gap-2 rounded-xl bg-emerald-500/10 p-3.5 text-xs md:text-sm text-emerald-800 dark:text-emerald-300">
-        <LockKeyhole className="size-4 shrink-0" />
-        <span>{ui.privacyNotice}</span>
-      </div>
-
-      {config.showNativeNotice && (
-        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-amber-900 dark:text-amber-200 space-y-1">
-          <div className="flex items-center gap-2 font-bold">
-            <Info className="size-4 text-amber-600" />
-            <span>{ui.nativeNoticeTitle}</span>
-          </div>
-          <p className="leading-relaxed">{ui.nativeNoticeDesc}</p>
-        </div>
-      )}
-
       <LocalizedDropzone
         accept={config.accept}
         file={file}
@@ -984,6 +971,21 @@ function LocalizedCorelServerTool({
           <span>{busy ? ui.converting : ui.convertBtn}</span>
         </button>
       )}
+      <div className="space-y-3 border-t border-[var(--border)] pt-4" aria-label="Privacy and CorelDRAW format limitations">
+      <div className="flex items-center gap-2 rounded-xl bg-emerald-500/10 p-3.5 text-xs md:text-sm text-emerald-800 dark:text-emerald-300">
+        <LockKeyhole className="size-4 shrink-0" />
+        <span>{ui.privacyNotice}</span>
+      </div>
+      {config.showNativeNotice && (
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-amber-900 dark:text-amber-200 space-y-1">
+          <div className="flex items-center gap-2 font-bold">
+            <Info className="size-4 text-amber-600" />
+            <span>{ui.nativeNoticeTitle}</span>
+          </div>
+          <p className="leading-relaxed">{ui.nativeNoticeDesc}</p>
+        </div>
+      )}
+      </div>
     </section>
   );
 }

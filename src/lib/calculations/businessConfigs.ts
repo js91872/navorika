@@ -721,21 +721,28 @@ export const businessCalculatorConfigs: Record<string, Config> = {
   },
   'drywall-mud-calculator': {
     fields: [
-      { key: 'drywallArea', label: 'Drywall area (sq ft)', defaultValue: 1000, min: 0.01, step: 10 },
-      { key: 'coveragePerBucket', label: 'Coverage per bucket/box (sq ft)', defaultValue: 450, min: 0.01, step: 10 },
-      { key: 'wastePercent', label: 'Extra allowance (%)', defaultValue: 10, min: 0, max: 100, step: 1 },
+      { key: 'drywallArea', label: 'Drywall area to finish (sq ft)', defaultValue: 1000, min: 0.01, step: 10 },
+      { key: 'compoundType', label: 'Compound packaging', type: 'select', defaultValue: 'ready', options: [{ value: 'ready', label: 'Ready-mix pails / boxes' }, { value: 'setting', label: 'Setting-type powder bags' }] },
+      { key: 'coveragePerBucket', label: 'Manufacturer coverage per selected container (sq ft, all coats)', defaultValue: 450, min: 0.01, step: 10, help: 'Enter the product-specific coverage for your complete taping, filling and finishing process. Change it when switching from a ready-mix pail to a setting compound bag.' },
+      { key: 'wastePercent', label: 'Compound extra allowance (%)', defaultValue: 10, min: 0, max: 100, step: 1 },
+      { key: 'tapeFactor', label: 'Estimated joint tape (linear ft per sq ft)', defaultValue: 0.7, min: 0, step: 0.05, help: 'Planning shortcut only. Measure actual seams and corners for a reliable tape purchase.' },
+      { key: 'tapeRollFeet', label: 'Feet per tape roll', defaultValue: 500, min: 1, step: 25 },
     ],
     results: [
-      { key: 'adjustedArea', label: 'Area with allowance (sq ft)', format: 'number' },
-      { key: 'containers', label: 'Estimated compound containers', format: 'number' },
+      { key: 'adjustedArea', label: 'Compound coverage area with allowance (sq ft)', format: 'number' },
+      { key: 'containers', label: 'Containers / bags to buy (rounded up)', format: 'number' },
+      { key: 'tapeFeet', label: 'Approximate joint tape length (linear ft)', format: 'number' },
+      { key: 'tapeRolls', label: 'Approximate tape rolls (rounded up)', format: 'number' },
     ],
     calculate: (x) => {
       const area = v(x, 'drywallArea'), coverage = v(x, 'coveragePerBucket'), waste = v(x, 'wastePercent');
-      if (area <= 0 || coverage <= 0 || waste < 0) throw new RangeError('Enter positive area and coverage values.');
+      const factor = v(x, 'tapeFactor'), roll = v(x, 'tapeRollFeet');
+      if (area <= 0 || coverage <= 0 || waste < 0 || waste > 100 || factor < 0 || roll <= 0) throw new RangeError('Enter a positive area, product coverage and tape-roll length, with valid allowances.');
       const adjustedArea = area * (1 + waste / 100);
-      return { adjustedArea, containers: Math.ceil(adjustedArea / coverage) };
+      const tapeFeet = area * factor * (1 + waste / 100);
+      return { adjustedArea, containers: Math.ceil(adjustedArea / coverage), tapeFeet, tapeRolls: Math.ceil(tapeFeet / roll) };
     },
-    note: 'Joint-compound coverage varies with board layout, number of coats, bead, texture, taping method and product. Use the manufacturer coverage figure for the compound you plan to buy.',
+    note: 'Choose ready-mix pails/boxes or setting-type bags, then enter coverage for that exact product and all intended coats. A pail and powder bag cannot be converted reliably without the label coverage. Tape estimate is only an area-based shortcut; actual board seams, corners and layout determine tape length. Do not treat tape factor as a measured quantity.',
   },
   'roof-ridge-height-calculator': {
     fields: [

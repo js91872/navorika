@@ -4,6 +4,59 @@ const webImageFormats = { name: 'MDN Web Docs — Image file type and format gui
 const pdfSpecification = { name: 'PDF Association — ISO 32000 (PDF specification)', url: 'https://pdfa.org/resource/iso-32000-pdf/' };
 
 export const guideSources: Record<string, GuideSource[]> = {
+  'how-to-convert-eml-to-word': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}],
+  'how-to-convert-eml-to-excel': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}, {"name": "Microsoft — Excel specifications and limits", "url": "https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3"}],
+  'how-to-convert-eml-to-html': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}],
+  'how-to-convert-eml-to-msg': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}, {"name": "Microsoft — MSG File Format", "url": "https://learn.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxmsg/1a69e000-f391-4c03-9d43-32d5f554bca7"}],
+  'how-to-convert-eml-to-pdf': [{"name": "IETF RFC 5322 — Internet Message Format", "url": "https://www.rfc-editor.org/rfc/rfc5322"}, {"name": "IETF RFC 2045 — MIME", "url": "https://www.rfc-editor.org/rfc/rfc2045"}],
+  '3d-printing-for-beginners': [{ name: 'Prusa Knowledge Base — First print', url: 'https://help.prusa3d.com/article/first-print-with-prusaslicer_1753' }],
+  'how-much-does-3d-printing-cost': [{ name: 'U.S. Department of Energy — Estimating appliance energy use', url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use' }],
+  'how-long-do-3d-prints-take': [{ name: 'Prusa Knowledge Base — PrusaSlicer', url: 'https://help.prusa3d.com/category/prusaslicer_204' }],
+  'how-to-generate-barcodes-in-excel': [
+    { name: 'Microsoft Support — Keep leading zeros in Excel', url: 'https://support.microsoft.com/en-us/office/keeping-leading-zeros-and-large-numbers-1bf7b935-36e1-4985-842f-5dfa51f85fe7' },
+    { name: 'Microsoft Support — Import or export text and CSV files', url: 'https://support.microsoft.com/en-us/office/import-or-export-text-txt-or-csv-files-5250ac4c-663c-47ce-937b-339e391393ba' },
+    { name: 'GS1 — Global Trade Item Number (GTIN)', url: 'https://www.gs1.org/standards/id-keys/gtin' },
+  ],
+  'code-128-vs-code-39': [
+    { name: 'GS1 — Barcode standards', url: 'https://www.gs1.org/standards/barcodes' },
+    { name: 'GS1 — GS1-128 barcode', url: 'https://www.gs1.org/standards/barcodes/1d' },
+  ],
+  'upc-vs-ean-barcode': [
+    { name: 'GS1 — Global Trade Item Number (GTIN)', url: 'https://www.gs1.org/standards/id-keys/gtin' },
+    { name: 'GS1 — Barcode standards', url: 'https://www.gs1.org/standards/barcodes' },
+  ],
+  'fps-calculator-guide': [
+    { name: 'MDN — requestAnimationFrame and display refresh rates', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame' },
+    { name: 'MDN — VideoFrame API', url: 'https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame' },
+    { name: 'W3C — Media Timed Events', url: 'https://www.w3.org/TR/media-timed-events/' },
+  ],
+  'how-to-generate-upi-qr-code': [
+    { name: 'NPCI — UPI Product Overview', url: 'https://www.npci.org.in/what-we-do/upi/product-overview' },
+    { name: 'Reserve Bank of India — Be(A)ware: financial fraud awareness', url: 'https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx?UrlPage=&ID=1154' }
+  ],
+  'how-to-calculate-square-feet': [
+    { name: 'NIST — SI Units: Area conversions', url: 'https://www.nist.gov/pml/owm/metric-si/si-units' },
+    { name: 'NIST — Handbook 44: Units of measurement', url: 'https://www.nist.gov/pml/owm/nist-handbook-44-current-edition' },
+    { name: 'US Census Bureau — Geographic areas and land measurement', url: 'https://www.census.gov/geographies/reference-files/2010/geo/2010-area.html' },
+  ],
+  'how-to-clear-icloud-storage': [
+    { name: 'Apple Support — Manage your iCloud storage', url: 'https://support.apple.com/en-us/108051' },
+    { name: 'Apple Support — Delete photos on your iPhone or iPad', url: 'https://support.apple.com/en-us/104967' },
+    { name: 'Apple Support — Archive or make copies of the information you store in iCloud', url: 'https://support.apple.com/en-us/108306' },
+    { name: 'Apple Support — Manage photos in iCloud on Mac', url: 'https://support.apple.com/guide/photos/use-icloud-photos-pht435d6885/mac' },
+  ],
+  'why-is-my-icloud-storage-full': [
+    { name: 'Apple Support — Manage your iCloud storage', url: 'https://support.apple.com/en-us/108051' },
+    { name: 'Apple Support — Delete photos on your iPhone or iPad', url: 'https://support.apple.com/en-us/104967' },
+    { name: 'Apple Support — What does iCloud back up?', url: 'https://support.apple.com/en-us/108770' },
+    { name: 'Apple Support — Share iCloud+ with your family', url: 'https://support.apple.com/en-us/108773' },
+  ],
+  'how-to-delete-icloud-backup-safely': [
+    { name: 'Apple Support — Back up your iPhone, iPad, or iPod touch', url: 'https://support.apple.com/en-us/108796' },
+    { name: 'Apple Support — What does iCloud back up?', url: 'https://support.apple.com/en-us/108770' },
+    { name: 'Apple Support — Manage your iCloud storage', url: 'https://support.apple.com/en-us/108051' },
+    { name: 'Apple Support — How to back up your iPhone with your Mac (Finder)', url: 'https://support.apple.com/guide/mac-help/back-up-and-restore-your-device-mchle3936997/mac' },
+  ],
   'is-claude-better-than-chatgpt': [
     { name: 'Anthropic — Claude pricing', url: 'https://claude.com/pricing' },
     { name: 'OpenAI — ChatGPT pricing', url: 'https://chatgpt.com/pricing' },
@@ -14,6 +67,7 @@ export const guideSources: Record<string, GuideSource[]> = {
     { name: 'Apple Support — How to clean your Apple products', url: 'https://support.apple.com/en-us/103258' },
     { name: 'Apple Support — If the internal speakers on your Mac are not working', url: 'https://support.apple.com/en-us/102411' },
   ],
+
   'how-to-back-out-sales-tax-us': [
     { name: 'CDTFA — Basic Sales and Use Tax training (tax-inclusive calculation method)', url: 'https://www.cdtfa.ca.gov/seminar/BSUTS.pdf' },
     { name: 'CDTFA — Applying Tax to Your Sales and Purchases (California-specific guidance)', url: 'https://www.cdtfa.ca.gov/taxes-and-fees/applying-tax-sales-purchases-faq.htm' },
@@ -112,6 +166,11 @@ export const guideSources: Record<string, GuideSource[]> = {
   'bmr-tdee-guide': [{ name: 'NIDDK — Body Weight Planner', url: 'https://www.niddk.nih.gov/bwp' }],
   'pdf-compression-guide': [pdfSpecification],
   'how-to-merge-pdf-files': [pdfSpecification],
+  'how-to-compare-pdf-files': [
+    pdfSpecification,
+    { name: 'Adobe Acrobat — Compare two versions of a PDF file', url: 'https://helpx.adobe.com/acrobat/using/compare-pdf-files.html' },
+    { name: 'PDF Association — PDF Text and Imaging Architecture', url: 'https://pdfa.org/' },
+  ],
   'image-compression-guide': [webImageFormats],
   'how-to-resize-images': [webImageFormats],
   'gst-calculation-guide': [{ name: 'Central Board of Indirect Taxes and Customs — GST', url: 'https://cbic-gst.gov.in/' }],

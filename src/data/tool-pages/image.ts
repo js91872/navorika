@@ -4,6 +4,19 @@ const privacy = 'The image is decoded and processed locally in your browser; it 
 const canvasLimits = ['Very large images can exceed browser memory or maximum canvas dimensions.', 'Browser decoding support varies by image format and device.', 'Canvas export normally removes original EXIF, camera, location, color-profile, and other file metadata.'];
 
 export const imageToolPages: Record<string, ToolPageContent> = {
+  'cmyk-color-converter': {
+    slug:'cmyk-color-converter',name:'CMYK Color Converter – CMYK to HEX and RGB',description:'Free CMYK color converter: enter cyan, magenta, yellow and black percentages to estimate RGB and HEX, or convert HEX to approximate CMYK.',category:'Image Tools',applicationCategory:'DesignApplication',
+    longTailKeywords:['cmyk to hex','cmyk to rgb','hex to cmyk','cmyk color converter','cmyk color wheel','cmyk for print'],
+    intro:['Convert four CMYK channel percentages to approximate screen RGB and HEX values. Enter a six-digit HEX value to estimate CMYK percentages.','This is an arithmetic approximation rather than a color-managed print proof. Print output depends on the ICC profile, ink, paper and press. All calculations stay in your browser.'],
+    formula:[{title:'Approximate CMYK to RGB',body:'For each channel, RGB = round(255 × (1 − C/M/Y ÷ 100) × (1 − K ÷ 100)).'},{title:'RGB to CMYK',body:'K = 1 − max(R,G,B)/255. For K below 1, C = (1 − R/255 − K)/(1 − K), similarly for M and Y.'}],
+    steps:['Adjust cyan, magenta, yellow and black percentages from 0 to 100.','Read the calculated RGB and HEX values and preview.','Alternatively enter a six-digit HEX code and choose Convert.','Copy the results for use in digital design; check a printer-approved profile for physical printing.'],
+    examples:[{title:'Pure cyan',input:'C=100%, M=0%, Y=0%, K=0%',result:'Approximate RGB 0,255,255 and HEX #00FFFF.'},{title:'Pure black',input:'C=0%, M=0%, Y=0%, K=100%',result:'RGB 0,0,0 and HEX #000000.'}],
+    interpretation:['The live swatch represents an RGB screen preview, not a calibrated proof of ink output.','The same RGB color can correspond to different CMYK separations under different ICC profiles.'],
+    limitations:['Not ICC color-managed; do not use for press-ready separations.','Cannot guarantee exact Pantone spot-color matches.','Printed color depends on substrate, ink, press and profile.','Rounding can make reverse conversions differ slightly.'],
+    faqs:[{question:'Can CMYK be converted to HEX?',answer:'Yes, mathematically. Enter CMYK percentages to estimate RGB and HEX for screen display; this is not a color-managed printing conversion.'},{question:'Can I convert HEX to CMYK?',answer:'Yes. Enter a six-digit HEX code to calculate approximate CMYK percentages.'},{question:'Does CMYK to Pantone have an exact formula?',answer:'No. Pantone spot colors require an appropriate licensed reference and physical or color-managed matching; this tool does not claim exact Pantone matches.'},{question:'Why does my printed color differ?',answer:'Paper, ink, press settings, ICC profiles and screen calibration all influence the final appearance.'}],
+    relatedTools:[{slug:'rgb-cmyk-image-checker',name:'RGB or CMYK Image Checker'},{slug:'image-print-size-calculator',name:'Print Size Calculator'}],
+    relatedGuides:['rgb-vs-cmyk-for-printing'],
+  },
   'batch-image-converter': {
     slug: 'batch-image-converter', name: 'Batch Image Converter', category: 'Image Tools', applicationCategory: 'DesignApplication', description: 'Convert multiple browser-supported images to JPG, PNG, or WebP locally in one batch.', longTailKeywords: ['batch image converter online', 'convert multiple images to webp', 'batch png jpg converter', 'multiple image format converter'],
     intro: ['Batch Image Converter decodes each selected image with the browser, draws it to a canvas, and downloads a new JPG, PNG, or WebP file.', privacy],
@@ -909,7 +922,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'Download your optimized 20 KB image immediately.',
     ],
     interpretation: [
-      '20 KB is an ultra-compact file budget typically required for passport portals, civil service exams, and biometric signatures.',
+      'A 20 KB limit is used by some application forms and signature-upload fields. Always check the specific portal byte limit, dimensions, and file-format requirements.',
       'When an image is multiple megabytes, reaching 20 KB requires both lossy encoding and proportional dimensional scaling.',
     ],
     limitations: [
@@ -917,8 +930,8 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'Original camera EXIF metadata is removed during canvas re-encoding.',
     ],
     faqs: [
-      { question: 'Will my image be exactly 20 KB?', answer: 'The compressor targets 20 KB or less. It finds the highest visual quality that stays strictly within the 20,480-byte ceiling.' },
-      { question: 'Can large photos be reduced to 20 KB?', answer: 'Yes. The engine uses binary quality search and proportional downscaling to safely reach 20 KB without distorting aspect ratios.' },
+      { question: 'Will my image be exactly 20 KB?', answer: 'The compressor aims for 20,480 bytes or less. Always check the achieved byte count; very detailed images may need smaller dimensions or another output format.' },
+      { question: 'Can large photos be reduced to 20 KB?', answer: 'Often, but not always. The engine can lower encoding quality or image dimensions. If the target is infeasible for your file, review the reported result rather than assuming acceptance.' },
       { question: 'Is my photo uploaded to your servers?', answer: 'No. All compression is executed entirely inside your browser canvas.' },
     ],
     relatedTools: [
@@ -950,10 +963,10 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'Choose a JPG, PNG, or WebP portrait or ID scan.',
       'Review the 50 KB target preset and click Compress.',
       'Our binary search engine determines the optimal compression quality under 50 KB.',
-      'Download your compliant image.',
+      'Download the result after verifying the achieved size, dimensions, and clarity against the destination form requirements.',
     ],
     interpretation: [
-      '50 KB is the standard upper threshold for passport photos, academic entrance exams, and consular portals worldwide.',
+      'File-size rules vary by portal and country. A 50 KB target helps only when the specific application permits that size and the resulting pixel dimensions.',
       'Preserves essential facial features and color tones while eliminating unnecessary image weight.',
     ],
     limitations: [
@@ -961,7 +974,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'Original camera EXIF tags are stripped during canvas re-encoding.',
     ],
     faqs: [
-      { question: 'Is 50 KB suitable for passport photos?', answer: 'Yes. Most government and visa application systems mandate photos between 20 KB and 50 KB.' },
+      { question: 'Is 50 KB suitable for passport photos?', answer: 'Only if your application explicitly accepts files up to 50 KB. Also confirm image dimensions, background, format, and any minimum size.' },
       { question: 'Does it change photo proportions?', answer: 'No. The compression algorithm strictly preserves the original aspect ratio.' },
       { question: 'Can I preserve original dimensions?', answer: 'Yes. You can toggle the preserve dimensions option if the portal requires specific pixel dimensions.' },
     ],
@@ -987,7 +1000,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'resize image to 100kb'
     ],
     intro: [
-      'Meet the 100 KB ceiling commonly enforced by web content management systems, email attachment filters, and online form portals.',
+      'Choose a 100 KB target when a form or publishing workflow specifies that budget; not all content systems require this limit.',
       privacy,
     ],
     steps: [
@@ -997,8 +1010,8 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'Download the optimized image file.',
     ],
     interpretation: [
-      '100 KB provides an ideal balance of visual fidelity and bandwidth efficiency for web publishing.',
-      'Images compressed to 100 KB load nearly instantaneously across mobile 4G/5G connections.',
+      'A 100 KB file budget can be useful for thumbnails and upload forms, but its effect on visual detail depends on dimensions, format, and image complexity.',
+      'Smaller files generally transfer faster, but actual loading depends on the network connection, page design, and other assets.',
     ],
     limitations: [
       'PNG images with high color variance may require dimensional downscaling or WebP conversion to reach 100 KB.',
@@ -1006,7 +1019,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     ],
     faqs: [
       { question: 'Why is 100 KB a popular limit?', answer: 'Many portals, blogs, and email clients use 100 KB as a threshold to ensure fast loading and avoid attachment limits.' },
-      { question: 'Will quality degrade noticeably?', answer: 'At 100 KB, standard web images retain excellent visual clarity with minimal perceptible compression.' },
+      { question: 'Will quality degrade noticeably?', answer: 'Quality varies by content. Compare text edges, facial detail, gradients, and the actual file size before publishing.' },
       { question: 'Is processing private?', answer: 'Yes. Processing runs entirely in your local browser without external network requests.' },
     ],
     relatedTools: [
@@ -1031,7 +1044,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'compress photo 200kb'
     ],
     intro: [
-      'Optimize rich hero images, portfolio photography, and e-commerce banners to under 200 KB without perceptible visual degradation.',
+      'Try a 200 KB target for website imagery when the page budget allows it. Review the result at its actual display size because detail loss can still be visible.',
       privacy,
     ],
     steps: [
@@ -1041,8 +1054,8 @@ export const imageToolPages: Record<string, ToolPageContent> = {
       'Download the ready-to-publish image.',
     ],
     interpretation: [
-      '200 KB is the sweet spot for desktop hero images and e-commerce product zooms requiring crisp textures.',
-      'Allows preserving 1080p or 1440p dimensions while cutting 70-90% of unoptimized camera file weight.',
+      'A 200 KB budget gives more room than 100 KB but does not guarantee crisp full-screen photos or product zooms.',
+      'Whether full dimensions can be retained depends on the original file, output format, and image complexity; compare pixels and achieved bytes.',
     ],
     limitations: [
       'Does not generate responsive srcset variants; creates a single optimized file.',
@@ -1050,7 +1063,7 @@ export const imageToolPages: Record<string, ToolPageContent> = {
     ],
     faqs: [
       { question: 'When should I use 200 KB instead of 100 KB?', answer: 'Use 200 KB for large desktop hero banners, portfolio photography, and product catalogs where fine textures matter.' },
-      { question: 'Can 4K camera photos reach 200 KB?', answer: 'Yes. The optimizer applies lossy compression and gentle scaling if needed to fit under 200 KB.' },
+      { question: 'Can 4K camera photos reach 200 KB?', answer: 'Often, but complex 4K photos may require substantial downscaling. Check the achieved size and dimensions before using the file.' },
       { question: 'Are files sent to any cloud server?', answer: 'No. All operations run directly in your browser.' },
     ],
     relatedTools: [

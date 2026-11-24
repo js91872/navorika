@@ -3,9 +3,9 @@
     "home": "Pagina iniziale",
     "tools": "Strumenti",
     "language": "Lingua",
-    "title": "Strumenti gratuiti per le attività quotidiane",
-    "intro": "Calcola le dimensioni delle immagini, crea disposizioni CSS e verifica il metodo colore delle immagini. Scegli uno strumento qui sotto.",
-    "local": "Funziona nel browser. File e dati inseriti non vengono caricati su un server.",
+    "title": "Strumenti online gratuiti, calcolatori e utilità",
+    "intro": "319 strumenti tra cui convertitori PDF, elaborazione immagini, calcolatori, strumenti per sviluppatori e utilità quotidiane. La maggior parte elabora i dati localmente nel browser; gli strumenti che richiedono dati esterni o conversioni su server indicano chiaramente le loro fonti.",
+    "local": "Calcolatori e utilità orientati alla privacy. La maggior parte degli strumenti elabora i dati localmente nel browser; quelli che richiedono elaborazioni esterne o dati in tempo reale indicano le proprie fonti.",
     "search": "Cerca uno strumento",
     "noResults": "Nessuno strumento trovato.",
     "allEnglish": "Tutti gli strumenti in inglese",
@@ -69,7 +69,45 @@
     "about": "Chi siamo",
     "disclaimer": "Disclaimer",
     "methodology": "Metodologia",
-    "glossary": "Glossario"
+    "glossary": "Glossario",
+    "catAll": "Tutti gli strumenti",
+    "catPdf": "Strumenti PDF",
+    "catImage": "Strumenti immagini",
+    "catFinance": "Calcolatori finanziari",
+    "catHealth": "Calcolatori salute",
+    "catDeveloper": "Strumenti per sviluppatori",
+    "catConstruction": "Calcolatori edilizia",
+    "catEveryday": "Calcolatori per tutti i giorni",
+    "searchPlaceholder": "Cerca tra 319 strumenti...",
+    "clearSearch": "Cancella ricerca",
+    "toolsFound": "strumenti trovati",
+    "allToolsCount": "319 strumenti",
+    "themeToggle": "Cambia tema",
+    "menuToggle": "Apri menu",
+    "brandTagline": "Strumenti gratuiti · Privacy al primo posto",
+    "brandHome": "Navorika pagina iniziale",
+    "privacyBadge": "PRIVACY AL PRIMO POSTO PER PROGETTAZIONE",
+    "legalTrust": "Note legali e trasparenza",
+    "navigation": "Navigazione",
+    "freePill": "319 strumenti · 100% gratuiti · Privacy al primo posto",
+    "statFreeTools": "Strumenti gratuiti",
+    "statProcessLocal": "Elaborazione locale",
+    "statClearSources": "Fonti trasparenti",
+    "statNoSignup": "Nessuna registrazione",
+    "statMost": "Quasi tutti",
+    "statClear": "Chiare",
+    "statZero": "0",
+    "exploreCategory": "Esplora categoria",
+    "whyChoose": "Perché scegliere Navorika?",
+    "whyChooseSubtitle": "Strumenti rapidi e precisi per calcoli e conversioni, senza passaggi inutili.",
+    "featurePrivacyTitle": "Privacy al primo posto",
+    "featurePrivacyDesc": "La maggior parte degli strumenti esegue i calcoli localmente nel browser. Gli strumenti con dati esterni specificano chiaramente la fonte.",
+    "featureSpeedTitle": "Risultati istantanei",
+    "featureSpeedDesc": "Calcoli e conversioni via browser offrono risposte immediate senza code.",
+    "featureFreeTitle": "Completamente gratuito",
+    "featureFreeDesc": "Nessun abbonamento, limitazione o carta di credito. Tutti i 319 strumenti sono a uso gratuito.",
+    "featureNoSignupTitle": "Nessuna registrazione",
+    "featureNoSignupDesc": "Apri qualsiasi strumento e inizia subito a lavorare, senza account, password o email."
   },
   "tools": {
     "aspect-ratio-padding-calculator": {
@@ -2895,15 +2933,32 @@
           "label": "Superficie delle lastre (piedi quadrati)"
         },
         "coveragePerBucket": {
-          "label": "Resa per contenitore (piedi quadrati)"
+          "label": "Resa per contenitore (piedi quadrati)",
+          "help": "Usa la resa indicata sul prodotto per tutte le mani previste."
         },
         "wastePercent": {
           "label": "Margine aggiuntivo (%)"
+        },
+        "compoundType": {
+          "label": "Confezione dello stucco",
+          "options": {
+            "ready": "Stucco pronto (secchi / scatole)",
+            "setting": "Stucco in polvere a presa rapida (sacchi)"
+          }
+        },
+        "tapeFactor": {
+          "label": "Nastro per giunti (piedi lineari per piede quadrato)",
+          "help": "Solo stima: misura giunti e angoli effettivi."
+        },
+        "tapeRollFeet": {
+          "label": "Piedi per rotolo di nastro"
         }
       },
       "results": {
         "adjustedArea": "Superficie con margine (piedi quadrati)",
-        "containers": "Contenitori da acquistare"
+        "containers": "Contenitori da acquistare",
+        "tapeFeet": "Lunghezza stimata del nastro (piedi)",
+        "tapeRolls": "Rotoli di nastro da acquistare"
       },
       "note": "La resa dipende da disposizione delle lastre, mani, paraspigoli, finitura, nastratura e prodotto. Usa il valore del produttore.",
       "textResults": {}

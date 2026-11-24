@@ -85,11 +85,11 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
   },
   'pdf-to-cdr-converter': {
     slug: 'pdf-to-cdr-converter',
-    name: 'PDF to CDR Converter – Convert PDF for CorelDRAW Online',
+    name: 'PDF to CDR Converter for CorelDRAW (Free)',
     category: 'Developer Tools',
     applicationCategory: 'DesignApplication',
     description:
-      'Convert PDF to CorelDRAW online for free. Prepare multipage PDF, editable SVG vectors, or EPS files to import and save as CDR. Fast, private, CorelDRAW-ready.',
+      'Prepare a PDF for CorelDRAW as a multi-page PDF, first-page SVG, or EPS. Import the file and save it as CDR in CorelDRAW. Free, private, no watermark.',
     longTailKeywords: [
       'pdf to cdr',
       'pdf to cdr converter',
@@ -106,30 +106,35 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       'pdf vector to coreldraw',
       'save pdf as cdr',
       'pdf file to cdr',
+      'multi-page pdf for coreldraw',
+      'canva pdf for coreldraw',
+      'illustrator pdf for coreldraw',
+      'pdf fonts to curves coreldraw',
     ],
     intro: [
-      'Convert PDF to CDR by preparing the PDF for CorelDRAW import. Upload a PDF, choose a CorelDRAW-ready PDF, SVG or EPS output, import the result into CorelDRAW, check the artwork, and use Save As to create the native CDR file.',
-      'Editability in CorelDRAW depends directly on whether your source PDF contains native vector paths or scanned bitmap images. Vector PDFs retain scalable curves, fills, and selectable text objects that CorelDRAW can edit directly. In contrast, scanned or raster-based PDFs contain photographic pixels that import as flat bitmap images, which do not automatically become editable vector curves without manual or automated tracing.',
-      'Navorika produces genuine, verified CorelDRAW-ready interchange files: a preserved multipage PDF document, a clean first-page SVG vector file, or an encapsulated PostScript (EPS) file. Navorika does not generate a native CDR file. It creates CorelDRAW-ready PDF, SVG, or EPS output that you can import into CorelDRAW and save as CDR.',
-      'Uploaded files are processed in an isolated temporary workspace on our server and deleted automatically after the conversion job completes. No files are permanently stored or shared.',
+      'Use this free PDF-to-CDR workflow to prepare artwork for CorelDRAW. Navorika downloads a PDF, SVG, or EPS file—not a native .cdr file. Import the download into CorelDRAW and choose Save As to create the CDR file.',
+      'Choose PDF when you need the original document with all pages. SVG and EPS exports contain only the first page.',
+      'Vector artwork may remain scalable after import, but CorelDRAW determines whether text arrives as editable text or curves. Embedded or missing fonts, transparency, and clipping can affect the result. Scanned pages stay images; use tracing in CorelDRAW if you need vector paths.',
+      'PDFs exported from Canva, Illustrator, or other design apps can be used if they are valid PDFs. Check fonts, images, colors, and transparency in CorelDRAW before editing or printing.',
+      'Uploaded files are processed in an isolated temporary workspace and deleted automatically when the conversion request finishes.',
     ],
     formula: [
-      { title: 'Multipage PDF Preservation', body: 'Retains entire vector trees, text layers, embedded images, and all pages for CorelDRAW multi-page File → Import.' },
-      { title: 'First-Page Vector SVG', body: 'Poppler vector backend extracts page-one paths, fills, and bezier strokes into clean W3C vector markup.' },
-      { title: 'Print Interchange EPS', body: 'Generates DSC-compliant PostScript vector interchange for legacy print RIPs.' },
-      { title: 'Vector PDFs vs Scanned Raster PDFs', body: 'Vector PDFs containing native curves, polygons, and text elements remain scalable and editable in CorelDRAW if matching fonts are installed. Scanned PDFs consist of pixel bitmaps wrapped in PDF pages; they import as raster images and require tracing (such as Corel PowerTRACE) to produce vector paths.' },
+      { title: 'PDF — All pages', body: 'Downloads the uploaded PDF unchanged, retaining its complete page sequence. CorelDRAW controls how each page and object is imported.' },
+      { title: 'SVG — First page', body: 'Exports the first PDF page to SVG. Vector artwork can remain scalable; text, images, and object editability depend on the source PDF and CorelDRAW import.' },
+      { title: 'EPS — First page', body: 'Exports the first PDF page to Encapsulated PostScript for print and vector workflows.' },
+      { title: 'Vector PDFs vs scanned PDFs', body: 'Vector PDFs can contain scalable paths and text. Scanned PDFs contain page images; converting the file does not trace those pixels into vector paths.' },
     ],
     steps: [
       'Upload a PDF file up to 15 MB.',
-      'Select your output format: choose PDF to preserve all document pages, or choose SVG or EPS for a focused first-page vector interchange.',
-      'Execute the secure online conversion.',
-      'In CorelDRAW, go to File → Import (Ctrl+I) to place your file, inspect fonts, layers, and curves, then choose File → Save As → CDR to save your native project.',
+      'Choose PDF to keep all pages, or SVG/EPS to export only the first page.',
+      'Download the selected output and, in CorelDRAW, use File → Import (Ctrl+I).',
+      'Review page order, text, curves, images, and transparency. Use File → Save As in CorelDRAW to create the native CDR file.',
     ],
     interpretation: [
-      'Multipage vs Single-Page: Choosing PDF output preserves every page and layer for multi-page CorelDRAW imports. Choosing SVG or EPS extracts only the first page for focused single-sheet vector or print work.',
-      'Vector Editability: Native vector paths, outlines, and fills in the source PDF import into CorelDRAW as scalable, editable curves. If text was converted to curves in the PDF, letter shapes are preserved perfectly as vectors, though paragraph text re-typing is disabled.',
-      'Scanned PDF Handling: Scanned documents containing scanned pages import as bitmap images. They do not automatically become editable vector paths simply by converting or importing.',
-      'Post-Import Native Saving: After importing the converted PDF, SVG, or EPS into CorelDRAW, use File → Save As and select CorelDRAW (*.cdr) to establish your permanent native file.',
+      'Page count: PDF output keeps all uploaded pages. SVG and EPS output only page one.',
+      'Text and fonts: Depending on the source PDF and CorelDRAW import options, text may remain text or become curves. Curves preserve letter shapes but cannot be edited as words.',
+      'Scanned pages: A scanned page remains a bitmap after conversion. Use CorelDRAW tracing tools if you need vector shapes.',
+      'Design-app PDFs: Canva, Illustrator, and other exported PDFs may combine paths, text, images, transparency, or clipping. Inspect the imported artwork before using it for production.',
     ],
     limitations: [
       nativeLimit,
@@ -145,17 +150,32 @@ export const corelDrawToolPages: Record<string, ToolPageContent> = {
       {
         question: 'Can I convert PDF to CDR online for free?',
         answer:
-          'Yes. You can use Navorika to prepare your PDF online for CorelDRAW as PDF, SVG, or EPS output. Import the downloaded file into CorelDRAW and use Save As to create the native CDR file.',
+          'You can prepare a PDF for CorelDRAW here for free, but the download is PDF, SVG, or EPS—not a native CDR file. Import it into CorelDRAW and use Save As to create the CDR.',
       },
       {
         question: 'Does this tool create a native CDR file?',
         answer:
-          "No. CDR is CorelDRAW's proprietary document format. Navorika does not generate a native CDR file. It creates CorelDRAW-ready PDF, SVG, or EPS output that you can import into CorelDRAW and save as CDR.",
+          'No. Navorika has no verified native CDR-writing provider configured. It downloads PDF, SVG, or EPS files for import into CorelDRAW, where you can save the artwork as CDR.',
+      },
+      {
+        question: 'How do I convert a multi-page PDF for CorelDRAW?',
+        answer:
+          'Choose PDF output to download the original document with all pages. SVG and EPS exports contain only the first page. Import the PDF into CorelDRAW and select the pages you need.',
+      },
+      {
+        question: 'What happens to embedded fonts or text converted to curves?',
+        answer:
+          'PDF import options and font availability affect how text appears in CorelDRAW. If text is imported as curves, the letter shapes remain visually fixed but are no longer editable as words. Check the imported file before saving.',
+      },
+      {
+        question: 'Can I use a Canva or Illustrator PDF?',
+        answer:
+          'Yes, if the exported file is a valid PDF. These files can mix vector paths, text, raster images, transparency, and clipping. Import the result into CorelDRAW and check these elements before editing or printing.',
       },
       {
         question: 'Can CorelDRAW open and edit a PDF file directly?',
         answer:
-          'Yes. CorelDRAW features native PDF import capability via File → Import. When importing a vector PDF, CorelDRAW prompts you to import text as editable typography (if system fonts match) or as vector curves, preserving lines, fills, and object hierarchy.',
+          'CorelDRAW can import PDFs, but the editability of text, paths, images, and effects depends on the PDF contents, fonts, and import settings. Inspect the imported artwork before saving as CDR.',
       },
       {
         question: 'Will a scanned PDF become editable vector artwork in CorelDRAW?',

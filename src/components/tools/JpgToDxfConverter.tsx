@@ -111,28 +111,28 @@ export default function JpgToDxfConverter(){
       window.setTimeout(()=>URL.revokeObjectURL(url),2000);
     }catch(e){setError(e instanceof Error?e.message:'Could not create DXF.')}finally{setBusy(false)}
   }
-  return <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 text-slate-900 shadow-sm sm:p-8">
+  return <section className="mt-8 rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5 text-[#18181b] dark:text-[#f4f4f5] shadow-xs sm:p-8">
     <label className="block font-semibold">Upload an image (JPG, JPEG, PNG or WebP; maximum 15 MB)
-      <input type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" className="mt-3 block w-full rounded-lg border p-3" onChange={e=>choose(e.target.files?.[0])}/>
+      <input type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" className="mt-3 block w-full rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-transparent p-3" onChange={e=>choose(e.target.files?.[0])}/>
     </label>
-    <p className="mt-2 text-sm text-slate-600">Images are processed in your browser, not uploaded. Best for black-and-white logos, silhouettes, symbols and line art.</p>
+    <p className="mt-2 text-sm text-[#5b5b63] dark:text-[#a1a1aa]">Images are processed in your browser, not uploaded. Best for black-and-white logos, silhouettes, symbols and line art.</p>
     <div className="mt-6 grid gap-5 md:grid-cols-2">
-      <label className="font-medium">Tracing threshold: {threshold}<input className="mt-2 w-full" type="range" min="25" max="245" value={threshold} onChange={e=>setThreshold(Number(e.target.value))}/></label>
-      <label className="font-medium">Minimum contour area (pixels)<input type="number" min="0" max="10000" value={minArea} onChange={e=>setMinArea(Math.max(0,Number(e.target.value)||0))} className="mt-2 w-full rounded-lg border p-2"/></label>
-      <label className="font-medium">Point reduction (pixels)<input type="number" step="0.5" min="0" max="20" value={smoothing} onChange={e=>setSmoothing(Math.max(0,Number(e.target.value)||0))} className="mt-2 w-full rounded-lg border p-2"/></label>
-      <label className="font-medium">Output width (mm)<input type="number" min="1" max="100000" value={widthMm} onChange={e=>setWidthMm(Number(e.target.value))} className="mt-2 w-full rounded-lg border p-2"/></label>
+      <label className="font-medium">Tracing threshold: {threshold}<input className="mt-2 w-full accent-[#e5322d]" type="range" min="25" max="245" value={threshold} onChange={e=>setThreshold(Number(e.target.value))}/></label>
+      <label className="font-medium">Minimum contour area (pixels)<input type="number" min="0" max="10000" value={minArea} onChange={e=>setMinArea(Math.max(0,Number(e.target.value)||0))} className="mt-2 w-full rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-transparent p-2"/></label>
+      <label className="font-medium">Point reduction (pixels)<input type="number" step="0.5" min="0" max="20" value={smoothing} onChange={e=>setSmoothing(Math.max(0,Number(e.target.value)||0))} className="mt-2 w-full rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-transparent p-2"/></label>
+      <label className="font-medium">Output width (mm)<input type="number" min="1" max="100000" value={widthMm} onChange={e=>setWidthMm(Number(e.target.value))} className="mt-2 w-full rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-transparent p-2"/></label>
     </div>
-    <label className="mt-5 flex items-center gap-2"><input type="checkbox" checked={invert} onChange={e=>setInvert(e.target.checked)}/> Trace light shapes on a dark background</label>
+    <label className="mt-5 flex items-center gap-2"><input type="checkbox" checked={invert} onChange={e=>setInvert(e.target.checked)} className="accent-[#e5322d]"/> Trace light shapes on a dark background</label>
     <canvas ref={canvas} className="hidden"/>
-    {error&&<p role="alert" className="mt-4 rounded-lg bg-red-50 p-3 text-red-700">{error}</p>}
-    {file&&dimensions[0]>0&&<div className="mt-6 rounded-xl border bg-slate-50 p-4">
-      <p className="font-semibold">Live vector outline preview</p>
-      <p className="text-sm text-slate-600">{dimensions[0]} × {dimensions[1]} processing pixels · {paths.length.toLocaleString()} contours · approximate height {(widthMm*dimensions[1]/dimensions[0]).toFixed(1)} mm</p>
-      <svg viewBox={'0 0 '+dimensions[0]+' '+dimensions[1]} className="mt-3 h-auto max-h-[420px] w-full rounded border bg-white" role="img" aria-label="Traced vector contour preview">
-        {paths.map((path,i)=><polyline key={i} points={path.map(p=>p.join(',')).join(' ')} fill="none" stroke="#1755c4" strokeWidth={Math.max(0.65,dimensions[0]/900)} />)}
+    {error&&<p role="alert" className="mt-4 rounded-lg bg-red-50 dark:bg-red-950/20 p-3 text-[#e5322d] text-sm">{error}</p>}
+    {file&&dimensions[0]>0&&<div className="mt-6 rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-[#f7f7f8] dark:bg-[#202023] p-4">
+      <p className="font-semibold text-sm">Live vector outline preview</p>
+      <p className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-1">{dimensions[0]} × {dimensions[1]} processing pixels · {paths.length.toLocaleString()} contours · approximate height {(widthMm*dimensions[1]/dimensions[0]).toFixed(1)} mm</p>
+      <svg viewBox={'0 0 '+dimensions[0]+' '+dimensions[1]} className="mt-3 h-auto max-h-[420px] w-full rounded-lg border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#121214]" role="img" aria-label="Traced vector contour preview">
+        {paths.map((path,i)=><polyline key={i} points={path.map(p=>p.join(',')).join(' ')} fill="none" stroke="#e5322d" strokeWidth={Math.max(0.65,dimensions[0]/900)} />)}
       </svg>
-      <p className="mt-3 text-sm text-slate-600">The DXF contains closed 2D polylines. They are traced outlines, not recognized engineering dimensions or CAD features. Inspect scale and paths in CAD/CAM before manufacturing.</p>
+      <p className="mt-3 text-xs text-[#5b5b63] dark:text-[#a1a1aa] leading-relaxed">The DXF contains closed 2D polylines. They are traced outlines, not recognized engineering dimensions or CAD features. Inspect scale and paths in CAD/CAM before manufacturing.</p>
     </div>}
-    <button type="button" onClick={download} disabled={!paths.length||busy||widthMm<=0||!Number.isFinite(widthMm)} className="mt-6 rounded-xl bg-blue-700 px-6 py-3 font-bold text-white disabled:cursor-not-allowed disabled:opacity-40">{busy?'Preparing DXF…':'Download DXF — Free'}</button>
+    <button type="button" onClick={download} disabled={!paths.length||busy||widthMm<=0||!Number.isFinite(widthMm)} className="mt-6 rounded-xl bg-[#e5322d] hover:bg-[#c71f1e] px-6 py-2.5 font-semibold text-sm text-white transition-colors disabled:cursor-not-allowed disabled:opacity-40 shadow-xs">{busy?'Preparing DXF…':'Download DXF — Free'}</button>
   </section>;
 }
