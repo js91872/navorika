@@ -47,26 +47,89 @@ export default async function ToolkitPage({ params }: Props) {
   ];
   if (toolkit.faqs?.length) graph.push({ '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: toolkit.faqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) });
 
-  return <main className="min-h-screen pb-20 pt-16">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replaceAll('<', '\\u003c') }} />
-    <header className="mx-auto max-w-4xl text-center"><p className="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Related tools for one task</p><h1 className="mt-3 text-balance text-4xl font-black tracking-tight sm:text-5xl">{toolkit.name}</h1><p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-[var(--muted-foreground)]">{toolkit.intro}</p><p className="mt-4 text-sm font-semibold text-[var(--muted-foreground)]">{toolkitTools.length} tools · {toolkit.groups.length} groups</p></header>
+  return (
+    <div className="pb-20 pt-8 text-[#18181b] dark:text-[#f4f4f5]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replaceAll('<', '\\u003c') }} />
+      <header className="mx-auto max-w-4xl text-center mb-10">
+        <nav aria-label="Breadcrumb" className="mb-4 inline-flex items-center gap-2 text-xs font-semibold text-[#5b5b63] dark:text-[#a1a1aa]">
+          <Link href="/" className="hover:text-[#e5322d]">Home</Link>
+          <span>/</span>
+          <Link href="/toolkits" className="hover:text-[#e5322d]">Toolkits</Link>
+          <span>/</span>
+          <span className="text-[#18181b] dark:text-white">{toolkit.name}</span>
+        </nav>
+        <p className="text-xs font-bold uppercase tracking-wider text-[#e5322d]">Related tools for one task</p>
+        <h1 className="mt-2 text-balance text-3xl sm:text-5xl font-black tracking-tight text-[#18181b] dark:text-white">{toolkit.name}</h1>
+        <p className="mx-auto mt-4 max-w-3xl text-base sm:text-lg leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">{toolkit.intro}</p>
+        <p className="mt-2 text-xs font-semibold text-[#5b5b63] dark:text-[#a1a1aa]">{toolkitTools.length} tools · {toolkit.groups.length} groups</p>
+      </header>
 
-    <div className="mx-auto mt-14 max-w-5xl space-y-12">{toolkit.groups.map((group) => {
-      const groupTools = toolkitTools.filter((tool) => group.toolSlugs.includes(tool.slug));
-      if (!groupTools.length) return null;
-      return <section key={group.name}><h2 className="text-2xl font-black">{group.name}</h2><p className="mt-2 max-w-3xl leading-7 text-[var(--muted-foreground)]">{group.description}</p><div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{groupTools.map((tool) => <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-lg"><div className="flex items-start gap-3"><span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-500/10 text-2xl" aria-hidden="true">{getToolIcon(tool.slug) || '🔧'}</span><div><h3 className="font-bold group-hover:text-indigo-600">{tool.title}</h3><p className="mt-1 line-clamp-3 text-sm leading-6 text-[var(--muted-foreground)]">{tool.description}</p></div></div><span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600">{`Open ${tool.title}`} <ArrowRight className="size-4" /></span></Link>)}</div></section>;
-    })}</div>
+      <div className="mx-auto max-w-5xl space-y-10">{toolkit.groups.map((group) => {
+        const groupTools = toolkitTools.filter((tool) => group.toolSlugs.includes(tool.slug));
+        if (!groupTools.length) return null;
+        return (
+          <section key={group.name}>
+            <div className="max-w-3xl mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#18181b] dark:text-white">{group.name}</h2>
+              <p className="mt-1 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">{group.description}</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {groupTools.map((tool) => (
+                <Link key={tool.slug} href={`/tools/${tool.slug}`} className="group rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5 transition hover:border-[#e5322d] hover:shadow-md flex flex-col justify-between min-h-[140px]">
+                  <div>
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 text-xl text-[#e5322d]" aria-hidden="true">{getToolIcon(tool.slug) || '🔧'}</span>
+                      <span className="text-[#5b5b63] dark:text-[#a1a1aa] group-hover:text-[#e5322d] group-hover:translate-x-0.5 transition-all">→</span>
+                    </div>
+                    <h3 className="font-semibold text-base text-[#18181b] dark:text-white group-hover:text-[#e5322d] transition-colors line-clamp-1">{tool.title}</h3>
+                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">{tool.description}</p>
+                  </div>
+                  <span className="mt-4 pt-3 border-t border-[#e4e4e8] dark:border-[#27272a]/60 inline-flex items-center gap-1 text-xs font-semibold text-[#e5322d]">{`Open ${tool.title}`} <ArrowRight className="size-3.5" /></span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })}</div>
 
-    <section className="mx-auto mt-16 max-w-5xl rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 sm:p-8">
-      <h2 className="text-2xl font-black">How to use this tool collection</h2>
-      <div className="mt-4 grid gap-5 text-sm leading-7 text-[var(--muted-foreground)] md:grid-cols-2">
-        <p>Start with the part of the job you are doing now, not necessarily the first tool shown. Each group above covers a different step, so you can move between calculators or converters only when the next step is useful to you.</p>
-        <p>Check the units, assumptions, and limitations on each tool page before using a result for purchasing, budgeting, health, construction, or another important decision. The collection is a navigation aid; each tool remains a separate calculator or utility with its own explanation.</p>
-      </div>
-    </section>
+      <section className="mx-auto mt-14 max-w-5xl rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-6 sm:p-8 shadow-xs">
+        <h2 className="text-xl font-bold text-[#18181b] dark:text-white mb-2">How to use this tool collection</h2>
+        <div className="grid gap-4 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa] md:grid-cols-2">
+          <p>Start with the part of the job you are doing now, not necessarily the first tool shown. Each group above covers a different step, so you can move between calculators or converters only when the next step is useful to you.</p>
+          <p>Check the units, assumptions, and limitations on each tool page before using a result for purchasing, budgeting, health, construction, or another important decision. The collection is a navigation aid; each tool remains a separate calculator or utility with its own explanation.</p>
+        </div>
+      </section>
 
-    {guides.length > 0 && <section className="mx-auto mt-16 max-w-5xl border-t border-[var(--border)] pt-12"><div className="flex items-center gap-3"><BookOpen className="size-6 text-violet-600" /><h2 className="text-2xl font-black">Helpful guides</h2></div><div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{guides.map((guide) => <Link key={guide.slug} href={`/guides/${guide.slug}`} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition hover:border-violet-500/40 hover:shadow-lg"><h3 className="font-bold leading-6">{guide.title}</h3><p className="mt-3 text-sm text-[var(--muted-foreground)]">{guide.readTime}</p></Link>)}</div></section>}
+      {guides.length > 0 && (
+        <section className="mx-auto mt-14 max-w-5xl border-t border-[#e4e4e8] dark:border-[#27272a] pt-10">
+          <div className="flex items-center gap-2.5 mb-4">
+            <BookOpen className="size-5 text-[#e5322d]" />
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#18181b] dark:text-white">Helpful guides</h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {guides.map((guide) => (
+              <Link key={guide.slug} href={`/guides/${guide.slug}`} className="group rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-4 transition hover:border-[#e5322d] hover:shadow-xs">
+                <h3 className="font-semibold text-sm leading-snug text-[#18181b] dark:text-white group-hover:text-[#e5322d] transition-colors">{guide.title}</h3>
+                <p className="mt-2 text-xs text-[#5b5b63] dark:text-[#a1a1aa]">{guide.readTime}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
-    {toolkit.faqs?.length ? <section className="mx-auto mt-16 max-w-4xl border-t border-[var(--border)] pt-12"><h2 className="text-2xl font-black">Frequently asked questions</h2><div className="mt-5 space-y-3">{toolkit.faqs.map(({ question, answer }) => <details key={question} className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5"><summary className="cursor-pointer font-bold">{question}</summary><p className="mt-3 leading-7 text-[var(--muted-foreground)]">{answer}</p></details>)}</div></section> : null}
-  </main>;
+      {toolkit.faqs?.length ? (
+        <section className="mx-auto mt-14 max-w-4xl border-t border-[#e4e4e8] dark:border-[#27272a] pt-10">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#18181b] dark:text-white mb-4">Frequently asked questions</h2>
+          <div className="space-y-3">
+            {toolkit.faqs.map(({ question, answer }) => (
+              <details key={question} className="rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-4 sm:p-5">
+                <summary className="cursor-pointer font-semibold text-sm sm:text-base text-[#18181b] dark:text-white">{question}</summary>
+                <p className="mt-2.5 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">{answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      ) : null}
+    </div>
+  );
 }

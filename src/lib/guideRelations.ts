@@ -1,4 +1,7 @@
 export const guideRelations: Record<string, string[]> = {
+  'how-to-clear-icloud-storage': ['why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely', 'how-to-speed-up-macbook'],
+  'why-is-my-icloud-storage-full': ['how-to-clear-icloud-storage', 'how-to-delete-icloud-backup-safely', 'how-to-speed-up-macbook'],
+  'how-to-delete-icloud-backup-safely': ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-speed-up-macbook'],
   'how-to-calculate-fertilizer-for-a-lawn': ['fertilizer-npk-numbers-explained', 'how-to-calculate-fertilizer-from-a-soil-test'],
   'fertilizer-npk-numbers-explained': ['how-to-calculate-fertilizer-for-a-lawn', 'how-to-calculate-fertilizer-from-a-soil-test'],
   'how-to-calculate-fertilizer-from-a-soil-test': ['how-to-calculate-fertilizer-for-a-lawn', 'fertilizer-npk-numbers-explained'],

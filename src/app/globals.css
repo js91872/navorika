@@ -1,42 +1,55 @@
 @import "tailwindcss";
 
 @layer base {
-  /* Light theme (default) */
+  /* Light theme (approved iLovePDF-inspired clean utility palette) */
   :root {
-    --background: #ffffff;
-    --foreground: #0a0a0a;
+    --background: #f7f7f8;
+    --foreground: #18181b;
     --card: #ffffff;
-    --card-foreground: #0a0a0a;
-    --border: #e5e7eb;
-    --muted: #f3f4f6;
-    --muted-foreground: #6b7280;
+    --card-foreground: #18181b;
+    --border: #e4e4e8;
+    --muted: #f0f0f2;
+    --muted-foreground: #5b5b63;
+    --primary: #e5322d;
+    --primary-hover: #c71f1e;
+    --primary-light: #fff1f1;
+    --primary-foreground: #ffffff;
   }
 
   .dark {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
-    --card: #111111;
-    --card-foreground: #ffffff;
-    --border: #1f2937;
-    --muted: #1a1a1a;
-    --muted-foreground: #9ca3af;
+    --background: #111113;
+    --foreground: #f4f4f5;
+    --card: #18181b;
+    --card-foreground: #f4f4f5;
+    --border: #27272a;
+    --muted: #222226;
+    --muted-foreground: #a1a1aa;
+    --primary: #e5322d;
+    --primary-hover: #ef4444;
+    --primary-light: rgba(229, 50, 45, 0.15);
+    --primary-foreground: #ffffff;
   }
 
+  html,
   body {
+    overflow-x: clip;
+    max-width: 100vw;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--background);
     color: var(--foreground);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background: rgba(99, 102, 241, 0.3);
-    color: white;
+    background: rgba(229, 50, 45, 0.2);
+    color: inherit;
   }
 
   ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
@@ -47,5 +60,26 @@
   }
   .dark ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* V2 link palette: normalize legacy blue/indigo link utilities without
+   changing semantic status colors, charts, buttons or non-link elements. */
+@layer utilities {
+  a:is(
+    [class*="text-blue-"],
+    [class*="text-indigo-"],
+    [class*="text-sky-"],
+    [class*="text-cyan-"]
+  ) {
+    color: var(--primary);
+  }
+  a:is(
+    [class*="text-blue-"],
+    [class*="text-indigo-"],
+    [class*="text-sky-"],
+    [class*="text-cyan-"]
+  ):hover {
+    color: var(--primary-hover);
   }
 }

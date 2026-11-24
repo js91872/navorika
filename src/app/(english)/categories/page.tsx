@@ -1,170 +1,89 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowRight, Grid3x3, Sparkles } from 'lucide-react';
+import { Grid3x3, ArrowRight } from 'lucide-react';
 import { categories, tools } from '@/data/registry';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 
-const iconMap: Record<string, string> = {
-  FileText: '📄',
-  Image: '🖼️',
-  Calculator: '📊',
-  HeartPulse: '❤️',
-  Code: '⚡',
-  PiggyBank: '💰',
-  Globe: '🌍',
-  Hammer: '🔨',
-};
-
-const colorMap: Record<string, { bg: string; border: string; glow: string; iconBg: string }> = {
-  'pdf-tools': {
-    bg: 'from-blue-600/20 to-indigo-600/20',
-    border: 'hover:border-blue-500/50',
-    glow: 'shadow-blue-500/20',
-    iconBg: 'bg-blue-500/20 text-blue-400',
-  },
-  'image-tools': {
-    bg: 'from-purple-600/20 to-violet-600/20',
-    border: 'hover:border-purple-500/50',
-    glow: 'shadow-purple-500/20',
-    iconBg: 'bg-purple-500/20 text-purple-400',
-  },
-  'finance-calculators': {
-    bg: 'from-emerald-600/20 to-teal-600/20',
-    border: 'hover:border-emerald-500/50',
-    glow: 'shadow-emerald-500/20',
-    iconBg: 'bg-emerald-500/20 text-emerald-400',
-  },
-  'health-calculators': {
-    bg: 'from-rose-600/20 to-pink-600/20',
-    border: 'hover:border-rose-500/50',
-    glow: 'shadow-rose-500/20',
-    iconBg: 'bg-rose-500/20 text-rose-400',
-  },
-  'developer-tools': {
-    bg: 'from-amber-600/20 to-orange-600/20',
-    border: 'hover:border-amber-500/50',
-    glow: 'shadow-amber-500/20',
-    iconBg: 'bg-amber-500/20 text-amber-400',
-  },
-  'retirement-calculators': {
-    bg: 'from-indigo-600/20 to-purple-600/20',
-    border: 'hover:border-indigo-500/50',
-    glow: 'shadow-indigo-500/20',
-    iconBg: 'bg-indigo-500/20 text-indigo-400',
-  },
-  'currency-converters': {
-    bg: 'from-blue-600/20 to-cyan-600/20',
-    border: 'hover:border-blue-500/50',
-    glow: 'shadow-blue-500/20',
-    iconBg: 'bg-blue-500/20 text-blue-400',
-  },
-  'construction-calculators': {
-    bg: 'from-cyan-600/20 to-blue-600/20',
-    border: 'hover:border-cyan-500/50',
-    glow: 'shadow-cyan-500/20',
-    iconBg: 'bg-cyan-500/20 text-cyan-400',
-  },
-  'everyday-calculators': {
-    bg: 'from-sky-600/20 to-cyan-600/20',
-    border: 'hover:border-sky-500/50',
-    glow: 'shadow-sky-500/20',
-    iconBg: 'bg-sky-500/20 text-sky-400',
-  },
+export const metadata: Metadata = {
+  title: 'All Tool Categories – Browse Free Online Tools',
+  description: 'Explore free online tools organized by category: PDF, image, calculators, finance, construction, developer utilities, and everyday tools.',
+  alternates: { canonical: 'https://navorika.com/categories' },
 };
 
 export default function CategoriesPage() {
+  const activeTools = tools.filter((tool) => !toolsUnderReview.has(tool.slug));
+
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
+    <div className="pb-16 pt-8 text-[#18181b] dark:text-[#f4f4f5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="p-3 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
-              <Grid3x3 className="h-8 w-8" />
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="p-3 rounded-xl bg-[#fff1f1] dark:bg-[#e5322d]/10 text-[#e5322d]">
+              <Grid3x3 className="h-6 w-6" />
             </div>
             <div>
-              <h1 className="text-4xl font-black tracking-tight">Free Online Tools by Category</h1>
-              <p className="text-[var(--muted-foreground)] mt-1">
-                {categories.length} categories · {tools.filter((tool) => !toolsUnderReview.has(tool.slug)).length} free tools
+              <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-[#18181b] dark:text-white">
+                Tool Categories
+              </h1>
+              <p className="text-[#5b5b63] dark:text-[#a1a1aa] text-sm mt-0.5">
+                {categories.length} categories · {activeTools.length} free online tools
               </p>
             </div>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)] mt-2 ml-14">
-            <Sparkles className="h-4 w-4 text-amber-500" />
-            <span>Choose what you want to do, then browse the matching tools</span>
           </div>
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {categories.map((category, index) => {
-            const categoryTools = tools.filter(t => t.category === category.slug && !toolsUnderReview.has(t.slug));
-            const icon = iconMap[category.icon] || '📁';
-            const colors = colorMap[category.slug] || {
-              bg: 'from-indigo-600/20 to-purple-600/20',
-              border: 'hover:border-indigo-500/50',
-              glow: 'shadow-indigo-500/20',
-              iconBg: 'bg-indigo-500/20 text-indigo-400',
-            };
-            const hasTools = categoryTools.length > 0;
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {categories.map((category) => {
+            const count = activeTools.filter((t) => t.category === category.slug).length;
 
             return (
-              <motion.div
+              <Link
                 key={category.slug}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.06 }}
-                whileHover={hasTools ? { y: -8, scale: 1.02 } : {}}
-                className="group"
+                href={`/categories/${category.slug}`}
+                className="group flex flex-col justify-between p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] hover:border-[#e5322d] hover:shadow-md transition-all duration-150 min-h-[160px]"
               >
-                <Link
-                  href={hasTools ? `/categories/${category.slug}` : '#'}
-                  className={`block h-full ${!hasTools ? 'cursor-not-allowed opacity-60' : ''}`}
-                >
-                  <div className={`relative p-6 rounded-2xl bg-gradient-to-br ${colors.bg} bg-[var(--card)] border-2 border-[var(--border)] ${hasTools ? colors.border : ''} transition-all duration-500 h-full overflow-hidden shadow-lg ${hasTools ? `hover:shadow-2xl ${colors.glow}` : ''}`}>
-                    {/* Animated glow on hover */}
-                    {hasTools && (
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        <div className={`absolute inset-0 bg-gradient-to-r ${colors.bg} blur-2xl rounded-2xl`} />
-                      </div>
-                    )}
-
-                    <div className="relative z-10">
-                      <div className={`w-14 h-14 rounded-2xl ${colors.iconBg} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                        {icon}
-                      </div>
-                      <h3 className="text-xl font-bold text-[var(--foreground)] group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                        {category.name}
-                      </h3>
-                      <p className="text-sm text-[var(--muted-foreground)] mt-1.5 leading-relaxed line-clamp-2">
-                        {category.description}
-                      </p>
-                      <div className="flex items-center justify-between mt-5 pt-4 border-t border-[var(--border)] text-xs text-[var(--muted-foreground)]">
-                        <span className="font-medium flex items-center gap-1.5">
-                          {hasTools ? `${categoryTools.length} tools` : 'Coming soon'}
-                        </span>
-                        {hasTools && (
-                          <span className="group-hover:translate-x-1 transition-transform">→</span>
-                        )}
-                      </div>
-                    </div>
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="font-mono text-xs font-bold text-[#e5322d] bg-[#fff1f1] dark:bg-[#e5322d]/10 px-2 py-0.5 rounded-md">
+                      {count} {count === 1 ? 'tool' : 'tools'}
+                    </span>
+                    <span className="text-[#5b5b63] dark:text-[#a1a1aa] group-hover:text-[#e5322d] group-hover:translate-x-0.5 transition-all">
+                      →
+                    </span>
                   </div>
-                </Link>
-              </motion.div>
+                  <h2 className="text-lg font-bold text-[#18181b] dark:text-white group-hover:text-[#e5322d] transition-colors leading-snug">
+                    {category.name}
+                  </h2>
+                  <p className="text-sm text-[#5b5b63] dark:text-[#a1a1aa] mt-1.5 leading-relaxed line-clamp-2">
+                    {category.description}
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[#e4e4e8] dark:border-[#27272a]/60 flex items-center justify-between text-xs font-semibold text-[#e5322d]">
+                  <span>Explore category</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </Link>
             );
           })}
         </div>
 
-        <section className="mt-14 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 sm:p-8">
-          <h2 className="text-2xl font-black">What you can find on Navorika</h2>
-          <div className="mt-4 grid gap-5 text-sm leading-7 text-[var(--muted-foreground)] md:grid-cols-2">
-            <p>Use PDF and image tools for common file jobs such as compression, conversion, resizing, merging, and page organization. Construction and everyday calculators help with materials, measurements, shipping, household planning, travel, and practical day-to-day estimates.</p>
-            <p>Finance and health calculators are designed for comparison and planning rather than professional advice. Developer tools cover common web and data tasks such as JSON, Base64, networking, timestamps, and code formatting. Choose a category above to see the tools and guides that match the job you are trying to do.</p>
+        {/* Information Callout */}
+        <section className="mt-12 rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-6 sm:p-8 shadow-xs">
+          <h2 className="text-xl font-bold text-[#18181b] dark:text-white mb-2">
+            Choosing the right tool
+          </h2>
+          <div className="grid gap-4 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa] md:grid-cols-2">
+            <p>
+              Use PDF and image tools for daily document and image tasks such as compressing, resizing, converting, and merging. Construction and everyday calculators help calculate material takeoffs, financial estimates, health screening formulas, and unit conversions.
+            </p>
+            <p>
+              Developer tools process JSON, YAML, Base64, regular expressions, and tokens locally in your browser. Choose any category above to see the complete list of tools, related workflow toolkits, and helpful guides.
+            </p>
           </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

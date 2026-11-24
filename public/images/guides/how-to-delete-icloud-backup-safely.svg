@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">How to Delete iCloud Backup Safely: iPhone &amp; iPad Guide</title>
+  <desc id="desc">Illustration demonstrating what happens when deleting an iCloud backup, distinguishing between live synced databases and device snapshots.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1060" cy="110" r="180" fill="#fee2e2" opacity="0.4"/>
+  <circle cx="120" cy="510" r="170" fill="#fee2e2" opacity="0.3"/>
+
+  <!-- Eyebrow Badge -->
+  <rect x="80" y="48" width="170" height="34" rx="17" fill="#fff1f1" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="165" y="70" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="700" fill="#e5322d" text-anchor="middle" letter-spacing="1">BACKUP SAFETY GUIDE</text>
+
+  <!-- Title & Subtitle -->
+  <text x="80" y="128" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="44" font-weight="900" fill="#18181b" letter-spacing="-1">How to Delete iCloud Backup Safely</text>
+  <text x="80" y="168" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="500" fill="#5b5b63">Will You Lose Everything? Exact Consequences, Step-by-Step Deletion &amp; Local Alternatives</text>
+
+  <!-- Main Card Container -->
+  <g filter="url(#cardShadow)">
+    <rect x="80" y="205" width="1040" height="370" rx="20" fill="#ffffff" stroke="#e4e4e8" stroke-width="1.5"/>
+  </g>
+
+  <!-- Core Reassurance Banner -->
+  <rect x="110" y="235" width="980" height="52" rx="12" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.2"/>
+  <circle cx="140" cy="261" r="14" fill="#10b981"/>
+  <!-- Checkmark -->
+  <path d="M134 261l4 4 8-8" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="170" y="256" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="15" font-weight="800" fill="#065f46">Direct Answer: Deleting an iCloud Backup does NOT delete your physical phone data.</text>
+  <text x="170" y="274" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="500" fill="#047857">Photos, contacts, messages, and downloaded apps stay on your phone. Only the cloud restore snapshot is removed.</text>
+
+  <!-- Two Comparison Columns: What is Safe vs What is Removed -->
+  <!-- Left Box: What is 100% Safe (Green) -->
+  <g>
+    <rect x="110" y="305" width="470" height="240" rx="14" fill="#fafafa" stroke="#e4e4e8" stroke-width="1.2"/>
+    <rect x="130" y="322" width="28" height="28" rx="8" fill="#d1fae5"/>
+    <path d="M138 336l4 4 8-8" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="170" y="342" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="800" fill="#065f46">What Remains 100% Safe</text>
+
+    <text x="130" y="378" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✓ All Photos &amp; Videos (in iCloud Photos &amp; on iPhone)</text>
+    <text x="130" y="405" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✓ Contacts, Calendars, Notes &amp; Reminders (live synced)</text>
+    <text x="130" y="432" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✓ Messages in iCloud &amp; attachments (live synced)</text>
+    <text x="130" y="459" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✓ iCloud Drive files, PDFs &amp; Pages documents</text>
+    <text x="130" y="486" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✓ All apps and downloaded media currently on device</text>
+
+    <text x="130" y="525" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="700" fill="#059669">Verdict: No live database data is touched.</text>
+  </g>
+
+  <!-- Right Box: What is Removed (Red/Amber) -->
+  <g>
+    <rect x="620" y="305" width="470" height="240" rx="14" fill="#fafafa" stroke="#e4e4e8" stroke-width="1.2"/>
+    <rect x="640" y="322" width="28" height="28" rx="8" fill="#fee2e2"/>
+    <path d="M648 330l12 12M660 330l-12 12" fill="none" stroke="#e5322d" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="680" y="342" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="800" fill="#991b1b">What Is Actually Removed</text>
+
+    <text x="640" y="378" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✕ Saved Home Screen layout &amp; wallpaper configuration</text>
+    <text x="640" y="405" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✕ Wi-Fi network passwords &amp; custom system settings</text>
+    <text x="640" y="432" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✕ Local app caches &amp; offline data for non-cloud apps</text>
+    <text x="640" y="459" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✕ Ability to clone this phone to a new iPhone from cloud</text>
+    <text x="640" y="486" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#18181b">✕ Nightly automated cloud disaster recovery safety net</text>
+
+    <text x="640" y="525" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="700" fill="#e5322d">Smart Solution: Create a free Mac/PC local backup first!</text>
+  </g>
+
+  <!-- Footer text -->
+  <text x="600" y="605" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#a1a1aa" text-anchor="middle">NAVORIKA TECH GUIDES • BACKUP ARCHITECTURE EXPLAINED</text>
+</svg>
