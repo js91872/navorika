@@ -71,7 +71,7 @@ export default function UniversalJsonStudioTool() {
         </div>
         <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
         <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
-        <PrivacyBadges slug="json-formatter" className="mt-5 justify-center" />
+
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden flex flex-col border border-slate-200 dark:border-slate-800">
@@ -130,6 +130,7 @@ export default function UniversalJsonStudioTool() {
           )}
         </div>
       </div>
+      <div className="mt-6" aria-label="Tool capabilities"><PrivacyBadges slug="json-formatter" /></div>
     </div>
   );
 }

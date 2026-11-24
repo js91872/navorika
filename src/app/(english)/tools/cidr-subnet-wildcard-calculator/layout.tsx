@@ -1,5 +1,6 @@
+import ToolPageContent from '@/components/seo/ToolPageContent';
 import { developerToolPages } from '@/data/tool-pages/developer';
-import { createToolJsonLd, createToolMetadata } from '@/lib/seo/toolPage';
+import { createToolMetadata } from '@/lib/seo/toolPage';
 
 const tool = developerToolPages['cidr-subnet-wildcard-calculator'];
 
@@ -10,13 +11,8 @@ export default function Layout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(createToolJsonLd(tool)),
-        }}
-      />
       {children}
+      <ToolPageContent tool={tool} />
     </>
   );
 }

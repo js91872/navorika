@@ -7,27 +7,28 @@
     "es",
     "ar",
     "ru",
-    "de"
+    "de",
+    "id"
   ],
   "summary": {
-    "tools": 325,
+    "tools": 343,
     "publishedTools": 319,
-    "pendingTools": 0,
-    "underReviewTools": 6,
+    "pendingTools": 17,
+    "underReviewTools": 7,
     "sharedCalculators": 75,
-    "guides": 63,
+    "guides": 82,
     "trustPages": 7,
-    "publishedToolTranslations": 2233,
-    "targetToolTranslations": 2233,
-    "pendingGuideTranslations": 441,
+    "publishedToolTranslations": 2552,
+    "targetToolTranslations": 2688,
+    "pendingGuideTranslations": 648,
     "pendingTrustTranslations": 0,
     "candidateCounts": {
-      "jsxText": 4214,
-      "visibleAttribute": 367,
-      "semanticCopy": 11535,
-      "reviewLiteral": 46419
+      "jsxText": 4810,
+      "visibleAttribute": 429,
+      "semanticCopy": 13155,
+      "reviewLiteral": 51263
     },
-    "candidateCopyWords": 316501
+    "candidateCopyWords": 387241
   },
   "tools": [
     {
@@ -46,7 +47,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -57,6 +59,60 @@
         "src/components/tools/ExpansionToolPage.tsx",
         "src/components/tools/GambrelRoofCalculator.tsx",
         "src/components/tools/GambrelRoofGuide.tsx"
+      ]
+    },
+    {
+      "slug": "3d-print-time-calculator",
+      "title": "3D Print Time Calculator",
+      "category": "everyday-calculators",
+      "route": "/tools/3d-print-time-calculator",
+      "source": "src/app/(english)/tools/3d-print-time-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/3d-print-time-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/ThreeDPrintTimeCalculator.tsx"
+      ]
+    },
+    {
+      "slug": "3d-printer-filament-calculator",
+      "title": "3D Printer Filament Calculator",
+      "category": "everyday-calculators",
+      "route": "/tools/3d-printer-filament-calculator",
+      "source": "src/app/(english)/tools/3d-printer-filament-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/3d-printer-filament-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/ThreeDPrintFilamentCalculator.tsx"
+      ]
+    },
+    {
+      "slug": "3d-printing-cost-calculator",
+      "title": "3D Printing Cost Calculator",
+      "category": "everyday-calculators",
+      "route": "/tools/3d-printing-cost-calculator",
+      "source": "src/app/(english)/tools/3d-printing-cost-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/3d-printing-cost-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/ThreeDPrintingCostCalculator.tsx"
       ]
     },
     {
@@ -75,7 +131,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -99,7 +156,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -123,7 +181,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -147,7 +206,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -176,7 +236,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -202,7 +263,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -227,7 +289,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -254,7 +317,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -278,7 +342,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -302,7 +367,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -328,7 +394,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -356,7 +423,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -384,7 +452,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -412,7 +481,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -438,7 +508,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -463,12 +534,31 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
       "sources": [
         "src/app/(english)/tools/barbell-plate-calculator/page.tsx"
+      ]
+    },
+    {
+      "slug": "barcode-generator",
+      "title": "Free Barcode Generator — Code 128, UPC, EAN & Bulk CSV",
+      "category": "developer-tools",
+      "route": "/tools/barcode-generator",
+      "source": "src/app/(english)/tools/barcode-generator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/barcode-generator/page.tsx",
+        "src/components/tools/BarcodeStudio.tsx",
+        "src/components/tools/ExpansionToolPage.tsx"
       ]
     },
     {
@@ -487,7 +577,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -511,7 +602,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -537,7 +629,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -561,7 +654,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -585,7 +679,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -628,7 +723,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -669,7 +765,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -695,7 +792,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -721,7 +819,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -747,7 +846,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -773,7 +873,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -801,7 +902,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -827,7 +929,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -855,7 +958,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -883,7 +987,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -911,7 +1016,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -937,7 +1043,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -963,7 +1070,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -991,7 +1099,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1019,7 +1128,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1045,7 +1155,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1073,7 +1184,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -1099,7 +1211,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -1125,7 +1238,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1154,7 +1268,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1183,7 +1298,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1212,7 +1328,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1241,7 +1358,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1270,7 +1388,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1298,7 +1417,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -1327,7 +1447,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1355,7 +1476,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1379,7 +1501,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1407,7 +1530,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1432,7 +1556,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -1458,13 +1583,32 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
         "src/app/(english)/tools/cloud-hosting-cost-calculator/page.tsx",
         "src/components/tools/BusinessCalculatorTool.tsx",
+        "src/components/tools/ExpansionToolPage.tsx"
+      ]
+    },
+    {
+      "slug": "cmyk-color-converter",
+      "title": "CMYK Color Converter",
+      "category": "image-tools",
+      "route": "/tools/cmyk-color-converter",
+      "source": "src/app/(english)/tools/cmyk-color-converter/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/cmyk-color-converter/page.tsx",
+        "src/components/tools/CmykColorConverter.tsx",
         "src/components/tools/ExpansionToolPage.tsx"
       ]
     },
@@ -1484,7 +1628,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1508,13 +1653,32 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
         "src/app/(english)/tools/common-port-service-lookup/page.tsx",
         "src/components/tools/BusinessCalculatorTool.tsx",
+        "src/components/tools/ExpansionToolPage.tsx"
+      ]
+    },
+    {
+      "slug": "compare-pdf",
+      "title": "Compare PDF Files Online Free",
+      "category": "pdf-tools",
+      "route": "/tools/compare-pdf",
+      "source": "src/app/(english)/tools/compare-pdf/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/compare-pdf/page.tsx",
+        "src/components/tools/ComparePdfTool.tsx",
         "src/components/tools/ExpansionToolPage.tsx"
       ]
     },
@@ -1534,7 +1698,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1558,7 +1723,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1584,7 +1750,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1610,7 +1777,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1636,7 +1804,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1662,7 +1831,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1686,7 +1856,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1712,7 +1883,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1736,7 +1908,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1761,7 +1934,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1787,7 +1961,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1811,7 +1986,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1839,7 +2015,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1865,7 +2042,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1891,7 +2069,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1918,7 +2097,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1946,7 +2126,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -1973,7 +2154,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -1998,7 +2180,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2023,7 +2206,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2048,7 +2232,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2072,7 +2257,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2096,7 +2282,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -2124,7 +2311,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2150,7 +2338,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2174,7 +2363,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2200,7 +2390,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2224,7 +2415,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2248,7 +2440,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2272,7 +2465,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2298,7 +2492,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2323,7 +2518,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2349,7 +2545,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2375,7 +2572,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2403,7 +2601,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2429,7 +2628,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2457,7 +2657,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2485,7 +2686,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2509,7 +2711,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2535,7 +2738,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2559,7 +2763,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2585,7 +2790,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2613,7 +2819,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2641,7 +2848,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2669,7 +2877,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2697,7 +2906,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2724,7 +2934,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2751,12 +2962,103 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
       "sources": [
         "src/app/(english)/tools/electricity-cost-calculator/page.tsx"
+      ]
+    },
+    {
+      "slug": "eml-to-excel",
+      "title": "Free EML to Excel Converter Online",
+      "category": "developer-tools",
+      "route": "/tools/eml-to-excel",
+      "source": "src/app/(english)/tools/eml-to-excel/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/eml-to-excel/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/email/EmailConverter.tsx"
+      ]
+    },
+    {
+      "slug": "eml-to-html",
+      "title": "Free EML to HTML Converter Online",
+      "category": "developer-tools",
+      "route": "/tools/eml-to-html",
+      "source": "src/app/(english)/tools/eml-to-html/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/eml-to-html/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/email/EmailConverter.tsx"
+      ]
+    },
+    {
+      "slug": "eml-to-msg",
+      "title": "Free EML to MSG Converter Online",
+      "category": "developer-tools",
+      "route": "/tools/eml-to-msg",
+      "source": "src/app/(english)/tools/eml-to-msg/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/eml-to-msg/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/email/EmailConverter.tsx"
+      ]
+    },
+    {
+      "slug": "eml-to-pdf",
+      "title": "Free EML to PDF Converter Online",
+      "category": "developer-tools",
+      "route": "/tools/eml-to-pdf",
+      "source": "src/app/(english)/tools/eml-to-pdf/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/eml-to-pdf/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/email/EmailConverter.tsx"
+      ]
+    },
+    {
+      "slug": "eml-to-word",
+      "title": "Free EML to Word Converter Online",
+      "category": "developer-tools",
+      "route": "/tools/eml-to-word",
+      "source": "src/app/(english)/tools/eml-to-word/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/eml-to-word/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/email/EmailConverter.tsx"
       ]
     },
     {
@@ -2775,7 +3077,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2801,7 +3104,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -2830,7 +3134,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2858,7 +3163,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2866,6 +3172,22 @@
       "definitionSource": null,
       "sources": [
         "src/app/(english)/tools/excavation-calculator/page.tsx"
+      ]
+    },
+    {
+      "slug": "exif-metadata-remover",
+      "title": "Bulk EXIF Metadata Remover",
+      "category": "image-tools",
+      "route": "/tools/exif-metadata-remover",
+      "source": "src/app/(english)/tools/exif-metadata-remover/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/exif-metadata-remover/page.tsx"
       ]
     },
     {
@@ -2884,7 +3206,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -2912,7 +3235,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2936,7 +3260,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -2960,7 +3285,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -2988,7 +3314,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3014,7 +3341,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3042,7 +3370,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3070,7 +3399,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3098,7 +3428,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3122,7 +3453,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3130,6 +3462,24 @@
       "definitionSource": null,
       "sources": [
         "src/app/(english)/tools/flooring-calculator/page.tsx"
+      ]
+    },
+    {
+      "slug": "fps-calculator",
+      "title": "FPS Calculator – Frames Per Second to MS",
+      "category": "everyday-calculators",
+      "route": "/tools/fps-calculator",
+      "source": "src/app/(english)/tools/fps-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/fps-calculator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/FpsCalculator.tsx"
       ]
     },
     {
@@ -3148,7 +3498,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3172,7 +3523,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3198,7 +3550,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3224,7 +3577,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -3250,7 +3604,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3276,7 +3631,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3302,7 +3658,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3328,7 +3685,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3355,7 +3713,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -3381,7 +3740,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3406,7 +3766,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3432,7 +3793,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3457,7 +3819,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3483,7 +3846,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3511,7 +3875,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3539,7 +3904,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3565,7 +3931,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3592,7 +3959,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3617,7 +3985,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3642,7 +4011,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3668,7 +4038,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3696,7 +4067,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3705,6 +4077,24 @@
       "sources": [
         "src/app/(english)/tools/hydration-calculator/page.tsx",
         "src/components/tools/BusinessCalculatorTool.tsx",
+        "src/components/tools/ExpansionToolPage.tsx"
+      ]
+    },
+    {
+      "slug": "icloud-storage-calculator",
+      "title": "iCloud Storage Cleanup Planner",
+      "category": "everyday-calculators",
+      "route": "/tools/icloud-storage-calculator",
+      "source": "src/app/(english)/tools/icloud-storage-calculator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/icloud-storage-calculator/page.tsx",
+        "src/components/guides/ICloudStoragePlanner.tsx",
         "src/components/tools/ExpansionToolPage.tsx"
       ]
     },
@@ -3724,7 +4114,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3748,7 +4139,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3772,7 +4164,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -3798,7 +4191,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -3824,7 +4218,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3848,7 +4243,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3890,7 +4286,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -3916,7 +4313,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -3942,7 +4340,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -3966,7 +4365,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -3992,7 +4392,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4018,7 +4419,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4044,7 +4446,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4069,7 +4472,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4093,7 +4497,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4119,7 +4524,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4145,7 +4551,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4171,7 +4578,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4197,7 +4605,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4223,7 +4632,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4251,7 +4661,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4279,7 +4690,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -4307,7 +4719,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4331,7 +4744,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4356,7 +4770,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4382,7 +4797,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4406,7 +4822,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4414,6 +4831,22 @@
         "src/app/(english)/tools/json-schema-validator/page.tsx",
         "src/components/tools/ExpansionToolPage.tsx",
         "src/components/tools/JsonSchemaValidator.tsx"
+      ]
+    },
+    {
+      "slug": "json-to-csv-converter",
+      "title": "Nested JSON to CSV / TSV Converter",
+      "category": "developer-tools",
+      "route": "/tools/json-to-csv-converter",
+      "source": "src/app/(english)/tools/json-to-csv-converter/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/json-to-csv-converter/page.tsx"
       ]
     },
     {
@@ -4432,7 +4865,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4457,7 +4891,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4483,7 +4918,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4509,7 +4945,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4533,7 +4970,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4560,7 +4998,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4586,7 +5025,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4612,7 +5052,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -4638,7 +5079,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4664,7 +5106,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4690,7 +5133,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4718,7 +5162,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4746,7 +5191,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -4774,7 +5220,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4800,7 +5247,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4828,7 +5276,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4854,7 +5303,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4878,7 +5328,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -4906,7 +5357,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4930,7 +5382,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4954,7 +5407,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -4980,7 +5434,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5005,7 +5460,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5033,7 +5489,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5061,7 +5518,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5089,7 +5547,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5117,7 +5576,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5145,7 +5605,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5173,7 +5634,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5183,6 +5645,26 @@
         "src/app/(english)/tools/net-revenue-retention-calculator/page.tsx",
         "src/components/tools/BusinessCalculatorTool.tsx",
         "src/components/tools/ExpansionToolPage.tsx"
+      ]
+    },
+    {
+      "slug": "obj-to-skp-converter",
+      "title": "OBJ to SKP Converter",
+      "category": "developer-tools",
+      "route": "/tools/obj-to-skp-converter",
+      "source": "src/app/(english)/tools/obj-to-skp-converter/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "under-review",
+      "translatedLocales": [],
+      "review": [
+        "server-errors-and-processing-disclosure"
+      ],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/obj-to-skp-converter/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/cad/ObjToSkpConverter.tsx"
       ]
     },
     {
@@ -5201,7 +5683,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -5227,7 +5710,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5254,7 +5738,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5282,7 +5767,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5310,7 +5796,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5336,7 +5823,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5360,7 +5848,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5386,7 +5875,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5415,7 +5905,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5440,7 +5931,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5465,7 +5957,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5491,7 +5984,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5515,7 +6009,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5539,7 +6034,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -5565,7 +6061,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -5610,7 +6107,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5638,7 +6136,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5666,7 +6165,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5692,7 +6192,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -5718,7 +6219,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -5744,7 +6246,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5789,7 +6292,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5815,7 +6319,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5843,7 +6348,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5867,7 +6373,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5895,7 +6402,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5923,7 +6431,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -5949,7 +6458,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -5974,7 +6484,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6002,7 +6513,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6030,7 +6542,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6054,7 +6567,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6078,7 +6592,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6103,7 +6618,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -6129,7 +6645,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6155,7 +6672,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6184,7 +6702,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6210,7 +6729,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6235,7 +6755,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6261,7 +6782,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6289,7 +6811,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6317,7 +6840,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6345,7 +6869,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6369,7 +6894,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6393,7 +6919,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6421,7 +6948,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6447,7 +6975,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6475,7 +7004,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6503,7 +7033,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6531,7 +7062,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6559,7 +7091,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6585,7 +7118,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6612,7 +7146,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6638,7 +7173,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6666,7 +7202,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6694,7 +7231,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6722,7 +7260,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6746,7 +7285,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6772,7 +7312,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6796,7 +7337,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6824,7 +7366,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6850,7 +7393,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6875,7 +7419,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -6899,7 +7444,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6907,8 +7453,8 @@
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
       "sources": [
         "src/app/(english)/tools/square-footage-calculator/page.tsx",
-        "src/components/tools/BusinessCalculatorTool.tsx",
-        "src/components/tools/ExpansionToolPage.tsx"
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/SquareFeetCalculator.tsx"
       ]
     },
     {
@@ -6927,7 +7473,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6955,7 +7502,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -6983,7 +7531,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7011,7 +7560,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -7039,7 +7589,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7067,7 +7618,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7093,7 +7645,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -7122,7 +7675,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7148,7 +7702,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7173,7 +7728,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7199,7 +7755,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7225,7 +7782,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -7251,7 +7809,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7277,7 +7836,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7305,7 +7865,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7329,7 +7890,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7355,7 +7917,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7383,7 +7946,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7409,7 +7973,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7435,7 +8000,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7461,7 +8027,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7487,7 +8054,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7511,7 +8079,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7538,6 +8107,26 @@
       ]
     },
     {
+      "slug": "upi-qr-code-generator",
+      "title": "Free UPI QR Code Generator",
+      "category": "finance-calculators",
+      "route": "/tools/upi-qr-code-generator",
+      "source": "src/app/(english)/tools/upi-qr-code-generator/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [
+        "domain-assumptions"
+      ],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/upi-qr-code-generator/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/UpiQrCodeGenerator.tsx"
+      ]
+    },
+    {
       "slug": "upscale-image",
       "title": "Upscale Image",
       "category": "image-tools",
@@ -7553,7 +8142,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7577,7 +8167,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7603,7 +8194,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -7629,7 +8221,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7655,7 +8248,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7680,7 +8274,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7704,7 +8299,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -7730,7 +8326,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7756,7 +8353,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -7784,7 +8382,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -7812,7 +8411,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -7838,7 +8438,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7864,7 +8465,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7890,7 +8492,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7916,7 +8519,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7942,7 +8546,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7968,7 +8573,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -7994,7 +8600,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8018,7 +8625,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8046,7 +8654,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8072,7 +8681,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8096,7 +8706,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8124,7 +8735,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8150,7 +8762,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8176,7 +8789,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8202,7 +8816,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8227,7 +8842,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8252,7 +8868,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8262,6 +8879,24 @@
         "src/app/(english)/tools/website-worth-calculator/page.tsx",
         "src/components/tools/ExpansionToolPage.tsx",
         "src/components/tools/WebsiteWorthCalculator.tsx"
+      ]
+    },
+    {
+      "slug": "what-generation-am-i",
+      "title": "What Generation Am I? Generation Calculator",
+      "category": "everyday-calculators",
+      "route": "/tools/what-generation-am-i",
+      "source": "src/app/(english)/tools/what-generation-am-i/page.tsx",
+      "routeExists": true,
+      "family": "individual-or-other-shared",
+      "status": "pending",
+      "translatedLocales": [],
+      "review": [],
+      "definitionSource": null,
+      "sources": [
+        "src/app/(english)/tools/what-generation-am-i/page.tsx",
+        "src/components/tools/ExpansionToolPage.tsx",
+        "src/components/tools/GenerationCalculator.tsx"
       ]
     },
     {
@@ -8280,7 +8915,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8308,7 +8944,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "domain-assumptions"
@@ -8334,7 +8971,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [
         "server-errors-and-processing-disclosure"
@@ -8363,7 +9001,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8390,7 +9029,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8416,7 +9056,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8443,7 +9084,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": "src/lib/calculations/businessConfigs.ts",
@@ -8469,7 +9111,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8495,7 +9138,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ],
       "review": [],
       "definitionSource": null,
@@ -8507,6 +9151,126 @@
     }
   ],
   "guides": [
+    {
+      "slug": "how-to-convert-eml-to-word",
+      "title": "How to Convert EML to Word: A Step-by-Step Guide",
+      "category": "Developer",
+      "route": "/guides/how-to-convert-eml-to-word",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-convert-eml-to-excel",
+      "title": "How to Convert EML to Excel: A Step-by-Step Guide",
+      "category": "Developer",
+      "route": "/guides/how-to-convert-eml-to-excel",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-convert-eml-to-html",
+      "title": "How to Convert EML to HTML: A Step-by-Step Guide",
+      "category": "Developer",
+      "route": "/guides/how-to-convert-eml-to-html",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-convert-eml-to-msg",
+      "title": "How to Convert EML to MSG: A Step-by-Step Guide",
+      "category": "Developer",
+      "route": "/guides/how-to-convert-eml-to-msg",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-convert-eml-to-pdf",
+      "title": "How to Convert EML to PDF: A Step-by-Step Guide",
+      "category": "Developer",
+      "route": "/guides/how-to-convert-eml-to-pdf",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "3d-printing-for-beginners",
+      "title": "3D Printing for Beginners: First Prints, Materials and Costs",
+      "category": "Everyday",
+      "route": "/guides/3d-printing-for-beginners",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-much-does-3d-printing-cost",
+      "title": "How Much Does 3D Printing Cost? Filament, Electricity and Pricing",
+      "category": "Everyday",
+      "route": "/guides/how-much-does-3d-printing-cost",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-long-do-3d-prints-take",
+      "title": "How Long Do 3D Prints Take? Speed, Infill and Print Time",
+      "category": "Everyday",
+      "route": "/guides/how-long-do-3d-prints-take",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-generate-barcodes-in-excel",
+      "title": "How to Generate Barcodes in Excel (Free CSV Method)",
+      "category": "Developer",
+      "route": "/guides/how-to-generate-barcodes-in-excel",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "code-128-vs-code-39",
+      "title": "Code 128 vs Code 39: Differences, Examples and When to Use Each",
+      "category": "Developer",
+      "route": "/guides/code-128-vs-code-39",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "upc-vs-ean-barcode",
+      "title": "UPC vs EAN Barcodes: UPC-A, EAN-13 and Check Digits Explained",
+      "category": "Developer",
+      "route": "/guides/upc-vs-ean-barcode",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "fps-calculator-guide",
+      "title": "FPS Calculator Guide: FPS to MS, Gaming Frame Rate and Hz",
+      "category": "Everyday",
+      "route": "/guides/fps-calculator-guide",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-clear-icloud-storage",
+      "title": "How to Clear iCloud Storage on iPhone, iPad & Mac Safely",
+      "category": "Everyday",
+      "route": "/guides/how-to-clear-icloud-storage",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "why-is-my-icloud-storage-full",
+      "title": "Why Is My iCloud Storage Full? 7 Hidden Culprits & How to Fix It",
+      "category": "Everyday",
+      "route": "/guides/why-is-my-icloud-storage-full",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-delete-icloud-backup-safely",
+      "title": "How to Delete iCloud Backup Safely: What Happens & What You Keep",
+      "category": "Everyday",
+      "route": "/guides/how-to-delete-icloud-backup-safely",
+      "status": "pending",
+      "translatedLocales": []
+    },
     {
       "slug": "is-claude-better-than-chatgpt",
       "title": "Is Claude Better Than ChatGPT? An Honest Comparison",
@@ -8525,7 +9289,7 @@
     },
     {
       "slug": "how-to-copy-and-paste-on-macbook",
-      "title": "How to Copy and Paste on a MacBook: Keyboard, Trackpad, Files and Photos",
+      "title": "How to Copy and Paste on MacBook: Shortcuts & Trackpad",
       "category": "Everyday",
       "route": "/guides/how-to-copy-and-paste-on-macbook",
       "status": "pending",
@@ -8632,6 +9396,30 @@
       "title": "How to Merge PDF Files: Complete Guide",
       "category": "PDF",
       "route": "/guides/how-to-merge-pdf-files",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-calculate-square-feet",
+      "title": "Sq Ft Calculator: How to Calculate Square Feet for Rooms & Floors",
+      "category": "Construction",
+      "route": "/guides/how-to-calculate-square-feet",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-generate-upi-qr-code",
+      "title": "How to Generate a UPI QR Code for Free (With or Without Amount)",
+      "category": "Finance",
+      "route": "/guides/how-to-generate-upi-qr-code",
+      "status": "pending",
+      "translatedLocales": []
+    },
+    {
+      "slug": "how-to-compare-pdf-files",
+      "title": "How to Compare PDF Files for Differences: Complete Guide",
+      "category": "PDF",
+      "route": "/guides/how-to-compare-pdf-files",
       "status": "pending",
       "translatedLocales": []
     },
@@ -8965,7 +9753,7 @@
     },
     {
       "slug": "free-video-editing-software-for-mac",
-      "title": "Best Free Video Editing Software for Mac in 2026",
+      "title": "Best Free Video Editing Software for Mac: Compare Editors",
       "category": "Video",
       "route": "/guides/free-video-editing-software-for-mac",
       "status": "pending",
@@ -9010,6 +9798,23 @@
       "route": "/guides/how-to-back-out-sales-tax-us",
       "status": "pending",
       "translatedLocales": []
+    },
+    {
+      "slug": "webp-to-png-guide",
+      "title": "How to Convert WebP to PNG Online for Free",
+      "category": "Image",
+      "route": "/guides/webp-to-png-guide",
+      "status": "published",
+      "translatedLocales": [
+        "fr",
+        "it",
+        "pt",
+        "es",
+        "ar",
+        "ru",
+        "de",
+        "id"
+      ]
     }
   ],
   "trustPages": [
@@ -9026,7 +9831,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9042,7 +9848,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9058,7 +9865,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9074,7 +9882,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9090,7 +9899,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9106,7 +9916,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     },
     {
@@ -9122,7 +9933,8 @@
         "es",
         "ar",
         "ru",
-        "de"
+        "de",
+        "id"
       ]
     }
   ],
@@ -9248,6 +10060,12 @@
       "localizedSource": "src/app/[locale]/guides/can-chatgpt-make-videos/page.tsx"
     },
     {
+      "source": "src/app/(english)/guides/google-pixel-vs-iphone/page.tsx",
+      "routeTemplate": "/guides/google-pixel-vs-iphone",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/guides/google-pixel-vs-iphone/page.tsx"
+    },
+    {
       "source": "src/app/(english)/guides/how-does-a-3d-printer-work/page.tsx",
       "routeTemplate": "/guides/how-does-a-3d-printer-work",
       "status": "pending",
@@ -9270,6 +10088,12 @@
       "routeTemplate": "/guides/is-claude-better-than-chatgpt",
       "status": "pending",
       "localizedSource": "src/app/[locale]/guides/is-claude-better-than-chatgpt/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/guides/mac-vs-pc/page.tsx",
+      "routeTemplate": "/guides/mac-vs-pc",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/guides/mac-vs-pc/page.tsx"
     },
     {
       "source": "src/app/(english)/guides/page.tsx",
@@ -9374,6 +10198,24 @@
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
+      "source": "src/app/(english)/tools/3d-print-time-calculator/page.tsx",
+      "routeTemplate": "/tools/3d-print-time-calculator",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/3d-printer-filament-calculator/page.tsx",
+      "routeTemplate": "/tools/3d-printer-filament-calculator",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/3d-printing-cost-calculator/page.tsx",
+      "routeTemplate": "/tools/3d-printing-cost-calculator",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
       "source": "src/app/(english)/tools/add-image-to-pdf/page.tsx",
       "routeTemplate": "/tools/add-image-to-pdf",
       "status": "published",
@@ -9467,6 +10309,12 @@
       "source": "src/app/(english)/tools/barbell-plate-calculator/page.tsx",
       "routeTemplate": "/tools/barbell-plate-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/barcode-generator/page.tsx",
+      "routeTemplate": "/tools/barcode-generator",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -9704,6 +10552,12 @@
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
+      "source": "src/app/(english)/tools/cmyk-color-converter/page.tsx",
+      "routeTemplate": "/tools/cmyk-color-converter",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
       "source": "src/app/(english)/tools/code-minifier-beautifier/page.tsx",
       "routeTemplate": "/tools/code-minifier-beautifier",
       "status": "published",
@@ -9713,6 +10567,12 @@
       "source": "src/app/(english)/tools/common-port-service-lookup/page.tsx",
       "routeTemplate": "/tools/common-port-service-lookup",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/compare-pdf/page.tsx",
+      "routeTemplate": "/tools/compare-pdf",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10004,6 +10864,36 @@
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
+      "source": "src/app/(english)/tools/eml-to-excel/page.tsx",
+      "routeTemplate": "/tools/eml-to-excel",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/eml-to-html/page.tsx",
+      "routeTemplate": "/tools/eml-to-html",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/eml-to-msg/page.tsx",
+      "routeTemplate": "/tools/eml-to-msg",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/eml-to-pdf/page.tsx",
+      "routeTemplate": "/tools/eml-to-pdf",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/eml-to-word/page.tsx",
+      "routeTemplate": "/tools/eml-to-word",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
       "source": "src/app/(english)/tools/epoch-time-converter/page.tsx",
       "routeTemplate": "/tools/epoch-time-converter",
       "status": "published",
@@ -10025,6 +10915,12 @@
       "source": "src/app/(english)/tools/excavation-calculator/page.tsx",
       "routeTemplate": "/tools/excavation-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/exif-metadata-remover/page.tsx",
+      "routeTemplate": "/tools/exif-metadata-remover",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10085,6 +10981,12 @@
       "source": "src/app/(english)/tools/flooring-calculator/page.tsx",
       "routeTemplate": "/tools/flooring-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/fps-calculator/page.tsx",
+      "routeTemplate": "/tools/fps-calculator",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10217,6 +11119,12 @@
       "source": "src/app/(english)/tools/hydration-calculator/page.tsx",
       "routeTemplate": "/tools/hydration-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/icloud-storage-calculator/page.tsx",
+      "routeTemplate": "/tools/icloud-storage-calculator",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10391,6 +11299,12 @@
       "source": "src/app/(english)/tools/json-schema-validator/page.tsx",
       "routeTemplate": "/tools/json-schema-validator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/json-to-csv-converter/page.tsx",
+      "routeTemplate": "/tools/json-to-csv-converter",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -10571,6 +11485,12 @@
       "source": "src/app/(english)/tools/net-revenue-retention-calculator/page.tsx",
       "routeTemplate": "/tools/net-revenue-retention-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/obj-to-skp-converter/page.tsx",
+      "routeTemplate": "/tools/obj-to-skp-converter",
+      "status": "under-review",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
@@ -11132,6 +12052,12 @@
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {
+      "source": "src/app/(english)/tools/upi-qr-code-generator/page.tsx",
+      "routeTemplate": "/tools/upi-qr-code-generator",
+      "status": "pending",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
       "source": "src/app/(english)/tools/upscale-image/page.tsx",
       "routeTemplate": "/tools/upscale-image",
       "status": "published",
@@ -11303,6 +12229,12 @@
       "source": "src/app/(english)/tools/website-worth-calculator/page.tsx",
       "routeTemplate": "/tools/website-worth-calculator",
       "status": "published",
+      "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
+    },
+    {
+      "source": "src/app/(english)/tools/what-generation-am-i/page.tsx",
+      "routeTemplate": "/tools/what-generation-am-i",
+      "status": "pending",
       "localizedSource": "src/app/[locale]/tools/[slug]/page.tsx"
     },
     {

@@ -1,9 +1,9 @@
-export const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de'] as const;
+export const locales = ['fr', 'it', 'pt', 'es', 'ar', 'ru', 'de', 'id'] as const;
 export type Locale = (typeof locales)[number];
 export type Language = Locale | 'en';
 export const languageNames: Record<Language, string> = {
   en: 'English', fr: 'Français', it: 'Italiano', pt: 'Português',
-  es: 'Español', ar: 'العربية', ru: 'Русский', de: 'Deutsch',
+  es: 'Español', ar: 'العربية', ru: 'Русский', de: 'Deutsch', id: 'Bahasa Indonesia',
 };
 export const translatedTools = [
   'aspect-ratio-padding-calculator', 'css-flexbox-generator',

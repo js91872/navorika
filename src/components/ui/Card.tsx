@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { forwardRef } from 'react';
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'glass' | 'dark' | 'gradient';
+  variant?: 'default' | 'subtle' | 'dark' | 'glass' | 'gradient';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   hoverable?: boolean;
 }
@@ -12,27 +12,28 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ children, variant = 'default', padding = 'md', hoverable = false, className = '', ...props }, ref) => {
     const variants = {
-      default: 'bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10',
-      glass: 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/50 dark:border-white/5',
-      dark: 'bg-slate-900 text-white border border-slate-800',
-      gradient: 'bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 border border-indigo-200/50 dark:border-indigo-800/30',
+      default: 'bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a]',
+      subtle: 'bg-[#f7f7f8] dark:bg-[#202023] border border-[#e4e4e8] dark:border-[#27272a]',
+      dark: 'bg-[#18181b] text-white border border-[#27272a]',
+      glass: 'bg-white/95 dark:bg-[#18181b]/95 backdrop-blur-md border border-[#e4e4e8] dark:border-[#27272a]',
+      gradient: 'bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a]',
     };
 
     const paddings = {
       none: 'p-0',
       sm: 'p-4',
-      md: 'p-6 sm:p-8',
-      lg: 'p-8 sm:p-12',
+      md: 'p-6',
+      lg: 'p-8 sm:p-10',
     };
 
     return (
       <div
         ref={ref}
         className={cn(
-          'rounded-[2rem] shadow-sm transition-all duration-300',
+          'rounded-xl transition-all duration-150',
           variants[variant],
           paddings[padding],
-          hoverable && 'hover:shadow-xl hover:-translate-y-1 cursor-pointer',
+          hoverable && 'hover:border-[#e5322d] hover:shadow-md cursor-pointer',
           className
         )}
         {...props}

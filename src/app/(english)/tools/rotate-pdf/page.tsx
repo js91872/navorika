@@ -1,29 +1,26 @@
 'use client';
-import Link from 'next/link';
 
 import { useState, useRef } from 'react';
-import { FileText, ArrowLeft, Upload, File, X, ShieldCheck, Download, Loader2, RefreshCw } from 'lucide-react';
+import Link from 'next/link';
+import { FileText, ArrowLeft, Upload, X, ShieldCheck, Download, Loader2, RefreshCw } from 'lucide-react';
 import { PDFDocument, degrees } from 'pdf-lib';
 import { tools } from '@/data/registry';
 
 export default function RotatePDFTool() {
-  // Default meta if not found
-
   const meta = tools.find(t => t.slug === 'rotate-pdf');
-  // Default meta if not found - defined AFTER finding meta
   const toolMeta = meta || {
-    heroTitle: 'Tool',
-    heroDescription: 'Process your documents efficiently.',
-    formulaExplanation: 'This tool processes your documents locally in your browser.',
+    heroTitle: 'Rotate PDF Online',
+    heroDescription: 'Rotate individual pages or entire PDF documents directly in your browser.',
+    formulaExplanation: 'This tool updates the rotation tags inside your PDF document without uploading it to any server.',
     faq: [
-      { question: 'How does this tool work?', answer: 'All processing happens locally in your browser. No data is ever uploaded to any server.' },
-      { question: 'Is my data safe?', answer: 'Yes! Your files and data never leave your computer.' },
-      { question: 'Do I need to install anything?', answer: 'No installation needed. Everything runs directly in your web browser.' }
+      { question: 'How does this tool work?', answer: 'All processing happens locally in your browser. No files are uploaded to any server.' },
+      { question: 'Is my data safe?', answer: 'Yes. Your files never leave your device.' },
+      { question: 'Do I need to install anything?', answer: 'No installation required. Everything runs directly in your web browser.' }
     ]
   };
   const [file, setFile] = useState<File | null>(null);
   const [pageCount, setPageCount] = useState<number>(0);
-  const [rotations, setRotations] = useState<number[]>([]); // Array tracking orientation degree multipliers per page index
+  const [rotations, setRotations] = useState<number[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -38,9 +35,8 @@ export default function RotatePDFTool() {
         const pdf = await PDFDocument.load(fileBuffer, { updateMetadata: false });
         const count = pdf.getPageCount();
         setPageCount(count);
-        // Initialize all pages at 0 degrees additional rotation
         setRotations(new Array(count).fill(0));
-      } catch (err) {
+      } catch {
         alert("Could not parse file bytes. Ensure document is unencrypted.");
         setFile(null);
       }
@@ -94,98 +90,101 @@ export default function RotatePDFTool() {
   if (!meta) return null;
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
-      <Link href="/categories/pdf-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition mb-8">
-        <ArrowLeft className="h-4 w-4" /> Back to PDF Tools
-      </Link>
+    <div className="pb-16 pt-8 text-[#18181b] dark:text-[#f4f4f5]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link href="/categories/pdf-tools" className="inline-flex items-center gap-2 text-sm font-semibold text-[#5b5b63] dark:text-[#a1a1aa] hover:text-[#e5322d] dark:hover:text-[#ff6b68] transition mb-6">
+          <ArrowLeft className="h-4 w-4" /> Back to PDF Tools
+        </Link>
 
-      <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
-          <ShieldCheck className="h-4 w-4" /> Local Processing Only
+        <div className="mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-3 border border-emerald-500/20">
+            <ShieldCheck className="h-3.5 w-3.5" /> Runs in your browser — files stay on your device
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-black text-[#18181b] dark:text-white tracking-tight mb-2">{toolMeta.heroTitle || 'Rotate PDF Online'}</h1>
+          <p className="text-base text-[#5b5b63] dark:text-[#a1a1aa] max-w-2xl leading-relaxed">{toolMeta.heroDescription || 'Rotate individual pages or entire documents with immediate preview.'}</p>
         </div>
-        <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4">{toolMeta.heroTitle}</h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">{toolMeta.heroDescription}</p>
-      </div>
 
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden mb-16">
-        {!file ? (
-          <div className="p-8">
-            <div 
-              onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-indigo-300 dark:border-indigo-500/30 rounded-2xl p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-colors"
-            >
-              <Upload className="h-10 w-10 text-indigo-500 mb-4" />
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Select PDF File to Rotate</h3>
-              <p className="text-sm text-slate-500 mt-2">Instant layout orientation adjustments</p>
-              <input 
-                type="file" 
-                accept="application/pdf" 
-                className="hidden" 
-                ref={fileInputRef}
-                onChange={handleFileChange}
-              />
-            </div>
-          </div>
-        ) : (
-          <div className="p-8">
-            <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 mb-8">
-              <div className="flex items-center gap-3 overflow-hidden">
-                <FileText className="h-5 w-5 text-red-500 flex-shrink-0" />
-                <div>
-                  <span className="text-sm font-semibold text-slate-700 dark:text-slate-300 truncate block">{file.name}</span>
-                  <span className="text-xs text-slate-400 font-bold block">{pageCount} Pages loaded</span>
-                </div>
-              </div>
-              <button onClick={() => setFile(null)} className="p-2 text-slate-400 hover:text-red-500 transition-colors rounded-lg">
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            {/* Macro Global Control Station */}
-            <div className="mb-8 p-4 bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-2xl">
-              <span className="block text-xs font-bold tracking-wider uppercase text-slate-400 mb-3">Rotate Entire Document</span>
-              <div className="flex flex-wrap gap-3">
-                <button onClick={() => rotateAllGlobal(90)} className="px-4 py-2 text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-indigo-500 flex items-center gap-1.5"><RefreshCw className="h-3 w-3" /> +90° Clockwise</button>
-                <button onClick={() => rotateAllGlobal(180)} className="px-4 py-2 text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-indigo-500 flex items-center gap-1.5"><RefreshCw className="h-3 w-3" /> 180° Flip</button>
-                <button onClick={() => rotateAllGlobal(270)} className="px-4 py-2 text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-indigo-500 flex items-center gap-1.5"><RefreshCw className="h-3 w-3" /> -90° Counter</button>
-              </div>
-            </div>
-
-            {/* Micro Layout Grid Matrix View */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-h-80 overflow-y-auto p-2 border border-slate-100 dark:border-slate-800 rounded-2xl mb-8">
-              {rotations.map((rotationAngle, index) => (
-                <div key={index} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 text-center flex flex-col items-center justify-between gap-3">
-                  <span className="text-xs font-bold text-slate-400">Page {index + 1}</span>
-                  <div 
-                    style={{ transform: `rotate(${rotationAngle}deg)` }} 
-                    className="h-16 w-12 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded flex items-center justify-center transition-transform duration-200"
-                  >
-                    <FileText className="h-6 w-6 text-slate-400" />
-                  </div>
-                  <button 
-                    onClick={() => rotateIndividualPage(index)}
-                    className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-500/5 border border-indigo-500/10 hover:bg-indigo-500/10"
-                  >
-                    <RefreshCw className="h-3 w-3" /> +90°
-                  </button>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex justify-end border-t border-slate-100 dark:border-slate-800 pt-6">
-              <button 
-                onClick={processRotation}
-                disabled={isProcessing}
-                className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md"
+        <div className="bg-white dark:bg-[#18181b] rounded-xl border border-[#e4e4e8] dark:border-[#27272a] shadow-xs overflow-hidden mb-12">
+          {!file ? (
+            <div className="p-6 sm:p-8">
+              <div 
+                onClick={() => fileInputRef.current?.click()}
+                className="border-2 border-dashed border-[#e4e4e8] dark:border-[#27272a] hover:border-[#e5322d] dark:hover:border-[#e5322d] rounded-xl p-10 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-[#fff1f1]/30 dark:hover:bg-[#e5322d]/5 transition-colors"
               >
-                {isProcessing ? <Loader2 className="h-5 w-5 animate-spin" /> : <Download className="h-5 w-5" />}
-                {isProcessing ? 'Applying Orientations...' : 'Save & Download'}
-              </button>
+                <div className="grid size-12 place-items-center rounded-xl bg-[#fff1f1] dark:bg-[#e5322d]/10 text-[#e5322d] mb-3">
+                  <Upload className="h-6 w-6" />
+                </div>
+                <h3 className="text-base font-bold text-[#18181b] dark:text-white">Select PDF File to Rotate</h3>
+                <p className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] mt-1">Instant layout orientation adjustments</p>
+                <input 
+                  type="file" 
+                  accept="application/pdf" 
+                  className="hidden" 
+                  ref={fileInputRef}
+                  onChange={handleFileChange}
+                />
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          ) : (
+            <div className="p-6 sm:p-8">
+              <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#f7f7f8] dark:bg-[#202023] border border-[#e4e4e8] dark:border-[#27272a] mb-6">
+                <div className="flex items-center gap-3 overflow-hidden">
+                  <FileText className="h-6 w-6 text-[#e5322d] shrink-0" />
+                  <div>
+                    <span className="text-sm font-semibold text-[#18181b] dark:text-white truncate block">{file.name}</span>
+                    <span className="text-xs text-[#5b5b63] dark:text-[#a1a1aa] block">{pageCount} pages loaded</span>
+                  </div>
+                </div>
+                <button onClick={() => setFile(null)} className="p-1.5 text-[#5b5b63] hover:text-[#e5322d] transition-colors rounded-lg">
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
 
-    </main>
+              {/* Macro Global Control Station */}
+              <div className="mb-6 p-4 bg-[#f7f7f8] dark:bg-[#202023] border border-[#e4e4e8] dark:border-[#27272a] rounded-xl">
+                <span className="block text-xs font-bold uppercase tracking-wider text-[#5b5b63] dark:text-[#a1a1aa] mb-2.5">Rotate Entire Document</span>
+                <div className="flex flex-wrap gap-2.5">
+                  <button onClick={() => rotateAllGlobal(90)} className="px-3.5 py-1.5 text-xs font-semibold bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] rounded-lg hover:border-[#e5322d] flex items-center gap-1.5 transition-colors shadow-xs"><RefreshCw className="h-3 w-3 text-[#e5322d]" /> +90° Clockwise</button>
+                  <button onClick={() => rotateAllGlobal(180)} className="px-3.5 py-1.5 text-xs font-semibold bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] rounded-lg hover:border-[#e5322d] flex items-center gap-1.5 transition-colors shadow-xs"><RefreshCw className="h-3 w-3 text-[#e5322d]" /> 180° Flip</button>
+                  <button onClick={() => rotateAllGlobal(270)} className="px-3.5 py-1.5 text-xs font-semibold bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] rounded-lg hover:border-[#e5322d] flex items-center gap-1.5 transition-colors shadow-xs"><RefreshCw className="h-3 w-3 text-[#e5322d]" /> -90° Counter</button>
+                </div>
+              </div>
+
+              {/* Micro Layout Grid Matrix View */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-h-80 overflow-y-auto p-2 border border-[#e4e4e8] dark:border-[#27272a] rounded-xl mb-6">
+                {rotations.map((rotationAngle, index) => (
+                  <div key={index} className="p-3.5 rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] text-center flex flex-col items-center justify-between gap-2.5 shadow-xs">
+                    <span className="text-xs font-semibold text-[#5b5b63] dark:text-[#a1a1aa]">Page {index + 1}</span>
+                    <div 
+                      style={{ transform: `rotate(${rotationAngle}deg)` }} 
+                      className="h-16 w-12 bg-[#f7f7f8] dark:bg-[#202023] border border-[#e4e4e8] dark:border-[#27272a] rounded flex items-center justify-center transition-transform duration-200"
+                    >
+                      <FileText className="h-6 w-6 text-[#5b5b63] dark:text-[#a1a1aa]" />
+                    </div>
+                    <button 
+                      onClick={() => rotateIndividualPage(index)}
+                      className="text-[11px] font-semibold text-[#e5322d] flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 border border-[#fecaca] dark:border-[#e5322d]/20 hover:bg-[#ffe4e4] transition-colors"
+                    >
+                      <RefreshCw className="h-3 w-3" /> +90°
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex justify-end border-t border-[#e4e4e8] dark:border-[#27272a] pt-5">
+                <button 
+                  onClick={processRotation}
+                  disabled={isProcessing}
+                  className="flex items-center gap-2 bg-[#e5322d] hover:bg-[#c71f1e] text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-xs disabled:opacity-50"
+                >
+                  {isProcessing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+                  {isProcessing ? 'Applying Orientations...' : 'Save & Download'}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }

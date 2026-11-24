@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { isLocale, locales, publicPageAlternates } from '@/lib/i18n/config';
 import { aboutContent } from '@/lib/i18n/trustPages';
 import { getDictionary } from '@/lib/i18n/dictionaries';
+import { replaceStaticToolCounts } from '@/lib/i18n/dictionaries';
+import { TOTAL_ACTIVE_TOOLS } from '@/data/registry';
 import { LocalizedTrustPage } from '@/components/i18n/LocalizedTrustPage';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -15,7 +17,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const content = aboutContent[locale];
+  const content = replaceStaticToolCounts(aboutContent[locale], new Intl.NumberFormat(locale).format(TOTAL_ACTIVE_TOOLS));
   return {
     title: content.title,
     description: content.description,
@@ -36,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function AboutRoute({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const content = aboutContent[locale];
+  const content = replaceStaticToolCounts(aboutContent[locale], new Intl.NumberFormat(locale).format(TOTAL_ACTIVE_TOOLS));
   const d = await getDictionary(locale);
 
   return <LocalizedTrustPage locale={locale} content={content} homeLabel={d.ui.home} />;

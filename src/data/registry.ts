@@ -1,3 +1,5 @@
+import { toolsUnderReview } from '@/lib/seo/toolReview';
+
 export interface Tool {
   slug: string;
   title: string;
@@ -74,6 +76,47 @@ export const categories: Category[] = [
 ];
 
 export const tools: RegisteredTool[] = ([
+  {
+    slug: 'eml-to-pdf', title: 'Free EML to PDF Converter Online',
+    description: 'Create a readable PDF with email headers, message text and attachment names. Western European text is searchable; other scripts may render as images.',
+    category: 'developer-tools',
+    keywords: ['eml to pdf', 'convert eml to pdf', 'eml to pdf online', 'free eml to pdf converter', 'batch eml to pdf']
+  },
+  {
+    slug: 'eml-to-msg', title: 'Free EML to MSG Converter Online',
+    description: 'Create a Unicode Outlook MSG with sender, recipients, date, message text, safe HTML and original attachment files.',
+    category: 'developer-tools',
+    keywords: ['eml to msg', 'convert eml to msg', 'eml to msg online', 'free eml to msg converter', 'batch eml to msg']
+  },
+  {
+    slug: 'eml-to-html', title: 'Free EML to HTML Converter Online',
+    description: 'Save a standalone HTML document with email headers, basic message formatting and an attachment list. Remote content and images are removed.',
+    category: 'developer-tools',
+    keywords: ['eml to html', 'convert eml to html', 'eml to html online', 'free eml to html converter', 'batch eml to html']
+  },
+  {
+    slug: 'eml-to-excel', title: 'Free EML to Excel Converter Online',
+    description: 'Create a genuine XLSX workbook with one email per row, filterable headers, message text and attachment names. No formulas are generated.',
+    category: 'developer-tools',
+    keywords: ['eml to excel', 'convert eml to excel', 'eml to excel online', 'free eml to excel converter', 'batch eml to excel']
+  },
+  {
+    slug: 'eml-to-word', title: 'Free EML to Word Converter Online',
+    description: 'Create an editable DOCX document with email headers, readable message text and attachment names. Original email styling and images are omitted.',
+    category: 'developer-tools',
+    keywords: ['eml to word', 'convert eml to word', 'eml to word online', 'free eml to word converter', 'batch eml to word']
+  },
+
+  { slug: 'what-generation-am-i', title: 'What Generation Am I? Generation Calculator', description: 'Find your generation by birth year and create a shareable purple and gold generation pass in JPG or PDF.', category: 'everyday-calculators', keywords: ['what generation am i', 'which generation am i', 'generation calculator', 'generation by birth year', 'generation chart by year', 'generation names and years', 'what generation am i if i was born in 1985', 'what generation am i 1998', 'what generation am i 1999', 'how do i know what generation i am', 'gen z age range', 'millennial birth years', 'gen alpha years', 'gen z vs millennials', 'generation quiz'], heroTitle: 'What Generation Am I?', heroDescription: 'Find your generation by birth year and download a free shareable generation pass.' },
+  { slug: '3d-printing-cost-calculator', title: '3D Printing Cost Calculator', description: 'Estimate 3D print costs, filament, electricity, machine time and profit margins.', category: 'everyday-calculators', keywords: ['3d printing cost calculator', '3d printing calculator', '3d printer calculator'], heroTitle: '3D Printing Cost Calculator', heroDescription: 'Estimate 3D print costs, filament, electricity, machine time and profit margins.' },
+  { slug: '3d-printer-filament-calculator', title: '3D Printer Filament Calculator', description: 'Calculate 3D printer filament weight and spool cost from filament length, diameter and density.', category: 'everyday-calculators', keywords: ['3d printer filament calculator', '3d printing calculator', '3d printer calculator'], heroTitle: '3D Printer Filament Calculator', heroDescription: 'Calculate 3D printer filament weight and spool cost from filament length, diameter and density.' },
+  { slug: '3d-print-time-calculator', title: '3D Print Time Calculator', description: 'Estimate FDM print time from toolpath distance, speed and layer changes.', category: 'everyday-calculators', keywords: ['3d print time calculator', '3d printing calculator', '3d printer calculator'], heroTitle: '3D Print Time Calculator', heroDescription: 'Estimate FDM print time from toolpath distance, speed and layer changes.' },
+  { slug: 'barcode-generator', title: 'Free Barcode Generator — Code 128, UPC, EAN & Bulk CSV', description: 'Generate Code 128, Code 39, EAN-13 and UPC-A barcodes online. Download PNG or SVG and bulk export up to 1,000 CSV values.', category: 'developer-tools', keywords: ['barcode generator', 'barcode generator free', 'barcode generator online free', 'bulk barcode generator', 'barcode generator excel', 'code 128 barcode generator', 'ean 13 barcode generator', 'upc barcode generator'], heroTitle: 'Free Barcode Generator', heroDescription: 'Create barcodes and export bulk CSV values in your browser for free.' },
+  { slug: 'cmyk-color-converter', title: 'CMYK Color Converter', description: 'Convert CMYK to approximate HEX and RGB, or HEX to CMYK, with a live color preview.', category: 'image-tools', keywords: ['cmyk to hex', 'cmyk to rgb', 'cmyk color converter', 'hex to cmyk', 'cmyk color wheel', 'cmyk for print'], heroTitle: 'CMYK Color Converter', heroDescription: 'Free browser-based CMYK, RGB and HEX color conversion with a live preview and printing limitations.' },
+  { slug: 'fps-calculator', title: 'FPS Calculator – Frames Per Second to MS', description: 'Convert gaming and video FPS into milliseconds per frame, total frames and display refresh comparisons.', category: 'everyday-calculators', keywords: ['fps calculator', 'fps calculator for games', 'fps to ms calculator', 'how many fps calculator', 'frames per second calculator', 'fps to milliseconds'], heroTitle: 'FPS Calculator – FPS to MS', heroDescription: 'Calculate average frame time, total video frames and compare gaming FPS with display Hz in your browser.' },
+  { slug: 'icloud-storage-calculator', title: 'iCloud Storage Cleanup Planner', description: 'Estimate possible iCloud cleanup scenarios using manually entered storage categories, with clear photo and backup deletion warnings.', category: 'everyday-calculators', keywords: ['icloud storage calculator', 'icloud storage cleanup planner', 'how to free up icloud storage', 'icloud storage full', 'icloud backup storage'], heroTitle: 'iCloud Storage Cleanup Planner', heroDescription: 'Explore hypothetical storage cleanup scenarios without accessing your Apple account or deleting files.' },
+  { slug:'json-to-csv-converter', title:'Nested JSON to CSV / TSV Converter', description:'Flatten nested JSON objects and arrays, select columns, preview rows and download CSV or TSV locally.', category:'developer-tools', keywords:['json to csv converter','nested json to csv','json to tsv','flatten json to csv'], heroTitle:'Nested JSON to CSV Converter', heroDescription:'Convert nested JSON to CSV or TSV in your browser with flexible columns and a live preview.' },
+  { slug:'exif-metadata-remover', title:'Bulk EXIF Metadata Remover', description:'Re-encode JPEG, PNG and WebP photos locally to remove common embedded metadata and download a cleaned ZIP.', category:'image-tools', keywords:['exif remover','remove image metadata','remove gps from photo','bulk exif remover'], heroTitle:'Bulk EXIF Metadata Remover', heroDescription:'Clean photo metadata privately in your browser and download processed images in one ZIP.' },
   { slug:'ai-video-prompt-generator', title:'AI Video Prompt Generator – Free Text & Image Video Prompts', description:'Create detailed, copy-ready AI video prompts for text-to-video and image-to-video workflows with camera, lighting, duration and format controls.', category:'developer-tools', keywords:['ai video prompt generator','video prompt generator','text to video prompt','image to video prompt','ai video prompts'], heroTitle:'Free AI Video Prompt Generator', heroDescription:'Build detailed AI video prompts with scene, camera, duration, style and aspect-ratio controls.' },
   { slug:'jpg-to-dxf', title:'JPG to DXF Converter – Free Online Image to CAD Tool', description:'Convert JPG and JPEG to DXF online for free with browser-based vector tracing, preview, scale controls and downloadable CAD polylines.', category:'image-tools', keywords:['jpg to dxf','jpg to dxf converter','convert jpg to dxf','jpg to dxf online','jpg to dxf free','jpeg to dxf','jpeg to dxf converter','image to dxf','jpg to autocad','jpg to dxf cnc','raster to dxf','image to cad converter'], aliases:['jpg to dxf online converter','free jpg to dxf converter','image to dxf converter'], heroTitle:'Free JPG to DXF Converter', heroDescription:'Trace JPG images into editable DXF CAD outlines. Adjust settings, preview contours and download locally.' },
 
@@ -1088,6 +1131,15 @@ export const tools: RegisteredTool[] = ([
     keywords: ['markup-formatter', 'markup', 'formatter']
   },
   {
+    slug: 'upi-qr-code-generator',
+    title: 'Free UPI QR Code Generator',
+    description: 'Generate a printable UPI payment QR code with name, optional photo, amount, note, and five poster colors. Download PNG or PDF locally.',
+    category: 'finance-calculators',
+    keywords: ['upi qr code generator', 'free upi qr code generator', 'upi qr code with amount', 'upi qr code for shop', 'upi payment qr code poster', 'upi qr code pdf download'],
+    heroTitle: 'Free UPI QR Code Generator and Payment Poster',
+    heroDescription: 'Create a UPI QR payment poster with optional amount, photo, and five colors. Download PNG or PDF without uploading your details.'
+  },
+  {
     slug: 'qr-code-generator',
     title: 'QR Code Generator',
     description: 'Generate colored QR codes or decode a QR code from an uploaded image locally.',
@@ -1823,6 +1875,15 @@ export const tools: RegisteredTool[] = ([
     heroDescription: 'Compare encoded byte sizes, code points, and UTF-16 code units across UTF-8 and UTF-16 string storage.'
   },
   {
+    slug: 'obj-to-skp-converter',
+    title: 'OBJ to SKP Converter',
+    description: 'Convert OBJ meshes and simple textured MTL materials to genuine SketchUp SKP files with an isolated server conversion workflow.',
+    category: 'developer-tools',
+    keywords: ['obj to skp', 'convert obj to skp', 'obj to skp online', 'obj to sketchup converter', 'wavefront obj to skp'],
+    heroTitle: 'OBJ to SKP Converter',
+    heroDescription: 'Convert OBJ geometry and basic textures into SketchUp SKP files after verifying the correct source units.'
+  },
+  {
     slug: 'step-to-3d-pdf-converter',
     title: 'STEP to 3D PDF Converter',
     description: 'Convert STEP and STP CAD files to 3D PDF online with interactive embedded PRC geometry.',
@@ -2162,6 +2223,25 @@ export const tools: RegisteredTool[] = ([
     ],
     heroTitle: 'PDF Page Size Checker',
     heroDescription: 'Check PDF page dimensions, orientation and common paper sizes such as A4, A3, Letter and Legal.'
+  },
+  {
+    slug: 'compare-pdf',
+    title: 'Compare PDF Files Online Free',
+    description: 'Compare two PDF files online for word-level and visual differences side by side. Inspect added, removed, and modified pages locally without uploading files.',
+    category: 'pdf-tools',
+    keywords: [
+      'compare pdf files',
+      'compare pdf documents',
+      'compare pdf',
+      'how to compare pdf documents',
+      'file compare pdf',
+      'compare pdf tool',
+      'compare pdf file online',
+      'compare pdf side by side',
+      'compare pdf files for differences'
+    ],
+    heroTitle: 'Compare PDF Files Online Free',
+    heroDescription: 'Compare two PDF files online for word-level and visual differences side by side without uploading files to a server.'
   },
   {
     slug: 'battery-charge-time-calculator',
@@ -2881,4 +2961,8 @@ export const tools: RegisteredTool[] = ([
   heroTitle: tool.heroTitle?.trim() || tool.title,
   heroDescription: tool.heroDescription?.trim() || tool.description,
 }));
+
+/** Tools available to the public, excluding tools currently held for review. */
+export const activeTools: RegisteredTool[] = tools.filter((tool) => !toolsUnderReview.has(tool.slug));
+export const TOTAL_ACTIVE_TOOLS = activeTools.length;
 

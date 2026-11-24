@@ -952,6 +952,112 @@ export const aboutContent: Record<Locale | 'en', TrustPageContent> = {
         "href": "/contact"
       }
     ]
+  },
+  id: {
+    "title": "Tentang Navorika – Kalkulator & Alat Online Gratis",
+    "description": "Pelajari tentang kalkulator privasi terdepan, editor PDF, konverter gambar, dan utilitas pengembang Navorika. Sebagian besar alat memproses lokal tanpa perlu mendaftar.",
+    "eyebrow": "Tentang Navorika",
+    "heroTitle": "Kalkulator & Alat Online Gratis",
+    "heroDescription": "Navorika adalah situs web independen dengan lebih dari {{toolCount}} kalkulator dan alat online gratis untuk berkas, gambar, keuangan, kesehatan, konstruksi, tugas sehari-hari, dan pengembangan web. Sebagian besar alat berjalan langsung di browser Anda.",
+    "buttons": {
+      "primaryText": "Jelajahi Alat Gratis",
+      "primaryHref": "/tools",
+      "secondaryText": "Cara Kerja Kalkulator Kami",
+      "secondaryHref": "/methodology"
+    },
+    "corePrinciplesTitle": "Apa yang Dapat Anda Harapkan",
+    "corePrinciples": [
+      {
+        "icon": "lock",
+        "title": "Berkas Anda Tetap Berada di Perangkat Anda",
+        "description": "Sebagian besar alat Navorika berjalan langsung di browser Anda, sehingga berkas dan nilai yang Anda masukkan tetap berada di perangkat Anda alih-alih diunggah ke server Navorika."
+      },
+      {
+        "icon": "shield",
+        "title": "Transparan Mengenai Cara Kerja Setiap Alat",
+        "description": "Jika suatu alat memerlukan data langsung atau pemrosesan server, halaman akan menjelaskannya secara terbuka. Kami tidak akan menampilkan alat berbasis browser sebagai alat privat jika sebenarnya alat tersebut memerlukan server."
+      },
+      {
+        "icon": "zap",
+        "title": "Tanpa Perlu Akun",
+        "description": "Buka alat dan langsung gunakan. Navorika tidak memerlukan akun, alamat email, langganan berbayar, atau instalasi perangkat lunak."
+      },
+      {
+        "icon": "cpu",
+        "title": "Perhitungan Teruji dan Terverifikasi",
+        "description": "Rumus kalkulator didasarkan pada metodologi terdokumentasi dan diverifikasi melalui pengujian otomatis dengan nilai tipikal, batas ekstrem, dan masukan tak terduga."
+      }
+    ],
+    "toolCategoriesTitle": "Apa yang Dapat Anda Lakukan di Navorika",
+    "toolCategories": [
+      {
+        "icon": "calculator",
+        "title": "Kalkulator Keuangan & Perencanaan",
+        "description": "Kalkulator untuk pinjaman, tabungan, investasi, pajak, hipotek, anggaran, metrik bisnis, dan analisis properti."
+      },
+      {
+        "icon": "layers",
+        "title": "Kalkulator Konstruksi & Proyek Rumah",
+        "description": "Perkirakan beton, bata, lantai, atap, tangga, material, biaya proyek, dan volume konstruksi umum lainnya."
+      },
+      {
+        "icon": "fileText",
+        "title": "Utilitas Dokumen & PDF",
+        "description": "Gabungkan, pisahkan, susun ulang, kompresi, tanda tangani, konversi, dan ekstrak teks dari berkas PDF menggunakan alat online sederhana."
+      },
+      {
+        "icon": "image",
+        "title": "Alat Gambar & Media",
+        "description": "Konversi, ubah ukuran, kompresi, pangkas, periksa metadata, dan siapkan format gambar populer seperti JPG, PNG, WebP, HEIC, dan SVG."
+      },
+      {
+        "icon": "code",
+        "title": "Alat Pengembang & Web",
+        "description": "Alat untuk JSON, YAML, Base64, JWT, jadwal cron, pemformat kode, jaringan, stempel waktu, dan tugas pengembangan web harian."
+      }
+    ],
+    "howWeBuildTitle": "Cara Kami Membangun dan Menguji Alat Kami",
+    "howWeBuildParagraphs": [
+      "Kami membangun kalkulator dari rumus yang terdokumentasi, regulasi resmi jika relevan, dan standar industri yang diakui. Sebagai contoh, alat pinjaman menggunakan rumus anuitas standar, kalkulator pajak merujuk pada ketentuan tarif resmi, dan alat konstruksi menggunakan perhitungan dimensi dan material teknik standar.",
+      "Kami menerapkan pengujian otomatis untuk memverifikasi hasil kalkulator pada skenario normal, nilai nol, batas toleransi, dan nilai masukan yang tidak biasa. Kami juga meninjau kembali alat saat formula, regulasi, atau pustaka perangkat lunak diperbarui.",
+      "Untuk penjelasan lebih rinci tentang formula, sumber rujukan, dan prosedur pengujian kami, baca dokumen Metodologi & Standar Kalkulator kami."
+    ],
+    "howWeBuildLink": {
+      "text": "Metodologi & Standar Kalkulator Kami",
+      "href": "/methodology"
+    },
+    "limitationsTitle": "Hal yang Perlu Diketahui Sebelum Menggunakan Hasil",
+    "limitationsParagraphs": [
+      "Alat berbasis browser tetap memiliki batasan teknis. Berkas PDF, gambar, atau media yang sangat besar dapat menghabiskan banyak memori, dan beberapa proses mungkin berjalan lebih lambat di ponsel atau komputer dengan spesifikasi lama.",
+      "Kalkulator dirancang untuk estimasi dan perencanaan awal. Keputusan hukum, perpajakan, medis, keselamatan, atau struktural yang penting tetap memerlukan konsultasi dengan profesional berlisensi. Silakan baca Pernyataan Penyangkalan Hukum & Perhitungan kami untuk batasan per kategori."
+    ],
+    "limitationsLink": {
+      "text": "Pernyataan Penyangkalan Hukum & Perhitungan",
+      "href": "/disclaimer"
+    },
+    "quickLinksTitle": "Kebijakan dan Informasi Penting",
+    "quickLinks": [
+      {
+        "text": "Metodologi Kalkulator",
+        "href": "/methodology"
+      },
+      {
+        "text": "Pernyataan Penyangkalan Hukum",
+        "href": "/disclaimer"
+      },
+      {
+        "text": "Kebijakan Privasi",
+        "href": "/privacy"
+      },
+      {
+        "text": "Ketentuan Layanan",
+        "href": "/terms"
+      },
+      {
+        "text": "Hubungi Kami",
+        "href": "/contact"
+      }
+    ]
   }
 };
 
@@ -1339,6 +1445,54 @@ export const contactContent: Record<Locale | 'en', TrustPageContent> = {
       "linkText": "منهجية عمل حاسباتنا",
       "linkHref": "/methodology"
     }
+  },
+  id: {
+    "title": "Hubungi Navorika – Bantuan Alat, Masukan & Laporan Masalah",
+    "description": "Hubungi Navorika terkait kalkulator, alat berkas, hasil yang kurang tepat, pertanyaan privasi, laporan bug, atau saran alat baru.",
+    "eyebrow": "Hubungi Kami",
+    "heroTitle": "Hubungi Navorika",
+    "heroDescription": "Butuh bantuan dengan kalkulator atau alat berkas, menemukan hasil yang tidak sesuai, atau memiliki ide untuk alat baru? Kirimkan pesan melalui email kepada kami.",
+    "contactCards": {
+      "general": {
+        "title": "Bantuan Umum & Masukan",
+        "description": "Untuk bantuan penggunaan alat, masukan, pertanyaan rumus, laporan bug, atau pertanyaan umum.",
+        "email": "admin@navorika.com",
+        "buttonText": "Kirim Email Bantuan"
+      },
+      "privacy": {
+        "title": "Pertanyaan Privasi & Data",
+        "description": "Untuk pertanyaan seputar pemrosesan data, pengungkapan periklanan, atau kebijakan privasi kami.",
+        "email": "privacy@navorika.com",
+        "buttonText": "Email Tim Privasi"
+      }
+    },
+    "bugReport": {
+      "title": "Laporkan Hasil yang Salah atau Masalah Alat",
+      "intro": "Jika hasil kalkulator, konversi berkas, atau halaman tidak berfungsi seperti yang diharapkan, rincian berikut akan sangat membantu kami dalam memeriksa masalah:",
+      "items": [
+        {
+          "label": "URL Alat",
+          "text": "Alamat halaman persis tempat masalah terjadi (contoh: /tools/roof-pitch-calculator)."
+        },
+        {
+          "label": "Nilai yang Dimasukkan",
+          "text": "Nilai numerik spesifik, format berkas, atau opsi yang dipilih."
+        },
+        {
+          "label": "Hasil yang Diharapkan",
+          "text": "Hasil yang Anda harapkan berdasarkan standar rujukan dibandingkan dengan hasil yang ditampilkan."
+        },
+        {
+          "label": "Browser & Perangkat",
+          "text": "Browser web yang Anda gunakan (Chrome, Firefox, Safari, Edge) dan jenis perangkat (Desktop, Ponsel)."
+        }
+      ]
+    },
+    "operationalNote": {
+      "text": "Navorika adalah platform alat online independen. Email adalah saluran dukungan utama kami. Untuk mempelajari bagaimana formula dan pengujian kalkulator dikelola, baca",
+      "linkText": "Metodologi & Standar Kalkulator Kami",
+      "linkHref": "/methodology"
+    }
   }
 };
 
@@ -1397,10 +1551,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Advertising and Cookies",
-        "content": "Navorika partners with third-party advertising networks to support our free tools:",
+        "content": "We may use advertising services such as Google AdSense.",
         "points": [
-          "Google AdSense: Third-party vendors, including Google, use cookies to serve ads based on a user’s prior visits to this website or other websites on the Internet",
-          "Personalized Advertising: Google’s use of advertising cookies enables it and its partners to serve ads to users based on their visits to our site and/or other sites across the web",
+          "If advertising is enabled, third-party vendors such as Google may use cookies or similar technologies, subject to applicable consent requirements.",
+          "If personalized advertising is enabled and permitted, ads may be tailored to your activity and consent choices.",
           "Opt-Out Choices: You may opt out of personalized advertising by visiting Google Ads Settings (https://www.google.com/settings/ads) or through third-party opt-out services such as www.aboutads.info/choices/",
           "Analytics: Aggregated, anonymized traffic analytics help us understand site usage and improve tool performance without identifying individual users",
           "Local Storage: Browser localStorage is used strictly to remember your preferences (such as light or dark display mode) and does not contain personal identifying information"
@@ -1467,10 +1621,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Publicité, témoins (cookies) et stockage local",
-        "content": "Navorika collabore avec des régies publicitaires partenaires pour maintenir la gratuité de l'ensemble de ses outils :",
+        "content": "Nous pouvons utiliser des services publicitaires tels que Google AdSense.",
         "points": [
-          "Google AdSense : des fournisseurs tiers, dont Google, emploient des cookies pour diffuser des annonces publicitaires adaptées selon les visites antérieures des internautes sur ce site ou d'autres sites web",
-          "Publicité personnalisée : l'utilisation de témoins publicitaires permet à Google et à ses partenaires de proposer des annonces ciblées selon la navigation effectuée sur notre plateforme et sur le réseau internet",
+          "Si la publicité est activée, des fournisseurs tiers comme Google peuvent utiliser des cookies ou technologies similaires, sous réserve des règles de consentement applicables.",
+          "Si la publicité personnalisée est activée et autorisée, les annonces peuvent dépendre de votre activité et de vos choix de consentement.",
           "Options de désactivation (Opt-Out) : vous pouvez désactiver les annonces personnalisées dans les paramètres Google Ads (https://www.google.com/settings/ads) ou par le biais de plateformes d'exclusion sectorielles telles que www.aboutads.info/choices/",
           "Outils d'analyse d'audience : des statistiques globales et anonymisées nous aident à appréhender la fréquentation globale et à perfectionner la fiabilité technique, sans identifier d'utilisateurs particuliers",
           "Stockage local (LocalStorage) : le stockage local de votre navigateur sert exclusivement à conserver vos préférences d'interface (mode clair ou sombre) et ne contient aucune information personnelle nominative"
@@ -1537,10 +1691,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Pubblicità, cookie e memorizzazione locale",
-        "content": "Navorika collabora con circuiti pubblicitari terzi per sostenere la gratuità e l'accessibilità dei propri strumenti:",
+        "content": "Potremmo utilizzare servizi pubblicitari come Google AdSense.",
         "points": [
-          "Google AdSense: fornitori terzi, tra cui Google, utilizzano cookie per pubblicare annunci basati sulle precedenti visite dell'utente su questo o su altri siti web",
-          "Pubblicità personalizzata: l'uso dei cookie pubblicitari consente a Google e ai suoi partner di mostrare annunci pertinenti in base alla navigazione sui nostri contenuti e sul web",
+          "Se la pubblicità è attiva, fornitori terzi come Google possono utilizzare cookie o tecnologie simili, nel rispetto dei requisiti di consenso applicabili.",
+          "Se la pubblicità personalizzata è attiva e consentita, gli annunci possono dipendere dalle tue attività e preferenze di consenso.",
           "Disattivazione (Opt-Out): puoi disattivare la personalizzazione degli annunci visitando le Impostazioni annunci di Google (https://www.google.com/settings/ads) o mediante portali di settore come www.aboutads.info/choices/",
           "Dati statistici (Analytics): utilizziamo metriche aggregate e anonime per monitorare l'efficienza della piattaforma e il carico dei server senza identificare i singoli utenti",
           "Archiviazione locale (LocalStorage): la memoria localStorage del browser viene impiegata esclusivamente per memorizzare le preferenze dell'interfaccia (come il tema chiaro o scuro) e non contiene dati identificativi"
@@ -1607,10 +1761,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Publicidade, cookies e armazenamento local",
-        "content": "A Navorika colabora com redes de publicidade de terceiros para garantir a gratuitidade de todas as ferramentas:",
+        "content": "Podemos utilizar serviços de publicidade como o Google AdSense.",
         "points": [
-          "Google AdSense: fornecedores terceiros, incluindo a Google, utilizam cookies para veicular anúncios com base nas visitas anteriores do utilizador a este ou a outros websites",
-          "Publicidade personalizada: a utilização de cookies de publicidade permite à Google e aos seus parceiros apresentar anúncios direcionados com base na navegação no nosso site e noutros sítios da web",
+          "Se a publicidade estiver ativa, fornecedores terceiros como a Google podem utilizar cookies ou tecnologias semelhantes, sujeitos aos requisitos de consentimento aplicáveis.",
+          "Se a publicidade personalizada estiver ativa e for permitida, os anúncios podem depender da sua atividade e das suas escolhas de consentimento.",
           "Opções de desativação (Opt-Out): pode desativar anúncios personalizados acedendo às Definições de Anúncios Google (https://www.google.com/settings/ads) ou através de serviços setoriais como www.aboutads.info/choices/",
           "Análise estatística (Analytics): métricas de tráfego agregadas e anónimas ajudam-nos a compreender a utilização da plataforma e a otimizar a velocidade dos utilitários sem identificar utilizadores individuais",
           "Armazenamento local (LocalStorage): o recurso localStorage do navegador é empregue unicamente para memorizar as suas preferências visuais (como o modo claro ou escuro), não contendo quaisquer dados pessoais"
@@ -1677,10 +1831,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Publicidad, cookies y almacenamiento local",
-        "content": "Navorika colabora con redes publicitarias de terceros para mantener el acceso gratuito a todas sus herramientas:",
+        "content": "Podemos utilizar servicios publicitarios como Google AdSense.",
         "points": [
-          "Google AdSense: proveedores externos, incluido Google, utilizan cookies para mostrar anuncios basados en las visitas previas del usuario a este u otros sitios web",
-          "Publicidad personalizada: el uso de cookies publicitarias permite a Google y a sus socios presentar anuncios orientados en función de la navegación en nuestro sitio y en internet",
+          "Si se habilita la publicidad, terceros como Google pueden utilizar cookies o tecnologías similares, de acuerdo con los requisitos de consentimiento aplicables.",
+          "Si la publicidad personalizada está habilitada y permitida, los anuncios pueden ajustarse a tu actividad y tus preferencias de consentimiento.",
           "Opciones de exclusión (Opt-Out): puede inhabilitar la publicidad personalizada en la Configuración de anuncios de Google (https://www.google.com/settings/ads) o a través de servicios sectoriales como www.aboutads.info/choices/",
           "Analítica y métricas de uso: recopilamos estadísticas de tráfico anónimas y agregadas que nos permiten supervisar el rendimiento técnico sin identificar a usuarios particulares",
           "Almacenamiento local (LocalStorage): la memoria localStorage del navegador se usa únicamente para recordar preferencias de interfaz (como el tema claro u oscuro) y no almacena información de identificación personal"
@@ -1747,10 +1901,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Werbung, Cookies und lokaler Speicher",
-        "content": "Navorika kooperiert mit externen Werbenetzwerken, um die kostenlose Bereitstellung aller Werkzeuge zu finanzieren:",
+        "content": "Wir können Werbedienste wie Google AdSense verwenden.",
         "points": [
-          "Google AdSense: Drittanbieter einschließlich Google verwenden Cookies zur Schaltung von Anzeigen auf Grundlage vorheriger Besuche auf dieser oder anderen Websites",
-          "Personalisierte Werbung: Durch den Einsatz von Werbe-Cookies können Google und seine Partner zielgerichtete Werbeanzeigen anhand des Surfverhaltens auf unseren und anderen Internetseiten einblenden",
+          "Wenn Werbung aktiviert ist, können Drittanbieter wie Google Cookies oder ähnliche Technologien nutzen, soweit die geltenden Einwilligungsregeln dies erlauben.",
+          "Wenn personalisierte Werbung aktiviert und zulässig ist, können Anzeigen auf Grundlage Ihrer Aktivitäten und Einwilligungsentscheidungen angepasst werden.",
           "Opt-Out-Möglichkeiten: Sie können personalisierte Werbung in den Google-Anzeigeneinstellungen (https://www.google.com/settings/ads) oder über branchenweite Deaktivierungsdienste wie www.aboutads.info/choices/ abschalten",
           "Reichweitenanalyse: Aggregierte, anonymisierte Verkehrsdaten helfen uns, die Auslastung der Plattform zu analysieren und die Werkzeuge zu verbessern, ohne Rückschlüsse auf Einzelpersonen zu ziehen",
           "Lokaler Speicher (LocalStorage): Der Browserspeicher localStorage wird ausschließlich zur Speicherung Ihrer Oberflächenpräferenzen (helles oder dunkles Design) genutzt und enthält keine personenidentifizierbaren Daten"
@@ -1817,10 +1971,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "Реклама, файлы cookie и локальное хранилище",
-        "content": "Navorika сотрудничает со сторонними рекламными сетями для поддержания бесплатного доступа ко всем онлайн-сервисам:",
+        "content": "Мы можем использовать рекламные сервисы, например Google AdSense.",
         "points": [
-          "Google AdSense: сторонние поставщики, включая Google, используют файлы cookie для показа объявлений с учетом предыдущих посещений этого или других сайтов в сети",
-          "Персонализированная реклама: рекламные файлы cookie позволяют Google и партнерам показывать релевантные объявления на основе истории переходов на нашем ресурсе и в интернете",
+          "Если реклама включена, сторонние поставщики, включая Google, могут использовать файлы cookie или аналогичные технологии с соблюдением применимых требований к согласию.",
+          "Если персонализированная реклама включена и разрешена, объявления могут подбираться с учетом действий пользователя и его выбора относительно согласия.",
           "Отказ от персонализации (Opt-Out): вы можете отключить персонализированный показ рекламы в настройках рекламных предпочтений Google (https://www.google.com/settings/ads) или через сервис www.aboutads.info/choices/",
           "Веб-аналитика: агрегированные и обезличенные данные о посещаемости помогают нам отслеживать техническую стабильность и нагрузку без идентификации конкретных пользователей",
           "Локальное хранилище (LocalStorage): хранилище localStorage в браузере используется исключительно для запоминания параметров интерфейса (светлая или темная тема) и не содержит персональных идентификаторов"
@@ -1887,10 +2041,10 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
       {
         "icon": "cookie",
         "title": "الإعلانات، ملفات تعريف الارتباط والتخزين المحلي",
-        "content": "شراكتنا مع شبكات إعلانية موثوقة تتيح لنا تقديم جميع أدوات الموقع مجاناً لجميع المستخدمين:",
+        "content": "قد نستخدم خدمات إعلانية مثل Google AdSense.",
         "points": [
-          "Google AdSense: يستخدم موردو الجهات الخارجية، بما في ذلك Google، ملفات تعريف الارتباط لعرض الإعلانات بناءً على زيارات المستخدم السابقة لهذا الموقع أو لمواقع أخرى على الإنترنت",
-          "الإعلانات المخصصة: يتيح استخدام ملفات تعريف الارتباط الإعلانية لشركة Google وشركائها تقديم إعلانات ملائمة للمستخدمين بناءً على تصفحهم لموقعنا ومواقع أخرى عبر الويب",
+          "إذا فُعّلت الإعلانات، فقد يستخدم مزودون خارجيون مثل Google ملفات تعريف الارتباط أو تقنيات مشابهة وفقاً لمتطلبات الموافقة المعمول بها.",
+          "إذا فُعّلت الإعلانات المخصصة وكانت مسموحة، فقد تُخصّص الإعلانات بناءً على نشاطك وخيارات موافقتك.",
           "خيارات إلغاء الاشتراك (Opt-Out): يمكنك إلغاء الاشتراك في الإعلانات المخصصة عبر زيارة إعدادات إعلانات Google (https://www.google.com/settings/ads) أو عبر خدمات مثل www.aboutads.info/choices/",
           "تحليلات الاستخدام: تساعدنا الإحصائيات المجمعة ومجهولة المصدر في فهم أداء الموقع وتحسين سرعة الأدوات دون تحديد هوية أي مستخدم",
           "التخزين المحلي (LocalStorage): يُستخدم التخزين المحلي في المتصفح حصرياً لتذكر تفضيلات العرض (مثل الوضع الداكن أو الفاتح) ولا يحتوي على أي بيانات تعريف شخصية"
@@ -1900,6 +2054,76 @@ export const privacyContent: Record<Locale | 'en', TrustPageContent> = {
     "footerNote": {
       "text": "هل لديك استفسارات حول سياسة الخصوصية الخاصة بنا؟ يرجى استخدام",
       "linkText": "صفحة الاتصال بنا",
+      "linkHref": "/contact"
+    }
+  },
+  id: {
+    "title": "Kebijakan Privasi – Navorika",
+    "description": "Bagaimana Navorika mengelola pemrosesan alat lokal, data eksternal langsung, pengiriman kontak, periklanan, analitik, dan preferensi browser.",
+    "eyebrow": "Komitmen Privasi",
+    "heroTitle": "Kebijakan Privasi",
+    "heroDescription": "Prinsip rekayasa utama kami sangat sederhana: data Anda tetap berada di perangkat Anda. Kami tidak menyimpan berkas Anda atau menjual informasi pribadi.",
+    "lastUpdatedLabel": "Terakhir diperbarui",
+    "lastUpdated": "27 September 2026",
+    "banner": {
+      "variant": "emerald",
+      "text": "Sebagian besar alat berjalan langsung di browser Anda. Alat yang membutuhkan server atau data luar secara tegas dicantumkan pada halaman."
+    },
+    "sections": [
+      {
+        "icon": "shield",
+        "title": "Bagaimana Navorika Mengelola Data Anda",
+        "content": "Sebagian besar alat Navorika memproses berkas dan input kalkulator langsung di dalam browser Anda. Ketika sebuah alat membutuhkan data eksternal langsung atau pemrosesan sementara di server, halaman alat akan menjelaskannya secara transparan."
+      },
+      {
+        "icon": "lock",
+        "title": "Input dan Berkas pada Alat",
+        "content": "Untuk alat yang ditandai dengan pemrosesan lokal di browser, berkas dan data input Anda tidak pernah diunggah ke server Navorika. Apabila pemrosesan server atau data eksternal diperlukan, hal tersebut diungkapkan secara jelas:",
+        "points": [
+          "Alat lokal di browser memproses berkas atau nilai sepenuhnya pada perangkat Anda",
+          "Beberapa konverter khusus, seperti STEP ke PDF 3D atau alat terkait CorelDRAW tertentu, menggunakan pemrosesan server sementara. Berkas diproses dalam direktori sementara yang terisolasi dan langsung dihapus setelah permintaan selesai",
+          "Alat yang memerlukan informasi terkini, seperti nilai tukar mata uang, dapat meminta data dari penyedia eksternal yang diidentifikasi pada halaman",
+          "Korespondensi langsung yang dikirimkan melalui email hanya diproses untuk menjawab pertanyaan atau menanggapi masukan Anda"
+        ]
+      },
+      {
+        "icon": "eye",
+        "title": "Apa yang Terjadi Saat Anda Menggunakan Alat",
+        "content": "Untuk alat yang ditandai sebagai pemrosesan lokal browser:",
+        "points": [
+          "Berkas diproses di browser Anda menggunakan teknologi standar web modern",
+          "Data sementara hanya berada di memori browser dan dibersihkan ketika halaman atau tab ditutup atau disetel ulang",
+          "Hasil unduhan disimpan langsung ke penyimpanan lokal perangkat Anda",
+          "Kami tidak mengelola basis data akun, profil pelacakan pengguna, atau log server persisten atas isi berkas Anda"
+        ]
+      },
+      {
+        "icon": "database",
+        "title": "Cara Kerja Pemrosesan Berbasis Browser",
+        "content": "Alat yang berbeda menggunakan teknologi browser yang berbeda sesuai kebutuhan tugas:",
+        "points": [
+          "Alat PDF memanfaatkan pustaka PDF berbasis browser seperti pdf-lib dan pdf.js",
+          "Alat gambar memanfaatkan Canvas HTML5, ImageData, atau WebAssembly langsung di browser",
+          "Kalkulator menjalankan rumus komputasi langsung di lingkungan runtime browser Anda",
+          "Alat terkait keamanan memanfaatkan Web Crypto API bawaan browser untuk enkripsi dan hashing yang aman"
+        ]
+      },
+      {
+        "icon": "cookie",
+        "title": "Periklanan dan Cookie",
+        "content": "Kami dapat menggunakan layanan periklanan seperti Google AdSense.",
+        "points": [
+          "Jika periklanan aktif, vendor pihak ketiga seperti Google dapat menggunakan cookie atau teknologi serupa, tunduk pada persyaratan persetujuan yang berlaku.",
+          "Jika iklan terpersonalisasi diaktifkan dan diizinkan oleh persetujuan Anda, iklan dapat disesuaikan berdasarkan riwayat aktivitas dan pilihan persetujuan Anda.",
+          "Pilihan Keluar (Opt-Out): Anda dapat memilih untuk menolak iklan terpersonalisasi melalui Setelan Iklan Google (https://www.google.com/settings/ads) atau melalui portal opt-out pihak ketiga seperti www.aboutads.info/choices/",
+          "Analitik: Data lalu lintas yang diagregasi dan dianonimkan membantu kami memahami penggunaan situs dan meningkatkan kinerja alat tanpa mengidentifikasi pengguna secara individual",
+          "Penyimpanan Lokal: Fitur localStorage browser hanya digunakan untuk mengingat preferensi antarmuka Anda (seperti mode tema terang atau gelap) dan tidak memuat data identifikasi pribadi"
+        ]
+      }
+    ],
+    "footerNote": {
+      "text": "Memiliki pertanyaan seputar kebijakan privasi kami? Kunjungi",
+      "linkText": "halaman kontak",
       "linkHref": "/contact"
     }
   }
@@ -2391,6 +2615,67 @@ export const termsContent: Record<Locale | 'en', TrustPageContent> = {
     "footerNote": {
       "text": "هل لديك أي استفسار حول شروط الخدمة؟ تفضل بزيارة",
       "linkText": "صفحة الاتصال بنا",
+      "linkHref": "/contact"
+    }
+  },
+  id: {
+    "title": "Ketentuan Layanan – Navorika",
+    "description": "Syarat dan ketentuan penggunaan kalkulator, utilitas dokumen, dan perangkat lunak berbasis browser Navorika.",
+    "eyebrow": "Ketentuan Hukum",
+    "heroTitle": "Ketentuan Layanan",
+    "heroDescription": "Harap tinjau syarat dan ketentuan yang mengatur akses dan penggunaan Anda atas platform dan utilitas online Navorika.",
+    "lastUpdatedLabel": "Terakhir diperbarui",
+    "lastUpdated": "27 September 2026",
+    "banner": {
+      "variant": "indigo",
+      "text": "Alat Navorika gratis untuk digunakan. Ketentuan ini menjelaskan kepemilikan, penggunaan yang dapat diterima, dan batasan tanggung jawab penting."
+    },
+    "sections": [
+      {
+        "icon": "scale",
+        "title": "1. Persetujuan atas Ketentuan",
+        "content": "Dengan mengakses atau menggunakan Navorika (navorika.com), Anda setuju untuk terikat oleh Ketentuan Layanan ini serta seluruh hukum dan peraturan perundang-undangan yang berlaku. Jika Anda tidak menyetujui salah satu dari ketentuan ini, Anda dilarang menggunakan atau mengakses situs ini."
+      },
+      {
+        "icon": "fileText",
+        "title": "2. Deskripsi Layanan",
+        "content": "Navorika menyediakan kalkulator online gratis, alat pemroses berkas, konverter format, dan utilitas pengembang. Sebagian besar alat beroperasi langsung di browser Anda. Sebagian kecil konversi khusus menggunakan pemrosesan server sementara."
+      },
+      {
+        "icon": "shield",
+        "title": "3. Hak Kekayaan Intelektual dan Berkas Pengguna",
+        "content": "Anda tetap memiliki hak kepemilikan penuh dan hak cipta atas berkas, teks, gambar, dan data yang Anda proses melalui Navorika. Kami tidak mengklaim kepemilikan apa pun atas dokumen Anda. Alat lokal memproses berkas di perangkat Anda, sedangkan alat berbantuan server menghapus berkas segera setelah permintaan selesai."
+      },
+      {
+        "icon": "checkCircle",
+        "title": "4. Penggunaan yang Diizinkan",
+        "content": "Anda setuju untuk menggunakan Navorika hanya untuk tujuan yang sah secara hukum. Anda setuju untuk tidak:",
+        "points": [
+          "Mencoba melewati kendali keamanan teknis atau mengganggu integritas layanan yang dilindungi",
+          "Menggunakan bot, scraper, atau permintaan otomatis secara berlebihan hingga mengganggu ketersediaan situs bagi pengguna lain",
+          "Mengunggah atau memproses berkas yang mengandung perangkat lunak berbahaya, virus, atau kode komputer yang merusak",
+          "Mempublikasikan atau mengklaim hasil kalkulator sebagai dokumen rekayasa teknik berlisensi, diagnosis medis, opini hukum, atau sertifikasi pajak resmi jika kenyataannya bukan"
+        ]
+      },
+      {
+        "icon": "alertTriangle",
+        "title": "5. Penyangkalan Jaminan",
+        "content": "Navorika, seluruh alat, panduan, dan layanannya disediakan atas dasar \"apa adanya\" (as is) dan \"sebagaimana tersedia\" (as available). Kami berusaha semaksimal mungkin untuk menjaga keakuratan hasil komputasi, namun kami tidak menjamin layanan bebas dari gangguan, bebas dari kekeliruan perhitungan, atau memenuhi setiap regulasi profesional lokal. Tinjau halaman Penyangkalan dan Metodologi untuk informasi lebih lanjut."
+      },
+      {
+        "icon": "scale",
+        "title": "6. Batasan Tanggung Jawab",
+        "content": "Dalam keadaan apa pun, Navorika, pengelola, atau kontributor tidak bertanggung jawab atas kerugian langsung, tidak langsung, insidental, khusus, atau konsekuensial yang timbul dari akses atau penggunaan alat kami, termasuk namun tidak terbatas pada kehilangan data, kekeliruan perhitungan, selisih biaya konstruksi, keputusan investasi keuangan, atau gangguan usaha."
+      },
+      {
+        "icon": "helpCircle",
+        "title": "7. Perubahan Ketentuan dan Pertanyaan",
+        "content": "Kami berhak memperbarui Ketentuan Layanan ini sewaktu-waktu tanpa pemberitahuan sebelumnya. Dengan terus menggunakan platform setelah revisi dipublikasikan, Anda dianggap menyetujui ketentuan yang diperbarui."
+      }
+    ],
+    "footerNote": {
+      "text": "Pertanyaan mengenai Ketentuan Layanan kami? Gunakan",
+      "linkText": "halaman kontak",
       "linkHref": "/contact"
     }
   }
@@ -2955,6 +3240,74 @@ export const disclaimerContent: Record<Locale | 'en', TrustPageContent> = {
       "linkHref": "/methodology",
       "secondLinkText": "صفحة الاتصال بنا",
       "secondLinkHref": "/contact"
+    }
+  },
+  id: {
+    "title": "Pernyataan Penyangkalan Hukum & Perhitungan – Navorika",
+    "description": "Pernyataan penyangkalan hukum dan perhitungan untuk alat keuangan, kesehatan, konstruksi, dan dokumen Navorika.",
+    "eyebrow": "Penyangkalan Hukum",
+    "heroTitle": "Pernyataan Penyangkalan Hukum & Perhitungan",
+    "heroDescription": "Seluruh perhitungan, konverter, dan pedoman yang disediakan di Navorika ditujukan hanya untuk keperluan informasi, estimasi perencanaan, dan edukasi.",
+    "lastUpdatedLabel": "Terakhir diperbarui",
+    "lastUpdated": "27 September 2026",
+    "banner": {
+      "variant": "amber",
+      "text": "Seluruh perhitungan, alat, dan panduan Navorika disediakan untuk tujuan informasi dan edukasi semata. Perhitungan ini bukan nasihat profesional berlisensi."
+    },
+    "sections": [
+      {
+        "icon": "trendingUp",
+        "title": "Kalkulator Keuangan & Investasi",
+        "badge": "Hanya Estimasi Perencanaan",
+        "badgeColor": "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20",
+        "content": "Kalkulator keuangan adalah alat simulasi dan perencanaan. Alat ini membantu membandingkan skenario pinjaman, tabungan, investasi, anggaran, pajak, dan pensiun, namun tidak menjamin hasil keuangan aktual.",
+        "points": [
+          "Bukan Nasihat Keuangan: Hasil yang dihasilkan oleh kalkulator kami bukan merupakan nasihat keuangan, investasi, hukum, akuntansi, atau perpajakan profesional.",
+          "Suku Bunga dan Aturan Berubah: Suku bunga pasar, imbal hasil investasi, inflasi, regulasi pajak, biaya provisi, dan kebijakan lembaga keuangan dapat berubah sewaktu-waktu dan memengaruhi hasil nyata.",
+          "Keputusan Signifikan: Selalu periksa suku bunga terkini, regulasi resmi, dan ketentuan penyedia pinjaman. Pertimbangkan untuk berkonsultasi dengan penasihat keuangan atau konsultan pajak berizin untuk keputusan besar."
+        ]
+      },
+      {
+        "icon": "heartPulse",
+        "title": "Kalkulator Kesehatan, Kebugaran & Biometri",
+        "badge": "Bukan Nasihat Medis",
+        "badgeColor": "bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/20",
+        "content": "Kalkulator kesehatan dan kebugaran menggunakan formula terpublikasi untuk memperkirakan nilai seperti BMI, kebutuhan kalori harian, zona denyut jantung, dan proporsi tubuh. Angka ini merupakan estimasi statistik umum, bukan diagnosis medis.",
+        "points": [
+          "Hanya Alat Penapisan Awal: Rumus statistik ini semata-mata ditujukan untuk pelacakan mandiri dan edukasi kebugaran. Formula ini tidak mendiagnosis, mengobati, menyembuhkan, atau mencegah penyakit maupun kondisi medis apa pun.",
+          "Variasi Individu: Rumus umum tidak dapat sepenuhnya memperhitungkan massa otot atletik, komposisi tubuh, kehamilan, pengobatan medis, kondisi hormonal, atau metabolisme individual.",
+          "Konsultasi Medis: Selalu berkonsultasi dengan dokter umum, dokter spesialis, atau ahli gizi terdaftar sebelum memulai diet pembatasan kalori ekstrem, program latihan intensitas tinggi, atau perubahan pola makan signifikan."
+        ]
+      },
+      {
+        "icon": "hammer",
+        "title": "Kalkulator Konstruksi & Teknik Bangunan",
+        "badge": "Hanya Estimasi Lapangan",
+        "badgeColor": "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/20",
+        "content": "Kalkulator konstruksi membantu memperkirakan volume material, dimensi, jumlah kebutuhan, biaya kasar, geometri atap atau tangga, serta nilai perencanaan kelistrikan dan struktural awal. Angka ini adalah taksiran awal, bukan gambar kerja berizin.",
+        "points": [
+          "Bukan Rekayasa Teknik Bersertifikat: Perhitungan ini bukan pengganti gambar arsitektur berstempel resmi, kalkulasi struktur dari insinyur bersertifikat (SIP), atau analisis geoteknik tanah.",
+          "Kepatuhan Standar Bangunan: Persyaratan konstruksi berbeda di setiap daerah. Seluruh bentang balok penopang beban, campuran mutu beton, jalur kabel listrik, dan jarak keselamatan harus mematuhi standar bangunan yang berlaku (seperti SNI, IBC, IRC, atau perda setempat).",
+          "Kondisi Lapangan Nyata: Faktor pemborosan (waste), kondisi tanah, pemadatan, mutu material, cuaca, dan metode pengerjaan dapat mengubah kebutuhan aktual secara signifikan. Selalu lakukan verifikasi pengukuran langsung di lapangan."
+        ]
+      },
+      {
+        "icon": "wrench",
+        "title": "Utilitas Umum & Alat Dokumen",
+        "badge": "Operasi Sebagaimana Adanya",
+        "badgeColor": "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-500/20",
+        "content": "Alat PDF, konverter gambar, dan utilitas pengembang disediakan atas dasar \"apa adanya\" dan \"sebagaimana tersedia\". Selalu simpan salinan cadangan berkas asli sebelum mengonversi atau mengeditnya.",
+        "points": [
+          "Batasan Browser: Alat lokal browser dapat mengalami kendala memori jika memproses berkas yang sangat besar, format yang rusak, atau terjadi gangguan tak terduga pada browser.",
+          "Simpan Cadangan Asli: Simpan salinan cadangan dari berkas, dokumen, gambar, atau kode penting Anda sebelum melakukan tindakan pengeditan atau konversi apa pun.",
+          "Format Pertukaran Terbuka: Alat konversi khusus tertentu (seperti konverter CorelDRAW) menghasilkan format pertukaran terbuka yang kompatibel (PDF, EPS, SVG) dan bukan berkas kepemilikan CDR mentah, sebagaimana dijelaskan secara transparan pada halaman alat tersebut."
+        ]
+      }
+    ],
+    "footerNote": {
+      "text": "Ingin memahami metodologi pengujian kalkulator kami? Baca",
+      "linkText": "Metodologi & Standar Kalkulator Kami",
+      "linkHref": "/methodology"
     }
   }
 };
@@ -3695,6 +4048,100 @@ export const methodologyContent: Record<Locale | 'en', TrustPageContent> = {
       "secondLinkText": "صفحة الاتصال بنا",
       "secondLinkHref": "/contact"
     }
+  },
+  id: {
+    "title": "Metodologi & Standar Kalkulator Kami – Navorika",
+    "description": "Bagaimana Navorika membangun, menguji, dan memverifikasi kalkulator, konversi berkas, rumus, batasan, dan penanganan nilai masukan.",
+    "eyebrow": "Standar Rekayasa",
+    "heroTitle": "Metodologi & Standar Kalkulator Kami",
+    "heroDescription": "Transparansi adalah inti dari keandalan alat online. Halaman ini menjelaskan formula rujukan, batasan teknis, dan prosedur pengujian otomatis di Navorika.",
+    "lastUpdatedLabel": "Terakhir diperbarui",
+    "lastUpdated": "27 September 2026",
+    "banner": {
+      "variant": "emerald",
+      "text": "Kalkulator kami dibangun berdasarkan rumus terdokumentasi dan diuji secara otomatis terhadap kasus normal, nilai batas, dan kondisi tak terduga."
+    },
+    "sections": [
+      {
+        "icon": "cpu",
+        "title": "1. Sumber Rumus dan Dasar Perhitungan",
+        "content": "Kami menyusun logika perhitungan dari formula matematis terbuka, standar rekayasa industri, atau peraturan perundang-undangan resmi:",
+        "points": [
+          "Keuangan: Perhitungan pinjaman dan amortisasi menggunakan rumus anuitas standar. Alat perpajakan dan pensiun memodelkan struktur tarif resmi yang dipublikasikan.",
+          "Konstruksi: Alat taksiran material menerapkan rumus geometri volume, kepadatan material standar, dan faktor cadangan susut/pemborosan (waste) yang lazim di industri konstruksi.",
+          "Kesehatan: Kalkulator kebugaran merujuk pada formula penelitian ilmiah terpublikasi (seperti persamaan Mifflin-St Jeor untuk BMR dan pedoman BMI WHO).",
+          "Pengembang: Utilitas format data, hashing, penguraian URL, dan kriptografi mengimplementasikan standar spesifikasi terbuka (RFC, W3C, dan standar IEEE)."
+        ]
+      },
+      {
+        "icon": "checkCircle2",
+        "title": "2. Kerangka Kerja Pengujian Otomatis",
+        "content": "Setiap mesin perhitungan wajib lolos dari serangkaian uji otomatis sebelum diterapkan ke produksi:",
+        "points": [
+          "Pengujian Nilai Tipikal: Memverifikasi kebenaran hasil terhadap contoh perhitungan baku yang telah terbukti di dunia nyata.",
+          "Pengujian Batas dan Ekstrem: Memeriksa perilaku sistem pada nilai input nol, angka sangat besar, desimal presisi tinggi, dan nilai negatif.",
+          "Pencegahan Kesalahan Pembagian Nol: Memastikan masukan tidak valid menghasilkan pesan panduan yang jelas alih-alih menghasilkan nilai NaN atau Infinity.",
+          "Uji Regresi Otomatis: Setiap perubahan kode diverifikasi kembali secara menyeluruh untuk memastikan fungsi yang ada tidak mengalami degradasi."
+        ]
+      },
+      {
+        "icon": "shieldAlert",
+        "title": "3. Validasi Masukan dan Penanganan Kesalahan",
+        "content": "Alat Navorika memvalidasi nilai masukan secara langsung untuk mencegah kesimpulan yang menyesatkan:",
+        "points": [
+          "Sanitasi Masukan: Mencegah karakter ilegal, skrip berbahaya, atau format masukan yang tidak sesuai.",
+          "Umpan Balik Instan: Memberikan indikasi jelas saat nilai yang dimasukkan berada di luar batas realistis alat.",
+          "Hasil Deterministik: Nilai input yang sama akan selalu menghasilkan output perhitungan yang identik tanpa variasi acak."
+        ]
+      },
+      {
+        "icon": "sliders",
+        "title": "4. Asumsi Bawaan dan Faktor Keamanan",
+        "content": "Alat kami menyediakan nilai awal (default) yang wajar untuk mempermudah perhitungan, namun selalu dapat disesuaikan oleh pengguna:",
+        "points": [
+          "Faktor Pemborosan (Waste Factor): Alat konstruksi menyertakan persentase cadangan material standar (umumnya 5–15%) yang dapat diubah sesuai kondisi proyek.",
+          "Asumsi Inflasi dan Pertumbuhan: Alat proyeksi kekayaan jangka panjang menyertakan asumsi inflasi yang transparan dan dapat dikonfigurasi.",
+          "Satuan Metrik dan Imperial: Sistem mendukung satuan metrik (cm, m, kg) dan imperial (inci, kaki, pon) dengan konversi matematis presisi."
+        ]
+      },
+      {
+        "icon": "layers",
+        "title": "5. Pemrosesan Lokal versus Bantuan Server",
+        "content": "Kami memprioritaskan pemrosesan di sisi klien (browser) untuk menjaga privasi dokumen Anda:",
+        "points": [
+          "Kalkulator & Pengubah Kode: Beroperasi 100% di browser pengguna tanpa lalu lintas data ke server.",
+          "Alat PDF & Gambar Standar: Memanfaatkan pustaka WebAssembly dan JavaScript modern untuk manipulasi berkas secara lokal di memori perangkat.",
+          "Konversi Server Khusus: Alat yang memerlukan perangkat lunak backend khusus (seperti STEP CAD ke 3D PDF) memanfaatkan wadah server terisolasi dengan penghapusan berkas segera."
+        ]
+      },
+      {
+        "icon": "fileCode",
+        "title": "6. Batasan Format dan Integritas Berkas",
+        "content": "Kami transparan mengenai kapabilitas konversi berkas:",
+        "points": [
+          "Preservasi Vektor: Mengutamakan elemen kurva vektor asli jika format tujuan mendukungnya.",
+          "Pemberitahuan Transparansi: Menjelaskan secara terbuka jika format tertentu (misalnya JPEG) tidak mendukung saluran transparansi alpha.",
+          "Format Pertukaran Terbuka: Konverter format tertutup (seperti CorelDRAW) menghasilkan format terbuka (PDF/EPS/SVG) yang dapat dibuka kembali di CorelDRAW maupun aplikasi desain profesional lainnya."
+        ]
+      },
+      {
+        "icon": "refreshCw",
+        "title": "7. Prosedur Peninjauan dan Pembaruan Berkala",
+        "content": "Kami secara berkala meninjau formula, aturan hukum, dan dependensi:",
+        "points": [
+          "Pembaruan Regulasi: Menyesuaikan aturan kalkulator perpajakan saat pemerintah merilis undang-undang atau batas ambang tarif tahunan baru.",
+          "Pembaruan Dependensi: Memperbarui pustaka pihak ketiga secara rutin untuk menutup kerentanan keamanan dan memastikan kompatibilitas browser terkini.",
+          "Tanggapan Laporan Komunitas: Meninjau dan memperbaiki formula dengan cepat apabila ada pengguna yang melaporkan ketidaksesuaian melalui saluran dukungan."
+        ]
+      }
+    ],
+    "footerNote": {
+      "text": "Tinjau Pernyataan Penyangkalan Hukum kami untuk batasan tanggung jawab. Untuk melaporkan ketidaksesuaian hasil atau masalah pada alat, gunakan halaman kontak.",
+      "linkText": "Pernyataan Penyangkalan Hukum",
+      "linkHref": "/disclaimer",
+      "secondLinkText": "halaman kontak",
+      "secondLinkHref": "/contact"
+    }
   }
 };
 
@@ -4433,6 +4880,98 @@ export const glossaryContent: Record<Locale | 'en', GlossaryPageContent> = {
       {
         "term": "صندوق الادخار العام (PPF)",
         "definition": "برنامج ادخار وتقاعد حكومي طويل الأجل يتميز بإعفاءات ضريبية خاصة، وهو شائع الاستخدام في الهند."
+      }
+    ]
+  },
+  id: {
+    "title": "Glosarium Istilah Alat & Kalkulator Online – Navorika",
+    "description": "Definisi bahasa Indonesia yang jelas untuk istilah kalkulator, keuangan, kesehatan, PDF, web, dan teknologi yang umum digunakan pada alat dan panduan Navorika.",
+    "heroTitle": "Glosarium",
+    "heroDescription": "21 istilah dan definisi konsep praktis yang digunakan dalam kalkulator, alat berkas, dan panduan Navorika",
+    "terms": [
+      {
+        "term": "APR",
+        "definition": "Annual Percentage Rate (Tingkat Persentase Tahunan) – total biaya pinjaman tahunan, termasuk bunga dan biaya administrasi terkait."
+      },
+      {
+        "term": "APY",
+        "definition": "Annual Percentage Yield (Hasil Persentase Tahunan) – tingkat imbal hasil tahunan efektif dari tabungan atau investasi setelah memperhitungkan bunga majemuk."
+      },
+      {
+        "term": "Pokok (Principal)",
+        "definition": "Jumlah uang awal yang dipinjam, diinvestasikan, atau disetorkan sebelum memperhitungkan bunga dan imbal hasil."
+      },
+      {
+        "term": "Hipotek (Mortgage)",
+        "definition": "Pinjaman jangka panjang yang digunakan untuk membeli properti atau lahan, yang biasanya diangsur secara bulanan mencakup pokok dan bunga."
+      },
+      {
+        "term": "ROI",
+        "definition": "Return on Investment (Laba atas Investasi) – persentase keuntungan atau kerugian bersih yang diperoleh dibandingkan dengan jumlah modal awal yang diinvestasikan."
+      },
+      {
+        "term": "CAGR",
+        "definition": "Compound Annual Growth Rate (Tingkat Pertumbuhan Tahunan Majemuk) – tingkat pertumbuhan rata-rata per tahun dari suatu investasi dalam periode tertentu dengan asumsi reinvestasi hasil."
+      },
+      {
+        "term": "Kekayaan Bersih (Net Worth)",
+        "definition": "Total nilai seluruh aset dan kepemilikan yang Anda miliki dikurangi total kewajiban utang dan liabilitas."
+      },
+      {
+        "term": "BMI",
+        "definition": "Body Mass Index (Indeks Massa Tubuh) – ukuran penapisan awal rasio berat terhadap tinggi badan. BMI bukan pengukuran langsung dari persentase lemak tubuh."
+      },
+      {
+        "term": "BMR",
+        "definition": "Basal Metabolic Rate (Laju Metabolisme Basal) – perkiraan jumlah kalori minimum yang dibutuhkan tubuh untuk menjalankan fungsi organ vital saat beristirahat total."
+      },
+      {
+        "term": "TDEE",
+        "definition": "Total Daily Energy Expenditure (Total Pengeluaran Energi Harian) – perkiraan jumlah kalori total yang dibakar tubuh dalam satu hari penuh, termasuk aktivitas fisik dan olahraga."
+      },
+      {
+        "term": "PPI",
+        "definition": "Pixels Per Inch (Piksel Per Inci) – ukuran kepadatan piksel digital per inci pada layar tampilan atau berkas gambar digital."
+      },
+      {
+        "term": "DPI",
+        "definition": "Dots Per Inch (Titik Per Inci) – ukuran kerapatan titik tinta fisik yang disemprotkan printer per inci pada media cetak."
+      },
+      {
+        "term": "PDF",
+        "definition": "Portable Document Format – format berkas standar dokumen digital yang mempertahankan tata letak, font, dan elemen visual secara identik di semua perangkat."
+      },
+      {
+        "term": "JSON",
+        "definition": "JavaScript Object Notation – format teks terstruktur yang ringan dan standar untuk menyimpan serta bertukar data antar-sistem perangkat lunak."
+      },
+      {
+        "term": "JWT",
+        "definition": "JSON Web Token – format token ringkas dan aman yang umum digunakan untuk otentikasi identitas dan transmisi data antar-layanan web."
+      },
+      {
+        "term": "Base64",
+        "definition": "Metode penyandian (encoding) data biner menjadi format teks ASCII agar dapat ditransmisikan secara aman melalui media berbasis teks."
+      },
+      {
+        "term": "Kode QR (QR Code)",
+        "definition": "Quick Response code – kode batang matriks dua dimensi yang dapat dibaca cepat oleh pemindai kamera untuk membuka tautan, data teks, atau kontak."
+      },
+      {
+        "term": "EMI",
+        "definition": "Equated Monthly Installment – skema cicilan pembayaran angsuran bulanan dalam jumlah tetap yang umum digunakan pada pinjaman bank."
+      },
+      {
+        "term": "SIP",
+        "definition": "Systematic Investment Plan – metode investasi berkala dengan menyetorkan dana dalam jumlah tetap ke dalam reksa dana pada interval waktu tertentu."
+      },
+      {
+        "term": "GST",
+        "definition": "Goods and Services Tax (Pajak Barang dan Jasa) – sistem pajak pertambahan nilai tidak langsung yang berlaku di India dan beberapa negara lainnya."
+      },
+      {
+        "term": "PPF",
+        "definition": "Public Provident Fund – program tabungan dan investasi pensiun jangka panjang khusus yang diterbitkan pemerintah India."
       }
     ]
   }

@@ -40,7 +40,7 @@ export default function RoofAreaCalculator() {
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 md:p-8">
         <h1 className="text-2xl font-bold mb-2">Roof Area Calculator</h1>
         <p className="text-slate-600 dark:text-slate-400">Calculate roof area, slope, and a waste-adjusted ordering area.</p>
-        <PrivacyBadges slug="roof-area-calculator" className="mb-6 mt-4" />
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -151,6 +151,7 @@ export default function RoofAreaCalculator() {
           </div>
         )}
       </div>
+      <div className="mt-5" aria-label="Tool capabilities"><PrivacyBadges slug="roof-area-calculator" /></div>
     </div>
   );
 }

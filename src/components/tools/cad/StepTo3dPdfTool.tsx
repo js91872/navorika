@@ -254,6 +254,32 @@ const cadTranslations: Record<Locale | 'en', {
     statusProcessing: 'تحليل طوبولوجيا B-Rep وتوليد الشبكة…',
     statusGenerating: 'تضمين هياكل PRC ثلاثية الأبعاد في PDF…',
   },
+  id: {
+    privacyTitle: 'Privasi CAD & Pemrosesan Sementara',
+    privacyDesc: 'Berkas CAD Anda diproses sementara di lingkungan terisolasi untuk konversi dan dihapus secara otomatis saat tugas selesai. Berkas tidak disimpan secara permanen atau dibagikan.',
+    viewerTitle: 'Disarankan Menggunakan Adobe Acrobat Reader Desktop untuk Interaksi 3D',
+    viewerDesc: 'Untuk tampilan 3D interaktif, buka PDF yang diunduh di Adobe Acrobat Reader desktop atau penampil 3D PDF lain yang kompatibel. Penampil PDF bawaan peramban web (Chrome, Edge, Firefox, Safari) tidak mendukung interaksi 3D PRC dan mungkin hanya menampilkan gambar pratinjau.',
+    backendUnavailableTitle: 'Backend Konversi Server Tidak Tersedia',
+    backendUnavailableDesc: 'Backend konversi native Open CASCADE atau Asymptote belum dikonfigurasi di host ini. Konversi dinonaktifkan untuk mencegah pembuatan berkas rusak atau simulasi.',
+    errorTitle: 'Kesalahan Konversi',
+    errorInvalidExt: 'Silakan pilih berkas CAD yang valid dengan ekstensi .step atau .stp.',
+    errorEmpty: 'Berkas yang dipilih kosong.',
+    errorTooLarge: 'Ukuran berkas melebihi batas unggah 25 MB.',
+    errorConversion: 'Konversi gagal dengan aman. Silakan verifikasi berkas CAD Anda dan coba lagi.',
+    dropPrompt: 'Tarik dan lepas berkas STEP atau STP Anda ke sini, atau',
+    browse: 'pilih berkas',
+    formatHelp: 'Mendukung model CAD ISO-10303-21 (.step, .stp) hingga 25 MB',
+    readyTitle: '3D PDF Siap Diunduh',
+    solids: 'Benda Padat (Solids)',
+    faces: 'Permukaan (Faces)',
+    triangles: 'Segitiga (Triangles)',
+    download: 'Unduh 3D PDF',
+    reset: 'Konversi Berkas Lain',
+    btnConvert: 'Konversi STEP ke 3D PDF',
+    statusUploading: 'Mengunggah berkas CAD…',
+    statusProcessing: 'Menganalisis topologi B-Rep & membuat jaring mesh…',
+    statusGenerating: 'Menyematkan struktur 3D PRC ke dalam PDF…',
+  },
 };
 
 export default function StepTo3dPdfTool({ locale = 'en' }: { locale?: Locale | 'en' } = {}) {
@@ -410,9 +436,6 @@ export default function StepTo3dPdfTool({ locale = 'en' }: { locale?: Locale | '
 
   return (
     <section className="mx-auto max-w-4xl min-w-0 space-y-6 rounded-3xl border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      <CadPrivacyNotice title={m.privacyTitle} desc={m.privacyDesc} />
-      <CadViewerNotice title={m.viewerTitle} desc={m.viewerDesc} />
-
       {isBackendDisabled && <CadBackendUnavailableNotice title={m.backendUnavailableTitle} desc={m.backendUnavailableDesc} />}
 
       {/* Upload Dropzone */}
@@ -530,6 +553,10 @@ export default function StepTo3dPdfTool({ locale = 'en' }: { locale?: Locale | '
             : m.btnConvert}
         </button>
       )}
+      <div className="space-y-3 border-t border-slate-200 pt-5 dark:border-slate-700" aria-label="Privacy and 3D PDF viewing information">
+        <CadPrivacyNotice title={m.privacyTitle} desc={m.privacyDesc} />
+        <CadViewerNotice title={m.viewerTitle} desc={m.viewerDesc} />
+      </div>
     </section>
   );
 }

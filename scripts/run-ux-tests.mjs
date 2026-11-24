@@ -4,3 +4,5 @@ import '../src/lib/resultExport.test.mjs';
 import '../src/data/toolUx.test.mjs';
 import '../src/lib/toolWorkflow.test.mjs';
 import '../src/lib/houseConstructionPresentation.test.mjs';
+
+import './tool-first-layout.test.mjs';
