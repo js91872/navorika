@@ -86,13 +86,13 @@ export default function TermsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
+              className="p-4 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] break-words"
             >
               <div className="flex items-start gap-4">
                 <div className="mt-1 p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shrink-0">
                   {section.icon}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <h2 className="text-xl font-bold mb-2">{section.title}</h2>
                   <p className="text-[var(--muted-foreground)] leading-relaxed">
                     {section.content}

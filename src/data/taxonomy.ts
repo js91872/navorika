@@ -28,15 +28,16 @@ export interface Toolkit {
 }
 
 export const clusters: ToolCluster[] = [
+  { id: 'icloud-storage-planning', name: 'Cloud Storage Planning', description: 'Explore iCloud storage usage and plan cleanup scenarios without accessing private account data.', category: 'everyday-calculators', toolSlugs: ['icloud-storage-calculator'] },
   { id: 'ai-video-prompts', name: 'AI Video Prompt Tools', description: 'Plan video scenes and generate structured prompts for AI video workflows.', category: 'developer-tools', toolSlugs: ['ai-video-prompt-generator'] },
   { id: 'speaker-audio', name: 'Speaker Audio Tools', description: 'Test phone speakers and explore audio troubleshooting with browser-based sounds.', category: 'everyday-calculators', toolSlugs: ['speaker-dust-cleaning-sound'] },
   { id: 'pdf-organize', name: 'Organize PDF Pages', description: 'Combine, separate, reorder, rotate, and extract pages in document workflows.', category: 'pdf-tools', toolSlugs: ['merge-pdf', 'split-pdf', 'reorder-pdf', 'rotate-pdf', 'delete-pdf-pages', 'extract-pdf-pages', 'interleave-pdf'] },
   { id: 'pdf-convert', name: 'PDF Conversion', description: 'Move content between PDF, image, and text formats.', category: 'pdf-tools', toolSlugs: ['jpg-to-pdf', 'webp-to-pdf', 'pdf-to-image', 'pdf-to-jpg', 'extract-pdf-text', 'pdf-word-counter', 'heic-to-pdf', 'markdown-to-pdf'] },
-  { id: 'pdf-edit', name: 'Edit and Prepare PDFs', description: 'Prepare page appearance, metadata, numbering, and reusable document output.', category: 'pdf-tools', toolSlugs: ['add-image-to-pdf', 'add-page-numbers', 'add-watermark', 'compress-pdf', 'crop-pdf', 'flatten-pdf', 'pdf-metadata-editor', 'pdf-bleed-trim-checker', 'pdf-page-size-checker'] },
+  { id: 'pdf-edit', name: 'Edit and Prepare PDFs', description: 'Prepare page appearance, metadata, numbering, and reusable document output.', category: 'pdf-tools', toolSlugs: ['add-image-to-pdf', 'add-page-numbers', 'add-watermark', 'compress-pdf', 'crop-pdf', 'flatten-pdf', 'pdf-metadata-editor', 'pdf-bleed-trim-checker', 'pdf-page-size-checker', 'compare-pdf'] },
   { id: 'pdf-security', name: 'PDF Signing and Security', description: 'Sign documents and manage document access where browser support is validated.', category: 'pdf-tools', toolSlugs: ['sign-pdf', 'protect-pdf', 'unlock-pdf'] },
 
   { id: 'image-convert', name: 'Image Format Conversion', description: 'Convert individual images or batches between common web and document formats.', category: 'image-tools', toolSlugs: ['batch-image-converter', 'convert-jpg-to-png', 'convert-jpg-to-webp', 'convert-png-to-jpg', 'convert-png-to-webp', 'convert-webp-to-jpg', 'heic-to-jpg', 'heic-to-png', 'image-converter', 'image-to-pdf', 'jpg-to-dxf', 'png-to-svg', 'svg-to-png', 'webp-to-png', 'jfif-to-png', 'webp-to-ico', 'avif-to-png', 'webp-to-gif', 'svg-to-ico'] },
-  { id: 'image-optimize', name: 'Image Size and Quality', description: 'Resize, compress, upscale, and inspect image output for web or print use.', category: 'image-tools', toolSlugs: ['change-image-resolution', 'resize-image-to-1000x1000', 'compress-image', 'compress-jpg', 'compress-png', 'compress-webp', 'image-dpi-converter', 'image-metadata-viewer', 'resize-image', 'upscale-image', 'image-megapixel-calculator', 'image-print-size-calculator', 'ppi-calculator', 'image-file-size-estimator', 'image-scaling-calculator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'svg-dimensions-checker', 'rgb-cmyk-image-checker', 'print-bleed-calculator'] },
+  { id: 'image-optimize', name: 'Image Size and Quality', description: 'Resize, compress, upscale, and inspect image output for web or print use.', category: 'image-tools', toolSlugs: ['change-image-resolution', 'resize-image-to-1000x1000', 'compress-image', 'compress-jpg', 'compress-png', 'compress-webp', 'image-dpi-converter', 'image-metadata-viewer', 'exif-metadata-remover', 'resize-image', 'upscale-image', 'image-megapixel-calculator', 'image-print-size-calculator', 'ppi-calculator', 'image-file-size-estimator', 'image-scaling-calculator', 'photo-storage-calculator', 'image-bandwidth-calculator', 'svg-dimensions-checker', 'rgb-cmyk-image-checker', 'print-bleed-calculator'] },
   { id: 'image-edit', name: 'Image Editing', description: 'Crop, rotate, retouch, watermark, and protect visual content.', category: 'image-tools', toolSlugs: ['blur-face', 'crop-image', 'photo-editor', 'black-and-white-image-converter', 'rotate-image', 'watermark-image'] },
   { id: 'image-create', name: 'Image Creation and Publishing', description: 'Create visual assets, sample colors, and prepare images for identity, social, and web use.', category: 'image-tools', toolSlugs: ['image-color-picker', 'html-to-image', 'html-to-jpg-converter', 'html-to-png-converter', 'icon-sticker-maker', 'id-photo-maker', 'meme-generator', 'photo-collage-maker', 'social-media-resizer', 'responsive-srcset-generator', 'txt-to-image'] },
   { id: 'image-compression', name: 'Target Size Image Compression', description: 'Compress JPEG, PNG, and WebP images down to exact kilobyte targets for forms, portals, and uploads.', category: 'image-tools', toolSlugs: ['compress-image-to-20kb', 'compress-image-to-50kb', 'compress-image-to-100kb', 'compress-image-to-200kb', 'compress-jpg-to-100kb', 'compress-png-to-100kb'] },
@@ -58,7 +59,7 @@ export const clusters: ToolCluster[] = [
   { id: 'pet-health', name: 'Pet Health and Nutrition', description: 'Estimate canine age progression, puppy adult weight curves, and feline energy requirements.', category: 'health-calculators', toolSlugs: ['dog-age-breed-specific-calculator', 'puppy-growth-predictor', 'cat-calorie-calculator'] },
 
   { id: 'developer-code-formatting', name: 'Code Formatting and Utility Hubs', description: 'Access general developer suites and parser-backed code or markup formatting workflows.', category: 'developer-tools', toolSlugs: ['code-minifier-beautifier', 'developer-utils', 'markup-formatter', 'gitignore-generator', 'docker-run-command-generator', 'typescript-to-zod-schema-converter', 'git-commit-message-formatter'] },
-  { id: 'developer-json', name: 'JSON and Tabular Data', description: 'Format, validate, compare, flatten, and convert JSON and CSV data.', category: 'developer-tools', toolSlugs: ['json-formatter', 'json-schema-validator', 'json-diff-compare', 'json-to-csv-flattener', 'csv-to-json-converter', 'csv-to-vcard', 'vcf-to-csv', 'yaml-json-converter', 'xml-to-csv'] },
+  { id: 'developer-json', name: 'JSON and Tabular Data', description: 'Format, validate, compare, flatten, and convert JSON and CSV data.', category: 'developer-tools', toolSlugs: ['json-formatter', 'json-schema-validator', 'json-diff-compare', 'json-to-csv-flattener', 'json-to-csv-converter', 'csv-to-json-converter', 'csv-to-vcard', 'vcf-to-csv', 'yaml-json-converter', 'xml-to-csv'] },
   { id: 'developer-config-data', name: 'Configuration and Data Interchange', description: 'Convert and validate configuration formats including JSON, YAML, and TOML locally in your browser.', category: 'developer-tools', toolSlugs: ['json-to-yaml-converter', 'yaml-to-json-converter', 'json-to-toml-converter', 'toml-to-json-converter', 'yaml-validator'] },
   { id: 'developer-xml-documents', name: 'XML and Document Conversion', description: 'Merge and validate XML, create genuine DOCX documents, and extract clean or raw XML from modern Word files.', category: 'developer-tools', toolSlugs: ['merge-xml-files', 'xml-to-word-converter', 'word-to-xml-converter'] },
   { id: 'coreldraw-cdr-tools', name: 'CorelDRAW and CDR Tools', description: 'Prepare CorelDRAW-ready interchange files, preview supported CDR documents, inspect versions, and export open formats without fake native CDR files.', category: 'developer-tools', toolSlugs: ['coreldraw-tools', 'pdf-to-cdr-converter', 'word-to-cdr-converter', 'png-to-cdr-converter', 'jpg-to-cdr-converter', 'svg-to-cdr-converter', 'ai-to-cdr-converter', 'eps-to-cdr-converter', 'cdr-viewer', 'cdr-version-converter', 'cdr-to-pdf-converter', 'cdr-to-svg-converter', 'cdr-to-png-converter', 'cdr-to-jpg-converter', 'cdr-to-eps-converter', 'cdr-print-readiness-checker'] },
@@ -173,8 +174,8 @@ export const toolkits: Toolkit[] = [
     categorySlugs: ['pdf-tools'],
     groups: [
       { name: 'Organize pages', description: 'Combine documents and put the required pages in the right order.', toolSlugs: ['merge-pdf', 'split-pdf', 'rotate-pdf', 'delete-pdf-pages', 'extract-pdf-pages', 'interleave-pdf'] },
-      { name: 'Prepare documents', description: 'Add visible details, edit metadata, flatten supported fields, and sign output.', toolSlugs: ['add-page-numbers', 'add-watermark', 'crop-pdf', 'pdf-metadata-editor', 'flatten-pdf', 'sign-pdf', 'pdf-word-counter'] },
-    ], guideSlugs: ['how-to-merge-pdf-files', 'pdf-security-guide'],
+      { name: 'Prepare documents', description: 'Add visible details, edit metadata, flatten supported fields, and sign output.', toolSlugs: ['add-page-numbers', 'add-watermark', 'crop-pdf', 'pdf-metadata-editor', 'flatten-pdf', 'sign-pdf', 'pdf-word-counter', 'compare-pdf'] },
+    ], guideSlugs: ['how-to-merge-pdf-files', 'pdf-security-guide', 'how-to-compare-pdf-files'],
   },
   {
     slug: 'fitness-and-body-calculators', name: 'Fitness and Body Calculators', seoTitle: 'Free Fitness and Body Calculators',
@@ -208,6 +209,7 @@ export const complementaryTools: Record<string, string[]> = {
   'xml-to-word-converter': ['word-to-xml-converter', 'markup-formatter', 'json-formatter'],
   'word-to-xml-converter': ['xml-to-word-converter', 'markup-formatter', 'extract-pdf-text'],
   'pdf-word-counter': ['extract-pdf-text', 'pdf-page-size-checker', 'split-pdf'],
+  'compare-pdf': ['pdf-word-counter', 'extract-pdf-text', 'pdf-page-size-checker', 'merge-pdf'],
   'concrete-calculator': ['cement-calculator', 'rebar-calculator', 'sand-calculator', 'gravel-calculator'],
   'cement-calculator': ['concrete-calculator', 'sand-calculator', 'gravel-calculator'],
   'flooring-calculator': ['tile-calculator', 'paint-calculator'],
@@ -383,12 +385,18 @@ export function getRelatedTools(slug: string, limit = 6, explicit: string[] = []
   const current = tools.find((tool) => tool.slug === slug);
   if (!current) return [];
   const cluster = getClusterForTool(slug);
-  const candidates = [
+  const focused = [...new Set([
     ...explicit,
     ...(complementaryTools[slug] ?? []),
     ...(cluster?.toolSlugs ?? []),
-    ...tools.filter((tool) => tool.category === current.category).map((tool) => tool.slug),
-  ];
+  ])].filter((candidate) =>
+    candidate !== slug && !toolsUnderReview.has(candidate) && tools.some((tool) => tool.slug === candidate)
+  );
+  // Preserve a curated workflow when it has sufficient options. Broad
+  // category fallbacks can otherwise surface unrelated developer utilities.
+  const candidates = focused.length >= 3
+    ? focused
+    : [...focused, ...tools.filter((tool) => tool.category === current.category).map((tool) => tool.slug)];
   return [...new Set(candidates)]
     .filter((candidate) => candidate !== slug && !toolsUnderReview.has(candidate))
     .flatMap((candidate) => {

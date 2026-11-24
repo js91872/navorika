@@ -26,6 +26,8 @@
     "check": "npm run validate:architecture && npm run typecheck && npm run lint:baseline && npm run build",
     "test:i18n": "node --import tsx --test src/lib/i18n/i18n.test.ts",
     "test:i18n:browser": "node scripts/test-i18n-browser.mjs",
+    "test:smoke": "node scripts/smoke-test-staging.mjs",
+    "samples:pdf": "node --import tsx scripts/generate-pdf-samples.mjs",
     "test:deploy": "bash -n scripts/deploy-vps.sh && python3 scripts/test-deploy-vps.py",
     "i18n:audit": "node --import tsx scripts/audit-i18n.mjs --check",
     "i18n:audit:write": "node --import tsx scripts/audit-i18n.mjs --write",

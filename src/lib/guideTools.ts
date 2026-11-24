@@ -1,5 +1,9 @@
 // Map guides to relevant tools
 export const guideTools: Record<string, string[]> = {
+  'how-to-clear-icloud-storage': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image', 'image-scaling-calculator'],
+  'why-is-my-icloud-storage-full': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image', 'extract-audio-from-video'],
+  'how-to-delete-icloud-backup-safely': ['icloud-storage-calculator', 'photo-storage-calculator', 'image-file-size-estimator', 'compress-image'],
+
   'how-to-back-out-sales-tax-us': ['reverse-sales-tax-calculator', 'profit-margin-markup-calculator', 'break-even-calculator'],
   'how-to-calculate-fertilizer-for-a-lawn': ['fertilizer-calculator', 'land-area-converter', 'mulch-calculator', 'topsoil-calculator'],
   'fertilizer-npk-numbers-explained': ['fertilizer-calculator', 'land-area-converter', 'square-footage-calculator', 'topsoil-calculator'],
@@ -25,6 +29,7 @@ export const guideTools: Record<string, string[]> = {
   'bmr-tdee-guide': ['bmr-calculator', 'tdee-calculator', 'calorie-calculator'],
   'pdf-compression-guide': ['compress-pdf', 'merge-pdf', 'split-pdf'],
   'how-to-merge-pdf-files': ['merge-pdf', 'split-pdf', 'reorder-pdf'],
+  'how-to-compare-pdf-files': ['compare-pdf', 'pdf-word-counter', 'extract-pdf-text', 'merge-pdf', 'split-pdf'],
   'image-compression-guide': ['compress-image', 'resize-image', 'image-converter'],
   'how-to-resize-images': ['resize-image', 'crop-image', 'rotate-image'],
   'gst-calculation-guide': ['gst-calculator', 'tax-calculator'],

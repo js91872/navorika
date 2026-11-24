@@ -410,9 +410,6 @@ export default function StepTo3dPdfTool({ locale = 'en' }: { locale?: Locale | '
 
   return (
     <section className="mx-auto max-w-4xl min-w-0 space-y-6 rounded-3xl border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      <CadPrivacyNotice title={m.privacyTitle} desc={m.privacyDesc} />
-      <CadViewerNotice title={m.viewerTitle} desc={m.viewerDesc} />
-
       {isBackendDisabled && <CadBackendUnavailableNotice title={m.backendUnavailableTitle} desc={m.backendUnavailableDesc} />}
 
       {/* Upload Dropzone */}
@@ -530,6 +527,10 @@ export default function StepTo3dPdfTool({ locale = 'en' }: { locale?: Locale | '
             : m.btnConvert}
         </button>
       )}
+      <div className="space-y-3 border-t border-slate-200 pt-5 dark:border-slate-700" aria-label="Privacy and 3D PDF viewing information">
+        <CadPrivacyNotice title={m.privacyTitle} desc={m.privacyDesc} />
+        <CadViewerNotice title={m.viewerTitle} desc={m.viewerDesc} />
+      </div>
     </section>
   );
 }

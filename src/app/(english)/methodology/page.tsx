@@ -128,7 +128,7 @@ export default function MethodologyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.07 }}
-              className="p-6 sm:p-8 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
+              className="p-4 sm:p-8 rounded-2xl bg-[var(--card)] border border-[var(--border)] break-words"
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shrink-0 mt-1">

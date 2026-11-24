@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Filter, Grid3x3, Search, X } from 'lucide-react';
+import { ArrowRight, Filter, Grid3x3, Search, X, RotateCcw } from 'lucide-react';
 import { searchTools, type SearchableTool } from '@/lib/toolSearch';
 
 export interface ToolDirectoryItem extends SearchableTool {
@@ -11,26 +11,21 @@ export interface ToolDirectoryItem extends SearchableTool {
   icon: string;
 }
 
-export interface ToolDirectoryCategory { slug: string; name: string }
+export interface ToolDirectoryCategory {
+  slug: string;
+  name: string;
+}
 
-const colorMap: Record<string, string> = {
-  'pdf-tools': 'hover:border-blue-500/50', 'image-tools': 'hover:border-purple-500/50',
-  'finance-calculators': 'hover:border-emerald-500/50', 'health-calculators': 'hover:border-rose-500/50',
-  'developer-tools': 'hover:border-amber-500/50', 'construction-calculators': 'hover:border-teal-500/50',
-};
-
-const categoryBadgeColors: Record<string, string> = {
-  'pdf-tools': 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
-  'image-tools': 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20',
-  'finance-calculators': 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
-  'health-calculators': 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20',
-  'developer-tools': 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
-  'construction-calculators': 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20',
-};
-
-export default function ToolDirectory({ tools, categories }: { tools: ToolDirectoryItem[]; categories: ToolDirectoryCategory[] }) {
+export default function ToolDirectory({
+  tools,
+  categories,
+}: {
+  tools: ToolDirectoryItem[];
+  categories: ToolDirectoryCategory[];
+}) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+
   const filteredTools = useMemo(() => {
     const bySlug = new Map(tools.map((tool) => [tool.slug, tool]));
     const ranked = searchQuery.trim()
@@ -39,12 +34,146 @@ export default function ToolDirectory({ tools, categories }: { tools: ToolDirect
           return tool ? [tool] : [];
         })
       : tools;
-    return selectedCategory === 'all' ? ranked : ranked.filter((tool) => tool.category === selectedCategory);
+    return selectedCategory === 'all'
+      ? ranked
+      : ranked.filter((tool) => tool.category === selectedCategory);
   }, [searchQuery, selectedCategory, tools]);
 
-  return <div className="min-h-screen bg-[var(--background)] pb-16 pt-24 text-[var(--foreground)]"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <header className="mb-10"><div className="flex items-center gap-3"><div className="rounded-2xl bg-indigo-500/10 p-3 text-indigo-600 dark:text-indigo-400"><Grid3x3 className="size-8" aria-hidden="true" /></div><div><h1 className="text-4xl font-black tracking-tight">All Tools</h1><p className="mt-1 text-[var(--muted-foreground)]">{filteredTools.length} tools · Search and filter the active directory</p></div></div></header>
-    <div className="mb-10 flex flex-col gap-4 sm:flex-row"><div className="relative flex-1"><Search className="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-[var(--muted-foreground)]" aria-hidden="true" /><label htmlFor="tool-directory-search" className="sr-only">Search all tools</label><input id="tool-directory-search" type="search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search tools by name or description..." className="min-h-12 w-full rounded-2xl border-2 border-[var(--border)] bg-[var(--card)] py-3.5 pl-12 pr-12 text-[var(--foreground)] shadow-sm outline-none transition focus:border-indigo-500" />{searchQuery && <button type="button" onClick={() => setSearchQuery('')} className="absolute right-1 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full text-[var(--muted-foreground)] hover:text-[var(--foreground)]" aria-label="Clear tool search"><X className="size-5" aria-hidden="true" /></button>}</div><div className="relative"><Filter className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-[var(--muted-foreground)]" aria-hidden="true" /><label htmlFor="tool-directory-category" className="sr-only">Filter by category</label><select id="tool-directory-category" value={selectedCategory} onChange={(event) => setSelectedCategory(event.target.value)} className="min-h-12 min-w-[180px] appearance-none rounded-2xl border-2 border-[var(--border)] bg-[var(--card)] py-3.5 pl-11 pr-8 text-[var(--foreground)] shadow-sm outline-none transition focus:border-indigo-500"><option value="all">All Categories</option>{categories.map((category) => <option key={category.slug} value={category.slug}>{category.name}</option>)}</select></div></div>
-    {filteredTools.length === 0 ? <div className="py-20 text-center text-[var(--muted-foreground)]"><div className="mb-4 text-6xl" aria-hidden="true">🔍</div><h2 className="mb-2 text-xl font-semibold">No tools found</h2><p className="text-sm">Try adjusting your search or filter.</p></div> : <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{filteredTools.map((tool) => <Link key={tool.slug} href={`/tools/${tool.slug}`} className={`group relative block overflow-hidden rounded-2xl border-2 border-[var(--border)] bg-[var(--card)] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-xl ${colorMap[tool.category] ?? 'hover:border-indigo-500/50'}`}><div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 transition-opacity group-hover:opacity-100" /><div className="relative z-10"><div className="flex items-start gap-4"><span className="block rounded-xl bg-indigo-500/10 p-2.5 text-xl transition-transform group-hover:scale-110" aria-hidden="true">{tool.icon}</span><div className="min-w-0 flex-1"><h2 className="line-clamp-1 font-semibold transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400">{tool.title}</h2><p className="mt-1 line-clamp-2 text-sm leading-relaxed text-[var(--muted-foreground)]">{tool.displayDescription}</p></div></div><div className="mt-4 flex items-center justify-between border-t border-[var(--border)] pt-3"><span className={`rounded-full border px-2.5 py-1 text-[10px] font-medium ${categoryBadgeColors[tool.category] ?? 'bg-slate-500/10 text-slate-600 dark:text-slate-400'}`}>{tool.categoryName}</span><span className="rounded-full bg-[var(--muted)] p-1 transition-colors group-hover:bg-indigo-500/10"><ArrowRight className="size-3.5 text-[var(--muted-foreground)] transition group-hover:translate-x-0.5 group-hover:text-indigo-500" aria-hidden="true" /></span></div></div></Link>)}</div>}
-  </div></div>;
+  const resetFilters = () => {
+    setSearchQuery('');
+    setSelectedCategory('all');
+  };
+
+  return (
+    <div className="pb-16 pt-8 text-[#18181b] dark:text-[#f4f4f5]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <header className="mb-8">
+          <div className="flex items-center gap-3">
+            <div className="rounded-xl bg-[#fff1f1] dark:bg-[#e5322d]/10 p-3 text-[#e5322d]">
+              <Grid3x3 className="size-6" aria-hidden="true" />
+            </div>
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-[#18181b] dark:text-white">
+                All Tools
+              </h1>
+              <p className="mt-1 text-sm text-[#5b5b63] dark:text-[#a1a1aa]">
+                {filteredTools.length} {filteredTools.length === 1 ? 'tool' : 'tools'} · Search and filter the active directory
+              </p>
+            </div>
+          </div>
+        </header>
+
+        {/* Search & Filter Bar */}
+        <div className="mb-8 flex flex-col gap-3 sm:flex-row">
+          <div className="relative flex-1 bg-white dark:bg-[#18181b] border border-[#d6d6dc] dark:border-[#27272a] rounded-lg shadow-xs focus-within:border-[#e5322d] focus-within:ring-2 focus-within:ring-[#e5322d]/20 transition-all">
+            <Search
+              className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-[#5b5b63] dark:text-[#a1a1aa]"
+              aria-hidden="true"
+            />
+            <label htmlFor="tool-directory-search" className="sr-only">
+              Search all tools
+            </label>
+            <input
+              id="tool-directory-search"
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Search tools by name, description, or keyword..."
+              className="min-h-11 w-full bg-transparent py-2.5 pl-10 pr-10 text-sm text-[#18181b] dark:text-white outline-none placeholder:text-[#5b5b63] dark:placeholder:text-[#a1a1aa]"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-2 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-[#5b5b63] hover:text-[#18181b] dark:hover:text-white"
+                aria-label="Clear tool search"
+              >
+                <X className="size-4" aria-hidden="true" />
+              </button>
+            )}
+          </div>
+
+          <div className="relative bg-white dark:bg-[#18181b] border border-[#d6d6dc] dark:border-[#27272a] rounded-lg shadow-xs focus-within:border-[#e5322d] focus-within:ring-2 focus-within:ring-[#e5322d]/20 transition-all">
+            <Filter
+              className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-[#5b5b63] dark:text-[#a1a1aa] pointer-events-none"
+              aria-hidden="true"
+            />
+            <label htmlFor="tool-directory-category" className="sr-only">
+              Filter by category
+            </label>
+            <select
+              id="tool-directory-category"
+              value={selectedCategory}
+              onChange={(event) => setSelectedCategory(event.target.value)}
+              className="min-h-11 min-w-[200px] appearance-none bg-transparent py-2.5 pl-10 pr-9 text-sm font-semibold text-[#18181b] dark:text-white outline-none cursor-pointer"
+            >
+              <option value="all">All Categories</option>
+              {categories.map((category) => (
+                <option key={category.slug} value={category.slug}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-[#5b5b63]">
+              ▼
+            </span>
+          </div>
+        </div>
+
+        {/* Tool Cards Grid */}
+        {filteredTools.length === 0 ? (
+          <div className="py-16 text-center bg-white dark:bg-[#18181b] border border-[#e4e4e8] dark:border-[#27272a] rounded-xl my-6 p-8">
+            <h2 className="text-lg font-bold text-[#18181b] dark:text-white mb-1">No tools found</h2>
+            <p className="text-sm text-[#5b5b63] dark:text-[#a1a1aa] mb-4">
+              Try adjusting your search terms or clearing the category filter.
+            </p>
+            <button
+              type="button"
+              onClick={resetFilters}
+              className="inline-flex items-center gap-2 rounded-lg bg-[#e5322d] hover:bg-[#c71f1e] px-4 py-2 text-sm font-semibold text-white shadow-xs transition cursor-pointer"
+            >
+              <RotateCcw className="h-4 w-4" />
+              Reset filters
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredTools.map((tool) => (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}`}
+                className="group flex flex-col justify-between rounded-xl border border-[#e4e4e8] dark:border-[#27272a] bg-white dark:bg-[#18181b] p-5 transition-all duration-150 hover:border-[#e5322d] hover:shadow-md min-h-[145px]"
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <span
+                      className="grid size-10 place-items-center rounded-lg bg-[#fff1f1] dark:bg-[#e5322d]/10 text-xl text-[#e5322d]"
+                      aria-hidden="true"
+                    >
+                      {tool.icon}
+                    </span>
+                    <span className="text-[#5b5b63] dark:text-[#a1a1aa] group-hover:text-[#e5322d] group-hover:translate-x-0.5 transition-all">
+                      →
+                    </span>
+                  </div>
+                  <h2 className="text-[17px] font-semibold text-[#18181b] dark:text-white transition-colors group-hover:text-[#e5322d] line-clamp-1">
+                    {tool.title}
+                  </h2>
+                  <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-[#5b5b63] dark:text-[#a1a1aa]">
+                    {tool.displayDescription}
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[#e4e4e8] dark:border-[#27272a]/60">
+                  <span className="inline-block rounded-md bg-[#f0f0f2] dark:bg-[#202023] px-2.5 py-0.5 text-[11px] font-medium text-[#5b5b63] dark:text-[#a1a1aa]">
+                    {tool.categoryName}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
