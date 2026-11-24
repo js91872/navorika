@@ -5,6 +5,8 @@ import { getFinanceSuiteUrls } from '@/lib/seo/financeSuite';
 import { toolsUnderReview } from '@/lib/seo/toolReview';
 import { guidesMetadata } from '@/lib/guidesMetadata';
 import { toolkits } from '@/data/taxonomy';
+import { getDictionary } from '@/lib/i18n/dictionaries';
+import { hasIndexableLocalizedToolCopy } from '@/lib/i18n/contentDepth';
 
 const baseUrl = 'https://navorika.com';
 const trustSlugs = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary'] as const;
@@ -29,12 +31,10 @@ const nonCanonicalToolSlugs = new Set([
   'pdf-to-jpg',
   'jpg-to-pdf',
   'webp-to-pdf',
-  'yaml-to-json-converter',
-  'json-to-yaml-converter',
   'epoch-time-converter',
 ]);
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     '',
     '/tools',
@@ -43,6 +43,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/guides',
     '/guides/how-to-convert-jpg-to-dxf',
     '/guides/how-does-a-3d-printer-work',
+    '/guides/can-chatgpt-make-videos',
+    '/guides/how-to-clean-phone-speaker',
+    '/guides/shopify-profit-margin-calculator',
     '/about',
     '/contact',
     '/glossary',
@@ -50,6 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terms',
     '/disclaimer',
     '/methodology',
+    '/sitemap',
     '/hubs/finance',
     '/paper-sizes',
     '/paper-size-converter',
@@ -74,11 +78,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const guidePages = guidesMetadata.map(({ slug, dateModified }) => ({ url: `${baseUrl}/guides/${slug}`, lastModified: new Date(dateModified) }));
   const toolkitPages = toolkits.map(({ slug }) => ({ url: `${baseUrl}/toolkits/${slug}` }));
 
+  const localizedGuideLanguages = Object.fromEntries(
+    (['en', ...locales]).map((locale) => [locale, locale === 'en' ? `${baseUrl}/guides/webp-to-png-guide` : `${baseUrl}/${locale}/guides/webp-to-png-guide`]),
+  );
+  localizedGuideLanguages['x-default'] = `${baseUrl}/guides/webp-to-png-guide`;
   const englishPages = [...staticPages, ...toolPages, ...financeSuitePages, ...categoryPages, ...toolkitPages, ...guidePages]
     .map((page) => {
       const toolSlug = page.url.startsWith(`${baseUrl}/tools/`) ? page.url.slice(`${baseUrl}/tools/`.length) : '';
       const path = page.url.replace(baseUrl, '') || '/';
       const trustSlug = trustSlugs.find((s) => path === `/${s}`);
+      if (path === '/guides/webp-to-png-guide') return { ...page, alternates: { languages: localizedGuideLanguages } };
       if (page.url === baseUrl || isTranslatedTool(toolSlug)) {
         return { ...page, alternates: { languages: languageAlternates(isTranslatedTool(toolSlug) ? toolSlug : undefined) } };
       }
@@ -87,13 +96,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }
       return page;
     });
-  const localizedPages = locales.flatMap((locale) => [
-    { url: `${baseUrl}${localizedPath(locale)}`, alternates: { languages: languageAlternates() } },
-    ...translatedTools.map((slug) => ({ url: `${baseUrl}${localizedPath(locale, slug)}`, alternates: { languages: languageAlternates(slug) } })),
-    ...trustSlugs.map((slug) => ({
-      url: `${baseUrl}/${locale}/${slug}`,
-      alternates: { languages: publicPageAlternates(`/${slug}`) },
-    })),
-  ]);
-  return [...englishPages, ...localizedPages];
+  const localizedGuidePages = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}/guides/webp-to-png-guide`,
+    lastModified: new Date('2026-11-13'),
+    alternates: { languages: localizedGuideLanguages },
+  }));
+  const localizedPages = (await Promise.all(locales.map(async (locale) => {
+    const dictionary = await getDictionary(locale);
+    return [
+      { url: `${baseUrl}${localizedPath(locale)}`, alternates: { languages: languageAlternates() } },
+      ...translatedTools
+        .filter((slug) => hasIndexableLocalizedToolCopy(dictionary.tools[slug]))
+        .map((slug) => ({ url: `${baseUrl}${localizedPath(locale, slug)}`, alternates: { languages: languageAlternates(slug) } })),
+      ...trustSlugs.map((slug) => ({
+        url: `${baseUrl}/${locale}/${slug}`,
+        alternates: { languages: publicPageAlternates(`/${slug}`) },
+      })),
+    ];
+  }))).flat();
+  // Preserve existing public URLs, but emit each only once. The two directional
+  // JSON/YAML converters are self-canonical and should remain discoverable.
+  const uniquePages = new Map<string, MetadataRoute.Sitemap[number]>();
+  for (const page of [...englishPages, ...localizedPages, ...localizedGuidePages]) uniquePages.set(page.url, page);
+  return [...uniquePages.values()];
 }

@@ -13,16 +13,35 @@ test('full-rollout inventory covers each registered tool, guide and English page
   assert.deepEqual(report.guides.map((row) => row.slug).sort(), guidesMetadata.map((row) => row.slug).sort());
   const contract = JSON.parse(readFileSync('scripts/english-route-contract.json', 'utf8'));
   const approvedNewRoutes = [
+    'tools/eml-to-pdf/page.tsx',
+    'tools/eml-to-msg/page.tsx',
+    'tools/eml-to-html/page.tsx',
+    'tools/eml-to-excel/page.tsx',
+    'tools/eml-to-word/page.tsx',
     'guides/can-chatgpt-make-videos/page.tsx',
+    'guides/google-pixel-vs-iphone/page.tsx',
     'guides/how-does-a-3d-printer-work/page.tsx',
     'guides/how-to-clean-phone-speaker/page.tsx',
     'guides/how-to-convert-jpg-to-dxf/page.tsx',
     'guides/is-claude-better-than-chatgpt/page.tsx',
+    'guides/mac-vs-pc/page.tsx',
     'guides/shopify-profit-margin-calculator/page.tsx',
+    'tools/3d-print-time-calculator/page.tsx',
+    'tools/3d-printer-filament-calculator/page.tsx',
+    'tools/3d-printing-cost-calculator/page.tsx',
     'tools/ai-video-prompt-generator/page.tsx',
+    'tools/barcode-generator/page.tsx',
+    'tools/compare-pdf/page.tsx',
+    'tools/cmyk-color-converter/page.tsx',
+    'tools/fps-calculator/page.tsx',
+    'tools/exif-metadata-remover/page.tsx',
+    'tools/icloud-storage-calculator/page.tsx',
     'tools/jpg-to-dxf/page.tsx',
+    'tools/json-to-csv-converter/page.tsx',
     'tools/shopify-margin-calculator/page.tsx',
     'tools/speaker-dust-cleaning-sound/page.tsx',
+    'tools/upi-qr-code-generator/page.tsx',
+    'tools/what-generation-am-i/page.tsx',
   ];
   assert.deepEqual(report.pageTemplates.map((row) => row.source.replace('src/app/(english)/', '')).sort(), [...contract, ...approvedNewRoutes].sort());
   for (const row of report.tools) assert.ok(row.routeExists && existsSync(row.source), row.slug);

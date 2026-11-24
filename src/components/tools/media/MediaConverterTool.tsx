@@ -207,19 +207,6 @@ export default function MediaConverterTool({
 
   return (
     <div className="mx-auto max-w-4xl">
-      {/* Local Privacy Badge */}
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-5 py-3 text-sm text-emerald-800 dark:text-emerald-300">
-        <div className="flex items-center gap-2 font-medium">
-          <ShieldCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-          <span>
-            Your file is processed locally in your browser and is not uploaded to Navorika.
-          </span>
-        </div>
-        <span className="rounded-full bg-emerald-600/20 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
-          Client-Side
-        </span>
-      </div>
-
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">
         {/* Upload Zone */}
         {!selectedFile && (
@@ -498,6 +485,19 @@ export default function MediaConverterTool({
           </div>
         )}
       </div>
+      {/* Local Privacy Badge */}
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-5 py-3 text-sm text-emerald-800 dark:text-emerald-300">
+        <div className="flex items-center gap-2 font-medium">
+          <ShieldCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+          <span>
+            Your file is processed locally in your browser and is not uploaded to Navorika.
+          </span>
+        </div>
+        <span className="rounded-full bg-emerald-600/20 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+          Client-Side
+        </span>
+      </div>
+
     </div>
   );
 }

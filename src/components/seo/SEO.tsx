@@ -12,8 +12,8 @@ interface SEOProps {
 }
 
 export default function SEO({
-  title = 'Navorika – 100+ Free Online Tools, Calculators & Utilities',
-  description = '100+ free online tools including calculators, PDF editors, image converters, and developer utilities. 100% client-side, no uploads, no signup.',
+  title = 'Navorika – Free Online Tools, Calculators & Utilities',
+  description = 'Free online calculators, PDF editors, image converters, and developer utilities. Processing methods vary by tool and are explained on each page.',
   keywords = ['free online tools', 'calculators', 'pdf tools', 'image tools', 'developer tools'],
   ogImage = 'https://navorika.com/og-image.png',
   canonical = 'https://navorika.com'

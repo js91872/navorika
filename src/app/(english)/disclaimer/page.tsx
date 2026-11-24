@@ -59,7 +59,7 @@ export default function DisclaimerPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -95,7 +95,7 @@ export default function DisclaimerPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
+              className="p-4 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] break-words"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                 <div className="flex items-center gap-3">
@@ -139,6 +139,6 @@ export default function DisclaimerPage() {
           </p>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

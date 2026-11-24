@@ -54,7 +54,7 @@ export default function ClientLayout({
         onClose={() => setSearchOpen(false)}
       />
 
-      <main className="flex-1 pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <main className="flex-1 pt-5 sm:pt-10 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full min-w-0">
         {children}
       </main>
 

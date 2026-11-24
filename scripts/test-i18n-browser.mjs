@@ -14,6 +14,45 @@ const configText = readFileSync('src/lib/i18n/config.ts', 'utf8');
 const match = configText.match(/export const translatedTools = \[([\s\S]*?)\] as const;/);
 const slugs = match ? match[1].match(/'([^']+)'/g).map((s) => s.replace(/'/g, '')) : [];
 const dictionaries = Object.fromEntries(locales.map((locale) => [locale, JSON.parse(readFileSync(`src/lib/i18n/dictionaries/${locale}.json`, 'utf8'))]));
+const hasContent = (value) => typeof value === 'string'
+  ? value.trim().length > 0
+  : Array.isArray(value) && value.some(hasContent);
+const countWords = (value) => typeof value === 'string'
+  ? value.trim().split(/\s+/).filter(Boolean).length
+  : Array.isArray(value)
+    ? value.reduce((total, item) => total + countWords(item), 0)
+    : value && typeof value === 'object'
+      ? Object.values(value).reduce((total, item) => total + countWords(item), 0)
+      : 0;
+const hasIndexableLocalizedToolCopy = (value) => {
+  if (!value || typeof value !== 'object') return false;
+  const copy = value;
+  const hasAllSections = [copy.about, copy.calculationMethod, copy.steps, copy.understandingResults, copy.limits].every(hasContent);
+  const faqs = Array.isArray(copy.faqs)
+    ? copy.faqs.filter((item) => item && hasContent(item.question) && hasContent(item.answer)).length
+    : 0;
+  const renderedBody = {
+    about: copy.about,
+    calculationMethod: copy.calculationMethod,
+    steps: copy.steps,
+    understandingResults: copy.understandingResults,
+    limits: copy.limits,
+    faqs: copy.faqs,
+  };
+  return hasAllSections && faqs >= 3 && countWords(renderedBody) >= 350;
+};
+const sitemapSource = readFileSync('src/app/sitemap.ts', 'utf8');
+const reviewSource = readFileSync('src/lib/seo/toolReview.ts', 'utf8');
+const readSet = (source, declaration) => {
+  const block = source.match(new RegExp(String.raw`${declaration} = new Set\(\[([\s\S]*?)\]\);`))?.[1] || '';
+  return new Set(Array.from(block.matchAll(/'([^']+)'/g), (item) => item[1]));
+};
+const nonSitemapEnglishSlugs = new Set([
+  ...readSet(sitemapSource, 'financeSuiteRoots'),
+  ...readSet(sitemapSource, 'nonCanonicalToolSlugs'),
+  ...readSet(reviewSource, 'export const toolsUnderReview'),
+]);
+
 let server, browser;
 let serverOutput = '';
 let pagesChecked = 0, workflowsChecked = 0, exportsValidated = 0, mockedChecksChecked = 0;
@@ -115,7 +154,8 @@ try {
       for (const alternate of locales) {
         assert.equal(data.alternates[alternate], `https://navorika.com/${alternate}${slug ? `/tools/${slug}` : ''}`);
       }
-      assert.equal(data.robots, 'index, follow');
+      const expectedRobots = slug && !hasIndexableLocalizedToolCopy(d.tools[slug]) ? 'noindex, follow' : 'index, follow';
+      assert.equal(data.robots, expectedRobots);
       assert.doesNotMatch(data.pageCopy, /\b(?:row-reverse|column-reverse|flex-start|flex-end|space-between|space-around|space-evenly|nowrap|wrap-reverse|English|inch|padding|layout|justify-content|align-items)\b/i, `Untranslated interface text: ${path}`);
       assert.ok(data.footerPrivacy.includes(d.ui.englishName));
       if (slug) {
@@ -136,9 +176,14 @@ try {
     }
 
     await visit(`/${locale}`);
-    await page.locator('input[type="search"]').fill(d.tools['rgb-cmyk-image-checker'].title);
+    const searchInput = page.locator('input[type="search"]');
+    await page.locator('input[type="search"][data-hydrated="true"]').waitFor({ state: 'attached', timeout: 30000 });
+    await searchInput.fill(d.tools['rgb-cmyk-image-checker'].title);
+    await page.waitForFunction(() => document.querySelectorAll('main h2').length === 1, null, { timeout: 10000 });
     assert.equal(await page.locator('main h2').count(), 1);
-    await page.locator('input[type="search"]').fill('zzzz-not-a-tool');
+    assert.equal(await page.getByRole('status').textContent(), `${new Intl.NumberFormat(locale).format(1)} ${d.ui.toolsFound}`);
+    await searchInput.fill('zzzz-not-a-tool');
+    await page.getByRole('status').getByText(d.ui.noResults).waitFor({ state: 'visible', timeout: 10000 });
     assert.equal(await page.getByRole('status').textContent(), d.ui.noResults);
 
     for (const [slug, initial, expected, changed] of [
@@ -1225,78 +1270,113 @@ try {
   }
   const trustSlugs = ['about', 'contact', 'privacy', 'terms', 'disclaimer', 'methodology', 'glossary'];
   let trustPagesChecked = 0;
-  for (const pageName of trustSlugs) {
-    for (const locale of locales) {
-      const pageUrl = `${base}/${locale}/${pageName}`;
-      const res = await englishPage.goto(pageUrl);
-      assert.equal(res.status(), 200, `/${locale}/${pageName}`);
-      trustPagesChecked++;
 
-      // 1. Language & Direction
-      const htmlLang = await englishPage.locator('html').getAttribute('lang');
-      const htmlDir = await englishPage.locator('html').getAttribute('dir');
-      assert.equal(htmlLang, locale, `html lang on /${locale}/${pageName}`);
-      if (locale === 'ar') {
-        assert.equal(htmlDir, 'rtl', `RTL direction on /${locale}/${pageName}`);
-      } else {
-        assert.equal(htmlDir, 'ltr', `LTR direction on /${locale}/${pageName}`);
-      }
+  async function checkTrustPage(pageName, targetLocale) {
+    const isEnglish = targetLocale === 'en';
+    const pagePath = isEnglish ? `/${pageName}` : `/${targetLocale}/${pageName}`;
+    const pageUrl = `${base}${pagePath}`;
+    const res = await englishPage.goto(pageUrl);
+    assert.equal(res.status(), 200, pagePath);
+    trustPagesChecked++;
 
-      // 2. Localized content (H1 title)
-      const h1Text = (await englishPage.locator('h1').textContent() || '').trim();
-      assert.ok(h1Text.length > 0, `H1 text exists on /${locale}/${pageName}`);
+    // 1. Language & Direction
+    const htmlLang = await englishPage.locator('html').getAttribute('lang');
+    const htmlDir = await englishPage.locator('html').getAttribute('dir');
+    assert.equal(htmlLang, targetLocale, `html lang on ${pagePath}`);
+    if (targetLocale === 'ar') {
+      assert.equal(htmlDir, 'rtl', `RTL direction on ${pagePath}`);
+    } else {
+      assert.ok(!htmlDir || htmlDir === 'ltr', `LTR direction on ${pagePath}`);
+    }
 
-      // 3. Canonical URL
-      const canonical = await englishPage.locator('link[rel="canonical"]').getAttribute('href');
-      assert.equal(canonical, `https://navorika.com/${locale}/${pageName}`);
+    // 2. Localized content (H1 title)
+    const h1Text = (await englishPage.locator('h1').textContent() || '').trim();
+    assert.ok(h1Text.length > 0, `H1 text exists on ${pagePath}`);
 
-      // 4. Alternates
-      const altLinks = await englishPage.locator('link[rel="alternate"][hreflang]').all();
-      assert.ok(altLinks.length >= locales.length + 1, `Alternates count on /${locale}/${pageName}`);
-      const altHreflangs = await Promise.all(altLinks.map((el) => el.getAttribute('hreflang')));
-      for (const loc of ['en', 'x-default', ...locales]) {
-        assert.ok(altHreflangs.includes(loc), `hreflang ${loc} present on /${locale}/${pageName}`);
-      }
+    // 3. Canonical URL
+    const expectedCanonical = `https://navorika.com${pagePath}`;
+    const canonical = await englishPage.locator('link[rel="canonical"]').getAttribute('href');
+    assert.equal(canonical, expectedCanonical, `Canonical URL on ${pagePath}`);
 
-      // 5. Footer destinations
-      const footerLinks = await englishPage.locator('footer a').all();
-      const footerHrefs = await Promise.all(footerLinks.map((el) => el.getAttribute('href')));
-      for (const dest of ['privacy', 'terms', 'contact', 'about']) {
-        assert.ok(footerHrefs.some((h) => h === `/${locale}/${dest}`), `Footer link to /${locale}/${dest}`);
-      }
+    // 4. Exact reciprocal alternates across English and all seven translated languages
+    const altLinks = await englishPage.locator('link[rel="alternate"][hreflang]').all();
+    assert.ok(altLinks.length >= locales.length + 1, `Alternates count on ${pagePath}`);
+    const altEntries = await Promise.all(altLinks.map(async (el) => [
+      await el.getAttribute('hreflang'),
+      await el.getAttribute('href'),
+    ]));
+    const altMap = Object.fromEntries(altEntries);
 
-      // 6. Mobile layout at 390px (no horizontal overflow)
-      await englishPage.setViewportSize({ width: 390, height: 844 });
-      const overflow = await englishPage.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
-      assert.equal(overflow, false, `No horizontal overflow on /${locale}/${pageName} at 390px`);
-      await englishPage.setViewportSize({ width: 1440, height: 1000 });
+    assert.equal(altMap['en'], `https://navorika.com/${pageName}`, `Exact hreflang en alternate on ${pagePath}`);
+    assert.equal(altMap['x-default'], `https://navorika.com/${pageName}`, `Exact hreflang x-default alternate on ${pagePath}`);
+    for (const loc of locales) {
+      assert.equal(
+        altMap[loc],
+        `https://navorika.com/${loc}/${pageName}`,
+        `Exact hreflang ${loc} alternate on ${pagePath}`
+      );
+    }
 
-      // 7. Regression checks for contact & privacy
-      if (pageName === 'contact') {
-        const bodyText = await englishPage.locator('body').textContent();
-        assert.ok(bodyText.includes('admin@navorika.com'), `admin@navorika.com on /${locale}/contact`);
-        assert.ok(bodyText.includes('privacy@navorika.com'), `privacy@navorika.com on /${locale}/contact`);
-        assert.ok(!bodyText.includes('contact@navorika.com'), `no contact@navorika.com on /${locale}/contact`);
-        assert.ok(!bodyText.includes('support@navorika.com'), `no support@navorika.com on /${locale}/contact`);
-      }
-      if (pageName === 'privacy') {
-        const bodyText = await englishPage.locator('body').textContent();
-        const htmlContent = await englishPage.content();
-        assert.ok(
-          htmlContent.includes('google.com/settings/ads') || htmlContent.includes('aboutads.info'),
-          `Advertising opt-out links on /${locale}/privacy`
-        );
-        assert.ok(
-          bodyText.includes('2026'),
-          `Localized last updated year 2026 on /${locale}/privacy`
-        );
-      }
+    // 5. Footer destinations
+    const footerLinks = await englishPage.locator('footer a').all();
+    const footerHrefs = await Promise.all(footerLinks.map((el) => el.getAttribute('href')));
+    const expectedFooterDest = isEnglish
+      ? ['/privacy', '/terms', '/contact', '/about']
+      : [`/${targetLocale}/privacy`, `/${targetLocale}/terms`, `/${targetLocale}/contact`, `/${targetLocale}/about`];
+    for (const dest of expectedFooterDest) {
+      assert.ok(footerHrefs.some((h) => h === dest), `Footer link to ${dest} on ${pagePath}`);
+    }
+
+    // 6. Mobile layout at 390px (no horizontal overflow)
+    await englishPage.setViewportSize({ width: 390, height: 844 });
+    const overflow = await englishPage.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+    assert.equal(overflow, false, `No horizontal overflow on ${pagePath} at 390px`);
+    await englishPage.setViewportSize({ width: 1440, height: 1000 });
+
+    // 7. Regression checks for contact & privacy
+    if (pageName === 'contact') {
+      const bodyText = await englishPage.locator('body').textContent();
+      assert.ok(bodyText.includes('admin@navorika.com'), `admin@navorika.com on ${pagePath}`);
+      assert.ok(bodyText.includes('privacy@navorika.com'), `privacy@navorika.com on ${pagePath}`);
+      assert.ok(!bodyText.includes('contact@navorika.com'), `no contact@navorika.com on ${pagePath}`);
+      assert.ok(!bodyText.includes('support@navorika.com'), `no support@navorika.com on ${pagePath}`);
+    }
+    if (pageName === 'privacy') {
+      const bodyText = await englishPage.locator('body').textContent();
+      const htmlContent = await englishPage.content();
+      assert.ok(
+        htmlContent.includes('google.com/settings/ads') || htmlContent.includes('aboutads.info'),
+        `Advertising opt-out links on ${pagePath}`
+      );
+      assert.ok(
+        bodyText.includes('2026'),
+        `Localized last updated year 2026 on ${pagePath}`
+      );
     }
   }
-  const sitemap = await (await context.request.get(`${base}/sitemap.xml`)).text();
+
+  for (const pageName of trustSlugs) {
+    // Check English trust page
+    await checkTrustPage(pageName, 'en');
+
+    // Check all 7 localized trust pages
+    for (const locale of locales) {
+      await checkTrustPage(pageName, locale);
+    }
+  }
+  const sitemapXml = await (await context.request.get(`${base}/sitemap.xml`)).text();
+  const sitemapUrls = new Set(Array.from(sitemapXml.matchAll(/<loc>(.*?)<\/loc>/g), (match) => match[1]));
+  for (const slug of slugs) {
+    const shouldInclude = !nonSitemapEnglishSlugs.has(slug);
+    assert.equal(sitemapUrls.has(`https://navorika.com/tools/${slug}`), shouldInclude, `English sitemap canonical status for ${slug}`);
+  }
+  for (const pageName of trustSlugs) assert.ok(sitemapUrls.has(`https://navorika.com/${pageName}`));
   for (const locale of locales) {
-    for (const slug of slugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/tools/${slug}`));
-    for (const pageName of trustSlugs) assert.ok(sitemap.includes(`https://navorika.com/${locale}/${pageName}`));
+    for (const slug of slugs) {
+      const shouldInclude = hasIndexableLocalizedToolCopy(dictionaries[locale].tools?.[slug]);
+      assert.equal(sitemapUrls.has(`https://navorika.com/${locale}/tools/${slug}`), shouldInclude, `Localized sitemap content-depth status for ${locale}/${slug}`);
+    }
+    for (const pageName of trustSlugs) assert.ok(sitemapUrls.has(`https://navorika.com/${locale}/${pageName}`));
   }
   if (process.env.I18N_SCREENSHOT_DIR) {
     mkdirSync(process.env.I18N_SCREENSHOT_DIR, { recursive: true });

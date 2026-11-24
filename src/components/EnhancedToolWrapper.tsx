@@ -55,7 +55,7 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
   const relatedTools = seo?.relatedTools || [];
 
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
+    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-8 pb-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="text-sm text-[var(--muted-foreground)] mb-6 flex items-center gap-2 flex-wrap">
@@ -72,7 +72,7 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
         </div>
 
         {/* Header with Icon and Title */}
-        <div className="mb-8">
+        <div className="mb-5">
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-5xl">
               {icon}
@@ -88,7 +88,12 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
           </div>
         </div>
 
-        {/* Trust Badges */}
+        {/* Tool UI */}
+        <div className="mb-12">
+          {children}
+        </div>
+
+        {/* Verified information after the interactive tool */}
         <div className="mb-8 flex flex-wrap items-center gap-3">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm font-medium border border-emerald-500/20">
             <span className="text-lg">🔒</span> Private by Design
@@ -104,10 +109,6 @@ export default function EnhancedToolWrapper({ meta, children }: EnhancedToolWrap
           </span>
         </div>
 
-        {/* Tool UI */}
-        <div className="mb-12">
-          {children}
-        </div>
 
         {/* ToolContent - Enhanced SEO content */}
         <ToolContent
