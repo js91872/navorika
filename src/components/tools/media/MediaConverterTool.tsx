@@ -46,6 +46,16 @@ export default function MediaConverterTool({
   allowedOutputFormats = [defaultOutputFormat],
   mode = 'video-to-audio',
 }: MediaConverterProps) {
+  const isEnhanced = acceptedFormats.length === 1 && ['wav', 'mp4'].includes(acceptedFormats[0]) && defaultOutputFormat === 'mp3';
+  const [batchFiles, setBatchFiles] = useState<File[]>([]);
+  const [batchResults, setBatchResults] = useState<{ name: string; blob: Blob }[]>([]);
+  const [sampleRate, setSampleRate] = useState<'' | '44100' | '48000'>('');
+  const [channels, setChannels] = useState<'' | '1' | '2'>('');
+  const [volume, setVolume] = useState(100);
+  const [startSeconds, setStartSeconds] = useState('');
+  const [endSeconds, setEndSeconds] = useState('');
+  const [duration, setDuration] = useState<number | null>(null);
+  const [sourceUrl, setSourceUrl] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileWarning, setFileWarning] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -108,16 +118,33 @@ export default function MediaConverterTool({
     [acceptedFormats, resultUrl]
   );
 
+  useEffect(() => {
+    if (!selectedFile || !isEnhanced) { setDuration(null); setSourceUrl(null); return; }
+    const url = URL.createObjectURL(selectedFile);
+    setSourceUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [selectedFile, isEnhanced]);
+
+  const handleFiles = (files: File[]) => {
+    if (!files.length) return;
+    if (!isEnhanced) { handleFile(files[0]); return; }
+    const valid = files.filter(file => validateMediaFile(file, acceptedFormats).valid);
+    if (!valid.length) { handleFile(files[0]); return; }
+    handleFile(valid[0]);
+    setBatchFiles(valid.slice(0, 20));
+    setBatchResults([]);
+    if (valid.length !== files.length) setFileWarning('Some files were skipped because their format or size is unsupported.');
+    else if (valid.length > 1) setFileWarning('Files will be converted sequentially to limit browser memory use.');
+  };
+
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragOver(false);
-    const file = e.dataTransfer.files?.[0];
-    handleFile(file);
+    handleFiles(Array.from(e.dataTransfer.files || []));
   };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    handleFile(file);
+    handleFiles(Array.from(e.target.files || []));
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
@@ -125,7 +152,15 @@ export default function MediaConverterTool({
 
   const startConversion = async () => {
     if (!selectedFile) return;
-
+    const start = startSeconds.trim() === '' ? 0 : Number(startSeconds);
+    const end = endSeconds.trim() === '' ? undefined : Number(endSeconds);
+    if (isEnhanced && (!Number.isFinite(start) || start < 0 || (end !== undefined && (!Number.isFinite(end) || end <= start)))) {
+      setError('Enter valid trim times in seconds; end must be greater than start.'); return;
+    }
+    if (isEnhanced && duration !== null && (start >= duration || (end !== undefined && end > duration))) {
+      setError('Trim range must fit within the source duration.'); return;
+    }
+    setBatchResults([]);
     setError(null);
     setStatus('converting');
     setProgressPercent(5);
@@ -135,21 +170,34 @@ export default function MediaConverterTool({
     abortControllerRef.current = abortController;
 
     try {
-      const result = await convertMediaFile(selectedFile, {
-        outputFormat,
-        bitrate,
-        signal: abortController.signal,
-        onProgress: (percent, stage) => {
-          setProgressPercent(percent);
-          setProgressStage(stage);
-        },
-      });
-
-      const url = URL.createObjectURL(result.blob);
-      setResultUrl(url);
-      setResultFilename(result.filename);
-      setResultSizeBytes(result.sizeBytes);
-      setEngineUsed(result.engine);
+      const files = isEnhanced && batchFiles.length ? batchFiles : [selectedFile];
+      const results: { name: string; blob: Blob }[] = [];
+      for (let i = 0; i < files.length; i++) {
+        if (abortController.signal.aborted) break;
+        setProgressStage(`Converting file ${i + 1} of ${files.length}...`);
+        const result = await convertMediaFile(files[i], {
+          outputFormat, bitrate, signal: abortController.signal,
+          ...(isEnhanced ? {
+            startSeconds: start, endSeconds: end,
+            sampleRate: sampleRate ? Number(sampleRate) as 44100 | 48000 : undefined,
+            channels: channels ? Number(channels) as 1 | 2 : undefined,
+            volume: volume / 100,
+          } : {}),
+          onProgress: (percent, stage) => {
+            setProgressPercent(Math.round(((i + percent / 100) / files.length) * 100));
+            setProgressStage(`File ${i + 1}/${files.length}: ${stage}`);
+          },
+        });
+        results.push({ name: result.filename, blob: result.blob });
+        if (i === 0) {
+          setResultUrl(URL.createObjectURL(result.blob));
+          setResultFilename(result.filename);
+          setResultSizeBytes(result.sizeBytes);
+          setEngineUsed(result.engine);
+        }
+      }
+      if (abortController.signal.aborted) return;
+      setBatchResults(results);
       setStatus('completed');
     } catch (err: unknown) {
       if (abortController.signal.aborted) {
@@ -186,6 +234,9 @@ export default function MediaConverterTool({
   const resetAll = () => {
     cancelConversion();
     setSelectedFile(null);
+    setBatchFiles([]);
+    setBatchResults([]);
+    setDuration(null);
     setFileWarning(null);
     setError(null);
     if (resultUrl) {
@@ -205,21 +256,19 @@ export default function MediaConverterTool({
     document.body.removeChild(a);
   };
 
+  const downloadZip = async () => {
+    if (!batchResults.length) return;
+    const JSZip = (await import('jszip')).default;
+    const zip = new JSZip();
+    batchResults.forEach((item, i) => zip.file(`${i + 1}-${item.name}`, item.blob));
+    const blob = await zip.generateAsync({ type: 'blob' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a'); link.href = url; link.download = 'navorika-mp3-files.zip'; link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  };
+
   return (
     <div className="mx-auto max-w-4xl">
-      {/* Local Privacy Badge */}
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-5 py-3 text-sm text-emerald-800 dark:text-emerald-300">
-        <div className="flex items-center gap-2 font-medium">
-          <ShieldCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-          <span>
-            Your file is processed locally in your browser and is not uploaded to Navorika.
-          </span>
-        </div>
-        <span className="rounded-full bg-emerald-600/20 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
-          Client-Side
-        </span>
-      </div>
-
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">
         {/* Upload Zone */}
         {!selectedFile && (
@@ -248,7 +297,7 @@ export default function MediaConverterTool({
               Choose or drop {inputLabel}
             </h3>
             <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-              Accepted formats: {acceptedFormats.map((f) => f.toUpperCase()).join(', ')} • Up to 500 MB
+              Accepted formats: {acceptedFormats.map((f) => f.toUpperCase()).join(', ')} • Up to 500 MB per file {isEnhanced ? '• Select up to 20 files' : ''}
             </p>
             <button
               type="button"
@@ -261,6 +310,7 @@ export default function MediaConverterTool({
               ref={fileInputRef}
               type="file"
               onChange={handleFileSelect}
+              multiple={isEnhanced}
               accept={acceptedFormats
                 .map((f) => (f.includes('/') ? f : `.${f}`))
                 .join(',')}
@@ -303,6 +353,17 @@ export default function MediaConverterTool({
               )}
             </div>
 
+            {isEnhanced && (
+              <div className="space-y-3 rounded-xl border border-slate-200 p-4 dark:border-slate-700">
+                <p className="text-sm font-semibold">Audio preview and batch queue</p>
+                <p className="text-xs text-slate-500">{batchFiles.length || 1} file(s) selected. Processing is sequential.</p>
+                {sourceUrl && <audio controls preload="metadata" src={sourceUrl} className="w-full" onLoadedMetadata={event => {
+                  const value = event.currentTarget.duration;
+                  setDuration(Number.isFinite(value) ? value : null);
+                }} />}
+                {duration !== null && <p className="text-xs text-slate-500">Duration: {duration.toFixed(1)} seconds • Estimated MP3 at {bitrate} kbps: {formatFileSize(Math.round((duration * bitrate * 1000) / 8))} (approximate)</p>}
+              </div>
+            )}
             {/* Large File Warning */}
             {fileWarning && (
               <div className="flex items-start gap-3 rounded-xl border border-amber-300/40 bg-amber-50 p-4 text-xs text-amber-800 dark:border-amber-500/20 dark:bg-amber-950/20 dark:text-amber-300">
@@ -379,6 +440,32 @@ export default function MediaConverterTool({
                   </div>
                 )}
 
+                {isEnhanced && (
+                  <details className="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
+                    <summary className="cursor-pointer text-sm font-semibold">Advanced audio settings and trimming</summary>
+                    <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                      <label className="text-sm">Sample rate
+                        <select value={sampleRate} disabled={status === 'converting'} onChange={e => setSampleRate(e.target.value as typeof sampleRate)} className="mt-1 block w-full rounded-lg border p-2 text-slate-900">
+                          <option value="">Keep original</option><option value="44100">44.1 kHz</option><option value="48000">48 kHz</option>
+                        </select>
+                      </label>
+                      <label className="text-sm">Channels
+                        <select value={channels} disabled={status === 'converting'} onChange={e => setChannels(e.target.value as typeof channels)} className="mt-1 block w-full rounded-lg border p-2 text-slate-900">
+                          <option value="">Keep original</option><option value="1">Mono</option><option value="2">Stereo</option>
+                        </select>
+                      </label>
+                      <label className="text-sm">Start time (seconds)
+                        <input type="number" min="0" step="0.1" value={startSeconds} disabled={status === 'converting'} onChange={e => setStartSeconds(e.target.value)} placeholder="0" className="mt-1 block w-full rounded-lg border p-2 text-slate-900" />
+                      </label>
+                      <label className="text-sm">End time (seconds, optional)
+                        <input type="number" min="0" step="0.1" value={endSeconds} disabled={status === 'converting'} onChange={e => setEndSeconds(e.target.value)} placeholder="Full length" className="mt-1 block w-full rounded-lg border p-2 text-slate-900" />
+                      </label>
+                      <label className="text-sm sm:col-span-2">Volume: {volume}%
+                        <input type="range" min="50" max="200" step="10" value={volume} disabled={status === 'converting'} onChange={e => setVolume(Number(e.target.value))} className="mt-2 block w-full" />
+                      </label>
+                    </div>
+                  </details>
+                )}
                 {/* WAV format informational notice */}
                 {outputFormat === 'wav' && (
                   <div className="flex items-center gap-2 rounded-xl bg-slate-50 p-3 text-xs text-slate-600 dark:bg-slate-800/40 dark:text-slate-400">
@@ -472,6 +559,12 @@ export default function MediaConverterTool({
                   </button>
                 </div>
 
+                {isEnhanced && batchResults.length > 1 && (
+                  <div className="space-y-2">
+                    <p className="text-sm font-semibold">{batchResults.length} MP3 files ready</p>
+                    <button type="button" onClick={downloadZip} className="rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white">Download all as ZIP</button>
+                  </div>
+                )}
                 <div className="flex justify-end gap-3">
                   <button
                     type="button"
@@ -498,6 +591,19 @@ export default function MediaConverterTool({
           </div>
         )}
       </div>
+      {/* Local Privacy Badge */}
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-5 py-3 text-sm text-emerald-800 dark:text-emerald-300">
+        <div className="flex items-center gap-2 font-medium">
+          <ShieldCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+          <span>
+            Your file is processed locally in your browser and is not uploaded to Navorika.
+          </span>
+        </div>
+        <span className="rounded-full bg-emerald-600/20 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+          Client-Side
+        </span>
+      </div>
+
     </div>
   );
 }

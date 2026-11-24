@@ -4,6 +4,26 @@ const local =
   'Inputs are processed locally in your browser and are not sent to Navorika.';
 
 export const everydayToolPages: Record<string, ToolPageContent> = {
+  '3d-printing-cost-calculator': {slug:'3d-printing-cost-calculator',name:'3D Printing Cost Calculator',category:'Everyday Calculators',applicationCategory:'UtilitiesApplication',description:'Calculate material, electricity, machine time, labor, failure allowance and a target selling price.',longTailKeywords:['3d printing cost calculator','3d printing for beginners'],intro:['Calculate material, electricity, machine time, labor, failure allowance and a target selling price.','All input data stays in the browser.'],formula:[{title:'Estimation method',body:'Material cost = grams / spool grams × spool price. Electricity cost = hours × watts / 1000 × energy price. Selling price = adjusted cost / (1 - margin).'}],steps:['Enter the dimensions, prices and other assumptions shown above.','Review the calculated estimate and units.','Compare with actual slicer or printer data before making a decision.'],interpretation:['Results are estimates based on your entered assumptions.'],limitations:['Not a substitute for slicer output or actual machine measurements.','Different printers, materials and workflows can yield different results.'],faqs:[{question:'Is this calculator free?',answer:'Yes, this browser-based calculator is free.'},{question:'Is this result exact?',answer:'No. It is an estimate based on the inputs and assumptions you provide.'}],relatedTools:[{slug:'3d-printing-cost-calculator',name:'3D Printing Cost Calculator'},{slug:'3d-printer-filament-calculator',name:'3D Printer Filament Calculator'},{slug:'3d-print-time-calculator',name:'3D Print Time Calculator'}].filter(t=>t.slug!=='3d-printing-cost-calculator'),relatedGuides:[]},
+  '3d-printer-filament-calculator': {slug:'3d-printer-filament-calculator',name:'3D Printer Filament Calculator',category:'Everyday Calculators',applicationCategory:'UtilitiesApplication',description:'Estimate the weight and cost of FDM filament from length, diameter and density.',longTailKeywords:['3d printer filament calculator','3d printing for beginners'],intro:['Estimate the weight and cost of FDM filament from length, diameter and density.','All input data stays in the browser.'],formula:[{title:'Estimation method',body:'Filament mass = π × (diameter in centimeters / 2)² × filament length in centimeters × material density.'}],steps:['Enter the dimensions, prices and other assumptions shown above.','Review the calculated estimate and units.','Compare with actual slicer or printer data before making a decision.'],interpretation:['Results are estimates based on your entered assumptions.'],limitations:['Not a substitute for slicer output or actual machine measurements.','Different printers, materials and workflows can yield different results.'],faqs:[{question:'Is this calculator free?',answer:'Yes, this browser-based calculator is free.'},{question:'Is this result exact?',answer:'No. It is an estimate based on the inputs and assumptions you provide.'}],relatedTools:[{slug:'3d-printing-cost-calculator',name:'3D Printing Cost Calculator'},{slug:'3d-printer-filament-calculator',name:'3D Printer Filament Calculator'},{slug:'3d-print-time-calculator',name:'3D Print Time Calculator'}].filter(t=>t.slug!=='3d-printer-filament-calculator'),relatedGuides:[]},
+  '3d-print-time-calculator': {slug:'3d-print-time-calculator',name:'3D Print Time Calculator',category:'Everyday Calculators',applicationCategory:'UtilitiesApplication',description:'Estimate FDM print duration from extrusion path length, average speed and layer-change overhead.',longTailKeywords:['3d print time calculator','3d printing for beginners'],intro:['Estimate FDM print duration from extrusion path length, average speed and layer-change overhead.','All input data stays in the browser.'],formula:[{title:'Estimation method',body:'Time = extrusion path length / average extrusion speed + travel allowance + layer-change overhead + setup time.'}],steps:['Enter the dimensions, prices and other assumptions shown above.','Review the calculated estimate and units.','Compare with actual slicer or printer data before making a decision.'],interpretation:['Results are estimates based on your entered assumptions.'],limitations:['Not a substitute for slicer output or actual machine measurements.','Different printers, materials and workflows can yield different results.'],faqs:[{question:'Is this calculator free?',answer:'Yes, this browser-based calculator is free.'},{question:'Is this result exact?',answer:'No. It is an estimate based on the inputs and assumptions you provide.'}],relatedTools:[{slug:'3d-printing-cost-calculator',name:'3D Printing Cost Calculator'},{slug:'3d-printer-filament-calculator',name:'3D Printer Filament Calculator'},{slug:'3d-print-time-calculator',name:'3D Print Time Calculator'}].filter(t=>t.slug!=='3d-print-time-calculator'),relatedGuides:[]},
+  'fps-calculator': {
+    slug: 'fps-calculator',
+    name: 'FPS Calculator – Frames Per Second to Milliseconds',
+    category: 'Everyday Calculators',
+    applicationCategory: 'UtilitiesApplication',
+    description: 'Free FPS calculator for games and video. Convert frames per second to milliseconds, estimate frame counts and compare FPS with display refresh rate.',
+    longTailKeywords: ['fps calculator', 'fps calculator for games', 'fps to ms calculator', 'frames per second calculator', 'how many fps calculator', 'fps to milliseconds', 'fps examples'],
+    intro: ['Enter a measured or assumed frame rate to calculate average frame time, estimate frames in a clip and compare the result with a monitor refresh rate.', 'Calculations run locally in your browser. This tool does not benchmark your GPU or predict game FPS.'],
+    formula: [{ title: 'FPS to milliseconds', body: 'Average frame time in milliseconds = 1000 ÷ frames per second.' }, { title: 'Frame count', body: 'Estimated number of frames = FPS × duration in seconds.' }, { title: 'FPS to Hz comparison', body: 'FPS ÷ display refresh rate in Hz is a numerical ratio, not a measure of smoothness.' }],
+    steps: ['Enter your measured or expected FPS.', 'Enter your display refresh rate in Hz.', 'Optionally change the clip duration in seconds.', 'Read average frame time, estimated frame count and FPS-to-Hz ratio.'],
+    examples: [{ title: '60 FPS gaming example', input: '60 FPS, 144 Hz display, 10-second duration.', result: 'Average frame time is 16.67 ms, 600 frames over 10 seconds, and FPS-to-Hz ratio is approximately 0.417.', note: 'These are mathematical values, not measured gameplay results.' }, { title: '144 FPS example', input: '144 FPS.', result: 'Average frame time is approximately 6.94 milliseconds.', note: 'Individual frames may take longer or shorter than the average.' }],
+    interpretation: ['Lower milliseconds per frame correspond to higher average FPS.', 'Refresh rate and game frame rate are distinct; neither alone determines smoothness or latency.'],
+    limitations: ['Does not detect or benchmark live game FPS.', 'Does not predict performance from hardware specifications.', 'Assumes constant frame rate for the frame-count estimate.', 'FPS here means frames per second, not feet per second.'],
+    faqs: [{ question: 'How do I convert FPS to milliseconds?', answer: 'Divide 1,000 by FPS. At 60 FPS the average frame interval is about 16.67 ms.' }, { question: 'Does a 144 Hz monitor mean 144 FPS?', answer: 'No. Display refresh rate and game rendering frame rate are different.' }, { question: 'Can this calculator tell how much FPS my PC will get?', answer: 'No. Measure FPS in the game using an FPS counter and enter that value here.' }, { question: 'How many frames are in 10 seconds at 60 FPS?', answer: '600 frames, assuming a constant 60 FPS.' }],
+    relatedTools: [],
+    relatedGuides: ['fps-calculator-guide'],
+  },
   'tire-size-calculator': {
     slug: 'tire-size-calculator',
     name: 'Tire Size Calculator',
@@ -18,6 +38,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { title: 'Speed difference', body: 'Estimated actual speed = indicated speed × new tire diameter ÷ original tire diameter.' },
     ],
     steps: ['Enter the original tire width, aspect ratio and rim diameter.', 'Enter the proposed replacement tire size.', 'Enter an indicated speed for the speedometer comparison.', 'Review diameter, circumference, revolutions, clearance and estimated actual speed.'],
+    examples: [
+      { title: 'Compare 205/55R16 with 215/55R16', input: 'Original 205/55R16; replacement 215/55R16; indicated speed 100 km/h.', result: 'Nominal diameters are 631.9 mm and 642.9 mm. Diameter increases by 11 mm (about 1.74%), ride height by 5.5 mm, and estimated actual speed becomes 101.74 km/h.', note: 'This is a geometric comparison, not a tire-fitment approval.' },
+    ],
     interpretation: ['A larger overall diameter travels farther per wheel revolution, while a smaller diameter travels less distance per revolution.', 'Clearance change represents half of the overall diameter difference.'],
     limitations: ['This calculator compares nominal tire dimensions only and does not establish safe vehicle fitment.', 'Actual mounted dimensions vary by tire model, wheel width, pressure, load and manufacturer tolerances.', 'Verify wheel width, offset, load rating, speed rating and vehicle manufacturer requirements.'],
     faqs: [
@@ -30,7 +53,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
   },
   'dimensional-weight-calculator': {
     slug: 'dimensional-weight-calculator',
-    name: 'Dimensional Weight Calculator – DIM & Volumetric Shipping Weight',
+    name: 'Dimensional Weight Calculator – Shipping DIM Weight',
     category: 'Everyday Calculators',
     applicationCategory: 'UtilitiesApplication',
     description: 'Calculate dimensional or volumetric shipping weight from package dimensions and a carrier divisor, then compare it with actual weight.',
@@ -41,6 +64,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { title: 'Billable comparison', body: 'The calculator displays the greater of entered actual weight and calculated dimensional weight.' },
     ],
     steps: ['Choose metric or imperial measurements.', 'Enter package length, width and height.', 'Enter actual package weight.', 'Enter the dimensional divisor required by the relevant carrier and service.', 'Compare actual, dimensional and estimated billable weight.'],
+    examples: [
+      { title: 'Lightweight parcel', input: '40 × 30 × 20 cm, actual weight 3 kg, illustrative divisor 5,000 cm³/kg.', result: 'Volume is 24,000 cm³; dimensional weight is 4.8 kg, which exceeds the actual weight of 3 kg.', note: 'A carrier may apply its own divisor, rounding and billing rules; 4.8 kg is not a guaranteed billed weight.' },
+    ],
     interpretation: ['Large lightweight packages can have dimensional weight greater than their scale weight.', 'The divisor materially affects the result and should be obtained from the carrier for the specific service.'],
     limitations: ['Carrier formulas, divisors, rounding rules and oversize policies vary.', 'This calculator does not quote shipping charges or guarantee the weight a carrier will bill.', 'Use the current rules published by the relevant carrier.'],
     faqs: [
@@ -64,6 +90,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { title: 'Cost', body: 'Electricity cost = energy in kWh × electricity rate per kWh.' },
     ],
     steps: ['Enter appliance wattage.', 'Enter average hours used per day.', 'Enter the number of days and electricity tariff per kWh.', 'Review energy use and estimated daily, monthly, yearly, and selected-period cost.'],
+    examples: [
+      { title: 'Daily fan running cost', input: '75 W appliance, 8 hours per day, electricity rate 0.20 per kWh in your chosen currency.', result: '0.6 kWh per day; 18 kWh over 30 days; estimated 30-day energy cost 3.60 in the same currency.', note: 'This example excludes fixed charges, taxes and tiered electricity rates.' },
+    ],
     interpretation: ['The selected-period result represents usage charges based only on the entered energy rate.', 'Daily, 30-day, and annual estimates assume the same daily usage pattern continues.'],
     limitations: ['Actual bills may include taxes, fixed fees, slab tariffs, demand charges, minimum charges, or time-of-use pricing.', 'Rated appliance wattage may differ from real operating consumption.'],
     faqs: [
@@ -71,7 +100,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       { question: 'Does this calculate my complete electricity bill?', answer: 'No. It estimates usage cost from the entered per-kWh rate.' },
       { question: 'Can I calculate yearly appliance cost?', answer: 'Yes. The calculator displays a 365-day estimate.' },
     ],
-    relatedTools: [{ slug: 'fuel-cost-split-calculator', name: 'Fuel Cost & Passenger Split Calculator' }],
+    relatedTools: [{ slug: 'unit-price-calculator', name: 'Unit Price Calculator' }],
     relatedGuides: ['electricity-cost-calculation-guide'],
   },
   'unit-price-calculator': {
@@ -84,14 +113,18 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
     intro: ['Unit Price Calculator makes differently sized packages easier to compare by converting both offers to the same price-per-unit basis.', local],
     formula: [{ title: 'Unit price', body: 'Unit price = total product price ÷ quantity.' }],
     steps: ['Enter price and quantity for Option A.', 'Enter price and quantity for Option B.', 'Choose a currency and enter the unit label.', 'Compare unit prices and percentage difference.'],
-    interpretation: ['The option with the lower price per identical unit generally offers better value when quality and other product characteristics are comparable.'],
+    examples: [
+      { title: 'Compare two rice packs', input: 'Option A: 2 kg for 7.20; Option B: 5 kg for 16.50, both in the same currency.', result: 'Option A costs 3.60 per kg. Option B costs 3.30 per kg, saving 0.30 per kg (about 8.33% relative to Option A).', note: 'Compare identical units and include any relevant delivery charges or discounts before purchasing.' },
+    ],
+    interpretation: ['The option with the lower price per identical unit generally offers better value when quality and other product characteristics are comparable.', 'A larger pack can have a lower unit price but still cost more overall or lead to waste if you cannot use it before expiry.', 'When comparing appliances, unit purchase price is only one part of the decision: use the electricity cost calculator to estimate ongoing running costs separately.'],
     limitations: ['Only compare equivalent units and comparable products.', 'Discounts, taxes, shipping, loyalty rewards, expiry, and quality differences are not automatically included.'],
     faqs: [
       { question: 'What is unit price?', answer: 'Unit price is the total price divided by the amount or number of units.' },
       { question: 'Can I compare different package sizes?', answer: 'Yes, provided both quantities use the same unit.' },
       { question: 'Can I use kilograms, litres, pieces, or metres?', answer: 'Yes. The unit label is editable.' },
+      { question: 'How much cheaper is the larger pack per unit?', answer: 'Divide each price by its quantity, subtract the lower unit price from the higher one, and divide that difference by the higher unit price to express the saving as a percentage.' },
     ],
-    relatedTools: [{ slug: 'fuel-cost-split-calculator', name: 'Fuel Cost & Passenger Split Calculator' }],
+    relatedTools: [{ slug: 'electricity-cost-calculator', name: 'Electricity Cost Calculator' }, { slug: 'dimensional-weight-calculator', name: 'Dimensional Weight Calculator' }],
     relatedGuides: [],
   },
   'aquarium-volume-calculator': {
@@ -133,6 +166,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Optionally estimate the percentage displaced by substrate, rocks, wood, or equipment.',
       'Review estimated litres, US gallons, UK gallons, and cubic feet.',
     ],
+    examples: [
+      { title: 'Rectangular 60 × 30 × 40 cm tank', input: 'Internal dimensions 60 × 30 × 40 cm; fill level 90%; estimated displacement 10%.', result: 'Gross volume is 72 litres. Filled volume is 64.8 litres; after 10% displacement, estimated water volume is 58.32 litres (about 15.4 US gallons).', note: 'Measure inside the tank and treat the displacement setting as an approximation, not a measured water quantity.' },
+    ],
     interpretation: [
       'Gross capacity represents the mathematical internal volume based on the entered dimensions.',
       'Actual water volume is usually lower because aquariums are not filled to the rim and objects inside the tank occupy space.',
@@ -159,6 +195,10 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       {
         question: 'Can I calculate a cylindrical aquarium?',
         answer: 'Yes. Choose Cylindrical and enter its diameter and height.',
+      },
+      {
+        question: 'Should I use outside or inside tank dimensions?',
+        answer: 'Use internal dimensions for a closer estimate of water capacity. Outside measurements include glass or acrylic thickness and can overstate the usable volume.',
       },
     ],
     relatedTools: [
@@ -205,6 +245,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Review the plate combination required on each side.',
       'If the exact target cannot be reached with the available plate sizes, review the closest lower balanced load.',
     ],
+    examples: [
+      { title: 'Load a 60 kg barbell', input: 'Target total 60 kg, bar 20 kg, with standard 20 kg plates available.', result: '40 kg remains for plates, or 20 kg per side. Put one 20 kg plate on each side of the bar.', note: 'Confirm the bar and plate markings and use suitable collars before lifting.' },
+    ],
     interpretation: [
       'The displayed plate count is per side, so the same combination should be loaded on both ends of the bar.',
       'Total weight includes the bar itself plus all plates on both sides.',
@@ -234,7 +277,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       },
     ],
     relatedTools: [
-      { slug: 'fuel-cost-split-calculator', name: 'Fuel Cost & Passenger Split Calculator' },
+      { slug: 'one-rep-max-calculator', name: 'One-Rep Max Calculator' },
     ],
     relatedGuides: [],
   },
@@ -282,6 +325,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Optionally mark the journey as a round trip and add tolls, parking, or other costs.',
       'Review fuel required, total trip cost, and each person’s share.',
     ],
+    examples: [
+      { title: 'Split a weekend road trip', input: 'One-way distance 150 km, round trip enabled, efficiency 15 km/L, fuel price 1.50 per litre, 4 passengers, and 12 in total tolls.', result: 'Round-trip distance is 300 km. Estimated fuel use is 20 litres, fuel expense is 30, and total shared expense is 42. Each of four passengers pays 10.50 in the same currency.', note: 'The example assumes all four passengers share costs equally and excludes parking or other unentered expenses.' },
+    ],
     interpretation: [
       'Fuel cost is based on the entered efficiency and assumes the vehicle achieves that average throughout the trip.',
       'Optional toll, parking, and other costs are added to the fuel expense before the total is divided equally between passengers.',
@@ -320,7 +366,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
           'No. The calculation runs locally in your browser.',
       },
     ],
-    relatedTools: [],
+    relatedTools: [{ slug: 'tire-size-calculator', name: 'Tire Size Calculator' }],
     relatedGuides: [],
   },
   'one-rep-max-calculator': {
@@ -351,6 +397,9 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Select your preferred prediction equation (Consensus Average, Epley, or Brzycki).',
       'Review your estimated 1RM and percentage load breakdown for programming training cycles.',
     ],
+    examples: [
+      { title: 'Estimate a bench-press maximum', input: 'Lift 60 kg for 5 repetitions with consistent technique.', result: 'Epley predicts 70 kg (60 × (1 + 5/30)). Brzycki predicts 67.5 kg (60 × 36/32). The arithmetic mean of these two estimates is 68.75 kg.', note: 'These are formula estimates, not a verified maximum. The displayed result depends on the selected equation and tool rounding.' },
+    ],
     interpretation: [
       'Estimates are most accurate between 2 and 10 repetitions; as repetitions exceed 10, muscular endurance skews the neuromuscular maximum estimate.',
       'Use 1RM percentages to program periodized training blocks (e.g. 70–80% for hypertrophy, 85–95% for maximal strength).',
@@ -361,7 +410,7 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
     ],
     faqs: [
       { question: 'Why estimate 1RM instead of testing true 1RM?', answer: 'Testing true 1RM lifts poses significant joint strain and injury risk. Submaximal estimation offers a safer benchmark for tracking strength progression.' },
-      { question: 'Which formula is most accurate?', answer: 'The consensus average of Epley and Brzycki is widely recognized as the most balanced predictor across bench press, squat, and deadlift.' },
+      { question: 'Why do Epley and Brzycki give different results?', answer: 'They use different mathematical relationships between repetitions and estimated maximum strength. Neither formula can account for every lifter or exercise, so treat the difference as a useful uncertainty range.' },
       { question: 'Is my workout data uploaded?', answer: 'No. All calculations run strictly in your web browser.' },
     ],
     relatedTools: [
@@ -373,10 +422,10 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
   },
   'website-worth-calculator': {
     slug: 'website-worth-calculator',
-    name: 'Website Worth Calculator: Check Website Value',
+    name: 'Website Worth Calculator – Estimate Site Value',
     category: 'Everyday Calculators',
     applicationCategory: 'UtilitiesApplication',
-    description: 'Check how much a website may be worth with a transparent website value calculator using URL quality signals, traffic, revenue, profit, and valuation multiples.',
+    description: 'Estimate how much a website may be worth using monthly profit, revenue or traffic. Review URL signals, valuation assumptions and an indicative price range—not a verified appraisal.',
     longTailKeywords: [
       'how much is this website worth',
       'website worth calculator',
@@ -404,6 +453,10 @@ export const everydayToolPages: Record<string, ToolPageContent> = {
       'Enter monthly visits, monthly revenue, or preferably monthly profit when known.',
       'Review the estimated low-to-high website value range and the assumptions shown beneath it.',
       'For a sale or acquisition decision, replace estimates with verified analytics and financial records.'
+    ],
+    examples: [
+      { title: 'Profit-based website valuation scenario', input: 'Verified average monthly profit of $1,000; illustrative unadjusted multiple range of 24–40 times monthly profit.', result: 'The base scenario spans $24,000–$40,000 before any modest technical-score adjustment.', note: 'This is an illustrative starting range, not a sale-price prediction. The live tool may adjust the range using its technical score; verify revenue quality, expenses and transfer risks.' },
+      { title: 'Traffic-only scenario with explicit assumptions', input: '50,000 monthly visits; assumed $12 revenue per 1,000 visits and 65% normalized profit margin.', result: 'Assumed monthly revenue is $600 and normalized monthly profit is $390. An unadjusted 24–40× multiple produces $9,360–$15,600.', note: 'Neither revenue nor profit is measured from a URL; replace these assumptions with real analytics and financial records.' },
     ],
     interpretation: [
       'The technical score describes observable website implementation signals; it is not a traffic, authority, or business-quality score.',

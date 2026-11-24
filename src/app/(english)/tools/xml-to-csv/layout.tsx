@@ -1,3 +1,4 @@
+import PageHelp from '@/components/seo/PageHelp';
 import type { Metadata } from 'next';
 import { languageAlternates } from '@/lib/i18n/config';
 
@@ -9,4 +10,4 @@ export const metadata: Metadata = {
     languages: languageAlternates('xml-to-csv'),
   },
 };
-export default function Layout({ children }: { children: React.ReactNode }) { return children; }
+export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}<PageHelp path="/tools/xml-to-csv" /></>; }

@@ -93,7 +93,7 @@ export default function NewConverter({mode}:{mode:Mode}){
   {typed&&<><label htmlFor="paste-content" className="block font-semibold">Or paste your {info.ext} content</label><textarea id="paste-content" value={text} onChange={e=>setText(e.target.value)} rows={8} className="w-full rounded-xl border border-[var(--border)] bg-[var(--background)] p-3 font-mono text-sm"/></>}
   {mode==='markdown-to-pdf'&&<p className="text-sm text-[var(--muted-foreground)]">Basic headings and text only; complex tables and images are not supported in this lightweight export.</p>}
   {mode==='xml-to-csv'&&<p className="text-sm text-[var(--muted-foreground)]">Supports flat repeated XML records. Nested objects require a separate mapping process.</p>}
-  {mode==='webp-to-gif'&&<p className="text-sm text-[var(--muted-foreground)]">Preserves multiple frames where supported. GIF conversion loads a browser-based encoder on first use and may take time.</p>}
+  {mode==='webp-to-gif'&&<p className="text-sm text-[var(--muted-foreground)]">Exports a single still frame as GIF. Animation, frame timing, and looping are not preserved.</p>}
   {error&&<p role="alert" className="text-red-600">{error}</p>}
   <button type="button" disabled={busy||(!file&&!text.trim())||(!!file&&file.size>15000000)} onClick={convert} className="rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white disabled:opacity-50">{busy?'Converting…':'Download '+info.output.toUpperCase()}</button>
   <p className="text-xs text-[var(--muted-foreground)]">Your file is processed in your browser, not uploaded to Navorika.</p>

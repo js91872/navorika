@@ -9,6 +9,11 @@ export type Mp3Bitrate = 96 | 128 | 192 | 256 | 320;
 export interface MediaConversionOptions {
   outputFormat: AudioOutputFormat;
   bitrate?: Mp3Bitrate;
+  startSeconds?: number;
+  endSeconds?: number;
+  sampleRate?: 44100 | 48000;
+  channels?: 1 | 2;
+  volume?: number;
   onProgress?: (percent: number, stageText: string) => void;
   signal?: AbortSignal;
 }

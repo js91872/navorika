@@ -1,4 +1,4 @@
-import type { AudioOutputFormat, Mp3Bitrate } from './types';
+import type { AudioOutputFormat, Mp3Bitrate, MediaConversionOptions } from './types';
 
 // Dynamic type references since @ffmpeg/ffmpeg is loaded dynamically on client
 type FFmpegType = import('@ffmpeg/ffmpeg').FFmpeg;
@@ -99,7 +99,8 @@ export async function convertMediaWithFFmpeg(
   outputFormat: AudioOutputFormat,
   bitrate: Mp3Bitrate = 192,
   onProgress?: (percent: number, stage: string) => void,
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  options?: MediaConversionOptions
 ): Promise<Blob> {
   const ffmpeg = await getOrInitFFmpeg((pct, msg) => {
     onProgress?.(Math.round(pct * 0.3), msg);
@@ -146,7 +147,20 @@ export async function convertMediaWithFFmpeg(
     onProgress?.(35, `Configuring audio encoder (${outputFormat.toUpperCase()})...`);
 
     // Build FFmpeg command arguments
-    const args: string[] = ['-i', inputName, '-vn'];
+    const args: string[] = [];
+    if (options?.startSeconds && options.startSeconds > 0) args.push('-ss', String(options.startSeconds));
+    args.push('-i', inputName, '-vn', '-map', '0:a:0');
+    if (options?.endSeconds !== undefined) {
+      const duration = options.endSeconds - (options.startSeconds || 0);
+      if (!Number.isFinite(duration) || duration <= 0) throw new Error('Trim end must be later than trim start.');
+      args.push('-t', String(duration));
+    }
+    if (options?.sampleRate) args.push('-ar', String(options.sampleRate));
+    if (options?.channels) args.push('-ac', String(options.channels));
+    if (options?.volume !== undefined && options.volume !== 1) {
+      if (!Number.isFinite(options.volume) || options.volume < 0.5 || options.volume > 2) throw new Error('Volume must be between 50% and 200%.');
+      args.push('-af', `volume=${options.volume}`);
+    }
 
     if (outputFormat === 'mp3') {
       args.push('-c:a', 'libmp3lame', '-b:a', `${bitrate}k`);

@@ -52,7 +52,7 @@ export default function TermsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-24 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -86,13 +86,13 @@ export default function TermsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)]"
+              className="p-4 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] break-words"
             >
               <div className="flex items-start gap-4">
                 <div className="mt-1 p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shrink-0">
                   {section.icon}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <h2 className="text-xl font-bold mb-2">{section.title}</h2>
                   <p className="text-[var(--muted-foreground)] leading-relaxed">
                     {section.content}
@@ -122,6 +122,6 @@ export default function TermsPage() {
           </p>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
