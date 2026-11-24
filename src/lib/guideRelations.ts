@@ -1,11 +1,16 @@
 export const guideRelations: Record<string, string[]> = {
+  'how-to-generate-upi-qr-code': ['qr-code-guide', 'gst-calculation-guide'],
+  'how-to-clear-icloud-storage': ['why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely', 'how-to-speed-up-macbook', 'how-to-copy-and-paste-on-macbook'],
+  'why-is-my-icloud-storage-full': ['how-to-clear-icloud-storage', 'how-to-delete-icloud-backup-safely', 'how-to-speed-up-macbook'],
+  'how-to-delete-icloud-backup-safely': ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-speed-up-macbook'],
+
   'how-to-calculate-fertilizer-for-a-lawn': ['fertilizer-npk-numbers-explained', 'how-to-calculate-fertilizer-from-a-soil-test'],
   'fertilizer-npk-numbers-explained': ['how-to-calculate-fertilizer-for-a-lawn', 'how-to-calculate-fertilizer-from-a-soil-test'],
   'how-to-calculate-fertilizer-from-a-soil-test': ['how-to-calculate-fertilizer-for-a-lawn', 'fertilizer-npk-numbers-explained'],
   'how-to-copy-and-paste-on-macbook': ['how-to-speed-up-macbook', 'how-to-show-battery-percentage-on-mac', 'how-to-clear-ram-on-mac'],
   'how-to-speed-up-macbook': ['how-to-copy-and-paste-on-macbook', 'how-to-clear-ram-on-mac', 'how-to-show-battery-percentage-on-mac'],
   'video-editing-software-for-mac': ['free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
-  'free-video-editing-software-for-mac': ['video-editing-software-for-mac', 'easy-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'how-to-clear-ram-on-mac'],
+  'free-video-editing-software-for-mac': ['video-editing-software-for-mac', 'easy-video-editing-software-for-mac', 'professional-video-editing-software-for-mac', 'how-to-clear-ram-on-mac', 'how-to-speed-up-macbook'],
   'professional-video-editing-software-for-mac': ['video-editing-software-for-mac', 'free-video-editing-software-for-mac', 'easy-video-editing-software-for-mac'],
   'easy-video-editing-software-for-mac': ['video-editing-software-for-mac', 'free-video-editing-software-for-mac', 'professional-video-editing-software-for-mac'],
   'house-construction-cost-guide': ['construction-estimate-quote-guide', 'brick-calculation-guide', 'flooring-calculation-guide'],
@@ -39,6 +44,7 @@ export const guideRelations: Record<string, string[]> = {
   'print-bleed-trim-safe-area-guide': ['rgb-vs-cmyk-for-printing', 'best-coreldraw-print-format', 'pdf-security-guide'],
   'eps-vs-cdr-guide': ['pdf-to-cdr-editing-guide', 'svg-vs-cdr-guide', 'best-coreldraw-print-format'],
   'how-to-save-a-screenshot-as-a-pdf': ['how-to-merge-pdf-files', 'pdf-security-guide', 'image-formats-guide'],
+  'how-to-compare-pdf-files': ['how-to-merge-pdf-files', 'pdf-security-guide', 'pdf-compression-guide'],
   'how-to-clear-ram-on-mac': ['free-video-editing-software-for-mac'],
 };
 

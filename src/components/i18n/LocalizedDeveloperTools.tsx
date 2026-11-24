@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { Code2 } from 'lucide-react';
 import ResultActions from '@/components/ui/ResultActions';
 import { resultActionMessages } from '@/lib/i18n/actionMessages';
+import { quickUnixTimestamp } from '@/lib/time/quickUnixTimestamp';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
 import { fieldClass, buttonClass } from './ToolControls';
@@ -63,14 +64,8 @@ export default function LocalizedDeveloperTools({
 
   // Timestamp evaluation
   const timestampResult = useMemo(() => {
-    const trimmed = timestamp.trim();
-    if (!/^-?\d+$/.test(trimmed)) return null;
-    const num = Number(trimmed);
-    if (!Number.isFinite(num)) return null;
-    const isMs = trimmed.replace('-', '').length > 10;
-    const date = new Date(isMs ? num : num * 1000);
-    if (Number.isNaN(date.getTime())) return null;
-    return date.toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
+    const result = quickUnixTimestamp(timestamp);
+    return result ? result.utc.replace('T', ' ').slice(0, 19) + ' UTC' : null;
   }, [timestamp]);
 
   // UTM evaluation

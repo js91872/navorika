@@ -19,6 +19,12 @@ export interface ToolCapabilitySnapshot {
 }
 
 export const toolUx: Record<string, ToolUxConfig> = {
+  'internet-speed-test': { processingMode: 'server', noAccount: true, resultActions: ['copy-summary'] },
+  'eml-to-word': { processingMode: 'local', noUpload: true, noAccount: true },
+  'eml-to-excel': { processingMode: 'local', noUpload: true, noAccount: true },
+  'eml-to-html': { processingMode: 'local', noUpload: true, noAccount: true },
+  'eml-to-msg': { processingMode: 'local', noUpload: true, noAccount: true },
+  'eml-to-pdf': { processingMode: 'local', noUpload: true, noAccount: true },
   'reverse-sales-tax-calculator': { processingMode: 'local', noUpload: true, noAccount: true },
   'fertilizer-calculator': { processingMode: 'local', noUpload: true, noAccount: true },
   'house-construction-cost-calculator': {
@@ -316,6 +322,11 @@ export const toolUx: Record<string, ToolUxConfig> = {
     processingMode: 'local', noUpload: true, noAccount: true,
     resultActions: ['copy-summary', 'download-csv', 'download-txt'],
     workflowLabels: { 'extract-pdf-text': 'Extract full PDF text', 'pdf-page-size-checker': 'Check PDF page dimensions' },
+  },
+  'compare-pdf': {
+    processingMode: 'local', noUpload: true, noAccount: true,
+    resultActions: ['copy-summary', 'download-txt', 'download-json', 'print'],
+    workflowLabels: { 'pdf-word-counter': 'Count words in compared PDFs', 'extract-pdf-text': 'Extract text from PDF pages', 'pdf-page-size-checker': 'Check PDF page dimensions' },
   },
   'rgb-cmyk-image-checker': {
     processingMode: 'local', noUpload: true, noAccount: true,

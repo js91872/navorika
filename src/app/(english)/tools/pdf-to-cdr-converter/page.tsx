@@ -8,11 +8,13 @@ export default function Page() {
   return (
     <ExpansionToolPage
       category="developer-tools"
-      eyebrow="Convert PDF for CorelDRAW Online"
+      eyebrow="PDF-to-CDR workflow for CorelDRAW"
       title="PDF to CDR Converter"
-      description="Convert PDF to CDR by preparing a CorelDRAW-ready PDF, SVG or EPS file. Import the result into CorelDRAW, check text and vector artwork, then use Save As to create a native CDR file."
+      description="Prepare a PDF for CorelDRAW as a multi-page PDF, first-page SVG, or EPS. Import it and save as .cdr in CorelDRAW; Navorika does not generate native CDR files."
     >
-      {/* Above-the-fold workflow helper bar */}
+      <CorelServerTool config={corelServerConfigs.pdf} />
+
+      {/* Related CorelDRAW tools and guide */}
       <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 text-xs text-[var(--muted-foreground)] shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 font-medium text-[var(--foreground)]">
@@ -54,14 +56,13 @@ export default function Page() {
         </div>
       </div>
 
-      <CorelServerTool config={corelServerConfigs.pdf} />
 
-      {/* Compact Above-the-Fold Workflow Strip */}
+      {/* Compact Workflow Strip */}
       <div className="mx-auto mt-6 max-w-5xl rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 text-center text-xs text-[var(--muted-foreground)]">
         <div className="flex flex-wrap items-center justify-center gap-1.5 font-medium text-[var(--foreground)] sm:gap-2">
           <span>PDF</span>
           <span className="text-[var(--muted-foreground)]">→</span>
-          <span>Choose PDF / SVG / EPS</span>
+          <span>PDF all pages / SVG or EPS page 1</span>
           <span className="text-[var(--muted-foreground)]">→</span>
           <span>Import into CorelDRAW</span>
           <span className="text-[var(--muted-foreground)]">→</span>
@@ -70,7 +71,7 @@ export default function Page() {
           <span>Save As CDR</span>
         </div>
         <p className="mt-2 text-[var(--muted-foreground)]">
-          Navorika does not generate a native CDR file. It creates CorelDRAW-ready PDF, SVG, or EPS output that you can import into CorelDRAW and save as CDR.
+          Navorika downloads PDF, SVG, or EPS—not a native CDR file. Import the download into CorelDRAW and use Save As to create .cdr.
         </p>
       </div>
     </ExpansionToolPage>
