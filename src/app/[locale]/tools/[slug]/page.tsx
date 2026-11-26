@@ -35,7 +35,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(locale) || !isTranslatedTool(slug)) notFound();
   const d = await getDictionary(locale);
   const tool = d.tools[slug];
-  const indexable = hasIndexableLocalizedToolCopy(tool);
   const url = `https://navorika.com${localizedPath(locale, slug)}`;
   return {
     title: tool.title,
@@ -43,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: url, languages: languageAlternates(slug) },
     openGraph: { title: tool.title, description: tool.description, url, siteName: 'Navorika', type: 'website' },
     twitter: { card: 'summary', title: tool.title, description: tool.description },
-    robots: { index: indexable, follow: true },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -53,7 +52,7 @@ export default async function LocalizedToolPage({ params }: Props) {
   const d = await getDictionary(locale);
   const tool = d.tools[slug];
   const richTool = tool as typeof tool & LocalizedToolCopy;
-  const indexable = hasIndexableLocalizedToolCopy(tool);
+  const hasRichCopy = hasIndexableLocalizedToolCopy(tool);
   const url = `https://navorika.com${localizedPath(locale, slug)}`;
   const schema = {
     '@context': 'https://schema.org',
@@ -116,7 +115,7 @@ export default async function LocalizedToolPage({ params }: Props) {
         </div>
       </div>
 
-      {indexable ? (
+      {hasRichCopy ? (
         <div className="mt-12 space-y-8">
           <section><h2 className="text-xl font-bold">{d.ui.aboutTool}</h2><div className="mt-3 space-y-3">{richTool.about && renderCopy(richTool.about)}</div></section>
           <section><h2 className="text-xl font-bold">{d.ui.calculationMethod}</h2><div className="mt-3 space-y-3">{richTool.calculationMethod && renderCopy(richTool.calculationMethod)}</div></section>
