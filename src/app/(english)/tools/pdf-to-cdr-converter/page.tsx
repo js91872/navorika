@@ -9,7 +9,7 @@ export default function Page() {
     <ExpansionToolPage
       category="developer-tools"
       eyebrow="PDF-to-CDR workflow for CorelDRAW"
-      title="Prepare a PDF for CorelDRAW"
+      title="PDF to CDR Converter"
       description="Prepare a PDF for CorelDRAW as a multi-page PDF, first-page SVG, or EPS. Import it and save as .cdr in CorelDRAW; Navorika does not generate native CDR files."
     >
       <CorelServerTool config={corelServerConfigs.pdf} />
