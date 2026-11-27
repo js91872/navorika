@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'OBJ to SKP Converter Online | SketchUp 3D Model Files',
   description: 'Convert OBJ mesh geometry and simple MTL texture materials into SketchUp SKP files. Check units, geometry, UVs and limitations before using a model.',
   alternates: { canonical: url },
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
 };
 
 export default function Page() {
