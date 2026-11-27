@@ -402,11 +402,11 @@ const guideDefinitions: GuideDefinition[] = [
   {
     slug: 'tax-planning-guide-2026',
     title: 'India Tax Planning Guide 2026: Slabs, Regimes, and Rebates',
-    description: 'Learn how to plan your taxes effectively for FY 2026–27. Compare New vs Old Regimes, standard deduction, Section 87A rebate, and advance tax schedules.',
-    featuredImage: { src: "/images/guides/editorial-tax-planning-guide-2026.svg", alt: "Original Navorika guide visual for India Tax Planning Guide 2026: Slabs, Regimes, and Rebates", caption: "Learn how to plan your taxes effectively for FY 2026–27. Compare New vs Old Regimes, standard deduction, Section 87A rebate, and advance tax schedules." },
+    description: 'Compare Indian income tax regimes for tax year 2026–27, with salary examples, the resident rebate and marginal relief.',
+    featuredImage: { src: "/images/guides/editorial-tax-planning-guide-2026.svg", alt: "Original Navorika guide visual for India Tax Planning Guide 2026: Slabs, Regimes, and Rebates", caption: "Compare Indian income tax regimes for tax year 2026–27, with salary examples, the resident rebate and marginal relief." },
     category: 'Finance',
     publishedDate: 'August 2026',
-    readTime: '12 min read',
+    readTime: '3 min read',
     author: 'Navorika Team'
   },
   {
@@ -856,7 +856,7 @@ export const guidesMetadata: GuideMetadata[] = guideDefinitions.map((guide) => {
   return {
     ...guide,
     datePublished: guide.slug === 'webp-to-png-guide' ? '2026-11-13' : guide.slug === 'how-to-compare-pdf-files' ? '2026-11-04' : ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-01' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08') : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch ? '2026-09-27' : guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-01',
-    dateModified: guide.slug === 'webp-to-png-guide' ? '2026-11-13' : guide.slug === 'how-to-compare-pdf-files' ? '2026-11-04' : ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-02' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : (guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08')) : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
+    dateModified: guide.slug === 'tax-planning-guide-2026' ? '2026-11-27' : guide.slug === 'webp-to-png-guide' ? '2026-11-13' : guide.slug === 'how-to-compare-pdf-files' ? '2026-11-04' : ['how-to-clear-icloud-storage', 'why-is-my-icloud-storage-full', 'how-to-delete-icloud-backup-safely'].includes(guide.slug) ? '2026-11-02' : guide.slug === 'how-to-back-out-sales-tax-us' ? '2026-10-20' : fertilizerGuideSlugs.has(guide.slug) ? '2026-10-19' : newOctoberGuideDates.has(guide.slug) ? (guide.slug === 'how-to-show-battery-percentage-on-mac' ? '2026-10-19' : ['how-to-copy-and-paste-on-macbook', 'how-to-speed-up-macbook'].includes(guide.slug) ? '2026-10-13' : (guide.slug === 'free-website-audit-checklist' ? '2026-10-11' : '2026-10-08')) : octoberMacVideoSlugs.has(guide.slug) ? '2026-10-05' : isNewBatch || guide.slug === 'pdf-to-cdr-editing-guide' ? '2026-09-27' : recentUpdateSlugs.has(guide.slug) || guideDefinitions.indexOf(guide) >= 21 ? '2026-08-29' : '2026-08-19',
     keywords: guide.keywords ?? [subject, `${subject} guide`, `${subject} explained`, guide.category.toLowerCase() + ' guide'],
     featuredImage: {
       src: guide.featuredImage?.src ?? image.src,

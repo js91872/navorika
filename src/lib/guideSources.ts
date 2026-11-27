@@ -182,7 +182,7 @@ export const guideSources: Record<string, GuideSource[]> = {
   'qr-code-guide': [{ name: 'ISO/IEC 18004 — QR Code specification', url: 'https://www.iso.org/standard/62021.html' }],
   'calorie-deficit-guide': [{ name: 'NIDDK — Body Weight Planner', url: 'https://www.niddk.nih.gov/bwp' }],
   'jwt-decoding-guide': [{ name: 'IETF RFC 7519 — JSON Web Token', url: 'https://www.rfc-editor.org/rfc/rfc7519' }],
-  'tax-planning-guide-2026': [{ name: 'Income Tax Department — AY 2026–27 guidance', url: 'https://www.incometax.gov.in/iec/foportal/help/non-company/return-applicable-0' }],
+  'tax-planning-guide-2026': [{ name: 'Income Tax Department — Budget 2026 FAQs', url: 'https://www.incometaxindia.gov.in/documents/20117/15766092/FAQs-Budget-2026.pdf/ff3d0e10-88a0-b11f-3c27-b58375974227' }, { name: 'Income-tax Act, 2025, as amended by Finance Act 2026', url: 'https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf' }],
   'macronutrients-guide': [{ name: 'World Health Organization — Healthy diet', url: 'https://www.who.int/news-room/fact-sheets/detail/healthy-diet' }],
   'json-formatting-guide': [{ name: 'IETF RFC 8259 — The JSON Data Interchange Format', url: 'https://www.rfc-editor.org/rfc/rfc8259' }],
   'image-formats-guide': [webImageFormats],
